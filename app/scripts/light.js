@@ -1,3 +1,7 @@
+/* eslint-disable import/first */
+
+import './modules/jQueryGlobalHelper';
+
 import $ from 'jquery';
 import 'bootstrap/js/scrollspy';
 import 'jquery-mousewheel';
