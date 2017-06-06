@@ -136,6 +136,18 @@ mixin note
 //- COLOR PALLETE
 //- mixin for generating color palette
 
+mixin displayColorInPalette(theme, colorset)
+  each weight, key in colorset
+    if typeof weight !== 'object'
+      div(
+        class=`l-color-${key < 1 ? 'main' : 'var'}`,
+        data-color-theme=theme,
+        data-color-weight=weight
+      )
+        span.color #{theme} (#{weight})
+    else
+      +displayColorInPalette(key, weight)
+
 mixin color-palette(colors)
 
   section#color-palette
@@ -149,13 +161,7 @@ mixin color-palette(colors)
       ul.l-color-palette
         each colorset, theme in colors
           li.l-color-palette_color
-            each weight, key in colorset
-              if key < 1
-                .l-color-main(data-color-theme=theme, data-color-weight=weight)
-                  span.color color(#{theme}, #{weight})
-              else
-                .l-color-var(data-color-theme=theme, data-color-weight=weight)
-                  span.color color(#{theme}, #{weight})
+            +displayColorInPalette(theme, colorset)
 
 //- ---------------------------------------------
 //- CONTENT SECTION

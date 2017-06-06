@@ -365,6 +365,11 @@
     $color-theme: map-get($color-palette, $theme);
     $color: null;
 
+    // if color is type of color, eg. no map
+    @if type-of($color-theme) == color {
+      @return _color-shade($color-theme, $weight);
+    }
+
     @if map-has-key($color-theme, $weight) {
       $color: map-get($color-theme, $weight);
     } @else {
