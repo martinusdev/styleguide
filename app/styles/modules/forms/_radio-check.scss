@@ -1,0 +1,197 @@
+// ---------------------------------------------
+// RADIO/CHECKBOX
+// ---------------------------------------------
+
+// wrapper
+.checkbox,
+.radio {
+  display: inline-flex;
+  align-items: center;
+
+  @include clearfix;
+}
+
+.radiocheck {
+  $this: &;
+
+  // native checkbox / radio input element
+  &__input {
+    @include visually-hidden;
+  }
+
+  &__control {
+    position: relative;
+    float: left;
+    display: block;
+    cursor: pointer;
+
+    [disabled] + &,
+    .is-disabled + &,
+    [readonly] + &,
+    .readonly + & { pointer-events: none; }
+
+    @each $type, $props in $radio-check {
+      #{$type} {
+        @include css-map($props);
+      }
+    }
+
+    @include css-map($radio-check, 'default');
+
+    :focus + &,
+    .is-active + & {
+      @include css-map($radio-check, 'focus');
+    }
+
+    [disabled] + &,
+    .is-disabled + & {
+      @include css-map($radio-check, 'disabled');
+    }
+
+    [readonly] + &,
+    .is-readonly + & {
+      @include css-map($radio-check, 'readonly');
+    }
+
+    .is-error + & {
+      @include css-map($radio-check, 'error');
+    }
+
+    &::before,
+    &::after {
+      opacity: 0;
+      transition: opacity $ease-300;
+      background-color: map-get($radio-check-color, 'default');
+    }
+
+    :checked + & {
+      // stylelint-disable-next-line
+      &::before,
+      &::after { opacity: 1; }
+    }
+
+    [disabled] + &,
+    .is-disabled + & {
+      // stylelint-disable-next-line
+      &::before,
+      &::after {
+        background-color: map-get($radio-check-color, 'disabled');
+      }
+      + .radiocheck__label { // stylelint-disable-line
+        color: map-get($radio-check-color, 'disabled');
+        pointer-events: none;
+      }
+    }
+
+    [readonly] + &,
+    .is-readonly + & {
+      // stylelint-disable-next-line
+      &::before,
+      &::after {
+        background-color: map-get($radio-check-color, 'readonly');
+      }
+
+      // stylelint-disable-next-line
+      + .radiocheck__label {
+        color: map-get($radio-check-color, 'readonly');
+        pointer-events: none;
+      }
+    }
+
+    .is-error + & {
+      // stylelint-disable-next-line
+      &::before,
+      &::after {
+        background-color: map-get($radio-check-color, 'error');
+      }
+
+      + .radiocheck__label {   // stylelint-disable-line
+        color: map-get($radio-check-color, 'error');
+      }
+    }
+  }
+
+  // checkbox
+  .checkbox &__control {
+    @include border-radius($default-border-radius);
+
+    &::before,
+    &::after {
+      content: '';
+      height: 20%;
+      position: absolute;
+      top: 50%;
+      left: 37%;
+      display: block;
+    }
+
+    &::before {
+      width: 50%;
+      transform: translate(-60%, 0%) rotate(45deg);
+    }
+
+    &::after {
+      width: 80%;
+      transform: translate(-15%, -60%) rotate(-45deg);
+    }
+  }
+
+  // radio
+  .radio &__control {
+    @include border-radius(50%);
+
+    &::after {
+      content: '';
+      width: 40%;
+      height: 40%;
+      margin: 0 auto;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      display: block;
+      transform: translateY(-50%);
+
+      @include border-radius(50%);
+    }
+  }
+
+  // checkbox / radio labels
+  &__label {
+    display: block;
+    cursor: pointer;
+
+    @include css-map($radio-check-label);
+  }
+
+  // -----------------
+  // checkbox / radio sizing
+
+  @each $size, $props in $radio-check-sizes {
+    &#{_get-variant-name($size)} {
+      #{$this}__control {
+        width: map_get($props, 'size');
+        height: map_get($props, 'size');
+      }
+
+      #{$this}__label {
+        font-size: map_get($props, 'font-size');
+      }
+    }
+  }
+
+  // -----------------
+  // checkbox and radio groups
+
+  &-group {
+    @include clearfix;
+    display: inline-block;
+
+    .checkbox,
+    .radio {
+      float: left;
+      clear: both;
+      margin: 0;
+    }
+  }
+}

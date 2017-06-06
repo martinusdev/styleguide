@@ -1,0 +1,180 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.formLayouts', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_forms.scss'], contents)
+
+    +p-big Documentation of possible form layouts including vertical and multicolumn.
+  //- end: main info
+
+//- Content
+block append content
+
+  //- FORM LAYOUTS
+  +content-section(contents[0])
+
+    +p Form layouts consists of containers as <code class='l-code-inline'>.form-control</code>, <code class='l-code-inline'>.form-label</code> and <code class='l-code-inline'>.form-text</code>.
+
+    +p The main container <code class='l-code-inline'>.form-control</code> has form component as children. Alongside form component other containers <code class='l-code-inline'>.form-label</code> and <code class='l-code-inline'>.form-text</code> can be used to display additional information. The <code class='l-code-inline'>.form-label</code> contains basic label for form controls.
+
+  //- end: section
+
+  +content-section(contents[1])
+
+    +p Vertical layout is the most basic form layout and can be created by following principles shown in example below. In case you need more form components for one form label, you can use vertical block layout. This layout can be created by using additional class <code class='l-code-inline'>.form-block</code> as shown on example below.
+
+    +demo
+      +demo-example
+        .row
+          .col--l-6
+            h4 Vertical layout
+            .form-control.form-control--input
+              .form-label
+                label(for='input-vl-01') Form label:
+              input.input(type='text', placeholder='Input', id='input-vl-01')
+            .form-control.form-control--textarea
+              .form-label
+                label(for='textarea-vl-01') Form label:
+              textarea.input(type='text', placeholder='Textarea', id='textarea-vl-01')
+            .form-control.form-control--checkbox
+              .form-label
+                label(for="checkbox-vl-01") Form label:
+              .checkbox
+                input.radiocheck__input(type='checkbox', id='checkbox-vl-01', name='checkbox-vl-01')
+                label.radiocheck__control(for='checkbox-vl-01')
+                label.radiocheck__label(for='checkbox-vl-01') Checkbox
+            hr
+            .form-control.form-control--group
+              .radiocheck-group
+                .form-label
+                  label Form label:
+                .form-control.form-control--radio
+                  .radio
+                    input.radiocheck__input(type='radio', id='radio-group-vl-0', name='radio-group-vl')
+                    label.radiocheck__control(for='radio-group-vl-01')
+                    label.radiocheck__label(for='radio-group-vl-01') Radio 1
+                .form-control.form-control--radio
+                  .radio
+                    input.radiocheck__input(type='radio', id='radio-group-vl-02', name='radio-group-vl')
+                    label.radiocheck__control(for='radio-group-vl-02')
+                    label.radiocheck__label(for='radio-group-vl-02') Radio 2
+            .form-control.form-control--select
+              .form-label
+                label(for="select-vl-01") Form label:
+              select.js-select#select-vl-01
+                each option in [1,2,3,4,5,6]
+                  option Option #{option}
+
+          .col--l-6.form--block
+            h4 Vertical layout
+            .form-control.form-control--input
+              .form-label
+                label(for='input-vl-02') Form label:
+              input.input(type='text', placeholder='Input', id='input-vl-02')
+            .form-control.form-control--textarea
+              textarea.input(type='text', placeholder='Textarea', id='textarea-vl-02')
+            .form-control.form-control--checkbox
+              .form-label
+                label(for="checkbox-vl-02") Form label:
+              .checkbox
+                input.radiocheck__input(type='checkbox', id='checkbox-vl-02', name='checkbox-vl-02')
+                label.radiocheck__control(for='checkbox-vl-02')
+                label.radiocheck__label(for='checkbox-vl-02') Checkbox
+            hr
+            .form-control.form-control--group
+              .radiocheck-group
+                .form-label
+                  label Form label:
+                .form-control.form-control--radio
+                  .radio
+                    input.radiocheck__input(type='radio', id='radio-group-vl-03', name='radio-group-vl-2')
+                    label.radiocheck__control(for='radio-group-vl-03')
+                    label.radiocheck__label(for='radio-group-vl-03') Radio 1
+                .form-control.form-control--radio
+                  .radio
+                    input.radiocheck__input(type='radio', id='radio-group-vl-03', name='radio-group-vl-2')
+                    label.radiocheck__control(for='radio-group-vl-03')
+                    label.radiocheck__label(for='radio-group-vl-03') Radio 2
+            .form-control.form-control--select
+              .form-label
+                label(for="select-vl-03") Form label:
+              select.js-select#select-vl-01
+                each option in [1,2,3,4,5,6]
+                  option Option #{option}
+
+      +demo-code
+        :code
+          <!-- vertical layout -->
+          <div class="row">
+            <div class="col col--l-6 col--s-2">
+              <div class="form-control ...">></div>
+              ...
+              <hr />
+              ...
+            </div>
+          </div>
+    //- end: demo
+  //- end: section
+
+  +content-section(contents[2])
+
+    +p Multicolumn layout can be created easily by combining <a href='grid.html#grid12'>Grid</a> with form layout as shown in example below. Different size of gutters between form columns can be achieved with <code class='l-code-inline'>.row--form</code> modificator on <code class='l-code-inline'>.row</code> element.
+
+    +demo
+      +demo-example
+        .row.row--form
+          .col--l-3.col--m-5.col--6
+            .form-control.form-control--input
+              .form-label
+                label(for='input-ml-01') Form label:
+              input.input(type='text', placeholder='Input', id='input-ml-01')
+          .col--l-1.col--m-2.col--6
+            .form-control.form-control--input
+              .form-label
+                label(for='input-ml-02') Label:
+              input.input(type='text', placeholder='Input', id='input-ml-02')
+          .col--l-3.col--m-5.col--6
+            .form-control.form-control--input
+              .form-label
+                label(for='input-ml-03') Form label:
+              input.input(type='text', placeholder='Input', id='input-ml-03')
+          .col--l-2.col--m-6.col--6
+            .form-control.form-control--checkbox
+              .form-label
+                label(for="checkbox-ml-04") Form label:
+              .checkbox
+                input.radiocheck__input(type='checkbox', id='checkbox-ml-04', name='checkbox-ml-04')
+                label.radiocheck__control(for='checkbox-ml-04')
+                label.radiocheck__label(for='checkbox-ml-04') Checkbox
+          .col--l-3.col--m-6
+            .form-control.form-control--select
+              .form-label
+                label(for="select-ml-05") Form label:
+              select.js-select#select-ml-05
+                each option in [1,2,3,4,5,6]
+                  option Option #{option}
+      +demo-code
+        :code
+          <div class="row">
+            <div class="col col--l-3 col--m-5 col--s-6 col--2">
+              <div class="form-control ...">
+                ...
+              </div>
+            </div>
+            ...
+            <div class="col col--l-1 col--m-2 col--s-6 col--2">
+              <div class="form-control ...">
+                ...
+              </div>
+            </div>
+          </div>
+    //- end: demo
+  //- end: section

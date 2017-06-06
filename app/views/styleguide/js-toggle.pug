@@ -1,0 +1,301 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('javascripts.toggle', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/scripts/modules/toggle.js'], contents)
+
+    +p-big Documentation for toggle javascript module.
+
+  //- end: main info
+
+//- Content
+block append content
+  
+  //- TOGGLE
+  +content-section(contents[0])
+
+    +p Toggle javascript handles basic toggle function of 'default/active' states, icon and text replacement in elements and aria-expanded attribute. It can be used for example to show/hide elements (with proper css), or change a hamburger menu icon to an X when the menu is open. By default it toggles <code class='l-code-inline'>.is-active</code> class on the target element.
+
+    +content-sub-section('Basic usage')
+    
+      +p To set up a basic toggle trigger element, use <code class='l-code-inline'>[data-toggle="#target-element"]</code>
+
+      +demo
+        +demo-example
+            code#toggleme.l-code-inline.l-debug-active target element state:
+            button.btn(type='button', data-toggle="#toggleme") Toggle
+
+        +demo-code
+          :code
+            <!-- target -->
+            <div id="toggleme">affected element</div>
+
+            <!-- toggle -->
+            <button class="btn" type="button" data-toggle="#toggleme">Toggle</button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Target parent')
+
+      +p The example below shows how to toggle parent element.
+
+      +demo
+        +demo-example
+          div
+            code.l-code-inline.l-debug-active-parent target element state:
+            button.btn(type='button', data-toggle="parent") Toggle
+        +demo-code
+          :code
+            <!-- target -->
+            <div>
+              <div>affected element</div>
+
+              <!-- toggle -->
+              <button class="btn" type="button" data-toggle="parent">Toggle</button>
+            </div>
+      //- end: demo
+
+    +content-sub-section('Target parent - 2 hops')
+
+      +p The example below shows how to target parent's parent element.
+
+      +demo
+        +demo-example
+          div
+            div
+              code.l-code-inline.l-debug-active-parent target element state:
+              button.btn(type='button', data-toggle="parent", data-parent-hop='2') Toggle
+        +demo-code
+          :code
+            <!-- target -->
+            <div>
+              <div>
+                <div>affected element</div>
+
+                <!-- toggle -->
+                <button class="btn" type="button" data-toggle="parent" data-parent-hop="2">Toggle</button>
+              </div>
+            </div>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Target next')
+
+      +p The example below shows how to target element next to toggle element.
+
+      +demo
+        +demo-example
+          button.btn(type='button', data-toggle='next') Toggle
+          code.l-code-inline.l-debug-active target element state:
+        +demo-code
+          :code
+            <!-- toggle -->
+            <button class="btn" type="button" data-toggle="next">Toggle</button>
+
+            <!-- target -->
+            <div>affected element</div>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Target previous')
+
+      +p The example below shows how to togg element previous to toggle element.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          button.btn(type='button', data-toggle='previous') Toggle
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn" type="button" data-toggle="previous">Toggle</button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Dropdown')
+
+      +p In the example below is shown how dropdown like behavior of toggle.
+
+      +note
+        +p Click anywhere in document will toggle off active state.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          .btn-dropdown
+            button.btn(type='button', data-toggle="self, next", data-toggle-icon="#icon-sg-chevronup")
+              | Button
+              +icon('chevrondown', 'icon-dropdown icon--right')
+            .dropdown(data-toggle-expand aria-expanded='false')
+              each item in [1,2,3,4,5]
+                a.dropdown__item Dropdown item #{item}
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn" type="button" data-toggle="previous">Toggle</button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Toggle icon')
+
+      +p The example below shows how to toggle an icon.
+
+      +warning
+        +p Do not forget to use <code class='l-code-inline'>data-toggle-icon</code> class on icon or it's parent element.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          button.btn(type='button', data-toggle='self, previous', data-toggle-icon='#icon-sg-close')
+            | Toggle
+            +icon('sg-check', 'icon--right icon--small')
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn" type="button" data-toggle="self" data-toggle-icon="#icon-sg-close"> Toggle
+              <svg class="icon icon-sg-check icon-right icon--small" role="img" aria-hidden="true"><use xlink:href="#icon-sg-check"></use></svg>
+            </button>
+      //- end: demo
+
+    //- end: subsection
+
+    +content-sub-section('Toggle text')
+
+      +p The example below shows how to toggle text.
+
+      +warning
+        +p Use only if toggle element contains only text.
+
+      +demo
+        +demo-example
+          code.l-code-inline.l-debug-active target element state:
+          button.btn(type='button', data-toggle='self, previous', data-toggle-text='toggle off') Toggle on
+        +demo-code
+          :code
+            <!-- target -->
+            <div>affected element</div>
+
+            <!-- toggle -->
+            <button class="btn" type="button" data-toggle="self" data-toggle-text="toggle off">Toggle on</button>
+      //- end: demo
+
+    //- end: subsection
+
+  //- end: section
+
+  //- OPTIONS
+  +content-section(contents[1])
+
+    p Options can be passed via data attributes. Append the option name to <code class='l-code-inline'>data-</code>, as in <code class='l-code-inline'>data-toggle=""</code>.
+    
+    h3 Trigger element options
+
+    table.table
+      thead
+        tr
+          th Name
+          th Type
+          th Default
+          th Description
+      tbody
+        tr
+          td target
+          td <code class='l-code-inline'>string</code>
+          td <code class='l-code-inline'>null</code>
+          td
+            | Select targets (comma delimited)
+            br
+            <strong>String</strong>: documnet.querySelector (<code class='l-code-inline'>#id</code>, <code class='l-code-inline'>.class</code> ...)
+            br
+            <strong>self:</strong> targets the toggle trigger element itself
+            br
+            <strong>parent:</strong> targets parent element
+            br
+            <strong>next:</strong> targets next element
+            br
+            <strong>previous:</strong> targets previous element
+            br
+            <strong>example:</strong> data-target="self, #target, parent"
+        tr
+          td parent-hop
+          td <code class='l-code-inline'>number</code>
+          td <code class='l-code-inline'>1</code>
+          td In case you need to get parent's parent, or even higher ancestor, you can specify count of hops. <br><strong>Use in combination with</strong> <code class='l-code-inline'>data-toggle="parent"</code>.
+          
+    h3 Target element options
+    
+    +note The default action without any target element options toggles <code class='l-code-inline'>.is-active</code> class on the target elemet.
+    
+    table.table
+      thead
+        tr
+          th Name
+          th Type
+          th Default
+          th Description
+      tbody
+        tr
+          td toggle-icon
+          td <code class='l-code-inline'>string</code>
+          td <code class='l-code-inline'>null</code>
+          td Toggle an icon. Just specify the xlink:href attribute to change.
+        tr
+          td toggle-text
+          td <code class='l-code-inline'>string</code>
+          td <code class='l-code-inline'>null</code>
+          td Change text in a toggle element.
+        tr
+          td toggle-class
+          td <code class='l-code-inline'>string</code>
+          td <code class='l-code-inline'>null</code>
+          td Specify the class to toggle.
+        tr
+          td toggle-expand
+          td <code class='l-code-inline'>N/A</code>
+          td <code class='l-code-inline'>null</code>
+          td When present, toggles aria-expanded attribute.
+
+
+  //- end: section
+
+  //- EVENTS
+  +content-section(contents[2], true)
+
+    table.table
+      thead
+        tr
+          th Event Type
+          th Element
+          th Description
+      tbody
+        tr
+          td triggerToggle
+          td <code class='l-code-inline'>trigger element</code>
+          td Fires whenever a toggle is triggered by clicking the trigger element.
+        tr
+          td toggle
+          td <code class='l-code-inline'>toggle target element</code>
+          td Fires whenever a toggle target element changes it's state.
+
+  //- end: section

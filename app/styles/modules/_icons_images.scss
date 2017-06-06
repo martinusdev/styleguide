@@ -1,0 +1,52 @@
+// ---------------------------------------------
+// ICONS AND IMAGES
+// ---------------------------------------------
+
+// CONTENTS
+// Icons
+// Images
+
+// ----------------------------
+// ICONS
+
+.icon {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+}
+
+@each $variant, $size in $icon-sizes {
+  .icon--#{$variant} {
+    width: $size;
+    height: $size;
+  }
+}
+
+// ----------------------------
+// IMAGES
+
+img {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto;
+}
+
+.img {
+  margin-bottom: $content-spacing;
+
+  &--fluid {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  &--rounded {
+    @include border-radius($image-border-radius);
+  }
+
+  &--circle {
+    @include border-radius(50%);
+  }
+}

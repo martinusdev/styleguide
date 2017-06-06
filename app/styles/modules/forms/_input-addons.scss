@@ -1,0 +1,57 @@
+// ---------------------------------------------
+// INPUT ADDONS
+// ---------------------------------------------
+
+.input-addons {
+  display: flex;
+  width: 100%;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto;
+
+    @each $prop, $value in $input-addon {
+      @if ($prop != 'border-radius') {
+        #{$prop}: #{$value};
+      }
+    }
+
+    border-right: 0;
+
+    &:first-child {
+      border-bottom-left-radius: map-get($input-addon, 'border-radius');
+      border-top-left-radius: map-get($input-addon, 'border-radius');
+    }
+
+    &:last-child {
+      border-bottom-right-radius: map-get($input-addon, 'border-radius');
+      border-top-right-radius: map-get($input-addon, 'border-radius');
+    }
+
+    + .input {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    .btn { margin: 0; }
+  }
+
+  //  input addon sizes
+  @each $size, $props in $input-addon-sizes {
+    &#{_get-variant-name($size)} .input-addons__item {
+      @include css-map($props);
+    }
+  }
+
+  .input {
+    flex: 0 1 auto;
+
+    &:not(:last-child) {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0;
+    }
+
+    + &-addons__item { border-left: 0; }
+  }
+}

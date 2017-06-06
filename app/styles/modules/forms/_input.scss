@@ -1,0 +1,39 @@
+// ---------------------------------------------
+// INPUT
+// ---------------------------------------------
+
+.input {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  transform: translateZ(0);
+
+  @include css-map($input, 'default');
+
+  &:focus,
+  &.is-active {
+    @include css-map($input, 'focus');
+  }
+
+  &[disabled],
+  &.is-disabled {
+    @include css-map($input, 'disabled');
+  }
+
+  &[readonly],
+  &.is-readonly {
+    @include css-map($input, 'readonly');
+  }
+
+  &.is-error {
+    @include css-map($input, 'error');
+  }
+
+  //  input sizes
+  @each $size, $props in $input-sizes {
+    &#{_get-variant-name($size)} {
+      @include css-map($props);
+    }
+  }
+}

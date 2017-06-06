@@ -1,0 +1,112 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.bar', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/layout/_bar.scss'], contents)
+
+    +p-big Documentation of Bar layout component.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- MEDIA QUERIES
+  +content-section(contents[0])
+
+    +p Bar is a simple horizontal layout for mixing content and actions.
+    +p Creating a bar layout is easy: The wrapper needs a <code class="l-code-inline">.bar</code> class and it's children a <code class="l-code-inline">.bar__item</code> or <code class="l-code-inline">.bar__content</code> class.
+    ul
+      li <code class="l-code-inline">.bar__item</code> takes only the space it needs
+      li <code class="l-code-inline">.bar__content</code> takes up all remaining space
+
+    +demo
+      +demo-example
+        .row.row--space
+          .col
+            .bar
+              .bar__item
+                .l-debug <code class="l-code-inline">.bar__item</code>
+              .bar__content
+                .l-debug <code class="l-code-inline">.bar__content</code>
+              .bar__item
+                .l-debug <code class="l-code-inline">.bar__item</code>
+        .row.row--space
+          .col
+            .l-debug
+              .bar
+                .bar__item
+                  +icon('home', 'icon--large')
+                h3.bar__content Home
+                .bar__item
+                  .btn.btn--primary Action
+      +demo-code
+        :code
+          <div class="bar">
+            <div class="bar__item"> ... </div>
+            <div class="bar__content"> ... </div>
+            <div class="bar__item"> ... </div>
+          </div>
+
+          <div class="bar">
+            <div class="bar__item">
+              <svg class="icon icon-home icon--large" role="img" aria-hidden="true">
+                <use xlink:href="#icon-home"></use>
+              </svg>
+            </div>
+            <h3 class="bar__content">Home</h3>
+            <div class="bar__item">
+              <div class="btn btn--primary">Action</div>
+            </div>
+          </div>
+
+    +content-sub-section('Alignment')
+
+      +p Bar is compatible with <a href="/styleguide/utilities#flexbox-alignment">flexbox alignment classes</a>.
+
+      +demo
+        +demo-example
+          .row.row--space
+            .col
+              .bar
+                .bar__item.align-self-top
+                  .l-debug <code class="l-code-inline">.align-self-top</code>
+                .bar__content
+                  p Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                .bar__item.align-self-bottom
+                  .l-debug <code class="l-code-inline">.align-self-bottom</code>
+          hr
+          .row.row--space
+            .col
+              <code class="l-code-inline">.bar.align-items-bottom</code>
+              .bar.align-items-bottom
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+                .bar__content
+                  p Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+        +demo-code
+          :code
+            <div class="bar">
+              <div class="bar__item align-self-top"> ... </div>
+              <div class="bar__content"> ... </div>
+              <div class="bar__item align-self-bottom"> ... </div>
+            </div>
+
+            <div class="bar align-items-bottom">
+              <div class="bar__item"> ... </div>
+              <div class="bar__content"> ... </div>
+              <div class="bar__item"> ... </div>
+            </div>
+
+    //- end demo
+
+  //- end: section

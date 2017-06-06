@@ -1,0 +1,447 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  -
+    const {
+      category: categoryID,
+      page: pageID
+    } = helpers.getPageIds('foundations.utilites', l_sitemap);
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/tools/_utilities.scss'], contents)
+
+    //- +p-big Documentation of headings, texts, list and all elements related to typography, including utility classes for text.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- HEADINGS
+  +content-section(contents[0])
+
+    +p Text utility classes provides basic functionality such as alignment or text transform. There are also utility classes for text colors.
+
+    +note
+      +p Always consider using semantic HTML when styling text (<code class="l-code-inline">strong</code>, <code class="l-code-inline">em</code>).
+
+    +demo
+      +demo-example
+        p
+          code.l-code-inline .text-bold
+          span.text-bold.text-space-left text bold
+          br
+          code.l-code-inline .text-semibold
+          span.text-semibold.text-space-left text semibold
+          br
+          code.l-code-inline .text-light
+          span.text-light.text-space-left text light
+          br
+          code.l-code-inline .text-italic
+          span.text-italic.text-space-left text italic
+          br
+          code.l-code-inline .text-normal
+          span.text-normal text normal
+
+        hr
+
+        p.text-left
+          code.l-code-inline .text-left
+        p.text-center
+          code.l-code-inline .text-center
+        p.text-right
+          code.l-code-inline .text-right
+        p.text-justify(style="width: 200px")
+          code.l-code-inline .text-justify
+          | Lorem ea dolor ea exercitation et esse incididunt ut Excepteur officia Ut sint cupidatat cupidatat
+        hr
+
+        p
+          | Icon
+          +icon('sg-home', 'icon--xlarge').text-vam
+          | with <code class='l-code-inline'>.text-vam</code>
+        p
+          | Icon
+          +icon('sg-home', 'icon--xlarge').text-vat
+          | with <code class='l-code-inline'>.text-vat</code>
+        p
+          | Icon
+          +icon('sg-home', 'icon--xlarge').text-vab
+          | with <code class='l-code-inline'>.text-vab</code>
+        p
+          | Icon
+          +icon('sg-home', 'icon--xlarge').text-vabl
+          | with <code class='l-code-inline'>.text-vabl</code>
+
+        hr
+
+        p
+          code.l-code-inline .text-transform-upper
+          span.text-transform-upper.text-space-left text transform uppercase
+          br
+          code.l-code-inline .text-transform-capitalize
+          span.text-transform-capitalize.text-space-left text transform capitalize
+          br
+          code.l-code-inline .text-transform-none
+          span.text-transform-none.text-space-left text transform none
+
+        hr
+        p.text-space-half
+          code.l-code-inline .text-space-half
+        p.text-nospace
+          code.l-code-inline .text-nospace
+        p.text-nospace
+          span.text-space-left Text with space on left side
+          code.l-code-inline .text-space-left
+        p.text-nospace
+          span.text-space-right Text with space on right side
+          code.l-code-inline .text-space-right
+
+        hr
+
+        p.text-nowrap(style="")
+          code.l-code-inline .text-nowrap
+          span.text-space-left Text no warp ea dolor ea exercitation et esse incididunt ut Excepteur officia. Tempor officia minim cillum do aute nulla sint dolor Lorem proident nisi elit.
+
+        p.text-ellipsis(style="width: 200px")
+          code.l-code-inline .text-ellipsis
+          span.text-space-left Text ellipsis
+
+      +demo-code
+        :code
+          <p>
+            <span class="text-bold">text bold</span>
+            <span class="text-semibold">text semibold</span>
+            <span class="text-light">text light</span>
+            <span class="text-italic">text italic</span>
+            <span class="text-normal">text normal</span>
+          </p>
+
+          <p class="text-left">...</p>
+          <p class="text-center">...</p>
+          <p class="text-right">...</p>
+          <p class="text-justify">...</p>
+
+          <p>... <svg class="icon text-vam"></svg> ...</p>
+          <p>... <svg class="icon text-vat"></svg> ...</p>
+          <p>... <svg class="icon text-vab"></svg> ...</p>
+          <p>... <svg class="icon text-vabl"></svg> ...</p>
+
+          <span class="text-transform-upper">text transform uppercase</span>
+          <span class="text-transform-capitalize">text transform capitalize</span>
+          <span class="text-transform-none">text transform none</span>
+
+          <p class="text-space-half">text space half</p>
+          <p class="text-nospace">text nospace</p>
+          <p class="text-nospace">
+            ...
+            <span class="text-space-left">text space left</span>
+            <span class="text-space-right">text space right</span>
+          </p>
+
+          <p class="text-nowrap">...</p>
+          <p class="text-ellipsis">...</p>
+    //- end: demo
+
+    +content-sub-section('Text colors')
+
+      +demo
+        +demo-example
+          ul.l-text-colors
+            each color in ['theme-500', 'theme-400', 'theme-100', 'black', 'semiblack', 'grey', 'grey-800', 'white', 'semiwhite', 'error']
+              li
+                span(class='text-color-' + color)= color
+
+        +demo-code
+          :code
+            <ul>
+              <li><span class="text-color-theme-500">theme-500</span></li>
+              <li><span class="text-color-theme-400">theme-400</span></li>
+              <li><span class="text-color-theme-100">theme-100</span></li>
+              <li><span class="text-color-black">black</span></li>
+              <li><span class="text-color-semiblack">semiblack</span></li>
+              <li><span class="text-color-grey">grey</span></li>
+              <li><span class="text-color-grey-800">grey-800</span></li>
+              <li><span class="text-color-white">white</span></li>
+              <li><span class="text-color-semiwhite">semiwhite</span></li>
+              <li><span class="text-color-error">error</span></li>
+            </ul>
+      //- end: demo
+  //- end: section
+
+  +content-section(contents[1])
+
+    +p Layout utilities contains basic classes for utility like margin/padding resets, alignements etc.
+
+    +p Some utilities can be set for specific breakpoint by adding postfix representing layout.
+
+    +content-sub-section('Spacing resets')
+
+      +p Use <code class='l-code-inline'>.no-pad</code> or <code class='l-code-inline'>.no-mrg</code> to reset margins or paddings. Target specific breakpoint with <code class='l-code-inline'>.no-mrg-[xs/s/m/xl]</code> and <code class='l-code-inline'>.no-pad-[xs/s/m/xl]</code>.
+
+      +demo(true)
+        +demo-code
+          :code
+            <div class="no-mrg"> reset margins </div>
+            <div class="no-mrg-top"> reset top margin </div>
+            <div class="no-mrg-bottom"> reset bottom margin </div>
+            <div class="no-mrg-left"> reset left margin </div>
+            <div class="no-mrg-right"> reset right margin </div>
+            <div class="no-mrg-vertical"> reset top and bottom margin </div>
+            <div class="no-mrg-horizontal"> reset left and right margin </div>
+
+            <div class="no-pad"> reset padding </div>
+            <div class="no-pad-top"> reset padding-top </div>
+            <div class="no-pad-bottom"> reset padding-bottom </div>
+            <div class="no-pad-left"> reset left padding </div>
+            <div class="no-pad-right"> reset right padding </div>
+            <div class="no-pad-vertical"> reset top and bottom padding </div>
+            <div class="no-pad-horizontal"> reset left and right padding </div>
+      //- end: demo
+
+    +content-sub-section('Flexbox alignment', 'flexbox-alignment')
+
+      +p Flexbox items are aligned to left by default and take up the height of the row. This behavior can be overriden on both column and row level.
+
+      +note
+        +p Alignment utilities can be used only inside flexbox components such as Grid, Bars etc. or custom flexbox components.
+
+      +note
+        +p Examples are shown on grid elements.
+
+      +p Horizontal alignment:
+        +ul
+          li <code class="l-code-inline">.align-items-right</code> <code class="l-code-inline">.align-items-center</code>
+          li <code class="l-code-inline">.align-self-right</code> <code class="l-code-inline">.align-self-center</code>
+
+      +demo
+        +demo-example
+          code.l-code-inline .align-items-right
+          .row.align-items-right
+            .col--3
+              .l-debug XS3
+            .col--3
+              .l-debug XS3
+          hr
+          code.l-code-inline .align-items-center
+          .row.align-items-center
+            .col--3
+              .l-debug XS3
+            .col--3
+              .l-debug XS3
+          hr
+          code.l-code-inline .align-items-spaced
+          .row.align-items-spaced
+            .col--3
+              .l-debug XS3
+            .col--3
+              .l-debug XS3
+          hr
+          code.l-code-inline .align-items-justify
+          .row.align-items-justify
+            .col--3
+              .l-debug XS3
+            .col--3
+              .l-debug XS3
+          hr
+          .row
+            .col--3
+              .l-debug XS3
+            .col--3.align-self-right
+              .l-debug XS3 .align-self-right
+          hr
+          .row
+            .col--3.align-self-center
+              .l-debug XS3 .align-self-center
+
+        +demo-code
+          :code
+            <div class="row align-items-right">
+              <div class="col--3"> ... </div>
+              <div class="col--3"> ... </div>
+            </div>
+
+            <div class="row align-items-center">
+              <div class="col--3"> ... </div>
+              <div class="col--3"> ... </div>
+            </div>
+
+            <div class="row align-items-spaced">
+              <div class="col--3"> ... </div>
+              <div class="col--3"> ... </div>
+            </div>
+
+            <div class="row align-items-justify">
+              <div class="col--3"> ... </div>
+              <div class="col--3"> ... </div>
+            </div>
+
+            <div class="row">
+              <div class="col--3"> ... </div>
+              <div class="col--3 align-self-right"> ... </div>
+            </div>
+
+            <div class="row">
+              <div class="col--3 align-self-center"> ... </div>
+            </div>
+
+        +p Vertical alignment:
+          +ul
+            li <code class="l-code-inline">.align-items-top</code> <code class="l-code-inline">.align-items-bottom</code> <code class="l-code-inline">.align-items-middle</code>
+            li <code class="l-code-inline">.align-self-top</code> <code class="l-code-inline">.align-self-bottom</code> <code class="l-code-inline">.align-self-middle</code>
+
+          +demo
+            +demo-example
+              code.l-code-inline .row
+              .row
+                .col--6.l-debug
+                  | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                .col--6.l-debug
+                  | Lorem ipsum
+              hr
+              code.l-code-inline .align-items-top
+              .row.align-items-top
+                .col--6.l-debug
+                  | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                .col--6.l-debug
+                  | Lorem ipsum
+              hr
+              code.l-code-inline .align-items-bottom
+              .row.align-items-bottom
+                .col--6.l-debug
+                  | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                .col--6.l-debug
+                  | Lorem ipsum
+              hr
+              code.l-code-inline .align-items-middle
+              .row.align-items-middle
+                .col--6.l-debug
+                  | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
+                .col--6.l-debug
+                  | Lorem ipsum
+              hr
+              .row.align-items-middle
+                .col--3.l-debug
+                  | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
+                .col--3.l-debug.align-self-top
+                  | .align-self-top
+                .col--3.l-debug.align-self-bottom
+                  | .align-self-bottom
+                .col--3.l-debug.align-self-middle
+                  | .align-self-middle
+            +demo-code
+              :code
+                <div class="row">
+                  <div class="col--6"> ... </div>
+                  <div class="col--6"> ... </div>
+                </div>
+
+                <div class="row align-items-top">
+                  <div class="col--6"> ... </div>
+                  <div class="col--6"> ... </div>
+                </div>
+
+                <div class="row align-items-bottom">
+                  <div class="col--6"> ... </div>
+                  <div class="col--6"> ... </div>
+                </div>
+
+                <div class="row align-items-middle">
+                  <div class="col--6"> ... </div>
+                  <div class="col--6"> ... </div>
+                </div>
+
+                <div class="row">
+                  <div class="col--3"> ... </div>
+                  <div class="col--3 align-self-top"> ... </div>
+                  <div class="col--3 align-self-bottom"> ... </div>
+                  <div class="col--3 align-self-middle"> ... </div>
+                </div>
+
+      //- end: demo
+
+    +content-sub-section('Float utilities')
+
+      +p Float utilites contains:
+        +ul
+          li <code class='l-code-inline'>.clearfix</code> for clearing floats inside container.
+          li <code class='l-code-inline'>.clear</code> for clearing floats after floated elements.
+
+  +content-section(contents[2])
+
+    +p You can programatically show or hide elements for specific layouts by using classes like <code class='l-code-inline'>.hide-[breakpoint]-only</code> or for all layouts larger including specified by classes like <code class='l-code-inline'>.show-[breakpoint]</code>.
+
+    +note
+      +p <code class='l-code-inline'>.hide-xs</code>, <code class='l-code-inline'>.show-xs</code> are not available, as XS is the default breakpoint. To hide an element completely, use <code class="l-code-inline">.hide</code>
+      +p <code class='l-code-inline'>.show-xl-only</code>, <code class='l-code-inline'>.hide-xl-only</code> are not available, as XL is the largest breakpoint. The same can be accomplished using <code class='l-code-inline'>.show-xl</code>, <code class='l-code-inline'>.hide-xl</code>
+
+    +demo()
+      +demo-example(true)
+        .row.row--space
+          .col
+            .l-debug Active layout:
+              span.show-xs-only XS
+              span.show-s-only S
+              span.show-m-only M
+              span.show-l-only L
+              span.show-xl-only XL
+        each bp, i in l_breakpoints
+          .row.row--space
+            .col--2
+              .l-debug= bp.name
+            .col--0
+              if i > 0
+                .row(class="show-" + bp.id)
+                  .col
+                    .l-debug
+                      .row
+                        .col--m-4.col--l-3 <code class='l-code-inline'>.show-#{bp.id}</code>
+                        .col--m-8.col--l-9 Your screen is #{bp.name} or larger
+
+              if i + 1 < l_breakpoints.length
+                .row(class="show-" + bp.id + "-only")
+                  .col
+                    .l-debug
+                      .row
+                        .col--m-4.col--l-3 <code class='l-code-inline'>.show-#{bp.id}-only</code>
+                        .col--m-8.col--l-9
+                          | Your screen is
+                          if i > 0
+                            |
+                            | larger than #{bp.name} and
+                          if i + 1 < l_breakpoints.length
+                            |
+                            | smaller than #{l_breakpoints[i + 1].name}
+
+              if i > 0
+                .row(class="hide-" + bp.id)
+                  .col
+                    .l-debug
+                      .row
+                        .col--m-4.col--l-3 <code class='l-code-inline'>.hide-#{bp.id}</code>
+                        .col--m-8.col--l-9 Your screen is smaller than #{bp.name}
+
+              if i + 1 < l_breakpoints.length
+                .row(class="hide-" + bp.id + "-only")
+                  .col
+                    .l-debug
+                      .row
+                        .col--m-4.col--l-3 <code class='l-code-inline'>.hide-#{bp.id}-only</code>
+                        .col--m-8.col--l-9 Your screen is
+                          |
+                          |
+                          if i > 0
+                            | either smaller than #{bp.name} or
+                            |
+                            |
+                          | larger than #{l_breakpoints[i + 1].name}
+
+  +content-section(contents[3], true)
+
+    +p Various other utilites contains:
+      +ul
+        li <code class='l-code-inline'>.clickable</code> for making pointer cursor.
+        li <code class='l-code-inline'>.visually-hidden</code> for hidding element visually without <code class='l-code-inline'>display: none;</code>.

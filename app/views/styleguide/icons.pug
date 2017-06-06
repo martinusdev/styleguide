@@ -1,0 +1,212 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('foundations.icons', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_icons_images.scss'], contents)
+
+    +p-big Documentation, preview and usage of icons and image utilities.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- ICONS
+  +content-section(contents[0])
+
+    +p Here is preview of icon set used in this project. An icon can be created by using pug mixin <code class='l-code-inline'>+icon(iconName)</code>.
+    +p Using just HTML, the markup is: <code class='l-code-inline'>&lt;svg class="icon"&gt;&lt;use xlink:href="#icon-iconName"&gt;&lt;/svg class="icon"&gt;</code>
+
+    +warning
+      +p The SVG sprite needs to be inlined in current document, so that <code class='l-code-inline'>&lt;use xlink:href="#icon-iconName"&gt;</code> can access the appropriate symbol.
+
+    +dependency
+      +p
+        | Icons require <code class='l-code-inline'>app/icons/icons.svg</code> file to be inlined just before the <code class='l-code-inline'>&lt;/body&gt;</code> tag.
+
+    +demo
+      +demo-example
+        ul.l-icons
+          each icon in helpers.getAppIcons()
+            li.l-icons_item
+              +icon(icon, 'icon--large')
+              br
+              abbr(title=icon).text-color-semiblack= icon
+
+      +demo-code
+        :code
+          <ul>
+            - for (var i=0; i < getIcons().length; i++) {
+              <li>
+                <svg class="icon icon-add">
+                  <use xlink:href="#icon-getSvgIcons()[i]"></use>
+                </svg>
+              </li>
+            - }
+          </ul>
+    //- end: demo
+
+    +content-sub-section('Sizes')
+
+      +p There are fours icon sizes: small, medium, large and xlarge. Size for icon can be specified with class <code class='l-code-inline'>.icon--[small/medium/large/xlarge]</code> on the icon element.
+      +p Our pug mixin accepts a <code class='l-code-inline'>className</code> parameter. To create a large icon, just pass the appropriate class as the second parameter <code class='l-code-inline'>+icon(iconName, 'gu')</code>
+
+      +note
+        +p In case there is no class for size, icon will inherit size from parent font-size property.
+
+      +demo
+        +demo-example
+          ul.l-icons
+            li.l-icons_item
+              +icon('sg-home', 'icon--xlarge')
+              br
+              abbr(title=icon).text-color-semiblack XL
+            li.l-icons_item
+              +icon('sg-home', 'icon--large')
+              br
+              abbr(title=icon).text-color-semiblack L
+            li.l-icons_item
+              +icon('sg-home', 'icon--medium')
+              br
+              abbr(title=icon).text-color-semiblack M
+            li.l-icons_item
+              +icon('sg-home', 'icon--small')
+              br
+              abbr(title=icon).text-color-semiblack S
+
+        +demo-code
+          :code
+            <ul>
+              <li>
+                <svg class="icon icon-home icon--xlarge">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+              <li>
+                <svg class="icon icon-home icon--large">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+              <li>
+                <svg class="icon icon-home icon--medium">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+              <li>
+                <svg class="icon icon-home icon--small">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+            </ul>
+      //- end: demo
+
+    +content-sub-section('Colors')
+
+      +p Icons use same <a class='l-a' href='/typography.html#utilities'>text color</a> priciple for colors as typography.
+
+      +note
+        +p In case there is no class for color, icon will inherit color from parent color property.
+
+      +demo
+        +demo-example
+          ul.l-icons
+            li.l-icons_item
+              +icon('sg-home', 'icon--large text-color-theme-500')
+            li.l-icons_item
+              +icon('sg-home', 'icon--large text-color-theme-100')
+            li.l-icons_item.text-color-semiblack
+              +icon('sg-home', 'icon--large')
+            li.l-icons_item.text-color-error
+              +icon('sg-home', 'icon--large')
+
+        +demo-code
+          :code
+            <ul>
+              <li>
+                <svg class="icon icon-home text-color-theme-500">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+              <li>
+                <svg class="icon icon-home text-color-theme-100">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+              <li class="text-color-semiblack">
+                <svg class="icon icon-home icon--large">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+              <li class="text-color-error">
+                <svg class="icon icon-home icon--large">
+                  <use xlink:href="#icon-home"></use>
+                </svg>
+              </li>
+            </ul>
+      //- end: demo
+
+    +content-sub-section('Accessibility')
+
+      +p Icons have two use cases:
+      ol
+        li Presentational icon accompanied by text. such icon does not need to be picked up by screenreaders and should have <span class="l-code-inline">role='presentation'</span> and <span class="l-code-inline">aria-hidden='true'</span> attributes on its svg tag.
+        li Content icon, that needs an accessible text alternative. A content icon might be a button that only holds an icon without any text. To make such an icon accessible, add <span class="l-code-inline">role='img'</span> and <span class="l-code-inline">aria-label='Text alternative'</span> attributes to its svg tag.
+      +p Luckily, the <span class="l-code-inline">+icon()</span> pug mixin can handle both cases. Passing an accessible text alternative as an <span class="l-code-inline">alt</span> paramter, automatically generates the markup for a content icon. To create a presentational icon, just omit the paramter.
+
+      +demo
+        +demo-example
+          ol
+            li
+              button.btn.btn--large
+                +icon('sg-check', 'icon--left', '')
+                | Done
+              br
+              span(title=icon).text-color-semiblack I'm accompanied by button text, my purpose is purely presentational
+            li
+              button.btn.btn--large
+                +icon('sg-settings', '', 'Settings')
+              br
+              span(title=icon).text-color-semiblack I clearly represent what will happen when the button is clicked. Therefore an accessbile text alternative is appropriate.
+        +demo-code
+          :code
+            <button class="btn btn--large">
+              <svg class="icon icon-check" role="img" aria-hidden="true">
+                <use xlink:href="#icon-check"></use>
+              </svg>
+              Done
+            </button>
+
+            <button class="btn btn--large">
+              <svg class="icon icon-settings" role="presentation" aria-label="Settings">
+                <use xlink:href="#icon-settings"></use>
+              </svg>
+            </button>
+          //- end: Accessibility
+
+  +content-section(contents[1], true)
+
+    +p There are three basic image utilities: fluid, rounded and circle. Fluid utility gives image ability to change size coresponding to its parent. Circle and rounded utilities provides specific shapes for images.
+
+    +demo
+      +demo-example
+        figure.l-image
+          img(src='/images/300x300.gif', alt='placeholder').img.img--fluid
+        figure.l-image
+          img(src='/images/150x150.gif', alt='placeholder').img.img--rounded
+        figure.l-image
+          img(src='/images/150x150.gif', alt='placeholder').img.img--circle
+
+      +demo-code
+        :code
+          <img src="..." class="img img--fluid">
+          <img src="..." class="img img--rounded">
+          <img src="..." class="img img--circle">
+    //- end: demo
+  //- end: section

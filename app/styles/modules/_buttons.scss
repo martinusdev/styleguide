@@ -1,0 +1,449 @@
+// ---------------------------------------------
+// BUTTONS
+// ---------------------------------------------
+
+// CONTENTS
+// Base
+// Styles
+// Icons in buttons
+// Layout
+// Group
+// Dropdown, split button
+
+// ----------------------------
+// Base
+
+/// Applies base button styles used for every button-base
+/// @param {map} $states - Map of button states
+@mixin button-base($states: $button) {
+  position: relative;
+  display: inline-block;
+  margin-bottom: $content-spacing;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  appearance: none;
+
+  @include css-map($states, 'default');
+
+  &:hover,
+  &:focus {
+    @include css-map($states, 'focus');
+  }
+
+  &:active,
+  &.is-active {
+    @include css-map($states, 'active');
+    z-index: 2;
+  }
+
+  &.is-disabled,
+  &[disabled] {
+    @include css-map($states, 'disabled');
+  }
+}
+
+// ----------------------------
+// Styles
+
+/// Styles our button appropriately
+/// @param {map} $states - Map of button states
+@mixin button-style($states) {
+  @include css-map($states, 'default');
+
+  @mixin generate-color($prop, $type) {
+    @if not _map-deep-get($states, $type, $prop) {
+      #{$prop}: _color(_map-deep-get($states, 'default', $prop), map-get($button-color-weights, $type));
+    }
+  };
+
+  &:hover,
+  &:focus {
+    @include css-map($states, 'focus');
+    @include generate-color('color', 'focus');
+    @include generate-color('background-color', 'focus');
+    @include generate-color('border-color', 'focus');
+
+    z-index: 2;
+  }
+
+  &:active,
+  &.is-active {
+    @include css-map($states, 'active');
+    @include generate-color('color', 'active');
+    @include generate-color('background-color', 'active');
+    @include generate-color('border-color', 'active');
+
+    z-index: 2;
+  }
+
+  &[disabled],
+  &.is-disabled {
+    @include css-map($states, 'disabled');
+    @include generate-color('color', 'disabled');
+    @include generate-color('background-color', 'disabled');
+    @include generate-color('border-color', 'disabled');
+
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+// Equilateral (width=height) button generator
+@mixin equilateral-button-sizing($padding) {
+  $size: $padding * 2 + _map-deep-get($button, 'default', 'line-height');
+  width: calc(#{$size} + 1px);
+  height: calc(#{$size} + 1px);
+}
+
+@mixin equilateral-button {
+  vertical-align: middle;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  line-height: 0;
+
+  @each $variant, $values in $button-sizes {
+    &.btn#{_get-variant-name($variant)} {
+      @include equilateral-button-sizing( nth(map-get($values, 'padding'), 1) );
+    }
+  }
+
+  .icon {
+    flex: 1 0 auto;
+  }
+}
+
+/// Generates button default, size, radius and style classes
+@mixin button-classes {
+  .btn {
+    @include button-base;
+  }
+
+  // button sizes
+  // configure $button-sizes in utils/config.scss
+  @each $size, $props in $button-sizes {
+    .btn#{_get-variant-name($size)} {
+      @each $prop, $value in $props {
+        #{$prop}: #{$value};
+      }
+    }
+  }
+
+  // button radii
+  // configure $button-radii in utils/config.scss
+  @each $name, $radius in $button-radii {
+    .btn#{_get-variant-name($name)} {
+      border-radius: $radius;
+    }
+  }
+
+  // button styles
+  // configure $button-styles in utils/config.scss
+  @each $name, $props in $button-styles {
+    .btn#{_get-variant-name($name)} {
+      @include button-style($props);
+    }
+  }
+
+  .btn--equal {
+    @include equilateral-button;
+  }
+}
+
+@include button-classes;
+
+// ----------------------------
+// Icons
+
+// Classes for proper icon alignment and sizing in buttons
+@mixin button-icon-classes {
+  .btn .icon {
+    position: relative;
+    vertical-align: -0.15em;
+
+    width: 1em;
+    height: 1em;
+    backface-visibility: hidden;
+
+    &--left {
+      margin-left: -0.25em;
+      margin-right: 0.5em;
+    }
+
+    &--right {
+      margin-left: 0.5em;
+      margin-right: -0.25em;
+    }
+  }
+}
+
+@include button-icon-classes;
+
+@mixin button-icon-sizes {
+  @each $button-variant, $button-size in $button-sizes {
+    @each $icon-variant, $icon-size in $icon-sizes {
+      .btn#{_get-variant-name($button-variant)} .icon--#{$icon-variant} {
+        $scale: 1 / _strip-units(map-get($button-size, font-size)) * _strip-units($icon-size);
+        $margin: (1 - $scale) / 2;
+        width: #{$scale}em;
+        height: #{$scale}em;
+        margin: #{$margin}em;
+
+        &.icon--left {
+          margin-right: $icon-size/3;
+        }
+
+        &.icon--right {
+          margin-left: $icon-size/3;
+        }
+      }
+    }
+  }
+}
+
+@include button-icon-sizes;
+
+@mixin button-positioned-icon-classes {
+  .btn--icon {
+    &-left,
+    &-right {
+      padding-left: 2.5em;
+      padding-right: 2.5em;
+
+      .icon {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        margin-top: 0;
+      }
+    }
+
+    &-left {
+      .icon {
+        left: 0.8em;
+      }
+    }
+
+    &-right {
+      .icon {
+        right: 0.8em;
+      }
+    }
+  }
+}
+
+@include button-positioned-icon-classes;
+
+// ----------------------------
+// Layout
+
+// Button layout sytle generator
+@mixin button-layout($direction) {
+  display: flex;
+  margin-bottom: $button-margin-bottom;
+
+  @if $direction == 'horizontal' {
+    flex-flow: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    > * {
+      flex: 0 0 auto;
+      margin-right: $button-margin-bottom;
+      margin-bottom: 0;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    > .btn,
+    > .btn-dropdown-split {
+      vertical-align: middle;
+    }
+  } @elseif $direction == 'vertical' {
+    flex-flow: column;
+    width: 100%;
+    align-items: stretch;
+
+    > * {
+      flex: 0 0 auto;
+      margin-right: 0;
+      margin-bottom: $button-margin-bottom;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+// Button layout classes generator
+@mixin button-layout-classes {
+  @each $breakpoint, $w in $breakpoints {
+    @include breakpoint($breakpoint) {
+      .btn-layout-#{_get-variant-name($breakpoint, '-')}-horizontal {
+        @include button-layout('horizontal');
+      }
+
+      .btn-layout-#{_get-variant-name($breakpoint, '-')}-vertical {
+        @include button-layout('vertical');
+      }
+    }
+  }
+}
+
+@include button-layout-classes;
+
+// ----------------------------
+// Button group
+
+// Button group base styles generator
+@mixin button-group-base {
+  @include clearfix;
+  margin-bottom: $button-margin-bottom;
+
+  .btn {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  @each $name, $props in $button-styles {
+    .btn#{_get-variant-name($name)} {
+      @if not _map-deep-get($props, 'group', 'border-color') {
+        border-color: _color(_map-deep-get($props, 'default', 'border-color'), map-get($button-color-weights, button-group-border));
+      } @else {
+        border-color: _map-deep-get($props, 'group', 'border-color');
+      }
+    }
+  }
+}
+
+// Button group layout styles generator
+@mixin button-group-layout($direction) {
+  display: flex;
+  align-items: stretch;
+
+  @if $direction == 'horizontal' {
+    flex-flow: row;
+
+    .btn {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+
+      &:not(:first-of-type) {
+        margin-left: -1px;
+      }
+
+      &:first-of-type {
+        border-radius: $default-border-radius 0 0 $default-border-radius;
+      }
+
+      &:last-of-type {
+        border-radius: 0 $default-border-radius $default-border-radius 0;
+      }
+    }
+  }
+
+  @if $direction == 'vertical' {
+    flex-flow: column;
+
+    .btn {
+      flex: 0 0 auto;
+      width: 100%;
+      margin-left: 0;
+      margin-bottom: -1px;
+
+      &:first-of-type {
+        border-radius: $default-border-radius $default-border-radius 0 0;
+      }
+
+      &:last-of-type {
+        border-radius: 0 0 $default-border-radius $default-border-radius;
+      }
+    }
+  }
+}
+
+// Button group classes generator
+@mixin button-group-classes {
+  *[class*='btn-group\-'] {
+    @include button-group-base;
+  }
+
+  @each $breakpoint, $w in $breakpoints {
+    @include breakpoint($breakpoint) {
+      .btn-group-#{_get-variant-name($breakpoint, '-')}-horizontal {
+        @include button-group-layout('horizontal');
+      }
+
+      .btn-group-#{_get-variant-name($breakpoint, '-')}-vertical {
+        @include button-group-layout('vertical');
+      }
+    }
+  }
+}
+
+@include button-group-classes;
+
+// ----------------------------
+// Dropdown and split button
+
+// Dropdown button generator
+@mixin dropdown-button {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: $button-margin-bottom;
+
+  .btn {
+    margin-bottom: 0;
+  }
+
+  .btn.is-active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  *[class*='btn-group-'] > & {
+    margin-bottom: 0;
+  }
+}
+
+// Dropdown button classes generator
+@mixin dropdown-button-classes {
+  .btn-dropdown {
+    @include dropdown-button;
+  }
+}
+
+@include dropdown-button-classes;
+
+// Split button generator
+@mixin split-button {
+  @include dropdown-button;
+  @include button-group-base;
+  @include button-group-layout('horizontal');
+  display: inline-flex;
+  vertical-align: middle;
+
+  &.is-active {
+    .btn {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+// Dropdown button classes generator
+@mixin split-button-classes {
+  .btn-dropdown-split {
+    @include split-button;
+  }
+}
+
+@include split-button-classes;

@@ -1,0 +1,242 @@
+/*===============================
+=            Choices            =
+===============================*/
+
+$select-selector: 'choices' !default;
+
+.#{$select-selector} {
+  position: relative;
+  .#{$select-selector}__inner {
+    @include css-map($select, 'default');
+  }
+
+  &:focus, &.is-focused {
+    outline: $default-outline;
+    @include css-map($select, 'focus');
+  }
+  &:last-child { margin-bottom: 0; }
+  &.is-disabled {
+    .#{$select-selector}__inner, .#{$select-selector}__input {
+      cursor: not-allowed;
+      user-select: none;
+    }
+    .#{$select-selector}__item { cursor: not-allowed; }
+  }
+}
+
+.#{$select-selector}[data-type*="select-one"] {
+  cursor: pointer;
+  .#{$select-selector}__input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border-bottom-width: _map-deep-get($select, 'default', 'border-width');
+    border-bottom-style: _map-deep-get($select, 'default', 'border-style');
+    border-bottom-color: _map-deep-get($select, 'default', 'border-color');
+    background-color: _map-deep-get($select, 'default', 'background-color');
+    margin: 0;
+  }
+  .#{$select-selector}__button {
+    background-image: svg-load('./../icons/app/close.svg', fill=$color-black);
+    padding: 0;
+    background-size: 16px;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    margin-top: -10px;
+    margin-right: 25px;
+    height: 20px;
+    width: 20px;
+    border-radius: 10em;
+    opacity: .5;
+    &:hover, &:focus { opacity: 1; }
+    &:focus {
+      box-shadow: 0px 0px 0px 2px _map-deep-get($select-item, 'highlighted', 'background-color');
+    }
+  }
+  &:after {
+    content: "";
+    height: 0;
+    width: 0;
+    border-style: solid;
+    border-color: $select-arrow-c transparent transparent transparent;
+    border-width: 5px;
+    position: absolute;
+    right: 11.5px;
+    top: 50%;
+    margin-top: -2.5px;
+    pointer-events: none;
+  }
+  &.is-open:after {
+    border-color: transparent transparent $select-arrow-c transparent;
+    margin-top: -7.5px;
+  }
+}
+
+@each $size, $props in $select-multiple-sizes {
+  .#{$select-selector}[data-type*="select-multiple"].select#{_get-variant-name($size)}, .#{$select-selector}[data-type*="text"].select#{_get-variant-name($size)} {
+    .#{$select-selector}__inner {
+      font-size: map-get($props, 'font-size');
+    }
+    .#{$select-selector}__input {
+      padding: map-get($props, 'padding');
+      padding-left: 0;
+    }
+  }
+}
+
+.#{$select-selector}[data-type*="select-multiple"], .#{$select-selector}[data-type*="text"]  {
+  padding: inherit;
+  .#{$select-selector}__inner {
+    padding: 0 5px;
+    cursor: text;
+  }
+  .#{$select-selector}__button {
+    position: relative;
+    display: inline-block;
+    vertical-align: baseline;
+    margin-top: 0;
+    margin-right: -$select-button-offset/2;
+    margin-bottom: 0;
+    margin-left: $select-button-offset;
+    padding-left: $select-button-offset*2;
+    border-left: 1px solid _map-deep-get($select-item, 'highlighted', 'background-color');
+    background-image: svg-load('./../icons/app/close.svg', fill=$color-white);
+    background-size: $select-button-dimension;
+    width: $select-button-dimension;
+    line-height: 1;
+    opacity: .75;
+    &:hover, &:focus { opacity: 1; }
+  }
+}
+
+.#{$select-selector}__inner {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  overflow: hidden;
+
+  .is-open & {
+    border-radius: $select-b-r $select-b-r 0 0;
+  }
+  .is-flipped.is-open & {
+    border-radius: 0 0 $select-b-r $select-b-r; }
+
+  @include css-map($select, 'default');
+
+  .is-focused &, .is-open & {
+    @include css-map($select, 'focus');
+  }
+
+  .is-disabled & {
+    @include css-map($select, 'disabled');
+  }
+
+  .is-error & {
+    @include css-map($select, 'error');
+  }
+
+  @each $size, $props in $select-sizes {
+    .select#{_get-variant-name($size)} & {
+      @include css-map($props);
+    }
+  }
+}
+
+.#{$select-selector}__list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.#{$select-selector}__list--single {
+  display: inline-block;
+  width: 100%;
+  .#{$select-selector}__item { width: 100%; }
+}
+
+.#{$select-selector}__list--multiple {
+  display: inline;
+  .#{$select-selector}__item {
+    display: inline-block;
+    vertical-align: middle;
+    word-break: break-all;
+    &[data-deletable] { padding-right: 5px; }
+
+    @include css-map($select-item, 'default');
+
+    &.is-highlighted {
+      @include css-map($select-item, 'highlighted');
+    }
+    .is-disabled & {
+      @include css-map($select-item, 'disabled');
+    }
+  }
+}
+
+.#{$select-selector}__list--dropdown {
+  @include dropdown-menu;
+
+  .is-flipped & {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    border-radius: $dropdown-menu-b-r $dropdown-menu-b-r 0 0;
+    border-top-width: map-get($dropdown-menu, 'border-width');
+    border-bottom-width: 0;
+    transform-origin: center bottom;
+  }
+  .#{$select-selector}__list {
+    position: relative;
+    @include dropdown-size;
+  }
+  .#{$select-selector}__item {
+    @include dropdown-item;
+  }
+  .#{$select-selector}__item--selectable {
+    &.is-highlighted {
+      @include css-map($dropdown-menu-item, 'highlighted');
+      &:after {
+        opacity: 1;
+        color: _color(gray, 800);
+      }
+    }
+  }
+}
+
+.#{$select-selector}__item { cursor: default; }
+.#{$select-selector}__item--selectable { cursor: pointer; }
+.#{$select-selector}__item--disabled {
+  cursor: not-allowed;
+  user-select: none;
+  opacity: .5;
+}
+
+.#{$select-selector}__button {
+  text-indent: -9999px;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  &:focus { outline: none; }
+}
+
+.#{$select-selector}__input {
+  display: inline-block;
+  vertical-align: middle;
+  border: 0;
+  border-radius: 0;
+  max-width: 100%;
+
+  @include css-map($select-search, 'disabled');
+
+  &:focus { outline: 0; }
+}
+
+.#{$select-selector}__placeholder { opacity: .5; }
+
+/*=====  End of Choices  ======*/

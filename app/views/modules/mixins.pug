@@ -1,0 +1,11 @@
+//- ---------------------------------------------
+//- ICONS
+//- mixins icons
+
+mixin icon(iconName, className='', alt='')
+  if alt
+    svg.icon(class=`icon-${iconName} ${className.length ? className : ''}` role='presentation' aria-label=alt)&attributes(attributes)
+      use(xlink:href=`#icon-${iconName}`)
+  else
+    svg.icon(class=`icon-${iconName} ${className.length ? className : ''}` role='img' aria-hidden='true')&attributes(attributes)
+      use(xlink:href=`#icon-${iconName}`)

@@ -1,0 +1,46 @@
+// ---------------------------------------------
+// FORMS GLOBALS
+// ---------------------------------------------
+
+// -----------------
+// form globals
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+// -----------------
+// form fieldset
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  @include clearfix;
+
+  &.bottom-sep {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #c2c8cd;
+  }
+}
+
+// -----------------
+// form controls
+
+.form-control {
+  margin: 0 0 $form-m;
+}
+
+.form--block {
+  .form-control:not(:last-child),
+  hr {
+    margin-bottom: $form-control-block-m;
+  }
+}

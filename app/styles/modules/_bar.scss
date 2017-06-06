@@ -1,0 +1,73 @@
+@mixin bar {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+@mixin bar-item(
+  $spacing: $bar-spacing,
+  $width: 0
+) {
+  flex: 0 1 if($width == 0, auto, $width);
+  display: flex;
+  align-items: center;
+
+  @each $breakpoint, $space in _get-breakpoint-map($spacing) {
+    @include breakpoint($breakpoint) {
+      margin-right: $space;
+    }
+  }
+
+  > * {
+    margin-bottom: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+@mixin bar-content(
+  $spacing: $bar-spacing
+) {
+  flex: 1 0 1px;
+  margin: 0;
+
+  @each $breakpoint, $space in _get-breakpoint-map($spacing) {
+    @include breakpoint($breakpoint) {
+      margin-right: $space;
+    }
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin bar-break(
+  $height: $bar-break-height
+) {
+  flex: 1 0 100%;
+  height: $height;
+}
+
+@mixin bar-classes {
+  .bar {
+    @include bar;
+
+    &__item {
+      @include bar-item;
+    }
+
+    &__content {
+      @include bar-content;
+    }
+  }
+}
+
+@include bar-classes;

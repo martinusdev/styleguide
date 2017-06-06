@@ -1,0 +1,108 @@
+// ---------------------------------------------
+// TABLES
+// ---------------------------------------------
+
+// CONTENTS
+// Table
+// Bordered
+// Striped
+// Clean
+
+// ----------------------------
+// TABLE
+
+// stylelint-disable max-nesting-depth, selector-max-compound-selectors
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $content-spacing;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  @include css-map($table, 'default');
+
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        @include css-map($table-cell, 'default');
+      }
+
+      > th {
+        text-align: left;
+      }
+    }
+  }
+
+  > thead > tr > th {
+    @include css-map($table-cell, 'head');
+  }
+
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+
+  > tbody + tbody {
+    border-top: _map-deep-get($table-cell, 'head', 'border-bottom');
+  }
+}
+
+// ----------------------------
+// BORDERED
+
+.table--bordered {
+  border: $table-border-w $table-border-s $table-border-c;
+
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: $table-border-w $table-border-s $table-border-c;
+      }
+    }
+  }
+
+  > thead > tr {
+    > th,
+    > td {
+      border-top: _map-deep-get($table-cell, 'head', 'border-bottom');
+    }
+  }
+}
+
+// ----------------------------
+// STRIPED
+
+.table--striped {
+  > tbody > tr:nth-of-type(odd) {
+    @include css-map($table-cell, 'odd');
+  }
+}
+
+// ----------------------------
+// CLEAN
+
+.table--clean {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+}

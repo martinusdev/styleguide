@@ -1,0 +1,47 @@
+// ---------------------------------------------
+// TABS
+// ---------------------------------------------
+
+// CONTENTS
+// Tabs
+
+// ----------------------------
+// TABS
+
+.tab-nav {
+  @include clearfix;
+  @include list-unstyled;
+  position: relative;
+}
+
+.tab-nav__item {
+  float: left;
+}
+
+.tab-nav__link {
+  display: block;
+
+  @include css-map($tabs-link, 'default');
+
+  &:focus,
+  &:hover {
+    @include css-map($tabs-link, 'focus');
+  }
+
+  .is-active > & {
+    @include css-map($tabs-link, 'active');
+  }
+
+  &[disabled],
+  &.is-disabled {
+    @include css-map($tabs-link, 'disabled');
+  }
+}
+
+.tab {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}

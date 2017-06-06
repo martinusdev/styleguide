@@ -1,0 +1,48 @@
+// ---------------------------------------------
+// GLOBALS
+// ---------------------------------------------
+
+html,
+body {
+  padding: 0;
+  height: 100%;
+  text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  position: relative;
+  background: $default-bg-color;
+  font-family: $default-font-family;
+  color: $default-text-color;
+}
+
+* { box-sizing: border-box; }
+*::after { box-sizing: border-box; }
+*::before { box-sizing: border-box; }
+
+::selection {
+  background-color: fade-out($selection-bg-color, 0.1);
+  color: $selection-text-color;
+}
+
+::-moz-selection { // stylelint-disable-line
+  background-color: fade-out($selection-bg-color, 0.1);
+  color: $selection-text-color;
+}
+
+a[href],
+area[href],
+input:not([disabled]),
+select:not([disabled]),
+textarea:not([disabled]),
+button:not([disabled]),
+iframe,
+[tabindex],
+[contentEditable=true] {
+  &:not([tabindex='-1']) {
+    &:focus {
+      outline: $default-outline;
+    }
+  }
+}

@@ -1,0 +1,418 @@
+// ---------------------------------------------
+// MIXINS AND FUNCTIONS
+// ---------------------------------------------
+
+// -------------------------------
+// MIXINS
+
+@mixin color(
+  $color-fallback,
+  $color
+) {
+  color: $color-fallback;
+  color: $color;
+}
+
+@mixin font-size(
+  $font-size,
+  $font-size-r: $default-font-size) {
+  $font-size: round($font-size);
+  font-size: $font-size;
+  font-size: ($font-size / $default-font-size) * 1rem;
+}
+
+@mixin text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin visually-hidden {
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// -- Nicolas Gallagher's micro clearfix
+@mixin clearfix {
+  *zoom: 1;           // For IE 6/7 (trigger hasLayout)
+  &::before,
+  &::after { // For modern browsers
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+@mixin center-unknown(
+  $selector) {
+  text-align: center;
+
+  &::before {
+    content: '';
+    height: 100%;
+    margin-right: -0.5em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #{$selector} {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+@mixin border-radius(
+  $radius,
+  $border: '',
+  $clip: true
+) {
+
+  $moz-border: '';
+
+  @if $border == 'top left' {
+    $border: '-top-left';
+  }
+  @else if $border == 'top right' {
+    $border: '-top-right';
+  }
+  @else if $border == 'bottom left' {
+    $border: '-bottom-left';
+  }
+  @else if $border == 'bottom right' {
+    $border: '-bottom-right';
+  }
+
+  border#{unquote($border)}-radius: $radius;
+
+  @if $clip == true {
+    //fix bg leaking outside the border
+    background-clip: padding-box;
+  }
+}
+
+@mixin border-top-radius(
+  $radius,
+  $clip: true
+) {
+  @include border-radius($radius, 'top left', $clip);
+  @include border-radius($radius, 'top right', false);
+}
+
+@mixin border-right-radius(
+  $radius,
+  $clip: true
+) {
+  @include border-radius($radius, 'top right', $clip);
+  @include border-radius($radius, 'bottom right', false);
+}
+
+@mixin border-bottom-radius(
+  $radius,
+  $clip: true
+) {
+  @include border-radius($radius, 'bottom left', $clip);
+  @include border-radius($radius, 'bottom right', false);
+}
+
+@mixin border-left-radius(
+  $radius,
+  $clip: true
+) {
+  @include border-radius($radius, 'top left', $clip);
+  @include border-radius($radius, 'bottom left', false);
+}
+
+/// Responsive map to classes
+/// @example
+///   $responisive-map: (
+///    null: (
+///      'h1, .h1' : (
+///        // property: value,
+///        // another-property: another-value,
+///      ),
+///      '.your-class' : (),
+///    ),
+///    'm': (
+///      'h1, .h1' : (),
+///      '.your-class' : (),
+///    ),
+///  );
+@mixin r-map-to-classes($responisive-map) {
+  @each $breakpoint, $tags in $responisive-map {
+    @include breakpoint($breakpoint) {
+      @each $tag, $properties in $tags {
+        #{$tag} {
+          @each $property, $value in $properties {
+            #{$property}: #{$value};
+          }
+        }
+      }
+    }
+  }
+}
+
+/// Get css propeties from map
+///
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to fetch
+///
+/// @example
+/// $map: (
+///   background-color: #fff,
+///   color: #000
+/// );
+///
+/// .example {
+///   @include css-map($map);
+///  }
+///
+/// Output:
+/// .example {
+///   background-color: #fff;
+///   color: #000;
+/// }
+@mixin css-map($_map, $keys...) {
+  $map: if($keys, _map-deep-get($_map, $keys...), $_map);
+
+  @each $prop, $value in $map {
+    #{$prop}: #{$value};
+  }
+}
+
+// -------------------------------
+// MEDIA QUERIES
+
+@mixin media($feature, $value) {
+  @media screen and ($feature: $value) { @content; }
+}
+
+// -------------------------------
+// FUNCTIONS
+
+@function _get-em(
+  $size,
+  $font-size: $default-font-size
+) {
+  @return $size / $font-size * 1em;
+}
+
+@function _get-rem(
+  $size,
+  $base: $default-font-size
+) {
+  @return $size / $base * 1rem;
+}
+
+/// Base on -zf-map-next https://github.com/zurb/foundation-sites/blob/develop/scss/util/_breakpoint.scss
+/// Find the next key in a map.
+/// @access private
+///
+/// @param {Map} $map - Map to traverse.
+/// @param {Mixed} $key - Key to use as a starting point.
+///
+/// @returns {Mixed} The value for the key after `$key`, if `$key` was found. If `$key` was not found, or `$key` was the last value in the map, returns `null`.
+@function _map-next($map, $key, $return: 'value') {
+
+  // Store the keys of the map as a list
+  $values: map-keys($map);
+
+  $i: 0;
+
+  // If the Key Exists, Get the index of the key within the map and add 1 to it for the next breakpoint in the map
+  @if (map-has-key($map, $key)) {
+    $i: index($values, $key) + 1;
+  }
+
+  // If the key doesn't exist, or it's the last key in the map, return null
+  @if ($i > length($map) or $i == 0) {
+    @return null;
+  }
+  // Otherwise, return the value
+  @else {
+    @if $return == 'value' {
+      @return map-get($map, nth($values, $i));
+    } @else {
+      @return nth($values, $i);
+    }
+  }
+}
+
+// -------------------------------
+// POWER CALCULATOR
+@function _pow($number, $exponent) {
+  $value: 1;
+
+  @if $exponent > 0 {
+    @for $i from 1 through $exponent {
+      $value: $value * $number;
+    }
+  } @elseif ( $exponent < 0 ) {
+    $value: 1 / _pow($number, abs($exponent));
+  }
+
+  @return $value;
+}
+
+/// Get space size from $spaces-vertical or $spaces-horizontal.
+/// @param {String} $direction - Horizontal/vertical direction
+/// @param {String} $size ['default'] - Size of space
+/// @param {String} $local-font-size [null] - Local font size which will overide $default-font-size in em computation via _get-em.
+/// @example
+///   _get-space('v');
+///   _get-space('v', 'small');
+///   _get-space('v', 'default', '24px');
+///   _get-space('h');
+///   ...
+@function _get-space($direction, $size: 'default', $local-font-size: null) {
+  @if $direction == 'v' or $direction == 'vertical' {
+    @if map-has-key($spaces-vertical, $size) {
+      $space: map-get($spaces-vertical, $size);
+
+      @if ($local-font-size) {
+        @return if(unit($space) == 'em', $space, _get-em($space, $local-font-size));
+      } @else {
+        @return if(unit($space) == 'em', $space, _get-em($space));
+      }
+    } @else {
+      @warn '$size is not defined';
+    }
+  } @else if $direction == 'h' or $direction == 'horizontal' {
+    @if map-has-key($spaces-horizontal, $size) {
+      $space: map-get($spaces-horizontal, $size);
+
+      @if ($local-font-size) {
+        @return if(unit($space) == 'em', $space, _get-em($space, $local-font-size));
+      } @else {
+        @return if(unit($space) == 'em', $space, _get-em($space));
+      }
+    } @else {
+      @warn '$size is not defined';
+    }
+  } @else {
+    @warn '$direction is not or wrongly defined';
+  }
+}
+
+/// Get prefixed variant name
+/// @param {String} $name - Variant name
+/// @return {String} - Return a prefixed variant name or empty string, for default variants
+/// @example scss
+///   _get-variant-name('primary')
+/// // -primary
+///   _get-variant-name('default')
+/// //
+@function _get-variant-name($name, $prefix: '--', $suffix: '') {
+  @if not $name or $name == default or $name == xs {
+    @return '';
+  }
+
+  @return #{$prefix + $name + $suffix};
+}
+
+/// Get last map key
+/// @param {Map} $map - Map to extract last key from
+/// @return {String} - The last key in provided map
+@function _get-last-key($map) {
+  $keys: map-keys($map);
+
+  @return nth($keys, length($map));
+}
+
+/// Get breakpoint map - Converts a string to a single-value breakpoint map for responsive use
+/// @param {String | Map} $value - String to convert. Passing a map will return the map itself.
+/// @return {Map}
+@function _get-breakpoint-map($value) {
+  @if type-of($value) == map {
+    @return $value;
+  } @else {
+    @return ('xs': $value);
+  }
+}
+
+/// Fetch nested keys
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to fetch
+/// @return {*}
+@function _map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    @if (type-of($map) == map ) {
+      $map: map-get($map, $key);
+    }
+  }
+
+  @return $map;
+}
+
+/// Strip units from any number
+/// @param {Number} $number - Number to strip units from
+/// @return {Number}
+@function _strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function _color($theme, $weight) {
+  @if map-has-key($color-palette, $theme) {
+    $color-theme: map-get($color-palette, $theme);
+    $color: null;
+
+    @if map-has-key($color-theme, $weight) {
+      $color: map-get($color-theme, $weight);
+    } @else {
+      $base-color: map-get($color-theme, 500);
+      $color: _color-shade($base-color, $weight);
+    }
+
+    @return $color;
+  } @else {
+    @return _color-shade($theme, $weight);
+  }
+}
+
+@function _color-shade($color, $weight) {
+  @if $weight > 500 {
+    @return mix(black, $color, ($weight - 500) / 5 );
+  } @elseif $weight < 500 {
+    @return mix(white, $color, (500 - $weight) / 5 );
+  } @else {
+    @return $color;
+  }
+}
+
+/// Get size in pixels based on modular scale from $typography-settings
+/// @param {Number} $level - Number which specifies level on modular typographic scale
+/// @param {String} $breakpoint ['default'] - Breakpoint in $typography settings
+/// @param {Number} $base-font-size [value from $typography-settings] - Base font size
+/// @return {Number}
+@function _modular-scale(
+  $level,
+  $breakpoint: null,
+  $base-font-size: null
+) {
+  $breakpoint: if($breakpoint, $breakpoint, 'default');
+
+  @if (not $base-font-size) {
+    $base-font-size: _map-deep-get($typography-settings, $breakpoint, base-font-size);
+  }
+
+  @return (
+    $base-font-size *
+    _pow(
+      _map-deep-get(
+        $typography-settings,
+        $breakpoint,
+        typographic-ratio
+      ),
+      $level
+    )
+  );
+}

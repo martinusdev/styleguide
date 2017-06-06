@@ -1,0 +1,46 @@
+extends layouts/_default
+
+block content
+  .intro-templates
+    header.intro-templates_header
+      .wrapper-main
+        h1.text-upper.text-color-white.no-mrg-bottom= projectName
+        span.text-small.text-color-semiwhite-050 version #{new Date().toDateString()}
+    article.intro-templates_content
+      .wrapper-main
+        h2.text-upper Content
+        ul.intro-templates_list
+          li.intro-templates_item
+            a(data-toggle='self, parent', data-toggle-icon='#icon-sg-chevronup') 
+              h3 
+                | Styleguide
+                +icon('sg-chevrondown')
+            ul.intro-templates_sublist
+              each category in l_sitemap
+                each page in category.topics
+                  li.intro-templates_subitem
+                    +icon('sg-caretright')
+                    if page.sub == undefined
+                      a(href='/styleguide/' + page.hlink, target='_blank')= page.title
+                    else
+                      a(href='/styleguide/' + page.sub[0].hlink, target='_blank')= page.title
+
+          each item in sitemap
+            li.intro-templates_item
+              a(data-toggle='self, parent', data-toggle-icon='#icon-sg-chevronup') 
+                h3 
+                  | #{item.title} 
+                  +icon('sg-chevrondown')
+              if item.contents
+                ul.intro-templates_sublist
+                  each subitem in item.contents
+                    li.intro-templates_subitem
+                      +icon('sg-caretright')
+                      a(href=subitem.href, target='_blank', class=subitem.old?'text-color-dovred-600':'', title=subitem.old?'old version !!!':undefined)= subitem.title
+                      if subitem.desc
+                        span.tooltip-icon.js-tooltip(title=subitem.desc) ?
+
+//- -----------------------------------------------
+//- STYLEGUIDE ICONS
+block append icons 
+  != helpers.readFile(iconsPaths.styleguide)

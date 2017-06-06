@@ -1,0 +1,182 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.tabs', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_tabs.scss'], contents)
+
+    +p-big Documentation for tab components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- TABS
+  +content-section(contents[0], true)
+
+    +p Tabs are created using a main wrapper element <code class='l-code-inline'>.tabs</code>, and <code class='l-code-inline'>.tab</code> tabs themselves inside of it. Navigation is wrapped in <code class='l-code-inline'>.tab-nav</code>, navigation items are <code class='l-code-inline'>.tab-nav__item</code> and navigation links need <code class='l-code-inline'>.tab-nav__link</code> for styling and <code class='l-code-inline'>[role=tab]</code> for toggling the tabs themselves.
+
+    +note Tabs are accessible, yay! Proper aria attributes are automatically added on load.
+
+    +demo
+      +demo-example
+        ul.tab-nav
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab-1' role="tab") Tab 1
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab-2' role="tab") Tab 2
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab-3' role="tab") Tab 3
+          li.tab-nav__item
+            a.tab-nav__link.is-disabled(href='#tab-4' role="tab" tabindex="-1") Tab disabled
+
+        article.tabs
+          section#tab-1.tab
+            p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+          section#tab-2.tab
+            p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+          section#tab-3.tab
+            p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
+          section#tab-4.tab
+            p Lorem ipsum Veniam qui cupidatat dolore ad nulla in dolore veniam id est cillum quis magna dolore Ut minim in culpa dolore in qui nostrud in.
+
+        button.btn(type="button", data-toggle="#tab-3") Toggle tab 3
+      +demo-code
+        :code
+          <!-- tabs -->
+          <ul class="tab-nav">
+            <li class="tab-nav__item">
+              <a class="tab-nav__link" href="#tab-1" role="tab">Tab 1</a>
+            </li>
+            <li class="tab-nav__item">
+              <a class="tab-nav__link" href="#tab-2" role="tab">Tab 2</a>
+            </li>
+            <li class="tab-nav__item is-active">
+              <a class="tab-nav__link" href="#tab-3" role="tab">Tab 3</a>
+            </li>
+            <li class="tab-nav__item">
+              <a class="tab-nav__link is-disabled" href="#tab-4" tabindex="-1">Tab disabled</a>
+            </li>
+          </ul>
+
+          <!-- tabs panes-->
+          <article class="tabs">
+            <section id="tab-1" class="tab">
+            </section>
+            <section id="tab-2" class="tab">
+            </section>
+            <section id="tab-3" class="tab">
+            </section>
+            <section id="tab-4" class="tab">
+            </section>
+          </article>
+      //- end: demo
+
+    h3.l-h3 Activate tab on load
+
+    +p To specify an opened tab on load, add <code class='l-code-inline'>.is-active</code> to both <code class='l-code-inline'>.tab-nav__item</code> and <code class='l-code-inline'>.tab</code>. Otherwise, the first tab will be activated on load.
+    +p You can even pass a tabs ID into location href, to open it directly by URL and scroll to its position. Enable this behavior by adding <code class='l-code-inline'>data-tab-load</code> to the <code class='l-code-inline'>.tabs</code> container. If there is a fixed header, you can offset the scroll position by passing a number (pixels) or the fixed container query selector to <code class='l-code-inline'>data-tab-load</code>. Try it by visiting <a href="/styleguide/tabs.html#tab2-2" target="_blank">Tab 2</a>
+
+    +demo
+      +demo-example
+        ul.tab-nav
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab2-1' role="tab") Tab 1
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab2-2' role="tab") Tab 2
+          li.tab-nav__item.is-active
+            a.tab-nav__link(href='#tab2-3' role="tab") Tab 3
+
+        article.tabs(data-tab-load=".l-header-main")
+          section#tab2-1.tab
+            p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+          section#tab2-2.tab
+            p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+          section#tab2-3.tab.is-active
+            p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
+      +demo-code
+        :code
+          <ul class="tab-nav">
+            <li class="tab-nav__item">
+              ...
+            </li>
+            <li class="tab-nav__item">
+              ...
+            </li>
+            <li class="tab-nav__item is-active">
+              ...
+            </li>
+          </ul>
+
+          <article class="tabs" data-tab-load=".l-header-main">
+            <section id="tab2-1" class="tab">
+              ...
+            </section>
+            <section id="tab2-2" class="tab">
+              ...
+            </section>
+            <section id="tab2-3" class="tab is-active">
+              ...
+            </section>
+          </article>
+
+    h3.l-h3 Toggle
+
+    +p Tabs are compatibble with <a href="/styleguide/js-toggle.html">Toggle</a>. To toggle a tab, use it's ID as the toggle target.
+
+    +demo
+      +demo-example
+        ul.tab-nav
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab3-1' role="tab") Tab 1
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab3-2' role="tab") Tab 2
+          li.tab-nav__item
+            a.tab-nav__link(href='#tab3-3' role="tab") Tab 3
+
+        article.tabs
+          section#tab3-1.tab
+            p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+          section#tab3-2.tab
+            p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+          section#tab3-3.tab
+            p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
+
+        button(type="button" href="#tab3-2", data-toggle="#tab3-2").btn Toggle tab 2
+      +demo-code
+        :code
+          <ul class="tab-nav">
+            <li class="tab-nav__item">
+              ...
+            </li>
+            <li class="tab-nav__item">
+              ...
+            </li>
+            <li class="tab-nav__item">
+              ...
+            </li>
+          </ul>
+
+          <article class="tabs">
+            <section id="tab3-1" class="tab">
+              ...
+            </section>
+            <section id="tab3-2" class="tab">
+              ...
+            </section>
+            <section id="tab3-3" class="tab">
+              ...
+            </section>
+          </article>
+
+          <button class="btn" type="button" href="#tab3-2" data-toggle="#tab3-2">Toggle tab 2</button>
+//- end: section
+
+//- end: section

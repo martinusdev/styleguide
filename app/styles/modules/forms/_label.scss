@@ -1,0 +1,25 @@
+// ---------------------------------------------
+// LABEL
+// ---------------------------------------------
+
+.form-label {
+  label {
+    margin-left: 0;
+    display: inline-block;
+    cursor: pointer;
+
+    @include css-map($form-label, 'default');
+  }
+
+  &.is-error {
+    label {
+      @include css-map($form-label, 'error');
+    }
+  }
+
+  @each $size, $props in $form-label-sizes {
+    &#{_get-variant-name($size)} {
+      @include css-map($props);
+    }
+  }
+}

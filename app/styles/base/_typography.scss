@@ -1,0 +1,240 @@
+// ---------------------------------------------
+// TYPOGRAPHY
+// ---------------------------------------------
+
+// Sizes
+// Headings
+// Text
+// Lists
+
+/// Typographt generator based on modular scale, rounded to whole pixels.
+/// Online calculator http://www.modularscale.com/
+@mixin typography-sizes() {
+  body { font-size: 100%; }
+
+  @each $breakpoint, $values in $typography-settings {
+    @include breakpoint($breakpoint) {
+
+      $base-font-size: map-get($values, base-font-size);
+
+      html {
+        font-size: _get-rem($base-font-size, 16px);
+        line-height: map-get($values, base-line-height);
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: $content-spacing;
+        line-height: map-get($values, base-line-height);
+      }
+
+      @each $heading in $heading-tags {
+        $i: index($heading-tags, $heading);
+        $pow: length($heading-tags) - $i;
+        $font-size: _get-rem(_modular-scale($pow, $breakpoint));
+
+        // stylelint-disable-next-line
+        #{$heading},
+        .#{$heading} {
+          margin-top: 0;
+          margin-bottom: $content-spacing;
+          font-size: $font-size;
+          line-height: map-get($values, base-line-height);
+        }
+      }
+
+      small,
+      .text-small {
+        font-size: _get-rem($font-size-small);
+      }
+
+      .text-big {
+        font-size: _get-rem($font-size-large);
+      }
+    }
+  }
+}
+
+@include typography-sizes();
+
+// ---------------------------------------------
+// HEADINGS
+
+%headline {
+  @include css-map($heading);
+}
+
+@mixin heading-styles() {
+  @each $heading in $heading-tags {
+    #{$heading},
+    .#{$heading} {
+      @extend %headline;
+    }
+  }
+}
+
+@include heading-styles();
+
+// ---------------------------------------------
+// TEXT
+
+@mixin typography-classes() {
+  .text-desc {
+    @include css-map($desc-text);
+  }
+
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    color: $default-text-color;
+
+    &[disabled],
+    &.is-disabled {
+      pointer-events: none;
+    }
+  }
+
+  .link {
+    @include css-map($link, 'default');
+    cursor: pointer;
+
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    word-break: break-word;
+
+    hyphens: auto;
+
+    &:focus,
+    &:hover,
+    &.is-active {
+      @include css-map($link, 'focus');
+    }
+  }
+
+  address { font-style: normal; }
+
+  abbr { cursor: help; }
+}
+
+@include typography-classes();
+
+blockquote {
+  @include css-map($blockquote);
+}
+
+cite {
+  display: block;
+
+  @include css-map($cite);
+}
+
+hr {
+  height: 1px;
+  display: block;
+  margin-bottom: $content-spacing;
+  border: 0;
+
+  @include css-map($hr);
+}
+
+// override typography settings
+@include r-map-to-classes($typography-overrides);
+
+// ---------------------------------------------
+// LISTS
+
+@mixin list-unstyled() {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin list-classes() {
+  ul,
+  ol,
+  dl {
+    margin: 0 0 $content-spacing;
+
+    ul,
+    ol,
+    dl {
+      margin-bottom: 0;
+    }
+  }
+
+  .list--unstyled {
+    @include list-unstyled;
+  }
+
+  .list--no-offset {
+    padding-left: _get-space('h');
+    list-style-position: outside;
+  }
+
+  .list--expanded {
+    li {
+      margin-bottom: _get-space('v', 'small');
+      &:last-child { margin-bottom: 0; }
+    }
+  }
+
+  .list-inline {
+    @include list-unstyled;
+    @include css-map($inline-list, 'default');
+
+    > li {
+      @include css-map($inline-list-item, 'default');
+      display: inline-block;
+      &:first-child { margin-left: 0; }
+      &:last-child { margin-right: 0; }
+    }
+  }
+
+  .list-inline--line {
+    margin: 0;
+    display: inline-block;
+
+    > li {
+      @include css-map($inline-list, 'line');
+      vertical-align: middle;
+    }
+  }
+
+  .list-inline--expanded {
+    > li {
+      @include css-map($inline-list-item, 'expanded');
+    }
+  }
+
+  dl {
+    dt {
+      font-weight: bold;
+    }
+
+    dd {
+      margin-left: 0;
+      margin-bottom: $content-spacing;
+
+      &:last-child { margin-bottom: 0; }
+    }
+  } // definition list
+
+  .dl-inline {
+    @include clearfix;
+
+    dt,
+    dd {
+      float: left;
+      margin: 0;
+    }
+
+    dt {
+      clear: both;
+      margin-right: _get-space('v', 'small');
+    }
+  }
+}
+
+@include list-classes;

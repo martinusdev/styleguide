@@ -1,0 +1,111 @@
+// ---------------------------------------------
+// LISTS
+// ---------------------------------------------
+
+// CONTENTS
+// Lists
+// List item sections
+
+// ----------------------------
+// LISTS
+
+@mixin list-base() {
+  @include list-unstyled;
+  display: flex;
+  flex-flow: column;
+  margin-bottom: $content-spacing;
+}
+
+@mixin list-style($variant: 'default') {
+  @include css-map($list, $variant);
+
+  .list__item { // stylelint-disable-line
+    @include bar;
+    flex-wrap: wrap;
+
+    @include css-map($list-item, $variant);
+
+    @if css-map($list-item, $variant, 'border-bottom') {
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+
+    > *:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@mixin list-item-clickable(
+  $list-item-clickable: $list-item-clickable
+) {
+  @include css-map($list-item-clickable, 'default');
+  cursor: pointer;
+
+  &:focus,
+  &:hover {
+    @include css-map($list-item-clickable, 'focus');
+  }
+
+  &.is-selected {
+    @include css-map($list-item-clickable, 'selected');
+
+    &:focus,
+    &:hover {
+      @include css-map($list-item-clickable, 'selected-focus');
+    }
+  }
+
+  &.is-disabled {
+    @include css-map($list-item-clickable, 'disabled');
+    cursor: not-allowed;
+  }
+}
+
+@mixin list-classes {
+  .list {
+    @include list-base;
+
+    .card__content > & {
+      border-radius: map-get($card, 'border-radius');
+    }
+  }
+
+  @each $variant in $list-variants {
+    .list#{_get-variant-name($variant)} {
+      @include list-style($variant);
+    }
+  }
+
+  .list__item--clickable {
+    @include list-item-clickable;
+  }
+}
+
+@include list-classes;
+
+// ----------------------------
+// LIST ITEM SECTIONS
+
+@mixin list-item-section-classes() {
+  .list__item__section {
+    &--primary {
+      @include bar-content;
+    }
+
+    &--secondary {
+      @include bar-item;
+    }
+
+    &--image {
+      @include bar-item($width: $list-item-section-image-size);
+    }
+
+    &--break {
+      @include bar-break();
+    }
+  }
+}
+
+@include list-item-section-classes;

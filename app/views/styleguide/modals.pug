@@ -1,0 +1,196 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.modals', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_modals.scss'], contents)
+
+    +p-big Documentation for modal windows and popups.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- MODALS
+  +content-section(contents[0])
+
+    +p Modal window can contain text or any UI controls such as forms, buttons etc. Modal windows retain focus until dismissed or a required action has been taken.
+
+    +p Modal component is complex component containing <code class='l-code-inline'>.modal-overlay</code> as main wrapper <code class='l-code-inline'>.modal</code> as window wrapper and <code class='l-code-inline'>.modal__header</code>, <code class='l-code-inline'>.modal__content</code> and <code class='l-code-inline'>.modal__footer</code> as inner sections of modal window. Modal window component can be created by following HTML structure in example below.
+
+    +dependency('Javascript')
+      +p Modal component is using <a href='/styleguide/js-toggle.html' class='l-a'>Toggle</a> javascript module, to show and hide window.
+
+    +note
+      +p Larger modal window can be created by using additional class on <code class='l-code-inline'>.modal</code> element <code class='l-code-inline'>.modal-large</code>.
+
+    +demo
+      +demo-example
+        button.btn(type='button', data-toggle='#modal-demo') Show modal
+        .modal-overlay#modal-demo(data-modal)
+          article.modal
+            header.modal__header
+              h3.modal__header__headline Headline
+              .modal__header__action
+                button.btn.btn--link(data-toggle='#modal-demo' type="button")
+                  +icon('close', 'icon--medium', 'Close')
+
+
+            section.modal__content
+
+              p Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.
+
+              p Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+              .form-control
+                input.input(type='text', placeholder='Input')
+
+            footer.modal__footer
+              .btn-layout--horizontal.align-items-right
+                button.btn.btn--link(type="button", data-toggle='#modal-demo') Cancel
+                button.btn.btn--link(type='button', data-toggle='#modal-demo2') Open another modal
+
+        .modal-overlay#modal-demo2(data-modal)
+          article.modal
+            header.modal__header
+              h3.modal__header__headline Another modal
+              .modal__header__action
+                button.btn.btn--link(data-toggle='#modal-demo2' type="button")
+                  +icon('close', 'icon--medium', 'Close')
+
+
+            section.modal__content
+
+              p.no-mrg-top Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.
+
+              .form-control
+                input.input(type='text', placeholder='Input')
+
+            footer.modal__footer
+              .btn-layout--horizontal.align-items-right
+                button.btn.btn--link(type="button", data-toggle='#modal-demo2') Cancel
+                button.btn.btn--link(type='button', data-toggle='#modal-demo') Open previous modal
+
+
+
+      +demo-code
+        :code
+          <!-- toggle button -->
+          <button class="btn" type="button" data-toggle="#modal-demo" data-toggle-self="false">Show modal</button>
+
+          <!-- modal -->
+          <div class="modal-overlay active" id="modal-demo">
+            <article class="modal">
+
+              <header class="modal__header">
+                <div class="modal__header__headline">
+                  <h3 class="text-nospace">Headline</h3>
+                </div>
+                <div class="modal__header__action">
+                  <a class="btn btn--link" data-toggle="#modal-demo">
+                    ...
+                  </a>
+                </div>
+              </header>
+
+              <section class="modal__content">
+                ...
+              </section>
+
+              <footer class="modal__footer">
+                <div class="row btn-layout--horizontal align-items-right">
+                  <button class="btn btn--small btn--link" type="button" data-toggle="#modal-demo">Cancel</button>
+                  <button class="btn btn--small btn--link" type="button" data-toggle="#modal-demo">Ok</button>
+                </div>
+              </footer>
+
+            </article>
+          </div>
+    //- end: demo
+
+  //- end: section
+
+  //- Multiple modals
+  +content-section(contents[1], true)
+
+    +p By default, having two open modals is not allowed. When you try to open a second modal, the first one gets closed automatically. To enable multiple open modals, all modal overlays need <code class="l-code-inline">[data-modal-allow-multiple]</code> attribute.
+
+    +demo
+      +demo-example
+        button.btn(type='button', data-toggle='#modal-demo-multiple') Show modal
+
+        .modal-overlay#modal-demo-multiple(data-modal data-modal-allow-multiple)
+          article.modal
+            header.modal__header
+              h3.modal__header__headline Headline
+              .modal__header__action
+                button.btn.btn--link(data-toggle='#modal-demo-multiple' type="button")
+                  +icon('close', 'icon--medium', 'Close')
+
+            section.modal__content
+
+              p Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.
+
+              p Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
+            footer.modal__footer
+              .btn-layout--horizontal.align-items-right
+                button.btn.btn--link(type="button", data-toggle='#modal-demo-multiple') Cancel
+                button.btn.btn--link(type='button', data-toggle='#modal-demo-multiple-2') Open another modal
+
+        .modal-overlay#modal-demo-multiple-2(data-modal data-modal-allow-multiple)
+          article.modal
+            header.modal__header
+              h3.modal__header__headline Another modal
+              .modal__header__action
+                button.btn.btn--link(data-toggle='#modal-demo-multiple-2' type="button")
+                  +icon('close', 'icon--medium', 'Close')
+
+            section.modal__content
+
+              p.no-mrg-top Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.
+
+            footer.modal__footer
+              .btn-layout--horizontal.align-items-right
+                button.btn.btn--link(type="button", data-toggle='#modal-demo-multiple-2') OK
+
+      +demo-code
+        :code
+          <!-- toggle button -->
+          <button class="btn active" type="button" data-toggle="#popup-demo">Show popup</button>
+
+          <!-- popup -->
+          <div class="modal-overlay active" id="popup-demo">
+            <article class="modal">
+
+              <header class="modal__header">
+                <div class="modal__header__headline">
+                  <h3 class="text-nospace">Headline</h3>
+                </div>
+                <div class="modal__header__action">
+                  <a class="btn btn--link" data-toggle="#popup-demo">
+                    ...
+                  </a>
+                </div>
+              </header>
+
+              <section class="modal__content">
+                ...
+                <div class="row btn-layout--horizontal align-items-right">
+                  <button class="btn btn--small btn--link" type="button" data-toggle="#popup-demo">Cancel</button>
+                  <button class="btn btn--small btn--link" type="button" data-toggle="#popup-demo">Delete</button>
+                </div>
+              </section>
+
+            </article>
+          </div>
+    //- end: demo
+
+  //- end: section

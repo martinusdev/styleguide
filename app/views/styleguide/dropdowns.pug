@@ -1,0 +1,135 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.dropdowns', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_dropdown.scss'], contents)
+
+    +p-big Documentation of dropdowns and thiers variations.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- BUTTONS
+
+  +content-section(contents[0], true)
+
+    +content-sub-section('Basic dropdown')
+
+      +p Dropdown components usualy hides extended functionality behind action, which opens dropdowns. Dropdown is build with <code class='l-code-inline'>.dropdown</code> class. Expaneded state is set with <code class='l-code-inline'>aria-expanded="true"</code> attribute. Example of basic dropdown list is shown below. Example also contains basic usage with <a class="l-a" href="/styleguide/buttons#dropdowns">dropdown buttons</a>.
+
+
+      +dependency('Javascript')
+
+        +p Dropdown copmonent require:
+          +p
+            a.l-a(href="/styleguide/js-toggle") Toggle
+            |  javascript module:
+            <code class='l-code-inline'>app/scripts/modules/Toggle.js</code>.
+            <br />
+            | Initialized by default in: <code class='l-code-inline'>app/scripts/main.js</code> file.
+          +p
+            | Dropdown javascript module:
+            <code class='l-code-inline'>app/scripts/modules/Dropdown.js</code>.
+            <br />
+            | Initialized by default in: <code class='l-code-inline'>app/scripts/main.js</code> file.
+
+      +demo
+        +demo-example
+          .row
+            .col--s-6
+              .dropdown(aria-expanded="true", style="position: relative; top: 0;")
+                each item in [1,2,3,4,5]
+                  a(href="#").dropdown__item Item #{item}
+            .col--s-6
+              .btn-layout--horizontal
+                .btn-dropdown
+                  button.btn(
+                    data-toggle='self, next', data-toggle-icon="#icon-chevronup",
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    | Button
+                    +icon('chevrondown', 'icon-dropdown')
+                  .dropdown(data-dropdown, data-toggle-expand)
+                    each item in [1,2,3,4,5]
+                      a(href="#").dropdown__item Item #{item}
+                .btn-dropdown-split
+                  button.btn Button
+                  button.btn.btn--equal(
+                    data-toggle='self, next, parent',
+                    data-toggle-icon="#icon-chevronup",
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    +icon('chevrondown', 'icon--smallplit')
+                  .dropdown(data-dropdown, data-toggle-expand)
+                    each item in [1,2,3,4,5]
+                      a.dropdown__item(href="#") List item #{item}
+        +demo-code
+          :code
+            <div class="dropdown" data-dropdown aria-expanded="false">
+              <a class="dropdown__item" href="#">...</a>
+              ...
+            </div>
+
+            <!-- expanded -->
+            <div class="dropdown" data-dropdown aria-expanded="true">
+
+    +content-sub-section('Interactive dropdown')
+      +p Dropdown menu with Interactive functionality eg. forms, buttons etc. should not close after click inside of dropdown component. This can be achieved with attribute <code class='l-code-inline'>[data-dropdown-interactive]</code>.
+
+      +note
+        +p Disable max height of dropdown with <code class='l-code-inline'>.dropdown--nowrap</code> class.
+
+      +note
+        +p Add padding to dropdown with <code class='l-code-inline'>.dropdown--space</code> class.
+
+      +demo
+        +demo-example
+          .row
+            .col--s-6
+              .dropdown.dropdown--nowrap.dropdown--space(aria-expanded="true", style="position: relative; top: 0")
+                .form-control.form-control--input
+                  .form-label
+                    label(for='input-01') Form label:
+                  input.input(type='text', placeholder='Input', id='input-01')
+                .form-control.form-control--select.no-mrg-bottom
+                  .form-label
+                    label Form label:
+                  select.js-select
+                    each option in [1,2,3,4,5,6]
+                      option Option #{option}
+            .col--s-6
+              .btn-dropdown
+                button.btn(
+                  data-toggle='self, next', data-toggle-icon="#icon-chevronup",
+                  data-toggle-expand,
+                  aria-haspopup="true"
+                )
+                  | Button
+                  +icon('chevrondown', 'icon-dropdown')
+                .dropdown.dropdown--nowrap.dropdown--space(data-dropdown, data-toggle-expand, data-dropdown-interactive, style="min-width: 300px;")
+                  .form-control.form-control--input
+                    .form-label
+                      label(for='input-02') Form label:
+                    input.input(type='text', placeholder='Input', id='input-02')
+                  .form-control.form-control--select.no-mrg-bottom
+                    .form-label
+                      label Form label:
+                    select.js-select
+                      each option in [1,2,3,4,5,6]
+                        option Option #{option}
+        +demo-code
+          :code
+            <div class="dropdown dropdown--nowrap dropdown--space" data-dropdown data-dropdown-interactive>
+              ...
+            </div>

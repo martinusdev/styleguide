@@ -1,0 +1,144 @@
+// ---------------------------------------------
+// MODALS
+// ---------------------------------------------
+
+// CONTENTS
+// Modal
+
+// ----------------------------
+// MODALS
+
+body.has-modal {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+
+@mixin modal-overlay($settings: $modal-overlay) {
+  width: 0;
+  height: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $modal-overlay-z-index;
+  opacity: 0;
+  transform: scale(1.1, 1.1);
+  background-color: $modal-overlay-bg-color;
+  transition: opacity $modal-overlay-e, transform $modal-overlay-e;
+  backface-visibility: hidden;
+
+  @include css-map($settings);
+
+  // &:not(.is-active) {
+  //   > * {
+  //
+  //   }
+  // }
+
+  &.is-active {
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1;
+    transform: scale(1, 1);
+    transition-delay: 0s;
+  }
+}
+
+@mixin modal-dialog($settings: $modal-dialog, $variants: $modal-dialog-variants) {
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  overflow: auto;
+
+  @each $breakpoint, $props in $settings {
+    @include breakpoint($breakpoint) {
+      @include css-map($settings, $breakpoint);
+
+      > * + * {
+        border-top: map-get($props, 'border');
+      }
+
+      $radius: map-get($props, 'border-radius');
+
+      // stylelint-disable max-nesting-depth
+      > * {
+        &:first-child {
+          border-top-left-radius: $radius;
+          border-top-right-radius: $radius;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: $radius;
+          border-bottom-right-radius: $radius;
+        }
+      }
+      // stylelint-enable max-nesting-depth
+    }
+  }
+
+  @each $variant, $props in $variants {
+    &#{_get-variant-name($variant)} {
+      @include css-map($variants, $variant);
+    }
+  }
+}
+
+@mixin modal-section($settings, $spacing: $modal-section-spacing) {
+  width: 100%;
+  flex: 0 0 auto;
+
+  @include css-map($settings);
+
+  @each $breakpoint, $space in $spacing {
+    @include breakpoint($breakpoint) {
+      padding: map-get($space, 'vertical') map-get($space, 'horizontal');
+    }
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin modal-header {
+  @include bar;
+
+  &__headline {
+    @include bar-content;
+  }
+
+  &__action {
+    @include bar-item;
+  }
+}
+
+@mixin modal-classes {
+  .modal-overlay {
+    @include modal-overlay;
+  }
+
+  .modal {
+    @include modal-dialog;
+  }
+
+  .modal__header {
+    @include modal-section($settings: $modal-header);
+    @include modal-header;
+  }
+
+  .modal__content {
+    @include modal-section($settings: $modal-content);
+  }
+
+  .modal__footer {
+    @include modal-section($settings: $modal-footer);
+  }
+}
+
+@include modal-classes;

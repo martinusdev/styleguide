@@ -1,0 +1,64 @@
+// stylelint-disable
+
+// ---------------------------------------------
+// INTRO - PAGE
+// ---------------------------------------------
+
+// CONTENTS
+// Intro
+
+// ----------------------------
+// INTRO
+
+  $intro-templates_header-bg: _color(primary, 500);
+  $intro-templates_item-border: 1px solid _color(#808080, 300);
+
+  .intro-templates_header {
+    padding: 20px 0;
+    background-color: $intro-templates_header-bg;
+    h1 { font-size: 24px;}
+    span { color: rgba(255,255,255,0.5)}
+  }
+
+  .intro-templates_content {
+    padding: 20px 0;
+    h2 {font-size: 20px;}
+    h3 {font-size: 16px;}
+  }
+
+  .intro-templates_list,
+  .intro-templates_sublist {
+    @include list-unstyled;
+  }
+
+.intro-templates_list {
+    margin-top: 30px;
+  }
+
+  .intro-templates_sublist {
+    padding-left: 10px;
+    margin-bottom: 20px;
+    display: none;
+    .intro-templates_item.is-active & {
+      display: block;
+    }
+  }
+
+  .intro-templates_item {
+    padding-top: 20px;
+    border-bottom: $intro-templates_item-border;
+    h3 {
+      color: _color(#808080, 500);
+      vertical-align: middle;
+      .icon {
+        margin-left: 10px;
+        position: relative;
+        top: -1px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .intro-templates_subitem {
+    margin: 5px 0;
+  }

@@ -1,0 +1,146 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.formAdvanced', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info([
+    'app/styles/modules/_forms.scss',
+  ], contents)
+
+    +p-big Documentation of advanced ipnuts with extended functionality, such is inputs with icons.
+  //- end: main info
+
+//- Content
+block append content
+
+  //- INNER ADDON
+  +content-section(contents[0], true)
+
+    +p Text input with inner addon is just extended basic input. To create input with inner (text) addon you need to wrap <code class='l-code-inline'>&lt;input&gt;</code> and addon element <code class='l-code-inline'>.input-addons__item</code> into element with class <code class='l-code-inline'>.input-addons</code> as shown in example below.
+
+    +demo
+      +demo-example
+        .row
+          .col--l-6
+            .form-control.form-control--input
+              .input-addons
+                .input-addons__item
+                  +icon('search', '', 'Search')
+                input.input(type='text')
+            .form-control.form-control--input
+              .input-addons
+                .input-addons__item.no-pad
+                  button.btn.btn--link Action
+                .input-addons__item Mr.
+                input.input(type='text')
+          .col--l-6
+            .form-control.form-control--input
+              .input-addons
+                input.input(type='text')
+                .input-addons__item.no-pad
+                  button.btn.btn--link
+                    +icon('close', '', 'Close')
+            .form-control.form-control--input
+              .input-addons
+                input.input(type='text')
+                .input-addons__item .00
+                .input-addons__item €
+        .row
+          .col--l-6
+            h4 Complex example
+            .form-control.form-control--input
+              .form-label.is-error
+                label(for="input-addon-left-5") Form label:
+              .input-addons
+                .input-addons__item
+                  +icon('search', '', 'Search')
+                input.input.is-error(type="text", id="input-addon-left-5")
+                .input-addons__item.no-pad
+                  button.btn.btn--link
+                    +icon('close', '', 'Close')
+              p.form-text Help message
+              p.form-text.is-error Error message
+
+      +demo-code
+        :code
+          <div class="form-control form-control--input">
+            <div class="input-addons">
+              <!-- icon -->
+              <div class="input-addons__item">
+                <svg aria-label="Search" class="icon icon-search" role="presentation">
+                  <use xlink:href="#icon-search"></use>
+                </svg>
+              </div>
+
+              <!-- button -->
+              <div class="input-addons__item no-pad">
+                <button class="btn btn--link">Action</button>
+              </div>
+
+              <!-- text -->
+              <div class="input-addons__item">Mr.</div>
+
+              <input class="input" type="text">
+
+              <!-- after input -->
+              <div class="input-addons__item">.00</div>
+            </div>
+          </div>
+
+
+    //- end: demo
+
+    +content-sub-section('Sizes')
+
+      +p You can combine inner addon with different input sizes.
+
+      +demo
+        +demo-example
+          .row
+            .col--l-6
+              .form-control.form-control--input
+                .input-addons.input-addons--small
+                  .input-addons__item
+                    +icon('search', '', 'Search')
+                  input.input.input--small(type='text')
+              .form-control.form-control--input
+                .input-addons.input-addons--small
+                  .input-addons__item Mr.
+                  input.input.input--small(type='text')
+            .col--l-6
+              .form-control.form-control--input
+                .input-addons.input-addons--large
+                  .input-addons__item
+                    +icon('search', '', 'Search')
+                  input.input.input--large(type='text')
+              .form-control.form-control--input
+                .input-addons.input-addons--large
+                  .input-addons__item Mr.
+                  input.input.input--large(type='text')
+        +demo-code
+          :code
+            <div class="form-control form-control--input">
+              <div class="input-addons input-addons--small">
+                <div class="input-addons__item ">...</div>
+                <input class="input input--small" type="text">
+              </div>
+            </div>
+
+            <div class="form-control form-control--input">
+              <div class="input-addons input-addons--large">
+                <div class="input-addons__item ">...</div>
+                <input class="input input--large" type="text">
+              </div>
+            </div>
+      //- end: demo
+
+    //- end: subsection
+
+  //- end: section

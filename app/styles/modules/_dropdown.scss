@@ -1,0 +1,72 @@
+// ---------------------------------------------
+// DROPDOWN
+// ---------------------------------------------
+
+@mixin dropdown-menu (
+  $dropdown-menu: $dropdown-menu
+) {
+  min-width: 100%;
+  position: absolute;
+  left: 0;
+  top: 100%;
+
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  word-break: break-all;
+
+  @include css-map($dropdown-menu, 'default');
+
+  &--space {
+    @include css-map($dropdown-menu, 'space');
+  }
+
+  &[aria-expanded='true'],
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+    transform: scale(1, 1);
+  }
+
+  &--nowrap {
+    overflow: visible;
+    max-height: none;
+  }
+}
+
+@mixin dropdown-size () {
+  max-height: $dropdown-menu-max-h;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  will-change: scroll-position;
+}
+
+@mixin dropdown-item (
+  $dropdown-menu-item: $dropdown-menu-item
+) {
+  display: block;
+
+  @each $prop, $value in map-get($dropdown-menu-item, 'default') {
+    #{$prop}: #{$value};
+  }
+
+  &:focus,
+  &:hover,
+  &.is-active {
+    @each $prop, $value in map-get($dropdown-menu-item, 'focus') {
+      #{$prop}: #{$value};
+    }
+  }
+}
+
+@mixin dropdown() {
+  .dropdown {
+    @include dropdown-menu;
+    @include dropdown-size;
+
+    &__item { @include dropdown-item; }
+  }
+}
+
+@include dropdown;

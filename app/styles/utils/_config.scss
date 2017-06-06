@@ -1,0 +1,937 @@
+// ---------------------------------------------
+// CONFIGURATION
+// ---------------------------------------------
+
+// CONTENTS
+// Breakpoints
+// Colors
+// Genreal
+// Typography
+// Icons
+// Grid
+// Bar
+// Buttons
+// Form components
+// Tables
+// Cards
+// Lists
+// Tabs
+// Modals
+// Other modules and components
+// Pages
+
+// ----------------------------
+// BREAKPOINTS
+
+$breakpoints: (
+  xs: 0,
+  s: 480px,
+  m: 640px,
+  l: 960px,
+  xl: 1280px,
+);
+
+// ----------------------------
+// COLORS
+
+$color-palette: (
+  primary: (
+    500: #ff5722,
+  ),
+  secondary: (
+    500: #21a2ff,
+  ),
+  error: (
+    500: #fa5252,
+    50:  #fff5f5,
+    100: #ffe3e3,
+    300: #ff6b6b,
+  ),
+  success: (
+    500: #3adb76,
+  ),
+  grey: (
+    500: #adb5bd,
+  ),
+);
+
+$default-color-weights: (
+  50,
+  100,
+  200,
+  300,
+  400,
+  500,
+  600,
+  700,
+  800,
+  900,
+);
+
+// ----------------------------
+// GENERAL
+
+$default-bg-color: $color-white !default;
+$default-text-color: _color(grey, 900) !default;
+$default-font-family: $font-family-opensans !default;
+
+$default-border-radius: $border-radius !default;
+
+$default-font-size: 16px !default;
+
+$default-outline: 3px solid rgba(_color(primary, 200), 0.8);
+
+$content-spacing: _get-space('v') !default;
+
+//---------------
+// selection
+
+$selection-bg-color: _color(primary, 500);
+$selection-text-color: $color-white;
+
+// ----------------------------
+// TYPOGRAPHY
+
+//---------------
+// headings
+
+$heading-tags: (h1,h2,h3,h4,h5);
+
+$heading: (
+  font-family: $font-family-opensans,
+  font-weight: 400
+);
+
+$typography-settings: (
+  default : (
+    base-font-size: $default-font-size,
+    base-line-height: 1.5,
+    typographic-ratio: 1.33,
+  ),
+  // mobile first breakpoints
+  // 'm' : (
+  //   base-font-size: $default-font-size,
+  //   base-line-height: 1.5,
+  //   typographic-ratio: 1.3,
+  // ) // from 'm' up
+);
+
+// Typography is typically calculated from $typography-settings in styles/utils/_variables,
+// but you can override ANYTHING here
+$typography-overrides: (
+  // null: (
+  //   'h1, .h1' : (
+  //     // property: value,
+  //     // another-property: another-value,
+  //   ),
+  //   '.your-class' : (),
+  // ),
+  // null: (
+  //   'h1, .h1' : (),
+  //   '.your-class' : (),
+  // ),
+);
+
+$font-size-large: _modular-scale(1);
+$font-size-small: _modular-scale(-1);
+
+//---------------
+// text
+
+$desc-text: (
+  color: $color-semiblack,
+  font-style: italic
+);
+
+$link: (
+  default: (
+    text-decoration: none,
+    border-bottom: 1px solid transparent,
+    color: _color(primary, 500),
+    transition: #{color $ease-400, border $ease-400},
+  ),
+  focus: (
+    color: _color(primary, 400),
+    border-bottom-color: _color(primary, 400),
+  )
+);
+
+$blockquote: (
+  margin: 0 0 _get-space('v'),
+  padding: _get-space('v', 'small') _get-space('h') 0,
+  border-left: 3px solid _color(gray, 500),
+);
+
+$cite: (
+  font-size: $font-size-small,
+  color: $color-semiblack,
+);
+
+$hr: (
+  border-top: 1px solid _color(grey, 300),
+);
+
+//---------------
+// lists
+
+$inline-list: (
+  default: (
+    margin: 0.5em 0,
+  ),
+  line: (
+    margin: 0 0.5em 0 0,
+  )
+);
+
+$inline-list-item: (
+  default: (
+    margin: 0.3em 0.5em 0.3em 0,
+  ),
+  expanded: (
+    margin: 0.3em 1.5em 0.3em 0,
+  )
+);
+
+//---------------
+// utility
+
+$text-color-theme-500: _color(primary, 500);
+$text-color-theme-400: _color(primary, 400);
+$text-color-theme-100: _color(primary, 100);
+
+$text-color-black: $color-black;
+$text-color-grey: _color(grey, 500);
+$text-color-grey-800: _color(grey, 800);
+$text-color-semiblack: $color-semiblack;
+
+$text-color-white: $color-white;
+$text-color-semiwhite: $color-semiwhite;
+
+$text-color-error: _color(error, 500);
+
+// ----------------------------
+// ICONS
+
+$icon-sizes: (
+  small: _get-rem(16px),
+  medium: _get-rem(24px),
+  large: _get-rem(32px),
+  xlarge: _get-rem(48px)
+);
+
+// ----------------------------
+// IMAGES
+
+$image-border-radius: $default-border-radius !default;
+
+// ----------------------------
+// GRID
+
+//---------------
+// wrappers
+
+$wrapper-widths: (
+  xs: 960px,
+  xl: 1080px,
+); // You only need to set those breakpoints, where a change should occur.
+
+$wrapper-paddings: (
+  xs: _get-space('h'),
+  xl: _get-space('h', 'large'),
+); // You only need to set those breakpoints, where a change should occur.
+
+//---------------
+// grid
+
+$grid-base: 12 !default;
+
+$gutters: (
+  xs: _get-space('h', 'small'),
+  m: _get-space('h'),
+  xl: _get-space('h', 'large')
+);
+
+$gutters-form: (
+  default: _get-space('h', 'small'),
+);
+
+// ----------------------------
+// BAR
+
+$bar-spacing: _get-space('h');
+$bar-break-height: 1em;
+
+// ----------------------------
+// BUTTONS
+
+// Global button settings
+
+$button-margin-bottom: $content-spacing;
+
+$button: (
+  default: (
+    border: 1px solid currentColor,
+    font-weight: 600,
+    text-transform: uppercase,
+    letter-spacing: 1px,
+    line-height: 1.4,
+    transition: 200ms all ease-out,
+    box-shadow: #{$shadow-direct-1, $shadow-ambient-1},
+  ),
+  focus: (
+    box-shadow: #{$shadow-direct-2, $shadow-ambient-2},
+  ),
+  active: (
+    box-shadow: #{$shadow-direct-1, $shadow-ambient-0},
+  ),
+  disabled: (
+    opacity: 0.5,
+  )
+);
+
+/// Generates button sizes. Each key is a suffix added to btn- (except default), and each value is the button font size.
+/// @type Map
+/// @prop {Length} button-size.font-size
+$button-sizes: (
+  default: (
+    padding: _get-em(9.5px, $default-font-size - 2px),
+    font-size: _get_rem($default-font-size - 2px),
+  ),
+  small: (
+    padding: _get-em(8px, $font-size-small - 2px),
+    font-size: _get_rem($font-size-small - 2px),
+  ),
+  large: (
+    padding: _get-em(10px, $font-size-large - 2px),
+    font-size: _get_rem($font-size-large - 2px),
+  ),
+);
+
+/// Generates button radii. Each key is a suffix added to btn- (except default), and each value is the button border radius.
+/// @type Map
+/// @prop {Length} button.radius
+/// @example
+///   $button-radii: (
+///     default: 0,
+///     radius: $default-border-radius,
+///     round: 999em,
+///   );
+$button-radii: (
+  default: 0,
+  radius: $default-border-radius,
+  round: 999em,
+);
+
+/// Generates button color/style variants.
+/// @type Map
+/// @prop {Map} variant - Button variant name (".btn-primary"). "default" is applied to generic ".btn" class
+/// all props in button-styles.variant are settings of the button style mixin. @mixin button-style
+/// @example
+///   $button-styles:
+///     primary: (
+///       default: (
+///         text-color: white
+///         background: primary
+///       ),
+///       focus: (...),
+///       ...
+///     ), // primary color bg and border, white text and default shadow
+///   );
+$button-styles: (
+  default: (
+    default: (
+      color: _color(primary, 500),
+      border-color: transparent,
+      background-color: #fff,
+    ),
+    disabled: (
+      box-shadow: none,
+    ),
+    group: (
+      border-color: _color(grey, 100),
+    )
+  ),
+  primary: (
+    default: (
+      color: #fff,
+      border-color: transparent,
+      background-color: _color(primary, 500),
+    ),
+  ),
+  secondary: (
+    default: (
+      color: #fff,
+      border-color: transparent,
+      background-color: _color(secondary, 500),
+    ),
+  ),
+  link: (
+    default: (
+      color: _color(primary, 500),
+      border-color: transparent,
+      background-color: transparent,
+      box-shadow: none,
+    ),
+    focus: (
+      box-shadow: none,
+    ),
+    active: (
+      box-shadow: none,
+    ),
+  ),
+  hollow: (
+    default: (
+      color: _color(primary, 500),
+      border-color: _color(primary, 500),
+      background-color: transparent,
+      box-shadow: none,
+    ),
+    focus: (
+      box-shadow: none,
+    ),
+    active: (
+      box-shadow: none,
+    ),
+  )
+);
+
+/// Default button color weights used for calculation button states. Used when hover/active/ colors are not defined.
+/// @type {Map}
+/// @prop {Number} button-color-weight.weight - Color weight to calculate from $button-color or $button-background
+$button-color-weights: (
+  default: 500,
+  focus: 300,
+  active: 400,
+  disabled: 550,
+  button-group-border: 600,
+);
+
+/// Overrides icon sizes (icon-s, etc.) in buttons
+/// @type {Map}
+/// @prop {Number} button-icon-scale.scale - Scale factor applied to css transform
+$button-icon-scaling: (
+  default: 1,
+  s: 0.8,
+  m: 1.2,
+  l: 2,
+);
+
+// ----------------------------
+// FORM COMPONENTS
+
+$form-m: _get-space('v');
+$form-control-block-m: 5px !default;
+
+$form-bgc: $color-white;
+$form-b-w: 1px;
+$form-b-s: solid;
+$form-b-c: _color(grey, 300);
+$form-b-r: $default-border-radius;
+$form-c: _color(grey, 800);
+$form-t: border, box-shadow $ease-300;
+
+$form-focus-bs: #{$shadow-direct-1, $shadow-ambient-1};
+$form-focus-b-c: _color(primary, 500);
+
+$form-disabled-c: _color(grey, 500);
+$form-disabled-b-c: _color(grey, 200);
+
+$form-readonly-c: _color(grey, 600);
+$form-readonly-b-c: _color(grey, 300);
+
+$form-error-c: _color(error, 500);
+$form-error-b-c: _color(error, 100);
+$form-error-bgc: _color(error, 50);
+
+//---------------
+// input styles
+
+$input: (
+  default: (
+    background-color: $form-bgc,
+    border-width: $form-b-w,
+    border-style: $form-b-s,
+    border-color: $form-b-c,
+    border-radius: $form-b-r,
+    color: $form-c,
+    transition: $form-t,
+  ),
+  focus: (
+    box-shadow: $form-focus-bs,
+    border-color: $form-focus-b-c,
+  ),
+  disabled: (
+    color: $form-disabled-c,
+    border-color: $form-disabled-b-c,
+  ),
+  readonly: (
+    color: $form-readonly-c,
+    border-color: $form-readonly-b-c,
+  ),
+  error: (
+    background-color: $form-error-bgc,
+    color: $form-error-c,
+    border-color: $form-error-b-c,
+  )
+);
+
+$input-sizes: (
+  default: (
+    font-size: _get-rem($default-font-size),
+    min-height: _get-em(40px, $default-font-size),
+    padding: _get-em(7px, $default-font-size) _get-em(8px, $default-font-size),
+  ),
+  small: (
+    font-size: _get-rem($font-size-small),
+    min-height: _get-em(32px, $font-size-small),
+    padding: _get-em(6px, $font-size-small) _get-em(8px, $font-size-small),
+  ),
+  large: (
+    font-size: _get-rem($font-size-large),
+    min-height: _get-em(48px, $font-size-large),
+    padding: _get-em(7.5px, $font-size-large) _get-em(8px, $font-size-large),
+  ),
+);
+
+//---------------
+// textarea
+
+$textarea: (
+  default: (
+    padding: 0.5em,
+  ),
+);
+
+//---------------
+// checkbox / radio styles
+
+$radio-check-margin: $form-m !default;
+$radio-check-size: _get-em(16px, 16px);
+
+$radio-check: (
+  default: (
+    height: $radio-check-size,
+    width: $radio-check-size,
+    background-color: $form-bgc,
+    border-width: $form-b-w,
+    border-style: $form-b-s,
+    border-color: $form-b-c,
+    border-radius: $form-b-r,
+    color: $form-c,
+    transition: $form-t,
+  ),
+  focus: (
+    box-shadow: $form-focus-bs,
+    border-color: $form-focus-b-c,
+  ),
+  disabled: (
+    color: $form-disabled-c,
+    border-color: $form-disabled-b-c,
+  ),
+  readonly: (
+    color: $form-readonly-c,
+    border-color: $form-readonly-b-c,
+  ),
+  error: (
+    background-color: $form-error-bgc,
+    color: $form-error-c,
+    border-color: $form-error-b-c,
+  ),
+);
+
+$radio-check-color: (
+  default: _color(grey, 800),
+  disabled: _color(grey, 300),
+  readonly: _color(grey, 400),
+  error: _color(error, 500),
+);
+
+$radio-check-label: (
+  margin-left: _get-space('h', 'small'),
+);
+
+$radio-check-sizes: (
+  default: (
+    size: _get-em($default-font-size),
+    font-size: _get-rem($default-font-size),
+  ),
+  small: (
+    size: _get-em($font-size-small),
+    font-size: _get-rem($font-size-small),
+  ),
+  large: (
+    size: _get-em($font-size-large),
+    font-size: _get-rem($font-size-large),
+  ),
+);
+
+//---------------
+// select
+
+$select-b-r: $form-b-r !default;
+$select-arrow-c: _color(grey, 800);
+
+$select-bg-color-dropdown: $color-white !default;
+
+$select-button-icon-path: '../../icons' !default;
+$select-button-dimension: 12px !default;
+$select-button-offset: 8px !default;
+
+$select: (
+  default: (
+    background-color: $form-bgc,
+    border-width: $form-b-w,
+    border-style: $form-b-s,
+    border-color: $form-b-c,
+    border-radius: $select-b-r,
+  ),
+  focus: (
+    box-shadow: $form-focus-bs,
+    border-color: $form-focus-b-c,
+  ),
+  disabled: (
+    color: $form-disabled-c,
+    border-color: $form-disabled-b-c,
+  ),
+  error: (
+    background-color: $form-error-bgc,
+    color: $form-disabled-c,
+    border-color: $form-disabled-b-c,
+  ),
+);
+
+$select-sizes: $input-sizes;
+
+$select-item: (
+  default: (
+    border-radius: _get-em(20px),
+    background-color: _color(primary, 500),
+    color: $color-white,
+    padding: _get-em(2px) _get-em(10px),
+    margin-right: 5px,
+    margin-top: 2px,
+    margin-bottom: 2px,
+  ),
+  highlighted: (
+    background-color: _color(primary, 600),
+  ),
+  disabled: (
+    background-color: _color(primary, 200),
+  )
+);
+
+$select-multiple-sizes: $input-sizes;
+
+$select-search: (
+  background-color: $form-bgc,
+  padding: 8px 0 7px 2px,
+);
+
+//---------------
+// input with inner addon
+
+$input-addon: (
+  background: _color(grey, 200),
+  color: _color(grey, 800),
+  border-width: 1px,
+  border-style: solid,
+  border-color: _color(grey, 300),
+  border-radius: $default-border-radius,
+);
+
+$input-addon-sizes: (
+  default: (
+    height: 40px,
+    padding: _get-em(7px, $default-font-size) _get-em(10px, $default-font-size),
+    font-size: _get-rem($default-font-size),
+  ),
+  small: (
+    height: 32px,
+    padding: _get-em(5px, $font-size-small) _get-em(10px, $font-size-small),
+    font-size: _get-rem($font-size-small),
+  ),
+  large: (
+    height: 48px,
+    padding: _get-em(9px, $font-size-large) _get-em(10px, $font-size-large),
+    font-size: _get-rem($font-size-large),
+  ),
+);
+
+//---------------
+// form labels
+
+$form-label: (
+  default: (
+    margin-bottom: _get_em(3px),
+    color: $default-text-color,
+  ),
+  error: (
+    color: _color(error, 500),
+  ),
+);
+
+$form-label-sizes: (
+  default: (
+    font-size: _get-rem($default-font-size),
+  ),
+  small: (
+    font-size: _get-rem($font-size-small),
+  ),
+  large: (
+    font-size: _get-rem($font-size-large),
+  ),
+);
+
+//---------------
+// form helps errors
+
+$form-text: (
+  default: (
+    margin: _get-em(5px) 0,
+    color: _color(grey, 600),
+  ),
+  radio-check: (
+    margin: 0 0 0 _get-em(25px),
+  ),
+  error: (
+    color: _color(error, 500),
+  ),
+);
+
+//---------------
+// DROPDOWN MENU
+
+$dropdown-menu-b-r: select-b-r;
+$dropdown-menu-max-h: 300px;
+
+$dropdown-menu: (
+  default: (
+    margin-top: -1px,
+    background-color: $color-white,
+    border-width: 1px,
+    border-style: solid,
+    border-color: _color(grey, 300),
+    border-radius: 0 0 $dropdown-menu-b-r,
+    box-shadow: #{$shadow-direct-1, $shadow-ambient-1},
+    z-index: 100,
+    transition: #{visibility $ease-100-delayed, opacity $ease-out-100, transform $ease-out-100},
+    transform-origin: top center,
+    transform: scale(1, 0.1),
+  ),
+  space: (
+    padding: _get-space('v') _get-space('h'),
+  )
+);
+
+$dropdown-menu-item: (
+  default: (
+    padding: 10px,
+    color: $color-black,
+    transition: #{color $ease-out-200, background $ease-out-200},
+  ),
+  focus: (
+    color: _color(primary, 500),
+    background-color: _color(grey, 100),
+  ),
+  highlighted: (
+    background-color: _color(grey, 100),
+    color: _color('primary', 500),
+  )
+);
+
+// ----------------------------
+// TABLES
+
+$table-border-w: 1px;
+$table-border-s: solid;
+$table-border-c: _color(grey, 300);
+
+$table: (
+  background-color: $color-white,
+);
+
+$table-cell: (
+  default: (
+    padding: _get-em(10px) _get-em(15px),
+    border-top: 1px solid $table-border-c,
+    vertical-align: top,
+  ),
+  odd: (
+    background-color: $table-border-c,
+  ),
+  head: (
+    border-bottom: 2px solid $table-border-c,
+    vertical-align: bottom,
+  )
+);
+
+// ----------------------------
+// CARDS
+
+$card: (
+  background-color: $color-white,
+  border: 1px solid _color(grey, 300),
+  border-radius: $default-border-radius,
+  box-shadow: #{$shadow-ambient-1, $shadow-direct-1},
+);
+
+$card-section: (
+  default: (
+    padding: _get-space('v', 'small') _get-space('h', 'small')
+  ),
+  'm': (
+    padding: _get-space('v') _get-space('h'),
+  )
+);
+
+$card-header: (
+  background-color: _color(grey, 50),
+);
+
+// ----------------------------
+// LISTS
+
+$list-margin-bottom: _get-space('v');
+
+$list-variants: (default, bordered, clean, condensed);
+
+$list: (
+  default: (
+    background: $color-white,
+    border: none,
+  ),
+  bordered: (
+    border: 1px solid _color(grey, 300),
+  ),
+  clean: (
+    border: none,
+  ),
+);
+
+$list-item: (
+  default: (
+    padding: _get-space('v') _get-space('h'),
+    border-bottom: 1px solid _color(grey, 300),
+  ),
+  clean: (
+    border-bottom: 1px solid transparent,
+  ),
+  condensed: (
+    padding: _get-space('v', 'small') _get-space('h', 'small'),
+  ),
+);
+
+// LIST ITEM CLICKABLE
+$list-item-clickable: (
+  default: (
+    transition: $ease-200,
+  ),
+  focus: (
+    background-color: _color(grey, 50),
+    border-color: _color(grey, 300),
+  ),
+  selected: (
+    background-color: _color(grey, 100),
+    border-color: _color(grey, 300)
+  ),
+  selected-focus: (
+    background-color: _color(grey, 200),
+    border-color: _color(grey, 300),
+  ),
+  disabled: (
+    opacity: 0.4
+  )
+);
+
+// ITEM SECTION
+
+$list-item-section-image-size: 3rem !default;
+
+// ----------------------------
+// TABS
+
+$tabs-link: (
+  default: (
+    padding: _get-em(8px) _get-em(20px) _get-em(6px),
+    transition: #{border $ease-400, color $ease-400, opacity $ease-400},
+    border-bottom-width: 2px,
+    border-bottom-style: solid,
+    border-bottom-color: transparent,
+    text-transform: uppercase,
+    font-weight: 600,
+  ),
+  active: (
+    color: _color(primary, 500),
+    border-color:_color(primary, 500),
+  ),
+  focus: (
+    color: _color(primary, 500),
+  ),
+  disabled: (
+    opacity: 0.5,
+    color: _color(grey, 500),
+  )
+);
+
+// ----------------------------
+// MODALS
+
+$modal-overlay-bg-color: $color-semiblack !default;
+$modal-overlay-z-index: $z-index-overlay !default;
+$modal-overlay-e: $ease-400 !default;
+
+$modal-overlay: (
+  background-color: $color-semiblack,
+  box-shadow: #{$shadow-ambient-1, $shadow-direct-1},
+);
+
+$modal-dialog: (
+  default: (
+    width: 100%,
+    height: 100%,
+    background-color: $color-white,
+    border: 1px solid _color(grey, 200),
+    box-shadow: ($shadow-ambient-3, $shadow-direct-2),
+  ),
+  'm': (
+    height: auto,
+    width: _get-rem(480px),
+    max-height: 90%,
+    border-radius: $default-border-radius,
+  )
+);
+
+$modal-dialog-variants: (
+  'large' : (
+    width: _get-rem(640px),
+  )
+);
+
+$modal-section-spacing: (
+  default: (
+    vertical: _get-space('v', 'small'),
+    horizontal: _get-space('v', 'small'),
+  ),
+  'm': (
+    vertical: _get-space('v'),
+    horizontal: _get-space('v'),
+  ),
+);
+
+$modal-header: (
+  background-color: _color(grey, 50),
+);
+
+$modal-content: (
+  background: $color-white,
+);
+
+$modal-footer: (
+  background: $color-white,
+);
+
+// ----------------------------
+// OTHER MODULES AND COMPONENTS
+
+// ----------------------------
+// PAGES

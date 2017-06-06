@@ -1,0 +1,238 @@
+// ---------------------------------------------
+// UTILITIES
+// set of utility classes
+// ---------------------------------------------
+
+// CONTENTS
+// Typography utilities
+// Layout utilities
+// Visibility utilities
+
+// ---------------------------------------------
+// TYPOGRAPHY UTILITIES
+
+.text-transform-upper { text-transform: uppercase; }
+.text-transform-capitalize { text-transform: capitalize; }
+.text-transform-none { text-transform: none; }
+
+strong,
+.text-bold { font-weight: 700; }
+.text-semibold { font-weight: 600; }
+.text-light { font-weight: 300; }
+.text-normal { font-weight: normal; }
+
+em,
+.text-italic { font-style: italic; }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-justify { text-align: justify; }
+
+.text-vam { vertical-align: middle; }
+.text-vat { vertical-align: top; }
+.text-vab { vertical-align: bottom; }
+.text-vabl { vertical-align: baseline; }
+
+.text-space-half { margin-bottom: _get-space('v', 'small'); }
+.text-nospace { margin: 0; }
+.text-space-left { margin-left: _get-space('h', 'small'); }
+.text-space-right { margin-right: _get-space('h', 'small'); }
+
+.text-nowrap { white-space: nowrap; }
+.text-ellipsis { @include text-ellipsis; }
+
+.text-color-theme-500 { color: _color(primary, 500); }
+.text-color-theme-400 { color: _color(primary, 400); }
+.text-color-theme-100 { color: _color(primary, 100); }
+.text-color-black { color: $text-color-black; }
+.text-color-semiblack { color: $text-color-semiblack; }
+.text-color-grey { color: $text-color-grey; }
+.text-color-grey-800 { color: $text-color-grey-800; }
+.text-color-white { color: $text-color-white; }
+.text-color-semiwhite { color: $text-color-semiwhite; }
+.text-color-error { color: $text-color-error; }
+
+// ---------------------------------------------
+// LAYOUT UTILITIES
+
+// mixin for utilities with layout targeting
+@mixin spacing-reset-classes($breakpoint: '') {
+  .no-mrg#{$breakpoint} { margin: 0 !important; }
+  .no-mrg-top#{$breakpoint} { margin-top: 0 !important; }
+  .no-mrg-bottom#{$breakpoint} { margin-bottom: 0 !important; }
+  .no-mrg-left#{$breakpoint} { margin-left: 0 !important; }
+  .no-mrg-right#{$breakpoint} { margin-right: 0 !important; }
+
+  .no-mrg-vertical#{$breakpoint} {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .no-mrg-horizontal#{$breakpoint} {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .no-pad#{$breakpoint} { padding: 0 !important; }
+  .no-pad-top#{$breakpoint} { padding-top: 0 !important; }
+  .no-pad-bottom#{$breakpoint} { padding-bottom: 0 !important; }
+  .no-pad-left#{$breakpoint} { padding-left: 0 !important; }
+  .no-pad-right#{$breakpoint} { padding-right: 0 !important; }
+
+  .no-pad-vertical#{$breakpoint} {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .no-pad-horizontal#{$breakpoint} {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@each $breakpoint, $size in $breakpoints {
+  @include breakpoint($breakpoint) {
+    @include spacing-reset-classes( _get-variant-name( $breakpoint ) );
+  }
+}
+
+.clearfix { @include clearfix; }
+.clear { clear: both; }
+
+// Flexbox alignment classes
+@mixin alignment-classes() {
+  // Children horizontal alignment
+  .align-items-right { justify-content: flex-end; }
+  .align-items-center { justify-content: center; }
+  .align-items-spaced { justify-content: space-around; }
+  .align-items-justify { justify-content: space-between; }
+  // Children vertcial alignment
+  .align-items-top { align-items: flex-start; }
+  .align-items-bottom { align-items: flex-end; }
+  .align-items-middle { align-items: center; }
+
+  // Selft horizontal alignmnet
+  .align-self-left {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  .align-self-right {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  .align-self-center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Self vertical alignmnet
+  .align-self-top { align-self: flex-start; }
+  .align-self-bottom { align-self: flex-end; }
+  .align-self-middle { align-self: center; }
+  .align-self-stretch { align-self: stretch; }
+}
+
+@include alignment-classes;
+
+// Visibility utilities
+@mixin show-for($breakpoint) {
+  @if map-get($breakpoints, $breakpoint) {
+    @include breakpoint($breakpoint, downfrom) {
+      display: none !important;
+    }
+  } @else {
+    @warn 'show-for() parameter breakpoint is not defined in the $breakpoints map';
+  }
+}
+
+@mixin hide-for($breakpoint) {
+  @if map-get($breakpoints, $breakpoint) {
+    @include breakpoint($breakpoint) {
+      display: none !important;
+    }
+  } @else {
+    @warn 'hide-for() parameter breakpoint is not defined in the $breakpoints map';
+  }
+}
+
+@mixin show-for-only($breakpoint) {
+  $lower-bound-name: $breakpoint;
+  $upper-bound-name: _map-next($breakpoints, $breakpoint, 'key');
+
+  @if $lower-bound-name {
+    @include breakpoint($lower-bound-name, downfrom) {
+      display: none !important;
+    }
+
+    @if $upper-bound-name {
+      @include breakpoint($upper-bound-name) {
+        display: none !important;
+      }
+    }
+  } @else {
+    @warn 'hide-for() parameter #{$breakpoint} is not defined properly in the $breakpoints map';
+  }
+}
+
+@mixin hide-for-only($breakpoint) {
+  @if map-get($breakpoints, $breakpoint) {
+    @include breakpoint($breakpoint, only) {
+      display: none !important;
+    }
+  } @else {
+    @warn 'hide-for() parameter #{$breakpoint} is not defined properly in the $breakpoints map';
+  }
+}
+
+@mixin visibility-classes() {
+  .hide {
+    display: none !important;
+  }
+
+  .invisible {
+    visibility: hidden;
+  }
+
+  @each $breakpoint, $size in $breakpoints {
+    @if $breakpoint != 'xs' {
+      .show-#{$breakpoint} {
+        @include show-for($breakpoint);
+      }
+
+      .hide-#{$breakpoint} {
+        @include hide-for($breakpoint);
+      }
+    }
+
+    .show-#{$breakpoint}-only {
+      @include show-for-only($breakpoint);
+    }
+
+    .hide-#{$breakpoint}-only {
+      @include hide-for-only($breakpoint);
+    }
+  }
+}
+
+@include visibility-classes;
+
+// ---------------------------------------------
+// 3. OTHER UTILITIES
+
+.clickable {
+  cursor: pointer;
+}
+
+.visually-hidden {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
