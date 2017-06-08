@@ -24,32 +24,20 @@
 
       p {
         margin-top: 0;
-        margin-bottom: $content-spacing;
+        margin-bottom: _get-space('v', 'large');
         line-height: map-get($values, base-line-height);
+
+        & + & { // stylelint-disable-line
+          margin-top: _get-space('v') - _get-space('v', 'large');
+        }
       }
 
       @each $heading in $heading-tags {
-        $i: index($heading-tags, $heading);
-        $pow: length($heading-tags) - $i;
-        $font-size: _get-rem(_modular-scale($pow, $breakpoint));
-
         // stylelint-disable-next-line
         #{$heading},
         .#{$heading} {
           margin-top: 0;
-          margin-bottom: $content-spacing;
-          font-size: $font-size;
-          line-height: map-get($values, base-line-height);
         }
-      }
-
-      small,
-      .text-small {
-        font-size: _get-rem($font-size-small);
-      }
-
-      .text-big {
-        font-size: _get-rem($font-size-large);
       }
     }
   }
@@ -79,8 +67,13 @@
 // TEXT
 
 @mixin typography-classes() {
-  .text-desc {
-    @include css-map($desc-text);
+  .text-medium {
+    @include css-map($text-medium);
+  }
+
+  small,
+  .text-small {
+    @include css-map($text-small);
   }
 
   a {
@@ -133,7 +126,7 @@ cite {
 hr {
   height: 1px;
   display: block;
-  margin-bottom: $content-spacing;
+  margin-bottom: $default-space;
   border: 0;
 
   @include css-map($hr);
@@ -155,7 +148,7 @@ hr {
   ul,
   ol,
   dl {
-    margin: 0 0 $content-spacing;
+    margin: 0 0 $default-space;
 
     ul,
     ol,
@@ -215,7 +208,7 @@ hr {
 
     dd {
       margin-left: 0;
-      margin-bottom: $content-spacing;
+      margin-bottom: $default-space;
 
       &:last-child { margin-bottom: 0; }
     }

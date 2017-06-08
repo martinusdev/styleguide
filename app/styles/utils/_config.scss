@@ -56,7 +56,7 @@ $color-palette: (
   orange: #f28629,
   brown: #945131,
   violet: #9967a7,
-  blue: #00b6eb,
+  blue: #0069ba,
   green: #33ab4e,
   // states
   error: #f76f74,
@@ -79,14 +79,14 @@ $default-color-weights: (
 // GENERAL
 
 $default-bg-color: $color-white !default;
-$default-text-color: _color(grey, 900) !default;
+$default-text-color: $color-black !default;
 $default-font-family: $font-family-opensans !default;
 
 $default-border-radius: $border-radius !default;
 
-$default-font-size: 16px !default;
+$default-font-size: $font-size-regular !default;
 
-$default-outline: 3px solid rgba(_color(primary, 200), 0.8);
+$default-outline: 2px solid rgba(_color(primary, 200), 0.8);
 
 $default-space: _get-space('v', 'large') !default;
 
@@ -102,11 +102,11 @@ $selection-text-color: $color-white;
 //---------------
 // headings
 
-$heading-tags: (h1,h2,h3,h4,h5);
+$heading-tags: (h1, h2, h3, h4, h5);
 
 $heading: (
-  font-family: $font-family-opensans,
-  font-weight: 400
+  font-family: $font-family-tabac,
+  font-weight: $font-weight-default,
 );
 
 $typography-settings: (
@@ -126,56 +126,73 @@ $typography-settings: (
 // Typography is typically calculated from $typography-settings in styles/utils/_variables,
 // but you can override ANYTHING here
 $typography-overrides: (
-  // null: (
-  //   'h1, .h1' : (
-  //     // property: value,
-  //     // another-property: another-value,
-  //   ),
-  //   '.your-class' : (),
-  // ),
-  // null: (
-  //   'h1, .h1' : (),
-  //   '.your-class' : (),
-  // ),
+  null: (
+    'h1, .h1' : (
+      font-size: _get-rem(42px),
+      line-height: 49/42,
+      margin-bottom: _get-space('v', 'large'),
+      font-weight: $font-weight-bold,
+    ),
+    'h2, .h2' : (
+      font-size: _get-rem(25px),
+      line-height: 31/25,
+      margin-bottom: _get-space('v', 'large'),
+      font-weight: $font-weight-semibold,
+    ),
+    'h3, .h3' : (
+      font-size: _get-rem(18px),
+      line-height: 24/18,
+      margin-bottom: _get-space('v', 'large'),
+      color: _color(grey, 800)
+    ),
+    'h4, .h4' : (
+      font-size: _get-rem(18px),
+      line-height: 24/18,
+      margin-bottom: _get-space('v', 'large'),
+      font-weight: $font-weight-semibold,
+    ),
+    'h5, .h5' : (
+      font-size: _get-rem(12px),
+      line-height: 20/12,
+      margin-bottom: _get-space('v', 'large'),
+      color: _color(grey, 800),
+      text-transform: uppercase,
+      letter-spacing: 1px,
+    ),
+    'h1 + h3, .h1 + h3, h1 + .h3, .h1 + .h3': (
+      margin-top: _get-space('v', 'small') - _get-space('v', 'large'),
+    )
+  ),
 );
-
-$font-size-large: _modular-scale(1);
-$font-size-small: _modular-scale(-1);
 
 //---------------
 // text
 
-$desc-text: (
-  color: $color-semiblack,
-  font-style: italic
+$text-medium: (
+  font-size: $font-size-medium,
+  line-height: 20/_strip-units($font-size-medium),
+);
+
+$text-small: (
+  font-size: $font-size-small,
+  line-height: 20/_strip-units($font-size-small),
 );
 
 $link: (
   default: (
     text-decoration: none,
     border-bottom: 1px solid transparent,
-    color: _color(primary, 500),
+    color: _color(blue),
     transition: #{color $ease-400, border $ease-400},
   ),
   focus: (
-    color: _color(primary, 400),
-    border-bottom-color: _color(primary, 400),
+    color: _color(blue, 400),
+    border-bottom-color: _color(blue, 400),
   )
 );
 
-$blockquote: (
-  margin: 0 0 _get-space('v'),
-  padding: _get-space('v', 'small') _get-space('h') 0,
-  border-left: 3px solid _color(gray, 500),
-);
-
-$cite: (
-  font-size: $font-size-small,
-  color: $color-semiblack,
-);
-
 $hr: (
-  border-top: 1px solid _color(grey, 300),
+  border-top: 1px solid $color-semiblack,
 );
 
 //---------------
@@ -273,7 +290,7 @@ $bar-break-height: 1em;
 
 // Global button settings
 
-$button-margin-bottom: $content-spacing;
+$button-margin-bottom: $default-space;
 
 $button: (
   default: (
@@ -309,8 +326,8 @@ $button-sizes: (
     font-size: _get_rem($font-size-small - 2px),
   ),
   large: (
-    padding: _get-em(10px, $font-size-large - 2px),
-    font-size: _get_rem($font-size-large - 2px),
+    padding: _get-em(10px, $default-font-size - 2px),
+    font-size: _get_rem($default-font-size - 2px),
   ),
 );
 
@@ -494,9 +511,9 @@ $input-sizes: (
     padding: _get-em(6px, $font-size-small) _get-em(8px, $font-size-small),
   ),
   large: (
-    font-size: _get-rem($font-size-large),
-    min-height: _get-em(48px, $font-size-large),
-    padding: _get-em(7.5px, $font-size-large) _get-em(8px, $font-size-large),
+    font-size: _get-rem($default-font-size),
+    min-height: _get-em(48px, $default-font-size),
+    padding: _get-em(7.5px, $default-font-size) _get-em(8px, $default-font-size),
   ),
 );
 
@@ -567,8 +584,8 @@ $radio-check-sizes: (
     font-size: _get-rem($font-size-small),
   ),
   large: (
-    size: _get-em($font-size-large),
-    font-size: _get-rem($font-size-large),
+    size: _get-em($default-font-size),
+    font-size: _get-rem($default-font-size),
   ),
 );
 
@@ -659,8 +676,8 @@ $input-addon-sizes: (
   ),
   large: (
     height: 48px,
-    padding: _get-em(9px, $font-size-large) _get-em(10px, $font-size-large),
-    font-size: _get-rem($font-size-large),
+    padding: _get-em(9px, $default-font-size) _get-em(10px, $default-font-size),
+    font-size: _get-rem($default-font-size),
   ),
 );
 
@@ -685,7 +702,7 @@ $form-label-sizes: (
     font-size: _get-rem($font-size-small),
   ),
   large: (
-    font-size: _get-rem($font-size-large),
+    font-size: _get-rem($default-font-size),
   ),
 );
 
