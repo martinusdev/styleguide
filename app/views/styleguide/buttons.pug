@@ -40,13 +40,13 @@ block append content
 
     +content-sub-section('Types')
 
-      +p There are four basic button shapes. Default, radius, rounded and equilateral. You can set shape of button by using class <code class='l-code-inline'>.btn--[radius/round/equal]</code>. Using both <code class='l-code-inline'>.btn--equal</code> and <code class='l-code-inline'>.btn--round</code> on one button creates a circle!
+      +p There are four basic button shapes. Default, radius, rounded and equilateral. You can set shape of button by using class <code class='l-code-inline'>.btn--[sharp/round/equal]</code>. Using both <code class='l-code-inline'>.btn--equal</code> and <code class='l-code-inline'>.btn--round</code> on one button creates a circle!
 
       +demo
         +demo-example
           .btn-layout--vertical.btn-layout--m-horizontal
             button.btn(type='button') Default
-            button.btn.btn--radius(type='button') Radius
+            button.btn.btn--sharp(type='button') Sharp
             button.btn.btn--round(type='button') Round
             button.btn.btn--equal(type='button')
               +icon('close')
@@ -57,7 +57,7 @@ block append content
         +demo-code
           :code
             <button class="btn" type="button">Default</button>
-            <button class="btn btn--radius" type="button">Radius</button>
+            <button class="btn btn--sharp" type="sharp">Radius</button>
             <button class="btn btn--round" type="button">Round</button>
             <button class="btn btn--equal" type="button">
               <svg class="icon icon-close " role="img" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
@@ -100,25 +100,19 @@ block append content
             .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--large(type='button') Large
               button.btn(type='button') Default
-              button.btn.btn--small(type='button') Small
             .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--round.btn--large(type='button') Large
               button.btn.btn--round(type='button') Default
-              button.btn.btn--round.btn--small(type='button') Small
             .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--equal.btn--round.btn--large(type='button')
                 +icon('close', 'icon--large', 'Close')
               button.btn.btn--equal.btn--round(type='button')
                 +icon('close', 'icon--medium', 'Close')
-              button.btn.btn--equal.btn--round.btn--small(type='button')
-                +icon('close', 'icon--small', 'Close')
             .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--equal.btn--large(type='button')
                 +icon('close', 'icon--large', 'Close')
               button.btn.btn--equal(type='button')
                 +icon('close', 'icon--medium', 'Close')
-              button.btn.btn--equal.btn--small(type='button')
-                +icon('close', 'icon--small', 'Close')
 
 
         +demo-code
@@ -131,7 +125,7 @@ block append content
     //- COLORS
     +content-sub-section('Colors')
 
-      +p There are five main buttons color variatons : default, primary, secondary, link and hollow. Color variation on button are set with additional class like <code class='l-code-inline'>.btn--[primary/link]</code>.
+      +p There are four main buttons color variatons : default, primary, ghost and clean. Color variation on button are set with additional class like <code class='l-code-inline'>.btn--[primary/link]</code>.
 
       +demo
         +demo-example
@@ -149,23 +143,17 @@ block append content
                 button.btn.btn--primary.is-active(type='button') Primary
                 button.btn.btn--primary(type='button', disabled) Primary
             .col--l-3.col--s-6
-              h4 Secondary
+              h4 Ghost
               .btn-layout--vertical
-                button.btn.btn--secondary(type='button') Secondary
-                button.btn.btn--secondary.is-active(type='button') Secondary
-                button.btn.btn--secondary(type='button', disabled) Secondary
+                button.btn.btn--ghost(type='button') Ghost
+                button.btn.btn--ghost.is-active(type='button') Ghost
+                button.btn.btn--ghost(type='button', disabled) Ghost
             .col--l-3.col--s-6
-              h4 Link
+              h4 Clean
               .btn-layout--vertical
-                button.btn.btn--link(type='button') Link
-                button.btn.btn--link.is-active(type='button') Link
-                button.btn.btn--link(type='button', disabled) Link
-            .col--l-3.col--s-6
-              h4 Hollow
-              .btn-layout--vertical
-                button.btn.btn--hollow(type='button') Hollow
-                button.btn.btn--hollow.is-active(type='button') Hollow
-                button.btn.btn--hollow(type='button', disabled) Hollow
+                button.btn.btn--clean(type='button') Clean
+                button.btn.btn--clean.is-active(type='button') Clean
+                button.btn.btn--clean(type='button', disabled) Clean
         +demo-code
           :code
             <!-- default -->
@@ -178,15 +166,15 @@ block append content
             <button type="button" class="btn btn--primary is-active">Primary</button>
             <button type="button" disabled="" class="btn btn--primary">Primary</button>
 
-            <!-- link -->
-            <button type="button" class="btn btn--link">Link</button>
-            <button type="button" class="btn btn--link is-active">Link</button>
-            <button type="button" disabled="" class="btn btn--link">Link</button>
+            <!-- ghost -->
+            <button type="button" class="btn btn--ghost">Ghost</button>
+            <button type="button" class="btn btn--ghost is-active">Ghost</button>
+            <button type="button" disabled="" class="btn btn--ghost">Ghost</button>
 
-            <!-- hollow -->
-            <button type="button" class="btn btn--hollow">Link</button>
-            <button type="button" class="btn btn--hollow is-active">Link</button>
-            <button type="button" disabled="" class="btn btn--hollow">Link</button>
+            <!-- clean -->
+            <button type="button" class="btn btn--clean">Clean</button>
+            <button type="button" class="btn btn--clean is-active">Clean</button>
+            <button type="button" disabled="" class="btn btn--clean">Clean</button>
       //- end: demo
 
   //- end: section

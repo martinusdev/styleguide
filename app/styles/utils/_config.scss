@@ -290,25 +290,19 @@ $bar-break-height: 1em;
 // Global button settings
 
 $button-margin-bottom: $default-space;
+$button-layout-margin: _get-space('h', 'small');
 
 $button: (
   default: (
-    border: 1px solid currentColor,
-    font-weight: 600,
+    border: 1px solid transparent,
+    font-weight: $font-weight-bold,
     text-transform: uppercase,
     letter-spacing: 1px,
-    line-height: 1.4,
+    line-height: 1.25,
     transition: 200ms all ease-out,
-    box-shadow: #{$shadow-direct-1, $shadow-ambient-1},
-  ),
-  focus: (
-    box-shadow: #{$shadow-direct-2, $shadow-ambient-2},
-  ),
-  active: (
-    box-shadow: #{$shadow-direct-1, $shadow-ambient-0},
   ),
   disabled: (
-    opacity: 0.5,
+    opacity: 0.25,
   )
 );
 
@@ -317,16 +311,12 @@ $button: (
 /// @prop {Length} button-size.font-size
 $button-sizes: (
   default: (
-    padding: _get-em(9.5px, $default-font-size - 2px),
-    font-size: _get_rem($default-font-size - 2px),
-  ),
-  small: (
-    padding: _get-em(8px, $font-size-small - 2px),
-    font-size: _get_rem($font-size-small - 2px),
+    padding: 0.71875rem _get-rem(10px),
+    font-size: _get_rem($default-font-size - 4px),
   ),
   large: (
-    padding: _get-em(10px, $default-font-size - 2px),
-    font-size: _get_rem($default-font-size - 2px),
+    padding: 1.03125rem _get-rem(25px),
+    font-size: _get_rem($default-font-size - 4px),
   ),
 );
 
@@ -340,8 +330,8 @@ $button-sizes: (
 ///     round: 999em,
 ///   );
 $button-radii: (
-  default: 0,
-  radius: $default-border-radius,
+  default: $default-border-radius,
+  sharp: 0,
   round: 999em,
 );
 
@@ -363,57 +353,69 @@ $button-radii: (
 $button-styles: (
   default: (
     default: (
-      color: _color(primary, 500),
-      border-color: transparent,
-      background-color: #fff,
+      color: $color-white,
+      background-color: _color(secondary, 500),
     ),
-    disabled: (
-      box-shadow: none,
+    active: (
+      color: $color-white,
     ),
     group: (
-      border-color: _color(grey, 100),
-    )
+      border-color: _color(secondary, 600),
+    ),
   ),
   primary: (
     default: (
-      color: #fff,
-      border-color: transparent,
+      position: relative,
+      color: $color-white,
       background-color: _color(primary, 500),
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    active: (
+      color: $color-white,
+      background-color: _color(primary, 600),
+      box-shadow: none,
+    ),
+    after: (
+      background-color: _color(primary, 600),
+      height: 4px,
+    ),
+    group: (
+      border-color: _color(primary, 600),
     ),
   ),
-  secondary: (
+  ghost: (
     default: (
-      color: #fff,
+      color: _color(grey, 800),
+      border-color: _color(grey, 400),
+      background-color: transparent,
+    ),
+    focus: (
+      background-color: _color(grey, 400),
+      color: _color(grey, 800),
+    ),
+    active: (
       border-color: transparent,
-      background-color: _color(secondary, 500),
+    ),
+    group: (
+      border-color: _color(gray, 600),
     ),
   ),
-  link: (
+  clean: (
     default: (
-      color: _color(primary, 500),
+      color: _color(grey, 800),
       border-color: transparent,
       background-color: transparent,
       box-shadow: none,
     ),
     focus: (
-      box-shadow: none,
-    ),
-    active: (
-      box-shadow: none,
-    ),
-  ),
-  hollow: (
-    default: (
       color: _color(primary, 500),
-      border-color: _color(primary, 500),
+      border-color: transparent,
       background-color: transparent,
-      box-shadow: none,
-    ),
-    focus: (
-      box-shadow: none,
     ),
     active: (
-      box-shadow: none,
+      color: _color(primary, 600),
+      border-color: transparent,
+      background-color: transparent,
     ),
   )
 );
@@ -423,9 +425,9 @@ $button-styles: (
 /// @prop {Number} button-color-weight.weight - Color weight to calculate from $button-color or $button-background
 $button-color-weights: (
   default: 500,
-  focus: 300,
-  active: 400,
-  disabled: 550,
+  focus: 400,
+  active: 600,
+  disabled: 500,
   button-group-border: 600,
 );
 

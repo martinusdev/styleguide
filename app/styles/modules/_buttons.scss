@@ -87,13 +87,29 @@
     cursor: not-allowed;
     pointer-events: none;
   }
+
+  @if map-has($states, 'after') {
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%;
+
+      @include css-map($states, 'after');
+    }
+  }
 }
 
 // Equilateral (width=height) button generator
 @mixin equilateral-button-sizing($padding) {
   $size: $padding * 2 + _map-deep-get($button, 'default', 'line-height');
-  width: calc(#{$size} + 1px);
-  height: calc(#{$size} + 1px);
+  width: calc(#{$size} - 3px);
+  height: calc(#{$size} - 3px);
 }
 
 @mixin equilateral-button {
@@ -244,7 +260,7 @@
 // Button layout sytle generator
 @mixin button-layout($direction) {
   display: flex;
-  margin-bottom: $button-margin-bottom;
+  margin-bottom: $button-layout-margin;
 
   @if $direction == 'horizontal' {
     flex-flow: row;
@@ -253,7 +269,7 @@
 
     > * {
       flex: 0 0 auto;
-      margin-right: $button-margin-bottom;
+      margin-right: $button-layout-margin;
       margin-bottom: 0;
 
       &:last-child {
@@ -273,7 +289,7 @@
     > * {
       flex: 0 0 auto;
       margin-right: 0;
-      margin-bottom: $button-margin-bottom;
+      margin-bottom: $button-layout-margin;
 
       &:last-child {
         margin-bottom: 0;
