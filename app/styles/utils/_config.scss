@@ -255,13 +255,11 @@ $image-border-radius: $default-border-radius !default;
 // wrappers
 
 $wrapper-widths: (
-  xs: 960px,
-  xl: 1080px,
+  default: 1200px,
 ); // You only need to set those breakpoints, where a change should occur.
 
 $wrapper-paddings: (
-  xs: _get-space('h'),
-  xl: _get-space('h', 'large'),
+  default: _get-space('h', 'large'),
 ); // You only need to set those breakpoints, where a change should occur.
 
 //---------------
@@ -270,13 +268,11 @@ $wrapper-paddings: (
 $grid-base: 12 !default;
 
 $gutters: (
-  xs: _get-space('h', 'small'),
-  m: _get-space('h'),
-  xl: _get-space('h', 'large')
+  default: _get-space('h', 'small'),
 );
 
 $gutters-form: (
-  default: _get-space('h', 'small'),
+  default: _get-space('h', 'small') / 2,
 );
 
 // ----------------------------
