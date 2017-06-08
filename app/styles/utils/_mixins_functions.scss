@@ -279,9 +279,9 @@
       $space: map-get($spaces-vertical, $size);
 
       @if ($local-font-size) {
-        @return if(unit($space) == 'em', $space, _get-em($space, $local-font-size));
+        @return if(unit($space) == 'em', $space, _get-rem($space, $local-font-size));
       } @else {
-        @return if(unit($space) == 'em', $space, _get-em($space));
+        @return if(unit($space) == 'em', $space, _get-rem($space));
       }
     } @else {
       @warn '$size is not defined';
@@ -291,9 +291,9 @@
       $space: map-get($spaces-horizontal, $size);
 
       @if ($local-font-size) {
-        @return if(unit($space) == 'em', $space, _get-em($space, $local-font-size));
+        @return if(unit($space) == 'em', $space, _get-rem($space, $local-font-size));
       } @else {
-        @return if(unit($space) == 'em', $space, _get-em($space));
+        @return if(unit($space) == 'em', $space, _get-rem($space));
       }
     } @else {
       @warn '$size is not defined';
@@ -360,7 +360,7 @@
   @return $number / ($number * 0 + 1);
 }
 
-@function _color($theme, $weight) {
+@function _color($theme, $weight: 500) {
   @if map-has-key($color-palette, $theme) {
     $color-theme: map-get($color-palette, $theme);
     $color: null;
