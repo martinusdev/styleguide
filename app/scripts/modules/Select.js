@@ -1,6 +1,11 @@
 import Choices from 'choices.js';
 
-const defaultConfig = {};
+const defaultConfig = {
+  search: false,
+  searchEnabled: false,
+  searchChoices: false,
+  shouldSort: false,
+};
 
 export default class Select {
   constructor(selector = '.js-select', config) {
@@ -79,6 +84,14 @@ export default class Select {
 
       if (select.classList.contains('select--small')) {
         choice.containerOuter.classList.add('select--small');
+      }
+
+      if (select.classList.contains('select--inline')) {
+        choice.containerOuter.classList.add('select--inline');
+      }
+
+      if (select.classList.contains('select--clean')) {
+        choice.containerOuter.classList.add('select--clean');
       }
 
       select.addEventListener('showDropdown', this._onShowDropdown);
