@@ -186,6 +186,7 @@ $link: (
     text-decoration: none,
     border-bottom: 1px solid transparent,
     color: _color(blue),
+    font-weight: $font-weight-semibold,
     transition: #{color $ease-400, border $ease-400},
   ),
   focus: (
@@ -216,6 +217,13 @@ $inline-list-item: (
   ),
   expanded: (
     margin: 0.3em 1.5em 0.3em 0,
+  )
+);
+
+$description-list: (
+  dt: map-merge(_map-deep-get($typography-overrides, null, 'h5, .h5'), ( margin-bottom: 0)),
+  dd: (
+    font-size: _get-rem($font-size-medium),
   )
 );
 

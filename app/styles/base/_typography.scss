@@ -192,13 +192,17 @@ hr {
   }
 
   dl {
+    @include css-map($description-list, 'dl');
+
     dt {
-      font-weight: bold;
+      @include css-map($description-list, 'dt');
     }
 
     dd {
       margin-left: 0;
       margin-bottom: $default-space;
+
+      @include css-map($description-list, 'dd');
 
       &:last-child { margin-bottom: 0; }
     }
