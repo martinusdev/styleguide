@@ -424,6 +424,31 @@ block append content
           </select>
     //- end: demo
 
+    +content-sub-section('Select types')
+
+      +p There is two types of select. Default with border around to match other form elements style and <code class='l-code-inline'>.select--clean</code> without borders.
+
+      +demo
+        +demo-example
+          .row
+            .col--l-6
+              .form-control.form-control--select
+                select.js-select
+                  each option in [1,2,3,4,5,6]
+                    option Option #{option}
+            .col--l-6
+              .form-control.form-control--select
+                select.js-select.select--clean
+                  each option in [1,2,3,4,5,6]
+                    option Option #{option}
+        +demo-code
+          :code
+            <!-- default -->
+            <select class="js-select"></select>
+
+            <!-- clean -->
+            <select class="select--clean js-select"></select>
+
     +content-sub-section('Select states')
 
       +p States can be set by using attributes and classes like <code class='l-code-inline'>[disabled]</code>, <code class='l-code-inline'>.is-disabled</code> and <code class='l-code-inline'>.is-error</code> on hidden native select element.
@@ -507,6 +532,27 @@ block append content
               ...
             </select>
     //- end: demo
+
+    +content-sub-section('Select inline')
+      +p Select with auto width can be achieved with additional class <code class='l-code-inline'>.select--inline</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col--l-3
+              .form-control.form-control--select
+                select.js-select.select--inline
+                  option Inline
+                  option Very long option
+                  option Very very very very very long option
+                  each option in [1,2,3]
+                    option Option #{option}
+        +demo-code
+          :code
+            <select class="js-select select--inline">
+              <option>Option 1</option>
+              ...
+            </select>
 
     +content-sub-section('Select placeholder')
 

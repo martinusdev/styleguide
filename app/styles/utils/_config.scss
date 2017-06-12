@@ -507,9 +507,9 @@ $input-sizes: (
     padding: _get-em(7px, $default-font-size) _get-em(8px, $default-font-size),
   ),
   small: (
-    font-size: _get-rem($font-size-small),
-    min-height: _get-em(32px, $font-size-small),
-    padding: _get-em(6px, $font-size-small) _get-em(8px, $font-size-small),
+    font-size: _get-rem($font-size-medium),
+    min-height: _get-em(24px, $font-size-medium),
+    padding: 0 _get-em(5px, $font-size-medium),
   ),
   large: (
     font-size: _get-rem($default-font-size),
@@ -604,6 +604,7 @@ $select-button-offset: 8px !default;
 
 $select: (
   default: (
+    default: (
     background-color: $form-bgc,
     border-width: $form-b-w,
     border-style: $form-b-s,
@@ -623,6 +624,12 @@ $select: (
     color: $form-disabled-c,
     border-color: $form-disabled-b-c,
   ),
+  ),
+  clean: (
+    default: (
+      border-width: 0,
+    )
+  )
 );
 
 $select-sizes: $input-sizes;
@@ -735,9 +742,9 @@ $dropdown-menu: (
     background-color: $color-white,
     border-width: 1px,
     border-style: solid,
-    border-color: _color(grey, 300),
+    border-color: transparent,
     border-radius: 0 0 $dropdown-menu-b-r,
-    box-shadow: #{$shadow-direct-1, $shadow-ambient-1},
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2),
     z-index: 100,
     transition: #{visibility $ease-100-delayed, opacity $ease-out-100, transform $ease-out-100},
     transform-origin: top center,
@@ -750,16 +757,15 @@ $dropdown-menu: (
 
 $dropdown-menu-item: (
   default: (
+    font-size: _get-rem($font-size-medium),
     padding: 10px,
     color: $color-black,
-    transition: #{color $ease-out-200, background $ease-out-200},
+    transition: #{color $ease-out-200},
   ),
   focus: (
     color: _color(primary, 500),
-    background-color: _color(grey, 100),
   ),
   highlighted: (
-    background-color: _color(grey, 100),
     color: _color('primary', 500),
   )
 );

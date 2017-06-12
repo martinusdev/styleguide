@@ -121,20 +121,26 @@ $select-selector: 'choices' !default;
     border-radius: $select-b-r $select-b-r 0 0;
   }
   .is-flipped.is-open & {
-    border-radius: 0 0 $select-b-r $select-b-r; }
-
-  @include css-map($select, 'default');
-
-  .is-focused &, .is-open & {
-    @include css-map($select, 'focus');
+    border-radius: 0 0 $select-b-r $select-b-r;
   }
 
-  .is-disabled & {
-    @include css-map($select, 'disabled');
-  }
+  @each $name, $props in $select {
+    @debug('.select#{_get-variant-name($name)} #{&}');
+    .select#{_get-variant-name($name)} & {
+      @include css-map($props, 'default');
 
-  .is-error & {
-    @include css-map($select, 'error');
+      .is-focused &, .is-open & {
+        @include css-map($props, 'focus');
+      }
+
+      .is-disabled & {
+        @include css-map($props, 'disabled');
+      }
+
+      .is-error & {
+        @include css-map($props, 'error');
+      }
+    }
   }
 
   @each $size, $props in $select-sizes {
