@@ -1,0 +1,23 @@
+// ---------------------------------------------
+// TAGS
+// ---------------------------------------------
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .badge {
+    margin-right: _get-space('h', 'small');
+    margin-bottom: 1px;
+    margin-top: 1px;
+    &:last-child { margin-right: 0; }
+  }
+}
+
+.badge {
+  display: inline-flex;
+  white-space: nowrap;
+}
+
+@include css-variants('.badge', $badge);

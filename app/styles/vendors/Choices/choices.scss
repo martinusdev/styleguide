@@ -125,7 +125,6 @@ $select-selector: 'choices' !default;
   }
 
   @each $name, $props in $select {
-    @debug('.select#{_get-variant-name($name)} #{&}');
     .select#{_get-variant-name($name)} & {
       @include css-map($props, 'default');
 

@@ -1,0 +1,50 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.badges', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_badges.scss'], contents)
+
+    +p-big Documentation for badges components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- TABS
+  +content-section(contents[0], true)
+
+    +p A badge provides an extra information that needs to be visually separated. Using badge is as simple as wrapping text into an element with <code class='l-code-inline'>.badge</code> class. If you need multiple badges in one line, wrap them with <code class='l-code-inline'>.badges</code> container.
+
+    +demo
+      +demo-example
+        .badge.mb-small Default badge
+
+        .badges
+          .badge Mutilple
+          .badge badges
+          .badge in line.
+      +demo-code
+        :code
+
+    +content-sub-section('Badge colors')
+
+      +p There are also some predefined colors that can be used:
+      +demo
+        +demo-example
+          .badges
+            each color in ['primary', 'green', 'orange', 'violet', 'blue']
+              .badge(class=`badge--${color}`)= color
+        +demo-code
+          :code
+
+//- end: section
+
+//- end: section

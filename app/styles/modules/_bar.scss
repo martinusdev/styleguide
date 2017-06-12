@@ -9,7 +9,7 @@
   $spacing: $bar-spacing,
   $width: 0
 ) {
-  flex: 0 1 if($width == 0, auto, $width);
+  flex: 0 0 if($width == 0, auto, $width);
   display: flex;
   align-items: center;
 
@@ -49,6 +49,19 @@
   }
 }
 
+@mixin bar-border (
+  $spacing: $bar-spacing
+) {
+  border-left: 1px solid _color(grey, 200);
+  align-self: stretch;
+
+  @each $breakpoint, $space in _get-breakpoint-map($spacing) {
+    @include breakpoint($breakpoint) {
+      margin-right: $space;
+    }
+  }
+}
+
 @mixin bar-break(
   $height: $bar-break-height
 ) {
@@ -62,10 +75,18 @@
 
     &__item {
       @include bar-item;
+
+      &--shrinkable {
+        flex-shrink: 1;
+      }
     }
 
     &__content {
       @include bar-content;
+    }
+
+    &__border {
+      @include bar-border;
     }
   }
 }

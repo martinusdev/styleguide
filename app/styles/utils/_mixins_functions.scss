@@ -189,6 +189,42 @@
   }
 }
 
+/// Get css propeties from map of variants
+///
+/// @param {Strng} $class - root classname
+/// @param {Map} $map - Map
+/// @param {Arglist} $keys - Keys to fetch
+///
+/// @example
+/// $map: (
+///   default:(
+///     background-color: #fff,
+///     color: #000
+///   ),
+///   error: (
+///     background-color: red,
+///   )
+/// );
+///
+///   @include css-variants('.example' ,$map);
+///
+/// Output:
+/// .example {
+///   background-color: #fff;
+///   color: #000;
+/// }
+///
+/// .example--error {
+///   background-color: red;
+/// }
+@mixin css-variants($class, $maps, $keys...) {
+  @each $variant, $map in $maps {
+    #{$class}#{_get-variant-name( $variant)} {
+      @include css-map($map, $keys...);
+    }
+  }
+}
+
 // -------------------------------
 // MEDIA QUERIES
 
