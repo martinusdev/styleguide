@@ -83,7 +83,7 @@ $default-color-weights: (
 
 $default-bg-color: $color-white !default;
 $default-text-color: $color-black !default;
-$default-font-family: $font-family-opensans !default;
+$default-font-family: $font-family-tabac !default;
 
 $default-border-radius: $border-radius !default;
 
@@ -258,7 +258,7 @@ $image-border-radius: $default-border-radius !default;
 // wrappers
 
 $wrapper-widths: (
-  default: 1200px,
+  default: 1280px,
 ); // You only need to set those breakpoints, where a change should occur.
 
 $wrapper-paddings: (
@@ -271,7 +271,7 @@ $wrapper-paddings: (
 $grid-base: 12 !default;
 
 $gutters: (
-  default: _get-space('h', 'small'),
+  default: _get-space('h'),
 );
 
 $gutters-form: (
@@ -605,25 +605,25 @@ $select-button-offset: 8px !default;
 $select: (
   default: (
     default: (
-    background-color: $form-bgc,
-    border-width: $form-b-w,
-    border-style: $form-b-s,
-    border-color: $form-b-c,
-    border-radius: $select-b-r,
-  ),
-  focus: (
-    box-shadow: $form-focus-bs,
-    border-color: $form-focus-b-c,
-  ),
-  disabled: (
-    color: $form-disabled-c,
-    border-color: $form-disabled-b-c,
-  ),
-  error: (
-    background-color: $form-error-bgc,
-    color: $form-disabled-c,
-    border-color: $form-disabled-b-c,
-  ),
+      background-color: $form-bgc,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: $form-b-c,
+      border-radius: $select-b-r,
+    ),
+    focus: (
+      box-shadow: $form-focus-bs,
+      border-color: $form-focus-b-c,
+    ),
+    disabled: (
+      color: $form-disabled-c,
+      border-color: $form-disabled-b-c,
+    ),
+    error: (
+      background-color: $form-error-bgc,
+      color: $form-disabled-c,
+      border-color: $form-disabled-b-c,
+    ),
   ),
   clean: (
     default: (
