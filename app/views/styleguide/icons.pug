@@ -36,9 +36,9 @@ block append content
         ul.l-icons
           each icon in helpers.getAppIcons()
             li.l-icons_item
-              +icon(icon, 'icon--large')
+              +icon(icon, 'icon--medium')
               br
-              abbr(title=icon).text-color-semiblack= icon
+              abbr(title=icon).text-color-grey= icon
 
       +demo-code
         :code
@@ -56,7 +56,7 @@ block append content
     +content-sub-section('Sizes')
 
       +p There are fours icon sizes: small, medium, large and xlarge. Size for icon can be specified with class <code class='l-code-inline'>.icon--[small/medium/large/xlarge]</code> on the icon element.
-      +p Our pug mixin accepts a <code class='l-code-inline'>className</code> parameter. To create a large icon, just pass the appropriate class as the second parameter <code class='l-code-inline'>+icon(iconName, 'gu')</code>
+      +p Our pug mixin accepts a <code class='l-code-inline'>className</code> parameter. To create a large icon, just pass the appropriate class as the second parameter <code class='l-code-inline'>+icon(iconName, 'home')</code>
 
       +note
         +p In case there is no class for size, icon will inherit size from parent font-size property.
@@ -67,19 +67,19 @@ block append content
             li.l-icons_item
               +icon('sg-home', 'icon--xlarge')
               br
-              abbr(title=icon).text-color-semiblack XL
+              abbr(title=icon).text-color-grey XL
             li.l-icons_item
               +icon('sg-home', 'icon--large')
               br
-              abbr(title=icon).text-color-semiblack L
+              abbr(title=icon).text-color-grey L
             li.l-icons_item
               +icon('sg-home', 'icon--medium')
               br
-              abbr(title=icon).text-color-semiblack M
+              abbr(title=icon).text-color-grey M
             li.l-icons_item
               +icon('sg-home', 'icon--small')
               br
-              abbr(title=icon).text-color-semiblack S
+              abbr(title=icon).text-color-grey S
 
         +demo-code
           :code
@@ -118,13 +118,13 @@ block append content
         +demo-example
           ul.l-icons
             li.l-icons_item
-              +icon('sg-home', 'icon--large text-color-theme-500')
+              +icon('sg-home', 'icon--large').text-color-theme
             li.l-icons_item
-              +icon('sg-home', 'icon--large text-color-theme-100')
-            li.l-icons_item.text-color-semiblack
-              +icon('sg-home', 'icon--large')
+              +icon('sg-home', 'icon--large').text-color-grey
+            li.l-icons_item
+              +icon('sg-home', 'icon--large').text-color-success
             li.l-icons_item.text-color-error
-              +icon('sg-home', 'icon--large')
+              +icon('sg-home', 'icon--large').text-color-error
 
         +demo-code
           :code
@@ -164,16 +164,16 @@ block append content
         +demo-example
           ol
             li
-              button.btn.btn--large
+              button.btn.btn--large.no-mrg
                 +icon('sg-check', 'icon--left', '')
                 | Done
               br
-              span(title=icon).text-color-semiblack I'm accompanied by button text, my purpose is purely presentational
+              p(title=icon) I'm accompanied by button text, my purpose is purely presentational
             li
-              button.btn.btn--large
+              button.btn.btn--large.no-mrg
                 +icon('sg-settings', '', 'Settings')
               br
-              span(title=icon).text-color-semiblack I clearly represent what will happen when the button is clicked. Therefore an accessbile text alternative is appropriate.
+              p(title=icon) I clearly represent what will happen when the button is clicked. Therefore an accessbile text alternative is appropriate.
         +demo-code
           :code
             <button class="btn btn--large">
