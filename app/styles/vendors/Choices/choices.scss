@@ -7,12 +7,12 @@ $select-selector: 'choices' !default;
 .#{$select-selector} {
   position: relative;
   .#{$select-selector}__inner {
-    @include css-map($select, 'default');
+    @include css-map($select, 'default', 'default');
   }
 
   &:focus, &.is-focused {
     outline: $default-outline;
-    @include css-map($select, 'focus');
+    @include css-map($select, 'default', 'focus');
   }
   &:last-child { margin-bottom: 0; }
   &.is-disabled {
@@ -57,20 +57,17 @@ $select-selector: 'choices' !default;
   }
   &:after {
     content: "";
-    height: 0;
-    width: 0;
-    border-style: solid;
-    border-color: $select-arrow-c transparent transparent transparent;
-    border-width: 5px;
+    background-image: svg-load('./../icons/app/chevron-down.svg', fill=_color(grey));
+    height: 24px;
+    width: 24px;
     position: absolute;
-    right: 11.5px;
     top: 50%;
-    margin-top: -2.5px;
+    right: 5px;
+    margin-top: -12px;
     pointer-events: none;
   }
   &.is-open:after {
-    border-color: transparent transparent $select-arrow-c transparent;
-    margin-top: -7.5px;
+    background-image: svg-load('./../icons/app/chevron-up.svg', fill=_color(grey));
   }
 }
 
