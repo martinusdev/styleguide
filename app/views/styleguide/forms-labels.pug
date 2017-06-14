@@ -119,6 +119,74 @@ block append content
           </div>
     //- end: demo
 
+    +content-sub-section('Form label inline')
+
+      +p Inline form labels can be created with form control modifier <code class='l-code-inline'>.form-control--inline</code>.
+
+      +note
+       +p Long labels can have <code class='l-code-inline'>max-width</code> set as inline style attribute to wrap text.
+
+      +warning
+        +p Inline labels are currently supported on <code class='l-code-inline'>.radiocheck-group</code> element.
+
+      +demo
+        +demo-example
+          .row
+            .col--l-6
+              .form-control.form-control--inline.form-control--input
+                .form-label
+                  label(for='input-inline-01') Form label:
+                input.input(type='text', placeholder='Input', id='input-inline-01')
+            .col--l-6
+              .form-control.form-control--inline.form-control--textarea
+                .form-label.align-self-top
+                  label(for='textarea-inline-01') Form label:
+                textarea.input(type='text', placeholder='Textarea', id='textarea-inline-01')
+
+          .row
+            .col--l-6
+              .form-control.form-control--inline.form-control--checkbox
+                .form-label
+                  label(for="checkbox-withlabel") Form label:
+                .checkbox
+                  input.radiocheck__input(type='checkbox', id='checkbox-inline-withlabel', name='checkbox-inline-withlabel')
+                  label.radiocheck__control(for='checkbox-inline-withlabel')
+                  label.radiocheck__label(for='checkbox-inline-withlabel') Checkbox
+
+            .col--l-6
+              .form-control.form-control--inline.form-control--group
+                .radiocheck-group
+                  .form-label
+                    label Form label:
+                  .form-control.form-control--radio
+                    .radio
+                      input.radiocheck__input(type='radio', id='radio-group-inline-withlabel-01', name='radio-group-inline-withlabel')
+                      label.radiocheck__control(for='radio-group-inline-withlabel-01')
+                      label.radiocheck__label(for='radio-group-inline-withlabel-01') Radio 1
+                  .form-control.form-control--radio
+                    .radio
+                      input.radiocheck__input(type='radio', id='radio-group-inline-withlabel-02', name='radio-group-inline-withlabel')
+                      label.radiocheck__control(for='radio-group-inline-withlabel-02')
+                      label.radiocheck__label(for='radio-group-inline-withlabel-02') Radio 2
+          .row
+            .col--l-6
+              .form-control.form-control--inline.form-control--select
+                .form-label
+                  label(for="select-inline-01") Form label:
+                select.js-select#select-inline-01
+                  each option in [1,2,3,4,5,6]
+                    option Option #{option}
+        +demo-code
+          :code
+            <div class="form-control form-control--input">
+              <div class="form-label">
+                <label for="...">Form label:</label>
+              </div>
+              <input type="text" class="input" id="...">
+            </div>
+
+      //- end: demo
+
     +content-sub-section('Form label states')
 
       +p Form labels can have two state: default and error state. Error state can be set by using class <code class='l-code-inline'>.is-error</code> on <code class='l-code-inline'>.form-label</code> element.
@@ -167,11 +235,11 @@ block append content
                 input.input.input--large(type='text', placeholder='Input', id='input-flsz-01')
               .form-control.form-control--input
                 .form-label
-                  label(for='input-flsz-02') Form label large:
+                  label(for='input-flsz-02') Form label:
                 input.input.input(type='text', placeholder='Input', id='input-flsz-02')
               .form-control.form-control--input
                 .form-label.form-label--small
-                  label(for='input-flsz-03') Form label large:
+                  label(for='input-flsz-03') Form label small:
                 input.input.input--small(type='text', placeholder='Input', id='input-flsz-03')
         +demo-code
           :code

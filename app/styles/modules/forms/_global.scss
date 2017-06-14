@@ -36,6 +36,25 @@ fieldset {
 
 .form-control {
   margin: 0 0 $form-m;
+
+  &--inline {
+    display: flex;
+    align-items: center;
+
+    .form-label {
+      flex: 0 0 auto;
+      label { margin: 0 _get-space('h', small) 0 0; } // stylelint-disable
+
+      + * {
+        flex: 1 0;
+        &.select--inline {
+          flex: 0 0 auto;
+        }
+      }
+    }
+
+
+  }
 }
 
 .form--block {
