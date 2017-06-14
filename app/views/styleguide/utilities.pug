@@ -49,6 +49,16 @@ block append content
           code.l-code-inline .text-normal
           span.text-normal text normal
 
+        p
+          code.l-code-inline .text-size-regular
+          span.text-size-regular text regular
+          br
+          code.l-code-inline .text-size-medium
+          span.text-size-medium text medium
+          br
+          code.l-code-inline .text-size-small
+          span.text-size-small text small
+
         hr
 
         p.text-left
@@ -123,6 +133,12 @@ block append content
             <span class="text-normal">text normal</span>
           </p>
 
+          <p>
+            <span class="text-size-regular">text regular</span>
+            <span class="text-size-medium">text medium</span>
+            <span class="text-size-small">text small</span>
+          </p>
+
           <p class="text-left">...</p>
           <p class="text-center">...</p>
           <p class="text-right">...</p>
@@ -154,16 +170,15 @@ block append content
       +demo
         +demo-example
           ul.l-text-colors
-            each color in ['theme-500', 'theme-400', 'theme-100', 'black', 'semiblack', 'grey', 'grey-800', 'white', 'semiwhite', 'error']
+            each color in ['theme', 'theme-400', 'black', 'semiblack', 'grey', 'grey-800', 'white', 'semiwhite', 'error', 'success']
               li
                 span(class='text-color-' + color)= color
 
         +demo-code
           :code
             <ul>
-              <li><span class="text-color-theme-500">theme-500</span></li>
+              <li><span class="text-color-theme">theme</span></li>
               <li><span class="text-color-theme-400">theme-400</span></li>
-              <li><span class="text-color-theme-100">theme-100</span></li>
               <li><span class="text-color-black">black</span></li>
               <li><span class="text-color-semiblack">semiblack</span></li>
               <li><span class="text-color-grey">grey</span></li>
@@ -171,6 +186,7 @@ block append content
               <li><span class="text-color-white">white</span></li>
               <li><span class="text-color-semiwhite">semiwhite</span></li>
               <li><span class="text-color-error">error</span></li>
+              <li><span class="text-color-success">success</span></li>
             </ul>
       //- end: demo
   //- end: section
