@@ -9,32 +9,90 @@
 // TABS
 
 .tab-nav {
+  $this: &;
+
   @include clearfix;
   @include list-unstyled;
   position: relative;
-}
 
-.tab-nav__item {
-  float: left;
-}
+  &__item {
+    float: left;
 
-.tab-nav__link {
-  display: block;
+    display: flex;
 
-  @include css-map($tabs-link, 'default');
-
-  &:focus,
-  &:hover {
-    @include css-map($tabs-link, 'focus');
+    #{$this}__content { flex: 1 0 auto; }
   }
 
-  .is-active > & {
-    @include css-map($tabs-link, 'active');
+  &--block {
+    display: flex;
+
+    #{$this}__item {
+      float: none;
+      flex: 1 0 auto;
+
+      margin-right: _get-space('h', 'small');
+
+      &:last-child { // stylelint-disable
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.tab-nav__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--link {
+    @include css-map($tabs-link, 'default');
+
+    &:focus,
+    &:hover {
+      @include css-map($tabs-link, 'focus');
+    }
+
+    .is-active > & {
+      @include css-map($tabs-link, 'active');
+    }
+
+    &[disabled],
+    &.is-disabled {
+      @include css-map($tabs-link, 'disabled');
+    }
   }
 
-  &[disabled],
-  &.is-disabled {
-    @include css-map($tabs-link, 'disabled');
+  &--card {
+    position: relative;
+
+    @include css-map($tabs-card, 'default');
+
+    &:focus,
+    &:hover {
+      @include css-map($tabs-card, 'focus');
+    }
+
+    .is-active > & {
+      @include css-map($tabs-card, 'active');
+
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: -(_map-deep-get($tabs-card, 'default', margin-bottom) + (_get-rem(1px)));
+        left: -1px;
+        right: -1px;
+
+        height: _map-deep-get($tabs-card, 'default', margin-bottom);
+        background-color: _map-deep-get($tabs-card, 'active', background-color);
+        border: _map-deep-get($tabs-card, 'default', border);
+        border-color: _map-deep-get($tabs-card, 'active', border-color);
+      }
+    }
+
+    &[disabled],
+    &.is-disabled {
+      @include css-map($tabs-card, 'disabled');
+    }
   }
 }
 

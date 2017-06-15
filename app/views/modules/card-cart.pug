@@ -1,0 +1,50 @@
+ul.tab-nav.tab-nav--block
+  li.tab-nav__item
+    a.tab-nav__content.tab-nav__content--card(href='#web' role="tab")
+      span.tab-nav__content-wrap Na webe
+  li.tab-nav__item
+    a.tab-nav__content.tab-nav__content--card(href='#shop' role="tab")
+      span.tab-nav__content-wrap
+        | Odložiť v kníhkupectve
+        br
+        span.figure-status.figure-status--success.text-color-grey.text-regular BA, Obchodná
+
+.tabs
+  section#web.tab
+    article.card.card--well.text-center.text-size-medium
+      p.mb-medium.text-color-grey-800 Knihu máme na <em class="">sklade</em>
+
+      .h1.no-mrg 12,99 €
+      p.mb-small.text-color-grey-800 Bežná cena#{' '}
+        span.text-strikethrough 15,42 €
+      .badges.badges--inline.align-items-center
+        .badge.badge--primary Ušetríte 3,50 €
+
+      p.mb-small.text-color-grey-800 Posielame <em>ihneď</em>.
+      button.btn.btn--primary.btn--large.mb-medium
+        +icon('add-to-cart').icon--left.icon--medium
+        | Vložiť do košíka
+
+      button.btn.btn--clean.no-mrg
+        +icon('heart').icon--left.icon--medium
+        | Pridať do
+  section#shop.tab.text-size-medium
+    article.card.card--well.text-center
+      .form-control.form-control--inline.form-control--select.align-self-middle.no-mrg
+        .form-label
+          label(for='shop-location') Predajňa#{' '}
+            +icon('pin').icon--medium.text-color-grey
+        select.js-select.select--inline.select--clean.select--small#shop-location
+          option BA Obchodná
+          option Martin
+      p.mb-medium.text-color-grey-800 Skladom máme <em>1ks</em>.
+
+      .h1.mb-medium 13,90 €
+
+      p.mb-small.text-color-grey-800 Knihu vám podržíme <em>48h</em>.
+
+      button.btn.btn--primary.btn--large.mb-medium Rezervovať
+
+      button.btn.btn--clean.no-mrg
+        +icon('heart').icon--left.icon--medium
+        | Pridať do
