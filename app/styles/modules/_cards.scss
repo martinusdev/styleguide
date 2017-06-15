@@ -10,16 +10,33 @@
 // ----------------------------
 // CARD
 
-@mixin card($card: $card) {
-  $border-radius: map-get($card, 'border-radius');
+@mixin card($_card: $card) {
+  $border-radius: _map-deep-get($card, 'default', 'border-radius');
+  $after: map-get($_card, after);
+  $_card: map_remove($_card, after);
+
   display: flex;
   flex-flow: column;
   margin-bottom: $default-space;
 
-  @include css-map($card);
+  @include css-map($_card);
+
+  @if $after {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      @include css-map($after);
+      border-bottom-left-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+    }
+  }
 
   > * + * {
-    border-top: map-get($card, 'border');
+    border-top: _map-deep-get($card, 'default', 'border');
   }
 
   > * {
@@ -55,7 +72,13 @@
 
 @mixin card-classes {
   .card {
-    @include card;
+    position: relative;
+
+    @each $variant, $map in $card {
+      &#{_get-variant-name( $variant)} {
+        @include card($map);
+      }
+    }
 
     &__header {
       @include card-section;

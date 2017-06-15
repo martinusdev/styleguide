@@ -62,6 +62,37 @@ block append content
           </article>
     //- end: demo
 
+    +content-sub-section('Card well')
+
+      +demo
+        +demo-example
+          article.card.card--well.text-center.text-size-medium
+            .card__content
+              p.text-color-grey-800 Knihu máme na <em class="">sklade</em>
+
+            .card__content
+              .h1.no-mrg 12,99 €
+              p.mb-small.text-color-grey-800 Bežná cena#{' '}
+                span.text-strikethrough 15,42 €
+              .badges.badges--inline.align-items-center
+                .badge.badge--primary Ušetríte 3,50 €
+
+            .card__content
+              p.mb-small.text-color-grey-800 Posielame <em>ihneď</em>.
+              .btn-layout--vertical
+                button.btn.btn--primary.btn--large.mb-small
+                  +icon('add-to-cart').icon--left.icon--medium
+                  | Vložiť do košíka
+
+                button.btn.btn--clean.no-mrg
+                  +icon('heart').icon--left.icon--medium
+                  | Pridať do
+        +demo-code
+          :code
+            <article class="card card--well">
+              ...
+            </article>
+
   //- end: section
 
   //- HEADER

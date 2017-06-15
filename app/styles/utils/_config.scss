@@ -820,18 +820,24 @@ $table-cell: (
 // CARDS
 
 $card: (
+  default: (
   background-color: $color-white,
-  border: 1px solid _color(grey, 300),
   border-radius: $default-border-radius,
-  box-shadow: #{$shadow-ambient-1, $shadow-direct-1},
+    padding: _get-space('v', 'small') _get-space('h', 'small'),
+    after: ()
+  ),
+  well: (
+    background-color: _color(bg, 500),
+    after: (
+      height: 4px,
+      background-color: _color(bg, 600),
+    )
+  )
 );
 
 $card-section: (
   default: (
     padding: _get-space('v', 'small') _get-space('h', 'small')
-  ),
-  'm': (
-    padding: _get-space('v') _get-space('h'),
   )
 );
 
