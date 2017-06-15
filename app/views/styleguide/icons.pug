@@ -190,7 +190,7 @@ block append content
             </button>
           //- end: Accessibility
 
-  +content-section(contents[1], true)
+  +content-section(contents[1])
 
     +p There are three basic image utilities: fluid, rounded and circle. Fluid utility gives image ability to change size coresponding to its parent. Circle and rounded utilities provides specific shapes for images.
 
@@ -210,3 +210,13 @@ block append content
           <img src="..." class="img img--circle">
     //- end: demo
   //- end: section
+
+  +content-section(contents[2])
+
+    +demo
+      +demo-example
+        img.img.book-thumbnail(src="/images/content/books/book-270.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+
+      +demo-code
+        :code
+          <img class="img book-thumbnail" src="..." alt="...">

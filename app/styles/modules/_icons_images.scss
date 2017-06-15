@@ -5,6 +5,7 @@
 // CONTENTS
 // Icons
 // Images
+// Book thumbnail
 
 // ----------------------------
 // ICONS
@@ -13,6 +14,8 @@
   fill: currentColor;
   width: 1em;
   height: 1em;
+
+  vertical-align: middle;
 }
 
 @each $variant, $size in $icon-sizes {
@@ -38,7 +41,8 @@ img {
   &--fluid {
     width: 100%;
     height: auto;
-    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
   }
 
@@ -49,4 +53,17 @@ img {
   &--circle {
     @include border-radius(50%);
   }
+}
+
+// override fills
+#icon-star-half { // stylelint-disable
+  path:first-child { fill: currentColor; }
+  path:last-child { fill: _color(grey, 100); }
+}
+
+// ----------------------------
+// BOOK THUMBNAIL
+
+.book-thumbnail {
+  box-shadow: -20px 10px 14px 0 rgba(0, 0, 0, 0.2), -10px 0 5px 0 rgba(0, 0, 0, 0.1); // todo generalize shadows
 }
