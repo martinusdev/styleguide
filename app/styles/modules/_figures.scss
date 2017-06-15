@@ -1,0 +1,37 @@
+// ---------------------------------------------
+// Figures
+// ---------------------------------------------
+
+.figure {
+  margin: 0 0 _get-space('v', 'large');
+
+  &--horizontal {
+    display: flex;
+    align-items: flex-start;
+
+    .img {
+      margin-right: _get-space('h', 'small');
+      margin-bottom: 0;
+    }
+  }
+}
+
+.figure-status {
+  display: inline-flex;
+  align-items: center;
+
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 999em;
+
+    margin-right: 5px;
+  }
+
+  @each $name, $props in $figure-status {
+    &#{_get-variant-name($name)}::before {
+      @include css-map($props);
+    }
+  }
+}

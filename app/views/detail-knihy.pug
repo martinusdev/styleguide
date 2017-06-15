@@ -1,0 +1,87 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Detail knihy'
+
+
+block content
+  main
+    .wrapper-main
+      .row.book-detail
+        .col--3
+          .book-detail__preview
+            .book-detail__image
+              img.img.img--fluid.book-thumbnail.mb-medium(src="/images/content/books/book-270.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .book-detail__preview-link.text-center
+              button.btn.btn--clean
+                +icon('eye').icon--left.icon--medium
+                | Pozrieť ukážku
+        .col--6
+          p.book-detail__author.mb-small
+            a.link(href="#") Frank Weissert
+            | ,#{' '}
+            a.link(href="#") Jack Thorne
+            | #{' '} a #{' '}
+            a.link(href="#") John Tiffany
+          h1.book-detail__title Základy rybolovu pro kluky a holky
+          h3.book-detail__subtitle Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+
+          .bar.mb-medium
+            .bar__item
+              .star-rating
+                +icon('star').star-rating__item.icon--medium
+                +icon('star').star-rating__item.icon--medium
+                +icon('star').star-rating__item.icon--medium
+                +icon('star').star-rating__item.icon--medium
+                +icon('star-half').star-rating__item.icon--medium
+                .star-rating__value
+                  b 4,5
+            .bar__border
+            .bar__item
+              a.link.text-medium(href="#") 234 x
+            .bar__item
+              .form-control.form-control--select.no-mrg
+                select.js-select.select--inline.select--clean.select--small
+                  option SK
+                  option CZ
+            .bar__item.bar__item--shrinkable
+              .badges.no-mrg
+                .badge.badge--green Bestseller
+                .badge.badge--orange Top #98
+
+          .bar.mb-medium
+            .bar__item
+              dl.no-mrg
+                dt Vydavateľstvo
+                dd
+                  a.link(href="#") Inspira Publishing
+                  span.text-color-grey , 2016
+            .bar__border
+            .bar__item
+              dl.no-mrg
+                dt Edícia
+                dd
+                  a.link(href="#") Rybolov
+            .bar__border
+            .bar__item
+              figure.figure.figure--horizontal.no-mrg
+                img.img.img--circle(src="http://placehold.it/24x24")
+                dl.no-mrg
+                  dt Tento titul číta aj
+                  dd
+                    a.link(href="#") Jana Šlinská
+
+          p Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké
+
+          p
+            a.link.text-medium(href="#") Čítaj viac#{' '}
+               +icon('arrow-down')
+
+
+        .col--3
+          include ./modules/card-cart
+
+//- -----------------------------------------------
+//- STYLEGUIDE ICONS
+block append icons
+  != helpers.readFile(iconsPaths.styleguide)
