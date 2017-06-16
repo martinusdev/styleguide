@@ -34,8 +34,8 @@ block append content
             .bar
               .bar__item
                 .l-debug <code class="l-code-inline">.bar__item</code>
-              .bar__content
-                .l-debug <code class="l-code-inline">.bar__content</code>
+              .bar__item.bar__item--fill
+                .l-debug <code class="l-code-inline">.bar__item.bar__item--fill</code>
               .bar__item
                 .l-debug <code class="l-code-inline">.bar__item</code>
         .row.row--space
@@ -44,9 +44,10 @@ block append content
               .bar
                 .bar__item
                   +icon('home', 'icon--large')
-                h3.bar__content Home
+                h3.bar__item.bar__item--fill.no-mrg Home
                 .bar__item
                   .btn.btn--primary Action
+
       +demo-code
         :code
           <div class="bar">
@@ -61,11 +62,30 @@ block append content
                 <use xlink:href="#icon-home"></use>
               </svg>
             </div>
-            <h3 class="bar__content">Home</h3>
+            <h3 class="bar__item bar__item--fill">Home</h3>
             <div class="bar__item">
               <div class="btn btn--primary">Action</div>
             </div>
           </div>
+
+    +content-sub-section('Bar gutters')
+      +p Gutter between bar items can alterned with <code class='l-code-inline'>.bar--small</code>
+
+      +demo
+        +demo-example
+          .row.row--space
+            .col
+              .bar.bar--small
+                .bar__item
+                  .l-debug Small
+                .bar__item
+                  .l-debug gutter with
+                .bar__item.bar__item--fill
+                  .l-debug <code class="l-code-inline">.bar--small</code>
+
+        +demo-code
+          :code
+            <div class="bar bar--small">...</div>
 
     +content-sub-section('Alignment')
 

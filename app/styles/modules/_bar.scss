@@ -6,18 +6,10 @@
 }
 
 @mixin bar-item(
-  $spacing: $bar-spacing,
   $width: 0
 ) {
   flex: 0 0 if($width == 0, auto, $width);
-  display: flex;
   align-items: center;
-
-  @each $breakpoint, $space in _get-breakpoint-map($spacing) {
-    @include breakpoint($breakpoint) {
-      margin-right: $space;
-    }
-  }
 
   > * {
     margin-bottom: 0;
@@ -28,25 +20,9 @@
   }
 }
 
-@mixin bar-content(
-  $spacing: $bar-spacing
-) {
+@mixin bar-content() {
+  @include bar-item;
   flex: 1 0 1px;
-  margin: 0;
-
-  @each $breakpoint, $space in _get-breakpoint-map($spacing) {
-    @include breakpoint($breakpoint) {
-      margin-right: $space;
-    }
-  }
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  > *:last-child {
-    margin-bottom: 0;
-  }
 }
 
 @mixin bar-border (
@@ -54,12 +30,6 @@
 ) {
   border-left: 1px solid _color(grey, 200);
   align-self: stretch;
-
-  @each $breakpoint, $space in _get-breakpoint-map($spacing) {
-    @include breakpoint($breakpoint) {
-      margin-right: $space;
-    }
-  }
 }
 
 @mixin bar-break(
@@ -79,14 +49,27 @@
       &--shrinkable {
         flex-shrink: 1;
       }
-    }
 
-    &__content {
-      @include bar-content;
-    }
+      &--fill {
+        flex: 1 0 1px;
+      }
 
-    &__border {
-      @include bar-border;
+      &--border {
+        @include bar-border;
+      }
+    }
+  }
+
+  // responsive bar spacing
+  @each $size, $props in $bar-spacing {
+    &#{_get-variant-name($size, '.bar--')} {
+      .bar__item {
+        @each $breakpoint, $space in _get-breakpoint-map($props) {
+          @include breakpoint($breakpoint) { // stylelint-disable
+            margin-right: $space;
+          }
+        }
+      }
     }
   }
 }

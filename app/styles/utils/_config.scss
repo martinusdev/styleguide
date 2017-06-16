@@ -300,7 +300,15 @@ $gutters-form: (
 // ----------------------------
 // BAR
 
-$bar-spacing: _get-space('h');
+$bar-spacing: (
+  default: (
+    default: _get-space('h'),
+  ),
+  small: (
+    default: _get-space('h', 'small'),
+  )
+);
+
 $bar-break-height: 1em;
 
 // ----------------------------
