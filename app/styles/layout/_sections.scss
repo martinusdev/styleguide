@@ -1,0 +1,15 @@
+// ---------------------------------------------
+// SECTIONS
+// ---------------------------------------------
+
+.section {
+  padding-top: _get-space('v', 'large');
+
+  @include clearfix;
+
+  &--overflow {
+    overflow: hidden;
+  }
+}
+
+@include css-variants('.section', $section);
