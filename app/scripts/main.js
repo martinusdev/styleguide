@@ -4,6 +4,7 @@ import Toggle from './modules/Toggle';
 import Tab from './modules/Tab';
 import Dropdown from './modules/Dropdown';
 import Modal from './modules/Modal';
+import Carousel from './modules/Carousel';
 
 window.addEventListener('DOMContentLoaded', () => {
   customEventPolyfill();
@@ -24,4 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.Modal = Modal;
   window.myApp.modals = new Modal();
+
+  window.myApp.Carousel = Carousel;
+  window.myApp.carousels = new Carousel();
 });

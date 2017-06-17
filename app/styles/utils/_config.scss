@@ -444,6 +444,20 @@ $button-styles: (
       border-color: transparent,
       background-color: transparent,
     ),
+  ),
+  carousel: (
+    default: (
+      color: $color-black,
+      border-color: transparent,
+      background-color: $color-white,
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
+    ),
+    focus: (
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2),
+    ),
+    active: (
+      box-shadow: none,
+    ),
   )
 );
 
@@ -1053,7 +1067,18 @@ $figure-status: (
   success: (
     background-color: _color(green),
   ),
-)
+);
+
+$carousel: (
+  btns: (
+    offsetH: -20px,
+    offsetV: 50%,
+  ),
+  fade: (
+    size: 800px,
+    gradient: (rgba(_color('bg'), 0), rgba(_color('bg'), 0.7) 40px, rgba(_color('bg'), 1) 300px),
+  )
+);
 
 // ----------------------------
 // OTHER MODULES AND COMPONENTS
