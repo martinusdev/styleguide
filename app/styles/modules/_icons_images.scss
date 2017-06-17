@@ -65,5 +65,36 @@ img {
 // BOOK THUMBNAIL
 
 .book-thumbnail {
-  box-shadow: -20px 10px 14px 0 rgba(0, 0, 0, 0.2), -10px 0 5px 0 rgba(0, 0, 0, 0.1); // todo generalize shadows
+  position: relative;
+  border-radius: $default-border-radius;
+  box-shadow: 0 10px 14px 0 rgba(#000, 0.2);
+  transition: box-shadow $ease-100;
+
+  user-select: none;
+
+  &--clickable {
+    &:hover,
+    &:active {
+      box-shadow: 0 10px 20px 0 rgba(#000, 0.3);
+    }
+  }
+
+  &--large-shadow {
+    box-shadow: -20px 10px 14px 0 rgba(#000, 0.2), -10px 0 5px 0 rgba(#000, 0.1); // todo generalize shadows
+  }
+
+  .img { border-radius: $default-border-radius; }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: 12px;
+    border-radius: $default-border-radius;
+
+    background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
+  }
 }
