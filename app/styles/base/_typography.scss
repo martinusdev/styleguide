@@ -143,11 +143,32 @@ hr {
   ol,
   dl {
     margin: 0 0 $default-space;
+    list-style: none;
 
     ul,
     ol,
     dl {
       margin-bottom: 0;
+    }
+  }
+
+  .list {
+    li.is-active {
+      position: relative;
+      font-weight: $font-weight-semibold;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -40px;
+        transform: translateY(-50%);
+
+        width: 20px;
+        height: 5px;
+
+        background: linear-gradient(to left, _color(primary, 500) 0, _color(primary, 500) 5px, _color(primary, 600) 5px, _color(primary, 600) 20px);
+      }
     }
   }
 
