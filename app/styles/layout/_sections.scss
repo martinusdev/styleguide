@@ -13,3 +13,27 @@
 }
 
 @include css-variants('.section', $section);
+
+.collapsed {
+  position: relative;
+  overflow: hidden;
+
+  max-height: 350px;
+
+  &.is-active {
+    max-height: none !important;
+  }
+
+  &:not(.is-active)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: 80px;
+    width: 100%;
+
+    background: linear-gradient(to top, rgba(#fff, 1), rgba(#fff, 0));
+  }
+}
