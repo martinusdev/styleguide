@@ -338,6 +338,27 @@ block append content
             </div>
       //- end: demo
 
+      +content-sub-section('Column border')
+
+        +p Border between two columns can be added on second column with class <code class='l-code-inline'>.col--border</code> which adds border on the left site in the middle of these two columns.
+
+        +demo
+          +demo-example
+            .row.row--space
+              .col--3
+                .l-debug Column
+              .col--fill.col--border
+                .l-debug Column with border
+              .col--3
+                .l-debug Column
+          +demo-code
+            :code
+              <div class="row">
+                <div class="col--3">...</div>
+                <div class="col--fill col--border">...</div>
+                <div class="col--3">...</div>
+              </div>
+
       +content-sub-section('Grid layout')
         +p Grid layout sizes its children into an evenly spaced layout. Use <code class='l-code-inline'>.grid</code> to set the base styles and add modifiers per breakpoint and number of items in one row <code class='l-code-inline'>.grid-[-breakpoint]-[number]</code>
         +p To add spacing between items use <code class='l-code-inline'>.grid--spaced</code>. You can even break the layout using <code class="l-code-inline">.col-[-breakpoint]-[width]</code> on any grid item.
