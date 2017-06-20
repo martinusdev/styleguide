@@ -3,15 +3,27 @@
 // ---------------------------------------------
 
 .figure {
+  $this: &;
   margin: 0 0 _get-space('v', 'large');
+  text-align: center;
+
+  .img,
+  .icon {
+    margin-bottom: 0;
+  }
+
+  &__caption {
+    margin-top: _get-space('h', 'small');
+  }
 
   &--horizontal {
     display: flex;
     align-items: flex-start;
+    text-align: left;
 
-    .img {
-      margin-right: _get-space('h', 'small');
-      margin-bottom: 0;
+    #{$this}__caption {
+      margin-top: 0;
+      margin-left: _get-space('h', 'small');
     }
   }
 }
