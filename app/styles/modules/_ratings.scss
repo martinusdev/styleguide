@@ -3,15 +3,42 @@
 // ---------------------------------------------
 
 // ---------------------------------------------
-// STAR RATING
+// RATING STAR
 
-.star-rating {
+.rating-star {
   display: flex;
   align-items: center;
 
-  &__item { color: _color(yellow); }
+  &__item {
+    color: _color(grey, 200);
+
+    &.is-active { color: _color(yellow); }
+  }
 
   &__value {
     margin-left: _get-space('h', 'small');
   }
+}
+
+// ---------------------------------------------
+// RATING TEXT
+
+.rating-text {
+  &__value {
+    font-size: _get-rem(42px);
+  }
+}
+
+// ---------------------------------------------
+// RATING BAR
+
+.rating-bar {
+  height: 10px;
+  border-radius: $default-border-radius;
+
+  &--5 { background-color: #ffb804; }
+  &--4 { background-color: #f19f00; }
+  &--3 { background-color: #dd8000; }
+  &--2 { background-color: #ff7100; }
+  &--1 { background-color: #ec5e00; }
 }
