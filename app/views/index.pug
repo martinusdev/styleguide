@@ -14,12 +14,12 @@ block content
             a(data-toggle='self, parent', data-toggle-icon='#icon-sg-chevronup')
               h3
                 | Styleguide
-                +icon('sg-chevrondown')
+                +icon-sg('sg-chevrondown')
             ul.intro-templates_sublist
               each category in l_sitemap
                 each page in category.topics
                   li.intro-templates_subitem
-                    +icon('sg-caretright')
+                    +icon-sg('sg-caretright')
                     if page.sub == undefined
                       a(href='/styleguide/' + page.hlink, target='_blank')= page.title
                     else
@@ -30,17 +30,12 @@ block content
               a(data-toggle='self, parent', data-toggle-icon='#icon-sg-chevronup')
                 h3
                   | #{item.title}
-                  +icon('sg-chevrondown')
+                  +icon-sg('sg-chevrondown')
               if item.contents
                 ul.intro-templates_sublist
                   each subitem in item.contents
                     li.intro-templates_subitem
-                      +icon('sg-caretright')
+                      +icon-sg('sg-caretright')
                       a(href=subitem.href, target='_blank', class=subitem.old?'text-color-dovred-600':'', title=subitem.old?'old version !!!':undefined)= subitem.title
                       if subitem.desc
                         span.tooltip-icon.js-tooltip(title=subitem.desc) ?
-
-//- -----------------------------------------------
-//- STYLEGUIDE ICONS
-block append icons
-  != helpers.readFile(iconsPaths.styleguide)

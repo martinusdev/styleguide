@@ -12,7 +12,7 @@ nav.l-nav-main(data-role='dropdown')
 
         a.l-nav-main_link(class=keyCat == categoryID?'is-active selected':'', data-toggle='self, next')
           | #{category.category}
-          +icon('sg-caretright')
+          +icon-sg('sg-caretright')
 
         ul.l-nav-main_list-sub(class=keyCat == categoryID?'is-active':'')
           each page, keyPage in category.topics
@@ -21,7 +21,7 @@ nav.l-nav-main(data-role='dropdown')
                 unless page.sub == undefined
                   a.l-nav-main-sub_link(class=keyPage == pageID && keyCat == categoryID?'is-active selected':'', data-toggle='self, next')
                     | #{page.title}
-                    +icon('sg-add')
+                    +icon-sg('sg-add')
                   ul.l-nav-main_list-sub2(class=keyCat == categoryID && keyPage == pageID?'is-active':'')
                     each subpage, key2 in page.sub
                       unless subpage.visible == false

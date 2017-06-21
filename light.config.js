@@ -1,4 +1,5 @@
-// module.exports = (defaultPaths, defaultConfig, flags) => ({
-//   paths: {},
-//   config: {},
-// });
+module.exports = () => ({
+  paths: {
+    icons: 'icons_',
+  },
+});

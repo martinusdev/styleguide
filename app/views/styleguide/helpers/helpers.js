@@ -45,13 +45,13 @@ function readFile(iconPath) {
 }
 
 function getStyleguideIcons() {
-  const iconPaths = glob.sync(path.join(__dirname, './../../../icons/styleguide/*.svg'));
+  const iconPaths = glob.sync(path.join(__dirname, './../../../icons_/styleguide/*.svg'));
 
   return iconPaths.map(iconPath => path.basename(iconPath, '.svg'));
 }
 
 function getAppIcons() {
-  const iconPaths = glob.sync(path.join(__dirname, './../../../icons/app/*.svg'));
+  const iconPaths = glob.sync(path.join(__dirname, './../../../icons_/app/*.svg'));
 
   return iconPaths.map(iconPath => path.basename(iconPath, '.svg'));
 }

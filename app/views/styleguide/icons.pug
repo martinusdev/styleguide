@@ -24,13 +24,6 @@ block append content
     +p Here is preview of icon set used in this project. An icon can be created by using pug mixin <code class='l-code-inline'>+icon(iconName)</code>.
     +p Using just HTML, the markup is: <code class='l-code-inline'>&lt;svg class="icon"&gt;&lt;use xlink:href="#icon-iconName"&gt;&lt;/svg class="icon"&gt;</code>
 
-    +warning
-      +p The SVG sprite needs to be inlined in current document, so that <code class='l-code-inline'>&lt;use xlink:href="#icon-iconName"&gt;</code> can access the appropriate symbol.
-
-    +dependency
-      +p
-        | Icons require <code class='l-code-inline'>app/icons/icons.svg</code> file to be inlined just before the <code class='l-code-inline'>&lt;/body&gt;</code> tag.
-
     +demo
       +demo-example
         ul.l-icons
@@ -65,19 +58,19 @@ block append content
         +demo-example
           ul.l-icons
             li.l-icons_item
-              +icon('sg-home', 'icon--xlarge')
+              +icon-sg('sg-home', 'icon--xlarge')
               br
               abbr(title=icon).text-color-grey XL
             li.l-icons_item
-              +icon('sg-home', 'icon--large')
+              +icon-sg('sg-home', 'icon--large')
               br
               abbr(title=icon).text-color-grey L
             li.l-icons_item
-              +icon('sg-home', 'icon--medium')
+              +icon-sg('sg-home', 'icon--medium')
               br
               abbr(title=icon).text-color-grey M
             li.l-icons_item
-              +icon('sg-home', 'icon--small')
+              +icon-sg('sg-home', 'icon--small')
               br
               abbr(title=icon).text-color-grey S
 
@@ -118,13 +111,13 @@ block append content
         +demo-example
           ul.l-icons
             li.l-icons_item
-              +icon('sg-home', 'icon--large').text-color-theme
+              +icon-sg('sg-home', 'icon--large').text-color-theme
             li.l-icons_item
-              +icon('sg-home', 'icon--large').text-color-grey
+              +icon-sg('sg-home', 'icon--large').text-color-grey
             li.l-icons_item
-              +icon('sg-home', 'icon--large').text-color-success
+              +icon-sg('sg-home', 'icon--large').text-color-success
             li.l-icons_item.text-color-error
-              +icon('sg-home', 'icon--large').text-color-error
+              +icon-sg('sg-home', 'icon--large').text-color-error
 
         +demo-code
           :code
@@ -165,13 +158,13 @@ block append content
           ol
             li
               button.btn.btn--large.no-mrg
-                +icon('sg-check', 'icon--left', '')
+                +icon-sg('sg-check', 'icon--left', '')
                 | Done
               br
               p(title=icon) I'm accompanied by button text, my purpose is purely presentational
             li
               button.btn.btn--large.no-mrg
-                +icon('sg-settings', '', 'Settings')
+                +icon-sg('sg-settings', '', 'Settings')
               br
               p(title=icon) I clearly represent what will happen when the button is clicked. Therefore an accessbile text alternative is appropriate.
         +demo-code

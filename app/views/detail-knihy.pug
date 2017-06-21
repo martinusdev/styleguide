@@ -18,6 +18,9 @@ block content
                   +icon('eye').icon--left.icon--medium
                   | Pozrieť ukážku
           article.col--6
+            .filter
+              label.filter__item
+                input
             p.book-detail__author.mb-small
               a.link(href="#") Frank Weissert
               | ,#{' '}
@@ -309,9 +312,3 @@ block content
                     +icon('add-to-cart').icon--left.icon--medium
                     | Kúpiť spolu za#{' '}
                     span.text-nowrap 20,32 €
-
-
-//- -----------------------------------------------
-//- STYLEGUIDE ICONS
-block append icons
-  != helpers.readFile(iconsPaths.styleguide)

@@ -4,10 +4,13 @@ include ./review
 //- ICONS
 //- mixins icons
 
-mixin icon(iconName, className='', alt='')
+mixin icon(iconName, className='', alt='', sprite='/icons_/app.svg')
   if alt
     svg.icon(class=`icon-${iconName} ${className.length ? className : ''}` role='presentation' aria-label=alt)&attributes(attributes)
-      use(xlink:href=`#icon-${iconName}`)
+      use(xlink:href=`${sprite}#icon-${iconName}`)
   else
     svg.icon(class=`icon-${iconName} ${className.length ? className : ''}` role='img' aria-hidden='true')&attributes(attributes)
-      use(xlink:href=`#icon-${iconName}`)
+      use(xlink:href=`${sprite}#icon-${iconName}`)
+
+mixin icon-sg(iconName, className='', alt='', sprite='/icons_/styleguide.svg')
+  +icon(iconName, className, alt, sprite)&attributes(attributes)

@@ -1,3 +1,5 @@
+import svg4everybody from 'svg4everybody';
+
 import { customEventPolyfill } from './modules/Utils';
 import Select from './modules/Select';
 import Toggle from './modules/Toggle';
@@ -7,6 +9,7 @@ import Modal from './modules/Modal';
 import Carousel from './modules/Carousel';
 
 window.addEventListener('DOMContentLoaded', () => {
+  svg4everybody();
   customEventPolyfill();
 
   window.myApp = {};

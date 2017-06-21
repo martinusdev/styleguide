@@ -37,7 +37,7 @@ $select-selector: 'choices' !default;
     margin: 0;
   }
   .#{$select-selector}__button {
-    background-image: svg-load('./../icons/app/close.svg', fill=$color-black);
+    background-image: svg-load('./../icons_/app/close.svg', fill=$color-black);
     padding: 0;
     background-size: 16px;
     height: 100%;
@@ -57,7 +57,7 @@ $select-selector: 'choices' !default;
   }
   &:after {
     content: "";
-    background-image: svg-load('./../icons/app/chevron-down.svg', fill=_color(grey));
+    background-image: svg-load('./../icons_/app/chevron-down.svg', fill=_color(grey));
     height: 24px;
     width: 24px;
     position: absolute;
@@ -67,7 +67,7 @@ $select-selector: 'choices' !default;
     pointer-events: none;
   }
   &.is-open:after {
-    background-image: svg-load('./../icons/app/chevron-up.svg', fill=_color(grey));
+    background-image: svg-load('./../icons_/app/chevron-up.svg', fill=_color(grey));
   }
 }
 
@@ -99,7 +99,7 @@ $select-selector: 'choices' !default;
     margin-left: $select-button-offset;
     padding-left: $select-button-offset*2;
     border-left: 1px solid _map-deep-get($select-item, 'highlighted', 'background-color');
-    background-image: svg-load('./../icons/app/close.svg', fill=$color-white);
+    background-image: svg-load('./../icons_/app/close.svg', fill=$color-white);
     background-size: $select-button-dimension;
     width: $select-button-dimension;
     line-height: 1;
