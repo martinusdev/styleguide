@@ -19,12 +19,22 @@
     margin: 0;
 
     &--prev {
-      left: _map-deep-get($carousel, btns, offsetH);
+      left: _map-deep-get($carousel, btns, offsetH, default);
     }
 
     &--next {
-      right: _map-deep-get($carousel, btns, offsetH);
+      right: _map-deep-get($carousel, btns, offsetH, default);
     }
+
+    @include breakpoint(l) {
+      &--prev {
+        left: _map-deep-get($carousel, btns, offsetH, l);
+      }
+
+      &--next {
+        right: _map-deep-get($carousel, btns, offsetH, l);
+      }
+    };
 
     &.is-disabled {
       opacity: 0;
@@ -71,5 +81,9 @@
         background: linear-gradient(to left, (_map-deep-get($carousel, fade, gradient)));
       }
     }
+  }
+
+  &__book-detail {
+    width: 120px;
   }
 }

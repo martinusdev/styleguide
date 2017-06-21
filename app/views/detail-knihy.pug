@@ -87,7 +87,9 @@ block content
             include ./modules/card-cart
     section.section.section--secondary.section--overflow
       .wrapper-main
-        h2 Odporúčané knihy a kolekcie
+        .bar.mb-medium
+          .bar__item.bar__item--fill.bar__item--shrinkable
+              h2 Odporúčané knihy a kolekcie
 
         include ./modules/recommended-books-carousel
 
@@ -290,8 +292,6 @@ block content
 
               p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame
 
-
-
           .col--12.col--l-2
             article.card.card--well.text-center
               .card__content
@@ -312,3 +312,15 @@ block content
                     +icon('add-to-cart').icon--left.icon--medium
                     | Kúpiť spolu za#{' '}
                     span.text-nowrap 20,32 €
+
+    section.section.section--secondary.section--overflow
+      .wrapper-main
+        .bar.mb-medium
+          .bar__item.bar__item--fill.bar__item--shrinkable
+            h2 Odporúčané knihy a kolekcie
+          .bar__item
+            a.link(href='#') Všetky
+              +icon('arrow-right')
+
+
+        include ./modules/recommended-books-carousel
