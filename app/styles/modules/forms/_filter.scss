@@ -1,0 +1,42 @@
+// ---------------------------------------------
+// FILTER
+// ---------------------------------------------
+
+.filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: _get-space('h');
+
+  &__input { @include visually-hidden; }
+
+  &__value {
+    border-radius: _map-deep-get($filter, 'default', 'border-radius');
+    $after: _map-deep-get($filter, active, after);
+    $_filter: map_remove($filter, active, after);
+    display: block;
+    text-align: center;
+    cursor: pointer;
+
+    @include css-map($_filter, default);
+
+    :checked + & {
+      position: relative;
+      background-color: _color('bg');
+      color: $color-black;
+
+      @if $after {
+        &::after { // stylelint-disable
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          @include css-map($after);
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+        }
+      }
+    }
+  }
+}

@@ -780,6 +780,24 @@ $form-text: (
 );
 
 //---------------
+// filter
+
+$filter: (
+  default: (
+    padding: _get-space('v', 'small') _get-space('h', 'small'),
+    border-radius: $default-border-radius,
+    font-size: _get-rem($font-size-medium),
+  ),
+  active: (
+    background-color: _color(bg, 500),
+    after: (
+      height: 4px,
+      background-color: _color(bg, 600),
+    )
+  )
+);
+
+//---------------
 // DROPDOWN MENU
 
 $dropdown-menu-b-r: select-b-r;

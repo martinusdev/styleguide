@@ -21,7 +21,7 @@ block prepend content
 block append content
 
   //- INNER ADDON
-  +content-section(contents[0], true)
+  +content-section(contents[0])
 
     +p Text input with inner addon is just extended basic input. To create input with inner (text) addon you need to wrap <code class='l-code-inline'>&lt;input&gt;</code> and addon element <code class='l-code-inline'>.input-addons__item</code> into element with class <code class='l-code-inline'>.input-addons</code> as shown in example below.
 
@@ -141,6 +141,41 @@ block append content
             </div>
       //- end: demo
 
+  +content-section(contents[1], true)
+
+    +p Filter is a special type of checkbox/radio group, where you can select one or multiple options. In filter, at least on of the options should be pre-selected by default. On smaller screens, filter should be replaced with select.
+
+    +demo
+      +demo-example
+        .filter
+          .filter__item
+            input.filter__input(type="radio", name="book-type", id="book-type-1", checked)
+            label.filter__value(for="book-type-1")
+              | Pevná väzba#{' '}
+              span.text-color-grey.text-nowrap 12,99 €
+          .filter__item
+            input.filter__input(type="radio", name="book-type", id="book-type-2")
+            label.filter__value(for="book-type-2")
+              | Brožovaná väzba#{' '}
+              span.text-color-grey.text-nowrap 10,29 €
+          .filter__item
+            input.filter__input(type="radio", name="book-type", id="book-type-3")
+            label.filter__value(for="book-type-3")
+              | E-kniha#{' '}
+              span.text-color-grey.text-nowrap 6,50 €
+          .filter__item
+            input.filter__input(type="radio", name="book-type", id="book-type-4")
+            label.filter__value(for="book-type-4")
+              | Audio kniha#{' '}
+              span.text-color-grey.text-nowrap 16,25 €
+      +demo-code
+        :code
+          <div class="filter">
+            <div class="filter__item">
+              <input class="filter__input" type="radio" name="filter" id="filter-1">
+              <label class="filter__value" for="filter-1">...</label>
+            </div>
+          </div>
     //- end: subsection
 
   //- end: section
