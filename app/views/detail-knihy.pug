@@ -3,7 +3,6 @@ extends layouts/_default
 block opts
     - var pageTitle = 'Detail knihy'
 
-
 block content
   main
     section.section
@@ -124,11 +123,11 @@ block content
               a.link(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="#icon-arrow-up", data-toggle-text="Čítaj menej") Čítaj viac#{' '}
                 +icon('arrow-down')
 
-            section
+            section.mb-large
               .card.card--well.text-medium
-                .row
-                  .col--4
-                    .card__content
+                .card__content
+                  .row
+                    .col--4
                       dl
                         dt Počet strán
                         dd 271
@@ -138,26 +137,25 @@ block content
                       dl.no-mrg
                         dt Rok vydania
                         dd 2017
-                  .col--4
-                    .card__content
+                    .col--4
                       dl
                         dt Väzba
                         dd pävná s prebalom
                       dl
                         dt Jazyk
                         dd slovenský
-                      dl
+                      dl.no-mrg
                         dt Katalógové číslo
                         dd 162431
-                  .col--4
-                    .card__content
+                    .col--4
                       dl
                         dt Rozmer
                         dd 100x90x25cm
-                      dl
+                      dl.no-mrg
                         dt ISBN
                         dd 9788055153025
 
+            section.mb-large
               h5.mb-medium Kategorizácia
 
               ul.list-inline
@@ -200,8 +198,96 @@ block content
                 li
                   a.link(href="#") Špeciálna kategória
 
+            section.mb-large
+              h2 Recenzie
 
+              .card.card--well
+                .card__content
+                  .row.align-items-center.align-items-middle
+                    .col--3
+                      figure.figure.no-mrg
+                        +icon('user').icon--xlarge.text-color-grey
+                        //- img.img.img--circle(src="http://placehold.it/48x48")
+                        figcaption.figure__caption Ja
+                    .col--5.col--border.text-center
+                      p.mb-small Ako sa vám páčila kniha?
+                      .rating-star.align-items-center
+                        +icon('star').rating-star__item.icon--xlarge.clickable
+                        +icon('star').rating-star__item.icon--xlarge.clickable
+                        +icon('star').rating-star__item.icon--xlarge.clickable
+                        +icon('star').rating-star__item.icon--xlarge.clickable
+                        +icon('star').rating-star__item.icon--xlarge.clickable
 
+                    .col--4
+                      .btn-layout.btn-layout--vertical.no-mrg
+                        button.btn Pridať recenziu
+
+              .card
+                .card__content
+                  .row.align-items-center.align-items-middle
+                    .col--5
+                      .rating-text.text-center
+                        .rating-text__value
+                          span.text-bold 4,7
+                          span.text-color-grey  / 5
+                          p.text-medium.text-color-grey.mb-small 1024 hodnotení
+                      .rating-star.align-items-center
+                        +icon('star').rating-star__item.icon--large.is-active
+                        +icon('star').rating-star__item.icon--large.is-active
+                        +icon('star').rating-star__item.icon--large.is-active
+                        +icon('star').rating-star__item.icon--large.is-active
+                        +icon('star-half').rating-star__item.icon--large.is-active
+                    .col--7.col--border
+                      table.table.table--clean.no-mrg
+                        tbody
+                          -
+                            const barRating = [857, 10, 24, 3, 12];
+                            const barRatingSum = barRating.reduce((a, b) => (a + b), 0);
+                          each rating, ratingIndex in barRating
+                            tr
+                              td
+                                .rating-star
+                                  each star, starIndex in Array(5)
+                                    +icon('star').rating-star__item.icon--large(class=(starIndex <= (4 - ratingIndex)) && 'is-active')
+                              td
+                                span= barRating[ratingIndex]
+                              td(width="100%")
+                                -
+                                  const width = `${Math.floor(barRating[ratingIndex] / barRatingSum * 100)}%`;
+                                .rating-bar(class=`rating-bar--${5 - ratingIndex}`, style=`width: ${width};`)
+
+              hr
+
+              +review
+                p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+
+              +review({ reply: true, name: 'Darina Dobrovská', address: false, review: 0, likes: 25})
+                p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+
+              +review({ avatar: true, name: 'Tomáš Ulej'})
+                p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+
+              .btn-layout.btn-layout--horizontal.align-items-middle
+                button.btn.btn--ghost.btn--equal.is-active 1
+                button.btn.btn--ghost.btn--equal 2
+                button.btn.btn--ghost.btn--equal 3
+                div ...
+                button.btn.btn--ghost.btn--equal 20
+                button.btn.btn--ghost
+                  | Ďalšie
+                  +icon('arrow-right').icon--right.icon--medium
+
+            hr
+
+            section.mb-large
+              h2 O autorovi
+
+              p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
+
+            secton.mb-large
+              h2 Vydavateľstvo
+
+              p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame
 
 
 
