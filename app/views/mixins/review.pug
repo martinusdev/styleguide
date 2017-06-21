@@ -1,0 +1,49 @@
+mixin review(props = {})
+  -
+    const {
+      avatar,
+      name = 'Kamil Peteraj',
+      address = 'Martinus, Obchodná BA',
+      stars = 4,
+      date = '2. 3. 2017',
+      likes = 0,
+      dislikes = 0,
+      reply,
+    } = props;
+  article.review(class= reply ? 'review--reply' : '')
+    header.review__header.bar.mb-small
+      .bar__item
+        if avatar
+          img.img.img--circle(src="http://placehold.it/48x48")
+        else
+          +icon('user').icon--xlarge.text-color-grey
+      .bar__item.bar__item--fill
+        .text-semibold= name
+        if address
+          div.text-color-grey-800= address
+      .bar__item
+        .rating-star.align-items-center
+          each star, starIndex in Array(5)
+            +icon('star').rating-star__item.icon--large(class=`${starIndex < stars ? 'is-active' : ''}`)
+      .bar__item
+        span.text-color-grey-800= date
+
+    div.review__body.mb-not-last
+      block
+    footer.review__footer.bar
+      .bar__item
+        button.btn.btn--clean
+          +icon('react').icon--left.icon--medium
+          | Reagovať
+      .bar__item
+        figure.figure.figure--horizontal.no-mrg
+          +icon('like').icon--medium.text-color-grey-800
+          figcaption.figure__caption.text-size-medium= likes
+
+      .bar__item
+        figure.figure.figure--horizontal.no-mrg
+          +icon('dislike').icon--medium.text-color-grey-800
+          figcaption.figure__caption.text-size-medium= dislikes
+
+      .bar__item
+        +icon('flag').icon--medium.text-color-grey-800
