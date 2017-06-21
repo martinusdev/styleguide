@@ -3,9 +3,17 @@
 // ---------------------------------------------
 
 .review {
-  margin-bottom: _get-space('v', 'large');
+  margin-bottom: _get-space('v');
+
+  @include breakpoint(m) {
+    margin-bottom: _get-space('v', 'large');
+  }
 
   &--reply {
-    margin-left: _get-space('h', 'large');
+    margin-left: _get-space('h');
+
+    @include breakpoint(m) {
+      margin-left: _get-space('h', 'large');
+    }
   }
 }

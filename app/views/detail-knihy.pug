@@ -96,7 +96,7 @@ block content
     section.section
       .wrapper-main
         .row
-          .col--2
+          .col--12.col--l-2
             .book-thumbnail
               img.img.img--fluid.mb-medium(src="/images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
             h2.mb-medium O knihe
@@ -106,7 +106,7 @@ block content
               li O autorovi
               li Recenzie
               li Vydavateľstvo
-          .col--7
+          .col--12.col--l-7
             h2.mb-medium Popis knihy
 
             section.mb-large
@@ -201,60 +201,58 @@ block content
             section.mb-large
               h2 Recenzie
 
-              .card.card--well
+              .card.card--well.mb-large
                 .card__content
                   .row.align-items-center.align-items-middle
-                    .col--3
+                    .col--3.show-l
                       figure.figure.no-mrg
-                        +icon('user').icon--xlarge.text-color-grey
+                        +icon('avatar').icon--xlarge.text-color-grey
                         //- img.img.img--circle(src="http://placehold.it/48x48")
                         figcaption.figure__caption Ja
-                    .col--5.col--border.text-center
+                    .col--l-5.col--l-border.text-center
                       p.mb-small Ako sa vám páčila kniha?
-                      .rating-star.align-items-center
+                      .rating-star.align-items-center.mb-small.no-mrg-l
                         +icon('star').rating-star__item.icon--xlarge.clickable
                         +icon('star').rating-star__item.icon--xlarge.clickable
                         +icon('star').rating-star__item.icon--xlarge.clickable
                         +icon('star').rating-star__item.icon--xlarge.clickable
                         +icon('star').rating-star__item.icon--xlarge.clickable
 
-                    .col--4
+                    .col--l-4
                       .btn-layout.btn-layout--vertical.no-mrg
                         button.btn Pridať recenziu
 
-              .card
-                .card__content
-                  .row.align-items-center.align-items-middle
-                    .col--5
-                      .rating-text.text-center
-                        .rating-text__value
-                          span.text-bold 4,7
-                          span.text-color-grey  / 5
-                          p.text-medium.text-color-grey.mb-small 1024 hodnotení
-                      .rating-star.align-items-center
-                        +icon('star').rating-star__item.icon--large.is-active
-                        +icon('star').rating-star__item.icon--large.is-active
-                        +icon('star').rating-star__item.icon--large.is-active
-                        +icon('star').rating-star__item.icon--large.is-active
-                        +icon('star-half').rating-star__item.icon--large.is-active
-                    .col--7.col--border
-                      table.table.table--clean.no-mrg
-                        tbody
-                          -
-                            const barRating = [857, 10, 24, 3, 12];
-                            const barRatingSum = barRating.reduce((a, b) => (a + b), 0);
-                          each rating, ratingIndex in barRating
-                            tr
-                              td
-                                .rating-star
-                                  each star, starIndex in Array(5)
-                                    +icon('star').rating-star__item.icon--large(class=(starIndex <= (4 - ratingIndex)) && 'is-active')
-                              td
-                                span= barRating[ratingIndex]
-                              td(width="100%")
-                                -
-                                  const width = `${Math.floor(barRating[ratingIndex] / barRatingSum * 100)}%`;
-                                .rating-bar(class=`rating-bar--${5 - ratingIndex}`, style=`width: ${width};`)
+              .row.align-items-center.align-items-middle.book-rating.mb-large
+                .col--l-5
+                  .rating-text.text-center
+                    .rating-text__value
+                      span.text-bold 4,7
+                      span.text-color-grey  / 5
+                      p.text-medium.text-color-grey.mb-small 1024 hodnotení
+                  .rating-star.align-items-center.mb-medium.no-mb-l
+                    +icon('star').rating-star__item.icon--large.is-active
+                    +icon('star').rating-star__item.icon--large.is-active
+                    +icon('star').rating-star__item.icon--large.is-active
+                    +icon('star').rating-star__item.icon--large.is-active
+                    +icon('star-half').rating-star__item.icon--large.is-active
+                .col--l-7.col--l-border
+                  table.book-rating__table.table.table--clean.no-mrg
+                    tbody
+                      -
+                        const barRating = [857, 10, 24, 3, 12];
+                        const barRatingSum = barRating.reduce((a, b) => (a + b), 0);
+                      each rating, ratingIndex in barRating
+                        tr
+                          td
+                            .rating-star
+                              each star, starIndex in Array(5)
+                                +icon('star').rating-star__item.icon--medium(class=(starIndex <= (4 - ratingIndex)) && 'is-active')
+                          td
+                            span= barRating[ratingIndex]
+                          td(width="100%")
+                            -
+                              const width = `${Math.floor(barRating[ratingIndex] / barRatingSum * 100)}%`;
+                            .rating-bar(class=`rating-bar--${5 - ratingIndex}`, style=`width: ${width};`)
 
               hr
 
@@ -264,15 +262,15 @@ block content
               +review({ reply: true, name: 'Darina Dobrovská', address: false, review: 0, likes: 25})
                 p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
-              +review({ avatar: true, name: 'Tomáš Ulej'})
+              +review({ avatar: true, name: 'Tomáš Ulej a mam strasne dlhe meno a uvidime co sa stane'})
                 p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
-              .btn-layout.btn-layout--horizontal.align-items-middle
+              .pagination.btn-layout.btn-layout--horizontal.align-items-middle
                 button.btn.btn--ghost.btn--equal.is-active 1
                 button.btn.btn--ghost.btn--equal 2
-                button.btn.btn--ghost.btn--equal 3
+                button.btn.btn--ghost.btn--equal.show-s 3
                 div ...
-                button.btn.btn--ghost.btn--equal 20
+                button.btn.btn--ghost.btn--equal.show-s 20
                 button.btn.btn--ghost
                   | Ďalšie
                   +icon('arrow-right').icon--right.icon--medium
@@ -291,7 +289,7 @@ block content
 
 
 
-          .col--3
+          .col--12.col--l-2
             article.card.card--well.text-center
               .card__content
                 .h2.no-mrg Kúpite výhodne spolu
