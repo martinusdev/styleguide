@@ -229,9 +229,13 @@ strong,
 // ---------------------------------------------
 // 3. OTHER UTILITIES
 
-.mb-large { margin-bottom: _get-space('v', 'large'); }
-.mb-medium { margin-bottom: _get-space('v'); }
-.mb-small { margin-bottom: _get-space('v', 'small'); }
+@each $breakpoint, $size in $breakpoints {
+  @include breakpoint( $breakpoint ) {
+    .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large'); }
+    .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v'); }
+    .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small'); }
+  }
+}
 
 .mb-not-last > *:last-child { margin-bottom: 0; }
 
