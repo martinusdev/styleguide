@@ -170,7 +170,7 @@ block append content
       +demo
         +demo-example
           ul.l-text-colors
-            each color in ['theme', 'theme-400', 'yellow', 'black', 'semiblack', 'grey', 'grey-800', 'white', 'semiwhite', 'error', 'success']
+            each color in ['theme', 'theme-400', 'yellow', 'black', 'semiblack', 'grey', 'grey-200','grey-800', 'white', 'semiwhite', 'error', 'success']
               li
                 span(class='text-color-' + color)= color
 
@@ -183,6 +183,7 @@ block append content
               <li><span class="text-color-black">black</span></li>
               <li><span class="text-color-semiblack">semiblack</span></li>
               <li><span class="text-color-grey">grey</span></li>
+              <li><span class="text-color-grey-200">grey-200</span></li>
               <li><span class="text-color-grey-800">grey-800</span></li>
               <li><span class="text-color-white">white</span></li>
               <li><span class="text-color-semiwhite">semiwhite</span></li>
@@ -461,11 +462,12 @@ block append content
 
   +content-section(contents[3], true)
 
-    +p Margin bottom utilities:
+    +p Margin utilities:
       +ul
         li <code class='l-code-inline'>.mb-large</code> for large margin bottom.
         li <code class='l-code-inline'>.mb-medium</code> for medium margin bottom.
         li <code class='l-code-inline'>.mb-small</code> for small margin bottom.
+        li <code class='l-code-inline'>.mb-not-last</code> for removing bottom of parents last child.
 
     +p Various other utilites contains:
       +ul
