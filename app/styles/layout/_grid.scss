@@ -181,7 +181,7 @@
 
   @each $breakpoint, $size in $breakpoints {
     @include breakpoint($breakpoint) {
-      @for $i from 1 through $grid-base {
+      @for $i from 0 through $grid-base {
         .ofst-#{_get-variant-name($breakpoint, '-')}-#{$i} {
           @include column-offset($i);
         }
