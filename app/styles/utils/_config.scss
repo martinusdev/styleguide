@@ -653,11 +653,15 @@ $select-button-offset: 8px !default;
 $select: (
   default: (
     default: (
-      background-color: $form-bgc,
+      background-color: _color(bg),
       border-width: $form-b-w,
       border-style: $form-b-s,
-      border-color: $form-b-c,
+      border-color: transparent,
       border-radius: $select-b-r,
+      after: (
+        height: 4px,
+        background-color: _color(bg, 600),
+      )
     ),
     focus: (
       box-shadow: $form-focus-bs,
@@ -676,7 +680,13 @@ $select: (
   clean: (
     default: (
       background-color: transparent,
-      border-width: 0,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: $form-b-c,
+      border-radius: $select-b-r,
+      after: (
+        display: none,
+      )
     )
   )
 );
@@ -825,15 +835,16 @@ $dropdown-menu: (
 $dropdown-menu-item: (
   default: (
     font-size: _get-rem($font-size-medium),
-    padding: 10px,
+    padding: _get-rem(10px),
     color: $color-black,
     transition: #{color $ease-out-200},
   ),
   focus: (
-    color: _color(primary, 500),
+    background-color: _color(bg, 500),
   ),
   highlighted: (
-    color: _color('primary', 500),
+    background-color: _color(bg, 500),
+    color: _color('primary'),
   )
 );
 

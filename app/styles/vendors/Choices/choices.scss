@@ -6,9 +6,6 @@ $select-selector: 'choices' !default;
 
 .#{$select-selector} {
   position: relative;
-  .#{$select-selector}__inner {
-    @include css-map($select, 'default', 'default');
-  }
 
   &:focus, &.is-focused {
     outline: $default-outline;
@@ -22,6 +19,8 @@ $select-selector: 'choices' !default;
     }
     .#{$select-selector}__item { cursor: not-allowed; }
   }
+
+  &.is-open .#{$select-selector}__inner::after { opacity: 0; }
 }
 
 .#{$select-selector}[data-type*="select-one"] {
@@ -123,7 +122,30 @@ $select-selector: 'choices' !default;
 
   @each $name, $props in $select {
     .select#{_get-variant-name($name)} & {
-      @include css-map($props, 'default');
+      // @debug($props);
+
+      border-radius: _map-deep-get($props, 'default', 'border-radius');
+      $after: _map-deep-get($props, default, after);
+      $default: map-get($props, default);
+      $default: map_remove($default, after);
+
+      @debug($default);
+
+      @include css-map($default);
+
+      @if $after {
+        &::after { // stylelint-disable
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+
+          @include css-map($after);
+          border-bottom-left-radius: $border-radius;
+          border-bottom-right-radius: $border-radius;
+        }
+      }
 
       .is-focused &, .is-open & {
         @include css-map($props, 'focus');
