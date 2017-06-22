@@ -3,6 +3,8 @@
   flex-flow: row;
   flex-wrap: wrap;
   align-items: center;
+
+  margin-top: -(_get-space('h', 'small'));
 }
 
 @mixin bar-item(
@@ -10,6 +12,7 @@
 ) {
   flex: 0 0 if($width == 0, auto, $width);
   align-items: center;
+  margin-top: _get-space('h', 'small');
 
   > * {
     margin-bottom: 0;
