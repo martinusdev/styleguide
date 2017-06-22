@@ -122,14 +122,11 @@ $select-selector: 'choices' !default;
 
   @each $name, $props in $select {
     .select#{_get-variant-name($name)} & {
-      // @debug($props);
 
       border-radius: _map-deep-get($props, 'default', 'border-radius');
       $after: _map-deep-get($props, default, after);
       $default: map-get($props, default);
       $default: map_remove($default, after);
-
-      @debug($default);
 
       @include css-map($default);
 
