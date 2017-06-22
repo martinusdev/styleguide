@@ -5,10 +5,29 @@ block opts
 
 block content
   main
+    section.section.section--toolbar.hide-m
+      .wrapper-main
+        .bar.bar--small.mb-small
+          .bar__item.bar__item--fill
+            .form-control.form-control--select.no-mrg
+              select.js-select
+                option Pevná väzba#{' '}
+                  span.text-color-grey.text-nowrap 12,99 €
+                option Brožovaná väzba#{' '}
+                  span.text-color-grey.text-nowrap 10,29 €
+                option E-kniha#{' '}
+                  span.text-color-grey.text-nowrap 6,50 €
+                option Audio kniha#{' '}
+                  span.text-color-grey.text-nowrap 16,25 €
+          .bar__item
+            .form-control.form-control--select.no-mrg
+              select.js-select.select--inline.select--clean
+                option SK
+                option CZ
     section.section
       .wrapper-main
         .row.book-detail
-          .col--3
+          .col--m-3
             .book-detail__preview
               .book-detail__image
                 .book-thumbnail.book-thumbnail--large-shadow
@@ -17,8 +36,8 @@ block content
                 button.btn.btn--clean
                   +icon('eye').icon--left.icon--medium
                   | Pozrieť ukážku
-          article.col--6
-            .filter.mb-large
+          article.col--m-9.col--l-6
+            .filter.mb-large.show-m
               .filter__item
                 input.filter__input(type="radio", name="book-type", id="book-type-1", checked)
                 label.filter__value(for="book-type-1")
@@ -47,9 +66,14 @@ block content
               | #{' '} a #{' '}
               a.link(href="#") John Tiffany
             h1.book-detail__title Základy rybolovu pro kluky a holky
-            h3.book-detail__subtitle Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+            h3.book-detail__subtitle.mb-medium.mb-large-m Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
 
             .bar.bar--small.mb-medium
+              .bar__item.show-m
+                .form-control.form-control--select.no-mrg
+                  select.js-select.select--inline.select--clean.select--small
+                    option Český jazyk
+                    option Slovenčina
               .bar__item
                 .rating-star
                   +icon('star').rating-star__item.icon--medium.is-active
@@ -62,17 +86,12 @@ block content
               .bar__item.bar__item--border
               .bar__item
                 a.link.text-medium(href="#") 234 x
-              .bar__item
-                .form-control.form-control--select.no-mrg
-                  select.js-select.select--inline.select--clean.select--small
-                    option SK
-                    option CZ
-              .bar__item.bar__item--shrinkable
+              .bar__item.bar__item--shrinkable.show-m
                 .badges.no-mrg
                   .badge.badge--green Bestseller
                   .badge.badge--orange Top #98
 
-            .bar.mb-medium
+            .bar.mb-medium.show-m
               .bar__item
                 dl.no-mrg
                   dt Vydavateľstvo
@@ -94,15 +113,15 @@ block content
                       dt Tento titul číta aj
                       dd
                         a.link(href="#") Jana Šlinská
+            .show-m
+              p Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké
 
-            p Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké
-
-            p
-              a.link.text-medium(href="#") Čítaj viac#{' '}
-                 +icon('arrow-down')
+              p
+                a.link.text-medium(href="#") Čítaj viac#{' '}
+                   +icon('arrow-down')
 
 
-          .col--3
+          .col--l-3.col--m-6.ofst--m-center
             include ./modules/card-cart
     section.section.section--secondary.section--overflow
       .wrapper-main

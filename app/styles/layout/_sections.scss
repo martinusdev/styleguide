@@ -3,12 +3,22 @@
 // ---------------------------------------------
 
 .section {
-  padding-top: _get-space('v', 'large');
+  padding-top: _get-space('v');
+
+  @include breakpoint(m) {
+    padding-top: _get-space('v', 'large');
+  }
 
   @include clearfix;
 
   &--overflow {
     overflow: hidden;
+  }
+
+  &--toolbar {
+    padding-top: _get-space('v', 'small');
+
+    border-bottom: 1px solid $default-border-color;
   }
 }
 
