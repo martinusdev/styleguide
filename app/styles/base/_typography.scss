@@ -24,12 +24,8 @@
 
       p {
         margin-top: 0;
-        margin-bottom: _get-space('v', 'large');
+        margin-bottom: _get-space('v');
         line-height: map-get($values, base-line-height);
-
-        & + & { // stylelint-disable-line
-          margin-top: _get-space('v') - _get-space('v', 'large');
-        }
       }
 
       @each $heading in $heading-tags {
