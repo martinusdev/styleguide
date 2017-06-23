@@ -156,14 +156,21 @@ hr {
         content: '';
         position: absolute;
         top: 50%;
-        left: -40px;
+        left: -20px;
         transform: translateY(-50%);
 
-        width: 20px;
+        width: 10px;
         height: 5px;
 
         background: linear-gradient(to left, _color(primary, 500) 0, _color(primary, 500) 5px, _color(primary, 600) 5px, _color(primary, 600) 20px);
       }
+
+      @include breakpoint(l) {
+        &::before {
+          width: 20px;
+          left: -40px;
+        }
+      };
     }
   }
 

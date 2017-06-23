@@ -216,7 +216,7 @@ $em: (
 
 $inline-list: (
   default: (
-    margin: 0.5em 0,
+    margin: -(_get-space('v', 'small') / 2) 0 _get-space('v'),
   ),
   line: (
     margin: 0 0.5em 0 0,
@@ -225,10 +225,10 @@ $inline-list: (
 
 $inline-list-item: (
   default: (
-    margin: 0.3em 0.5em 0.3em 0,
+    margin: (_get-space('v', 'small') / 2) _get-space('h', 'small') 0 0,
   ),
   expanded: (
-    margin: 0.3em 1.5em 0.3em 0,
+    margin: (_get-space('v', 'small') / 2)  _get-space('h') 0 0,
   )
 );
 
