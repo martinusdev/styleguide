@@ -93,10 +93,11 @@ export default class Toggle {
 
     if (el.hasAttribute('data-toggle-text')) {
       const newText = el.getAttribute('data-toggle-text');
-      const oldText = el.textContent;
+      const target = el.querySelector('[data-toggle-text-target]') || el;
+      const oldText = target.textContent;
 
       el.setAttribute('data-toggle-text', oldText);
-      el.textContent = newText;
+      target.textContent = newText;
 
       toggled = true;
     }

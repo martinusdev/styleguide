@@ -17,14 +17,14 @@ block prepend content
 
 //- Content
 block append content
-  
+
   //- TOGGLE
   +content-section(contents[0])
 
     +p Toggle javascript handles basic toggle function of 'default/active' states, icon and text replacement in elements and aria-expanded attribute. It can be used for example to show/hide elements (with proper css), or change a hamburger menu icon to an X when the menu is open. By default it toggles <code class='l-code-inline'>.is-active</code> class on the target element.
 
     +content-sub-section('Basic usage')
-    
+
       +p To set up a basic toggle trigger element, use <code class='l-code-inline'>[data-toggle="#target-element"]</code>
 
       +demo
@@ -164,7 +164,7 @@ block append content
       +demo
         +demo-example
           code.l-code-inline.l-debug-active target element state:
-          button.btn(type='button', data-toggle='self, previous', data-toggle-icon='#icon-sg-close')
+          button.btn(type='button', data-toggle='self, previous', data-toggle-icon='/icons_/styleguide.svg#icon-sg-close')
             | Toggle
             +icon-sg('sg-check', 'icon--right icon--small')
         +demo-code
@@ -185,12 +185,18 @@ block append content
       +p The example below shows how to toggle text.
 
       +warning
-        +p Use only if toggle element contains only text.
+        +p Elements with multiple children (non-text too), can specify <code class='l-code-inline'>data-toggle-text-target</code> on element with text, which will be toggled.
 
       +demo
         +demo-example
           code.l-code-inline.l-debug-active target element state:
           button.btn(type='button', data-toggle='self, previous', data-toggle-text='toggle off') Toggle on
+
+          code.l-code-inline.l-debug-active target element state:
+          button.btn(type='button', data-toggle='self, previous', data-toggle-icon='/icons_/styleguide.svg#icon-sg-close', data-toggle-text='toggle off')
+            span(data-toggle-text-target) Toggle on
+            +icon-sg('sg-check', 'icon--right icon--small')
+
         +demo-code
           :code
             <!-- target -->
@@ -198,6 +204,12 @@ block append content
 
             <!-- toggle -->
             <button class="btn" type="button" data-toggle="self" data-toggle-text="toggle off">Toggle on</button>
+
+            <!-- toggle with multiple children -->
+            <button class="btn" type="button" data-toggle="self" data-toggle-icon="#icon-sg-close" data-toggle-text='Toggle off'>
+              <span data-toggle-text-target>Toggle on</span>
+              <svg class="icon icon-sg-check icon-right icon--small" role="img" aria-hidden="true"><use xlink:href="#icon-sg-check"></use></svg>
+            </button>
       //- end: demo
 
     //- end: subsection
@@ -208,7 +220,7 @@ block append content
   +content-section(contents[1])
 
     p Options can be passed via data attributes. Append the option name to <code class='l-code-inline'>data-</code>, as in <code class='l-code-inline'>data-toggle=""</code>.
-    
+
     h3 Trigger element options
 
     table.table
@@ -242,11 +254,11 @@ block append content
           td <code class='l-code-inline'>number</code>
           td <code class='l-code-inline'>1</code>
           td In case you need to get parent's parent, or even higher ancestor, you can specify count of hops. <br><strong>Use in combination with</strong> <code class='l-code-inline'>data-toggle="parent"</code>.
-          
+
     h3 Target element options
-    
+
     +note The default action without any target element options toggles <code class='l-code-inline'>.is-active</code> class on the target elemet.
-    
+
     table.table
       thead
         tr
