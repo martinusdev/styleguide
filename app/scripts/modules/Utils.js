@@ -67,5 +67,14 @@ export function getSiblings(el) {
   return siblings;
 }
 
+export function insertAfter(newNode, referenceNode) {
+  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+export function createElementFromString(elementAsStr) {
+  const div = document.createElement('div');
+  div.innerHTML = elementAsStr;
+  return div.children[0];
+}
 
 /* eslint-enable */

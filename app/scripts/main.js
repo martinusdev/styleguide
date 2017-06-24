@@ -7,6 +7,7 @@ import Tab from './modules/Tab';
 import Dropdown from './modules/Dropdown';
 import Modal from './modules/Modal';
 import Carousel from './modules/Carousel';
+import Collapse from './modules/Collapse';
 
 window.addEventListener('DOMContentLoaded', () => {
   svg4everybody();
@@ -31,4 +32,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.Carousel = Carousel;
   window.myApp.carousels = new Carousel();
+
+  window.myApp.Collapse = Collapse;
+  window.myApp.collapses = new Collapse();
 });
