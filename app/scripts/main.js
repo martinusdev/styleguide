@@ -9,6 +9,7 @@ import Modal from './modules/Modal';
 import Carousel from './modules/Carousel';
 import Collapse from './modules/Collapse';
 import Sticky from './modules/Sticky';
+import ScrollSpy from './modules/ScrollSpy';
 
 window.addEventListener('DOMContentLoaded', () => {
   svg4everybody();
@@ -39,4 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.Sticky = Sticky;
   window.myApp.stickies = new Sticky();
+
+  window.myApp.ScrollSpy = ScrollSpy;
+  window.myApp.scrollspies = new ScrollSpy();
 });

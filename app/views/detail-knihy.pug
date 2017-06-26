@@ -130,7 +130,7 @@ block content
             .bar__item.bar__item--fill.bar__item--shrinkable
                 h2 Odporúčané knihy a kolekcie
 
-        include ./modules/recommended-books-carousel
+          include ./modules/recommended-books-carousel
 
       section.section.no-pad
         .wrapper-main.no-pad
@@ -157,16 +157,21 @@ block content
                 .book-thumbnail
                   img.img.img--fluid.mb-medium(src="/images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
-                ul.list.list--expanded.no-pad(role="navigation")
-                  li.is-active Popis knihy
-                  li Podrobnosti
-                  li O autorovi
-                  li Recenzie
-                  li Vydavateľstvo
+                ul.list.list--expanded.no-pad(role="navigation", data-gumshoe)
+                  li
+                    a(href="#popis-knihy") Popis knihy
+                  li
+                    a(href="#podrobnosti") Podrobnosti
+                  li
+                    a(href="#recenzie") Recenzie
+                  li
+                    a(href="#o-autorovi") O autorovi
+                  li
+                    a(href="#vydavatelstvo") Vydavateľstvo
             .col--m-9.col--l-7
-              h2.mb-medium Popis knihy
+              section.mb-large#popis-knihy
 
-              section.mb-large
+                h2.mb-medium Popis knihy
                 div(data-collapse="300")
                   p Vždy bolo ťažké byť Harrym Potterom a nie je to ľahké ani dnes, keď je prepracovaným zamestnancom Ministerstva mágie, manželom a otcom troch školopovinných detí.
 
@@ -185,7 +190,7 @@ block content
                   .col--s-8.ofst--s-center
                     include ./modules/card-buy-together
 
-              section.mb-large
+              section.mb-large#podrobnosti
                 .card.card--well.text-medium.no-pad-bottom
                   .card__content
                     .row.no-mrg-bottom
@@ -263,7 +268,7 @@ block content
                   li
                     a.link(href="#") Špeciálna kategória
 
-              section.mb-large
+              section.mb-large#recenzie
                 h2 Recenzie
 
                 .card.card--well.mb-large
@@ -342,7 +347,7 @@ block content
 
               hr
 
-              section.mb-large
+              section.mb-large#o-autorovi
                 h2 O autorovi
 
                 div(data-collapse="150")
@@ -350,7 +355,7 @@ block content
                 a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                   +icon('arrow-down')
 
-              section.mb-large
+              section.mb-large#vydavatelstvo
                 h2 Vydavateľstvo
 
                 div(data-collapse="150")
