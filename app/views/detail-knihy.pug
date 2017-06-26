@@ -5,359 +5,361 @@ block opts
 
 block content
   main
-    section.section.section--toolbar.hide-m
-      .wrapper-main
-        .bar.bar--small.mb-small
-          .bar__item.bar__item--fill
-            .form-control.form-control--select.no-mrg
-              select.js-select
-                option Pevná väzba#{' '}
-                  span.text-color-grey.text-nowrap 12,99 €
-                option Brožovaná väzba#{' '}
-                  span.text-color-grey.text-nowrap 10,29 €
-                option E-kniha#{' '}
-                  span.text-color-grey.text-nowrap 6,50 €
-                option Audio kniha#{' '}
-                  span.text-color-grey.text-nowrap 16,25 €
-          .bar__item
-            .form-control.form-control--select.no-mrg
-              select.js-select.select--inline.select--clean
-                option SK
-                option CZ
-    section.section
-      .wrapper-main
-        .row.book-detail
-          .col--m-4.col--l-3
-            .book-detail__preview
-              .book-detail__image
-                .book-thumbnail.book-thumbnail--large-shadow
-                  img.img.img--fluid.mb-medium(src="/images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-              .book-detail__preview-link.text-center
-                button.btn.btn--clean
-                  +icon('eye').icon--left.icon--medium
-                  | Pozrieť ukážku
-          article.col--m-8.col--l-6
-            .filter.mb-large.show-m
-              .filter__item
-                input.filter__input(type="radio", name="book-type", id="book-type-1", checked)
-                label.filter__value(for="book-type-1")
-                  | Pevná väzba#{' '}
-                  span.text-color-grey.text-nowrap 12,99 €
-              .filter__item
-                input.filter__input(type="radio", name="book-type", id="book-type-2")
-                label.filter__value(for="book-type-2")
-                  | Brožovaná väzba#{' '}
-                  span.text-color-grey.text-nowrap 10,29 €
-              .filter__item
-                input.filter__input(type="radio", name="book-type", id="book-type-3")
-                label.filter__value(for="book-type-3")
-                  | E-kniha#{' '}
-                  span.text-color-grey.text-nowrap 6,50 €
-              .filter__item
-                input.filter__input(type="radio", name="book-type", id="book-type-4")
-                label.filter__value(for="book-type-4")
-                  | Audio kniha#{' '}
-                  span.text-color-grey.text-nowrap 16,25 €
+    div(data-sticky-container)
+      section.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
+        .wrapper-main
+          .bar.bar--small.mb-small
+            .bar__item.bar__item--fill
+              .form-control.form-control--select.no-mrg
+                select.js-select
+                  option Pevná väzba#{' '}
+                    span.text-color-grey.text-nowrap 12,99 €
+                  option Brožovaná väzba#{' '}
+                    span.text-color-grey.text-nowrap 10,29 €
+                  option E-kniha#{' '}
+                    span.text-color-grey.text-nowrap 6,50 €
+                  option Audio kniha#{' '}
+                    span.text-color-grey.text-nowrap 16,25 €
+            .bar__item
+              .form-control.form-control--select.no-mrg
+                select.js-select.select--inline.select--clean
+                  option SK
+                  option CZ
+      section.section
+        .wrapper-main
+          .row.book-detail
+            .col--m-4.col--l-3
+              .book-detail__preview
+                .book-detail__image
+                  .book-thumbnail.book-thumbnail--large-shadow
+                    img.img.img--fluid.mb-medium(src="/images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .book-detail__preview-link.text-center
+                  button.btn.btn--clean
+                    +icon('eye').icon--left.icon--medium
+                    | Pozrieť ukážku
+            article.col--m-8.col--l-6
+              .filter.mb-large.show-m
+                .filter__item
+                  input.filter__input(type="radio", name="book-type", id="book-type-1", checked)
+                  label.filter__value(for="book-type-1")
+                    | Pevná väzba#{' '}
+                    span.text-color-grey.text-nowrap 12,99 €
+                .filter__item
+                  input.filter__input(type="radio", name="book-type", id="book-type-2")
+                  label.filter__value(for="book-type-2")
+                    | Brožovaná väzba#{' '}
+                    span.text-color-grey.text-nowrap 10,29 €
+                .filter__item
+                  input.filter__input(type="radio", name="book-type", id="book-type-3")
+                  label.filter__value(for="book-type-3")
+                    | E-kniha#{' '}
+                    span.text-color-grey.text-nowrap 6,50 €
+                .filter__item
+                  input.filter__input(type="radio", name="book-type", id="book-type-4")
+                  label.filter__value(for="book-type-4")
+                    | Audio kniha#{' '}
+                    span.text-color-grey.text-nowrap 16,25 €
 
-            p.book-detail__author.mb-small
-              a.link(href="#") Frank Weissert
-              | ,#{' '}
-              a.link(href="#") Jack Thorne
-              | #{' '} a #{' '}
-              a.link(href="#") John Tiffany
-            h1.book-detail__title Základy rybolovu pro kluky a holky
-            h3.book-detail__subtitle.mb-medium.mb-large-m Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+              p.book-detail__author.mb-small
+                a.link(href="#") Frank Weissert
+                | ,#{' '}
+                a.link(href="#") Jack Thorne
+                | #{' '} a #{' '}
+                a.link(href="#") John Tiffany
+              h1.book-detail__title Základy rybolovu pro kluky a holky
+              h3.book-detail__subtitle.mb-medium.mb-large-m Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
 
-            .bar.bar--small.mb-medium
-              .bar__item.show-m
-                .form-control.form-control--select.no-mrg
-                  select.js-select.select--inline.select--clean.select--small
-                    option Český jazyk
-                    option Slovenčina
-              .bar__item
-                .rating-star
-                  +icon('star').rating-star__item.icon--medium.is-active
-                  +icon('star').rating-star__item.icon--medium.is-active
-                  +icon('star').rating-star__item.icon--medium.is-active
-                  +icon('star').rating-star__item.icon--medium.is-active
-                  +icon('star-half').rating-star__item.icon--medium.is-active
-                  .rating-star__value
-                    b 4,5
-              .bar__item.bar__item--border
-              .bar__item
-                a.link.text-medium(href="#") 234 x
-              .bar__item.bar__item--shrinkable.show-m
-                .badges.no-mrg
-                  .badge.badge--green Bestseller
-                  .badge.badge--orange Top #98
+              .bar.bar--small.mb-medium
+                .bar__item.show-m
+                  .form-control.form-control--select.no-mrg
+                    select.js-select.select--inline.select--clean.select--small
+                      option Český jazyk
+                      option Slovenčina
+                .bar__item
+                  .rating-star
+                    +icon('star').rating-star__item.icon--medium.is-active
+                    +icon('star').rating-star__item.icon--medium.is-active
+                    +icon('star').rating-star__item.icon--medium.is-active
+                    +icon('star').rating-star__item.icon--medium.is-active
+                    +icon('star-half').rating-star__item.icon--medium.is-active
+                    .rating-star__value
+                      b 4,5
+                .bar__item.bar__item--border
+                .bar__item
+                  a.link.text-medium(href="#") 234 x
+                .bar__item.bar__item--shrinkable.show-m
+                  .badges.no-mrg
+                    .badge.badge--green Bestseller
+                    .badge.badge--orange Top #98
 
-            .bar.mb-medium.show-m
-              .bar__item
-                dl.no-mrg
-                  dt Vydavateľstvo
-                  dd
-                    a.link(href="#") Inspira Publishing
-                    span.text-color-grey , 2016
-              .bar__item.bar__item--border
-              .bar__item
-                dl.no-mrg
-                  dt Edícia
-                  dd
-                    a.link(href="#") Rybolov
-              .bar__item.bar__item--border
-              .bar__item
-                figure.figure.figure--horizontal.no-mrg
-                  img.img.img--circle(src="http://placehold.it/24x24")
-                  figcaption.figure__caption
-                    dl.no-mrg
-                      dt Tento titul číta aj
-                      dd
-                        a.link(href="#") Jana Šlinská
-            .show-m
-              p Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké
+              .bar.mb-medium.show-m
+                .bar__item
+                  dl.no-mrg
+                    dt Vydavateľstvo
+                    dd
+                      a.link(href="#") Inspira Publishing
+                      span.text-color-grey , 2016
+                .bar__item.bar__item--border
+                .bar__item
+                  dl.no-mrg
+                    dt Edícia
+                    dd
+                      a.link(href="#") Rybolov
+                .bar__item.bar__item--border
+                .bar__item
+                  figure.figure.figure--horizontal.no-mrg
+                    img.img.img--circle(src="http://placehold.it/24x24")
+                    figcaption.figure__caption
+                      dl.no-mrg
+                        dt Tento titul číta aj
+                        dd
+                          a.link(href="#") Jana Šlinská
+              .show-m
+                p Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké
 
-              p
-                a.link.text-medium(href="#") Čítaj viac#{' '}
-                   +icon('arrow-down')
+                p
+                  a.link.text-medium(href="#") Čítaj viac#{' '}
+                     +icon('arrow-down')
 
 
-          .col--l-3.col--m-6.ofst--m-4.ofst--l-0
-            include ./modules/card-cart
-    section.section.section--secondary.section--overflow
-      .wrapper-main
-        .bar.mb-medium
-          .bar__item.bar__item--fill.bar__item--shrinkable
-              h2 Odporúčané knihy a kolekcie
+            .col--l-3.col--m-6.ofst--m-4.ofst--l-0
+              include ./modules/card-cart
+      section.section.section--secondary.section--overflow
+        .wrapper-main
+          .bar.mb-medium
+            .bar__item.bar__item--fill.bar__item--shrinkable
+                h2 Odporúčané knihy a kolekcie
 
         include ./modules/recommended-books-carousel
 
-    section.section.no-pad
-      .wrapper-main.no-pad
-        a(href='#')
-          img.img.img--fluid(src="/images/content/banner-1280x100.jpg").no-mrg
+      section.section.no-pad
+        .wrapper-main.no-pad
+          a(href='#')
+            img.img.img--fluid(src="/images/content/banner-1280x100.jpg").no-mrg
+    div(data-sticky-container)
+      section.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
+        .wrapper-main
+          .bar.bar--small.mb-small
+            .bar__item.bar__item--fill
+              .form-control.form-control--select.no-mrg
+                select.js-select.select--clean
+                  option Popis knihy
+                  option Podrobnosti
+                  option Recenzie
+                  option O autorovi
+                  option Vydavateľstvo
 
-    section.section.section--toolbar.hide-m
-      .wrapper-main
-        .bar.bar--small.mb-small
-          .bar__item.bar__item--fill
-            .form-control.form-control--select.no-mrg
-              select.js-select.select--clean
-                option Popis knihy
-                option Podrobnosti
-                option Recenzie
-                option O autorovi
-                option Vydavateľstvo
+      section.section
+        .wrapper-main
+          .row(data-sticky-container)
+            .col--l-2.col--m-3.show-m
+              div(data-sticky, data-sticky-class="is-stuck", data-margin-top="40")
+                .book-thumbnail
+                  img.img.img--fluid.mb-medium(src="/images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                h2.mb-medium O knihe
+                ul.list.list--expanded.no-pad(role="navigation")
+                  li.is-active Popis knihy
+                  li Podrobnosti
+                  li O autorovi
+                  li Recenzie
+                  li Vydavateľstvo
+            .col--m-9.col--l-7
+              h2.mb-medium Popis knihy
 
-    section.section
-      .wrapper-main
-        .row
-          .col--l-2.col--m-3.show-m
-            .book-thumbnail
-              img.img.img--fluid.mb-medium(src="/images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            h2.mb-medium O knihe
-            ul.list.list--expanded.no-pad(role="navigation")
-              li.is-active Popis knihy
-              li Podrobnosti
-              li O autorovi
-              li Recenzie
-              li Vydavateľstvo
-          .col--m-9.col--l-7
-            h2.mb-medium Popis knihy
+              section.mb-large
+                div(data-collapse="300")
+                  p Vždy bolo ťažké byť Harrym Potterom a nie je to ľahké ani dnes, keď je prepracovaným zamestnancom Ministerstva mágie, manželom a otcom troch školopovinných detí.
 
-            section.mb-large
-              div(data-collapse="300")
-                p Vždy bolo ťažké byť Harrym Potterom a nie je to ľahké ani dnes, keď je prepracovaným zamestnancom Ministerstva mágie, manželom a otcom troch školopovinných detí.
+                  p Harry zápasí s minulosťou, ktorá sa ustavične vracia. Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
 
-                p Harry zápasí s minulosťou, ktorá sa ustavične vracia. Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
+                  p Nová hra Jacka Thorna Harry Potter a prekliate dieťa vychádza z pôvodného nového príbehu J.K. Rowlingovej, Johna Tiffanyho a Jacka Thorna. Je to ôsmy príbeh o Harrym Potterovi a prvý, ktorý sa objavil na javisku. Toto knižné vydanie scenára prináša pokračovanie príbehu Harryho Pottera, jeho priateľov a rodiny bezprostredne po svetovej premiére hry v londýnskom West Ende 30. júla 2016.
 
-                p Nová hra Jacka Thorna Harry Potter a prekliate dieťa vychádza z pôvodného nového príbehu J.K. Rowlingovej, Johna Tiffanyho a Jacka Thorna. Je to ôsmy príbeh o Harrym Potterovi a prvý, ktorý sa objavil na javisku. Toto knižné vydanie scenára prináša pokračovanie príbehu Harryho Pottera, jeho priateľov a rodiny bezprostredne po svetovej premiére hry v londýnskom West Ende 30. júla 2016.
+                  p Prvá oficiálna divadelná hra o Harrym Potterovi mala premiéru v sobotu 30. júla v Palace Theatre v londýnskom West Ende. Prvých 175-tisíc vstupeniek sa minulý rok vypredalo v priebehu ôsmich hodín. Tvorcovia sa preto rozhodli, že hru, ktorú mali pôvodne uvádzať do 27. mája 2017, predĺžia až do 10. decembra toho roku.
 
-                p Prvá oficiálna divadelná hra o Harrym Potterovi mala premiéru v sobotu 30. júla v Palace Theatre v londýnskom West Ende. Prvých 175-tisíc vstupeniek sa minulý rok vypredalo v priebehu ôsmich hodín. Tvorcovia sa preto rozhodli, že hru, ktorú mali pôvodne uvádzať do 27. mája 2017, predĺžia až do 10. decembra toho roku.
+                  p.mb-medium Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+                a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                  +icon('arrow-down')
 
-                p.mb-medium Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
-              a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
-                +icon('arrow-down')
+              section.mb-large.hide-l
+                .row
+                  .col--s-8.ofst--s-center
+                    include ./modules/card-buy-together
 
-            section.mb-large.hide-l
-              .row
-                .col--s-8.ofst--s-center
-                  include ./modules/card-buy-together
+              section.mb-large
+                .card.card--well.text-medium.no-pad-bottom
+                  .card__content
+                    .row.no-mrg-bottom
+                      .col--6.col--s-4
+                        dl
+                          dt Počet strán
+                          dd 271
+                        dl
+                          dt Väzba
+                          dd pävná s prebalom
+                        dl
+                          dt Rozmer
+                          dd 100x90x25cm
+                      .col--6.col--s-4
+                        dl
+                          dt Hmotnosť
+                          dd 330g
+                        dl
+                          dt Jazyk
+                          dd slovenský
+                        dl
+                          dt ISBN
+                          dd 9788055153025
 
-            section.mb-large
-              .card.card--well.text-medium.no-pad-bottom
-                .card__content
-                  .row.no-mrg-bottom
-                    .col--6.col--s-4
-                      dl
-                        dt Počet strán
-                        dd 271
-                      dl
-                        dt Väzba
-                        dd pävná s prebalom
-                      dl
-                        dt Rozmer
-                        dd 100x90x25cm
-                    .col--6.col--s-4
-                      dl
-                        dt Hmotnosť
-                        dd 330g
-                      dl
-                        dt Jazyk
-                        dd slovenský
-                      dl
-                        dt ISBN
-                        dd 9788055153025
-
-                    .col--6.col--s-4
-                      dl
-                        dt Rok vydania
-                        dd 2017
-                      dl
-                        dt Katalógové číslo
-                        dd 162431
+                      .col--6.col--s-4
+                        dl
+                          dt Rok vydania
+                          dd 2017
+                        dl
+                          dt Katalógové číslo
+                          dd 162431
 
 
 
-            section.mb-large
-              h5.mb-medium Kategorizácia
+              section.mb-large
+                h5.mb-medium Kategorizácia
 
-              ul.list-inline
-                li
-                  a.link(href="#") Knihy
-                li(role="presentional")
-                  +icon('chevron-right')
-                li
-                  a.link(href="#") Deti a mládež
-                li(role="presentional")
-                  +icon('chevron-right')
-                li
-                  a.link(href="#") Enciklopédie, náučné knihy
-                li(role="presentional")
-                  +icon('chevron-right')
-                li
-                  a.link(href="#") Ostatné
+                ul.list-inline
+                  li
+                    a.link(href="#") Knihy
+                  li(role="presentional")
+                    +icon('chevron-right')
+                  li
+                    a.link(href="#") Deti a mládež
+                  li(role="presentional")
+                    +icon('chevron-right')
+                  li
+                    a.link(href="#") Enciklopédie, náučné knihy
+                  li(role="presentional")
+                    +icon('chevron-right')
+                  li
+                    a.link(href="#") Ostatné
 
-              ul.list-inline
-                li
-                  a.link(href="#") Knihy
-                li(role="presentional")
-                  +icon('chevron-right')
-                li
-                  a.link(href="#") Próza
-                li(role="presentional")
-                  +icon('chevron-right')
-                li
-                  a.link(href="#") Ďalšie druhy prózy
+                ul.list-inline
+                  li
+                    a.link(href="#") Knihy
+                  li(role="presentional")
+                    +icon('chevron-right')
+                  li
+                    a.link(href="#") Próza
+                  li(role="presentional")
+                    +icon('chevron-right')
+                  li
+                    a.link(href="#") Ďalšie druhy prózy
 
-              ul.list-inline
-                li
-                  a.link(href="#") Knihy
-                li(role="presentional")
-                  +icon('chevron-right')
-                li
-                  a.link(href="#") Hobby
-                li(role="presentional")
-                  +icon('chevron-right')
-                li
-                  a.link(href="#") Špeciálna kategória
+                ul.list-inline
+                  li
+                    a.link(href="#") Knihy
+                  li(role="presentional")
+                    +icon('chevron-right')
+                  li
+                    a.link(href="#") Hobby
+                  li(role="presentional")
+                    +icon('chevron-right')
+                  li
+                    a.link(href="#") Špeciálna kategória
 
-            section.mb-large
-              h2 Recenzie
+              section.mb-large
+                h2 Recenzie
 
-              .card.card--well.mb-large
-                .card__content
-                  .row.align-items-center.align-items-middle
-                    .col--3.show-l
-                      figure.figure.no-mrg
-                        +icon('avatar').icon--xlarge.text-color-grey
-                        //- img.img.img--circle(src="http://placehold.it/48x48")
-                        figcaption.figure__caption Ja
-                    .col--l-5.col--l-border.text-center
-                      p.mb-small Ako sa vám páčila kniha?
-                      .rating-star.align-items-center.mb-small.no-mrg-l
-                        +icon('star').rating-star__item.icon--xlarge.clickable
-                        +icon('star').rating-star__item.icon--xlarge.clickable
-                        +icon('star').rating-star__item.icon--xlarge.clickable
-                        +icon('star').rating-star__item.icon--xlarge.clickable
-                        +icon('star').rating-star__item.icon--xlarge.clickable
+                .card.card--well.mb-large
+                  .card__content
+                    .row.align-items-center.align-items-middle
+                      .col--3.show-l
+                        figure.figure.no-mrg
+                          +icon('avatar').icon--xlarge.text-color-grey
+                          //- img.img.img--circle(src="http://placehold.it/48x48")
+                          figcaption.figure__caption Ja
+                      .col--l-5.col--l-border.text-center
+                        p.mb-small Ako sa vám páčila kniha?
+                        .rating-star.align-items-center.mb-small.no-mrg-l
+                          +icon('star').rating-star__item.icon--xlarge.clickable
+                          +icon('star').rating-star__item.icon--xlarge.clickable
+                          +icon('star').rating-star__item.icon--xlarge.clickable
+                          +icon('star').rating-star__item.icon--xlarge.clickable
+                          +icon('star').rating-star__item.icon--xlarge.clickable
 
-                    .col--l-4
-                      .btn-layout.btn-layout--vertical.no-mrg
-                        button.btn Pridať recenziu
+                      .col--l-4
+                        .btn-layout.btn-layout--vertical.no-mrg
+                          button.btn Pridať recenziu
 
-              .row.align-items-center.align-items-middle.book-rating.mb-large
-                .col--l-5
-                  .rating-text.text-center
-                    .rating-text__value
-                      span.text-bold 4,7
-                      span.text-color-grey  / 5
-                      p.text-medium.text-color-grey.mb-small 1024 hodnotení
-                  .rating-star.align-items-center.mb-medium.no-mb-l
-                    +icon('star').rating-star__item.icon--large.is-active
-                    +icon('star').rating-star__item.icon--large.is-active
-                    +icon('star').rating-star__item.icon--large.is-active
-                    +icon('star').rating-star__item.icon--large.is-active
-                    +icon('star-half').rating-star__item.icon--large.is-active
-                .col--l-7.col--l-border
-                  table.book-rating__table.table.table--clean.no-mrg
-                    tbody
-                      -
-                        const barRating = [857, 10, 24, 3, 12];
-                        const barRatingSum = barRating.reduce((a, b) => (a + b), 0);
-                      each rating, ratingIndex in barRating
-                        tr
-                          td
-                            .rating-star
-                              each star, starIndex in Array(5)
-                                +icon('star').rating-star__item.icon--medium(class=(starIndex <= (4 - ratingIndex)) && 'is-active')
-                          td
-                            span= barRating[ratingIndex]
-                          td(width="100%")
-                            -
-                              const width = `${Math.floor(barRating[ratingIndex] / barRatingSum * 100)}%`;
-                            .rating-bar(class=`rating-bar--${5 - ratingIndex}`, style=`width: ${width};`)
+                .row.align-items-center.align-items-middle.book-rating.mb-large
+                  .col--l-5
+                    .rating-text.text-center
+                      .rating-text__value
+                        span.text-bold 4,7
+                        span.text-color-grey  / 5
+                        p.text-medium.text-color-grey.mb-small 1024 hodnotení
+                    .rating-star.align-items-center.mb-medium.no-mb-l
+                      +icon('star').rating-star__item.icon--large.is-active
+                      +icon('star').rating-star__item.icon--large.is-active
+                      +icon('star').rating-star__item.icon--large.is-active
+                      +icon('star').rating-star__item.icon--large.is-active
+                      +icon('star-half').rating-star__item.icon--large.is-active
+                  .col--l-7.col--l-border
+                    table.book-rating__table.table.table--clean.no-mrg
+                      tbody
+                        -
+                          const barRating = [857, 10, 24, 3, 12];
+                          const barRatingSum = barRating.reduce((a, b) => (a + b), 0);
+                        each rating, ratingIndex in barRating
+                          tr
+                            td
+                              .rating-star
+                                each star, starIndex in Array(5)
+                                  +icon('star').rating-star__item.icon--medium(class=(starIndex <= (4 - ratingIndex)) && 'is-active')
+                            td
+                              span= barRating[ratingIndex]
+                            td(width="100%")
+                              -
+                                const width = `${Math.floor(barRating[ratingIndex] / barRatingSum * 100)}%`;
+                              .rating-bar(class=`rating-bar--${5 - ratingIndex}`, style=`width: ${width};`)
+
+                hr
+
+                +review
+                  p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+
+                +review({ reply: true, name: 'Darina Dobrovská', address: false, review: 0, likes: 25})
+                  p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+
+                +review({ avatar: true, name: 'Tomáš Ulej a mam strasne dlhe meno a uvidime co sa stane'})
+                  p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+
+                .pagination.btn-layout.btn-layout--horizontal.align-items-middle
+                  button.btn.btn--ghost.btn--equal.is-active 1
+                  button.btn.btn--ghost.btn--equal 2
+                  button.btn.btn--ghost.btn--equal.show-s 3
+                  div ...
+                  button.btn.btn--ghost.btn--equal.show-s 20
+                  button.btn.btn--ghost
+                    | Ďalšie
+                    +icon('arrow-right').icon--right.icon--medium
 
               hr
 
-              +review
-                p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+              section.mb-large
+                h2 O autorovi
 
-              +review({ reply: true, name: 'Darina Dobrovská', address: false, review: 0, likes: 25})
-                p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+                div(data-collapse="150")
+                  p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
+                a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                  +icon('arrow-down')
 
-              +review({ avatar: true, name: 'Tomáš Ulej a mam strasne dlhe meno a uvidime co sa stane'})
-                p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+              section.mb-large
+                h2 Vydavateľstvo
 
-              .pagination.btn-layout.btn-layout--horizontal.align-items-middle
-                button.btn.btn--ghost.btn--equal.is-active 1
-                button.btn.btn--ghost.btn--equal 2
-                button.btn.btn--ghost.btn--equal.show-s 3
-                div ...
-                button.btn.btn--ghost.btn--equal.show-s 20
-                button.btn.btn--ghost
-                  | Ďalšie
-                  +icon('arrow-right').icon--right.icon--medium
+                div(data-collapse="150")
+                  p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame
+                a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                  +icon('arrow-down')
 
-            hr
-
-            section.mb-large
-              h2 O autorovi
-
-              div(data-collapse="150")
-                p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
-              a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
-                +icon('arrow-down')
-
-            section.mb-large
-              h2 Vydavateľstvo
-
-              div(data-collapse="150")
-                p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame
-              a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
-                +icon('arrow-down')
-
-          .col--l-3.show-l
-            include ./modules/card-buy-together
+            .col--l-3.show-l
+              include ./modules/card-buy-together
 
     section.section.section--secondary.section--overflow
       .wrapper-main

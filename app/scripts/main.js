@@ -8,6 +8,7 @@ import Dropdown from './modules/Dropdown';
 import Modal from './modules/Modal';
 import Carousel from './modules/Carousel';
 import Collapse from './modules/Collapse';
+import Sticky from './modules/Sticky';
 
 window.addEventListener('DOMContentLoaded', () => {
   svg4everybody();
@@ -35,4 +36,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.Collapse = Collapse;
   window.myApp.collapses = new Collapse();
+
+  window.myApp.Sticky = Sticky;
+  window.myApp.stickies = new Sticky();
 });
