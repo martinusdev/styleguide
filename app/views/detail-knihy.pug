@@ -136,10 +136,22 @@ block content
         a(href='#')
           img.img.img--fluid(src="/images/content/banner-1280x100.jpg").no-mrg
 
+    section.section.section--toolbar.hide-m
+      .wrapper-main
+        .bar.bar--small.mb-small
+          .bar__item.bar__item--fill
+            .form-control.form-control--select.no-mrg
+              select.js-select.select--clean
+                option Popis knihy
+                option Podrobnosti
+                option Recenzie
+                option O autorovi
+                option Vydavateľstvo
+
     section.section
       .wrapper-main
         .row
-          .col--12.col--l-2
+          .col--l-2.col--m-3.show-m
             .book-thumbnail
               img.img.img--fluid.mb-medium(src="/images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
             h2.mb-medium O knihe
@@ -149,11 +161,11 @@ block content
               li O autorovi
               li Recenzie
               li Vydavateľstvo
-          .col--12.col--l-7
+          .col--m-9.col--l-7
             h2.mb-medium Popis knihy
 
             section.mb-large
-              .collapsed
+              div(data-collapse="300")
                 p Vždy bolo ťažké byť Harrym Potterom a nie je to ľahké ani dnes, keď je prepracovaným zamestnancom Ministerstva mágie, manželom a otcom troch školopovinných detí.
 
                 p Harry zápasí s minulosťou, ktorá sa ustavične vracia. Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
@@ -163,40 +175,48 @@ block content
                 p Prvá oficiálna divadelná hra o Harrym Potterovi mala premiéru v sobotu 30. júla v Palace Theatre v londýnskom West Ende. Prvých 175-tisíc vstupeniek sa minulý rok vypredalo v priebehu ôsmich hodín. Tvorcovia sa preto rozhodli, že hru, ktorú mali pôvodne uvádzať do 27. mája 2017, predĺžia až do 10. decembra toho roku.
 
                 p.mb-medium Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
-              a.link(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="#icon-arrow-up", data-toggle-text="Čítaj menej") Čítaj viac#{' '}
+              a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                 +icon('arrow-down')
 
+            section.mb-large.hide-l
+              .row
+                .col--s-8.ofst--s-center
+                  include ./modules/card-buy-together
+
             section.mb-large
-              .card.card--well.text-medium
+              .card.card--well.text-medium.no-pad-bottom
                 .card__content
-                  .row
-                    .col--4
+                  .row.no-mrg-bottom
+                    .col--6.col--s-4
                       dl
                         dt Počet strán
                         dd 271
                       dl
-                        dt Hmotnosť
-                        dd 330g
-                      dl.no-mrg
-                        dt Rok vydania
-                        dd 2017
-                    .col--4
-                      dl
                         dt Väzba
                         dd pävná s prebalom
                       dl
-                        dt Jazyk
-                        dd slovenský
-                      dl.no-mrg
-                        dt Katalógové číslo
-                        dd 162431
-                    .col--4
-                      dl
                         dt Rozmer
                         dd 100x90x25cm
-                      dl.no-mrg
+                    .col--6.col--s-4
+                      dl
+                        dt Hmotnosť
+                        dd 330g
+                      dl
+                        dt Jazyk
+                        dd slovenský
+                      dl
                         dt ISBN
                         dd 9788055153025
+
+                    .col--6.col--s-4
+                      dl
+                        dt Rok vydania
+                        dd 2017
+                      dl
+                        dt Katalógové číslo
+                        dd 162431
+
+
 
             section.mb-large
               h5.mb-medium Kategorizácia
@@ -323,33 +343,21 @@ block content
             section.mb-large
               h2 O autorovi
 
-              p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
+              div(data-collapse="150")
+                p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
+              a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                +icon('arrow-down')
 
-            secton.mb-large
+            section.mb-large
               h2 Vydavateľstvo
 
-              p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame
+              div(data-collapse="150")
+                p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame
+              a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="/icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                +icon('arrow-down')
 
-          .col--12.col--l-2
-            article.card.card--well.text-center
-              .card__content
-                .h2.no-mrg Kúpite výhodne spolu
-              .card__content
-                .bar
-                  .bar__item.bar__item--fill.align-items-bottom
-                    .book-thumbnail
-                      img.img.img--fluid.mb-medium(src="/images/content/books/sample-5.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                  .bar__item.bar__item--fill
-                    .book-thumbnail
-                      img.img.img--fluid.mb-medium(src="/images/content/books/sample-8.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                .badges.badges--inline.align-items-center
-                  .badge.badge--primary Ušetríte 3,50 €
-              .card__content
-                .btn-layout--vertical
-                  button.btn.btn--primary.btn--large.mb-small
-                    +icon('add-to-cart').icon--left.icon--medium
-                    | Kúpiť spolu za#{' '}
-                    span.text-nowrap 20,32 €
+          .col--l-3.show-l
+            include ./modules/card-buy-together
 
     section.section.section--secondary.section--overflow
       .wrapper-main
