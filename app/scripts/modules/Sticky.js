@@ -17,4 +17,13 @@ export default class StickyWrapper {
 
     return this.stickies;
   }
+
+  update() {
+    this.destory();
+    this.init();
+  }
+
+  destroy() {
+    this.stickies.destroy();
+  }
 }

@@ -26,4 +26,13 @@ export default class StickyWrapper {
   _handleResize() { // eslint-disable-line
     gumshoe.setDistances();
   }
+
+  update() {
+    this.destroy();
+    this._init();
+  }
+
+  destroy() { // eslint-disable-line
+    gumshoe.destroy();
+  }
 }

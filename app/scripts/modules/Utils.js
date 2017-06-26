@@ -1,3 +1,27 @@
+export function requestAnimationFramePolyfill() {
+  function polyfill() {
+    let clock = Date.now();
+
+    return callback => {
+      const currentTime = Date.now();
+
+      if (currentTime - clock > 16) {
+        clock = currentTime;
+        callback(currentTime);
+      } else {
+        setTimeout(() => {
+          polyfill(callback);
+        }, 0);
+      }
+    };
+  }
+  window.requestAnimationFrame =
+    window.requestAnimationFrame ||
+    window.webkitRequestAnimationFrame ||
+    window.mozRequestAnimationFrame ||
+    polyfill;
+}
+
 /* eslint-disable */
 export function customEventPolyfill() {
   if ( typeof window.CustomEvent === "function" ) return false;
@@ -31,15 +55,16 @@ export function closestPolyfill() {
     };
   }
 }
+/* eslint-enable */
 
 // Get element position relative to document
 export function windowOffset(el) {
-  let position = { x: 0, y: 0 };
+  const position = { x: 0, y: 0 };
   if (el.offsetParent) {
-    do {
+    do { // eslint-disable-line
       position.x += el.offsetLeft;
       position.y += el.offsetTop;
-    } while (el = el.offsetParent);
+    } while ((el = el.offsetParent));
   }
   return position;
 }
@@ -55,10 +80,9 @@ export function getSiblings(el) {
   }
   const parentChildren = [];
   const siblings = [];
-  parentChildren.push.apply(
-    parentChildren,
-    parent.children,
-  );
+
+  parentChildren.push.apply(parentChildren, parent.children);
+
   for (let i = 0, l = parentChildren.length; i < l; i++) {
     if (parentChildren[i] !== el) {
       siblings.push(parentChildren[i]);
@@ -76,5 +100,3 @@ export function createElementFromString(elementAsStr) {
   div.innerHTML = elementAsStr;
   return div.children[0];
 }
-
-/* eslint-enable */
