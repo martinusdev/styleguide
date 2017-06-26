@@ -1,6 +1,9 @@
 //- -----------------------------------------------
 //- VARIABLES AND DATA
 
+- const assetsPrefix = '';
+- const htmlPostfix = '.html';
+
 include ../mixins/mixins
 
 //- -----------------------------------------------
@@ -27,14 +30,14 @@ html.no-js
     meta(name='author', content='Lighting Beetle s.r.o.')
     meta(name="description", content="")
     meta(name='keywords', content='')
-    link(rel="shortcut icon", href="/favicon.ico")
+    link(rel="shortcut icon", href=`${assetsPrefix}favicon.ico`)
     meta(name="theme-color", content=project.theme)
 
-    link(rel="stylesheet", href="/fonts/Tabac/fonts.css")
+    link(rel="stylesheet", href=`${assetsPrefix}fonts/Tabac/fonts.css`)
 
-    link(rel="stylesheet", href="/styles/main.css")
+    link(rel="stylesheet", href=`${assetsPrefix}styles/main.css`)
 
-    script(src="/scripts/plugins/modernizr.js")
+    script(src=`${assetsPrefix}scripts/plugins/modernizr.js`)
 
   //- -----------------------------------------------
   //- BODY
@@ -49,7 +52,7 @@ html.no-js
 
     //- -----------------------------------------------
     //- SCRIPTS
-    script(src="/scripts/vendor.js")
-    script(src="/scripts/main.js")
+    script(src=`${assetsPrefix}scripts/vendor.js`)
+    script(src=`${assetsPrefix}scripts/main.js`)
 
     block scripts

@@ -21,9 +21,9 @@ block content
                   li.intro-templates_subitem
                     +icon-sg('sg-caretright')
                     if page.sub == undefined
-                      a(href='/styleguide/' + page.hlink, target='_blank')= page.title
+                      a(href=`${assetsPrefix}styleguide/${page.hlink}${htmlPostfix}`, target='_blank')= page.title
                     else
-                      a(href='/styleguide/' + page.sub[0].hlink, target='_blank')= page.title
+                      a(href=`${assetsPrefix}styleguide/${page.sub[0].hlink}${htmlPostfix}`, target='_blank')= page.title
 
           each item in sitemap
             li.intro-templates_item
@@ -36,6 +36,6 @@ block content
                   each subitem in item.contents
                     li.intro-templates_subitem
                       +icon-sg('sg-caretright')
-                      a(href=subitem.href, target='_blank', class=subitem.old?'text-color-dovred-600':'', title=subitem.old?'old version !!!':undefined)= subitem.title
+                      a(href=`${assetsPrefix}${subitem.href}${htmlPostfix}`, target='_blank', class=subitem.old?'text-color-dovred-600':'', title=subitem.old?'old version !!!':undefined)= subitem.title
                       if subitem.desc
                         span.tooltip-icon.js-tooltip(title=subitem.desc) ?

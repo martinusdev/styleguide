@@ -25,10 +25,10 @@
   .swiper-container(data-swiper-options=swiperConfig)
     .swiper-wrapper
       each item, i in [...books, ...books, ...books, ...books]
-        a.swiper-slide(href="/detail-knihy").carousel__book-detail
+        a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book-detail
           figure.figure.figure-book.mb-small.text-left
             .figure-book__cover.book-thumbnail.book-thumbnail--clickable.mb-small
-              img(src=item.cover)
+              img(src=`${assetsPrefix}${item.cover}`)
             figcaption.figure-book__title
               p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
               p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author

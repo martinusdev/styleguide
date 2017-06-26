@@ -342,14 +342,14 @@ block append content
               ul.list
                 li.list__item
                   .list__item__section--image
-                    img.img.img--fluid.img--rounded(src='/images/150x150.gif')
+                    img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
                   .list__item__section--primary
                     dl
                       dt Commodo dolore
                       dd Eu qui ut laborum
                 li.list__item
                   .list__item__section--image
-                    img.img.img--fluid.img--rounded(src='/images/150x150.gif')
+                    img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
                   .list__item__section--primary
                     dl
                       dt Ut velit incididunt
@@ -382,7 +382,7 @@ block append content
 
     +content-sub-section('Section alignment')
 
-      +p List item sections are compatible with <a href="/styleguide/utilities#flexbox-alignment">flexbox alignment classes</a>.
+      +p List item sections are compatible with <a href="utilities#{htmlPostfix}#flexbox-alignment">flexbox alignment classes</a>.
       +demo
         +demo-example
           .row
@@ -458,7 +458,7 @@ block append content
 
     +content-sub-section('List item section break')
 
-      +p It might happen you will need to break a list item into multiple lines. This can be achieved using <code class="l-code-inline">.list__item__section--break</code>. You can even specify on which breakpoint it should become active with <a href="/styleguide/styleguide/utilities#visibility-utilites">visibility classes</a>.
+      +p It might happen you will need to break a list item into multiple lines. This can be achieved using <code class="l-code-inline">.list__item__section--break</code>. You can even specify on which breakpoint it should become active with <a href="utilities`${assetsPrefix}#visibility-utilites">visibility classes</a>.
 
       +demo
         +demo-example
@@ -467,13 +467,13 @@ block append content
               ul.list
                 li.list__item
                   .list__item__section--image
-                    img.img.img--fluid.img--rounded(src='/images/150x150.gif')
+                    img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
                   .list__item__section--break.hide-m
                   .list__item__section--primary
                     p This text will move under the image on S and XS
                 li.list__item
                   .list__item__section--image
-                    img.img.img--fluid.img--rounded(src='/images/150x150.gif')
+                    img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
                   .list__item__section--break.show-m
                   .list__item__section--primary
                     p This text will move under the image on M and larger

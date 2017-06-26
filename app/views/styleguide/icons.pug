@@ -102,7 +102,7 @@ block append content
 
     +content-sub-section('Colors')
 
-      +p Icons use same <a class='l-a' href='/typography.html#utilities'>text color</a> priciple for colors as typography.
+      +p Icons use same <a class='l-a' href=`typography${htmlPostfix}#utilities`>text color</a> priciple for colors as typography.
 
       +note
         +p In case there is no class for color, icon will inherit color from parent color property.
@@ -190,11 +190,11 @@ block append content
     +demo
       +demo-example
         figure.l-image
-          img(src='/images/300x300.gif', alt='placeholder').img.img--fluid
+          img(src=`${assetsPrefix}images/300x300.gif`, alt='placeholder').img.img--fluid
         figure.l-image
-          img(src='/images/150x150.gif', alt='placeholder').img.img--rounded
+          img(src=`${assetsPrefix}images/150x150.gif`, alt='placeholder').img.img--rounded
         figure.l-image
-          img(src='/images/150x150.gif', alt='placeholder').img.img--circle
+          img(src=`${assetsPrefix}images/150x150.gif`, alt='placeholder').img.img--circle
 
       +demo-code
         :code
@@ -208,7 +208,7 @@ block append content
 
     +demo
       +demo-example
-        img.img.book-thumbnail(src="/images/content/books/book-270.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+        img.img.book-thumbnail(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
 
       +demo-code
         :code
