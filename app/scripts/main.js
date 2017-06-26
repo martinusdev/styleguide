@@ -1,6 +1,9 @@
 import svg4everybody from 'svg4everybody';
 
-import { customEventPolyfill } from './modules/Utils';
+import {
+  customEventPolyfill,
+  requestAnimationFramePolyfill,
+} from './modules/Utils';
 import Select from './modules/Select';
 import Toggle from './modules/Toggle';
 import Tab from './modules/Tab';
@@ -10,10 +13,12 @@ import Carousel from './modules/Carousel';
 import Collapse from './modules/Collapse';
 import Sticky from './modules/Sticky';
 import ScrollSpy from './modules/ScrollSpy';
+import SmoothScroll from './modules/SmoothScroll';
 
 window.addEventListener('DOMContentLoaded', () => {
   svg4everybody();
   customEventPolyfill();
+  requestAnimationFramePolyfill();
 
   window.myApp = {};
 
@@ -43,4 +48,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.ScrollSpy = ScrollSpy;
   window.myApp.scrollspies = new ScrollSpy();
+
+  window.myApp.SmoothScroll = SmoothScroll;
+  window.myApp.smoothScrolls = new SmoothScroll();
 });
