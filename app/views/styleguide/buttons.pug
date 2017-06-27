@@ -49,9 +49,9 @@ block append content
             button.btn.btn--sharp(type='button') Sharp
             button.btn.btn--round(type='button') Round
             button.btn.btn--equal(type='button')
-              +icon('close')
+              +icon-sg('sg-close')
             button.btn.btn--equal.btn--round(type='button')
-              +icon('close')
+              +icon-sg('sg-close')
 
 
         +demo-code
@@ -60,10 +60,10 @@ block append content
             <button class="btn btn--sharp" type="sharp">Radius</button>
             <button class="btn btn--round" type="button">Round</button>
             <button class="btn btn--equal" type="button">
-              <svg class="icon icon-close " role="img" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+              <svg class="icon icon-close " role="img" aria-hidden="true"><use xlink:href="icons_/styleguide.svg#icon-close"></use></svg>
             </button>
             <button class="btn btn--equal btn--round" type="button">
-              <svg class="icon icon-close " role="img" aria-hidden="true"><use xlink:href="#icon-close"></use></svg>
+              <svg class="icon icon-close " role="img" aria-hidden="true"><use xlink:href="icons_/styleguide.svg#icon-close"></use></svg>
             </button>
       //- end: demo
 
@@ -105,14 +105,14 @@ block append content
               button.btn.btn--round(type='button') Default
             .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--equal.btn--round.btn--large(type='button')
-                +icon('close', 'icon--large', 'Close')
+                +icon-sg('sg-close', 'icon--large', 'Close')
               button.btn.btn--equal.btn--round(type='button')
-                +icon('close', 'icon--medium', 'Close')
+                +icon-sg('sg-close', 'icon--medium', 'Close')
             .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--equal.btn--large(type='button')
-                +icon('close', 'icon--large', 'Close')
+                +icon-sg('sg-close', 'icon--large', 'Close')
               button.btn.btn--equal(type='button')
-                +icon('close', 'icon--medium', 'Close')
+                +icon-sg('sg-close', 'icon--medium', 'Close')
 
 
         +demo-code
@@ -196,98 +196,98 @@ block append content
               h4 Small icon and text
               .btn-layout--vertical.btn-layout--m-horizontal
                 button.btn(type='button')
-                  +icon('download', 'icon--small icon--left')
+                  +icon-sg('sg-download', 'icon--small icon--left')
                   | Download
                 button.btn.btn--primary(type='button')
                   | Settings
-                  +icon('settings', 'icon--small icon--right')
+                  +icon-sg('sg-settings', 'icon--small icon--right')
 
             .col--l-6.col--m-2
               h4 Medium icon and text
               .btn-layout--vertical.btn-layout--m-horizontal
                 button.btn.btn--primary(type='button')
-                  +icon('download', 'icon--medium icon--left')
+                  +icon-sg('sg-download', 'icon--medium icon--left')
                   | Download
                 button.btn(type='button')
                   | Settings
-                  +icon('settings', 'icon--medium icon--right')
+                  +icon-sg('sg-settings', 'icon--medium icon--right')
 
             .col--l-6.col--m-2
               h4 Large button and small button
               .btn-layout--vertical.btn-layout--m-horizontal
                 button.btn.btn--small.btn--primary(type='button')
-                  +icon('download', 'icon--small icon--left')
+                  +icon-sg('sg-download', 'icon--small icon--left')
                   | Download
                 button.btn.btn--large(type='button')
                   | Settings
-                  +icon('settings', 'icon--medium icon--right')
+                  +icon-sg('sg-settings', 'icon--medium icon--right')
 
             .col--l-6.col--m-2
               h4 Only icons
               .btn-layout--vertical.btn-layout--m-horizontal
                 button.btn(type='button')
-                  +icon('home', 'icon--small', 'Home')
+                  +icon-sg('sg-home', 'icon--small', 'Home')
                 button.btn.btn--primary(type='button')
-                  +icon('facebook', 'icon--medium', 'Facebook')
+                  +icon-sg('sg-facebook', 'icon--medium', 'Facebook')
                 button.btn.btn--link(type='button')
-                  +icon('edit', 'icon--medium', 'Edit')
+                  +icon-sg('sg-edit', 'icon--medium', 'Edit')
         +demo-code
           :code
             <!-- small icon and text -->
             <button type="button" class="btn">
               <svg class="icon icon-download icon--small icon--left" role="img" aria-hidden="true">
-                <use xlink:href="#icon-download"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-download"></use>
               </svg> Download
             </button>
 
             <button type="button" class="btn btn--primary"> Settings
               <svg class="icon icon--settings icon--small icon--right" role="img" aria-hidden="true">
-                <use xlink:href="#icon-settings"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-settings"></use>
               </svg>
             </button>
 
             <!-- medium icon and text -->
             <button type="button" class="btn btn--primary">
               <svg class="icon icon-download icon--medium icon--left" role="img" aria-hidden="true">
-                <use xlink:href="#icon-download"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-download"></use>
               </svg> Download
             </button>
 
             <button type="button" class="btn"> Settings
               <svg class="icon icon--settings icon--medium icon--right" role="img" aria-hidden="true">
-                <use xlink:href="#icon-settings"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-settings"></use>
               </svg>
             </button>
 
             <!-- large and small button -->
             <button type="button" class="btn btn--primary btn--small">
               <svg class="icon icon-download icon--small icon--left" role="img" aria-hidden="true">
-                <use xlink:href="#icon-download"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-download"></use>
               </svg> Download
             </button>
 
             <button type="button" class="btn btn--large"> Settings
               <svg class="icon icon--settings icon--medium icon--right" role="img" aria-hidden="true">
-                <use xlink:href="#icon-settings"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-settings"></use>
               </svg>
             </button>
 
             <!-- only icons -->
             <button type="button" class="btn">
               <svg class="icon icon-home icon--small" role="presentation" aria-label="Home">
-                <use xlink:href="#icon-home"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-home"></use>
               </svg>
             </button>
 
             <button type="button" class="btn btn--primary">
               <svg class="icon icon-facebook icon--medium" role="presentation" aria-label="Facebook">
-                <use xlink:href="#icon-facebook"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-facebook"></use>
               </svg>
             </button>
 
             <button type="button" class="btn btn--link">
               <svg class="icon icon-edit icon--medium" role="presentation" aria-label="Edit">
-                <use xlink:href="#icon-edit"></use>
+                <use xlink:href="icons_/styleguide.svg#icon-edit"></use>
               </svg>
             </button>
       //- end: demo
@@ -302,50 +302,50 @@ block append content
             .col--l-4.col--m-5.col--12
               .btn-layout--vertical
                 button.btn.btn--icon-left(type='button')
-                  +icon('chevronleft', 'icon--large')
+                  +icon('chevron-left', 'icon--large')
                   | Back
 
             .col--l-4.ofst--l-4.col--m-5.ofst--m-2.col--12.ofst--0.col--space
               .btn-layout--vertical
                 button.btn.btn--primary.btn--icon-right(type='button')
                   | Next
-                  +icon('chevronright', 'icon--large')
+                  +icon('chevron-right', 'icon--large')
           .row.row--space
             .col--l-4.col--m-5.col--12
               .btn-layout--vertical
                 button.btn.btn--large.btn--icon-left(type='button')
-                  +icon('chevronleft', 'icon--large')
+                  +icon('chevron-left', 'icon--large')
                   | Back
 
             .col--l-4.ofst--l-4.col--m-5.ofst--m-2.col--12.ofst--0.col--space
               .btn-layout--vertical
                 button.btn.btn--small.btn--primary.btn--icon-right(type='button')
                   | Next
-                  +icon('chevronright', 'icon--large')
+                  +icon('chevron-right', 'icon--large')
 
         +demo-code
           :code
             <button type="button" class="btn btn-full btn--icon-left">
               <svg class="icon icon-chevronleft icon--large" role="img" aria-hidden="true">
-                <use xlink:href="#icon-chevronleft"></use>
+                <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
               </svg>
             </button>
 
             <button type="button" class="btn btn--primary btn-full btn--icon-right"> Next
               <svg class="icon icon-chevronright icon--large" role="img" aria-hidden="true">
-                <use xlink:href="#icon-chevronright"></use>
+                <use xlink:href="icons_/app.svg#icon-chevron-right"></use>
               </svg>
             </button>
 
             <button type="button" class="btn btn--large btn-full btn--icon-left">
               <svg class="icon icon-chevronleft icon--large" role="img" aria-hidden="true">
-                <use xlink:href="#icon-chevronleft"></use>
+                <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
               </svg>
             </button>
 
             <button type="button" class="btn btn--small btn--primary btn-full btn--icon-right"> Next
               <svg class="icon icon-chevronright icon--large" role="img" aria-hidden="true">
-                <use xlink:href="#icon-chevronright"></use>
+                <use xlink:href="icons_/app.svg#icon-chevron-right"></use>
               </svg>
             </button>
       //- end: demo
@@ -410,12 +410,12 @@ block append content
                   button.btn.btn--large.btn--primary(type='button') Button
                   button.btn.btn--large.btn--primary(type='button') Button
                   button.btn.btn--large.btn--primary(type='button')
-                    +icon('settings', '', 'Settings')
+                    +icon-sg('sg-settings', '', 'Settings')
                 .btn-group--horizontal
                   button.btn.btn--small(type='button', disabled) Disabled
                   button.btn.btn--small(type='button') Button
                   button.btn.btn--small(type='button')
-                    +icon('edit', 'icon--left')
+                    +icon-sg('sg-edit', 'icon--left')
                     | Edit
 
             .col--l-6.col--m-12
@@ -428,13 +428,13 @@ block append content
                   button.btn.btn--primary(type='button') Button
                 .btn-group--vertical
                   button.btn.btn--large(type='button')
-                    +icon('home', '', 'Home')
+                    +icon-sg('sg-home', '', 'Home')
                   button.btn.btn--large(type='button') Button
                 .btn-group--vertical
                   button.btn.btn--small.btn--primary(type='button', disabled) Disabled
                   button.btn.btn--small.btn--primary(type='button') Button
                   button.btn.btn--small.btn--primary.btn--icon-left(type='button')
-                    +icon('edit', 'icon--left')
+                    +icon-sg('sg-edit', 'icon--left')
                     | Edit
 
         +demo-code
@@ -496,12 +496,12 @@ block append content
           .btn-layout--horizontal
             .btn-dropdown
               button.btn(
-                data-toggle='self, next', data-toggle-icon="#icon-chevronup",
+                data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
               )
                 | Button
-                +icon('chevrondown', 'icon-dropdown')
+                +icon('chevron-down', 'icon-dropdown')
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a(href="#").dropdown__item Item #{item}
@@ -509,12 +509,12 @@ block append content
             .btn-dropdown
               button.btn.btn--primary.btn--large(
                 data-toggle='self, next',
-                data-toggle-icon="#icon-chevronup"
+                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`
                 data-toggle-expand,
                 aria-haspopup="true"
               )
                 | Dropdown with inputs
-                +icon('chevrondown', 'icon-dropdown')
+                +icon('chevron-down', 'icon-dropdown')
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a(href="#").dropdown__item Item #{item}
@@ -522,13 +522,13 @@ block append content
             .btn-dropdown
               button.btn.btn--small(
                 data-toggle='self, next',
-                data-toggle-icon="#icon-chevronup",
+                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true",
                 disabled
               )
                 | Button
-                +icon('chevrondown', 'icon-dropdown')
+                +icon('chevron-down', 'icon-dropdown')
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a(href="#").dropdown__item Item #{item}
@@ -537,10 +537,10 @@ block append content
             <div class="btn-dropdown">
               <button
                 class="btn"
-                data-toggle="self, next" data-toggle-icon="#icon-chevronup"
+                data-toggle="self, next" data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
-              >Button<svg class="icon icon-chevrondown icon-dropdown" role="img" aria-hidden="true">
+              >Button<svg class="icon icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
                 ...
               </button>
               <div class="dropdown" data-dropdown data-toggle-expand>
@@ -552,10 +552,10 @@ block append content
               <button
                 class="btn btn--primary btn--large"
                 data-toggle="self, next"
-                data-toggle-icon="#icon-chevronup"
+                data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
-              >Button<svg class="icon icon-chevrondown icon-dropdown" role="img" aria-hidden="true">
+              >Button<svg class="icon icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
                 ...
               </button>
               <div class="dropdown" data-dropdown data-toggle-expand>
@@ -568,10 +568,10 @@ block append content
                 class="btn--small"
                 disabled
                 data-toggle="self, next"
-                data-toggle-icon="#icon-chevronup"
+                data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
-              >Button<svg class="icon icon-chevrondown icon-dropdown" role="img" aria-hidden="true">
+              >Button<svg class="icon icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
                 ...
               </button>
               <div class="dropdown" data-dropdown data-toggle-expand>
@@ -594,11 +594,11 @@ block append content
               button.btn Button
               button.btn.btn--equal(
                 data-toggle='self, next, parent',
-                data-toggle-icon="#icon-chevronup",
+                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
               )
-                +icon('chevrondown', 'icon--smallplit')
+                +icon('chevron-down', 'icon--smallplit')
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a.dropdown__item(href="#") List item #{item}
@@ -607,11 +607,11 @@ block append content
               button.btn.btn--primary.btn--large Button
               button.btn.btn--primary.btn--large(
                 data-toggle='self, next, parent',
-                data-toggle-icon="#icon-chevronup",
+                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
               )
-                +icon('chevrondown', 'icon--smallplit')
+                +icon('chevron-down', 'icon--smallplit')
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a.dropdown__item(href="#") List item #{item}
@@ -620,11 +620,11 @@ block append content
               button.btn.btn--small(disabled) Button
               button.btn.btn--small(
                 disabled,
-                data-toggle='self, next, parent', data-toggle-icon="#icon-chevronup",
+                data-toggle='self, next, parent', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
               )
-                +icon('chevrondown', 'icon--smallplit')
+                +icon('chevron-down', 'icon--smallplit')
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a.dropdown__item(href="#") List item #{item}
@@ -634,7 +634,7 @@ block append content
               <button class="btn">Button</button>
               <button
                 class="btn btn--equal"
-                data-toggle="self, next, parent" data-toggle-icon="#icon-chevronup"
+                data-toggle="self, next, parent" data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
               >
@@ -650,7 +650,7 @@ block append content
               <button
                 class="btn btn--large"
                 data-toggle="self, next, parent"
-                data-toggle-icon="#icon-chevronup"
+                data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
               >
@@ -666,7 +666,7 @@ block append content
               <button
                 class="btn btn--small"
                 disabled data-toggle="self, next, parent"
-                data-toggle-icon="#icon-chevronup"
+                data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
               >

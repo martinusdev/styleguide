@@ -137,9 +137,9 @@ block append content
         +demo-example
           code.l-code-inline.l-debug-active target element state:
           .btn-dropdown
-            button.btn(type='button', data-toggle="self, next", data-toggle-icon="#icon-sg-chevronup")
+            button.btn(type='button', data-toggle="self, next", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`)
               | Button
-              +icon('chevrondown', 'icon-dropdown icon--right')
+              +icon('chevron-down', 'icon-dropdown icon--right')
             .dropdown(data-toggle-expand aria-expanded='false')
               each item in [1,2,3,4,5]
                 a.dropdown__item Dropdown item #{item}

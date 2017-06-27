@@ -11,7 +11,7 @@ block content
         h2.text-upper Content
         ul.intro-templates_list
           li.intro-templates_item
-            a(data-toggle='self, parent', data-toggle-icon='#icon-sg-chevronup')
+            a(data-toggle='self, parent', data-toggle-icon=`${assetsPrefix}icons_/styleguide.svg#icon-sg-chevronup`)
               h3
                 | Styleguide
                 +icon-sg('sg-chevrondown')
@@ -27,7 +27,7 @@ block content
 
           each item in sitemap
             li.intro-templates_item
-              a(data-toggle='self, parent', data-toggle-icon='#icon-sg-chevronup')
+              a(data-toggle='self, parent', data-toggle-icon=`${assetsPrefix}icons_/styleguide.svg#icon-sg-chevronup`)
                 h3
                   | #{item.title}
                   +icon-sg('sg-chevrondown')

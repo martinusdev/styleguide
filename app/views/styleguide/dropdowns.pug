@@ -53,12 +53,12 @@ block append content
               .btn-layout--horizontal
                 .btn-dropdown
                   button.btn(
-                    data-toggle='self, next', data-toggle-icon="#icon-chevronup",
+                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                     data-toggle-expand,
                     aria-haspopup="true"
                   )
                     | Button
-                    +icon('chevrondown', 'icon-dropdown')
+                    +icon('chevron-down', 'icon-dropdown')
                   .dropdown(data-dropdown, data-toggle-expand)
                     each item in [1,2,3,4,5]
                       a(href="#").dropdown__item Item #{item}
@@ -66,11 +66,11 @@ block append content
                   button.btn Button
                   button.btn.btn--equal(
                     data-toggle='self, next, parent',
-                    data-toggle-icon="#icon-chevronup",
+                    data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                     data-toggle-expand,
                     aria-haspopup="true"
                   )
-                    +icon('chevrondown', 'icon--smallplit')
+                    +icon('chevron-down', 'icon--smallplit')
                   .dropdown(data-dropdown, data-toggle-expand)
                     each item in [1,2,3,4,5]
                       a.dropdown__item(href="#") List item #{item}
@@ -111,12 +111,12 @@ block append content
             .col--s-6
               .btn-dropdown
                 button.btn(
-                  data-toggle='self, next', data-toggle-icon="#icon-chevronup",
+                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`
                   data-toggle-expand,
                   aria-haspopup="true"
                 )
                   | Button
-                  +icon('chevrondown', 'icon-dropdown')
+                  +icon('chevron-down', 'icon-dropdown')
                 .dropdown.dropdown--nowrap.dropdown--space(data-dropdown, data-toggle-expand, data-dropdown-interactive, style="min-width: 300px;")
                   .form-control.form-control--input
                     .form-label
