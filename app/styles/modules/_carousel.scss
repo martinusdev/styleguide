@@ -81,6 +81,17 @@
         background: linear-gradient(to left, (_map-deep-get($carousel, fade, gradient)));
       }
     }
+
+    &-white {
+      .swiper-container { // stylelint-disable-line
+        &::before { // stylelint-disable-line
+          background: linear-gradient(to left, (_map-deep-get($carousel, fade, gradient-white)));
+        }
+        &::after { // stylelint-disable-line
+          background: linear-gradient(to right, (_map-deep-get($carousel, fade, gradient-white)));
+        }
+      }
+    }
   }
 
   &__book-detail {
