@@ -65,6 +65,17 @@ block append content
               li.list__item Quis adipisicing eu consectetur.
               li.list__item Et anim sit do nisi.
               li.list__item Deserunt id consectetur esse in.
+
+        .row
+          .col--l-5
+            h4 List with counter badges
+
+            ul.list.list--unstyled.list--counter
+              each item, i in [...books, ...books ]
+                if i < 3
+                  li.mb-medium(class=i > 4 ? 'show-m' : '')
+                    +book-figure-horizontal(item)
+
       +demo-code
         :code
           <!-- basic list -->

@@ -78,6 +78,31 @@
     }
   }
 
+  .list--counter {
+    counter-reset: section;
+
+    li {
+      position: relative;
+
+      &::before {
+        $size: map-get($list-counter, size);
+        content: counter(section);
+        counter-increment: section;
+
+        position: absolute;
+        top: -($size / 2);
+        left: -($size / 2);
+        width: $size;
+        height: $size;
+        line-height: $size;
+
+        @include css-map($list-counter, style);
+
+        z-index: 1;
+      }
+    }
+  }
+
   .list__item--clickable {
     @include list-item-clickable;
   }
