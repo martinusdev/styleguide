@@ -100,3 +100,10 @@ export function createElementFromString(elementAsStr) {
   div.innerHTML = elementAsStr;
   return div.children[0];
 }
+
+export function nodeListToArray(nodeList) {
+  const arr = [];
+  arr.push.apply(arr, nodeList);
+
+  return arr;
+}

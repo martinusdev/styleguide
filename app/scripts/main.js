@@ -14,6 +14,7 @@ import Collapse from './modules/Collapse';
 import Sticky from './modules/Sticky';
 import ScrollSpy from './modules/ScrollSpy';
 import SmoothScroll from './modules/SmoothScroll';
+import Grid from './modules/Grid';
 
 window.addEventListener('DOMContentLoaded', () => {
   svg4everybody();
@@ -51,4 +52,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.SmoothScroll = SmoothScroll;
   window.myApp.smoothScrolls = new SmoothScroll();
+
+  window.myApp.Grid = Grid;
+  window.myApp.grids = new Grid();
 });
