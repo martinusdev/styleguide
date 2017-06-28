@@ -65,6 +65,10 @@
     }
   }
 
+  &--overflow {
+    overflow: hidden;
+  }
+
   > *:last-child {
     margin-bottom: _get-space('v', 'small');
   }
@@ -100,6 +104,15 @@
 
     &__footer {
       @include card-section;
+    }
+
+    .carousel {
+      .swiper-container {
+        margin-right: 40px;
+      }
+
+      .carousel__btn--prev { left: -5px; }
+      .carousel__btn--next { right: -45px; }
     }
   }
 }
