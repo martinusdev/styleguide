@@ -45,7 +45,7 @@ export default class Grid {
           const column =
             JSON.parse(item.getAttribute('data-grid-column'))[breakpoint] - 1;
 
-          container.children[column].appendChild(item.cloneNode(true));
+          container.children[column].appendChild(item);
         });
       }
     });
