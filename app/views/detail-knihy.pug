@@ -126,9 +126,7 @@ block content
               include ./modules/card-cart
       section.section.section--secondary.section--overflow
         .wrapper-main
-          .bar.mb-medium
-            .bar__item.bar__item--fill.bar__item--shrinkable
-                h2 Odporúčané knihy a kolekcie
+          +section-header({ header: 'Odporúčané knihy a kolekcie', more: false })
 
           include ./modules/recommended-books-carousel
 
@@ -368,12 +366,6 @@ block content
 
     section.section.section--secondary.section--overflow
       .wrapper-main
-        .bar.mb-medium
-          .bar__item.bar__item--fill.bar__item--shrinkable
-            h2 Odporúčané knihy a kolekcie
-          .bar__item
-            a.link(href='#') Všetky
-              +icon('arrow-right')
-
+        +section-header({ header: 'Odporúčané knihy a kolekcie' })
 
         include ./modules/recommended-books-carousel

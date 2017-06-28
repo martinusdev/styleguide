@@ -1,0 +1,15 @@
+mixin section-header(props)
+  -
+    const {
+      header,
+      more = 'Všetky',
+      moreHref = '#'
+    } = props;
+
+  .bar.mb-medium
+    .bar__item.bar__item--fill.bar__item--shrinkable
+      h2= header
+    if more
+      .bar__item
+        a.link(href=moreHref)= more
+          +icon('arrow-right')
