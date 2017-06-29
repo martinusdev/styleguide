@@ -3,60 +3,115 @@ extends layouts/_default
 block opts
     - var pageTitle = 'Homepage'
 
+mixin preVas
+  section.mb-large
+    +section-header({ header: 'Pre Vás' })
+    article.card
+      .card__content.card__content--overflow
+        include ./modules/card-carousel-horizontal
+
+mixin banner
+  section.mb-large
+    a(href='#').banner
+      img.img.img--fluid(src="images/content/banner-374x200.jpg")
+
+mixin tyzdenneKolekcie
+  section.mb-large
+    +section-header({ header: 'Týždenné kolekcie' })
+    article.card
+      .card__content.card__content--overflow
+        h2.text-center Knihy do vašej kuchyne
+        include ./modules/collection-carousel
+
+      .card__content
+        .btn-layout.btn-layout--vertical
+          button.btn.btn--ghost Celá kolekcia
+
+mixin novinky
+  section.mb-large
+    +section-header({ header: 'Novinky' })
+    article.card
+      .card__content.card__content--overflow
+        include ./modules/card-carousel-horizontal
+
+mixin najoblubenejsieKolekcie
+  section.mb-large
+    +section-header({ header: 'Najobľúbenejšie kolekcie' })
+    article.card
+      .card__content.card__content--overflow
+        h2.text-center Biografie slávnych
+        include ./modules/collection-carousel
+
+      .card__content
+        .btn-layout.btn-layout--vertical
+          button.btn.btn--ghost Celá kolekcia
+
+mixin najpredavaniejsieZPonuky
+  section.mb-large
+    +section-header({ header: 'Najpredávanejšie z ponuky', more: false })
+    .card
+      .card__content
+        .filter.filter--fill
+          .filter__item
+            input.filter__input(type="radio", name="top-type", id="top-type-1", checked)
+            label.filter__value(for="top-type-1") Knihy
+          .filter__item
+            input.filter__input(type="radio", name="top-type", id="top-type-2")
+            label.filter__value(for="top-type-2") Filmy
+          .filter__item
+            input.filter__input(type="radio", name="top-type", id="top-type-3")
+            label.filter__value(for="top-type-3") Hry
+          .filter__item
+            input.filter__input(type="radio", name="top-type", id="top-type-4")
+            label.filter__value(for="top-type-4") Káva a čaj
+
+      .card__content
+        ul.list.list--counter
+          each item, i in [...books, ...books ]
+            if i < 10
+              li.mb-medium(class=i > 4 ? 'show-l' : '')
+                +book-figure-horizontal(item)
+
+      .card__content
+        .btn-layout.btn-layout--vertical
+          button.btn.btn--ghost Celý rebríček
+
 block content
   main.bg-secondary
     section.section
       .wrapper-main
-        .homepage-grid(data-grid)
-          .row(data-grid-container)
-          div(data-grid-source)
-            .homepage-grid__item(data-grid-column='{ "m": 1, "l": 1}')
-              +section-header({ header: 'Pre Vás' })
-              .card
-                .card__content.card__content--overflow
-                  include ./modules/card-carousel-horizontal
+        // desktop
+        .row.show-l
+          .col--l-4.col--m-6
+            +preVas
+            +banner
+            +tyzdenneKolekcie
 
-            .homepage-grid__item(data-grid-column='{ "m": 2, "l": 3}')
-              +section-header({ header: 'Najpredávanejšie z ponuky', more: false })
-              .card
-                .card__content
-                  .filter.filter--fill
-                    .filter__item
-                      input.filter__input(type="radio", name="top-type", id="top-type-1", checked)
-                      label.filter__value(for="top-type-1") Knihy
-                    .filter__item
-                      input.filter__input(type="radio", name="top-type", id="top-type-2")
-                      label.filter__value(for="top-type-2") Filmy
-                    .filter__item
-                      input.filter__input(type="radio", name="top-type", id="top-type-3")
-                      label.filter__value(for="top-type-3") Hry
-                    .filter__item
-                      input.filter__input(type="radio", name="top-type", id="top-type-4")
-                      label.filter__value(for="top-type-4") Káva a čaj
+          .col--l-4.col--m-6
+            +novinky
+            +najoblubenejsieKolekcie
 
-                .card__content
-                  ul.list.list--counter
-                    each item, i in [...books, ...books ]
-                      if i < 10
-                        li.mb-medium(class=i > 4 ? 'show-m' : '')
-                          +book-figure-horizontal(item)
+          .col--l-4.col--m-6
+            +najpredavaniejsieZPonuky
 
-                .card__content
-                  .btn-layout.btn-layout--vertical
-                    button.btn.btn--ghost Celý rebríček
+        // tablet
+        .row.show-m-only
+          .col--m-6
+            +preVas
+            +novinky
+            +banner
+            +tyzdenneKolekcie
 
-            .homepage-grid__item(data-grid-column='{ "m": 1, "l": 2}')
-              +section-header({ header: 'Novinky' })
+          .col--m-6
+            +najpredavaniejsieZPonuky
+            +najoblubenejsieKolekcie
 
-              .card
-                .card__content.card__content--overflow
-                  include ./modules/card-carousel-horizontal
-
-            .homepage-grid__item(style="height: 200px;", data-grid-column='{ "m": 1, "l": 1}')
-              h2 banner
-            .homepage-grid__item(style="height: 543px;", data-grid-column='{ "m": 1, "l": 1}')
-              h2 Týždenné kolekcie
-            .homepage-grid__item(style="height: 410px;", data-grid-column='{ "m": 1, "l": 2}')
-              h2 Najobľúbenejšie kolekcie
-            .homepage-grid__item(style="height: 410px;", data-grid-column='{ "m": 1, "l": 2}')
-              h2 Ľudí najviac zaujíma
+        // mobile
+        .row.hide-m
+          .col--12
+            +preVas
+            +najpredavaniejsieZPonuky
+            +novinky
+            +tyzdenneKolekcie
+            +banner
+            +najoblubenejsieKolekcie
