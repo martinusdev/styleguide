@@ -1,5 +1,7 @@
 import Swiper from 'swiper';
 
+import { nodeListToArray } from './Utils';
+
 const defaultConfig = {
   pagination: '.swiper-pagination',
   nextButton: '.carousel__btn--next',
@@ -28,10 +30,12 @@ export default class SwiperSlider {
     this.config = { ...defaultConfig, ...config };
 
     this.swipers = [];
+    this.instances = [];
 
     this._disableLazyIframes = this._disableLazyIframes.bind(this);
 
-    return this._init();
+    this._init();
+    return this;
   }
 
   _init() {
@@ -49,6 +53,11 @@ export default class SwiperSlider {
       const swiperInstance = new Swiper(swiper, swiperConfig);
       swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);
 
+      swiperInstance.on('onTransitionEnd', this._handleSlideChange);
+      this._handleSlideChange(swiperInstance);
+
+      this.instances.push(swiperInstance);
+
       return swiper;
     });
   }
@@ -63,6 +72,27 @@ export default class SwiperSlider {
           window.myApp.toggles.doToggle(lazyIframe);
         }
       }
+    }
+  }
+
+  _handleSlideChange(instance) { // eslint-disable-line
+    const activeElement = instance.slides[instance.activeIndex];
+
+    const extraContent = activeElement.querySelector(
+      '[data-swipper-extra-content-source]',
+    );
+    const extraContentTarget = instance.container[0].querySelector(
+      '[data-swipper-extra-content-target]',
+    );
+
+    if (extraContent && extraContentTarget) {
+      while (extraContentTarget.firstChild) {
+        extraContentTarget.removeChild(extraContentTarget.firstChild);
+      }
+
+      nodeListToArray(extraContent.children).forEach(item => {
+        extraContentTarget.appendChild(item.cloneNode(true));
+      });
     }
   }
 }

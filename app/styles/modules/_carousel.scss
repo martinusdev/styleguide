@@ -97,4 +97,56 @@
   &__book-detail {
     width: 120px;
   }
+
+  &__book {
+    width: 100px;
+  }
+
+  // stylelint-disable max-nesting-depth
+  &--fan {
+    .swiper-container { overflow: visible; }
+
+    .swiper-slide {
+      opacity: 0;
+
+      .figure-book__rating {
+        position: relative;
+        margin-top: -10px;
+        opacity: 0;
+      }
+    }
+
+    .swiper-slide-visible {
+      opacity: 0.2;
+      transform: rotate(-20deg) scale(0.6) translate3d(150px, 60px, 0);
+      z-index: 2;
+
+      &.swiper-slide-prev,
+      &.swiper-slide-next {
+        opacity: 0.5;
+        transform: rotate(-10deg) scale(0.8) translate3d(50px, 0, 0);
+        z-index: 3;
+      }
+
+      &.swiper-slide-active {
+        opacity: 1;
+        transform: rotate(0deg) scale(1) translate3d(0, 0, 0);
+        z-index: 4;
+
+        .figure-book__rating {
+          opacity: 1;
+          z-index: 5;
+        }
+
+        ~ .swiper-slide-visible {
+          transform: rotate(20deg) scale(0.6) translate3d(-150px, 60px, 0);
+        }
+
+        + .swiper-slide-next {
+          transform: rotate(10deg) scale(0.8) translate3d(-50px, 0, 0);
+        }
+      }
+    }
+  }
+  // stylelint-enable max-nesting-depth
 }

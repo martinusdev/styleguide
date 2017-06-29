@@ -107,12 +107,23 @@
     }
 
     .carousel {
-      .swiper-container {
+      &.carousel--fade-outside .swiper-container {
         margin-right: 40px;
       }
 
-      .carousel__btn--prev { left: -5px; }
-      .carousel__btn--next { right: -45px; }
+      // stylelint-disable max-nesting-depth
+      &--fade-outside {
+        .carousel__btn--prev { left: -5px; }
+        .carousel__btn--next { right: -45px; }
+      }
+      // stylelint-enable max-nesting-depth
+
+      // stylelint-disable max-nesting-depth
+      &--fan {
+        .carousel__btn--prev { left: -5px; }
+        .carousel__btn--next { right: -5px; }
+      }
+      // stylelint-enable max-nesting-depth
     }
   }
 }

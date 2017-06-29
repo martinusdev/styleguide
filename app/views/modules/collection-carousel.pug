@@ -1,0 +1,37 @@
+-
+  var swiperConfig = {
+    slidesPerView: 'auto',
+    slidesPerGroup: 1,
+    spaceBetween: 0,
+    centeredSlides: true,
+    loop: true,
+    speed: 0
+  };
+
+  swiperConfig = JSON.stringify(swiperConfig);
+.carousel.carousel--fan
+  .swiper-container(data-swiper-options=swiperConfig)
+    .swiper-wrapper
+      each item, i in [...books, ...books, ...books, ...books]
+        a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book
+          figure.figure.figure-book.figure-book--rating.mb-medium
+            .figure-book__cover.book-thumbnail.book-thumbnail--clickable
+              img.no-mrg(src=`${assetsPrefix}${item.cover}`)
+            figcaption.figure-book__rating
+              if item.discount
+                .badge.badge--primary= item.discount
+              else
+                .badge
+                  +icon('star').text-color-yellow.icon--small
+                  | #{' '}
+                  = item.rating
+          div(data-swipper-extra-content-source).visually-hidden
+            h3.text-center.text-color-black.text-semibold.no-mrg= item.title
+            p.text-center.text-medium= item.author
+
+    div(data-swipper-extra-content-target)
+
+    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+      +icon('arrow-left').icon--medium
+    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+      +icon('arrow-right').icon--medium
