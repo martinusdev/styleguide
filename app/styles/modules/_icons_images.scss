@@ -62,6 +62,16 @@ img {
 }
 
 // ----------------------------
+// THUMBNAILS
+
+@each $name, $size in $thumbnail-sizes {
+  .thumbnail#{_get-variant-name($name)} {
+    width: $size;
+    height: $size;
+  }
+}
+
+// ----------------------------
 // BOOK THUMBNAIL
 
 .book-thumbnail {
@@ -104,5 +114,11 @@ img {
     border-radius: $default-border-radius;
 
     background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
+  }
+
+  &__status {
+    position: absolute;
+    top: -10px;
+    left: -10px;
   }
 }
