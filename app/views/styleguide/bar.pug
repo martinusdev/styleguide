@@ -87,6 +87,29 @@ block append content
           :code
             <div class="bar bar--small">...</div>
 
+    +content-sub-section('Bar item with border')
+      +p Border between bar items can be added as bar item with class <code class='l-code-inline'>.bar__item--border</code>.
+
+      +note
+        +p It's is usually placed on empty bar item, or space between border and bar item content needs to be handled.
+
+      +demo
+        +demo-example
+          .row.row--space
+            .col
+              .bar
+                .bar__item
+                  .l-debug Between first
+                .bar__item.bar__item--border
+                .bar__item
+                  .l-debug and second bar item
+                .bar__item.bar__item--fill
+                  .l-debug is border
+
+        +demo-code
+          :code
+            <div class="bar__item bar__item--border"></div>
+
     +content-sub-section('Alignment')
 
       +p Bar is compatible with <a href="utilities#{htmlPostfix}#flexbox-alignment">flexbox alignment classes</a>.
@@ -98,7 +121,7 @@ block append content
               .bar
                 .bar__item.align-self-top
                   .l-debug <code class="l-code-inline">.align-self-top</code>
-                .bar__content
+                .bar__item.bar__item--fill.bar__item--shrinkable
                   p Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit.
                 .bar__item.align-self-bottom
                   .l-debug <code class="l-code-inline">.align-self-bottom</code>
@@ -109,7 +132,7 @@ block append content
               .bar.align-items-bottom
                 .bar__item
                   .l-debug <code class="l-code-inline">.bar__item</code>
-                .bar__content
+                .bar__item.bar__item--fill.bar__item--shrinkable
                   p Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit. Nulla vitae elit libero, a pharetra augue. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper. Nullam id dolor id nibh ultricies vehicula ut id elit.
                 .bar__item
                   .l-debug <code class="l-code-inline">.bar__item</code>
