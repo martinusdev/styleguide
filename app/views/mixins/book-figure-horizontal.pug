@@ -2,28 +2,45 @@ mixin book-figure-horizontal(props = {})
   -
     const {
       cover = 'images/content/books/sample-15.jpg',
+      coverSize = 'small',
       title = 'Základy rybolovu pro kluky a holky',
       author = 'Frank Weissert, Jack Thorne a John Tiffany',
+      description,
       discount,
+      discountUnderBook = false,
       rating = 4.5,
       price = '12,99 €',
+      duration,
     } = props;
 
   a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
-  figure.figure.figure--horizontal.no-mrg
-    .figure__img.figure-book__cover.book-thumbnail.book-thumbnail--small
-      img(src=`${assetsPrefix}${cover}`)
-    figcaption.figure__caption
-      p.text-semibold.text-size-medium.no-mrg(title=title)= title
-      p.text-color-grey.text-size-small.mb-small= author
-      .bar.bar--small
-        .bar__item
-          if discount
-            .badge.badge--primary= discount
-          else
-            .badge
-              +icon('star').text-color-yellow.icon--small
-              | #{' '}
-              = rating
-        .bar__bar__item--fill.text-right
-          .text-medium.text-semibold= price
+    figure.figure.figure--horizontal&attributes(attributes)
+      .figure__img.figure-book__cover
+        .book-thumbnail(class=`book-thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
+          img(src=`${assetsPrefix}${cover}`)
+          if duration
+            .book-thumbnail__status
+              +bookBadge(duration)
+        if discount && discountUnderBook
+          .badge.badge--primary= discount
+
+      figcaption.figure__caption
+        p.text-semibold.text-size-medium.no-mrg(title=title)= title
+        p.text-color-grey.text-size-small.mb-small= author
+        .bar.bar--small.mb-small
+          .bar__item
+            if discount && !discountUnderBook
+              .badge.badge--primary= discount
+            else
+              .badge
+                +icon('star').text-color-yellow.icon--small
+                | #{' '}
+                = rating
+          .bar__item.bar__item--fill.text-right
+            .text-medium.text-semibold= price
+
+        if description
+          p.text-size-small.mb-small= description
+            | #{' '}
+            a.link(href='#') Čítať viac#{' '}
+              +icon('arrow-right')

@@ -71,7 +71,8 @@ mixin booksCarouselHorizontal(props = {})
                 .book-thumbnail.book-thumbnail--clickable.mb-small
                   img(src=`${assetsPrefix}${item.cover}`)
                   if duration
-                    +duration(duration).book-thumbnail__badge
+                    .book-thumbnail__status
+                      +bookBadge(duration)
               figcaption.figure-book__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
                 p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author

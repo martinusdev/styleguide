@@ -10,10 +10,10 @@ mixin preVas
       .card__content.card__content--overflow
         +booksCarouselHorizontal
 
-mixin banner
+mixin banner(size = 200)
   section.mb-large
     a(href='#').banner
-      img.img.img--fluid(src="images/content/banner-374x200.jpg")
+      img.img.img--fluid(src=`images/content/banner-374x${size}.jpg`)
 
 mixin tyzdenneKolekcie
   section.mb-large
@@ -24,8 +24,15 @@ mixin tyzdenneKolekcie
         include ./modules/collection-carousel
 
       .card__content
-        .btn-layout.btn-layout--vertical
+        .btn-layout.btn-layout--vertical.mb-medium
           button.btn.btn--ghost Celá kolekcia
+        figure.figure.figure--horizontal
+          .figure__img
+            img.img--fluid.img--circle.thumbnail.thumbnail--medium(src='https://placehold.it/100x100', alt="Tomáš Ulej")
+          figcaption.figure__caption
+            p.mb-small Vyberá#{' '}
+              a.link(href='#', title="Tomáš Ulej") Tomáš Ulej
+            p.no-mrg.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
 
 mixin novinky
   section.mb-large
@@ -38,6 +45,8 @@ mixin najoblubenejsieKolekcie
   section.mb-large
     +section-header({ header: 'Najobľúbenejšie kolekcie' })
     article.card
+      .card__status
+        img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100', alt="Tomáš Ulej")
       .card__content.card__content--overflow
         h2.text-center Biografie slávnych
         include ./modules/collection-carousel
@@ -70,11 +79,45 @@ mixin najpredavaniejsieZPonuky
           each item, i in [...books, ...books ]
             if i < 10
               li.mb-medium(class=i > 4 ? 'show-l' : '')
-                +book-figure-horizontal(item)
+                +book-figure-horizontal(item).no-mrg
 
       .card__content
         .btn-layout.btn-layout--vertical
           button.btn.btn--ghost Celý rebríček
+
+mixin akcioveTituly
+  section.mb-large
+    +section-header({ header: 'Akciové tituly' })
+    .card
+      .card__content
+        +book-figure-horizontal({ discountUnderBook: true, discount: 'Ušetrite 3,50 €', description: 'Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.', coverSize: 'medium', duration: {} })
+      .card__content.card__content--overflow
+        +booksCarouselHorizontal({ duration: {} })
+
+mixin ludiNajviacZaujma
+  section.mb-large
+    +section-header({ header: 'Ľudí najviac zaujíma' })
+    .card
+      .card__content
+        ul.list
+          each item, i in [...books, ...books ]
+            if i < 4
+              li(class=`${i < 3 ? 'mb-medium' : ''}`)
+                +book-figure-horizontal(item).no-mrg
+
+mixin najoblubenejsieSerie
+  section.mb-large
+    +section-header({ header: 'Najobľúbenejšie série' })
+    article.card
+      .card__status
+        img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100', alt="Tomáš Ulej")
+      .card__content.card__content--overflow
+        h2.text-center Všetko z IT sveta
+        include ./modules/collection-carousel
+
+      .card__content
+        .btn-layout.btn-layout--vertical
+          button.btn.btn--ghost Celá kolekcia
 
 block content
   main.bg-secondary
@@ -86,13 +129,17 @@ block content
             +preVas
             +banner
             +tyzdenneKolekcie
+            +akcioveTituly
 
           .col--l-4.col--m-6
             +novinky
             +najoblubenejsieKolekcie
+            +ludiNajviacZaujma
+            +najoblubenejsieSerie
 
           .col--l-4.col--m-6
             +najpredavaniejsieZPonuky
+            +banner(374)
 
         // tablet
         .row.show-m-only
@@ -101,10 +148,13 @@ block content
             +novinky
             +banner
             +tyzdenneKolekcie
+            +akcioveTituly
 
           .col--m-6
             +najpredavaniejsieZPonuky
             +najoblubenejsieKolekcie
+            +najoblubenejsieSerie
+            +ludiNajviacZaujma
 
         // mobile
         .row.hide-m
@@ -115,3 +165,9 @@ block content
             +tyzdenneKolekcie
             +banner
             +najoblubenejsieKolekcie
+            +akcioveTituly
+
+        .row
+          .col--m-6.col--l-4.ofst--center
+            .btn-layout.btn-layout--vertical
+              button.btn.btn--ghost Zobraziť viac
