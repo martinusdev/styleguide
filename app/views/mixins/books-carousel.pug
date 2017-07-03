@@ -1,0 +1,93 @@
+mixin booksCarouselRecommended()
+  -
+    var swiperConfig = {
+      slidesPerView: 'auto',
+      slidesPerGroup: 7,
+      breakpoints: {
+        1024: {
+          slidesPerGroup: 5,
+        },
+        768: {
+          spaceBetween: 20,
+          slidesPerGroup: 3,
+        },
+        640: {
+          spaceBetween: 20,
+          slidesPerGroup: 2,
+        },
+        480: {
+          spaceBetween: 20,
+          slidesPerGroup: 1,
+        }
+      },
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel.carousel--fade-outside
+    .swiper-container(data-swiper-options=swiperConfig)
+      .swiper-wrapper
+        each item, i in [...books, ...books, ...books, ...books]
+          a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book-detail
+            figure.figure.figure-book.mb-small.text-left
+              .figure-book__cover.book-thumbnail.book-thumbnail--clickable.mb-small
+                img(src=`${assetsPrefix}${item.cover}`)
+              figcaption.figure-book__title
+                p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
+                p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
+            .bar.bar--small.no-mrg
+              .bar__item
+                if item.discount
+                  .badge.badge--primary= item.discount
+                else
+                  .badge
+                    +icon('star').text-color-yellow.icon--small
+                    | #{' '}
+                    = item.rating
+              .bar__item.bar__item--fill.text-right
+                .text-medium.text-semibold= item.price
+
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+        +icon('arrow-left').icon--medium
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+        +icon('arrow-right').icon--medium
+
+mixin booksCarouselHorizontal(props = {})
+  -
+    const {
+      duration,
+    } = props;
+    var swiperConfig = {
+      slidesPerView: 'auto',
+      slidesPerGroup: 1,
+      spaceBetween: 20
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel.carousel--fade-outside.carousel--fade-outside-white
+    .swiper-container(data-swiper-options=swiperConfig)
+      .swiper-wrapper
+        each item, i in [...books, ...books, ...books, ...books]
+          a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book-detail
+            figure.figure.figure-book.mb-small.text-left
+              .figure-book__cover
+                .book-thumbnail.book-thumbnail--clickable.mb-small
+                  img(src=`${assetsPrefix}${item.cover}`)
+                  if duration
+                    +duration(duration).book-thumbnail__badge
+              figcaption.figure-book__title
+                p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
+                p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
+            .bar.bar--small.no-mrg
+              .bar__item
+                if item.discount
+                  .badge.badge--primary= item.discount
+                else
+                  .badge
+                    +icon('star').text-color-yellow.icon--small
+                    | #{' '}
+                    = item.rating
+              .bar__item.bar__item--fill.text-right
+                .text-medium.text-semibold= item.price
+
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+        +icon('arrow-left').icon--medium
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+        +icon('arrow-right').icon--medium
