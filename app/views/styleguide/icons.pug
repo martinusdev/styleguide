@@ -224,12 +224,54 @@ block append content
           <img class="img thumbnail thumbnail--medium" src="..." alt="...">
           <img class="img thumbnail thumbnail--large" src="..." alt="...">
 
-    +content-sub-section('Book thumbnails')
+  +content-section(contents[3], true)
+
+    +demo
+      +demo-example
+        .book-thumbnail.book-thumbnail--medium
+          img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+
+      +demo-code
+        :code
+          <div class="book-thumbnail">
+            <img class="img " src="..." alt="...">
+          </div>
+
+    +content-sub-section('Book thumbnail sizes')
+
+      +p Book thumbnails should have specified size via classes <code class='l-code-inline'>.book-thumbnail--[small/medium]</code>.
 
       +demo
         +demo-example
-          img.img.book-thumbnail(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+          .bar
+            .bar__item
+              .book-thumbnail.book-thumbnail--medium
+                img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .bar__item
+              .book-thumbnail.book-thumbnail--small
+                img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
 
         +demo-code
           :code
-            <img class="img book-thumbnail" src="..." alt="...">
+            <div class="book-thumbnail book-thumbnail--small">...</div>
+            <div class="book-thumbnail book-thumbnail--medium">...</div>
+
+    +content-sub-section('Book thumbnail status')
+
+      +p Book thumbnails can embed status with <code class='l-code-inline'>.book-thumbnail__status</code>. Example with book-badge as discount coutdown is shown below.
+
+      +demo
+        +demo-example
+          .book-thumbnail.book-thumbnail--medium
+            img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .book-thumbnail__status
+              +bookBadge(duration)
+
+        +demo-code
+          :code
+            <div class="book-thumbnail book-thumbnail--medium">
+              <img class="img" src="..." alt="..." />
+              <div class="book-thumbnail__status">
+                ...
+              </div>
+            </div>
