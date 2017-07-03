@@ -66,30 +66,55 @@ block append content
 
       +demo
         +demo-example
-          article.card.card--well.text-center.text-size-medium
-            .card__content
-              p.text-color-grey-800 Knihu máme na <em class="">sklade</em>
+          .row
+            .col--m-6.col--l-4
+              article.card.card--well.text-center.text-size-medium
+                .card__content
+                  p.text-color-grey-800 Knihu máme na <em class="">sklade</em>
 
-            .card__content
-              .h1.no-mrg 12,99 €
-              p.mb-small.text-color-grey-800 Bežná cena#{' '}
-                span.text-strikethrough 15,42 €
-              .badges.badges--inline.align-items-center
-                .badge.badge--primary Ušetríte 3,50 €
+                .card__content
+                  .h1.no-mrg 12,99 €
+                  p.mb-small.text-color-grey-800 Bežná cena#{' '}
+                    span.text-strikethrough 15,42 €
+                  .badges.badges--inline.align-items-center
+                    .badge.badge--primary Ušetríte 3,50 €
 
-            .card__content
-              p.mb-small.text-color-grey-800 Posielame <em>ihneď</em>.
-              .btn-layout--vertical
-                button.btn.btn--primary.btn--large.mb-small
-                  +icon('add-to-cart').icon--left.icon--medium
-                  | Vložiť do košíka
+                .card__content
+                  p.mb-small.text-color-grey-800 Posielame <em>ihneď</em>.
+                  .btn-layout--vertical
+                    button.btn.btn--primary.btn--large.mb-small
+                      +icon('add-to-cart').icon--left.icon--medium
+                      | Vložiť do košíka
 
-                button.btn.btn--clean.no-mrg
-                  +icon('heart').icon--left.icon--medium
-                  | Pridať do
+                    button.btn.btn--clean.no-mrg
+                      +icon('heart').icon--left.icon--medium
+                      | Pridať do
+            +demo-code
+              :code
+                <article class="card card--well">
+                  ...
+                </article>
+
+    +content-sub-section('Card status')
+
+      +p Card status is item in top right corner of card. Content of the status needs to be wrapped in <code class='l-code-inline'>.card__status</code> element.
+
+      +demo
+        +demo-example
+          .row
+            .col--m-6.col--l-4
+              article.card
+                .card__status
+                  img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100', alt="Tomáš Ulej")
+                .card__content.card__content--overflow
+                  h2.text-center Biografie slávnych
+                  include ./../modules/collection-carousel
         +demo-code
           :code
-            <article class="card card--well">
+            <article class="card">
+              <div class="card__status">
+                ...
+              </div>
               ...
             </article>
 
