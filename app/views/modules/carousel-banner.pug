@@ -1,0 +1,23 @@
+.carousel-banner
+  -
+    var swiperConfig = {
+      slidesPerView: 'auto',
+      slidesPerGroup: 1,
+      spaceBetween: 20,
+      centeredSlides: true,
+      loop: true,
+      slideToClickedSlide: true,
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel.carousel--fade-inactive.carousel--disable-inactive
+    .swiper-container(data-swiper-options=swiperConfig)
+      .swiper-wrapper
+        each item, i in Array(3)
+          .swiper-slide.carousel__banner
+            a(href="#").carousel__link
+              img(src=`${assetsPrefix}images/content/banner-homepage.jpg`)
+
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+        +icon('arrow-left').icon--medium
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+        +icon('arrow-right').icon--medium

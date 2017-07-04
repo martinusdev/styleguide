@@ -15,7 +15,6 @@ const defaultConfig = {
   lazyLoadingInPrevNext: true,
   lazyLoadingOnTransitionStart: true,
   buttonDisabledClass: 'is-disabled',
-  simulateTouch: false,
   onInit: swiper => {
     swiper.container[0].classList.add('is-initialized');
   },
