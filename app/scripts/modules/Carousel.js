@@ -1,6 +1,11 @@
 import Swiper from 'swiper';
 
 import { nodeListToArray } from './Utils';
+import { BREAKPOINTS } from './Const';
+
+const shouldInitalize = (up, down, currentWidth, breakpoints) =>
+  !(up && breakpoints[up] >= currentWidth) &&
+  !(down && breakpoints[down] < currentWidth);
 
 const defaultConfig = {
   pagination: '.swiper-pagination',
@@ -43,19 +48,31 @@ export default class SwiperSlider {
     );
 
     return this.swipers.map(swiper => {
+      const breakpointUp = swiper.getAttribute('data-swiper-up');
+      const breakpointDown = swiper.getAttribute('data-swiper-down');
       const options = swiper.getAttribute('data-swiper-options');
       let swiperConfig = this.config;
+
       if (options) {
         swiperConfig = { ...this.config, ...JSON.parse(options) };
       }
 
-      const swiperInstance = new Swiper(swiper, swiperConfig);
-      swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);
+      if (
+        shouldInitalize(
+          breakpointUp,
+          breakpointDown,
+          window.innerWidth,
+          BREAKPOINTS,
+        )
+      ) {
+        const swiperInstance = new Swiper(swiper, swiperConfig);
+        swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);
 
-      swiperInstance.on('onTransitionEnd', this._handleSlideChange);
-      this._handleSlideChange(swiperInstance);
+        swiperInstance.on('onTransitionEnd', this._handleSlideChange);
+        this._handleSlideChange(swiperInstance);
 
-      this.instances.push(swiperInstance);
+        this.instances.push(swiperInstance);
+      }
 
       return swiper;
     });
