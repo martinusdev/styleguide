@@ -45,6 +45,11 @@ $color-palette: (
     500: #945131,
     600: #7a4228,
   ),
+  link: (
+    500: #0069ba,
+    400: #0078d4,
+    600: #005ba1,
+  ),
   bg: (
     500: #fbf7f5,
     600: #f7efeb,
@@ -190,13 +195,13 @@ $link: (
   default: (
     text-decoration: none,
     border-bottom: 1px solid transparent,
-    color: _color(blue),
+    color: _color(link),
     font-weight: $font-weight-semibold,
     transition: #{color $ease-400, border $ease-400},
   ),
   focus: (
-    color: _color(blue, 400),
-    border-bottom-color: _color(blue, 400),
+    color: _color(link, 400),
+    border-bottom-color: _color(link, 400),
   )
 );
 
