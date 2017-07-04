@@ -1,0 +1,23 @@
+mixin carouselTiles(tiles)
+  .carousel-tiles
+    -
+      var swiperConfig = {
+        slidesPerView: 'auto',
+        slidesPerGroup: 1,
+        spaceBetween: 20,
+        centeredSlides: true,
+        loop: true,
+      };
+      swiperConfig = JSON.stringify(swiperConfig);
+    .carousel
+      .swiper-container(data-swiper-options=swiperConfig, data-swiper-up="m")
+        .swiper-wrapper
+          each item, i in tiles
+            .swiper-slide.carousel__tile.carousel-tile.carousel-tile__bg(style=`background-image: url(${assetsPrefix}images/content/banner-tile-${(i % 3) + 1 }.jpg)`, class=`carousel-tile__bg--${item.color}`)
+              a(href="#").carousel__link
+                h2.carousel-tile__header.text-color-white= item.title
+
+        button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+          +icon('arrow-left').icon--medium
+        button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+          +icon('arrow-right').icon--medium

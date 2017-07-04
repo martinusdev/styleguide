@@ -5,7 +5,7 @@
 .carousel {
   margin-bottom: _get-space('v', 'large');
 
-  .swiper-slide:not(.swiper-slide-visible) {
+  .is-initialized .swiper-slide:not(.swiper-slide-visible) {
     pointer-events: none;
   }
 
@@ -18,23 +18,8 @@
     transform: translateY(-(_map-deep-get($carousel, btns, offsetV)));
     margin: 0;
 
-    &--prev {
-      left: _map-deep-get($carousel, btns, offsetH, default);
-    }
-
-    &--next {
-      right: _map-deep-get($carousel, btns, offsetH, default);
-    }
-
-    @include breakpoint(l) {
-      &--prev {
-        left: _map-deep-get($carousel, btns, offsetH, l);
-      }
-
-      &--next {
-        right: _map-deep-get($carousel, btns, offsetH, l);
-      }
-    };
+    &--next { right: 40px; }
+    &--prev { left: 40px; }
 
     &.is-disabled {
       opacity: 0;
@@ -96,14 +81,29 @@
         }
       }
     }
+
+    .carousel__btn--prev {
+      left: _map-deep-get($carousel, btns, offsetH, default);
+    }
+
+    .carousel__btn--next {
+      right: _map-deep-get($carousel, btns, offsetH, default);
+    }
+
+    @include breakpoint(l) {
+      .carousel__btn--prev {
+        left: _map-deep-get($carousel, btns, offsetH, l);
+      }
+
+      .carousel__btn--next {
+        right: _map-deep-get($carousel, btns, offsetH, l);
+      }
+    };
   }
 
   &--fade-inactive {
     .swiper-slide { opacity: 0.5; }
     .swiper-slide-active { opacity: 1; }
-
-    .carousel__btn--next { right: 40px; }
-    .carousel__btn--prev { left: 40px; }
   }
 
   &--disable-inactive {
@@ -126,6 +126,11 @@
     @include breakpoint(m) {
       width: 600px;
     }
+  }
+
+  &__tile {
+    width: 290px;
+    height: 290px;
   }
 
   // stylelint-disable max-nesting-depth
@@ -175,4 +180,75 @@
     }
   }
   // stylelint-enable max-nesting-depth
+}
+
+.carousel-tiles {
+  @include breakpoint(s, 'down') {
+    .swiper-wrapper {
+      display: block;
+      width: auto;
+      margin-left: _get-space('h');
+      margin-right: _get-space('h');
+      transform: none !important;
+    }
+
+    .swiper-slide-duplicate { display: none; }
+
+    .carousel__btn { display: none; }
+
+    .carousel__link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+    }
+
+    .carousel-tile {
+      width: 100%;
+    }
+
+    .carousel-tile__bg {
+      margin-bottom: _get-space('v');
+      width: 100%;
+      height: 100px;
+      background-image: none !important;
+
+      &--orange {
+        background-color: _color(orange);
+      }
+
+      &--yellow {
+        background-color: _color(yellow);
+      }
+
+      &--blue {
+        background-color: _color(blue);
+      }
+
+      &--green {
+        background-color: _color(green);
+      }
+
+      &--violet {
+        background-color: _color(violet);
+      }
+    }
+
+    .carousel-tile__header {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.carousel-tile {
+  position: relative;
+
+  &__header {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+  }
 }
