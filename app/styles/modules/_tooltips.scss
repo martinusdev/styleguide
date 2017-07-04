@@ -1,0 +1,29 @@
+@import './../../../node_modules/tippy.js/src/scss/tippy';
+
+.tippy-tooltip.dark-theme {
+  background-color: _color(grey);
+  padding: _get-rem(5px);
+
+  color: $color-white;
+
+  font-size: _get-rem($font-size-small);
+  font-weight: $font-weight-semibold;
+
+  border-radius: $default-border-radius;
+
+  .tippy-popper[x-placement^=top] & [x-arrow] {
+    border-top-color: _color(grey);
+  }
+
+  .tippy-popper[x-placement^=right] & [x-arrow] {
+    border-right-color: _color(grey);
+  }
+
+  .tippy-popper[x-placement^=bottom] & [x-arrow] {
+    border-bottom-color: _color(grey);
+  }
+
+  .tippy-popper[x-placement^=left] & [x-arrow] {
+    border-left-color: _color(grey);
+  }
+}

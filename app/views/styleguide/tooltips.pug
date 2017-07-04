@@ -1,0 +1,76 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.tooltips', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_tooltips.scss'], contents)
+
+    +p-big Documentation for tooltips components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- TABS
+  +content-section(contents[0], true)
+
+    +p Tooltip can display simple text information inside bubble next to component. There are few variations of how tooltips can be used. For example on text, on button, with or without tooltip icon. Tooltip can be created using <code class='l-code-inline'>[data-tooltip]</code> attribute in conjunction with <code class='l-code-inline'>[title]</code> attribute.
+
+    +dependency('Javascript')
+      +p Tooltip component is wrapper plugin around#{' '}
+        a.l-a(href="https://github.com/atomiks/tippyjs") Tippy.js
+        | . All methods and events are supported.
+
+    +demo
+      +demo-example
+        .bar
+          .bar__item
+            em(data-tooltip, title="This is tooltip text") This text has tooltip
+
+          .bar__item
+            button.btn.btn--ghost(data-tooltip, title="This is tooltip text") This button has tooltip
+
+          .bar__item
+            +icon('user').icon--large(data-tooltip, title="This is tooltip text on icon")
+      +demo-code
+        :code
+          <em data-tooltip title="This is tooltip text">...</em>
+
+          <button class="btn btn--ghost" data-tooltip title="This is tooltip text">..</button>
+
+          <svg class="icon icon-user icon--large" role="img" aria-hidden="true" data-tooltip data-tooltipped="" title="This is tooltip text on icon">.../svg>
+
+    +content-sub-section('Tooltip positions')
+
+      +p Tooltip can be positioned on: <code class='l-code-inline'>top(default)/right/bottom/left</code> with attribute <code class='l-code-inline'>data-position</code> as shown on example below.
+
+      +demo
+        +demo-example
+          .bar
+            .bar__item
+              button.btn.btn--ghost(data-tooltip, title="This is tooltip text") Position: top (default)
+            .bar__item
+              button.btn.btn--ghost(data-tooltip, data-position="right", title="This is tooltip text") Position: right
+            .bar__item
+              button.btn.btn--ghost(data-tooltip, data-position="bottom", title="This is tooltip text") Position: bottom
+            .bar__item
+              button.btn.btn--ghost(data-tooltip, data-position="left", title="This is tooltip text") Position: left
+
+        //- +demo-code
+        //-   :code
+        //-     <button class="btn btn--ghost" data-tooltip title="This is tooltip text">..</button>
+        //-     <button class="btn btn--ghost" data-tooltip data-position="right" title="This is tooltip text">..</button>
+        //-     <button class="btn btn--ghost" data-tooltip data-position="bottom" title="This is tooltip text">..</button>
+        //-     <button class="btn btn--ghost" data-tooltip data-position="left" title="This is tooltip text">..</button>
+
+
+//- end: section
+
+//- end: section

@@ -13,7 +13,8 @@ ul.tab-nav.tab-nav--block
   section#web.tab
     article.card.card--well.text-center.text-size-medium
       .card__content
-        p.text-color-grey-800 Knihu máme na <em class="">sklade</em>
+        p.text-color-grey-800 Knihu máme na#{' '}
+          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
 
       .card__content
         .h1.no-mrg 12,99 €
@@ -23,7 +24,9 @@ ul.tab-nav.tab-nav--block
           .badge.badge--primary Ušetríte 3,50 €
 
       .card__content
-        p.mb-small.text-color-grey-800 Posielame <em>ihneď</em>.
+        p.mb-small.text-color-grey-800 Posielame#{' '}
+          em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+          | .
         .btn-layout--vertical
           button.btn.btn--primary.btn--large.mb-small
             +icon('add-to-cart').icon--left.icon--medium
@@ -43,13 +46,17 @@ ul.tab-nav.tab-nav--block
           select.js-select.select--inline.select--clean.select--small#shop-location
             option BA Obchodná
             option Martin
-        p.text-color-grey-800 Skladom máme <em>1ks</em>.
+        p.text-color-grey-800 Skladom máme#{' '}
+          em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
+          | .
 
       .card__content
         .h1 13,90 €
 
       .card__content
-        p.mb-small.text-color-grey-800 Knihu vám podržíme <em>48h</em>.
+        p.mb-small.text-color-grey-800 Knihu vám podržíme#{' '}
+          em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
+          | .
         .btn-layout--vertical
           button.btn.btn--primary.btn--large.mb-small Rezervovať
           button.btn.btn--clean.no-mrg
