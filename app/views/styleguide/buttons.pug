@@ -99,21 +99,27 @@ block append content
           .btn-layout--vertical
             .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--large(type='button') Large
-              button.btn(type='button') Default
-            .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--round.btn--large(type='button') Large
-              button.btn.btn--round(type='button') Default
-            .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--equal.btn--round.btn--large(type='button')
                 +icon-sg('sg-close', 'icon--large', 'Close')
-              button.btn.btn--equal.btn--round(type='button')
-                +icon-sg('sg-close', 'icon--medium', 'Close')
-            .btn-layout--vertical.btn-layout--m-horizontal
               button.btn.btn--equal.btn--large(type='button')
                 +icon-sg('sg-close', 'icon--large', 'Close')
+
+            .btn-layout--vertical.btn-layout--m-horizontal
+              button.btn(type='button') Default
+              button.btn.btn--round(type='button') Default
+              button.btn.btn--equal.btn--round(type='button')
+                +icon-sg('sg-close', 'icon--medium', 'Close')
               button.btn.btn--equal(type='button')
                 +icon-sg('sg-close', 'icon--medium', 'Close')
 
+            .btn-layout--vertical.btn-layout--m-horizontal
+              button.btn.btn--small(type='button') Small
+              button.btn.btn--round.btn--small(type='button') Small
+              button.btn.btn--equal.btn--round.btn--small(type='button')
+                +icon-sg('sg-close', 'icon--small', 'Close')
+              button.btn.btn--equal.btn--small(type='button')
+                +icon-sg('sg-close', 'icon--small', 'Close')
 
         +demo-code
           :code
@@ -401,20 +407,24 @@ block append content
           .row
             .col--l-6.col--m-12
               h4 Button groups horizontal
-              .btn-layout--vertical.btn-layout--m-horizontal
+              .btn-layout--vertical
                 .btn-group--horizontal
+                  button.btn.is-active(type='button') Active
                   button.btn(type='button') Button
-                  button.btn(type='button') Button
-                  button.btn(type='button') Button
+                  button.btn(type='button', disabled) Disabled
                 .btn-group--horizontal
+                  button.btn.btn--ghost.is-active Active
+                  button.btn.btn--ghost(type='button') Button
+                  button.btn.btn--ghost(type='button', disabled) Disabled
+                .btn-group--horizontal
+                  button.btn.btn--large.btn--primary.is-active(type='button') Active
                   button.btn.btn--large.btn--primary(type='button') Button
-                  button.btn.btn--large.btn--primary(type='button') Button
-                  button.btn.btn--large.btn--primary(type='button')
+                  button.btn.btn--large.btn--primary(type='button', disabled)
                     +icon-sg('sg-settings', '', 'Settings')
                 .btn-group--horizontal
-                  button.btn.btn--small(type='button', disabled) Disabled
+                  button.btn.btn--small.is-active(type='button') Active
                   button.btn.btn--small(type='button') Button
-                  button.btn.btn--small(type='button')
+                  button.btn.btn--small(type='button', disabled)
                     +icon-sg('sg-edit', 'icon--left')
                     | Edit
 

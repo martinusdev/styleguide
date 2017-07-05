@@ -344,7 +344,7 @@ $button-layout-margin: _get-space('h', 'small');
 $button: (
   default: (
     border: 1px solid transparent,
-    font-weight: $font-weight-bold,
+    font-weight: $font-weight-semibold,
     text-transform: uppercase,
     letter-spacing: 1px,
     line-height: 1.25,
@@ -361,11 +361,15 @@ $button: (
 /// @prop {Length} button-size.font-size
 $button-sizes: (
   default: (
-    padding: 0.71875rem _get-rem(10px),
+    padding: _get-rem(11.5px) _get-rem(10px),
     font-size: _get_rem($default-font-size - 4px),
   ),
   large: (
-    padding: 1.03125rem _get-rem(25px),
+    padding: _get-rem(16.5px) _get-rem(25px),
+    font-size: _get_rem($default-font-size - 4px),
+  ),
+  small: (
+    padding: _get-rem(3.5px) _get-rem(25px),
     font-size: _get_rem($default-font-size - 4px),
   ),
 );
@@ -404,13 +408,17 @@ $button-styles: (
   default: (
     default: (
       color: $color-white,
-      background-color: _color(secondary, 500),
+      background-color: _color(grey, 700),
+    ),
+    focus: (
+      background-color: _color(grey, 600),
     ),
     active: (
       color: $color-white,
+      background-color: _color(grey, 900),
     ),
     group: (
-      border-color: _color(secondary, 600),
+      border-color: _color(grey, 900),
     ),
   ),
   primary: (
@@ -440,14 +448,15 @@ $button-styles: (
       background-color: transparent,
     ),
     focus: (
-      background-color: _color(grey, 400),
+      background-color: _color(secondary, 400),
       color: _color(grey, 700),
     ),
     active: (
-      border-color: transparent,
+      background-color: _color(secondary, 500),
+      border-color: _color(gray, 200),
     ),
     group: (
-      border-color: _color(gray, 600),
+      border-color: _color(gray, 400),
     ),
   ),
   clean: (
