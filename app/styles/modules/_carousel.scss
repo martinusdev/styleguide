@@ -24,6 +24,10 @@
     &.is-disabled {
       opacity: 0;
     }
+
+    @include breakpoint(s, 'down') {
+      display: none;
+    }
   }
 
   &__link {
@@ -176,6 +180,12 @@
         + .swiper-slide-next {
           transform: rotate(10deg) scale(0.8) translate3d(-50px, 0, 0);
         }
+      }
+    }
+
+    .carousel__btn {
+      @include breakpoint(s, 'down') {
+        display: flex;
       }
     }
   }
