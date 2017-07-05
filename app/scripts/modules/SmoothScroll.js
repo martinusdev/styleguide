@@ -1,6 +1,9 @@
 import smoothScroll from 'smooth-scroll';
 
-const defaultConfig = {};
+const defaultConfig = {
+  offset: 40,
+  speed: 200,
+};
 
 export default class SmoothScroll {
   constructor(selector = '[data-scroll]', config) {
@@ -8,7 +11,9 @@ export default class SmoothScroll {
 
     this.smoothScrolls = [];
 
-    return this._init();
+    this._init();
+
+    return this;
   }
 
   _init() {
