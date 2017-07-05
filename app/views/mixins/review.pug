@@ -20,14 +20,14 @@ mixin review(props = {})
       .review__header-name.bar__item.bar__item--fill.bar__item--shrinkable
         .text-semibold= name
         if address
-          div.text-color-grey-800= address
+          div.text-color-grey-dark= address
       .bar__break.hide-m
       .review__header-rating-date.bar__item.bar
         .rating-star.bar__item.align-items-center.no-mrg-top
           each star, starIndex in Array(5)
             +icon('star').rating-star__item.icon--large(class=`${starIndex < stars ? 'is-active' : ''}`)
         .review__header-date.bar__item.no-mrg-top
-          span.text-color-grey-800= date
+          span.text-color-grey-dark= date
 
     div.review__body.mb-not-last
       block

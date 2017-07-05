@@ -59,7 +59,9 @@ $color-palette: (
     200: #e5e5e5,
     400: #bcbcba,
     500: #8f8d8a,
-    800: #625d58,
+    600: #7a746e,
+    700: #625d58,
+    900: #474440,
   ),
   // colors
   yellow: #fcc34c,
@@ -156,7 +158,7 @@ $typography-overrides: (
       font-size: _get-rem(18px),
       line-height: 24/18,
       margin-bottom: _get-space('v', 'large'),
-      color: _color(grey, 800)
+      color: _color(grey, 700)
     ),
     'h4, .h4' : (
       font-size: _get-rem(18px),
@@ -168,7 +170,7 @@ $typography-overrides: (
       font-size: _get-rem(12px),
       line-height: 20/12,
       margin-bottom: _get-space('v', 'large'),
-      color: _color(grey, 800),
+      color: _color(grey, 700),
       text-transform: uppercase,
       letter-spacing: 1px,
     ),
@@ -254,8 +256,8 @@ $text-color-theme-100: _color(primary, 100);
 
 $text-color-black: $color-black;
 $text-color-grey: _color(grey, 500);
-$text-color-grey-200: _color(grey, 200);
-$text-color-grey-800: _color(grey, 800);
+$text-color-grey-light: _color(grey, 200);
+$text-color-grey-dark: _color(grey, 700);
 $text-color-semiblack: $color-semiblack;
 
 $text-color-white: $color-white;
@@ -434,13 +436,13 @@ $button-styles: (
   ),
   ghost: (
     default: (
-      color: _color(grey, 800),
+      color: _color(grey, 700),
       border-color: _color(grey, 400),
       background-color: transparent,
     ),
     focus: (
       background-color: _color(grey, 400),
-      color: _color(grey, 800),
+      color: _color(grey, 700),
     ),
     active: (
       border-color: transparent,
@@ -451,7 +453,7 @@ $button-styles: (
   ),
   clean: (
     default: (
-      color: _color(grey, 800),
+      color: _color(grey, 700),
       border-color: transparent,
       background-color: transparent,
       box-shadow: none,
@@ -515,7 +517,7 @@ $form-b-w: 1px;
 $form-b-s: solid;
 $form-b-c: _color(grey, 300);
 $form-b-r: $default-border-radius;
-$form-c: _color(grey, 800);
+$form-c: _color(grey, 700);
 $form-t: border, box-shadow $ease-300;
 
 $form-focus-bs: #{$shadow-direct-1, $shadow-ambient-1};
@@ -628,7 +630,7 @@ $radio-check: (
 );
 
 $radio-check-color: (
-  default: _color(grey, 800),
+  default: _color(grey, 700),
   disabled: _color(grey, 300),
   readonly: _color(grey, 400),
   error: _color(error, 500),
@@ -657,7 +659,7 @@ $radio-check-sizes: (
 // select
 
 $select-b-r: $form-b-r !default;
-$select-arrow-c: _color(grey, 800);
+$select-arrow-c: _color(grey, 700);
 
 $select-bg-color-dropdown: $color-white !default;
 
@@ -738,7 +740,7 @@ $select-search: (
 
 $input-addon: (
   background: _color(grey, 200),
-  color: _color(grey, 800),
+  color: _color(grey, 700),
   border-width: 1px,
   border-style: solid,
   border-color: _color(grey, 300),
@@ -979,7 +981,7 @@ $list-counter: (
     background-color: $color-white,
     border: 1px solid $default-border-color,
     border-radius: 999em,
-    color: _color(grey, 800),
+    color: _color(grey, 700),
     text-align: center,
     font-weight: $font-weight-semibold,
   )
@@ -1094,7 +1096,7 @@ $modal-footer: (
 $badge: (
   default: (
     padding: 0 _get-space('h', 'small'),
-    color: _color(grey, 800),
+    color: _color(grey, 700),
     background-color: $color-white,
     border: 1px solid $default-border-color,
     border-radius: $default-border-radius,
