@@ -294,12 +294,10 @@ block content
                           figcaption.figure__caption Ja
                       .col--l-5.col--l-border.text-center
                         p.mb-small Ako sa vám páčila kniha?
-                        .rating-star.align-items-center.mb-small.no-mrg-l
-                          +icon('star').rating-star__item.icon--xlarge.clickable
-                          +icon('star').rating-star__item.icon--xlarge.clickable
-                          +icon('star').rating-star__item.icon--xlarge.clickable
-                          +icon('star').rating-star__item.icon--xlarge.clickable
-                          +icon('star').rating-star__item.icon--xlarge.clickable
+                        .rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
+                          each i in Array(5)
+                            a(href="#").rating-star__item
+                              +icon('star').icon--xlarge
 
                       .col--l-4
                         .btn-layout.btn-layout--vertical.no-mrg

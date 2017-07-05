@@ -18,6 +18,18 @@
   &__value {
     margin-left: _get-space('h', 'small');
   }
+
+  &--highlight-on-hover {
+    &:hover .rating-star__item {
+      color: _color(yellow);
+    }
+
+    .rating-star__item:hover {
+      ~ * { // stylelint-disable
+        color: _color(grey, 200);
+      }
+    }
+  }
 }
 
 // ---------------------------------------------

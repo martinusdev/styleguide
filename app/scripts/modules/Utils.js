@@ -91,6 +91,17 @@ export function getSiblings(el) {
   return siblings;
 }
 
+/* eslint-disable no-continue */
+export function getPreviousSiblings(elem) {
+  const sibs = [];
+  while ((elem = elem.previousSibling)) { // eslint-disable-line
+    if (elem.nodeType === 3) continue; // text node
+    sibs.push(elem);
+  }
+  return sibs;
+}
+/* eslint-enable */
+
 export function insertAfter(newNode, referenceNode) {
   referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
