@@ -6,25 +6,40 @@ block opts
 block content
   main
     div(data-sticky-container)
-      section.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
+      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
-              .form-control.form-control--select.no-mrg
-                select.js-select
-                  option Pevná väzba#{' '}
+              .btn-layout.btn-layout--vertical
+                .btn-dropdown.no-mrg
+                  button.btn.btn--clean.btn--icon-right.text-left(
+                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    | Pevná väzba#{' '}
                     span.text-color-grey.text-nowrap 12,99 €
-                  option Brožovaná väzba#{' '}
-                    span.text-color-grey.text-nowrap 10,29 €
-                  option E-kniha#{' '}
-                    span.text-color-grey.text-nowrap 6,50 €
-                  option Audio kniha#{' '}
-                    span.text-color-grey.text-nowrap 16,25 €
+                    +icon('chevron-down', 'icon-dropdown').icon--medium
+                  .dropdown(data-dropdown, data-toggle-expand)
+                    a(href="#").dropdown__item Brožovaná väzba#{' '}
+                      span.text-color-grey.text-nowrap 10,29 €
+                    a(href="#").dropdown__item E-kniha#{' '}
+                      span.text-color-grey.text-nowrap 6,50 €
+                    a(href="#").dropdown__item Audio kniha#{' '}
+                      span.text-color-grey.text-nowrap 16,25 €
             .bar__item
-              .form-control.form-control--select.no-mrg
-                select.js-select.select--inline.select--clean
-                  option SK
-                  option CZ
+              .btn-layout.btn-layout--vertical
+                .btn-dropdown.no-mrg
+                  button.btn.btn--clean.btn--icon-right(
+                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    | SK
+                    +icon('chevron-down', 'icon-dropdown').icon--medium
+                  .dropdown(data-dropdown, data-toggle-expand)
+                    a(href="#").dropdown__item CZ
+
       section.section
         .wrapper-main
           .row.book-detail
@@ -38,26 +53,15 @@ block content
                     +icon('eye').icon--left.icon--medium
                     | Pozrieť ukážku
             article.col--m-8.col--l-6
-              .filter.mb-large.show-m
-                .filter__item
-                  input.filter__input(type="radio", name="book-type", id="book-type-1", checked)
-                  label.filter__value(for="book-type-1")
-                    | Pevná väzba#{' '}
+              .btn-layout.btn-layout--vertical.mb-large.show-m
+                .btn-group--horizontal
+                  a(href="#").btn.btn--ghost.is-active Pevná väzba#{' '}
                     span.text-color-grey.text-nowrap 12,99 €
-                .filter__item
-                  input.filter__input(type="radio", name="book-type", id="book-type-2")
-                  label.filter__value(for="book-type-2")
-                    | Brožovaná väzba#{' '}
+                  a(href="#").btn.btn--ghost Brožovaná väzba#{' '}
                     span.text-color-grey.text-nowrap 10,29 €
-                .filter__item
-                  input.filter__input(type="radio", name="book-type", id="book-type-3")
-                  label.filter__value(for="book-type-3")
-                    | E-kniha#{' '}
+                  a(href="#").btn.btn--ghost E-kniha#{' '}
                     span.text-color-grey.text-nowrap 6,50 €
-                .filter__item
-                  input.filter__input(type="radio", name="book-type", id="book-type-4")
-                  label.filter__value(for="book-type-4")
-                    | Audio kniha#{' '}
+                  a(href="#").btn.btn--ghost Audio kniha#{' '}
                     span.text-color-grey.text-nowrap 16,25 €
 
               p.book-detail__author.mb-small
@@ -71,7 +75,18 @@ block content
 
               .bar.bar--small.mb-medium
                 .bar__item.show-m
-                  .form-control.form-control--select.no-mrg
+                  .btn-layout.btn-layout--vertical
+                    .btn-dropdown.no-mrg
+                      button.btn.btn--ghost.btn--small.btn--icon-right(
+                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                        data-toggle-expand,
+                        aria-haspopup="true"
+                      )
+                        | Slovenčina
+                        +icon('chevron-down', 'icon-dropdown').icon--medium
+                      .dropdown(data-dropdown, data-toggle-expand)
+                        a(href="#").dropdown__item Český jazyk
+                  //- .form-control.form-control--select.no-mrg
                     select.js-select.select--inline.select--clean.select--small
                       option Český jazyk
                       option Slovenčina
@@ -135,7 +150,7 @@ block content
           a(href='#')
             img.img.img--fluid(src="images/content/banner-1280x100.jpg").no-mrg
     div(data-sticky-container)
-      section.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
+      section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
