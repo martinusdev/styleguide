@@ -60,19 +60,12 @@ mixin najpredavaniejsieZPonuky
     +section-header({ header: 'Najpredávanejšie z ponuky', more: false })
     .card
       .card__content
-        .filter.filter--fill
-          .filter__item
-            input.filter__input(type="radio", name="top-type", id="top-type-1", checked)
-            label.filter__value(for="top-type-1") Knihy
-          .filter__item
-            input.filter__input(type="radio", name="top-type", id="top-type-2")
-            label.filter__value(for="top-type-2") Filmy
-          .filter__item
-            input.filter__input(type="radio", name="top-type", id="top-type-3")
-            label.filter__value(for="top-type-3") Hry
-          .filter__item
-            input.filter__input(type="radio", name="top-type", id="top-type-4")
-            label.filter__value(for="top-type-4") Káva a čaj
+        .btn-layout.btn-layout--vertical.mb-large.show-m
+          .btn-group.btn-group--horizontal.btn-group--fill
+            a(href="#").btn.btn--ghost.is-active Knihy
+            a(href="#").btn.btn--ghost Filmy
+            a(href="#").btn.btn--ghost Hry
+            a(href="#").btn.btn--ghost Káva a čaj
 
       .card__content
         ul.list.list--counter
