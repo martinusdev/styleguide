@@ -46,7 +46,7 @@ block content
             .col--m-4.col--l-3
               .book-detail__preview
                 .book-detail__image
-                  .book-thumbnail.book-thumbnail--large-shadow
+                  .book-thumbnail.book-thumbnail--large-shadow.mb-medium
                     img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 .book-detail__preview-link.text-center
                   button.btn.btn--clean
@@ -155,22 +155,22 @@ block content
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
               .form-control.form-control--select.no-mrg
-                select.js-select.select--clean
-                  option Popis knihy
-                  option Podrobnosti
-                  option Recenzie
-                  option O autorovi
-                  option Vydavateľstvo
+                select.select--clean#detail-sections-spy
+                  option(value="popis-knihy") Popis knihy
+                  option(value="podrobnosti") Podrobnosti
+                  option(value="recenzie") Recenzie
+                  option(value="o-autorovi") O autorovi
+                  option(value="vydavatelstvo") Vydavateľstvo
 
       section.section
         .wrapper-main
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
               div(data-sticky, data-sticky-class="is-stuck", data-margin-top="40")
-                .book-thumbnail
-                  img.img.img--fluid.mb-medium(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .book-thumbnail.mb-medium
+                  img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
-                ul.list.list--expanded.no-pad(role="navigation", data-gumshoe)
+                ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
                   li
                     a(href="#popis-knihy", data-scroll) Popis knihy
                   li
