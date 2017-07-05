@@ -227,9 +227,6 @@
   .btn--icon {
     &-left,
     &-right {
-      padding-left: 2.5em;
-      padding-right: 2.5em;
-
       .icon {
         position: absolute;
         height: 100%;
@@ -239,12 +236,16 @@
     }
 
     &-left {
+      padding-left: 2.5em;
+
       .icon {
         left: 0.8em;
       }
     }
 
     &-right {
+      padding-right: 2.5em;
+
       .icon {
         right: 0.8em;
       }
@@ -268,7 +269,7 @@
     align-items: flex-start;
 
     > * {
-      flex: 0 0 auto;
+      flex: 0 1 auto;
       margin-right: $button-layout-margin;
       margin-bottom: 0;
 
@@ -350,7 +351,7 @@
     flex-flow: row;
 
     .btn {
-      flex: 0 0 auto;
+      flex: 0 1 auto;
       margin-bottom: 0;
 
       &:not(:first-of-type) {
@@ -404,6 +405,11 @@
       }
     }
   }
+
+  &.btn-group--fill > {
+    .btn,
+    .btn-dropdown { flex-grow: 1; }
+  }
 }
 
 @include button-group-classes;
@@ -436,6 +442,18 @@
 @mixin dropdown-button-classes {
   .btn-dropdown {
     @include dropdown-button;
+
+    .btn {
+      padding-right: 2.5em;
+    }
+
+    .icon {
+      position: absolute;
+      height: 100%;
+      top: 0;
+      right: 10px;
+      margin-top: 0;
+    }
   }
 }
 

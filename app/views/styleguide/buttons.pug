@@ -374,13 +374,13 @@ block append content
       +demo
         +demo-example
           p Buttons are stacked vertically by default, on medium screens the layout becomes horizontal and then vertical again on XL.
-          .btn-layout--vertical.btn-layout--m-horizontal.btn-layout--xl-vertical
+          .btn-layout.btn-layout--vertical.btn-layout--m-horizontal.btn-layout--xl-vertical
             button.btn.btn--primary(type='button') Button
             button.btn.btn--primary(type='button') Button
             button.btn.btn--primary(type='button') Button
         +demo-code
           :code
-            <div class="btn-layout--vertical btn-layout--m-horizontal btn-layout--xl-vertical">
+            <div class="btn-layout btn-layout--vertical btn-layout--m-horizontal btn-layout--xl-vertical">
               <button type="button" class="btn">Button</button>
               <button type="button" class="btn">Button</button>
               <button type="button" class="btn">Button</button>
@@ -407,21 +407,21 @@ block append content
           .row
             .col--l-6.col--m-12
               h4 Button groups horizontal
-              .btn-layout--vertical
-                .btn-group--horizontal
+              .btn-layout.btn-layout--vertical
+                .btn-group.btn-group--horizontal
                   button.btn.is-active(type='button') Active
                   button.btn(type='button') Button
                   button.btn(type='button', disabled) Disabled
-                .btn-group--horizontal
+                .btn-group.btn-group--horizontal
                   button.btn.btn--ghost.is-active Active
                   button.btn.btn--ghost(type='button') Button
                   button.btn.btn--ghost(type='button', disabled) Disabled
-                .btn-group--horizontal
+                .btn-group.btn-group--horizontal
                   button.btn.btn--large.btn--primary.is-active(type='button') Active
                   button.btn.btn--large.btn--primary(type='button') Button
                   button.btn.btn--large.btn--primary(type='button', disabled)
                     +icon-sg('sg-settings', '', 'Settings')
-                .btn-group--horizontal
+                .btn-group.btn-group--horizontal
                   button.btn.btn--small.is-active(type='button') Active
                   button.btn.btn--small(type='button') Button
                   button.btn.btn--small(type='button', disabled)
@@ -431,16 +431,16 @@ block append content
             .col--l-6.col--m-12
               h4 Button groups vertical
 
-              .btn-layout--vertical.btn-layout--m-horizontal
-                .btn-group--vertical
+              .btn-layout.btn-layout--vertical.btn-layout--m-horizontal
+                .btn-group.btn-group--vertical
                   button.btn.btn--primary(type='button') Button
                   button.btn.btn--primary(type='button') Button
                   button.btn.btn--primary(type='button') Button
-                .btn-group--vertical
+                .btn-group.btn-group--vertical
                   button.btn.btn--large(type='button')
                     +icon-sg('sg-home', '', 'Home')
                   button.btn.btn--large(type='button') Button
-                .btn-group--vertical
+                .btn-group.btn-group--vertical
                   button.btn.btn--small.btn--primary(type='button', disabled) Disabled
                   button.btn.btn--small.btn--primary(type='button') Button
                   button.btn.btn--small.btn--primary.btn--icon-left(type='button')
@@ -449,24 +449,43 @@ block append content
 
         +demo-code
           :code
-            <div class="btn-group--horizontal">
+            <div class="btn-group btn-group--horizontal">
               <button class="btn" type="button">Button</button>
               <button class="btn" type="button">Button</button>
               <button class="btn" type="button">Button</button>
             </div>
 
-            <div class="btn-group--horizontal"> ... </div>
-            <div class="btn-group--horizontal"> ... </div>
+            <div class="btn-group btn-group--horizontal"> ... </div>
+            <div class="btn-group btn-group--horizontal"> ... </div>
 
-            <div class="btn-group--vertical">
+            <div class="btn-group btn-group--vertical">
               <button class="btn" type="button">Button</button>
               <button class="btn" type="button">Button</button>
               <button class="btn" type="button">Button</button>
             </div>
 
-            <div class="btn-group--vertical"> ... </div>
-            <div class="btn-group--vertical"> ... </div>
+            <div class="btn-group btn-group--vertical"> ... </div>
+            <div class="btn-group btn-group--vertical"> ... </div>
       //- end: demo
+
+    +content-sub-section('Button group fill')
+
+      +p If group of buttons should stretch across available space, use <code class='l-code-inline'>.btn-group--fill</code> class.
+
+      +demo
+        +demo-example
+          .row
+            .col--l-6
+              .btn-layout--vertical
+                .btn-group.btn-group--horizontal.btn-group--fill
+                  button.btn.is-active(type='button') Active
+                  button.btn(type='button') Button
+                  button.btn(type='button', disabled) Disabled
+        +demo-code
+          :code
+            <div class="btn-group btn-group--horizontal btn-group--fill">
+              ...
+            </div>
 
   //- end: section
 
@@ -511,7 +530,7 @@ block append content
                 aria-haspopup="true"
               )
                 | Button
-                +icon('chevron-down', 'icon-dropdown')
+                +icon('chevron-down', 'icon-dropdown').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a(href="#").dropdown__item Item #{item}
@@ -524,7 +543,7 @@ block append content
                 aria-haspopup="true"
               )
                 | Dropdown with inputs
-                +icon('chevron-down', 'icon-dropdown')
+                +icon('chevron-down', 'icon-dropdown').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a(href="#").dropdown__item Item #{item}
@@ -538,7 +557,7 @@ block append content
                 disabled
               )
                 | Button
-                +icon('chevron-down', 'icon-dropdown')
+                +icon('chevron-down', 'icon-dropdown').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a(href="#").dropdown__item Item #{item}
@@ -550,7 +569,7 @@ block append content
                 data-toggle="self, next" data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
-              >Button<svg class="icon icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
+              >Button<svg class="icon icon--medium icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
                 ...
               </button>
               <div class="dropdown" data-dropdown data-toggle-expand>
@@ -565,7 +584,7 @@ block append content
                 data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
-              >Button<svg class="icon icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
+              >Button<svg class="icon icon--medium icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
                 ...
               </button>
               <div class="dropdown" data-dropdown data-toggle-expand>
@@ -581,7 +600,7 @@ block append content
                 data-toggle-icon="icons_/app.svg#icon-chevron-up"
                 data-toggle-expand
                 aria-haspopup="true"
-              >Button<svg class="icon icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
+              >Button<svg class="icon icon--medium icon-chevron-down icon-dropdown" role="img" aria-hidden="true">
                 ...
               </button>
               <div class="dropdown" data-dropdown data-toggle-expand>
@@ -608,7 +627,7 @@ block append content
                 data-toggle-expand,
                 aria-haspopup="true"
               )
-                +icon('chevron-down', 'icon--smallplit')
+                +icon('chevron-down').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a.dropdown__item(href="#") List item #{item}
@@ -621,7 +640,7 @@ block append content
                 data-toggle-expand,
                 aria-haspopup="true"
               )
-                +icon('chevron-down', 'icon--smallplit')
+                +icon('chevron-down').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a.dropdown__item(href="#") List item #{item}
@@ -634,7 +653,7 @@ block append content
                 data-toggle-expand,
                 aria-haspopup="true"
               )
-                +icon('chevron-down', 'icon--smallplit')
+                +icon('chevron-down').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
                 each item in [1,2,3,4,5]
                   a.dropdown__item(href="#") List item #{item}
