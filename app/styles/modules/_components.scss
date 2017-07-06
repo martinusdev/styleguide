@@ -48,3 +48,31 @@ $book-badge: (
     @include css-map($book-badge);
   }
 }
+
+// ----------------------------
+// Notifications
+
+[data-notification] {
+  overflow: visible;
+
+  &::after {
+    content: attr(data-notification);
+
+    position: absolute;
+
+    top: -5px;
+    right: -5px;
+    bottom: auto;
+    left: auto;
+
+    width: auto;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+
+    border-radius: 999em;
+
+    background-color: _color(primary);
+    color: $color-white;
+  }
+}
