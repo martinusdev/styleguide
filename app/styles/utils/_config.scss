@@ -525,16 +525,17 @@ $button-icon-scaling: (
 $form-m: _get-space('v');
 $form-control-block-m: 5px !default;
 
-$form-bgc: $color-white;
+$form-bgc: _color(grey, 50);
 $form-b-w: 1px;
 $form-b-s: solid;
-$form-b-c: _color(grey, 300);
+$form-b-c: _color(grey, 400);
 $form-b-r: $default-border-radius;
-$form-c: _color(grey, 700);
-$form-t: border, box-shadow $ease-300;
+$form-c: $color-black;
+$form-bs: inset 0 3px 2px 0 rgba(#000, 0.05);
+$form-t: border, box-shadow, background-color $ease-300;
 
-$form-focus-bs: #{$shadow-direct-1, $shadow-ambient-1};
-$form-focus-b-c: _color(primary, 500);
+$form-focus-bs: #{$form-bs, 0 4px 4px 0 rgba(#000, 0.1) };
+$form-focus-b-c: _color(grey, 500);
 
 $form-disabled-c: _color(grey, 500);
 $form-disabled-b-c: _color(grey, 200);
@@ -542,9 +543,9 @@ $form-disabled-b-c: _color(grey, 200);
 $form-readonly-c: _color(grey, 600);
 $form-readonly-b-c: _color(grey, 300);
 
-$form-error-c: _color(error, 500);
-$form-error-b-c: _color(error, 100);
-$form-error-bgc: _color(error, 50);
+$form-error-c: $color-black;
+$form-error-b-c: _color(error, 500);
+$form-error-bgc: _color(error, 100);
 
 //---------------
 // input styles
@@ -557,11 +558,13 @@ $input: (
     border-color: $form-b-c,
     border-radius: $form-b-r,
     color: $form-c,
+    box-shadow: $form-bs,
     transition: $form-t,
   ),
   focus: (
     box-shadow: $form-focus-bs,
     border-color: $form-focus-b-c,
+    outline: none !important,
   ),
   disabled: (
     color: $form-disabled-c,
@@ -752,8 +755,8 @@ $select-search: (
 // input with inner addon
 
 $input-addon: (
-  background: _color(grey, 200),
-  color: _color(grey, 700),
+  background: $form-bgc,
+  color: _color(grey, 500),
   border-width: 1px,
   border-style: solid,
   border-color: _color(grey, 300),
@@ -767,12 +770,12 @@ $input-addon-sizes: (
     font-size: _get-rem($default-font-size),
   ),
   small: (
-    height: 32px,
+    height: 24px,
     padding: _get-em(5px, $font-size-small) _get-em(10px, $font-size-small),
     font-size: _get-rem($font-size-small),
   ),
   large: (
-    height: 48px,
+    height: 50px,
     padding: _get-em(9px, $default-font-size) _get-em(10px, $default-font-size),
     font-size: _get-rem($default-font-size),
   ),

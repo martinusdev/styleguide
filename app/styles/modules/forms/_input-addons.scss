@@ -17,7 +17,9 @@
       }
     }
 
-    border-right: 0;
+    &:not(:last-child) {
+      border-right: 0;
+    }
 
     &:first-child {
       border-bottom-left-radius: map-get($input-addon, 'border-radius');
@@ -34,10 +36,12 @@
       border-top-left-radius: 0;
     }
 
-    .btn { margin: 0; }
+    .btn {
+      margin: 0;
+    }
   }
 
-  //  input addon sizes
+  // input addon sizes
   @each $size, $props in $input-addon-sizes {
     &#{_get-variant-name($size)} .input-addons__item {
       @include css-map($props);
@@ -52,6 +56,6 @@
       border-top-right-radius: 0;
     }
 
-    + &-addons__item { border-left: 0; }
+    + .input-addons__item { border-left: 0; }
   }
 }
