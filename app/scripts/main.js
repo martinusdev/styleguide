@@ -15,6 +15,7 @@ import Sticky from './modules/Sticky';
 import ScrollSpy from './modules/ScrollSpy';
 import SmoothScroll from './modules/SmoothScroll';
 import Tooltip from './modules/Tooltip';
+import Input from './modules/Input';
 
 window.addEventListener('DOMContentLoaded', () => {
   svg4everybody();
@@ -55,4 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.Tooltip = Tooltip;
   window.myApp.tooltips = new Tooltip();
+
+  window.myApp.Input = Input;
+  window.myApp.inputs = new Input();
 });
