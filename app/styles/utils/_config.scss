@@ -97,6 +97,7 @@ $default-color-weights: (
 
 $default-bg-color: $color-white !default;
 $secondary-bg-color: _color(bg) !default;
+$grey-bg-color: _color(grey, 100) !default;
 $default-text-color: $color-black !default;
 $default-font-family: $font-family-tabac !default;
 
@@ -480,6 +481,24 @@ $button-styles: (
       color: _color(primary, 600),
       border-color: transparent,
       background-color: transparent,
+    ),
+  ),
+  facebook: (
+    default: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(link, 500),
+      box-shadow: none,
+    ),
+    focus: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(link, 600),
+    ),
+    active: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(link, 600),
     ),
   ),
   carousel: (

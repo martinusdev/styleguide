@@ -1,0 +1,52 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Prihlásenie a registrácia'
+
+block content
+  main.bg-grey
+    .wrapper-container
+      .wrapper-secondary.reglog--border
+        section.section.no-pad.mb-medium
+          .height-medium
+          h4.text-center.no-mrg.align-self-middle Prihlásenie a registrácia
+
+        section.section.bg-grey.reglog__heading--border.no-pad
+          .height-medium
+          .row
+          .col--m-12.col--11.align-self-center
+            p.text-center.mb-medium
+              | Registráciou na Martinus.sk získate neobmedzený prístup k vlastnej online knižnici 
+              br
+              | so starostlivo  vyberanou (nielen) knižnou inšpiráciou!
+
+        section.section.no-pad
+          .height-medium
+          .row.book-detail.align-items-center
+            .col--m-5.col--s-8.col--11
+              p.text-center.text-medium
+                | Pre prihlásenie alebo registráciu vložte 
+                br
+                | prosím váš e-email:
+
+              div.btn-layout--vertical.mb-medium
+                input.input(type="email", name="email", id="reglog_email", placeholder="Váš e-mail")
+              div.btn-layout--vertical.mb-medium
+                button.btn.btn--primary Pokračovať
+
+        hr.no-mrg
+
+        section.section.no-pad
+          .height-medium
+          .row.book-detail.align-items-center
+            .col--m-5.col--s-8.col--11
+              div.btn-layout--vertical.mb-medium
+                button.btn.btn--facebook Prihlásenie cez facebook
+
+        hr.hide-m
+
+        article.card.hide-m
+          .card__content.card__content--overflow
+            +booksCarouselHorizontal
+
+

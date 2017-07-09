@@ -29,6 +29,29 @@
   }
 } // /main wrapper
 
+// wrapper container for wrapper-secondary
+.wrapper-container {
+  @include breakpoint(m) {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: $grey-bg-color;
+  }
+}  // /container wrapper
+
+.wrapper-secondary {
+  width: 100%;
+  max-width: 800px;
+  background-color: $default-bg-color;
+
+  @include breakpoint(m) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}  // /secondary wrapper
+
 // ----------------------------
 // GRID
 
