@@ -1,1 +1,80 @@
-footer
+footer.footer
+  .wrapper-main
+    section.row.mb-medium
+      .col--l-2.col--m-4
+        ul.list--unstyled.list--expanded.mb-medium
+          each item in ['Knihy', 'Filmy', 'Spoločenské hry', 'Káva čaj']
+            li
+              a.link.text-color-white(href='#')= item
+
+      .col--l-3.col--m-6
+        h5 Kníhkupectvá
+        .row
+          .col--4
+            ul.list--unstyled.mb-medium
+              each item in ['Bratislava', 'Košice', 'Lučenec', 'Martin']
+                li
+                  a.link.text-color-white.text-size-medium.text-normal(href='#')= item
+          .col--8
+            ul.list--unstyled.mb-medium
+              each item in ['Poprad', 'Považská Bystrica', 'Nitra', 'Žilina']
+                li
+                  a.link.text-color-white.text-size-medium.text-normal(href='#')= item
+      .col--l-2.col--m-4
+        h5 Nakupujte u nás
+        ul.list--unstyled.mb-medium
+          each item in ['Prečo práve u nás?', 'Ako nakupovať', 'Najčastejšie otázky', 'Poštovné', 'Možnosti platby']
+            li
+              a.link.text-color-white.text-size-medium.text-normal(href='#')= item
+      .col--l-2.col--m-4.col--6
+        h5 Naše projekty
+        ul.list--unstyled.mb-medium
+          each item in ['Knihobežník', 'Slovensko číta', 'Čo mám čítať ďalej', 'Poviedky o nevere', 'Slovensko píše román']
+            li
+              a.link.text-color-white.text-size-medium.text-normal(href='#')= item
+      .col--l-2.col--m-4.col--6
+        h5 Martinus.sk
+        ul.list--unstyled.mb-medium
+          each item in ['Martinus.sk', 'Náš príbeh', 'O nás', 'Kontakty']
+            li
+              a.link.text-color-white.text-size-medium.text-normal(href='#')= item
+
+    section.row.mb-medium.align-items-middle
+      .col--m-8.col--l-7
+        .bar
+          .bar__item.bar__item--fill
+            .form-control.form-control--m-inline.form-control--input.no-mrg-bottom
+              .form-label
+                label.text-color-white(for='newsletter-input') Knižné a filmové novinky na e-mail:
+              .bar.bar--small.no-mrg-bottom
+                .bar__item.bar__item--fill
+                  input.input.input--dark(type='text', placeholder='Napíšte nám váš e-mail', id='newsletter-input')
+                .bar__item
+                  button.btn.btn--primary Odoslať
+
+      .col--m-4.col--l-5
+        .bar.footer__social
+          .bar__item
+            a(href='#')
+              +icon('fb').icon--medium
+          .bar__item
+            a(href='#')
+              +icon('google').icon--medium
+          .bar__item
+            a(href='#')
+              +icon('instagram').icon--medium
+          .bar__item
+            a(href='#')
+              +icon('youtube').icon--medium
+
+    section.row.align-items-middle
+      .col--l-7
+        figure.figure.figure--horizontal.mb-medium.footer__copy
+          img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
+          figcaption.figure__caption &copy; 2011 Martinus. Internetové kníhkupectvo. Všetky práva vyhradené.
+      .col--l-5
+        ul.list-inline
+          li
+            a.link.text-color-white(href='#').text-normal.text-medium Obchodné podmienky
+          li
+            a.link.text-color-white(href='#').text-normal.text-medium Ochrana súkromia
