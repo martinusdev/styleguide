@@ -1,0 +1,140 @@
+.header {
+  position: relative;
+  background-color: $color-black;
+  padding: _get-space('v') _get-space('h');
+  z-index: $z-index-topbar;
+
+  @include breakpoint(m, 'down') {
+    padding-left: _get-space('h', 'small');
+    padding-right: _get-space('h', 'small');
+  }
+
+  &__bar {
+    margin-bottom: 0;
+
+    @include breakpoint(m, 'down') {
+      .bar__item {
+        margin-right: _map-deep-get($bar-spacing, small, default);
+      }
+    }
+  }
+
+  &__btn {
+    padding-top: _get-rem(9px);
+    padding-bottom: _get-rem(9px);
+
+    color: _color(grey, 400);
+
+    text-transform: none;
+
+    font-size: $default-font-size;
+
+    &.btn--small.btn--equal {
+      padding: 0;
+    }
+
+    &:hover,
+    &:focus,
+    &.is-active {
+      color: $color-white;
+    }
+  }
+
+  &__search {
+    width: 100%;
+
+    .input {
+      // stylelint-disable max-nesting-depth
+      &:not(.is-value) {
+        ~ .header-search__value { display: none; }
+      }
+
+      &.is-value {
+        ~ .header-search__empty { display: none; }
+      }
+      // stylelint-enable max-nesting-depth
+    }
+  }
+
+  &__user {
+    color: _color(grey, 400);
+    font-size: _get-rem($font-size-medium);
+    font-weight: $font-weight-semibold;
+
+    align-items: center;
+  }
+
+  &__cart,
+  &__nav-burger .btn {
+    color: _color(grey, 400);
+  }
+
+  &::after {
+    content: '';
+    background-image: svg-load('./../images/content/rainbow-header.svg');
+
+    height: 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+}
+
+.header-search {
+  display: flex;
+  justify-content: flex-end;
+
+  .input {
+    background-color: _color(grey, 900);
+    border-color: _color(grey, 900);
+
+    &::placeholder {
+      color: _color(grey, 200);
+    }
+
+    &:hover {
+      background-color: _color(grey, 800);
+      border-color: _color(grey, 800);
+
+      ~ .header-search__empty { // stylelint-disable-line
+        background-color: _color(grey, 800);
+        border-color: _color(grey, 800);
+      }
+    }
+
+    &:focus,
+    &.is-active,
+    &.is-value {
+      // stylelint-disable max-nesting-depth
+      background-color: $color-white;
+      border-color: $color-white;
+
+      &::placeholder {
+        color: _color(grey, 700);
+      }
+
+      ~ .header-search__empty {
+        background-color: $color-white;
+        border-color: $color-white;
+      }
+      // stylelint-enable max-nesting-depth
+    }
+  }
+
+  &__value {
+    border-left: 0;
+    border-right: 0;
+  }
+
+  &__empty {
+    border-top-right-radius: $form-b-r;
+    border-bottom-right-radius: $form-b-r;
+
+    background-color: _color(grey, 900);
+    border-color: _color(grey, 900);
+
+    transition: $form-t;
+  }
+}

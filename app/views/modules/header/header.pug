@@ -1,0 +1,70 @@
+header.header(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
+  .bar.header__bar
+    .bar__item.header__logo
+        img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
+        img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
+    .bar__item.header__nav
+      .btn-layout.btn-layout--horizontal
+        .btn-dropdown.no-mrg
+          button.btn.btn--clean.header__btn(
+            data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+            data-toggle-expand,
+            aria-haspopup="true"
+          )
+            | Knihy
+            +icon('chevron-down', 'icon-dropdown').icon--medium
+        .btn-dropdown.no-mrg.show-s
+          button.btn.btn--clean.header__btn(
+            data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+            data-toggle-expand,
+            aria-haspopup="true"
+          )
+            | E-Knihy
+            +icon('chevron-down', 'icon-dropdown').icon--medium
+        .btn-dropdown.no-mrg.show-l
+          button.btn.btn--clean.header__btn(
+            data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+            data-toggle-expand,
+            aria-haspopup="true"
+          )
+            | Filmy
+            +icon('chevron-down', 'icon-dropdown').icon--medium
+        .btn-dropdown.no-mrg.show-l
+          button.btn.btn--clean.header__btn(
+            data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+            data-toggle-expand,
+            aria-haspopup="true"
+          )
+            | Hry
+            +icon('chevron-down', 'icon-dropdown').icon--medium
+        .btn-dropdown.no-mrg
+          button.btn.btn--clean.btn--equal.header__btn(
+            data-toggle='self, next',
+            data-toggle-expand,
+            aria-haspopup="true"
+          )
+            +icon('dots').icon--medium
+
+    .bar__item.bar__item--fill.header-search
+      button.btn.btn--clean.btn--small.btn--equal.header__btn.no-mrg-bottom.hide-m
+        +icon('search').icon--medium
+      .form-control.form-control--input.no-mrg-bottom.header__search.show-m
+        .input-addons
+          input.input(type='text', placeholder="Titul, kategória alebo autor", data-input)
+          .input-addons__item.header-search__empty
+              +icon('search', '', 'Search').icon--medium
+          .input-addons__item.input-addons__item.no-pad.header-search__value
+            .btn.btn--primary
+              +icon('search', '', 'Search').icon--medium.icon--left
+              | Hladať
+
+    .bar__item.header__user
+      a(href='#')
+        figure.figure.figure--horizontal.no-mrg.align-items-middle
+          +icon('user').icon--medium
+          //- img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
+          figcaption.figure__caption.show-m Bartolomej
+
+    .bar__item.header__cart
+      button.btn.btn--clean.btn--small.btn--equal.header__btn(data-notification="4")
+        +icon('cart').icon--medium
