@@ -203,11 +203,11 @@
   @each $button-variant, $button-size in $button-sizes {
     @each $icon-variant, $icon-size in $icon-sizes {
       .btn#{_get-variant-name($button-variant)} .icon--#{$icon-variant} {
-        $scale: 1 / _strip-units(map-get($button-size, font-size)) * _strip-units($icon-size);
+        $scale: 1 / _strip-units(1rem) * _strip-units($icon-size);
         $margin: (1 - $scale) / 2;
-        width: #{$scale}em;
-        height: #{$scale}em;
-        margin: #{$margin}em;
+        width: #{$scale}rem;
+        height: #{$scale}rem;
+        margin: #{$margin}rem;
 
         &.icon--left {
           margin-right: $icon-size/3;
@@ -236,18 +236,18 @@
     }
 
     &-left {
-      padding-left: 2.5em;
+      padding-left: 2rem;
 
       .icon {
-        left: 0.8em;
+        left: 0.8rem;
       }
     }
 
     &-right {
-      padding-right: 2.5em;
+      padding-right: 2rem;
 
       .icon {
-        right: 0.8em;
+        right: 0.8rem;
       }
     }
   }
@@ -444,7 +444,7 @@
     @include dropdown-button;
 
     .btn {
-      padding-right: 2.5em;
+      padding-right: 2rem;
     }
 
     .icon {
