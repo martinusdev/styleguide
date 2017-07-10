@@ -86,46 +86,10 @@
   display: flex;
   justify-content: flex-end;
 
-  .input {
-    background-color: _color(grey, 900);
-    border-color: _color(grey, 900);
-
-    &::placeholder {
-      color: _color(grey, 200);
-    }
-
-    &:hover {
-      background-color: _color(grey, 800);
-      border-color: _color(grey, 800);
-
-      ~ .header-search__empty { // stylelint-disable-line
-        background-color: _color(grey, 800);
-        border-color: _color(grey, 800);
-      }
-    }
-
-    &:focus,
-    &.is-active,
-    &.is-value {
-      // stylelint-disable max-nesting-depth
-      background-color: $color-white;
-      border-color: $color-white;
-
-      &::placeholder {
-        color: _color(grey, 700);
-      }
-
-      ~ .header-search__empty {
-        background-color: $color-white;
-        border-color: $color-white;
-      }
-      // stylelint-enable max-nesting-depth
-    }
-  }
-
   &__value {
     border-left: 0;
     border-right: 0;
+    border-radius: $default-border-radius;
   }
 
   &__empty {

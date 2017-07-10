@@ -24,15 +24,22 @@ block append content
 
     +p Text inputs are basic form components and can be created by using class <code class='l-code-inline'>.input</code> on <code class='l-code-inline'>&lt;input&gt;</code> element.
 
+    +p Input comes in two basic variants, light (default without mod class) and dark <code class='l-code-inline'>.input--dark</code>. Dark inputs should be used on dark backgrounds.
+
     +demo
       +demo-example
         .row
           .col--l-6
             .form-control.form-control--input
               input.input(type='text', placeholder='Input')
+          .col--l-6
+            .form-control.form-control--input
+              input.input.input--dark(type='text', placeholder='Input')
       +demo-code
         :code
           <input placeholder="Input" class="input" type="text">
+
+          <input placeholder="Input" class="input input--dark" type="text">
     //- end: demo
 
     +content-sub-section('Text input states')
@@ -52,6 +59,17 @@ block append content
                 input.input(type='text', placeholder='Readonly', readonly, value='Readonly')
               .form-control.form-control--input
                 input.input.is-error(type='text', placeholder='Error', value='Error')
+          .row
+            .col--l-6
+              .form-control.form-control--input
+                input.input.input--dark.is-active(type='text', placeholder='Active dark')
+              .form-control.form-control--input
+                input.input.input--dark(type='text', placeholder='Disabled', disabled, value='Disabled dark')
+            .col--l-6
+              .form-control.form-control--input
+                input.input.input--dark(type='text', placeholder='Readonly', readonly, value='Readonly dark')
+              .form-control.form-control--input
+                input.input.input--dark.is-error(type='text', placeholder='Error', value='Error dark')
         +demo-code
           :code
             <input placeholder="Focus" class="input is-active" type="text">

@@ -9,31 +9,70 @@
   margin: 0;
   transform: translateZ(0);
 
-  @include css-map($input, 'default');
+  @each $variant, $props in $input {
+    &#{_get-variant-name($variant)} {
+      @include css-map($props, 'default');
 
-  &:focus,
-  &.is-active {
-    @include css-map($input, 'focus');
-  }
+      &:hover {
+        @include css-map($props, 'hover');
+      }
 
-  &[disabled],
-  &.is-disabled {
-    @include css-map($input, 'disabled');
-  }
+      &:focus,
+      &.is-active {
+        @include css-map($props, 'focus');
+      }
 
-  &[readonly],
-  &.is-readonly {
-    @include css-map($input, 'readonly');
-  }
+      &[disabled],
+      &.is-disabled {
+        @include css-map($props, 'disabled');
+      }
 
-  &.is-error {
-    @include css-map($input, 'error');
+      &[readonly],
+      &.is-readonly {
+        @include css-map($props, 'readonly');
+      }
+
+      &.is-error {
+        @include css-map($props, 'error');
+      }
+    }
   }
 
   //  input sizes
   @each $size, $props in $input-sizes {
     &#{_get-variant-name($size)} {
       @include css-map($props);
+    }
+  }
+
+  @each $variant, $props in $input-placeholder {
+    &#{_get-variant-name($variant)} {
+      // stylelint-disable max-nesting-depth
+      &::placeholder { @include css-map($props, 'default'); }
+
+      &:hover {
+        &::placeholder { @include css-map($props, 'hover'); }
+      }
+
+      &:focus,
+      &.is-active {
+        &::placeholder { @include css-map($props, 'focus'); }
+      }
+
+      &[disabled],
+      &.is-disabled {
+        &::placeholder { @include css-map($props, 'disabled'); }
+      }
+
+      &[readonly],
+      &.is-readonly {
+        &::placeholder { @include css-map($props, 'readonly'); }
+      }
+
+      &.is-error {
+        &::placeholder { @include css-map($props, 'error'); }
+      }
+      // stylelint-enable max-nesting-depth
     }
   }
 }

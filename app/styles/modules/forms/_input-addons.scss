@@ -11,9 +11,13 @@
     align-items: center;
     flex: 0 0 auto;
 
-    @each $prop, $value in $input-addon {
-      @if ($prop != 'border-radius') {
-        #{$prop}: #{$value};
+    @each $variant, $values in $input-addon {
+      &#{_get-variant-name($variant)} {
+        @each $prop, $value in $values {
+          @if ($prop != 'border-radius') { // stylelint-disable-line
+            #{$prop}: #{$value};
+          }
+        }
       }
     }
 
@@ -32,6 +36,11 @@
     }
 
     + .input {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
+
+    .input + & {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
     }

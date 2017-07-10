@@ -552,32 +552,64 @@ $form-error-bgc: _color(error, 100);
 
 $input: (
   default: (
-    background-color: $form-bgc,
-    border-width: $form-b-w,
-    border-style: $form-b-s,
-    border-color: $form-b-c,
-    border-radius: $form-b-r,
-    color: $form-c,
-    box-shadow: $form-bs,
-    transition: $form-t,
+    default: (
+      background-color: $form-bgc,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: $form-b-c,
+      border-radius: $form-b-r,
+      color: $form-c,
+      box-shadow: $form-bs,
+      transition: $form-t,
+    ),
+    focus: (
+      box-shadow: $form-focus-bs,
+      border-color: $form-focus-b-c,
+      outline: none !important,
+    ),
+    disabled: (
+      color: $form-disabled-c,
+      border-color: $form-disabled-b-c,
+    ),
+    readonly: (
+      color: $form-readonly-c,
+      border-color: $form-readonly-b-c,
+    ),
+    error: (
+      background-color: $form-error-bgc,
+      color: $form-error-c,
+      border-color: $form-error-b-c,
+    ),
   ),
-  focus: (
-    box-shadow: $form-focus-bs,
-    border-color: $form-focus-b-c,
-    outline: none !important,
+  dark: (
+    default: (
+      background-color: _color(grey, 900),
+      border-color: _color(grey, 900),
+    ),
+    hover: (
+      background-color: _color(grey, 800),
+      border-color: _color(grey, 800),
+    ),
+    focus: (
+      background-color: $color-white,
+      border-color: $color-white,
+    )
+  )
+);
+
+$input-placeholder: (
+  default: (
+    default: (
+      color: _color(grey),
+    )
   ),
-  disabled: (
-    color: $form-disabled-c,
-    border-color: $form-disabled-b-c,
-  ),
-  readonly: (
-    color: $form-readonly-c,
-    border-color: $form-readonly-b-c,
-  ),
-  error: (
-    background-color: $form-error-bgc,
-    color: $form-error-c,
-    border-color: $form-error-b-c,
+  dark: (
+    default: (
+      color: _color(grey, 200),
+    ),
+    focus: (
+      color: _color(grey, 700),
+    )
   )
 );
 
@@ -755,12 +787,18 @@ $select-search: (
 // input with inner addon
 
 $input-addon: (
-  background: $form-bgc,
-  color: _color(grey, 500),
-  border-width: 1px,
-  border-style: solid,
-  border-color: _color(grey, 300),
-  border-radius: $default-border-radius,
+  default: (
+    background: $form-bgc,
+    color: _color(grey, 500),
+    border-width: 1px,
+    border-style: solid,
+    border-color: _color(grey, 300),
+    border-radius: $default-border-radius,
+  ),
+  dark: (
+    background-color: _color(grey, 900),
+    border-color: _color(grey, 900),
+  )
 );
 
 $input-addon-sizes: (
