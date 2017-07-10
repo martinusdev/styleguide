@@ -1,0 +1,43 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Zabudnuté heslo'
+
+block content
+  main.bg-grey
+    .wrapper-container
+      .wrapper-secondary.reglog--border
+        section.section.no-pad.mb-medium
+          .height-medium
+          .bar.no-mrg
+            .bar__item.bar__back.no-mrg
+              a.link.text-size-medium
+                +icon('arrow-left').icon--left.text-space-right
+                | Späť
+            .bar__content.bar__item--fill
+              h4.text-center.no-mrg.align-self-middle Zabudnuté heslo
+              
+        hr.no-mrg
+
+        section.section.no-pad
+          .height-medium
+          .row.book-detail.align-items-center
+            .col--m-5.col--s-8.col--11
+              p.text-left.text-medium.mb-small
+                | Ak ste zabudli heslo, odkaz na jeho 
+                br
+                | obnovu vám zašleme na váš e-mail:
+
+              .form-control.form-control--input.mb-medium
+                .form-label.text-bold E-mail*
+                input.input(type="email", name="email", id="reglog_email", placeholder="Váš e-mail", required)
+              .btn-layout--vertical.mb-medium
+                button.btn.btn--primary Pokračovať
+
+        hr.no-mrg
+
+        article.card.hide-m
+          .card__content.card__content--overflow
+            +booksCarouselHorizontal
+
+
