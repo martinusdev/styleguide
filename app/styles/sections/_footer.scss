@@ -1,0 +1,40 @@
+.footer {
+  position: relative;
+  background-color: $color-black;
+  color: $color-white;
+
+  padding-top: _get-space('v', 'large');
+  margin-top: 60px;
+
+  &__social {
+    justify-content: space-around;
+
+    @include breakpoint(m) {
+      justify-content: flex-end;
+    }
+  }
+
+  &__copy {
+    align-items: flex-start;
+
+    @include breakpoint(m) {
+      align-items: center;
+    }
+  }
+
+  &::after {
+    content: '';
+    background-image: svg-load('./../images/content/rainbow-footer.svg');
+
+    height: 60px;
+    position: absolute;
+    top: -60px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .form-label label,
+  h5,
+  .h5 { color: inherit; }
+}
