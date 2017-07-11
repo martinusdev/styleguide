@@ -1,0 +1,123 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Registrácia'
+
+block content
+  main.bg-grey
+    .wrapper-container
+      .wrapper-secondary.reglog--border
+        section.section.no-pad.mb-medium
+          .height-medium
+          .bar.no-mrg
+            .bar__item.bar__back.no-mrg
+              a.link.text-size-medium
+                +icon('arrow-left').icon--left.text-space-right
+                | Späť
+            
+            .bar__content.bar__item--fill
+              h4.text-center.no-mrg.align-self-middle Registrácia
+              
+        hr.no-mrg
+
+        section.section.no-pad
+          .height-medium
+          .row.book-detail.align-items-center
+            .col--m-5.col--s-8.col--11
+            
+              h4.text-center.mb-medium
+                | K tejto e-mailovej adrese zatiaĺ nie je priradený žiadnz účet!
+            
+              p.text-left.text-medium.mb-small
+                | Váš e-mail: peter.skrovan@gmail.com  
+                
+              .btn-layout--vertical.mb-medium
+                button.btn.btn--clean.text-left.no-pad
+                  +icon('reaction').icon--left.text-space-right
+                  | chcem použiť iný mail
+              
+              p.text-left.text-medium.mb-small
+                | Ďakujeme, že ste sa rozhodli vytvoriť si konto v internetovom obchode Martinus.sk. Ihneď získate vlastné konto a môžete začať nakupovať s výhodami a využívať všetky naše služby prístupné iba pre našich zákazníkov! 
+
+              .form-control.form-control--input.mb-large
+                .form-label.form-label--required.text-bold 
+                  label Meno
+                  
+                input.input(type="text", name="reg_name", id="reg_name", placeholder="Zadajte meno", required)
+                
+                .height-small
+                .form-label.text-bold Priezvisko*
+                input.input(type="text", name="reg_lastname", id="reg_lastname", placeholder="Zadajte priezvisko", required)
+                
+                .height-small
+                .form-label.text-bold Heslo*
+                input.input(type="password", name="reg_password", id="reg_password", placeholder="Zadajte heslo", required)
+              
+              h4.text-left.no-mrg
+                | Nepovinné údaje
+              p.text-left.text-medium.mb-small
+                | (Psst! Vďaka nim Vás môžeme prekvapiť na narodeniny! :)) 
+                
+              
+              label.form-label.text-bold Dátum narodenia
+              .row
+                .col--3
+                  .form-control.form-control--select
+                    .choices.select.select--inline.select--clean
+                      select.js-select.select--inline.choices__input.is-hidden.select--clean
+                        option Deň
+                .col--3
+                  .form-control.form-control--select
+                    .choices.select.select--inline.select--clean
+                      select.js-select.select--inline.choices__input.is-hidden.select--clean
+                        option Mesiac
+                .col--3
+                  .form-control.form-control--select
+                    .choices.select.select--inline.select--clean
+                      select.js-select.select--inline.choices__input.is-hidden.select--clean
+                        option Rok
+         
+                
+              .form-control.form-control--group
+                .radiocheck-group
+                  label.form-label.text-bold Pohlavie
+                  .form-control.form-control--radio
+                    .radio
+                      input.radiocheck__input(type="radio", name="reg_gender", id="reg_gender_female")
+                      label.radiocheck__control(for="reg_gender_female")
+                      label.radiocheck__label(for="reg_gender_female")
+                        | Žena
+
+                      input.radiocheck__input(type="radio", name="reg_gender", id="reg_gender_male")
+                      label.radiocheck__control(for="reg_gender_male")
+                      label.radiocheck__label(for="reg_gender_male")
+                         | Muž
+                         
+                         
+              .form-control.form-control--checkbox.mb-small
+                .checkbox.radiocheck--large
+                  input.radiocheck__input(type="checkbox", name="reg_newsletter", id="reg_newsletter")
+                  label.radiocheck__control(for="reg_newsletter")
+                  label.radiocheck__label(for="reg_newsletter")
+                    | Prosím si posielať novinky na e-mail
+                    
+              .btn-layout--vertical.mb-medium
+                button.btn.btn--primary Pokračovať
+
+        hr.no-mrg
+      
+        section.section.no-pad
+          .height-medium
+          .row.book-detail.align-items-center
+            .col--m-5.col--s-8.col--11
+              p.text-small.text-color-grey.no-mrg
+                | Vyplnením a odoslaním tohto formulára súhlasíte s 
+                a.text-color-grey.text-underline(href='http://google.com') Všeobecnými obchodnými podmienkami 
+                | Martinus.sk. Všetky údaje, ktoré nám poskytnete, budú použité len pre našu potrebu a potreby v súvislosti s vybavovaním Vašich objednávok. Prečítajte si, ako ich chránime. 
+                a.text-color-grey.text-underline(href='http://google.com') (Ochrana Vášho súkromia a osobných údajov)
+
+        article.card.hide-m
+          .card__content.card__content--overflow
+            +booksCarouselHorizontal
+
+
