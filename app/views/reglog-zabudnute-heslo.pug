@@ -4,40 +4,32 @@ block opts
     - var pageTitle = 'Zabudnuté heslo'
 
 block content
-  main.bg-grey
-    .wrapper-container
-      .wrapper-secondary.reglog--border
-        section.section.no-pad.mb-medium
-          .height-medium
-          .bar.no-mrg
-            .bar__item.bar__back.no-mrg
-              a.link.text-size-medium
-                +icon('arrow-left').icon--left.text-space-right
-                | Späť
-            .bar__content.bar__item--fill
-              h4.text-center.no-mrg.align-self-middle Zabudnuté heslo
+  main
+    section.section.section--secondary.section--m-full
+      .wrapper-main
+        article.card.no-pad-horizontal
+          .mb-small
+          .card__header.card-header.mb-medium
+            .card-header__action.no-mrg.text-transform-upper.text-color-grey.text-size-small
+              +icon('arrow-left').icon--left.icon--medium.text-space-right
+              | Späť
+            h2.card-header__title.text-center.no-mrg Zabudnuté heslo
+            .card-header__action
+          
+          section.card__content.no-pad.mb-small
+            hr.no-mrg
+          
+          section.card__content
+            .row
+              .col--m-4.col--s-8.ofst--center
+                p.text-center.text-size-large
+                  | Ak ste zabudli heslo, odkaz na jeho obnovu vám zašleme na váš e-mail:
+
+                .form-control.form-control--input
+                  .form-label.form-label--required
+                    label.text-transform-upper.text-size-small(for="reglog_forgot_pass_email") 
+                      | e-mail
+                    input.input(type="email", name="email", id="reglog_forgot_pass_email", placeholder="Váš e-mail")
               
-        hr.no-mrg
-
-        section.section.no-pad
-          .height-medium
-          .row.book-detail.align-items-center
-            .col--m-5.col--s-8.col--11
-              p.text-left.text-medium.mb-small
-                | Ak ste zabudli heslo, odkaz na jeho 
-                br
-                | obnovu vám zašleme na váš e-mail:
-
-              .form-control.form-control--input.mb-medium
-                label.form-label.text-bold E-mail*
-                input.input(type="email", name="email", id="reglog_email", placeholder="Váš e-mail", required)
-              .btn-layout--vertical.mb-medium
-                button.btn.btn--primary Pokračovať
-
-        hr.no-mrg
-
-        article.card.hide-m
-          .card__content.card__content--overflow
-            +booksCarouselHorizontal
-
-
+                div.btn-layout--vertical.mb-medium
+                  button.btn.btn--primary Pokračovať
