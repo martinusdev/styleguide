@@ -203,8 +203,10 @@
   @each $button-variant, $button-size in $button-sizes {
     @each $icon-variant, $icon-size in $icon-sizes {
       .btn#{_get-variant-name($button-variant)} .icon--#{$icon-variant} {
-        $scale: 1 / _strip-units(1rem) * _strip-units($icon-size);
-        $margin: (1 - $scale) / 2;
+        // TODO this is still not good enought pls revisit later
+        $scale: _strip-units(map-get($button-size, font-size)) * _strip-units($icon-size) * _map-deep-get($button, default, line-height);
+        $margin: -(abs((1 - $scale)));
+
         width: #{$scale}rem;
         height: #{$scale}rem;
         margin: #{$margin}rem;
