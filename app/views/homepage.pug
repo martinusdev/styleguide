@@ -62,15 +62,15 @@ mixin najpredavaniejsieZPonuky
       .card__content
         .btn-layout.btn-layout--vertical.mb-large.show-m
           .btn-group.btn-group--horizontal.btn-group--fill(data-tabs-container)
-            a(href='#tab-ranking-books', role="tab").btn.btn--ghost.is-active(data-tabs-item) Knihy
-            a(href='#tab-ranking-movies', role="tab").btn.btn--ghost(data-tabs-item) Filmy
-            a(href='#tab-ranking-games', role="tab").btn.btn--ghost(data-tabs-item) Hry
-            a(href='#tab-ranking-coffee-tea', role="tab").btn.btn--ghost(data-tabs-item) Káva a čaj
+            a(href='#tab-ranking-books', role="tab", data-tabs-item).btn.btn--ghost.is-active Knihy
+            a(href='#tab-ranking-movies', role="tab", data-tabs-item).btn.btn--ghost Filmy
+            a(href='#tab-ranking-games', role="tab", data-tabs-item).btn.btn--ghost Hry
+            a(href='#tab-ranking-coffee-tea', role="tab", data-tabs-item).btn.btn--ghost Káva a čaj
 
       .card__content
         article.tabs
           each item, index in ['books', 'movies', 'games', 'coffee-tea']
-            section(id=`tab-ranking-${item}`).tab(class= index === 0 ? 'is-active' : '')
+            section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
               ul.list.list--counter
                 each item, i in [...books, ...books ]
                   if i < 10
