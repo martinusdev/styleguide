@@ -23,20 +23,23 @@ block append content
 
     +p Tabs are created using a main wrapper element <code class='l-code-inline'>.tabs</code>, and <code class='l-code-inline'>.tab</code> tabs themselves inside of it. Navigation is wrapped in <code class='l-code-inline'>.tab-nav</code>, navigation items are <code class='l-code-inline'>.tab-nav__item</code> and navigation links need <code class='l-code-inline'>.tab-nav__content</code> for styling and <code class='l-code-inline'>[role=tab]</code> for toggling the tabs themselves.
 
-    +note Tabs are accessible, yay! Proper aria attributes are automatically added on load.
+    +p Javascript functionality is hooked up on class <code class='l-code-inline'>[data-tabs-container]</code> which specifies container with navigation links. <code class='l-code-inline'>[data-tabs-item]</code> specify single tab item, which can be clicked.
+
+    +note
+      +p Tabs are accessible, yay! Proper aria attributes are automatically added on load.
 
     +demo
       +demo-example
-        ul.tab-nav
-          li.tab-nav__item
+        ul.tab-nav(data-tabs-container)
+          li.tab-nav__item(data-tabs-item)
             a.tab-nav__content.tab-nav__content--link(href='#tab-1' role="tab")
               .tab-nav__content-wrap Tab 1
-          li.tab-nav__item
+          li.tab-nav__item(data-tabs-item)
             a.tab-nav__content.tab-nav__content--link(href='#tab-2' role="tab")
              .tab-nav__content-wrap Tab 2
-          li.tab-nav__item
+          li.tab-nav__item(data-tabs-item)
             a.tab-nav__content.tab-nav__content--link(href='#tab-3' role="tab") Tab 3
-          li.tab-nav__item
+          li.tab-nav__item(data-tabs-item)
             a.tab-nav__content.tab-nav__content--link.is-disabled(href='#tab-4' role="tab" tabindex="-1")
               .tab-nav__content-wrap Tab disabled
 
@@ -53,17 +56,17 @@ block append content
       +demo-code
         :code
           <!-- tabs -->
-          <ul class="tab-nav">
-            <li class="tab-nav__item">
+          <ul class="tab-nav" data-tabs-container>
+            <li class="tab-nav__item" data-tabs-item>
               <a class="tab-nav__content tab-nav__content--link" href="#tab-1" role="tab">Tab 1</a>
             </li>
-            <li class="tab-nav__item">
+            <li class="tab-nav__item" data-tabs-item>
               <a class="tab-nav__content tab-nav__content--link" href="#tab-2" role="tab">Tab 2</a>
             </li>
-            <li class="tab-nav__item is-active">
+            <li class="tab-nav__item is-active" data-tabs-item>
               <a class="tab-nav__content tab-nav__content--link" href="#tab-3" role="tab">Tab 3</a>
             </li>
-            <li class="tab-nav__item">
+            <li class="tab-nav__item" data-tabs-item>
               <a class="tab-nav__content tab-nav__content--link is-disabled" href="#tab-4" tabindex="-1">Tab disabled</a>
             </li>
           </ul>
@@ -99,6 +102,37 @@ block append content
               ...
             </ul>
 
+    +content-sub-section('Tabs filter')
+
+      +p Tabs can be styled as button group as shown on example below.
+
+      +demo
+        +demo-example
+          .btn-group.btn-group--horizontal(data-tabs-container)
+            a(href='#tab-filter-1', role="tab").btn.btn--ghost.is-active(data-tabs-item) Knihy
+            a(href='#tab-filter-2', role="tab").btn.btn--ghost(data-tabs-item) Filmy
+            a(href='#tab-filter-3', role="tab").btn.btn--ghost(data-tabs-item) Hry
+            a(href='#tab-filter-4', role="tab").btn.btn--ghost(data-tabs-item) Káva a čaj
+
+          article.tabs
+            section#tab-filter-1.tab
+              p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+            section#tab-filter-2.tab
+              p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+            section#tab-filter-3.tab
+              p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
+            section#tab-filter-4.tab
+              p Lorem ipsum Veniam qui cupidatat dolore ad nulla in dolore veniam id est cillum quis magna dolore Ut minim in culpa dolore in qui nostrud in.
+
+        +demo-code
+          :code
+            <div class="btn-group btn-group--horizontal" data-tabs-container>
+              <a class="btn btn--ghost" href="..." role="tab" data-tabs-item id="tab-filter-4-label">...</a>
+              <a class="btn btn--ghost" href="..." role="tab" data-tabs-item id="tab-filter-4-label">...</a>
+              ...
+            </div>
+
+
   +content-section(contents[1], true)
 
     +content-sub-section('Activate tab on load')
@@ -108,13 +142,16 @@ block append content
 
       +demo
         +demo-example
-          ul.tab-nav
-            li.tab-nav__item
-              a.tab-nav__link(href='#tab2-1' role="tab") Tab 1
-            li.tab-nav__item
-              a.tab-nav__link(href='#tab2-2' role="tab") Tab 2
-            li.tab-nav__item.is-active
-              a.tab-nav__link(href='#tab2-3' role="tab") Tab 3
+          ul.tab-nav(data-tabs-container)
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link(href='#tab2-1' role="tab")
+                .tab-nav__content-wrap Tab 1
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link(href='#tab2-2' role="tab")
+                .tab-nav__content-wrap Tab 2
+            li.tab-nav__item.is-active(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link(href='#tab2-3' role="tab")
+                .tab-nav__content-wrap Tab 3
 
           article.tabs(data-tab-load=".l-header-main")
             section#tab2-1.tab
@@ -125,14 +162,14 @@ block append content
               p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
         +demo-code
           :code
-            <ul class="tab-nav">
-              <li class="tab-nav__item">
+            <ul class="tab-nav" data-tabs-container>
+              <li class="tab-nav__item" data-tabs-item>
                 ...
               </li>
-              <li class="tab-nav__item">
+              <li class="tab-nav__item" data-tabs-item>
                 ...
               </li>
-              <li class="tab-nav__item is-active">
+              <li class="tab-nav__item is-active" data-tabs-item>
                 ...
               </li>
             </ul>
@@ -155,13 +192,16 @@ block append content
 
       +demo
         +demo-example
-          ul.tab-nav
-            li.tab-nav__item
-              a.tab-nav__link(href='#tab3-1' role="tab") Tab 1
-            li.tab-nav__item
-              a.tab-nav__link(href='#tab3-2' role="tab") Tab 2
-            li.tab-nav__item
-              a.tab-nav__link(href='#tab3-3' role="tab") Tab 3
+          ul.tab-nav(data-tabs-container)
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link(href='#tab3-1' role="tab")
+                .tab-nav__content-wrap Tab 1
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link(href='#tab3-2' role="tab")
+                .tab-nav__content-wrap Tab 2
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link(href='#tab3-3' role="tab")
+                .tab-nav__content-wrap Tab 3
 
           article.tabs
             section#tab3-1.tab
@@ -174,14 +214,14 @@ block append content
           button(type="button" href="#tab3-2", data-toggle="#tab3-2").btn Toggle tab 2
         +demo-code
           :code
-            <ul class="tab-nav">
-              <li class="tab-nav__item">
+            <ul class="tab-nav" data-tabs-container>
+              <li class="tab-nav__item" data-tabs-item>
                 ...
               </li>
-              <li class="tab-nav__item">
+              <li class="tab-nav__item" data-tabs-item>
                 ...
               </li>
-              <li class="tab-nav__item">
+              <li class="tab-nav__item" data-tabs-item>
                 ...
               </li>
             </ul>
