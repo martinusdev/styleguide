@@ -1,12 +1,15 @@
 .header {
   position: relative;
   background-color: $color-black;
-  padding: _get-space('v') _get-space('h');
+  padding-top: _get-space('v');
+  padding-bottom: _get-space('v');
   z-index: $z-index-topbar;
 
-  @include breakpoint(m, 'down') {
-    padding-left: _get-space('h', 'small');
-    padding-right: _get-space('h', 'small');
+  .wrapper-main {
+    @include breakpoint(m, 'down') {
+      padding-left: _get-space('h', 'small');
+      padding-right: _get-space('h', 'small');
+    }
   }
 
   &__bar {
