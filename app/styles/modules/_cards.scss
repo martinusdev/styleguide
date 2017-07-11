@@ -90,12 +90,13 @@
       @include bar;
     }
 
-    &__header__title {
+    &-header__title {
       @include bar-content;
     }
 
-    &__header__action {
+    &-header__action {
       @include bar-item;
+      min-width: 80px;
     }
 
     &__content {
@@ -111,6 +112,10 @@
 
       top: 10px;
       right: 10px;
+    }
+
+    &-header {
+      background-color: transparent;
     }
 
     .carousel {

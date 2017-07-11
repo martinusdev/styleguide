@@ -237,14 +237,6 @@ strong,
   }
 }
 
-@each $breakpoint, $size in $breakpoints {
-  @include breakpoint( $breakpoint ) {
-    .height-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large'); }
-    .height-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v'); }
-    .height-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small'); }
-  }
-}
-
 .mb-not-last > *:last-child { margin-bottom: 0; }
 
 .clickable {
@@ -272,6 +264,6 @@ strong,
   background-color: $secondary-bg-color;
 }
 
-.bg-grey {
-  background-color: $grey-bg-color;
+.bg-blue {
+  background-color: $blue-bg-color;
 }

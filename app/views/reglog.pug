@@ -4,43 +4,44 @@ block opts
     - var pageTitle = 'Prihlásenie a registrácia'
 
 block content
-  main.bg-grey
-    .wrapper-container
-      .wrapper-secondary.reglog--border
-      
-        //cards
-        section.section.no-pad.mb-medium
-          .height-medium
-          h4.text-center.no-mrg.align-self-middle Prihlásenie a registrácia
+  main
+    section.section.section--secondary.section--m-full
+      .wrapper-main
+        article.card.no-pad-horizontal
+          .mb-small
+          .card__header.card-header.mb-medium
+            h2.card-header__title.text-center.no-mrg Prihlásenie a registrácia
+            
+          section.card__content.bg-blue.mb-small.no-pad
+            hr.no-mrg
+            .mb-large
+            .row.no-mrg
+              .col--m-9.ofst--center
+                h3.text-center.mb-large
+                  | Registráciou na Martinus.sk získate neobmedzený prístup k vlastnej online knižnici 
+                  | so starostlivo  vyberanou (nielen) knižnou inšpiráciou!
 
-        section.section.bg-grey.reglog__heading--border.no-pad
-          .height-medium
-          .row
-          .col--m-12.col--11.align-self-center
-            p.text-center.mb-medium
-              | Registráciou na Martinus.sk získate neobmedzený prístup k vlastnej online knižnici 
-              br
-              | so starostlivo  vyberanou (nielen) knižnou inšpiráciou!
+          section.card__content
+            .row
+              .col--m-4.col--s-8.ofst--center
+                p.text-center.text-size-large
+                  | Pre prihlásenie alebo registráciu vložte prosím váš e-email:
 
-        section.section.no-pad
-          .height-medium
-          .row.book-detail.align-items-center
-            .col--m-5.col--s-8.col--11
-              p.text-center.text-medium
-                | Pre prihlásenie alebo registráciu vložte 
-                br
-                | prosím váš e-email:
+                .form-control.form-control--input
+                  .form-label
+                    label.text-transform-upper.text-size-small(for="reglog_email") 
+                      | e-mail
+                    input.input(type="email", name="email", id="reglog_email", placeholder="Váš e-mail")
+              
+                div.btn-layout--vertical.no-mrg
+                  button.btn.btn--primary Pokračovať
 
-              div.btn-layout--vertical.mb-medium
-                input.input(type="email", name="email", id="reglog_email", placeholder="Váš e-mail")
-              div.btn-layout--vertical.mb-medium
-                button.btn.btn--primary Pokračovať
-
-        hr.no-mrg
-
-        section.section.no-pad
-          .height-medium
-          .row.book-detail.align-items-center
-            .col--m-5.col--s-8.col--11
-              div.btn-layout--vertical.mb-medium
-                button.btn.btn--facebook Prihlásenie cez facebook
+          section.card__content
+            .row
+              .col--m-4.col--s-8.ofst--center
+                hr.mb-medium.no-mrg-top
+                div.btn-layout--vertical.mb-medium
+                  button.btn.btn--facebook
+                    +icon('fb').icon--left.icon--medium
+                    | Prihlásenie cez facebook
+          

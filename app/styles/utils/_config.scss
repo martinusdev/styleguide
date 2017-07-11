@@ -50,6 +50,12 @@ $color-palette: (
     600: #005ba1,
   ),
   bg: (
+    200: #f2f8fb,
+    500: #fbf7f5,
+    600: #f7efeb,
+  ),
+  borders: (
+    200: #4267b2,
     500: #fbf7f5,
     600: #f7efeb,
   ),
@@ -97,7 +103,7 @@ $default-color-weights: (
 
 $default-bg-color: $color-white !default;
 $secondary-bg-color: _color(bg) !default;
-$grey-bg-color: _color(grey, 100) !default;
+$blue-bg-color: _color(bg, 200) !default;
 $default-text-color: $color-black !default;
 $default-font-family: $font-family-tabac !default;
 
@@ -485,20 +491,20 @@ $button-styles: (
   ),
   facebook: (
     default: (
-      color: $color-white,
-      border-color: transparent,
-      background-color: _color(link, 500),
-      box-shadow: none,
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
+      background-color: transparent,
     ),
     focus: (
-      color: $color-white,
-      border-color: transparent,
-      background-color: _color(link, 600),
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
+      background-color: transparent,
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
     ),
     active: (
-      color: $color-white,
-      border-color: transparent,
-      background-color: _color(link, 600),
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
+      background-color: transparent,
     ),
   ),
   carousel: (
