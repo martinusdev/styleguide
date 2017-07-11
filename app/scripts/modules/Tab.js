@@ -15,8 +15,8 @@ closestPolyfill();
 
 const defaultConfig = {
   activeClass: 'is-active',
-  navContainerSelector: '.tab-nav',
-  navItemSelector: '.tab-nav__item',
+  navContainerSelector: '[data-tabs-container]',
+  navItemSelector: '[data-tabs-item]',
   tabPanesContainerSelector: '.tabs',
   tabPaneSelector: '.tab',
   scrollDelay: '300',
@@ -231,22 +231,30 @@ export default class Tab {
     if (!trigger) {
       return;
     }
+
     const triggerContainer = trigger.closest(this.config.navContainerSelector);
     if (!triggerContainer) {
       return;
     }
-    const currentItem = triggerContainer.querySelector(
-      `${this.config.navItemSelector}.${this.config.activeClass} ${this.selector}`,
-    );
+
+    const currentItem =
+      triggerContainer.querySelector(
+        `${this.config.navItemSelector}.${this.config.activeClass} ${this.selector}`,
+      ) ||
+      triggerContainer.querySelector(
+        `${this.config.navItemSelector}.${this.config.activeClass}${this.selector}`,
+      );
     if (trigger === currentItem) {
       return;
     }
+
     if (currentItem) {
       currentItem
         .closest(this.config.navItemSelector)
         .classList.remove(this.config.activeClass);
       currentItem.setAttribute('aria-selected', false);
     }
+
     trigger
       .closest(this.config.navItemSelector)
       .classList.add(this.config.activeClass);

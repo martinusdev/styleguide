@@ -1,0 +1,24 @@
+section.section.section--white
+  .wrapper-main
+    .bar.mb-large
+      .bar__item
+        h2.no-mrg-bottom Pozreli ste si:
+      .bar__break.hide-l
+      .bar__item.bar__item--fill.overflow-hidden
+        -
+          var swiperConfig = {
+            slidesPerView: 'auto',
+            slidesPerGroup: 1,
+            spaceBetween: 10,
+          };
+          swiperConfig = JSON.stringify(swiperConfig);
+        .carousel.no-mrg-bottom(style="overflow: hidden;")
+          .swiper-container(data-swiper-options=swiperConfig)
+            .swiper-wrapper
+              each item, i in Array(12)
+                a.swiper-slide.carousel__book--small(href="#")
+                  .book-thumbnail
+                    img.img.mb-medium(src=`${assetsPrefix}images/content/books/sample-${i + 1}.jpg`, alt="...")
+      .bar__break.hide-m
+      .bar__item
+        a.link.text-size-medium(href="#") Vymazať históriu prezeraných kníh

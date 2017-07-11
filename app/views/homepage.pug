@@ -61,18 +61,21 @@ mixin najpredavaniejsieZPonuky
     .card
       .card__content
         .btn-layout.btn-layout--vertical.mb-large.show-m
-          .btn-group.btn-group--horizontal.btn-group--fill
-            a(href="#").btn.btn--ghost.is-active Knihy
-            a(href="#").btn.btn--ghost Filmy
-            a(href="#").btn.btn--ghost Hry
-            a(href="#").btn.btn--ghost Káva a čaj
+          .btn-group.btn-group--horizontal.btn-group--fill(data-tabs-container)
+            a(href='#tab-ranking-books', role="tab", data-tabs-item).btn.btn--ghost.is-active Knihy
+            a(href='#tab-ranking-movies', role="tab", data-tabs-item).btn.btn--ghost Filmy
+            a(href='#tab-ranking-games', role="tab", data-tabs-item).btn.btn--ghost Hry
+            a(href='#tab-ranking-coffee-tea', role="tab", data-tabs-item).btn.btn--ghost Káva a čaj
 
       .card__content
-        ul.list.list--counter
-          each item, i in [...books, ...books ]
-            if i < 10
-              li.mb-medium(class=i > 4 ? 'show-l' : '')
-                +book-figure-horizontal(item).no-mrg
+        article.tabs
+          each item, index in ['books', 'movies', 'games', 'coffee-tea']
+            section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
+              ul.list.list--counter
+                each item, i in [...books, ...books ]
+                  if i < 10
+                    li.mb-medium(class=i > 4 ? 'show-l' : '')
+                      +book-figure-horizontal(item).no-mrg
 
       .card__content
         .btn-layout.btn-layout--vertical
@@ -194,3 +197,5 @@ block content
           },
         ];
       +carouselTiles(tiles)
+
+    include ./modules/seen-items
