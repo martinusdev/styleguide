@@ -82,9 +82,13 @@ body.has-modal {
     }
   }
 
-  @each $variant, $props in $variants {
+  @each $variant, $breakpoint in $variants {
     &#{_get-variant-name($variant)} {
-      @include css-map($variants, $variant);
+      @each $breakpoint, $props in $breakpoint {
+        @include breakpoint($breakpoint) {
+          @include css-map($props);
+        }
+      }
     }
   }
 }

@@ -40,7 +40,7 @@ block append content
               h3.modal__header__headline Headline
               .modal__header__action
                 button.btn.btn--link(data-toggle='#modal-demo' type="button")
-                  +icon('close', 'icon--medium', 'Close')
+                  +icon-sg('sg-close', 'icon--medium', 'Close')
 
 
             section.modal__content
@@ -63,7 +63,7 @@ block append content
               h3.modal__header__headline Another modal
               .modal__header__action
                 button.btn.btn--link(data-toggle='#modal-demo2' type="button")
-                  +icon('close', 'icon--medium', 'Close')
+                  +icon-sg('sg-close', 'icon--medium', 'Close')
 
 
             section.modal__content
@@ -114,6 +114,44 @@ block append content
             </article>
           </div>
     //- end: demo
+
+    +content-sub-section('Modal sizes')
+      +p Modals comes in two sizes <code class='l-code-inline'>.modal--[default/full]</code>. Full sized modal behaves same as <code class='l-code-inline'>.wrapper-main</code> in terms of dimensions.
+
+      +demo
+        +demo-example
+          .row
+            .col--m-4
+              .btn-layout.btn-layout--vertical
+                button.btn(type='button', data-toggle='#modal-default') Show modal default
+                button.btn(type='button', data-toggle='#modal-full') Show modal full
+
+        .modal-overlay#modal-default(data-modal)
+          article.modal
+            header.modal__header
+              h3.modal__header__headline Headline
+              .modal__header__action
+                button.btn.btn--link(data-toggle='#modal-default', type="button")
+                  +icon-sg('sg-close', 'icon--medium', 'Close')
+
+            section.modal__content
+              p Default modal
+
+        .modal-overlay#modal-full(data-modal)
+          article.modal.modal--full
+            header.modal__header
+              h3.modal__header__headline Headline
+              .modal__header__action
+                button.btn.btn--link(data-toggle='#modal-full', type="button")
+                  +icon-sg('sg-close', 'icon--medium', 'Close')
+
+            section.modal__content
+              p Default full width
+
+        +demo-code
+          :code
+            <article class="modal">...</article>
+            <article class="modal modal--full">...</article>
 
   //- end: section
 

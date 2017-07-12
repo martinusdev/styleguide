@@ -1085,7 +1085,7 @@ $modal-overlay-z-index: $z-index-overlay !default;
 $modal-overlay-e: $ease-400 !default;
 
 $modal-overlay: (
-  background-color: $color-semiblack,
+  background-color: rgba($color-black, 0.5),
   box-shadow: #{$shadow-ambient-1, $shadow-direct-1},
 );
 
@@ -1106,8 +1106,14 @@ $modal-dialog: (
 );
 
 $modal-dialog-variants: (
-  'large' : (
-    width: _get-rem(640px),
+  'full' : (
+    default: (
+      width: calc(100vw - (#{_get-space('h')} * 2)),
+      max-width: _get-rem(1200px),
+    ),
+    'l': (
+      width: calc(100vw - (#{_get-space('h', 'large')} * 2)),
+    )
   )
 );
 
