@@ -1,0 +1,47 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.numberspinner', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info(['app/scripts/modules/NumberSpinner.js'], contents)
+
+    +p-big Documentation of NumberSpinner.js.
+
+    +dependency('Javascript')
+
+  //- end: main info
+
+//- Content
+block append content
+
+  +content-section(contents[0])
+
+    +p Number spinners control the value of a number input. A number spinner is created by using <code class="l-code-inline">[data-number-spinner="increase/decrease"]</code> and <code class="l-code-inline">[data-controls="#number-input"]</code> on any element, ideally a button.
+    +p Number spinners honor the input's <code class="l-code-inline">[min]</code>, <code class="l-code-inline">[max]</code>, and <code class="l-code-inline">[step]</code> attributes.
+    +demo
+      +demo-example
+        .form-control.form-control--input
+          .input-addons
+            .input-addons__item.no-pad
+              button(type="button" data-number-spinner="decrease" data-controls="#number-input").btn.btn--clean.btn--equal
+                +icon('minus', 'icon--medium', 'mínus')
+            input(type="number" id="number-input" min="0" max="100" step="3" value="1").input.input--short.no-pad-horizontal.text-center
+            .input-addons__item.no-pad
+              button(type="button" data-number-spinner="increase" data-controls="#number-input").btn.btn--clean.btn--equal
+                +icon('plus', 'icon--medium', 'plus')
+
+      +demo-code
+        :code
+          <button type="button" data-number-spinner="decrease" data-controls="#number-input">...</button>
+          <input type="number" id="number-input" min="0" max="100" step="3">
+          <button type="button" data-number-spinner="increase" data-controls="#number-input">...</button>
+    //- end: demo
+
+  //- end: section

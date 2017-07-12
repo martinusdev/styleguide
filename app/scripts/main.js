@@ -16,6 +16,7 @@ import ScrollSpy from './modules/ScrollSpy';
 import SmoothScroll from './modules/SmoothScroll';
 import Tooltip from './modules/Tooltip';
 import Input from './modules/Input';
+import NumberSpinner from './modules/NumberSpinner';
 
 window.addEventListener('DOMContentLoaded', () => {
   svg4everybody();
@@ -59,4 +60,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.Input = Input;
   window.myApp.inputs = new Input();
+
+  window.myApp.NumberSpinner = NumberSpinner;
+  window.myApp.numberSpinners = new NumberSpinner();
 });
