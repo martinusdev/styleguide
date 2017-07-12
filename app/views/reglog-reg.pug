@@ -26,8 +26,9 @@ block content
                 .row.mb-medium
                   .col--s-12.col--m-5
                     p.text-left.no-mrg
-                       | Váš e-mail:
-                       strong  peter.skrovan@gmail.com
+                       | Váš e-mail:#{' '}
+                       strong
+                        | peter.skrovan@gmail.com
 
                   .col--s-12.col--m-7
                     .btn-layout--vertical.no-mrg
@@ -48,19 +49,19 @@ block content
                       .form-label.form-label--required
                         label.text-transform-upper.text-size-small(for="reglog_reg_surname")
                           | meno
-                        input.input(type="text", name="reg_surname", id="reglog_reg_surname", placeholder="Zadajte meno")
+                      input.input(type="text", name="reg_surname", id="reglog_reg_surname", placeholder="Zadajte meno")
 
                     .form-control.form-control--input
                       .form-label.form-label--required
                         label.text-transform-upper.text-size-small(for="reglog_reg_lastname")
                           | priezvisko
-                        input.input(type="text", name="reg_lastname", id="reglog_reg_lastname", placeholder="Zadajte priezvisko")
+                      input.input(type="text", name="reg_lastname", id="reglog_reg_lastname", placeholder="Zadajte priezvisko")
 
                     .form-control.form-control--input
                       .form-label.form-label--required
                         label.text-transform-upper.text-size-small(for="reglog_reg_password")
                           | heslo
-                        input.input(type="password", name="reg_password", id="reglog_reg_password", placeholder="Zadajte heslo")
+                      input.input(type="password", name="reg_password", id="reglog_reg_password", placeholder="Zadajte heslo")
 
                   .col--s-12.col--m-6
 
@@ -75,22 +76,22 @@ block content
                         label.text-transform-upper.text-size-small
                           | dátum narodenia
 
-                    .row
+                    .row.row--form
                       .col--4
                         .form-control.form-control--select
-                          select.js-select.select--inline
+                          select.js-select
                               option(selected disabled placeholder) Deň
                               option 1
 
                       .col--4
                         .form-control.form-control--select
-                          select.js-select.select--inline
+                          select.js-select
                               option(selected disabled placeholder) Mesiac
                               option 1
 
                       .col--4
                        .form-control.form-control--select
-                          select.js-select.select--inline
+                          select.js-select
                               option(selected disabled placeholder) Rok
                               option 1
 
