@@ -68,10 +68,6 @@
   &--overflow {
     overflow: hidden;
   }
-
-  > *:last-child {
-    margin-bottom: _get-space('v', 'small');
-  }
 }
 
 @mixin card-classes {
@@ -86,12 +82,13 @@
 
     &__header {
       @include card-section;
-      @include css-map($card-header);
       @include bar;
+      @include css-map($card-header);
     }
 
     &-header__title {
       @include bar-content;
+      margin-bottom: 0;
     }
 
     &-header__action {
@@ -101,6 +98,18 @@
 
     &__content {
       @include card-section($grow: 1);
+
+      &:first-child {
+        padding-top: _get-space('v');
+      }
+
+      &:last-child {
+        padding-bottom: _get-space('v');
+      }
+
+      > *:last-child {
+        margin-bottom: _get-space('v', 'small');
+      }
     }
 
     &__footer {
@@ -112,10 +121,6 @@
 
       top: 10px;
       right: 10px;
-    }
-
-    &-header {
-      background-color: transparent;
     }
 
     .carousel {

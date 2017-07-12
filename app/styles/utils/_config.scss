@@ -964,7 +964,6 @@ $card: (
   default: (
     background-color: $color-white,
     border-radius: $default-border-radius,
-    padding: _get-space('v', 'small') _get-space('h', 'small'),
     after: ()
   ),
   well: (
@@ -978,12 +977,14 @@ $card: (
 
 $card-section: (
   default: (
-    padding: _get-space('v', 'small') _get-space('h', 'small') 0,
+    padding: _get-space('v', 'small') _get-space('h') 0,
   )
 );
 
 $card-header: (
-  background-color: _color(grey, 50),
+  padding: _get-space('v') _get-space('h'),
+  border-bottom: 1px solid $default-border-color,
+  text-align: center,
 );
 
 // ----------------------------
