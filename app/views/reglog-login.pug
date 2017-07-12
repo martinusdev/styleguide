@@ -4,51 +4,49 @@ block opts
     - var pageTitle = 'Prihlásenie'
 
 block content
-  main.bg-grey
-    .wrapper-container
-      .wrapper-secondary.reglog--border
-        section.section.no-pad.mb-medium
-          .height-medium
-          .bar.no-mrg
-            .bar__item.bar__back.no-mrg
-              a.link.text-size-medium
-                +icon('arrow-left').icon--left.text-space-right
-                | Späť
-            
-            .bar__content.bar__item--fill
-              h4.text-center.no-mrg.align-self-middle Prihlásenie
-              
-        hr.no-mrg
-
-        section.section.no-pad
-          .height-medium
-          .row.book-detail.align-items-center
-            .col--m-5.col--s-8.col--11
-              p.text-left.text-medium.mb-small
-                | Váš e-mail: peter.skrovan@gmail.com  
+  main
+    section.section.section--secondary.section--m-full
+      .wrapper-main
+        article.card.no-pad-horizontal
+          .mb-small
+          .card__header.card-header.mb-medium
+            .card-header__action.no-mrg.text-transform-upper.text-color-grey.text-size-small
+              +icon('arrow-left').icon--left.icon--medium.text-space-right
+              | Späť
+            h2.card-header__title.text-center.no-mrg Prihlásenie
+            .card-header__action
+          
+          section.card__content.no-pad.mb-small
+            hr.no-mrg
+          
+          section.card__content   
+            .row
+              .col--m-4.col--s-8.ofst--center
+                p.text-center.text-size-large.no-mrg
+                   | Váš e-mail: 
+                   strong peter.skrovan@gmail.com
                 
-              .btn-layout--vertical.mb-medium
-                button.btn.btn--clean.text-left.no-pad
-                  +icon('reaction').icon--left.text-space-right
-                  | chcem použiť iný mail
-              
-              h4.text-center.mb-medium
-                | Ahoj Peter, si to ty?
+                .btn-layout--vertical.mb-medium
+                  button.btn.btn--clean.text-center.btn-small
+                    +icon('reaction').icon--left.text-space-right
+                    | chcem použiť iný mail
 
-              .form-control.form-control--input.no-mrg
-                input.input(type="password", name="reglog_password", id="reglog_password", placeholder="Zadaj tvoje heslo", required)
+                h4.text-center.mb-medium
+                  | Ahoj Peter, si to ty?
 
-              .btn-layout--vertical.no-mrg
-                button.btn.btn--clean
-                  | zabudol som heslo
-                  
-              .btn-layout--vertical.mb-medium
-                button.btn.btn--primary Pokračovať
-
-        hr.no-mrg
-
-        article.card.hide-m
-          .card__content.card__content--overflow
-            +booksCarouselHorizontal
-
-
+                .form-control.form-control--input.no-mrg
+                  .form-label
+                    label.text-transform-upper.text-size-small(for="reglog_login_pass") 
+                      | heslo
+                    input.input(type="email", name="email", id="reglog_login_pass", placeholder="Zadaj tvoje heslo")
+           
+          section.card__content.mb-medium
+            .row
+              .ofst--center
+                a.link.ofst--center.text-size-medium Zabudol som heslo
+          
+          section.card__content   
+            .row
+              .col--m-4.col--s-8.ofst--center
+                .btn-layout--vertical.mb-medium
+                  button.btn.btn--primary Pokračovať
