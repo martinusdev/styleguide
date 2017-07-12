@@ -7,17 +7,14 @@ block content
   main
     section.section.section--secondary.section--m-full
       .wrapper-main
-        article.card.no-pad-horizontal
-          .mb-small
-          .card__header.card-header.mb-medium
-            .card-header__action.no-mrg.text-transform-upper.text-color-grey.text-size-small
-              +icon('arrow-left').icon--left.icon--medium.text-space-right
-              | Späť
-            h2.card-header__title.text-center.no-mrg Zabudnuté heslo
+        article.card
+          .card__header.card-header.mb-small
             .card-header__action
-          
-          section.card__content.no-pad.mb-small
-            hr.no-mrg
+              button.btn.btn--clean.btn--small
+                +icon('arrow-left').icon--left.icon--medium
+                | Späť
+            h2.card-header__title Zabudnuté heslo
+            .card-header__action
           
           section.card__content
             .row
