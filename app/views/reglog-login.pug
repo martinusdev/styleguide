@@ -7,25 +7,22 @@ block content
   main
     section.section.section--secondary.section--m-full
       .wrapper-main
-        article.card.no-pad-horizontal
-          .mb-small
-          .card__header.card-header.mb-medium
-            .card-header__action.no-mrg.text-transform-upper.text-color-grey.text-size-small
-              +icon('arrow-left').icon--left.icon--medium.text-space-right
-              | Späť
-            h2.card-header__title.text-center.no-mrg Prihlásenie
+        article.card
+          .card__header.card-header
             .card-header__action
-          
-          section.card__content.no-pad.mb-small
-            hr.no-mrg
-          
-          section.card__content   
+              button.btn.btn--clean
+                +icon('arrow-left').icon--left.icon--medium
+                | Späť
+            h2.card-header__title Prihlásenie
+            .card-header__action
+
+          section.card__content
             .row
               .col--m-4.col--s-8.ofst--center
                 p.text-center.text-size-large.no-mrg
-                   | Váš e-mail: 
+                   | Váš e-mail:
                    strong peter.skrovan@gmail.com
-                
+
                 .btn-layout--vertical.mb-medium
                   button.btn.btn--clean.text-center.btn-small
                     +icon('reaction').icon--left.text-space-right
@@ -36,16 +33,16 @@ block content
 
                 .form-control.form-control--input.no-mrg
                   .form-label
-                    label.text-transform-upper.text-size-small(for="reglog_login_pass") 
+                    label.text-transform-upper.text-size-small(for="reglog_login_pass")
                       | heslo
                     input.input(type="email", name="email", id="reglog_login_pass", placeholder="Zadaj tvoje heslo")
-           
+
           section.card__content.mb-medium
             .row
               .ofst--center
                 a.link.ofst--center.text-size-medium Zabudol som heslo
-          
-          section.card__content   
+
+          section.card__content
             .row
               .col--m-4.col--s-8.ofst--center
                 .btn-layout--vertical.mb-medium
