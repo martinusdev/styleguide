@@ -1,0 +1,90 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Kosik'
+
+block content
+  main.bg-secondary
+    section.section
+      .wrapper-main
+        .row
+          .col--l-8.ofst--center.card
+            .card__content
+              h1.h2 Váš košík
+
+              ul.list.list--cart
+                each item, i in books
+                  li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
+                    .cart-item
+                      .cart-item__thumbnail
+                        img(src=`${assetsPrefix}${item.cover}`).book-thumbnail.book-thumbnail--small.book-thumbnail--clickable
+                      .cart-item__content
+                        .cart-item__column.cart-item__column--product-name
+                          .text-semibold.no-mrg.text-ellipsis= item.title
+                          .text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
+                          if (i == 1 || i == 2)
+                            .bar.bar--small.text-size-small.no-mrg.show-m
+                              .bar__item
+                                img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
+                              .bar__item
+                                span.text-transform-upper.text-color-grey Tento titul číta aj
+                                |
+                                |
+                                a.link(href="#") Jana Šlinská
+
+                        .cart-item__column.cart-item__column--wishlist
+                          button.btn.btn--clean.no-mrg(type="button" data-toggle="self" data-toggle-class="text-color-theme")
+                            +icon('wishlist', 'icon--medium')
+                        .cart-item__column.cart-item__column--tags.show-m
+                          if (i === 2)
+                            .badge.text-nowrap E-kniha
+                        .cart-item__column.cart-item__column--qty
+                          .form-control.form-control--input.no-mrg
+                            .input-addons.input-addons--small.align-items-right
+                              .input-addons__item.no-pad
+                                button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
+                                  +icon('minus', 'icon--medium', 'mínus')
+                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
+                              .input-addons__item.no-pad
+                                button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
+                                  +icon('plus', 'icon--medium', 'plus')
+                        .cart-item__column.cart-item__column--price
+                          .text-semibold.text-size-medium.text-nowrap= item.price
+                        .cart-item__column.cart-item__column--remove
+                          button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                            +icon('trash', 'icon--medium')
+
+        .row
+          .col--l-8.ofst--center.card
+            .card__content
+              h1.h2 Váš košík
+
+              ul.list.list--cart
+                each item, i in books
+                  li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
+                    .cart-item
+                      .cart-item__content
+                        .cart-item__column.cart-item__column--product-name
+                          .text-semibold.no-mrg.text-ellipsis= item.title
+
+                        .cart-item__column.cart-item__column--wishlist
+                          button.btn.btn--clean.no-mrg(type="button" data-toggle="self" data-toggle-class="text-color-theme")
+                            +icon('wishlist', 'icon--medium')
+                        .cart-item__column.cart-item__column--tags.show-m
+                          if (i === 2)
+                            .badge.text-nowrap E-kniha
+                        .cart-item__column.cart-item__column--qty
+                          .form-control.form-control--input.no-mrg
+                            .input-addons.input-addons--small.align-items-right
+                              .input-addons__item.no-pad
+                                button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
+                                  +icon('minus', 'icon--medium', 'mínus')
+                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
+                              .input-addons__item.no-pad
+                                button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
+                                  +icon('plus', 'icon--medium', 'plus')
+                        .cart-item__column.cart-item__column--price
+                          .text-semibold.text-size-medium.text-nowrap= item.price
+                        .cart-item__column.cart-item__column--remove
+                          button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                            +icon('trash', 'icon--medium')
