@@ -118,3 +118,21 @@ export function nodeListToArray(nodeList) {
 
   return arr;
 }
+
+export const transitionEnd = (() => {
+  let transition = null;
+  const el = document.createElement('div');
+  const transitions = [
+    { key: 'transition', value: 'transitionend' },
+    { key: 'OTransition', value: 'otransitionend' },
+    { key: 'MozTransition', value: 'transitionend' },
+    { key: 'WebkitTransition', value: 'webkitTransitionEnd' },
+  ];
+
+  for (let i = 0, l = transitions.length; i < l; i++) {
+    if (el.style[transitions[i].key] !== 'undefined') {
+      transition = transitions[i].value;
+    }
+  }
+  return transition;
+})();
