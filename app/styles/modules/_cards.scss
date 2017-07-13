@@ -61,16 +61,12 @@
 
   @each $breakpoint, $props in _get-breakpoint-map($card-section) {
     @include breakpoint($breakpoint) {
-      @include css-map($props);
+      @include css-map($props, default);
     }
   }
 
   &--overflow {
     overflow: hidden;
-  }
-
-  > *:last-child {
-    margin-bottom: _get-space('v', 'small');
   }
 }
 
@@ -86,20 +82,42 @@
 
     &__header {
       @include card-section;
-      @include css-map($card-header);
       @include bar;
+      @include css-map($card-header);
     }
 
-    &__header__title {
+    &-header__title {
       @include bar-content;
+      margin-bottom: 0;
     }
 
-    &__header__action {
+    &-header__action {
       @include bar-item;
+      min-width: 80px;
     }
 
     &__content {
       @include card-section($grow: 1);
+
+      @each $breakpoint, $props in _get-breakpoint-map($card-section) {
+        @include breakpoint($breakpoint) {
+          &--large {
+            @include css-map($props, large);
+          }
+        }
+      }
+
+      &:first-child {
+        padding-top: _get-space('v');
+      }
+
+      &:last-child {
+        padding-bottom: _get-space('v');
+      }
+
+      > *:last-child {
+        margin-bottom: _get-space('v', 'small');
+      }
     }
 
     &__footer {

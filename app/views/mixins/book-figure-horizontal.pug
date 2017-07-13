@@ -9,38 +9,61 @@ mixin book-figure-horizontal(props = {})
       discount,
       discountUnderBook = false,
       rating = 4.5,
-      price = '12,99 €',
+      price = '9999,99 €',
       duration,
+      cart,
+      count,
+      trash,
     } = props;
 
-  a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
-    figure.figure.figure--horizontal&attributes(attributes)
-      .figure__img.figure-book__cover
-        .book-thumbnail(class=`book-thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
+  figure.figure.figure--horizontal&attributes(attributes)
+    .figure__img.figure-book__cover
+      .book-thumbnail(class=`book-thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
+        a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
           img(src=`${assetsPrefix}${cover}`)
-          if duration
-            .book-thumbnail__status
-              +bookBadge(duration)
-        if discount && discountUnderBook
-          .badge.badge--primary= discount
+        if duration
+          .book-thumbnail__status
+            +bookBadge(duration)
+      if discount && discountUnderBook
+        .badge.badge--primary= discount
 
-      figcaption.figure__caption
-        p.text-semibold.text-size-medium.no-mrg(title=title)= title
-        p.text-color-grey.text-size-small.mb-small= author
-        .bar.bar--small.mb-small
-          .bar__item
+    figcaption.figure__caption
+      .bar.bar--small.no-mrg-bottom
+        .bar__item.bar__item--fill
+          a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+          p.text-color-grey.text-size-small.mb-small= author
+          .bar.bar--small.mb-small
             if discount && !discountUnderBook
-              .badge.badge--primary= discount
-            else
-              .badge
-                +icon('star').text-color-yellow.icon--small
-                | #{' '}
-                = rating
-          .bar__item.bar__item--fill.text-right
-            .text-medium.text-semibold= price
+              .bar__item
+                .badge.badge--primary= discount
+            else if rating
+              .bar__item
+                .badge
+                  +icon('star').text-color-yellow.icon--small
+                  | #{' '}
+                  = rating
+            if count
+              .bar__item.text-size-medium= count
 
-        if description
-          p.text-size-small.mb-small= description
-            | #{' '}
-            a.link(href='#') Čítať viac#{' '}
-              +icon('arrow-right')
+            if edit
+              .bar__item
+                  a.btn.btn--small.btn--primary.btn--equal(href="#")
+                    +icon('edit')
+
+            .bar__item.bar__item--fill.text-right
+              .text-medium.text-semibold= price
+
+            if cart
+              .bar__item
+                a.btn.btn--small.btn--clean.btn--equal.text-color-theme(href="#")
+                  +icon('cart').icon--medium
+
+          if description
+            p.text-size-small.mb-small= description
+              | #{' '}
+              a.link(href='#') Čítať viac#{' '}
+                +icon('arrow-right')
+        if trash
+          .bar__item.align-self-top
+            a.btn.btn--small.btn--clean.btn--equal(href="#")
+              +icon('close').icon--medium

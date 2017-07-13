@@ -50,6 +50,12 @@ $color-palette: (
     600: #005ba1,
   ),
   bg: (
+    200: #f2f8fb,
+    500: #fbf7f5,
+    600: #f7efeb,
+  ),
+  borders: (
+    200: #4267b2,
     500: #fbf7f5,
     600: #f7efeb,
   ),
@@ -76,7 +82,10 @@ $color-palette: (
     500: #e93227,
     100: #fae8e8,
   ),
-  success: #33ab4e,
+  success: (
+    500: #33ab4e,
+    100: #eaf6ed,
+  )
 );
 
 $default-color-weights: (
@@ -97,6 +106,7 @@ $default-color-weights: (
 
 $default-bg-color: $color-white !default;
 $secondary-bg-color: _color(bg) !default;
+$blue-bg-color: _color(bg, 200) !default;
 $default-text-color: $color-black !default;
 $default-font-family: $font-family-tabac !default;
 
@@ -479,6 +489,24 @@ $button-styles: (
     active: (
       color: _color(primary, 600),
       border-color: transparent,
+      background-color: transparent,
+    ),
+  ),
+  facebook: (
+    default: (
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
+      background-color: transparent,
+    ),
+    focus: (
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
+      background-color: transparent,
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    active: (
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
       background-color: transparent,
     ),
   ),
@@ -942,7 +970,6 @@ $card: (
   default: (
     background-color: $color-white,
     border-radius: $default-border-radius,
-    padding: _get-space('v', 'small') _get-space('h', 'small'),
     after: ()
   ),
   well: (
@@ -956,12 +983,19 @@ $card: (
 
 $card-section: (
   default: (
-    padding: _get-space('v', 'small') _get-space('h', 'small') 0,
-  )
+    default: (
+      padding: _get-space('v', 'small') _get-space('h') 0,
+    ),
+    large: (
+      padding: _get-space('v', 'large') _get-space('h', 'large') 0,
+    )
+  ),
 );
 
 $card-header: (
-  background-color: _color(grey, 50),
+  padding: _get-space('v') _get-space('h'),
+  border-bottom: 1px solid $default-border-color,
+  text-align: center,
 );
 
 // ----------------------------
@@ -1091,14 +1125,14 @@ $modal-overlay-z-index: $z-index-overlay !default;
 $modal-overlay-e: $ease-400 !default;
 
 $modal-overlay: (
-  background-color: $color-semiblack,
+  background-color: rgba($color-black, 0.5),
   box-shadow: #{$shadow-ambient-1, $shadow-direct-1},
 );
 
 $modal-dialog: (
   default: (
     width: 100%,
-    height: 100%,
+    max-height: calc(100vh - (#{_get-space('v')} * 2)),
     background-color: $color-white,
     border: 1px solid $default-border-color,
     box-shadow: ($shadow-ambient-3, $shadow-direct-2),
@@ -1106,14 +1140,19 @@ $modal-dialog: (
   'm': (
     height: auto,
     width: _get-rem(480px),
-    max-height: 90%,
     border-radius: $default-border-radius,
   )
 );
 
 $modal-dialog-variants: (
-  'large' : (
-    width: _get-rem(640px),
+  'full' : (
+    default: (
+      width: calc(100vw - (#{_get-space('h')} * 2)),
+      max-width: _get-rem(1200px),
+    ),
+    'l': (
+      width: calc(100vw - (#{_get-space('h', 'large')} * 2)),
+    )
   )
 );
 
@@ -1132,9 +1171,7 @@ $modal-header: (
   background-color: _color(grey, 50),
 );
 
-$modal-content: (
-  background: $color-white,
-);
+$modal-content: ();
 
 $modal-footer: (
   background: $color-white,

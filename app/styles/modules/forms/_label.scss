@@ -11,6 +11,14 @@
     @include css-map($form-label, 'default');
   }
 
+  &--required {
+    label::after {
+      content: ' *';
+      font-size: 11px;
+      color: _color(primary);
+    }
+  }
+
   &.is-error {
     label {
       @include css-map($form-label, 'error');
