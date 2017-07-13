@@ -1,4 +1,4 @@
-mixin book-figure-horizontal(props = {})
+mixin product-horizontal(props = {})
   -
     const {
       cover = 'images/content/books/sample-15.jpg',
@@ -16,8 +16,8 @@ mixin book-figure-horizontal(props = {})
       trash,
     } = props;
 
-  figure.figure.figure--horizontal&attributes(attributes)
-    .figure__img.figure-book__cover
+  article.product.product--horizontal&attributes(attributes)
+    .product__img.product-book__cover
       .book-thumbnail(class=`book-thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
         a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
           img(src=`${assetsPrefix}${cover}`)
@@ -27,7 +27,7 @@ mixin book-figure-horizontal(props = {})
       if discount && discountUnderBook
         .badge.badge--primary= discount
 
-    figcaption.figure__caption
+    .product__caption
       .bar.bar--small.no-mrg-bottom
         .bar__item.bar__item--fill
           a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title

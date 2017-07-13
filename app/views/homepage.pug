@@ -26,10 +26,10 @@ mixin tyzdenneKolekcie
       .card__content
         .btn-layout.btn-layout--vertical.mb-medium
           button.btn.btn--ghost Celá kolekcia
-        figure.figure.figure--horizontal
-          .figure__img
+        .bar.bar--small.align-items-top
+          .bar__item
             img.img--fluid.img--circle.thumbnail.thumbnail--medium(src='https://placehold.it/100x100', alt="Tomáš Ulej")
-          figcaption.figure__caption
+          .bar__item.bar__item--fill
             p.mb-small Vyberá#{' '}
               a.link(href='#', title="Tomáš Ulej") Tomáš Ulej
             p.no-mrg.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
@@ -75,7 +75,7 @@ mixin najpredavaniejsieZPonuky
                 each item, i in [...books, ...books ]
                   if i < 10
                     li.mb-medium(class=i > 4 ? 'show-l' : '')
-                      +book-figure-horizontal(item).no-mrg
+                      +product-horizontal(item).no-mrg
 
       .card__content
         .btn-layout.btn-layout--vertical
@@ -86,7 +86,7 @@ mixin akcioveTituly
     +section-header({ header: 'Akciové tituly' })
     .card
       .card__content
-        +book-figure-horizontal({ discountUnderBook: true, discount: 'Ušetrite 3,50 €', description: 'Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.', coverSize: 'medium', duration: {} })
+        +product-horizontal({ discountUnderBook: true, discount: 'Ušetrite 3,50 €', description: 'Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.', coverSize: 'medium', duration: {} })
       .card__content.card__content--overflow
         +booksCarouselHorizontal({ duration: {} })
 
@@ -99,7 +99,7 @@ mixin ludiNajviacZaujma
           each item, i in [...books, ...books ]
             if i < 4
               li(class=`${i < 3 ? 'mb-medium' : ''}`)
-                +book-figure-horizontal(item).no-mrg
+                +product-horizontal(item).no-mrg
 
 mixin najoblubenejsieSerie
   section.mb-large
