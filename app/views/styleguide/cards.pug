@@ -123,22 +123,22 @@ block append content
   //- HEADER
   +content-section(contents[1])
 
-    +p Card header is part of the card component. It can be created by using class <code class='l-code-inline'>.card__header</code> on header element.
+    +p Card header is part of the card component. It can be created by using class <code class='l-code-inline'>.card__header.card-header</code> on header element. Title can be added via <code class='l-code-inline'>.card-header__title</code>
 
     +demo
       +demo-example
         .row
           .col--m-6
             article.card
-              header.card__header
-                h3 Card with header
+              header.card__header.card-header
+                h2.card-header__title Card with header
               section.card__content
                 p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
       +demo-code
         :code
           <article class="card">
-            <header class="card__header">
-              ...
+            <header class="card__header card-header">
+              <h2 class="card-header__title">Title</h2>
             </header>
             <section class="card__content">
               ...
@@ -158,26 +158,26 @@ block append content
           .row
             .col--m-6
               article.card
-                header.card__header
-                  .card__header__action
-                    +icon('home')
-                  h4.card__header__title Headline
-                  .card__header__action
+                header.card__header.card-header
+                  .card-header__action
+                    +icon('user').icon--medium
+                  h2.card-header__title Headline
+                  .card-header__action
                     .btn.btn--equal.btn--round
-                      +icon('settings')
+                      +icon('arrow-right').icon--medium
                 section.card__content
                   p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
         +demo-code
           :code
             <article class="card">
-              <header class="card__header">
-                <div class="card__header__action">
+              <header class="card__header card-header">
+                <div class="card-header__action">
                   ...
                 </div>
-                <div class="card__header__title">
+                <div class="card-header__title">
                   ...
                 </div>
-                <div class="card__header__action">
+                <div class="card-header__action">
                   ...
                 </div>
               </header>

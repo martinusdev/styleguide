@@ -50,6 +50,12 @@ $color-palette: (
     600: #005ba1,
   ),
   bg: (
+    200: #f2f8fb,
+    500: #fbf7f5,
+    600: #f7efeb,
+  ),
+  borders: (
+    200: #4267b2,
     500: #fbf7f5,
     600: #f7efeb,
   ),
@@ -97,6 +103,7 @@ $default-color-weights: (
 
 $default-bg-color: $color-white !default;
 $secondary-bg-color: _color(bg) !default;
+$blue-bg-color: _color(bg, 200) !default;
 $default-text-color: $color-black !default;
 $default-font-family: $font-family-tabac !default;
 
@@ -479,6 +486,24 @@ $button-styles: (
     active: (
       color: _color(primary, 600),
       border-color: transparent,
+      background-color: transparent,
+    ),
+  ),
+  facebook: (
+    default: (
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
+      background-color: transparent,
+    ),
+    focus: (
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
+      background-color: transparent,
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    active: (
+      color: _color(link, 500),
+      border-color: _color(borders, 200),
       background-color: transparent,
     ),
   ),
@@ -939,7 +964,6 @@ $card: (
   default: (
     background-color: $color-white,
     border-radius: $default-border-radius,
-    padding: _get-space('v', 'small') _get-space('h', 'small'),
     after: ()
   ),
   well: (
@@ -953,12 +977,19 @@ $card: (
 
 $card-section: (
   default: (
-    padding: _get-space('v', 'small') _get-space('h', 'small') 0,
-  )
+    default: (
+      padding: _get-space('v', 'small') _get-space('h') 0,
+    ),
+    large: (
+      padding: _get-space('v', 'large') _get-space('h', 'large') 0,
+    )
+  ),
 );
 
 $card-header: (
-  background-color: _color(grey, 50),
+  padding: _get-space('v') _get-space('h'),
+  border-bottom: 1px solid $default-border-color,
+  text-align: center,
 );
 
 // ----------------------------

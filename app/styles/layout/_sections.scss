@@ -25,6 +25,17 @@
   }
 }
 
+.section--m-full {
+  @include breakpoint(m, 'down') {
+    padding-top: 0;
+
+    .wrapper-main {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
 @include css-variants('.section', $section);
 
 .collapsed {
