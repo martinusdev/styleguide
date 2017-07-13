@@ -124,7 +124,7 @@ $book-badge: (
     order: 1;
 
     @include breakpoint(s, down) {
-      width: calc(100% - 3em);
+      width: calc(100% - 50px);
       align-self: flex-start;
     }
   }
@@ -141,8 +141,9 @@ $book-badge: (
   &--qty {
     order: 4;
 
-    @include breakpoint(s, only) {
+    @include breakpoint(s, down) {
       flex-grow: 1;
+      margin-left: auto;
     }
   }
 
