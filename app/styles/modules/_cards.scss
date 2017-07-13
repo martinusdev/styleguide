@@ -61,7 +61,7 @@
 
   @each $breakpoint, $props in _get-breakpoint-map($card-section) {
     @include breakpoint($breakpoint) {
-      @include css-map($props);
+      @include css-map($props, default);
     }
   }
 
@@ -98,6 +98,14 @@
 
     &__content {
       @include card-section($grow: 1);
+
+      @each $breakpoint, $props in _get-breakpoint-map($card-section) {
+        @include breakpoint($breakpoint) {
+          &--large {
+            @include css-map($props, large);
+          }
+        }
+      }
 
       &:first-child {
         padding-top: _get-space('v');
