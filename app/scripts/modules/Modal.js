@@ -1,4 +1,4 @@
-import { closestPolyfill } from './Utils';
+import { closestPolyfill, transitionEnd } from './Utils';
 import { TOGGLE_EVT } from './Toggle';
 
 closestPolyfill();
@@ -10,9 +10,14 @@ const defaultConfig = {
   modalHeadlineSelector: '.modal__header__headline',
   modalContentSelector: '.modal__content',
   modalBodyIsOpen: 'has-modal',
+  localModalAnchorAttr: 'data-modal-anchor',
+  ajaxEnabledAttr: 'data-modal-ajax',
+  ajaxLoadingClass: 'modal--loading',
 };
 
 const isActive = el => el.classList.contains('is-active');
+export const MODAL_AJAX_LOAD_EVT = 'modalAjaxLoad';
+export const MODAL_AJAX_LOADED_EVT = 'modalAjaxLoaded';
 
 export default class Modal {
   constructor(selector = 'data-modal', config) {
@@ -27,6 +32,8 @@ export default class Modal {
 
     this._onToggle = this._onToggle.bind(this);
     this._onBlur = this._onBlur.bind(this);
+    this._onAjaxLoaded = this._onAjaxLoaded.bind(this);
+    this._onOverlayTransitionEnd = this._onOverlayTransitionEnd.bind(this);
 
     this._init();
 
@@ -41,10 +48,14 @@ export default class Modal {
 
     this.modals.forEach(modal => {
       modal.addEventListener(TOGGLE_EVT, this._onToggle);
+      if (modal.hasAttribute(this.config.ajaxEnabledAttr)) {
+        modal.addEventListener(MODAL_AJAX_LOADED_EVT, this._onAjaxLoaded);
+      }
     });
 
     this._assignAccessibilityAttributes();
     this._openModalOnLoad();
+    return this.modals;
   }
 
   _openModalOnLoad() {
@@ -93,17 +104,23 @@ export default class Modal {
     this.trigger = e.detail.trigger;
     this.dialog = this.target.querySelector(this.config.modalDialogSelector);
 
-    if (this.activeModals.length === 0 && this.target) {
-      this.originalTrigger = e.detail.trigger;
-    }
+    if (this.dialog) {
+      if (this.activeModals.length === 0 && this.target) {
+        this.originalTrigger = e.detail.trigger;
+      }
 
-    if (isActive(this.target)) {
-      this._activateModal();
-    } else {
-      this._deactivateModal();
-    }
+      if (isActive(this.target)) {
+        this._activateModal();
+      } else {
+        this._deactivateModal();
+      }
 
-    this._handleUrl();
+      if (!this.target.hasAttribute(this.config.ajaxEnabledAttr)) {
+        this._handleUrl();
+      } else {
+        this._onAjaxInit();
+      }
+    }
   }
 
   _onBlur(e) {
@@ -114,13 +131,21 @@ export default class Modal {
   }
 
   _activateModal() {
-    this._lockBody();
+    if (!this.target.classList.contains('modal-overlay--local')) {
+      this._lockBody();
+    }
 
     this.activeModals.push({
       overlay: this.target,
       dialog: this.dialog,
       trigger: this.trigger,
     });
+
+    if (this.target.classList.contains('modal-overlay--local')) {
+      this._positionLocalModal(this.target);
+    } else {
+      this.dialog.classList.add('is-active');
+    }
 
     this.dialog.focus();
     this.dialog.style.zIndex =
@@ -139,8 +164,19 @@ export default class Modal {
           this._onBlur,
           true,
         );
+        if (
+          this.activeModals[i].overlay.classList.contains(
+            'modal-overlay--local',
+          )
+        ) {
+          this.activeModals[i].overlay.addEventListener(
+            transitionEnd,
+            this._onOverlayTransitionEnd,
+          );
+        }
         this.activeModals[i].dialog.setAttribute('aria-hidden', 'true');
         this.activeModals[i].dialog.zIndex = 0;
+        this.activeModals[i].dialog.classList.remove('is-active');
 
         if (this.activeModals.length === 1 && this.originalTrigger) {
           this.originalTrigger.focus();
@@ -220,11 +256,66 @@ export default class Modal {
     // remove modal body class
     document.body.classList.remove(this.config.modalBodyIsOpen);
 
-    // remove css top
-    document.body.style.top = null;
-    // set original scrollTop
+    if (scrollTop) {
+      // remove css top
+      document.body.style.top = null;
+      // set original scrollTop
+      document.documentElement.scrollTop = scrollTop;
+      document.body.scrollTop = scrollTop;
+    }
+  }
 
-    document.documentElement.scrollTop = scrollTop;
-    document.body.scrollTop = scrollTop;
+  _positionLocalModal(modal) {
+    const anchor = document.querySelector(
+      modal.getAttribute(this.config.localModalAnchorAttr),
+    );
+    if (anchor) {
+      anchor.appendChild(modal);
+      const icons = modal.querySelectorAll('use');
+
+      Array.prototype.forEach.call(icons, icon => {
+        // this is a IE hack, solves disappearing SVG icons
+        if (icon.href && icon.href.baseVal) {
+          icon.href.baseVal = icon.href.baseVal; // trigger fixing of href
+        }
+      });
+
+      setTimeout(() => {
+        modal.firstElementChild.classList.add('is-active');
+      }, 1);
+    }
+  }
+
+  _onAjaxInit() {
+    this.dialog.classList.add(this.config.ajaxLoadingClass);
+    this.target.dispatchEvent(
+      new CustomEvent(MODAL_AJAX_LOAD_EVT, { bubbles: true }),
+    );
+  }
+
+  _onAjaxLoaded() {
+    this.dialog.classList.remove(this.config.ajaxLoadingClass);
+    if (typeof Event === 'function') {
+      // this helps recalculate swiper in modal
+      // modern browsers
+      window.dispatchEvent(new Event('resize'));
+    } else {
+      // for IE and other old browsers
+      // causes deprecation warning on modern browsers
+      const evt = window.document.createEvent('UIEvents');
+      evt.initUIEvent('resize', true, false, window, 0);
+      window.dispatchEvent(evt);
+    }
+  }
+
+  _onOverlayTransitionEnd(e) {
+    if (e.propertyName === 'width' && !isActive(e.currentTarget)) {
+      e.currentTarget.removeEventListener(
+        transitionEnd,
+        this._onOverlayTransitionEnd,
+        true,
+      );
+      document.body.appendChild(e.currentTarget);
+    }
   }
 }
