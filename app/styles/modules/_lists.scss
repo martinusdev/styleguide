@@ -20,8 +20,10 @@
   @include css-map($list, $variant);
 
   .list__item { // stylelint-disable-line
-    @include bar;
+    display: flex;
+    flex-flow: row;
     flex-wrap: wrap;
+    align-items: center;
 
     @include css-map($list-item, $variant);
 
@@ -116,15 +118,15 @@
 @mixin list-item-section-classes() {
   .list__item__section {
     &--primary {
-      @include bar-content;
+      flex: 1 0 auto;
     }
 
     &--secondary {
-      @include bar-item;
+      flex: 0 1 auto;
     }
 
     &--image {
-      @include bar-item($width: $list-item-section-image-size);
+      flex: 0 1 $list-item-section-image-size;
     }
 
     &--break {

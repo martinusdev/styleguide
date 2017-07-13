@@ -80,7 +80,7 @@ block append content
 
     +content-sub-section('Text input sizes')
 
-      +p There are three main sizes of text inputs: medium (default), large <code class='l-code-inline'>.input--large</code> and small <code class='l-code-inline'>.input--small</code>.
+      +p There are three main sizes of text inputs: medium (default), large <code class='l-code-inline'>.input--large</code> and small <code class='l-code-inline'>.input--small</code>. For verty small inputs (mainly number spinners), you can add <code class='l-code-inline'>.input--short</code> to make it short.
 
       +demo
         +demo-example
@@ -92,6 +92,19 @@ block append content
                 input.input(type='text', placeholder='Medium', value='Medium')
               .form-control.form-control--input
                 input.input.input--small(type='text', placeholder='Small', value='Small')
+            .col--l-6
+              .form-control.form-control--input
+                input.input.input--large.input--short(type='text', placeholder='123', value='123')
+                |
+                | Large Short
+              .form-control.form-control--input
+                input.input.input--short(type='text', placeholder='123', value='123')
+                |
+                | Medium Short
+              .form-control.form-control--input
+                input.input.input--small.input--short(type='text', placeholder='123', value='123')
+                |
+                | Small Short
         +demo-code
           :code
             <input placeholder="Large" class="input input--large" type="text">

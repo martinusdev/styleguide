@@ -661,6 +661,9 @@ $input-sizes: (
     min-height: _get-em(48px, $default-font-size),
     padding: _get-em(7.5px, $default-font-size) _get-em(8px, $default-font-size),
   ),
+  short: (
+    width: 2.5em,
+  )
 );
 
 //---------------
@@ -1000,7 +1003,7 @@ $card-header: (
 
 $list-margin-bottom: _get-space('v');
 
-$list-variants: (default, bordered, clean, condensed);
+$list-variants: (default, bordered, clean, padded);
 
 $list: (
   default: (
@@ -1008,7 +1011,7 @@ $list: (
     border: none,
   ),
   bordered: (
-    border: 1px solid _color(grey, 300),
+    border: 1px solid _color(grey, 200),
   ),
   clean: (
     border: none,
@@ -1017,15 +1020,18 @@ $list: (
 
 $list-item: (
   default: (
-    padding: _get-space('v') _get-space('h'),
-    border-bottom: 1px solid _color(grey, 300),
+    padding: _get-space('v', 'small') 0,
+    border-bottom: 1px solid _color(grey, 200),
   ),
   clean: (
     border-bottom: 1px solid transparent,
   ),
-  condensed: (
+  padded: (
     padding: _get-space('v', 'small') _get-space('h', 'small'),
   ),
+  bordered: (
+    padding: _get-space('v', 'small') _get-space('h', 'small'),
+  )
 );
 
 // LIST ITEM CLICKABLE
