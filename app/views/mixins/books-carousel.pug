@@ -27,10 +27,10 @@ mixin booksCarouselRecommended()
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
-            .product.product-book.mb-small.text-left
-              .product-book__cover.book-thumbnail.book-thumbnail--clickable.mb-small
+            .product.mb-small.text-left
+              .product__cover.book-thumbnail.book-thumbnail--clickable.mb-small
                 img(src=`${assetsPrefix}${item.cover}`)
-              .product-book__title
+              .product__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
                 p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
             .bar.bar--small.no-mrg
@@ -66,14 +66,14 @@ mixin booksCarouselHorizontal(props = {})
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
-            .product.product-book.mb-small.text-left
-              .product-book__cover
+            .product.mb-small.text-left
+              .product__cover
                 .book-thumbnail.book-thumbnail--clickable.mb-small
                   img(src=`${assetsPrefix}${item.cover}`)
                   if duration
                     .book-thumbnail__status
                       +discountBadge(duration)
-              .product-book__title
+              .product__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
                 p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
             .bar.bar--small.no-mrg
