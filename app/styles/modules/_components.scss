@@ -167,3 +167,29 @@ $book-badge: (
     }
   }
 }
+
+// ----------------------------
+// Cart-item
+
+$progress-bar: (
+  height: 5px,
+  border-radius: 5px,
+);
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+
+  @include css-map($progress-bar);
+  background-color: _color(grey, 200);
+
+  &__value {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    border-radius: map-get($progress-bar, border-radius);
+    &--blue { background-color: _color(blue); }
+  }
+}
