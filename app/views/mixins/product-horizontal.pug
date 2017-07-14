@@ -23,7 +23,7 @@ mixin product-horizontal(props = {})
           img(src=`${assetsPrefix}${cover}`)
         if duration
           .book-thumbnail__status
-            +bookBadge(duration)
+            +discountBadge(duration)
       if discount && discountUnderBook
         .badge.badge--primary= discount
 

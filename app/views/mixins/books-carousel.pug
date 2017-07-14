@@ -72,7 +72,7 @@ mixin booksCarouselHorizontal(props = {})
                   img(src=`${assetsPrefix}${item.cover}`)
                   if duration
                     .book-thumbnail__status
-                      +bookBadge(duration)
+                      +discountBadge(duration)
               .product-book__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
                 p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author

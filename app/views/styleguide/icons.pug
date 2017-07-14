@@ -258,14 +258,14 @@ block append content
 
     +content-sub-section('Book thumbnail status')
 
-      +p Book thumbnails can embed status with <code class='l-code-inline'>.book-thumbnail__status</code>. Example with book-badge as discount coutdown is shown below.
+      +p Book thumbnails can embed status with <code class='l-code-inline'>.book-thumbnail__status</code>. Example with badge as discount coutdown is shown below.
 
       +demo
         +demo-example
           .book-thumbnail.book-thumbnail--medium
             img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
             .book-thumbnail__status
-              +bookBadge(duration)
+              +discountBadge(duration)
 
         +demo-code
           :code
