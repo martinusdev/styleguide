@@ -32,9 +32,14 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
             +icon('add-to-cart').icon--left.icon--medium
             | Vložiť do košíka
 
-          button.btn.btn--clean.no-mrg
-            +icon('heart').icon--left.icon--medium
-            | Pridať do
+          .btn-dropdown
+            button.btn.btn--clean.no-mrg(data-toggle="self, next")
+              +icon('heart').icon--left.icon--medium
+              | Pridať do
+            .dropdown.dropdown--arrowhead(data-dropdown aria-expanded="false")
+              .dropdown__item Wishlist
+              .dropdown__item Moj zoznam
+
   section#shop.tab.text-size-medium
     article.card.card--well.text-center
 
