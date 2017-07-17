@@ -206,7 +206,7 @@ block append content
 
   +content-section(contents[2])
 
-    +p Image thumbnails are defined in three sizes <code class='l-code-inline'>small/medium/large</code> as shown on example below.
+    +p Image thumbnails are defined in four sizes <code class='l-code-inline'>small/medium/medium-large/large</code> as shown on example below.
 
     +demo
       +demo-example
@@ -216,62 +216,46 @@ block append content
           .bar__item
             img.img--fluid.img--circle.thumbnail.thumbnail--medium(src='https://placehold.it/100x100')
           .bar__item
+            img.img--fluid.img--circle.thumbnail.thumbnail--medium-large(src='https://placehold.it/100x100')
+          .bar__item
             img.img--fluid.img--circle.thumbnail.thumbnail--large(src='https://placehold.it/100x100')
 
       +demo-code
         :code
           <img class="img thumbnail thumbnail--small" src="..." alt="...">
           <img class="img thumbnail thumbnail--medium" src="..." alt="...">
+          <img class="img thumbnail thumbnail--medium-large" src="..." alt="...">
           <img class="img thumbnail thumbnail--large" src="..." alt="...">
 
   +content-section(contents[3], true)
 
     +demo
       +demo-example
-        .book-thumbnail.book-thumbnail--medium
+        .thumbnail.thumbnail--book.thumbnail--large
           img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
 
       +demo-code
         :code
-          <div class="book-thumbnail">
+          <div class="thumbnail thumbnail--book">
             <img class="img " src="..." alt="...">
           </div>
 
-    +content-sub-section('Book thumbnail sizes')
+    +content-sub-section('Thumbnail status')
 
-      +p Book thumbnails should have specified size via classes <code class='l-code-inline'>.book-thumbnail--[small/medium]</code>.
-
-      +demo
-        +demo-example
-          .bar
-            .bar__item
-              .book-thumbnail.book-thumbnail--medium
-                img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .bar__item
-              .book-thumbnail.book-thumbnail--small
-                img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-
-        +demo-code
-          :code
-            <div class="book-thumbnail book-thumbnail--small">...</div>
-            <div class="book-thumbnail book-thumbnail--medium">...</div>
-
-    +content-sub-section('Book thumbnail status')
-
-      +p Book thumbnails can embed status with <code class='l-code-inline'>.book-thumbnail__status</code>. Example with book-badge as discount coutdown is shown below.
+      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with badge as discount coutdown is shown below.
 
       +demo
         +demo-example
-          .book-thumbnail.book-thumbnail--medium
-            img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .book-thumbnail__status
-              +bookBadge(duration)
+          .thumbnail.thumbnail--book.thumbnail--large
+            img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .thumbnail__status
+              +discountBadge(duration)
 
         +demo-code
           :code
-            <div class="book-thumbnail book-thumbnail--medium">
+            <div class="thumbnail--book thumbnail--large">
               <img class="img" src="..." alt="..." />
-              <div class="book-thumbnail__status">
+              <div class="thumbnail__status">
                 ...
               </div>
             </div>
