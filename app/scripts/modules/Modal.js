@@ -1,5 +1,5 @@
-import { closestPolyfill, transitionEnd } from './Utils';
-import { TOGGLE_EVT } from './Toggle';
+import { closestPolyfill, transitionEnd, triggerResize } from './Utils';
+import { TOGGLE_EVT, doToggle } from './Toggle';
 
 closestPolyfill();
 
@@ -18,6 +18,7 @@ const defaultConfig = {
 const isActive = el => el.classList.contains('is-active');
 export const MODAL_AJAX_LOAD_EVT = 'modalAjaxLoad';
 export const MODAL_AJAX_LOADED_EVT = 'modalAjaxLoaded';
+export const MODAL_OPEN = 'modalOpen';
 
 export default class Modal {
   constructor(selector = 'data-modal', config) {
@@ -67,7 +68,7 @@ export default class Modal {
       }
 
       if (el.hasAttribute(this.selector)) {
-        window.myApp.toggles.doToggle(el);
+        doToggle(el);
       }
     }
   }
@@ -154,6 +155,21 @@ export default class Modal {
     this.dialog.addEventListener('blur', this._onBlur, true);
 
     this._handleMultipleModals();
+
+    this.target.addEventListener(
+      transitionEnd,
+      () => {
+        setTimeout(() => {
+          triggerResize();
+          this.target.dispatchEvent(
+            new CustomEvent(MODAL_OPEN, { bubbles: true }),
+          );
+        }, 0);
+      },
+      {
+        once: true,
+      },
+    );
   }
 
   _deactivateModal() {
@@ -203,7 +219,7 @@ export default class Modal {
     if (this.activeModals.length > 1 && !this._isMultipleAllowed()) {
       this.activeModals.forEach(modal => {
         if (modal.overlay !== this.target && isActive(modal.overlay)) {
-          window.myApp.toggles.doToggle(modal.overlay);
+          doToggle(modal.overlay);
         }
       });
     }
@@ -295,17 +311,7 @@ export default class Modal {
 
   _onAjaxLoaded() {
     this.dialog.classList.remove(this.config.ajaxLoadingClass);
-    if (typeof Event === 'function') {
-      // this helps recalculate swiper in modal
-      // modern browsers
-      window.dispatchEvent(new Event('resize'));
-    } else {
-      // for IE and other old browsers
-      // causes deprecation warning on modern browsers
-      const evt = window.document.createEvent('UIEvents');
-      evt.initUIEvent('resize', true, false, window, 0);
-      window.dispatchEvent(evt);
-    }
+    triggerResize();
   }
 
   _onOverlayTransitionEnd(e) {

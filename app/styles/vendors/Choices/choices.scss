@@ -108,10 +108,11 @@ $select-selector: 'choices' !default;
 }
 
 .#{$select-selector}__inner {
-  display: inline-block;
-  vertical-align: top;
+  display: flex;
+  align-items: center;
   width: 100%;
   overflow: hidden;
+
 
   .is-open & {
     border-radius: $select-b-r $select-b-r 0 0;
@@ -174,6 +175,7 @@ $select-selector: 'choices' !default;
 .#{$select-selector}__list--single {
   display: block;
   width: 100%;
+  padding-right: _get-rem(24px);
   .#{$select-selector}__item { width: 100%; }
 }
 

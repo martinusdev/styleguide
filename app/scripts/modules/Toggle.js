@@ -2,7 +2,7 @@
 // Toggle
 // module for handling toggle actions
 
-import { customEventPolyfill } from './Utils';
+import { customEventPolyfill, triggerResize } from './Utils';
 
 customEventPolyfill();
 
@@ -14,7 +14,7 @@ const defaultConfig = {
   settingsAttr: 'data-toggle',
 };
 
-export default class Toggle {
+class Toggle {
   constructor(selector = '[data-toggle]', config) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
@@ -26,38 +26,7 @@ export default class Toggle {
     return this;
   }
 
-  _init() {
-    this.triggers.push.apply(
-      this.triggers,
-      document.querySelectorAll(this.selector),
-    );
-    for (let i = 0, l = this.triggers.length; i < l; i++) {
-      this.triggers[i].addEventListener('click', this._onClick);
-    }
-  }
-
-  _onClick(e) {
-    const triggerEl = e.currentTarget;
-
-    const triggerTargets = this._getTargets(triggerEl);
-    triggerTargets.map(el => this.doToggle(el, triggerEl));
-
-    triggerEl.dispatchEvent(new CustomEvent(TRIGGER_EVT, { bubbles: true }));
-  }
-
-  destroy() {
-    for (let i = 0, l = this.triggers.length; i < l; i++) {
-      this.triggers[i].removeEventListener('click', this._onClick);
-    }
-    this.triggers = [];
-  }
-
-  update() {
-    this.destroy();
-    this._init();
-  }
-
-  doToggle(el, triggerEl) {
+  static doToggle(el, triggerEl, toggleClass = defaultConfig.toggleClass) {
     if (!(el instanceof Element)) {
       el = document.querySelector(el);
     }
@@ -69,10 +38,10 @@ export default class Toggle {
     let toggled = false;
 
     if (el.hasAttribute('data-toggle-class')) {
-      const toggleClass = el.getAttribute('data-toggle-class')
+      const localToggleClass = el.getAttribute('data-toggle-class')
         ? el.getAttribute('data-toggle-class')
-        : this.config.toggleClass;
-      el.classList.toggle(toggleClass);
+        : toggleClass;
+      el.classList.toggle(localToggleClass);
 
       toggled = true;
     }
@@ -93,11 +62,10 @@ export default class Toggle {
 
     if (el.hasAttribute('data-toggle-text')) {
       const newText = el.getAttribute('data-toggle-text');
-      const target = el.querySelector('[data-toggle-text-target]') || el;
-      const oldText = target.textContent;
+      const oldText = el.textContent;
 
       el.setAttribute('data-toggle-text', oldText);
-      target.textContent = newText;
+      el.textContent = newText;
 
       toggled = true;
     }
@@ -123,7 +91,7 @@ export default class Toggle {
     }
 
     if (!toggled) {
-      el.classList.toggle(this.config.toggleClass);
+      el.classList.toggle(toggleClass);
     }
 
     el.dispatchEvent(
@@ -135,7 +103,43 @@ export default class Toggle {
         bubbles: true,
       }),
     );
+
+    triggerResize();
+
     return true;
+  }
+
+  _init() {
+    this.triggers.push.apply(
+      this.triggers,
+      document.querySelectorAll(this.selector),
+    );
+    for (let i = 0, l = this.triggers.length; i < l; i++) {
+      this.triggers[i].addEventListener('click', this._onClick);
+    }
+  }
+
+  _onClick(e) {
+    const triggerEl = e.currentTarget;
+
+    const triggerTargets = this._getTargets(triggerEl);
+    triggerTargets.forEach(el => {
+      Toggle.doToggle(el, triggerEl, this.config.toggleClass);
+    });
+
+    triggerEl.dispatchEvent(new CustomEvent(TRIGGER_EVT, { bubbles: true }));
+  }
+
+  destroy() {
+    for (let i = 0, l = this.triggers.length; i < l; i++) {
+      this.triggers[i].removeEventListener('click', this._onClick);
+    }
+    this.triggers = [];
+  }
+
+  update() {
+    this.destroy();
+    this._init();
   }
 
   _getTargets(trigger) {
@@ -158,12 +162,15 @@ export default class Toggle {
           }
           return trigger;
         } else if (target === 'previous') {
-          return trigger.previousSibling;
+          return trigger.previousElementSibling;
         } else if (target === 'next') {
-          return trigger.nextSibling;
+          return trigger.nextElementSibling;
         }
         return document.querySelector(target);
       })
       .filter(Boolean);
   }
 }
+
+export default Toggle;
+export const doToggle = Toggle.doToggle;

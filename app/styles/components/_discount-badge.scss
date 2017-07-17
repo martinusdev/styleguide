@@ -1,0 +1,27 @@
+// ---------------------------------------------
+// Book badge
+// ---------------------------------------------
+
+$discount-badge: (
+  font-size: _get-rem(10px),
+  font-weight: $font-weight-semibold,
+  color: _color(primary),
+);
+
+.discount-badge {
+  display: inline-flex;
+  position: relative;
+
+  &__value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    padding: 0 4px;
+
+    text-align: center;
+
+    @include css-map($discount-badge);
+  }
+}
