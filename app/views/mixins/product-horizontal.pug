@@ -2,7 +2,7 @@ mixin product-horizontal(props = {})
   -
     const {
       cover = 'images/content/books/sample-15.jpg',
-      coverSize = 'small',
+      coverSize = 'medium-large',
       title = 'Základy rybolovu pro kluky a holky',
       author = 'Frank Weissert, Jack Thorne a John Tiffany',
       description,
@@ -18,7 +18,7 @@ mixin product-horizontal(props = {})
 
   article.product.product--horizontal&attributes(attributes)
     .product__img.product__cover
-      .thumbnail.thumbnail--book.thumbnail--medium-large(class=`thumbnail--book--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
+      .thumbnail.thumbnail--book(class=`thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
         a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
           img(src=`${assetsPrefix}${cover}`).img
         if duration
