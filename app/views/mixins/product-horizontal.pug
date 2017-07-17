@@ -30,7 +30,11 @@ mixin product-horizontal(props = {})
     .product__caption
       .bar.bar--small.no-mrg-bottom
         .bar__item.bar__item--fill
-          a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+          if cart
+            .text-ellipsis
+              a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+          else
+            a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           p.text-color-grey.text-size-small.mb-small= author
           .bar.bar--small.mb-small
             if discount && !discountUnderBook
