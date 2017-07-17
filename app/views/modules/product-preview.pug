@@ -63,6 +63,13 @@
               a.btn.btn--primary(href='#')
                 +icon('cart').icon--medium.icon--left
                 | Vložiť do košíka
-              a.btn.btn--ghost(href='#')
-                +icon('heart').icon--medium.icon--left
-                | Pridať do
+              .btn-dropdown.no-mrg
+                button.btn.btn--clean.no-mrg(data-toggle="self, next")
+                  +icon('heart', 'icon-dropdown').icon--medium.icon--left
+                  | Pridať do
+                .dropdown.dropdown--arrowhead(data-dropdown aria-expanded="false")
+                  a(href="#").dropdown__item Wishlist
+                  a(href="#").dropdown__item Moj zoznam
+                  a(href="#").dropdown__item
+                    +icon('plus', 'icon-dropdown').icon--medium
+                    | Novy zaznam
