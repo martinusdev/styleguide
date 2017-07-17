@@ -1,5 +1,5 @@
 import { closestPolyfill } from './Utils';
-import { TOGGLE_EVT } from './Toggle';
+import { TOGGLE_EVT, doToggle } from './Toggle';
 
 closestPolyfill();
 
@@ -67,8 +67,8 @@ export default class Dropdown {
         !this.target.hasAttribute(this.config.dataInteractive) ||
         !this.target.contains(e.target)
       ) {
-        window.myApp.toggles.doToggle(this.trigger);
-        window.myApp.toggles.doToggle(this.target);
+        doToggle(this.trigger);
+        doToggle(this.target);
 
         this._removeListeners();
       }

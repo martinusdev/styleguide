@@ -29,13 +29,11 @@ body.has-modal {
   backface-visibility: hidden;
   visibility: hidden;
 
-  @include css-map($settings);
-
-  // &:not(.is-active) {
-  //   > * {
-  //
-  //   }
-  // }
+  @each $variant, $props in $settings {
+    &#{_get-variant-name( $variant)} {
+      @include card($props);
+    }
+  }
 
   &.is-active {
     width: 100% !important;

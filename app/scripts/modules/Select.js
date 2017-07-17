@@ -7,6 +7,23 @@ const defaultConfig = {
   shouldSort: false,
 };
 
+const productSelectTemplate = data =>
+  `
+  <div class="bar no-mrg-bottom">
+    <div class="bar__item bar__item--fill">
+      <p class="text-size-medium">${data.label}</p>
+      ${data.customProperties.delivery ? `
+        <p class="text-size-small text-color-grey">${data.customProperties.delivery}</p>
+      ` : ''}
+    </div>
+    ${data.customProperties.price ? `
+      <div class="bar__item">
+        <h2>${data.customProperties.price}</h2>
+      </div>
+    ` : ''}
+  </div>
+`;
+
 export default class Select {
   constructor(selector = '.js-select', config) {
     this.selector = selector;
@@ -63,6 +80,12 @@ export default class Select {
         select.hasAttribute('data-clearable')
       ) {
         config.removeItemButton = true;
+      }
+
+      if (select.hasAttribute('data-select-product')) {
+        config.callbackOnCreateTemplates = template => ({
+          item: data => template(productSelectTemplate(data)),
+        });
       }
 
       const choice = new Choices(select, config);

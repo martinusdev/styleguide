@@ -1,0 +1,90 @@
+.product-preview {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  padding: _get-space('v', 'large') _get-space('h', 'large');
+  text-align: left;
+
+  @include breakpoint(s, 'down') {
+    padding: _get-space('v', 'small') 0 0;
+  }
+
+  &__header {
+    flex: 1 0 auto;
+
+    @include breakpoint(m) {
+      margin-bottom: _get-space('v', 'large');
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex: 1 1 auto;
+    height: 100%;
+
+    flex-wrap: wrap;
+    overflow: hidden;
+
+    @include breakpoint(s, 'down') {
+      height: calc(100% - 52px);
+    }
+  }
+
+  &__control {
+    flex: 0 0 _get-rem(50px);
+    max-width: none;
+  }
+
+  &__slider {
+    height: 100%;
+    overflow: auto;
+    flex: 1 0;
+
+    -webkit-overflow-scrolling: touch;
+
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: _get-space('h');
+    padding-right: _get-space('h');
+    padding-bottom: 1px;
+    max-width: _get-rem(374px);
+
+    &.is-active {
+      max-width: none;
+    }
+
+    @include breakpoint(s, 'down') {
+      // padding: 0;
+      flex-basis: 100%;
+      height: calc(100% - #{_get-rem(100px)});
+      margin-bottom: _get-space('h');
+      max-width: none;
+    }
+  }
+
+  &__info {
+    flex: 0 0 _get-rem(374px);
+
+    @include breakpoint(s, 'down') {
+      flex-basis: 100%;
+
+      // stylelint-disable-next-line
+      .card,
+      .card__content {
+        margin-bottom: 0;
+        border-radius: 0;
+      }
+    }
+  }
+
+  &__page {
+    display: block;
+    margin-bottom: _get-space('v', 'large');
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
