@@ -49,9 +49,10 @@ block content
                   .book-thumbnail.book-thumbnail--large-shadow.mb-medium
                     img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 .book-detail__preview-link.text-center
-                  button.btn.btn--clean
+                  button.btn.btn--clean(data-toggle="#product-preview")
                     +icon('eye').icon--left.icon--medium
                     | Pozrieť ukážku
+
             article.col--m-8.col--l-6
               .btn-layout.btn-layout--vertical.mb-large.show-m
                 .btn-group--horizontal
@@ -384,3 +385,46 @@ block content
         +booksCarouselRecommended
 
     include ./modules/seen-items
+
+block append modals
+  include ./modules/product-preview
+
+block append scripts
+    script.
+      document.addEventListener('myAppLoaded', function() {
+        var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
+          choices: [
+            {
+              value: 'Pevná väzba 12,99 €',
+              label: 'Pevná väzba 12,99 €',
+              id: 1,
+              customProperties: {
+                price: '11,50 €',
+                delivery: 'posielame ihneď'
+              }
+            },
+            {
+              value: 'E-book 10,99 €',
+              label: 'E-book 10,99 €',
+              id: 1,
+              customProperties: {
+                price: '11,50 €',
+              }
+            },
+          ]
+        });
+      });
+
+      document.addEventListener('myAppInit', function() {
+        var productPreview;
+
+        window.addEventListener('modalOpen', function() {
+          productPreview = new window.myApp.ProductPreview();
+        });
+
+        window.addEventListener('resize', function() {
+          if (productPreview) {
+            productPreview.update();
+          }
+        });
+      });
