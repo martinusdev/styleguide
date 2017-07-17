@@ -1,5 +1,5 @@
 import { closestPolyfill, transitionEnd } from './Utils';
-import { TOGGLE_EVT } from './Toggle';
+import { TOGGLE_EVT, doToggle } from './Toggle';
 
 closestPolyfill();
 
@@ -67,7 +67,7 @@ export default class Modal {
       }
 
       if (el.hasAttribute(this.selector)) {
-        window.myApp.toggles.doToggle(el);
+        doToggle(el);
       }
     }
   }
@@ -203,7 +203,7 @@ export default class Modal {
     if (this.activeModals.length > 1 && !this._isMultipleAllowed()) {
       this.activeModals.forEach(modal => {
         if (modal.overlay !== this.target && isActive(modal.overlay)) {
-          window.myApp.toggles.doToggle(modal.overlay);
+          doToggle(modal.overlay);
         }
       });
     }

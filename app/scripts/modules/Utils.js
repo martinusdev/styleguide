@@ -136,3 +136,17 @@ export const transitionEnd = (() => {
   }
   return transition;
 })();
+
+export function triggerResize() {
+  if (typeof Event === 'function') {
+    // this helps recalculate swiper in modal
+    // modern browsers
+    window.dispatchEvent(new Event('resize'));
+  } else {
+    // for IE and other old browsers
+    // causes deprecation warning on modern browsers
+    const evt = window.document.createEvent('UIEvents');
+    evt.initUIEvent('resize', true, false, window, 0);
+    window.dispatchEvent(evt);
+  }
+}
