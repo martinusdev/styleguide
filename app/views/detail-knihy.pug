@@ -42,16 +42,17 @@ block content
 
       section.section
         .wrapper-main
-          .row.book-detail
+          .row.product-detail
             .col--m-4.col--l-3
-              .book-detail__preview
-                .book-detail__image
-                  .book-thumbnail.book-thumbnail--large-shadow.mb-medium
+              .product-detail__preview
+                .product-detail__image
+                  .thumbnail.thumbnail--book.thumbnail--large-shadow.mb-medium
                     img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                .book-detail__preview-link.text-center
-                  button.btn.btn--clean
+                .product-detail__preview-link.text-center
+                  button.btn.btn--clean(data-toggle="#product-preview")
                     +icon('eye').icon--left.icon--medium
                     | Pozrieť ukážku
+
             article.col--m-8.col--l-6
               .btn-layout.btn-layout--vertical.mb-large.show-m
                 .btn-group--horizontal
@@ -64,14 +65,14 @@ block content
                   a(href="#").btn.btn--ghost Audio kniha#{' '}
                     span.text-color-grey.text-nowrap 16,25 €
 
-              p.book-detail__author.mb-small
+              p.product-detail__author.mb-small
                 a.link(href="#") Frank Weissert
                 | ,#{' '}
                 a.link(href="#") Jack Thorne
                 | #{' '} a #{' '}
                 a.link(href="#") John Tiffany
-              h1.book-detail__title Základy rybolovu pro kluky a holky
-              h3.book-detail__subtitle.mb-medium.mb-large-m Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+              h1.product-detail__title Základy rybolovu pro kluky a holky
+              h3.product-detail__subtitle.mb-medium.mb-large-m Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
 
               .bar.bar--small.mb-medium
                 .bar__item.show-m
@@ -122,9 +123,10 @@ block content
                       a.link(href="#") Rybolov
                 .bar__item.bar__item--border
                 .bar__item
-                  figure.figure.figure--horizontal.no-mrg
-                    img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
-                    figcaption.figure__caption
+                  .bar.bar--small.align-items-top.no-mrg-bottom
+                    .bar__item
+                      img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
+                    .bar__item.bar__item--fill
                       dl.no-mrg
                         dt Tento titul číta aj
                         dd
@@ -167,7 +169,7 @@ block content
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
               div(data-sticky, data-sticky-class="is-stuck", data-margin-top="120")
-                .book-thumbnail.mb-medium
+                .thumbnail.thumbnail--book.mb-medium
                   img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
                 ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
@@ -288,10 +290,11 @@ block content
                   .card__content
                     .row.align-items-center.align-items-middle
                       .col--3.show-l
-                        figure.figure.no-mrg
-                          +icon('avatar').icon--xlarge.text-color-grey
+                        div.text-center
+                          +icon('avatar').text-space-half.icon--xlarge.text-color-grey
+                          br
+                          | Ja
                           //- img.img.img--circle(src="http://placehold.it/48x48")
-                          figcaption.figure__caption Ja
                       .col--l-5.col--l-border.text-center
                         p.mb-small Ako sa vám páčila kniha?
                         .rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
@@ -384,3 +387,46 @@ block content
         +booksCarouselRecommended
 
     include ./modules/seen-items
+
+block append modals
+  include ./modules/product-preview
+
+block append scripts
+    script.
+      document.addEventListener('myAppLoaded', function() {
+        var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
+          choices: [
+            {
+              value: 'Pevná väzba 12,99 €',
+              label: 'Pevná väzba 12,99 €',
+              id: 1,
+              customProperties: {
+                price: '11,50 €',
+                delivery: 'posielame ihneď'
+              }
+            },
+            {
+              value: 'E-book 10,99 €',
+              label: 'E-book 10,99 €',
+              id: 1,
+              customProperties: {
+                price: '11,50 €',
+              }
+            },
+          ]
+        });
+      });
+
+      document.addEventListener('myAppInit', function() {
+        var productPreview;
+
+        window.addEventListener('modalOpen', function() {
+          productPreview = new window.myApp.ProductPreview();
+        });
+
+        window.addEventListener('resize', function() {
+          if (productPreview) {
+            productPreview.update();
+          }
+        });
+      });

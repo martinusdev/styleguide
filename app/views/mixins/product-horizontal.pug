@@ -1,8 +1,8 @@
-mixin book-figure-horizontal(props = {})
+mixin product-horizontal(props = {})
   -
     const {
       cover = 'images/content/books/sample-15.jpg',
-      coverSize = 'small',
+      coverSize = 'medium-large',
       title = 'Základy rybolovu pro kluky a holky',
       author = 'Frank Weissert, Jack Thorne a John Tiffany',
       description,
@@ -16,18 +16,18 @@ mixin book-figure-horizontal(props = {})
       trash,
     } = props;
 
-  figure.figure.figure--horizontal&attributes(attributes)
-    .figure__img.figure-book__cover
-      .book-thumbnail(class=`book-thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
+  article.product.product--horizontal&attributes(attributes)
+    .product__img.product__cover
+      .thumbnail.thumbnail--book(class=`thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
         a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
-          img(src=`${assetsPrefix}${cover}`)
+          img(src=`${assetsPrefix}${cover}`).img
         if duration
-          .book-thumbnail__status
-            +bookBadge(duration)
+          .thumbnail__status
+            +discountBadge(duration)
       if discount && discountUnderBook
         .badge.badge--primary= discount
 
-    figcaption.figure__caption
+    .product__caption
       .bar.bar--small.no-mrg-bottom
         .bar__item.bar__item--fill
           a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title

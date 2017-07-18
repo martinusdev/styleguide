@@ -17,7 +17,7 @@ block content
                   li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
                     .cart-item
                       .cart-item__thumbnail
-                        img(src=`${assetsPrefix}${item.cover}`).book-thumbnail.book-thumbnail--small.book-thumbnail--clickable
+                        img(src=`${assetsPrefix}${item.cover}`).thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
                           .text-semibold.no-mrg.text-ellipsis= item.title
@@ -33,8 +33,7 @@ block content
                                 a.link(href="#") Jana Šlinská
 
                         .cart-item__column.cart-item__column--wishlist
-                          button.btn.btn--clean.no-mrg(type="button" data-toggle="self" data-toggle-class="text-color-theme")
-                            +icon('heart', 'icon--medium')
+                          +addTo({ text: '' }).no-mrg-bottom
                         .cart-item__column.cart-item__column--tags.show-m
                           if (i === 2)
                             .badge.text-nowrap E-kniha
@@ -68,8 +67,7 @@ block content
                           .text-semibold.no-mrg.text-ellipsis= item.title
 
                         .cart-item__column.cart-item__column--wishlist
-                          button.btn.btn--clean.no-mrg(type="button" data-toggle="self" data-toggle-class="text-color-theme")
-                            +icon('heart', 'icon--medium')
+                          +addTo({ text: '' }).no-mrg-bottom
                         .cart-item__column.cart-item__column--tags.show-m
                           if (i === 2)
                             .badge.text-nowrap E-kniha

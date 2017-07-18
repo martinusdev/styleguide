@@ -7,7 +7,7 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
       span.tab-nav__content-wrap
         | Odložiť v kníhkupectve
         br
-        span.figure-status.figure-status--success.text-color-grey.text-regular BA, Obchodná
+        span.status.status--success.text-color-grey.text-regular BA, Obchodná
 
 .tabs
   section#web.tab
@@ -32,9 +32,8 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
             +icon('add-to-cart').icon--left.icon--medium
             | Vložiť do košíka
 
-          button.btn.btn--clean.no-mrg
-            +icon('heart').icon--left.icon--medium
-            | Pridať do
+          +addTo()
+
   section#shop.tab.text-size-medium
     article.card.card--well.text-center
 
@@ -59,6 +58,5 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
           | .
         .btn-layout--vertical
           button.btn.btn--primary.btn--large.mb-small Rezervovať
-          button.btn.btn--clean.no-mrg
-            +icon('heart').icon--left.icon--medium
-            | Pridať do
+
+          +addTo()

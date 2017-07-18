@@ -64,33 +64,18 @@ img {
 // ----------------------------
 // THUMBNAILS
 
-@each $name, $size in $thumbnail-sizes {
-  .thumbnail#{_get-variant-name($name)} {
-    width: $size;
-    height: $size;
-  }
-}
-
-// ----------------------------
-// BOOK THUMBNAIL
-
-.book-thumbnail {
+.thumbnail {
   position: relative;
-  border-radius: $default-border-radius;
-  box-shadow: 0 10px 14px 0 rgba(#000, 0.2);
-  transition: box-shadow $ease-100;
 
-  user-select: none;
-
-  &--medium {
-    width: 120px;
-  }
-
-  &--small {
-    width: 65px;
+  @each $name, $size in $thumbnail-sizes {
+    &#{_get-variant-name($name)} {
+      width: $size;
+    }
   }
 
   &--clickable {
+    transition: box-shadow $ease-100;
+
     &:hover,
     &:active {
       box-shadow: 0 10px 20px 0 rgba(#000, 0.3);
@@ -101,22 +86,28 @@ img {
     box-shadow: -20px 10px 14px 0 rgba(#000, 0.2), -10px 0 5px 0 rgba(#000, 0.1); // todo generalize shadows
   }
 
-  .img {
-    margin-bottom: 0;
+  &--book {
     border-radius: $default-border-radius;
-  }
+    box-shadow: 0 10px 14px 0 rgba(#000, 0.2);
+    user-select: none;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
+    .img {
+      margin-bottom: 0;
+      border-radius: $default-border-radius;
+    }
 
-    width: 12px;
-    border-radius: $default-border-radius;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
 
-    background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
+      width: 12px;
+      border-radius: $default-border-radius;
+
+      background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
+    }
   }
 
   &__status {

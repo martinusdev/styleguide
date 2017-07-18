@@ -1,4 +1,5 @@
 import Swiper from 'swiper';
+import { doToggle } from './Toggle';
 
 import { nodeListToArray } from './Utils';
 import { BREAKPOINTS } from './Const';
@@ -85,7 +86,7 @@ export default class SwiperSlider {
       );
       if (lazyIframe) {
         if (lazyIframe.hasAttribute('src')) {
-          window.myApp.toggles.doToggle(lazyIframe);
+          doToggle(lazyIframe);
         }
       }
     }

@@ -15,7 +15,7 @@
   align-items: center;
   margin-top: _get-space('h', 'small');
 
-  .bar:not(.bar--vertical) > & > * {
+  > *:not(.bar):not([class*='mb\-']) {
     margin-bottom: 0;
   }
 }
@@ -67,9 +67,14 @@
 
       > .bar__item {
         margin-right: 0;
+        margin-bottom: _map-deep-get($bar-spacing, 'default', 'default');
 
         &:first-child { // stylelint-disable-line
           margin-top: 0;
+        }
+
+        &:last-child { // stylelint-disable-line
+          margin-bottom: 0;
         }
       }
     }

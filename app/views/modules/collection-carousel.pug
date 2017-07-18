@@ -14,10 +14,10 @@
     .swiper-wrapper
       each item, i in [...books, ...books, ...books, ...books]
         a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book
-          figure.figure.figure-book.figure-book--rating.mb-medium
-            .figure-book__cover.book-thumbnail.book-thumbnail--clickable
-              img.no-mrg(src=`${assetsPrefix}${item.cover}`)
-            figcaption.figure-book__rating
+          .product.mb-medium
+            .product__cover.thumbnail.thumbnail--book.thumbnail--clickable
+              img.no-mrg(src=`${assetsPrefix}${item.cover}`).img
+            .product__rating
               if item.discount
                 .badge.badge--primary= item.discount
               else
