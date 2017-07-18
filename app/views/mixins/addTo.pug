@@ -4,9 +4,9 @@ mixin addTo(props = {})
       text = 'Pridať do'
     } = props;
 
-  .btn-dropdown&attributes(attributes)
+  .btn-dropdown.btn-dropdown--no-icon&attributes(attributes)
     button.btn.btn--clean.no-mrg(data-toggle="self, next")
-      +icon('heart').icon--medium.icon--left
+      +icon('heart').icon--medium(class=text ? "icon--left" : "")
       | #{text}
     .dropdown.dropdown--arrowhead(data-dropdown aria-expanded="false")
       a(href="#").dropdown__item Wishlist
