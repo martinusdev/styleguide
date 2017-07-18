@@ -84,6 +84,41 @@ block append content
             <!-- expanded -->
             <div class="dropdown" data-dropdown aria-expanded="true">
 
+    +content-sub-section('Dropdown with arrow')
+
+      +p Dropdown menu modified with arrow-up. This kind of dropdown is build with <code class='l-code-inline'>.dropdown--arrowhead</code> class which is append to <code class='l-code-inline'>.dropdown</code> class.
+
+      +demo
+        +demo-example
+          .row
+            .col--s-6
+              .dropdown.dropdown--arrowhead(aria-expanded="true", style="position: relative; top: 0;")
+                each item in [1,2,3,4,5]
+                  a(href="#").dropdown__item Item #{item}
+            .col--s-6
+              .btn-layout--horizontal
+                .btn-dropdown
+                  button.btn(
+                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    | Button
+                    +icon('chevron-down', 'icon-dropdown')
+                  .dropdown.dropdown--arrowhead(data-dropdown, data-toggle-expand)
+                    each item in [1,2,3,4,5]
+                      a(href="#").dropdown__item Item #{item}
+        +demo-code
+          :code
+            <div class="dropdown dropdown--arrowhead" data-dropdown aria-expanded="false">
+              <a class="dropdown__item" href="#">...</a>
+              ...
+            </div>
+
+            <!-- expanded -->
+            <div class="dropdown dropdown--arrowhead" data-dropdown aria-expanded="true">
+
+
     +content-sub-section('Interactive dropdown')
       +p Dropdown menu with Interactive functionality eg. forms, buttons etc. should not close after click inside of dropdown component. This can be achieved with attribute <code class='l-code-inline'>[data-dropdown-interactive]</code>.
 

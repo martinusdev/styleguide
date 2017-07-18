@@ -67,6 +67,30 @@
     @include dropdown-size;
 
     &__item { @include dropdown-item; }
+
+    &--arrowhead {
+      margin-top: 10px;
+      border-radius: 3px;
+      overflow: visible;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 0;
+        height: 0;
+        position: absolute;
+        top: -9px;
+        left: 50%;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid #fff;
+        transform: translateX(-50%);
+      }
+
+      .dropdown__item {
+        text-align: left;
+      }
+    }
   }
 }
 
