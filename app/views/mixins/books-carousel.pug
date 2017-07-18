@@ -3,6 +3,8 @@ mixin booksCarouselRecommended()
     var swiperConfig = {
       slidesPerView: 'auto',
       slidesPerGroup: 7,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
       breakpoints: {
         1024: {
           slidesPerGroup: 5,
@@ -56,9 +58,11 @@ mixin booksCarouselHorizontal(props = {})
       duration,
     } = props;
     var swiperConfig = {
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
       slidesPerView: 'auto',
       slidesPerGroup: 1,
-      spaceBetween: 20
+      spaceBetween: 20,
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel.carousel--fade-outside.carousel--fade-outside-white
