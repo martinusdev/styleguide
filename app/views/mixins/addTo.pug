@@ -1,0 +1,16 @@
+mixin addTo(props = {})
+  -
+    const {
+      text = 'Pridať do'
+    } = props;
+
+  .btn-dropdown&attributes(attributes)
+    button.btn.btn--clean.no-mrg(data-toggle="self, next")
+      +icon('heart').icon--medium.icon--left
+      | #{text}
+    .dropdown.dropdown--arrowhead(data-dropdown aria-expanded="false")
+      a(href="#").dropdown__item Wishlist
+      a(href="#").dropdown__item Môj zoznam
+      a(href="#").dropdown__item
+        +icon('plus').icon--medium.text-color-grey
+        | Nový záznam

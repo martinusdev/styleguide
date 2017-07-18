@@ -33,8 +33,7 @@ block content
                                 a.link(href="#") Jana Šlinská
 
                         .cart-item__column.cart-item__column--wishlist
-                          button.btn.btn--clean.no-mrg(type="button" data-toggle="self" data-toggle-class="text-color-theme")
-                            +icon('heart', 'icon--medium')
+                          +addTo({ text: '' }).no-mrg-bottom
                         .cart-item__column.cart-item__column--tags.show-m
                           if (i === 2)
                             .badge.text-nowrap E-kniha
@@ -68,8 +67,7 @@ block content
                           .text-semibold.no-mrg.text-ellipsis= item.title
 
                         .cart-item__column.cart-item__column--wishlist
-                          button.btn.btn--clean.no-mrg(type="button" data-toggle="self" data-toggle-class="text-color-theme")
-                            +icon('heart', 'icon--medium')
+                          +addTo({ text: '' }).no-mrg-bottom
                         .cart-item__column.cart-item__column--tags.show-m
                           if (i === 2)
                             .badge.text-nowrap E-kniha
