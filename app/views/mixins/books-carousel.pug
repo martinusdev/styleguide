@@ -80,16 +80,20 @@ mixin booksCarouselHorizontal(props = {})
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
                 p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
             .bar.bar--tiny.no-mrg
-              .bar__item
-                if item.discount
-                  .badge.badge--primary= item.discount
-                else
-                  .badge
-                    +icon('star').text-color-yellow.icon--small
-                    | #{' '}
-                    = item.rating
-              .bar__item.bar__item--fill.text-right
-                .text-medium.text-semibold= item.price
+              if (i == 2)
+                .bar__item
+                  p &nbsp;
+              else
+                .bar__item
+                  if item.discount
+                    .badge.badge--primary= item.discount
+                  else
+                    .badge
+                      +icon('star').text-color-yellow.icon--small
+                      | #{' '}
+                      = item.rating
+                .bar__item.bar__item--fill.text-right
+                  .text-medium.text-semibold= item.price
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium
