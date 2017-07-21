@@ -13,3 +13,20 @@
     };
   }
 }
+
+.product-read-more {
+  position: relative;
+
+  a {
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 200%;
+      width: 100%;
+    }
+  }
+}
