@@ -112,6 +112,7 @@ $default-font-family: $font-family-tabac !default;
 
 $default-border-color: _color(grey, 200);
 $default-border-radius: $border-radius !default;
+$default-border-radius-circle: $border-radius-circle !default;
 
 $default-font-size: $font-size-regular !default;
 
@@ -1239,6 +1240,20 @@ $badge: (
   blue: (
     color: _color(blue),
     border-color: _color(blue),
+  ),
+);
+
+$badge-circle: (
+  default: (
+    color: $color-white,
+    background-color: _color(grey),
+    border-radius: $default-border-radius-circle,
+    font-size: _get-rem($font-size-small),
+    font-weight: $font-weight-semibold,
+  ),
+  blue: (
+    color: $color-white,
+    background-color: _color(link, 500),
   ),
 );
 
