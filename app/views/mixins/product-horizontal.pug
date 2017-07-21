@@ -11,9 +11,10 @@ mixin product-horizontal(props = {})
       rating = 4.5,
       price = '9999,99 €',
       duration,
-      cart,
       count,
       trash,
+      truncnateTitle,
+      showCartButton,
     } = props;
 
   article.product.product--horizontal&attributes(attributes)
@@ -30,7 +31,7 @@ mixin product-horizontal(props = {})
     .product__caption
       .bar.bar--small.no-mrg-bottom
         .bar__item.bar__item--fill
-          if cart
+          if truncnateTitle
             .text-ellipsis
               a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           else
@@ -57,7 +58,7 @@ mixin product-horizontal(props = {})
             .bar__item.bar__item--fill.text-right
               .text-medium.text-semibold= price
 
-            if cart
+            if showCartButton
               .bar__item
                 a.btn.btn--small.btn--clean.btn--equal.text-color-theme(href="#")
                   +icon('cart').icon--medium
