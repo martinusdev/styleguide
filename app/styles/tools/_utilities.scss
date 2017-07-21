@@ -33,6 +33,14 @@ strong,
 .text-right { text-align: right; }
 .text-justify { text-align: justify; }
 
+@each $breakpoint, $size in $breakpoints {
+  @include breakpoint( $breakpoint ) {
+    .text-center#{_get-variant-name($breakpoint, '-')} { text-align: center; }
+    .text-right#{_get-variant-name($breakpoint, '-')} { text-align: left; }
+    .text-right#{_get-variant-name($breakpoint, '-')} { text-align: right; }
+  }
+}
+
 .text-vam { vertical-align: middle; }
 .text-vat { vertical-align: top; }
 .text-vab { vertical-align: bottom; }
@@ -267,4 +275,8 @@ strong,
 
 .bg-blue {
   background-color: $blue-bg-color;
+}
+
+.bg-green {
+  background-color: $text-color-success;
 }
