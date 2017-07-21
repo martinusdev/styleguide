@@ -13,26 +13,13 @@ block content
                 .col--m-6.ofst--m-center.text-center
                   .thank-you-progress.mb-large
                     .row
-                      .thank-you-progress__item.col--s-3.col--12.current
+                      - for (var i = 0; i < 4; ++i) {
+                      .thank-you-progress__item.col--s-3.col--12(class=(i === 0) ? 'current' : '')
                         .thank-you-progress__circle.mb-small
                           +icon('cart').icon--small
                         .thank-you-progress__status
                           +icon('cart').icon--small
-                      .thank-you-progress__item.col--s-3.col--12
-                        .thank-you-progress__circle.mb-small
-                          +icon('cart').icon--small
-                        .thank-you-progress__status
-                          +icon('cart').icon--small
-                      .thank-you-progress__item.col--s-3.col--12
-                        .thank-you-progress__circle.mb-small
-                          +icon('cart').icon--small
-                        .thank-you-progress__status
-                          +icon('cart').icon--small
-                      .thank-you-progress__item.col--s-3.col--12
-                        .thank-you-progress__circle.mb-small
-                          +icon('cart').icon--small
-                        .thank-you-progress__status
-                          +icon('cart').icon--small
+                      - }
                   h4.mb-small Vaša objednávka č. 8512435 bola úspešne odoslaná!
                   p.text-medium Naši škriatkovia ju začali ihneď spracovávať.
 
