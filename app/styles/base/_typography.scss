@@ -249,6 +249,15 @@ hr {
       margin-right: _get-space('v', 'small');
     }
   }
+
+  .list--comma li {
+    display: inline;
+
+    &:not(:last-child) *::after {
+      content: ', ';
+      display: inline;
+    }
+  }
 }
 
 @include list-classes;
