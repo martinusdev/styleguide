@@ -207,7 +207,8 @@ $text-small: (
   line-height: 20/_strip-units($font-size-small),
 );
 
-$link: (
+$links: (
+  default: (
   default: (
     text-decoration: none,
     border-bottom: 1px solid transparent,
@@ -218,6 +219,25 @@ $link: (
   focus: (
     color: _color(link, 400),
     border-bottom-color: _color(link, 400),
+  )
+  ),
+  grey: (
+    default: (
+      color: _color(grey),
+      font-weight: $font-weight-default,
+    ),
+    focus: (
+      border-bottom: 1px solid transparent,
+    )
+  ),
+  black: (
+    default: (
+      color: $color-black,
+      font-weight: $font-weight-default,
+    ),
+    focus: (
+      border-bottom: 1px solid transparent,
+    )
   )
 );
 
