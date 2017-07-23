@@ -61,14 +61,14 @@ export default class Modal {
 
   _openModalOnLoad() {
     if (window.location.hash) {
-      const el = document.getElementById(window.location.hash.slice(1));
+      const target = document.getElementById(window.location.hash.slice(1));
 
-      if (!el) {
+      if (!target) {
         return;
       }
 
-      if (el.hasAttribute(this.selector)) {
-        doToggle(el);
+      if (target.hasAttribute(this.selector)) {
+        doToggle({ target });
       }
     }
   }
@@ -207,7 +207,7 @@ export default class Modal {
         this.activeModals.splice(i, 1);
 
         if (this.activeModals.length === 0) {
-          this._unlockBody();
+          Modal.unlockBody();
         }
 
         return;
@@ -219,7 +219,7 @@ export default class Modal {
     if (this.activeModals.length > 1 && !this._isMultipleAllowed()) {
       this.activeModals.forEach(modal => {
         if (modal.overlay !== this.target && isActive(modal.overlay)) {
-          doToggle(modal.overlay);
+          doToggle({ target: modal.overlay });
         }
       });
     }
