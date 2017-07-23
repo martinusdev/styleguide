@@ -18,6 +18,7 @@ import Tooltip from './modules/Tooltip';
 import Input from './modules/Input';
 import NumberSpinner from './modules/NumberSpinner';
 import ProductPreview from './modules/ProductPreview';
+import MegaMenu from './modules/MegaMenu';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -38,12 +39,15 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Input = Input;
   window.myApp.NumberSpinner = NumberSpinner;
   window.myApp.ProductPreview = ProductPreview;
+  window.myApp.MegaMenu = MegaMenu;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
   svg4everybody();
   customEventPolyfill();
   requestAnimationFramePolyfill();
+
+  window.myApp.megaMenu = new MegaMenu();
 
   window.myApp.toggles = new Toggle();
 
