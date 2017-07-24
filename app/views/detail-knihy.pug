@@ -62,8 +62,15 @@ block content
                     span.text-color-grey.text-nowrap 10,29 €
                   a(href="#").btn.btn--ghost E-kniha#{' '}
                     span.text-color-grey.text-nowrap 6,50 €
-                  a(href="#").btn.btn--ghost Audio kniha#{' '}
-                    span.text-color-grey.text-nowrap 16,25 €
+                  .btn-dropdown
+                    a(href="#").btn.btn--ghost(data-toggle="self, next", data-toggle-expand, aria-haspopup="true") Viac formatov (2)#{' '}
+                      +icon('chevron-down', 'icon-dropdown').icon--medium
+                    .dropdown(data-dropdown, data-toggle-expand)
+                      a.dropdown__item(href="#") Audio kniha#{' '}
+                        span.text-color-grey.text-nowrap 16,25 €
+                      a.dropdown__item(href="#") Audio kniha#{' '}
+                        span.text-color-grey.text-nowrap 16,25 €
+
 
               p.product-detail__author.mb-small
                 a.link(href="#") Frank Weissert
