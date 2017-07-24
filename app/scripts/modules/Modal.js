@@ -328,7 +328,10 @@ export default class Modal {
   }
 
   _onOverlayClick(e) {
-    if (e.target.className.includes('modal-overlay')) {
+    if (
+      typeof e.target.className === 'string' &&
+      e.target.className.includes('modal-overlay')
+    ) {
       doToggle(this.target);
     }
   }
