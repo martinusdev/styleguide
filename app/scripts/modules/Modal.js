@@ -35,6 +35,7 @@ export default class Modal {
     this._onBlur = this._onBlur.bind(this);
     this._onAjaxLoaded = this._onAjaxLoaded.bind(this);
     this._onOverlayTransitionEnd = this._onOverlayTransitionEnd.bind(this);
+    this._onOverlayClick = this._onOverlayClick.bind(this);
 
     this._init();
 
@@ -56,6 +57,7 @@ export default class Modal {
 
     this._assignAccessibilityAttributes();
     this._openModalOnLoad();
+    document.addEventListener('click', this._onOverlayClick);
     return this.modals;
   }
 
@@ -322,6 +324,12 @@ export default class Modal {
         true,
       );
       document.body.appendChild(e.currentTarget);
+    }
+  }
+
+  _onOverlayClick(e) {
+    if (e.target.className.includes('modal-overlay')) {
+      doToggle(this.target);
     }
   }
 }
