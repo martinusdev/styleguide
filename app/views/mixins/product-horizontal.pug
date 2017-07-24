@@ -4,7 +4,7 @@ mixin product-horizontal(props = {})
       cover = 'images/content/books/sample-15.jpg',
       coverSize = 'medium-large',
       title = 'Základy rybolovu pro kluky a holky',
-      author = 'Frank Weissert, Jack Thorne a John Tiffany',
+      author = 'Frank Weissert, Jack Thorne, John Tiffany',
       description,
       discount,
       discountUnderBook = false,
@@ -36,7 +36,10 @@ mixin product-horizontal(props = {})
               a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           else
             a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
-          p.text-color-grey.text-size-small.mb-small= author
+          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
+            - var authors = author.split(', ')
+            each author in authors
+              li= author
           .bar.bar--small.mb-small
             if discount && !discountUnderBook
               .bar__item

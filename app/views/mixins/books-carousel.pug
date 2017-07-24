@@ -34,7 +34,10 @@ mixin booksCarouselRecommended()
                 img(src=`${assetsPrefix}${item.cover}`).img
               .product__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
-                p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
+                ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+                  - var authors = item.author.split(', ')
+                  each author in authors
+                    li= author
             .bar.bar--tiny.no-mrg
               .bar__item
                 if item.discount
@@ -78,7 +81,10 @@ mixin booksCarouselHorizontal(props = {})
                     +discountBadge(duration)
               .product__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
-                p.text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
+                ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+                  - var authors = item.author.split(', ')
+                  each author in authors
+                    li= author
             .bar.bar--tiny.no-mrg
               if (i == 2)
                 .bar__item
