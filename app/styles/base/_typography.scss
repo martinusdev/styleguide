@@ -218,6 +218,20 @@ hr {
     }
   }
 
+  .list-inline--delimited {
+    > li {
+      @include css-map($inline-list-item, 'delimited');
+
+      &:not(:last-child)::after {
+        content: ',';
+      }
+
+      &:nth-last-child(2)::after {
+        content: ' a';
+      }
+    }
+  }
+
   dl {
     @include css-map($description-list, 'dl');
 
