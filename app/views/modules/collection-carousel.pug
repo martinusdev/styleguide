@@ -18,7 +18,8 @@
         a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book
           .product.mb-medium
             .product__cover.thumbnail.thumbnail--book.thumbnail--clickable
-              img.no-mrg(src=`${assetsPrefix}${item.cover}`).img
+              .product__image-container
+                img.no-mrg(src=`${assetsPrefix}${item.cover}`).img
             .product__rating
               if item.discount
                 .badge.badge--primary= item.discount

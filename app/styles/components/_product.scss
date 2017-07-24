@@ -20,11 +20,13 @@
     margin-top: _get-space('h', 'small');
   }
 
-  &__cover {
+  &__image-container {
     display: flex;
     align-items: flex-end;
     max-height: 190px;
     overflow: hidden;
+
+    @include border-radius($image-border-radius);
   }
 
   &--horizontal {
