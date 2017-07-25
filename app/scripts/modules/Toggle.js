@@ -34,13 +34,28 @@ class Toggle {
     return target.classList.contains(activeClass);
   }
 
-  static doToggle({ target, trigger, className, icon, text, expand, state }) {
+  static doToggle({
+    target,
+    trigger,
+    className,
+    icon,
+    text,
+    expand,
+    state,
+    defaultClassName = defaultConfig.toggleClass,
+  }) {
     if (!(target instanceof Element)) {
       target = document.querySelector(target);
     }
 
     if (!target) {
       return false;
+    }
+
+    if (!className) {
+      className = target.hasAttribute('data-toggle-class')
+        ? target.getAttribute('data-toggle-class')
+        : defaultClassName;
     }
 
     if (className !== undefined || className !== null) {
