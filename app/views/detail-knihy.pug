@@ -227,12 +227,49 @@ block content
               section.mb-large
                 .card.card--well.no-pad-bottom
                   .card__content
-                    .row.no-mrg-bottom
+                    #mistake.row.no-mrg-bottom(data-toggle-class="hide")
                       .col--m-8
                         .text-semibold Našli ste v našom obsashu nejaké nepresnosti?
                         div Dajte nám o tom vedieť.
                       .col--m-4.text-right
-                        button.btn.btn--ghost.no-mrg Nahlásiť chybu
+                        button.btn.btn--ghost.no-mrg(data-toggle="#mistake, #mistake-detail") Nahlásiť chybu
+                    #mistake-detail.hide(data-toggle-class="hide")
+                      .row
+                        .col--fill
+                          .text-semibold Našli ste v našom obsashu nejaké nepresnosti?
+                          .text-semibold.mb-medium Dajte nám o tom vedieť.
+                          p Máte o knihe viac informácií ako je na tejto stránke alebo ste našli chybu? Budeme vám veľmi vďační, ak nám pomôžete s doplnením informácií na našich stránkach.
+                        .col--shrink
+                          button.btn.btn--clean.text-color-grey
+                            +icon('close').icon--medium(data-toggle="#mistake, #mistake-detail")
+                      .row
+                        .col--m-6
+                          .form-control.form-control--input
+                            .form-label
+                              label.text-transform-upper.text-small.text-color-grey meno a priezvisko
+                            input.input(type="text", placeholder="Zadajte Vaše meno a priezvisko")
+                        .col--m-6
+                          .form-control.form-control--input
+                            .form-label
+                              label.text-transform-upper.text-small.text-color-grey e-mail
+                            input.input(type="e-mail", placeholder="Zadajte Váš e-mail")
+                      .row
+                        .col--12
+                          .form-control.form-control--input
+                            .form-label
+                              label.text-transform-upper.text-small.text-color-grey text
+                            textarea.input(rows="4", placeholder="Napíšte informácie, ktoré chcete doplniť alebo opraviť")
+                      .row.mb-medium
+                        .col--12
+                          .form-control.form-control--checkbox
+                            .checkbox.radiocheck--medium
+                              input.radiocheck__input(type="checkbox", id="mistake-agree")
+                              label.radiocheck__control(for="mistake-agree")
+                              label.radiocheck__label(for="mistake-agree") Potvrdzujem, že vyššie uvedené informácie neporušujú autorské práva iných osôb 
+                                span.text-semibold a súhlasím s ich využitím firmou Martinus, s.r.o.
+                      .row
+                        .col--12.text-center
+                          button.btn(type="submit") odoslať upozornenie
 
               section.mb-large#podrobnosti
                 .card.card--well.text-medium.no-pad-bottom
