@@ -62,3 +62,12 @@ block content
                       button.btn.btn--ghost Skontrolovať objednávku
                       p.text-medium V prípade akýchkoľvek otázok mi neváhajte napísať!
                       button.btn.btn--ghost Poslať správu
+    section.section.section--secondary
+      .wrapper-main
+        .mb-large
+          +section-header({ header: 'Zakúpené tituly sme pridali do Vašej knižnice', more: false })
+          +libraryCarousel()
+        .text-center.mb-large
+          a.btn(href="/")
+            +icon('arrow-left').icon--medium
+            span.text-space-left späť na domovskú stránku
