@@ -68,6 +68,26 @@ block append content
             </div>
           </div>
 
+    +content-sub-section('Bar vertical')
+      +p Bar layout with vertical orientation.
+      +p Wrapper needs <code class="l-code-inline">.bar</code> and <code class="l-code-inline">.bar--vertical</code> class.
+
+      +demo
+        +demo-example
+          .row.row--space
+            .col
+              .bar.bar--vertical
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+
+        +demo-code
+          :code
+            <div class="bar bar--vertical">...</div>
+
     +content-sub-section('Bar gutters')
       +p Gutter between bar items can alterned with <code class='l-code-inline'>.bar--small</code>
 

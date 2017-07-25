@@ -29,7 +29,7 @@
     #{$this}__item {
       float: none;
       flex: 1 1 auto;
-
+      min-width: 0;
       margin-right: _get-space('h', 'small');
 
       &:last-child { // stylelint-disable
@@ -43,6 +43,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  max-width: 100%;
 
   &--link {
     @include css-map($tabs-link, 'default');
@@ -93,6 +94,14 @@
     &.is-disabled {
       @include css-map($tabs-card, 'disabled');
     }
+  }
+}
+
+.tab-nav__content-wrap {
+  max-width: 100%;
+
+  > * {
+    max-width: 100%;
   }
 }
 
