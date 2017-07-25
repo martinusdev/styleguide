@@ -435,6 +435,36 @@ block content
 
                 div#about-author(data-collapse="150")
                   p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
+                  article.card.card--well
+                    .card__content
+                      .row
+                        .col--m-shrink
+                          img(src="/images/content/author.png", width="100", alt="J. K. Rowling")
+                        .col--m-fill
+                          h4.mb-small Beseda s autorom: J. K. Rowling
+                          .text-color-grey.mb-medium Udalost
+                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate dictum ante, id ultricies mi bibendum ac. Nulla pretium nisi lorem, eget faucibus leo feugiat sed. Aliquam posuere nibh sit amet aliquam vehicula. Curabitur lobortis nibh vestibulum lobortis luctus. Curabitur a dolor quam. Ut ullamcorper at orci id sollicitudin. 
+                      .row.mb-medium
+                        .col--12
+                          .border-bottom-grey
+                      .row
+                        .col--12
+                          h4.mb-small Terminy
+                          - for (var i = 0; i < 4; ++i) {
+                            .bar.mb-medium.text-medium.border-bottom-grey
+                              .bar__item.mb-small
+                                +icon('calendar', 'icon--medium').text-color-grey
+                              .bar__item.text-space-right.mb-small
+                                .text-semibold 21. 8. 2017, 17:00
+                              .bar__item.mb-small
+                                +icon('pin', 'icon--medium').text-color-grey
+                              .bar__item.bar__item--fill.mb-small Bratislava (Obchodna)
+                              .bar__item.mb-small
+                                a.link(href="#") Udalosť na Faceboku
+                          - }
+                          a.link.text-medium Všetky besedy v Martinuse
+                            +icon('arrow-right')
+
                 .product-read-more
                   a.link.text-size-medium(href="javascript:void(0)", data-toggle="#about-author, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                     +icon('arrow-down')
