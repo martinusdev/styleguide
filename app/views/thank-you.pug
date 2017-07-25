@@ -4,6 +4,18 @@ block opts
     - var pageTitle = 'Ďakujeme'
 
 block content
+  - var currentStep = 0
+  -
+    var swiperConfig = {
+      slidesPerView: 4,
+      simulateTouch: false,
+      breakpoints: {
+        480: {
+          slidesPerView: 1,
+          simulateTouch: true,
+        }
+      },
+    };
   main
     section.section.section--secondary.section--m-full
       .wrapper-main
@@ -11,16 +23,23 @@ block content
           article.card.col--l-8.ofst--center
             section.card__content
               .row
-                .col--m-6.ofst--m-center.text-center
+                .col--m-8.ofst--m-center.text-center
                   .thank-you-progress.mb-large
-                    .row
-                      - for (var i = 0; i < 4; ++i) {
-                      .thank-you-progress__item.col--s-3.col--12(class=(i === 0) ? 'current' : '')
-                        .thank-you-progress__circle.mb-small
-                          +icon('cart').icon--small
-                        .thank-you-progress__status
-                          +icon('cart').icon--small
-                      - }
+                    .swiper-container(data-swiper-options=swiperConfig)
+                      .swiper-wrapper
+                        - for (var i = 0; i < 4; ++i) {
+                        .thank-you-progress__item.swiper-slide(class=(i <= currentStep) ? 'current' : '')
+                          .thank-you-progress__circle.mb-small
+                            - if (i > currentStep)
+                              +icon('file').icon--small
+                            - else
+                              +icon('cart').icon--small
+                          .thank-you-progress__status
+                            - if (i > currentStep)
+                              +icon('progress-check').icon--small
+                            - else
+                              +icon('time').icon--small
+                        - }
                   h4.mb-small Vaša objednávka č. 8512435 bola úspešne odoslaná!
                   p.text-medium Naši škriatkovia ju začali ihneď spracovávať.
 
