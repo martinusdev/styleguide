@@ -53,7 +53,9 @@ export default class Dropdown {
 
   _onToggle(e) {
     this.target = e.detail.target;
-    this.trigger = e.detail.trigger;
+    if (e.detail.trigger) {
+      this.trigger = e.detail.trigger;
+    }
 
     // attach events only if dropdown is open
     if (isActive(this.target)) {
@@ -67,8 +69,13 @@ export default class Dropdown {
         !this.target.hasAttribute(this.config.dataInteractive) ||
         !this.target.contains(e.target)
       ) {
-        doToggle(this.trigger);
-        doToggle(this.target);
+        doToggle({
+          target: this.trigger,
+          expand: true,
+          state: false,
+          icon: this.trigger.getAttribute('data-toggle-icon'),
+        });
+        doToggle({ target: this.target, expand: true, state: false });
 
         this._removeListeners();
       }

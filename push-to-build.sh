@@ -2,7 +2,7 @@
 
 STATUS="$(git status)"
 
-if [[ $STATUS == *"nothing to commit, working directory clean"* ]]
+if [[ $STATUS == *"nothing to commit"* ]]
 then
     # remove `dist` from .gitignore
     sed -i"" '/dist/d' ./.gitignore #linux

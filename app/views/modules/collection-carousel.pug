@@ -1,5 +1,7 @@
 -
   var swiperConfig = {
+    nextButton: '.carousel__btn--next',
+    prevButton: '.carousel__btn--prev',
     slidesPerView: 'auto',
     slidesPerGroup: 1,
     spaceBetween: 0,
@@ -16,7 +18,8 @@
         a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book
           .product.mb-medium
             .product__cover.thumbnail.thumbnail--book.thumbnail--clickable
-              img.no-mrg(src=`${assetsPrefix}${item.cover}`).img
+              .product__image-container
+                img.no-mrg(src=`${assetsPrefix}${item.cover}`).img
             .product__rating
               if item.discount
                 .badge.badge--primary= item.discount
@@ -27,7 +30,10 @@
                   = item.rating
           div(data-swipper-extra-content-source).visually-hidden
             h3.text-center.text-color-black.text-semibold.no-mrg= item.title
-            p.text-center.text-medium= item.author
+            ul.list-inline.list-inline--delimited.text-center.text-medium
+              - var authors = item.author.split(', ')
+              each author in authors
+                li= author
 
     div(data-swipper-extra-content-target)
 
