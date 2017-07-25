@@ -67,8 +67,8 @@ export default class Dropdown {
         !this.target.hasAttribute(this.config.dataInteractive) ||
         !this.target.contains(e.target)
       ) {
-        doToggle({ target: this.trigger });
-        doToggle({ target: this.target });
+        doToggle({ target: this.trigger, expand: true });
+        doToggle({ target: this.target, expand: true });
 
         this._removeListeners();
       }
