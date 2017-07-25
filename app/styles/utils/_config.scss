@@ -207,17 +207,37 @@ $text-small: (
   line-height: 20/_strip-units($font-size-small),
 );
 
-$link: (
+$links: (
   default: (
-    text-decoration: none,
-    border-bottom: 1px solid transparent,
-    color: _color(link),
-    font-weight: $font-weight-semibold,
-    transition: #{color $ease-400, border $ease-400},
+    default: (
+      text-decoration: none,
+      border-bottom: 1px solid transparent,
+      color: _color(link),
+      font-weight: $font-weight-semibold,
+      transition: #{color $ease-400, border $ease-400},
+    ),
+    focus: (
+      color: _color(link, 400),
+      border-bottom-color: _color(link, 400),
+    )
   ),
-  focus: (
-    color: _color(link, 400),
-    border-bottom-color: _color(link, 400),
+  grey: (
+    default: (
+      color: _color(grey),
+      font-weight: $font-weight-default,
+    ),
+    focus: (
+      border-bottom: 1px solid transparent,
+    )
+  ),
+  black: (
+    default: (
+      color: $color-black,
+      font-weight: $font-weight-default,
+    ),
+    focus: (
+      border-bottom: 1px solid transparent,
+    )
   )
 );
 

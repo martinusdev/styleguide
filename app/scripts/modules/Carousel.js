@@ -83,7 +83,7 @@ export default class SwiperSlider {
       );
       if (lazyIframe) {
         if (lazyIframe.hasAttribute('src')) {
-          doToggle(lazyIframe);
+          doToggle({ target: lazyIframe });
         }
       }
     }
