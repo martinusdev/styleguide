@@ -84,6 +84,45 @@
     }
   }
 
+  // bar progress eg. bar in checkout
+  .bar__progress {
+    margin-top: _get-space('h', 'small');
+    margin-bottom: _get-space('h', 'small');
+
+    .bar__item {
+      height: 100%;
+      position: relative;
+      font-size: $font-size-medium;
+
+      &::after,
+      &::before {
+        content: '';
+        display: block;
+        height: 5px;
+        position: absolute;
+        bottom: -(_get-space('h', 'small')) + 0.3;
+      }
+
+      &::before {
+        width: 100%;
+        background: _color(grey, 200);
+      }
+
+      &::after {
+        background: _color(green);
+        z-index: 5;
+      }
+
+      &.done::after {
+        width: 100%;
+      }
+
+      &.in-progress::after {
+        width: 25%;
+      }
+    }
+  }
+
   // responsive bar spacing
   @each $size, $props in $bar-spacing {
     &#{_get-variant-name($size, '.bar--')} {
