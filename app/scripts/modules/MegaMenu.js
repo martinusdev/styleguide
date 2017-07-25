@@ -103,10 +103,6 @@ export default class MegaMenu {
       className: 'is-mega-menu-active',
       state: this.isMegaMenuOpen,
     });
-
-    if (this.isMegaMenuOpen) {
-      this._closeDropdowns();
-    }
   }
 
   _handleClickOutside(e) {
@@ -148,17 +144,5 @@ export default class MegaMenu {
 
   destroy() {
     this.items.destroy();
-  }
-
-  _closeDropdowns() {
-    window.myApp.dropdowns.dropdowns.forEach(dropdown => {
-      if (this.megaMenu.parentNode.contains(dropdown) && isToggled(dropdown)) {
-        doToggle({
-          target: dropdown,
-          expand: true,
-        });
-        window.myApp.dropdowns._removeListeners();
-      }
-    });
   }
 }
