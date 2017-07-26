@@ -9,9 +9,6 @@ const shouldInitalize = (up, down, currentWidth, breakpoints) =>
   !(down && breakpoints[down] < currentWidth);
 
 const defaultConfig = {
-  pagination: '.swiper-pagination',
-  nextButton: '.carousel__btn--next',
-  prevButton: '.carousel__btn--prev',
   paginationClickable: true,
   a11y: true,
   loop: false,
@@ -86,7 +83,7 @@ export default class SwiperSlider {
       );
       if (lazyIframe) {
         if (lazyIframe.hasAttribute('src')) {
-          doToggle(lazyIframe);
+          doToggle({ target: lazyIframe });
         }
       }
     }

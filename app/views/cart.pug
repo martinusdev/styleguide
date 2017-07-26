@@ -21,7 +21,10 @@ block content
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
                           .text-semibold.no-mrg.text-ellipsis= item.title
-                          .text-color-grey.text-size-small.no-mrg.text-ellipsis= item.author
+                          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
+                            - var authors = item.author.split(', ')
+                            each author in authors
+                              li= author
                           if (i == 1 || i == 2)
                             .bar.bar--small.text-size-small.no-mrg.show-m
                               .bar__item

@@ -84,7 +84,6 @@
   }
 
   .link {
-    @include css-map($link, 'default');
     cursor: pointer;
 
     overflow-wrap: break-word;
@@ -95,10 +94,44 @@
 
     hyphens: auto;
 
-    &:focus,
-    &:hover,
-    &.is-active {
-      @include css-map($link, 'focus');
+    @each $variant, $link in $links {
+      &#{_get-variant-name($variant)} {
+        @include css-map($link, 'default');
+
+        &:focus,
+        &:hover,
+        &.is-active {
+          @include css-map($link, 'focus');
+        }
+      }
+    }
+
+    &--show {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: -30px;
+        bottom: -4px;
+        height: 24px;
+        width: 24px;
+
+        background: svg-load('./../icons_/app/arrow-right.svg', fill=_color(link, 400));
+
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: transform $ease-100, opacity $ease-100;
+      }
+
+      &.is-active,
+      &:hover,
+      &:focus {
+        &::after { // stylelint-disable-line
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
     }
   }
 
@@ -218,6 +251,20 @@ hr {
     }
   }
 
+  .list-inline--delimited {
+    > li {
+      @include css-map($inline-list-item, 'delimited');
+
+      &:not(:last-child)::after {
+        content: ',';
+      }
+
+      &:nth-last-child(2)::after {
+        content: ' a';
+      }
+    }
+  }
+
   dl {
     @include css-map($description-list, 'dl');
 
@@ -247,6 +294,15 @@ hr {
     dt {
       clear: both;
       margin-right: _get-space('v', 'small');
+    }
+  }
+
+  .list--comma li {
+    display: inline;
+
+    &:not(:last-child) *::after {
+      content: ', ';
+      display: inline;
     }
   }
 }
