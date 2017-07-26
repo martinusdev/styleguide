@@ -58,14 +58,15 @@ block content
                     section.card__content
                       p.text-medium Milý Peter,
                         br
-                        | ďakujeme za Váš nákup! Hneď ako vašu objednávku pripravím a odošlem, budeme vás o tom informovať e-mailom. 
+                        | ďakujeme za Váš nákup! Hneď ako vašu objednávku pripravím a odošlem, budeme vás o tom informovať e-mailom.
                       button.btn.btn--ghost Skontrolovať objednávku
                       p.text-medium V prípade akýchkoľvek otázok mi neváhajte napísať!
                       button.btn.btn--ghost Poslať správu
     section.section.section--secondary
       .wrapper-main
         .mb-large
-          +section-header({ header: 'Zakúpené tituly sme pridali do Vašej knižnice', more: false })
+          +section-header({ header: 'Zakúpené tituly sme pridali do Vašej knižnice', more: 'Prezrieť kinžnicu' })
+        .mb-large
           +libraryCarousel()
         .text-center.mb-large
           a.btn(href="/")
