@@ -32,9 +32,24 @@
   border-bottom: 1px solid $text-color-grey-light;
 }
 
+.cat-border-right {
+  border-right: 1px solid $text-color-grey-light;
+}
+
 .category {
   .pagination {
     justify-content: center;
     padding: _get-space('v', 'large');
   }
+
+  h1 {
+    @include breakpoint(s, 'downfrom') {
+      font-size: _get-rem(25px);
+    }
+  }
+}
+
+.product-item__description {
+  max-height: 60px;
+  overflow: hidden;
 }

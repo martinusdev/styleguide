@@ -18,8 +18,8 @@ block content
           .bar__item.bar__item--fill
             button.btn.btn--clean
               +icon('eye', 'icon--large')
-              span.text-space-left sledovať kategóriu
-        nav.category-nav
+              span.text-space-left.show-m sledovať kategóriu
+        nav.category-nav.show-l
           ul.list-inline.text-medium
             each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
               li.category-nav__item
@@ -31,13 +31,13 @@ block content
 
         +booksCarouselRecommended
 
-    section.section
+    section.section.section--m-full
       .wrapper-main
         .row
-          .col--m-3
+          .col--l-3.show-l
             include ./modules/category-filter
-          .col--m-9
-            .mb-medium
+          .col--l-9.col--12
+            .mb-medium.show-l
               .bar.mb-large
                 .bar__item.bar__item--fill.text-right.text-medium Zoradiť:
                 .bar__item
@@ -49,31 +49,40 @@ block content
                       option(value="ba-obchodna") Bratislava, Obchodná
                       option(value="ba-obchodna") Bratislava, Obchodná
 
+            .hide-l.text-center
+              button.btn.btn--clean.no-mrg-bottom
+                +icon('reduction', 'icon--large').icon--left
+                span Zúženie výberu
+              button.btn.btn--clean.no-mrg-bottom
+                +icon('order', 'icon--large').icon--left
+                span Zoradit
             - for (var i = 0; i<8; i++)
               .product-item.row.bg-default
                 .col--12
                   .row
-                    .col--fill
+                    .col--m-fill
                       .row
-                        .col--shrink.no-pad-right
-                          .thumbnail.thumbnail--book
+                        .col--s-shrink.col--3.no-pad-right
+                          a(href="detail-knihy.html").thumbnail.thumbnail--book
                             img(src="images/content/books/sample-15.jpg", alt="Cover", width="120")
-                        .col--fill
-                          h4.mb-small Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
-                          .text-medium.text-color-grey.mb-small Podnapdis na viac slov alebo aj riadkov
-                          .text-small.text-color-grey.mb-small Armin Göllner
-                          .mb-small
+                        .col--s-fill.col--9
+                          h2.h4.no-mrg-bottom.mb-small-s
+                            a(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
+                          .text-medium.text-color-grey.mb-small-s Podnapdis na viac slov alebo aj riadkov
+                          .text-small.text-color-grey.mb-small-s Armin Göllner
+                          .mb-small.show-s
                             .badge
                               +icon('star', 'icon--small').text-color-yellow
                               span.text-normal.text-space-left 3,5
                             span.cat-border-right.text-space-left.text-space-right
                             a(href="#").link.text-space-right.text-medium 234 x
                             .badge.badge--blue Novinka
-                          p.text-small.no-mrg-bottom Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
-                          .mb-medium
+                          p.text-small.no-mrg-bottom.product-item__description.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
+                          .mb-medium.show-s
                             a(href="detail-knihy.html").link.text-small Viac o knihe
                               +icon('arrow-right', 'icon--small')
-                    .col--shrink
+                    .col--12.mb-medium.hide-s
+                    .col--m-shrink
                       .btn-layout.btn-layout--vertical.mb-medium
                         .btn-dropdown.no-mrg
                           button.btn.btn--ghost.btn--icon-right.text-left(
@@ -116,7 +125,7 @@ block content
                                 .bar__item.text-right
                                   .text-semibold.text-color-black 12,00 €
                                   .text-color-grey -2%
-                      .text-center
+                      .text-center.show-m
                         h2.text-bold.mb-small 201,99 €
                         .badge.badge--primary.mb-small Zľava 10%
                         p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
