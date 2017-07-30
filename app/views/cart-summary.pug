@@ -1,0 +1,160 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Košík - Sumár'
+
+block content
+  main.bg-secondary
+    section.section--toolbar
+      .wrapper-main
+        .row.align-items-center
+          .bar.bar--progress.col--l-8.ofst--center.mb-small
+            .bar__item.bar__item--fill.text-center
+              | Košík
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              | Doručenie
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              | Platba
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              | Sumár
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 25%")
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-8.ofst--center
+            .card.card--done.mb-small
+              .card__content
+                .bar
+                  .bar__item
+                    h2 Váš košík
+                  .bar__item.bar__item--fill
+                    .pills.pills--blue 4
+                  .bar__item
+                    button.btn.btn--clean.no-mrg.no-pad
+                      +icon('edit').icon--medium.icon--left
+                      | Upraviť
+                ul.list.list--cart
+                  div(data-collapse="115")
+                    each item, i in books
+                      li.list__item(id=`cart-item${i}` data-toggle-class="is-active")
+                        .cart-item
+                          .cart-item__content
+                            .cart-item__column.cart-item__column--product-name
+                              .text-semibold.no-mrg.text-ellipsis= item.title
+                            .cart-item__column.cart-item__column--qty
+                              .text-semibold.no-mrg
+                                | 1x
+                            .cart-item__column.cart-item__column--price
+                              .text-semibold.text-size-medium.text-nowrap= item.price
+                  a.link.text-size-medium.col--m-4.col--s-12.ofst--center(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť všetký(+3)", data-collapse-trigger) <span data-toggle-text-target>Zobraziť všetký(+3)</span>#{' '}
+                    +icon('arrow-down')
+
+              .card__footer
+                .bar.align-items-right.align-items-bottom
+                  .bar__item.bar__item--fill.text-right
+                    h3
+                      | Spolu
+                  .bar__item
+                    h2.text-bold
+                      | 21.45€
+
+            .card.card--done.mb-small
+              .card__content
+                .bar
+                  .bar__item.bar__item--fill
+                    h2 Poznámka
+
+              .card__content.no-pad-top.no-mrg
+                p.text-size-medium
+                  | Pridanie poznámky spôsobí zdržanie objednávky
+
+            .card.mb-medium
+              .card__content
+                .bar
+                  .bar__item.bar__item--fill
+                    h2 Darujte centy a stanete sa Dobrým Anjelom
+
+              .card__content.no-pad-top.no-mrg
+                .row
+                  .col--m-6.col--s-11.text-size-medium
+                    p.mb-small
+                      | Vyberte, prosím, sumu, na ktorú si prajete zaokrúhliť Váš nákup. Celý rozdiel poputuje chorým deťom z Dobrého Anjela.
+                    a.link
+                      | Viac informácií nájdete tu.#{' '}
+                    span.text-semibold
+                      | Ďakujeme!
+
+                  .col--m-6.col--s-11
+                    .bar
+                      .bar__item
+
+                      .bar__item.bar__item--fill
+                        .form-control.form-control--select
+                          select.js-select
+                            option(selected disabled placeholder) Zaokrúhliť na 20 € (dar = 5,95 €)
+                            option Zaokrúhliť na 20 € (dar = 5,95 €)
+
+              .card__content.no-pad.no-mrg
+                hr
+
+              .card__content
+                .bar.align-items-right.align-items-bottom
+                  .bar__item.bar__item--fill.text-right
+                    h3
+                      | Spolu
+                  .bar__item
+                    h2.text-bold
+                      | 21.45€
+
+              .card__content.no-pad.mb-small
+                hr
+
+              .card__content.no-pad-top.no-mrg
+                .form-control.form-control--checkbox.mb-small
+                  .checkbox.radiocheck--large.form-label--required
+                    input.radiocheck__input(type='checkbox', id='checkout_summary_terms', name='checkout_summary_terms')
+                    label.radiocheck__control(for='checkout_summary_terms')
+                    label.radiocheck__label(for='checkout_summary_terms')
+                      span.text-size-medium Oboznámil som sa so#{' '}
+                      a.link.text-size-medium všeobecnými obchodnými podmienkami#{' '}
+                      span.text-size-medium a súhlasím s nimi.
+
+                .form-control.form-control--checkbox.mb-small
+                  .checkbox.radiocheck--large
+                    input.radiocheck__input(type='checkbox', id='checkout_summary_signup', name='checkout_summary_signup')
+                    label.radiocheck__control(for='checkout_summary_signup')
+                    label.radiocheck__label(for='checkout_summary_signup')
+                      span.text-size-medium Tento nákup sa mi páčil,#{' '}
+                      span.text-semibold.text-size-medium vytvorte mi účet na Martinuse!
+
+                .row
+                  .col--m-6.col--s-11
+                    .form-control.form-control--input.no-mrg
+                      .form-label
+                        label.text-transform-upper.text-size-small(for="checkout_summary_password")
+                            | heslo
+                        input.input(type="password", name="checkout_summary_password", id="checkout_summary_password", placeholder="Vložte vaše tajné heslo")
+
+              .card__content.no-pad.mb-medium
+                hr
+
+              .card__content.mb-small
+                .row
+                  .col--s-11.col--m-7.ofst--center
+                    .btn-layout--vertical.mb-small
+                      button.btn.btn--primary.is-disabled(type="submit")
+                        | záväzne objednať a zaplatiť
+
+                    p.no-mrg.text-center.text-size-small Objednávka vyžaduje platbu za tovar
+
+            p.text-color-grey.text-size-small.text-space-left
+              | * Podmienky obsahujú aj vyžadované predzmluvné informácie ohľadom prevádzkovateľa internetového obchodu, tovaru, dodacích a platobných podmienok, práva na odstúpenie od zmluvy, záručných podmienok, postupe pri uplatňovaní reklamácií, ochrany osobných údajov a ostatné informácie v súlade s 3 zákona 102/2014 Z.z. a v súlade ustanoveniami zákona 122/2013 Z.z.
+
