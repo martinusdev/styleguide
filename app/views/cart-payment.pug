@@ -5,24 +5,32 @@ block opts
 
 block content
   main.bg-secondary
-    section.section-progress
+    section.section--toolbar
       .wrapper-main
-        .row
-          .bar.bar__progress.col--l-8.ofst--center
-            .bar__item.done.bar__item--fill.text-center
+        .row.align-items-center
+          .bar.bar--progress.col--l-8.ofst--center.mb-small
+            .bar__item.bar__item--fill.text-center
               | Košík
-            .bar__item.done.bar__item--fill.text-center
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
               | Doručenie
-            .bar__item.in-progress.bar__item--fill.text-center
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 25%")
+            .bar__item.bar__item--fill.text-center
               | Platba
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 0")
             .bar__item.bar__item--fill.text-center
               | Sumár
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 0")
 
     section.section
       .wrapper-main
         .row
           .col--l-8.ofst--center
-            .card.mb-small
+            .card.card--done.mb-small
               .card__content
                 .bar
                   .bar__item
@@ -58,10 +66,7 @@ block content
                     h2.text-bold
                       | 21.45€
 
-              .card__done
-                 +icon('check-circle').icon--medium.text-color-success
-
-            .card.mb-small
+            .card.card--done.mb-small
               .card__content
                 .bar
                   .bar__item.bar__item--fill
@@ -77,9 +82,6 @@ block content
                     | Balíkomat
                   .bar__item.text-size-medium
                     strong 1.99€
-
-              .card__done
-                +icon('check-circle').icon--medium.text-color-success
 
             .card.mb-small
               .card__content
@@ -149,11 +151,14 @@ block content
                   .radio.radiocheck--large.radiocheck--transparent.align-items-top
                     input.radiocheck__input(type='radio', id='payment_ib', name='payment_options')
                     label.radiocheck__control(for='payment_ib')
-                    label.radiocheck__label.radiocheck__label--multiline(for='payment_ib')
-                      p.text-semibold.no-mrg
-                        | Internet bankingom mojej banky
-                      p.text-size-medium.no-mrg
-                        | Tatra Banka, SLSP, VÚB, UniCredit, ČSOB, Poštová banka, Sberbank
+                    label.radiocheck__label(for='payment_ib')
+                      .bar.bar--vertical.no-mrg
+                        .bar__item.no-mrg
+                          p.text-semibold.no-mrg
+                            | Internet bankingom mojej banky
+                        .bar__item.no-mrg
+                          p.text-size-medium.no-mrg
+                            | Tatra Banka, SLSP, VÚB, UniCredit, ČSOB, Poštová banka, Sberbank
 
                 .row.text-space-left
                   .col--m-4
@@ -234,10 +239,13 @@ block content
                     input.radiocheck__input(type='radio', id='payment_invoice', name='payment_options')
                     label.radiocheck__control(for='payment_invoice')
                     label.radiocheck__label.radiocheck__label--multiline.mb-medium(for='payment_invoice')
-                      p.text-semibold.no-mrg
-                        | Predfaktúra
-                      p.text-size-medium.no-mrg
-                        | Tovar bude odoslaný až po pripísaní platby na náš účet.
+                      .bar.bar--vertical.no-mrg
+                        .bar__item.no-mrg
+                          p.text-semibold.no-mrg
+                            | Predfaktúra
+                        .bar__item.no-mrg
+                          p.text-size-medium.no-mrg
+                            | Tovar bude odoslaný až po pripísaní platby na náš účet.
 
               .card__content.no-pad-top.mb-medium
                 .row
