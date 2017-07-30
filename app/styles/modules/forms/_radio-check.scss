@@ -61,7 +61,6 @@
     &::after {
       opacity: 0;
       transition: opacity $ease-300;
-      background-color: map-get($radio-check-color, 'default');
     }
 
     :checked + & {
@@ -113,55 +112,33 @@
 
   // checkbox
   .checkbox &__control {
+    background: $default-bg-color svg-load('./../icons_/app/arrow-up.svg', fill=_color(success, 500)) center center;
+
     @include border-radius($default-border-radius);
 
-    &::before,
     &::after {
       content: '';
-      height: 20%;
-      position: absolute;
-      top: 50%;
-      left: 37%;
       display: block;
-    }
-
-    &::before {
-      width: 50%;
-      transform: translate(-60%, 0%) rotate(45deg);
-    }
-
-    &::after {
-      width: 80%;
-      transform: translate(-15%, -60%) rotate(-45deg);
+      width: 100%;
+      height: 100%;
+      background: $default-bg-color svg-load('./../icons_/app/check-circle.svg', fill=_color(success, 500)) center center;
     }
   }
 
   // radio
   .radio &__control {
+    background: $default-bg-color svg-load('./../icons_/app/arrow-up.svg', fill=_color(success, 500)) center center;
+
     @include border-radius(50%);
 
     &::after {
       content: '';
-      width: 40%;
-      height: 40%;
-      margin: 0 auto;
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
       display: block;
-      transform: translateY(-50%);
+      width: 100%;
+      height: 100%;
+      background: $default-bg-color svg-load('./../icons_/app/check-circle.svg', fill=_color(success, 500)) center center;
 
       @include border-radius(50%);
-    }
-  }
-
-  //checkbox / radio control transparent
-  &--transparent {
-    .radiocheck__control {
-      background-color: transparent;
-      border: 2px solid #999;
-      box-sizing: border-box;
     }
   }
 
@@ -171,13 +148,6 @@
     cursor: pointer;
 
     @include css-map($radio-check-label);
-  }
-
-  //checkbox / radio multiline labels
-  &__label--multiline {
-    span {
-      float: right;
-    }
   }
 
   // -----------------
