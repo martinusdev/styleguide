@@ -2,7 +2,7 @@ extends templates/layout
 
 //- Options
 block prepend opts
-  - var page = helpers.getPageIds('javascripts.modules', l_sitemap);
+  - var page = helpers.getPageIds('modules.priceBox', l_sitemap);
   - var categoryID = page.category;
   - var pageID = page.page;
 
@@ -548,44 +548,30 @@ block append content
                         | Vložiť do košíka
 
                       +addTo()
-            block append scripts
-              script.
-                document.addEventListener('myAppLoaded', function() {
-                  var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
-                    choices: [
-                      {
-                        value: 'Pevná väzba 12,99 €',
-                        label: 'Pevná väzba 12,99 €',
-                        id: 1,
-                        customProperties: {
-                          price: '11,50 €',
-                          delivery: 'posielame ihneď'
-                        }
-                      },
-                      {
-                        value: 'E-book 10,99 €',
-                        label: 'E-book 10,99 €',
-                        id: 1,
-                        customProperties: {
-                          price: '11,50 €',
-                        }
-                      },
-                    ]
-                  });
-                });
-
-                document.addEventListener('myAppInit', function() {
-                  var productPreview;
-
-                  window.addEventListener('modalOpen', function() {
-                    productPreview = new window.myApp.ProductPreview();
-                  });
-
-                  window.addEventListener('resize', function() {
-                    if (productPreview) {
-                      productPreview.update();
-                    }
-                  });
-                });
+  block append scripts
+    script.
+      document.addEventListener('myAppLoaded', function() {
+        var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
+          choices: [
+            {
+              value: 'Pevná väzba 12,99 €',
+              label: 'Pevná väzba 12,99 €',
+              id: 1,
+              customProperties: {
+                price: '11,50 €',
+                delivery: 'posielame ihneď'
+              }
+            },
+            {
+              value: 'E-book 10,99 €',
+              label: 'E-book 10,99 €',
+              id: 1,
+              customProperties: {
+                price: '11,50 €',
+              }
+            },
+          ]
+        });
+      });
 
 
