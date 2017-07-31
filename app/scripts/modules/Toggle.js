@@ -3,6 +3,7 @@
 // module for handling toggle actions
 
 import { customEventPolyfill, triggerResize } from './Utils';
+import { lockBody, unlockBody } from './Modal';
 
 customEventPolyfill();
 
@@ -97,6 +98,14 @@ class Toggle {
           'aria-expanded',
           currentState === 'true' ? 'false' : 'true',
         );
+      }
+    }
+
+    if (target.hasAttribute('data-toggle-lock')) {
+      if (document.body.className.includes('has-modal')) {
+        unlockBody();
+      } else {
+        lockBody();
       }
     }
 
