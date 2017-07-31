@@ -19,6 +19,18 @@ block content
             button.btn.btn--clean
               +icon('eye', 'icon--large')
               span.text-space-left.show-m sledovať kategóriu
+        .btn-layout.btn-layout--vertical.mb-medium.hide-l
+          .btn-dropdown.no-mrg
+            button.btn.btn--ghost.btn--icon-right.text-left(
+              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+              data-toggle-expand,
+              aria-haspopup="true"
+            )
+              | Všetky
+              +icon('chevron-down', 'icon-dropdown').icon--medium
+            .dropdown(data-dropdown, data-toggle-expand)
+              each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
+                a(href="#").dropdown__item !{link}
         nav.category-nav.show-l
           ul.list-inline.text-medium
             each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']

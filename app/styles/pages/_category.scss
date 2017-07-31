@@ -1,6 +1,12 @@
 .category-nav {
   .category-nav__item {
-    margin-right: _get-rem(30px);
+    @include breakpoint('xl', 'downfrom') {
+      font-size: $font-size-small;
+    }
+
+    @include breakpoint('xl') {
+      margin-right: _get-rem(30px);
+    }
   }
 }
 
