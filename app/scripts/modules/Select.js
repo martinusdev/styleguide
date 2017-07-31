@@ -11,14 +11,14 @@ const productSelectTemplate = data =>
   `
   <div class="bar no-mrg-bottom">
     <div class="bar__item bar__item--fill">
-      <p class="text-size-medium">${data.label}</p>
+      <p class="text-size-medium text-left text-semibold">${data.label}</p>
       ${data.customProperties.delivery ? `
-        <p class="text-size-small text-color-grey">${data.customProperties.delivery}</p>
+        <p class="text-size-small text-color-grey text-left">${data.customProperties.delivery}</p>
       ` : ''}
     </div>
     ${data.customProperties.price ? `
       <div class="bar__item">
-        <h2>${data.customProperties.price}</h2>
+        <p class="text-semibold">${data.customProperties.price}</p>
       </div>
     ` : ''}
   </div>
