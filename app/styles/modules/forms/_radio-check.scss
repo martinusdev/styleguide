@@ -36,25 +36,6 @@
       }
     }
 
-    :focus + &,
-    .is-active + & {
-      @include css-map($radio-check, 'focus');
-    }
-
-    [disabled] + &,
-    .is-disabled + & {
-      @include css-map($radio-check, 'disabled');
-    }
-
-    [readonly] + &,
-    .is-readonly + & {
-      @include css-map($radio-check, 'readonly');
-    }
-
-    .is-error + & {
-      @include css-map($radio-check, 'error');
-    }
-
     &::before,
     &::after {
       opacity: 0;
