@@ -4,12 +4,12 @@
       h2 Filter
     .col--shrink
       a.link.text-transform-upper.text-small zmazať filter
-  dl
-    dt
+  dl.filter__cat
+    dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
         button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-show-only", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Zobrazit iba
           +icon('chevron-up', 'icon--medium').text-color-grey
-    dd#filter-show-only(data-toggle-class="hide")
+    dd.filter__cat-items#filter-show-only(data-toggle-class="hide")
       .form-control.form-control--group.no-mrg-bottom
         .radiocheck-group
           .form-control.form-control--checkbox
@@ -40,12 +40,12 @@
               input.radiocheck__input(type="checkbox", id="filter-presale")
               label.radiocheck__control(for="filter-presale")
               label.radiocheck__label(for="filter-presale") Predpredaj
-  dl
-    dt
+  dl.filter__cat
+    dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
         button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-product-type", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Typ produktu
           +icon('chevron-up', 'icon--medium').text-color-grey
-    dd#filter-product-type(data-toggle-class="hide")
+    dd.filter__cat-items#filter-product-type(data-toggle-class="hide")
       .form-control.form-control--group.no-mrg-bottom
         .radiocheck-group
           .form-control.form-control--checkbox
@@ -64,12 +64,12 @@
               label.radiocheck__control(for="filter-audiobooks")
               label.radiocheck__label(for="filter-audiobooks") Audioknihy#{' '}
                 span.text-color-grey (635)
-  dl
-    dt
+  dl.filter__cat
+    dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
         button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-formats", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Formáty
           +icon('chevron-up', 'icon--medium').text-color-grey
-    dd#filter-formats(data-toggle-class="hide")
+    dd.filter__cat-items#filter-formats(data-toggle-class="hide")
       .form-control.form-control--group.no-mrg-bottom
         .radiocheck-group
           .form-control.form-control--checkbox
@@ -108,12 +108,12 @@
               label.radiocheck__control(for="filter-mp3")
               label.radiocheck__label(for="filter-mp3") MP3#{' '}
                 span.text-color-grey (635)
-  dl
-    dt
+  dl.filter__cat
+    dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
         button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-authors", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Autori
           +icon('chevron-up', 'icon--medium').text-color-grey
-    dd#filter-authors(data-toggle-class="hide")
+    dd.filter__cat-items#filter-authors(data-toggle-class="hide")
       .form-control.form-control--input
         input.input.filter__search(type="text", name="filter-author", id="filter-author", placeholder="Vyhľadajte autora")
       .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
@@ -161,12 +161,12 @@
                 span.text-color-grey (635)
       a.link.text-size-medium(href="javascript:void(0)", data-toggle="self, previous", data-toggle-icon="../icons_/app.svg#icon-arrow-up", data-toggle-text="Menej", data-collapse-trigger) <span data-toggle-text-target>+ ďalších 60 autorov</span>#{' '}
         +icon('arrow-down')
-  dl
-    dt
+  dl.filter__cat
+    dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
         button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-languages", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Jazyky
           +icon('chevron-up', 'icon--medium').text-color-grey
-    dd#filter-languages(data-toggle-class="hide")
+    dd.filter__cat-items#filter-languages(data-toggle-class="hide")
       .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
         .radiocheck-group
           .form-control.form-control--checkbox
