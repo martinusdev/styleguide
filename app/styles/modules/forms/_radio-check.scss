@@ -36,8 +36,6 @@
       }
     }
 
-    @include css-map($radio-check, 'default');
-
     :focus + &,
     .is-active + & {
       @include css-map($radio-check, 'focus');
@@ -112,7 +110,7 @@
 
   // checkbox
   .checkbox &__control {
-    background: $default-bg-color svg-load('./../icons_/app/arrow-up.svg', fill=_color(success, 500)) center center;
+    background: $default-bg-color svg-load('./../icons_/app/checkbox-empty.svg', fill=_color(success, 500)) center center;
 
     @include border-radius($default-border-radius);
 
@@ -121,13 +119,13 @@
       display: block;
       width: 100%;
       height: 100%;
-      background: $default-bg-color svg-load('./../icons_/app/check-circle.svg', fill=_color(success, 500)) center center;
+      background: $default-bg-color svg-load('./../icons_/app/checkbox-checked.svg', fill=_color(success, 500)) center center;
     }
   }
 
   // radio
   .radio &__control {
-    background: $default-bg-color svg-load('./../icons_/app/arrow-up.svg', fill=_color(success, 500)) center center;
+    background: $default-bg-color svg-load('./../icons_/app/radio-empty.svg', fill=_color(success, 500)) center center;
 
     @include border-radius(50%);
 
@@ -136,7 +134,7 @@
       display: block;
       width: 100%;
       height: 100%;
-      background: $default-bg-color svg-load('./../icons_/app/check-circle.svg', fill=_color(success, 500)) center center;
+      background: $default-bg-color svg-load('./../icons_/app/radio-checked.svg', fill=_color(success, 500)) center center;
 
       @include border-radius(50%);
     }
