@@ -24,6 +24,13 @@ const productSelectTemplate = data =>
   </div>
 `;
 
+const productSelectChoice = data =>
+  `
+  <div data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${data.id}" data-value="${data.value}" ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
+    ${data.customProperties.itemLabel}
+  </div>
+  `;
+
 export default class Select {
   constructor(selector = '.js-select', config) {
     this.selector = selector;
@@ -85,6 +92,7 @@ export default class Select {
       if (select.hasAttribute('data-select-product')) {
         config.callbackOnCreateTemplates = template => ({
           item: data => template(productSelectTemplate(data)),
+          choice: data => template(productSelectChoice(data)),
         });
       }
 
