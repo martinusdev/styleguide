@@ -5,10 +5,11 @@ closestPolyfill();
 
 const defaultConfig = {
   dataInteractive: 'data-dropdown-interactive',
+  activeClassName: 'is-active',
 };
 
 const isActive = el =>
-  el.classList.contains('is-active') ||
+  el.classList.contains(defaultConfig.activeClassName) ||
   el.getAttribute('aria-expanded') === 'true';
 
 export default class Dropdown {
@@ -74,8 +75,14 @@ export default class Dropdown {
           expand: true,
           state: false,
           icon: this.trigger.getAttribute('data-toggle-icon'),
+          className: this.config.activeClassName,
         });
-        doToggle({ target: this.target, expand: true, state: false });
+        doToggle({
+          target: this.target,
+          expand: true,
+          state: false,
+          className: this.config.activeClassName,
+        });
 
         this._removeListeners();
       }
