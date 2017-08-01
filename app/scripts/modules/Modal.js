@@ -50,6 +50,7 @@ export default class Modal {
 
     this.modals.forEach(modal => {
       modal.addEventListener(TOGGLE_EVT, this._onToggle);
+      modal.addEventListener('click', this._onOverlayClick);
       if (modal.hasAttribute(this.config.ajaxEnabledAttr)) {
         modal.addEventListener(MODAL_AJAX_LOADED_EVT, this._onAjaxLoaded);
       }
@@ -57,7 +58,6 @@ export default class Modal {
 
     this._assignAccessibilityAttributes();
     this._openModalOnLoad();
-    document.addEventListener('click', this._onOverlayClick);
     return this.modals;
   }
 
@@ -332,11 +332,9 @@ export default class Modal {
   }
 
   _onOverlayClick(e) {
-    if (
-      typeof e.target.className === 'string' &&
-      e.target.className.includes('modal-overlay')
-    ) {
-      doToggle(this.target);
+    if (e.target.hasAttribute(this.selector)) {
+      doToggle({ target: e.target });
+      this._deactivateModal();
     }
   }
 }

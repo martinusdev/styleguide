@@ -101,11 +101,11 @@ block content
                       option Slovenčina
                 .bar__item
                   .rating-star
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star-half').rating-star__item.icon--medium.is-active
+                    .rating-star__icon
+                    .rating-star__icon
+                    .rating-star__icon 
+                    .rating-star__icon
+                    .rating-star__icon.rating-star__icon--half
                     .rating-star__value
                       b 4,5
                 .bar__item.bar__item--border
@@ -151,13 +151,14 @@ block content
               include ./modules/card-cart
 
       section.section.section--secondary.controversial
-        .row
-          .col--m-6.ofst--m-center
-            .text-medium.text-uppercase.text-color-grey-dark.mb-medium Upozornenie
-            p Obsah tejto knihy je vnímaný ako kontroverzný. Pri čítaní každej knihy odporúčame nezabúdať na kritické myslenie a názory odborníkov v danej oblasti. Zisk z predaja tejto knihy putuje na podporu neziskových organizácií SuperTrieda a Slovenská debatná asociácia
-              a.link.text-medium.text-space-left Prečo?
-            a.link.text-medium(href="#popis-knihy", data-scroll) Zobraziť anotáciu ku knihe od vydavateľa
-              +icon('arrow-down')
+        .wrapper-main
+          .row
+            .col--m-6.ofst--m-center
+              .text-medium.text-uppercase.text-color-grey-dark.mb-medium Upozornenie
+              p Obsah tejto knihy je vnímaný ako kontroverzný. Pri čítaní každej knihy odporúčame nezabúdať na kritické myslenie a názory odborníkov v danej oblasti. Zisk z predaja tejto knihy putuje na podporu neziskových organizácií SuperTrieda a Slovenská debatná asociácia
+                a.link.text-medium.text-space-left Prečo?
+              a.link.text-medium(href="#popis-knihy", data-scroll) Zobraziť anotáciu ku knihe od vydavateľa
+                +icon('arrow-down')
 
 
       section.section.section--secondary.section--overflow
@@ -419,15 +420,7 @@ block content
                   .text-semibold Nadpis recenzie
                   p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
-                .pagination.btn-layout.btn-layout--horizontal.align-items-middle
-                  button.btn.btn--ghost.btn--equal.is-active 1
-                  button.btn.btn--ghost.btn--equal 2
-                  button.btn.btn--ghost.btn--equal.show-s 3
-                  div ...
-                  button.btn.btn--ghost.btn--equal.show-s 20
-                  button.btn.btn--ghost
-                    | Ďalšie
-                    +icon('arrow-right').icon--right.icon--medium
+                include modules/pagination
 
               hr
 
