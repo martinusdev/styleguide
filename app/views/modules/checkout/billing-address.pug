@@ -1,0 +1,69 @@
+.card.mb-small
+  .card__content
+    h2.no-mrg Fakturačná adresa
+
+  .card__content
+    .row
+      .col--s-11.col--m-6.ofst--center
+        .form-control.form-control--input.mb-small
+          .form-label.form-label--required
+            label.text-transform-upper(for="checkout_surname")
+              | meno
+          input.input(type="text", name="checkout_surname", id="checkout_surname", placeholder="Zadajte meno")
+
+        .form-control.form-control--input.mb-small
+          .form-label.form-label--required
+            label.text-transform-upper(for="checkout_lastname")
+              | priezvisko
+          input.input(type="text", name="checkout_lastname", id="checkout_lastname", placeholder="Zadajte priezvisko")
+
+        .form-control.form-control--checkbox
+          .checkbox.radiocheck--large
+            input.radiocheck__input(type='checkbox', id='checkout_company_invoice', name='checkout_company_invoice')
+            label.radiocheck__control(for='checkout_company_invoice')
+            label.radiocheck__label(for='checkout_company_invoice')
+              | Chcem faktúrovať na firmu
+
+        .form-control.form-control--input.mb-small
+          .form-label.form-label--required
+            label.text-transform-upper(for="checkout_address_option1")
+              | adresa
+          input.input(type="text", name="checkout_address", id="checkout_address_option1", placeholder="Napr. ulica, číslo...")
+
+        .form-control.form-control--input.mb-small
+          input.input(type="text", name="checkout_address", id="checkout_address_option2", placeholder="Napr. poschodie, zvonček...")
+
+        .form-control.form-control--input.mb-small
+          .form-label.form-label--required
+            label.text-transform-upper(for="checkout_zip")
+              | psč
+          input.input(type="text", name="checkout_zip", id="checkout_zip", placeholder="Zadajte PSČ")
+
+        .form-control.form-control--input.mb-small
+          .form-label.form-label--required
+            label.text-transform-upper(for="checkout_city")
+              | mesto
+          input.input(type="text", name="checkout_city", id="checkout_city", placeholder="Zadajte mesto")
+
+        .form-control.form-control--select.mb-small
+          .form-label.form-label--required
+            label.text-transform-upper
+              | štát
+          select.js-select
+              option(selected disabled placeholder) Slovensko
+              option Slovensko
+
+        .form-control.form-control--input.mb-medium
+          .form-label.form-label--required
+            label.text-transform-upper(for="checkout_tel")
+              | mobil
+          .input-addons
+            .input-addons__item.no-pad
+              select.js-select
+                option(selected disabled placeholder) +421
+                option +421
+            input.input(type="number", name="checkout_tel", id="checkout_tel", placeholder="902 000 000")
+
+        .btn-layout--vertical.no-mrg
+          button.btn.btn--primary.is-disabled(type="submit")
+            | Potvrdiť fakturačnú adresu
