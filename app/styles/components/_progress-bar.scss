@@ -4,12 +4,12 @@
 
 $progress-bar: (
   height: 5px,
-  border-radius: 5px,
 );
 
 .progress-bar {
   position: relative;
   width: 100%;
+  background: _color(grey, 200);
 
   @include css-map($progress-bar);
   background-color: _color(grey, 200);
@@ -20,7 +20,11 @@ $progress-bar: (
     left: 0;
     bottom: 0;
 
-    border-radius: map-get($progress-bar, border-radius);
     &--blue { background-color: _color(blue); }
+    &--green { background-color: _color(green); }
+  }
+
+  &--round {
+    border-radius: 5px;
   }
 }
