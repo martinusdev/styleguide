@@ -20,6 +20,7 @@ import Input from './modules/Input';
 import NumberSpinner from './modules/NumberSpinner';
 import ProductPreview from './modules/ProductPreview';
 import MegaMenu from './modules/MegaMenu';
+import RadiocheckToggle from './modules/RadiocheckToggle';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -78,6 +79,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.inputs = new Input();
 
   window.myApp.numberSpinners = new NumberSpinner();
+
+  window.myApp.radiocheckToggles = new RadiocheckToggle();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });
