@@ -63,7 +63,7 @@ block content
                   a(href="#").btn.btn--ghost E-kniha#{' '}
                     span.text-color-grey.text-nowrap 6,50 €
                   .btn-dropdown
-                    a(href="#").btn.btn--ghost(data-toggle="self, next", data-toggle-expand, aria-haspopup="true") Viac formatov (2)#{' '}
+                    a.btn.btn--ghost(href="#", data-toggle="self, next", data-toggle-expand, aria-haspopup="true") Viac formatov (2)#{' '}
                       +icon('chevron-down', 'icon-dropdown').icon--medium
                     .dropdown(data-dropdown, data-toggle-expand)
                       a.dropdown__item(href="#") Audio kniha#{' '}
@@ -103,9 +103,9 @@ block content
                   .rating-star
                     .rating-star__icon
                     .rating-star__icon
-                    .rating-star__icon 
                     .rating-star__icon
                     .rating-star__icon.rating-star__icon--half
+                    .rating-star__icon.rating-star__icon--empty
                     .rating-star__value
                       b 4,5
                 .bar__item.bar__item--border
