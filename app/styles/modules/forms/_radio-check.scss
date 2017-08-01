@@ -6,9 +6,7 @@
 .checkbox,
 .radio {
   display: inline-flex;
-  align-items: center;
-
-  @include clearfix;
+  align-items: flex-start;
 }
 
 .radiocheck {
@@ -21,8 +19,6 @@
 
   &__control {
     position: relative;
-    float: left;
-    display: block;
     cursor: pointer;
 
     @include css-map($radio-check, 'default');
