@@ -1,9 +1,30 @@
-.card.card--done.mb-small
+.card.mb-small#checkout-note-card(data-toggle-class="card--done")
   .card__content
     .bar
       .bar__item.bar__item--fill
         h2 Poznámka
+      .bar__item
+        button.btn.btn--clean.btn--equal(
+            data-toggle="self, #checkout-note-wrapper"
+            data-toggle-icon="icons_/app.svg#icon-chevron-up"
+          )
+          +icon('chevron-down', 'icon--medium', 'Upraviť poznámku')
 
   .card__content.no-pad-top.no-mrg
     p.text-size-medium
       | Pridanie poznámky spôsobí zdržanie objednávky
+      #checkout-note-wrapper.hide(data-toggle-class="hide")
+        .form-control.form-control--textarea
+          .form-label
+            label(for="checkout-note") Napíšte poznámku
+          textarea.input(
+            id="checkout-note"
+            name="checkout-note"
+            rows="4"
+            placeholder="Odkaz, kritika, pochvala, špeciálna požiadavka"
+            )
+        .form-control.form-control--submit
+          button.btn.no-mrg-bottom(
+            type="button"
+            data-toggle="#checkout-note-card, #checkout-note-wrapper"
+          ) Pridať poznámku
