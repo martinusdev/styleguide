@@ -33,7 +33,24 @@ block content
 
             include modules/checkout/cart
 
-            include modules/checkout/delivery-done
+            +checkout-card-done({
+              id: 'delivery',
+              title: 'Zvoľte spôsob doručenia',
+              summary: 'Balíkomat',
+              price: '1,99 €',
+            })
+
+            +checkout-card-done({
+              id: 'delivery-balikomat',
+              title: 'Odberné miesto',
+              summary: 'Bratislava, Cubicon, Staré Grunty 24',
+            })
+
+            +checkout-card-done({
+              id: 'billing-address',
+              title: 'Fakturačná adresa',
+              summary: 'Lighting Beetle s.r.o. Budyšínska 8, 831 03 Bratislava',
+            })
 
             include modules/checkout/gift
 
