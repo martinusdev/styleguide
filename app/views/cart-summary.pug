@@ -1,0 +1,62 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Košík - Sumár'
+
+block content
+  main.bg-secondary
+    section.section--toolbar
+      .wrapper-main
+        .row.align-items-center
+          .bar.bar--progress.col--l-8.ofst--center.mb-small
+            .bar__item.bar__item--fill.text-center
+              | Košík
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              | Doručenie
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              | Platba
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              | Sumár
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 25%")
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-8.ofst--center
+            include modules/checkout/cart
+
+            +checkout-card-done({
+              id: 'delivery',
+              title: 'Zvoľte spôsob doručenia',
+              summary: 'Balíkomat',
+              price: '1,99 €',
+            })
+
+            +checkout-card-done({
+              id: 'delivery-balikomat',
+              title: 'Odberné miesto',
+              summary: 'Bratislava, Cubicon, Staré Grunty 24',
+            })
+
+            +checkout-card-done({
+              id: 'billing-address',
+              title: 'Fakturačná adresa',
+              summary: 'Lighting Beetle s.r.o. Budyšínska 8, 831 03 Bratislava',
+            })
+
+            +checkout-card-done({
+              id: 'gift',
+              title: 'Darčekové balenie',
+              summary: '2x červený papier <br>Neprikladať faktúru',
+            })
+
+            include modules/checkout/note
+
+            include modules/checkout/confirm
