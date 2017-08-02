@@ -46,8 +46,9 @@ block content
             .col--m-4.col--l-3
               .product-detail__preview
                 .product-detail__image
-                  .thumbnail.thumbnail--book.thumbnail--large-shadow.mb-medium.clickable(data-toggle="#product-preview")
-                    img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                  .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-medium.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 .product-detail__preview-link.text-center
                   button.btn.btn--clean(data-toggle="#product-preview")
                     +icon('eye').icon--left.icon--medium
@@ -63,7 +64,7 @@ block content
                   a(href="#").btn.btn--ghost E-kniha#{' '}
                     span.text-color-grey.text-nowrap 6,50 €
                   .btn-dropdown
-                    a.btn.btn--ghost(href="#" data-toggle="self, next", data-toggle-expand, aria-haspopup="true") Viac formatov (2)#{' '}
+                    a.btn.btn--ghost(href="#", data-toggle="self, next", data-toggle-expand, aria-haspopup="true") Viac formatov (2)#{' '}
                       +icon('chevron-down', 'icon-dropdown').icon--medium
                     .dropdown(data-dropdown, data-toggle-expand)
                       a.dropdown__item(href="#") Audio kniha#{' '}
@@ -103,9 +104,9 @@ block content
                   .rating-star
                     .rating-star__icon
                     .rating-star__icon
-                    .rating-star__icon 
                     .rating-star__icon
                     .rating-star__icon.rating-star__icon--half
+                    .rating-star__icon.rating-star__icon--empty
                     .rating-star__value
                       b 4,5
                 .bar__item.bar__item--border
@@ -189,8 +190,9 @@ block content
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
               div(data-sticky, data-sticky-class="is-stuck", data-margin-top="120")
-                .thumbnail.thumbnail--book.mb-medium
-                  img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail.thumbnail--book.mb-medium.thumbnail--xlarge
+                  .thumbnail__img-wrap
+                    img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
                 ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
                   li
@@ -264,7 +266,7 @@ block content
                       .row.mb-medium
                         .col--12
                           .form-control.form-control--checkbox
-                            .checkbox
+                            .checkbox.radiocheck--medium
                               input.radiocheck__input(type="checkbox", id="mistake-agree")
                               label.radiocheck__control(for="mistake-agree")
                               label.radiocheck__label(for="mistake-agree") Potvrdzujem, že vyššie uvedené informácie neporušujú autorské práva iných osôb
@@ -420,7 +422,15 @@ block content
                   .text-semibold Nadpis recenzie
                   p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
-                include modules/pagination
+                .pagination.btn-layout.btn-layout--horizontal.align-items-middle
+                  button.btn.btn--ghost.btn--equal.is-active 1
+                  button.btn.btn--ghost.btn--equal 2
+                  button.btn.btn--ghost.btn--equal.show-s 3
+                  div ...
+                  button.btn.btn--ghost.btn--equal.show-s 20
+                  button.btn.btn--ghost
+                    | Ďalšie
+                    +icon('arrow-right').icon--right.icon--medium
 
               hr
 
@@ -480,6 +490,23 @@ block content
         +section-header({ header: 'Odporúčané knihy a kolekcie' })
 
         +booksCarouselRecommended
+
+  //- flag review modal
+  .modal-overlay.active#flag-review
+    article.modal
+      .modal__wrap
+        section.modal__content
+          h1.h2 Chcete nahlásiť recenziu?
+          p Pozrieme sa na to, či recenzia porušuje pravidlá alebo prezrádza dej.
+        footer.modal__footer
+          .row.btn-layout--horizontal.align-items-center
+            button.btn.btn--ghost(type="button" data-toggle="#flag-review") Zrušiť
+            button.btn(type="button" data-toggle="#flag-review") Nahlásiť
+          </div>
+        </footer>
+      </div>
+    </article>
+  </div>
 
     include ./modules/seen-items
 

@@ -333,7 +333,12 @@ export default class Modal {
 
   _onOverlayClick(e) {
     if (e.target.hasAttribute(this.selector)) {
-      doToggle({ target: e.target });
+      doToggle({
+        target: e.target,
+        className: 'is-active',
+        expand: true,
+        state: false,
+      });
       this._deactivateModal();
     }
   }

@@ -12,7 +12,9 @@
     each item, i in books
       .bar(id=`cart-item${i}`).align-items-top
         .bar__item
-          img(src=`${assetsPrefix}${item.cover}`).thumbnail.thumbnail--book.thumbnail--medium
+          .thumbnail.thumbnail--book.thumbnail--medium
+            .thumbnail__img-wrap
+              img(src=`${assetsPrefix}${item.cover}`)
         .bar__item.bar__item--fill.text-size-medium=item.title
         .bar__item.bar__item--fill
           .form-control.form-control--select
