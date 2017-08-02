@@ -24,7 +24,7 @@ block content
                         img(src=`${assetsPrefix}${item.cover}`).thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          .text-semibold.no-mrg.text-ellipsis= item.title
+                          a.text-semibold.no-mrg.text-ellipsis(href="detail-knihy.html")=item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                             - var authors = item.author.split(', ')
                             each author in authors
