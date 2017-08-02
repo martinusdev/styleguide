@@ -85,7 +85,9 @@ block content
                     div
                       button.btn.btn--clean.btn--small.no-mrg
                         +icon('upload', 'icon--medium').icon--left
-                        | Nahrať nový obrázok
+                        | Nahrať 
+                        span.show-s nový#{' '}
+                        | obrázok
                     .mb-medium.show-m
                     div
                       button.btn.btn--clean.btn--small.no-mrg
@@ -263,13 +265,14 @@ block content
             h3.h4.text-color-black.mb-medium E-knihy
             .article.card.mb-large
               section.card__content
-                .row.no-mrg-bottom
-                  .col--m-shrink.no-pad-right
+                .row.no-mrg-bottom.align-items-middle
+                  .col--m-shrink
                     .form-control.form-control--checkbox.no-mrg-bottom
                       .checkbox.radiocheck--medium
                         input.radiocheck__input(type="checkbox", id="newsletter")
                         label.radiocheck__control(for="newsletter")
                         label.radiocheck__label(for="newsletter") Prosím o automatické odosielanie e-kníh na tento e-mail:
+                  .col.mb-small.hide-m
                   .col--m-fill
                     .form-control.form-control--input.no-mrg-bottom
                       input.input(type="email", placeholder="Zadajte vašu e-mailovú adresu")
