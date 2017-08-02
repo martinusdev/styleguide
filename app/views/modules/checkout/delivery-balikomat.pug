@@ -1,0 +1,44 @@
+.card.mb-small#delivery-balikomat
+  .row
+    .col--s-11.col--m-6.ofst--center
+
+      .card__content
+        h2 Kde si prídete nákup vyzdvihnúť?
+        .btn-layout--vertical.mb-small
+          button.btn.btn--ghost
+            +icon('target').icon--left.icon--medium
+            | Zistiť podľa mojej polohy
+
+        .form-control.form-control--select.mb-small
+          .form-label
+            label.text-transform-upper
+              | Kraj
+          select.js-autocomplete
+              option(selected disabled placeholder) Zadajte kraj / vyberte zo zoznamu
+              option Bratislavský
+
+        .form-control.form-control--select.mb-small
+          .form-label
+            label.text-transform-upper
+              | Okres
+          select.js-autocomplete
+              option(selected disabled placeholder) Zadajte okres / vyberte zo zoznamu
+              option Bratislavský
+
+        .form-control.form-control--select.mb-small
+          .form-label
+            label.text-transform-upper
+              | Mesto
+          select.js-autocomplete
+              option(selected disabled placeholder) Zadajte mesto / vyberte zo zoznamu
+              option Bratislava
+    .col--s-11.col--m-6.ofst--center
+      .card__content.no-pad
+      // map container
+
+  .card__content
+    .row
+      .col--s-11.col--m-6.ofst--center
+        .btn-layout--vertical.mb-small
+          button.btn.btn--primary.is-disabled(type="submit")
+            | Pozrieť ukážku

@@ -79,12 +79,12 @@ $color-palette: (
   green: #33ab4e,
   // states
   error: (
-    500: #e93227,
     100: #fae8e8,
+    500: #e93227,
   ),
   success: (
-    500: #33ab4e,
     100: #eaf6ed,
+    500: #33ab4e,
   )
 );
 
@@ -112,6 +112,7 @@ $default-font-family: $font-family-tabac !default;
 
 $default-border-color: _color(grey, 200);
 $default-border-radius: $border-radius !default;
+$default-border-radius-circle: $border-radius-circle !default;
 
 $default-font-size: $font-size-regular !default;
 
@@ -712,23 +713,21 @@ $textarea: (
 // checkbox / radio styles
 
 $radio-check-margin: $form-m !default;
-$radio-check-size: _get-em(16px, 16px);
+$radio-check-size: _get-rem(20px);
 
 $radio-check: (
   default: (
     height: $radio-check-size,
     width: $radio-check-size,
-    background-color: $form-bgc,
-    border-width: $form-b-w,
+    margin-top: _get-rem(2px),
+    border-width: 2px,
     border-style: $form-b-s,
     border-color: $form-b-c,
-    border-radius: $form-b-r,
     color: $form-c,
     transition: $form-t,
   ),
   focus: (
     box-shadow: $form-focus-bs,
-    border-color: $form-focus-b-c,
   ),
   disabled: (
     color: $form-disabled-c,
@@ -745,6 +744,29 @@ $radio-check: (
   ),
 );
 
+$radio-check-checked: (
+  default: (
+    border-color: _color(link, 500),
+    background-color: _color(link, 500),
+  ),
+  focus: (
+    border-color: _color(link, 500),
+    background-color: _color(link, 500),
+  ),
+  disabled: (
+    border-color: _color(grey, 300),
+    background-color: _color(grey, 300),
+  ),
+  readonly: (
+    border-color: _color(grey, 400),
+    background-color: _color(grey, 400),
+  ),
+  error: (
+    border-color: _color(error, 500),
+    background-color: _color(error, 500),
+  ),
+);
+
 $radio-check-color: (
   default: _color(grey, 700),
   disabled: _color(grey, 300),
@@ -756,20 +778,20 @@ $radio-check-label: (
   margin-left: _get-space('h', 'small'),
 );
 
-$radio-check-sizes: (
-  default: (
-    size: _get-em($default-font-size),
-    font-size: _get-rem($default-font-size),
-  ),
-  small: (
-    size: _get-em($font-size-small),
-    font-size: _get-rem($font-size-small),
-  ),
-  large: (
-    size: _get-em($default-font-size),
-    font-size: _get-rem($default-font-size),
-  ),
-);
+// $radio-check-sizes: (
+//   default: (
+//     size: $radio-check-size,
+//     font-size: _get-rem($default-font-size),
+//   ),
+//   small: (
+//     size: _get-em($font-size-small),
+//     font-size: _get-rem($font-size-small),
+//   ),
+//   large: (
+//     size: _get-em($radio-check-sizes-large),
+//     font-size: _get-rem($default-font-size),
+//   ),
+// );
 
 //---------------
 // select
@@ -821,6 +843,30 @@ $select: (
         display: none,
       )
     )
+  ),
+  ghost : (
+    default: (
+      color: _color(grey, 700),
+      background-color: transparent,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: _color(grey, 400),
+      border-radius: $select-b-r,
+      after: (
+        display: none,
+      )
+    ),
+    focus: (
+      background-color: _color(secondary, 400),
+      color: _color(grey, 700),
+    ),
+    active: (
+      background-color: _color(secondary, 500),
+      border-color: _color(gray, 200),
+    ),
+    group: (
+      border-color: _color(gray, 400),
+    ),
   )
 );
 
@@ -892,6 +938,7 @@ $input-addon-sizes: (
 
 $form-label: (
   default: (
+    font-size: _get-rem(10px),
     margin-bottom: _get_em(3px),
     color: _color(grey, 700),
   ),
@@ -1244,6 +1291,21 @@ $badge: (
   blue: (
     color: _color(blue),
     border-color: _color(blue),
+  ),
+);
+
+$pills: (
+  default: (
+    color: $color-white,
+    background-color: _color(grey),
+    border-radius: $default-border-radius-circle,
+    font-size: _get-rem($font-size-small),
+    font-weight: $font-weight-semibold,
+    min-width: _get-rem(24px),
+  ),
+  blue: (
+    color: $color-white,
+    background-color: _color(link, 500),
   ),
 );
 
