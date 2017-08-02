@@ -1,0 +1,275 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Môj účet'
+
+block content
+  main.account
+    section.section
+      .wrapper-main
+        .row.align-items-middle
+          .col--l-4.col--fill
+            .row.align-items-middle
+              .col--shrink.no-pad-right.show-l
+                img(src="/images/content/user-photo.png", alt="User", width="52")
+              .col--fill
+                h1.h3.text-color-black.text-semibold.no-mrg-bottom.show-l Bartolomej Najsčítanejší
+                h2.h1.account-title Môj martinus
+          .col--fill.show-l
+            nav
+              ul.list-inline.inline-nav.no-mrg-bottom
+                li.inline-nav__item.text-medium
+                  a.inline-nav__link Moja knižnica
+                  span.badge.pill.text-space-left 231
+                li.inline-nav__item.text-medium
+                  a.inline-nav__link Objednávky
+                  span.badge.pill.text-space-left 4
+                li.inline-nav__item.text-medium
+                  a.inline-nav__link Účet
+          .col--l-3.col--shrink.text-right
+            button.btn.btn--clean.btn--small.no-mrg-bottom
+              span.show-m Odhlásiť sa
+              +icon('logout', 'icon--medium').icon--right
+        .hide-l
+          .bar
+            .bar__item.bar__item--fill
+              .btn-dropdown.no-mrg.flex.flex-column
+                button.btn.btn--ghost.btn--icon-right.text-left(
+                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                  data-toggle-expand,
+                  aria-haspopup="true"
+                )
+                  | Účet
+                  +icon('chevron-down', 'icon-dropdown').icon--medium
+                .dropdown(data-dropdown, data-toggle-expand)
+                  each link, i in ['Účet', 'Adresy', 'Platby', 'Newsletter', 'E-knihy', 'O vás']
+                    a(href="#").dropdown__item !{link}
+            .bar__item
+              button.btn Uložiť
+
+
+    section.section.section--m-full
+      .wrapper-main
+        .row
+          .col--l-3.show-l
+            h2 Môj účet
+            ul.list.list--expanded.no-pad(role="navigation")
+              li.is-active
+                a(href="#", data-scroll) Účet
+              li
+                a(href="#", data-scroll) Adresy
+              li
+                a(href="#", data-scroll) Platby
+              li
+                a(href="#", data-scroll) Newsletter
+              li
+                a(href="#", data-scroll) E-knihy
+              li
+                a(href="#", data-scroll) O vás
+            
+          .col--l-9.col--12.bg-secondary
+            .mb-medium
+            .row.align-items-middle
+              .col--fill
+                h3.h4.text-color-black.mb-medium Účet
+              .col--shrink.show-l
+                button.btn
+                  +icon('save', 'icon--medium').icon--left
+                  | Uložiť zmeny
+            article.card.mb-large
+              section.card__content
+                .row.align-items-middle.mb-medium
+                  .col--3.col--m-shrink.no-pad-right
+                    img(src="/images/content/user-photo.png", alt="User", width="100")
+                  .col--fill
+                    div
+                      button.btn.btn--clean.btn--small.no-mrg
+                        +icon('upload', 'icon--medium').icon--left
+                        | Nahrať nový obrázok
+                    .mb-medium.show-m
+                    div
+                      button.btn.btn--clean.btn--small.no-mrg
+                        +icon('trash', 'icon--medium').icon--left
+                        | Odstrániť
+                .row
+                  .col--m-4
+                    .form-control.form-control--input
+                      .form-label
+                        label.text-transform-upper.text-small.text-color-grey Meno
+                      input.input(type="text")
+                    .form-control.form-control--input
+                      .form-label
+                        label.text-transform-upper.text-small.text-color-grey Priezvisko
+                      input.input(type="text")
+                  .col--m-4
+                    .form-control.form-control--input
+                      .form-label
+                        label.text-transform-upper.text-small.text-color-grey E-mail
+                      input.input(type="email")
+                    .form-control.form-control--select
+                      .form-label
+                        label.text-transform-upper.text-small.text-color-grey Dátum narodenia
+                      select.js-select.select--inline
+                        option 14
+                        option 15
+                      select.js-select.select--inline
+                        option Maj
+                        option Jun
+                      select.js-select.select--inline
+                        option 1998
+                        option 1999
+                  .col--m-4
+                    .form-control.form-control--input
+                      .form-label
+                        label.text-transform-upper.text-small.text-color-grey Vaša klubová karta
+                      input.input(type="text")
+                .row
+                  .col--12
+                    .border-bottom-grey.mb-medium
+                .row.no-mrg-bottom
+                  .col--m-4
+                    .btn-layout--vertical
+                      button.btn.btn--ghost.no-mrg Zmeniť heslo
+            h3.h4.text-color-black.mb-medium Adresy
+            .row.mb-medium
+              .col--m-4.flex.flex-column
+                article.card.flex-1
+                  section.card__content
+                    .badge.badge--blue.mb-medium
+                      +icon('invoice', 'icon--small').icon--left
+                      | Fakturačná
+                    .btn-dropdown.flex.flex-column
+                      button.btn.btn--ghost.btn--icon-right.text-left(
+                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                        data-toggle-expand,
+                        aria-haspopup="true"
+                      )
+                        | Fakturačná
+                        +icon('chevron-down', 'icon-dropdown').icon--medium
+                      .dropdown(data-dropdown, data-toggle-expand)
+                          a(href="#").dropdown__item Fakturačná
+                          a(href="#").dropdown__item Doručovacia
+                    p.text-medium Lighting Beetle
+                      br
+                      | Katarína Bohmová
+                      br
+                      | Katarína Bohmová
+                      br
+                      | Gunduličova 4,
+                      br
+                      | 851 02 Bratislava
+                      br
+                      | Slovensko
+                      br
+                      | +421 902 500 336
+                    p.text-medium
+                      | IČO: 44 865 894
+                      br
+                      | IČ DPH: SK20 2286 0840
+              .col--m-4.flex.flex-column
+                article.card.flex-1
+                  section.card__content
+                    .badge.badge--green.mb-medium
+                      +icon('invoice', 'icon--small').icon--left
+                      | Doručovacia
+                    .btn-dropdown.flex.flex-column
+                      button.btn.btn--ghost.btn--icon-right.text-left(
+                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                        data-toggle-expand,
+                        aria-haspopup="true"
+                      )
+                        | Doručovacia
+                        +icon('chevron-down', 'icon-dropdown').icon--medium
+                      .dropdown(data-dropdown, data-toggle-expand)
+                          a(href="#").dropdown__item Fakturačná
+                          a(href="#").dropdown__item Doručovacia
+                    p.text-medium Lighting Beetle
+                      br
+                      | Jozef Novák
+                      br
+                      | Lighting Beetle, Gunduličova 4,
+                      br
+                      | 851 02 Bratislava
+              - for (var i = 0; i<2; i++)
+                .col--m-4.flex.flex-column
+                  article.card.flex-1
+                    section.card__content
+                      .btn-dropdown.flex.flex-column
+                        button.btn.btn--ghost.btn--icon-right.text-left(
+                          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                          data-toggle-expand,
+                          aria-haspopup="true"
+                        )
+                          | Nastaviť adresu ako
+                          +icon('chevron-down', 'icon-dropdown').icon--medium
+                        .dropdown(data-dropdown, data-toggle-expand)
+                            a(href="#").dropdown__item Fakturačná
+                            a(href="#").dropdown__item Doručovacia
+                      .bar.align-items-top
+                        .bar__item.bar__item--fill
+                          p.text-medium Lighting Beetle
+                            br
+                            | Katarína Bohmová
+                            br
+                            | Katarína Bohmová
+                            br
+                            | Gunduličova 4,
+                            br
+                            | 851 02 Bratislava
+                            br
+                            | Slovensko
+                            br
+                            | +421 902 500 336
+                          p.text-medium
+                            | IČO: 44 865 894
+                            br
+                            | IČ DPH: SK20 2286 0840
+                        .bar__item.text-right
+                          .btn-dropdown.btn-dropdown--no-icon
+                            button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
+                              +icon('dots')
+                            .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand)
+                                a(href="#").dropdown__item Upraviť
+                                a(href="#").dropdown__item Zmazať
+              .col--m-4.flex.flex-column
+                .add-new-address.flex-1.mb-medium.align-items-middle.align-items-center
+                  button.btn.btn--clean.btn--small
+                    +icon('plus').icon--left
+                    | Pridať ďalšiu adresu
+            
+            h3.h4.text-color-black.mb-medium Platby
+            .mb-large
+              - for (var i = 0; i<2; i++)
+                .article.card
+                  section.card__content
+                    .row.no-mrg-bottom.align-items-middle
+                      .col--fill
+                        .text-small.text-transform-upper.text-color-grey-dark Vaša zapamätaná karta
+                        .text-medium 4544 **** **** 6403
+                      .col--shrink
+                        button.btn.btn--clean.btn--small.no-mrg
+                          +icon('trash', 'icon--medium').icon--left
+                          span.show-s Odstrániť
+
+            h3.h4.text-color-black.mb-medium Newsletter
+            .article.card.mb-large
+              section.card__content
+                .form-control.form-control--checkbox.no-mrg-bottom
+                  .checkbox.radiocheck--medium
+                    input.radiocheck__input(type="checkbox", id="newsletter")
+                    label.radiocheck__control(for="newsletter")
+                    label.radiocheck__label(for="newsletter") Prajem si dostávať newsletter
+
+            h3.h4.text-color-black.mb-medium E-knihy
+            .article.card.mb-large
+              section.card__content
+                .row.no-mrg-bottom
+                  .col--m-shrink.no-pad-right
+                    .form-control.form-control--checkbox.no-mrg-bottom
+                      .checkbox.radiocheck--medium
+                        input.radiocheck__input(type="checkbox", id="newsletter")
+                        label.radiocheck__control(for="newsletter")
+                        label.radiocheck__label(for="newsletter") Prosím o automatické odosielanie e-kníh na tento e-mail:
+                  .col--m-fill
+                    .form-control.form-control--input.no-mrg-bottom
+                      input.input(type="email", placeholder="Zadajte vašu e-mailovú adresu")
