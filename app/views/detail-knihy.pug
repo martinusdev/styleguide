@@ -489,6 +489,23 @@ block content
 
         +booksCarouselRecommended
 
+  //- flag review modal
+  .modal-overlay.active#flag-review
+    article.modal
+      .modal__wrap
+        section.modal__content
+          h1.h2 Chcete nahlásiť recenziu?
+          p Pozrieme sa na to, či recenzia porušuje pravidlá alebo prezrádza dej.
+        footer.modal__footer
+          .row.btn-layout--horizontal.align-items-center
+            button.btn.btn--ghost(type="button" data-toggle="#flag-review") Zrušiť
+            button.btn(type="button" data-toggle="#flag-review") Nahlásiť
+          </div>
+        </footer>
+      </div>
+    </article>
+  </div>
+
     include ./modules/seen-items
 
 block append modals
