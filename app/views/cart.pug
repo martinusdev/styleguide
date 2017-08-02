@@ -21,7 +21,9 @@ block content
                   li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
                     .cart-item
                       .cart-item__thumbnail
-                        img(src=`${assetsPrefix}${item.cover}`).thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable
+                        a.thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable(href="detail-knihy.html")
+                          .thumbnail__img-wrap
+                            img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
                           a.text-semibold.no-mrg.text-ellipsis(href="detail-knihy.html")=item.title
