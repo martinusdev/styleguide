@@ -85,6 +85,13 @@
     }
   }
 
+  // bar progress eg. bar in checkout
+  .bar--progress {
+    .progress-bar {
+      bottom: -(_get-space('h', 'small'));
+    }
+  }
+
   // responsive bar spacing
   @each $size, $props in $bar-spacing {
     &#{_get-variant-name($size, '.bar--')} {

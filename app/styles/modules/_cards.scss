@@ -134,6 +134,20 @@
       right: 10px;
     }
 
+    &--done {
+      &::after {
+        content: '';
+        height: _get-rem(24px);
+        width: _get-rem(24px);
+        position: absolute;
+        top: +(_get-rem(1px));
+        left: -(_get-rem(10px));
+        background-image: svg-load('./../icons_/app/check-circle.svg');
+        background-color: $default-bg-color;
+        border-radius: $default-border-radius-circle;
+      }
+    }
+
     .carousel {
       &.carousel--fade-outside .swiper-container {
         margin-right: 40px;
