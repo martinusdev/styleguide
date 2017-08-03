@@ -46,8 +46,9 @@ block content
             .col--m-4.col--l-3
               .product-detail__preview
                 .product-detail__image
-                  .thumbnail.thumbnail--book.thumbnail--large-shadow.mb-medium.clickable(data-toggle="#product-preview")
-                    img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                  .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-medium.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 .product-detail__preview-link.text-center
                   button.btn.btn--clean(data-toggle="#product-preview")
                     +icon('eye').icon--left.icon--medium
@@ -189,8 +190,9 @@ block content
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
               div(data-sticky, data-sticky-class="is-stuck", data-margin-top="120")
-                .thumbnail.thumbnail--book.mb-medium
-                  img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail.thumbnail--book.mb-medium.thumbnail--xlarge
+                  .thumbnail__img-wrap
+                    img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
                 ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
                   li
@@ -225,7 +227,7 @@ block content
                 .row
                   .col--s-8.ofst--s-center
                     include ./modules/card-buy-together
-        
+
               section.mb-large
                 .card.card--well.no-pad-bottom
                   .card__content
@@ -267,7 +269,7 @@ block content
                             .checkbox.radiocheck--medium
                               input.radiocheck__input(type="checkbox", id="mistake-agree")
                               label.radiocheck__control(for="mistake-agree")
-                              label.radiocheck__label(for="mistake-agree") Potvrdzujem, že vyššie uvedené informácie neporušujú autorské práva iných osôb 
+                              label.radiocheck__label(for="mistake-agree") Potvrdzujem, že vyššie uvedené informácie neporušujú autorské práva iných osôb
                                 span.text-semibold a súhlasím s ich využitím firmou Martinus, s.r.o.
                       .row
                         .col--12.text-center
@@ -477,7 +479,7 @@ block content
                         .col--m-fill
                           h4.mb-small Beseda s autorom: J. K. Rowling
                           .text-color-grey.mb-medium Udalost
-                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate dictum ante, id ultricies mi bibendum ac. Nulla pretium nisi lorem, eget faucibus leo feugiat sed. Aliquam posuere nibh sit amet aliquam vehicula. Curabitur lobortis nibh vestibulum lobortis luctus. Curabitur a dolor quam. Ut ullamcorper at orci id sollicitudin. 
+                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate dictum ante, id ultricies mi bibendum ac. Nulla pretium nisi lorem, eget faucibus leo feugiat sed. Aliquam posuere nibh sit amet aliquam vehicula. Curabitur lobortis nibh vestibulum lobortis luctus. Curabitur a dolor quam. Ut ullamcorper at orci id sollicitudin.
                       .row.mb-medium
                         .col--12
                           .border-bottom-grey

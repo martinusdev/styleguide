@@ -206,26 +206,115 @@ block append content
 
   +content-section(contents[2])
 
-    +p Image thumbnails are defined in four sizes <code class='l-code-inline'>small/medium/medium-large/large</code> as shown on example below.
+    +p Image thumbnails are defined in four sizes <code class='l-code-inline'>small/medium/medium-large/large/xlarge/huge</code> as shown on example below.
 
     +demo
       +demo-example
-        .bar
+        .bar.bar--wrap
           .bar__item
-            img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100')
+            .thumbnail.thumbnail--small
+              img.img--fluid.img--circle(src='https://placehold.it/25x25')
           .bar__item
-            img.img--fluid.img--circle.thumbnail.thumbnail--medium(src='https://placehold.it/100x100')
+            .thumbnail.thumbnail--medium
+              img.img--fluid.img--circle(src='https://placehold.it/50x50')
           .bar__item
-            img.img--fluid.img--circle.thumbnail.thumbnail--medium-large(src='https://placehold.it/100x100')
+            .thumbnail.thumbnail--medium-large
+              img.img--fluid.img--circle(src='https://placehold.it/65x65')
           .bar__item
-            img.img--fluid.img--circle.thumbnail.thumbnail--large(src='https://placehold.it/100x100')
+            .thumbnail.thumbnail--large
+              img.img--fluid.img--circle(src='https://placehold.it/120x120')
+          .bar__item
+            .thumbnail.thumbnail--xlarge
+              img.img--fluid.img--circle(src='https://placehold.it/170x170')
+          .bar__item
+            .thumbnail.thumbnail--huge
+              img.img--fluid.img--circle(src='https://placehold.it/270x270')
 
       +demo-code
         :code
-          <img class="img thumbnail thumbnail--small" src="..." alt="...">
-          <img class="img thumbnail thumbnail--medium" src="..." alt="...">
-          <img class="img thumbnail thumbnail--medium-large" src="..." alt="...">
-          <img class="img thumbnail thumbnail--large" src="..." alt="...">
+          <div class="thumbnail thumbail--small">
+            <img class="img" src="..." alt="...">
+          </div>
+          <div class="thumbnail thumbail--medium">
+            <img class="img" src="..." alt="...">
+          </div>
+          <div class="thumbnail thumbail--medium-large">
+            <img class="img" src="..." alt="...">
+          </div>
+          <div class="thumbnail thumbail--large">
+            <img class="img" src="..." alt="...">
+          </div>
+          <div class="thumbnail thumbail--xlarge">
+            <img class="img" src="..." alt="...">
+          </div>
+          <div class="thumbnail thumbail--huge">
+            <img class="img" src="..." alt="...">
+          </div>
+
+    +content-sub-section('Accessibility')
+      +p Thumbnails have a default max-height that crops tall images. To enable this behavior, wrap the <code class="l-code-inline">.img</code> iside a <code class="l-code-inline">.thumbnail__img-wrap</code>
+
+    +demo
+      +demo-example
+        .bar.bar--wrap
+          .bar__item
+            .thumbnail.thumbnail--small
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/25x75')
+          .bar__item
+            .thumbnail.thumbnail--medium
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/50x150')
+          .bar__item
+            .thumbnail.thumbnail--medium-large
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/65x195')
+          .bar__item
+            .thumbnail.thumbnail--large
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/120x360')
+          .bar__item
+            .thumbnail.thumbnail--xlarge
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/170x510')
+          .bar__item
+            .thumbnail.thumbnail--huge
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/270x810')
+
+      +demo-code
+        :code
+          <div class="thumbnail thumbail--small">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--medium">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--medium-large">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--large">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--xlarge">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--huge">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+
 
   +content-section(contents[3], true)
 
@@ -240,22 +329,22 @@ block append content
             <img class="img " src="..." alt="...">
           </div>
 
-    +content-sub-section('Thumbnail status')
+  +content-section(contents[4], true)
 
-      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with badge as discount coutdown is shown below.
+    +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with badge as discount coutdown is shown below.
 
-      +demo
-        +demo-example
-          .thumbnail.thumbnail--book.thumbnail--large
-            img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .thumbnail__status
-              +discountBadge(duration)
+    +demo
+      +demo-example
+        .thumbnail.thumbnail--book.thumbnail--large
+          img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+          .thumbnail__status
+            +discountBadge(duration)
 
-        +demo-code
-          :code
-            <div class="thumbnail--book thumbnail--large">
-              <img class="img" src="..." alt="..." />
-              <div class="thumbnail__status">
-                ...
-              </div>
+      +demo-code
+        :code
+          <div class="thumbnail--book thumbnail--large">
+            <img class="img" src="..." alt="..." />
+            <div class="thumbnail__status">
+              ...
             </div>
+          </div>
