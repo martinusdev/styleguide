@@ -1,3 +1,4 @@
+
 extends templates/layout
 
 //- Options
@@ -477,6 +478,12 @@ block append content
             .col--l-6
               .form-control.form-control--select
                 select.js-select.select--ghost
+                  each option in [1,2,3,4,5,6]
+                    option Option #{option}
+
+            .col--l-6
+              .form-control.form-control--select
+                select.js-select.select--input
                   each option in [1,2,3,4,5,6]
                     option Option #{option}
 

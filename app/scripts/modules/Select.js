@@ -117,6 +117,10 @@ export default class Select {
         choice.containerOuter.classList.add('select--ghost');
       }
 
+      if (select.classList.contains('select--input')) {
+        choice.containerOuter.classList.add('select--input');
+      }
+
       if (select.classList.contains('select--clean')) {
         choice.containerOuter.classList.add('select--clean');
       }
