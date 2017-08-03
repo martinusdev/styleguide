@@ -1,7 +1,7 @@
 extends layouts/_default
 
 block opts
-    - var pageTitle = 'Môj účet'
+    - var pageTitle = 'Objednávky'
 
 block content
   main.account
@@ -12,21 +12,27 @@ block content
       .wrapper-main
         .row
           .col--l-3.show-l
-            h2 Môj účet
-            ul.list.list--expanded.no-pad(role="navigation")
-              li.is-active
-                a(href="#", data-scroll) Účet
-              li
-                a(href="#", data-scroll) Adresy
-              li
-                a(href="#", data-scroll) Platby
-              li
-                a(href="#", data-scroll) Newsletter
-              li
-                a(href="#", data-scroll) E-knihy
-              li
-                a(href="#", data-scroll) O vás
-            
+            .form-control.form-control--input
+              input.input.filter__search(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
+            - for (i=0; i<5; i++)
+              .box(class=i === 0 ? "bg-secondary" : "border-bottom-grey")
+                .bar.align-items-top
+                  .bar__item.bar__item--fill
+                    .text-medium.text-semibold Objednávka č. 123
+                    .text-small.text-color-grey Objednané 12.4.2017
+                  .bar__item
+                    img(src="images/content/books/sample-1.jpg").thumbnail.thumbnail--book.thumbnail--medium
+                .bar.text-medium.no-mrg-bottom
+                  .bar__item.bar__item--fill
+                    if i<1
+                      +icon('time', 'icon--small').text-color-grey
+                    else
+                      +icon('check-circle', 'icon--small').text-color-success
+                    span.text-space-right.text-space-left #{i<1 ? 'Prijatá' : 'Vybavená'}
+                    span.text-color-grey Dnes
+                  .bar__item
+                    .text-semibold 10,00 €
+
           .col--l-9.col--12.bg-secondary
             .mb-medium
             .row.align-items-middle
