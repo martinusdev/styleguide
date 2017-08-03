@@ -68,6 +68,26 @@ block append content
             </div>
           </div>
 
+    +content-sub-section('Bar vertical')
+      +p Bar layout with vertical orientation.
+      +p Wrapper needs <code class="l-code-inline">.bar</code> and <code class="l-code-inline">.bar--vertical</code> class.
+
+      +demo
+        +demo-example
+          .row.row--space
+            .col
+              .bar.bar--vertical
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+                .bar__item
+                  .l-debug <code class="l-code-inline">.bar__item</code>
+
+        +demo-code
+          :code
+            <div class="bar bar--vertical">...</div>
+
     +content-sub-section('Bar gutters')
       +p Gutter between bar items can alterned with <code class='l-code-inline'>.bar--small</code>
 
@@ -82,10 +102,19 @@ block append content
                   .l-debug gutter with
                 .bar__item.bar__item--fill
                   .l-debug <code class="l-code-inline">.bar--small</code>
+            .col
+              .bar.bar--tiny
+                .bar__item
+                  .l-debug Tiny
+                .bar__item
+                  .l-debug gutter with
+                .bar__item.bar__item--fill
+                  .l-debug <code class="l-code-inline">.bar--tiny</code>
 
         +demo-code
           :code
             <div class="bar bar--small">...</div>
+            <div class="bar bar--tiny">...</div>
 
     +content-sub-section('Bar item with border')
       +p Border between bar items can be added as bar item with class <code class='l-code-inline'>.bar__item--border</code>.

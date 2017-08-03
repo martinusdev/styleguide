@@ -4,23 +4,25 @@ mixin product-horizontal(props = {})
       cover = 'images/content/books/sample-15.jpg',
       coverSize = 'medium-large',
       title = 'Základy rybolovu pro kluky a holky',
-      author = 'Frank Weissert, Jack Thorne a John Tiffany',
+      author = 'Frank Weissert, Jack Thorne, John Tiffany',
       description,
       discount,
       discountUnderBook = false,
       rating = 4.5,
       price = '9999,99 €',
       duration,
-      cart,
       count,
       trash,
+      truncnateTitle,
+      showCartButton,
     } = props;
 
   article.product.product--horizontal&attributes(attributes)
     .product__img.product__cover
       .thumbnail.thumbnail--book(class=`thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
         a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
-          img(src=`${assetsPrefix}${cover}`).img
+          .thumbnail__img-wrap
+            img(src=`${assetsPrefix}${cover}`).img
         if duration
           .thumbnail__status
             +discountBadge(duration)
@@ -30,8 +32,15 @@ mixin product-horizontal(props = {})
     .product__caption
       .bar.bar--small.no-mrg-bottom
         .bar__item.bar__item--fill
-          a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
-          p.text-color-grey.text-size-small.mb-small= author
+          if truncnateTitle
+            .text-ellipsis
+              a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+          else
+            a.text-semibold.text-size-medium(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
+            - var authors = author.split(', ')
+            each author in authors
+              li= author
           .bar.bar--small.mb-small
             if discount && !discountUnderBook
               .bar__item
@@ -53,7 +62,7 @@ mixin product-horizontal(props = {})
             .bar__item.bar__item--fill.text-right
               .text-medium.text-semibold= price
 
-            if cart
+            if showCartButton
               .bar__item
                 a.btn.btn--small.btn--clean.btn--equal.text-color-theme(href="#")
                   +icon('cart').icon--medium

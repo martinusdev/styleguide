@@ -12,6 +12,7 @@
   $width: 0
 ) {
   flex: 0 0 if($width == 0, auto, $width);
+  min-width: 0;
   align-items: center;
   margin-top: _get-space('h', 'small');
 
@@ -81,6 +82,13 @@
 
     &__break {
       @include bar-break;
+    }
+  }
+
+  // bar progress eg. bar in checkout
+  .bar--progress {
+    .progress-bar {
+      bottom: -(_get-space('h', 'small'));
     }
   }
 

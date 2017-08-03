@@ -1,0 +1,57 @@
+.thank-you-progress {
+  position: relative;
+  margin: 0 auto;
+
+  @include breakpoint('s') {
+    width: _get-rem(335px);
+  }
+
+  &::after {
+    @include breakpoint('s') {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+      background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.9) 100%);
+    }
+  }
+}
+
+.thank-you-progress__item {
+  &:not(:last-child) .thank-you-progress__status {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      right: _get-rem(5px);
+      width: _get-rem(40px);
+      height: 2px;
+      background: $text-color-grey-light;
+    }
+  }
+}
+
+.thank-you-progress__item.current {
+  .thank-you-progress__circle {
+    background: $text-color-grey-light;
+  }
+
+  .thank-you-progress__status {
+    color: _color(green);
+  }
+}
+
+.thank-you-progress__circle {
+  width: _get-rem(54px);
+  height: _get-rem(54px);
+  display: inline-block;
+  padding-top: _get-rem(10px);
+
+  @include border-radius(50%);
+  border: 2px solid $text-color-grey-light;
+}

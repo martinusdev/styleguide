@@ -1,0 +1,39 @@
+.card.mb-small#gift-wrap
+  .card__content
+    .bar
+      .bar__item.bar__item--fill
+        h2 Je to darček ?
+
+  .card__content.no-pad-top.no-mrg
+    p.text-size-medium
+      | Radi Vám tovar zabalíme do niektorého z dostupných darčekových papierov alebo špecialnej ochrannej fólie :)
+
+  .card__content
+    each item, i in books
+      .bar(id=`cart-item${i}`).align-items-top
+        .bar__item
+          .thumbnail.thumbnail--book.thumbnail--medium
+            .thumbnail__img-wrap
+              img(src=`${assetsPrefix}${item.cover}`)
+        .bar__item.bar__item--fill.text-size-medium=item.title
+        .bar__item.bar__item--fill
+          .form-control.form-control--select
+            select.js-select
+                option(selected disabled placeholder) Bez špeciálneho balenia 0.00€
+                option Bez špeciálneho balenia 0.00€
+
+  hr.mb-small
+
+  .card__content
+    .row
+      .col--s-11.col--m-6.ofst--center
+        .form-control.form-control--checkbox.text-center.mb-large
+          .checkbox
+            input.radiocheck__input(type='checkbox', id='gift_no_invoice', name='gift_no_invoice')
+            label.radiocheck__control(for='gift_no_invoice')
+            label.radiocheck__label(for='gift_no_invoice')
+              | Nepriložiť faktúru, je to prekvapenie
+
+        .btn-layout--vertical.no-mrg
+          button.btn.is-disabled(type="submit")
+            | hotovo, mam zabalené !

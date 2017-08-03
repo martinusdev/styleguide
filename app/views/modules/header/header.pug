@@ -1,74 +1,93 @@
-header.header(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
-  .wrapper-main
-    .bar.header__bar
-      .bar__item.header__logo
-          img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
-          img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
-      .bar__item.header__nav
-        .btn-layout.btn-layout--horizontal
-          .btn-dropdown.no-mrg
-            button.btn.btn--clean.header__btn(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              | Knihy
-              +icon('chevron-down', 'icon-dropdown').icon--medium
-          .btn-dropdown.no-mrg.show-s
-            button.btn.btn--clean.header__btn(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              | E-Knihy
-              +icon('chevron-down', 'icon-dropdown').icon--medium
-          .btn-dropdown.no-mrg.show-l
-            button.btn.btn--clean.header__btn(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              | Filmy
-              +icon('chevron-down', 'icon-dropdown').icon--medium
-          .btn-dropdown.no-mrg.show-l
-            button.btn.btn--clean.header__btn(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              | Hry
-              +icon('chevron-down', 'icon-dropdown').icon--medium
-          .btn-dropdown.no-mrg
-            button.btn.btn--clean.btn--equal.header__btn(
-              data-toggle='self, next',
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              +icon('dots').icon--medium
+header.header
+  .header__wrapper(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap)
+    .wrapper-main
+      .bar.header__bar
+        .bar__item.header__logo
+            img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
+            img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
+        .bar__item.header__nav
+          .btn-layout.btn-layout--horizontal
+            .btn-dropdown.no-mrg.show-m
+              button.btn.btn--clean.header__btn(
+                data-mega-menu-trigger="#mega-menu-knihy"
+                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                data-toggle-expand,
+                aria-haspopup="true"
+              )
+                | Knihy
+                +icon('chevron-down', 'icon-dropdown').icon--medium
+            .btn-dropdown.no-mrg.show-m
+              button.btn.btn--clean.header__btn(
+                data-mega-menu-trigger="#mega-menu-eknihy"
+                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                data-toggle-expand,
+                aria-haspopup="true"
+              )
+                | E-Knihy
+                +icon('chevron-down', 'icon-dropdown').icon--medium
+            .btn-dropdown.no-mrg.show-l
+              button.btn.btn--clean.header__btn(
+                data-mega-menu-trigger
+                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                data-toggle-expand,
+                aria-haspopup="true"
+              )
+                | Filmy
+                +icon('chevron-down', 'icon-dropdown').icon--medium
+            .btn-dropdown.no-mrg.show-l
+              button.btn.btn--clean.header__btn(
+                data-mega-menu-trigger
+                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                data-toggle-expand,
+                aria-haspopup="true"
+              )
+                | Hry
+                +icon('chevron-down', 'icon-dropdown').icon--medium
 
-      .bar__item.bar__item--fill.header-search
-        button.btn.btn--clean.btn--small.btn--equal.header__btn.no-mrg-bottom.hide-m
-          +icon('search').icon--medium
-        .form-control.form-control--input.no-mrg-bottom.header__search.show-m
-          .input-addons
-            input.input.input--dark(type='text', placeholder="Titul, kategória alebo autor", data-input)
-            .input-addons__item.header-search__empty.input-addons__item--dark
-                +icon('search', '', 'Search').icon--medium
-            .input-addons__item.input-addons__item.no-pad.header-search__value
-              .btn.btn--primary
-                +icon('search', '', 'Search').icon--medium.icon--left
-                | Hladať
+            .btn-dropdown.no-mrg.btn-dropdown--no-icon.show-m
+              button.btn.btn--clean.btn--equal.header__btn.no-pad(
+                data-toggle='self, next',
+                data-toggle-expand,
+                aria-haspopup="true"
+              )
+                +icon('dots').icon--medium
+              .dropdown.dropdown--arrowhead(data-dropdown, data-toggle-expand, aria-expanded="false")
+                a(href="#").dropdown__item Káva ačaj
+                a(href="#").dropdown__item Hudba
 
-      .bar__item.header__user
-        a(href='#')
-          .bar.bar--small.no-mrg-bottom
-            .bar__item
-              +icon('user').icon--medium
-            //- img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
-            .bar__item.bar__item--fill.show-m Bartolomej
+            .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-m
+              button.btn.btn--clean.header__btn(
+                data-mega-menu-trigger
+                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
+                data-toggle-expand,
+                aria-haspopup="true"
+              )
+                +icon('menu').icon--medium
 
-      .bar__item.header__cart
-        button.btn.btn--clean.btn--small.btn--equal.header__btn(data-notification="4", data-toggle='#checkout-notice')
-          +icon('cart').icon--medium
+        .bar__item.bar__item--fill.header__search.header-search
+          button.btn.btn--clean.btn--small.btn--equal.header__btn.no-mrg-bottom.hide-m
+            +icon('search').icon--medium
+          .form-control.form-control--input.no-mrg-bottom.header__search.show-m
+            .input-addons
+              input.input.input--dark(type='text', placeholder="Titul, kategória alebo autor", data-input)
+              .input-addons__item.header-search__empty.input-addons__item--dark
+                  +icon('search', '', 'Search').icon--medium
+              .input-addons__item.input-addons__item.no-pad.header-search__value
+                .btn.btn--primary
+                  +icon('search', '', 'Search').icon--medium.icon--left
+                  | Hladať
 
+        .bar__item.header__user
+          a(href='#')
+            .bar.bar--small.no-mrg-bottom
+              .bar__item
+                +icon('user').icon--medium
+              //- img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
+              .header__username.bar__item.bar__item--fill.text-ellipsis.show-m Bartolomej
+
+        .bar__item.header__cart
+          a.btn.btn--clean.btn--small.btn--equal.header__btn(href="cart.html", data-notification="4")
+            +icon('cart').icon--medium
+
+  include ./megamenu
   include ./../checkout-notice

@@ -3,6 +3,7 @@
 // module for handling toggle actions
 
 import { customEventPolyfill, triggerResize } from './Utils';
+import { lockBody, unlockBody } from './Modal';
 
 customEventPolyfill();
 
@@ -26,79 +27,78 @@ class Toggle {
     return this;
   }
 
-  static doToggle(el, triggerEl, toggleClass = defaultConfig.toggleClass) {
-    if (!(el instanceof Element)) {
-      el = document.querySelector(el);
+  static isToggled(target, activeClass = defaultConfig.toggleClass) {
+    if (target && target.hasAttribute('data-toggle-expand')) {
+      return target.getAttribute('aria-expanded') === 'true';
     }
 
-    if (!el) {
+    return target.classList.contains(activeClass);
+  }
+
+  static doToggle({ target, trigger, className, icon, text, expand, state }) {
+    if (!(target instanceof Element)) {
+      target = document.querySelector(target);
+    }
+
+    if (!target) {
       return false;
     }
 
-    let toggled = false;
-
-    if (el.hasAttribute('data-toggle-class')) {
-      const localToggleClass = el.getAttribute('data-toggle-class')
-        ? el.getAttribute('data-toggle-class')
-        : toggleClass;
-      el.classList.toggle(localToggleClass);
-
-      toggled = true;
-    }
-
-    if (el.hasAttribute('data-toggle-icon')) {
-      const icon = el.querySelector('use');
-
-      if (icon) {
-        const currentIcon = icon.getAttribute('xlink:href');
-        const newIcon = el.getAttribute('data-toggle-icon');
-
-        el.setAttribute('data-toggle-icon', currentIcon);
-        icon.setAttribute('xlink:href', newIcon);
-
-        toggled = true;
-      }
-    }
-
-    if (el.hasAttribute('data-toggle-text')) {
-      const newText = el.getAttribute('data-toggle-text');
-      const oldText = el.textContent;
-
-      el.setAttribute('data-toggle-text', oldText);
-      el.textContent = newText;
-
-      toggled = true;
-    }
-
-    if (el.hasAttribute('data-toggle-expand')) {
-      const currentState = el.getAttribute('aria-expanded');
-      let isVisible = false;
-
-      if (currentState === false) {
-        isVisible = !!(el.offsetWidth ||
-          el.offsetHeight ||
-          el.getClientRects().length);
-      } else if (currentState === 'true') {
-        isVisible = true;
+    if (className !== undefined || className !== null) {
+      if (state !== undefined) {
+        if (state) {
+          target.classList.add(className);
+        } else {
+          target.classList.remove(className);
+        }
       } else {
-        isVisible = false;
+        target.classList.toggle(className);
       }
-
-      isVisible = !isVisible;
-      el.setAttribute('aria-expanded', isVisible.toString());
-
-      toggled = true;
     }
 
-    if (!toggled) {
-      el.classList.toggle(toggleClass);
+    if (icon) {
+      const iconEl = target.querySelector('use');
+
+      if (iconEl) {
+        const currentIcon = iconEl.getAttribute('xlink:href');
+
+        target.setAttribute('data-toggle-icon', currentIcon);
+        iconEl.setAttribute('xlink:href', icon);
+      }
     }
 
-    el.dispatchEvent(
+    if (text) {
+      const oldText = target.textContent;
+
+      target.setAttribute('data-toggle-text', oldText);
+      target.textContent = text;
+    }
+
+    if (expand) {
+      const currentState = target.getAttribute('aria-expanded') || 'false';
+      if (state !== undefined) {
+        target.setAttribute('aria-expanded', state.toString());
+      } else {
+        target.setAttribute(
+          'aria-expanded',
+          currentState === 'true' ? 'false' : 'true',
+        );
+      }
+    }
+
+    if (target.hasAttribute('data-toggle-lock')) {
+      if (document.body.className.includes('has-modal')) {
+        unlockBody();
+      } else {
+        lockBody();
+      }
+    }
+
+    target.dispatchEvent(
       new CustomEvent(TOGGLE_EVT, {
         detail: {
-          target: el,
-          trigger: triggerEl,
+          target,
+          trigger,
         },
         bubbles: true,
       }),
@@ -106,7 +106,7 @@ class Toggle {
 
     triggerResize();
 
-    return true;
+    return target;
   }
 
   _init() {
@@ -120,14 +120,24 @@ class Toggle {
   }
 
   _onClick(e) {
-    const triggerEl = e.currentTarget;
+    const trigger = e.currentTarget;
 
-    const triggerTargets = this._getTargets(triggerEl);
-    triggerTargets.forEach(el => {
-      Toggle.doToggle(el, triggerEl, this.config.toggleClass);
+    const triggerTargets = this._getTargets(trigger);
+
+    triggerTargets.forEach(target => {
+      Toggle.doToggle({
+        target,
+        trigger,
+        className: target.hasAttribute('data-toggle-class')
+          ? target.getAttribute('data-toggle-class')
+          : this.config.toggleClass,
+        icon: target.getAttribute('data-toggle-icon'),
+        text: target.getAttribute('data-toggle-text'),
+        expand: target.hasAttribute('data-toggle-expand'),
+      });
     });
 
-    triggerEl.dispatchEvent(new CustomEvent(TRIGGER_EVT, { bubbles: true }));
+    trigger.dispatchEvent(new CustomEvent(TRIGGER_EVT, { bubbles: true }));
   }
 
   destroy() {
@@ -174,3 +184,4 @@ class Toggle {
 
 export default Toggle;
 export const doToggle = Toggle.doToggle;
+export const isToggled = Toggle.isToggled;

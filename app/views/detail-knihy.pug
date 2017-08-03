@@ -46,8 +46,9 @@ block content
             .col--m-4.col--l-3
               .product-detail__preview
                 .product-detail__image
-                  .thumbnail.thumbnail--book.thumbnail--large-shadow.mb-medium
-                    img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                  .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-medium.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 .product-detail__preview-link.text-center
                   button.btn.btn--clean(data-toggle="#product-preview")
                     +icon('eye').icon--left.icon--medium
@@ -62,15 +63,23 @@ block content
                     span.text-color-grey.text-nowrap 10,29 €
                   a(href="#").btn.btn--ghost E-kniha#{' '}
                     span.text-color-grey.text-nowrap 6,50 €
-                  a(href="#").btn.btn--ghost Audio kniha#{' '}
-                    span.text-color-grey.text-nowrap 16,25 €
+                  .btn-dropdown
+                    a.btn.btn--ghost(href="#", data-toggle="self, next", data-toggle-expand, aria-haspopup="true") Viac formatov (2)#{' '}
+                      +icon('chevron-down', 'icon-dropdown').icon--medium
+                    .dropdown(data-dropdown, data-toggle-expand)
+                      a.dropdown__item(href="#") Audio kniha#{' '}
+                        span.text-color-grey.text-nowrap 16,25 €
+                      a.dropdown__item(href="#") Audio kniha#{' '}
+                        span.text-color-grey.text-nowrap 16,25 €
 
-              p.product-detail__author.mb-small
-                a.link(href="#") Frank Weissert
-                | ,#{' '}
-                a.link(href="#") Jack Thorne
-                | #{' '} a #{' '}
-                a.link(href="#") John Tiffany
+
+              ul.list-inline.list-inline--delimited.product-detail__author.mb-small
+                li
+                  a.link(href="#") Frank Weissert
+                li
+                  a.link(href="#") Jack Thorne
+                li
+                  a.link(href="#") John Tiffany
               h1.product-detail__title Základy rybolovu pro kluky a holky
               h3.product-detail__subtitle.mb-medium.mb-large-m Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
 
@@ -93,16 +102,16 @@ block content
                       option Slovenčina
                 .bar__item
                   .rating-star
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star').rating-star__item.icon--medium.is-active
-                    +icon('star-half').rating-star__item.icon--medium.is-active
+                    .rating-star__icon
+                    .rating-star__icon
+                    .rating-star__icon
+                    .rating-star__icon.rating-star__icon--half
+                    .rating-star__icon.rating-star__icon--empty
                     .rating-star__value
                       b 4,5
                 .bar__item.bar__item--border
                 .bar__item
-                  a.link.text-medium(href="#") 234 x
+                  a.link.text-medium(href="#recenzie", data-scroll) 234 x
                 .bar__item.bar__item--shrinkable.show-m
                   .badges.no-mrg
                     .badge.badge--green Bestseller
@@ -141,6 +150,18 @@ block content
 
             .col--l-3.col--m-6.ofst--m-4.ofst--l-0
               include ./modules/card-cart
+
+      section.section.section--secondary.controversial
+        .wrapper-main
+          .row
+            .col--m-6.ofst--m-center
+              .text-medium.text-uppercase.text-color-grey-dark.mb-medium Upozornenie
+              p Obsah tejto knihy je vnímaný ako kontroverzný. Pri čítaní každej knihy odporúčame nezabúdať na kritické myslenie a názory odborníkov v danej oblasti. Zisk z predaja tejto knihy putuje na podporu neziskových organizácií SuperTrieda a Slovenská debatná asociácia
+                a.link.text-medium.text-space-left Prečo?
+              a.link.text-medium(href="#popis-knihy", data-scroll) Zobraziť anotáciu ku knihe od vydavateľa
+                +icon('arrow-down')
+
+
       section.section.section--secondary.section--overflow
         .wrapper-main
           +section-header({ header: 'Odporúčané knihy a kolekcie', more: false })
@@ -169,8 +190,9 @@ block content
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
               div(data-sticky, data-sticky-class="is-stuck", data-margin-top="120")
-                .thumbnail.thumbnail--book.mb-medium
-                  img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail.thumbnail--book.mb-medium.thumbnail--xlarge
+                  .thumbnail__img-wrap
+                    img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
                 ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
                   li
@@ -187,7 +209,7 @@ block content
               section.mb-large#popis-knihy
 
                 h2.mb-medium Popis knihy
-                div(data-collapse="300")
+                div#book-desription(data-collapse="300")
                   p Vždy bolo ťažké byť Harrym Potterom a nie je to ľahké ani dnes, keď je prepracovaným zamestnancom Ministerstva mágie, manželom a otcom troch školopovinných detí.
 
                   p Harry zápasí s minulosťou, ktorá sa ustavične vracia. Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
@@ -197,13 +219,61 @@ block content
                   p Prvá oficiálna divadelná hra o Harrym Potterovi mala premiéru v sobotu 30. júla v Palace Theatre v londýnskom West Ende. Prvých 175-tisíc vstupeniek sa minulý rok vypredalo v priebehu ôsmich hodín. Tvorcovia sa preto rozhodli, že hru, ktorú mali pôvodne uvádzať do 27. mája 2017, predĺžia až do 10. decembra toho roku.
 
                   p.mb-medium Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
-                a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
-                  +icon('arrow-down')
+                .product-read-more
+                  a.link.text-size-medium(href="javascript:void(0)", data-toggle="#book-desription, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                    +icon('arrow-down')
 
               section.mb-large.hide-l
                 .row
                   .col--s-8.ofst--s-center
                     include ./modules/card-buy-together
+
+              section.mb-large
+                .card.card--well.no-pad-bottom
+                  .card__content
+                    #mistake.row.no-mrg-bottom(data-toggle-class="hide")
+                      .col--m-8
+                        .text-semibold Našli ste v našom obsashu nejaké nepresnosti?
+                        div Dajte nám o tom vedieť.
+                      .col--m-4.text-right
+                        button.btn.btn--ghost.no-mrg(data-toggle="#mistake, #mistake-detail") Nahlásiť chybu
+                    #mistake-detail.hide(data-toggle-class="hide")
+                      .row
+                        .col--fill
+                          .text-semibold Našli ste v našom obsashu nejaké nepresnosti?
+                          .text-semibold.mb-medium Dajte nám o tom vedieť.
+                          p Máte o knihe viac informácií ako je na tejto stránke alebo ste našli chybu? Budeme vám veľmi vďační, ak nám pomôžete s doplnením informácií na našich stránkach.
+                        .col--shrink
+                          button.btn.btn--clean.text-color-grey
+                            +icon('close').icon--medium(data-toggle="#mistake, #mistake-detail")
+                      .row
+                        .col--m-6
+                          .form-control.form-control--input
+                            .form-label
+                              label.text-transform-upper.text-small.text-color-grey meno a priezvisko
+                            input.input(type="text", placeholder="Zadajte Vaše meno a priezvisko")
+                        .col--m-6
+                          .form-control.form-control--input
+                            .form-label
+                              label.text-transform-upper.text-small.text-color-grey e-mail
+                            input.input(type="e-mail", placeholder="Zadajte Váš e-mail")
+                      .row
+                        .col--12
+                          .form-control.form-control--input
+                            .form-label
+                              label.text-transform-upper.text-small.text-color-grey text
+                            textarea.input(rows="4", placeholder="Napíšte informácie, ktoré chcete doplniť alebo opraviť")
+                      .row.mb-medium
+                        .col--12
+                          .form-control.form-control--checkbox
+                            .checkbox.radiocheck--medium
+                              input.radiocheck__input(type="checkbox", id="mistake-agree")
+                              label.radiocheck__control(for="mistake-agree")
+                              label.radiocheck__label(for="mistake-agree") Potvrdzujem, že vyššie uvedené informácie neporušujú autorské práva iných osôb
+                                span.text-semibold a súhlasím s ich využitím firmou Martinus, s.r.o.
+                      .row
+                        .col--12.text-center
+                          button.btn(type="submit") odoslať upozornenie
 
               section.mb-large#podrobnosti
                 .card.card--well.text-medium.no-pad-bottom
@@ -341,12 +411,15 @@ block content
                 hr
 
                 +review
+                  .text-semibold Nadpis recenzie
                   p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
                 +review({ reply: true, name: 'Darina Dobrovská', address: false, review: 0, likes: 25})
+                  .text-semibold Nadpis recenzie
                   p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
                 +review({ avatar: true, name: 'Tomáš Ulej a mam strasne dlhe meno a uvidime co sa stane'})
+                  .text-semibold Nadpis recenzie
                   p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
                 .pagination.btn-layout.btn-layout--horizontal.align-items-middle
@@ -364,18 +437,50 @@ block content
               section.mb-large#o-autorovi
                 h2 O autorovi
 
-                div(data-collapse="150")
+                div#about-author(data-collapse="150")
                   p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
-                a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
-                  +icon('arrow-down')
+                  article.card.card--well
+                    .card__content
+                      .row
+                        .col--m-shrink
+                          img(src="/images/content/author.png", width="100", alt="J. K. Rowling")
+                        .col--m-fill
+                          h4.mb-small Beseda s autorom: J. K. Rowling
+                          .text-color-grey.mb-medium Udalost
+                          p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate dictum ante, id ultricies mi bibendum ac. Nulla pretium nisi lorem, eget faucibus leo feugiat sed. Aliquam posuere nibh sit amet aliquam vehicula. Curabitur lobortis nibh vestibulum lobortis luctus. Curabitur a dolor quam. Ut ullamcorper at orci id sollicitudin.
+                      .row.mb-medium
+                        .col--12
+                          .border-bottom-grey
+                      .row
+                        .col--12
+                          h4.mb-small Terminy
+                          - for (var i = 0; i < 4; ++i) {
+                            .bar.mb-medium.text-medium.border-bottom-grey
+                              .bar__item.mb-small
+                                +icon('calendar', 'icon--medium').text-color-grey
+                              .bar__item.text-space-right.mb-small
+                                .text-semibold 21. 8. 2017, 17:00
+                              .bar__item.mb-small
+                                +icon('pin', 'icon--medium').text-color-grey
+                              .bar__item.bar__item--fill.mb-small Bratislava (Obchodna)
+                              .bar__item.mb-small
+                                a.link(href="#") Udalosť na Faceboku
+                          - }
+                          a.link.text-medium Všetky besedy v Martinuse
+                            +icon('arrow-right')
+
+                .product-read-more
+                  a.link.text-size-medium(href="javascript:void(0)", data-toggle="#about-author, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                    +icon('arrow-down')
 
               section.mb-large#vydavatelstvo
                 h2 Vydavateľstvo
 
-                div(data-collapse="150")
+                div#publisher(data-collapse="150")
                   p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame
-                a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
-                  +icon('arrow-down')
+                .product-read-more
+                  a.link.text-size-medium(href="javascript:void(0)", data-toggle="#publisher, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                    +icon('arrow-down')
 
             .col--l-3.show-l
               include ./modules/card-buy-together
@@ -385,6 +490,23 @@ block content
         +section-header({ header: 'Odporúčané knihy a kolekcie' })
 
         +booksCarouselRecommended
+
+  //- flag review modal
+  .modal-overlay.active#flag-review
+    article.modal
+      .modal__wrap
+        section.modal__content
+          h1.h2 Chcete nahlásiť recenziu?
+          p Pozrieme sa na to, či recenzia porušuje pravidlá alebo prezrádza dej.
+        footer.modal__footer
+          .row.btn-layout--horizontal.align-items-center
+            button.btn.btn--ghost(type="button" data-toggle="#flag-review") Zrušiť
+            button.btn(type="button" data-toggle="#flag-review") Nahlásiť
+          </div>
+        </footer>
+      </div>
+    </article>
+  </div>
 
     include ./modules/seen-items
 

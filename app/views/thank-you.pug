@@ -1,0 +1,74 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Ďakujeme'
+
+block content
+  - var currentStep = 0
+  -
+    var swiperConfig = {
+      slidesPerView: 4,
+      simulateTouch: false,
+      breakpoints: {
+        480: {
+          slidesPerView: 1,
+          simulateTouch: true,
+        }
+      },
+    };
+  main
+    section.section.section--secondary.section--m-full
+      .wrapper-main
+        .row
+          article.card.col--l-8.ofst--center
+            section.card__content
+              .row
+                .col--m-8.ofst--m-center.text-center
+                  .thank-you-progress.mb-large
+                    .swiper-container(data-swiper-options=swiperConfig)
+                      .swiper-wrapper
+                        - for (var i = 0; i < 4; ++i) {
+                        .thank-you-progress__item.swiper-slide(class=(i <= currentStep) ? 'current' : '')
+                          .thank-you-progress__circle.mb-small
+                            - if (i > currentStep)
+                              +icon('file').icon--small
+                            - else
+                              +icon('cart').icon--small
+                          .thank-you-progress__status
+                            - if (i > currentStep)
+                              +icon('progress-check').icon--small
+                            - else
+                              +icon('time').icon--small
+                        - }
+                  h4.mb-small Vaša objednávka č. 8512435 bola úspešne odoslaná!
+                  p.text-medium Naši škriatkovia ju začali ihneď spracovávať.
+
+          article.card.col--l-8.ofst--center
+            section.card__content
+              .row.align-items-middle
+                .col--m-6
+                  .row.align-items-middle.mb-small
+                    .col--s-12.col--5.mb-small-m.text-center-s
+                      img(src="/images/thank-you-avatar.png", alt="avatar")
+                    .col--s-12.col--7.text-center-s
+                      .text-semibold Anugs Stefanson
+                      .text-medium Knižný škriatok
+                .col--m-6
+                  article.card.card--well.text-center.no-mrg-bottom
+                    section.card__content
+                      p.text-medium Milý Peter,
+                        br
+                        | ďakujeme za Váš nákup! Hneď ako vašu objednávku pripravím a odošlem, budeme vás o tom informovať e-mailom.
+                      button.btn.btn--ghost Skontrolovať objednávku
+                      p.text-medium V prípade akýchkoľvek otázok mi neváhajte napísať!
+                      button.btn.btn--ghost Poslať správu
+    section.section.section--secondary
+      .wrapper-main
+        .mb-large
+          +section-header({ header: 'Zakúpené tituly sme pridali do Vašej knižnice', more: 'Prezrieť kinžnicu' })
+        .mb-large
+          +libraryCarousel()
+        .text-center.mb-large
+          a.btn(href="/")
+            +icon('arrow-left').icon--medium
+            span.text-space-left späť na domovskú stránku
