@@ -5,6 +5,32 @@ const defaultConfig = {
   searchEnabled: false,
   searchChoices: false,
   shouldSort: false,
+  itemSelectText: 'Press to select',
+  classNames: {
+    containerOuter: 'choices',
+    containerInner: 'choices__inner',
+    input: 'choices__input',
+    inputCloned: 'choices__input--cloned',
+    list: 'choices__list',
+    listItems: 'choices__list--multiple',
+    listSingle: 'choices__list--single',
+    listDropdown: 'choices__list--dropdown',
+    item: 'choices__item',
+    itemSelectable: 'choices__item--selectable',
+    itemDisabled: 'choices__item--disabled',
+    itemChoice: 'choices__item--choice',
+    group: 'choices__group',
+    groupHeading: 'choices__heading',
+    button: 'choices__button',
+    activeState: 'is-active',
+    focusState: 'is-focused',
+    openState: 'is-open',
+    disabledState: 'is-disabled',
+    highlightedState: 'is-highlighted',
+    hiddenState: 'is-hidden',
+    flippedState: 'is-flipped',
+    loadingState: 'is-loading',
+  },
 };
 
 const productSelectTemplate = data =>
@@ -21,13 +47,14 @@ const productSelectTemplate = data =>
         <p class="text-semibold">${data.customProperties.price}</p>
       </div>
     ` : ''}
-  </div>
-`;
+  </div>`;
 
-const productSelectChoice = data =>
-  `
-  <div data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${data.id}" data-value="${data.value}" ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
-    ${data.customProperties.itemLabel}
+const productSelectChoice = (data, config) => `
+  <div class="${config.classNames.item} ${config.classNames.itemChoice} ${data.disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${data.id}" data-value="${data.value}" ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
+    <div class="bar no-mrg-bottom align-items-justify">
+      <div class="bar__item">${data.label}</div>
+      <div class="bar__item">${data.customProperties.price}</div>
+    </div>
   </div>
   `;
 
@@ -89,10 +116,14 @@ export default class Select {
         config.removeItemButton = true;
       }
 
+      if (select.hasAttribute('placeholder')) {
+        config.placeholderValue = select.getAttribute('placeholder');
+      }
+
       if (select.hasAttribute('data-select-product')) {
         config.callbackOnCreateTemplates = template => ({
           item: data => template(productSelectTemplate(data)),
-          choice: data => template(productSelectChoice(data)),
+          choice: data => template(productSelectChoice(data, this.config)),
         });
       }
 

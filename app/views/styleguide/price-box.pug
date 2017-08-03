@@ -532,7 +532,7 @@ block append content
                 article.card.card--well.text-center.text-size-medium
 
                   .card__content
-                    .h1.mb-small 12,99 €
+                    .h1.h2 12,99 € - 15,99 €
                     .badges.badges--inline.align-items-center.no-mrg
                       .badge.badge--primary Ušetríte 3,50 €
                     p.mb-small.text-color-grey-dark Bežná cena#{' '}
@@ -540,8 +540,7 @@ block append content
 
                   .card__content
                     .form-control.form-control--select
-                      select#product-preview-product-select(data-select-product)
-
+                      select#product-variant-select(data-select-product placeholder="select something")
                     .btn-layout--vertical
                       button.btn.btn--primary.btn--large.no-mrg-bottom
                         +icon('add-to-cart').icon--left.icon--medium
@@ -551,28 +550,26 @@ block append content
   block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {
-        var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
+        var productPreviewProductSelect = new window.myApp.Select('#product-variant-select', {
           choices: [
             {
-              value: 'Pevná väzba 12,99 €',
-              label: 'Pevná väzba 12,99 €',
+              value: 'pevna-vazba',
+              label: 'Pevná väzba',
               id: 1,
               customProperties: {
                 price: '11,50 €',
                 delivery: 'posielame ihneď',
-                itemLabel: 'Pevná väzba',
               }
             },
             {
-              value: 'E-book 10,99 €',
-              label: 'E-book 10,99 €',
-              id: 1,
+              value: 'e-book',
+              label: 'E-book',
+              id: 2,
               customProperties: {
-                price: '11,50 €',
+                price: '10,99 €',
+                delivery: 'posielame ihneď',
               }
             },
           ]
         });
       });
-
-
