@@ -172,7 +172,10 @@ hr {
   ol,
   dl {
     margin: 0 0 $default-space;
-    list-style: none;
+
+    &:not(.style-default) {
+      list-style: none;
+    }
 
     ul,
     ol,
@@ -194,7 +197,7 @@ hr {
         transform: translateY(-50%);
 
         width: 10px;
-        height: 5px;
+        height: 2px;
 
         background: linear-gradient(to left, _color(primary, 500) 0, _color(primary, 500) 5px, _color(primary, 600) 5px, _color(primary, 600) 20px);
       }
