@@ -4,6 +4,19 @@ block opts
     - var pageTitle = 'Objednávky'
 
 block content
+
+  -
+    var swiperConfig = {
+      slidesPerView: 4,
+      simulateTouch: false,
+      breakpoints: {
+        480: {
+          slidesPerView: 1,
+          simulateTouch: true,
+        }
+      },
+    };
+
   main.account
 
     include modules/account-header
@@ -13,7 +26,7 @@ block content
         .row
           .col--l-3.show-l
             .form-control.form-control--input
-              input.input.filter__search(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
+              input.input.filter__search.no-mrg-top(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
             - for (i=0; i<5; i++)
               .box(class=i === 0 ? "bg-secondary" : "border-bottom-grey")
                 .bar.align-items-top
@@ -21,7 +34,7 @@ block content
                     .text-medium.text-semibold Objednávka č. 123
                     .text-small.text-color-grey Objednané 12.4.2017
                   .bar__item
-                    img(src="images/content/books/sample-1.jpg").thumbnail.thumbnail--book.thumbnail--medium
+                    img(src="images/content/books/sample-3.jpg").thumbnail.thumbnail--book.thumbnail--medium
                 .bar.text-medium.no-mrg-bottom
                   .bar__item.bar__item--fill
                     if i<1
@@ -33,212 +46,165 @@ block content
                   .bar__item
                     .text-semibold 10,00 €
 
-          .col--l-9.col--12.bg-secondary
-            .mb-medium
-            .row.align-items-middle
+          .col--l-9.col--12
+            .row
               .col--fill
-                h3.h4.text-color-black.mb-medium Účet
-              .col--shrink.show-l
-                button.btn
-                  +icon('save', 'icon--medium').icon--left
-                  | Uložiť zmeny
-            article.card.mb-large
-              section.card__content
-                .row.align-items-middle.mb-medium
-                  .col--3.col--m-shrink.no-pad-right
-                    img(src="/images/content/user-photo.png", alt="User", width="100")
-                  .col--fill
-                    div
-                      button.btn.btn--clean.btn--small.no-mrg
-                        +icon('upload', 'icon--medium').icon--left
-                        | Nahrať 
-                        span.show-s nový#{' '}
-                        | obrázok
-                    .mb-medium.show-m
-                    div
-                      button.btn.btn--clean.btn--small.no-mrg
-                        +icon('trash', 'icon--medium').icon--left
-                        | Odstrániť
-                .row
-                  .col--m-4
-                    .form-control.form-control--input
-                      .form-label
-                        label.text-transform-upper.text-small.text-color-grey Meno
-                      input.input(type="text")
-                    .form-control.form-control--input
-                      .form-label
-                        label.text-transform-upper.text-small.text-color-grey Priezvisko
-                      input.input(type="text")
-                  .col--m-4
-                    .form-control.form-control--input
-                      .form-label
-                        label.text-transform-upper.text-small.text-color-grey E-mail
-                      input.input(type="email")
-                    .form-control.form-control--select
-                      .form-label
-                        label.text-transform-upper.text-small.text-color-grey Dátum narodenia
-                      select.js-select.select--inline
-                        option 14
-                        option 15
-                      select.js-select.select--inline
-                        option Maj
-                        option Jun
-                      select.js-select.select--inline
-                        option 1998
-                        option 1999
-                  .col--m-4
-                    .form-control.form-control--input
-                      .form-label
-                        label.text-transform-upper.text-small.text-color-grey Vaša klubová karta
-                      input.input(type="text")
-                .row
-                  .col--12
-                    .border-bottom-grey.mb-medium
-                .row.no-mrg-bottom
-                  .col--m-4
-                    .btn-layout--vertical
-                      button.btn.btn--ghost.no-mrg Zmeniť heslo
-            h3.h4.text-color-black.mb-medium Adresy
-            .row.mb-medium
-              .col--m-4.flex.flex-column
-                article.card.flex-1
-                  section.card__content
-                    .badge.badge--blue.mb-medium
-                      +icon('invoice', 'icon--small').icon--left
-                      | Fakturačná
-                    .btn-dropdown.flex.flex-column
-                      button.btn.btn--ghost.btn--icon-right.text-left(
-                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                        data-toggle-expand,
-                        aria-haspopup="true"
-                      )
-                        | Fakturačná
-                        +icon('chevron-down', 'icon-dropdown').icon--medium
-                      .dropdown(data-dropdown, data-toggle-expand)
-                          a(href="#").dropdown__item Fakturačná
-                          a(href="#").dropdown__item Doručovacia
-                    p.text-medium Lighting Beetle
-                      br
-                      | Katarína Bohmová
-                      br
-                      | Katarína Bohmová
-                      br
-                      | Gunduličova 4,
-                      br
-                      | 851 02 Bratislava
-                      br
-                      | Slovensko
-                      br
-                      | +421 902 500 336
-                    p.text-medium
-                      | IČO: 44 865 894
-                      br
-                      | IČ DPH: SK20 2286 0840
-              .col--m-4.flex.flex-column
-                article.card.flex-1
-                  section.card__content
-                    .badge.badge--green.mb-medium
-                      +icon('invoice', 'icon--small').icon--left
-                      | Doručovacia
-                    .btn-dropdown.flex.flex-column
-                      button.btn.btn--ghost.btn--icon-right.text-left(
-                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                        data-toggle-expand,
-                        aria-haspopup="true"
-                      )
-                        | Doručovacia
-                        +icon('chevron-down', 'icon-dropdown').icon--medium
-                      .dropdown(data-dropdown, data-toggle-expand)
-                          a(href="#").dropdown__item Fakturačná
-                          a(href="#").dropdown__item Doručovacia
-                    p.text-medium Lighting Beetle
-                      br
-                      | Jozef Novák
-                      br
-                      | Lighting Beetle, Gunduličova 4,
-                      br
-                      | 851 02 Bratislava
-              - for (var i = 0; i<2; i++)
-                .col--m-4.flex.flex-column
-                  article.card.flex-1
-                    section.card__content
-                      .btn-dropdown.flex.flex-column
-                        button.btn.btn--ghost.btn--icon-right.text-left(
-                          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                          data-toggle-expand,
-                          aria-haspopup="true"
-                        )
-                          | Nastaviť adresu ako
-                          +icon('chevron-down', 'icon-dropdown').icon--medium
-                        .dropdown(data-dropdown, data-toggle-expand)
-                            a(href="#").dropdown__item Fakturačná
-                            a(href="#").dropdown__item Doručovacia
-                      .bar.align-items-top
-                        .bar__item.bar__item--fill
-                          p.text-medium Lighting Beetle
-                            br
-                            | Katarína Bohmová
-                            br
-                            | Katarína Bohmová
-                            br
-                            | Gunduličova 4,
-                            br
-                            | 851 02 Bratislava
-                            br
-                            | Slovensko
-                            br
-                            | +421 902 500 336
-                          p.text-medium
-                            | IČO: 44 865 894
-                            br
-                            | IČ DPH: SK20 2286 0840
-                        .bar__item.text-right
-                          .btn-dropdown.btn-dropdown--no-icon
-                            button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
-                              +icon('dots')
-                            .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand)
-                                a(href="#").dropdown__item Upraviť
-                                a(href="#").dropdown__item Zmazať
-              .col--m-4.flex.flex-column
-                .add-new-address.flex-1.mb-medium.align-items-middle.align-items-center
-                  button.btn.btn--clean.btn--small
-                    +icon('plus').icon--left
-                    | Pridať ďalšiu adresu
+                h1.h2.mb-small Objednávka č. 123
+                .text-medium.text-color-grey Objednané 12. 4. 2017
+              .col--shrink
+                button.btn.btn--ghost.no-mrg-bottom.text-space-right
+                  +icon('trash', 'icon--medium').icon--left
+                  | Stornovať
+                button.btn.btn--ghost.no-mrg-bottom
+                  +icon('download', 'icon--medium').icon--left
+                  | Stiahnuť faktúru
+            .row.mb-large
+              // progress bar
+              .order-progress.mb-large
+                .swiper-container(data-swiper-options=swiperConfig)
+                  .swiper-wrapper
+                    - for (var i = 0; i < 6; ++i)
+                      .order-progress__item.swiper-slide.text-center(class=(i <= currentStep) ? 'current' : '')
+                        .mb-small
+                          +icon('file', 'icon--large')
+                        .mb-small
+                          +icon('time', 'icon--medium')
+                        .text-medium Dokončili ste objednávku
             
-            h3.h4.text-color-black.mb-medium Platby
-            .mb-large
-              - for (var i = 0; i<2; i++)
-                .article.card
-                  section.card__content
-                    .row.no-mrg-bottom.align-items-middle
-                      .col--fill
-                        .text-small.text-transform-upper.text-color-grey-dark Vaša zapamätaná karta
-                        .text-medium 4544 **** **** 6403
-                      .col--shrink
-                        button.btn.btn--clean.btn--small.no-mrg
-                          +icon('trash', 'icon--medium').icon--left
-                          span.show-s Odstrániť
-
-            h3.h4.text-color-black.mb-medium Newsletter
-            .article.card.mb-large
-              section.card__content
-                .form-control.form-control--checkbox.no-mrg-bottom
-                  .checkbox.radiocheck--medium
-                    input.radiocheck__input(type="checkbox", id="newsletter")
-                    label.radiocheck__control(for="newsletter")
-                    label.radiocheck__label(for="newsletter") Prajem si dostávať newsletter
-
-            h3.h4.text-color-black.mb-medium E-knihy
-            .article.card.mb-large
-              section.card__content
-                .row.no-mrg-bottom.align-items-middle
-                  .col--m-shrink
-                    .form-control.form-control--checkbox.no-mrg-bottom
-                      .checkbox.radiocheck--medium
-                        input.radiocheck__input(type="checkbox", id="newsletter")
-                        label.radiocheck__control(for="newsletter")
-                        label.radiocheck__label(for="newsletter") Prosím o automatické odosielanie e-kníh na tento e-mail:
-                  .col.mb-small.hide-m
-                  .col--m-fill
-                    .form-control.form-control--input.no-mrg-bottom
-                      input.input(type="email", placeholder="Zadajte vašu e-mailovú adresu")
+            .order-packages
+              // zasielka 1
+              .package.mb-large
+                .bar.align-items-middle.mb-medium
+                  .bar__item
+                    h2.h4
+                      +icon('check-circle', 'icon--medium').text-color-success.text-space-right
+                      | Zásielka 1.
+                each a, i in Array(2)
+                  .package__item.mb-small
+                    .bar.align-items-middle.mb-small
+                      .bar__item.no-pad-right
+                        img(src="images/content/books/sample-1.jpg").thumbnail.thumbnail--book.thumbnail--medium
+                      .bar__item.bar__item--fill
+                        .text-semibold Rybaření pro začátečníky a názov na dva riadky
+                        .text-small.text-color-grey Armin Göllner
+                      .bar__item
+                        button.btn.btn--clean
+                          +icon('heart', 'icon--medium').icon--left
+                        span.text-medium V#{' '}
+                          a.link(href="#") knižnici
+                      .bar__item.text-medium
+                        | 1x#{' '}
+                        span.text-semibold 3940,26 €
+                    div(class=i===1 ? 'border-bottom-grey-2' : 'border-bottom-grey')
+              // zasielka 2
+              .package.mb-large
+                .bar.align-items-middle.mb-medium
+                  .bar__item
+                    h2.h4
+                      +icon('check-circle', 'icon--medium').text-color-success.text-space-right
+                      | Zásielka 2.
+                  .bar__item
+                    span.text-small.text-space-right
+                      span.text-color-grey Odoslané 13. 4. 2017.#{' '}
+                      span.text-color-black Kuriér GLS
+                    span.text-small.text-space-right
+                      span.text-color-grey Číslo zásielky#{' '}
+                      span.text-color-black HSKDJF546546
+                .package__item.mb-small
+                  .bar.align-items-middle.mb-small
+                    .bar__item.no-pad-right
+                      img(src="images/content/books/sample-22.jpg").thumbnail.thumbnail--book.thumbnail--medium
+                    .bar__item.bar__item--fill
+                      .text-semibold Rybaření pro začátečníky a názov na dva riadky
+                      .text-small.text-color-grey Armin Göllner
+                    .bar__item
+                      button.btn.btn--clean
+                        +icon('heart', 'icon--medium').icon--left
+                      span.text-medium V#{' '}
+                        a.link(href="#") knižnici
+                    .bar__item.text-medium
+                      | 1x#{' '}
+                      span.text-semibold 3940,26 €
+                  .border-bottom-grey-2
+              // neodoslane
+              .package.mb-large
+                .bar.align-items-middle.mb-medium
+                  .bar__item
+                    h2.h4
+                      +icon('time', 'icon--medium').text-color-grey.text-space-right
+                      | Zatiaľ neodoslané tituly
+                  .bar__item
+                    span.text-small.text-space-right
+                      span.text-color-grey Odoslané 13. 4. 2017.#{' '}
+                      span.text-color-black Kuriér GLS
+                    span.text-small.text-space-right
+                      span.text-color-grey Číslo zásielky#{' '}
+                      span.text-color-black HSKDJF546546
+                .package__item.mb-small
+                  .bar.align-items-middle.mb-small
+                    .bar__item.no-pad-right
+                      img(src="images/content/books/sample-15.jpg").thumbnail.thumbnail--book.thumbnail--medium
+                    .bar__item.bar__item--fill
+                      .text-semibold Rybaření pro začátečníky a názov na dva riadky
+                      .text-small.text-color-grey Armin Göllner
+                    .bar__item
+                      button.btn.btn--clean
+                        +icon('heart', 'icon--medium').icon--left
+                      span.text-medium V#{' '}
+                        a.link(href="#") knižnici
+                    .bar__item.text-medium
+                      | 1x#{' '}
+                      span.text-semibold 3940,26 €
+                  .border-bottom-grey-2
+            
+            .order-summary.mb-large
+              h2.mb-medium Sumár objednávky
+              .order-summary__item.border-bottom-grey-2.mb-medium
+                .bar.mb-small.text-medium
+                  .bar__item.bar__item--fill
+                    h3.h4.mb-small.text-color-black Spôsob doručenia
+                    div Pošta (na adresu)
+                  .bar__item.text-right
+                    .text-semibold 1,99 €
+              .order-summary__item.border-bottom-grey-2.mb-medium
+                .bar.mb-small.text-medium
+                  .bar__item.bar__item--fill 
+                    h3.h4.mb-small.text-color-black Spôsob doručenia
+                    div 1x červený papier
+                      br
+                      | Neprikladať faktúru
+              .order-summary__item
+                .bar.mb-small.text-medium
+                  .bar__item.bar__item--fill 
+                    h3.h4.mb-small.text-color-black Fakturačná adresa
+                    div Jozef Novák, Budyšínska 51, 851 02 Bratislava
+              .order-summary__item.border-bottom-grey-2.mb-medium
+                .bar.mb-small.text-medium
+                  .bar__item.bar__item--fill 
+                    h3.h4.mb-small.text-color-black Doručovacia adresa
+                    div Jozef Novák, Budyšínska 51, 851 02 Bratislava
+              .order-summary__item.border-bottom-grey-2.mb-medium
+                .bar.mb-small.text-medium
+                  .bar__item.bar__item--fill 
+                    h3.h4.mb-small.text-color-black Spôsob platby
+                    div Kartou (vopred)
+                      br
+                      | Darčeková poukážka
+                  .bar__item.text-right
+                    button.btn.btn--ghost.mb-small
+                      +icon('download', 'icon--medium').icon--left
+                      | Stiahnuť faktúru za prijatú platbu
+                    .text-semibold 1,99 €
+              .order-summary__item.border-bottom-grey-2.mb-medium
+                .bar.mb-small.text-medium
+                  .bar__item.bar__item--fill 
+                    h3.h4.mb-small.text-color-black Darovali ste centy a stali ste sa Anjelom!
+                    div Zaokrúhliť na 10€
+                  .bar__item.text-right
+                    button.btn.btn--clean.no-mrg-bottom
+                      +icon('chevron-down', 'icon--medium')
+                    .text-semibold 1,56 €
+              .mb-large
+              .text-right
+                span.text-large.text-space-right Spolu k úhrade
+                span.h2.text-bold 10,00 €
