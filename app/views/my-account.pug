@@ -26,7 +26,7 @@ block content
                 a(href="#", data-scroll) E-knihy
               li
                 a(href="#", data-scroll) O vás
-            
+
           .col--l-9.col--12
             .mb-medium.hide-l
             .row.align-items-middle
@@ -44,7 +44,7 @@ block content
                   div
                     button.btn.btn--clean.btn--small.no-mrg
                       +icon('upload', 'icon--medium').icon--left
-                      | Nahrať 
+                      | Nahrať
                       span.show-s nový#{' '}
                       | obrázok
                   .mb-medium.show-m
@@ -70,15 +70,19 @@ block content
                   .form-control.form-control--select
                     .form-label
                       label.text-transform-upper.text-small.text-color-grey Dátum narodenia
-                    select.js-select.select--inline
-                      option 14
-                      option 15
-                    select.js-select.select--inline
-                      option Maj
-                      option Jun
-                    select.js-select.select--inline
-                      option 1998
-                      option 1999
+                    .row.row--form
+                      .col--4
+                        select.js-select.select--input
+                          each day in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+                            option=day
+                      .col--4
+                        select.js-select.select--input
+                          each month in ['Jan','Feb','Mar','Apr','Máj','Jún','Júl','Aug','Sep','Okt','Nov','Dec']
+                            option=month
+                      .col--4
+                        select.js-select.select--input
+                          option 1998
+                          option 1999
                 .col--m-4
                   .form-control.form-control--input
                     .form-label
@@ -196,7 +200,7 @@ block content
                     | Pridať ďalšiu adresu
               .col--12
                 .border-bottom-grey.mb-medium
-            
+
             h3.h2.text-color-black.mb-medium Platby
             .mb-large
               - for (var i = 0; i<2; i++)
