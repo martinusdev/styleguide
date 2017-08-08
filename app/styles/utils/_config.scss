@@ -84,7 +84,9 @@ $color-palette: (
   ),
   success: (
     100: #eaf6ed,
+    200: #37b855,
     500: #33ab4e,
+    600: #2f9e49,
   )
 );
 
@@ -158,13 +160,13 @@ $typography-settings: (
 $typography-overrides: (
   null: (
     'h1, .h1' : (
-      font-size: _get-rem(42px),
+      font-size: _get-rem(25px),
       line-height: 49/42,
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
     ),
     'h2, .h2' : (
-      font-size: _get-rem(25px),
+      font-size: _get-rem(18px),
       line-height: 31/25,
       margin-bottom: _get-space('v'),
       font-weight: $font-weight-semibold,
@@ -194,6 +196,9 @@ $typography-overrides: (
     ),
   ),
   s: (
+    'h1, .h1' : (
+      font-size: _get-rem(42px),
+    ),
     'h4, .h4' : (
       font-size: _get-rem(18px),
     ),
@@ -485,6 +490,11 @@ $button-styles: (
       box-shadow: none,
     ),
     after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
       background-color: _color(primary, 600),
       height: 4px,
     ),
@@ -558,6 +568,24 @@ $button-styles: (
     ),
     active: (
       box-shadow: none,
+    ),
+  ),
+  success: (
+    default: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 500),
+      box-shadow: none,
+    ),
+    focus: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 200),
+    ),
+    active: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 600),
     ),
   )
 );
@@ -1267,6 +1295,11 @@ $modal-dialog-variants: (
     ),
     'l': (
       width: calc(100vw - (#{_get-space('h', 'large')} * 2)),
+    )
+  ),
+  'medium' : (
+    default: (
+      width: _get-rem(700px),
     )
   )
 );

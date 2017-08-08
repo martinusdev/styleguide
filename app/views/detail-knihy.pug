@@ -367,14 +367,46 @@ block content
                           //- img.img.img--circle(src="http://placehold.it/48x48")
                       .col--l-5.col--l-border.text-center
                         p.mb-small Ako sa vám páčila kniha?
-                        .rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
-                          each i in Array(5)
-                            a(href="#").rating-star__item
+                        //- .rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
+                        //-   each i in Array(5)
+                        //-     a(href="#").rating-star__item
+                        //-       +icon('star').icon--xlarge
+                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
+                          - for (var abc = 0; abc<5; abc++)
+                            input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
+                            label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+abc)
                               +icon('star').icon--xlarge
 
                       .col--l-4
                         .btn-layout.btn-layout--vertical.no-mrg
-                          button.btn Pridať recenziu
+                          button.btn(data-toggle="#add-review") Pridať recenziu
+                    .row.hide#add-review(data-toggle-class="hide")
+                      .col--12.mb-medium
+                      .col--12.mb-medium
+                        .border-bottom-grey-2
+                      .col--12
+                        .h4.mb-medium Máte chvíľu čas? Napíšte recenziu
+                        .form-control.form-control--input
+                          .form-label
+                            label.text-transform-upper.text-small.text-color-grey Názov recenzie
+                          input.input(type="text", placeholder="Napíšte názov recenzie")
+                        .form-control.form-control--textarea
+                          .form-label
+                            label.text-transform-upper.text-small.text-color-grey Text recenzie
+                          textarea.input(rows="5", placeholder="Napíšte svoju recenziu. Recenzia musí mať aspoň 150 znakov.")
+                        .form-control.form-control--checkbox
+                          .checkbox
+                            input.radiocheck__input(type="checkbox", id="review-spoiler")
+                            label.radiocheck__control(for="review-spoiler")
+                            label.radiocheck__label(for="review-spoiler") Môj príspevok prezrádza momenty z deja.
+                        p.text-medium.mb-large Recenzia bude uverejnená pod menom 
+                          span.text-semibold Bartolomej.#{' '}
+                          a.link(href="#") Uverejniť anonymne.
+                        .text-center
+                          button.btn Odoslať recenziu
+                          .text-small Odoslaním príspevku súhlasíte s našimi#{' '}
+                            a.link(href="#") podmienkami používania služby recenzií
+                            | .
 
                 .row.align-items-center.align-items-middle.book-rating.mb-large
                   .col--l-5
@@ -450,12 +482,12 @@ block content
                           p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate dictum ante, id ultricies mi bibendum ac. Nulla pretium nisi lorem, eget faucibus leo feugiat sed. Aliquam posuere nibh sit amet aliquam vehicula. Curabitur lobortis nibh vestibulum lobortis luctus. Curabitur a dolor quam. Ut ullamcorper at orci id sollicitudin.
                       .row.mb-medium
                         .col--12
-                          .border-bottom-grey
+                          .border-bottom-grey-2
                       .row
                         .col--12
                           h4.mb-small Terminy
                           - for (var i = 0; i < 4; ++i) {
-                            .bar.mb-medium.text-medium.border-bottom-grey
+                            .bar.mb-medium.text-medium.border-bottom-grey-2
                               .bar__item.mb-small
                                 +icon('calendar', 'icon--medium').text-color-grey
                               .bar__item.text-space-right.mb-small
@@ -491,27 +523,16 @@ block content
 
         +booksCarouselRecommended
 
-  //- flag review modal
-  .modal-overlay.active#flag-review
-    article.modal
-      .modal__wrap
-        section.modal__content
-          h1.h2 Chcete nahlásiť recenziu?
-          p Pozrieme sa na to, či recenzia porušuje pravidlá alebo prezrádza dej.
-        footer.modal__footer
-          .row.btn-layout--horizontal.align-items-center
-            button.btn.btn--ghost(type="button" data-toggle="#flag-review") Zrušiť
-            button.btn(type="button" data-toggle="#flag-review") Nahlásiť
-          </div>
-        </footer>
-      </div>
-    </article>
-  </div>
-
     include ./modules/seen-items
 
 block append modals
   include ./modules/product-preview
+
+  //- flag review modal
+  include ./modules/flag-review
+
+  //- book reservation modal
+  include ./modules/book-reservation
 
 block append scripts
     script.
@@ -552,4 +573,9 @@ block append scripts
             productPreview.update();
           }
         });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (typeof e.target.className === 'string' && e.target.className.includes('rating-star__input'))
+          e.target.parentElement.classList.add("checked");
       });

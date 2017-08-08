@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Light - Styleguide</title>
+    <meta name="author" content="Lighting Beetle s.r.o.">
+    <meta name="description" content="Light is SCSS/Pug foundation for living styleguides">
+    <meta name="keywords" content="Living Styleguide, Styleguide, SCSS, Pug">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta name="theme-color" content="#ff5722">
+    <link rel="stylesheet" href="../fonts/Tabac/fonts.css">
+    <link rel="stylesheet" href="../fonts/opensans/fonts.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/light.css">
+    <script src="../scripts/plugins/modernizr.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".js-scrollspy" data-offset="150" id="top">
+    <!-- offcanvas-->
+    <div class="l-offcanvas" data-role="offcanvas">
+      <!-- content main-->
+      <article class="l-content-main" id="top">
+        <!-- header-->
+        <header class="l-header-main"> 
+          <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
+          <div class="l-wrap-main">
+            <h1 class="js-header"> <a href="#top" data-smoothscroll="#top">Cart</a></h1>
+            <div class="js-scrollspy l-headnav" id="header-navigation">
+              <ul class="l-headnav_list nav">
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#cart" data-smoothscroll="#cart" data-toggle-target="#header-navigation" data-toggle="dropdown">Cart</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <div class="l-content-main_inner">
+          <section class="l-main-info" id="main-info">
+            <div class="l-wrap-main">
+              <p class="l-big">Documentation of Cart component.
+              </p>
+              <div class="l-box-desc">
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/modules/_cart-item.scss</code><br/>
+              </div>
+            </div>
+          </section>
+          <aside class="l-nav-contents js-scrollspy">
+            <p class="l-nav-contents_headline">Contents</p>
+            <ul class="l-nav-contents_list nav">
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#cart" data-smoothscroll="#cart">Cart</a></li>
+            </ul>
+          </aside>
+          <section id="cart">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Cart
+              </h2>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <div class="row">
+                    <div class="col--m-12">
+                      <ul class="list list--cart">
+                        <li class="list__item">
+                          <div class="cart-item">
+                            <div class="cart-item__thumbnail"><img class="thumbnail thumbnail--book thumbnail--medium-large thumbnail--clickable" src="/images/content/books/sample-15.jpg"></div>
+                            <div class="cart-item__content">
+                              <div class="cart-item__column cart-item__column--product-name">
+                                <div class="text-semibold no-mrg text-ellipsis">Základy rybolovu pro kluky a holky</div>
+                                <div class="text-color-grey text-size-small no-mrg text-ellipsis">Frank Weissert, Jack Thorne a John Tiffany</div>
+                                <div class="bar bar--small text-size-small no-mrg show-m">
+                                  <div class="bar__item"><img class="img img--circle thumbnail thumbnail--small" src="http://placehold.it/100x100"></div>
+                                  <div class="bar__item"><span class="text-transform-upper text-color-grey">Tento titul číta aj</span>
+                                    <a class="link" href="#">Jana Šlinská</a>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--wishlist">
+                                <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                                  <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                                    <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                      <use xlink:href="../icons_/app.svg#icon-heart"></use>
+                                    </svg>
+                                  </button>
+                                  <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                      <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                        <use xlink:href="../icons_/app.svg#icon-plus"></use>
+                                      </svg>Nový záznam</a></div>
+                                </div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--tags show-m">
+                                <div class="badge text-nowrap">E-kniha</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--qty">
+                                <div class="form-control form-control--input no-mrg">
+                                  <div class="input-addons input-addons--small align-items-right">
+                                    <div class="input-addons__item no-pad">
+                                      <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-undefined-qty">
+                                        <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                          <use xlink:href="../icons_/app.svg#icon-minus"></use>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                    <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-undefined-qty" min="0" max="100" step="1" value="1">
+                                    <div class="input-addons__item no-pad">
+                                      <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-undefined-qty">
+                                        <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                          <use xlink:href="../icons_/app.svg#icon-plus"></use>
+                                        </svg>
+                                      </button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--price">
+                                <div class="text-semibold text-size-medium text-nowrap">12,99 €</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--remove">
+                                <button class="btn btn--clean no-mrg" type="button">
+                                  <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                                    <use xlink:href="../icons_/app.svg#icon-trash"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;ul class=&quot;list list--cart&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;cart-item&quot;&gt;
+      &lt;div class=&quot;cart-item__thumbnail&quot;&gt;
+        ...
+      &lt;/div&gt;
+      &lt;div class=&quot;cart-item__content&quot;&gt;
+        &lt;div class=&quot;cart-item__column&quot;&gt;
+          ...
+        &lt;/div&gt;
+        &lt;div class=&quot;cart-item__column&quot;&gt;
+          ...
+        &lt;/div&gt;
+        &lt;div class=&quot;cart-item__column&quot;&gt;
+          ...
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+        </div>
+      </article>
+      <aside class="l-wrap-navs">
+        <!-- navigation main-->
+        <nav class="l-nav-main" data-role="dropdown"><a class="l-nav-main_headline" href="../index.html">Martinus - Styleguide</a>
+          <ul class="l-nav-main_list js-scrollbar" data-role="sidebar">
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Introduction
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="index.html">Get started</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Foundations
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="color-palette.html">Color Palette</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="typography.html">Typography</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="icons.html">Icons / Images</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="grid.html">Grid</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="utilities.html">Utilities</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link is-active selected" data-toggle="self, next">Components
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub is-active">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
+                    <svg class="icon icon-sg-add " role="img" aria-hidden="true">
+                      <use xlink:href="../icons_/styleguide.svg#icon-sg-add"></use>
+                    </svg></a>
+                  <ul class="l-nav-main_list-sub2">
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-basic.html">- Basic</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-labels.html">- Labels</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
+                  </ul>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="box.html">Box</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="cart.html">Cart</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tables.html">Tables</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cards.html">Cards</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="lists.html">Lists</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tabs.html">Tabs</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="modals.html">Modals</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="dropdowns.html">Dropdowns</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="badges.html">Badges, pills</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="carousels.html">Carousels</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tooltips.html">Tooltips</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Modules
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="price-box.html">Price Boxes</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Javascripts
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-select.html">Select</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-toggle.html">Toggle</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- end: navigation main-->
+      </aside>
+      <!-- end: content main-->
+    </div>
+    <!-- end: offcanvas-->
+    <script src="../scripts/vendor.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/light.js"></script>
+  </body>
+</html>

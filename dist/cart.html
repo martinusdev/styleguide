@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Kosik</title>
+    <meta name="author" content="Lighting Beetle s.r.o.">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="theme-color" content="#D22121">
+    <link rel="stylesheet" href="fonts/Tabac/fonts.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <script src="scripts/plugins/modernizr.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__wrapper" data-sticky data-sticky-class="is-stuck" data-sticky-wrap>
+        <div class="wrapper-main">
+          <div class="bar header__bar">
+            <div class="bar__item header__logo"><img class="show-l" src="images/content/logo.svg" alt="Martinus"><img class="hide-l" src="images/content/logo-small.svg" alt="Martinus"></div>
+            <div class="bar__item header__nav">
+              <div class="btn-layout btn-layout--horizontal">
+                <div class="btn-dropdown no-mrg show-m">
+                  <button class="btn btn--clean header__btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" data-toggle-icon="icons_/app.svg#icon-chevron-up" data-toggle-expand aria-haspopup="true">Knihy
+                    <svg class="icon icon-chevron-down icon-dropdown icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-chevron-down"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="btn-dropdown no-mrg show-m">
+                  <button class="btn btn--clean header__btn" data-mega-menu-trigger="#mega-menu-eknihy" data-toggle="self" data-toggle-icon="icons_/app.svg#icon-chevron-up" data-toggle-expand aria-haspopup="true">E-Knihy
+                    <svg class="icon icon-chevron-down icon-dropdown icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-chevron-down"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="btn-dropdown no-mrg show-l">
+                  <button class="btn btn--clean header__btn" data-mega-menu-trigger data-toggle="self" data-toggle-icon="icons_/app.svg#icon-chevron-up" data-toggle-expand aria-haspopup="true">Filmy
+                    <svg class="icon icon-chevron-down icon-dropdown icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-chevron-down"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="btn-dropdown no-mrg show-l">
+                  <button class="btn btn--clean header__btn" data-mega-menu-trigger data-toggle="self" data-toggle-icon="icons_/app.svg#icon-chevron-up" data-toggle-expand aria-haspopup="true">Hry
+                    <svg class="icon icon-chevron-down icon-dropdown icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-chevron-down"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="btn-dropdown no-mrg btn-dropdown--no-icon show-m">
+                  <button class="btn btn--clean btn--equal header__btn no-pad" data-toggle="self, next" data-toggle-expand aria-haspopup="true">
+                    <svg class="icon icon-dots  icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-dots"></use>
+                    </svg>
+                  </button>
+                  <div class="dropdown dropdown--arrowhead" data-dropdown data-toggle-expand aria-expanded="false"><a class="dropdown__item" href="#">Káva ačaj</a><a class="dropdown__item" href="#">Hudba</a></div>
+                </div>
+                <div class="btn-dropdown no-mrg btn-dropdown--no-icon hide-m">
+                  <button class="btn btn--clean header__btn" data-mega-menu-trigger data-toggle="self" data-toggle-icon="icons_/app.svg#icon-close" data-toggle-expand aria-haspopup="true">
+                    <svg class="icon icon-menu  icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-menu"></use>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="bar__item bar__item--fill header__search header-search">
+              <button class="btn btn--clean btn--small btn--equal header__btn no-mrg-bottom hide-m">
+                <svg class="icon icon-search  icon--medium" role="img" aria-hidden="true">
+                  <use xlink:href="icons_/app.svg#icon-search"></use>
+                </svg>
+              </button>
+              <div class="form-control form-control--input no-mrg-bottom header__search show-m">
+                <div class="input-addons">
+                  <input class="input input--dark" type="text" placeholder="Titul, kategória alebo autor" data-input>
+                  <div class="input-addons__item header-search__empty input-addons__item--dark">
+                    <svg class="icon icon-search  icon--medium" role="presentation" aria-label="Search">
+                      <use xlink:href="icons_/app.svg#icon-search"></use>
+                    </svg>
+                  </div>
+                  <div class="input-addons__item input-addons__item no-pad header-search__value">
+                    <div class="btn btn--primary">
+                      <svg class="icon icon-search  icon--medium icon--left" role="presentation" aria-label="Search">
+                        <use xlink:href="icons_/app.svg#icon-search"></use>
+                      </svg>Hladať
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bar__item header__user"><a href="#">
+                <div class="bar bar--small no-mrg-bottom">
+                  <div class="bar__item">
+                    <svg class="icon icon-user  icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-user"></use>
+                    </svg>
+                  </div>
+                  <div class="header__username bar__item bar__item--fill text-ellipsis show-m">Bartolomej</div>
+                </div></a></div>
+            <div class="bar__item header__cart"><a class="btn btn--clean btn--small btn--equal header__btn" href="cart.html" data-notification="4">
+                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                </svg></a></div>
+          </div>
+        </div>
+      </div>
+      <div class="header__mega-menu mega-menu" data-mega-menu>
+        <div class="mega-menu__contents" data-mega-menu-contents>
+          <div class="mega-menu__content" data-mega-menu-target id="mega-menu-knihy">
+            <div class="mega-menu__mobile-header" data-toggle="self, parent, [data-mega-menu-contents]" data-toggle-icon="icons_/app.svg#icon-arrow-left" data-toggle-expand aria-haspopup="true">
+              <div class="bar">
+                <div class="bar__item bar__item--fill">Knihy</div>
+                <div class="bar__item">
+                  <svg class="icon icon-arrow-right  icon--medium text-color-grey" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-arrow-right"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="mega-menu__content-wrap">
+              <div class="mega-menu__recommended">
+                <h5>Odporúčame</h5>
+                <ul class="list--expanded no-pad no-mrg-bottom">
+                  <li><a class="link link--black link--show" href="#">Akcie</a></li>
+                  <li><a class="link link--black link--show" href="#">Novinky</a></li>
+                  <li><a class="link link--black link--show" href="#">Bestsellery</a></li>
+                  <li><a class="link link--black link--show" href="#">Kolekcie</a></li>
+                  <li><a class="link link--black link--show" href="#">Pre Vás</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu__categories mega-menu-categories">
+                <div class="row">
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Biografie, životopisy</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Cudzojazyčná lit.</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Ostatné jazyky</a></li>
+                      <li><a class="link link--grey" href="#">Dvojjazyčné vydania</a></li>
+                      <li><a class="link link--grey" href="#">Španielsky jazyk</a></li>
+                      <li><a class="link link--grey" href="#">Francúzsky jazyk</a></li>
+                      <li><a class="link link--grey" href="#">Nemecký jazyk</a></li>
+                      <li><a class="link link--grey" href="#">Anglický jazyk</a></li>
+                      <li><a class="link link--grey" href="#">+ 2 ďalšie</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Deti a mládež</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Domov, hobby</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Ekonomika, právo</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Sociálne zabezpečenie</a></li>
+                      <li><a class="link link--grey" href="#">Verejná správa</a></li>
+                      <li><a class="link link--grey" href="#">Súkromné právo</a></li>
+                      <li><a class="link link--grey" href="#">Verejné právo</a></li>
+                      <li><a class="link link--grey" href="#">Medzinárodné právo</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 5</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Ezoterika, mystika</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Geografia, cestovanie</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">História</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Manažment, biznis</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Medicína, zdravie</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Motivačná literatúra</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Náboženstvo, cirkev</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mega-menu__content" data-mega-menu-target id="mega-menu-eknihy">
+            <div class="mega-menu__mobile-header" data-toggle="self, parent, [data-mega-menu-contents]" data-toggle-icon="icons_/app.svg#icon-arrow-left" data-toggle-expand aria-haspopup="true">
+              <div class="bar">
+                <div class="bar__item bar__item--fill">E-knihy</div>
+                <div class="bar__item">
+                  <svg class="icon icon-arrow-right  icon--medium text-color-grey" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-arrow-right"></use>
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="mega-menu__content-wrap">
+              <div class="mega-menu__recommended">
+                <h5>Odporúčame</h5>
+                <ul class="list--expanded no-pad no-mrg-bottom">
+                  <li><a class="link link--black link--show" href="#">Akcie</a></li>
+                  <li><a class="link link--black link--show" href="#">Novinky</a></li>
+                  <li><a class="link link--black link--show" href="#">Bestsellery</a></li>
+                  <li><a class="link link--black link--show" href="#">Kolekcie</a></li>
+                  <li><a class="link link--black link--show" href="#">Pre Vás</a></li>
+                </ul>
+              </div>
+              <div class="mega-menu__categories mega-menu-categories">
+                <div class="row">
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Biografie, životopisy</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Cudzojazyčná lit.</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Ostatné jazyky</a></li>
+                      <li><a class="link link--grey" href="#">Dvojjazyčné vydania</a></li>
+                      <li><a class="link link--grey" href="#">Španielsky jazyk</a></li>
+                      <li><a class="link link--grey" href="#">Francúzsky jazyk</a></li>
+                      <li><a class="link link--grey" href="#">Nemecký jazyk</a></li>
+                      <li><a class="link link--grey" href="#">Anglický jazyk</a></li>
+                      <li><a class="link link--grey" href="#">+ 2 ďalšie</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Deti a mládež</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Domov, hobby</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Ekonomika, právo</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Sociálne zabezpečenie</a></li>
+                      <li><a class="link link--grey" href="#">Verejná správa</a></li>
+                      <li><a class="link link--grey" href="#">Súkromné právo</a></li>
+                      <li><a class="link link--grey" href="#">Verejné právo</a></li>
+                      <li><a class="link link--grey" href="#">Medzinárodné právo</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 5</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Ezoterika, mystika</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Geografia, cestovanie</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">História</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Manažment, biznis</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Medicína, zdravie</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Motivačná literatúra</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                  <div class="col--l-4 col--m-12"><a class="link mega-menu-categories__title" href="#">Náboženstvo, cirkev</a>
+                    <ul class="list--comma text-size-small no-pad show-m">
+                      <li><a class="link link--grey" href="#">Spomienky a udalosti</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti dnes</a></li>
+                      <li><a class="link link--grey" href="#">Významné osobnosti minulosť</a></li>
+                      <li><a class="link link--grey" href="#">Umelci</a></li>
+                      <li><a class="link link--grey" href="#">+ ďalších 8</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mega-menu__banner text-center">
+            <div class="row">
+              <div class="col--l-12 col--m-12 col--s-8 ofst--center">
+                <div class="h2">Kúpite výhodne spolu</div>
+                <div class="bar align-items-bottom">
+                  <div class="bar__item bar__item--fill">
+                    <div class="thumbnail thumbnail--book thumbnail--large">
+                      <div class="thumbnail__img-wrap"><img class="img img--fluid mb-medium" src="images/content/books/sample-5.jpg" alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany"></div>
+                    </div>
+                  </div>
+                  <div class="bar__item bar__item--fill">
+                    <div class="thumbnail thumbnail--book thumbnail--large">
+                      <div class="thumbnail__img-wrap"><img class="img img--fluid mb-medium" src="images/content/books/sample-8.jpg" alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="badges badges--inline align-items-center mb-medium">
+                  <div class="badge badge--primary">Ušetríte 3,50 €</div>
+                </div>
+                <button class="btn btn--primary btn--large mb-small">
+                  <svg class="icon icon-add-to-cart  icon--left icon--medium" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-add-to-cart"></use>
+                  </svg>Kúpiť spolu za <span class="text-nowrap">20,32 €</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-overlay" id="checkout-notice" data-modal>
+        <article class="modal modal--full">
+          <div class="row no-mrg-horizontal modal__wrap">
+            <section class="modal__content col--l-8 col--m-6 show-m bg-secondary">
+              <h5>Posledné z vášho wishlistu</h5>
+              <div class="row">
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <h5>Zákazníci si kúpili aj...</h5>
+              <div class="row">
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div class="row show-l">
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+              <div class="row show-l">
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+                <div class="col--l-6">
+                  <article class="product product--horizontal mb-medium">
+                    <div class="product__img product__cover">
+                      <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                      </div>
+                    </div>
+                    <div class="product__caption">
+                      <div class="bar bar--small no-mrg-bottom">
+                        <div class="bar__item bar__item--fill">
+                          <div class="text-ellipsis"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a></div>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                          <div class="bar bar--small mb-small">
+                            <div class="bar__item">
+                              <div class="badge">
+                                <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-star"></use>
+                                </svg> 4.5
+                              </div>
+                            </div>
+                            <div class="bar__item bar__item--fill text-right">
+                              <div class="text-medium text-semibold">9999,99 €</div>
+                            </div>
+                            <div class="bar__item"><a class="btn btn--small btn--clean btn--equal text-color-theme" href="#">
+                                <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-cart"></use>
+                                </svg></a></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </section>
+            <section class="modal__content col--l-4 col--m-6">
+              <div class="bar bar--vertical">
+                <div class="bar__item bar__item--fill">
+                  <div class="bar">
+                    <div class="bar__item bar__item--fill">
+                      <h2>Váš košík</h2>
+                    </div>
+                    <div class="bar__item">
+                      <button class="btn btn--clean" data-toggle="#checkout-notice">Zatvoriť
+                        <svg class="icon icon-close  icon--medium icon--right" role="img" aria-hidden="true">
+                          <use xlink:href="icons_/app.svg#icon-close"></use>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="box box--success">
+                    <h3 class="text-color-success mb-medium text-semibold">Do košíka ste práve pridali:</h3>
+                    <article class="product product--horizontal no-mrg-bottom">
+                      <div class="product__img product__cover">
+                        <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="detail-knihy.html">
+                            <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"/></div></a>
+                        </div>
+                      </div>
+                      <div class="product__caption">
+                        <div class="bar bar--small no-mrg-bottom">
+                          <div class="bar__item bar__item--fill"><a class="text-semibold text-size-medium" href="detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a>
+                            <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                              <li>Frank Weissert</li>
+                              <li>Jack Thorne</li>
+                              <li>John Tiffany</li>
+                            </ul>
+                            <div class="bar bar--small mb-small">
+                              <div class="bar__item text-size-medium">1x</div>
+                              <div class="bar__item bar__item--fill text-right">
+                                <div class="text-medium text-semibold">9999,99 €</div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="bar__item align-self-top"><a class="btn btn--small btn--clean btn--equal" href="#">
+                              <svg class="icon icon-close  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-close"></use>
+                              </svg></a></div>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <p class="text-center"><a class="link text-size-medium" href="#">Zobraziť všetky (+3) 
+                      <svg class="icon icon-arrow-right " role="img" aria-hidden="true">
+                        <use xlink:href="icons_/app.svg#icon-arrow-right"></use>
+                      </svg></a></p>
+                </div>
+                <div class="bar__item">
+                  <p class="text-medium">Nakúpte ešte za <span class="text-bold">8,23 €</span> a doručenie Slovenskou poštou máte <span class="text-bold">zadarmo</span>.</p>
+                  <div class="bar bar--small">
+                    <div class="bar__item">
+                      <svg class="icon icon-transit  text-color-blue icon--medium" role="presentation" aria-label="Doprava">
+                        <use xlink:href="icons_/app.svg#icon-transit"></use>
+                      </svg>
+                    </div>
+                    <div class="bar__item bar__item--fill">
+                      <div class="progress-bar">
+                        <div class="progress-bar__value progress-bar--round progress-bar__value--blue" style="width: 80%;"></div>
+                      </div>
+                    </div>
+                    <div class="bar__item"><span class="text-size-medium">30 €</span></div>
+                  </div>
+                  <div class="bar align-items-bottom">
+                    <div class="bar__item">Spolu</div>
+                    <div class="bar__item bar__item--fill text-right">
+                      <h1>21,77 €</h1>
+                    </div>
+                  </div>
+                  <div class="bar align-items-bottom text-color-grey text-size-medium">
+                    <div class="bar__item">Inde by ste zaplatili:</div>
+                    <div class="bar__item bar__item--fill text-right">21,77 € (ušetríte 2,00 €)</div>
+                  </div>
+                  <div class="btn-layout btn-layout--horizontal btn-layout--fill no-mrg"><a class="btn btn--ghost" href="#">Ísť do košíka</a><a class="btn btn--primary" href="#">Objednať teraz</a></div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </article>
+      </div>
+    </header>
+    <main class="bg-secondary">
+      <section class="section">
+        <div class="wrapper-main">
+          <div class="row">
+            <div class="col--l-8 ofst--center card">
+              <div class="card__content">
+                <div class="bar bar--small">
+                  <div class="bar__item">
+                    <h1 class="h2">Váš košík</h1>
+                  </div>
+                  <div class="bar__item">
+                    <div class="pill pill--blue">4</div>
+                  </div>
+                </div>
+                <ul class="list list--cart">
+                  <li class="list__item" id="cart-item0" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__thumbnail"><a class="thumbnail thumbnail--book thumbnail--medium-large thumbnail--clickable" href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-15.jpg"></div></a></div>
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name"><a class="text-semibold no-mrg text-ellipsis" href="detail-knihy.html">Základy rybolovu pro kluky a holky</a>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Frank Weissert</li>
+                            <li>Jack Thorne</li>
+                            <li>John Tiffany</li>
+                          </ul>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-0-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-0-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-0-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">12,99 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item0">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item1" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__thumbnail"><a class="thumbnail thumbnail--book thumbnail--medium-large thumbnail--clickable" href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-1.jpg"></div></a></div>
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name"><a class="text-semibold no-mrg text-ellipsis" href="detail-knihy.html">Hobbit</a>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>J.R.R. Tolkien</li>
+                          </ul>
+                          <div class="bar bar--small text-size-small no-mrg show-m">
+                            <div class="bar__item"><img class="img img--circle thumbnail thumbnail--small" src="http://placehold.it/100x100"></div>
+                            <div class="bar__item"><span class="text-transform-upper text-color-grey">Tento titul číta aj</span>
+                              <a class="link" href="#">Jana Šlinská</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-1-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-1-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-1-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">7,26 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item1">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item2" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__thumbnail"><a class="thumbnail thumbnail--book thumbnail--medium-large thumbnail--clickable" href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-22.jpg"></div></a></div>
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name"><a class="text-semibold no-mrg text-ellipsis" href="detail-knihy.html">Ako ju získať</a>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Michal Kopecký</li>
+                          </ul>
+                          <div class="bar bar--small text-size-small no-mrg show-m">
+                            <div class="bar__item"><img class="img img--circle thumbnail thumbnail--small" src="http://placehold.it/100x100"></div>
+                            <div class="bar__item"><span class="text-transform-upper text-color-grey">Tento titul číta aj</span>
+                              <a class="link" href="#">Jana Šlinská</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                          <div class="badge text-nowrap">E-kniha</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-2-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-2-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-2-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">12,00 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item2">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item3" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__thumbnail"><a class="thumbnail thumbnail--book thumbnail--medium-large thumbnail--clickable" href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-1.jpg"></div></a></div>
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name"><a class="text-semibold no-mrg text-ellipsis" href="detail-knihy.html">Hobbit</a>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>J.R.R. Tolkien</li>
+                          </ul>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-3-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-3-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-3-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">7,26 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item3">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item4" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__thumbnail"><a class="thumbnail thumbnail--book thumbnail--medium-large thumbnail--clickable" href="detail-knihy.html">
+                          <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-3.jpg"></div></a></div>
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name"><a class="text-semibold no-mrg text-ellipsis" href="detail-knihy.html">Steve Jobs - mam taký dlhší názov</a>
+                          <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                            <li>Walter Isaacson</li>
+                          </ul>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-4-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-4-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-4-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">17,99 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item4">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col--l-8 ofst--center card">
+              <div class="card__content">
+                <div class="bar bar--small">
+                  <div class="bar__item">
+                    <h1 class="h2">Váš košík</h1>
+                  </div>
+                  <div class="bar__item">
+                    <div class="pill pill--blue">4</div>
+                  </div>
+                </div>
+                <ul class="list list--cart">
+                  <li class="list__item" id="cart-item0" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name">
+                          <div class="text-semibold no-mrg text-ellipsis">Základy rybolovu pro kluky a holky</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-0-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-0-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-0-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">12,99 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item0">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item1" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name">
+                          <div class="text-semibold no-mrg text-ellipsis">Hobbit</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-1-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-1-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-1-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">7,26 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item1">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item2" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name">
+                          <div class="text-semibold no-mrg text-ellipsis">Ako ju získať</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                          <div class="badge text-nowrap">E-kniha</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-2-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-2-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-2-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">12,00 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item2">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item3" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name">
+                          <div class="text-semibold no-mrg text-ellipsis">Hobbit</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-3-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-3-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-3-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">7,26 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item3">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list__item" id="cart-item4" data-toggle-class="is-hidden">
+                    <div class="cart-item">
+                      <div class="cart-item__content">
+                        <div class="cart-item__column cart-item__column--product-name">
+                          <div class="text-semibold no-mrg text-ellipsis">Steve Jobs - mam taký dlhší názov</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--wishlist">
+                          <div class="btn-dropdown btn-dropdown--no-icon no-mrg-bottom">
+                            <button class="btn btn--clean no-mrg" data-toggle="self, next" data-toggle-expand="data-toggle-expand">
+                              <svg class="icon icon-heart  icon--medium" role="img" aria-hidden="true">
+                                <use xlink:href="icons_/app.svg#icon-heart"></use>
+                              </svg>
+                            </button>
+                            <div class="dropdown dropdown--arrowhead" data-dropdown="data-dropdown" aria-expanded="false"><a class="dropdown__item" href="#">Wishlist</a><a class="dropdown__item" href="#">Môj zoznam</a><a class="dropdown__item" href="#">
+                                <svg class="icon icon-plus  icon--medium text-color-grey" role="img" aria-hidden="true">
+                                  <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                </svg>Nový záznam</a></div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--tags show-m">
+                        </div>
+                        <div class="cart-item__column cart-item__column--qty">
+                          <div class="form-control form-control--input no-mrg">
+                            <div class="input-addons input-addons--small align-items-right">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="decrease" data-controls="#product-4-qty">
+                                  <svg class="icon icon-minus icon--medium" role="presentation" aria-label="mínus">
+                                    <use xlink:href="icons_/app.svg#icon-minus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                              <input class="input input--small input--short no-pad-horizontal text-center" type="number" id="product-4-qty" min="0" max="100" step="1" value="1">
+                              <div class="input-addons__item no-pad">
+                                <button class="btn btn--small btn--clean btn--equal" type="button" data-number-spinner="increase" data-controls="#product-4-qty">
+                                  <svg class="icon icon-plus icon--medium" role="presentation" aria-label="plus">
+                                    <use xlink:href="icons_/app.svg#icon-plus"></use>
+                                  </svg>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--price">
+                          <div class="text-semibold text-size-medium text-nowrap">17,99 €</div>
+                        </div>
+                        <div class="cart-item__column cart-item__column--remove">
+                          <button class="btn btn--clean no-mrg" type="button" data-toggle="#cart-item4">
+                            <svg class="icon icon-trash icon--medium" role="img" aria-hidden="true">
+                              <use xlink:href="icons_/app.svg#icon-trash"></use>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrapper-main">
+        <section class="row mb-medium">
+          <div class="col--l-2 col--m-4">
+            <ul class="list--unstyled list--expanded mb-medium">
+              <li><a class="link text-color-white" href="#">Knihy</a></li>
+              <li><a class="link text-color-white" href="#">Filmy</a></li>
+              <li><a class="link text-color-white" href="#">Spoločenské hry</a></li>
+              <li><a class="link text-color-white" href="#">Káva čaj</a></li>
+            </ul>
+          </div>
+          <div class="col--l-3 col--m-6">
+            <h5>Kníhkupectvá</h5>
+            <div class="row">
+              <div class="col--4">
+                <ul class="list--unstyled mb-medium">
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Bratislava</a></li>
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Košice</a></li>
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Lučenec</a></li>
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Martin</a></li>
+                </ul>
+              </div>
+              <div class="col--8">
+                <ul class="list--unstyled mb-medium">
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Poprad</a></li>
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Považská Bystrica</a></li>
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Nitra</a></li>
+                  <li><a class="link text-color-white text-size-medium text-normal" href="#">Žilina</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col--l-2 col--m-4">
+            <h5>Nakupujte u nás</h5>
+            <ul class="list--unstyled mb-medium">
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Prečo práve u nás?</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Ako nakupovať</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Najčastejšie otázky</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Poštovné</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Možnosti platby</a></li>
+            </ul>
+          </div>
+          <div class="col--l-2 col--m-4 col--6">
+            <h5>Naše projekty</h5>
+            <ul class="list--unstyled mb-medium">
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Knihobežník</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Slovensko číta</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Čo mám čítať ďalej</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Poviedky o nevere</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Slovensko píše román</a></li>
+            </ul>
+          </div>
+          <div class="col--l-2 col--m-4 col--6">
+            <h5>Martinus.sk</h5>
+            <ul class="list--unstyled mb-medium">
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Martinus.sk</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Náš príbeh</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">O nás</a></li>
+              <li><a class="link text-color-white text-size-medium text-normal" href="#">Kontakty</a></li>
+            </ul>
+          </div>
+        </section>
+        <section class="row mb-medium align-items-middle">
+          <div class="col--m-8 col--l-7">
+            <div class="bar">
+              <div class="bar__item bar__item--fill">
+                <div class="form-control form-control--m-inline form-control--input no-mrg-bottom">
+                  <div class="form-label">
+                    <label class="text-color-white" for="newsletter-input">Knižné a filmové novinky na e-mail:</label>
+                  </div>
+                  <div class="bar bar--small no-mrg-bottom">
+                    <div class="bar__item bar__item--fill">
+                      <input class="input input--dark" type="text" placeholder="Napíšte nám váš e-mail" id="newsletter-input">
+                    </div>
+                    <div class="bar__item">
+                      <button class="btn btn--primary">Odoslať</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col--m-4 col--l-5">
+            <div class="bar footer__social">
+              <div class="bar__item"><a href="#">
+                  <svg class="icon icon-fb  icon--medium" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-fb"></use>
+                  </svg></a></div>
+              <div class="bar__item"><a href="#">
+                  <svg class="icon icon-google  icon--medium" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-google"></use>
+                  </svg></a></div>
+              <div class="bar__item"><a href="#">
+                  <svg class="icon icon-instagram  icon--medium" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-instagram"></use>
+                  </svg></a></div>
+              <div class="bar__item"><a href="#">
+                  <svg class="icon icon-youtube  icon--medium" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-youtube"></use>
+                  </svg></a></div>
+            </div>
+          </div>
+        </section>
+        <section class="row align-items-middle">
+          <div class="col--l-7">
+            <div class="bar bar--small mb-medium footer__copy">
+              <div class="bar__item"><img src="images/content/logo-small.svg" alt="Martinus"></div>
+              <div class="bar__item bar__item--fill">&copy; 2011 Martinus. Internetové kníhkupectvo. Všetky práva vyhradené.</div>
+            </div>
+          </div>
+          <div class="col--l-5">
+            <ul class="list-inline">
+              <li><a class="link text-color-white text-normal text-medium" href="#">Obchodné podmienky</a></li>
+              <li><a class="link text-color-white text-normal text-medium" href="#">Ochrana súkromia</a></li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </footer>
+    <script src="scripts/vendor.js"></script>
+    <script src="scripts/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+section.section.section--secondary
+  .wrapper-main
+    .row.align-items-middle
+      .col--l-4.col--fill
+        .row.align-items-middle
+          .col--shrink.no-pad-right.show-l
+            img(src="/images/content/user-photo.png", alt="User", width="52")
+          .col--fill
+            h1.h3.text-color-black.text-semibold.no-mrg-bottom.show-l Bartolomej Najsčítanejší
+            h2.h1.account-title Môj martinus
+      .col--fill.show-l
+        nav
+          ul.list-inline.inline-nav.no-mrg-bottom
+            li.inline-nav__item.text-medium
+              a.inline-nav__link Moja knižnica
+              //- span.badge.pill.text-space-left 231
+            li.inline-nav__item.text-medium
+              a.inline-nav__link.active Objednávky
+              //- span.badge.pill.text-space-left 4
+            li.inline-nav__item.text-medium
+              a.inline-nav__link Účet
+      .col--l-3.col--shrink.text-right
+        button.btn.btn--clean.btn--small.no-mrg-bottom
+          span.show-m Odhlásiť sa
+          +icon('logout', 'icon--medium').icon--right
+    .hide-l
+      .bar
+        .bar__item.bar__item--fill
+          .btn-dropdown.no-mrg.flex.flex-column
+            button.btn.btn--ghost.btn--icon-right.text-left(
+              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+              data-toggle-expand,
+              aria-haspopup="true"
+            )
+              | Účet
+              +icon('chevron-down', 'icon-dropdown').icon--medium
+            .dropdown(data-dropdown, data-toggle-expand)
+              each link, i in ['Účet', 'Adresy', 'Platby', 'Newsletter', 'E-knihy', 'O vás']
+                a(href="#").dropdown__item !{link}
+        .bar__item
+          button.btn Uložiť
+    .mb-large

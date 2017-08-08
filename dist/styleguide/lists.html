@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Light - Styleguide</title>
+    <meta name="author" content="Lighting Beetle s.r.o.">
+    <meta name="description" content="Light is SCSS/Pug foundation for living styleguides">
+    <meta name="keywords" content="Living Styleguide, Styleguide, SCSS, Pug">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta name="theme-color" content="#ff5722">
+    <link rel="stylesheet" href="../fonts/Tabac/fonts.css">
+    <link rel="stylesheet" href="../fonts/opensans/fonts.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/light.css">
+    <script src="../scripts/plugins/modernizr.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".js-scrollspy" data-offset="150" id="top">
+    <!-- offcanvas-->
+    <div class="l-offcanvas" data-role="offcanvas">
+      <!-- content main-->
+      <article class="l-content-main" id="top">
+        <!-- header-->
+        <header class="l-header-main"> 
+          <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
+          <div class="l-wrap-main">
+            <h1 class="js-header"> <a href="#top" data-smoothscroll="#top">Lists</a></h1>
+            <div class="js-scrollspy l-headnav" id="header-navigation">
+              <ul class="l-headnav_list nav">
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#lists" data-smoothscroll="#lists" data-toggle-target="#header-navigation" data-toggle="dropdown">Lists</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#items" data-smoothscroll="#items" data-toggle-target="#header-navigation" data-toggle="dropdown">Items</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#itemsections" data-smoothscroll="#itemsections" data-toggle-target="#header-navigation" data-toggle="dropdown">Item sections</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <div class="l-content-main_inner">
+          <section class="l-main-info" id="main-info">
+            <div class="l-wrap-main">
+              <p class="l-big">Documentation for list component and its items. Lists present multiple line items in a vertical arrangement as a single continuous element.
+              </p>
+              <div class="l-box-desc">
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/modules/_lists.scss</code><br/>
+              </div>
+            </div>
+          </section>
+          <aside class="l-nav-contents js-scrollspy">
+            <p class="l-nav-contents_headline">Contents</p>
+            <ul class="l-nav-contents_list nav">
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#lists" data-smoothscroll="#lists">Lists</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#items" data-smoothscroll="#items">Items</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#itemsections" data-smoothscroll="#itemsections">Item sections</a></li>
+            </ul>
+          </aside>
+          <section id="lists">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Lists
+              </h2>
+              <p class="l-p">List is basic container for list items and can be created by using class <code class='l-code-inline'>.list</code> on <code class='l-code-inline'>&lt;ul&gt;</code> element. Bordered list can be created by using additional class <code class='l-code-inline'>.list--bordered</code> and clean list with additional class <code class='l-code-inline'>.list--clean</code>.
+              </p>
+              <div class="l-box-desc l-box-note">
+                <p class="l-box-desc_headline">Note</p>
+                <p class="l-p">You do not have to use <code class='l-code-inline'>&lt;ul&gt;</code> element but HTML structure have to be same.
+                </p>
+              </div>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <div class="row">
+                    <div class="col--l-5">
+                      <h4>Basic list</h4>
+                      <ul class="list">
+                        <li class="list__item">Laborum laboris amet minim.</li>
+                        <li class="list__item">Quis adipisicing eu consectetur.</li>
+                        <li class="list__item">Et anim sit do nisi.</li>
+                        <li class="list__item">Deserunt id consectetur esse in.</li>
+                      </ul>
+                    </div>
+                    <div class="col--l-5 ofst--l-1">
+                      <h4>Bordered list</h4>
+                      <ul class="list list--bordered">
+                        <li class="list__item">Laborum laboris amet minim.</li>
+                        <li class="list__item">Quis adipisicing eu consectetur.</li>
+                        <li class="list__item">Et anim sit do nisi.</li>
+                        <li class="list__item">Deserunt id consectetur esse in.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col--l-5">
+                      <h4>Clean list</h4>
+                      <ul class="list list--clean">
+                        <li class="list__item">Laborum laboris amet minim.</li>
+                        <li class="list__item">Quis adipisicing eu consectetur.</li>
+                        <li class="list__item">Et anim sit do nisi.</li>
+                        <li class="list__item">Deserunt id consectetur esse in.</li>
+                      </ul>
+                    </div>
+                    <div class="col--l-5 ofst--l-1">
+                      <h4>Padded list</h4>
+                      <ul class="list list--padded">
+                        <li class="list__item">Laborum laboris amet minim.</li>
+                        <li class="list__item">Quis adipisicing eu consectetur.</li>
+                        <li class="list__item">Et anim sit do nisi.</li>
+                        <li class="list__item">Deserunt id consectetur esse in.</li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col--l-5">
+                      <h4>List with counter badges</h4>
+                      <ul class="list list--unstyled list--counter">
+                        <li class="mb-medium">
+                          <article class="product product--horizontal">
+                            <div class="product__img product__cover">
+                              <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="../detail-knihy.html">
+                                  <div class="thumbnail__img-wrap"><img class="img" src="../images/content/books/sample-15.jpg"/></div></a>
+                              </div>
+                            </div>
+                            <div class="product__caption">
+                              <div class="bar bar--small no-mrg-bottom">
+                                <div class="bar__item bar__item--fill"><a class="text-semibold text-size-medium" href="../detail-knihy.html" title="Základy rybolovu pro kluky a holky">Základy rybolovu pro kluky a holky</a>
+                                  <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                                    <li>Frank Weissert</li>
+                                    <li>Jack Thorne</li>
+                                    <li>John Tiffany</li>
+                                  </ul>
+                                  <div class="bar bar--small mb-small">
+                                    <div class="bar__item">
+                                      <div class="badge">
+                                        <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                          <use xlink:href="../icons_/app.svg#icon-star"></use>
+                                        </svg> 4.5
+                                      </div>
+                                    </div>
+                                    <div class="bar__item bar__item--fill text-right">
+                                      <div class="text-medium text-semibold">12,99 €</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+                        </li>
+                        <li class="mb-medium">
+                          <article class="product product--horizontal">
+                            <div class="product__img product__cover">
+                              <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="../detail-knihy.html">
+                                  <div class="thumbnail__img-wrap"><img class="img" src="../images/content/books/sample-1.jpg"/></div></a>
+                              </div>
+                            </div>
+                            <div class="product__caption">
+                              <div class="bar bar--small no-mrg-bottom">
+                                <div class="bar__item bar__item--fill"><a class="text-semibold text-size-medium" href="../detail-knihy.html" title="Hobbit">Hobbit</a>
+                                  <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                                    <li>J.R.R. Tolkien</li>
+                                  </ul>
+                                  <div class="bar bar--small mb-small">
+                                    <div class="bar__item">
+                                      <div class="badge badge--primary">-50%</div>
+                                    </div>
+                                    <div class="bar__item bar__item--fill text-right">
+                                      <div class="text-medium text-semibold">7,26 €</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+                        </li>
+                        <li class="mb-medium">
+                          <article class="product product--horizontal">
+                            <div class="product__img product__cover">
+                              <div class="thumbnail thumbnail--book thumbnail--medium-large"><a href="../detail-knihy.html">
+                                  <div class="thumbnail__img-wrap"><img class="img" src="../images/content/books/sample-22.jpg"/></div></a>
+                              </div>
+                            </div>
+                            <div class="product__caption">
+                              <div class="bar bar--small no-mrg-bottom">
+                                <div class="bar__item bar__item--fill"><a class="text-semibold text-size-medium" href="../detail-knihy.html" title="Ako ju získať">Ako ju získať</a>
+                                  <ul class="list-inline list-inline--delimited text-color-grey text-size-small mb-small">
+                                    <li>Michal Kopecký</li>
+                                  </ul>
+                                  <div class="bar bar--small mb-small">
+                                    <div class="bar__item">
+                                      <div class="badge">
+                                        <svg class="icon icon-star  text-color-yellow icon--small" role="img" aria-hidden="true">
+                                          <use xlink:href="../icons_/app.svg#icon-star"></use>
+                                        </svg> 5
+                                      </div>
+                                    </div>
+                                    <div class="bar__item bar__item--fill text-right">
+                                      <div class="text-medium text-semibold">12,00 €</div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </article>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;!-- basic list --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;... &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+
+&lt;!-- bordered list --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;... &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+
+&lt;!-- clean list --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;... &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+
+&lt;!-- padded list --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;... &lt;/li&gt;
+  ...
+&lt;/ul&gt;</code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="items">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Items
+              </h2>
+              <p class="l-p">Items are core elements of lists. The most basic list item contains only text and can be created by wrapping text into element with class <code class='l-code-inline'>.list__item</code>.
+              </p>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <div class="row">
+                    <div class="col--l-5">
+                      <ul class="list">
+                        <li class="list__item">Laborum laboris amet minim.</li>
+                        <li class="list__item">Quis adipisicing eu consectetur.</li>
+                        <li class="list__item">Et anim sit do nisi.</li>
+                        <li class="list__item">Deserunt id consectetur esse in.</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;Laborum laboris amet minim. &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;Quis adipisicing eu consectetur.&lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;Et anim sit do nisi.&lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;Deserunt id consectetur esse in.&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+              </article>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Item content
+                </h3>
+                <p class="l-p">Content of item can be any UI element, thus is easy to create items with headlines and texts, or buttons and form components as shown in example below.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col--l-5">
+                        <h4>Item content example</h4>
+                        <ul class="list">
+                          <li class="list__item">
+                            <dl>
+                              <dt>Commodo dolore</dt>
+                              <dd>Eu qui ut laborum</dd>
+                            </dl>
+                          </li>
+                          <li class="list__item">
+                            <dl>
+                              <dt>Veniam veniam</dt>
+                              <dd>Veniam sit eu.</dd>
+                            </dl>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col--l-5 ofst--l-1">
+                        <h4>Item content example 2</h4>
+                        <ul class="list">
+                          <li class="list__item">
+                            <p><strong>Exercitation Ut</strong> eu nostrud voluptate commodo exercitation in amet voluptate proident <strong>reprehenderit</strong>.</p>
+                          </li>
+                          <li class="list__item">
+                            <p>Sint aute labore mollit sunt aliqua sed ut minim <strong>laborum adipisicing</strong>.</p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--l-5">
+                        <h4>Item content example 3</h4>
+                        <ul class="list">
+                          <li class="list__item">
+                            <p class="no-mrg">Sint aute labore mollit sunt aliqua sed ut minim <strong>laborum adipisicing</strong>.</p>
+                          </li>
+                          <li class="list__item">
+                            <p class="no-mrg"><strong>Exercitation Ut</strong> eu nostrud voluptate commodo exercitation in amet voluptate proident <strong>reprehenderit</strong>.</p>
+                          </li>
+                          <li class="list__item">
+                            <button class="btn btn-full" type="button">Load more</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;!-- content example 1 --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;Commodo dolore&lt;/dt&gt;
+      &lt;dd&gt;Eu qui ut laborum&lt;/dd&gt;
+    &lt;/dl&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;Veniam veniam&lt;/dt&gt;
+      &lt;dd&gt;Veniam sit eu.&lt;/dd&gt;
+    &lt;/dl&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- content example 2 --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;p&gt;...&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- content example 3 --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;p class=&quot;no-mrg&quot;&gt;...&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;p class=&quot;no-mrg&quot;&gt;...&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;button class=&quot;btn btn-full&quot; type=&quot;button&quot;&gt;Load more&lt;/button&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Item clickable
+                </h3>
+                <p class="l-p">In case that item is clickable, you can add styles for interaction as selected or hover with additional class <code class='l-code-inline'>.list__item--clickable</code>.
+                </p>
+                <div class="l-box-desc l-box-note">
+                  <p class="l-box-desc_headline">Note</p>
+                  <p class="l-p">Clickable items can have states: <code class='l-code-inline'>.is-selected</code> and <code class='l-code-inline'>.is-disabled</code>.
+                  </p>
+                </div>
+                <div class="l-box-desc l-box-note">
+                  <p class="l-box-desc_headline">Note</p>
+                  <p class="l-p">Clickable items must be focusable and that can achieved with <code class='l-code-inline'>tabindex="0"</code> attribute.
+                  </p>
+                </div>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col--l-5">
+                        <ul class="list">
+                          <li class="list__item list__item--clickable" tabindex="0">
+                            <dl>
+                              <dt>Commodo dolore</dt>
+                              <dd>Eu qui ut laborum</dd>
+                            </dl>
+                          </li>
+                          <li class="list__item list__item--clickable is-selected" tabindex="0">
+                            <dl>
+                              <dt>Selected</dt>
+                              <dd>Veniam sit</dd>
+                            </dl>
+                          </li>
+                          <li class="list__item list__item--clickable" tabindex="0">
+                            <dl>
+                              <dt>LEiusmod in nulla tempor</dt>
+                              <dd>Veniam sit</dd>
+                            </dl>
+                          </li>
+                          <li class="list__item list__item--clickable is-disabled">
+                            <dl>
+                              <dt>Disabled</dt>
+                              <dd>Veniam sit</dd>
+                            </dl>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item list__item--clickable&quot; tabindex=&quot;0&quot;&gt;
+    ...
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item list__item--clickable is-selected&quot; tabindex=&quot;0&quot;&gt;
+    ...
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item list__item--clickable is-disabled&quot;&gt;
+    ...
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="itemsections">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Item sections
+              </h2>
+              <p class="l-p">List items can split into (contain) more sections.
+              </p>
+              <ul>
+                <li><code class='l-code-inline'>.list__item__section--secondary</code> only takes space it needs</li>
+                <li><code class='l-code-inline'>.list__item__section--primary</code> fills all available space</li>
+                <li><code class='l-code-inline'>.list__item__section--image</code> has fixed width and is great for showing images, icons, etc.</li>
+              </ul>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Section secondary
+                </h3>
+                <p class="l-p">In case you want to use secondary content on either side of the list item you can use section <code class='l-code-inline'>.list__item__section--secondary</code> as shown in example below.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col--l-5">
+                        <ul class="list">
+                          <li class="list__item">
+                            <div class="list__item__section--primary">
+                              <p>Veniam ea minim labore consectetur dolor.</p>
+                            </div>
+                            <div class="list__item__section--secondary">
+                              <p class="text-desc">Commodo qui</p>
+                            </div>
+                          </li>
+                          <li class="list__item">
+                            <div class="list__item__section--secondary">
+                              <p class="text-desc">Dolor cupidatat</p>
+                            </div>
+                            <div class="list__item__section--primary">
+                              <p>Id consectetur et.</p>
+                            </div>
+                          </li>
+                          <li class="list__item">
+                            <div class="list__item__section--primary">
+                              <dl>
+                                <dt>Commodo dolore</dt>
+                                <dd>Eu qui ut laborum</dd>
+                              </dl>
+                            </div>
+                            <div class="list__item__section--secondary">
+                              <button class="btn" type="button">Action</button>
+                            </div>
+                          </li>
+                          <li class="list__item">
+                            <div class="list__item__section--primary">
+                              <dl>
+                                <dt>Ut velit incididunt</dt>
+                                <dd>Dolore aliqua</dd>
+                              </dl>
+                            </div>
+                            <div class="list__item__section--secondary">
+                              <button class="btn" type="button">Action</button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--secondary&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--secondary&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--secondary&quot;&gt;
+      &lt;button class=&quot;btn&quot; type=&quot;button&quot;&gt;Action&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--secondary&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Section image
+                </h3>
+                <p class="l-p">In case you want to use an image in list item, you can use section <code class='l-code-inline'>.list__item__section--image</code> as shown in example below.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col--l-5">
+                        <ul class="list">
+                          <li class="list__item">
+                            <div class="list__item__section--image"><img class="img img--fluid img--rounded" src="../images/150x150.gif"></div>
+                            <div class="list__item__section--primary">
+                              <dl>
+                                <dt>Commodo dolore</dt>
+                                <dd>Eu qui ut laborum</dd>
+                              </dl>
+                            </div>
+                          </li>
+                          <li class="list__item">
+                            <div class="list__item__section--image"><img class="img img--fluid img--rounded" src="../images/150x150.gif"></div>
+                            <div class="list__item__section--primary">
+                              <dl>
+                                <dt>Ut velit incididunt</dt>
+                                <dd>Dolore aliqua</dd>
+                              </dl>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;ul class=&quot;list&quot;&gt;
+
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--image&quot;&gt;
+      image
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/li&gt;
+
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--image&quot;&gt;
+      image
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Section alignment
+                </h3>
+                <p class="l-p">List item sections are compatible with <a href="utilities.html#flexbox-alignment">flexbox alignment classes</a>.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col--l-5">
+                        <h4>Vertical alignment top</h4>
+                        <ul class="list">
+                          <li class="list__item">
+                            <div class="list__item__section--primary">
+                              <h4>Lorem ipsum</h4>
+                              <dl>
+                                <dt>Commodo dolore</dt>
+                                <dd>Eu qui ut laborum</dd>
+                              </dl>
+                            </div>
+                            <div class="list__item__section--secondary align-self-top">
+                              <button class="btn" type="button">Action</button>
+                            </div>
+                          </li>
+                          <li class="list__item">
+                            <div class="list__item__section--primary">
+                              <h4>Lorem ipsum</h4>
+                              <dl>
+                                <dt>Ut velit incididunt</dt>
+                                <dd>Dolore aliqua</dd>
+                              </dl>
+                            </div>
+                            <div class="list__item__section--secondary align-self-top">
+                              <button class="btn" type="button">Action</button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col--l-5 ofst--l-1">
+                        <h4>Vertical alignment bottom</h4>
+                        <ul class="list">
+                          <li class="list__item">
+                            <div class="list__item__section--primary">
+                              <h4>Lorem ipsum</h4>
+                              <dl>
+                                <dt>Commodo dolore</dt>
+                                <dd>Eu qui ut laborum</dd>
+                              </dl>
+                            </div>
+                            <div class="list__item__section--secondary align-self-bottom">
+                              <button class="btn" type="button">Action</button>
+                            </div>
+                          </li>
+                          <li class="list__item">
+                            <div class="list__item__section--primary">
+                              <h4>Lorem ipsum</h4>
+                              <dl>
+                                <dt>Ut velit incididunt</dt>
+                                <dd>Dolore aliqua</dd>
+                              </dl>
+                            </div>
+                            <div class="list__item__section--secondary align-self-bottom">
+                              <button class="btn" type="button">Action</button>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;!-- alignment top --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--secondary align-self-top&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;
+
+&lt;!-- alignment bottom --&gt;
+&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;
+      ...
+    &lt;/div&gt;
+    &lt;div class=&quot;list__item__section--secondary align-self-bottom&quot;&gt;
+      ...
+    &lt;/div&gt;
+  &lt;/li&gt;
+  ...
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">List item section break
+                </h3>
+                <p class="l-p">It might happen you will need to break a list item into multiple lines. This can be achieved using <code class="l-code-inline">.list__item__section--break</code>. You can even specify on which breakpoint it should become active with <a href="utilities`${assetsPrefix}#visibility-utilites">visibility classes</a>.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col--l-5">
+                        <ul class="list">
+                          <li class="list__item">
+                            <div class="list__item__section--image"><img class="img img--fluid img--rounded" src="../images/150x150.gif"></div>
+                            <div class="list__item__section--break hide-m"></div>
+                            <div class="list__item__section--primary">
+                              <p>This text will move under the image on S and XS</p>
+                            </div>
+                          </li>
+                          <li class="list__item">
+                            <div class="list__item__section--image"><img class="img img--fluid img--rounded" src="../images/150x150.gif"></div>
+                            <div class="list__item__section--break show-m"></div>
+                            <div class="list__item__section--primary">
+                              <p>This text will move under the image on M and larger</p>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;ul class=&quot;list&quot;&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--image&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;list__item__section--break hide-m&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;...&lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;list__item&quot;&gt;
+    &lt;div class=&quot;list__item__section--image&quot;&gt;...&lt;/div&gt;
+    &lt;div class=&quot;list__item__section--break show-m&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;list__item__section--primary&quot;&gt;...&lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </section>
+        </div>
+      </article>
+      <aside class="l-wrap-navs">
+        <!-- navigation main-->
+        <nav class="l-nav-main" data-role="dropdown"><a class="l-nav-main_headline" href="../index.html">Martinus - Styleguide</a>
+          <ul class="l-nav-main_list js-scrollbar" data-role="sidebar">
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Introduction
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="index.html">Get started</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Foundations
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="color-palette.html">Color Palette</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="typography.html">Typography</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="icons.html">Icons / Images</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="grid.html">Grid</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="utilities.html">Utilities</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link is-active selected" data-toggle="self, next">Components
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub is-active">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
+                    <svg class="icon icon-sg-add " role="img" aria-hidden="true">
+                      <use xlink:href="../icons_/styleguide.svg#icon-sg-add"></use>
+                    </svg></a>
+                  <ul class="l-nav-main_list-sub2">
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-basic.html">- Basic</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-labels.html">- Labels</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
+                  </ul>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="box.html">Box</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cart.html">Cart</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tables.html">Tables</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cards.html">Cards</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="lists.html">Lists</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tabs.html">Tabs</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="modals.html">Modals</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="dropdowns.html">Dropdowns</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="badges.html">Badges, pills</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="carousels.html">Carousels</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tooltips.html">Tooltips</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Modules
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="price-box.html">Price Boxes</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Javascripts
+                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-select.html">Select</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-toggle.html">Toggle</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- end: navigation main-->
+      </aside>
+      <!-- end: content main-->
+    </div>
+    <!-- end: offcanvas-->
+    <script src="../scripts/vendor.js"></script>
+    <script src="../scripts/main.js"></script>
+    <script src="../scripts/light.js"></script>
+  </body>
+</html>

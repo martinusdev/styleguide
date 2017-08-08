@@ -1,0 +1,16 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Výsledky vyhľadávania'
+
+block content
+  main.category
+    section.section.section--secondary
+      .wrapper-main.text-center
+        .text-medium.text-color-grey Hľadali ste
+        h1 Harry Potter
+          +icon('edit', 'icon--medium').text-color-grey
+        .h3 Našli sme 
+          span.text-color-black.text-semibold 63 titulov
+
+    include modules/category-list
