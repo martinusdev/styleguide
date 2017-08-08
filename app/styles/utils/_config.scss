@@ -84,7 +84,9 @@ $color-palette: (
   ),
   success: (
     100: #eaf6ed,
+    200: #37b855,
     500: #33ab4e,
+    600: #2f9e49,
   )
 );
 
@@ -158,7 +160,7 @@ $typography-settings: (
 $typography-overrides: (
   null: (
     'h1, .h1' : (
-      font-size: _get-rem(42px),
+      font-size: _get-rem(25px),
       line-height: 49/42,
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
@@ -194,8 +196,8 @@ $typography-overrides: (
     ),
   ),
   s: (
-    'h2, .h2' : (
-      font-size: _get-rem(25px),
+    'h1, .h1' : (
+      font-size: _get-rem(42px),
     ),
     'h4, .h4' : (
       font-size: _get-rem(18px),
@@ -338,6 +340,8 @@ $thumbnail-sizes: (
   medium: 50px,
   medium-large: 65px,
   large: 120px,
+  xlarge: 170px,
+  huge: 270px,
 );
 
 // ----------------------------
@@ -486,6 +490,11 @@ $button-styles: (
       box-shadow: none,
     ),
     after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
       background-color: _color(primary, 600),
       height: 4px,
     ),
@@ -559,6 +568,24 @@ $button-styles: (
     ),
     active: (
       box-shadow: none,
+    ),
+  ),
+  success: (
+    default: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 500),
+      box-shadow: none,
+    ),
+    focus: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 200),
+    ),
+    active: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 600),
     ),
   )
 );
@@ -869,6 +896,34 @@ $select: (
     ),
     group: (
       border-color: _color(gray, 400),
+    ),
+  ),
+  input : (
+    default: (
+      background-color: $form-bgc,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: $form-b-c,
+      border-radius: $form-b-r,
+      color: $form-c,
+      box-shadow: $form-bs,
+      after: (
+        display: none,
+      )
+    ),
+    focus: (
+      box-shadow: $form-focus-bs,
+      border-color: $form-focus-b-c,
+      outline: none !important,
+    ),
+    disabled: (
+      color: $form-disabled-c,
+      border-color: $form-disabled-b-c,
+    ),
+    error: (
+      background-color: $form-error-bgc,
+      color: $form-error-c,
+      border-color: $form-error-b-c,
     ),
   )
 );
@@ -1241,6 +1296,11 @@ $modal-dialog-variants: (
     'l': (
       width: calc(100vw - (#{_get-space('h', 'large')} * 2)),
     )
+  ),
+  'medium' : (
+    default: (
+      width: _get-rem(700px),
+    )
   )
 );
 
@@ -1295,6 +1355,18 @@ $badge: (
     color: _color(blue),
     border-color: _color(blue),
   ),
+  yellow: (
+    color: _color(yellow),
+    border-color: _color(yellow),
+  ),
+  brown: (
+    color: _color(brown),
+    border-color: _color(brown),
+  ),
+  darkblue: (
+    color: _color(darkblue),
+    border-color: _color(darkblue),
+  ),
 );
 
 $pills: (
@@ -1318,6 +1390,9 @@ $status: (
   ),
   success: (
     background-color: _color(green),
+  ),
+  error: (
+    background-color: _color(error, 500),
   ),
 );
 

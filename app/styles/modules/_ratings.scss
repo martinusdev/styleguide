@@ -20,12 +20,24 @@
   }
 
   &--highlight-on-hover {
+    &.checked .rating-star__item {
+      color: _color(yellow);
+    }
+
+    &.checked .radiocheck__input:checked {
+      + .rating-star__item ~ .rating-star__item { // stylelint-disable
+        color: _color(grey, 200);
+      }
+    }
+
+    &#rating-star.checked:hover .rating-star__item,
     &:hover .rating-star__item {
       color: _color(yellow);
     }
 
+    &#rating-star.checked .rating-star__item:hover,
     .rating-star__item:hover {
-      ~ * { // stylelint-disable
+      ~ .rating-star__item {
         color: _color(grey, 200);
       }
     }
@@ -39,6 +51,10 @@
 
     &--half {
       background: svg-load('./../images/content/rating/star-half.svg');
+    }
+
+    &--empty {
+      background: svg-load('./../images/content/rating/star-empty.svg');
     }
   }
 }
