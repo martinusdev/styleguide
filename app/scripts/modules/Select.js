@@ -58,6 +58,22 @@ const productSelectChoice = (data, config) => `
   </div>
   `;
 
+const storeListTemplate = data =>
+  `
+  <div class="text-left">
+    <svg class="icon icon-pin icon--small">
+      <use xlink:href="../icons_/app.svg#icon-pin"></use>
+    </svg>
+    <span class="text-size-medium text-left text-semibold">${data.label}</span>
+  </div>`;
+
+const storeListChoice = (data, config) => `
+  <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${data.disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${data.id}" data-value="${data.value}">
+    <span class="text-vam status status--${data.customProperties.status} text-color-grey text-regular text-ellipsis">${data.label}</span>
+    <span class="text-vam text-color-grey">(${data.customProperties.availability})</span>
+  </div>
+  `;
+
 export default class Select {
   constructor(selector = '.js-select', config) {
     this.selector = selector;
@@ -124,6 +140,13 @@ export default class Select {
         config.callbackOnCreateTemplates = template => ({
           item: data => template(productSelectTemplate(data)),
           choice: data => template(productSelectChoice(data, this.config)),
+        });
+      }
+
+      if (select.hasAttribute('data-select-store')) {
+        config.callbackOnCreateTemplates = template => ({
+          item: data => template(storeListTemplate(data)),
+          choice: data => template(storeListChoice(data, this.config)),
         });
       }
 

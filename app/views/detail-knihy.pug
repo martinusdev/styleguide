@@ -559,6 +559,47 @@ block append scripts
             },
           ]
         });
+
+        var storeListSelect = new window.myApp.Select('#store-list-select', {
+          choices: [
+            {
+              value: 'ba-obchodna',
+              label: 'BA Obchodná',
+              id: 1,
+              customProperties: {
+                status: 'success',
+                availability: '5+ ks',
+              }
+            },
+            {
+              value: 'ba-cubicon',
+              label: 'BA Cubicon',
+              id: 2,
+              customProperties: {
+                status: 'success',
+                availability: '5+ ks',
+              }
+            },
+            {
+              value: 'ba-galeria',
+              label: 'BA OC Galéria',
+              id: 3,
+              customProperties: {
+                status: 'orange',
+                availability: '3 ks',
+              }
+            },
+            {
+              value: 'nr-centro',
+              label: 'BA OC Centro',
+              id: 4,
+              customProperties: {
+                status: 'grey',
+                availability: 'vypredané',
+              }
+            },
+          ]
+        });
       });
 
       document.addEventListener('myAppInit', function() {
