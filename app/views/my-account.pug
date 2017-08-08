@@ -94,7 +94,7 @@ block content
               .row.no-mrg-bottom
                 .col--m-4
                   .btn-layout--vertical
-                    button.btn.btn--ghost.no-mrg Zmeniť heslo
+                    button.btn.btn--ghost.no-mrg(data-toggle="#change-password") Zmeniť heslo
             h3.h2.text-color-black.mb-medium Adresy
             .row.mb-medium
               .col--m-4.flex.flex-column
@@ -236,3 +236,5 @@ block content
               .col--m-fill
                 .form-control.form-control--input.no-mrg-bottom
                     input.input(type="email", placeholder="Zadajte vašu e-mailovú adresu")
+block append modals
+  include ./modules/change-password
