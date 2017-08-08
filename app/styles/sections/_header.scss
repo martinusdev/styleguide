@@ -1,9 +1,25 @@
 .header {
   position: relative;
-  background-color: $color-black;
-  padding-top: _get-space('v');
-  padding-bottom: _get-space('v');
-  z-index: $z-index-topbar;
+
+  &__wrapper {
+    position: relative;
+    background-color: $color-black;
+    padding-top: _get-space('v');
+    padding-bottom: _get-space('v');
+    z-index: $z-index-topbar;
+
+    &::after {
+      content: '';
+      background-image: svg-load('./../images/content/rainbow-header.svg');
+
+      height: 5px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: $z-index-topbar;
+    }
+  }
 
   .wrapper-main {
     @include breakpoint(m, 'down') {
@@ -16,7 +32,9 @@
     margin-bottom: 0;
 
     @include breakpoint(m, 'down') {
-      .bar__item {
+      justify-content: space-between;
+
+      .bar__item { // stylelint-disable-line max-nesting-depth
         margin-right: _map-deep-get($bar-spacing, small, default);
       }
     }
@@ -40,6 +58,29 @@
     &:focus,
     &.is-active {
       color: $color-white;
+    }
+
+    @include breakpoint('l') {
+      &.is-active {
+        position: relative;
+        overflow: visible;
+        z-index: $z-index-topbar + 1;
+
+        &::before { // stylelint-disable-line
+          content: '';
+          width: 0;
+          height: 0;
+
+          position: absolute;
+          bottom: -21px;
+          left: 50%;
+          margin-left: -8px;
+
+          border-left: 8px solid transparent;
+          border-right: 8px solid transparent;
+          border-bottom: 8px solid $color-white;
+        }
+      }
     }
   }
 
@@ -65,6 +106,16 @@
     font-weight: $font-weight-semibold;
 
     align-items: center;
+
+    @include breakpoint(m, 'down') {
+      .bar__item:first-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__username {
+    max-width: _get-rem(110px);
   }
 
   &__cart,
@@ -72,16 +123,20 @@
     color: _color(grey, 400);
   }
 
-  &::after {
-    content: '';
-    background-image: svg-load('./../images/content/rainbow-header.svg');
+  .dropdown {
+    z-index: $z-index-topbar + 1;
+  }
 
-    height: 5px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1;
+  @include breakpoint(m, 'down') {
+    &__user { order: 1; }
+    &__cart { order: 2; }
+
+    &__search {
+      order: 3;
+      flex: 0;
+    }
+
+    &__nav { order: 4; }
   }
 }
 

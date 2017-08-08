@@ -1,13 +1,13 @@
 ul.tab-nav.tab-nav--block(data-tabs-container)
-  li.tab-nav__item(data-tabs-item)
+  li.tab-nav__item.flex-noshrink(data-tabs-item)
     a.tab-nav__content.tab-nav__content--card(href='#web' role="tab")
-      span.tab-nav__content-wrap Na webe
+      span.tab-nav__content-wrap.text-nowrap Na webe
   li.tab-nav__item(data-tabs-item)
     a.tab-nav__content.tab-nav__content--card(href='#shop' role="tab")
       span.tab-nav__content-wrap
         | Odložiť v kníhkupectve
         br
-        span.status.status--success.text-color-grey.text-regular BA, Obchodná
+        span.status.status--success.text-color-grey.text-regular.text-ellipsis BA, Obchodná, KE, NR, PP, ZA
 
 .tabs
   section#web.tab
@@ -28,7 +28,7 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
           em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
           | .
         .btn-layout--vertical
-          button.btn.btn--primary.btn--large.mb-small
+          button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
             +icon('add-to-cart').icon--left.icon--medium
             | Vložiť do košíka
 
@@ -39,12 +39,8 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
 
       .card__content
         .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-          .form-label
-            label(for='shop-location') Predajňa#{' '}
-              +icon('pin').icon--medium.text-color-grey
-          select.js-select.select--inline.select--clean.select--small#shop-location
-            option BA Obchodná
-            option Martin
+          span.text-medium.text-space-right Predajňa
+          select#store-list-select(data-select-store)
         p.text-color-grey-dark Skladom máme#{' '}
           em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
           | .
@@ -57,6 +53,6 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
           em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
           | .
         .btn-layout--vertical
-          button.btn.btn--primary.btn--large.mb-small Rezervovať
+          button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať
 
           +addTo()

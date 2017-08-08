@@ -10,7 +10,10 @@
 // LISTS
 
 @mixin list-base() {
-  @include list-unstyled;
+  &:not(.style-default) {
+    @include list-unstyled;
+  }
+
   display: flex;
   flex-flow: column;
   margin-bottom: $default-space;
@@ -83,7 +86,7 @@
   .list--counter {
     counter-reset: section;
 
-    li {
+    > li {
       position: relative;
 
       &::before {

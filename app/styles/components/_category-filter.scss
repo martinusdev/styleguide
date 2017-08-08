@@ -1,0 +1,39 @@
+.filter__cat {
+  margin-bottom: 0;
+  border-bottom: 1px solid $text-color-grey-light;
+}
+
+.filter__cat-name {
+  @include breakpoint('l', 'downfrom') {
+    padding: 0 0 0 _get-rem(20px);
+  }
+
+  .btn {
+    font-size: $font-size-medium;
+    padding: _get-rem(20px);
+  }
+}
+
+.filter__cat-items {
+  padding-bottom: _get-rem(20px);
+
+  @include breakpoint('l', 'downfrom') {
+    padding-left: _get-rem(20px);
+    padding-right: _get-rem(20px);
+  }
+
+  .checkbox {
+    flex-wrap: wrap;
+    padding: _get-rem(5px) 0;
+  }
+}
+
+.nested-select {
+  width: 100%;
+  margin-top: _get-rem(10px);
+  margin-left: _get-rem(24px);
+}
+
+.filter__search {
+  margin-top: _get-space('v', 'small');
+}

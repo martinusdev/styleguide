@@ -5,7 +5,7 @@ mixin addTo(props = {})
     } = props;
 
   .btn-dropdown.btn-dropdown--no-icon&attributes(attributes)
-    button.btn.btn--clean.no-mrg(data-toggle="self, next")
+    button.btn.btn--clean.no-mrg(data-toggle="self, next", data-toggle-expand)
       +icon('heart').icon--medium(class=text ? "icon--left" : "")
       | #{text}
     .dropdown.dropdown--arrowhead(data-dropdown aria-expanded="false")

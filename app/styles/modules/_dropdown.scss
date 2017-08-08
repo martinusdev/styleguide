@@ -21,17 +21,25 @@
     @include css-map($dropdown-menu, 'space');
   }
 
-  &[aria-expanded='true'],
-  &.is-active {
+  &[aria-expanded='true'] {
     opacity: 1;
     visibility: visible;
     transition-delay: 0s;
     transform: scale(1, 1);
+
+    &.dropdown--arrowhead {
+      transform: scale(1, 1) translateX(-50%);
+    }
   }
 
   &--nowrap {
     overflow: visible;
     max-height: none;
+  }
+
+  &--align-right {
+    left: auto;
+    right: 0;
   }
 }
 
@@ -72,6 +80,9 @@
       margin-top: 10px;
       border-radius: 3px;
       overflow: visible;
+
+      transform: scale(1, 0.1) translateX(-50%);
+      left: 50%;
 
       &::before {
         content: '';

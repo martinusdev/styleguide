@@ -1,3 +1,4 @@
+
 extends templates/layout
 
 //- Options
@@ -278,74 +279,74 @@ block append content
             </div>
       //- end: demo
 
-    +content-sub-section('Checkbox / Radio sizes')
-
-      +p Size of checkbox or radio can be set by using classes like <code class='l-code-inline'>.radiocheck-[size]</code> on wrapper element.
-
-      +demo
-        +demo-example
-          .row
-            .col--l-6
-              h4 Checkbox
-              .form-control.form-control--checkbox
-                .checkbox.radiocheck--large
-                  input.radiocheck__input(type='checkbox', id='checkbox--large', name='checkbox--large', checked)
-                  label.radiocheck__control(for='checkbox--large')
-                  label.radiocheck__label(for='checkbox--large') Large
-              .form-control.form-control--checkbox
-                .checkbox
-                  input.radiocheck__input(type='checkbox', id='checkbox-medium', name='checkbox-medium', checked)
-                  label.radiocheck__control(for='checkbox-medium')
-                  label.radiocheck__label(for='checkbox-medium') Medium
-              .form-control.form-control--checkbox
-                .checkbox.radiocheck--small
-                  input.radiocheck__input(type='checkbox', id='checkbox--small', name='checkbox--small', checked)
-                  label.radiocheck__control(for='checkbox--small')
-                  label.radiocheck__label(for='checkbox--small') Small
-            .col--l-6
-              h4 Radio
-              .form-control.form-control--radio
-                .radio.radiocheck--large
-                  input.radiocheck__input(type='radio', id='radio-large', name='radio-large', checked)
-                  label.radiocheck__control(for='radio-large')
-                  label.radiocheck__label(for='radio-large') Large
-              .form-control.form-control--radio
-                .radio
-                  input.radiocheck__input(type='radio', id='radio-medium', name='radio-medium', checked)
-                  label.radiocheck__control(for='radio-medium')
-                  label.radiocheck__label(for='radio-medium') Medium
-              .form-control.form-control--radio
-                .radio.radiocheck--small
-                  input.radiocheck__input(type='radio', id='radio-small', name='radio-small', checked)
-                  label.radiocheck__control(for='radio-small')
-                  label.radiocheck__label(for='radio-small') Small
-        +demo-code
-          :code
-            <div class="checkbox checkbox--large">
-              <input id="..." name="..." class="radiocheck__input" type="checkbox">
-              ...
-            </div>
-            <div class="checkbox">
-              <input id="..." name="..." class="radiocheck__input" type="checkbox">
-              ...
-            </div>
-            <div class="checkbox checkbox--small">
-              <input id="..." name="..." class="radiocheck__input" type="checkbox">
-              ...
-            </div>
-
-            <div class="radio radio-large">
-              <input id="..." name="..." class="radiocheck__input" type="radio">
-              ...
-            </div>
-            <div class="radio">
-              <input id="..." name="..." class="radiocheck__input" type="radio">
-              ...
-            </div>
-            <div class="radio radio-small">
-              <input id="..." name="..." class="radiocheck__input" type="radio">
-              ...
-            </div>
+    //- +content-sub-section('Checkbox / Radio sizes')
+    //-
+    //-   +p Size of checkbox or radio can be set by using classes like <code class='l-code-inline'>.radiocheck-[size]</code> on wrapper element.
+    //-
+    //-   +demo
+    //-     +demo-example
+    //-       .row
+    //-         .col--l-6
+    //-           h4 Checkbox
+    //-           .form-control.form-control--checkbox
+    //-             .checkbox.radiocheck--large
+    //-               input.radiocheck__input(type='checkbox', id='checkbox--large', name='checkbox--large', checked)
+    //-               label.radiocheck__control(for='checkbox--large')
+    //-               label.radiocheck__label(for='checkbox--large') Large
+    //-           .form-control.form-control--checkbox
+    //-             .checkbox
+    //-               input.radiocheck__input(type='checkbox', id='checkbox-medium', name='checkbox-medium', checked)
+    //-               label.radiocheck__control(for='checkbox-medium')
+    //-               label.radiocheck__label(for='checkbox-medium') Medium
+    //-           .form-control.form-control--checkbox
+    //-             .checkbox.radiocheck--small
+    //-               input.radiocheck__input(type='checkbox', id='checkbox--small', name='checkbox--small', checked)
+    //-               label.radiocheck__control(for='checkbox--small')
+    //-               label.radiocheck__label(for='checkbox--small') Small
+    //-         .col--l-6
+    //-           h4 Radio
+    //-           .form-control.form-control--radio
+    //-             .radio.radiocheck--large
+    //-               input.radiocheck__input(type='radio', id='radio-large', name='radio-large', checked)
+    //-               label.radiocheck__control(for='radio-large')
+    //-               label.radiocheck__label(for='radio-large') Large
+    //-           .form-control.form-control--radio
+    //-             .radio
+    //-               input.radiocheck__input(type='radio', id='radio-medium', name='radio-medium', checked)
+    //-               label.radiocheck__control(for='radio-medium')
+    //-               label.radiocheck__label(for='radio-medium') Medium
+    //-           .form-control.form-control--radio
+    //-             .radio.radiocheck--small
+    //-               input.radiocheck__input(type='radio', id='radio-small', name='radio-small', checked)
+    //-               label.radiocheck__control(for='radio-small')
+    //-               label.radiocheck__label(for='radio-small') Small
+    //-     +demo-code
+    //-       :code
+    //-         <div class="checkbox checkbox--large">
+    //-           <input id="..." name="..." class="radiocheck__input" type="checkbox">
+    //-           ...
+    //-         </div>
+    //-         <div class="checkbox">
+    //-           <input id="..." name="..." class="radiocheck__input" type="checkbox">
+    //-           ...
+    //-         </div>
+    //-         <div class="checkbox checkbox--small">
+    //-           <input id="..." name="..." class="radiocheck__input" type="checkbox">
+    //-           ...
+    //-         </div>
+    //-
+    //-         <div class="radio radio-large">
+    //-           <input id="..." name="..." class="radiocheck__input" type="radio">
+    //-           ...
+    //-         </div>
+    //-         <div class="radio">
+    //-           <input id="..." name="..." class="radiocheck__input" type="radio">
+    //-           ...
+    //-         </div>
+    //-         <div class="radio radio-small">
+    //-           <input id="..." name="..." class="radiocheck__input" type="radio">
+    //-           ...
+    //-         </div>
 
     +content-sub-section('Checkbox / Radio groups')
 
@@ -457,7 +458,7 @@ block append content
 
     +content-sub-section('Select types')
 
-      +p There is two types of select. Default with border around to match other form elements style and <code class='l-code-inline'>.select--clean</code> without borders.
+      +p There is several types of select. Default with border around to match other form elements style, <code class='l-code-inline'>.select--clean</code> without borders and <code class='l-code-inline'>.select--ghost</code> with border similar to dropdown.
 
       +demo
         +demo-example
@@ -472,6 +473,20 @@ block append content
                 select.js-select.select--clean
                   each option in [1,2,3,4,5,6]
                     option Option #{option}
+
+          .row
+            .col--l-6
+              .form-control.form-control--select
+                select.js-select.select--ghost
+                  each option in [1,2,3,4,5,6]
+                    option Option #{option}
+
+            .col--l-6
+              .form-control.form-control--select
+                select.js-select.select--input
+                  each option in [1,2,3,4,5,6]
+                    option Option #{option}
+
         +demo-code
           :code
             <!-- default -->
@@ -479,6 +494,9 @@ block append content
 
             <!-- clean -->
             <select class="select--clean js-select"></select>
+
+            <!-- ghost -->
+            <select class="select--ghost js-select"></select>
 
     +content-sub-section('Select states')
 

@@ -1,0 +1,214 @@
+.filter
+  .row.show-l
+    .col--fill
+      h2 Filter
+    .col--shrink
+      a.link.text-transform-upper.text-small zmazať filter
+  dl.filter__cat
+    dt.filter__cat-name
+      .btn-layout--vertical.no-mrg-bottom
+        button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-show-only", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Zobrazit iba
+          +icon('chevron-up', 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-show-only(data-toggle-class="hide")
+      .form-control.form-control--group.no-mrg-bottom
+        .radiocheck-group
+          .form-control.form-control--checkbox
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-news")
+              label.radiocheck__control(for="filter-news")
+              label.radiocheck__label(for="filter-news") Novinky
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-discount")
+              label.radiocheck__control(for="filter-discount")
+              label.radiocheck__label(for="filter-discount") Zľavnené tituly
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-online-store")
+              label.radiocheck__control(for="filter-online-store")
+              label.radiocheck__label(for="filter-online-store") Na sklade online
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-book-store")
+              label.radiocheck__control(for="filter-book-store")
+              label.radiocheck__label(for="filter-book-store") V kníhkupectve
+              .form-control.form-control--select.nested-select
+                select.js-select.select--small
+                  option(value="ba-obchodna") Bratislava, Obchodná
+                  option(value="ba-obchodna") Bratislava, Obchodná
+                  option(value="ba-obchodna") Bratislava, Obchodná
+                  option(value="ba-obchodna") Bratislava, Obchodná
+                  option(value="ba-obchodna") Bratislava, Obchodná
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-presale")
+              label.radiocheck__control(for="filter-presale")
+              label.radiocheck__label(for="filter-presale") Predpredaj
+  dl.filter__cat
+    dt.filter__cat-name
+      .btn-layout--vertical.no-mrg-bottom
+        button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-product-type", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Typ produktu
+          +icon('chevron-up', 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-product-type(data-toggle-class="hide")
+      .form-control.form-control--group.no-mrg-bottom
+        .radiocheck-group
+          .form-control.form-control--checkbox
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-books")
+              label.radiocheck__control(for="filter-books")
+              label.radiocheck__label(for="filter-books") Knihy#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-ebooks")
+              label.radiocheck__control(for="filter-ebooks")
+              label.radiocheck__label(for="filter-ebooks") E-knihy#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-audiobooks")
+              label.radiocheck__control(for="filter-audiobooks")
+              label.radiocheck__label(for="filter-audiobooks") Audioknihy#{' '}
+                span.text-color-grey (635)
+  dl.filter__cat
+    dt.filter__cat-name
+      .btn-layout--vertical.no-mrg-bottom
+        button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-formats", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Formáty
+          +icon('chevron-up', 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-formats(data-toggle-class="hide")
+      .form-control.form-control--group.no-mrg-bottom
+        .radiocheck-group
+          .form-control.form-control--checkbox
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-hardcover")
+              label.radiocheck__control(for="filter-hardcover")
+              label.radiocheck__label(for="filter-hardcover") Pevná väzba#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-brozovana-vazba")
+              label.radiocheck__control(for="filter-brozovana-vazba")
+              label.radiocheck__label(for="filter-brozovana-vazba") Brožovaná väzba#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-sita-vazba")
+              label.radiocheck__control(for="filter-sita-vazba")
+              label.radiocheck__label(for="filter-sita-vazba") Šitá väzba#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-mobi")
+              label.radiocheck__control(for="filter-mobi")
+              label.radiocheck__label(for="filter-mobi") MOBI#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-online-epub")
+              label.radiocheck__control(for="filter-online-epub")
+              label.radiocheck__label(for="filter-online-epub") EPUB#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-pdf")
+              label.radiocheck__control(for="filter-pdf")
+              label.radiocheck__label(for="filter-pdf") PDF#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-mp3")
+              label.radiocheck__control(for="filter-mp3")
+              label.radiocheck__label(for="filter-mp3") MP3#{' '}
+                span.text-color-grey (635)
+  dl.filter__cat
+    dt.filter__cat-name
+      .btn-layout--vertical.no-mrg-bottom
+        button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-authors", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Autori
+          +icon('chevron-up', 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-authors(data-toggle-class="hide")
+      .form-control.form-control--input
+        input.input.filter__search(type="text", name="filter-author", id="filter-author", placeholder="Vyhľadajte autora")
+      .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
+        .radiocheck-group
+          .form-control.form-control--checkbox
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-1")
+              label.radiocheck__control(for="filter-author-1")
+              label.radiocheck__label(for="filter-author-1") Milan Veselský#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-2")
+              label.radiocheck__control(for="filter-author-2")
+              label.radiocheck__label(for="filter-author-2") Albert Uderzo#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-3")
+              label.radiocheck__control(for="filter-author-3")
+              label.radiocheck__label(for="filter-author-3") Božena Němcová#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-4")
+              label.radiocheck__control(for="filter-author-4")
+              label.radiocheck__label(for="filter-author-4") J. K. Rowling#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-5")
+              label.radiocheck__control(for="filter-author-5")
+              label.radiocheck__label(for="filter-author-5") Milan Veselský#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-6")
+              label.radiocheck__control(for="filter-author-6")
+              label.radiocheck__label(for="filter-author-6") Albert Uderzo#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-6")
+              label.radiocheck__control(for="filter-author-6")
+              label.radiocheck__label(for="filter-author-6") Božena Němcová#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-author-7")
+              label.radiocheck__control(for="filter-author-7")
+              label.radiocheck__label(for="filter-author-7") J. K. Rowling#{' '}
+                span.text-color-grey (635)
+      a.link.text-size-medium(href="javascript:void(0)", data-toggle="self, previous", data-toggle-icon="../icons_/app.svg#icon-arrow-up", data-toggle-text="Menej", data-collapse-trigger) <span data-toggle-text-target>+ ďalších 60 autorov</span>#{' '}
+        +icon('arrow-down')
+  dl.filter__cat
+    dt.filter__cat-name
+      .btn-layout--vertical.no-mrg-bottom
+        button.btn.btn--clean.btn--icon-right.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-languages", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Jazyky
+          +icon('chevron-up', 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-languages(data-toggle-class="hide")
+      .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
+        .radiocheck-group
+          .form-control.form-control--checkbox
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-slovak")
+              label.radiocheck__control(for="filter-slovak")
+              label.radiocheck__label(for="filter-slovak") Slovenský#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-czech")
+              label.radiocheck__control(for="filter-czech")
+              label.radiocheck__label(for="filter-czech") Český#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-german")
+              label.radiocheck__control(for="filter-german")
+              label.radiocheck__label(for="filter-german") Nemecký#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-russian")
+              label.radiocheck__control(for="filter-russian")
+              label.radiocheck__label(for="filter-russian") Ruský#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-slovak")
+              label.radiocheck__control(for="filter-slovak")
+              label.radiocheck__label(for="filter-slovak") Slovenský#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-czech")
+              label.radiocheck__control(for="filter-czech")
+              label.radiocheck__label(for="filter-czech") Český#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-german")
+              label.radiocheck__control(for="filter-german")
+              label.radiocheck__label(for="filter-german") Nemecký#{' '}
+                span.text-color-grey (635)
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-russian")
+              label.radiocheck__control(for="filter-russian")
+              label.radiocheck__label(for="filter-russian") Ruský#{' '}
+                span.text-color-grey (635)
+      a.link.text-size-medium(href="javascript:void(0)", data-toggle="self, previous", data-toggle-icon="../icons_/app.svg#icon-arrow-up", data-toggle-text="Menej", data-collapse-trigger) <span data-toggle-text-target>+ ďalšie 4 jazyky</span>#{' '}
+        +icon('arrow-down')

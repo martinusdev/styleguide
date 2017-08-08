@@ -1,4 +1,4 @@
-section.section.section--white
+section.section.section--white#seen-items(data-toggle-class="hide")
   .wrapper-main
     .bar.mb-large
       .bar__item
@@ -16,9 +16,10 @@ section.section.section--white
           .swiper-container(data-swiper-options=swiperConfig)
             .swiper-wrapper
               each item, i in Array(12)
-                a.swiper-slide.carousel__book--small(href="#")
-                  .thumbnail--book
-                    img.img.mb-medium(src=`${assetsPrefix}images/content/books/sample-${i + 1}.jpg`, alt="...")
+                .swiper-slide.carousel__recently-viewed
+                  a.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--medium(href="#")
+                    .thumbnail__img-wrap
+                      img.img.mb-medium(src=`${assetsPrefix}images/content/books/sample-${i + 1}.jpg`, alt="...")
       .bar__break.hide-m
       .bar__item
-        a.link.text-size-medium(href="#") Vymazať históriu prezeraných kníh
+        a.link.text-size-medium(data-toggle="#seen-items-delete, #seen-items") Vymazať históriu prezeraných kníh
