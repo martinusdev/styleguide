@@ -78,12 +78,7 @@ header.header
                   | Hladať
 
         .bar__item.header__user
-          a(href='#')
-            .bar.bar--small.no-mrg-bottom
-              .bar__item
-                +icon('user').icon--medium
-              //- img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
-              .header__username.bar__item.bar__item--fill.text-ellipsis.show-m Bartolomej
+          +userMenu()
 
         .bar__item.header__cart
           a.btn.btn--clean.btn--small.btn--equal.header__btn(href="cart.html", data-notification="4")
