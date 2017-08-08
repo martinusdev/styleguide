@@ -547,6 +547,23 @@ block append content
                         | Vložiť do košíka
 
                       +addTo()
+
+      +content-sub-section('Price box No.11 - Stiahnuť zadarmo')
+
+        +demo
+            +demo-example
+              .row
+                .col--m-6.col--l-4
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .btn-layout--vertical.no-mrg
+                        button.btn.btn--success.btn--large
+                          +icon('download').icon--left.icon--medium
+                          | Stiahnuť zadarmo
+
+                        +addTo()
+
   block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {
