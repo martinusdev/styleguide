@@ -52,10 +52,10 @@ block append content
           .order-progress.mb-large
             .swiper-container(data-swiper-options=swiperConfig)
               .swiper-wrapper
-                - for (var i = 0; i < 6; ++i)
+                - for (var i = 1; i < 7; ++i)
                   .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
                     .mb-small.order-progress__icon(class=i<currentStep ? 'text-color-success' : '')
-                      +icon('file', 'icon--large')
+                      +icon('order-progress-'+i, 'icon--large')
                     .mb-small(class=i<currentStep ? 'text-color-success' : '')
                       if (i<currentStep)
                         +icon('check-circle', 'icon--medium').bg-default
@@ -73,11 +73,11 @@ block append content
           .order-progress.mb-large
             .swiper-container(data-swiper-options=swiperConfig)
               .swiper-wrapper
-                - for (var i = 0; i < 6; ++i)
+                - for (var i = 1; i < 7; ++i)
                   .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
                     if (i===currentStep)
                       .mb-small.order-progress__icon.text-color-error
-                        +icon('file', 'icon--large')
+                        +icon('order-progress-'+i, 'icon--large')
                       .mb-small.text-color-error
                         if (i<currentStep)
                           +icon('check-circle', 'icon--medium').bg-default
@@ -88,7 +88,7 @@ block append content
                       .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Platba neúspešná
                     else
                       .mb-small.order-progress__icon(class=i<currentStep ? 'text-color-success' : '')
-                        +icon('file', 'icon--large')
+                        +icon('order-progress-'+i, 'icon--large')
                       .mb-small(class=i<currentStep ? 'text-color-success' : '')
                         if (i<currentStep)
                           +icon('check-circle', 'icon--medium').bg-default
@@ -108,10 +108,10 @@ block append content
               .order-progress
                 .swiper-container(data-swiper-options=swiperConfig2)
                   .swiper-wrapper
-                    - for (var i = 0; i < 3; ++i)
+                    - for (var i = 1; i < 4; ++i)
                       .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
                         .mb-small.order-progress__icon.text-color-success
-                          +icon('file', 'icon--large')
+                          +icon('order-progress-'+i, 'icon--large')
                         .mb-small.text-color-success
                             +icon('check-circle', 'icon--medium').bg-default
                         .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
