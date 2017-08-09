@@ -1,0 +1,145 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Kolekcia'
+
+block content
+  -
+    var swiperConfig = {
+      slidesPerView: 1,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+    };
+
+  main.collection
+    section.section
+      .wrapper-main
+        .bar.breadcrumb.mb-medium
+          .bar__item
+            a.text-medium(href="#") 
+              span Knihy
+            +icon('chevron-right', 'icon--medium').text-color-grey
+        .row
+          .col--l-5
+            h1.mb-small Začnite s behaním alebo aspoň trošku športujte
+            p Najpredávanejšia kulinárska novinka z Veľkej Británie, ktorá zabodovala aj v USA. Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať. 
+            .bar.mb-medium.text-medium
+              .bar__item
+                .text-color-grey Kolekciu zostavil
+              .bar__break.hide-s
+              .bar__item.flex.align-items-middle
+                img.img.img--circle.thumbnail--small(src="http://placehold.it/100x100")
+                span.text-semibold.text-space-left Tomáš Ulej
+              .bar__item.bar__item--border.show-s
+              .bar__break.hide-s
+              .bar__item
+                a.link(href="#") Sledovať autora kolekcie
+          .col--l-4
+            .mb-medium.text-center
+              +icon('collection', 'icon--medium').text-color-grey.text-space-right
+              | Kolekcia obsahuje!{' '}
+              span.text-semibold 27 kníh
+            include ./modules/collection-carousel
+            //- .carousel
+            //-   .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
+            //-     .swiper-wrapper
+            //-       each item, i in [...books, ...books, ...books, ...books]
+            //-         a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail.text-center
+            //-           .product.mb-small
+            //-             .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--xlarge.inline-block.mb-small
+            //-               .thumbnail__img-wrap
+            //-                 img(src=`${assetsPrefix}${item.cover}`).img
+            //-             .product__title
+            //-               .h4.no-mrg.text-ellipsis(title=item.title)= item.title
+            //-               ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+            //-                 - var authors = item.author.split(', ')
+            //-                 each author in authors
+            //-                   li= author
+            //-           .badge
+            //-             +icon('star').text-color-yellow.icon--small
+            //-             | #{' '}
+            //-             = item.rating
+
+            //-     button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+            //-       +icon('arrow-left').icon--medium
+            //-     button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+            //-       +icon('arrow-right').icon--medium
+
+          .col--l-3.flex
+            article.card.card--well.text-center.text-size-medium.flex-1.align-items-center
+              .flex.flex-column
+                .card__content
+                  p.text-color-grey-dark Predobjednávka
+
+                .card__content
+                  .h1.mb-small 12,99 €
+                  .badges.badges--inline.align-items-center
+                    .badge.badge--primary Ušetríte 3,50 €
+
+                .card__content
+                  .btn-layout--vertical
+                    button.btn.btn--primary.btn--large.no-mrg-bottom
+                      +icon('collection').icon--left.icon--medium
+                      | Vložiť do košíka
+
+                    +addTo()
+
+    section.section
+      - for (var i = 0; i<8; i++)
+        .product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' )
+          .wrapper-main
+            .row.mb-large
+            .row
+              .col--l-shrink.text-left-l.text-center
+                .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--xlarge.inline-block.mb-small
+                  .thumbnail__img-wrap
+                    img(src="images/content/books/sample-3.jpg").img
+                .product__rating.text-center
+                  .badge
+                    +icon('star').text-color-yellow.icon--small
+                    | 3.5
+                .product-detail__preview-link.text-center
+                  button.btn.btn--clean(data-toggle="#product-preview")
+                    +icon('eye').icon--left.icon--medium
+                    | Pozrieť ukážku
+              .col--l-fill
+                .mb-small
+                  a.link(href="") Frank Weissert
+                h2.text-bold.mb-small Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
+                h3.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+                .bar.mb-large
+                  .bar__item
+                    dl.no-mrg
+                      dt Vydavateľstvo
+                      dd
+                        a.link(href="#") Inspira Publishing
+                        span.text-color-grey , 2016
+                  .bar__item.bar__item--border
+                  .bar__item
+                    dl.no-mrg
+                      dt Edícia
+                      dd
+                        a.link(href="#") Rybolov
+                .bar.no-mrg-bottom.product-item__pricebox
+                  .bar__item
+                    .h2.text-bold 12,99 €
+                  .bar__item
+                    button.btn.btn--primary.btn--large.no-mrg-bottom
+                      +icon('add-to-cart').icon--left.icon--medium
+                      | Vložiť do košíka
+                  .bar__item
+                    +addTo()
+              .col--l-3
+                if (i>0 && i<=2)
+                  article.card(class=(i % 2 == 0) ? 'bg-default' : 'bg-secondary' )
+                    .card__content.text-medium Vychutnajte si daľšiu várku úžasných a zdravých receptov Elly Woodwardovej spolu s rodinou a priatelmi bez ohladu na to, pri akej príležitosti sa zišli.
+                  .bar
+                    .bar__item
+                      img.img.img--circle.thumbnail--small(src="http://placehold.it/100x100")
+                    .bar__item
+                      a.link.text-medium(href="#") Tomáš Ulej
+                      .text-small.text-color-grey Autor kolekcie
+              .col--12.mb-medium
+
+block append modals
+  include ./modules/product-preview
