@@ -44,8 +44,8 @@ block content
                   .swiper-wrapper
                     - for (var i = 1; i < 7; ++i)
                       .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
-                        .mb-small.order-progress__icon(class=i<currentStep ? 'text-color-success' : '')
-                          +icon('order-progress-'+i, 'icon--large')
+                        .order-progress__icon(class=i<currentStep ? 'text-color-success' : '')
+                          +icon('order-progress-'+i, 'icon--xxlarge')
                         .mb-small(class=i<currentStep ? 'text-color-success' : '')
                           if (i<currentStep)
                             +icon('check-circle', 'icon--medium').bg-default
