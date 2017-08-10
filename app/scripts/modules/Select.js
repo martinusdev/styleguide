@@ -159,33 +159,13 @@ export default class Select {
         choice.disable();
       }
 
-      if (select.classList.contains('is-error')) {
-        choice.containerOuter.classList.add('is-error');
-      }
-
-      if (select.classList.contains('select--large')) {
-        choice.containerOuter.classList.add('select--large');
-      }
-
-      if (select.classList.contains('select--small')) {
-        choice.containerOuter.classList.add('select--small');
-      }
-
-      if (select.classList.contains('select--inline')) {
-        choice.containerOuter.classList.add('select--inline');
-      }
-
-      if (select.classList.contains('select--ghost')) {
-        choice.containerOuter.classList.add('select--ghost');
-      }
-
-      if (select.classList.contains('select--input')) {
-        choice.containerOuter.classList.add('select--input');
-      }
-
-      if (select.classList.contains('select--clean')) {
-        choice.containerOuter.classList.add('select--clean');
-      }
+      const classes = select.classList;
+      const unwantedClasses = ['choices__input', 'is-hidden', 'js-select'];
+      classes.forEach(className => {
+        if (!unwantedClasses.includes(className)) {
+          choice.containerOuter.classList.add(className);
+        }
+      });
 
       select.addEventListener('showDropdown', this._onShowDropdown);
       select.addEventListener('hideDropdown', this._onHideDropdown);
