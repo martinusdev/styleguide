@@ -64,7 +64,7 @@ const storeListTemplate = data =>
     <svg class="icon icon-pin icon--small">
       <use xlink:href="../icons_/app.svg#icon-pin"></use>
     </svg>
-    <span class="text-size-medium text-left text-semibold">${data.label}</span>
+    <span class="text-size-medium text-left">${data.label}</span>
   </div>`;
 
 const storeListChoice = (data, config) => `
