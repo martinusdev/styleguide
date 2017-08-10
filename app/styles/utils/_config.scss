@@ -271,19 +271,22 @@ $inline-list: (
   ),
   line: (
     margin: 0 0.5em 0 0,
-  )
+  ),
 );
 
 $inline-list-item: (
   default: (
-    margin: (_get-space('v', 'small') / 2) _get-space('h', 'small') 0 0,
+    margin: (_get-space('v', 'tiny') _get-space('h', 'small') 0 0),
   ),
   expanded: (
-    margin: (_get-space('v', 'small') / 2)  _get-space('h') 0 0,
+    margin: (_get-space('v', 'tiny')  _get-space('h') 0 0),
   ),
   delimited: (
-    margin: (_get-space('v', 'small') / 2) 0 0 0,
-  )
+    margin: (_get-space('v', 'tiny') 0 0 0),
+  ),
+  condensed: (
+    margin: (_get-space('v', 'tiny') _get-space('h', 'tiny') 0 0),
+  ),
 );
 
 $description-list: (
