@@ -1,0 +1,30 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Blahoželáme'
+
+block content
+  main
+    section.section.section--secondary.section--m-full
+      .wrapper-main
+        .row
+          .col--l-8.ofst--center
+             article.card
+                .card__header.card-header.no-mrg-top
+                  h2.card-header__title.no-mrg-top Blahoželáme, práve ste si vytvorili konto na Martinus.sk
+
+                section.card__content
+                  .row
+                    .col--m-6.col--s-8.ofst--center
+                      p.text-center.mb-large
+                        | V budúcnosti budete môcť kedykoľvek nakupovať po prihlásení sa. Odteraz môžete využívať tvorbu vlastnej knižnice a evidovať všetky vaše knihy. Vaše prihlasovacie údaje sme zaslali na e-mailovú adresu, ktorú ste uviedli pri registrácii:
+                        br
+                        span.text-semibold ivan.ninaj@gmail.com.
+
+                      div.btn-layout--vertical.mb-medium
+                        a(href="#").btn.btn--primary Rozumiem, prihláste ma!
+
+                      div.btn-layout--vertical.mb-medium
+                        a(href="/").btn.btn--ghost
+                          +icon('chevron-left').icon--left.icon--medium
+                          | Späť na úvodnú stránku
