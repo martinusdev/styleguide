@@ -136,6 +136,12 @@ export default class Select {
         config.placeholderValue = select.getAttribute('placeholder');
       }
 
+      if (select.hasAttribute('data-autocomplete')) {
+        config.searchEnabled = true;
+        config.searchChoices = true;
+        config.shouldSort = true;
+      }
+
       if (select.hasAttribute('data-select-product')) {
         config.callbackOnCreateTemplates = template => ({
           item: data => template(productSelectTemplate(data)),

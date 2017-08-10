@@ -5,7 +5,6 @@ import {
   requestAnimationFramePolyfill,
 } from './modules/Utils';
 import Select from './modules/Select';
-import Autocomplete from './modules/Autocomplete';
 import Toggle from './modules/Toggle';
 import Tab from './modules/Tab';
 import Dropdown from './modules/Dropdown';
@@ -31,7 +30,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Dropdown = Dropdown;
   window.myApp.Tab = Tab;
   window.myApp.Select = Select;
-  window.myApp.Autocomplete = Autocomplete;
   window.myApp.Modal = Modal;
   window.myApp.Carousel = Carousel;
   window.myApp.Collapse = Collapse;
@@ -59,8 +57,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.tabs = new Tab();
 
   window.myApp.selects = new Select();
-
-  window.myApp.selectsAutocomplete = new Autocomplete();
 
   window.myApp.modals = new Modal();
 
