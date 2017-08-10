@@ -222,7 +222,7 @@
       .btn#{_get-variant-name($button-variant)} .icon--#{$icon-variant} {
         // TODO this is still not good enought pls revisit later
         $scale: _strip-units(map-get($button-size, font-size)) * _strip-units($icon-size) * _map-deep-get($button, default, line-height);
-        $margin: -(abs((1 - $scale))) / 2;
+        $margin: -(abs((1 - $scale * 1.1))) / 2;
 
         width: #{$scale}rem;
         height: #{$scale}rem;
