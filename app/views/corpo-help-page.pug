@@ -1,0 +1,44 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Help Page'
+
+block content
+
+  main
+
+    section.section.section--secondary
+      .wrapper-main
+        .bar.breadcrumb.mb-large-l
+          .bar__item
+            - var breadcrumbs = ['Martinus Help Page','']
+            each breadcrumb, i in breadcrumbs
+              a.text-medium(href="#")
+                span !{breadcrumb}
+              if (i < breadcrumbs.length - 1)
+                +icon('chevron-right', 'icon--medium').text-color-grey
+        .col--m-7.col--12.ofst--center
+          .h1.text-center.mb-medium Martinus Help Page
+          .form-control.form-control--input.mb-large
+                .input-addons
+                  input.input(type='text')
+                  .input-addons__item
+                    +icon('search', '', 'Search')
+
+    section.section.section--secondary
+      .wrapper-main.mb-large
+        .grid.grid--3
+          - for (var i = 0; i<6; i++)
+            - var links = [['Náš príbeh','My Martinusáci','Kariéra'],['Prečo nakupovať u nás','Čo sa deje s vašou objednávkou','Najčastejšie otázky','Poštové','Spôsob platby','Reklamácie'],['Kontakt a podpora','Kníhkupectvá'],['Obchodné podmienky','Ochrana súkromia','Licenčná dohoda a podmienka používania e-kníh '],['Čo pre vás robíme','Čítačky a besedy','Naše projekty','Blog'],['Kontakt pre médiá','Tlačové správy','Logá na stiahnutie','Partnerský systém']]
+            - var headers = ['O Martinuse','Všetko o nákupe','Kontakty','Právne veci','Robíme pre vás','Pre médiá a firmy']
+              .card.bg-secondary
+                .card__content.col--11.bg-default.no-pad-horizontal
+                  .h2.text-center.mb-medium !{headers[i]}
+                  ul.list.list--expanded.style-default.list--clean.mb-large(role="navigation")
+                    each link in links[i]
+                      li.list__item.no-mrg.no-pad-bottom
+                        a.link.text-size-regular(href="#") !{link}
+
+
+
+
