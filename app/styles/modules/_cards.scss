@@ -96,7 +96,15 @@
 
     &-header__action {
       @include bar-item;
-      min-width: 80px;
+      min-width: 110px;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
     }
 
     &__content {
@@ -132,6 +140,20 @@
 
       top: 10px;
       right: 10px;
+    }
+
+    &--done {
+      &::after {
+        content: '';
+        height: _get-rem(24px);
+        width: _get-rem(24px);
+        position: absolute;
+        top: +(_get-rem(1px));
+        left: -(_get-rem(10px));
+        background-image: svg-load('./../icons_/app/check-circle.svg');
+        background-color: $default-bg-color;
+        border-radius: $default-border-radius-circle;
+      }
     }
 
     .carousel {

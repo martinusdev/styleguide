@@ -34,21 +34,9 @@
       background: $text-color-grey-light;
     }
   }
-
-  &:not(.current) {
-    @include breakpoint('s', 'downfrom') {
-      display: none;
-    }
-  }
 }
 
 .thank-you-progress__item.current {
-  .thank-you-progress__status::after {
-    @include breakpoint('s', 'downfrom') {
-      content: none;
-    }
-  }
-
   .thank-you-progress__circle {
     background: $text-color-grey-light;
   }
@@ -66,4 +54,24 @@
 
   @include border-radius(50%);
   border: 2px solid $text-color-grey-light;
+}
+
+.card--arrowhead-left {
+  overflow: visible;
+
+  &::before {
+    @include breakpoint('m') {
+      content: '';
+      display: inline-block;
+      width: 0;
+      height: 0;
+      position: absolute;
+      top: 50%;
+      left: -8px;
+      border-top: 8px solid transparent;
+      border-bottom: 8px solid transparent;
+      border-right: 8px solid #fbf7f5;
+      transform: translateY(-50%);
+    }
+  }
 }

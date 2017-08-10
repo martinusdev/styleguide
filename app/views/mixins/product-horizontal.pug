@@ -21,7 +21,7 @@ mixin product-horizontal(props = {})
     .product__img.product__cover
       .thumbnail.thumbnail--book(class=`thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
         a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
-          .product__image-container
+          .thumbnail__img-wrap
             img(src=`${assetsPrefix}${cover}`).img
         if duration
           .thumbnail__status

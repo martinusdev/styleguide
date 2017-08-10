@@ -1,0 +1,42 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Košík - Doručenie'
+
+block content
+  main.bg-secondary
+    section.section--toolbar
+      .wrapper-main
+        .row.align-items-center
+          .bar.bar--small.bar--progress.col--l-8.ofst--center.mb-small
+            .bar__item.bar__item--fill.text-center
+              | Košík
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              | Doručenie
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 25%")
+            .bar__item.bar__item--fill.text-center
+              | Platba
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 0")
+            .bar__item.bar__item--fill.text-center
+              | Sumár
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 0")
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-8.ofst--center
+
+            include modules/checkout/cart
+
+            include modules/checkout/delivery
+
+            include modules/checkout/delivery-balikomat
+
+            include modules/checkout/delivery-personal-pickup
+
+            include modules/checkout/billing-address

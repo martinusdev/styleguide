@@ -17,7 +17,7 @@
 /// @param {map} $states - Map of button states
 @mixin button-base($states: $button) {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
   margin-bottom: $default-space;
   vertical-align: middle;
   text-align: center;
@@ -94,13 +94,19 @@
 
     &::after {
       content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
 
       @include css-map($states, 'after');
+    }
+  }
+
+  @if map-has($states, 'before') {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+
+      @include css-map($states, 'before');
     }
   }
 }
@@ -121,6 +127,16 @@
   align-items: center;
   padding: 0;
   line-height: 0;
+
+  &::before {
+    content: '';
+    flex: 1 0 auto;
+  }
+
+  &::after {
+    content: '';
+    flex: 1 0 auto;
+  }
 
   @each $variant, $values in $button-sizes {
     &.btn#{_get-variant-name($variant)} {

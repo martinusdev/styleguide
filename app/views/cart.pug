@@ -10,17 +10,23 @@ block content
         .row
           .col--l-8.ofst--center.card
             .card__content
-              h1.h2 Váš košík
+              .bar.bar--small
+                .bar__item
+                  h1.h2 Váš košík
+                .bar__item
+                  .pill.pill--blue 4
 
               ul.list.list--cart
                 each item, i in books
                   li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
                     .cart-item
                       .cart-item__thumbnail
-                        img(src=`${assetsPrefix}${item.cover}`).thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable
+                        a.thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable(href="detail-knihy.html")
+                          .thumbnail__img-wrap
+                            img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          .text-semibold.no-mrg.text-ellipsis= item.title
+                          a.text-semibold.no-mrg.text-ellipsis(href="detail-knihy.html")=item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                             - var authors = item.author.split(', ')
                             each author in authors
@@ -43,11 +49,11 @@ block content
                         .cart-item__column.cart-item__column--qty
                           .form-control.form-control--input.no-mrg
                             .input-addons.input-addons--small.align-items-right
-                              .input-addons__item.no-pad
+                              .input-addons__item.input-addons__item--no-border.no-pad
                                 button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('minus', 'icon--medium', 'mínus')
                               input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
-                              .input-addons__item.no-pad
+                              .input-addons__item.input-addons__item--no-border.no-pad
                                 button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('plus', 'icon--medium', 'plus')
                         .cart-item__column.cart-item__column--price
@@ -59,7 +65,11 @@ block content
         .row
           .col--l-8.ofst--center.card
             .card__content
-              h1.h2 Váš košík
+              .bar.bar--small
+                .bar__item
+                  h1.h2 Váš košík
+                .bar__item
+                  .pill.pill--blue 4
 
               ul.list.list--cart
                 each item, i in books
@@ -77,11 +87,11 @@ block content
                         .cart-item__column.cart-item__column--qty
                           .form-control.form-control--input.no-mrg
                             .input-addons.input-addons--small.align-items-right
-                              .input-addons__item.no-pad
+                              .input-addons__item.input-addons__item--no-border.no-pad
                                 button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('minus', 'icon--medium', 'mínus')
                               input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
-                              .input-addons__item.no-pad
+                              .input-addons__item.input-addons__item--no-border.no-pad
                                 button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('plus', 'icon--medium', 'plus')
                         .cart-item__column.cart-item__column--price
