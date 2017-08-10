@@ -102,9 +102,6 @@
 
   &__user {
     color: _color(grey, 400);
-    font-size: _get-rem($font-size-medium);
-    font-weight: $font-weight-semibold;
-
     align-items: center;
 
     @include breakpoint(m, 'down') {
@@ -137,6 +134,22 @@
     }
 
     &__nav { order: 4; }
+  }
+}
+
+.header-user {
+  &__name {
+    display: inline-block;
+    vertical-align: middle;
+
+    max-width: _get-rem(135px);
+
+    @include text-ellipsis;
+  }
+
+  @include breakpoint(l, 'down') {
+    &__icon { margin-right: 0 !important; } // specificity :()
+    &__name { display: none; }
   }
 }
 
