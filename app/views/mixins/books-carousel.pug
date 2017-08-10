@@ -30,8 +30,8 @@ mixin booksCarouselRecommended()
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
             .product.mb-small.text-left
-              .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.mb-small
-                .product__image-container
+              .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--large.mb-small
+                .thumbnail__img-wrap
                   img(src=`${assetsPrefix}${item.cover}`).img
               .product__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=item.title)= item.title
@@ -75,8 +75,8 @@ mixin booksCarouselHorizontal(props = {})
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
             .product.mb-small.text-left
-              .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.mb-small
-                .product__image-container
+              .product__cover.thumbnail.thumbnail--book.thumbnail--large.thumbnail--clickable.mb-small
+                .thumbnail__img-wrap
                   img(src=`${assetsPrefix}${item.cover}`).img
                 if duration
                   .thumbnail__status

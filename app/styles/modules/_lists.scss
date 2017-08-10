@@ -10,7 +10,10 @@
 // LISTS
 
 @mixin list-base() {
-  @include list-unstyled;
+  &:not(.style-default) {
+    @include list-unstyled;
+  }
+
   display: flex;
   flex-flow: column;
   margin-bottom: $default-space;
