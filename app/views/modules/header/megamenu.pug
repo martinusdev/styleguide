@@ -1,93 +1,145 @@
 -
- const megaMenu = [
-   {
+  const defaultPages = [{
+    title: 'Akcie',
+    href: '#',
+  }, {
+    title: 'Novinky',
+    href: '#',
+  }, {
+    title: 'Bestsellery',
+    href: '#',
+  }, {
+    title: 'Kolekcie',
+    href: '#',
+  }, {
+    title: 'Pre Vás',
+    href: '#',
+  }];
+
+  const defaultCategories = [{
+   title: 'Biografie, životopisy',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8'],
+  }, {
+   title: 'Cudzojazyčná lit.',
+   entries: ['Ostatné jazyky', 'Dvojjazyčné vydania', 'Španielsky jazyk', 'Francúzsky jazyk', 'Nemecký jazyk', 'Anglický jazyk', '+ 2 ďalšie']
+  }, {
+   title: 'Deti a mládež',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'Domov, hobby',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'Ekonomika, právo',
+   entries: ['Sociálne zabezpečenie', 'Verejná správa', 'Súkromné právo', 'Verejné právo', 'Medzinárodné právo', '+ ďalších 5']
+  }, {
+   title: 'Ezoterika, mystika',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'Geografia, cestovanie',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'História',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'Manažment, biznis',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'Medicína, zdravie',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'Motivačná literatúra',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }, {
+   title: 'Náboženstvo, cirkev',
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+  }];
+
+  const megaMenu = [
+    {
      title: 'Knihy',
      id: 'knihy',
-   },
-   {
+     pages: defaultPages,
+     pagesTitle: 'Odporúčame',
+     categories: defaultCategories,
+    }, {
      title: 'E-knihy',
      id: 'eknihy',
-   },
- ]
+      pages: defaultPages,
+      pagesTitle: 'Odporúčame',
+      categories: defaultCategories,
+    }, {
+      title: 'Ostatné',
+      id: 'other',
+      pages: [{
+        title: 'Kníhkupectvá',
+        href: '#',
+      }, {
+        title: 'Pomoc',
+        href: '#',
+      }, {
+        title: 'Niečo 1',
+        href: '#',
+      }, {
+        title: 'Niečo 2',
+        href: '#',
+      }],
+      categories: [{
+        title: 'Káva a čaj',
+        entries: ['Káva typ 1', 'Káva typ 2', 'Čaj typ 1', 'Čaj typ 1', '+ ďalších 8'],
+      }, {
+        title: 'Hudba',
+        entries: ['Hudba typ 1', 'Hudba typ 2', 'Hudba typ iny typ', 'Techno', '+ 25 ďalších']
+      }],
+    },
+  ]
+
+mixin megaMenuContent(props = {})
+  -
+    const {
+      id,
+      title,
+      pages,
+      pagesTitle,
+      categories,
+    } = props;
+
+  .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
+    .mega-menu__mobile-header(
+      data-toggle='self, parent, [data-mega-menu-contents]',
+      data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-arrow-left`,
+      data-toggle-expand,
+      aria-haspopup="true"
+    )
+      .bar
+        .bar__item.bar__item--fill= title
+        .bar__item
+          +icon('arrow-right').icon--medium.text-color-grey
+    .mega-menu__content-wrap
+      .mega-menu__recommended
+        if pagesTitle
+          h5= pagesTitle
+
+        ul.list--expanded.no-pad.no-mrg-bottom
+          each page in pages
+            li
+              a.link.link--black.link--show(href=page.href)= page.title
+
+      .mega-menu__categories.mega-menu-categories
+        .row
+          each category in categories
+            .col--l-4.col--m-12
+              a(href="#").mega-menu-categories__title
+                span.link=category.title
+              ul.list--comma.text-size-small.no-pad.show-m
+                each entry in category.entries
+                  li
+                    a.link.link--grey(href="#")= entry
+
 
 .header__mega-menu.mega-menu(data-mega-menu)
   .mega-menu__contents(data-mega-menu-contents)
     each item in megaMenu
-      .mega-menu__content(data-mega-menu-target, id=`mega-menu-${item.id}`)
-        .mega-menu__mobile-header(
-          data-toggle='self, parent, [data-mega-menu-contents]',
-          data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-arrow-left`,
-          data-toggle-expand,
-          aria-haspopup="true"
-        )
-          .bar
-            .bar__item.bar__item--fill= item.title
-            .bar__item
-              +icon('arrow-right').icon--medium.text-color-grey
-        .mega-menu__content-wrap
-          .mega-menu__recommended
-            h5 Odporúčame
-
-            ul.list--expanded.no-pad.no-mrg-bottom
-              li
-                a.link.link--black.link--show(href="#") Akcie
-              li
-                a.link.link--black.link--show(href="#") Novinky
-              li
-                a.link.link--black.link--show(href="#") Bestsellery
-              li
-                a.link.link--black.link--show(href="#") Kolekcie
-              li
-                a.link.link--black.link--show(href="#") Pre Vás
-
-          .mega-menu__categories.mega-menu-categories
-            -
-              const categories = [{
-                title: 'Biografie, životopisy',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8'],
-              }, {
-                title: 'Cudzojazyčná lit.',
-                entries: ['Ostatné jazyky', 'Dvojjazyčné vydania', 'Španielsky jazyk', 'Francúzsky jazyk', 'Nemecký jazyk', 'Anglický jazyk', '+ 2 ďalšie']
-              }, {
-                title: 'Deti a mládež',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'Domov, hobby',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'Ekonomika, právo',
-                entries: ['Sociálne zabezpečenie', 'Verejná správa', 'Súkromné právo', 'Verejné právo', 'Medzinárodné právo', '+ ďalších 5']
-              }, {
-                title: 'Ezoterika, mystika',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'Geografia, cestovanie',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'História',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'Manažment, biznis',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'Medicína, zdravie',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'Motivačná literatúra',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }, {
-                title: 'Náboženstvo, cirkev',
-                entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
-              }];
-            .row
-              each category in categories
-                .col--l-4.col--m-12
-                  a(href="#").mega-menu-categories__title
-                    span.link=category.title
-                  ul.list--comma.text-size-small.no-pad.show-m
-                    each entry in category.entries
-                      li
-                        a.link.link--grey(href="#")= entry
+      +megaMenuContent(item)
 
     .mega-menu__banner.text-center
       .row
