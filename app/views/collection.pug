@@ -54,7 +54,7 @@ block content
 
                 .card__content
                   .btn-layout--vertical
-                    button.btn.btn--primary.btn--large.no-mrg-bottom
+                    button.btn.btn--primary.btn--large.mb-small
                       +icon('collection').icon--left.icon--medium
                       | Vložiť do košíka
 
@@ -62,11 +62,10 @@ block content
 
     section.section
       - for (var i = 0; i<8; i++)
-        .product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' )
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' )
           .wrapper-main
-            .row.mb-large
-            .row
-              .col--l-shrink.text-left-l.text-center
+            .row.row--space
+              .col--l-shrink.no-mrg-bottom.text-left-l.text-center
                 .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--xlarge.inline-block.mb-small
                   .thumbnail__img-wrap
                     img(src="images/content/books/sample-3.jpg").img
@@ -115,7 +114,6 @@ block content
                     .bar__item
                       a.link.text-medium(href="#") Tomáš Ulej
                       .text-small.text-color-grey Autor kolekcie
-              .col--12.mb-medium
 
     section.section.section--secondary
       .wrapper-main
