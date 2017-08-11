@@ -55,7 +55,8 @@ block content
                     | Pozrieť ukážku
 
             article.col--m-8.col--l-6
-              .btn-layout.btn-layout--vertical.mb-large.show-m
+
+              //-.btn-layout.btn-layout--vertical.mb-large.show-m
                 .btn-group--horizontal
                   a(href="#").btn.btn--ghost.is-active Pevná väzba#{' '}
                     span.text-color-grey.text-nowrap 12,99 €
@@ -72,19 +73,60 @@ block content
                       a.dropdown__item(href="#") Audio kniha#{' '}
                         span.text-color-grey.text-nowrap 16,25 €
 
+              .btn-dropdown.mb-small
+                button.btn.btn--small.btn--ghost.btn--icon-right.text-left(
+                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                  data-toggle-expand,
+                  aria-haspopup="true"
+                )
+                  | Slovenčina, pevná väzba
+                  +icon('chevron-down', 'icon-dropdown').icon--medium
+                .dropdown(data-dropdown, data-toggle-expand)
+                  a(href="#").dropdown__item
+                    .bar.text-small.no-mrg-bottom
+                      .bar__item.bar__item--fill
+                        div Slovenčina, e-kniha
+                        .text-color-grey Posielame ihneď
+                      .bar__item.text-right
+                        .text-semibold.text-color-black 18,00 €
+                        .text-color-grey -10%
+                  a(href="#").dropdown__item
+                    .bar.text-small.no-mrg-bottom
+                      .bar__item.bar__item--fill
+                        div Slovenčina, brožovaná väzba
+                        .text-color-grey Posielame ihneď
+                      .bar__item.text-right
+                        .text-semibold.text-color-black 16,00 €
+                        .text-color-grey -10%
+                  a(href="#").dropdown__item
+                    .bar.text-small.no-mrg-bottom
+                      .bar__item.bar__item--fill
+                        div Český jazyk, E-kniha
+                        .text-color-grey Posielame ihneď
+                      .bar__item.text-right
+                        .text-semibold.text-color-black 8,00 €
+                        .text-color-grey -5%
+                  a(href="#").dropdown__item
+                    .bar.text-small.no-mrg-bottom
+                      .bar__item.bar__item--fill
+                        div Český jazyk, audio kniha
+                        .text-color-grey Posielame ihneď
+                      .bar__item.text-right
+                        .text-semibold.text-color-black 12,00 €
+                        .text-color-grey -2%
 
-              ul.list-inline.list-inline--delimited.product-detail__author.mb-small
-                li
-                  a.link(href="#") Frank Weissert
-                li
-                  a.link(href="#") Jack Thorne
-                li
-                  a.link(href="#") John Tiffany
               h1.product-detail__title Základy rybolovu pro kluky a holky
-              h3.product-detail__subtitle.mb-medium.mb-large-m Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+              h3.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+              ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
+                  li
+                    a.link(href="#") Frank Weissert
+                  li
+                    a.link(href="#") Jack Thorne
+                  li
+                    a.link(href="#") John Tiffany
 
               .bar.bar--small.mb-medium
-                .bar__item.show-m
+                //-.bar__item.show-m
                   .btn-layout.btn-layout--vertical
                     .btn-dropdown.no-mrg
                       button.btn.btn--ghost.btn--small.btn--icon-right(
