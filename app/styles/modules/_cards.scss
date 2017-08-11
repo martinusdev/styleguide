@@ -102,20 +102,22 @@
     &__content {
       @include card-section($grow: 1);
 
-      @each $breakpoint, $props in _get-breakpoint-map($card-section) {
+      @each $breakpoint, $variants in _get-breakpoint-map($card-section) {
         @include breakpoint($breakpoint) {
-          &--large {
-            @include css-map($props, large);
+          @each $variant, $props in $variants {
+            &#{_get-variant-name($variant)} {
+              @include css-map($props);
+            }
+
+            &:first-child {
+              padding-top: nth(map-get($props, padding), 1) * 2;
+            }
+
+            &:last-child {
+              padding-bottom: nth(map-get($props, padding), 1) * 2;
+            }
           }
         }
-      }
-
-      &:first-child {
-        padding-top: _get-space('v');
-      }
-
-      &:last-child {
-        padding-bottom: _get-space('v');
       }
 
       > *:last-child {
