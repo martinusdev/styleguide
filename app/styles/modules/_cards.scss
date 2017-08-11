@@ -107,14 +107,14 @@
           @each $variant, $props in $variants {
             &#{_get-variant-name($variant)} {
               @include css-map($props);
-            }
 
-            &:first-child {
-              padding-top: nth(map-get($props, padding), 1) * 2;
-            }
+              &:first-child { //stylelint-disable-line
+                padding-top: nth(map-get($props, padding), 1) * 2;
+              }
 
-            &:last-child {
-              padding-bottom: nth(map-get($props, padding), 1) * 2;
+              &:last-child { //stylelint-disable-line
+                padding-bottom: nth(map-get($props, padding), 1) * 2;
+              }
             }
           }
         }
