@@ -21,24 +21,21 @@ block content
           .h1.text-center.mb-medium Martinus Help Page
           .form-control.form-control--input.mb-large
                 .input-addons
-                  input.input(type='text')
+                  input.input(type='text' placeholder="Ako Vám môžeme pomôcť?")
                   .input-addons__item
-                    +icon('search', '', 'Search')
+                    button(type="submit").btn.btn--clean.btn--equal
+                      +icon('search', 'icon--medium', 'Hľadať')
 
-    section.section.section--secondary
+    section.section.section--secondary.section--small
       .wrapper-main.mb-large
-        .grid.grid--3
+        .grid.grid--1.grid--m-2.grid--l-3.grid--spaced
+          - var links = [['Náš príbeh','My Martinusáci','Kariéra'],['Prečo nakupovať u nás','Čo sa deje s vašou objednávkou','Najčastejšie otázky','Poštové','Spôsob platby','Reklamácie'],['Kontakt a podpora','Kníhkupectvá'],['Obchodné podmienky','Ochrana súkromia','Licenčná dohoda a podmienka používania e-kníh '],['Čo pre vás robíme','Čítačky a besedy','Naše projekty','Blog'],['Kontakt pre médiá','Tlačové správy','Logá na stiahnutie','Partnerský systém']]
+          - var headers = ['O Martinuse','Všetko o nákupe','Kontakty','Právne veci','Robíme pre vás','Pre médiá a firmy']
           - for (var i = 0; i<6; i++)
-            - var links = [['Náš príbeh','My Martinusáci','Kariéra'],['Prečo nakupovať u nás','Čo sa deje s vašou objednávkou','Najčastejšie otázky','Poštové','Spôsob platby','Reklamácie'],['Kontakt a podpora','Kníhkupectvá'],['Obchodné podmienky','Ochrana súkromia','Licenčná dohoda a podmienka používania e-kníh '],['Čo pre vás robíme','Čítačky a besedy','Naše projekty','Blog'],['Kontakt pre médiá','Tlačové správy','Logá na stiahnutie','Partnerský systém']]
-            - var headers = ['O Martinuse','Všetko o nákupe','Kontakty','Právne veci','Robíme pre vás','Pre médiá a firmy']
-              .card.bg-secondary
-                .card__content.col--11.bg-default.no-pad-horizontal
-                  .h2.text-center.mb-medium !{headers[i]}
-                  ul.list.list--expanded.style-default.list--clean.mb-large(role="navigation")
-                    each link in links[i]
-                      li.list__item.no-mrg.no-pad-bottom
-                        a.link.text-size-regular(href="#") !{link}
-
-
-
-
+            .card.bg-secondary.no-mrg-bottom
+              .card__content.card__content--large.bg-default
+                h2.text-center !{headers[i]}
+                ul.list.list--clean(role="navigation")
+                  each link in links[i]
+                    li.list__item
+                      a.link(href="#") !{link}
