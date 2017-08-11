@@ -1,0 +1,24 @@
+.collection {
+  .product__rating {
+    position: relative;
+    margin-top: _get-rem(-23px);
+  }
+
+  .product-item .thumbnail--xlarge {
+    @include breakpoint('m', 'downfrom') {
+      max-width: 120px;
+    }
+  }
+
+  .product-item__pricebox {
+    @include breakpoint('m', 'downfrom') {
+      flex-direction: column;
+    }
+  }
+
+  .product-item__pricebox .bar__item {
+    @include breakpoint('m', 'downfrom') {
+      margin-right: 0;
+    }
+  }
+}
