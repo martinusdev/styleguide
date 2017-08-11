@@ -7,7 +7,7 @@ block content
 
   main
 
-    section.section.section--small.section--secondary
+    .section.section--small.section--secondary
       .wrapper-main
         .bar.breadcrumb
           .bar__item
@@ -22,7 +22,7 @@ block content
           select.select--ghost.js-select.mb-medium
             option KONTAKT A PODPORA
 
-    section.section
+    .section
       .wrapper-main
         .row
           .col--l-3.show-l
@@ -35,43 +35,42 @@ block content
                 li.mb-medium(class=i===0 ? 'is-active' : '')
                   a.text-medium(href="#", data-scroll) !{link}
 
-          .col--l-9.col--m-9.col--s-12.ofst--m-center.mb-large
-            .show-l
+          article.col--l-9.ofst--m-center.mb-large
+            .show-m
               h1 Kontakt a podpora
               h2.h3 Potrebuejte údaje o Martinuse? Potrebujete s niečím pomôcť? Ak máte akékoľvek problémy alebo otázky, sme tu pre vás
-            .hide-l
+            .hide-m
               p.text-color-grey.text-size-medium.no-mrg Potrebuejte údaje o Martinuse?
               p.text-color-grey.text-size-medium Potrebujete s niečím pomôcť?
 
-            .card.mb-large
-              .h2.mb-medium Podpora
-              .row
-                .col--m-6.col--s-12
-                  .box.bg-secondary.no-mrg
-                    .col--12.ofst--center
-                      .text-color-grey.text-transform-upper.text-size-small.mb-medium S čím vám môžeme pomôcť?
-                      ul.list.bg-secondary.text-medium.mb-large
-                        each link, i in ['Všeobecné informácie', 'Objednávky, informácie o knihách', 'Reklamácie', 'Technické problémy', 'E-knihy technická podpora']
-                          li.mb-medium(class=i===0 ? 'is-active' : '')
-                            a.link.text-color-black(class=i===0 ? 'text-bold' : 'text-light') !{link}
+            h2 Podpora
+            .row.row--space
+              .col--m-6.col--s-12
+                .card.bg-secondary.no-mrg-bottom
+                  .card__content
+                    h2.h5 S čím vám môžeme pomôcť?
+                    ul.list.bg-secondary.text-medium.mb-large
+                      each link, i in ['Všeobecné informácie', 'Objednávky, informácie o knihách', 'Reklamácie', 'Technické problémy', 'E-knihy technická podpora']
+                        li.mb-medium(class=i===0 ? 'is-active' : '')
+                          a.link.text-color-black(class=i===0 ? 'text-bold' : 'text-light') !{link}
 
-                .card.col--m-6.col--s-12.no-mrg
-                  .card__content.no-pad-top
-                    .text-bold.mb-medium Všeobecné informácie
-                    ul.list.list--expanded.text-medium.mb-large
-                      each link, i in ['info@martinus.sk']
-                        li
-                          a.link.text-size-regular(href="#") !{link}
-                  .card__footer
-                    .btn-layout--vertical.col--m-6.no-pad.no-mrg
-                      button.btn.btn--ghost
-                        | Zahájiť chat
+              .card.col--m-6.col--s-12
+                .card__content.no-pad-top
+                  h3.text-size-regular.text-color-black.text-bold.mb-medium Všeobecné informácie
+                  ul.list.list--expanded.text-medium.mb-large
+                    each link, i in ['info@martinus.sk']
+                      li
+                        a.link.text-size-regular(href="#") !{link}
+                .card__footer
+                  .btn-layout--vertical.col--m-6.no-pad.no-mrg
+                    button.btn.btn--ghost
+                      | Zahájiť chat
 
             .card
-              .h2.mb-medium O nás
+              h2 O nás
               .row
                 .col--m-6.col--s-12.no-mrg
-                  p
+                  h3.text-size-regular.text-color-black.mb-medium
                     strong Prevádzkovateľ#{' '}
                     | (adresa a sídlo firmy)
                   address.mb-medium
@@ -88,7 +87,7 @@ block content
                     | IČ DPH: SK2023008911
                   p.text-size-medium.text-color-grey.mb-medium
                     | Spoločnosť zapísaná do Obchodného registra Okresného súdu Žilina, oddiel s.r.o., vložka číslo 52711/L zo dňa 8. 4. 2010
-                  p
+                  h3.text-size-regular.text-color-black.mb-medium
                     strong Zodpovedná osoba:#{' '}
                     | Michal Meško
 
@@ -101,9 +100,9 @@ block content
                     | BIC: GIBASKBX
                   p.text-size-medium.text-color-grey.mb-medium
                     | (Prosím, neuhrádzajte na tento účet priamym bankovým prevodom alebo vkladom žiadne platby pred tým, ako Vám oznámime konkrétne detaily o platbe k Vašej objednávke. Ďakujeme za porozumenie.)
+                  h3.text-size-regular.text-color-black.text-bold.no-mrg-bottom
+                    | Orgán dozoru:
                   p.mb-medium
-                    strong Orgán dozoru:
-                    br
                     | Inšpektorát SOI pre Žilinský kraj
                     br
                     | Predmestská 71, P.O. Box B-89; 011 79 Žilina 1
