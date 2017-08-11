@@ -26,17 +26,10 @@ section.section.section--secondary
     .hide-l
       .bar
         .bar__item.bar__item--fill
-          .btn-dropdown.no-mrg.flex.flex-column
-            button.btn.btn--ghost.btn--icon-right.text-left(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              | Účet
-              +icon('chevron-down', 'icon-dropdown').icon--medium
-            .dropdown(data-dropdown, data-toggle-expand)
-              each link, i in ['Účet', 'Adresy', 'Platby', 'Newsletter', 'E-knihy', 'O vás']
-                a(href="#").dropdown__item !{link}
+          .form-control.form-control--select.no-mrg
+            select.select--ghost#account-sections-spy
+              each slug, link in {'Účet':'ucet', 'Adresy':'adresy', 'Platby':'platby', 'Newsletter':'newsletter', 'E-knihy':'eknihy', 'O vás':'ovas'}
+                option(value=slug) !{link}
         .bar__item
           button.btn Uložiť
     .mb-large

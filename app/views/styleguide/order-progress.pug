@@ -1,0 +1,124 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('modules.orderProgress', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/components/_order-progress.scss'], contents)
+
+    +p-big Documentation for order progress.
+
+  //- end: main info
+
+//- Content
+block append content
+  
+  - var currentStep = 2
+  -
+    var swiperConfig = {
+      slidesPerView: 6,
+      simulateTouch: false,
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          simulateTouch: true,
+        },
+      },
+    };
+  -
+    var swiperConfig2 = {
+      slidesPerView: 3,
+      simulateTouch: false,
+      breakpoints: {
+        768: {
+          simulateTouch: true,
+        },
+      },
+    };
+
+
+  +content-section(contents[0])
+    +content-sub-section('Order progress')
+
+      +demo
+        +demo-example
+
+          .order-progress.mb-large
+            .swiper-container(data-swiper-options=swiperConfig)
+              .swiper-wrapper
+                - for (var i = 1; i < 7; ++i)
+                  .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
+                    .order-progress__icon(class=i<currentStep ? 'text-color-success' : '')
+                      +icon('order-progress-'+i, 'icon--xxlarge')
+                    .mb-small(class=i<currentStep ? 'text-color-success' : '')
+                      if (i<currentStep)
+                        +icon('check-circle', 'icon--medium').bg-default
+                      if (i===currentStep)
+                        +icon('time', 'icon--medium').bg-default
+                      if (i>currentStep)
+                        .order-progress__blank-circle
+                    .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
+
+    +content-sub-section('Order progress - Error')
+
+      +demo
+        +demo-example
+
+          .order-progress.mb-large
+            .swiper-container(data-swiper-options=swiperConfig)
+              .swiper-wrapper
+                - for (var i = 1; i < 7; ++i)
+                  .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
+                    if (i===currentStep)
+                      .order-progress__icon.text-color-error
+                        +icon('order-progress-'+i, 'icon--xxlarge')
+                      .mb-small.text-color-error
+                        if (i<currentStep)
+                          +icon('check-circle', 'icon--medium').bg-default
+                        if (i===currentStep)
+                          +icon('alert-circle', 'icon--medium').bg-default
+                        if (i>currentStep)
+                          .order-progress__blank-circle
+                      .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Platba neúspešná
+                    else
+                      .order-progress__icon(class=i<currentStep ? 'text-color-success' : '')
+                        +icon('order-progress-'+i, 'icon--xxlarge')
+                      .mb-small(class=i<currentStep ? 'text-color-success' : '')
+                        if (i<currentStep)
+                          +icon('check-circle', 'icon--medium').bg-default
+                        if (i===currentStep)
+                          +icon('time', 'icon--medium').bg-default
+                        if (i>currentStep)
+                          .order-progress__blank-circle
+                      .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
+
+    +content-sub-section('Order progress - Done')
+
+      +demo
+        +demo-example
+
+          .row.mb-large
+            .col--m-6
+              .order-progress
+                .swiper-container(data-swiper-options=swiperConfig2)
+                  .swiper-wrapper
+                    - for (var i = 1; i < 4; ++i)
+                      .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
+                        .order-progress__icon.text-color-success
+                          +icon('order-progress-'+i, 'icon--xxlarge')
+                        .mb-small.text-color-success
+                            +icon('check-circle', 'icon--medium').bg-default
+                        .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
+            .col--12.mb-large.hide-m
+            .col--m-6.text-center
+              .btn-group.btn-group--horizontal.align-items-center
+                button.btn.btn--ghost PDF
+                button.btn.btn--ghost EPUB
+                button.btn.btn--ghost MOBI
+              button.btn.btn--primary Stiahnuť všetky tituly
