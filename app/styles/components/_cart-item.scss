@@ -68,8 +68,11 @@
 
   &--price {
     order: 5;
-    flex-basis: _get-rem(75px);
     text-align: right;
+
+    @include breakpoint(m) {
+      flex-basis: _get-rem(75px);
+    }
 
     @include breakpoint(s, down) {
       margin-right: 0;
