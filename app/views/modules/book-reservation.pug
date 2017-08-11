@@ -1,14 +1,14 @@
 .modal-overlay.active#book-reservation
   article.modal.modal--medium
     .modal__wrap
-      header.modal__header.align-items-top
+      header.modal__header.align-items-top.no-mrg-bottom
         .modal__header__headline
           h2.h3.mb-medium.text-semibold.text-color-black Rezervácia titulu v kníhkupectve
           p.text-medium Bojíte sa, že sa titul vypredá, skôr než stihnete prísť do kníhkupectva?
             br
             | Rezervujte si ho a my vám ho odložíme priamo pri pokladni.
         .modal__header__action
-          a.btn.btn--link(data-toggle="#book-reservation")
+          button.btn.btn--link(data-toggle="#book-reservation")
             +icon('close', 'icon--medium')
       section.modal__content
         .row.border-bottom-grey-2.mb-medium
@@ -19,37 +19,37 @@
               .bar__item.bar__item--fill
                 h2.h4.text- Fantastické tvory a dlhý názov na dva riadky
                 .text-medium.text-color-grey.mb-small J.K. Rowlingová
-                .align-items-middle.text-medium
-                  btn.btn.btn--clean.text-space-right.no-mrg-bottom
+                .bar.align-items-middle.text-medium.mb-small
+                  button.btn.btn--clean.text-space-right.no-mrg-bottom
                     +icon('heart', 'icon--medium')
                   img.img.img--circle.thumbnail.thumbnail--small.no-mrg-bottom(src="http://placehold.it/100x100", alt="avatar")
                   span.text-space-left Tento titul má na poličke aj#{' '}
                     span.text-semibold Tomáš Ulej
         .row.border-bottom-grey-2.mb-medium
-          .col--6
+          .col--6.mb-medium
             h3.mb-small.text-semibold.text-color-black Kde si prídete nákup vyzdvihnúť?
             .text-medium.text-semibold.mb-small Kníhkupectvo
             .btn-layout--vertical
               button.btn.btn--ghost.mb-small
                 +icon('target').icon--left.icon--medium
                 | Zistiť podľa mojej polohy
-            .btn-dropdown.mb-small
-              button.btn.btn--ghost.btn--icon-right.text-left.text-transform-none(
-                data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
+              .btn-dropdown.mb-small
+                button.btn.btn--ghost.btn--icon-right.text-left.text-transform-none(
+                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                  data-toggle-expand,
+                  aria-haspopup="true"
               )
-                .bar.text-medium.no-mrg-bottom
-                  .bar__item.bar__item--fill Bratislava (Obchodná)
-                  .bar__item.text-right
-                    span.text-color-grey Skladom 1 ks
-                +icon('chevron-down', 'icon-dropdown').icon--medium
-              .dropdown(data-dropdown, data-toggle-expand)
-                a(href="#").dropdown__item
                   .bar.text-medium.no-mrg-bottom
-                    .bar__item.bar__item--fill Bratislava (Obchodná)
+                    .bar__item.bar__item--fill BA (Obchodná)
                     .bar__item.text-right
                       span.text-color-grey Skladom 1 ks
+                  +icon('chevron-down', 'icon-dropdown').icon--medium
+                .dropdown(data-dropdown, data-toggle-expand)
+                  a(href="#").dropdown__item
+                    .bar.text-medium.no-mrg-bottom
+                      .bar__item.bar__item--fill Bratislava (Obchodná)
+                      .bar__item.text-right
+                        span.text-color-grey Skladom 1 ks
             .text-semibold.text-medium Otváracie hodiny kníhkupectva:
             .text-medium Pon - Pia: 8:00 - 18:00
           .col--6
@@ -70,7 +70,7 @@
               label.text-transform-upper(for="reservation-mobile") Mobil
             .input-addons
               .input-addons__item.no-pad
-                select.js-select
+                select.js-select.select--input
                   option(selected disabled placeholder) +421
                   option +421
               input.input(type="number", name="reservation-mobile", id="reservation-mobile", placeholder="902 000 000")

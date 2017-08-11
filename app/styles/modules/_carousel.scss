@@ -21,7 +21,6 @@
     &--next { right: 40px; }
     &--prev { left: 40px; }
 
-    &.is-disabled,
     .swiper-container:not(.is-initialized) & {
       opacity: 0;
     }
@@ -209,6 +208,10 @@
     }
   }
   // stylelint-enable max-nesting-depth
+
+  &--lazy {
+    min-height: 18rem;
+  }
 }
 
 .carousel-tiles {

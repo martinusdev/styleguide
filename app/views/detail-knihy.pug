@@ -313,7 +313,7 @@ block content
               section.mb-large
                 h5.mb-medium Kategorizácia
 
-                ul.list-inline
+                ul.list-inline.list-inline--condensed
                   li
                     a.link(href="#") Knihy
                   li(role="presentional")
@@ -329,7 +329,7 @@ block content
                   li
                     a.link(href="#") Ostatné
 
-                ul.list-inline
+                ul.list-inline.list-inline--condensed
                   li
                     a.link(href="#") Knihy
                   li(role="presentional")
@@ -341,7 +341,7 @@ block content
                   li
                     a.link(href="#") Ďalšie druhy prózy
 
-                ul.list-inline
+                ul.list-inline.list-inline--condensed
                   li
                     a.link(href="#") Knihy
                   li(role="presentional")
@@ -399,7 +399,7 @@ block content
                             input.radiocheck__input(type="checkbox", id="review-spoiler")
                             label.radiocheck__control(for="review-spoiler")
                             label.radiocheck__label(for="review-spoiler") Môj príspevok prezrádza momenty z deja.
-                        p.text-medium.mb-large Recenzia bude uverejnená pod menom 
+                        p.text-medium.mb-large Recenzia bude uverejnená pod menom
                           span.text-semibold Bartolomej.#{' '}
                           a.link(href="#") Uverejniť anonymne.
                         .text-center
@@ -524,6 +524,7 @@ block content
         +booksCarouselRecommended
 
     include ./modules/seen-items
+    include ./modules/seen-items-delete
 
 block append modals
   include ./modules/product-preview
@@ -555,6 +556,47 @@ block append scripts
               customProperties: {
                 price: '9,50 €',
                 delivery: 'posielame ihneď',
+              }
+            },
+          ]
+        });
+
+        var storeListSelect = new window.myApp.Select('#store-list-select', {
+          choices: [
+            {
+              value: 'ba-obchodna',
+              label: 'BA Obchodná',
+              id: 1,
+              customProperties: {
+                status: 'success',
+                availability: '5+ ks',
+              }
+            },
+            {
+              value: 'ba-cubicon',
+              label: 'BA Cubicon',
+              id: 2,
+              customProperties: {
+                status: 'success',
+                availability: '5+ ks',
+              }
+            },
+            {
+              value: 'ba-galeria',
+              label: 'BA OC Galéria',
+              id: 3,
+              customProperties: {
+                status: 'orange',
+                availability: '3 ks',
+              }
+            },
+            {
+              value: 'nr-centro',
+              label: 'BA OC Centro',
+              id: 4,
+              customProperties: {
+                status: 'grey',
+                availability: 'vypredané',
               }
             },
           ]
