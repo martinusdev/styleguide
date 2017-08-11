@@ -156,6 +156,27 @@
       }
     }
 
+    &--speech-bubble {
+      position: relative;
+      border-bottom-left-radius: 0;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 10px 0 0;
+        border-color: $color-white transparent transparent;
+      }
+
+      &.bg-secondary::after {
+        border-color: $secondary-bg-color transparent transparent;
+      }
+    }
+
     .carousel {
       &.carousel--fade-outside .swiper-container {
         margin-right: 40px;
