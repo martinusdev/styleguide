@@ -54,15 +54,15 @@ block content
                         li.mb-medium(class=i===0 ? 'is-active' : '')
                           a.link.text-color-black(class=i===0 ? 'text-bold' : 'text-light') !{link}
 
-              .card.col--m-6.col--s-12
-                .card__content.no-pad-top
-                  h3.text-size-regular.text-color-black.text-bold.mb-medium Všeobecné informácie
-                  ul.list.list--expanded.text-medium.mb-large
-                    each link, i in ['info@martinus.sk']
-                      li
-                        a.link.text-size-regular(href="#") !{link}
-                .card__footer
-                  .btn-layout--vertical.col--m-6.no-pad.no-mrg
+              .col--m-6.col--s-12
+                .bar.bar--vertical
+                  .bar__item.bar__item--fill
+                    h3.text-size-regular.text-color-black.text-bold.mb-medium Všeobecné informácie
+                    ul.list.list--expanded.text-medium.mb-large
+                      each link, i in ['info@martinus.sk']
+                        li
+                          a.link.text-size-regular(href="#") !{link}
+                  .bar__item
                     button.btn.btn--ghost
                       | Zahájiť chat
 
