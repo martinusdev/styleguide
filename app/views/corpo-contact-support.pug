@@ -18,17 +18,14 @@ block content
               if (i < breadcrumbs.length - 1)
                 +icon('chevron-right', 'icon--medium').text-color-grey
 
-        .form-control.form-control--select.col--12.col--m-4.hide-l.no-pad
-          select.select--ghost.js-select.mb-medium
-            option KONTAKT A PODPORA
 
     .section
       .wrapper-main
         .row
           .col--l-3.show-l
-            button.btn.btn--clean.mb-medium
-              +icon('arrow-left', 'icon--medium').icon--left
-              | Späť na martinus centrum
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+              +icon('arrow-left', 'icon--medium')
+              span Späť na martinus centrum
             h2.h4 Kontakty
             ul.list.list--expanded.no-pad(role="navigation")
               each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
