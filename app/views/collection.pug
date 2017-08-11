@@ -82,29 +82,7 @@ block content
                   a.link(href="") Frank Weissert
                 h2.text-bold.mb-small Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
                 h3.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
-                .bar.mb-large
-                  .bar__item
-                    dl.no-mrg
-                      dt Vydavateľstvo
-                      dd
-                        a.link(href="#") Inspira Publishing
-                        span.text-color-grey , 2016
-                  .bar__item.bar__item--border
-                  .bar__item
-                    dl.no-mrg
-                      dt Edícia
-                      dd
-                        a.link(href="#") Rybolov
-                .bar.no-mrg-bottom.product-item__pricebox
-                  .bar__item
-                    .h2.text-bold 12,99 €
-                  .bar__item
-                    button.btn.btn--primary.no-mrg-bottom
-                      +icon('add-to-cart').icon--left.icon--medium
-                      | Vložiť do košíka
-                  .bar__item
-                    +addTo()
-              .col--l-3
+
                 if (i>0 && i<=2)
                   article.card.card--speech-bubble(class=(i % 2 == 0) ? 'bg-default' : 'bg-secondary' )
                     .card__content.text-medium Vychutnajte si daľšiu várku úžasných a zdravých receptov Elly Woodwardovej spolu s rodinou a priatelmi bez ohladu na to, pri akej príležitosti sa zišli.
@@ -114,6 +92,19 @@ block content
                     .bar__item
                       a.link.text-medium(href="#") Tomáš Ulej
                       .text-small.text-color-grey Autor kolekcie
+                else
+                  p Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
+              .col--l-3.align-self-middle
+                .product-item__pricebox.text-center
+                  .bar.bar--vertical.no-mrg-bottom
+                    .bar__item
+                      .h2 12,99 €
+                    .bar__item
+                      button.btn.btn--primary
+                        +icon('add-to-cart').icon--left.icon--medium
+                        | Vložiť do košíka
+                    .bar__item
+                      +addTo()
 
     section.section.section--secondary
       .wrapper-main
