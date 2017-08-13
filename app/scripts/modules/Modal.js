@@ -256,35 +256,27 @@ export default class Modal {
   }
 
   static lockBody(className = defaultConfig.modalBodyIsOpen) {
-    // this is commented out because position is switched from fixed to absolut on body element
+    // add locking styles to body
+    document.body.style.height = '100%';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.WebkitOverflowScrolling = 'auto';
 
-    // const scrollTop =
-    //   document.documentElement.scrollTop || document.body.scrollTop;
-
-    // add negative top to counter position: fixed; posiiton
-    // if (scrollTop) {
-    //   document.body.style.top = `-${scrollTop}px`;
-    // }
-
-    // add modal class to body
+    // add modal class
     document.body.classList.add(className);
   }
 
   static unlockBody(className = defaultConfig.modalBodyIsOpen) {
-    // this is commented out because position is switched from fixed to absolut on body element
+    // remove locking styles from body
+    // add locking styles to body
+    document.body.style.height = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
 
-    // const scrollTop = Math.abs(parseInt(document.body.style.top, 10));
-
-    // remove modal body class
+    // add modal class
     document.body.classList.remove(className);
-    //
-    // if (scrollTop) {
-    //   // remove css top
-    //   document.body.style.top = null;
-    //   // set original scrollTop
-    //   document.documentElement.scrollTop = scrollTop;
-    //   document.body.scrollTop = scrollTop;
-    // }
   }
 
   _positionLocalModal(modal) {
