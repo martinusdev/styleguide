@@ -35,7 +35,16 @@ class Toggle {
     return target.classList.contains(activeClass);
   }
 
-  static doToggle({ target, trigger, className, icon, text, expand, state }) {
+  static doToggle({
+    target,
+    trigger,
+    className,
+    icon,
+    text,
+    expand,
+    state,
+    resize = false,
+  }) {
     if (!(target instanceof Element)) {
       target = document.querySelector(target);
     }
@@ -104,7 +113,9 @@ class Toggle {
       }),
     );
 
-    triggerResize();
+    if (resize) {
+      triggerResize();
+    }
 
     return target;
   }
