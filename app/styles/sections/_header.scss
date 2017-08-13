@@ -86,6 +86,11 @@
       right: 0;
       z-index: $z-index-topbar;
     }
+
+    @include breakpoint(s, 'down') {
+      padding-top: _get-space('v', 'small');
+      padding-bottom: _get-space('v', 'small');
+    }
   }
 
   .wrapper-main {
@@ -96,6 +101,7 @@
   }
 
   &__bar {
+    height: _get-rem(50px);
     margin-bottom: 0;
 
     @include breakpoint(m, 'down') {
