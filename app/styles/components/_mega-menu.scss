@@ -12,9 +12,14 @@
   &.is-active {
     display: flex;
 
-    max-height: calc(100vh - 80px);
+    max-height: calc(100vh - 60px);
     overflow: auto;
     z-index: $z-index-topbar + 1;
+    -webkit-overflow-scrolling: touch;
+
+    @include breakpoint(m) {
+      max-height: calc(100vh - 80px);
+    }
   }
 
   &__contents {
@@ -25,7 +30,7 @@
     flex: 1 1 auto;
     display: flex;
 
-    @include breakpoint(m) {
+    @include breakpoint(l) {
       &:not(.is-active) {
         display: none;
       }
@@ -50,7 +55,6 @@
   &__categories {
     flex: 1 1 auto;
     padding: _get-space('v') _get-space('h');
-    max-width: 576px;
   }
 
   &__banner {
@@ -84,13 +88,21 @@
     }
   }
 
-  @include breakpoint(s, 'down') {
+  @include breakpoint(m, 'down') {
     &__contents {
+      display: block;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+    }
+
+    &__content {
       flex-direction: column;
     }
 
     &__mobile-header {
       display: block;
+      flex: 1 0 auto;
     }
 
     .is-active + &__content-wrap {

@@ -127,7 +127,7 @@ mixin megaMenuContent(props = {})
       .mega-menu__categories.mega-menu-categories
         .row
           each category in categories
-            .col--l-4.col--m-12
+            .col--l-4.col--m-6
               a(href="#").mega-menu-categories__title
                 span.link=category.title
               ul.list--comma.text-size-small.no-pad.show-m
@@ -145,16 +145,16 @@ mixin megaMenuContent(props = {})
       .row
         .col--l-12.col--m-12.col--s-8.ofst--center
           .h2 Kúpite výhodne spolu
-          .bar.align-items-bottom
-            .bar__item.bar__item--fill
-              .thumbnail.thumbnail--book.thumbnail--large
+          .row.align-items-bottom.mb-medium
+            .col--6
+              .thumbnail.thumbnail--book.thumbnail--large.align-self-right
                 .thumbnail__img-wrap
                   img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-5.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .bar__item.bar__item--fill
+            .col--6
               .thumbnail.thumbnail--book.thumbnail--large
                 .thumbnail__img-wrap
                   img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-8.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-          .badges.badges--inline.align-items-center.mb-medium
+          .badges.align-items-center.mb-medium
             .badge.badge--primary Ušetríte 3,50 €
           button.btn.btn--primary.btn--large.mb-small
             +icon('cart').icon--left.icon--medium
