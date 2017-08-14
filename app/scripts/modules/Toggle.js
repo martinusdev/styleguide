@@ -136,12 +136,20 @@ class Toggle {
     const triggerTargets = this._getTargets(trigger);
 
     triggerTargets.forEach(target => {
+      let className = this.config.toggleClass;
+
+      if (trigger.hasAttribute('data-toggle-class-target')) {
+        className = trigger.getAttribute('data-toggle-class-target');
+      }
+
+      if (target.hasAttribute('data-toggle-class')) {
+        className = target.getAttribute('data-toggle-class');
+      }
+
       Toggle.doToggle({
         target,
         trigger,
-        className: target.hasAttribute('data-toggle-class')
-          ? target.getAttribute('data-toggle-class')
-          : this.config.toggleClass,
+        className,
         icon: target.getAttribute('data-toggle-icon'),
         text: target.getAttribute('data-toggle-text'),
         expand: target.hasAttribute('data-toggle-expand'),
