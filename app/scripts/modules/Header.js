@@ -33,7 +33,7 @@ export default class Header {
   _focusSearchOnSearchActive(e) { // eslint-disable-line
     const target = e.detail.target;
 
-    if (isToggled(target, 'is-search-active')) {
+    if (target === this.header && isToggled(target, 'is-search-active')) {
       this.searchInput.focus();
     }
   }
