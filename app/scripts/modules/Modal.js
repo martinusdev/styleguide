@@ -256,6 +256,11 @@ export default class Modal {
   }
 
   static lockBody(className = defaultConfig.modalBodyIsOpen) {
+    // store current scrollTop value
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    document.body.setAttribute('data-lock-scrolltop', scrollTop);
+
     // add locking styles to body
     document.body.style.height = '100%';
     document.body.style.width = '100%';
@@ -265,9 +270,16 @@ export default class Modal {
 
     // add modal class
     document.body.classList.add(className);
+
+    // attempt to scroll top fixed position
+    window.requestAnimationFrame(() => {
+      window.scrollTo(0, scrollTop);
+    });
   }
 
   static unlockBody(className = defaultConfig.modalBodyIsOpen) {
+    const scrollTop = document.body.getAttribute('data-lock-scrolltop');
+
     // remove locking styles from body
     // add locking styles to body
     document.body.style.height = '';
@@ -277,6 +289,12 @@ export default class Modal {
 
     // add modal class
     document.body.classList.remove(className);
+
+    // set scroll position back
+
+    window.requestAnimationFrame(() => {
+      window.scrollTo(0, scrollTop);
+    });
   }
 
   _positionLocalModal(modal) {
