@@ -21,6 +21,11 @@ export default class Header {
 
   _init() {
     this.header = document.querySelector(this.config.selector);
+
+    if (!this.header) {
+      return null;
+    }
+
     this.searchInput = this.header.querySelector(this.config.searchSelector);
 
     if (this.searchInput) {
