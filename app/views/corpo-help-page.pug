@@ -1,0 +1,41 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Help Page'
+
+block content
+
+  main
+
+    section.section.section--small.section--secondary
+      .wrapper-main
+        .bar.breadcrumb
+          .bar__item
+            - var breadcrumbs = ['Martinus Help Page','']
+            each breadcrumb, i in breadcrumbs
+              a.text-medium(href="#")
+                span !{breadcrumb}
+              if (i < breadcrumbs.length - 1)
+                +icon('chevron-right', 'icon--medium').text-color-grey
+        .col--m-7.col--12.ofst--center
+          .h1.text-center.mb-medium Martinus Help Page
+          .form-control.form-control--input.mb-large
+                .input-addons
+                  input.input(type='text' placeholder="Ako Vám môžeme pomôcť?")
+                  .input-addons__item
+                    button(type="submit").btn.btn--clean.btn--equal
+                      +icon('search', 'icon--medium', 'Hľadať')
+
+    section.section.section--secondary.section--small
+      .wrapper-main.mb-large
+        .grid.grid--1.grid--m-2.grid--l-3.grid--spaced
+          - var links = [['Náš príbeh','My Martinusáci','Kariéra'],['Prečo nakupovať u nás','Čo sa deje s vašou objednávkou','Najčastejšie otázky','Poštové','Spôsob platby','Reklamácie'],['Kontakt a podpora','Kníhkupectvá'],['Obchodné podmienky','Ochrana súkromia','Licenčná dohoda a podmienka používania e-kníh '],['Čo pre vás robíme','Čítačky a besedy','Naše projekty','Blog'],['Kontakt pre médiá','Tlačové správy','Logá na stiahnutie','Partnerský systém']]
+          - var headers = ['O Martinuse','Všetko o nákupe','Kontakty','Právne veci','Robíme pre vás','Pre médiá a firmy']
+          - for (var i = 0; i<6; i++)
+            .card.bg-secondary.no-mrg-bottom
+              .card__content.card__content--large.bg-default
+                h2.text-center !{headers[i]}
+                ul.list.list--clean(role="navigation")
+                  each link in links[i]
+                    li.list__item
+                      a.link(href="#") !{link}

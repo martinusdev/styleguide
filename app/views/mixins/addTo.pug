@@ -5,10 +5,10 @@ mixin addTo(props = {})
     } = props;
 
   .btn-dropdown.btn-dropdown--no-icon&attributes(attributes)
-    button.btn.btn--clean.no-mrg(data-toggle="self, next", data-toggle-expand)
+    button.btn.btn--clean.no-mrg(data-toggle="self, next",  aria-expanded="false", data-toggle-expand)
       +icon('heart').icon--medium(class=text ? "icon--left" : "")
       | #{text}
-    .dropdown.dropdown--arrowhead(data-dropdown aria-expanded="false")
+    .dropdown.dropdown--arrowhead(data-dropdown, data-toggle-expand, aria-expanded="false")
       a(href="#").dropdown__item Wishlist
       a(href="#").dropdown__item Môj zoznam
       a(href="#").dropdown__item
