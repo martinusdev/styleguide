@@ -21,6 +21,7 @@ import NumberSpinner from './modules/NumberSpinner';
 import ProductPreview from './modules/ProductPreview';
 import MegaMenu from './modules/MegaMenu';
 import RadiocheckToggle from './modules/RadiocheckToggle';
+import Header from './modules/Header';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -43,6 +44,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.NumberSpinner = NumberSpinner;
   window.myApp.ProductPreview = ProductPreview;
   window.myApp.MegaMenu = MegaMenu;
+  window.myApp.Header = Header;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
@@ -81,6 +83,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.numberSpinners = new NumberSpinner();
 
   window.myApp.radiocheckToggles = new RadiocheckToggle();
+
+  window.myApp.header = new Header();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });

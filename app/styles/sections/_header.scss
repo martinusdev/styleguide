@@ -1,6 +1,15 @@
 .header-search {
-  display: flex;
+  display: none;
   justify-content: flex-end;
+  margin-bottom: 0;
+
+  &__search {
+    display: none;
+
+    @include breakpoint(m) {
+      display: flex;
+    };
+  }
 
   &__value {
     border-left: 0;
@@ -16,6 +25,30 @@
     border-color: _color(grey, 900);
 
     transition: $form-t;
+  }
+
+  &__back {
+    display: none;
+    margin-right: _get-space('h', 'small');
+  }
+
+  &__toggle {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  .is-search-active & {
+    display: flex;
+    max-width: none;
+    margin-right: 0;
+    flex: 1 0 auto;
+
+    &__search {
+      display: block;
+      flex: 1 0 auto;
+    }
+
+    &__back { display: flex; }
   }
 }
 
@@ -166,6 +199,16 @@
     }
 
     &__nav { order: 4; }
+  }
+
+  &.is-search-active {
+    .header__logo,
+    .header__nav,
+    .header__user,
+    .header__cart,
+    .header-search__toggle {
+      display: none;
+    }
   }
 
   @include breakpoint(s, 'down') {
