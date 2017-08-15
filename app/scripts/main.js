@@ -5,7 +5,6 @@ import {
   requestAnimationFramePolyfill,
 } from './modules/Utils';
 import Select from './modules/Select';
-import Autocomplete from './modules/Autocomplete';
 import Toggle from './modules/Toggle';
 import Tab from './modules/Tab';
 import Dropdown from './modules/Dropdown';
@@ -21,6 +20,7 @@ import NumberSpinner from './modules/NumberSpinner';
 import ProductPreview from './modules/ProductPreview';
 import MegaMenu from './modules/MegaMenu';
 import RadiocheckToggle from './modules/RadiocheckToggle';
+import Header from './modules/Header';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -31,7 +31,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Dropdown = Dropdown;
   window.myApp.Tab = Tab;
   window.myApp.Select = Select;
-  window.myApp.Autocomplete = Autocomplete;
   window.myApp.Modal = Modal;
   window.myApp.Carousel = Carousel;
   window.myApp.Collapse = Collapse;
@@ -43,6 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.NumberSpinner = NumberSpinner;
   window.myApp.ProductPreview = ProductPreview;
   window.myApp.MegaMenu = MegaMenu;
+  window.myApp.Header = Header;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
@@ -59,8 +59,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.tabs = new Tab();
 
   window.myApp.selects = new Select();
-
-  window.myApp.selectsAutocomplete = new Autocomplete();
 
   window.myApp.modals = new Modal();
 
@@ -81,6 +79,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.numberSpinners = new NumberSpinner();
 
   window.myApp.radiocheckToggles = new RadiocheckToggle();
+
+  window.myApp.header = new Header();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });

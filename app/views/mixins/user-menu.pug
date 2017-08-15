@@ -1,18 +1,16 @@
 mixin userMenu(props = {})
   -
     const {
-      userName = 'Bartolomej'
+      userName = 'Bartolomej s dlhym menom'
     } = props;
 
-  .btn-dropdown.btn-dropdown--no-icon
-    a.btn.btn--clean.header__btn(data-toggle-expand data-toggle="self, next")
-      .bar.no-mrg
-        .bar__item
-          +icon('user').icon--medium.text-space-right
-        .bar__item.bar__item--fill
-          | #{userName}
+  .btn-dropdown.btn-dropdown--no-icon.header-user
+    button.btn.btn--clean.header-btn.header-btn--no-arrow(data-toggle-expand data-toggle="self, next")
+      +icon('user').icon--medium.icon--left.header-user__icon
+      span.header-user__name #{userName}
+
     .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false")
-      a(href="#").dropdown__item Môj MARTINUS
+      h5.dropdown__group Môj MARTINUS
       a(href="#").dropdown__item Knižnica
       a(href="#").dropdown__item Objednávky
       a(href="#").dropdown__item Účet

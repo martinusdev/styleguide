@@ -199,6 +199,9 @@ $typography-overrides: (
     'h1, .h1' : (
       font-size: _get-rem(42px),
     ),
+    'h2, .h2' : (
+      font-size: _get-rem(25px),
+    ),
     'h4, .h4' : (
       font-size: _get-rem(18px),
     ),
@@ -273,19 +276,22 @@ $inline-list: (
   ),
   line: (
     margin: 0 0.5em 0 0,
-  )
+  ),
 );
 
 $inline-list-item: (
   default: (
-    margin: (_get-space('v', 'small') / 2) _get-space('h', 'small') 0 0,
+    margin: (_get-space('v', 'tiny') _get-space('h', 'small') 0 0),
   ),
   expanded: (
-    margin: (_get-space('v', 'small') / 2)  _get-space('h') 0 0,
+    margin: (_get-space('v', 'tiny')  _get-space('h') 0 0),
   ),
   delimited: (
-    margin: (_get-space('v', 'small') / 2) 0 0 0,
-  )
+    margin: (_get-space('v', 'tiny') 0 0 0),
+  ),
+  condensed: (
+    margin: (_get-space('v', 'tiny') 0 0 0),
+  ),
 );
 
 $description-list: (
@@ -839,68 +845,6 @@ $select-button-offset: 8px !default;
 $select: (
   default: (
     default: (
-      background-color: _color(bg),
-      border-width: $form-b-w,
-      border-style: $form-b-s,
-      border-color: transparent,
-      border-radius: $select-b-r,
-      after: (
-        height: 4px,
-        background-color: _color(bg, 600),
-      )
-    ),
-    focus: (
-      box-shadow: $form-focus-bs,
-      border-color: $form-focus-b-c,
-    ),
-    disabled: (
-      color: $form-disabled-c,
-      border-color: $form-disabled-b-c,
-    ),
-    error: (
-      background-color: $form-error-bgc,
-      color: $form-disabled-c,
-      border-color: $form-disabled-b-c,
-    ),
-  ),
-  clean: (
-    default: (
-      background-color: transparent,
-      border-width: $form-b-w,
-      border-style: $form-b-s,
-      border-color: transparent,
-      border-radius: $select-b-r,
-      after: (
-        display: none,
-      )
-    )
-  ),
-  ghost : (
-    default: (
-      color: _color(grey, 700),
-      background-color: transparent,
-      border-width: $form-b-w,
-      border-style: $form-b-s,
-      border-color: _color(grey, 400),
-      border-radius: $select-b-r,
-      after: (
-        display: none,
-      )
-    ),
-    focus: (
-      background-color: _color(secondary, 400),
-      color: _color(grey, 700),
-    ),
-    active: (
-      background-color: _color(secondary, 500),
-      border-color: _color(gray, 200),
-    ),
-    group: (
-      border-color: _color(gray, 400),
-    ),
-  ),
-  input : (
-    default: (
       background-color: $form-bgc,
       border-width: $form-b-w,
       border-style: $form-b-s,
@@ -926,10 +870,88 @@ $select: (
       color: $form-error-c,
       border-color: $form-error-b-c,
     ),
+  ),
+  clean: (
+    default: (
+      background-color: transparent,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: transparent,
+      border-radius: $select-b-r,
+      box-shadow: none,
+      after: (
+        display: none,
+      )
+    )
+  ),
+  ghost : (
+    default: (
+      color: _color(grey, 700),
+      background-color: transparent,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: _color(grey, 400),
+      border-radius: $select-b-r,
+      box-shadow: none,
+      text-transform: uppercase,
+      font-weight: 600,
+      letter-spacing: 1px,
+      after: (
+        display: none,
+      )
+    ),
+    focus: (
+      background-color: _color(secondary, 400),
+      color: _color(grey, 700),
+    ),
+    active: (
+      background-color: _color(secondary, 500),
+      border-color: _color(gray, 200),
+    ),
+    group: (
+      border-color: _color(gray, 400),
+    ),
+  ),
+  brown : (
+    default: (
+      background-color: _color(bg),
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: transparent,
+      border-radius: $select-b-r,
+      box-shadow: none,
+      color: _color(gray, 600),
+      after: (
+        display: block,
+        height: 4px,
+        background-color: _color(bg, 600),
+      )
+    ),
+    focus: (
+      box-shadow: none,
+      border-color: $form-focus-b-c,
+    ),
+    disabled: (
+      color: $form-disabled-c,
+      border-color: $form-disabled-b-c,
+    ),
+    error: (
+      background-color: $form-error-bgc,
+      color: $form-disabled-c,
+      border-color: $form-disabled-b-c,
+    ),
   )
 );
 
-$select-sizes: $input-sizes;
+$select-ghost-sizes: (
+  ghost: (
+    font-size: _get-rem($font-size-small),
+    min-height: _get-em(40px, $font-size-small),
+    padding: _get-em(7px, $font-size-small) _get-em(8px, $font-size-small),
+  ),
+);
+
+$select-sizes: map-merge($input-sizes, $select-ghost-sizes);
 
 $select-item: (
   default: (
@@ -1059,6 +1081,11 @@ $dropdown-menu: (
   )
 );
 
+$dropdown-menu-group: (
+  padding: _get-rem(10px),
+  margin-bottom: 0,
+);
+
 $dropdown-menu-item: (
   default: (
     font-size: _get-rem($font-size-medium),
@@ -1126,7 +1153,7 @@ $card-section: (
       padding: _get-space('v', 'small') _get-space('h') 0,
     ),
     large: (
-      padding: _get-space('v', 'large') _get-space('h', 'large') 0,
+      padding: _get-space('v') _get-space('h', 'large') 0,
     )
   ),
 );

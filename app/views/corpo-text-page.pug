@@ -7,9 +7,9 @@ block content
 
   main
 
-    section.section.section--secondary
+    .section.section--small.section--secondary
       .wrapper-main
-        .bar.breadcrumb.no-mrg-bottom
+        .bar.breadcrumb
           .bar__item
             - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
             each breadcrumb, i in breadcrumbs
@@ -18,13 +18,13 @@ block content
               if (i < breadcrumbs.length - 1)
                 +icon('chevron-right', 'icon--medium').text-color-grey
 
-    section.section
+    .section
       .wrapper-main
         .row
           .col--l-3.show-l
-            a.btn.btn--clean.mb-medium.text-left.no-pad-left.no-pad-right.block(href="#")
-              +icon('arrow-left', 'icon--medium').icon--left
-              | Späť na martinus centrum
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+              +icon('arrow-left', 'icon--medium')
+              span Späť na martinus centrum
             h2.h4 Kontakty
             ul.list.list--expanded.no-pad(role="navigation")
               each link, i in ['Čo sa deje s vašou objednávkou', 'Najčastejšie otázky', 'Poštovné', 'Spôsob platby', 'Reklamácie']
