@@ -65,7 +65,7 @@ section.section.section--m-full
                         a(href="detail-knihy.html").link.text-small Viac o knihe
                           +icon('arrow-right', 'icon--small')
                 .col--12.mb-medium.hide-s
-                .col--m-shrink
+                .col--m-shrink.product-item__price-box
                   .btn-layout.btn-layout--vertical.mb-medium
                     .btn-dropdown.no-mrg
                       button.btn.btn--ghost.btn--icon-right.text-left(
@@ -120,6 +120,8 @@ section.section.section--m-full
                     p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
                       em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
                       | .
+                      if i == 1
+                        | Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
                     .btn-layout--vertical
                       button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
                         +icon('cart').icon--left.icon--medium

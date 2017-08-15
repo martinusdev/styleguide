@@ -26,6 +26,12 @@
   overflow: hidden;
 }
 
+.product-item__price-box {
+  @include breakpoint(m) {
+    max-width: _get-rem(250px);
+  }
+}
+
 .mobile-wrapper {
   &.is-active {
     @include breakpoint('l', 'downfrom') {
