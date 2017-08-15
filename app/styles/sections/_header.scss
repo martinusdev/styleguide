@@ -41,17 +41,21 @@
   }
 
   .is-search-active & {
-    display: flex;
-    max-width: none;
-    margin-right: 0;
-    flex: 1 0 auto;
-
-    &__search {
-      display: block;
+    @include breakpoint(s, down) {
+      display: flex;
+      max-width: none;
+      margin-right: 0;
       flex: 1 0 auto;
-    }
 
-    &__back { display: flex; }
+      &__search { //stylelint-disable-line
+        display: block;
+        flex: 1 0 auto;
+      }
+
+      &__back { //stylelint-disable-line
+        display: flex;
+      }
+    }
   }
 }
 
@@ -205,12 +209,14 @@
   }
 
   &.is-search-active {
-    .header__logo,
-    .header__nav,
-    .header__user,
-    .header__cart,
-    .header-search__toggle {
-      display: none;
+    @include breakpoint(s, down) {
+      .header__logo,
+      .header__nav,
+      .header__user,
+      .header__cart,
+      .header-search__toggle {
+        display: none;
+      }
     }
   }
 
