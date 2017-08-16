@@ -1,0 +1,116 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Kontakt a support'
+
+block content
+
+  main
+
+    .section.section--small.section--secondary
+      .wrapper-main
+        .bar.breadcrumb
+          .bar__item
+            - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
+            each breadcrumb, i in breadcrumbs
+              a.text-medium(href="#")
+                span !{breadcrumb}
+              if (i < breadcrumbs.length - 1)
+                +icon('chevron-right', 'icon--medium').text-color-grey
+
+
+    .section
+      .wrapper-main
+        .row
+          .col--l-3.show-l
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+              +icon('arrow-left', 'icon--medium')
+              span Späť na martinus centrum
+            h2.h4 Kontakty
+            ul.list.list--expanded.no-pad(role="navigation")
+              each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
+                li.mb-medium(class=i===0 ? 'is-active' : '')
+                  a.text-medium(href="#", data-scroll) !{link}
+
+          article.col--l-9.ofst--m-center.mb-large
+            .show-m
+              h1 Kontakt a podpora
+              h2.h3 Potrebuejte údaje o Martinuse? Potrebujete s niečím pomôcť? Ak máte akékoľvek problémy alebo otázky, sme tu pre vás
+            .hide-m
+              p.text-color-grey.text-size-medium.no-mrg Potrebuejte údaje o Martinuse?
+              p.text-color-grey.text-size-medium Potrebujete s niečím pomôcť?
+
+            h2 Podpora
+            .row.row--space
+              .col--m-6.col--s-12
+                .card.bg-secondary.no-mrg-bottom
+                  .card__content
+                    h2.h5 S čím vám môžeme pomôcť?
+                    ul.list.bg-secondary.text-medium.mb-large
+                      each link, i in ['Všeobecné informácie', 'Objednávky, informácie o knihách', 'Reklamácie', 'Technické problémy', 'E-knihy technická podpora']
+                        li.mb-medium(class=i===0 ? 'is-active' : '')
+                          a.link.text-color-black(class=i===0 ? 'text-bold' : 'text-light') !{link}
+
+              .col--m-6.col--s-12
+                .bar.bar--vertical
+                  .bar__item.bar__item--fill
+                    h3.text-size-regular.text-color-black.text-bold.mb-medium Všeobecné informácie
+                    ul.list.list--expanded.text-medium.mb-large
+                      each link, i in ['info@martinus.sk']
+                        li
+                          a.link.text-size-regular(href="#") !{link}
+                  .bar__item
+                    button.btn.btn--ghost
+                      | Zahájiť chat
+
+            .card
+              h2 O nás
+              .row
+                .col--m-6.col--s-12.no-mrg
+                  h3.text-size-regular.text-color-black.mb-medium
+                    strong Prevádzkovateľ#{' '}
+                    | (adresa a sídlo firmy)
+                  address.mb-medium
+                    | Martinus, s.r.o.
+                    br
+                    | Gorkého 4
+                    br
+                    | 036 01 Martin
+                  p.mb-medium
+                    | IČO: 45 503 249
+                    br
+                    | DIČ: 2023008911
+                    br
+                    | IČ DPH: SK2023008911
+                  p.text-size-medium.text-color-grey.mb-medium
+                    | Spoločnosť zapísaná do Obchodného registra Okresného súdu Žilina, oddiel s.r.o., vložka číslo 52711/L zo dňa 8. 4. 2010
+                  h3.text-size-regular.text-color-black.mb-medium
+                    strong Zodpovedná osoba:#{' '}
+                    | Michal Meško
+
+                .col--m-6.col--s-12
+                  p
+                    | Číslo účtu: 0352363833/0900 (Slovenská sporiteľňa)
+                    br
+                    | IBAN: SK28 0900 0000 0003 5236 3833
+                    br
+                    | BIC: GIBASKBX
+                  p.text-size-medium.text-color-grey.mb-medium
+                    | (Prosím, neuhrádzajte na tento účet priamym bankovým prevodom alebo vkladom žiadne platby pred tým, ako Vám oznámime konkrétne detaily o platbe k Vašej objednávke. Ďakujeme za porozumenie.)
+                  h3.text-size-regular.text-color-black.text-bold.no-mrg-bottom
+                    | Orgán dozoru:
+                  p.mb-medium
+                    | Inšpektorát SOI pre Žilinský kraj
+                    br
+                    | Predmestská 71, P.O. Box B-89; 011 79 Žilina 1
+                    br
+                    | odbor technickej kontroly výrobkov a ochrany spotrebiteľa
+                    br
+                    strong Telefón:#{' '}
+                    a.text-medium(href="tel:041 / 7632 130") 041 / 7632 130
+                    br
+                    strong Fax:#{' '}
+                    a.text-medium(href="tel:041 / 7632 139") 041 / 7632 139
+                    br
+                    strong E-mail:#{' '}
+                    a.link.text-medium(href="mailto:za@soi.sk") za@soi.sk

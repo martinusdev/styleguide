@@ -18,7 +18,7 @@ block prepend content
 
 //- Content
 block append content
-  
+
   - var currentStep = 2
   -
     var swiperConfig = {
@@ -82,7 +82,7 @@ block append content
                         if (i<currentStep)
                           +icon('check-circle', 'icon--medium').bg-default
                         if (i===currentStep)
-                          +icon('alert-circle', 'icon--medium').bg-default
+                          +icon('error', 'icon--medium').bg-default
                         if (i>currentStep)
                           .order-progress__blank-circle
                       .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Platba neúspešná
