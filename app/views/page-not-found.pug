@@ -2,32 +2,28 @@ extends layouts/_default
 
 block opts
     - var pageTitle = 'Page not found'
+    - var pageClass = 'bg-page-not-found'
 
 block content
   main.bg-page-not-found
     section.section
-      .row
-        .col--m-5.ofst--center
-          img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/page-not-found-1.png`, alt="404")
+      .wrapper-main
+        .row
+          .col--m-8.col--l-5.ofst--center
+            img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/page-not-found-1.png`, alt="404")
 
-          .h1.text-center.mb-large.text-color-white
-            | Ľutujeme, ani Harry Potter nenašiel túto stránku :(
+            h1.h1.text-center.mb-large.text-color-white
+              | Ľutujeme, ani Harry Potter nenašiel túto stránku :(
 
-          .col--m-8.ofst--center
-            .form-control.form-control--input.mb-medium
-              .input-addons
-                input.input(type='text', placeholder='Skúste vyhľadávanie')
-                .input-addons__item
-                  +icon('search', '', 'Search')
+            .col--m-10.ofst--center
+              .form-control.form-control--input.mb-medium
+                .input-addons
+                  input.input(type='text', placeholder='Skúste vyhľadávanie')
+                  .input-addons__item
+                    +icon('search', '', 'Search')
 
-            p.text-center.text-color-white.mb-medium
-              | alebo
+              p.text-center.text-color-white.mb-medium
+                | alebo
 
-            .btn-layout--vertical.mb-large
-              button.btn.btn--default na domovskú stránku
-
-block append scripts
-    script.
-      document.addEventListener('myAppLoaded', function() {
-        document.body.classList.add('bg-page-not-found');
-      });
+              .btn-layout--vertical.mb-large
+                button.btn.btn--default na domovskú stránku
