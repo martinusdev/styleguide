@@ -1,0 +1,62 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Autor'
+
+block content
+  main
+    section.section.mb-large
+      .wrapper-main
+        .bar.breadcrumb.mb-medium
+          .bar__item
+            a.text-medium(href="#")
+              span Autor
+            +icon('chevron-right', 'icon--medium').text-color-grey
+
+        .row
+          .col--3.show-l
+            .author-photo.text-right
+              img(src="images/content/author/author-photo.png", alt="Rowlingova")
+              img.author-photo__sign(src="images/content/author/author-signature.png", alt="Rowlingova sign")
+          .col--l-9.col--12
+            .row
+              .col--3.hide-l
+                .author-photo.text-right
+                  img(src="images/content/author/author-photo.png", alt="Rowlingova")
+                  img.author-photo__sign(src="images/content/author/author-signature.png", alt="Rowlingova sign")
+              .col--9
+                .bar.mb-small.mb-medium-m
+                  .bar__item
+                    h1 J. K. Rowling
+                  .bar__item.bar__item--fill
+                    button.btn.btn--clean
+                      +icon('eye', 'icon--large').icon--left.text-color-grey
+                      span.show-m sledovať autora
+                .text-medium.text-color-grey.mb-large-l
+                  span * 3. júl 1965
+                  span.text-space-left 52 rokov
+            .row
+              .col--12
+                .bar
+                  .bar__item.flex.align-items-middle
+                    +icon('star', 'icon--medium').text-color-yellow
+                    span.h2.text-bold.text-space-left 4,5
+                  .bar__item.bar__item--shrinkable
+                    .badges
+                      .badge.badge--orange Sci-fi, fantasy, horrory
+                      .badge.badge--green Detektívky
+                      .badge.badge--blue Young adult
+                .show-l
+                  #book-desription(data-collapse="100")
+                    p Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.
+                  .product-read-more
+                    a.link.text-size-medium(href="javascript:void(0)", data-toggle="#book-desription, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                      +icon('arrow-down')
+
+
+
+
+
+
+
+    include modules/category-list
