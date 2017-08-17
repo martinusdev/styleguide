@@ -1,4 +1,4 @@
-section.section.section--toolbar.no-pad.hide-l.text-center.cat-border-bottom.bg-default(data-sticky, data-margin-top="151", data-sticky-class="is-stuck")
+section.section.section--toolbar.no-pad.hide-l.text-center.bg-default(data-sticky, data-margin-top="151", data-sticky-class="is-stuck")
   button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-reduction")
     +icon('reduction', 'icon--large').icon--left
     span Zúženie výberu
@@ -40,116 +40,118 @@ section.section.section--m-full
               .btn-layout.btn-layout--vertical.no-mrg-bottom
                 button.btn Zoradiť
         - for (var i = 0; i<8; i++)
-          .product-item.row.bg-default
-            .col--12
-              .row
-                .col--m-fill
-                  .row
-                    .col--s-shrink.col--3.no-pad-right
-                      a(href="detail-knihy.html").thumbnail.thumbnail--book
-                        img(src="images/content/books/sample-15.jpg", alt="Cover", width="120")
-                    .col--s-fill.col--9
-                      h2.h4.no-mrg-bottom.mb-small-s
-                        a(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
-                      .text-medium.text-color-grey.mb-small-s Podnapdis na viac slov alebo aj riadkov
-                      .text-small.text-color-grey.mb-small-s Armin Göllner
-                      .mb-small.show-s
-                        .badge
-                          +icon('star', 'icon--small').text-color-yellow
-                          span.text-normal.text-space-left 3,5
-                        span.cat-border-right.text-space-left.text-space-right
-                        a(href="detail-knihy.html#recenzie").link.text-space-right.text-medium 234 x
-                        .badge.badge--blue Novinka
-                      p.text-small.no-mrg-bottom.product-item__description.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
-                      .mb-medium.show-s
-                        a(href="detail-knihy.html").link.text-small Viac o knihe
-                          +icon('arrow-right', 'icon--small')
-                .col--12.mb-medium.hide-s
-                .col--m-shrink
-                  .btn-layout.btn-layout--vertical.mb-medium
-                    .btn-dropdown.no-mrg
-                      button.btn.btn--ghost.btn--icon-right.text-left(
-                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                        data-toggle-expand,
-                        aria-haspopup="true"
-                      )
-                        | Pevná väzba
-                        +icon('chevron-down', 'icon-dropdown').icon--medium
-                      .dropdown(data-dropdown, data-toggle-expand)
-                        a(href="#").dropdown__item
-                          .bar.text-small.no-mrg-bottom
-                            .bar__item.bar__item--fill
-                              div Pevná väzba
-                              .text-color-grey Posielame ihneď
-                            .bar__item.text-right
-                              .text-semibold.text-color-black 18,00 €
-                              .text-color-grey -10%
-                        a(href="#").dropdown__item
-                          .bar.text-small.no-mrg-bottom
-                            .bar__item.bar__item--fill
-                              div Brožovaná väzba
-                              .text-color-grey Posielame ihneď
-                            .bar__item.text-right
-                              .text-semibold.text-color-black 16,00 €
-                              .text-color-grey -10%
-                        a(href="#").dropdown__item
-                          .bar.text-small.no-mrg-bottom
-                            .bar__item.bar__item--fill
-                              div E-kniha
-                              .text-color-grey Posielame ihneď
-                            .bar__item.text-right
-                              .text-semibold.text-color-black 8,00 €
-                              .text-color-grey -5%
-                        a(href="#").dropdown__item
-                          .bar.text-small.no-mrg-bottom
-                            .bar__item.bar__item--fill
-                              div Audio kniha
-                              .text-color-grey Posielame ihneď
-                            .bar__item.text-right
-                              .text-semibold.text-color-black 12,00 €
-                              .text-color-grey -2%
-                  .text-center.show-m
-                    h2.text-bold.mb-small 201,99 €
-                    .badge.badge--primary.mb-small Zľava 10%
-                    p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
-                      em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-                      | .
-                    .btn-layout--vertical
-                      button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                        +icon('cart').icon--left.icon--medium
-                        span.text-semibold Vložiť do košíka
+          .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
+            .row.no-mrg-horizontal
+              .col--m-fill
+                .row.mb-medium
+                  .col--s-shrink.col--3.no-pad-right
+                    a(href="detail-knihy.html").thumbnail.thumbnail--book
+                      img(src="images/content/books/sample-15.jpg", alt="Cover", width="120")
+                  .col--s-fill.col--9
+                    h2.h4.no-mrg-bottom.mb-small-s
+                      a(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
+                    .text-medium.text-color-grey.mb-small-s Podnapdis na viac slov alebo aj riadkov
+                    .text-small.text-color-grey.mb-small-s Armin Göllner
+                    .mb-small.show-s
+                      .badge
+                        +icon('star', 'icon--small').text-color-yellow
+                        span.text-normal.text-space-left 3,5
+                      span.cat-border-right.text-space-left.text-space-right
+                      a(href="detail-knihy.html#recenzie").link.text-space-right.text-medium 234 x
+                      .badge.badge--blue Novinka
+                    div(data-collapse="60")
+                      p.text-small.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
+                    .mb-medium.show-s
+                      a(href="detail-knihy.html").link.text-small Viac o knihe
+                        +icon('arrow-right', 'icon--small')
 
-                      +addTo()
-              .cat-border-bottom
+              .col--m-shrink
+                .btn-layout.btn-layout--vertical.mb-medium
+                  .btn-dropdown.no-mrg
+                    button.btn.btn--ghost.btn--icon-right.text-left(
+                      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                      data-toggle-expand,
+                      aria-haspopup="true"
+                    )
+                      | Pevná väzba
+                      +icon('chevron-down', 'icon-dropdown').icon--medium
+                    .dropdown(data-dropdown, data-toggle-expand)
+                      a(href="#").dropdown__item
+                        .bar.text-small.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div Pevná väzba
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 18,00 €
+                            .text-color-grey -10%
+                      a(href="#").dropdown__item
+                        .bar.text-small.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div Brožovaná väzba
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 16,00 €
+                            .text-color-grey -10%
+                      a(href="#").dropdown__item
+                        .bar.text-small.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div E-kniha
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 8,00 €
+                            .text-color-grey -5%
+                      a(href="#").dropdown__item
+                        .bar.text-small.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div Audio kniha
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 12,00 €
+                            .text-color-grey -2%
+                .text-center.show-m
+                  h2.text-bold.mb-small 201,99 €
+                  .badge.badge--primary.mb-small Zľava 10%
+                  p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
+                    em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                    | .
+                  .btn-layout--vertical
+                    button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+                      +icon('cart').icon--left.icon--medium
+                      span.text-semibold Vložiť do košíka
+
+                    +addTo()
+
           //- HLADATE DARCEK
           if i === 2
-            .row.bg-secondary.show-m
-              .col--12
-                .mb-large
-                .row
-                  .col--shrink
-                    img.text-space-left(src="../images/content/gift/darcek@2x.png", alt="Darcek", width="64")
-                  .col--fill
-                    h2.mb-small Hľadáte darček?
-                    .bar.no-mrg-bottom
-                      .bar__item Pre:
-                      .bar__item.bar__item--fill
-                        ul.list-inline
-                          each gift in ['babku', 'kamarátku', 'syna', 'dcéru', 'mamu', 'otca', 'brata']
-                            li
-                              a.link !{gift}
-                .mb-large
+            .section.bg-secondary.show-m.mb-medium
+              .product-item
+                .row.mb-large.no-mrg-horizontal
+                  .col--m-fill
+                    .row
+                      .col--s-shrink.col--3.no-pad-right
+                        .thumbnail
+                          img(src="../images/content/gift/darcek@2x.png", alt="Darcek", width="120")
+                      .col--m-shrink
+                        h2.mb-small Hľadáte darček?
+                        .bar.no-mrg-bottom
+                          .bar__item Pre:
+                          .bar__item.bar__item--fill
+                            ul.list-inline
+                              each gift in ['babku', 'kamarátku', 'syna', 'dcéru', 'mamu', 'otca', 'brata']
+                                li
+                                  a.link !{gift}
+
           //- DARCEKOVA POUKAZKA
           if i === 4
-            .row.bg-secondary.show-m
-              .col--12
-                .mb-large
-                .row
-                  .col--shrink
-                    img.text-space-left(src="../images/content/gift/darcekova-poukazka@2x.png", alt="Darcekova poukazka", width="64")
-                  .col--fill
+            .section.bg-secondary.show-m.mb-medium
+              .product-item
+                .row.mb-large.no-mrg-horizontal
+                  .col--m-fill
                     .row
-                      .col--fill
+                      .col--s-shrink.col--3.no-pad-right
+                        .thumbnail
+                          img(src="../images/content/gift/darcekova-poukazka@2x.png", alt="Darcekova poukazka", width="120")
+                      .col--s-fill.col--9
                         h2.mb-small Nie ste si istý?
                           br
                           | Kúpte darčekovú poukážku
@@ -159,26 +161,25 @@ section.section.section--m-full
                           | za ktorú si môžu vybrať čokoľvek z celej pomnuky Martinus.sk - desiatky tisíc kníh, filmov, puzzle a iných skvelých darčekov. Podmienky použitia nájdete
                           a(href="#") tu
                           | .
-                      .col--shrink
-                        .text-small.text.text-transform-upper.text-color-grey hodnota darčekovej poukážky
-                        .btn-layout.btn-layout--vertical.mb-medium
-                          .btn-dropdown.no-mrg
-                            button.btn.btn--ghost.btn--icon-right.text-left(
-                              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                              data-toggle-expand,
-                              aria-haspopup="true"
-                            )
-                              | 20,00 €
-                              +icon('chevron-down', 'icon-dropdown').icon--medium
-                            .dropdown(data-dropdown, data-toggle-expand)
-                              a(href="#").dropdown__item 20,00 €
-                              a(href="#").dropdown__item 15,00 €
-                              a(href="#").dropdown__item 10,00 €
-                        .text-center
-                          .btn-layout--vertical
-                            button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                              +icon('cart').icon--left.icon--medium
-                              span.text-semibold Vložiť do košíka
-                .mb-large
+                  .col--m-shrink
+                    .text-small.text.text-transform-upper.text-color-grey hodnota darčekovej poukážky
+                    .btn-layout.btn-layout--vertical.mb-medium
+                      .btn-dropdown.no-mrg
+                        button.btn.btn--ghost.btn--icon-right.text-left(
+                          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                          data-toggle-expand,
+                          aria-haspopup="true"
+                        )
+                          | 20,00 €
+                          +icon('chevron-down', 'icon-dropdown').icon--medium
+                        .dropdown(data-dropdown, data-toggle-expand)
+                          a(href="#").dropdown__item 20,00 €
+                          a(href="#").dropdown__item 15,00 €
+                          a(href="#").dropdown__item 10,00 €
+                    .text-center
+                      .btn-layout--vertical
+                        button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+                          +icon('cart').icon--left.icon--medium
+                          span.text-semibold Vložiť do košíka
 
         +pagination.align-items-center.mb-large
