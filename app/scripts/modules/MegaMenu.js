@@ -7,6 +7,7 @@ import { nodeListToArray } from './Utils';
 const defaultConfig = {
   selectorTriggers: '[data-mega-menu-trigger]',
   selectorTargets: '[data-mega-menu-target]',
+  selectorContents: '[data-mega-menu-contents]',
 };
 
 export default class MegaMenu {
@@ -55,7 +56,7 @@ export default class MegaMenu {
       targetSection && document.querySelector(targetSection);
 
     if (this.isMegaMenuOpen) {
-      if (window.innerWidth < BREAKPOINTS.m) {
+      if (window.innerWidth < BREAKPOINTS.l) {
         lockBody();
       }
 
@@ -63,7 +64,7 @@ export default class MegaMenu {
         document.addEventListener('click', this._handleClickOutside);
       });
     } else {
-      if (window.innerWidth < BREAKPOINTS.m) {
+      if (window.innerWidth < BREAKPOINTS.l) {
         unlockBody();
       }
 
@@ -89,6 +90,19 @@ export default class MegaMenu {
         className: 'is-active',
         state: target === this.openMegaMenuSection,
       });
+
+      const mobileHeaderTarget = target.querySelector(
+        '.mega-menu__mobile-header',
+      );
+
+      doToggle({
+        target: mobileHeaderTarget,
+        className: 'is-active',
+        icon: isToggled(mobileHeaderTarget) &&
+          mobileHeaderTarget.getAttribute('data-toggle-icon'),
+        expand: true,
+        state: false,
+      });
     });
 
     doToggle({
@@ -102,6 +116,12 @@ export default class MegaMenu {
       target: document.querySelector('body'),
       className: 'is-mega-menu-active',
       state: this.isMegaMenuOpen,
+    });
+
+    doToggle({
+      target: document.querySelector(this.config.selectorContents),
+      className: 'is-active',
+      state: false,
     });
   }
 
@@ -132,6 +152,8 @@ export default class MegaMenu {
           state: false,
         });
       });
+
+      unlockBody();
 
       document.removeEventListener('click', this._handleClickOutside);
     }

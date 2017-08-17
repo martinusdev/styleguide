@@ -6,7 +6,7 @@ block opts
 block content
   main
     div(data-sticky-container)
-      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-margin-top="80")
+      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-margin-top="60")
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
@@ -173,7 +173,7 @@ block content
           a(href='#')
             img.img.img--fluid(src="images/content/banner-1280x100.jpg").no-mrg
     div(data-sticky-container)
-      section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-margin-top="80")
+      section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-margin-top="60")
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
@@ -441,6 +441,74 @@ block content
                               .rating-bar(class=`rating-bar--${5 - ratingIndex}`, style=`width: ${width};`)
 
                 hr
+
+                //- najuzitocnejsie recenzie
+                h2 Najužitočnejšie recenzie
+                article.card.card--well.mb-large
+                  .card__content
+                    .row
+                      .col--l-6.mb-medium.mb-none-l
+                        header.review__header
+                          .bar
+                            .review__header-avatar.bar__item
+                              img.img.img--circle(src="http://placehold.it/48x48")
+                              +icon('smile', 'icon--medium').text-color-success.bg-default.icon-useful
+                            .review__header-name.bar__item.bar__item--fill.bar__item--shrinkable
+                              .text-semibold Kamil Peteraj
+                              .text-medium Martinus, Obchodná BA
+                          .bar
+                            .bar__item
+                              .badge
+                                +icon('star', 'icon--small').text-color-yellow
+                                | 4.5
+                            .bar__item
+                              .text-medium 2.3.2017
+                        p.mb-small Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.no-mrg-bottom
+                          button.btn.btn--clean.no-mrg-right
+                            +icon('react').icon--left.icon--medium
+                            | Reagovať
+                          button.btn.btn--clean.no-mrg-right
+                            +icon('like').icon--left.icon--medium
+                            span.text-normal.text-size-medium= likes
+
+                          button.btn.btn--clean.no-mrg-right
+                            +icon('dislike').icon--left.icon--medium
+                            span.text-normal.text-size-medium= dislikes
+
+                          button.btn.btn--clean.no-mrg-right(data-toggle="#flag-review" data-toggle-self="false")
+                            +icon('flag').icon--medium
+
+                      .col--l-6.col--l-border
+                        header.review__header
+                          .bar
+                            .review__header-avatar.bar__item
+                              +icon('avatar').icon--xlarge.text-color-grey
+                              +icon('sad', 'icon--medium').text-color-error.bg-default.icon-useful
+                            .review__header-name.bar__item.bar__item--fill.bar__item--shrinkable
+                              .text-semibold Kamil Peteraj
+                          .bar
+                            .bar__item
+                              .badge
+                                +icon('star', 'icon--small').text-color-yellow
+                                | 4.5
+                            .bar__item
+                              .text-medium 2.3.2017
+                        p.mb-small Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.no-mrg-bottom
+                          button.btn.btn--clean.no-mrg-right
+                            +icon('react').icon--left.icon--medium
+                            | Reagovať
+                          button.btn.btn--clean.no-mrg-right
+                            +icon('like').icon--left.icon--medium
+                            span.text-normal.text-size-medium= likes
+
+                          button.btn.btn--clean.no-mrg-right
+                            +icon('dislike').icon--left.icon--medium
+                            span.text-normal.text-size-medium= dislikes
+
+                          button.btn.btn--clean.no-mrg-right(data-toggle="#flag-review" data-toggle-self="false")
+                            +icon('flag').icon--medium
 
                 +review
                   .text-semibold Nadpis recenzie

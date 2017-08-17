@@ -1,0 +1,133 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('javascripts.alert', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/scripts/modules/Alert.js'], contents)
+
+    +p-big Documentation for alert javascript module.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- SELECT
+  +content-section(contents[0])
+
+    +content-sub-section('Usage')
+
+      +p Usage is shown in&nbsp;
+        a.l-a(href=`alerts#{htmlPostfix}`) alerts
+        |  section of this styleguide.
+
+    +content-sub-section('Default initialization')
+
+      +p Initialization is shown on example below. Constructor returns alert instance.
+
+      +demo(true)
+        +demo-example
+          button.btn#alert-example Show example
+        +demo-code
+          :code
+            <script>
+              document.getElementById('alert-example').addEventListener('click', function() {
+                var myAlert = new window.myApp.Alert({
+                  icon: 'check-circle',
+                  text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
+                });
+              });
+            </script>
+
+  +content-section(contents[1])
+
+    +p <code class='l-code-inline'>new Select({ config })</code>
+
+    .l-table-wrap
+      table.l-table
+        thead
+          tr
+            th Name
+            th Type
+            th Default
+            th Description
+        tbody
+          tr
+            td container
+            td <code class='l-code-inline'>DOM Selector/String</code>
+            td <code class='l-code-inline'>'[data-alert-area]'</code>
+            td Default DOM container, where alerts will be displayed.
+          tr
+            td type
+            td <code class='l-code-inline'>String/['info','success','warning', 'error']</code>
+            td <code class='l-code-inline'>'info'</code>
+            td Type of alert message.
+          tr
+            td text
+            td <code class='l-code-inline'>String</code>
+            td <code class='l-code-inline'>''</code>
+            td Alert message.
+          tr
+            td icon
+            td <code class='l-code-inline'>String</code>
+            td <code class='l-code-inline'></code>
+            td Alert icon defined as icon name.
+          tr
+            td loader
+            td <code class='l-code-inline'>Boolean</code>
+            td <code class='l-code-inline'></code>
+            td Specifies if loader is shown.
+          tr
+            td closeable
+            td <code class='l-code-inline'>Boolean</code>
+            td <code class='l-code-inline'></code>
+            td Specifies if alert is closeable via default action on x-button.
+          tr
+            td customActionTemplate
+            td <code class='l-code-inline'>String</code>
+            td <code class='l-code-inline'></code>
+            td Default x-button as action can be swaped to custom template. Template must be passed as stringified dom. Html elements is valid, but do not pass user input. Custom action callback can be defined in <code class='l-code-inline'>onAction</code> callback function.
+          tr
+            td onAction
+            td <code class='l-code-inline'>Function</code>
+            td <code class='l-code-inline'>() => {}</code>
+            td Callback called on <code class='l-code-inline'>click</code> on tooltip action. Default action is <code class='l-code-inline'>Alert.destroy</code>.
+          tr
+            td timeout
+            td <code class='l-code-inline'>Number</code>
+            td <code class='l-code-inline'></code>
+            td If specified in milliseconds, alert will destoried after given time. Hover over alert resets timer.
+
+  +content-section(contents[2], true)
+
+    +p Methods of alert instance.
+
+    .l-table-wrap
+      table.l-table
+        thead
+          tr
+            th Name
+            th Type
+            th Default
+            th Description
+        tbody
+          tr
+            td destroy
+            td <code class='l-code-inline'>Function</code>
+            td <code class='l-code-inline'></code>
+            td Will destroy alert instance.
+
+block append scripts
+  script.
+    document.getElementById('alert-example').addEventListener('click', function() {
+      var myAlert = new window.myApp.Alert({
+        icon: 'check-circle',
+        text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
+      });
+    });
