@@ -45,6 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.ProductPreview = ProductPreview;
   window.myApp.MegaMenu = MegaMenu;
   window.myApp.Header = Header;
+  window.myApp.RadiocheckToggle = RadiocheckToggle;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 

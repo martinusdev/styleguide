@@ -130,11 +130,6 @@ export default class Alert {
     this.alert.addEventListener('mouseleave', this._setTimeout);
   }
 
-  update() {
-    this.destory();
-    this.init();
-  }
-
   destroy() {
     if (this.actionEl) {
       this.actionEl.removeEventListener(
