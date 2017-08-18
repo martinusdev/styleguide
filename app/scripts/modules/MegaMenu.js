@@ -32,6 +32,10 @@ export default class MegaMenu {
   _init() {
     this.megaMenu = document.querySelector(this.config.selector);
 
+    if (!this.megaMenu) {
+      return;
+    }
+
     this.triggers = nodeListToArray(
       document.querySelectorAll(this.config.selectorTriggers),
     );
@@ -40,8 +44,18 @@ export default class MegaMenu {
       document.querySelectorAll(this.config.selectorTargets),
     );
 
+    this._attachDOMEvents();
+  }
+
+  _attachDOMEvents() {
     this.triggers.forEach(trigger =>
       trigger.addEventListener('click', this._handleTriggerClick),
+    );
+  }
+
+  _detachDOMEvents() {
+    this.triggers.forEach(trigger =>
+      trigger.removeEventListener('click', this._handleTriggerClick),
     );
   }
 
@@ -161,10 +175,10 @@ export default class MegaMenu {
 
   update() {
     this.destory();
-    this.init();
+    this._init();
   }
 
   destroy() {
-    this.items.destroy();
+    this.detachDOMEvents();
   }
 }
