@@ -78,7 +78,7 @@ block content
                     button.btn.btn--clean(data-toggle="#product-preview")
                       +icon('eye').icon--left.icon--medium
                       | Pozrieť ukážku
-              .col--l-fill
+              .col--m-fill
                 ul.list-inline.list-inline--delimited.mb-small
                   li
                     a.link(href="#") Frank Weissert
@@ -97,15 +97,16 @@ block content
                       .text-small.text-color-grey Autor kolekcie
                 else
                   p Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
-              .col--l-3.align-self-middle
-                .product-item__pricebox.text-center
+              .col--m-3.align-self-middle
+                .product-item__price-box.text-center
                   .bar.bar--vertical.no-mrg-bottom
                     .bar__item
                       .h2.text-bold 12,99 €
                     .bar__item
-                      button.btn.btn--primary
-                        +icon('cart').icon--left.icon--medium
-                        | Vložiť do košíka
+                      .btn-layout.btn-layout--vertical
+                        button.btn.btn--primary
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
                     .bar__item
                       +addTo()
 

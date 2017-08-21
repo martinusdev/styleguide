@@ -1,4 +1,4 @@
-section.section.section--toolbar.no-pad.hide-l.text-center.bg-default(data-sticky, data-margin-top="151", data-sticky-class="is-stuck")
+section.section.section--toolbar.no-pad.hide-l.text-center.bg-default(data-sticky, data-margin-top=filterStickyOffset ? filterStickyOffset : '151', data-sticky-class="is-stuck")
   button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-reduction")
     +icon('reduction', 'icon--large').icon--left
     span Zúženie výberu
@@ -42,7 +42,7 @@ section.section
         - for (var i = 0; i<8; i++)
           .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
             .row.no-mrg-horizontal
-              .col--m-fill
+              .col--m-fill.product-item__content
                 .row.mb-medium
                   .col--s-shrink.col--3.no-pad-right
                     a(href="detail-knihy.html").thumbnail.thumbnail--book
@@ -52,20 +52,23 @@ section.section
                       a(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
                     .text-medium.text-color-grey.mb-small-s Podnapdis na viac slov alebo aj riadkov
                     .text-small.text-color-grey.mb-small-s Armin Göllner
-                    .mb-small.show-s
-                      .badge
-                        +icon('star', 'icon--small').text-color-yellow
-                        span.text-normal.text-space-left 3,5
-                      span.cat-border-right.text-space-left.text-space-right
-                      a(href="detail-knihy.html#recenzie").link.text-space-right.text-medium 234 x
-                      .badge.badge--blue Novinka
+                    .bar.bar--small.mb-small.show-s
+                      .bar__item
+                        .badge
+                          +icon('star', 'icon--small').text-color-yellow
+                          span.text-normal.text-space-left 3,5
+                      .bar__item.bar__item--border
+                        a.link.text-medium.text-space-left(href="#recenzie", data-scroll) 234x
+                      .bar__item
+                        .badge.badge--blue Novinka
+
                     div(data-collapse="60")
                       p.text-small.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
                     .mb-medium.show-s
                       a(href="detail-knihy.html").link.text-small Viac o knihe
                         +icon('arrow-right', 'icon--small')
 
-              .col--m-shrink
+              .col--m-shrink.product-item__price-box
                 .btn-layout.btn-layout--vertical.mb-medium
                   .btn-dropdown.no-mrg
                     button.btn.btn--ghost.btn--icon-right.text-left(
@@ -114,6 +117,9 @@ section.section
                   p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
                     em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
                     | .
+                    if i == 1
+                      | Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+
                   .btn-layout--vertical
                     button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
                       +icon('cart').icon--left.icon--medium
@@ -126,7 +132,7 @@ section.section
             .section.bg-secondary.show-m.mb-medium
               .product-item
                 .row.mb-large.no-mrg-horizontal
-                  .col--m-fill
+                  .col--m-fill.product-item__content
                     .row
                       .col--s-shrink.col--3.no-pad-right
                         .thumbnail
@@ -161,7 +167,7 @@ section.section
                           | za ktorú si môžu vybrať čokoľvek z celej pomnuky Martinus.sk - desiatky tisíc kníh, filmov, puzzle a iných skvelých darčekov. Podmienky použitia nájdete
                           a(href="#") tu
                           | .
-                  .col--m-shrink
+                  .col--m-shrink.product-item__price-box
                     .text-small.text.text-transform-upper.text-color-grey hodnota darčekovej poukážky
                     .btn-layout.btn-layout--vertical.mb-medium
                       .btn-dropdown.no-mrg

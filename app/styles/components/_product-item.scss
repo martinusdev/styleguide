@@ -11,13 +11,17 @@
     }
   }
 
-  &__pricebox {
+  &__price-box {
     @include breakpoint('m', 'downfrom') {
       flex-direction: column;
 
       .bar__item { // stylelint-disable-line
         margin-right: 0;
       }
+    }
+
+    @include breakpoint('m') {
+      max-width: 245px;
     }
   }
 }
