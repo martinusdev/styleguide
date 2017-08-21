@@ -17,28 +17,42 @@ block content
                     data-toggle-expand,
                     aria-haspopup="true"
                   )
-                    | Pevná väzba#{' '}
+                    | Slovenčina, pevná väzba#{' '}
                     span.text-color-grey.text-nowrap 12,99 €
                     +icon('chevron-down', 'icon-dropdown').icon--medium
                   .dropdown(data-dropdown, data-toggle-expand)
-                    a(href="#").dropdown__item Brožovaná väzba#{' '}
-                      span.text-color-grey.text-nowrap 10,29 €
-                    a(href="#").dropdown__item E-kniha#{' '}
-                      span.text-color-grey.text-nowrap 6,50 €
-                    a(href="#").dropdown__item Audio kniha#{' '}
-                      span.text-color-grey.text-nowrap 16,25 €
-            .bar__item
-              .btn-layout.btn-layout--vertical
-                .btn-dropdown.no-mrg
-                  button.btn.btn--clean.btn--icon-right(
-                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                    data-toggle-expand,
-                    aria-haspopup="true"
-                  )
-                    | SK
-                    +icon('chevron-down', 'icon-dropdown').icon--medium
-                  .dropdown(data-dropdown, data-toggle-expand)
-                    a(href="#").dropdown__item CZ
+                    a(href="#").dropdown__item
+                      .bar.no-mrg-bottom
+                        .bar__item.bar__item--fill
+                          div Slovenčina, e-kniha
+                          .text-color-grey Posielame ihneď
+                        .bar__item.text-right
+                          .text-semibold.text-color-black 18,00 €
+                          .text-color-grey -10%
+                    a(href="#").dropdown__item
+                      .bar.no-mrg-bottom
+                        .bar__item.bar__item--fill
+                          div Slovenčina, brožovaná väzba
+                          .text-color-grey Posielame ihneď
+                        .bar__item.text-right
+                          .text-semibold.text-color-black 16,00 €
+                          .text-color-grey -10%
+                    a(href="#").dropdown__item
+                      .bar.no-mrg-bottom
+                        .bar__item.bar__item--fill
+                          div Český jazyk, E-kniha
+                          .text-color-grey Posielame ihneď
+                        .bar__item.text-right
+                          .text-semibold.text-color-black 8,00 €
+                          .text-color-grey -5%
+                    a(href="#").dropdown__item
+                      .bar.no-mrg-bottom
+                        .bar__item.bar__item--fill
+                          div Český jazyk, audio kniha
+                          .text-color-grey Posielame ihneď
+                        .bar__item.text-right
+                          .text-semibold.text-color-black 12,00 €
+                          .text-color-grey -2%
 
       section.section
         .wrapper-main
@@ -56,24 +70,7 @@ block content
 
             article.col--m-8.col--l-6
 
-              //-.btn-layout.btn-layout--vertical.mb-large.show-m
-                .btn-group--horizontal
-                  a(href="#").btn.btn--ghost.is-active Pevná väzba#{' '}
-                    span.text-color-grey.text-nowrap 12,99 €
-                  a(href="#").btn.btn--ghost Brožovaná väzba#{' '}
-                    span.text-color-grey.text-nowrap 10,29 €
-                  a(href="#").btn.btn--ghost E-kniha#{' '}
-                    span.text-color-grey.text-nowrap 6,50 €
-                  .btn-dropdown
-                    a.btn.btn--ghost(href="#", data-toggle="self, next", data-toggle-expand, aria-haspopup="true") Viac formatov (2)#{' '}
-                      +icon('chevron-down', 'icon-dropdown').icon--medium
-                    .dropdown(data-dropdown, data-toggle-expand)
-                      a.dropdown__item(href="#") Audio kniha#{' '}
-                        span.text-color-grey.text-nowrap 16,25 €
-                      a.dropdown__item(href="#") Audio kniha#{' '}
-                        span.text-color-grey.text-nowrap 16,25 €
-
-              .btn-dropdown.mb-small
+              .btn-dropdown.mb-small.show-m
                 button.btn.btn--small.btn--ghost.btn--icon-right.text-left(
                   data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                   data-toggle-expand,
@@ -126,22 +123,6 @@ block content
                     a.link(href="#") John Tiffany
 
               .bar.bar--small.mb-medium
-                //-.bar__item.show-m
-                  .btn-layout.btn-layout--vertical
-                    .btn-dropdown.no-mrg
-                      button.btn.btn--ghost.btn--small.btn--icon-right(
-                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                        data-toggle-expand,
-                        aria-haspopup="true"
-                      )
-                        | Slovenčina
-                        +icon('chevron-down', 'icon-dropdown').icon--medium
-                      .dropdown(data-dropdown, data-toggle-expand)
-                        a(href="#").dropdown__item Český jazyk
-                  //- .form-control.form-control--select.no-mrg
-                    select.js-select.select--inline.select--clean.select--small
-                      option Český jazyk
-                      option Slovenčina
                 .bar__item
                   .badges.no-mrg
                     .badge
