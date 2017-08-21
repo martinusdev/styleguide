@@ -23,7 +23,7 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    // align-items: center;
+    align-items: center;
 
     @include css-map($list-item, $variant);
 
@@ -117,10 +117,6 @@
 
 @mixin list-item-section-classes() {
   .list__item__section {
-    &:not(:last-child) {
-      margin-right: _get-space('h');
-    }
-
     &--primary {
       flex: 1 0 auto;
     }
