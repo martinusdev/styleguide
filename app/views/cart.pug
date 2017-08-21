@@ -9,7 +9,7 @@ block content
       .wrapper-main
         .row
           .col--l-8.ofst--center.card
-            .card__content
+            .card__content.mb-medium
               .bar.bar--small
                 .bar__item
                   h1.h2 Váš košík
@@ -61,10 +61,22 @@ block content
                         .cart-item__column.cart-item__column--remove
                           button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
+                li.list__item.align-items-bottom.mt-small
+                  .list__item__section.list__item__section--primary.text-right
+                    span.h3 Spolu
+                  .list__item__section.list__item__section--secondary
+                    span.h2
+                      strong 21.45€
+            .card_footer
+              .row
+                .col--m-9.ofst--center
+                  .btn-layout--vertical.btn-layout--s-horizontal.btn-layout--fill.mb-large
+                    a(href="/homepage.html").btn.btn--ghost Späť do kníhkupectva
+                    a(href="/homepage.html").btn.btn--primary Objednať tituly
 
         .row
           .col--l-8.ofst--center.card
-            .card__content
+            .card__content.mb-medium
               .bar.bar--small
                 .bar__item
                   h1.h2 Váš košík
@@ -99,3 +111,16 @@ block content
                         .cart-item__column.cart-item__column--remove
                           button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
+                li.list__item.align-items-bottom.mt-small
+                  .list__item__section.list__item__section--primary.text-right
+                    span.h3 Spolu
+                  .list__item__section.list__item__section--secondary
+                    span.h2
+                      strong 21.45€
+
+            .card_footer
+              .row
+                .col--m-9.ofst--center
+                  .btn-layout--vertical.btn-layout--s-horizontal.btn-layout--fill.mb-large
+                    a(href="/homepage.html").btn.btn--ghost Späť do kníhkupectva
+                    a(href="/homepage.html").btn.btn--primary Objednať tituly
