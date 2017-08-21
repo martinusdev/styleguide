@@ -149,28 +149,12 @@
     }
   }
 
-  //checkbox / radio control transparent
-  &--transparent {
-    .radiocheck__control {
-      background-color: transparent;
-      border: 2px solid #999;
-      box-sizing: border-box;
-    }
-  }
-
   // checkbox / radio labels
   &__label {
     display: block;
     cursor: pointer;
 
     @include css-map($radio-check-label);
-  }
-
-  //checkbox / radio multiline labels
-  &__label--multiline {
-    span {
-      float: right;
-    }
   }
 
   // -----------------
@@ -201,20 +185,6 @@
       float: left;
       clear: both;
       margin: 0;
-    }
-  }
-
-  // checkbox and radio groups with full width
-  &-group--wider {
-    display: block;
-
-    .checkbox,
-    .radio {
-      width: 100%;
-    }
-
-    #{$this}__label {
-      width: calc(100% - 1.3rem);
     }
   }
 }
