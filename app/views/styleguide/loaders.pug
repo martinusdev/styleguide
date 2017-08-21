@@ -1,0 +1,90 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.loaders', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_loader.scss'], contents)
+
+    +p-big Documentation for loader components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- TABS
+  +content-section(contents[0], true)
+
+    +p Preview of loader element which is specified as shown on example below. Loader should be used in case, when content or response is not available instantly and user needs to wait.
+
+    +p By default, loading state should be announced inside <a href="alerts#{htmlPostfix}">alert</a> component.
+
+    +demo
+      +demo-example
+        +loader
+
+      +demo-code
+        :code
+          <div class="loader" aria-hidden="true">
+            <div class="loader__page"></div>
+            <div class="loader__page"></div>
+            <div class="loader__page"></div>
+          </div>
+
+    +content-sub-section('Sizes')
+
+      +p Same as icon sizes there are fours loader sizes: small, medium, large and xlarge. Size for icon can be specified with class <code class='l-code-inline'>.loader--[small/medium/large/xlarge]</code> on the loader element.
+
+      +demo
+        +demo-example
+          ul.l-icons
+            li.l-icons_item
+              +loader({ size: 'xlarge'})
+              br
+              abbr(title=icon).text-color-grey XL
+            li.l-icons_item
+              +loader({ size: 'large'})
+              br
+              abbr(title=icon).text-color-grey L
+            li.l-icons_item
+              +loader({ size: 'medium'})
+              br
+              abbr(title=icon).text-color-grey M
+            li.l-icons_item
+              +loader({ size: 'small'})
+              br
+              abbr(title=icon).text-color-grey S
+        +demo-code
+          :code
+            <div class="loader loader--xlarge">...</div>
+            <div class="loader loader--large">...</div>
+            <div class="loader loader--medium">...</div>
+            <div class="loader loader--small">...</div>
+
+    +content-sub-section('Color variants')
+
+      +p Two color variants are available: <code class='l-code-inline'>default (grey)/white</code>.
+
+      +demo
+        +demo-example
+          ul.l-icons
+            li.l-icons_item
+              +loader
+              br
+              abbr(title=icon).text-color-grey Default
+            li.l-icons_item.l-icons_item-dark
+              +loader({ color: 'white'})
+              br
+              abbr(title=icon).text-color-grey White
+        +demo-code
+          :code
+            <div class="loader">...</div>
+            <div class="loader loader--white">...</div>
+
+//- end: section

@@ -4,6 +4,7 @@ import {
   customEventPolyfill,
   requestAnimationFramePolyfill,
 } from './modules/Utils';
+import Alert from './modules/Alert';
 import Select from './modules/Select';
 import Toggle from './modules/Toggle';
 import Tab from './modules/Tab';
@@ -27,6 +28,7 @@ const APP_INIT = 'myAppInit';
 
 window.addEventListener('DOMContentLoaded', () => {
   window.myApp = {};
+  window.myApp.Alert = Alert;
   window.myApp.Toggle = Toggle;
   window.myApp.Dropdown = Dropdown;
   window.myApp.Tab = Tab;
@@ -43,6 +45,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.ProductPreview = ProductPreview;
   window.myApp.MegaMenu = MegaMenu;
   window.myApp.Header = Header;
+  window.myApp.RadiocheckToggle = RadiocheckToggle;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 

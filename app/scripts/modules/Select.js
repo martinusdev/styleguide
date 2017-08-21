@@ -82,7 +82,9 @@ export default class Select {
     this._onShowDropdown = this._onShowDropdown.bind(this);
     this._onHideDropdown = this._onHideDropdown.bind(this);
 
-    return this._init();
+    this.elements = this._init();
+
+    return this;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -122,8 +124,12 @@ export default class Select {
       document.querySelectorAll(this.selector),
     );
 
-    return selects.map(select => {
+    return selects.map((select, index) => {
       const config = { ...this.config };
+
+      if (select.hasAttribute('data-is-initialized')) {
+        return this.elements[index];
+      }
 
       if (
         (select.multiple && config.removeItemButton === undefined) ||
@@ -176,7 +182,13 @@ export default class Select {
       select.addEventListener('showDropdown', this._onShowDropdown);
       select.addEventListener('hideDropdown', this._onHideDropdown);
 
+      select.setAttribute('data-is-initialized', '');
+
       return choice;
     });
+  }
+
+  update() {
+    this._init();
   }
 }

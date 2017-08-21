@@ -77,16 +77,24 @@ $color-palette: (
   violet: #9967a7,
   blue: #00b6eb,
   green: #33ab4e,
+  teal: #67cdb7,
   // states
   error: (
     100: #fae8e8,
     500: #e93227,
+    600: #d22121,
   ),
   success: (
     100: #eaf6ed,
     200: #37b855,
     500: #33ab4e,
     600: #2f9e49,
+  ),
+  warning: (
+    500: #f28629,
+  ),
+  info: (
+    500: #007fb1,
   )
 );
 
@@ -109,6 +117,8 @@ $default-color-weights: (
 $default-bg-color: $color-white !default;
 $secondary-bg-color: _color(bg) !default;
 $blue-bg-color: _color(bg, 200) !default;
+$teal-bg-color: _color(teal) !default;
+$green-bg-color: _color(success, 500) !default;
 $default-text-color: $color-black !default;
 $default-font-family: $font-family-tabac !default;
 

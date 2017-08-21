@@ -1,0 +1,27 @@
+.product-item {
+  margin-bottom: _get-space('v');
+
+  &--border-bottom {
+    border-bottom: 1px solid $default-border-color;
+  }
+
+  .thumbnail--xlarge {
+    @include breakpoint('m', 'downfrom') {
+      max-width: 120px;
+    }
+  }
+
+  &__price-box {
+    @include breakpoint('m', 'downfrom') {
+      flex-direction: column;
+
+      .bar__item { // stylelint-disable-line
+        margin-right: 0;
+      }
+    }
+
+    @include breakpoint('m') {
+      max-width: 245px;
+    }
+  }
+}
