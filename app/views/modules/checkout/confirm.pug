@@ -9,15 +9,14 @@
       .col--m-6.col--s-11.text-size-medium
         p.mb-small
           | Vyberte, prosím, sumu, na ktorú si prajete zaokrúhliť Váš nákup. Celý rozdiel poputuje chorým deťom z Dobrého Anjela.
-        a.link
-          | Viac informácií nájdete tu.#{' '}
-        span.text-semibold
-          | Ďakujeme!
+        p.mb-small
+          a.link
+            | Viac informácií nájdete tu.#{' '}
+          span.text-semibold
+            | Ďakujeme!
 
       .col--m-6.col--s-11
         .bar
-          .bar__item
-
           .bar__item.bar__item--fill
             .form-control.form-control--select
               select.js-select
@@ -51,19 +50,19 @@
 
     .form-control.form-control--checkbox.mb-small
       .checkbox
-        input.radiocheck__input(type='checkbox', id='checkout_summary_signup', name='checkout_summary_signup')
+        input.radiocheck__input(type='checkbox', id='checkout_summary_signup', name='checkout_summary_signup',  data-radiocheck-toggle="#checkout-password")
         label.radiocheck__control(for='checkout_summary_signup')
         label.radiocheck__label(for='checkout_summary_signup')
           span.text-size-medium Tento nákup sa mi páčil,#{' '}
           span.text-semibold.text-size-medium vytvorte mi účet na Martinuse!
 
-    .row
-      .col--m-6.col--s-11
-        .form-control.form-control--input.no-mrg
-          .form-label
-            label.text-transform-upper.text-size-small(for="checkout_summary_password")
-                | heslo
-            input.input(type="password", name="checkout_summary_password", id="checkout_summary_password", placeholder="Vložte vaše tajné heslo")
+      .form-control.form-control--input.hide#checkout-password
+        .row
+          .col--m-6
+            .form-label
+              label.text-transform-upper.text-size-small(for="checkout_summary_password")
+                  | heslo
+              input.input(type="password", name="checkout_summary_password", id="checkout_summary_password", placeholder="Vložte vaše tajné heslo")
 
   .card__content.no-pad.mb-medium
     hr

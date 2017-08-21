@@ -42,7 +42,7 @@ html.no-js
   //- -----------------------------------------------
   //- BODY
 
-  body
+  body(class=`${pageClass}`)
 
     include ./../modules/header/header
 
@@ -51,6 +51,8 @@ html.no-js
     include ./../modules/footer
 
     block modals
+
+    .alert-container(data-alert-area)
 
     //- -----------------------------------------------
     //- SCRIPTS

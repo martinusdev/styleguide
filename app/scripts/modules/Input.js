@@ -26,11 +26,7 @@ export default class Input {
     );
 
     this.items.forEach(item => {
-      item.addEventListener('focus', this._handleFocus);
-      item.addEventListener('blur', this._handleBlur);
-
-      item.addEventListener('change', this._handleChange);
-      item.addEventListener('keyup', this._handleChange);
+      this._attachEvents(item);
 
       Input.setClassValue(item);
     });
@@ -39,12 +35,30 @@ export default class Input {
   }
 
   update() {
-    this.destory();
-    this.init();
+    this.destroy();
+    this._init();
   }
 
   destroy() {
-    this.items.destroy();
+    this.items.forEach(item => {
+      this._detachEvents(item);
+    });
+  }
+
+  _attachEvents(item) {
+    item.addEventListener('focus', this._handleFocus);
+    item.addEventListener('blur', this._handleBlur);
+
+    item.addEventListener('change', this._handleChange);
+    item.addEventListener('keyup', this._handleChange);
+  }
+
+  _detachEvents(item) {
+    item.removeEventListener('focus', this._handleFocus);
+    item.removeEventListener('blur', this._handleBlur);
+
+    item.removeEventListener('change', this._handleChange);
+    item.removeEventListener('keyup', this._handleChange);
   }
 
   _handleFocus(e) {

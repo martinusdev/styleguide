@@ -1,3 +1,110 @@
+.header-search {
+  justify-content: flex-end;
+  margin-bottom: 0;
+
+  &__search {
+    display: none;
+
+    .form-control {
+      width: 100%;
+    }
+
+    @include breakpoint(m) {
+      display: flex;
+    };
+  }
+
+  &__value {
+    border-left: 0;
+    border-right: 0;
+    border-radius: $default-border-radius;
+  }
+
+  &__empty {
+    border-top-right-radius: $form-b-r;
+    border-bottom-right-radius: $form-b-r;
+
+    background-color: _color(grey, 900);
+    border-color: _color(grey, 900);
+
+    transition: $form-t;
+  }
+
+  &__back {
+    display: none;
+    margin-right: _get-space('h', 'small');
+  }
+
+  &__toggle {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  .is-search-active & {
+    @include breakpoint(s, down) {
+      display: flex;
+      max-width: none;
+      margin-right: 0;
+      flex: 1 0 auto;
+
+      &__search { //stylelint-disable-line
+        display: block;
+        flex: 1 0 auto;
+      }
+
+      &__back { //stylelint-disable-line
+        display: flex;
+      }
+    }
+  }
+}
+
+.header-btn {
+  padding-top: _get-rem(9px);
+  padding-bottom: _get-rem(9px);
+
+  color: _color(grey, 400);
+
+  text-transform: none;
+
+  font-size: $default-font-size;
+
+  border-width: 0;
+
+  &.btn--small.btn--equal {
+    padding: 0;
+  }
+
+  &:hover,
+  &:focus,
+  &.is-active {
+    color: $color-white;
+  }
+
+  @include breakpoint('l') {
+    &.is-active:not(.header-btn--no-arrow) {
+      position: relative;
+      overflow: visible;
+      z-index: $z-index-topbar + 1;
+
+      &::before { // stylelint-disable-line
+        content: '';
+        width: 0;
+        height: 0;
+
+        position: absolute;
+        bottom: -21px;
+        left: 50%;
+        margin-left: -8px;
+
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid $color-white;
+      }
+    }
+  }
+}
+
 .header {
   position: relative;
 
@@ -19,6 +126,11 @@
       right: 0;
       z-index: $z-index-topbar;
     }
+
+    @include breakpoint(s, 'down') {
+      padding-top: _get-space('v', 'small');
+      padding-bottom: _get-space('v', 'small');
+    }
   }
 
   .wrapper-main {
@@ -29,6 +141,7 @@
   }
 
   &__bar {
+    height: _get-rem(50px);
     margin-bottom: 0;
 
     @include breakpoint(m, 'down') {
@@ -36,50 +149,6 @@
 
       .bar__item { // stylelint-disable-line max-nesting-depth
         margin-right: _map-deep-get($bar-spacing, small, default);
-      }
-    }
-  }
-
-  &__btn {
-    padding-top: _get-rem(9px);
-    padding-bottom: _get-rem(9px);
-
-    color: _color(grey, 400);
-
-    text-transform: none;
-
-    font-size: $default-font-size;
-
-    &.btn--small.btn--equal {
-      padding: 0;
-    }
-
-    &:hover,
-    &:focus,
-    &.is-active {
-      color: $color-white;
-    }
-
-    @include breakpoint('l') {
-      &.is-active {
-        position: relative;
-        overflow: visible;
-        z-index: $z-index-topbar + 1;
-
-        &::before { // stylelint-disable-line
-          content: '';
-          width: 0;
-          height: 0;
-
-          position: absolute;
-          bottom: -21px;
-          left: 50%;
-          margin-left: -8px;
-
-          border-left: 8px solid transparent;
-          border-right: 8px solid transparent;
-          border-bottom: 8px solid $color-white;
-        }
       }
     }
   }
@@ -102,9 +171,6 @@
 
   &__user {
     color: _color(grey, 400);
-    font-size: _get-rem($font-size-medium);
-    font-weight: $font-weight-semibold;
-
     align-items: center;
 
     @include breakpoint(m, 'down') {
@@ -132,31 +198,47 @@
     &__cart { order: 2; }
 
     &__search {
+      display: block;
       order: 3;
-      flex: 0;
+      max-width: _get-rem(300px);
+      justify-content: flex-start;
+      min-width: auto;
     }
 
     &__nav { order: 4; }
   }
-}
 
-.header-search {
-  display: flex;
-  justify-content: flex-end;
-
-  &__value {
-    border-left: 0;
-    border-right: 0;
-    border-radius: $default-border-radius;
+  &.is-search-active {
+    @include breakpoint(s, down) {
+      .header__logo,
+      .header__nav,
+      .header__user,
+      .header__cart,
+      .header-search__toggle {
+        display: none;
+      }
+    }
   }
 
-  &__empty {
-    border-top-right-radius: $form-b-r;
-    border-bottom-right-radius: $form-b-r;
+  @include breakpoint(s, 'down') {
+    &__search {
+      flex: 0;
+    }
+  }
+}
 
-    background-color: _color(grey, 900);
-    border-color: _color(grey, 900);
+.header-user {
+  &__name {
+    display: inline-block;
+    vertical-align: middle;
 
-    transition: $form-t;
+    max-width: _get-rem(135px);
+
+    @include text-ellipsis;
+  }
+
+  @include breakpoint(l, 'down') {
+    &__icon { margin-right: 0 !important; } // specificity :()
+    &__name { display: none; }
   }
 }

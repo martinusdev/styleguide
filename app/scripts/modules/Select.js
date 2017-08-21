@@ -64,7 +64,7 @@ const storeListTemplate = data =>
     <svg class="icon icon-pin icon--small">
       <use xlink:href="../icons_/app.svg#icon-pin"></use>
     </svg>
-    <span class="text-size-medium text-left text-semibold">${data.label}</span>
+    <span class="text-size-medium text-left">${data.label}</span>
   </div>`;
 
 const storeListChoice = (data, config) => `
@@ -82,7 +82,9 @@ export default class Select {
     this._onShowDropdown = this._onShowDropdown.bind(this);
     this._onHideDropdown = this._onHideDropdown.bind(this);
 
-    return this._init();
+    this.elements = this._init();
+
+    return this;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -122,8 +124,12 @@ export default class Select {
       document.querySelectorAll(this.selector),
     );
 
-    return selects.map(select => {
+    return selects.map((select, index) => {
       const config = { ...this.config };
+
+      if (select.hasAttribute('data-is-initialized')) {
+        return this.elements[index];
+      }
 
       if (
         (select.multiple && config.removeItemButton === undefined) ||
@@ -134,6 +140,12 @@ export default class Select {
 
       if (select.hasAttribute('placeholder')) {
         config.placeholderValue = select.getAttribute('placeholder');
+      }
+
+      if (select.hasAttribute('data-autocomplete')) {
+        config.searchEnabled = true;
+        config.searchChoices = true;
+        config.shouldSort = true;
       }
 
       if (select.hasAttribute('data-select-product')) {
@@ -159,38 +171,24 @@ export default class Select {
         choice.disable();
       }
 
-      if (select.classList.contains('is-error')) {
-        choice.containerOuter.classList.add('is-error');
-      }
-
-      if (select.classList.contains('select--large')) {
-        choice.containerOuter.classList.add('select--large');
-      }
-
-      if (select.classList.contains('select--small')) {
-        choice.containerOuter.classList.add('select--small');
-      }
-
-      if (select.classList.contains('select--inline')) {
-        choice.containerOuter.classList.add('select--inline');
-      }
-
-      if (select.classList.contains('select--ghost')) {
-        choice.containerOuter.classList.add('select--ghost');
-      }
-
-      if (select.classList.contains('select--input')) {
-        choice.containerOuter.classList.add('select--input');
-      }
-
-      if (select.classList.contains('select--clean')) {
-        choice.containerOuter.classList.add('select--clean');
-      }
+      const classes = select.classList;
+      const unwantedClasses = ['choices__input', 'is-hidden', 'js-select'];
+      classes.forEach(className => {
+        if (!unwantedClasses.includes(className)) {
+          choice.containerOuter.classList.add(className);
+        }
+      });
 
       select.addEventListener('showDropdown', this._onShowDropdown);
       select.addEventListener('hideDropdown', this._onHideDropdown);
 
+      select.setAttribute('data-is-initialized', '');
+
       return choice;
     });
+  }
+
+  update() {
+    this._init();
   }
 }

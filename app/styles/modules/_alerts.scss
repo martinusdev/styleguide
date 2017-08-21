@@ -1,0 +1,108 @@
+$alerts: (
+  default: (
+    default: (
+      margin-bottom: _get-space('v'),
+      padding: _get-space('v', 'small') _get-space('h', 'small'),
+      background-color: _color(info),
+      color: $color-white,
+      font-size: $font-size-medium,
+      border-radius: $default-border-radius,
+    )
+  ),
+  success: (
+    default: ( background-color: _color('success') ),
+  ),
+  warning: (
+    default: ( background-color: _color('warning') ),
+  ),
+  error: (
+    default: ( background-color: _color('error') ),
+  )
+);
+
+.alert {
+  display: flex;
+  align-items: center;
+
+  transition: all $ease-200;
+
+  &__icon {
+    flex: 0 0 auto;
+    margin-right: _get-space('h', 'small');
+  }
+
+  &__loader {
+    flex: 0 0 auto;
+    margin-right: _get-space('h', 'small');
+  }
+
+  &__content {
+    flex: 1 1 auto;
+  }
+
+  &__action {
+    flex: 0 0 auto;
+    align-self: flex-start;
+    margin-left: _get-space('h', 'small');
+
+    .btn {
+      color: _color(grey, 800);
+
+      // stylelint-disable-next-line
+      &:focus,
+      &:hover {
+        color: $color-white;
+      }
+    }
+
+    > * { margin-bottom: 0; }
+  }
+
+  &--fixed {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  &--fixed-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &--destroy {
+    opacity: 0;
+  }
+
+  .link {
+    color: $color-white;
+    text-decoration: underline;
+  }
+
+  @each $variant, $props in $alerts {
+    &#{_get-variant-name($variant)} {
+      @include css-map($props, 'default');
+
+      &:focus,
+      &:hover {
+        @include css-map($props, 'focus');
+      }
+    }
+  }
+}
+
+.alert-container {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 0 _get-space('h');
+
+  .alert {
+    box-shadow: 0 10px 20px 0 rgba($color-black, 0.1);
+  }
+}

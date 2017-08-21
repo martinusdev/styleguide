@@ -69,12 +69,22 @@
   }
 }
 
+@mixin dropdown-group (
+  $dropdown-menu-group: $dropdown-menu-group
+) {
+  display: block;
+  white-space: nowrap;
+
+  @include css-map($dropdown-menu-group);
+}
+
 @mixin dropdown() {
   .dropdown {
     @include dropdown-menu;
     @include dropdown-size;
 
     &__item { @include dropdown-item; }
+    &__group { @include dropdown-group; }
 
     &--arrowhead {
       margin-top: 10px;
