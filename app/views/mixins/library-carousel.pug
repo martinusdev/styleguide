@@ -1,0 +1,45 @@
+mixin libraryCarousel()
+  -
+    var swiperConfig = {
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+      slidesPerView: 4,
+      spaceBetween: 20,
+      breakpoints: {
+        1024: {
+          slidesPerView: 3,
+        },
+        768: {
+          slidesPerView: 3,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        480: {
+          slidesPerView: 1,
+        }
+      },
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel.carousel--fade-outside
+    .swiper-container(data-swiper-options=swiperConfig)
+      .swiper-wrapper
+        - for (var i = 0; i < 6; ++i) {
+        .swiper-slide(href="#")
+          .bar
+            .bar__item
+              a(href="detail-knihy.html").thumbnail--book
+                img(src="images/content/books/sample-15.jpg", alt="Kniha", width="74")
+            .bar__item.bar__item--fill
+              a.text-semibold(href="detail-knihy.html") Rybaření pro začátečníky
+              .text-medium.mb-small Armin Gollner
+              .mb-small
+                a.link.text-medium(href="#") Knižku som nekúpil pre seba
+              div
+                a.link.text-medium(href="#") Vymazať z knižnice
+        - }
+
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+        +icon('arrow-left').icon--medium
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+        +icon('arrow-right').icon--medium

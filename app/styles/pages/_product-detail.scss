@@ -13,3 +13,31 @@
     };
   }
 }
+
+.product-read-more {
+  position: relative;
+
+  a {
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 200%;
+      width: 100%;
+    }
+  }
+}
+
+.review__header-avatar {
+  position: relative;
+
+  .icon-useful {
+    position: absolute;
+    left: _get-rem(-6px);
+    top: _get-rem(-6px);
+    border-radius: 50%;
+  }
+}

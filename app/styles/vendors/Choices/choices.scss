@@ -8,8 +8,10 @@ $select-selector: 'choices' !default;
   position: relative;
 
   &:focus, &.is-focused {
-    outline: $default-outline;
-    @include css-map($select, 'default', 'focus');
+    &:not('.select--brown') {
+      outline: $default-outline;
+      @include css-map($select, 'default', 'focus');
+    }
   }
   &:last-child { margin-bottom: 0; }
   &.is-disabled {

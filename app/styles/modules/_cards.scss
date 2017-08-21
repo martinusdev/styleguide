@@ -73,7 +73,7 @@
 @mixin card-classes {
   .card {
     position: relative;
-    padding: 0;
+    // padding: 0;
 
     @each $variant, $map in $card {
       &#{_get-variant-name( $variant)} {
@@ -96,26 +96,36 @@
 
     &-header__action {
       @include bar-item;
-      min-width: 80px;
+      min-width: 110px;
+
+      &:first-child {
+        text-align: left;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
     }
 
     &__content {
       @include card-section($grow: 1);
 
-      @each $breakpoint, $props in _get-breakpoint-map($card-section) {
+      @each $breakpoint, $variants in _get-breakpoint-map($card-section) {
         @include breakpoint($breakpoint) {
-          &--large {
-            @include css-map($props, large);
+          @each $variant, $props in $variants {
+            &#{_get-variant-name($variant)} {
+              @include css-map($props);
+
+              &:first-child { //stylelint-disable-line
+                padding-top: nth(map-get($props, padding), 1) * 2;
+              }
+
+              &:last-child { //stylelint-disable-line
+                padding-bottom: nth(map-get($props, padding), 1) * 2;
+              }
+            }
           }
         }
-      }
-
-      &:first-child {
-        padding-top: _get-space('v');
-      }
-
-      &:last-child {
-        padding-bottom: _get-space('v');
       }
 
       > *:last-child {
@@ -134,10 +144,39 @@
       right: 10px;
     }
 
-    &__done {
-      position: absolute;
-      top: -4px;
-      left: -10px;
+    &--done {
+      &::after {
+        content: '';
+        height: _get-rem(24px);
+        width: _get-rem(24px);
+        position: absolute;
+        top: +(_get-rem(1px));
+        left: -(_get-rem(10px));
+        background-image: svg-load('./../icons_/app/check-circle.svg');
+        background-color: $default-bg-color;
+        border-radius: $default-border-radius-circle;
+      }
+    }
+
+    &--speech-bubble {
+      position: relative;
+      border-bottom-left-radius: 0;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px 10px 0 0;
+        border-color: $color-white transparent transparent;
+      }
+
+      &.bg-secondary::after {
+        border-color: $secondary-bg-color transparent transparent;
+      }
     }
 
     .carousel {

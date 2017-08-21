@@ -34,10 +34,10 @@ export default class StickyWrapper {
     navs.forEach(nav => {
       const target = nav.getAttribute('data-gumshoe-select');
       if (target) {
-        const select = new Select(target)[0];
-        this.selects[target] = select;
+        const select = new Select(target);
+        this.selects[target] = select.elements[0];
 
-        select.passedElement.addEventListener(
+        this.selects[target].passedElement.addEventListener(
           'choice',
           this._handleSetSectionInSelect,
         );

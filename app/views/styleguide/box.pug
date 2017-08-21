@@ -1,0 +1,48 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.box', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_box.scss'], contents)
+
+    +p-big Documentation of Box component.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- MEDIA QUERIES
+  +content-section(contents[0])
+
+    +demo
+      +demo-example
+        .row
+          .col--m-6
+            .box
+              h3 Basic box
+              p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore qui voluptate et non ex laboris ullamco consequat culpa consequat qui magna qui labore dolore do velit sint.
+
+          .col--m-6
+            .box.box--success
+              h3 Box success
+              p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et.
+      +demo-code
+        :code
+          <!-- basic box -->
+          <div class="box">
+              ...
+          </div>
+
+          <!-- box success-->
+          <div class="box box--success">
+              ...
+          </div>
+    //- end: demo
+    

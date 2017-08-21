@@ -1,0 +1,287 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.alerts', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_alerts.scss'], contents)
+
+    +p-big Documentation for alerts components.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- TABS
+  +content-section(contents[0], true)
+
+    +p Alert messages provides information about some action, whether it is success, error etc. Message can be shown below header as fixed for whole page, or inlined inside content if necessary. Various examples are shown below.
+
+    +demo
+      +demo-example
+        .row
+          .col--m-8
+            .alert
+              .alert__icon
+                +icon('check-circle').icon--medium
+              .alert__content
+                | Upokoj sa, všetko ide podľa plánu.#{' '}
+                a.link(href="#") Viac informácií nájdete tu
+                | .
+              .alert__action
+                button.btn.btn--clean.btn--small(data-alert-action)
+                  +icon('close').icon--medium
+          .col--m-4
+            button.btn#alert-1 Show example
+
+        .row
+          .col--m-8
+            .alert
+              .alert__icon
+                +icon('check-circle').icon--medium
+              .alert__content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mauris augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.
+              .alert__action
+                button.btn.btn--clean.btn--small(data-alert-action)
+                  +icon('close').icon--medium
+          .col--m-4
+            button.btn#alert-2 Show example
+
+        .row
+          .col--m-8
+            .alert
+              .alert__content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mauris augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.
+              .alert__action
+                button.btn.btn--clean.btn--small(data-alert-action)
+                  +icon('close').icon--medium
+          .col--m-4
+            button.btn#alert-3 Show example
+
+      +demo-code
+        :code
+          <div class="alert">
+            <div class="alert__icon">...</div>
+            <div class="alert__content">...</div>
+            <div class="alert__action">...</div>
+          </div>
+
+          <script>
+            new window.myApp.Alert({
+              icon: 'check-circle',
+              text: '...'
+            });
+          </script>
+
+    +content-sub-section('Types')
+
+      +p Four types of alert are defined: <code class='l-code-inline'>info (defalut)/success/warning/error</code>. Coresponding icon with state should be included in alert.
+
+      +demo
+        +demo-example
+          .row
+            .col--m-8
+              .alert
+                .alert__icon
+                  +icon('check-circle').icon--medium
+                .alert__content
+                  | Upokoj sa, všetko ide podľa plánu.
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    +icon('close').icon--medium
+            .col--m-4
+              button.btn#alert-type-1 Show example
+
+          .row
+            .col--m-8
+              .alert.alert--success
+                .alert__icon
+                  +icon('check-circle').icon--medium
+                .alert__content
+                  span.text-semibold Úspech!
+                  |  Všetko sa podarilo.#{' '}
+                  a.link(href="#") Viac informácií nájdete tu
+                  | .
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    +icon('close').icon--medium
+            .col--m-4
+              button.btn#alert-type-2 Show example
+
+          .row
+            .col--m-8
+              .alert.alert--warning
+                .alert__icon
+                  +icon('warning').icon--medium
+                .alert__content
+                  span.text-semibold Hoplá!
+                  |  Skúste to znova.
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    span.text-color-white Opakovať
+            .col--m-4
+              button.btn#alert-type-3 Show example
+
+          .row
+            .col--m-8
+              .alert.alert--error
+                .alert__icon
+                  +icon('error').icon--medium
+                .alert__content
+                  | Obrázok sa nepodarilo nahrať
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    +icon('close').icon--medium
+            .col--m-4
+              button.btn#alert-type-4 Show example
+        +demo-code
+          :code
+            <div class="alert">...</div>
+            <div class="alert alert--success">...</div>
+            <div class="alert alert--warning">...</div>
+            <div class="alert alert--error">...</div>
+
+            <script>
+              new window.myApp.Alert({
+                type: 'success',
+                icon: 'check-circle',
+                text: '...'
+              });
+            </script>
+
+    +content-sub-section('Timeout')
+
+      +p If timeout attribute of alert is set, alert will be destoried after given timeout.
+
+      +demo
+        +demo-example
+          button.btn#alert-timeout Alert with 7s timeout
+
+        +demo-code
+          :code
+            <script>
+              new window.myApp.Alert({
+                text: '...',
+                timeout: 7000,
+              });
+            </script>
+
+    +content-sub-section('Loader')
+
+      +p Wait on content, or response should be displayed as alert loader as shown on example below.
+
+      +demo
+        +demo-example
+          .row
+            .col--m-8
+              .alert.alert--error
+                .alert__loader
+                  +loader({ size: 'small', color: 'white' })
+                .alert__content
+                  | Načítavanie
+            .col--m-4
+              .btn-group.btn-group--horizontal
+                button.btn#alert-loader-show Show loader
+                button.btn#alert-loader-destroy Destroy loader
+
+        +demo-code
+          :code
+            <div class="alert">
+              <div class="alert__loader">...</div>
+            </div>
+
+            <script>
+              new window.myApp.Alert({
+                loader: true,
+                text: 'Načítavanie',
+                closeable: false,
+              });
+            </script>
+
+//- end: section
+
+block append scripts
+  script.
+    document.getElementById('alert-1').addEventListener('click', function() {
+      new window.myApp.Alert({
+        icon: 'check-circle',
+        text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
+      });
+    });
+
+    document.getElementById('alert-2').addEventListener('click', function() {
+      new window.myApp.Alert({
+        icon: 'check-circle',
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mauris augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.'
+      });
+    });
+
+    document.getElementById('alert-3').addEventListener('click', function() {
+      new window.myApp.Alert({
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mauris augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.'
+      });
+    });
+
+    document.getElementById('alert-type-1').addEventListener('click', function() {
+      new window.myApp.Alert({
+        icon: 'check-circle',
+        text: 'Upokoj sa, všetko ide podľa plánu.'
+      });
+    });
+
+    document.getElementById('alert-type-2').addEventListener('click', function() {
+      new window.myApp.Alert({
+        type: 'success',
+        icon: 'check-circle',
+        text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
+      });
+    });
+
+    document.getElementById('alert-type-3').addEventListener('click', function() {
+      var alertCustomAction = new window.myApp.Alert({
+        type: 'warning',
+        icon: 'warning',
+        text: '<span class="text-semibold">Hoplá!</span> Skúste to znova.',
+        customActionTemplate: '<button class="btn btn--clean btn--small" data-alert-action=""><span class="text-color-white">Opakovať</span></button>',
+        onAction: function() {
+          console.log('custom action callback');
+          alertCustomAction.destroy();
+        }
+      });
+    });
+
+    document.getElementById('alert-type-4').addEventListener('click', function() {
+      new window.myApp.Alert({
+        type: 'error',
+        icon: 'error',
+        text: 'Obrázok sa nepodarilo nahrať',
+      });
+    });
+
+    document.getElementById('alert-timeout').addEventListener('click', function() {
+      new window.myApp.Alert({
+        icon: 'check-circle',
+        text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.',
+        timeout: 7000
+      });
+    });
+
+    var loaderAlert;
+
+    document.getElementById('alert-loader-show').addEventListener('click', function() {
+      loaderAlert = new window.myApp.Alert({
+        loader: true,
+        text: 'Načítavanie',
+        closeable: false,
+      });
+    });
+
+    document.getElementById('alert-loader-destroy').addEventListener('click', function() {
+      if (loaderAlert) {
+        loaderAlert.destroy();
+      }
+    });

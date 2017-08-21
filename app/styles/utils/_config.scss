@@ -77,14 +77,24 @@ $color-palette: (
   violet: #9967a7,
   blue: #00b6eb,
   green: #33ab4e,
+  teal: #67cdb7,
   // states
   error: (
-    500: #e93227,
     100: #fae8e8,
+    500: #e93227,
+    600: #d22121,
   ),
   success: (
-    500: #33ab4e,
     100: #eaf6ed,
+    200: #37b855,
+    500: #33ab4e,
+    600: #2f9e49,
+  ),
+  warning: (
+    500: #f28629,
+  ),
+  info: (
+    500: #007fb1,
   )
 );
 
@@ -107,6 +117,8 @@ $default-color-weights: (
 $default-bg-color: $color-white !default;
 $secondary-bg-color: _color(bg) !default;
 $blue-bg-color: _color(bg, 200) !default;
+$teal-bg-color: _color(teal) !default;
+$green-bg-color: _color(success, 500) !default;
 $default-text-color: $color-black !default;
 $default-font-family: $font-family-tabac !default;
 
@@ -158,13 +170,13 @@ $typography-settings: (
 $typography-overrides: (
   null: (
     'h1, .h1' : (
-      font-size: _get-rem(42px),
+      font-size: _get-rem(25px),
       line-height: 49/42,
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
     ),
     'h2, .h2' : (
-      font-size: _get-rem(25px),
+      font-size: _get-rem(18px),
       line-height: 31/25,
       margin-bottom: _get-space('v'),
       font-weight: $font-weight-semibold,
@@ -176,8 +188,8 @@ $typography-overrides: (
       color: _color(grey, 700)
     ),
     'h4, .h4' : (
-      font-size: _get-rem(18px),
-      line-height: 24/18,
+      font-size: _get-rem(14px),
+      line-height: 20/14,
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-semibold,
     ),
@@ -191,7 +203,18 @@ $typography-overrides: (
     ),
     'h1 + h3, .h1 + h3, h1 + .h3, .h1 + .h3': (
       margin-top: _get-space('v', 'small') - _get-space('v', 'large'),
-    )
+    ),
+  ),
+  s: (
+    'h1, .h1' : (
+      font-size: _get-rem(42px),
+    ),
+    'h2, .h2' : (
+      font-size: _get-rem(25px),
+    ),
+    'h4, .h4' : (
+      font-size: _get-rem(18px),
+    ),
   ),
 );
 
@@ -208,17 +231,37 @@ $text-small: (
   line-height: 20/_strip-units($font-size-small),
 );
 
-$link: (
+$links: (
   default: (
-    text-decoration: none,
-    border-bottom: 1px solid transparent,
-    color: _color(link),
-    font-weight: $font-weight-semibold,
-    transition: #{color $ease-400, border $ease-400},
+    default: (
+      text-decoration: none,
+      border-bottom: 1px solid transparent,
+      color: _color(link),
+      font-weight: $font-weight-semibold,
+      transition: #{color $ease-400, border $ease-400},
+    ),
+    focus: (
+      color: _color(link, 400),
+      border-bottom-color: _color(link, 400),
+    )
   ),
-  focus: (
-    color: _color(link, 400),
-    border-bottom-color: _color(link, 400),
+  grey: (
+    default: (
+      color: _color(grey),
+      font-weight: $font-weight-default,
+    ),
+    focus: (
+      border-bottom: 1px solid transparent,
+    )
+  ),
+  black: (
+    default: (
+      color: $color-black,
+      font-weight: $font-weight-default,
+    ),
+    focus: (
+      border-bottom: 1px solid transparent,
+    )
   )
 );
 
@@ -243,16 +286,22 @@ $inline-list: (
   ),
   line: (
     margin: 0 0.5em 0 0,
-  )
+  ),
 );
 
 $inline-list-item: (
   default: (
-    margin: (_get-space('v', 'small') / 2) _get-space('h', 'small') 0 0,
+    margin: (_get-space('v', 'tiny') _get-space('h', 'small') 0 0),
   ),
   expanded: (
-    margin: (_get-space('v', 'small') / 2)  _get-space('h') 0 0,
-  )
+    margin: (_get-space('v', 'tiny')  _get-space('h') 0 0),
+  ),
+  delimited: (
+    margin: (_get-space('v', 'tiny') 0 0 0),
+  ),
+  condensed: (
+    margin: (_get-space('v', 'tiny') 0 0 0),
+  ),
 );
 
 $description-list: (
@@ -291,7 +340,8 @@ $icon-sizes: (
   small: _get-rem(16px),
   medium: _get-rem(24px),
   large: _get-rem(32px),
-  xlarge: _get-rem(48px)
+  xlarge: _get-rem(48px),
+  xxlarge: _get-rem(64px)
 );
 
 // ----------------------------
@@ -307,6 +357,8 @@ $thumbnail-sizes: (
   medium: 50px,
   medium-large: 65px,
   large: 120px,
+  xlarge: 170px,
+  huge: 270px,
 );
 
 // ----------------------------
@@ -346,6 +398,9 @@ $bar-spacing: (
   ),
   small: (
     default: _get-space('h', 'small'),
+  ),
+  tiny: (
+    default: _get-space('h', 'tiny'),
   )
 );
 
@@ -452,6 +507,11 @@ $button-styles: (
       box-shadow: none,
     ),
     after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
       background-color: _color(primary, 600),
       height: 4px,
     ),
@@ -525,6 +585,24 @@ $button-styles: (
     ),
     active: (
       box-shadow: none,
+    ),
+  ),
+  success: (
+    default: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 500),
+      box-shadow: none,
+    ),
+    focus: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 200),
+    ),
+    active: (
+      color: $color-white,
+      border-color: transparent,
+      background-color: _color(success, 600),
     ),
   )
 );
@@ -682,23 +760,21 @@ $textarea: (
 // checkbox / radio styles
 
 $radio-check-margin: $form-m !default;
-$radio-check-size: _get-em(16px, 16px);
+$radio-check-size: _get-rem(20px);
 
 $radio-check: (
   default: (
     height: $radio-check-size,
     width: $radio-check-size,
-    background-color: $form-bgc,
-    border-width: $form-b-w,
+    margin-top: _get-rem(2px),
+    border-width: 2px,
     border-style: $form-b-s,
     border-color: $form-b-c,
-    border-radius: $form-b-r,
     color: $form-c,
     transition: $form-t,
   ),
   focus: (
     box-shadow: $form-focus-bs,
-    border-color: $form-focus-b-c,
   ),
   disabled: (
     color: $form-disabled-c,
@@ -715,6 +791,29 @@ $radio-check: (
   ),
 );
 
+$radio-check-checked: (
+  default: (
+    border-color: _color(link, 500),
+    background-color: _color(link, 500),
+  ),
+  focus: (
+    border-color: _color(link, 500),
+    background-color: _color(link, 500),
+  ),
+  disabled: (
+    border-color: _color(grey, 300),
+    background-color: _color(grey, 300),
+  ),
+  readonly: (
+    border-color: _color(grey, 400),
+    background-color: _color(grey, 400),
+  ),
+  error: (
+    border-color: _color(error, 500),
+    background-color: _color(error, 500),
+  ),
+);
+
 $radio-check-color: (
   default: _color(grey, 700),
   disabled: _color(grey, 300),
@@ -726,22 +825,20 @@ $radio-check-label: (
   margin-left: _get-space('h', 'small'),
 );
 
-$radio-check-sizes-large: 20px;
-
-$radio-check-sizes: (
-  default: (
-    size: _get-em($default-font-size),
-    font-size: _get-rem($default-font-size),
-  ),
-  small: (
-    size: _get-em($font-size-small),
-    font-size: _get-rem($font-size-small),
-  ),
-  large: (
-    size: _get-em($radio-check-sizes-large),
-    font-size: _get-rem($default-font-size),
-  ),
-);
+// $radio-check-sizes: (
+//   default: (
+//     size: $radio-check-size,
+//     font-size: _get-rem($default-font-size),
+//   ),
+//   small: (
+//     size: _get-em($font-size-small),
+//     font-size: _get-rem($font-size-small),
+//   ),
+//   large: (
+//     size: _get-em($radio-check-sizes-large),
+//     font-size: _get-rem($default-font-size),
+//   ),
+// );
 
 //---------------
 // select
@@ -758,18 +855,90 @@ $select-button-offset: 8px !default;
 $select: (
   default: (
     default: (
+      background-color: $form-bgc,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: $form-b-c,
+      border-radius: $form-b-r,
+      color: $form-c,
+      box-shadow: $form-bs,
+      after: (
+        display: none,
+      )
+    ),
+    focus: (
+      box-shadow: $form-focus-bs,
+      border-color: $form-focus-b-c,
+      outline: none !important,
+    ),
+    disabled: (
+      color: $form-disabled-c,
+      border-color: $form-disabled-b-c,
+    ),
+    error: (
+      background-color: $form-error-bgc,
+      color: $form-error-c,
+      border-color: $form-error-b-c,
+    ),
+  ),
+  clean: (
+    default: (
+      background-color: transparent,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: transparent,
+      border-radius: $select-b-r,
+      box-shadow: none,
+      after: (
+        display: none,
+      )
+    )
+  ),
+  ghost : (
+    default: (
+      color: _color(grey, 700),
+      background-color: transparent,
+      border-width: $form-b-w,
+      border-style: $form-b-s,
+      border-color: _color(grey, 400),
+      border-radius: $select-b-r,
+      box-shadow: none,
+      text-transform: uppercase,
+      font-weight: 600,
+      letter-spacing: 1px,
+      after: (
+        display: none,
+      )
+    ),
+    focus: (
+      background-color: _color(secondary, 400),
+      color: _color(grey, 700),
+    ),
+    active: (
+      background-color: _color(secondary, 500),
+      border-color: _color(gray, 200),
+    ),
+    group: (
+      border-color: _color(gray, 400),
+    ),
+  ),
+  brown : (
+    default: (
       background-color: _color(bg),
       border-width: $form-b-w,
       border-style: $form-b-s,
       border-color: transparent,
       border-radius: $select-b-r,
+      box-shadow: none,
+      color: _color(gray, 600),
       after: (
+        display: block,
         height: 4px,
         background-color: _color(bg, 600),
       )
     ),
     focus: (
-      box-shadow: $form-focus-bs,
+      box-shadow: none,
       border-color: $form-focus-b-c,
     ),
     disabled: (
@@ -781,22 +950,18 @@ $select: (
       color: $form-disabled-c,
       border-color: $form-disabled-b-c,
     ),
-  ),
-  clean: (
-    default: (
-      background-color: transparent,
-      border-width: $form-b-w,
-      border-style: $form-b-s,
-      border-color: transparent,
-      border-radius: $select-b-r,
-      after: (
-        display: none,
-      )
-    )
   )
 );
 
-$select-sizes: $input-sizes;
+$select-ghost-sizes: (
+  ghost: (
+    font-size: _get-rem($font-size-small),
+    min-height: _get-em(40px, $font-size-small),
+    padding: _get-em(7px, $font-size-small) _get-em(8px, $font-size-small),
+  ),
+);
+
+$select-sizes: map-merge($input-sizes, $select-ghost-sizes);
 
 $select-item: (
   default: (
@@ -926,6 +1091,11 @@ $dropdown-menu: (
   )
 );
 
+$dropdown-menu-group: (
+  padding: _get-rem(10px),
+  margin-bottom: 0,
+);
+
 $dropdown-menu-item: (
   default: (
     font-size: _get-rem($font-size-medium),
@@ -993,7 +1163,7 @@ $card-section: (
       padding: _get-space('v', 'small') _get-space('h') 0,
     ),
     large: (
-      padding: _get-space('v', 'large') _get-space('h', 'large') 0,
+      padding: _get-space('v') _get-space('h', 'large') 0,
     )
   ),
 );
@@ -1164,6 +1334,12 @@ $modal-dialog-variants: (
     'l': (
       width: calc(100vw - (#{_get-space('h', 'large')} * 2)),
     )
+  ),
+  'medium' : (
+    default: (
+      width: _get-rem(700px),
+      max-width: 100%,
+    )
   )
 );
 
@@ -1190,14 +1366,13 @@ $modal-footer: (
 
 $badge: (
   default: (
-    padding: 0 _get-space('h', 'small'),
+    padding: 0 _get-space('h', 'tiny'),
     color: _color(grey, 700),
     background-color: $color-white,
     border: 1px solid $default-border-color,
     border-radius: $default-border-radius,
     font-size: _get-rem($font-size-medium),
     font-weight: $font-weight-semibold,
-    line-height: 22/_strip-units($font-size-medium),
   ),
   primary: (
     color: _color(primary),
@@ -1219,15 +1394,28 @@ $badge: (
     color: _color(blue),
     border-color: _color(blue),
   ),
+  yellow: (
+    color: _color(yellow),
+    border-color: _color(yellow),
+  ),
+  brown: (
+    color: _color(brown),
+    border-color: _color(brown),
+  ),
+  darkblue: (
+    color: _color(darkblue),
+    border-color: _color(darkblue),
+  ),
 );
 
-$badge-circle: (
+$pills: (
   default: (
     color: $color-white,
     background-color: _color(grey),
     border-radius: $default-border-radius-circle,
     font-size: _get-rem($font-size-small),
     font-weight: $font-weight-semibold,
+    min-width: _get-rem(24px),
   ),
   blue: (
     color: $color-white,
@@ -1242,6 +1430,15 @@ $status: (
   success: (
     background-color: _color(green),
   ),
+  error: (
+    background-color: _color(error, 500),
+  ),
+  grey: (
+    background-color: _color(grey, 500),
+  ),
+  orange: (
+    background-color: _color(orange, 500),
+  )
 );
 
 $carousel: (

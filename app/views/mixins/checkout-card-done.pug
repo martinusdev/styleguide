@@ -1,0 +1,26 @@
+mixin checkout-card-done(props = {})
+  -
+    const {
+      id = '',
+      title = 'Nadpis',
+      summary,
+      price,
+    } = props;
+
+  .card.card--done.mb-small(id=id)
+    .card__content
+      .bar
+        .bar__item.bar__item--fill
+          h2!=title
+        .bar__item
+          button.btn.btn--clean.no-mrg.no-pad-right
+            +icon('edit').icon--medium.icon--left
+            | Upraviť
+
+    if summary
+      .card__content.no-pad-top.mb-medium
+        .bar.no-mrg
+          .bar__item.bar__item--fill.text-size-medium!=summary
+          if price
+            .bar__item.text-size-medium
+              strong!=price

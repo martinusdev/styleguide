@@ -1,0 +1,80 @@
+.card.mb-medium#confirmation
+  .card__content
+    .bar
+      .bar__item.bar__item--fill
+        h2 Darujte centy a stanete sa Dobrým Anjelom
+
+  .card__content.no-pad-top.no-mrg
+    .row
+      .col--m-6.col--s-11.text-size-medium
+        p.mb-small
+          | Vyberte, prosím, sumu, na ktorú si prajete zaokrúhliť Váš nákup. Celý rozdiel poputuje chorým deťom z Dobrého Anjela.
+        p.mb-small
+          a.link
+            | Viac informácií nájdete tu.#{' '}
+          span.text-semibold
+            | Ďakujeme!
+
+      .col--m-6.col--s-11
+        .bar
+          .bar__item.bar__item--fill
+            .form-control.form-control--select
+              select.js-select
+                option(selected disabled placeholder) Zaokrúhliť na 20 € (dar = 5,95 €)
+                option Zaokrúhliť na 20 € (dar = 5,95 €)
+
+  .card__content.no-pad.no-mrg
+    hr
+
+  .card__content
+    .bar.align-items-right.align-items-bottom
+      .bar__item.bar__item--fill.text-right
+        h3
+          | Spolu
+      .bar__item
+        h2.text-bold
+          | 21.45€
+
+  .card__content.no-pad.mb-small
+    hr
+
+  .card__content.no-pad-top.no-mrg
+    .form-control.form-control--checkbox.mb-small
+      .checkbox.form-label--required
+        input.radiocheck__input(type='checkbox', id='checkout_summary_terms', name='checkout_summary_terms')
+        label.radiocheck__control(for='checkout_summary_terms')
+        label.radiocheck__label(for='checkout_summary_terms')
+          span.text-size-medium Oboznámil som sa so#{' '}
+          a.link.text-size-medium všeobecnými obchodnými podmienkami#{' '}
+          span.text-size-medium a súhlasím s nimi.
+
+    .form-control.form-control--checkbox.mb-small
+      .checkbox
+        input.radiocheck__input(type='checkbox', id='checkout_summary_signup', name='checkout_summary_signup',  data-radiocheck-toggle="#checkout-password")
+        label.radiocheck__control(for='checkout_summary_signup')
+        label.radiocheck__label(for='checkout_summary_signup')
+          span.text-size-medium Tento nákup sa mi páčil,#{' '}
+          span.text-semibold.text-size-medium vytvorte mi účet na Martinuse!
+
+      .form-control.form-control--input.hide#checkout-password
+        .row
+          .col--m-6
+            .form-label
+              label.text-transform-upper.text-size-small(for="checkout_summary_password")
+                  | heslo
+              input.input(type="password", name="checkout_summary_password", id="checkout_summary_password", placeholder="Vložte vaše tajné heslo")
+
+  .card__content.no-pad.mb-medium
+    hr
+
+  .card__content.mb-small
+    .row
+      .col--s-11.col--m-7.ofst--center
+        .btn-layout--vertical.mb-small
+          button.btn.btn--primary.is-disabled(type="submit")
+            | záväzne objednať a zaplatiť
+
+        p.no-mrg.text-center.text-size-small Objednávka vyžaduje platbu za tovar
+
+p.text-color-grey.text-size-small.text-space-left
+  | * Podmienky obsahujú aj vyžadované predzmluvné informácie ohľadom prevádzkovateľa internetového obchodu, tovaru, dodacích a platobných podmienok, práva na odstúpenie od zmluvy, záručných podmienok, postupe pri uplatňovaní reklamácií, ochrany osobných údajov a ostatné informácie v súlade s 3 zákona 102/2014 Z.z. a v súlade ustanoveniami zákona 122/2013 Z.z.

@@ -1,0 +1,149 @@
+.loader {
+  top: 0;
+  transform: translateY(0);
+  position: relative;
+  margin: 0 auto;
+  border: 2px solid _color(grey);
+  width: 40px;
+  height: 24px;
+
+  &__page {
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin: 0 auto;
+    border-top: 2px solid _color(grey);
+    border-bottom: 2px solid _color(grey);
+    border-right: 2px solid _color(grey);
+    background: transparent;
+    width: 20px;
+    height: 24px;
+    transform-origin: 0% 50%;
+    animation: loader 0.8s infinite linear;
+    animation-fill-mode: forwards;
+
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        z-index: -$i;
+        animation-delay: 1.4s * $i;
+      }
+    }
+  }
+
+  &--small {
+    height: _get-rem(16px);
+    width: _get-rem(26.6px);
+
+    .loader__page {
+      height: _get-rem(16px);
+      width: _get-rem(13.3px);
+    }
+  }
+
+  &--large {
+    height: _get-rem(32px);
+    width: _get-rem(53.33px);
+
+    .loader__page {
+      height: _get-rem(32px);
+      width: _get-rem(26.66px);
+    }
+  }
+
+  &--xlarge {
+    height: _get-rem(48px);
+    width: _get-rem(80px);
+    border-width: 4px;
+
+    .loader__page {
+      border-width: 4px;
+      top: -4px;
+
+      height: _get-rem(48px);
+      width: _get-rem(40px);
+    }
+  }
+
+  &--white {
+    border-color: $color-white;
+
+    .loader__page {
+      border-color: $color-white;
+      animation-name: loader-white;
+    }
+  }
+}
+
+@keyframes loader {
+  0% {
+    transform: perspective(600px) rotateY(-0deg);
+  }
+
+  20% {
+    background: _color(grey);
+  }
+
+  29.9% {
+    background: _color(grey);
+  }
+
+  30% {
+    transform: perspective(200px) rotateY(-90deg);
+    background: transparent;
+  }
+
+  54.999% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0;
+  }
+
+  60% {
+    transform: perspective(200px) rotateY(-180deg);
+    background: transparent;
+  }
+
+  100% {
+    transform: perspective(200px) rotateY(-180deg);
+    background: transparent;
+  }
+}
+
+@keyframes loader-white {
+  0% {
+    transform: perspective(600px) rotateY(-0deg);
+  }
+
+  20% {
+    background: rgba($color-white, 10%);
+  }
+
+  29.9% {
+    background: rgba($color-white, 10%);
+  }
+
+  30% {
+    transform: perspective(200px) rotateY(-90deg);
+    background: transparent;
+  }
+
+  54.999% {
+    opacity: 1;
+  }
+
+  55% {
+    opacity: 0;
+  }
+
+  60% {
+    transform: perspective(200px) rotateY(-180deg);
+    background: transparent;
+  }
+
+  100% {
+    transform: perspective(200px) rotateY(-180deg);
+    background: transparent;
+  }
+}

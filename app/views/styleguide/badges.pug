@@ -40,19 +40,19 @@ block append content
       +demo
         +demo-example
           .badges
-            each color in ['primary', 'green', 'orange', 'violet', 'blue']
+            each color in ['primary', 'green', 'orange', 'violet', 'blue', 'yellow', 'brown', 'darkblue']
               .badge(class=`badge--${color}`)= color
         +demo-code
           :code
 
   +content-section(contents[1], true)
 
-    +p Using circle badge is as simple as wrapping text into an element with <code class='l-code-inline'>.badge--circle</code> class.
+    +p Using Pills is as simple as wrapping text into an element with <code class='l-code-inline'>.pill</code> class.
 
     +demo
       +demo-example
-        .badge--circle.mb-small 4
+        .pill.mb-small 4
       +demo-code
         :code
-          <div class="badge--circle mb-small">4</div>
+          <div class="pills mb-small">4</div>
 //- end: section

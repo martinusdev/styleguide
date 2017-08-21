@@ -84,6 +84,46 @@ block append content
             <!-- expanded -->
             <div class="dropdown" data-dropdown aria-expanded="true">
 
+    +content-sub-section('Dropdown with groups')
+      +p Dropdown groups can be created with class <code class='l-code-inline'>.dropdown__group</code> on <code class='l-code-inline'>h5</code> element.
+
+      +demo
+        +demo-example
+          .row
+            .col--s-6
+              .dropdown(aria-expanded="true", style="position: relative; top: 0;")
+                h5.dropdown__group Group 1
+                each item in [1,2,3]
+                  a(href="#").dropdown__item Item #{item}
+                h5.dropdown__group Group 2
+                each item in [4, 5]
+                  a(href="#").dropdown__item Item #{item}
+            .col--s-6
+              .btn-layout--horizontal
+                .btn-dropdown
+                  button.btn(
+                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    | Button
+                    +icon('chevron-down', 'icon-dropdown')
+                  .dropdown(data-dropdown, data-toggle-expand)
+                    h5.dropdown__group Group 1
+                    each item in [1,2,3]
+                      a(href="#").dropdown__item Item #{item}
+                    h5.dropdown__group Group 2
+                    each item in [4, 5]
+                      a(href="#").dropdown__item Item #{item}
+
+        +demo-code
+          :code
+            <div class="dropdown" aria-expanded="true" style="position: relative; top: 0;">
+              <h5 class="dropdown__group">Group 1</h5>
+              <a class="dropdown__item" href="#">Item 1</a>
+              ...
+            </div>
+
     +content-sub-section('Dropdown with arrow')
 
       +p Dropdown menu modified with arrow-up. This kind of dropdown is build with <code class='l-code-inline'>.dropdown--arrowhead</code> class which is append to <code class='l-code-inline'>.dropdown</code> class.

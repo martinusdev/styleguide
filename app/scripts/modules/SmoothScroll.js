@@ -1,4 +1,4 @@
-import smoothScroll from 'smooth-scroll';
+import SmoothScrollPlugin from 'smooth-scroll';
 
 const defaultConfig = {
   offset: 40,
@@ -7,7 +7,8 @@ const defaultConfig = {
 
 export default class SmoothScroll {
   constructor(selector = '[data-scroll]', config) {
-    this.config = { ...defaultConfig, ...{ selector }, ...config };
+    this.selector = selector;
+    this.config = { ...defaultConfig, ...config };
 
     this.smoothScrolls = [];
 
@@ -17,14 +18,14 @@ export default class SmoothScroll {
   }
 
   _init() {
-    this.smoothScrolls = smoothScroll.init(this.config);
+    this.smoothScrolls = new SmoothScrollPlugin(this.selector, this.config);
 
-    return this.smoothScrolls;
+    return this;
   }
 
   update() {
-    this.destory();
-    this.init();
+    this.destroy();
+    this._init();
   }
 
   destroy() {

@@ -1,0 +1,77 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Text page'
+
+block content
+
+  main
+
+    .section.section--small.section--secondary
+      .wrapper-main
+        .bar.breadcrumb
+          .bar__item
+            - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
+            each breadcrumb, i in breadcrumbs
+              a.text-medium(href="#")
+                span !{breadcrumb}
+              if (i < breadcrumbs.length - 1)
+                +icon('chevron-right', 'icon--medium').text-color-grey
+
+    .section
+      .wrapper-main
+        .row
+          .col--l-3.show-l
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+              +icon('arrow-left', 'icon--medium')
+              span Späť na martinus centrum
+            h2.h4 Kontakty
+            ul.list.list--expanded.no-pad(role="navigation")
+              each link, i in ['Čo sa deje s vašou objednávkou', 'Najčastejšie otázky', 'Poštovné', 'Spôsob platby', 'Reklamácie']
+                li.mb-medium(class=i===2 ? 'is-active' : '')
+                  a.text-medium(href="#", data-scroll) !{link}
+
+          article.col--l-9.col--m-9.ofst--m-center.col--12.mb-large
+            h1 Poštovné
+            h2.h3 V tejto sekcii nájdete ceny, lehoty dodania a zhrnutie maximálne 2 riadky, ktoré user ľahko a rýchlo prečíta lorem ipsum dolor sit amet a bla.
+
+            h3.h4.text-color-black.mb-medium Témy sekcie
+            ol.style-default.list.list--no-offset.list--expanded.text-medium.mb-large
+              each link, i in ['Poštovné v rámci SR', 'Kurié GLS', 'Poštovné do zahraničia', 'Lorem ipsum', 'Dolor sit amet']
+                li
+                  a.link(href="#") !{link}
+                  if (i===3)
+                    ol.style-default
+                      li
+                        a.link(href="#") Subsekcia jeden
+                      li
+                        a.link(href="#") Subsekcia dva
+
+            img.img.img--rounded(src="images/content/text-page/text-page-1.jpg", alt="Img")
+            h3.h4.text-color-black.mb-medium Poštovné v rámci SR
+            p Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+            p Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+            p Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+            h3.h4.text-color-black.mb-medium Kuriér GLS
+            .row
+              .col--m-7
+                p Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+                p Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+                p Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
+              .col--m-5
+                img.img.img--rounded(src="images/content/text-page/text-page-2.jpg", alt="Img")
+            .box.bg-secondary.mb-large
+              .bar.no-mrg-bottom
+                .bar__item
+                  .h4 Pomohol vám tento článok?
+                .bar__item
+                  .btn.btn--clean.no-mrg-bottom.text-color-grey
+                    +icon('smile', 'icon--medium')
+                  .btn.btn--clean.no-mrg-bottom.text-color-grey
+                    +icon('sad', 'icon--medium')
+            aside
+              h3.h4.text-color-black.mb-medium Mohlo by vás zaujímať
+              ul.list.list--no-offset.text-medium
+                each link, i in ['Prečo nakupovať u nás', 'Čo sa deje s vašou objednávkou', 'Spôsob platby', 'Reklamácie']
+                  li.mb-small
+                    a.link(href="#") !{link}

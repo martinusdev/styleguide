@@ -88,19 +88,26 @@
     pointer-events: none;
   }
 
-  @if map-has($states, 'after') {
+  @if map-has-key($states, 'after') {
     position: relative;
     overflow: hidden;
 
     &::after {
       content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      width: 100%;
 
       @include css-map($states, 'after');
+    }
+  }
+
+  @if map-has-key($states, 'before') {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      display: inline-block;
+
+      @include css-map($states, 'before');
     }
   }
 }
@@ -121,6 +128,16 @@
   align-items: center;
   padding: 0;
   line-height: 0;
+
+  &::before {
+    content: '';
+    flex: 1 0 auto;
+  }
+
+  &::after {
+    content: '';
+    flex: 1 0 auto;
+  }
 
   @each $variant, $values in $button-sizes {
     &.btn#{_get-variant-name($variant)} {
@@ -205,7 +222,7 @@
       .btn#{_get-variant-name($button-variant)} .icon--#{$icon-variant} {
         // TODO this is still not good enought pls revisit later
         $scale: _strip-units(map-get($button-size, font-size)) * _strip-units($icon-size) * _map-deep-get($button, default, line-height);
-        $margin: -(abs((1 - $scale))) / 2;
+        $margin: -(abs((1 - $scale * 1.1))) / 2;
 
         width: #{$scale}rem;
         height: #{$scale}rem;
@@ -241,7 +258,7 @@
       padding-left: 2rem;
 
       .icon {
-        left: 0.8rem;
+        left: 0.5rem;
       }
     }
 
@@ -249,7 +266,7 @@
       padding-right: 2rem;
 
       .icon {
-        right: 0.8rem;
+        right: 0.5rem;
       }
     }
   }
@@ -361,17 +378,32 @@
       flex: 0 1 auto;
       margin-bottom: 0;
 
-      &:not(:first-of-type) {
+      &:not(:first-child) {
         margin-left: -1px;
       }
 
-      &:first-of-type {
+      &:first-child {
         border-radius: $default-border-radius 0 0 $default-border-radius;
       }
 
+      &:last-child {
+        border-radius: 0 $default-border-radius $default-border-radius 0;
+      }
+    }
+
+    .btn-dropdown:not(:first-child) .btn {
+      margin-left: -1px;
+      border-radius: 0;
+    }
+
+    .btn-dropdown:last-child .btn {
       &:last-of-type {
         border-radius: 0 $default-border-radius $default-border-radius 0;
       }
+    }
+
+    .btn-dropdown:not(:first-child) + .btn {
+      margin-left: -2px;
     }
   }
 
@@ -435,7 +467,7 @@
     margin-bottom: 0;
   }
 
-  .btn.is-active {
+  .btn[aria-expanded='true'] {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

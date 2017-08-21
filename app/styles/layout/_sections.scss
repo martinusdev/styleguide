@@ -23,6 +23,10 @@
 
     z-index: $z-index-sticky;
   }
+
+  &--small {
+    padding-top: _get-space('v');
+  }
 }
 
 .section--m-full {
@@ -60,5 +64,9 @@
     width: 100%;
 
     background: linear-gradient(to top, rgba(#fff, 1), rgba(#fff, 0));
+  }
+
+  &.bg-secondary:not(.is-active)::after {
+    background: linear-gradient(to top, rgba($secondary-bg-color, 1), rgba($secondary-bg-color, 0));
   }
 }

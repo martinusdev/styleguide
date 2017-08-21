@@ -35,6 +35,7 @@ export default class Modal {
     this._onBlur = this._onBlur.bind(this);
     this._onAjaxLoaded = this._onAjaxLoaded.bind(this);
     this._onOverlayTransitionEnd = this._onOverlayTransitionEnd.bind(this);
+    this._onOverlayClick = this._onOverlayClick.bind(this);
 
     this._init();
 
@@ -49,6 +50,7 @@ export default class Modal {
 
     this.modals.forEach(modal => {
       modal.addEventListener(TOGGLE_EVT, this._onToggle);
+      modal.addEventListener('click', this._onOverlayClick);
       if (modal.hasAttribute(this.config.ajaxEnabledAttr)) {
         modal.addEventListener(MODAL_AJAX_LOADED_EVT, this._onAjaxLoaded);
       }
@@ -61,14 +63,14 @@ export default class Modal {
 
   _openModalOnLoad() {
     if (window.location.hash) {
-      const el = document.getElementById(window.location.hash.slice(1));
+      const target = document.getElementById(window.location.hash.slice(1));
 
-      if (!el) {
+      if (!target) {
         return;
       }
 
-      if (el.hasAttribute(this.selector)) {
-        doToggle(el);
+      if (target.hasAttribute(this.selector)) {
+        doToggle({ target });
       }
     }
   }
@@ -133,7 +135,7 @@ export default class Modal {
 
   _activateModal() {
     if (!this.target.classList.contains('modal-overlay--local')) {
-      this._lockBody();
+      Modal.lockBody();
     }
 
     this.activeModals.push({
@@ -207,7 +209,7 @@ export default class Modal {
         this.activeModals.splice(i, 1);
 
         if (this.activeModals.length === 0) {
-          this._unlockBody();
+          Modal.unlockBody();
         }
 
         return;
@@ -219,7 +221,7 @@ export default class Modal {
     if (this.activeModals.length > 1 && !this._isMultipleAllowed()) {
       this.activeModals.forEach(modal => {
         if (modal.overlay !== this.target && isActive(modal.overlay)) {
-          doToggle(modal.overlay);
+          doToggle({ target: modal.overlay });
         }
       });
     }
@@ -253,32 +255,46 @@ export default class Modal {
     }
   }
 
-  _lockBody() {
+  static lockBody(className = defaultConfig.modalBodyIsOpen) {
+    // store current scrollTop value
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
+    document.body.setAttribute('data-lock-scrolltop', scrollTop);
 
-    // add negative top to counter position: fixed; posiiton
-    if (scrollTop) {
-      document.body.style.top = `-${scrollTop}px`;
-    }
+    // add locking styles to body
+    document.body.style.height = '100%';
+    document.body.style.width = '100%';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'fixed';
+    document.body.style.WebkitOverflowScrolling = 'auto';
 
-    // add modal class to body
-    document.body.classList.add(this.config.modalBodyIsOpen);
+    // add modal class
+    document.body.classList.add(className);
+
+    // attempt to scroll top fixed position
+    window.requestAnimationFrame(() => {
+      window.scrollTo(0, scrollTop);
+    });
   }
 
-  _unlockBody() {
-    const scrollTop = Math.abs(parseInt(document.body.style.top, 10));
+  static unlockBody(className = defaultConfig.modalBodyIsOpen) {
+    const scrollTop = document.body.getAttribute('data-lock-scrolltop');
 
-    // remove modal body class
-    document.body.classList.remove(this.config.modalBodyIsOpen);
+    // remove locking styles from body
+    // add locking styles to body
+    document.body.style.height = '';
+    document.body.style.width = '';
+    document.body.style.overflow = '';
+    document.body.style.position = '';
 
-    if (scrollTop) {
-      // remove css top
-      document.body.style.top = null;
-      // set original scrollTop
-      document.documentElement.scrollTop = scrollTop;
-      document.body.scrollTop = scrollTop;
-    }
+    // add modal class
+    document.body.classList.remove(className);
+
+    // set scroll position back
+
+    window.requestAnimationFrame(() => {
+      window.scrollTo(0, scrollTop);
+    });
   }
 
   _positionLocalModal(modal) {
@@ -324,4 +340,19 @@ export default class Modal {
       document.body.appendChild(e.currentTarget);
     }
   }
+
+  _onOverlayClick(e) {
+    if (e.target.hasAttribute(this.selector)) {
+      doToggle({
+        target: e.target,
+        className: 'is-active',
+        expand: true,
+        state: false,
+      });
+      this._deactivateModal();
+    }
+  }
 }
+
+export const lockBody = Modal.lockBody;
+export const unlockBody = Modal.unlockBody;

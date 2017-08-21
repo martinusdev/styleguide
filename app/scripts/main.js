@@ -4,6 +4,7 @@ import {
   customEventPolyfill,
   requestAnimationFramePolyfill,
 } from './modules/Utils';
+import Alert from './modules/Alert';
 import Select from './modules/Select';
 import Toggle from './modules/Toggle';
 import Tab from './modules/Tab';
@@ -18,12 +19,16 @@ import Tooltip from './modules/Tooltip';
 import Input from './modules/Input';
 import NumberSpinner from './modules/NumberSpinner';
 import ProductPreview from './modules/ProductPreview';
+import MegaMenu from './modules/MegaMenu';
+import RadiocheckToggle from './modules/RadiocheckToggle';
+import Header from './modules/Header';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
 
 window.addEventListener('DOMContentLoaded', () => {
   window.myApp = {};
+  window.myApp.Alert = Alert;
   window.myApp.Toggle = Toggle;
   window.myApp.Dropdown = Dropdown;
   window.myApp.Tab = Tab;
@@ -38,12 +43,17 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Input = Input;
   window.myApp.NumberSpinner = NumberSpinner;
   window.myApp.ProductPreview = ProductPreview;
+  window.myApp.MegaMenu = MegaMenu;
+  window.myApp.Header = Header;
+  window.myApp.RadiocheckToggle = RadiocheckToggle;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
   svg4everybody();
   customEventPolyfill();
   requestAnimationFramePolyfill();
+
+  window.myApp.megaMenu = new MegaMenu();
 
   window.myApp.toggles = new Toggle();
 
@@ -70,6 +80,10 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.inputs = new Input();
 
   window.myApp.numberSpinners = new NumberSpinner();
+
+  window.myApp.radiocheckToggles = new RadiocheckToggle();
+
+  window.myApp.header = new Header();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });

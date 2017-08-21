@@ -65,11 +65,12 @@ img {
 // THUMBNAILS
 
 .thumbnail {
+  display: block;
   position: relative;
 
   @each $name, $size in $thumbnail-sizes {
     &#{_get-variant-name($name)} {
-      width: $size;
+      max-width: $size;
     }
   }
 
@@ -87,6 +88,7 @@ img {
   }
 
   &--book {
+    position: relative;
     border-radius: $default-border-radius;
     box-shadow: 0 10px 14px 0 rgba(#000, 0.2);
     user-select: none;
@@ -107,6 +109,20 @@ img {
       border-radius: $default-border-radius;
 
       background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
+    }
+  }
+
+  &__img-wrap {
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+
+    @include border-radius($image-border-radius);
+
+    @each $name, $size in $thumbnail-sizes {
+      .thumbnail#{_get-variant-name($name)} & {
+        max-height: _get-rem($size * (19/12));
+      }
     }
   }
 
