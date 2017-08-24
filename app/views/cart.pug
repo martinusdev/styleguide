@@ -8,8 +8,8 @@ block content
     section.section
       .wrapper-main
         .row
-          .col--l-8.ofst--center.card
-            .card__content
+          .col--l-8.ofst--center.card.no-pad-horizontal
+            .card__content.mb-medium
               .bar.bar--small
                 .bar__item
                   h1.h2 Váš košík
@@ -26,7 +26,7 @@ block content
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          a.text-semibold.no-mrg.text-ellipsis.block(href="detail-knihy.html")=item.title
+                          a.text-semibold.no-mrg.block(href="detail-knihy.html")=item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                             - var authors = item.author.split(', ')
                             each author in authors
@@ -44,7 +44,7 @@ block content
                         .cart-item__column.cart-item__column--wishlist
                           +addTo({ text: '' }).no-mrg-bottom
                         .cart-item__column.cart-item__column--tags.show-m
-                          if (i === 2)
+                          if (item.ebook)
                             .badge.text-nowrap E-kniha
                         .cart-item__column.cart-item__column--qty
                           .form-control.form-control--input.no-mrg
@@ -61,10 +61,21 @@ block content
                         .cart-item__column.cart-item__column--remove
                           button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
+                li.list__item.align-items-bottom.mt-small
+                  .list__item__section.list__item__section--primary.text-right
+                    span.h3 Spolu
+                  .list__item__section.list__item__section--secondary
+                    span.h2
+                      strong 21.45€
+            .card_footer
+              .col--m-9.ofst--center
+                .btn-layout--vertical.btn-layout--s-horizontal.btn-layout--fill.mb-large
+                  a(href="/homepage.html").btn.btn--ghost Späť do kníhkupectva
+                  a(href="/homepage.html").btn.btn--primary Objednať tituly
 
         .row
-          .col--l-8.ofst--center.card
-            .card__content
+          .col--l-8.ofst--center.card.no-pad-horizontal
+            .card__content.mb-medium
               .bar.bar--small
                 .bar__item
                   h1.h2 Váš košík
@@ -77,13 +88,11 @@ block content
                     .cart-item
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          .text-semibold.no-mrg.text-ellipsis= item.title
-
+                          span.text-semibold(class=item.ebook ? 'text-space-right' : '')= item.title
+                          if item.ebook
+                            span.badge.text-nowrap E-kniha
                         .cart-item__column.cart-item__column--wishlist
                           +addTo({ text: '' }).no-mrg-bottom
-                        .cart-item__column.cart-item__column--tags.show-m
-                          if (i === 2)
-                            .badge.text-nowrap E-kniha
                         .cart-item__column.cart-item__column--qty
                           .form-control.form-control--input.no-mrg
                             .input-addons.input-addons--small.align-items-right
@@ -99,3 +108,15 @@ block content
                         .cart-item__column.cart-item__column--remove
                           button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
+                li.list__item.align-items-bottom.mt-small
+                  .list__item__section.list__item__section--primary.text-right
+                    span.h3 Spolu
+                  .list__item__section.list__item__section--secondary
+                    span.h2
+                      strong 21.45€
+
+            .card_footer
+              .col--m-9.ofst--center
+                .btn-layout--vertical.btn-layout--s-horizontal.btn-layout--fill.mb-large
+                  a(href="/homepage.html").btn.btn--ghost Späť do kníhkupectva
+                  a(href="/homepage.html").btn.btn--primary Objednať tituly
