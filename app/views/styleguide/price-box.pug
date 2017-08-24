@@ -564,6 +564,50 @@ block append content
 
                         +addTo()
 
+      +content-sub-section('Price box No.12 - Wishlist')
+
+        +demo
+            +demo-example
+              .row
+                .col--m-6.col--l-4
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .btn-layout--vertical.no-mrg
+                        button.btn.btn--primary.btn--large.no-mrg-bottom
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
+
+                        +addTo()
+
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .btn-layout--vertical.no-mrg
+                        button.btn.btn--primary.btn--large.no-mrg-bottom
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
+
+                        +addTo({
+                          text: "Mám vo wishliste",
+                          icon: 'heart-full',
+                          iconClass: 'text-color-theme-200'
+                        })
+
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .btn-layout--vertical.no-mrg
+                        button.btn.btn--primary.btn--large.no-mrg-bottom
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
+
+                        +addTo({
+                          text: "Mám v 5 zoznamoch",
+                          icon: 'heart-full',
+                          iconClass: 'text-color-theme-200'
+                        })
+
   block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {
