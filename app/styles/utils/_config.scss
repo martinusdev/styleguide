@@ -330,7 +330,7 @@ $text-color-semiwhite: $color-semiwhite;
 $text-color-yellow: _color(yellow);
 $text-color-blue: _color(blue);
 
-$text-color-error: _color(error, 500);
+$text-color-error: _color(error, 600);
 $text-color-success: _color(success, 500);
 
 // ----------------------------
@@ -653,7 +653,7 @@ $form-readonly-c: _color(grey, 600);
 $form-readonly-b-c: _color(grey, 300);
 
 $form-error-c: $color-black;
-$form-error-b-c: _color(error, 500);
+$form-error-b-c: _color(error, 600);
 $form-error-bgc: _color(error, 100);
 
 //---------------
@@ -688,6 +688,14 @@ $input: (
       background-color: $form-error-bgc,
       color: $form-error-c,
       border-color: $form-error-b-c,
+      background-image: svg-load('./../icons_/css/cross.svg', fill=_color(error, 600)),
+      background-repeat: no-repeat,
+      background-position: center right 0.5em,
+    ),
+    success: (
+      background-image: svg-load('./../icons_/css/check.svg', fill=_color(success, 500)),
+      background-repeat: no-repeat,
+      background-position: center right 0.5em,
     ),
   ),
   dark: (
@@ -1062,7 +1070,10 @@ $form-text: (
     margin: 0 0 0 _get-em(25px),
   ),
   error: (
-    color: _color(error, 500),
+    color: _color(error, 600),
+  ),
+  success: (
+    color: _color(success, 600),
   ),
 );
 
