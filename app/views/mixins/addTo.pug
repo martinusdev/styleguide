@@ -2,12 +2,14 @@ mixin addTo(props = {})
   -
     const {
       text = 'Pridať do',
-      id = Math.floor((Math.random() * 1000))
+      icon = 'heart',
+      iconClass = '',
+      id = Math.floor((Math.random() * 1000)),
     } = props;
 
   .btn-dropdown.btn-dropdown--no-icon&attributes(attributes)
     button.btn.btn--clean.no-mrg(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)
-      +icon('heart').icon--medium(class=text ? "icon--left" : "")
+      +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
       | #{text}
     .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
       div(id=`wishlist-list-${id}` data-toggle-class="hide")
