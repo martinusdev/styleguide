@@ -1,6 +1,17 @@
 import Sticky from 'sticky-js';
 
-const defaultConfig = {};
+import { getValueFromResponsiveMap } from './Utils';
+
+function getOffset(element) {
+  const currentOffset =
+    JSON.parse(element.getAttribute('data-scroll-offset')) || 90;
+
+  return getValueFromResponsiveMap(currentOffset, window.innerWidth);
+}
+
+const defaultConfig = {
+  marginTop: getOffset,
+};
 
 export default class StickyWrapper {
   constructor(selector = '[data-sticky]', config) {
@@ -13,7 +24,7 @@ export default class StickyWrapper {
   }
 
   _init() {
-    this.stickies = new Sticky(this.selector);
+    this.stickies = new Sticky(this.selector, this.config);
 
     return this.stickies;
   }

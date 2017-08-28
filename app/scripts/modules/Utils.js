@@ -150,3 +150,44 @@ export function triggerResize() {
     window.dispatchEvent(evt);
   }
 }
+
+export function isObject(val) {
+  return val != null && typeof val === 'object' && Array.isArray(val) === false;
+}
+
+export function getValueFromResponsiveMap(
+  value,
+  screenWidth,
+  direction = 'up',
+) {
+  // if value is object
+  if (isObject(value)) {
+    // sort object keys
+    const keys = Object.keys(value)
+      .sort((a, b) => a - b)
+      .map(key => parseInt(key, 10));
+
+    // get value from
+    return keys.reduce((currentValue, key) => {
+      let condition;
+
+      switch (direction) {
+        case 'up':
+          condition = key <= screenWidth;
+          break;
+        case 'down':
+          condition = key > screenWidth;
+          break;
+        case 'only':
+          condition = key === screenWidth;
+          break;
+        default:
+          condition = false;
+      }
+
+      return condition ? value[key] : currentValue;
+    }, 0);
+  }
+
+  return value;
+}
