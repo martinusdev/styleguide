@@ -68,6 +68,14 @@ block content
                     +icon('eye').icon--left.icon--medium
                     | Pozrieť ukážku
 
+                .product-detail__preview-link.text-center
+                  button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
+                    +icon('play').icon--left.icon--medium
+                    span(data-toggle-text-target) Prehrať ukážku
+                  audio#audio-preview(data-audioplayer)
+                    source(type="audio/aac" src="http://techslides.com/demos/samples/sample.aac")
+                    .alert.alert--error Váš prehliadač nepodporuje HTML5 audio prehrávač.
+
             article.col--m-8.col--l-6
 
               .btn-dropdown.mb-small.show-m
