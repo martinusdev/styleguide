@@ -1,8 +1,17 @@
 import SmoothScrollPlugin from 'smooth-scroll';
 
+import { getValueFromResponsiveMap } from './Utils';
+
+function getOffset(anchor, toggle) {
+  const currentOffset =
+    JSON.parse(toggle.getAttribute('data-scroll-offset')) || 90;
+
+  return getValueFromResponsiveMap(currentOffset, window.innerWidth);
+}
+
 const defaultConfig = {
-  offset: 40,
   speed: 200,
+  offset: getOffset,
 };
 
 export default class SmoothScroll {

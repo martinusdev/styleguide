@@ -1,14 +1,25 @@
 import gumshoe from 'gumshoe';
-import smoothScroll from 'smooth-scroll';
+import SmoothScroll from 'smooth-scroll';
 
 import Select from './Select';
 import { TOGGLE_EVT } from './Toggle';
 
-import { nodeListToArray } from './Utils';
+import { nodeListToArray, getValueFromResponsiveMap } from './Utils';
+
+function getOffset(nav) {
+  if (!nav) {
+    return 90;
+  }
+
+  const currentOffset =
+    JSON.parse(nav.getAttribute('data-scroll-offset')) || 90;
+
+  return getValueFromResponsiveMap(currentOffset, window.innerWidth);
+}
 
 const defaultConfig = {
   activeClass: 'is-active',
-  offset: 80,
+  offset: getOffset,
 };
 
 export default class StickyWrapper {
@@ -44,6 +55,8 @@ export default class StickyWrapper {
       }
     });
 
+    this.smoothScroll = new SmoothScroll();
+
     this.scrollSpies = gumshoe.init(this.config);
 
     document.addEventListener(TOGGLE_EVT, this._handleResize);
@@ -72,7 +85,9 @@ export default class StickyWrapper {
 
   _handleSetSectionInSelect(e) { // eslint-disable-line
     const anchor = document.querySelector(`#${e.detail.choice.value}`);
-    smoothScroll.animateScroll(anchor, null, { offset: 60 });
+    const offset = this.config.offset(e.srcElement);
+
+    this.smoothScroll.animateScroll(anchor, null, { offset });
   }
 
   update() {
