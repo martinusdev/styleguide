@@ -4,6 +4,7 @@ const defaultConfig = {
   animation: 'scale',
   arrow: true,
   interactive: true,
+  delay: 150,
 };
 
 export default class Collapse {
