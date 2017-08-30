@@ -45,17 +45,20 @@ strong,
 .text-vat { vertical-align: top; }
 .text-vab { vertical-align: bottom; }
 .text-vabl { vertical-align: baseline; }
+.text-vamd { vertical-align: -0.15em; }
 
 .text-space-half { margin-bottom: _get-space('v', 'small'); }
 .text-nospace { margin: 0; }
 .text-space-left { margin-left: _get-space('h', 'small'); }
 .text-space-right { margin-right: _get-space('h', 'small'); }
 
+.text-wrap { white-space: normal; }
 .text-nowrap { white-space: nowrap; }
 .text-ellipsis { @include text-ellipsis; }
 
 .text-color-theme { color: _color(primary, 500); }
 .text-color-theme-400 { color: _color(primary, 400); }
+.text-color-theme-200 { color: _color(primary, 200); }
 .text-color-theme-100 { color: _color(primary, 100); }
 .text-color-black { color: $text-color-black; }
 .text-color-semiblack { color: $text-color-semiblack; }
@@ -249,6 +252,10 @@ strong,
 
 .mb-not-last > *:last-child { margin-bottom: 0; }
 
+.mt-small {
+  margin-top: _get-space('v', 'small');
+}
+
 .clickable {
   cursor: pointer;
 }
@@ -293,6 +300,7 @@ strong,
 .flex-column { flex-direction: column; }
 .flex-1 { flex: 1; }
 .flex-noshrink { flex-shrink: 0 !important; }
+.flex-nowrap { flex-wrap: nowrap; }
 
 .inline-block { display: inline-block; }
 .block { display: block; }

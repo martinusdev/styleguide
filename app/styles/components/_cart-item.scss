@@ -23,6 +23,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
+
+    .cart-item--summary & { //stylelint-disable-line
+      justify-content: flex-end;
+    }
 
     @include breakpoint(m) {
       flex-wrap: nowrap;
@@ -43,9 +48,17 @@
     flex: 1 1 auto;
     order: 1;
 
+    .cart-item--has-tags & {
+      flex-grow: 0;
+    }
+
     @include breakpoint(s, down) {
       width: calc(100% - 3em);
       align-self: flex-start;
+
+      .cart-item--summary & { //stylelint-disable-line
+        width: 100%;
+      }
     }
   }
 
@@ -56,14 +69,14 @@
   &--tags {
     order: 3;
     flex-basis: _get-rem(80px);
+
+    .cart-item--summary & {
+      flex-grow: 1;
+    }
   }
 
   &--qty {
     order: 4;
-
-    @include breakpoint(s, only) {
-      flex-grow: 1;
-    }
   }
 
   &--price {
@@ -84,7 +97,7 @@
 
     @include breakpoint(s, down) {
       order: 1;
-      margin-top: -#{_get-space('v', 'small') };
+      margin-top: -#{_get-rem(8px) };
       align-self: flex-start;
     }
   }

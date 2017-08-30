@@ -19,10 +19,29 @@
 
         .form-control.form-control--checkbox
           .checkbox
-            input.radiocheck__input(type='checkbox', id='checkout_company_invoice', name='checkout_company_invoice')
+            input.radiocheck__input(type='checkbox', id='checkout_company_invoice', name='checkout_company_invoice', data-radiocheck-toggle="#company-billing")
             label.radiocheck__control(for='checkout_company_invoice')
             label.radiocheck__label(for='checkout_company_invoice')
               | Chcem faktúrovať na firmu
+
+        #company-billing.hide
+          .form-control.form-control--input.mb-small
+            .form-label
+              label.text-transform-upper(for="checkout_company_name")
+                | Názov firmy
+            input.input(type="text", name="checkout_company_name", id="checkout_company_name", placeholder="Zadajte názov firmy")
+
+          .form-control.form-control--input.mb-small
+            .form-label.form-label--required
+              label.text-transform-upper(for="checkout_cid")
+                | IČO
+            input.input(type="text", name="checkout_cid", id="checkout_cid", placeholder="Zadajte IČO firmy")
+
+          .form-control.form-control--input
+            .form-label
+              label.text-transform-upper(for="checkout_vat")
+                | IČ DPH
+            input.input(type="text", name="checkout_vat", id="checkout_vat", placeholder="Zadajte IČ DPH firmy")
 
         .form-control.form-control--input.mb-small
           .form-label.form-label--required

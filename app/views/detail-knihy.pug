@@ -6,7 +6,7 @@ block opts
 block content
   main
     div(data-sticky-container)
-      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-margin-top="60")
+      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset="60")
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
@@ -21,7 +21,7 @@ block content
                     span.text-color-grey.text-nowrap 12,99 €
                     +icon('chevron-down', 'icon-dropdown').icon--medium
                   .dropdown(data-dropdown, data-toggle-expand)
-                    a(href="#").dropdown__item
+                    a(href="#").dropdown__item.text-wrap
                       .bar.no-mrg-bottom
                         .bar__item.bar__item--fill
                           div Slovenčina, e-kniha
@@ -29,7 +29,7 @@ block content
                         .bar__item.text-right
                           .text-semibold.text-color-black 18,00 €
                           .text-color-grey -10%
-                    a(href="#").dropdown__item
+                    a(href="#").dropdown__item.text-wrap
                       .bar.no-mrg-bottom
                         .bar__item.bar__item--fill
                           div Slovenčina, brožovaná väzba
@@ -37,7 +37,7 @@ block content
                         .bar__item.text-right
                           .text-semibold.text-color-black 16,00 €
                           .text-color-grey -10%
-                    a(href="#").dropdown__item
+                    a(href="#").dropdown__item.text-wrap
                       .bar.no-mrg-bottom
                         .bar__item.bar__item--fill
                           div Český jazyk, E-kniha
@@ -45,10 +45,10 @@ block content
                         .bar__item.text-right
                           .text-semibold.text-color-black 8,00 €
                           .text-color-grey -5%
-                    a(href="#").dropdown__item
+                    a(href="#").dropdown__item.text-wrap
                       .bar.no-mrg-bottom
                         .bar__item.bar__item--fill
-                          div Český jazyk, audio kniha
+                          div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
                           .text-color-grey Posielame ihneď
                         .bar__item.text-right
                           .text-semibold.text-color-black 12,00 €
@@ -68,6 +68,14 @@ block content
                     +icon('eye').icon--left.icon--medium
                     | Pozrieť ukážku
 
+                .product-detail__preview-link.text-center
+                  button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
+                    +icon('play').icon--left.icon--medium
+                    span(data-toggle-text-target) Prehrať ukážku
+                  audio#audio-preview(data-audioplayer)
+                    source(type="audio/aac" src="http://techslides.com/demos/samples/sample.aac")
+                    .alert.alert--error Váš prehliadač nepodporuje HTML5 audio prehrávač.
+
             article.col--m-8.col--l-6
 
               .btn-dropdown.mb-small.show-m
@@ -79,7 +87,7 @@ block content
                   | Slovenčina, pevná väzba
                   +icon('chevron-down', 'icon-dropdown').icon--medium
                 .dropdown(data-dropdown, data-toggle-expand)
-                  a(href="#").dropdown__item
+                  a(href="#").dropdown__item.text-wrap
                     .bar.text-small.no-mrg-bottom
                       .bar__item.bar__item--fill
                         div Slovenčina, e-kniha
@@ -87,7 +95,7 @@ block content
                       .bar__item.text-right
                         .text-semibold.text-color-black 18,00 €
                         .text-color-grey -10%
-                  a(href="#").dropdown__item
+                  a(href="#").dropdown__item.text-wrap
                     .bar.text-small.no-mrg-bottom
                       .bar__item.bar__item--fill
                         div Slovenčina, brožovaná väzba
@@ -95,7 +103,7 @@ block content
                       .bar__item.text-right
                         .text-semibold.text-color-black 16,00 €
                         .text-color-grey -10%
-                  a(href="#").dropdown__item
+                  a(href="#").dropdown__item.text-wrap
                     .bar.text-small.no-mrg-bottom
                       .bar__item.bar__item--fill
                         div Český jazyk, E-kniha
@@ -103,10 +111,10 @@ block content
                       .bar__item.text-right
                         .text-semibold.text-color-black 8,00 €
                         .text-color-grey -5%
-                  a(href="#").dropdown__item
+                  a(href="#").dropdown__item.text-wrap
                     .bar.text-small.no-mrg-bottom
                       .bar__item.bar__item--fill
-                        div Český jazyk, audio kniha
+                        div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
                         .text-color-grey Posielame ihneď
                       .bar__item.text-right
                         .text-semibold.text-color-black 12,00 €
@@ -181,7 +189,7 @@ block content
               .text-medium.text-uppercase.text-color-grey-dark.mb-medium Upozornenie
               p Obsah tejto knihy je vnímaný ako kontroverzný. Pri čítaní každej knihy odporúčame nezabúdať na kritické myslenie a názory odborníkov v danej oblasti. Zisk z predaja tejto knihy putuje na podporu neziskových organizácií SuperTrieda a Slovenská debatná asociácia
                 a.link.text-medium.text-space-left Prečo?
-              a.link.text-medium(href="#popis-knihy", data-scroll) Zobraziť anotáciu ku knihe od vydavateľa
+              a.link.text-medium(href="#popis-knihy", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Zobraziť anotáciu ku knihe od vydavateľa
                 +icon('arrow-down')
 
 
@@ -196,12 +204,12 @@ block content
           a(href='#')
             img.img.img--fluid(src="images/content/banner-1280x100.jpg").no-mrg
     div(data-sticky-container)
-      section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-margin-top="60")
+      section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset="60")
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
               .form-control.form-control--select.no-mrg
-                select.select--clean#detail-sections-spy
+                select.select--clean#detail-sections-spy(data-scroll-offset="130")
                   option(value="popis-knihy") Popis knihy
                   option(value="podrobnosti") Podrobnosti
                   option(value="recenzie") Recenzie
@@ -212,22 +220,22 @@ block content
         .wrapper-main
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
-              div(data-sticky, data-sticky-class="is-stuck", data-margin-top="120")
+              div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset="120")
                 .thumbnail.thumbnail--book.mb-medium.thumbnail--xlarge
                   .thumbnail__img-wrap
                     img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
                 ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
                   li
-                    a(href="#popis-knihy", data-scroll) Popis knihy
+                    a(href="#popis-knihy", data-scroll, data-scroll-offset='{"0": 130, "768": 90}' ) Popis knihy
                   li
-                    a(href="#podrobnosti", data-scroll) Podrobnosti
+                    a(href="#podrobnosti", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Podrobnosti
                   li
-                    a(href="#recenzie", data-scroll) Recenzie
+                    a(href="#recenzie", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Recenzie
                   li
-                    a(href="#o-autorovi", data-scroll) O autorovi
+                    a(href="#o-autorovi", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') O autorovi
                   li
-                    a(href="#vydavatelstvo", data-scroll) Vydavateľstvo
+                    a(href="#vydavatelstvo", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Vydavateľstvo
             .col--m-9.col--l-7
               section.mb-large#popis-knihy
 
@@ -340,15 +348,15 @@ block content
                   li
                     a.link(href="#") Knihy
                   li(role="presentional")
-                    +icon('chevron-right')
+                    +icon('chevron-right', 'text-vamd')
                   li
                     a.link(href="#") Deti a mládež
                   li(role="presentional")
-                    +icon('chevron-right')
+                    +icon('chevron-right', 'text-vamd')
                   li
                     a.link(href="#") Enciklopédie, náučné knihy
                   li(role="presentional")
-                    +icon('chevron-right')
+                    +icon('chevron-right', 'text-vamd')
                   li
                     a.link(href="#") Ostatné
 
@@ -356,11 +364,11 @@ block content
                   li
                     a.link(href="#") Knihy
                   li(role="presentional")
-                    +icon('chevron-right')
+                    +icon('chevron-right', 'text-vamd')
                   li
                     a.link(href="#") Próza
                   li(role="presentional")
-                    +icon('chevron-right')
+                    +icon('chevron-right', 'text-vamd')
                   li
                     a.link(href="#") Ďalšie druhy prózy
 
@@ -368,11 +376,11 @@ block content
                   li
                     a.link(href="#") Knihy
                   li(role="presentional")
-                    +icon('chevron-right')
+                    +icon('chevron-right', 'text-vamd')
                   li
                     a.link(href="#") Hobby
                   li(role="presentional")
-                    +icon('chevron-right')
+                    +icon('chevron-right', 'text-vamd')
                   li
                     a.link(href="#") Špeciálna kategória
 
@@ -540,6 +548,16 @@ block content
                 +review({ reply: true, name: 'Darina Dobrovská', address: false, review: 0, likes: 25})
                   .text-semibold Nadpis recenzie
                   p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+
+                +review({ reply: false, name: 'Ondrej Vykecal', address: false, review: 0, likes: 25})
+                  .text-semibold Nadpis recenzie
+                  #review-123456-spoiler-notice(data-toggle-class="hide")
+                    p.text-color-grey Tento príspevok je spoiler, takze urcite zvaz ci si to kuknes, lebo to mozes niekedy v buducnosti olutovat. Ked to tak neurobis, tak budes mat problem a tak podobne.
+                      br
+                      button.link(href="#review-123456-spoiler" data-toggle="#review-123456-spoiler, #review-123456-spoiler-notice") Prajete si ho zobraziť?
+                  #review-123456-spoiler.hide(data-toggle-class="hide")
+                    p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
+
 
                 +review({ avatar: true, name: 'Tomáš Ulej a mam strasne dlhe meno a uvidime co sa stane'})
                   .text-semibold Nadpis recenzie

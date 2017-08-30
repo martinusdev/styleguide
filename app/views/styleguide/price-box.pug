@@ -564,6 +564,94 @@ block append content
 
                         +addTo()
 
+      +content-sub-section('Price box No.12 - Wishlist')
+
+        +demo
+            +demo-example
+              .row
+                .col--m-6.col--l-4
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .btn-layout--vertical.no-mrg
+                        button.btn.btn--primary.btn--large.no-mrg-bottom
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
+
+                        +addTo()
+
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .btn-layout--vertical.no-mrg
+                        button.btn.btn--primary.btn--large.no-mrg-bottom
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
+
+                        +addTo({
+                          text: "Mám vo wishliste",
+                          icon: 'heart-full',
+                          iconClass: 'text-color-theme-200'
+                        })
+
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .btn-layout--vertical.no-mrg
+                        button.btn.btn--primary.btn--large.no-mrg-bottom
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
+
+                        +addTo({
+                          text: "Mám v 5 zoznamoch",
+                          icon: 'heart-full',
+                          iconClass: 'text-color-theme-200'
+                        })
+
+      +content-sub-section('Price box No.13 - Choose store')
+
+        +demo
+            +demo-example
+              .row
+                .col--m-6.col--l-4
+                  ul.tab-nav.tab-nav--block(data-tabs-container)
+                    li.tab-nav__item(data-tabs-item)
+                      a.tab-nav__content.tab-nav__content--card(href='#web' role="tab")
+                        span.tab-nav__content-wrap Na webe
+                    li.tab-nav__item.is-active(data-tabs-item)
+                      a.tab-nav__content.tab-nav__content--card(href='#shop' role="tab")
+                        span.tab-nav__content-wrap
+                          | Odložiť v kníhkupectve
+                          br
+                          span.status.text-color-grey.text-regular BA, ZA, KE + 5 ďalších
+
+                  .tabs
+
+                    section#shop.tab.text-size-medium
+                      article.card.card--well.text-center
+
+                        .card__content
+                          .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
+                            .form-label
+                              label(for='shop-location') Vyberte predajňu#{' '}
+                                +icon('pin').icon--medium.text-color-grey
+                            select.js-select.select--inline.select--clean.select--small#shop-location
+                              option(disabled selected value="choice-hidden" data-custom-attr) #{' '}
+                              option BA Obchodná
+                              option Martin
+
+                        .card__content
+                          .h1 13,90 €
+
+                        .card__content
+                          p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
+                            em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
+                            | .
+                          .btn-layout--vertical
+                            button.btn.btn--primary.btn--large.no-mrg-bottom Rezervovať
+
+                            +addTo()
+
   block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {

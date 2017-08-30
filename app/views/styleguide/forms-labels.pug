@@ -392,11 +392,11 @@ block append content
           .col--l-6
             .form-control.form-control--checkbox
               .form-label.is-error
-                label(for="checkbox-withlabel") Form label:
+                label(for="checkbox-error") Form label:
               .checkbox
-                input.radiocheck__input.is-error(type='checkbox', id='checkbox-withlabel', name='checkbox-withlabel')
-                label.radiocheck__control(for='checkbox-withlabel')
-                label.radiocheck__label(for='checkbox-withlabel') Checkbox
+                input.radiocheck__input.is-error(type='checkbox', id='checkbox-error', name='checkbox-error')
+                label.radiocheck__control(for='checkbox-error')
+                label.radiocheck__label(for='checkbox-error') Checkbox
               p.form-text.is-error Lorem ipsum Sit eu velit.
 
           .col--l-6
@@ -406,14 +406,14 @@ block append content
                   label Form label:
                 .form-control.form-control--radio
                   .radio
-                    input.radiocheck__input.is-error(type='radio', id='radio-group-withlabel-01', name='radio-group-withlabel')
-                    label.radiocheck__control(for='radio-group-withlabel-01')
-                    label.radiocheck__label(for='radio-group-withlabel-01') Radio 1
+                    input.radiocheck__input.is-error(type='radio', id='radio-group-error-01', name='radio-group-error')
+                    label.radiocheck__control(for='radio-group-error-01')
+                    label.radiocheck__label(for='radio-group-error-01') Radio 1
                 .form-control.form-control--radio
                   .radio
-                    input.radiocheck__input.is-error(type='radio', id='radio-group-withlabel-02', name='radio-group-withlabel')
-                    label.radiocheck__control(for='radio-group-withlabel-02')
-                    label.radiocheck__label(for='radio-group-withlabel-02') Radio 2
+                    input.radiocheck__input.is-error(type='radio', id='radio-group-error-02', name='radio-group-error')
+                    label.radiocheck__control(for='radio-group-error-02')
+                    label.radiocheck__label(for='radio-group-error-02') Radio 2
                 p.form-text.is-error Lorem ipsum Anim nisi et in dolor.
         .row
           .col--l-6
@@ -474,6 +474,120 @@ block append content
             </div>
             <select class="js-select">...</select>
             <p class="form-text.is-error">...</p>
+          </div>
+          ...
+    //- end: demo
+
+  //- end: section
+
+  //- FORM SUCCESS
+  +content-section(contents[3], true)
+
+    +p In case you need to show additional success text for form components you can use valid state class. Success text will be then shown under form component. To create form success text you can use <code class='l-code-inline'>&lt;p&gt;</code> tag with class <code class='l-code-inline'>.form-text.is-valid</code> as shown in example below.
+
+    +demo
+      +demo-example
+        .row
+          .col--l-6
+            .form-control.form-control--input
+              .form-label.is-valid
+                label(for='input-01') Form label:
+              input.input.is-valid(type='text', placeholder='Input', id='input-01')
+              p.form-text.is-valid Lorem ipsum Elit anim tempor aliquip tempor mollit.
+
+          .col--l-6
+            .form-control.form-control--textarea
+              .form-label.is-valid
+                label(for='textarea-01') Form label:
+              textarea.input.is-valid(type='text', placeholder='Textarea', id='textarea-01')
+              p.form-text.is-valid Lorem ipsum Elit anim tempor aliquip tempor mollit.
+
+        .row
+          .col--l-6
+            .form-control.form-control--checkbox
+              .form-label.is-valid
+                label(for="checkbox-error") Form label:
+              .checkbox
+                input.radiocheck__input.is-valid(type='checkbox', id='checkbox-success', name='checkbox-success')
+                label.radiocheck__control(for='checkbox-success')
+                label.radiocheck__label(for='checkbox-success') Checkbox
+              p.form-text.is-valid Lorem ipsum Sit eu velit.
+
+          .col--l-6
+            .form-control.form-control--group
+              .radiocheck-group
+                .form-label.is-valid
+                  label Form label:
+                .form-control.form-control--radio
+                  .radio
+                    input.radiocheck__input.is-valid(type='radio', id='radio-group-success-01', name='radio-group-success')
+                    label.radiocheck__control(for='radio-group-success-01')
+                    label.radiocheck__label(for='radio-group-success-01') Radio 1
+                .form-control.form-control--radio
+                  .radio
+                    input.radiocheck__input.is-valid(type='radio', id='radio-group-success-02', name='radio-group-success')
+                    label.radiocheck__control(for='radio-group-success-02')
+                    label.radiocheck__label(for='radio-group-success-02') Radio 2
+                p.form-text.is-valid Lorem ipsum Anim nisi et in dolor.
+        .row
+          .col--l-6
+            .form-control.form-control--select
+              .form-label.is-valid
+                label Form label:
+              select.js-select.is-valid
+                each option in [1,2,3,4,5,6]
+                  option Option #{option}
+              p.form-text.is-valid Lorem ipsum Sed est culpa nulla sit laboris sed aliqua aute nostrud dolore consectetur dolor sed dolore dolore et dolor tempor laboris.
+      +demo-code
+        :code
+          <!-- input -->
+          <div class="form-control form-control--input">
+            <div class="form-label error">
+              <label for="...">Form label:</label>
+            </div>
+            <input type="text" class="input" id="...">
+            <p class="form-text.is-valid">...</p>
+          </div>
+
+          <!-- textarea -->
+          <div class="form-control form-control--textarea">
+            <div class="form-label error">
+              <label for="...">Form label:</label>
+            </div>
+            <textarea type="text" class="input" id="..." rows="3">
+            <p class="form-text.is-valid">...</p>
+          </div>
+
+          <!-- checkbox -->
+          <div class="form-control form-control--checkbox">
+            <div class="form-label error">
+              <label for="...">Form label:</label>
+            </div>
+            <div class="checkbox">...</div>
+            <p class="form-text.is-valid">...</p>
+          </div>
+
+          <!-- radiogroup -->
+          <div class="form-control form-control--group">
+            <div class="radiocheck-group">
+              <div class="form-label error">
+                <label for="...">Form label:</label>
+              </div>
+              <div class="form-control form-control--radio">
+                <div class="radio">...</div>
+              </div>
+              ...
+              <p class="form-text.is-valid">...</p>
+            </div>
+          </div>
+
+          <!-- select -->
+          <div class="form-control form-control--select">
+            <div class="form-label error">
+              <label for="...">Form label:</label>
+            </div>
+            <select class="js-select">...</select>
+            <p class="form-text.is-valid">...</p>
           </div>
           ...
     //- end: demo

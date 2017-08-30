@@ -9,20 +9,24 @@
         button.btn.btn--clean.no-mrg.no-pad-right
           +icon('edit').icon--medium.icon--left
           | Upraviť
-    ul.list.list--cart
-      div(data-collapse="220")
+    #cart-summary(data-collapse="220")
+      ul.list.list--cart
         each item, i in books
           li.list__item(id=`cart-item${i}` data-toggle-class="is-active")
-            .cart-item
+            .cart-item.cart-item--summary(class=item.ebook ? 'cart-item--has-tags' : '')
               .cart-item__content
                 .cart-item__column.cart-item__column--product-name
                   a.text-size-medium.no-mrg.text-ellipsis(href="detail-knihy.html")=item.title
+                if item.ebook
+                  .cart-item__column.cart-item__column--tags
+                    .badge.text-nowrap E-kniha
                 .cart-item__column.cart-item__column--qty
                   .text-size-medium.no-mrg
                     | 1x
                 .cart-item__column.cart-item__column--price
                   .text-semibold.text-size-medium.text-nowrap= item.price
-      a.link.text-size-medium.col--4.ofst--center(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť všetký(+3)", data-collapse-trigger) <span data-toggle-text-target>Zobraziť všetký(+3)</span>#{' '}
+    .text-center
+      span.link.text-size-medium(data-toggle="#cart-summary, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť všetký(+3)", data-collapse-trigger) <span data-toggle-text-target>Zobraziť všetký(+3)</span>#{' '}
         +icon('arrow-down')
 
   .card__footer
