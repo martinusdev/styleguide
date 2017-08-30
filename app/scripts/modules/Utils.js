@@ -191,3 +191,9 @@ export function getValueFromResponsiveMap(
 
   return value;
 }
+
+export function escapeSelectorName(selector) {
+  const selectorName = selector.replace(/(:|\.|\[|\])/g, '\\$1');
+
+  return selectorName;
+}
