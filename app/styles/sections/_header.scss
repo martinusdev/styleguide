@@ -91,7 +91,7 @@
         height: 0;
 
         position: absolute;
-        bottom: -21px;
+        bottom: -28px;
         left: 50%;
         margin-left: -8px;
 
@@ -110,7 +110,7 @@
     position: relative;
     background-color: $color-black;
     padding-top: _get-space('v');
-    padding-bottom: _get-space('v');
+    padding-bottom: _get-space('v') + _get-space('v', 'tiny');
     z-index: $z-index-topbar;
 
     &::after {
@@ -127,7 +127,7 @@
 
     @include breakpoint(s, 'down') {
       padding-top: _get-space('v', 'small');
-      padding-bottom: _get-space('v', 'small');
+      padding-bottom: _get-space('v', 'small') + _get-space('v', 'tiny');
     }
   }
 

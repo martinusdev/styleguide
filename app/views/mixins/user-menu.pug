@@ -5,9 +5,9 @@ mixin userMenu(props = {})
     } = props;
 
   .btn-dropdown.btn-dropdown--no-icon.header-user
-    button.btn.btn--clean.header-btn.header-btn--no-arrow(data-toggle-expand data-toggle="self, next")
+    button.btn.btn--clean.btn--lowercase.header-btn.header-btn--no-arrow(data-toggle-expand data-toggle="self, next")
       +icon('user').icon--medium.icon--left.header-user__icon
-      span.header-user__name.text-transform-none #{userName}
+      span.header-user__name #{userName}
 
     .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false")
       h5.dropdown__group Môj MARTINUS
