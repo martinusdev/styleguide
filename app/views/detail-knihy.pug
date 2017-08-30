@@ -135,13 +135,13 @@ block content
                   .badges.no-mrg
                     .badge
                       .rating-star
-                        .rating-star__icon
-                        .rating-star__icon
-                        .rating-star__icon
-                        .rating-star__icon.rating-star__icon--half
-                        .rating-star__icon.rating-star__icon--empty
-                        .rating-star__value.text-color-grey
-                          | 4,5
+                        +icon('star').rating-star__item.icon--medium.is-active
+                        +icon('star').rating-star__item.icon--medium.is-active
+                        +icon('star').rating-star__item.icon--medium.is-active
+                        +icon('star-half').rating-star__item.icon--medium.is-active
+                        +icon('star').rating-star__item.icon--medium
+                        .rating-star__value
+                          | 3,5
                       a.link.text-medium.text-space-left(href="#recenzie", data-scroll) 234x
                 .bar__item.bar__item--shrinkable.show-m
                   .badges.no-mrg
