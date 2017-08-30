@@ -15,8 +15,6 @@
 
   .badge {
     margin-right: _get-space('h', 'small');
-    margin-bottom: 1px;
-    margin-top: 1px;
     &:last-child { margin-right: 0; }
   }
 }
@@ -24,6 +22,13 @@
 .badge {
   display: inline-flex;
   align-items: center;
+
+  min-height: _get-rem(24px);
+
+  .icon--medium {
+    height: _get-rem(22px);
+    width: _get-rem(22px);
+  }
 }
 
 // ----------------------------
