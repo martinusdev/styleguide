@@ -8,6 +8,10 @@ const shouldInitalize = (up, down, currentWidth, breakpoints) =>
   !(up && breakpoints[up] >= currentWidth) &&
   !(down && breakpoints[down] < currentWidth);
 
+const getTotalNumberOfSlides = container =>
+  container.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')
+    .length;
+
 const defaultConfig = {
   paginationClickable: true,
   a11y: true,
@@ -35,6 +39,9 @@ export default class SwiperSlider {
     this.instances = [];
 
     this._disableLazyIframes = this._disableLazyIframes.bind(this);
+    this._handleCarouselFunSlideChange = this._handleCarouselFunSlideChange.bind(
+      this,
+    );
 
     this._init();
     return this;
@@ -68,6 +75,19 @@ export default class SwiperSlider {
 
         swiperInstance.on('onTransitionEnd', this._handleSlideChange);
         this._handleSlideChange(swiperInstance);
+
+        if (
+          swiperInstance.container[0].parentNode.classList.contains(
+            'carousel--fan',
+          )
+        ) {
+          swiperInstance.on(
+            'onSlideChangeStart',
+            this._handleCarouselFunSlideChange,
+          );
+
+          this._handleCarouselFunSlideChange(swiperInstance);
+        }
 
         this.instances.push(swiperInstance);
       }
@@ -108,5 +128,43 @@ export default class SwiperSlider {
         extraContentTarget.appendChild(item.cloneNode(true));
       });
     }
+  }
+
+  _handleCarouselFunSlideChange(instance) { // eslint-disable-line
+    const container = instance.container[0];
+    const numberOfSlides = getTotalNumberOfSlides(container);
+    const numberOfActiveSlides = instance.loopedSlides;
+    const activeIndex = instance.realIndex;
+    const offset = Math.floor(numberOfActiveSlides / 2);
+
+    // remove old indexes
+    container.querySelectorAll('[data-carousel-fan-index]').forEach(slide => {
+      slide.removeAttribute('data-carousel-fan-index');
+    });
+
+    // create array of active slides
+    const arrayOfActiveSlides = [];
+    for (let i = activeIndex - offset; i <= activeIndex + offset; i += 1) {
+      let index = i;
+
+      if (i < 0) {
+        index = numberOfSlides - -i;
+      } else if (i >= numberOfSlides) {
+        index = i - numberOfSlides;
+      }
+
+      arrayOfActiveSlides.push(index);
+    }
+
+    // mark all visible slides with offset
+    arrayOfActiveSlides.forEach((slideIndex, index) => {
+      // find visible slide based on slideIndex
+      const slide = container.querySelector(
+        `[data-swiper-slide-index="${slideIndex}"].swiper-slide-visible`,
+      );
+
+      // set offset
+      slide.setAttribute('data-carousel-fan-index', index - offset);
+    });
   }
 }
