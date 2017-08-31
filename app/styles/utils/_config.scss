@@ -71,7 +71,10 @@ $color-palette: (
     900: #474440,
   ),
   // colors
-  yellow: #fcc34c,
+  yellow: (
+    100: #fef0d2,
+    500: #fcc34c
+  ),
   orange: #f28629,
   brown: #945131,
   violet: #9967a7,
@@ -1474,6 +1477,11 @@ $section: (
   white: (
     background-color: $color-white,
   ),
+);
+
+$boxes: (
+  success: ( background-color: _color(success, 100) ),
+  notice: ( background-color: _color(yellow, 100) )
 );
 
 // ----------------------------
