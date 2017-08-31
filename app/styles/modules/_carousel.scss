@@ -162,7 +162,8 @@
       opacity: 0;
       width: 100px;
 
-      .product__rating {
+      .thumbnail__info,
+      &:not([data-carousel-fan-index]) {
         opacity: 0;
       }
     }
@@ -184,7 +185,7 @@
         transform: rotate(0deg) scale(1) translate3d(0, 0, 0);
         z-index: 4;
 
-        .product__rating {
+        .thumbnail__info {
           opacity: 1;
           z-index: 5;
         }
