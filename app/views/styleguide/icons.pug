@@ -204,7 +204,7 @@ block append content
     //- end: demo
   //- end: section
 
-  +content-section(contents[2])
+  +content-section(contents[2], true)
 
     +p Image thumbnails are defined in four sizes <code class='l-code-inline'>small/medium/medium-large/large/xlarge/huge</code> as shown on example below.
 
@@ -316,35 +316,64 @@ block append content
           </div>
 
 
-  +content-section(contents[3], true)
+    +content-sub-section('Thumbnail book')
 
-    +demo
-      +demo-example
-        .thumbnail.thumbnail--book.thumbnail--large
-          img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+      +demo
+        +demo-example
+          .thumbnail.thumbnail--book.thumbnail--large
+            img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
 
-      +demo-code
-        :code
-          <div class="thumbnail thumbnail--book">
-            <img class="img " src="..." alt="...">
-          </div>
-
-  +content-section(contents[4], true)
-
-    +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with badge as discount coutdown is shown below.
-
-    +demo
-      +demo-example
-        .thumbnail.thumbnail--book.thumbnail--large
-          img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-          .thumbnail__status
-            +discountBadge(duration)
-
-      +demo-code
-        :code
-          <div class="thumbnail--book thumbnail--large">
-            <img class="img" src="..." alt="..." />
-            <div class="thumbnail__status">
-              ...
+        +demo-code
+          :code
+            <div class="thumbnail thumbnail--book">
+              <img class="img " src="..." alt="...">
             </div>
-          </div>
+
+    +content-sub-section('Thumbnail status')
+
+      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with badge as discount coutdown is shown below.
+
+      +demo
+        +demo-example
+          .thumbnail.thumbnail--book.thumbnail--large
+            img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .thumbnail__status
+              +discountBadge(duration)
+
+        +demo-code
+          :code
+            <div class="thumbnail--book thumbnail--large">
+              <img class="img" src="..." alt="..." />
+              <div class="thumbnail__status">
+                ...
+              </div>
+            </div>
+
+    +content-sub-section('Thumbnail info')
+
+      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__info</code> which can contain for example rating or discount.
+
+      +demo
+        +demo-example
+          .bar
+            .bar__item
+              .thumbnail.thumbnail--book.thumbnail--large
+                img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail__info
+                  .badge
+                    +icon('star').text-color-yellow.icon--small
+                    |  3.5
+            .bar__item
+              .thumbnail.thumbnail--book.thumbnail--large
+                img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail__info
+                  .badge.badge--primary -50%
+
+        +demo-code
+          :code
+            <div class="thumbnail--book thumbnail--large">
+              <img class="img" src="..." alt="..." />
+              <div class="thumbnail__info">
+                ...
+              </div>
+            </div>
