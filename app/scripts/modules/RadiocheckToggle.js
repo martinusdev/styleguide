@@ -2,7 +2,7 @@
 // Toggle
 // module for handling toggle actions
 
-import { customEventPolyfill } from './Utils';
+import { customEventPolyfill, escapeSelectorName } from './Utils';
 import { TRIGGER_EVT, TOGGLE_EVT } from './Toggle';
 
 customEventPolyfill();
@@ -40,7 +40,7 @@ export default class RadiocheckToggle {
 
     siblings.push.apply(
       siblings,
-      document.querySelectorAll(`[name=${triggerEl.name}]`),
+      document.querySelectorAll(`[name=${escapeSelectorName(triggerEl.name)}]`),
     );
 
     let targets = [];

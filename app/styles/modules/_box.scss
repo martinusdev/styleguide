@@ -2,6 +2,7 @@
   padding: _get-space('v', 'small') _get-space('h', 'small');
   margin-bottom: _get-space('v');
 
+  //refactor later in config for variants hovers
   &--hover {
     transition: background $ease-out-200;
   }
@@ -10,7 +11,13 @@
     background-color: _color(grey, 50);
   }
 
-  &--success {
-    background-color: _color(success, 100);
+  &--enlarged {
+    padding: _get-space('v') _get-space('h');
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
   }
 }
+
+@include css-variants('.box', $boxes);

@@ -56,6 +56,14 @@ block content
 
       section.section
         .wrapper-main
+          .bar.breadcrumb.mb-large
+            .bar__item
+              - var breadcrumbs = ['Knihy', 'Deti a mládež', 'Encyklopédie, náučné knihy', 'Ostatné', 'Základy rybolovu pro kluky a holky']
+              each breadcrumb, i in breadcrumbs
+                a.text-medium(href="#")
+                  span !{breadcrumb}
+                if (i < breadcrumbs.length - 1)
+                  +icon('chevron-right', 'icon--medium').text-color-grey
           .row.product-detail
             .col--m-4.col--l-3
               .product-detail__preview
@@ -237,6 +245,9 @@ block content
                   li
                     a(href="#vydavatelstvo", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Vydavateľstvo
             .col--m-9.col--l-7
+              .box.box--enlarged.box--notice
+                p Milí Martinusáci, v čase od 29. 6. 2017 do 20. 8. 2017 prebieha vo vydavateľstve Orbis Pictus Istropolizana dovolenka. Objednávky na tituly z tohto vydavateľstva budeme vybavovať v rámci našich možností čo najskôr, no napriek našej snahe môže nastať situácia, že s ich vybavovaním budeme meškať. (Prípadné nevybavené objednávky budeme evidovať a vybavíme ich ako najskôr to bude možné po skončení ich dovolenkovej prestávky.) Ďakujeme za pochopenie.
+
               section.mb-large#popis-knihy
 
                 h2.mb-medium Popis knihy
@@ -493,7 +504,10 @@ block content
                                 | 4.5
                             .bar__item
                               .text-medium 2.3.2017
-                        p.mb-small Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        p#user-review-1.bg-secondary.no-mrg-bottom(data-collapse="200") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        .product-read-more.mb-small
+                          a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-1, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                            +icon('arrow-down')
                         footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.no-mrg-bottom
                           button.btn.btn--clean.no-mrg-right
                             +icon('react').icon--left.icon--medium
@@ -524,7 +538,10 @@ block content
                                 | 4.5
                             .bar__item
                               .text-medium 2.3.2017
-                        p.mb-small Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        p#user-review-2.bg-secondary.no-mrg-bottom(data-collapse="200") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        .product-read-more.mb-small
+                          a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-2, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                            +icon('arrow-down')
                         footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.no-mrg-bottom
                           button.btn.btn--clean.no-mrg-right
                             +icon('react').icon--left.icon--medium
@@ -567,7 +584,13 @@ block content
               hr
 
               section.mb-large#o-autorovi
-                h2 O autorovi
+                .bar
+                  .bar__item.bar__item--fill
+                    h2 O autorovi
+                  .bar__break.hide-s
+                  .bar__item
+                    a.link(href="author.html") Prejsť na stránku autora
+                      +icon('arrow-right')
 
                 div#about-author(data-collapse="150")
                   p Narodila sa v marci 1976. V osemnástich rokoch odišla z rodnej Žiliny na vysokú školu do Bratislavy a tam aj ostala. Celý profesionálny život sa venuje žurnalistike, začala ako moderátorka v Rock FM rádiu, potom spolu s Julom Viršíkom tri roky vysielala rannú šou v rádiu Koliba, neskôr OKEY. Aj vďaka bestsellerom Všetko alebo nič, Stalo sa mi všetko a Všetko alebo nič: Príbeh pokračuje, ktoré vyšli s úspechom aj v Česku, sa stala najobľúbenejšou slovenskou autorkou kníh za rok 2009. Ďalšia jej kniha Svet mi je dlžný bola najpredávanejším slovenským titulom roka 2010. Jedna z najpredávanejších slovenských autoriek sa okrem písania venuje aj svojmu vydavateľstvu Evitapress, ktoré založila v roku 2007.
@@ -606,7 +629,13 @@ block content
                     +icon('arrow-down')
 
               section.mb-large#vydavatelstvo
-                h2 Vydavateľstvo
+                .bar
+                  .bar__item.bar__item--fill
+                    h2 Vydavateľstvo
+                  .bar__break.hide-s
+                  .bar__item
+                    a.link(#href="#") Všetky knihy vydavateľstva
+                      +icon('arrow-right')
 
                 div#publisher(data-collapse="150")
                   p Vydavateľstvo Evitapress sa časom vyprofilovalo na spoločnosť, pod hlavičkou ktorej vydávajú svoje knižky najčítanejšie slovenské autorky. Našimi čitateľmi sú hlavne ženy, ku knižkám z Evitapressu ich pritiahli ich námety, uveriteľnosť a moderný súčasný jazyk našich spisovateliek. Najžiadanejšie „príbehy, ktoré píše život“ vydávame v edícii Evitovky, pre naše najmladšie čitateľky v tínedžerskom veku máme Evitínky, pre milovníčky romantických príbehov Srdcovky, pre tých, čo milujú napínavé romány Detektívky a unikátne kúsky vydávame

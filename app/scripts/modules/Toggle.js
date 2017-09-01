@@ -42,6 +42,7 @@ class Toggle {
     icon,
     text,
     expand,
+    focus,
     state,
     resize = false,
   }) {
@@ -95,6 +96,10 @@ class Toggle {
           currentState === 'true' ? 'false' : 'true',
         );
       }
+    }
+
+    if (focus) {
+      target.focus();
     }
 
     if (target.hasAttribute('data-toggle-lock')) {
@@ -155,6 +160,7 @@ class Toggle {
         icon: target.getAttribute('data-toggle-icon'),
         text: target.getAttribute('data-toggle-text'),
         expand: target.hasAttribute('data-toggle-expand'),
+        focus: target.hasAttribute('data-toggle-focus'),
       });
     });
 

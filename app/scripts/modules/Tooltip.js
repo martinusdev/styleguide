@@ -4,9 +4,10 @@ const defaultConfig = {
   animation: 'scale',
   arrow: true,
   interactive: true,
+  delay: 150,
 };
 
-export default class Collapse {
+export default class Tooltip {
   constructor(selector = '[data-tooltip]', config) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 

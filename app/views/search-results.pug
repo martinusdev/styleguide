@@ -10,9 +10,7 @@ block content
       .wrapper-main.text-center
         .text-medium.text-color-grey Hľadali ste
         h1 Harry Potter
-          a.text-color-grey.hide-m(href="#uq" data-toggle=".header" data-toggle-class-target="is-search-active")
-            +icon('edit', 'icon--medium', 'Upraviť vyhľadávanie')
-          a.text-color-grey.show-m(href="#uq")
+          button.btn.btn--clean.no-mrg-bottom(data-toggle=".header, #search-in-header", data-toggle-class-target="is-search-active")
             +icon('edit', 'icon--medium', 'Upraviť vyhľadávanie')
         .h3 Našli sme #{' '}
           span.text-color-black.text-semibold 63 titulov
