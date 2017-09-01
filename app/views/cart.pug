@@ -26,11 +26,16 @@ block content
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          a.text-semibold.no-mrg.block(href="detail-knihy.html")=item.title
+                          a.text-semibold.no-mrg.block.link.link--product(href="detail-knihy.html")=item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                             - var authors = item.author.split(', ')
                             each author in authors
                               li= author
+                          .badges.show-m
+                            if (item.ebook)
+                              .badge.text-nowrap E-kniha
+                            if (item.preorder)
+                              .badge.badge--orange.text-nowrap Predpredaj
                           if (i == 1 || i == 2)
                             .bar.bar--small.text-size-small.no-mrg.show-m
                               .bar__item
@@ -43,9 +48,6 @@ block content
 
                         .cart-item__column.cart-item__column--wishlist
                           +addTo({ text: '' }).no-mrg-bottom
-                        .cart-item__column.cart-item__column--tags.show-m
-                          if (item.ebook)
-                            .badge.text-nowrap E-kniha
                         .cart-item__column.cart-item__column--qty
                           .form-control.form-control--input.no-mrg
                             .input-addons.input-addons--small.align-items-right

@@ -28,7 +28,7 @@ block content
             .form-control.form-control--input
               input.input.filter__search.no-mrg-top(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
             - for (i=0; i<5; i++)
-              a.box.block(href="#", class=i === 0 ? "bg-secondary" : "border-bottom-grey")
+              a.box.box--hover.block(href="#", class=i === 0 ? "bg-secondary" : "border-bottom-grey")
                 .bar.align-items-top
                   .bar__item.bar__item--fill
                     .text-medium.text-semibold Objednávka č. 123
@@ -91,8 +91,8 @@ block content
                       +icon('check-circle', 'icon--medium').text-color-success.text-space-right
                       | Zásielka 1.
                 each a, i in Array(2)
-                  .package__item.mb-small
-                    .bar.align-items-middle.mb-small
+                  .package__item.mb-medium
+                    .bar.align-items-middle.mb-medium
                       .bar__item.no-pad-right
                         img(src="images/content/books/sample-1.jpg").thumbnail.thumbnail--book.thumbnail--medium
                       .bar__item.bar__item--fill
@@ -110,7 +110,7 @@ block content
                               span.text-space-left.text-medium
                                 | 1x#{' '}
                                 span.text-semibold 3940,26 €
-                    div(class=i===1 ? 'border-bottom-grey-2' : 'border-bottom-grey')
+                    div(class=i===1 ? '' : 'border-bottom-grey')
               // zasielka 2
               .package.mb-large
                 .bar.align-items-middle.mb-medium
@@ -126,8 +126,8 @@ block content
                     span.text-small.text-space-right
                       span.text-color-grey Číslo zásielky#{' '}
                       span.text-color-black HSKDJF546546
-                .package__item.mb-small
-                  .bar.align-items-middle.mb-small
+                .package__item.mb-medium
+                  .bar.align-items-middle.mb-medium
                     .bar__item.no-pad-right
                       img(src="images/content/books/sample-22.jpg").thumbnail.thumbnail--book.thumbnail--medium
                     .bar__item.bar__item--fill
@@ -145,7 +145,7 @@ block content
                               span.text-space-left.text-medium
                                 | 1x#{' '}
                                 span.text-semibold 3940,26 €
-                  .border-bottom-grey-2
+                  .border-bottom-grey
               // neodoslane
               .package.mb-large
                 .bar.align-items-middle.mb-medium
@@ -162,8 +162,8 @@ block content
                     span.text-small.text-space-right
                       span.text-color-grey Číslo zásielky#{' '}
                       span.text-color-black HSKDJF546546
-                .package__item.mb-small
-                  .bar.align-items-middle.mb-small
+                .package__item.mb-medium
+                  .bar.align-items-middle.mb-medium
                     .bar__item.no-pad-right
                       img(src="images/content/books/sample-15.jpg").thumbnail.thumbnail--book.thumbnail--medium
                     .bar__item.bar__item--fill
@@ -181,36 +181,36 @@ block content
                               span.text-space-left.text-medium
                                 | 1x#{' '}
                                 span.text-semibold 3940,26 €
-                  .border-bottom-grey-2
+                  .border-bottom-grey
             
             .order-summary.mb-large
               h2.mb-medium Sumár objednávky
-              .order-summary__item.border-bottom-grey-2.mb-medium
-                .bar.mb-small.text-medium
+              .order-summary__item.border-bottom-grey.mb-medium
+                .bar.mb-medium.text-medium
                   .bar__item.bar__item--fill
                     h3.h4.mb-small.text-color-black Spôsob doručenia
                     div Pošta (na adresu)
                   .bar__item.text-right
                     .text-semibold 1,99 €
-              .order-summary__item.border-bottom-grey-2.mb-medium
-                .bar.mb-small.text-medium
+              .order-summary__item.border-bottom-grey.mb-medium
+                .bar.mb-medium.text-medium
                   .bar__item.bar__item--fill 
                     h3.h4.mb-small.text-color-black Spôsob doručenia
                     div 1x červený papier
                       br
                       | Neprikladať faktúru
               .order-summary__item
-                .bar.mb-small.text-medium
+                .bar.mb-medium.text-medium
                   .bar__item.bar__item--fill 
                     h3.h4.mb-small.text-color-black Fakturačná adresa
                     div Jozef Novák, Budyšínska 51, 851 02 Bratislava
-              .order-summary__item.border-bottom-grey-2.mb-medium
-                .bar.mb-small.text-medium
+              .order-summary__item.border-bottom-grey.mb-medium
+                .bar.mb-medium.text-medium
                   .bar__item.bar__item--fill 
                     h3.h4.mb-small.text-color-black Doručovacia adresa
                     div Jozef Novák, Budyšínska 51, 851 02 Bratislava
-              .order-summary__item.border-bottom-grey-2.mb-medium
-                .bar.mb-small.text-medium
+              .order-summary__item.border-bottom-grey.mb-medium
+                .bar.mb-medium.text-medium
                   .bar__item.bar__item--fill 
                     h3.h4.mb-small.text-color-black Spôsob platby
                     div Kartou (vopred)
@@ -221,8 +221,8 @@ block content
                       +icon('download', 'icon--medium').icon--left
                       | Stiahnuť faktúru za prijatú platbu
                     .text-semibold 1,99 €
-              .order-summary__item.border-bottom-grey-2.mb-medium
-                .bar.mb-small.text-medium
+              .order-summary__item.border-bottom-grey.mb-medium
+                .bar.mb-medium.text-medium
                   .bar__item.bar__item--fill 
                     h3.h4.mb-small.text-color-black Darovali ste centy a stali ste sa Anjelom!
                     div Zaokrúhliť na 10€
