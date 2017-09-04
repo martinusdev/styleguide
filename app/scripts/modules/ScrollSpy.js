@@ -8,11 +8,10 @@ import { nodeListToArray, getValueFromResponsiveMap } from './Utils';
 
 function getOffset(nav) {
   if (!nav) {
-    return 90;
+    return 0;
   }
 
-  const currentOffset =
-    JSON.parse(nav.getAttribute('data-scroll-offset')) || 90;
+  const currentOffset = JSON.parse(nav.getAttribute('data-scroll-offset')) || 0;
 
   return getValueFromResponsiveMap(currentOffset, window.innerWidth);
 }

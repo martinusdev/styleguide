@@ -6,7 +6,7 @@ block opts
 block content
   main
     div(data-sticky-container)
-      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset="60")
+      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
@@ -197,7 +197,7 @@ block content
               .text-medium.text-uppercase.text-color-grey-dark.mb-medium Upozornenie
               p Obsah tejto knihy je vnímaný ako kontroverzný. Pri čítaní každej knihy odporúčame nezabúdať na kritické myslenie a názory odborníkov v danej oblasti. Zisk z predaja tejto knihy putuje na podporu neziskových organizácií SuperTrieda a Slovenská debatná asociácia
                 a.link.text-medium.text-space-left Prečo?
-              a.link.text-medium(href="#popis-knihy", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Zobraziť anotáciu ku knihe od vydavateľa
+              a.link.text-medium(href="#popis-knihy", data-scroll, data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.m + 20}}`) Zobraziť anotáciu ku knihe od vydavateľa
                 +icon('arrow-down')
 
 
@@ -212,12 +212,12 @@ block content
           a(href='#')
             img.img.img--fluid(src="images/content/banner-1280x100.jpg").no-mrg
     div(data-sticky-container)
-      section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset="60")
+      section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
         .wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
               .form-control.form-control--select.no-mrg
-                select.select--clean#detail-sections-spy(data-scroll-offset="130")
+                select.select--clean#detail-sections-spy(data-scroll-offset=header.size.default + 80)
                   option(value="popis-knihy") Popis knihy
                   option(value="podrobnosti") Podrobnosti
                   option(value="recenzie") Recenzie
@@ -228,22 +228,23 @@ block content
         .wrapper-main
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
-              div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset="120")
+              div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.m + 40)
                 .thumbnail.thumbnail--book.mb-medium.thumbnail--xlarge
                   .thumbnail__img-wrap
                     img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 h2.mb-medium O knihe
                 ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
+                  - const aboutBookScrollOffset = `{"0": ${header.size.default + 80}, "768": ${header.size.m + 10}}`;
                   li
-                    a(href="#popis-knihy", data-scroll, data-scroll-offset='{"0": 130, "768": 90}' ) Popis knihy
+                    a(href="#popis-knihy", data-scroll, data-scroll-offset=aboutBookScrollOffset ) Popis knihy
                   li
-                    a(href="#podrobnosti", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Podrobnosti
+                    a(href="#podrobnosti", data-scroll, data-scroll-offset=aboutBookScrollOffset) Podrobnosti
                   li
-                    a(href="#recenzie", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Recenzie
+                    a(href="#recenzie", data-scroll, data-scroll-offset=aboutBookScrollOffset) Recenzie
                   li
-                    a(href="#o-autorovi", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') O autorovi
+                    a(href="#o-autorovi", data-scroll, data-scroll-offset=aboutBookScrollOffset) O autorovi
                   li
-                    a(href="#vydavatelstvo", data-scroll, data-scroll-offset='{"0": 130, "768": 90}') Vydavateľstvo
+                    a(href="#vydavatelstvo", data-scroll, data-scroll-offset=aboutBookScrollOffset) Vydavateľstvo
             .col--m-9.col--l-7
               .box.box--enlarged.box--notice
                 p Milí Martinusáci, v čase od 29. 6. 2017 do 20. 8. 2017 prebieha vo vydavateľstve Orbis Pictus Istropolizana dovolenka. Objednávky na tituly z tohto vydavateľstva budeme vybavovať v rámci našich možností čo najskôr, no napriek našej snahe môže nastať situácia, že s ich vybavovaním budeme meškať. (Prípadné nevybavené objednávky budeme evidovať a vybavíme ich ako najskôr to bude možné po skončení ich dovolenkovej prestávky.) Ďakujeme za pochopenie.
@@ -349,51 +350,50 @@ block content
                         dl
                           dt Katalógové číslo
                           dd 162431
+                    .row.no-mrg-bottom
+                      .col--12
+                        dl
+                          dt.mb-small Kategorizácia
+                          dd
+                            ul.list-inline.list-inline--condensed.mb-small
+                              li
+                                a.link(href="#") Knihy
+                              li(role="presentional")
+                                +icon('chevron-right', 'text-vamd')
+                              li
+                                a.link(href="#") Deti a mládež
+                              li(role="presentional")
+                                +icon('chevron-right', 'text-vamd')
+                              li
+                                a.link(href="#") Enciklopédie, náučné knihy
+                              li(role="presentional")
+                                +icon('chevron-right', 'text-vamd')
+                              li
+                                a.link(href="#") Ostatné
 
+                            ul.list-inline.list-inline--condensed.mb-small
+                              li
+                                a.link(href="#") Knihy
+                              li(role="presentional")
+                                +icon('chevron-right', 'text-vamd')
+                              li
+                                a.link(href="#") Próza
+                              li(role="presentional")
+                                +icon('chevron-right', 'text-vamd')
+                              li
+                                a.link(href="#") Ďalšie druhy prózy
 
-
-              section.mb-large
-                h5.mb-medium Kategorizácia
-
-                ul.list-inline.list-inline--condensed
-                  li
-                    a.link(href="#") Knihy
-                  li(role="presentional")
-                    +icon('chevron-right', 'text-vamd')
-                  li
-                    a.link(href="#") Deti a mládež
-                  li(role="presentional")
-                    +icon('chevron-right', 'text-vamd')
-                  li
-                    a.link(href="#") Enciklopédie, náučné knihy
-                  li(role="presentional")
-                    +icon('chevron-right', 'text-vamd')
-                  li
-                    a.link(href="#") Ostatné
-
-                ul.list-inline.list-inline--condensed
-                  li
-                    a.link(href="#") Knihy
-                  li(role="presentional")
-                    +icon('chevron-right', 'text-vamd')
-                  li
-                    a.link(href="#") Próza
-                  li(role="presentional")
-                    +icon('chevron-right', 'text-vamd')
-                  li
-                    a.link(href="#") Ďalšie druhy prózy
-
-                ul.list-inline.list-inline--condensed
-                  li
-                    a.link(href="#") Knihy
-                  li(role="presentional")
-                    +icon('chevron-right', 'text-vamd')
-                  li
-                    a.link(href="#") Hobby
-                  li(role="presentional")
-                    +icon('chevron-right', 'text-vamd')
-                  li
-                    a.link(href="#") Špeciálna kategória
+                            ul.list-inline.list-inline--condensed.mb-small
+                              li
+                                a.link(href="#") Knihy
+                              li(role="presentional")
+                                +icon('chevron-right', 'text-vamd')
+                              li
+                                a.link(href="#") Hobby
+                              li(role="presentional")
+                                +icon('chevron-right', 'text-vamd')
+                              li
+                                a.link(href="#") Špeciálna kategória
 
               section.mb-large#recenzie
                 h2 Recenzie
@@ -695,7 +695,7 @@ block append scripts
           choices: [
             {
               value: 'ba-obchodna',
-              label: 'BA Obchodná',
+              label: 'Bratislava, Obchodná',
               id: 1,
               customProperties: {
                 status: 'success',
@@ -704,7 +704,7 @@ block append scripts
             },
             {
               value: 'ba-cubicon',
-              label: 'BA Cubicon',
+              label: 'Bratislava, Cubicon',
               id: 2,
               customProperties: {
                 status: 'success',
@@ -712,8 +712,8 @@ block append scripts
               }
             },
             {
-              value: 'ba-galeria',
-              label: 'BA OC Galéria',
+              value: 'ke-galeria',
+              label: 'Košice, OC Galéria',
               id: 3,
               customProperties: {
                 status: 'orange',
@@ -722,7 +722,7 @@ block append scripts
             },
             {
               value: 'nr-centro',
-              label: 'BA OC Centro',
+              label: 'Nitra, OC Centro',
               id: 4,
               customProperties: {
                 status: 'grey',
