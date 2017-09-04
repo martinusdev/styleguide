@@ -1,0 +1,104 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Bookstores'
+
+block content
+
+  main
+
+    .section.section--small.section--secondary
+      .wrapper-main
+        .bar.breadcrumb
+          .bar__item
+            - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
+            each breadcrumb, i in breadcrumbs
+              a.text-medium(href="#")
+                span !{breadcrumb}
+              if (i < breadcrumbs.length - 1)
+                +icon('chevron-right', 'icon--medium').text-color-grey
+        .btn-layout.btn-layout--vertical.mb-medium.hide-l
+          .btn-dropdown.no-mrg
+            button.btn.btn--ghost.btn--icon-right.text-left(
+              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+              data-toggle-expand,
+              aria-haspopup="true"
+            )
+              | Kníhkupectvá
+              +icon('chevron-down', 'icon-dropdown').icon--medium
+            .dropdown(data-dropdown, data-toggle-expand)
+              each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
+                a(href="#").dropdown__item !{link}
+
+    .section
+      .wrapper-main
+        .row
+          .col--l-3.show-l
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+              +icon('arrow-left', 'icon--medium')
+              span Späť na martinus centrum
+            h2.h4 Kontakty
+            ul.list.list--expanded.no-pad(role="navigation")
+              each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
+                li.mb-medium
+                  a.text-medium(href="#", data-scroll) !{link}
+                  if (i===1)
+                    ul.list.list--expanded
+                      each link, i in ['Bratislava', 'Martin', 'Žilina', 'Nitra', 'Košice', 'Považská Bystrica', 'Poprad', 'Lučenec']
+                        li.mb-medium(class=i===0 ? 'is-active' : '')
+                          a.text-medium(href="#", data-scroll) !{link}
+
+          article.col--l-9.mb-large
+            h1.show-l Kníhkupectvá Martinus v Bratislave
+            .mb-medium
+              ul.list.list--expanded.hide-l
+                each link, i in ['Bratislava', 'Martin', 'Žilina', 'Nitra', 'Košice', 'Považská Bystrica', 'Poprad', 'Lučenec']
+                  li.mb-medium(class=i===0 ? 'is-active' : '')
+                    a.text-medium(href="#", data-scroll) !{link}
+            each i in Array(3)
+              .store.mb-medium
+                .row.mb-medium
+                  .col--m-8
+                    .store__photo-box.text-color-white.flex.flex-column.align-items-right(style="background-image: url(/images/content/stores/store-ba.jpg)")
+                      h2.mb-small Martinus na Obchodnej
+                      .bar.no-mrg-bottom
+                        .bar__item
+                          a(href="#") Prezrieť galériu
+                            +icon('arrow-right')
+                        .bar__item
+                          a(href="#") Virtuálna prehliadka
+                            +icon('arrow-right')
+                  .col--m-4
+                    | MAPA
+                .row.border-bottom-grey.mb-small
+                  .col--m-4
+                    p Obchodná 26
+                      br
+                      | 811 06 Bratislava
+                    .mb-medium
+                      a.link.text-medium(href="#") Besedy v tomto kníhkupectve
+                        +icon('arrow-right')
+                  .col--m-4
+                    p.no-mrg-bottom--m
+                      span.text-semibold Otváracie hodiny
+                      br
+                      | Pondelok - piatok: 8:30 - 21:00
+                      br
+                      | Sobota - nedeľa: 10:00 - 20:00
+                  .col--m-4
+                    p.no-mrg-bottom--m
+                      span.text-semibold Kontakt
+                      br
+                      | Telefón: 02/3266 0366
+                      br
+                      | E-mail:
+                      a(href="mailto:obbchodna@martinus.sk") obbchodna@martinus.sk
+                .row.mb-medium
+                  .col--12
+                    .btn-layout--horizontal
+                      button.btn.btn--clean(data-toggle="#product-preview")
+                        +icon('facebook').icon--left.icon--medium
+                        | Facebook
+                      button.btn.btn--clean(data-toggle="#product-preview")
+                        +icon('foursquare').icon--left.icon--medium
+                        | Foursquare
