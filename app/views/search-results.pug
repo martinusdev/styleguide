@@ -2,7 +2,7 @@ extends layouts/_default
 
 block opts
     - var pageTitle = 'Výsledky vyhľadávania'
-    - var filterStickyOffset = 80
+    - var filterStickyOffset = JSON.stringify({0: header.size.default, 768: header.size.m});
 
 block content
   main.category
