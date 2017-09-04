@@ -28,9 +28,9 @@ block append content
 
     +demo
       +demo-example
-        .row
+        .row.mb-medium
           .col--l-5
-            h4 Basic list
+            h4.mb-medium Basic list
 
             ul.list
               li.list__item Laborum laboris amet minim.
@@ -39,7 +39,7 @@ block append content
               li.list__item Deserunt id consectetur esse in.
 
           .col--l-5.ofst--l-1
-            h4 Bordered list
+            h4.mb-medium Bordered list
 
             ul.list.list--bordered
               li.list__item Laborum laboris amet minim.
@@ -47,9 +47,9 @@ block append content
               li.list__item Et anim sit do nisi.
               li.list__item Deserunt id consectetur esse in.
 
-        .row
+        .row.mb-medium
           .col--l-5
-            h4 Clean list
+            h4.mb-medium Clean list
 
             ul.list.list--clean
               li.list__item Laborum laboris amet minim.
@@ -58,7 +58,7 @@ block append content
               li.list__item Deserunt id consectetur esse in.
 
           .col--l-5.ofst--l-1
-            h4 Padded list
+            h4.mb-medium Padded list
 
             ul.list.list--padded
               li.list__item Laborum laboris amet minim.
@@ -66,9 +66,9 @@ block append content
               li.list__item Et anim sit do nisi.
               li.list__item Deserunt id consectetur esse in.
 
-        .row
+        .row.mb-medium
           .col--l-5
-            h4 List with counter badges
+            h4.mb-medium List with counter badges
 
             ul.list.list--unstyled.list--counter
               each item, i in [...books, ...books ]
@@ -135,7 +135,7 @@ block append content
 
       +demo
         +demo-example
-          .row
+          .row.row--space
             .col--l-5
               h4 Item content example
               ul.list
@@ -352,16 +352,16 @@ block append content
             .col--l-5
               ul.list
                 li.list__item
-                  .list__item__section--image
+                  .list__item__section.list__item__section--image
                     img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
-                  .list__item__section--primary
+                  .list__item__section.list__item__section--primary
                     dl
                       dt Commodo dolore
                       dd Eu qui ut laborum
                 li.list__item
-                  .list__item__section--image
+                  .list__item__section.list__item__section--image
                     img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
-                  .list__item__section--primary
+                  .list__item__section.list__item__section--primary
                     dl
                       dt Ut velit incididunt
                       dd Dolore aliqua
@@ -370,19 +370,19 @@ block append content
             <ul class="list">
 
               <li class="list__item">
-                <div class="list__item__section--image">
+                <div class="list__item__section list__item__section--image">
                   image
                 </div>
-                <div class="list__item__section--primary">
+                <div class="list__item__section list__item__section--primary">
                   ...
                 </div>
               </li>
 
               <li class="list__item">
-                <div class="list__item__section--image">
+                <div class="list__item__section list__item__section--image">
                   image
                 </div>
-                <div class="list__item__section--primary">
+                <div class="list__item__section list__item__section--primary">
                   ...
                 </div>
               </li>
@@ -474,32 +474,32 @@ block append content
       +demo
         +demo-example
           .row
-            .col--l-5
+            .col--l-6
               ul.list
                 li.list__item
-                  .list__item__section--image
+                  .list__item__section.list__item__section--image
                     img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
-                  .list__item__section--break.hide-m
-                  .list__item__section--primary
+                  .list__item__section.list__item__section--break.hide-m
+                  .list__item__section.list__item__section--primary
                     p This text will move under the image on S and XS
                 li.list__item
-                  .list__item__section--image
+                  .list__item__section.list__item__section--image
                     img.img.img--fluid.img--rounded(src=`${assetsPrefix}images/150x150.gif`)
-                  .list__item__section--break.show-m
-                  .list__item__section--primary
+                  .list__item__section.list__item__section--break.show-m
+                  .list__item__section.list__item__section--primary
                     p This text will move under the image on M and larger
         +demo-code
           :code
             <ul class="list">
               <li class="list__item">
-                <div class="list__item__section--image">...</div>
-                <div class="list__item__section--break hide-m"></div>
-                <div class="list__item__section--primary">...</div>
+                <div class="list__item__section list__item__section--image">...</div>
+                <div class="list__item__section list__item__section--break hide-m"></div>
+                <div class="list__item__section list__item__section--primary">...</div>
               </li>
               <li class="list__item">
-                <div class="list__item__section--image">...</div>
-                <div class="list__item__section--break show-m"></div>
-                <div class="list__item__section--primary">...</div>
+                <div class="list__item__section list__item__section--image">...</div>
+                <div class="list__item__section list__item__section--break show-m"></div>
+                <div class="list__item__section list__item__section--primary">...</div>
               </li>
             </ul>
       //- end: demo
