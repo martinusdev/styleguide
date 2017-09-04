@@ -2,17 +2,13 @@ extends layouts/_default
 
 block opts
     - var pageTitle = 'Kategoria'
-    - var filterStickyOffset = 151
+    - var filterStickyOffset = header.size.default + 71
 
 block content
   main.category(data-sticky-container)
     section.section--secondary.section.section--toolbar.cat-no-border-bottom
       .wrapper-main
-        .bar.breadcrumb.mb-medium
-          .bar__item
-            a.text-medium(href="#")
-              span Knihy
-            +icon('chevron-right', 'icon--medium').text-color-grey
+        +breadcrumbs({ breadcrumbs: ['Knihy'] })
         .bar.no-mrg-bottom
           .bar__item
             h1 Deti a mládež
@@ -26,9 +22,9 @@ block content
           ul.list-inline.text-medium
             each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
               li.inline-nav__item
-                a.inline-nav__link(class=(i === 0) ? 'active' : '') !{link}
+                a.inline-nav__link.link.link--product(class=(i === 0) ? 'active' : '') !{link}
 
-    section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset="80", data-sticky-class="is-stuck")
+    section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset=header.size.default, data-sticky-class="is-stuck", data-sticky-wrap)
       .wrapper-main
         .btn-layout.btn-layout--vertical.mb-medium
           .btn-dropdown.no-mrg

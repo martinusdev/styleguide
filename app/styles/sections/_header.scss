@@ -65,11 +65,13 @@
 
   color: _color(grey, 400);
 
-  text-transform: none;
-
-  font-size: $default-font-size;
+  font-size: $font-size-medium;
 
   border-width: 0;
+
+  .icon-dropdown {
+    right: _get_rem(3px);
+  }
 
   &.btn--small.btn--equal {
     padding: 0;
@@ -93,7 +95,7 @@
         height: 0;
 
         position: absolute;
-        bottom: -21px;
+        bottom: -23px;
         left: 50%;
         margin-left: -8px;
 
@@ -111,7 +113,7 @@
   &__wrapper {
     position: relative;
     background-color: $color-black;
-    padding-top: _get-space('v');
+    padding-top: _get-space('v') - _get-space('v', 'tiny');
     padding-bottom: _get-space('v');
     z-index: $z-index-topbar;
 
@@ -129,7 +131,7 @@
 
     @include breakpoint(s, 'down') {
       padding-top: _get-space('v', 'small');
-      padding-bottom: _get-space('v', 'small');
+      padding-bottom: _get-space('v', 'small') + _get-space('v', 'tiny');
     }
   }
 
@@ -191,6 +193,12 @@
 
   .dropdown {
     z-index: $z-index-topbar + 1;
+  }
+
+  .btn-dropdown {
+    .header-btn {
+      padding-right: _get-space('h');
+    }
   }
 
   @include breakpoint(m, 'down') {

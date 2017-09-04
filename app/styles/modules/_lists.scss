@@ -72,6 +72,11 @@
   .list {
     @include list-base;
 
+    .list {
+      margin-top: _get-rem(10px);
+      padding-left: _get-rem(20px);
+    }
+
     .card__content > & {
       border-radius: map-get($card, 'border-radius');
     }

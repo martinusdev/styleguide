@@ -79,7 +79,7 @@ block append content
 
     +content-sub-section('Types')
 
-      +p Four types of alert are defined: <code class='l-code-inline'>info (defalut)/success/warning/error</code>. Coresponding icon with state should be included in alert.
+      +p Eight types of alert are defined: <code class='l-code-inline'>info (defalut)/success/warning/error/light/success-light/warging-light/error-light</code>. Coresponding icon with state should be included in alert.
 
       +demo
         +demo-example
@@ -138,6 +138,55 @@ block append content
                     +icon('close').icon--medium
             .col--m-4
               button.btn#alert-type-4 Show example
+
+          .row
+            .col--m-8
+              .alert.alert--light
+                .alert__icon
+                  +icon('check-circle').icon--medium
+                .alert__content
+                  | Upokoj sa, všetko ide podľa plánu.
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    +icon('close').icon--medium
+
+          .row
+            .col--m-8
+              .alert.alert--success-light
+                .alert__icon
+                  +icon('check-circle').icon--medium
+                .alert__content
+                  span.text-semibold Úspech!
+                  |  Všetko sa podarilo.#{' '}
+                  a.link(href="#") Viac informácií nájdete tu
+                  | .
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    +icon('close').icon--medium
+
+          .row
+            .col--m-8
+              .alert.alert--warning-light
+                .alert__icon
+                  +icon('warning').icon--medium
+                .alert__content
+                  span.text-semibold Hoplá!
+                  |  Skúste to znova.
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    span Opakovať
+
+          .row
+            .col--m-8
+              .alert.alert--error-light
+                .alert__icon
+                  +icon('error').icon--medium
+                .alert__content
+                  | Obrázok sa nepodarilo nahrať
+                .alert__action
+                  button.btn.btn--clean.btn--small(data-alert-action)
+                    +icon('close').icon--medium
+
         +demo-code
           :code
             <div class="alert">...</div>

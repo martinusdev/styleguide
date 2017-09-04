@@ -12,9 +12,6 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
 .tabs
   section#web.tab
     article.card.card--well.text-center.text-size-medium
-      .card__content
-        p.text-color-grey-dark Knihu máme na#{' '}
-          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
 
       .card__content
         .h1.no-mrg 12,99 €
@@ -24,7 +21,9 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
           .badge.badge--primary Ušetríte 3,50 €
 
       .card__content
-        p.mb-small.text-color-grey-dark Posielame#{' '}
+        p.mb-small.text-color-grey-dark Máme na#{' '}
+          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+          | ,#{' '}posielame#{' '}
           em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
           | .
         .btn-layout--vertical
@@ -38,21 +37,14 @@ ul.tab-nav.tab-nav--block(data-tabs-container)
     article.card.card--well.text-center
 
       .card__content
-        .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-          span.text-medium.text-space-right Predajňa
-          select#store-list-select.select--brown(data-select-store)
-        p.text-color-grey-dark Skladom máme#{' '}
-          em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
-          | .
-
-      .card__content
         .h1 13,90 €
 
       .card__content
-        p.mb-small.text-color-grey-dark Knihu vám podržíme#{' '}
-          em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-          | .
+        .form-control.form-control--select.align-items-center.no-mrg
+          select#store-list-select.select--ghost.select--lowercase(data-select-store)
+
+      .card__content
         .btn-layout--vertical
-          button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať
+          button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať na 48 hod.
 
           +addTo()

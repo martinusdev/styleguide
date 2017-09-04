@@ -17,6 +17,42 @@ $alerts: (
   ),
   error: (
     default: ( background-color: _color('error') ),
+  ),
+  light: (
+    default: (
+      background-color: _color('info', 100),
+      color: _color('info')
+    ),
+    link: (
+      color: _color('info'),
+    )
+  ),
+  success-light: (
+    default: (
+      background-color: _color('success', 100),
+      color: _color('success')
+    ),
+    link: (
+      color: _color('success'),
+    )
+  ),
+  warning-light: (
+    default: (
+      background-color: _color('warning', 100),
+      color: _color('warning')
+    ),
+    link: (
+      color: _color('warning'),
+    )
+  ),
+  error-light: (
+    default: (
+      background-color: _color('error', 100),
+      color: _color('error')
+    ),
+    link: (
+      color: _color('error'),
+    )
   )
 );
 
@@ -80,6 +116,14 @@ $alerts: (
   @each $variant, $props in $alerts {
     &#{_get-variant-name($variant)} {
       @include css-map($props, 'default');
+
+      .link {
+        @include css-map($props, 'link');
+      }
+
+      .btn:hover {
+        @include css-map($props, 'link');
+      }
 
       &:focus,
       &:hover {

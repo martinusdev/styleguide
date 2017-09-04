@@ -16,6 +16,10 @@
     flex-shrink: 0;
   }
 
+  &__title {
+    transition: color $ease-300;
+  }
+
   &__caption {
     margin-top: _get-space('h', 'small');
   }
@@ -30,6 +34,12 @@
       min-width: 0;
       margin-top: 0;
       margin-left: _get-space('h', 'small');
+    }
+  }
+
+  &:hover {
+    #{$this}__title {
+      color: _color('primary');
     }
   }
 }

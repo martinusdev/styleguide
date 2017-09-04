@@ -9,14 +9,7 @@ block content
 
     .section.section--small.section--secondary
       .wrapper-main
-        .bar.breadcrumb
-          .bar__item
-            - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
-            each breadcrumb, i in breadcrumbs
-              a.text-medium(href="#")
-                span !{breadcrumb}
-              if (i < breadcrumbs.length - 1)
-                +icon('chevron-right', 'icon--medium').text-color-grey
+        +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
 
     .section
       .wrapper-main
@@ -50,6 +43,18 @@ block content
             img.img.img--rounded(src="images/content/text-page/text-page-1.jpg", alt="Img")
             h3.h4.text-color-black.mb-medium Poštovné v rámci SR
             p Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
+            .row.mb-medium
+              .col--s-3
+                img.img.img--rounded(src="images/content/text-page/text-page-2.jpg", alt="Img")
+              .col--s-9
+                h4 Nejaky nadpis odseku
+                p Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+            .row.mb-medium
+              .col--s-9
+                h4 Nejaky nadpis odseku
+                p Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
+              .col--s-3
+                img.img.img--rounded(src="images/content/text-page/text-page-2.jpg", alt="Img")
             p Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.
             p Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.
             h3.h4.text-color-black.mb-medium Kuriér GLS
