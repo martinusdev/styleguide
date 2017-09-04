@@ -1,0 +1,13 @@
+mixin breadcrumbs(props = {})
+  -
+    const {
+      breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'],
+    } = props;
+
+  .bar.breadcrumb
+    .bar__item.bar__item--shrinkable
+      each breadcrumb, i in breadcrumbs
+        a.text-medium(href="#")
+          span !{breadcrumb}
+        if (i < breadcrumbs.length - 1)
+          +icon('chevron-right', 'icon--medium').text-color-grey

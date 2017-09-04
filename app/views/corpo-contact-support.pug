@@ -9,15 +9,7 @@ block content
 
     .section.section--small.section--secondary
       .wrapper-main
-        .bar.breadcrumb
-          .bar__item
-            - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
-            each breadcrumb, i in breadcrumbs
-              a.text-medium(href="#")
-                span !{breadcrumb}
-              if (i < breadcrumbs.length - 1)
-                +icon('chevron-right', 'icon--medium').text-color-grey
-
+        +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
 
     .section
       .wrapper-main
