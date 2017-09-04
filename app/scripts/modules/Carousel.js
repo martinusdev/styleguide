@@ -133,7 +133,7 @@ export default class SwiperSlider {
   _handleCarouselFunSlideChange(instance) { // eslint-disable-line
     const container = instance.container[0];
     const numberOfSlides = getTotalNumberOfSlides(container);
-    const numberOfActiveSlides = instance.loopedSlides;
+    const numberOfActiveSlides = Math.min(instance.loopedSlides, 5);
     const activeIndex = instance.realIndex;
     const offset = Math.floor(numberOfActiveSlides / 2);
 
@@ -164,7 +164,9 @@ export default class SwiperSlider {
       );
 
       // set offset
-      slide.setAttribute('data-carousel-fan-index', index - offset);
+      if (slide) {
+        slide.setAttribute('data-carousel-fan-index', index - offset);
+      }
     });
   }
 }
