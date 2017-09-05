@@ -2,10 +2,17 @@ footer.footer
   .wrapper-main
     section.row.mb-medium
       .col--l-2.col--m-4
-        ul.list--unstyled.list--expanded.mb-medium
-          each item in ['Knihy', 'Filmy', 'Spoločenské hry', 'Káva čaj']
-            li
-              a.link.text-color-white(href='#')= item
+        .row
+          .col--6.col--m-12
+            ul.list--unstyled.list--expanded.mb-small
+              each item in ['Knihy', 'Filmy']
+                li
+                  a.link.text-color-white(href='#')= item
+          .col--6.col--m-12
+            ul.list--unstyled.list--expanded.mb-medium
+              each item in ['Spoločenské hry', 'Káva čaj']
+                li
+                  a.link.text-color-white(href='#')= item
 
       .col--l-3.col--m-6
         h5 Kníhkupectvá
@@ -20,24 +27,26 @@ footer.footer
               each item in ['Poprad', 'Považská Bystrica', 'Nitra', 'Žilina']
                 li
                   a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-      .col--l-2.col--m-4
+      .col--l-2.col--m-4.show-m
         h5 Nakupujte u nás
         ul.list--unstyled.mb-medium
           each item in ['Prečo práve u nás?', 'Ako nakupovať', 'Najčastejšie otázky', 'Poštovné', 'Možnosti platby']
             li
               a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-      .col--l-2.col--m-4.col--6
+      .col--l-2.col--m-4.col--6.show-m
         h5 Naše projekty
         ul.list--unstyled.mb-medium
           each item in ['Knihobežník', 'Slovensko číta', 'Čo mám čítať ďalej', 'Poviedky o nevere', 'Slovensko píše román']
             li
               a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-      .col--l-2.col--m-4.col--6
+      .col--l-2.col--m-4.col--6.show-m
         h5 Martinus.sk
         ul.list--unstyled.mb-medium
           each item in ['Martinus.sk', 'Náš príbeh', 'O nás', 'Kontakty']
             li
               a.link.text-color-white.text-size-medium.text-normal(href='#')= item
+      .col--12.hide-m
+        a.link.text-color-white.text-size-medium.text-normal(href='#') Nakupovanie v Martinuse
 
     section.row.mb-medium.align-items-middle
       .col--m-8.col--l-7
