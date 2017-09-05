@@ -48,6 +48,8 @@ export default class NumberSpinner {
       return;
     }
 
+    const changeEvent = new Event('change');
+
     if (action === 'increase') {
       const max = parseInt(input.getAttribute('max'), 10);
       let newValue = value + step;
@@ -65,6 +67,8 @@ export default class NumberSpinner {
       }
       input.value = newValue;
     }
+
+    input.dispatchEvent(changeEvent);
   }
 
   destroy() {
