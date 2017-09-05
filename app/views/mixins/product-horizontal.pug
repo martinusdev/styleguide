@@ -15,6 +15,8 @@ mixin product-horizontal(props = {})
       trash,
       truncnateTitle,
       showCartButton,
+      textGrey,
+      breakBeforePrice,
     } = props;
 
   article.product.product--horizontal&attributes(attributes)
@@ -34,13 +36,13 @@ mixin product-horizontal(props = {})
         .bar__item.bar__item--fill
           if truncnateTitle
             .text-ellipsis
-              a.text-semibold.text-size-medium.link.link--product(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+              a.text-semibold.link.link--product(class=textGrey ? 'text-color-grey-dark' : 'text-size-medium', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           else
-            a.text-semibold.text-size-medium.link.link--product(href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
-          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
+            a.text-semibold.text-size-medium.link.link--product(class=textGrey ? 'text-color-grey-dark' : 'text-size-medium', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+          ul.list-inline.list-inline--delimited.text-color-grey.mb-small(class=textGrey ? 'text-size-medium' : 'text-size-small')
             - var authors = author.split(', ')
             each author in authors
-              li= author
+              li.no-mrg= author
           .bar.bar--small.mb-small
             if discount && !discountUnderBook
               .bar__item
@@ -59,7 +61,10 @@ mixin product-horizontal(props = {})
                   a.btn.btn--small.btn--primary.btn--equal(href="#")
                     +icon('edit')
 
-            .bar__item.bar__item--fill.text-right
+            if breakBeforePrice
+              .bar__break
+
+            .bar__item(class=breakBeforePrice ? '' : 'text-right bar__item--fill')
               .text-medium.text-semibold= price
 
             if showCartButton
@@ -75,4 +80,4 @@ mixin product-horizontal(props = {})
         if trash
           .bar__item.align-self-top
             a.btn.btn--small.btn--clean.btn--equal(href="#")
-              +icon('close').icon--medium
+              +icon('trash').icon--medium
