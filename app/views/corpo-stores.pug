@@ -33,20 +33,21 @@ block content
     .section
       .wrapper-main
         .row
-          .col--l-3.show-l
-            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
-              +icon('arrow-left', 'icon--medium')
-              span Späť na martinus centrum
-            h2.h4 Kontakty
-            ul.list.list--expanded.no-pad(role="navigation")
-              each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
-                li.mb-medium
-                  a.text-medium(href="#", data-scroll) !{link}
-                  if (i===1)
-                    ul.list.list--expanded
-                      each link, i in ['Bratislava', 'Martin', 'Žilina', 'Nitra', 'Košice', 'Považská Bystrica', 'Poprad', 'Lučenec']
-                        li.mb-medium(class=i===0 ? 'is-active' : '')
-                          a.text-medium(href="#", data-scroll) !{link}
+          .col--l-3.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default)
+              a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+                +icon('arrow-left', 'icon--medium')
+                span Späť na martinus centrum
+              h2.h4 Kontakty
+              ul.list.list--expanded.no-pad(role="navigation")
+                each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
+                  li.mb-medium
+                    a.text-medium(href="#", data-scroll) !{link}
+                    if (i===1)
+                      ul.list.list--expanded
+                        each link, i in ['Bratislava', 'Martin', 'Žilina', 'Nitra', 'Košice', 'Považská Bystrica', 'Poprad', 'Lučenec']
+                          li.mb-medium(class=i===0 ? 'is-active' : '')
+                            a.text-medium(href="#", data-scroll) !{link}
 
           article.col--l-9.mb-large
             h1.show-l Kníhkupectvá Martinus v Bratislave
