@@ -130,8 +130,28 @@
   .card__content.no-pad-top.mb-medium
     .row
       .col--s-12.col--m-11.ofst--center
-        a.link.text-size-medium
-          | Využiť darčekovú poukážku alebo ISIC, ITIC, EURO<26 zľavu
+        .mb-medium
+          a.link.text-size-medium(data-toggle="#gift")
+            | Využiť darčekovú poukážku alebo ISIC, ITIC, EURO<26 zľavu
+        #gift.row.hide(data-toggle-class="hide")
+          .col--m-6
+            .form-control.form-control--input
+              .form-label.form-label--required
+                label.text-transform-upper.text-size-small(for="cislo-poukazky")
+                  | Zadajte číslo poukážky
+              .input-addons
+                input.input(type="text", name="cislo-poukazky", id="cislo-poukazky", placeholder="V tvare XYZ321")
+                .input-addons__item.no-pad
+                  button.btn.btn--ghost Overiť
+          .col--m-6
+            .form-control.form-control--input
+              .form-label.form-label--required
+                label.text-transform-upper.text-size-small(for="cislo-poukazky")
+                  | Zadajte číslo preukazu
+              .input-addons
+                input.input(type="text", name="cislo-poukazky", id="cislo-poukazky", placeholder="ISIC, ITIC alebo EURO<26")
+                .input-addons__item.no-pad
+                  button.btn.btn--ghost Overiť
 
   .card__content
     .row
