@@ -71,7 +71,7 @@ mixin najpredavaniejsieZPonuky
         article.tabs
           each item, index in ['books', 'movies', 'games', 'coffee-tea']
             section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
-              ul.list.list--counter
+              ul.list.list--counter.no-pad
                 each item, i in [...books, ...books ]
                   if i < 10
                     li.mb-medium(class=i > 4 ? 'show-l' : '')

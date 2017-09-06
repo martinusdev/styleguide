@@ -418,6 +418,15 @@ $bar-spacing: (
   )
 );
 
+$bar--vertical-spacing: (
+  default: (
+    default: _get-space('h', 'small'),
+  ),
+  small: (
+    default: _get-space('h', 'tiny'),
+  )
+);
+
 $bar-break-height: 0;
 
 // ----------------------------
@@ -1191,6 +1200,9 @@ $card: (
       height: 4px,
       background-color: _color(bg, 600),
     )
+  ),
+  success: (
+    background-color: _color(success, 100),
   )
 );
 

@@ -36,14 +36,14 @@ mixin product-horizontal(props = {})
         .bar__item.bar__item--fill
           if truncnateTitle
             .text-ellipsis
-              a.text-semibold.link.link--product(class=textGrey ? 'text-color-grey-dark' : 'text-size-medium', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+              a.text-semibold.link.link--product.text-size-medium.block.mb-small(class=textGrey ? 'text-color-grey-dark' : '', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           else
-            a.text-semibold.text-size-medium.link.link--product(class=textGrey ? 'text-color-grey-dark' : 'text-size-medium', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
-          ul.list-inline.list-inline--delimited.text-color-grey.mb-small(class=textGrey ? 'text-size-medium' : 'text-size-small')
+            a.text-semibold.text-size-medium.link.link--product.text-size-medium.block.mb-small(class=textGrey ? 'text-color-grey-dark' : '', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+          ul.list-inline.list-inline--delimited.text-color-grey.mb-small.text-size-small.mb-small
             - var authors = author.split(', ')
             each author in authors
               li.no-mrg= author
-          .bar.bar--small.mb-small
+          .bar.bar--small.bar--vertical-small.mb-small
             if discount && !discountUnderBook
               .bar__item
                 .badge.badge--primary= discount
@@ -64,7 +64,7 @@ mixin product-horizontal(props = {})
             if breakBeforePrice
               .bar__break
 
-            .bar__item(class=breakBeforePrice ? '' : 'text-right bar__item--fill')
+            .bar__item
               .text-medium.text-semibold= price
 
             if showCartButton
