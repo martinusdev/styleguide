@@ -3,12 +3,14 @@ mixin section-header(props)
     const {
       header,
       more = 'Všetky',
-      moreHref = '#'
+      moreHref = '#',
+      center = false,
+      small = false,
     } = props;
 
-  .bar.mb-medium
+  .bar(class=small ? 'mb-small' : 'mb-medium')
     .bar__item.bar__item--fill.bar__item--shrinkable
-      h2= header
+      h2(class=center ? 'text-center' : '', class=small ? 'h5' : '')= header
     if more
       .bar__item
         a.link(href=moreHref).text-medium= more
