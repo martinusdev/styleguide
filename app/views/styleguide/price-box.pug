@@ -21,110 +21,220 @@ block append content
 
 
   +content-section(contents[0])
-    +content-sub-section('Price box No.1 - Nestíhame')
+    +content-sub-section('Price box No.1 - Default')
 
       +demo
         +demo-example
 
           .row
             .col--m-6.col--l-4
-              ul.tab-nav.tab-nav--block(data-tabs-container)
-                li.tab-nav__item(data-tabs-item)
-                  a.tab-nav__content.tab-nav__content--card(href='#web' role="tab")
-                    span.tab-nav__content-wrap Na webe
-                li.tab-nav__item(data-tabs-item)
-                  a.tab-nav__content.tab-nav__content--card(href='#shop' role="tab")
+              ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                li.tab-nav__item.flex-noshrink(data-tabs-item)
+                  a.tab-nav__content.tab-nav__content--card(href='#web_1_1' role="tab")
                     span.tab-nav__content-wrap
-                      | Odložiť v kníhkupectve
+                      | Na webe
                       br
-                      span.status.status--success.text-color-grey.text-regular BA, Obchodná
+                      span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
+                li.tab-nav__item(data-tabs-item)
+                  a.tab-nav__content.tab-nav__content--card(href='#shop_1_1' role="tab")
+                    span.tab-nav__content-wrap.text-nowrap
+                      span.inline-block.text-ellipsis Odložiť v kníhkupectve
+                      br
+                      span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
               .tabs
-                section#web.tab
+                section#web_1_1.tab
                   article.card.card--well.text-center.text-size-medium
-                    .card__content
-                      p.text-color-grey-dark Knihu máme na#{' '}
-                        em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
 
                     .card__content
-                      .h1.mb-small 12,98 €
-                      .badges.badges--inline.align-items-center.no-mrg
-                        .badge.badge--primary Ušetríte 3,50 €
+                      .h1.no-mrg 12,99 €
                       p.mb-small.text-color-grey-dark Bežná cena#{' '}
                         span.text-strikethrough 15,42 €
+                      .badges.badges--inline.align-items-center
+                        .badge.badge--primary Ušetríte 3,50 €
 
                     .card__content
-                      p.mb-medium.text-color-grey-dark
-                        +icon('star-half').icon--medium.text-space-right.text-vab
-                        em(data-tooltip, title="Toto je tooltip vysvetlivka")
-                          | Nestíhame do Vianoc
+                      p.mb-small.text-color-grey-dark Máme na#{' '}
+                        em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+                        | ,#{' '}posielame#{' '}
+                        em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                        | .
                       .btn-layout--vertical
-                        button.btn.btn--primary.btn--large.no-mrg-bottom
+                        button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
                           +icon('cart').icon--left.icon--medium
                           | Vložiť do košíka
 
                         +addTo()
 
-                section#shop.tab.text-size-medium
+                section#shop_1_1.tab.text-size-medium
                   article.card.card--well.text-center
-
-                    .card__content
-                      .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-                        .form-label
-                          label(for='shop-location') Predajňa#{' '}
-                            +icon('pin').icon--medium.text-color-grey
-                        select.js-select.select--inline.select--clean.select--small#shop-location
-                          option BA Obchodná
-                          option Martin
-                      p.text-color-grey-dark Skladom máme#{' '}
-                        em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
-                        | .
 
                     .card__content
                       .h1 13,90 €
 
                     .card__content
-                      p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
-                        em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-                        | .
+                      .form-control.form-control--select.align-items-center.no-mrg
+                        select.store-list-select.select--ghost.select--lowercase(data-select-store)
+
+                    .card__content
                       .btn-layout--vertical
-                        button.btn.btn--primary.btn--large.no-mrg-bottom Rezervovať
+                        button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať na 48 hod.
 
                         +addTo()
 
-      +content-sub-section('Price box No.2 - Stíhame')
+            .col--m-6.col--l-4
+              p.mb-small.text-color-grey-dark TODO placeholder do selectu "Vyberte knihkupectvo..."
+              ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                li.tab-nav__item.flex-noshrink(data-tabs-item)
+                  a.tab-nav__content.tab-nav__content--card(href='#web_1_2' role="tab")
+                    span.tab-nav__content-wrap
+                      | Na webe
+                      br
+                      span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
+                li.tab-nav__item(data-tabs-item)
+                  a.tab-nav__content.tab-nav__content--card(href='#shop_1_2' role="tab")
+                    span.tab-nav__content-wrap.text-nowrap
+                      span.inline-block.text-ellipsis Odložiť v kníhkupectve
+                      br
+                      span.status.status--success.text-color-grey.text-normal.text-ellipsis Vyberte kníhkupectvo
+
+              .tabs
+                section#web_1_2.tab
+                  article.card.card--well.text-center.text-size-medium
+
+                    .card__content
+                      .h1.no-mrg 12,99 €
+                      p.mb-small.text-color-grey-dark Bežná cena#{' '}
+                        span.text-strikethrough 15,42 €
+                      .badges.badges--inline.align-items-center
+                        .badge.badge--primary Ušetríte 3,50 €
+
+                    .card__content
+                      p.mb-small.text-color-grey-dark Máme na#{' '}
+                        em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+                        | ,#{' '}posielame#{' '}
+                        em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                        | .
+                      .btn-layout--vertical
+                        button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
+
+                        +addTo()
+
+                section#shop_1_2.tab.text-size-medium
+                  article.card.card--well.text-center
+
+                    .card__content
+                      .h1 13,90 €
+
+                    .card__content
+                      .form-control.form-control--select.align-items-center.no-mrg
+                        select.store-list-select.select--ghost.select--lowercase(data-select-store)
+
+                    .card__content
+                      .btn-layout--vertical
+                        button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať na 48 hod.
+
+                        +addTo()
+
+      +content-sub-section('Price box No.2 - Vianoce')
 
         +demo
           +demo-example
 
             .row
               .col--m-6.col--l-4
-                ul.tab-nav.tab-nav--block(data-tabs-container)
-                  li.tab-nav__item(data-tabs-item)
-                    a.tab-nav__content.tab-nav__content--card(href='#web_2' role="tab")
-                      span.tab-nav__content-wrap Na webe
-                  li.tab-nav__item(data-tabs-item)
-                    a.tab-nav__content.tab-nav__content--card(href='#shop_2' role="tab")
+                ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                  li.tab-nav__item.flex-noshrink(data-tabs-item)
+                    a.tab-nav__content.tab-nav__content--card(href='#web_2_1' role="tab")
                       span.tab-nav__content-wrap
-                        | Odložiť v kníhkupectve
+                        | Na webe
                         br
-                        span.status.status--success.text-color-grey.text-regular BA, Obchodná
+                        span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
+                  li.tab-nav__item(data-tabs-item)
+                    a.tab-nav__content.tab-nav__content--card(href='#shop_2_1' role="tab")
+                      span.tab-nav__content-wrap.text-nowrap
+                        span.inline-block.text-ellipsis Odložiť v kníhkupectve
+                        br
+                        span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
                 .tabs
-                  section#web_2.tab
+                  section#web_2_1.tab
                     article.card.card--well.text-center.text-size-medium
-                      .card__content
-                        p.text-color-grey-dark Knihu máme na#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
 
                       .card__content
-                        .h1.mb-small 12,99 €
-                        .badges.badges--inline.align-items-center.no-mrg
-                          .badge.badge--primary Ušetríte 3,50 €
+                        .h1.no-mrg 12,99 €
                         p.mb-small.text-color-grey-dark Bežná cena#{' '}
                           span.text-strikethrough 15,42 €
+                        .badges.badges--inline.align-items-center
+                          .badge.badge--primary Ušetríte 3,50 €
 
                       .card__content
+                        p.mb-small.text-color-grey-dark Máme na#{' '}
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+                          | ,#{' '}posielame#{' '}
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                          | .
+                        p.mb-medium.text-color-grey-dark
+                          +icon('star-half').icon--medium.text-space-right.text-vab
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka")
+                            | Nestíhame do Vianoc
+                        .btn-layout--vertical
+                          button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+                            +icon('cart').icon--left.icon--medium
+                            | Vložiť do košíka
+
+                          +addTo()
+
+                  section#shop_2_1.tab.text-size-medium
+                    article.card.card--well.text-center
+
+                      .card__content
+                        .h1 13,90 €
+
+                      .card__content
+                        .form-control.form-control--select.align-items-center.no-mrg
+                          select.store-list-select.select--ghost.select--lowercase(data-select-store)
+
+                      .card__content
+                        .btn-layout--vertical
+                          button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať na 48 hod.
+
+                          +addTo()
+
+              .col--m-6.col--l-4
+                ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                  li.tab-nav__item.flex-noshrink(data-tabs-item)
+                    a.tab-nav__content.tab-nav__content--card(href='#web_2_2' role="tab")
+                      span.tab-nav__content-wrap
+                        | Na webe
+                        br
+                        span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
+                  li.tab-nav__item(data-tabs-item)
+                    a.tab-nav__content.tab-nav__content--card(href='#shop_2_2' role="tab")
+                      span.tab-nav__content-wrap.text-nowrap
+                        span.inline-block.text-ellipsis Odložiť v kníhkupectve
+                        br
+                        span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
+
+                .tabs
+                  section#web_2_2.tab
+                    article.card.card--well.text-center.text-size-medium
+
+                      .card__content
+                        .h1.no-mrg 12,99 €
+                        p.mb-small.text-color-grey-dark Bežná cena#{' '}
+                          span.text-strikethrough 15,42 €
+                        .badges.badges--inline.align-items-center
+                          .badge.badge--primary Ušetríte 3,50 €
+
+                      .card__content
+                        p.mb-small.text-color-grey-dark Máme na#{' '}
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+                          | ,#{' '}posielame#{' '}
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                          | .
                         p.no-mrg.text-color-grey-dark
                           +icon('star-half').icon--medium.text-space-right.text-vab
                           em(data-tooltip, title="Toto je tooltip vysvetlivka")
@@ -132,36 +242,26 @@ block append content
                         p.mb-small.text-color-grey-dark
                           | (GLS, Balíkomat, osobný odber)
                         .btn-layout--vertical
-                          button.btn.btn--primary.btn--large.no-mrg-bottom
+                          button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
                             +icon('cart').icon--left.icon--medium
                             | Vložiť do košíka
 
                           +addTo()
 
-                  section#shop_2.tab.text-size-medium
+                  section#shop_2_2.tab.text-size-medium
                     article.card.card--well.text-center
-
-                      .card__content
-                        .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-                          .form-label
-                            label(for='shop-location') Predajňa#{' '}
-                              +icon('pin').icon--medium.text-color-grey
-                          select.js-select.select--inline.select--clean.select--small#shop-location
-                            option BA Obchodná
-                            option Martin
-                        p.text-color-grey-dark Skladom máme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
-                          | .
 
                       .card__content
                         .h1 13,90 €
 
                       .card__content
-                        p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-                          | .
+                        .form-control.form-control--select.align-items-center.no-mrg
+                          select.store-list-select.select--ghost.select--lowercase(data-select-store)
+
+                      .card__content
                         .btn-layout--vertical
-                          button.btn.btn--primary.btn--large.mb-small Rezervovať
+                          button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať na 48 hod.
+
                           +addTo()
 
       +content-sub-section('Price box No.3 - Pripravujeme')
@@ -201,16 +301,19 @@ block append content
 
             .row
               .col--m-6.col--l-4
-                ul.tab-nav.tab-nav--block(data-tabs-container)
-                  li.tab-nav__item(data-tabs-item)
+                ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                  li.tab-nav__item.flex-noshrink(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#web_3' role="tab")
-                      span.tab-nav__content-wrap Na webe
+                      span.tab-nav__content-wrap
+                        | Na webe
+                        br
+                        span.status.status--grey.text-color-grey.text-normal.text-ellipsis Vypredané
                   li.tab-nav__item(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#shop_3' role="tab")
-                      span.tab-nav__content-wrap
-                        | V kníhkupectvách
+                      span.tab-nav__content-wrap.text-nowrap
+                        span.inline-block.text-ellipsis V kníhkupectvách
                         br
-                        span.status.status--error.text-color-grey.text-regular Vypredané
+                        span.status.status--grey.text-color-grey.text-normal.text-ellipsis Vypredané
 
                 .tabs
                   section#web_3.tab
@@ -240,26 +343,11 @@ block append content
                     article.card.card--well.text-center
 
                       .card__content
-                        .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-                          .form-label
-                            label(for='shop-location') Predajňa#{' '}
-                              +icon('pin').icon--medium.text-color-grey
-                          select.js-select.select--inline.select--clean.select--small#shop-location
-                            option BA Obchodná
-                            option Martin
-                        p.text-color-grey-dark Skladom máme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
-                          | .
-
-                      .card__content
                         .h1 13,90 €
 
                       .card__content
-                        p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-                          | .
                         .btn-layout--vertical
-                          button.btn.btn--primary.btn--large.mb-small Rezervovať
+                          button.btn.btn--primary.btn--large.mb-small(disabled) Rezervovať na 48 hod.
                           +addTo()
 
       +content-sub-section('Price box No.5 - Vypredané - chystá sa dotlač')
@@ -269,16 +357,19 @@ block append content
 
             .row
               .col--m-6.col--l-4
-                ul.tab-nav.tab-nav--block(data-tabs-container)
-                  li.tab-nav__item(data-tabs-item)
+                ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                  li.tab-nav__item.flex-noshrink(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#web_4' role="tab")
-                      span.tab-nav__content-wrap Na webe
+                      span.tab-nav__content-wrap
+                        | Na webe
+                        br
+                        span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
                   li.tab-nav__item(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#shop_4' role="tab")
-                      span.tab-nav__content-wrap
-                        | V kníhkupectvách
+                      span.tab-nav__content-wrap.text-nowrap
+                        span.inline-block.text-ellipsis V kníhkupectvách
                         br
-                        span.status.status--error.text-color-grey.text-regular Vypredané
+                        span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
 
                 .tabs
                   section#web_4.tab
@@ -308,26 +399,11 @@ block append content
                     article.card.card--well.text-center
 
                       .card__content
-                        .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-                          .form-label
-                            label(for='shop-location') Predajňa#{' '}
-                              +icon('pin').icon--medium.text-color-grey
-                          select.js-select.select--inline.select--clean.select--small#shop-location
-                            option BA Obchodná
-                            option Martin
-                        p.text-color-grey-dark Skladom máme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
-                          | .
-
-                      .card__content
                         .h1 13,90 €
 
                       .card__content
-                        p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-                          | .
                         .btn-layout--vertical
-                          button.btn.btn--primary.btn--large.mb-small Rezervovať
+                          button.btn.btn--primary.btn--large.mb-small(disabled) Rezervovať na 48 hod.
                           +addTo()
 
       +content-sub-section('Price box No.6 - Predobjednávka')
@@ -338,8 +414,6 @@ block append content
             .row
               .col--m-6.col--l-4
                 article.card.card--well.text-center.text-size-medium
-                  .card__content
-                    p.text-color-grey-dark Predobjednávka
 
                   .card__content
                     .h1.mb-small 12,99 €
@@ -350,7 +424,9 @@ block append content
 
                   .card__content
                     p.mb-small.text-color-grey-dark
-                      | Titul vychádza 20.8.2017(o 2 dni)
+                      | Predobjednávka,
+                      br
+                      | titul vychádza 20.8.2017 (o 2 dni)
                     .btn-layout--vertical
                       button.btn.btn--primary.btn--large.no-mrg-bottom
                         +icon('cart').icon--left.icon--medium
@@ -358,29 +434,30 @@ block append content
 
                       +addTo()
 
-      +content-sub-section('Price box No.7 - Vypredané - odložiť')
+      +content-sub-section('Price box No.7 - Na objednávku')
 
         +demo
           +demo-example
 
             .row
               .col--m-6.col--l-4
-                ul.tab-nav.tab-nav--block(data-tabs-container)
-                  li.tab-nav__item(data-tabs-item)
+                ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                  li.tab-nav__item.flex-noshrink(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#web_5' role="tab")
-                      span.tab-nav__content-wrap Na webe
+                      span.tab-nav__content-wrap
+                        | Na webe
+                        br
+                        span.status.status--orange.text-color-grey.text-normal.text-ellipsis Viac ako 3 týždne
                   li.tab-nav__item(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#shop_5' role="tab")
-                      span.tab-nav__content-wrap
-                        | Odložiť ihneď na predajni
+                      span.tab-nav__content-wrap.text-nowrap
+                        span.inline-block.text-ellipsis V kníhkupectvách
                         br
-                        span.status.status--error.text-color-grey.text-regular Vypredané
+                        span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
 
                 .tabs
                   section#web_5.tab
                     article.card.card--well.text-center.text-size-medium
-                      .card__content
-                        p.text-color-grey-dark Nemáme na sklade
 
                       .card__content
                         .h1.mb-small 12,99 €
@@ -391,7 +468,11 @@ block append content
 
                       .card__content
                         p.mb-small.text-color-grey-dark
-                          | Posielame o viac ako 3 týždne
+                          | Nie je na&nbsp;
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+                          |,
+                          br
+                          | posielame o viac ako 3 týždne
                         .btn-layout--vertical
                           button.btn.btn--primary.btn--large.no-mrg-bottom
                             +icon('cart').icon--left.icon--medium
@@ -403,51 +484,37 @@ block append content
                     article.card.card--well.text-center
 
                       .card__content
-                        .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-                          .form-label
-                            label(for='shop-location') Predajňa#{' '}
-                              +icon('pin').icon--medium.text-color-grey
-                          select.js-select.select--inline.select--clean.select--small#shop-location
-                            option BA Obchodná
-                            option Martin
-                        p.text-color-grey-dark Skladom máme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
-                          | .
-
-                      .card__content
                         .h1 13,90 €
 
                       .card__content
-                        p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-                          | .
                         .btn-layout--vertical
-                          button.btn.btn--primary.btn--large.mb-small Rezervovať
+                          button.btn.btn--primary.btn--large.mb-small(disabled) Rezervovať na 48 hod.
                           +addTo()
 
-      +content-sub-section('Price box No.4 - Odložiť')
+      +content-sub-section('Price box No.8 - Už máte')
 
         +demo
           +demo-example
 
             .row
               .col--m-6.col--l-4
-                ul.tab-nav.tab-nav--block(data-tabs-container)
-                  li.tab-nav__item(data-tabs-item)
+                ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+                  li.tab-nav__item.flex-noshrink(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#web_6' role="tab")
-                      span.tab-nav__content-wrap Na webe
+                      span.tab-nav__content-wrap
+                        | Na webe
+                        br
+                        span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
                   li.tab-nav__item(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#shop_6' role="tab")
-                      span.tab-nav__content-wrap
-                        | Odložiť ihneď na predajni
+                      span.tab-nav__content-wrap.text-nowrap
+                        span.inline-block.text-ellipsis Odložiť v kníhkupectve
                         br
-                        span.status.status--success.text-color-grey.text-regular BA, Obchodná
+                        span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
                 .tabs
                   section#web_6.tab
                     article.card.card--well.text-center.text-size-medium
-                      .card__content
-                        p.text-color-grey-dark Knihu máme na sklade
 
                       .card__content
                         .h1.mb-small 12,99 €
@@ -457,8 +524,11 @@ block append content
                           span.text-strikethrough 15,42 €
 
                       .card__content
-                        p.no-mrg.text-color-grey-dark
-                          | Posielame ihneď
+                        p.mb-small.text-color-grey-dark Máme na#{' '}
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+                          | ,#{' '}posielame#{' '}
+                          em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                          | .
                         p.mb-small.text-color-grey-dark
                           em(data-tooltip, title="Toto je tooltip vysvetlivka")
                             | Túto knihu ste už kúpili
@@ -473,26 +543,16 @@ block append content
                     article.card.card--well.text-center
 
                       .card__content
-                        .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-                          .form-label
-                            label(for='shop-location') Predajňa#{' '}
-                              +icon('pin').icon--medium.text-color-grey
-                          select.js-select.select--inline.select--clean.select--small#shop-location
-                            option BA Obchodná
-                            option Martin
-                        p.text-color-grey-dark Skladom máme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 1ks
-                          | .
-
-                      .card__content
                         .h1 13,90 €
 
                       .card__content
-                        p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
-                          em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-                          | .
+                        .form-control.form-control--select.align-items-center.no-mrg
+                          select.store-list-select.select--ghost.select--lowercase(data-select-store)
+
+                      .card__content
                         .btn-layout--vertical
-                          button.btn.btn--primary.btn--large.mb-small Rezervovať
+                          button.btn.btn--primary.btn--large.mb-small(data-toggle="#book-reservation") Rezervovať na 48 hod.
+
                           +addTo()
 
       +content-sub-section('Price box No.9 - Na stiahnutie')
@@ -608,53 +668,51 @@ block append content
                           iconClass: 'text-color-theme-200'
                         })
 
-      +content-sub-section('Price box No.13 - Choose store')
-
-        +demo
-            +demo-example
-              .row
-                .col--m-6.col--l-4
-                  ul.tab-nav.tab-nav--block(data-tabs-container)
-                    li.tab-nav__item(data-tabs-item)
-                      a.tab-nav__content.tab-nav__content--card(href='#web' role="tab")
-                        span.tab-nav__content-wrap Na webe
-                    li.tab-nav__item.is-active(data-tabs-item)
-                      a.tab-nav__content.tab-nav__content--card(href='#shop' role="tab")
-                        span.tab-nav__content-wrap
-                          | Odložiť v kníhkupectve
-                          br
-                          span.status.text-color-grey.text-regular BA, ZA, KE + 5 ďalších
-
-                  .tabs
-
-                    section#shop.tab.text-size-medium
-                      article.card.card--well.text-center
-
-                        .card__content
-                          .form-control.form-control--inline.form-control--select.align-items-center.no-mrg
-                            .form-label
-                              label(for='shop-location') Vyberte predajňu#{' '}
-                                +icon('pin').icon--medium.text-color-grey
-                            select.js-select.select--inline.select--clean.select--small#shop-location
-                              option(disabled selected value="choice-hidden" data-custom-attr) #{' '}
-                              option BA Obchodná
-                              option Martin
-
-                        .card__content
-                          .h1 13,90 €
-
-                        .card__content
-                          p.mb-medium.text-color-grey-dark Knihu vám podržíme#{' '}
-                            em(data-tooltip, title="Toto je tooltip vysvetlivka") 48h
-                            | .
-                          .btn-layout--vertical
-                            button.btn.btn--primary.btn--large.no-mrg-bottom Rezervovať
-
-                            +addTo()
-
   block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {
+
+          var storeListSelect = new window.myApp.Select('.store-list-select', {
+              choices: [
+                  {
+                      value: 'ba-obchodna',
+                      label: 'Bratislava, Obchodná',
+                      id: 1,
+                      customProperties: {
+                          status: 'success',
+                          availability: '5+ ks',
+                      }
+                  },
+                  {
+                      value: 'ba-cubicon',
+                      label: 'Bratislava, Cubicon',
+                      id: 2,
+                      customProperties: {
+                          status: 'success',
+                          availability: '5+ ks',
+                      }
+                  },
+                  {
+                      value: 'ke-galeria',
+                      label: 'Košice, OC Galéria',
+                      id: 3,
+                      customProperties: {
+                          status: 'orange',
+                          availability: '3 ks',
+                      }
+                  },
+                  {
+                      value: 'nr-centro',
+                      label: 'Nitra, OC Centro',
+                      id: 4,
+                      customProperties: {
+                          status: 'grey',
+                          availability: 'vypredané',
+                      }
+                  },
+              ]
+          });
+
         var productPreviewProductSelect = new window.myApp.Select('#product-variant-select', {
           choices: [
             {
