@@ -1,0 +1,55 @@
+.card.mb-small#saved-address
+  .card__content
+    h2.no-mrg Kam vám zásielku doručíme?
+
+  .card__content
+    .row
+      .col--s-11.col--m-6.ofst--center
+        .form-control.form-control--select
+          .form-label.form-label--required
+            label.text-transform-upper
+              | Použiť adresu
+          select.js-select
+              option(selected disabled placeholder) Moyzesova 55
+              option Moyzesova 55
+        p
+          | Katarína Bohmová
+          br
+          |Moyzesova 55
+          br
+          | 851 02 Bratislava
+        .form-control.form-control--checkbox
+          .checkbox
+            input.radiocheck__input(type='checkbox', id='checkout_billing_address', name='checkout_billing_address', data-radiocheck-toggle="#billing-address-saved")
+            label.radiocheck__control(for='checkout_billing_address')
+            label.radiocheck__label(for='checkout_billing_address')
+              | Doručovacia adresa je rovnaká ako fakturačná
+  
+  #billing-address-saved(data-toggle-class="hide")
+    .card__content
+      h2.no-mrg Fakturačná adresa
+
+    .card__content
+      .row
+        .col--s-11.col--m-6.ofst--center
+          .form-control.form-control--select
+            .form-label.form-label--required
+              label.text-transform-upper
+                | Použiť adresu
+            select.js-select
+                option(selected disabled placeholder) Moyzesova 55
+                option Moyzesova 55
+          p
+            | Lighting Beetle s.r.o.
+            br
+            | Bydučínska 51
+            br
+            | 12585 Bratislava
+            br
+            | IČO: 546556434
+            br
+            | DIČ: SK4545456557484
+
+          .btn-layout--vertical.no-mrg
+            button.btn.btn--primary.is-disabled(type="submit")
+              | Poslať sem
