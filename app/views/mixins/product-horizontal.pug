@@ -15,7 +15,7 @@ mixin product-horizontal(props = {})
       trash,
       truncnateTitle,
       showCartButton,
-      textGrey,
+      titleClass = 'text-size-medium',
       breakBeforePrice,
     } = props;
 
@@ -36,9 +36,9 @@ mixin product-horizontal(props = {})
         .bar__item.bar__item--fill
           if truncnateTitle
             .text-ellipsis
-              a.text-semibold.link.link--product.text-size-medium.block.mb-small(class=textGrey ? 'text-color-grey-dark' : '', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+              a.text-semibold.link.link--product.block.mb-small(class=titleClass, href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           else
-            a.text-semibold.text-size-medium.link.link--product.text-size-medium.block.mb-small(class=textGrey ? 'text-color-grey-dark' : '', href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+            a.text-semibold.link.link--product.block.mb-small(class=titleClass, href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           ul.list-inline.list-inline--delimited.text-color-grey.mb-small.text-size-small.mb-small
             - var authors = author.split(', ')
             each author in authors

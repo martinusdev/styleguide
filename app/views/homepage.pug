@@ -75,7 +75,8 @@ mixin najpredavaniejsieZPonuky
                 each item, i in [...books, ...books ]
                   if i < 10
                     li.mb-medium(class=i > 4 ? 'show-l' : '')
-                      +product-horizontal(item).no-mrg
+                      //- +product-horizontal(item).no-mrg
+                      +product-horizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
 
       .card__content
         .btn-layout.btn-layout--vertical
