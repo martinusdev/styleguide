@@ -17,6 +17,7 @@ mixin product-horizontal(props = {})
       showCartButton,
       titleClass = 'text-size-medium',
       breakBeforePrice,
+      edit = false,
     } = props;
 
   article.product.product--horizontal&attributes(attributes)
@@ -58,8 +59,9 @@ mixin product-horizontal(props = {})
 
             if edit
               .bar__item
-                  a.btn.btn--small.btn--primary.btn--equal(href="#")
-                    +icon('edit')
+                  button.btn.btn--clean.no-mrg
+                    +icon('edit').icon--medium.icon--left
+                    | Upraviť
 
             if breakBeforePrice
               .bar__break
