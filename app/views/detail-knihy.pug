@@ -121,7 +121,7 @@ block content
                         .text-semibold.text-color-black 12,00 €
                         .text-color-grey -2%
 
-              h1.product-detail__title Základy rybolovu pro kluky a holky
+              h1.product-detail__title.mb-small Základy rybolovu pro kluky a holky
               h3.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
               ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
                   li
@@ -434,9 +434,21 @@ block content
                             input.radiocheck__input(type="checkbox", id="review-spoiler")
                             label.radiocheck__control(for="review-spoiler")
                             label.radiocheck__label(for="review-spoiler") Môj príspevok prezrádza momenty z deja.
-                        p.text-medium.mb-large Recenzia bude uverejnená pod menom#{' '}
-                          span.text-semibold Bartolomej.#{' '}
-                          a.link(href="#") Uverejniť anonymne.
+                        .mb-large
+                          p.text-medium Recenzia bude uverejnená pod menom#{' '}
+                            span.text-semibold Bartolomej.#{' '}
+                            a.link(href="javascript:void(0)", data-toggle="self, #anonymous", data-toggle-class="hide") Uverejniť anonymne.
+                          .row#anonymous.hide(data-toggle-class="hide")
+                            .col--m-6
+                              .form-control.form-control--input
+                                .form-label
+                                  label.text-transform-upper.text-small.text-color-grey.form-label--required Meno
+                                input.input(type="text")
+                            .col--m-6
+                              .form-control.form-control--input
+                                .form-label
+                                  label.text-transform-upper.text-small.text-color-grey.form-label--required E-mail
+                                input.input(type="email")
                         .text-center
                           button.btn Odoslať recenziu
                           .text-small Odoslaním príspevku súhlasíte s našimi#{' '}

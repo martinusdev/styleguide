@@ -12,6 +12,8 @@
         label.radiocheck__control(for='payment_card')
         label.radiocheck__label.text-semibold(for='payment_card')
           | Kartou (vopred)
+          img.text-space-left(src="/images/content/banks/visa.png", alt="VISA")
+          img.text-space-left(src="/images/content/banks/mastercard.png", alt="mastercard")
 
       .form-control.form-control--checkbox.hide#payment_card_options
         .checkbox
@@ -28,6 +30,12 @@
         label.radiocheck__label(for='payment_ib')
           span.block.text-semibold
             | Internet bankingom mojej banky
+            img.text-space-left(src="/images/content/banks/tatra-banka.png", alt="tatra bank")
+            img.text-space-left(src="/images/content/banks/slsp.png", alt="SLSP")
+            img.text-space-left(src="/images/content/banks/vub.png", alt="VUB")
+            img.text-space-left(src="/images/content/banks/unicredit.png", alt="unicredit")
+            img.text-space-left(src="/images/content/banks/postova-banka.png", alt="postova banka")
+            img.text-space-left(src="/images/content/banks/sberbank.png", alt="sberbank")
           span.text-size-medium
             | Tatra Banka, SLSP, VÚB, UniCredit, ČSOB, Poštová banka, Sberbank
 
@@ -91,6 +99,7 @@
         label.radiocheck__control(for='payment_paypal')
         label.radiocheck__label.text-semibold(for='payment_paypal')
           | PayPal
+          img.text-space-left(src="/images/content/banks/paypal.png", alt="paypal")
 
     .form-control.form-control--radio
       .radio
@@ -98,6 +107,7 @@
         label.radiocheck__control(for='payment_viamo')
         label.radiocheck__label.text-semibold(for='payment_viamo')
           | Viamo
+          img.text-space-left(src="/images/content/banks/viamo.png", alt="viamo")
 
     .form-control.form-control--radio
       .radio
@@ -105,6 +115,7 @@
         label.radiocheck__control(for='payment_mcm')
         label.radiocheck__label.text-semibold(for='payment_mcm')
           | MasterCard Mobile
+          img.text-space-left(src="/images/content/banks/mastercard.png", alt="mastercard")
 
     .form-control.form-control--radio
       .radio.align-items-top
@@ -119,8 +130,28 @@
   .card__content.no-pad-top.mb-medium
     .row
       .col--s-12.col--m-11.ofst--center
-        a.link.text-size-medium
-          | Využiť darčekovú poukážku alebo ISIC, ITIC, EURO<26 zľavu
+        .mb-medium
+          a.link.text-size-medium(data-toggle="#gift")
+            | Využiť darčekovú poukážku alebo ISIC, ITIC, EURO<26 zľavu
+        #gift.row.hide(data-toggle-class="hide")
+          .col--m-6
+            .form-control.form-control--input
+              .form-label.form-label--required
+                label.text-transform-upper.text-size-small(for="cislo-poukazky")
+                  | Zadajte číslo poukážky
+              .input-addons
+                input.input(type="text", name="cislo-poukazky", id="cislo-poukazky", placeholder="V tvare XYZ321")
+                .input-addons__item.no-pad
+                  button.btn.btn--ghost Overiť
+          .col--m-6
+            .form-control.form-control--input
+              .form-label.form-label--required
+                label.text-transform-upper.text-size-small(for="cislo-poukazky")
+                  | Zadajte číslo preukazu
+              .input-addons
+                input.input(type="text", name="cislo-poukazky", id="cislo-poukazky", placeholder="ISIC, ITIC alebo EURO<26")
+                .input-addons__item.no-pad
+                  button.btn.btn--ghost Overiť
 
   .card__content
     .row
