@@ -7,22 +7,25 @@ block content
 
   main
 
-    .section.section--small.section--secondary
+    section.breadcrumbs
       .wrapper-main
-        .bar.breadcrumb
-          .bar__item
+        .bar.no-mrg
+          .bar__item.no-mrg.bar__item--shrinkable
+            a.breadcrumb.text-medium.link(href="#")
+              +icon('martinus', 'icon--small').text-color-grey
+            +icon('chevron-right', 'icon--small').text-color-grey
             - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
             each breadcrumb, i in breadcrumbs
-              a.text-medium(href="#")
+              a.breadcrumb.text-medium.link(href="#")
                 span !{breadcrumb}
               if (i < breadcrumbs.length - 1)
-                +icon('chevron-right', 'icon--medium').text-color-grey
-        .btn-layout.btn-layout--vertical.mb-medium.hide-l
+                +icon('chevron-right', 'icon--small').text-color-grey
+        .btn-layout.btn-layout--vertical.mb-small.hide-l
           .btn-dropdown.no-mrg
             button.btn.btn--ghost.btn--icon-right.text-left(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
+            data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+            data-toggle-expand,
+            aria-haspopup="true"
             )
               | Kníhkupectvá
               +icon('chevron-down', 'icon-dropdown').icon--medium

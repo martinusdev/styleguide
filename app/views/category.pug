@@ -6,9 +6,9 @@ block opts
 
 block content
   main.category(data-sticky-container)
-    section.section--secondary.section.section--toolbar.cat-no-border-bottom
+    +breadcrumbs({ breadcrumbs: ['Knihy'] })
+    section.section--secondary.section.section--toolbar.cat-no-border-bottom.no-pad-top
       .wrapper-main
-        +breadcrumbs({ breadcrumbs: ['Knihy'] })
         .bar.no-mrg-bottom
           .bar__item
             h1 Deti a mládež
