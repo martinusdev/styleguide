@@ -34,10 +34,10 @@ block content
       .wrapper-main
         .row
           .col--l-3.show-l(data-sticky-container)
-            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default)
-              a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
-                +icon('arrow-left', 'icon--medium')
-                span Späť na martinus centrum
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+              +icon('arrow-left', 'icon--medium')
+              span Späť na martinus centrum
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default+30)
               h2.h4 Kontakty
               ul.list.list--expanded.no-pad(role="navigation")
                 each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
