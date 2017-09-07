@@ -105,6 +105,18 @@
       }
     }
   }
+
+  @each $size, $props in $bar--vertical-spacing {
+    &#{_get-variant-name($size, '.bar--vertical-')} {
+      .bar__item {
+        @each $breakpoint, $space in _get-breakpoint-map($props) {
+          @include breakpoint($breakpoint) {
+            margin-top: $space;
+          }
+        }
+      }
+    }
+  }
 }
 
 @include bar-classes;

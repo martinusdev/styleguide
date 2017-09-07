@@ -1,13 +1,16 @@
-ul.tab-nav.tab-nav--block(data-tabs-container)
+ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
   li.tab-nav__item.flex-noshrink(data-tabs-item)
     a.tab-nav__content.tab-nav__content--card(href='#web' role="tab")
-      span.tab-nav__content-wrap.text-nowrap Na webe
+      span.tab-nav__content-wrap
+        | Na webe
+        br
+        span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
   li.tab-nav__item(data-tabs-item)
     a.tab-nav__content.tab-nav__content--card(href='#shop' role="tab")
-      span.tab-nav__content-wrap
-        | Odložiť v kníhkupectve
+      span.tab-nav__content-wrap.text-nowrap
+        span.inline-block.text-ellipsis Odložiť v kníhkupectve
         br
-        span.status.status--success.text-color-grey.text-regular.text-ellipsis BA, Obchodná, KE, NR, PP, ZA
+        span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
 .tabs
   section#web.tab

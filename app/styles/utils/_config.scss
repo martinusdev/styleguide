@@ -206,9 +206,6 @@ $typography-overrides: (
       text-transform: uppercase,
       letter-spacing: 1px,
     ),
-    'h1 + h3, .h1 + h3, h1 + .h3, .h1 + .h3': (
-      margin-top: _get-space('v', 'small') - _get-space('v', 'large'),
-    ),
   ),
   s: (
     'h1, .h1' : (
@@ -242,7 +239,7 @@ $links: (
       text-decoration: none,
       color: _color(link),
       font-weight: $font-weight-semibold,
-      transition: #{color $ease-400, border $ease-400},
+      transition: #{color $ease-100, border $ease-100},
     ),
     focus: (
       color: _color(link, 400),
@@ -270,10 +267,10 @@ $links: (
   ),
   product: (
     default: (
-      color: $color-black,
+      color: _color('primary', 600),
     ),
     focus: (
-      color: _color('primary', 500),
+      color: _color('primary', 400),
       text-decoration: none,
     )
   )
@@ -414,6 +411,15 @@ $bar-spacing: (
     default: _get-space('h', 'small'),
   ),
   tiny: (
+    default: _get-space('h', 'tiny'),
+  )
+);
+
+$bar--vertical-spacing: (
+  default: (
+    default: _get-space('h', 'small'),
+  ),
+  small: (
     default: _get-space('h', 'tiny'),
   )
 );
@@ -1191,6 +1197,9 @@ $card: (
       height: 4px,
       background-color: _color(bg, 600),
     )
+  ),
+  success: (
+    background-color: _color(success, 100),
   )
 );
 
