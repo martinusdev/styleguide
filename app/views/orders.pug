@@ -27,22 +27,23 @@ block content
           .col--l-3.col--12
             .form-control.form-control--input
               input.input.filter__search.no-mrg-top(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
-            - for (i=0; i<5; i++)
-              a.box.box--hover.block(href="#", class=i === 0 ? "bg-secondary" : "border-bottom-grey")
-                .bar.align-items-top
-                  .bar__item.bar__item--fill
-                    .text-medium.text-semibold Objednávka č. 123
-                    .text-small.text-color-grey 12.4.2017
-                    .text-small
-                        .text-semibold 10,00 €
-                        if i<1
-                          +icon('time', 'icon--small').text-color-grey
-                        else
-                          +icon('check-circle', 'icon--small').text-color-success
-                        | #{i<1 ? ' Prijatá' : ' Vybavená'}
-                        span.text-color-grey &nbsp;dnes
-                  .bar__item
-                    img(src="images/content/books/sample-3.jpg").thumbnail.thumbnail--book.thumbnail--medium
+            .overflow-auto(style="max-height: calc(100vh - 307px)")
+              - for (i=0; i<20; i++)
+                a.box.box--hover.block(href="#", class=i === 0 ? "bg-secondary" : "border-bottom-grey")
+                  .bar.align-items-top
+                    .bar__item.bar__item--fill
+                      .text-medium.text-semibold Objednávka č. 123
+                      .text-small.text-color-grey 12.4.2017
+                      .text-small
+                          .text-semibold 10,00 €
+                          if i<1
+                            +icon('time', 'icon--small').text-color-grey
+                          else
+                            +icon('check-circle', 'icon--small').text-color-success
+                          | #{i<1 ? ' Prijatá' : ' Vybavená'}
+                          span.text-color-grey &nbsp;dnes
+                    .bar__item
+                      img(src="images/content/books/sample-3.jpg").thumbnail.thumbnail--book.thumbnail--medium
 
 
           .col--l-9.col--12
