@@ -7,9 +7,11 @@ block content
 
   main
 
-    .section.section--small.section--secondary
+    section.section--breadcrumbs
       .wrapper-main
-        +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
 
     .section
       .wrapper-main

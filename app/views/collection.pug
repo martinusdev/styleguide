@@ -12,7 +12,11 @@ block content
     };
 
   main.collection
-    +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
     section.section
       .wrapper-main
