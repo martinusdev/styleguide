@@ -24,10 +24,10 @@ block content
     section.section.section
       .wrapper-main
         .row
-          .col--l-3.col--12
+          .col--l-3.col--12.show-l
             .form-control.form-control--input
               input.input.filter__search.no-mrg-top(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
-            .order-list.overflow-auto
+            .overflow-auto(style="max-height: calc(100vh - 307px)")
               - for (i=0; i<20; i++)
                 a.box.box--hover.block(href="order-detail.html", class=i === 0 ? "bg-secondary" : "border-bottom-grey")
                   .bar.align-items-top
@@ -46,7 +46,7 @@ block content
                       img(src="images/content/books/sample-3.jpg").thumbnail.thumbnail--book.thumbnail--medium
 
 
-          .col--l-9.col--12.show-l
+          .col--l-9.col--12
             .mb-medium.hide-l
             .row.mb-large
               .col--shrink.no-pad-right.hide-l
