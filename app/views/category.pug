@@ -5,8 +5,12 @@ block opts
     - var filterStickyOffset = header.size.default + 71
 
 block content
-  main.category(data-sticky-container)
-    +breadcrumbs({ breadcrumbs: ['Knihy'] })
+  section.section--breadcrumbs
+    .wrapper-main
+      .bar.no-mrg-bottom
+        .bar__item.bar__item--shrinkable
+          +breadcrumbs({ breadcrumbs: ['Knihy'] })
+
     section.section--secondary.section.section--toolbar.cat-no-border-bottom.no-pad-top
       .wrapper-main
         .bar.no-mrg-bottom

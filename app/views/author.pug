@@ -6,7 +6,12 @@ block opts
 
 block content
   main
-    +breadcrumbs({ breadcrumbs: ['Autor'] })
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Autor'] })
+
     section.section.mb-large
       .wrapper-main
         .row

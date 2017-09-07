@@ -6,7 +6,11 @@ block opts
 block content
 
   main
-    +breadcrumbs({ breadcrumbs: ['Martinus Help Page',''] })
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Martinus Help Page',''] })
 
     section.section.section--small.section--secondary
       .wrapper-main
