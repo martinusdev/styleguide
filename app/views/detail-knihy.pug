@@ -387,6 +387,28 @@ block content
                                 +icon('chevron-right', 'text-vamd')
                               li
                                 a.link(href="#") Špeciálna kategória
+              section.mb-large
+                h2 Čo si myslíme my?
+                .card.card--info.mb-large
+                  .card__content
+                    .bar
+                      .bar__item
+                        img.img.img--circle(src="http://placehold.it/100x100", alt="user photo")
+                      .bar__item.bar__item--fill
+                        .text-semibold Adela Ostrolúcka
+                        .text-size-medium Event Manager
+                      .bar__break.hide-m
+                      .bar__item
+                        +icon('smile', 'icon--medium').text-color-success
+                      .bar__item
+                        .rating-star
+                          each star, starIndex in Array(5)
+                            +icon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
+                      .bar__item
+                        .text-size-medium 2.3.2017
+                    p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                    a.link.text-size-medium(hre="#") Viac hodnotení od ľudí z Martinusu
+                      +icon('arrow-right')
 
               section.mb-large#recenzie
                 h2 Recenzie
