@@ -4,11 +4,12 @@ mixin breadcrumbs(props = {})
       breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'],
     } = props;
 
-  a.breadcrumbs__item.text-medium.link(href="#")
-    +icon('martinus', 'icon--small').text-color-grey
-  +icon('chevron-right', 'icon--small').text-color-grey
-  each breadcrumb, i in breadcrumbs
+  .breadcrumbs
     a.breadcrumbs__item.text-medium.link(href="#")
-      span !{breadcrumb}
-    if (i < breadcrumbs.length - 1)
-      +icon('chevron-right', 'icon--small').text-color-grey
+      +icon('martinus', 'icon--small').text-color-grey
+    +icon('chevron-right', 'icon--small').text-color-grey
+    each breadcrumb, i in breadcrumbs
+      a.breadcrumbs__item.text-medium.link(href="#")
+        span !{breadcrumb}
+      if (i < breadcrumbs.length - 1)
+        +icon('chevron-right', 'icon--small').text-color-grey
