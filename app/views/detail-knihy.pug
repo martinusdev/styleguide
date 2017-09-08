@@ -12,12 +12,12 @@ block content
             .bar__item.bar__item--fill
               .btn-layout.btn-layout--vertical
                 .btn-dropdown.no-mrg
-                  button.btn.btn--clean.btn--icon-right.text-left(
+                  button.btn.btn--clean.btn--lowercase.btn--icon-right.text-left(
                     data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                     data-toggle-expand,
                     aria-haspopup="true"
                   )
-                    | Slovenčina, pevná väzba#{' '}
+                    span.text-size-medium Slovenčina, pevná väzba#{' '}
                     span.text-color-grey.text-nowrap 12,99 €
                     +icon('chevron-down', 'icon-dropdown').icon--medium
                   .dropdown(data-dropdown, data-toggle-expand)
@@ -54,9 +54,14 @@ block content
                           .text-semibold.text-color-black 12,00 €
                           .text-color-grey -2%
 
+      section.section--breadcrumbs
+        .wrapper-main
+          .bar.no-mrg-bottom
+            .bar__item.bar__item--shrinkable
+              +breadcrumbs({ breadcrumbs: ['Knihy', 'Deti a mládež', 'Encyklopédie, náučné knihy', 'Ostatné', 'Základy rybolovu pro kluky a holky'] })
+
       section.section
         .wrapper-main
-          +breadcrumbs({ breadcrumbs: ['Knihy', 'Deti a mládež', 'Encyklopédie, náučné knihy', 'Ostatné', 'Základy rybolovu pro kluky a holky'] })
           .row.product-detail
             .col--m-4.col--l-3
               .product-detail__preview
