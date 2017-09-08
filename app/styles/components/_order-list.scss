@@ -1,5 +1,13 @@
 .order-list {
+  position: relative;
+  height: 100%;
+}
+
+.order-list__container {
   @include breakpoint('l') {
-    max-height: calc(100vh - 307px);
+    position: absolute;
+    top: _get-rem(60px);
+    bottom: 0;
+    width: 100%;
   }
 }
