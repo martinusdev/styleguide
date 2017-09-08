@@ -30,20 +30,21 @@ block content
     .section
       .wrapper-main
         .row
-          .col--l-3.show-l
+          .col--l-3.show-l(data-sticky-container)
             a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
               +icon('arrow-left', 'icon--medium')
               span Späť na martinus centrum
-            h2.h4 Kontakty
-            ul.list.list--expanded.no-pad(role="navigation")
-              each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
-                li.mb-medium
-                  a.text-medium(href="#", data-scroll) !{link}
-                  if (i===1)
-                    ul.list.list--expanded
-                      each link, i in ['Bratislava', 'Martin', 'Žilina', 'Nitra', 'Košice', 'Považská Bystrica', 'Poprad', 'Lučenec']
-                        li.mb-medium(class=i===0 ? 'is-active' : '')
-                          a.text-medium(href="#", data-scroll) !{link}
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default+30)
+              h2.h4 Kontakty
+              ul.list.list--expanded.no-pad(role="navigation")
+                each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
+                  li.mb-medium
+                    a.text-medium(href="#", data-scroll) !{link}
+                    if (i===1)
+                      ul.list.list--expanded
+                        each link, i in ['Bratislava', 'Martin', 'Žilina', 'Nitra', 'Košice', 'Považská Bystrica', 'Poprad', 'Lučenec']
+                          li.mb-medium(class=i===0 ? 'is-active' : '')
+                            a.text-medium(href="#", data-scroll) !{link}
 
           article.col--l-9.mb-large
             h1.show-l Kníhkupectvá Martinus v Bratislave
@@ -56,7 +57,7 @@ block content
               .store.mb-medium
                 .row.mb-medium
                   .col--m-8
-                    .store__photo-box.text-color-white.flex.flex-column.align-items-right(style="background-image: url(/images/content/stores/store-ba.jpg)")
+                    .store__photo-box.text-color-white.flex.flex-column.align-items-right(style="background-image: url(images/content/stores/store-ba.jpg)")
                       h2.mb-small Martinus na Obchodnej
                       .bar.no-mrg-bottom
                         .bar__item
