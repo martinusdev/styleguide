@@ -24,7 +24,7 @@ mixin booksCarouselRecommended()
       },
     };
     swiperConfig = JSON.stringify(swiperConfig);
-  .carousel.carousel--fade-outside&attributes(attributes)
+  .carousel&attributes(attributes)
     .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
