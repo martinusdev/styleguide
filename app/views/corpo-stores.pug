@@ -53,7 +53,7 @@ block content
                 each link, i in ['Bratislava', 'Martin', 'Žilina', 'Nitra', 'Košice', 'Považská Bystrica', 'Poprad', 'Lučenec']
                   li.mb-medium(class=i===0 ? 'is-active' : '')
                     a.text-medium(href="#", data-scroll) !{link}
-            each i in Array(3)
+            each item, i in Array(3)
               .store.mb-medium
                 .row.mb-medium
                   .col--m-8
@@ -67,7 +67,7 @@ block content
                           a(href="#") Virtuálna prehliadka
                             +icon('arrow-right')
                   .col--m-4
-                    | MAPA
+                    div.map(id=`map-${i}`)
                 .row.border-bottom-grey.mb-small
                   .col--m-4
                     p Obchodná 26
@@ -100,3 +100,19 @@ block content
                       button.btn.btn--clean(data-toggle="#product-preview")
                         +icon('foursquare').icon--left.icon--medium
                         | Foursquare
+
+block append scripts
+  script.
+    function initMap() {
+      for(var i=0; i < 3; i++) {
+        var map = new google.maps.Map(document.getElementById('map-' + i), {
+          zoom: 15,
+          center: { lat: 48.147303, lng: 17.1099111 }
+        });
+
+        var marker = new google.maps.Marker({
+          position: { lat: 48.147303, lng: 17.1099111 },
+          map: map
+        });
+      }
+    }
