@@ -12,9 +12,14 @@ block content
     };
 
   main.collection
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
+
     section.section
       .wrapper-main
-        +breadcrumbs({ breadcrumbs: ['Knihy'] })
         .row
           .col--l-5
             h1.mb-small Začnite s behaním alebo aspoň trošku športujte

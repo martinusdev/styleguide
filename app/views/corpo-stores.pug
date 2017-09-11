@@ -7,28 +7,25 @@ block content
 
   main
 
-    .section.section--small.section--secondary
+    section.section--breadcrumbs
       .wrapper-main
-        .bar.breadcrumb
-          .bar__item
-            - var breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné']
-            each breadcrumb, i in breadcrumbs
-              a.text-medium(href="#")
-                span !{breadcrumb}
-              if (i < breadcrumbs.length - 1)
-                +icon('chevron-right', 'icon--medium').text-color-grey
-        .btn-layout.btn-layout--vertical.mb-medium.hide-l
-          .btn-dropdown.no-mrg
-            button.btn.btn--ghost.btn--icon-right.text-left(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              | Kníhkupectvá
-              +icon('chevron-down', 'icon-dropdown').icon--medium
-            .dropdown(data-dropdown, data-toggle-expand)
-              each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
-                a(href="#").dropdown__item !{link}
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
+          .bar__break.hide-l
+          .bar__item.bar__item--fill
+            .btn-layout.btn-layout--vertical.hide-l
+              .btn-dropdown.no-mrg
+                button.btn.btn--ghost.btn--icon-right.text-left(
+                data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                data-toggle-expand,
+                aria-haspopup="true"
+                )
+                  | Kníhkupectvá
+                  +icon('chevron-down', 'icon-dropdown').icon--medium
+                .dropdown(data-dropdown, data-toggle-expand)
+                  each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
+                    a(href="#").dropdown__item !{link}
 
     .section
       .wrapper-main
