@@ -12,7 +12,7 @@
         | Stornovať
       button.btn.btn--clean.no-mrg-bottom.text-space-right.hide-m
         +icon('trash', 'icon--medium').icon--left
-  .row.mb-large.show-m      
+  .row.mb-large.show-m
   .row.mb-large-m
     // progress bar
     .order-progress.mb-large
@@ -31,9 +31,9 @@
                   .order-progress__blank-circle
               .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
 
-    
+
   h2 Sumár objednávky
-  
+
   .order-packages
     // zasielka 1
     .package.mb-large.border-bottom-grey
@@ -162,54 +162,74 @@
           .text-semibold Spolu za túto zásielku
         .bar__item
           .text-medium.text-semibold 15,26 €
-  
+
   .order-summary.mb-large
     .order-summary__item.border-bottom-grey.mb-medium
+      .bar
+        .bar__item.bar__item--fill.bar__item--shrinkable
+          h3.h4.text-color-black Spôsob doručenia
       .bar.mb-medium.text-medium
         .bar__item.bar__item--fill
-          h3.h4.mb-small.text-color-black Spôsob doručenia
           div Pošta (na adresu)
         .bar__item.text-right
           .text-semibold 1,99 €
+
     .order-summary__item.border-bottom-grey.mb-medium
+      .bar
+        .bar__item.bar__item--fill.bar__item--shrinkable
+          h3.h4.text-color-black Spôsob doručenia
       .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill 
-          h3.h4.mb-small.text-color-black Spôsob doručenia
+        .bar__item.bar__item--fill
           div 1x červený papier
             br
             | Neprikladať faktúru
+
     .order-summary__item
+      .bar
+        .bar__item.bar__item--fill.bar__item--shrinkable
+          h3.h4.text-color-black Fakturačná adresa
       .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill 
-          h3.h4.mb-small.text-color-black Fakturačná adresa
+        .bar__item.bar__item--fill
           div Jozef Novák, Budyšínska 51, 851 02 Bratislava
+
     .order-summary__item.border-bottom-grey.mb-medium
+      .bar
+        .bar__item.bar__item--fill.bar__item--shrinkable
+          h3.h4.text-color-black Doručovacia adresa
       .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill 
-          h3.h4.mb-small.text-color-black Doručovacia adresa
+        .bar__item.bar__item--fill
           div Jozef Novák, Budyšínska 51, 851 02 Bratislava
+
     .order-summary__item.border-bottom-grey.mb-medium
+      .bar
+        .bar__item.bar__item--fill.bar__item--shrinkable
+          h3.h4.no-mrg-bottom.text-color-black Spôsob platby
+        .bar__item.text-right
+          button.btn.btn--clean.show-m
+            +icon('download', 'icon--medium').icon--left
+            | Stiahnuť faktúru za prijatú platbu
+
       .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill 
-          h3.h4.mb-small.text-color-black Spôsob platby
+        .bar__item.bar__item--fill
           div Kartou (vopred)
             br
             | Darčeková poukážka
         .bar__item.text-right
-          button.btn.btn--clean.mb-small.show-m
-            +icon('download', 'icon--medium').icon--left
-            | Stiahnuť faktúru za prijatú platbu
           .text-semibold 1,99 €
+
     .order-summary__item.border-bottom-grey.mb-medium
-      .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill 
-          h3.h4.mb-small.text-color-black Darovali ste centy a stali ste sa Anjelom!
-          div Zaokrúhliť na 10€
+      .bar
+        .bar__item.bar__item--fill.bar__item--shrinkable
+          h3.h4.no-mrg-bottom.text-color-black Darovali ste centy a stali ste sa Anjelom!
         .bar__item.text-right
           button.btn.btn--clean.no-mrg-bottom
             +icon('chevron-down', 'icon--medium')
+      .bar.mb-medium.text-medium
+        .bar__item.bar__item--fill
+          div Zaokrúhliť na 10€
+        .bar__item.text-right
           .text-semibold 1,56 €
-    .mb-large
+
     .text-right
       span.text-large.text-space-right Spolu k úhrade
       span.h2.text-bold 10,00 €
