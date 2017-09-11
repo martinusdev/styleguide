@@ -24,7 +24,7 @@ mixin booksCarouselRecommended()
       },
     };
     swiperConfig = JSON.stringify(swiperConfig);
-  .carousel.carousel--fade-outside
+  .carousel.carousel--fade-outside&attributes(attributes)
     .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
@@ -69,7 +69,7 @@ mixin booksCarouselHorizontal(props = {})
       spaceBetween: 20,
     };
     swiperConfig = JSON.stringify(swiperConfig);
-  .carousel.carousel--fade-outside.carousel--fade-outside-white
+  .carousel.carousel--fade-outside.carousel--fade-outside-white&attributes(attributes)
     .swiper-container(data-swiper-options=swiperConfig)
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
