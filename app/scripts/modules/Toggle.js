@@ -80,10 +80,10 @@ class Toggle {
     if (text) {
       const toggleTextTarget =
         target.querySelector('[data-toggle-text-target]') || target;
-      const oldText = toggleTextTarget.textContent;
+      const oldText = toggleTextTarget.innerHTML;
 
       target.setAttribute('data-toggle-text', oldText);
-      toggleTextTarget.textContent = text;
+      toggleTextTarget.innerHTML = text;
     }
 
     if (expand) {
