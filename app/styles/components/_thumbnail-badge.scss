@@ -2,13 +2,13 @@
 // Book badge
 // ---------------------------------------------
 
-$discount-badge: (
+$thumbnail-badge: (
   font-size: _get-rem(10px),
   font-weight: $font-weight-semibold,
   color: _color(primary),
 );
 
-.discount-badge {
+.thumbnail-badge {
   display: inline-flex;
   position: relative;
 
@@ -22,6 +22,12 @@ $discount-badge: (
 
     text-align: center;
 
-    @include css-map($discount-badge);
+    @include css-map($thumbnail-badge);
+  }
+
+  &--simple::before {
+    @extend %list-counter;
+
+    content: attr(data-thumbnail-badge);
   }
 }
