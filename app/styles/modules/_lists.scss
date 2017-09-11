@@ -9,6 +9,20 @@
 // ----------------------------
 // LISTS
 
+%list-counter {
+  $size: map-get($list-counter, size);
+  content: counter(section);
+  counter-increment: section;
+
+  width: $size;
+  height: $size;
+  line-height: $size;
+
+  @include css-map($list-counter, style);
+
+  z-index: 1;
+}
+
 @mixin list-base() {
   display: flex;
   flex-flow: column;
@@ -91,20 +105,10 @@
       position: relative;
 
       &::before {
-        $size: map-get($list-counter, size);
-        content: counter(section);
-        counter-increment: section;
-
+        @extend %list-counter;
         position: absolute;
         top: -10px;
         left: -10px;
-        width: $size;
-        height: $size;
-        line-height: $size;
-
-        @include css-map($list-counter, style);
-
-        z-index: 1;
       }
     }
   }
