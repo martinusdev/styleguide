@@ -463,20 +463,21 @@ block content
                             label.radiocheck__control(for="review-spoiler")
                             label.radiocheck__label(for="review-spoiler") Môj príspevok prezrádza momenty z deja.
                         .mb-large
-                          p.text-medium Recenzia bude uverejnená pod menom#{' '}
-                            span.text-semibold Bartolomej.#{' '}
-                            a.link(href="javascript:void(0)", data-toggle="self, #anonymous", data-toggle-class="hide") Uverejniť anonymne.
+                          p.text-medium
+                            span(data-toggle-text="Recenzia bude uverejnená anonymne. ") Recenzia bude uverejnená pod menom#{' '}
+                              span.text-semibold Bartolomej.#{' '}
+                            a.link(href="javascript:void(0)", data-toggle="self, #anonymous, previous", data-toggle-text="Uverejniť pod menom Bartolomej.") Uverejniť anonymne.
                           .row#anonymous.hide(data-toggle-class="hide")
                             .col--m-6
                               .form-control.form-control--input
                                 .form-label
                                   label.text-transform-upper.text-small.text-color-grey.form-label--required Meno
-                                input.input(type="text")
+                                input.input(type="text", placeholder="Vaše meno")
                             .col--m-6
                               .form-control.form-control--input
                                 .form-label
                                   label.text-transform-upper.text-small.text-color-grey.form-label--required E-mail
-                                input.input(type="email")
+                                input.input(type="email", placeholder="Váš email")
                         .text-center
                           button.btn Odoslať recenziu
                           .text-small Odoslaním príspevku súhlasíte s našimi#{' '}
