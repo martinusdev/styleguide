@@ -164,11 +164,11 @@ $typography-settings: (
     typographic-ratio: 1.33,
   ),
   // mobile first breakpoints
-  // 'm' : (
-  //   base-font-size: $default-font-size,
-  //   base-line-height: 1.5,
-  //   typographic-ratio: 1.3,
-  // ) // from 'm' up
+  //'m' : (
+  //  base-font-size: $default-font-size,
+  //  base-line-height: 1.5,
+  //  typographic-ratio: 1.3,
+  //) // from 'm' up
 );
 
 // Typography is typically calculated from $typography-settings in styles/utils/_variables,
@@ -176,7 +176,7 @@ $typography-settings: (
 $typography-overrides: (
   null: (
     'h1, .h1' : (
-      font-size: _get-rem(25px),
+      font-size: _get-rem(22px),
       line-height: 49/42,
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
@@ -188,7 +188,7 @@ $typography-overrides: (
       font-weight: $font-weight-semibold,
     ),
     'h3, .h3' : (
-      font-size: _get-rem(18px),
+      font-size: _get-rem(16px),
       line-height: 24/18,
       margin-bottom: _get-space('v', 'large'),
       color: _color(grey, 700)
@@ -208,12 +208,15 @@ $typography-overrides: (
       letter-spacing: 1px,
     ),
   ),
-  s: (
+  m: (
     'h1, .h1' : (
       font-size: _get-rem(42px),
     ),
     'h2, .h2' : (
       font-size: _get-rem(25px),
+    ),
+    'h3, .h3' : (
+      font-size: _get-rem(18px),
     ),
     'h4, .h4' : (
       font-size: _get-rem(18px),
@@ -394,7 +397,8 @@ $wrapper-paddings: (
 $grid-base: 12 !default;
 
 $gutters: (
-  default: _get-space('h'),
+  default: _get-space('h', 'small'),
+  m: _get-space('h'),
 );
 
 $gutters-form: (

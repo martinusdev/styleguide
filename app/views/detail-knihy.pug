@@ -63,26 +63,27 @@ block content
       section.section
         .wrapper-main
           .row.product-detail
-            .col--m-4.col--l-3
+            .col--5.col--s-3.col--m-4.col--l-3
               .product-detail__preview
                 .product-detail__image
                   .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-medium.clickable(data-toggle="#product-preview")
                     .thumbnail__img-wrap
                       img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                .product-detail__preview-link.text-center
-                  button.btn.btn--clean(data-toggle="#product-preview")
-                    +icon('eye').icon--left.icon--medium
-                    | Pozrieť ukážku
+                .show-m
+                  .product-detail__preview-link.text-center
+                    button.btn.btn--clean(data-toggle="#product-preview")
+                      +icon('eye').icon--left.icon--medium
+                      span.show-m Pozrieť ukážku
 
-                .product-detail__preview-link.text-center
-                  button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
-                    +icon('play').icon--left.icon--medium
-                    span(data-toggle-text-target) Prehrať ukážku
-                  audio#audio-preview(data-audioplayer)
-                    source(type="audio/aac" src="http://techslides.com/demos/samples/sample.aac")
-                    .alert.alert--error Váš prehliadač nepodporuje HTML5 audio prehrávač.
+                  .product-detail__preview-link.text-center
+                    button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
+                      +icon('play').icon--left.icon--medium
+                      span.show-m(data-toggle-text-target) Prehrať ukážku
+                    audio#audio-preview(data-audioplayer)
+                      source(type="audio/aac" src="http://techslides.com/demos/samples/sample.aac")
+                      .alert.alert--error-light Váš prehliadač nepodporuje HTML5 audio prehrávač.
 
-            article.col--m-8.col--l-6
+            article.col--7.col--s-9.col--m-8.col--l-6
 
               .btn-dropdown.mb-small.show-m
                 button.btn.btn--small.btn--ghost.btn--icon-right.text-left(
@@ -148,7 +149,7 @@ block content
                         +icon('star').rating-star__item.icon--medium
                         .rating-star__value
                           | 3,5
-                      a.link.text-medium.text-space-left(href="#recenzie", data-scroll) 234x
+                      a.link.text-medium.text-space-left.show-m(href="#recenzie", data-scroll) 234x
                 .bar__item.bar__item--shrinkable.show-m
                   .badges.no-mrg
                     .badge.badge--green Bestseller
