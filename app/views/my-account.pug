@@ -194,11 +194,11 @@ block content
                             button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
                               +icon('dots')
                             .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand)
-                                a(href="#").dropdown__item Upraviť
+                                a(href="#", data-toggle="#account-address").dropdown__item Upraviť
                                 a(href="#").dropdown__item Zmazať
                 .col--m-4.flex.flex-column
                   .add-new-address.flex-1.mb-medium.align-items-middle.align-items-center
-                    button.btn.btn--clean.btn--small
+                    button.btn.btn--clean.btn--small(data-toggle="#account-address")
                       +icon('plus').icon--left
                       | Pridať ďalšiu adresu
                 .col--12
@@ -244,3 +244,4 @@ block content
                       input.input(type="email", placeholder="Zadajte vašu e-mailovú adresu")
 block append modals
   include ./modules/change-password
+  include ./modules/address-modal
