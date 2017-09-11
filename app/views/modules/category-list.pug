@@ -46,8 +46,23 @@ section.section
               .col--m-fill.product-item__content
                 .row.mb-medium
                   .col--s-shrink.col--3.no-pad-right
-                    a(href="detail-knihy.html").thumbnail.thumbnail--book
+                    a(href="detail-knihy.html").thumbnail.thumbnail--book.mb-small
+                      if categoryListBadge
+                        .thumbnail__status
+                          .thumbnail-badge.thumbnail-badge--simple(data-thumbnail-badge=i+1)
                       img(src="images/content/books/sample-15.jpg", alt="Cover", width="120")
+                    if categoryListBadge
+                      p.text-size-small
+                        if (i % 3 === 0)
+                          +icon('arrow-up-right').text-color-success.icon--small.text-vat
+                        if (i % 3 === 1)
+                          +icon('arrow-down-right').text-color-error.icon--small.text-vat
+                        if (i % 3 === 2)
+                          +icon('arrow-right').text-color-grey.icon--small.text-vat
+                        | #{' '}
+                        span.text-semibold 120
+                        |  dní#{' '}
+                        span.text-color-grey v TOP 100
                   .col--s-fill.col--9
                     h2.h4.mb-tiny
                       a.link.link--product(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
