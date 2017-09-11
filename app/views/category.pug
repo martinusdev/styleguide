@@ -3,6 +3,8 @@ extends layouts/_default
 block opts
     - var pageTitle = 'Kategoria'
     - var filterStickyOffset = header.size.default + 71
+    - var subcategories = true
+    - var carousel = true
 
 block content
   section.section--breadcrumbs
@@ -22,11 +24,6 @@ block content
             span.show-m sledovať kategóriu
       .mb-medium.show-l
       p.mb-medium Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
-      nav.inline-nav.show-l
-        ul.list-inline.text-medium
-          each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
-            li.inline-nav__item
-              a.inline-nav__link.link.link--product(class=(i === 0) ? 'active' : '') !{link}
 
   section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset=header.size.default, data-sticky-class="is-stuck", data-sticky-wrap)
     .wrapper-main
@@ -42,11 +39,5 @@ block content
           .dropdown(data-dropdown, data-toggle-expand)
             each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
               a(href="#").dropdown__item !{link}
-
-  section.section.section--overflow.border-bottom-grey-2
-    .wrapper-main
-      +section-header({ header: 'Najobľúbenejšie tituly a kolekcie', more: false })
-
-      +booksCarouselRecommended
 
   include modules/category-list
