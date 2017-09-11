@@ -61,10 +61,7 @@ const productSelectChoice = (data, config) => `
 const storeListTemplate = data =>
   `
   <div class="text-left">
-    <svg class="icon icon-pin icon--small text-color-${data.customProperties.status}">
-      <use xlink:href="../icons_/app.svg#icon-pin"></use>
-    </svg>
-    <span class="text-size-medium text-left">${data.label}</span>
+    <span class="text-vam status status--${data.customProperties.status} text-color-grey text-size-medium text-ellipsis">${data.label}</span>
   </div>`;
 
 const storeListChoice = (data, config) => `
