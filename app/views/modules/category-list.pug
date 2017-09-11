@@ -18,21 +18,25 @@ section.section
         .mobile-wrapper__content.no-pad
           if subcategories
             .show-l.mb-large
-              h2 Podkategórie
+              //-h2 Podkategórie
               nav
-                ul.list.text-medium.no-pad
+                ul.text-medium.no-pad
                   each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
-                    li.list__item
-                      a.link.link--product(class=(i === 0) ? 'active' : '') !{link}
+                    li.align-items-middle
+                      +icon('reaction').icon--medium.text-color-grey
+                      | &nbsp;
+                      a.link(class=(i === 0) ? 'active' : '')
+                        | !{link}
           include category-filter
           .hide-l.align-items-bottom.box.no-mrg-bottom
             .btn-layout.btn-layout--vertical.no-mrg-bottom
               button.btn Zúžiť výber
       .col--l-9.col--12
+        if description
+          p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
         if carousel
-          .border-bottom-grey.mb-large
-            h2.mb-large Najobľúbenejšie tituly a kolekcie
-            +booksCarouselRecommended
+          h2.mb-large Najobľúbenejšie tituly a kolekcie
+          +booksCarouselRecommended(false)
         #mobile-order.mobile-wrapper.mb-medium(data-toggle-lock)
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
@@ -74,7 +78,7 @@ section.section
                         | #{' '}
                         span.text-semibold 120
                         |  dní#{' '}
-                        span.text-color-grey v TOP 100
+                        span.text-color-grey.show-m v TOP 100
                   .col--s-fill.col--9
                     .mb-small
                       h2.h3.mb-tiny
