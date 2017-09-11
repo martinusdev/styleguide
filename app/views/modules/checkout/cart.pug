@@ -10,7 +10,7 @@
           +icon('edit').icon--medium.icon--left
           | Upraviť
     #cart-summary(data-collapse="220")
-      ul.list.list--cart
+      ul.list.list--cart.list--unstyled
         each item, i in books
           li.list__item(id=`cart-item${i}` data-toggle-class="is-active")
             .cart-item.cart-item--summary(class=item.ebook ? 'cart-item--has-tags' : '')
