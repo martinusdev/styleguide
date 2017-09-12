@@ -50,36 +50,4 @@ mixin review(props = {})
     if !reply
       .card.card--well.mb-medium.hide(data-toggle-class="hide", id=`reply-review-${id}`)
         .card__content
-          .form-control.form-control--input
-            .form-label
-              label.text-transform-upper.text-small.text-color-grey Názov recenzie
-            input.input(type="text", placeholder="Napíšte názov recenzie")
-          .form-control.form-control--textarea
-            .form-label
-              label.text-transform-upper.text-small.text-color-grey Text recenzie
-            textarea.input(rows="5", placeholder="Napíšte svoju recenziu. Recenzia musí mať aspoň 150 znakov.")
-          .form-control.form-control--checkbox
-            .checkbox
-              input.radiocheck__input(type="checkbox", id="review-spoiler")
-              label.radiocheck__control(for="review-spoiler")
-              label.radiocheck__label(for="review-spoiler") Môj príspevok prezrádza momenty z deja.
-          .mb-large
-            p.text-medium Recenzia bude uverejnená pod menom#{' '}
-              span.text-semibold Bartolomej.#{' '}
-              a.link(href="javascript:void(0)", data-toggle=`self, #anonymous-${id}`, data-toggle-class="hide") Uverejniť anonymne.
-            .row.hide(id=`anonymous-${id}`, data-toggle-class="hide")
-              .col--m-6
-                .form-control.form-control--input
-                  .form-label
-                    label.text-transform-upper.text-small.text-color-grey.form-label--required Meno
-                  input.input(type="text")
-              .col--m-6
-                .form-control.form-control--input
-                  .form-label
-                    label.text-transform-upper.text-small.text-color-grey.form-label--required E-mail
-                  input.input(type="email")
-          .text-center
-            button.btn Odoslať recenziu
-            .text-small Odoslaním príspevku súhlasíte s našimi#{' '}
-              a.link(href="#") podmienkami používania služby recenzií
-              | .
+          include ./../modules/review-form
