@@ -109,14 +109,26 @@
 
 .header {
   position: relative;
+  height: map-get($header-height, default);
+
+  overflow: hidden;
+
+  @include breakpoint(m) {
+    height: map-get($header-height, 'm');
+  }
 
   &__wrapper {
     position: fixed;
+    height: map-get($header-height, 'default');
     width: 100%;
     background-color: $color-black;
     padding-top: _get-space('v') - _get-space('v', 'tiny');
     padding-bottom: _get-space('v');
     z-index: $z-index-topbar;
+
+    @include breakpoint(m) {
+      height: map-get($header-height, 'm');
+    }
 
     &::after {
       content: '';
