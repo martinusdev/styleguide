@@ -16,11 +16,27 @@ section.section
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
             +icon('close', 'icon--medium')
         .mobile-wrapper__content.no-pad
+          if subcategories
+            .show-l.mb-large
+              //-h2 Podkategórie
+              nav
+                ul.text-medium.no-pad
+                  each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
+                    li.align-items-middle
+                      +icon('minus').icon--medium.text-color-grey
+                      | &nbsp;
+                      a.link(class=(i === 0) ? 'active' : '')
+                        | !{link}
           include category-filter
           .hide-l.align-items-bottom.box.no-mrg-bottom
             .btn-layout.btn-layout--vertical.no-mrg-bottom
               button.btn Zúžiť výber
       .col--l-9.col--12
+        if description
+          p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
+        if carousel
+          h2.mb-large Najobľúbenejšie tituly a kolekcie
+          +booksCarouselRecommended()
         #mobile-order.mobile-wrapper.mb-medium(data-toggle-lock)
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
@@ -42,7 +58,7 @@ section.section
                 button.btn Zoradiť
         - for (var i = 0; i<8; i++)
           .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
-            .row.no-mrg-horizontal
+            .row
               .col--m-fill.product-item__content
                 .row.mb-medium
                   .col--s-shrink.col--3.no-pad-right
@@ -62,12 +78,13 @@ section.section
                         | #{' '}
                         span.text-semibold 120
                         |  dní#{' '}
-                        span.text-color-grey v TOP 100
+                        span.text-color-grey.show-m v TOP 100
                   .col--s-fill.col--9
-                    h2.h4.mb-tiny
-                      a.link.link--product(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
-                        span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov
-                    .text-color-grey.mb-small-s.text-medium Armin Göllner
+                    .mb-small-m
+                      h2.h3.mb-tiny
+                        a.link.link--product(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
+                          span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov
+                      .text-color-grey.mb-small.text-medium Armin Göllner
                     .bar.bar--small.mb-small.show-s
                       .bar__item
                         .badge
@@ -84,55 +101,65 @@ section.section
                       a(href="detail-knihy.html").link.text-small Viac o knihe
                         +icon('arrow-right', 'icon--small')
 
+                    .bar.bar--tiny.mb-none.hide-s
+                      .bar__item
+                        .badge.badge--primary -20%
+                      .bar__item.bar__item--fill
+                        .text-medium.text-semibold.text-space-left 201,99 €
+                      .bar__item
+                        button.btn.btn--clean.no-mrg
+                          +icon('heart').icon--medium
+
               .col--m-shrink.product-item__price-box
-                .btn-layout.btn-layout--vertical.mb-medium
-                  .btn-dropdown.no-mrg
-                    button.btn.btn--ghost.btn--icon-right.text-left(
-                      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                      data-toggle-expand,
-                      aria-haspopup="true"
-                    )
-                      .bar.text-small.no-mrg-bottom
-                        .bar__item.bar__item--fill
-                          div Pevná väzba
-                          .text-color-grey.text-small.text-transform-none.text-normal.hide-m Posielame ihneď
-                        .bar__item.text-right.text-small.hide-m
-                          .text-semibold.text-color-black 18,00 €
-                          .text-color-grey -10%
-                      +icon('chevron-down', 'icon-dropdown').icon--medium
-                    .dropdown(data-dropdown, data-toggle-expand)
-                      a(href="#").dropdown__item
+                if formats
+                  .btn-layout.btn-layout--vertical.mb-medium
+                    .btn-dropdown.no-mrg
+                      button.btn.btn--ghost.btn--icon-right.text-left(
+                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                        data-toggle-expand,
+                        aria-haspopup="true"
+                      )
                         .bar.text-small.no-mrg-bottom
                           .bar__item.bar__item--fill
                             div Pevná väzba
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
+                            .text-color-grey.text-small.text-transform-none.text-normal.hide-m Posielame ihneď
+                          .bar__item.text-right.text-small.hide-m
                             .text-semibold.text-color-black 18,00 €
                             .text-color-grey -10%
-                      a(href="#").dropdown__item
-                        .bar.text-small.no-mrg-bottom
-                          .bar__item.bar__item--fill
-                            div Brožovaná väzba
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
-                            .text-semibold.text-color-black 16,00 €
-                            .text-color-grey -10%
-                      a(href="#").dropdown__item
-                        .bar.text-small.no-mrg-bottom
-                          .bar__item.bar__item--fill
-                            div E-kniha
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
-                            .text-semibold.text-color-black 8,00 €
-                            .text-color-grey -5%
-                      a(href="#").dropdown__item
-                        .bar.text-small.no-mrg-bottom
-                          .bar__item.bar__item--fill
-                            div Audio kniha
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
-                            .text-semibold.text-color-black 12,00 €
-                            .text-color-grey -2%
+                        +icon('chevron-down', 'icon-dropdown').icon--medium
+                      .dropdown(data-dropdown, data-toggle-expand)
+                        a(href="#").dropdown__item
+                          .bar.text-small.no-mrg-bottom
+                            .bar__item.bar__item--fill
+                              div Pevná väzba
+                              .text-color-grey Posielame ihneď
+                            .bar__item.text-right
+                              .text-semibold.text-color-black 18,00 €
+                              .text-color-grey -10%
+                        a(href="#").dropdown__item
+                          .bar.text-small.no-mrg-bottom
+                            .bar__item.bar__item--fill
+                              div Brožovaná väzba
+                              .text-color-grey Posielame ihneď
+                            .bar__item.text-right
+                              .text-semibold.text-color-black 16,00 €
+                              .text-color-grey -10%
+                        a(href="#").dropdown__item
+                          .bar.text-small.no-mrg-bottom
+                            .bar__item.bar__item--fill
+                              div E-kniha
+                              .text-color-grey Posielame ihneď
+                            .bar__item.text-right
+                              .text-semibold.text-color-black 8,00 €
+                              .text-color-grey -5%
+                        a(href="#").dropdown__item
+                          .bar.text-small.no-mrg-bottom
+                            .bar__item.bar__item--fill
+                              div Audio kniha
+                              .text-color-grey Posielame ihneď
+                            .bar__item.text-right
+                              .text-semibold.text-color-black 12,00 €
+                              .text-color-grey -2%
                 .text-center.show-m
                   h2.text-bold.mb-small 201,99 €
                   .badge.badge--primary.mb-small Zľava 10%
@@ -149,9 +176,10 @@ section.section
 
                     +addTo()
 
+
           //- HLADATE DARCEK
           if i === 2
-            .section.bg-secondary.show-m.mb-medium
+            .section.bg-secondary.show-m.mb-large
               .product-item
                 .row.mb-large.no-mrg-horizontal
                   .col--m-fill.product-item__content
@@ -171,7 +199,7 @@ section.section
 
           //- DARCEKOVA POUKAZKA
           if i === 4
-            .section.bg-secondary.show-m.mb-medium
+            .section.bg-secondary.show-m.mb-large
               .product-item
                 .row.mb-large.no-mrg-horizontal
                   .col--m-fill

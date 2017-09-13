@@ -24,7 +24,7 @@ mixin booksCarouselRecommended()
       },
     };
     swiperConfig = JSON.stringify(swiperConfig);
-  .carousel.carousel--fade-outside&attributes(attributes)
+  .carousel&attributes(attributes)
     .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
@@ -38,8 +38,8 @@ mixin booksCarouselRecommended()
                 ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
                   - var authors = item.author.split(', ')
                   each author in authors
-                    li= author
-            .bar.bar--tiny.no-mrg
+                    li.no-mrg= author
+            .bar.bar--tiny.mb-none
               .bar__item
                 if item.discount
                   .badge.badge--primary= item.discount
@@ -86,8 +86,8 @@ mixin booksCarouselHorizontal(props = {})
                 ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
                   - var authors = item.author.split(', ')
                   each author in authors
-                    li= author
-            .bar.bar--tiny.no-mrg
+                    li.no-mrg= author
+            .bar.bar--tiny.mb-none
               if (i == 2)
                 .bar__item
                   p &nbsp;
