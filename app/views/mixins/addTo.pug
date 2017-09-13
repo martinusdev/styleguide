@@ -12,24 +12,25 @@ mixin addTo(props = {})
       +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
       | #{text}
     .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
-      div(id=`wishlist-list-${id}` data-toggle-class="hide")
-        a(href="#").dropdown__item Wishlist
-        a(href="#").dropdown__item Môj zoznam
-        button(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`).btn.btn--clean.text-left.text-nowrap
-          +icon('plus').icon--left.icon--medium.text-color-grey
-          | Nový záznam
-      .hide(id=`wishlist-add-item-${id}` data-toggle-class="hide")
-        .box.no-mrg-bottom
-          .bar.flex-nowrap
-            .bar__item
-              button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`)
-                +icon('chevron-left', 'icon--medium', 'Naspäť')
-            .bar__item.bar__item--fill.text-center.text-nowrap
-              | Nový záznam
-            .bar__item
-              button.btn.btn--clean.btn--small(data-toggle=`#wishlist-button-${id}, #wishlist-dropdown-${id}`)
-                +icon('close', 'icon--small', 'Naspäť')
-          .form-control.form-control--input
-            input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
-          .btn-layout--vertical
-            button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+      .dropdown__wrap
+        div(id=`wishlist-list-${id}` data-toggle-class="hide")
+          a(href="#").dropdown__item Wishlist
+          a(href="#").dropdown__item Môj zoznam
+          button(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`).btn.btn--clean.text-left.text-nowrap
+            +icon('plus').icon--left.icon--medium.text-color-grey
+            | Nový záznam
+        .hide(id=`wishlist-add-item-${id}` data-toggle-class="hide")
+          .box.no-mrg-bottom
+            .bar.flex-nowrap
+              .bar__item
+                button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`)
+                  +icon('chevron-left', 'icon--medium', 'Naspäť')
+              .bar__item.bar__item--fill.text-center.text-nowrap
+                | Nový záznam
+              .bar__item
+                button.btn.btn--clean.btn--small(data-toggle=`#wishlist-button-${id}, #wishlist-dropdown-${id}`)
+                  +icon('close', 'icon--small', 'Naspäť')
+            .form-control.form-control--input
+              input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
+            .btn-layout--vertical
+              button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť

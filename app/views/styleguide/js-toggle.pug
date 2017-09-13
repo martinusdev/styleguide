@@ -141,8 +141,9 @@ block append content
               | Button
               +icon('chevron-down', 'icon-dropdown icon--right')
             .dropdown(data-toggle-expand aria-expanded='false')
-              each item in [1,2,3,4,5]
-                a.dropdown__item Dropdown item #{item}
+              .dropdown__wrap
+                each item in [1,2,3,4,5]
+                  a.dropdown__item Dropdown item #{item}
         +demo-code
           :code
             <!-- target -->

@@ -47,8 +47,9 @@ block append content
           .row
             .col--s-6
               .dropdown(aria-expanded="true", style="position: relative; top: 0;")
-                each item in [1,2,3,4,5]
-                  a(href="#").dropdown__item Item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a(href="#").dropdown__item Item #{item}
             .col--s-6
               .btn-layout--horizontal
                 .btn-dropdown
@@ -60,8 +61,9 @@ block append content
                     | Button
                     +icon('chevron-down', 'icon-dropdown')
                   .dropdown(data-dropdown, data-toggle-expand)
-                    each item in [1,2,3,4,5]
-                      a(href="#").dropdown__item Item #{item}
+                    .dropdown__wrap
+                      each item in [1,2,3,4,5]
+                        a(href="#").dropdown__item Item #{item}
                 .btn-dropdown-split
                   button.btn Button
                   button.btn.btn--equal(
@@ -72,13 +74,16 @@ block append content
                   )
                     +icon('chevron-down', 'icon--smallplit')
                   .dropdown(data-dropdown, data-toggle-expand)
-                    each item in [1,2,3,4,5]
-                      a.dropdown__item(href="#") List item #{item}
+                    .dropdown__wrap
+                      each item in [1,2,3,4,5]
+                        a.dropdown__item(href="#") List item #{item}
         +demo-code
           :code
             <div class="dropdown" data-dropdown aria-expanded="false">
-              <a class="dropdown__item" href="#">...</a>
-              ...
+              <div class="dropdown__wrap">
+                <a class="dropdown__item" href="#">...</a>
+                ...
+              </div>
             </div>
 
             <!-- expanded -->
@@ -92,12 +97,13 @@ block append content
           .row
             .col--s-6
               .dropdown(aria-expanded="true", style="position: relative; top: 0;")
-                h5.dropdown__group Group 1
-                each item in [1,2,3]
-                  a(href="#").dropdown__item Item #{item}
-                h5.dropdown__group Group 2
-                each item in [4, 5]
-                  a(href="#").dropdown__item Item #{item}
+                .dropdown__wrap
+                  h5.dropdown__group Group 1
+                  each item in [1,2,3]
+                    a(href="#").dropdown__item Item #{item}
+                  h5.dropdown__group Group 2
+                  each item in [4, 5]
+                    a(href="#").dropdown__item Item #{item}
             .col--s-6
               .btn-layout--horizontal
                 .btn-dropdown
@@ -109,19 +115,22 @@ block append content
                     | Button
                     +icon('chevron-down', 'icon-dropdown')
                   .dropdown(data-dropdown, data-toggle-expand)
-                    h5.dropdown__group Group 1
-                    each item in [1,2,3]
-                      a(href="#").dropdown__item Item #{item}
-                    h5.dropdown__group Group 2
-                    each item in [4, 5]
-                      a(href="#").dropdown__item Item #{item}
+                    .dropdown__wrap
+                      h5.dropdown__group Group 1
+                      each item in [1,2,3]
+                        a(href="#").dropdown__item Item #{item}
+                      h5.dropdown__group Group 2
+                      each item in [4, 5]
+                        a(href="#").dropdown__item Item #{item}
 
         +demo-code
           :code
             <div class="dropdown" aria-expanded="true" style="position: relative; top: 0;">
-              <h5 class="dropdown__group">Group 1</h5>
-              <a class="dropdown__item" href="#">Item 1</a>
-              ...
+              <div class="dropdown__wrap">
+                <h5 class="dropdown__group">Group 1</h5>
+                <a class="dropdown__item" href="#">Item 1</a>
+                ...
+              </div>
             </div>
 
     +content-sub-section('Dropdown with arrow')
@@ -133,8 +142,9 @@ block append content
           .row
             .col--s-6
               .dropdown.dropdown--arrowhead(aria-expanded="true", style="position: relative; top: 0;")
-                each item in [1,2,3,4,5]
-                  a(href="#").dropdown__item Item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a(href="#").dropdown__item Item #{item}
             .col--s-6
               .btn-layout--horizontal
                 .btn-dropdown
@@ -146,13 +156,16 @@ block append content
                     | Button
                     +icon('chevron-down', 'icon-dropdown')
                   .dropdown.dropdown--arrowhead(data-dropdown, data-toggle-expand)
-                    each item in [1,2,3,4,5]
-                      a(href="#").dropdown__item Item #{item}
+                    .dropdown__wrap
+                      each item in [1,2,3,4,5,6,7,8,9,10]
+                        a(href="#").dropdown__item Item #{item}
         +demo-code
           :code
             <div class="dropdown dropdown--arrowhead" data-dropdown aria-expanded="false">
-              <a class="dropdown__item" href="#">...</a>
-              ...
+              <div class="dropdown__wrap">
+                <a class="dropdown__item" href="#">...</a>
+                ...
+              </div>
             </div>
 
             <!-- expanded -->
@@ -173,16 +186,17 @@ block append content
           .row
             .col--s-6
               .dropdown.dropdown--nowrap.dropdown--space(aria-expanded="true", style="position: relative; top: 0")
-                .form-control.form-control--input
-                  .form-label
-                    label(for='input-01') Form label:
-                  input.input(type='text', placeholder='Input', id='input-01')
-                .form-control.form-control--select.no-mrg-bottom
-                  .form-label
-                    label Form label:
-                  select.js-select
-                    each option in [1,2,3,4,5,6]
-                      option Option #{option}
+                .dropdown__wrap
+                  .form-control.form-control--input
+                    .form-label
+                      label(for='input-01') Form label:
+                    input.input(type='text', placeholder='Input', id='input-01')
+                  .form-control.form-control--select.no-mrg-bottom
+                    .form-label
+                      label Form label:
+                    select.js-select
+                      each option in [1,2,3,4,5,6]
+                        option Option #{option}
             .col--s-6
               .btn-dropdown
                 button.btn(
@@ -193,16 +207,17 @@ block append content
                   | Button
                   +icon('chevron-down', 'icon-dropdown')
                 .dropdown.dropdown--nowrap.dropdown--space(data-dropdown, data-toggle-expand, data-dropdown-interactive, style="min-width: 300px;")
-                  .form-control.form-control--input
-                    .form-label
-                      label(for='input-02') Form label:
-                    input.input(type='text', placeholder='Input', id='input-02')
-                  .form-control.form-control--select.no-mrg-bottom
-                    .form-label
-                      label Form label:
-                    select.js-select
-                      each option in [1,2,3,4,5,6]
-                        option Option #{option}
+                  .dropdown__wrap
+                    .form-control.form-control--input
+                      .form-label
+                        label(for='input-02') Form label:
+                      input.input(type='text', placeholder='Input', id='input-02')
+                    .form-control.form-control--select.no-mrg-bottom
+                      .form-label
+                        label Form label:
+                      select.js-select
+                        each option in [1,2,3,4,5,6]
+                          option Option #{option}
         +demo-code
           :code
             <div class="dropdown dropdown--nowrap dropdown--space" data-dropdown data-dropdown-interactive>

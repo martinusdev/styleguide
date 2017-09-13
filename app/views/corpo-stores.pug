@@ -24,8 +24,9 @@ block content
                   | Kníhkupectvá
                   +icon('chevron-down', 'icon-dropdown').icon--medium
                 .dropdown(data-dropdown, data-toggle-expand)
-                  each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
-                    a(href="#").dropdown__item !{link}
+                  .dropdown__wrap
+                    each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
+                      a(href="#").dropdown__item !{link}
 
     .section
       .wrapper-main
