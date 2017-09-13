@@ -212,6 +212,24 @@ block append content
             </button>
       //- end: demo
 
+    +content-sub-section('Toggle attributes')
+
+      +p The example below shows how to toggle attribute (disabled).
+
+      +demo
+        +demo-example
+          input.input.mb-medium(data-toggle-attribute="disabled", data-toggle-class="", placeholder="Placeholder")
+          button.btn(data-toggle="previous") Toggle attribute (disabled)
+        +demo-code
+          :code
+            <!-- target -->
+            <input class="input" data-toggle-attribute="disabled" data-toggle-class="" />
+
+            <!-- toggle -->
+            <button class="btn" type="button" data-toggle="previous" data-toggle-icon="#icon-sg-close">
+              Toggle focus
+            </button>
+
     +content-sub-section('Toggle focus')
 
       +p The example below shows how to toggle focus.
@@ -311,6 +329,11 @@ block append content
           td <code class='l-code-inline'>N/A</code>
           td <code class='l-code-inline'>null</code>
           td When present, toggles aria-expanded attribute.
+        tr
+          td toggle-attribute
+          td <code class='l-code-inline'>string</code>
+          td <code class='l-code-inline'>null</code>
+          td When present, toggle DOM attribute.
         tr
           td toggle-focus
           td <code class='l-code-inline'>N/A</code>
