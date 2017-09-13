@@ -71,6 +71,44 @@ const storeListChoice = (data, config) => `
   </div>
   `;
 
+const choiceListTemplate = (width = 'none', config) => `
+  <div class="${config.classNames.list}" dir="ltr" role="listbox" style="width:${width}"></div>
+`;
+
+function getTemplates(template, select, config) {
+  let templates = {};
+  if (select.hasAttribute('data-select-product')) {
+    templates = {
+      ...{ templates },
+      item: data => template(productSelectTemplate(data)),
+      choice: data => template(productSelectChoice(data, config)),
+    };
+  }
+
+  if (select.hasAttribute('data-select-store')) {
+    templates = {
+      ...{ templates },
+      item: data => template(storeListTemplate(data)),
+      choice: data => template(storeListChoice(data, config)),
+    };
+  }
+
+  if (select.hasAttribute('data-select-dropdown-width')) {
+    templates = {
+      ...{ templates },
+      choiceList: () =>
+        template(
+          choiceListTemplate(
+            select.getAttribute('data-select-dropdown-width'),
+            config,
+          ),
+        ),
+    };
+  }
+
+  return templates;
+}
+
 export default class Select {
   constructor(selector = '.js-select', config) {
     this.selector = selector;
@@ -145,19 +183,8 @@ export default class Select {
         config.shouldSort = true;
       }
 
-      if (select.hasAttribute('data-select-product')) {
-        config.callbackOnCreateTemplates = template => ({
-          item: data => template(productSelectTemplate(data)),
-          choice: data => template(productSelectChoice(data, this.config)),
-        });
-      }
-
-      if (select.hasAttribute('data-select-store')) {
-        config.callbackOnCreateTemplates = template => ({
-          item: data => template(storeListTemplate(data)),
-          choice: data => template(storeListChoice(data, this.config)),
-        });
-      }
+      config.callbackOnCreateTemplates = template =>
+        getTemplates(template, select, this.config);
 
       const choice = new Choices(select, config);
 
