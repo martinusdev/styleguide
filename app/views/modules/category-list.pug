@@ -23,7 +23,7 @@ section.section
                 ul.text-medium.no-pad
                   each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
                     li.align-items-middle
-                      +icon('reaction').icon--medium.text-color-grey
+                      +icon('minus').icon--medium.text-color-grey
                       | &nbsp;
                       a.link(class=(i === 0) ? 'active' : '')
                         | !{link}
@@ -58,7 +58,7 @@ section.section
                 button.btn Zoradiť
         - for (var i = 0; i<8; i++)
           .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
-            .row.no-mrg-horizontal
+            .row
               .col--m-fill.product-item__content
                 .row.mb-medium
                   .col--s-shrink.col--3.no-pad-right
@@ -80,12 +80,11 @@ section.section
                         |  dní#{' '}
                         span.text-color-grey.show-m v TOP 100
                   .col--s-fill.col--9
-                    .mb-small
+                    .mb-small-m
                       h2.h3.mb-tiny
                         a.link.link--product(href="detail-knihy.html") Rybaření pro záčátečníky a posledný skutok z lásky pre zlatú rybičku
                           span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov
                       .text-color-grey.mb-small.text-medium Armin Göllner
-                      .h2.text-bold.mb-none.hide-m 201,99 €
                     .bar.bar--small.mb-small.show-s
                       .bar__item
                         .badge
@@ -101,6 +100,15 @@ section.section
                     .mb-medium.show-s
                       a(href="detail-knihy.html").link.text-small Viac o knihe
                         +icon('arrow-right', 'icon--small')
+
+                    .bar.bar--tiny.mb-none.hide-s
+                      .bar__item
+                        .badge.badge--primary -20%
+                      .bar__item.bar__item--fill
+                        .text-medium.text-semibold.text-space-left 201,99 €
+                      .bar__item
+                        button.btn.btn--clean.no-mrg
+                          +icon('heart').icon--medium
 
               .col--m-shrink.product-item__price-box
                 if formats
@@ -167,17 +175,11 @@ section.section
                       span.text-semibold Vložiť do košíka
 
                     +addTo()
-                .hide-m
-                  .btn-layout.btn-layout--horizontal.align-items-center.mb-none
-                    button.btn.btn--primary.btn--medium(data-toggle='#checkout-notice')
-                      +icon('cart').icon--left.icon--medium
-                      span.text-semibold Do košíka
-                    +addTo()
 
 
           //- HLADATE DARCEK
           if i === 2
-            .section.bg-secondary.show-m.mb-medium
+            .section.bg-secondary.show-m.mb-large
               .product-item
                 .row.mb-large.no-mrg-horizontal
                   .col--m-fill.product-item__content
@@ -197,7 +199,7 @@ section.section
 
           //- DARCEKOVA POUKAZKA
           if i === 4
-            .section.bg-secondary.show-m.mb-medium
+            .section.bg-secondary.show-m.mb-large
               .product-item
                 .row.mb-large.no-mrg-horizontal
                   .col--m-fill
