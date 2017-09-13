@@ -6,7 +6,7 @@ block opts
 
 block content
   main.bg-secondary
-    section.section--toolbar
+    section.section--toolbar(data-sticky, data-scroll-offset=`{"0": ${header.size.default}, "768": ${header.size.m}}`, data-sticky-class="is-stuck", data-sticky-wrap)
       .wrapper-main
         .row.align-items-center
           .bar.bar--small.bar--progress.col--l-8.ofst--center.mb-small
