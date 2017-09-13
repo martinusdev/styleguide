@@ -31,7 +31,8 @@
     }
   }
 
-  &--nowrap {
+  &--nowrap,
+  &--nowrap &__wrap {
     overflow: visible;
     max-height: none;
   }
@@ -84,6 +85,11 @@
   .dropdown {
     @include dropdown-menu;
     @include dropdown-size;
+
+    &__wrap {
+      overflow: auto;
+      max-height: $dropdown-menu-max-h;
+    }
 
     &__item { @include dropdown-item; }
     &__group { @include dropdown-group; }

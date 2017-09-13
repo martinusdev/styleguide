@@ -538,8 +538,9 @@ block append content
                 | Button
                 +icon('chevron-down', 'icon-dropdown').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
-                each item in [1,2,3,4,5]
-                  a(href="#").dropdown__item Item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a(href="#").dropdown__item Item #{item}
 
             .btn-dropdown
               button.btn.btn--primary.btn--large(
@@ -551,8 +552,9 @@ block append content
                 | Dropdown with inputs
                 +icon('chevron-down', 'icon-dropdown').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
-                each item in [1,2,3,4,5]
-                  a(href="#").dropdown__item Item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a(href="#").dropdown__item Item #{item}
 
             .btn-dropdown
               button.btn.btn--small(
@@ -565,8 +567,9 @@ block append content
                 | Button
                 +icon('chevron-down', 'icon-dropdown').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
-                each item in [1,2,3,4,5]
-                  a(href="#").dropdown__item Item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a(href="#").dropdown__item Item #{item}
         +demo-code
           :code
             <div class="btn-dropdown">
@@ -635,8 +638,9 @@ block append content
               )
                 +icon('chevron-down').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
-                each item in [1,2,3,4,5]
-                  a.dropdown__item(href="#") List item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a.dropdown__item(href="#") List item #{item}
 
             .btn-dropdown-split
               button.btn.btn--primary.btn--large Button
@@ -648,8 +652,9 @@ block append content
               )
                 +icon('chevron-down').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
-                each item in [1,2,3,4,5]
-                  a.dropdown__item(href="#") List item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a.dropdown__item(href="#") List item #{item}
 
             .btn-dropdown-split.is-disabled
               button.btn.btn--small(disabled) Button
@@ -661,8 +666,9 @@ block append content
               )
                 +icon('chevron-down').icon--medium
               .dropdown(data-dropdown, data-toggle-expand)
-                each item in [1,2,3,4,5]
-                  a.dropdown__item(href="#") List item #{item}
+                .dropdown__wrap
+                  each item in [1,2,3,4,5]
+                    a.dropdown__item(href="#") List item #{item}
         +demo-code
           :code
             <div class="btn-dropdown-split">
