@@ -96,7 +96,7 @@ mixin ludiNajviacZaujma
     .card
       .card__content
         +section-header({ header: 'Ľudí najviac zaujíma', more: false, center: true })
-        ul.list
+        ul.list.list--unstyled
           each item, i in [...books, ...books ]
             if i < 4
               li(class=`${i < 3 ? 'mb-medium' : ''}`)

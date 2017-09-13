@@ -182,7 +182,7 @@ block content
                 p Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké
 
                 p
-                  a.link.text-medium(href="#popis-knihy", data-scroll) Čítaj viac#{' '}
+                  a.link.text-medium(href="#popis-knihy", data-scroll, data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.m + 20}}`) Čítaj viac#{' '}
                      +icon('arrow-down')
 
 
@@ -449,40 +449,7 @@ block content
                         .border-bottom-grey-2
                       .col--12
                         .h4.mb-medium Máte chvíľu čas? Napíšte recenziu
-                        .form-control.form-control--input
-                          .form-label
-                            label.text-transform-upper.text-small.text-color-grey Názov recenzie
-                          input.input(type="text", placeholder="Napíšte názov recenzie")
-                        .form-control.form-control--textarea
-                          .form-label
-                            label.text-transform-upper.text-small.text-color-grey Text recenzie
-                          textarea.input(rows="5", placeholder="Napíšte svoju recenziu. Recenzia musí mať aspoň 150 znakov.")
-                        .form-control.form-control--checkbox
-                          .checkbox
-                            input.radiocheck__input(type="checkbox", id="review-spoiler")
-                            label.radiocheck__control(for="review-spoiler")
-                            label.radiocheck__label(for="review-spoiler") Môj príspevok prezrádza momenty z deja.
-                        .mb-large
-                          p.text-medium
-                            span(data-toggle-text="Recenzia bude uverejnená anonymne. ") Recenzia bude uverejnená pod menom#{' '}
-                              span.text-semibold Bartolomej.#{' '}
-                            a.link(href="javascript:void(0)", data-toggle="self, #anonymous, previous", data-toggle-text="Uverejniť pod menom Bartolomej.") Uverejniť anonymne.
-                          .row#anonymous.hide(data-toggle-class="hide")
-                            .col--m-6
-                              .form-control.form-control--input
-                                .form-label
-                                  label.text-transform-upper.text-small.text-color-grey.form-label--required Meno
-                                input.input(type="text", placeholder="Vaše meno")
-                            .col--m-6
-                              .form-control.form-control--input
-                                .form-label
-                                  label.text-transform-upper.text-small.text-color-grey.form-label--required E-mail
-                                input.input(type="email", placeholder="Váš email")
-                        .text-center
-                          button.btn Odoslať recenziu
-                          .text-small Odoslaním príspevku súhlasíte s našimi#{' '}
-                            a.link(href="#") podmienkami používania služby recenzií
-                            | .
+                        include ./modules/review-form
 
                 .row.align-items-center.align-items-middle.book-rating.mb-large
                   .col--l-5
