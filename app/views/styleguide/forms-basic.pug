@@ -645,6 +645,43 @@ block append content
               <option>Option 1</option>
             </select>
 
+
+    +content-sub-section('Select with long texts')
+      +p By default, select dropdown has width of select. If you need dropdown with different size, you can set the width <code class='l-code-inline'>[data-select-dropdown-width</code>.
+
+      +demo
+        +demo-example
+          .row
+            .col--l-3
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select
+                      option(selected, disabled, placeholder) Select with long strings
+                      each option in [1,'Toto je dlhsi text v selecte na niekolko riadkov', 'Totojevelmidlheslovoktorebysamalopeknezalomit',4]
+                        option Option #{option}
+            .col--l-3
+              .row.form-row
+                .form-controls.col
+                  .form-control
+                    select.js-select(data-select-dropdown-width="300px")
+                      option(selected, disabled, placeholder) Select with data-select-dropdown-max-width
+                      each option in [1,'Toto je dlhsi text v selecte na niekolko riadkov', 'Totojevelmidlheslovoktorebysamalopeknezalomit',4]
+                        option Option #{option}
+        +demo-code
+          :code
+            <select class="js-select">
+              <option selected disabled placeholder>Select with long strings</option>
+              <option>Toto je dlhsi text v selecte na niekolko riadkov</option>
+              <option>Totojevelmidlheslovoktorebysamalopeknezalomit</option>
+            </select>
+
+            <select class="js-select" data-select-dropdown-width="300px">
+              <option selected disabled placeholder>Select with long strings</option>
+              <option>Toto je dlhsi text v selecte na niekolko riadkov</option>
+              <option>Totojevelmidlheslovoktorebysamalopeknezalomit</option>
+            </select>
+
   //- end: section
   +content-section(contents[4], true)
 
