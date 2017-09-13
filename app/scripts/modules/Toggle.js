@@ -42,6 +42,7 @@ class Toggle {
     icon,
     text,
     expand,
+    attribute,
     focus,
     state,
     resize = false,
@@ -54,6 +55,7 @@ class Toggle {
       return false;
     }
 
+    // todo: refracor this
     if (className !== undefined || className !== null) {
       if (state !== undefined) {
         if (state) {
@@ -61,7 +63,7 @@ class Toggle {
         } else {
           target.classList.remove(className);
         }
-      } else {
+      } else if (className !== null) {
         target.classList.toggle(className);
       }
     }
@@ -95,6 +97,16 @@ class Toggle {
           'aria-expanded',
           currentState === 'true' ? 'false' : 'true',
         );
+      }
+    }
+
+    if (attribute) {
+      const currentAttibute = target.getAttribute(attribute);
+
+      if (currentAttibute !== null) {
+        target.removeAttribute(attribute);
+      } else {
+        target.setAttribute(attribute, '');
       }
     }
 
@@ -150,7 +162,7 @@ class Toggle {
       }
 
       if (target.hasAttribute('data-toggle-class')) {
-        className = target.getAttribute('data-toggle-class');
+        className = target.getAttribute('data-toggle-class') || null;
       }
 
       Toggle.doToggle({
@@ -160,6 +172,7 @@ class Toggle {
         icon: target.getAttribute('data-toggle-icon'),
         text: target.getAttribute('data-toggle-text'),
         expand: target.hasAttribute('data-toggle-expand'),
+        attribute: target.getAttribute('data-toggle-attribute'),
         focus: target.hasAttribute('data-toggle-focus'),
       });
     });
