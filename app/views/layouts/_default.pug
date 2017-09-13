@@ -44,7 +44,10 @@ html.no-js
 
   body(class=`${pageClass}`)
 
-    include ./../modules/header/header
+    if checkoutHeader
+      include ./../modules/header/checkout-header
+    else
+      include ./../modules/header/header
 
     block content
 

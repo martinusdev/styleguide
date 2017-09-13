@@ -204,6 +204,18 @@
     color: _color(grey, 400);
   }
 
+  &__checkout-info {
+    font-size: _get-rem($font-size-small);
+
+    .icon { vertical-align: -0.6em; } // magic align
+
+    @include breakpoint(m) {
+      font-size: _get-rem($font-size-regular);
+
+      .icon { vertical-align: bottom; } // stylelint-disable-line
+    };
+  }
+
   .dropdown {
     z-index: $z-index-topbar + 1;
   }
