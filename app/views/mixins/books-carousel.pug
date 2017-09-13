@@ -1,4 +1,4 @@
-mixin booksCarouselRecommended(captions = true)
+mixin booksCarouselRecommended()
   -
     var swiperConfig = {
       slidesPerView: 'auto',
@@ -35,23 +35,21 @@ mixin booksCarouselRecommended(captions = true)
                   img(src=`${assetsPrefix}${item.cover}`).img
               .product__title
                 p.text-semibold.text-size-medium.no-mrg.text-ellipsis.link.link--product(title=item.title)= item.title
-                if captions
-                  ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
-                    - var authors = item.author.split(', ')
-                    each author in authors
-                      li= author
-            if captions
-              .bar.bar--tiny.no-mrg
-                .bar__item
-                  if item.discount
-                    .badge.badge--primary= item.discount
-                  else
-                    .badge
-                      +icon('star').text-color-yellow.icon--small
-                      | #{' '}
-                      = item.rating
-                .bar__item.bar__item--fill
-                  .text-medium.text-semibold.text-space-left= item.price
+                ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+                  - var authors = item.author.split(', ')
+                  each author in authors
+                    li= author
+            .bar.bar--tiny.no-mrg
+              .bar__item
+                if item.discount
+                  .badge.badge--primary= item.discount
+                else
+                  .badge
+                    +icon('star').text-color-yellow.icon--small
+                    | #{' '}
+                    = item.rating
+              .bar__item.bar__item--fill
+                .text-medium.text-semibold.text-space-left= item.price
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium
