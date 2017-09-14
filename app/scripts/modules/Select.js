@@ -1,4 +1,5 @@
-import Choices from 'choices.js';
+import Choices
+  from './../../../node_modules/choices.js/assets/scripts/dist/choices';
 
 const defaultConfig = {
   search: false,
@@ -178,6 +179,7 @@ export default class Select {
       }
 
       if (select.hasAttribute('data-autocomplete')) {
+        config.searchPlaceholderValue = select.getAttribute('placeholder');
         config.searchEnabled = true;
         config.searchChoices = true;
         config.shouldSort = true;
