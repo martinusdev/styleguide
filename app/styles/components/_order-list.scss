@@ -1,6 +1,9 @@
 .order-list {
   position: relative;
-  height: 100%;
+
+  @include breakpoint(l) {
+    height: calc(100vh - 115px);
+  }
 }
 
 .order-list__container {
@@ -13,16 +16,7 @@
 }
 
 .order-list__item {
-  // &.is-active::before {
-  //   content: '';
-  //   position: absolute;
-  //   left: 0;
-  //   right: 0;
-  //   top: 0;
-  //   height: _get-rem(30px);
-
-  //   Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#e5e2e0+0,fbf7f5+100
-  //   background: #e5e2e0;
-  //   background: linear-gradient(to bottom, #e5e2e0 0%, #fbf7f5 100%);
-  // }
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
