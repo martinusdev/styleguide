@@ -10,10 +10,10 @@ mixin preVas
         +section-header({ header: 'Pre Vás', more: false, center: true })
         +booksCarouselHorizontal
 
-mixin banner(size = 200)
+mixin banner(banner)
   section.mb-large
     a(href='#').banner
-      img.img.img--fluid(src=`images/content/banner-374x${size}.jpg`)
+      img.img.img--fluid(src=`images/content/banners/${banner}.jpg`)
 
 mixin tyzdenneKolekcie
   section.mb-large
@@ -127,7 +127,7 @@ block content
         .row.show-l
           .col--l-4.col--m-6
             +preVas
-            +banner
+            +banner('Main')
             +tyzdenneKolekcie
             +akcioveTituly
 
@@ -139,14 +139,14 @@ block content
 
           .col--l-4.col--m-6
             +najpredavaniejsieZPonuky
-            +banner(374)
+            +banner('Square')
 
         // tablet
         .row.show-m-only
           .col--m-6
             +preVas
             +novinky
-            +banner
+            +banner('Main')
             +tyzdenneKolekcie
             +akcioveTituly
 
@@ -163,7 +163,7 @@ block content
             +najpredavaniejsieZPonuky
             +novinky
             +tyzdenneKolekcie
-            +banner
+            +banner('Main')
             +najoblubenejsieKolekcie
             +akcioveTituly
 
@@ -173,28 +173,36 @@ block content
               button.btn.btn--ghost Zobraziť viac
 
     section.section
-      h2.text-center.mb-medium Máme pre vás aj hry
+      h2.text-center.mb-medium Máme pre vás aj
       -
         const tiles = [
           {
-            title: 'Filmy',
+            title: 'Blog',
             color: 'yellow'
+          },
+          {
+            title: 'E-knihy',
+            color: 'green'
           },
           {
             title: 'Hry',
             color: 'blue'
           },
           {
-            title: 'Káva a čaj',
-            color: 'orange'
+            title: 'Filmy',
+            color: 'violet'
           },
           {
-            title: 'Blog',
-            color: 'green'
+            title: 'Knižné predplatné',
+            color: 'red'
+          },
+          {
+            title: 'Káva a čaj',
+            color: 'brown'
           },
           {
             title: 'Darčeková poukážka',
-            color: 'violet'
+            color: 'orange'
           },
         ];
       +carouselTiles(tiles)
