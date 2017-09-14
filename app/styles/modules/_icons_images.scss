@@ -35,25 +35,15 @@ img {
   height: auto;
 }
 
-.img {
+%img {
   margin-bottom: $default-space;
-
-  &--fluid {
-    width: 100%;
-    height: auto;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-  }
-
-  &--rounded {
-    @include border-radius($image-border-radius);
-  }
-
-  &--circle {
-    @include border-radius(50%);
-  }
 }
+
+.img {
+  @extend %img;
+}
+
+@include css-variants('.img', $image);
 
 // override fills
 #icon-star-half { // stylelint-disable

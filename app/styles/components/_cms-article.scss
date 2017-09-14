@@ -1,0 +1,31 @@
+.cms-article {
+  a {
+    @extend %link;
+
+    @include css-map($links, 'default', 'default');
+
+    &:focus,
+    &:hover,
+    &.is-active {
+      @include css-map($links, 'default', 'focus');
+    }
+  }
+
+  ul,
+  ol,
+  dl {
+    list-style: initial;
+  }
+
+  ol { list-style-type: decimal; }
+
+  img {
+    @extend %img;
+
+    @include css-map($image, 'rounded');
+  }
+
+  table {
+    @extend %default-table;
+  }
+}

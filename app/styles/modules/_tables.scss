@@ -13,31 +13,30 @@
 
 // stylelint-disable max-nesting-depth, selector-max-compound-selectors
 
-.table {
+%table {
   width: 100%;
   max-width: 100%;
   margin-bottom: $default-space;
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+%default-table {
+  @extend %table;
 
   @include css-map($table, 'default');
+  border: $table-border-w $table-border-s $table-border-c;
 
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        @include css-map($table-cell, 'default');
-      }
-
-      > th {
-        text-align: left;
-      }
-    }
+  th,
+  td {
+    @include css-map($table-cell, 'default');
   }
 
-  > thead > tr > th {
+  th {
+    text-align: left;
+  }
+
+  th {
     @include css-map($table-cell, 'head');
   }
 
@@ -57,28 +56,24 @@
   }
 }
 
+.table {
+  @extend %default-table;
+}
+
 // ----------------------------
 // BORDERED
 
-.table--bordered {
-  border: $table-border-w $table-border-s $table-border-c;
+.table--simple {
+  border: 0;
 
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        border: $table-border-w $table-border-s $table-border-c;
-      }
-    }
+  th {
+    @include css-map($table-cell, 'head-highlight');
   }
 
-  > thead > tr {
-    > th,
-    > td {
-      border-top: _map-deep-get($table-cell, 'head', 'border-bottom');
-    }
+  th,
+  td {
+    background-color: initial;
+    border-bottom: 0;
   }
 }
 
@@ -86,8 +81,19 @@
 // STRIPED
 
 .table--striped {
-  > tbody > tr:nth-of-type(odd) {
-    @include css-map($table-cell, 'odd');
+  border: 0;
+
+  th {
+    @include css-map($table-cell, 'head-highlight');
+  }
+
+  > tbody > tr:nth-of-type(even) {
+    @include css-map($table-cell, 'even');
+  }
+
+  th,
+  td {
+    border-bottom: 0;
   }
 }
 
@@ -95,17 +101,14 @@
 // CLEAN
 
 .table--clean {
-  > thead,
-  > tbody,
-  > tfoot {
-    > tr {
-      > th,
-      > td {
-        border-top: 0;
+  border: 0;
 
-        &:first-child { padding-left: 0; }
-        &:last-child { padding-right: 0; }
-      }
-    }
+  th,
+  td {
+    border: 0;
+    background-color: initial;
+
+    &:first-child { padding-left: 0; }
+    &:last-child { padding-right: 0; }
   }
 }

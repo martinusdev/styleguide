@@ -281,6 +281,70 @@ block append content
   //- end: section
 
   //- UTILITIES
-  +content-section(contents[3], true)
+  +content-section(contents[3])
+
+    +demo
+      +demo-example
+        article.cms-article
+          h1 Header 1
+          h2 Header 2
+          h3 Header 3
+          h4 Header 4
+          h5 Header 5
+
+          p Leverage agile <a href="#">frameworks to provide a robust synopsis</a> for high level overviews. Iterative approaches to corporate strategy <strong>foster collaborative thinking</strong> to further the overall value proposition. <i>Organically grow</i> the holistic world view of disruptive innovation via workplace diversity and empowerment.
+
+          p
+            small This is smaller text.
+
+          ul
+            li
+              a(href='#') Link in list 1
+            li Normal text 1
+            li
+              a(href='#') Link in list 2
+            li
+              a(href='#') Link in list 3
+            li
+              strong Bold text
+
+          ol
+            li
+              a(href='#') Link in list 1
+            li Normal text 1
+            li
+              a(href='#') Link in list 2
+            li
+              a(href='#') Link in list 3
+            li Normal text 2
+
+          img(src="http://placehold.it/600x100")
+
+          table
+            thead
+              tr
+                th Column 1
+                th Longer column name
+                th Column 3
+            tbody
+              tr
+                td Et fugiat
+                td Voluptate dolore
+                td 979
+              tr
+                td Quis deserunt
+                td Aliqua sint laboris ut
+                td 1023
+              tr
+                td Voluptate dolore
+                td Voluptate dolore
+                td 12
+
+      +demo-code
+        :code
+
+
+  //- UTILITIES
+  +content-section(contents[4], true)
 
     +p Text utilities are covered in <a href="utilities#{assetsPrefix}#typography-utilities">Utilites</a> section.

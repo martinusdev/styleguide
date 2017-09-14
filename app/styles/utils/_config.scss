@@ -53,6 +53,7 @@ $color-palette: (
     200: #f2f8fb,
     500: #fbf7f5,
     600: #f7efeb,
+    650: #f6f6f6,
   ),
   borders: (
     200: #4267b2,
@@ -363,6 +364,22 @@ $icon-sizes: (
 // IMAGES
 
 $image-border-radius: $default-border-radius !default;
+
+$image: (
+  fluid: (
+    width: 100%,
+    height: auto,
+    margin-left: auto,
+    margin-right: auto,
+    display: block,
+  ),
+  rounded: (
+    border-radius: $image-border-radius,
+  ),
+  circle: (
+    border-radius: 50%,
+  )
+);
 
 // ----------------------------
 // THUMBNAILS
@@ -1170,7 +1187,7 @@ $dropdown-menu-item: (
 
 $table-border-w: 1px;
 $table-border-s: solid;
-$table-border-c: _color(grey, 300);
+$table-border-c: _color(grey, 200);
 
 $table: (
   background-color: $color-white,
@@ -1178,17 +1195,20 @@ $table: (
 
 $table-cell: (
   default: (
-    padding: _get-space('v', 'small') / 2 _get-space('h', 'small'),
-    border-top: 1px solid $table-border-c,
+    padding: _get-space('v', 'small') / 2 _get-space('h'),
     vertical-align: middle,
+    border-bottom: $table-border-w $table-border-s $table-border-c,
   ),
-  odd: (
-    background-color: $table-border-c,
+  even: (
+    background-color: _color(bg, 650),
   ),
   head: (
-    border-bottom: 2px solid $table-border-c,
     vertical-align: bottom,
-  )
+    font-weight: $font-weight-semibold,
+  ),
+  head-highlight: (
+    background-color: _color(bg, 500),
+  ),
 );
 
 // ----------------------------
