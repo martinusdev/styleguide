@@ -79,13 +79,13 @@
 
   &[disabled],
   &.is-disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+
     @include css-map($states, 'disabled');
     @include generate-color('color', 'disabled');
     @include generate-color('background-color', 'disabled');
     @include generate-color('border-color', 'disabled');
-
-    cursor: not-allowed;
-    pointer-events: none;
   }
 
   @if map-has-key($states, 'after') {
