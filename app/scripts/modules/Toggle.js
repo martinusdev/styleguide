@@ -46,6 +46,7 @@ class Toggle {
     focus,
     state,
     resize = false,
+    dispatchEvent = true,
   }) {
     if (!(target instanceof Element)) {
       target = document.querySelector(target);
@@ -122,15 +123,17 @@ class Toggle {
       }
     }
 
-    target.dispatchEvent(
-      new CustomEvent(TOGGLE_EVT, {
-        detail: {
-          target,
-          trigger,
-        },
-        bubbles: true,
-      }),
-    );
+    if (dispatchEvent) {
+      target.dispatchEvent(
+        new CustomEvent(TOGGLE_EVT, {
+          detail: {
+            target,
+            trigger,
+          },
+          bubbles: true,
+        }),
+      );
+    }
 
     if (resize) {
       triggerResize();
