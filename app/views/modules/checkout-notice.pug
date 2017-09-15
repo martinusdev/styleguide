@@ -5,26 +5,26 @@
         h5 Posledné z vášho wishlistu
         .row
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
 
         h5 Zákazníci si kúpili aj...
         .row
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
         .row
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
         .row.show-l
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark text-size-medium', breakBeforePrice: true }).mb-medium
+            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
 
       section.modal__content.col--l-4.col--m-6.no-pad
         .bar.bar--vertical
@@ -41,8 +41,7 @@
                 +product-horizontal({
                   trash: true,
                   rating: false,
-                  count: '1x',
-                  edit: true,
+                  titleClass: 'text-color-grey-dark',
               }).no-mrg-bottom
             p.text-center
               a.link(href="#").text-size-medium Zobraziť všetky (+3)#{' '}
@@ -71,6 +70,11 @@
                   .bar__item Inde by ste zaplatili:
                   .bar__item.bar__item--fill.text-right 21,77 € (ušetríte 2,00 €)
 
-                .btn-layout.btn-layout--horizontal.btn-layout--fill.no-mrg
+                .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-small
                   a(href="#").btn.btn--ghost Ísť do košíka
                   a(href="#").btn.btn--primary Objednať teraz
+
+                .bar
+                  .bar__item.bar__item--fill.text-right
+                    a.link(href="#").text-size-medium Chcem pokračovať v nákupe
+                      +icon('arrow-right')

@@ -11,7 +11,7 @@
           button.btn.btn--link(data-toggle="#book-reservation")
             +icon('close', 'icon--medium')
       section.modal__content
-        .row.border-bottom-grey-2.mb-medium
+        .row.border-bottom-grey.mb-medium
           .col--12
             .bar.align-items-top.no-mrg-bottom
               .bar__item
@@ -25,64 +25,32 @@
                   img.img.img--circle.thumbnail.thumbnail--small.no-mrg-bottom(src="http://placehold.it/100x100", alt="avatar")
                   span.text-space-left Tento titul má na poličke aj#{' '}
                     span.text-semibold Tomáš Ulej
-        .row.border-bottom-grey-2.mb-medium
+        .row.border-bottom-grey.mb-medium
           .col--6.mb-medium
             h3.mb-small.text-semibold.text-color-black Kde si prídete nákup vyzdvihnúť?
-            .text-medium.text-semibold.mb-small Kníhkupectvo
-            .btn-layout--vertical
-              button.btn.btn--ghost.mb-small
-                +icon('target').icon--left.icon--medium
-                | Zistiť podľa mojej polohy
-              .btn-dropdown.mb-small
-                button.btn.btn--ghost.btn--icon-right.text-left.text-transform-none(
-                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                  data-toggle-expand,
-                  aria-haspopup="true"
-              )
-                  .bar.text-medium.no-mrg-bottom
-                    .bar__item.bar__item--fill BA (Obchodná)
-                    .bar__item.text-right
-                      span.text-color-grey Skladom 1 ks
-                  +icon('chevron-down', 'icon-dropdown').icon--medium
-                .dropdown(data-dropdown, data-toggle-expand)
-                  .dropdown__wrap
-                    a(href="#").dropdown__item
-                      .bar.text-medium.no-mrg-bottom
-                        .bar__item.bar__item--fill Bratislava (Obchodná)
-                        .bar__item.text-right
-                          span.text-color-grey Skladom 1 ks
+            .form-control.form-control--select.mb-small
+              .form-label.no-mrg-bottom
+                label.text-transform-upper Kníhkupectvo
+              select.store-list-select.select--ghost.select--lowercase(data-select-store)
             .text-semibold.text-medium Otváracie hodiny kníhkupectva:
             .text-medium Pon - Pia: 8:00 - 18:00
-          .col--6
-            //-
-            //- MAP
-            //-
-            | MAPA
-        .row.border-bottom-grey-2.mb-medium
-          .col--12
+          .col--6.mb-medium
             h3.mb-small.text-semibold.text-color-black Zadajte vaše kontaktné údaje
-          .col--6
             .form-control.form-control--input.mb-small
               .form-label.form-label--required.no-mrg-bottom
                 label.text-transform-upper(for="reservation-name") Meno a priezvisko
               input.input(type="text", name="reservation-name", id="reservation-name", placeholder="Zadajte meno a priezvisko")
-          .col--6
-            .form-label.form-label--required.no-mrg-bottom
-              label.text-transform-upper(for="reservation-mobile") Mobil
-            .input-addons
-              .input-addons__item.no-pad
-                select.js-select
-                  option(selected disabled placeholder) +421
-                  option +421
-              input.input(type="number", name="reservation-mobile", id="reservation-mobile", placeholder="902 000 000")
+
+            .form-control.form-control--input.mb-small
+              .form-label.form-label--required.no-mrg-bottom
+                label.text-transform-upper(for="reservation-mobile") Mobil
+              .input-addons
+                .input-addons__item.no-pad
+                  select.js-select
+                    option(selected disabled placeholder) +421
+                    option +421
+                input.input(type="number", name="reservation-mobile", id="reservation-mobile", placeholder="902 000 000")
 
       footer.modal__footer
-        .row.align-items-bottom
-          .col--6
-            .form-control.form-control--input.no-mrg-bottom
-              .form-label
-                label.text-transform-upper.text-small.text-color-grey Prepíšte slovo "martinus"
-              input.input(type="text")
-          .col--6
-            .btn-layout--vertical.no-mrg-bottom
-              button.btn.btn--primary(type="button" data-toggle="#book-reservation") Záväzne rezervovať
+        .btn-layout--horizontal.no-mrg-bottom.align-items-center
+          button.btn.btn--primary(type="button" data-toggle="#book-reservation") Záväzne rezervovať za 19,90 €
