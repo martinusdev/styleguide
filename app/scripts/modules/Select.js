@@ -59,18 +59,32 @@ const productSelectChoice = (data, config) => `
   </div>
   `;
 
-const storeListTemplate = data =>
-  `
-  <div class="text-left">
-    <span class="text-vam status status--${data.customProperties.status} text-color-grey text-size-medium text-ellipsis">${data.label}</span>
-  </div>`;
+const storeListTemplate = ({ label, customProperties }) => {
+  const status = customProperties && customProperties.status
+    ? `status status--${customProperties.status}`
+    : '';
 
-const storeListChoice = (data, config) => `
-  <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${data.disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${data.id}" data-value="${data.value}">
-    <span class="text-vam status status--${data.customProperties.status} text-color-grey text-regular text-ellipsis">${data.label}</span>
-    <span class="text-vam text-color-grey">(${data.customProperties.availability})</span>
+  return `
+  <div class="text-left">
+    <span class="text-vam ${status} text-color-grey text-size-medium text-ellipsis">${label}</span>
+  </div>`;
+};
+
+const storeListChoice = (
+  { customProperties, disabled, label, id, value },
+  config,
+) => {
+  const status = customProperties && customProperties.status
+    ? `status status--${customProperties.status}`
+    : '';
+
+  return `
+  <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
+    <span class="text-vam ${status} text-color-grey text-regular text-ellipsis">${label}</span>
+    ${customProperties && customProperties.availability ? `<span class="text-vam text-color-grey">(${customProperties.availability})</span>` : ''}
   </div>
   `;
+};
 
 const choiceListTemplate = (width = 'none', config) => `
   <div class="${config.classNames.list}" dir="ltr" role="listbox" style="width:${width}"></div>
