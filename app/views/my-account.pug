@@ -3,6 +3,47 @@ extends layouts/_default
 block opts
     - var pageTitle = 'Môj účet'
 
+mixin address(props = {})
+  -
+    const {
+      type
+    } = props;
+
+  if type === 'Fakturačná'
+    .badge.badge--blue.mb-medium
+      +icon('invoice', 'icon--small').icon--left
+      | Fakturačná
+
+  if type === 'Doručovacia'
+    .badge.badge--green.mb-medium
+      +icon('invoice', 'icon--small').icon--left
+      | Doručovacia
+
+  .btn-dropdown.flex.flex-column
+    button.btn.btn--ghost.btn--icon-right.text-left(
+      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+      data-toggle-expand,
+      aria-haspopup="true"
+    )
+      = type
+      +icon('chevron-down', 'icon-dropdown').icon--medium
+    .dropdown(data-dropdown, data-toggle-expand)
+      .dropdown__wrap
+        a(href="#").dropdown__item Fakturačná
+        a(href="#").dropdown__item Doručovacia
+  .bar.align-items-top
+    .bar__item.bar__item--fill
+      block
+    .bar__item.text-right
+      .btn-dropdown.btn-dropdown--no-icon
+        button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
+          +icon('dots')
+        .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand, style="min-width: 80px;")
+          .dropdown__wrap
+            a(href="#", data-toggle="#account-address").dropdown__item Upraviť
+            a(href="#").dropdown__item Zmazať
+
+
 block content
   main.account
 
@@ -12,29 +53,24 @@ block content
       .wrapper-main
         .row
           .col--l-3.show-l(data-sticky-container)
-            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.m + 40)
-              h2 Môj účet
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
               ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
                 li
-                  a(href="#ucet", data-scroll) Účet
+                  a(href="#ucet", data-scroll, data-scroll-offset=header.size.default + 40) Účet
                 li
-                  a(href="#adresy", data-scroll) Adresy
+                  a(href="#adresy", data-scroll, data-scroll-offset=header.size.default + 40) Adresy
                 li
-                  a(href="#platby", data-scroll) Platby
+                  a(href="#platby", data-scroll, data-scroll-offset=header.size.default + 40) Platby
                 li
-                  a(href="#newsletter", data-scroll) Newsletter
+                  a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Newsletter
                 li
-                  a(href="#eknihy", data-scroll) E-knihy
-                //- li
-                //-   a(href="#onas", data-scroll) O vás
-
+                  a(href="#eknihy", data-scroll, data-scroll-offset=header.size.default + 40) E-knihy
           .col--l-9.col--12
-            .mb-medium.hide-l
             #ucet
               .row.align-items-middle
                 .col--fill
                   h3.h2.text-color-black.mb-medium Účet
-                .col--shrink.show-l
+                .col--shrink
                   button.btn
                     +icon('save', 'icon--medium').icon--left
                     | Uložiť zmeny
@@ -54,6 +90,9 @@ block content
                       button.btn.btn--clean.btn--small.no-mrg
                         +icon('trash', 'icon--medium').icon--left
                         | Odstrániť
+
+              hr.mb-medium
+
               .row
                 .col--m-4
                   .form-control.form-control--input
@@ -90,36 +129,23 @@ block content
                     .form-label
                       label.text-transform-upper.text-small.text-color-grey Vaša klubová karta
                     input.input(type="text")
-              .row
-                .col--12
-                  .border-bottom-grey.mb-medium
+
+              hr.mb-medium
+
               .row.no-mrg-bottom
                 .col--m-4
                   .btn-layout--vertical
                     button.btn.btn--ghost.no-mrg(data-toggle="#change-password") Zmeniť heslo
+              hr
+
             #adresy
               h3.h2.text-color-black.mb-medium Adresy
+
               .row.mb-medium
-                .col--m-4.flex.flex-column
-                  .mb-small
-                    .badge.badge--blue.mb-medium
-                      +icon('invoice', 'icon--small').icon--left
-                      | Fakturačná
-                    .btn-dropdown.flex.flex-column
-                      button.btn.btn--ghost.btn--icon-right.text-left(
-                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                        data-toggle-expand,
-                        aria-haspopup="true"
-                      )
-                        | Fakturačná
-                        +icon('chevron-down', 'icon-dropdown').icon--medium
-                      .dropdown(data-dropdown, data-toggle-expand)
-                        .dropdown__wrap
-                          a(href="#").dropdown__item Fakturačná
-                          a(href="#").dropdown__item Doručovacia
-                    p.text-medium Lighting Beetle
-                      br
-                      | Katarína Bohmová
+                .col--m-4.flex.flex-column.mb-medium
+                  +address({ type: 'Fakturačná'})
+                    p.text-medium.mb-small
+                      | Lighting Beetle
                       br
                       | Katarína Bohmová
                       br
@@ -134,79 +160,43 @@ block content
                       | IČO: 44 865 894
                       br
                       | IČ DPH: SK20 2286 0840
-                .col--m-4.flex.flex-column
-                  .mb-small
-                    .badge.badge--green.mb-medium
-                      +icon('invoice', 'icon--small').icon--left
-                      | Doručovacia
-                    .btn-dropdown.flex.flex-column
-                      button.btn.btn--ghost.btn--icon-right.text-left(
-                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                        data-toggle-expand,
-                        aria-haspopup="true"
-                      )
-                        | Doručovacia
-                        +icon('chevron-down', 'icon-dropdown').icon--medium
-                      .dropdown(data-dropdown, data-toggle-expand)
-                        .dropdown__wrap
-                          a(href="#").dropdown__item Fakturačná
-                          a(href="#").dropdown__item Doručovacia
+                .col--m-4.flex.flex-column.mb-medium
+                  +address({ type: 'Doručovacia'})
                     p.text-medium Lighting Beetle
-                      br
                       | Jozef Novák
                       br
-                      | Lighting Beetle, Gunduličova 4,
+                      | Lighting Beetle,
+                      br
+                      | Gunduličova 4,
                       br
                       | 851 02 Bratislava
                 - for (var i = 0; i<2; i++)
-                  .col--m-4.flex.flex-column
-                    .mb-small
-                      .btn-dropdown.flex.flex-column
-                        button.btn.btn--ghost.btn--icon-right.text-left(
-                          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                          data-toggle-expand,
-                          aria-haspopup="true"
-                        )
-                          | Nastaviť adresu ako
-                          +icon('chevron-down', 'icon-dropdown').icon--medium
-                        .dropdown(data-dropdown, data-toggle-expand)
-                          .dropdown__wrap
-                            a(href="#").dropdown__item Fakturačná
-                            a(href="#").dropdown__item Doručovacia
-                      .bar.align-items-top
-                        .bar__item.bar__item--fill
-                          p.text-medium Lighting Beetle
-                            br
-                            | Katarína Bohmová
-                            br
-                            | Katarína Bohmová
-                            br
-                            | Gunduličova 4,
-                            br
-                            | 851 02 Bratislava
-                            br
-                            | Slovensko
-                            br
-                            | +421 902 500 336
-                          p.text-medium
-                            | IČO: 44 865 894
-                            br
-                            | IČ DPH: SK20 2286 0840
-                        .bar__item.text-right
-                          .btn-dropdown.btn-dropdown--no-icon
-                            button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
-                              +icon('dots')
-                            .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand)
-                              .dropdown__wrap
-                                a(href="#", data-toggle="#account-address").dropdown__item Upraviť
-                                a(href="#").dropdown__item Zmazať
-                .col--m-4.flex.flex-column
+                  .col--m-4.flex.flex-column.mb-medium
+                    +address({ type: 'Nastaviť adresu ako'})
+                      p.text-medium.mb-small
+                        | Lighting Beetle
+                        br
+                        | Katarína Bohmová
+                        br
+                        | Gunduličova 4,
+                        br
+                        | 851 02 Bratislava
+                        br
+                        | Slovensko
+                        br
+                        | +421 902 500 336
+                      p.text-medium
+                        | IČO: 44 865 894
+                        br
+                        | IČ DPH: SK20 2286 0840
+
+                .col--m-4.flex.flex-column.mb-medium
                   .add-new-address.flex-1.mb-medium.align-items-middle.align-items-center
                     button.btn.btn--clean.btn--small(data-toggle="#account-address")
                       +icon('plus').icon--left
                       | Pridať ďalšiu adresu
-                .col--12
-                  .border-bottom-grey.mb-medium
+
+              hr
 
             #platby
               h3.h2.text-color-black.mb-medium Platby
@@ -220,10 +210,7 @@ block content
                       button.btn.btn--clean.btn--small.no-mrg
                         +icon('trash', 'icon--medium').icon--left
                         span.show-s Odstrániť
-                    if (i<1)
-                      .col--12
-                        .mb-small
-                        .border-bottom-grey
+                  hr.mb-small
 
             #newsletter
               h3.h2.text-color-black.mb-medium Newsletter
