@@ -18,12 +18,19 @@ block content
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
-    section.section
+    section.section.section--l-background(style=`background-image: url(${assetsPrefix}images/content/collections-header.png)`)
       .wrapper-main
         .row
           .col--l-5
             h1.mb-small Začnite s behaním alebo aspoň trošku športujte
+
+            p
+              +icon('collection', 'icon--medium').text-color-grey.text-space-right
+              | Kolekcia obsahuje#{' '}
+              span.text-semibold 27 kníh
+
             p Najpredávanejšia kulinárska novinka z Veľkej Británie, ktorá zabodovala aj v USA. Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
+
             .bar.mb-medium.text-medium
               .bar__item
                 .text-color-grey Kolekciu zostavil
@@ -35,14 +42,8 @@ block content
               .bar__break.hide-s
               .bar__item
                 a.link(href="#") Sledovať autora kolekcie
-          .col--l-4.overflow-hidden
-            .mb-medium.text-center
-              +icon('collection', 'icon--medium').text-color-grey.text-space-right
-              | Kolekcia obsahuje!{' '}
-              span.text-semibold 27 kníh
-            include ./modules/collection-carousel
 
-          .col--l-3.flex
+          .col--l-3.ofst--l-4
             article.card.card--well.text-center.text-size-medium.flex-1.align-items-center
               .flex.flex-column
                 .card__content
@@ -61,7 +62,7 @@ block content
 
                     +addTo()
 
-    section.section
+    section.section.no-pad-top
       - for (var i = 0; i<8; i++)
         .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' )
           .wrapper-main
