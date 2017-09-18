@@ -10,12 +10,13 @@ const defaultConfig = {
   customActionTemplate: undefined,
   onAction: undefined,
   timeout: undefined,
+  iconPath: '../icons_/app.svg',
 };
 
-const templateIcon = icon => `
+const templateIcon = (icon, iconPath) => `
   <div class="alert__icon">
     <svg class="icon icon-${icon} icon--medium" role="img" aria-hidden="true">
-      <use xlink:href="../icons_/app.svg#icon-${icon}" />
+      <use xlink:href="${iconPath}#icon-${icon}" />
     </svg>
   </div>
 `;
@@ -30,12 +31,12 @@ const templateLoader = () => `
   </div>
 `;
 
-const templateAction = customTemplate => `
+const templateAction = (customTemplate, iconPath) => `
   <div class="alert__action">
     ${customTemplate || `
       <button class="btn btn--clean btn--small" data-alert-action>
         <svg class="icon icon-close icon--medium" role="img" aria-hidden="true">
-          <use xlink:href="../icons_/app.svg#icon-close" />
+          <use xlink:href="${iconPath}#icon-close" />
         </svg>
       </button>
     `}
@@ -49,12 +50,13 @@ const template = ({
   text,
   closeable,
   customActionTemplate,
+  iconPath,
 }) => `
   <div class="alert alert--fixed ${type && `alert--${type}`}">
-    ${(icon && templateIcon(icon)) || ''}
+    ${(icon && templateIcon(icon, iconPath)) || ''}
     ${(loader && templateLoader()) || ''}
     <div class="alert__content">${text}</div>
-    ${((closeable || customActionTemplate) && templateAction(customActionTemplate)) || ''}
+    ${((closeable || customActionTemplate) && templateAction(customActionTemplate, iconPath)) || ''}
   </div>
 `;
 
@@ -89,6 +91,7 @@ export default class Alert {
         text: this.config.text,
         closeable: this.config.closeable,
         customActionTemplate: this.config.customActionTemplate,
+        iconPath: this.config.iconPath,
       }),
     );
 
