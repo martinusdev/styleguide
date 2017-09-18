@@ -9,16 +9,8 @@ section.section.section--secondary
             h1.h3.text-color-black.text-semibold.no-mrg-bottom.show-l Bartolomej Najsčítanejší
             h2.h1.account-title Môj martinus
       .col--fill.show-l
-        nav
-          ul.list-inline.inline-nav.no-mrg-bottom
-            li.inline-nav__item.text-large
-              a.inline-nav__link Moja knižnica
-              //- span.badge.pill.text-space-left 231
-            li.inline-nav__item.text-large
-              a.inline-nav__link.active Objednávky
-              //- span.badge.pill.text-space-left 4
-            li.inline-nav__item.text-large
-              a.inline-nav__link Účet
+        +inlineNav({ items: ['Moja knižnica', 'Objednávky', 'Účet']})
+
       .col--l-3.col--shrink.text-right
         button.btn.btn--clean.btn--small.no-mrg-bottom
           span.show-m Odhlásiť sa

@@ -1,0 +1,90 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Kolekcia'
+
+block content
+  mixin najoblubenejsieSerie
+    section.mb-large
+      article.card
+        .card__status
+          img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100', alt="Tomáš Ulej")
+        .card__content.card__content--overflow
+          +section-header({ header: 'Najobľúbenejšie série', more: false, center: true, small: true })
+          h2.text-center Všetko z IT sveta
+          include ./modules/collection-carousel
+
+        .card__content
+          .btn-layout.btn-layout--vertical
+            button.btn.btn--ghost Celá kolekcia
+
+  main.collection
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
+
+    section.section.section--small
+      .wrapper-main
+        h1.mb-medium Kolekcie
+
+        +inlineNav({ items: ['Ako začať', 'Kultovky', 'Kniha ako darček', 'Šport', 'Pre relax'] })
+
+    section.section.bg-secondary
+      .wrapper-main
+        .row
+          .col--l-8
+            .row
+              .col--12
+                article.card
+                  .card__status
+                    +icon('eye').icon--medium.text-color-grey
+                  .card__content.text-center
+                    h5.mb-small Kolekcia 34. týždna
+                    h2.mb-small Knihy do vašej kuchyne
+                    p.text-size-medium.text-color-grey.no-mrg-bottom Obsahuje 27 kníh
+
+                  .card__content.card__content--overflow
+                    hr.mb-medium
+                    .bar
+                      .bar__item
+                        .bar.no-mrg-bottom
+                          .bar__item
+                            img.img--fluid.img--circle.thumbnail.thumbnail--medium(src='https://placehold.it/100x100', alt="Tomáš Ulej")
+                          .bar__item.bar__item--fill.text-size-medium
+                            p.mb-small
+                              span.text-semibold Vyberá Tomáš Ulej
+                              br
+                              a.link(href='#', title="Tomáš Ulej") Sledovať autora kolekcie
+                      .bar__item.bar__item--border.show-m
+                      .bar__break.hide-m
+                      .bar__item.bar__item--fill.bar__item--shrinkable
+                        p.no-mrg.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
+                    hr
+
+                    +booksCarouselHorizontal
+
+                  .card__content.text-center
+                      button.btn.btn--ghost Celá kolekcia
+              .col--m-6
+                +najoblubenejsieSerie
+                +najoblubenejsieSerie
+
+              .col--m-6
+                +najoblubenejsieSerie
+                +najoblubenejsieSerie
+
+
+
+          .col--l-4
+            .row
+              .col--m-6.col--l-12
+                +najoblubenejsieSerie
+              .col--m-6.col--l-12
+                +najoblubenejsieSerie
+              .col--m-6.col--l-12
+                +najoblubenejsieSerie
+
+  include ./modules/seen-items
+  include ./modules/seen-items-delete

@@ -1,0 +1,12 @@
+mixin inlineNav(props = {})
+  -
+    const {
+      items,
+      active = 0,
+    } = props;
+
+  nav
+    ul.list-inline.inline-nav&attributes(attributes)
+      each item, i in items
+        li.inline-nav__item.text-large
+          a.inline-nav__link(class= active === i ? 'is-active' : '')= item
