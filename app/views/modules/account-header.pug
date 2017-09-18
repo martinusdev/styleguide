@@ -1,27 +1,31 @@
-section.section.section--secondary
+section.section.section--secondary.section--small
   .wrapper-main
     .row.align-items-middle
-      .col--l-4.col--fill
-        .row.align-items-middle
-          .col--shrink.no-pad-right.show-l
-            img(src="/images/content/user-photo.png", alt="User", width="52")
-          .col--fill
-            h1.h3.text-color-black.text-semibold.no-mrg-bottom.show-l Bartolomej Najsčítanejší
-            h2.h1.account-title Môj martinus
-      .col--fill.show-l
-        +inlineNav({ items: ['Moja knižnica', 'Objednávky', 'Účet']})
+      .col--l-3.mb-medium
+        .bar.no-mrg-bottom
+          .bar__item
+            img.img--fluid.img--circle.thumbnail.thumbnail--medium(src=`images/content/user-photo.png`, alt="Tomáš Ulej")
+          .bar__item.bar__item--fill
+            h1.h3.text-color-black.text-semibold.no-mrg-bottom Bartolomej Najsčítanejší
+            h2.h5 Môj martinus
+      .col--l-9.mb-medium.show-l
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--fill
+            +inlineNav({ items: ['Moja knižnica', 'Na stiahnutie', 'Objednávky', 'Účet']}).no-mrg-bottom.show-l
+          .bar__item.text-right
+            button.btn.btn--clean.btn--small.no-mrg-bottom
+              | Odhlásiť sa
+              +icon('logout', 'icon--medium').icon--right
 
-      .col--l-3.col--shrink.text-right
+section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
+  .wrapper-main
+    .bar.bar--small.mb-small
+      .bar__item.bar__item--fill
+        .form-control.form-control--select.no-mrg
+          select.select--ghost#account-sections-spy(data-scroll-offset=`{"0": ${header.size.default + 20}, "768": ${header.size.m + 20}}`)
+            each slug, link in {'Účet':'ucet', 'Adresy':'adresy', 'Platby':'platby', 'Newsletter':'newsletter', 'E-knihy':'eknihy'}
+              option(value=slug) !{link}
+      .bar__item.text-right
         button.btn.btn--clean.btn--small.no-mrg-bottom
           span.show-m Odhlásiť sa
           +icon('logout', 'icon--medium').icon--right
-    .hide-l
-      .bar
-        .bar__item.bar__item--fill
-          .form-control.form-control--select.no-mrg
-            select.js-select.select--ghost#account-sections-spy.bg-default
-              each slug, link in {'Účet':'ucet', 'Adresy':'adresy', 'Platby':'platby', 'Newsletter':'newsletter', 'E-knihy':'eknihy', 'O vás':'ovas'}
-                option(value=slug) !{link}
-        .bar__item
-          button.btn Uložiť
-    .mb-large
