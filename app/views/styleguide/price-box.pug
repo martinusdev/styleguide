@@ -33,14 +33,12 @@ block append content
                   li.tab-nav__item.flex-noshrink(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#web_1_1' role="tab")
                       span.tab-nav__content-wrap
-                        | Na webe
-                        br
+                        span.block.text-ellipsis Na webe
                         span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
                   li.tab-nav__item(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_1_1' role="tab")
                       span.tab-nav__content-wrap.text-nowrap
-                        span.inline-block.text-ellipsis Odložiť v kníhkupectve
-                        br
+                        span.block.text-ellipsis Odložiť v kníhkupectve
                         span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
                 .tabs
@@ -89,20 +87,17 @@ block append content
                           +addTo()
 
             .col--m-6.col--l-4
-              p.mb-small.text-color-grey-dark TODO placeholder do selectu "Vyberte knihkupectvo..."
               .price-box
                 ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
                   li.tab-nav__item.flex-noshrink(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card(href='#web_1_2' role="tab")
                       span.tab-nav__content-wrap
-                        | Na webe
-                        br
+                        span.block.text-ellipsis Na webe
                         span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
                   li.tab-nav__item(data-tabs-item)
                     a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_1_2' role="tab")
                       span.tab-nav__content-wrap.text-nowrap
-                        span.inline-block.text-ellipsis Odložiť v kníhkupectve
-                        br
+                        span.block.text-ellipsis Odložiť v kníhkupectve
                         span.status.status--success.text-color-grey.text-normal.text-ellipsis Vyberte kníhkupectvo
 
                 .tabs
@@ -143,6 +138,7 @@ block append content
                       .card__content
                         .form-control.form-control--select.align-items-center.no-mrg
                           select.store-list-select.select--ghost.select--lowercase(data-select-store)
+                            option(placeholder, selected, disabled) Vyberte kníhkupectvo
 
                       .card__content
                         .btn-layout--vertical
@@ -162,14 +158,12 @@ block append content
                     li.tab-nav__item.flex-noshrink(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card(href='#web_2_1' role="tab")
                         span.tab-nav__content-wrap
-                          | Na webe
-                          br
+                          span.block.text-ellipsis Na webe
                           span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
                     li.tab-nav__item(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_2_1' role="tab")
                         span.tab-nav__content-wrap.text-nowrap
-                          span.inline-block.text-ellipsis Odložiť v kníhkupectve
-                          br
+                          span.block.text-ellipsis Odložiť v kníhkupectve
                           span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
                   .tabs
@@ -222,14 +216,12 @@ block append content
                     li.tab-nav__item.flex-noshrink(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card(href='#web_2_2' role="tab")
                         span.tab-nav__content-wrap
-                          | Na webe
-                          br
+                          span.block.text-ellipsis Na webe
                           span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
                     li.tab-nav__item(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_2_2' role="tab")
                         span.tab-nav__content-wrap.text-nowrap
-                          span.inline-block.text-ellipsis Odložiť v kníhkupectve
-                          br
+                          span.block.text-ellipsis Odložiť v kníhkupectve
                           span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
                   .tabs
@@ -326,15 +318,13 @@ block append content
                     li.tab-nav__item.flex-noshrink(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card(href='#web_3' role="tab")
                         span.tab-nav__content-wrap
-                          | Na webe
-                          br
-                          span.status.status--grey.text-color-grey.text-normal.text-ellipsis Vypredané
+                          span.block.text-ellipsis Na webe
+                          span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
                     li.tab-nav__item(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_3' role="tab")
                         span.tab-nav__content-wrap.text-nowrap
-                          span.inline-block.text-ellipsis V kníhkupectvách
-                          br
-                          span.status.status--grey.text-color-grey.text-normal.text-ellipsis Vypredané
+                          span.block.text-ellipsis V kníhkupectvách
+                          span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
 
                   .tabs
                     section#web_3.tab
@@ -383,14 +373,12 @@ block append content
                     li.tab-nav__item.flex-noshrink(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card(href='#web_4' role="tab")
                         span.tab-nav__content-wrap
-                          | Na webe
-                          br
+                          span.block.text-ellipsis Na webe
                           span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
                     li.tab-nav__item(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_4' role="tab")
                         span.tab-nav__content-wrap.text-nowrap
-                          span.inline-block.text-ellipsis V kníhkupectvách
-                          br
+                          span.block.text-ellipsis V kníhkupectvách
                           span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
 
                   .tabs
@@ -474,14 +462,12 @@ block append content
                     li.tab-nav__item.flex-noshrink(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card(href='#web_5' role="tab")
                         span.tab-nav__content-wrap
-                          | Na webe
-                          br
+                          span.block.text-ellipsis Na webe
                           span.status.status--orange.text-color-grey.text-normal.text-ellipsis Viac ako 3 týždne
                     li.tab-nav__item(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_5' role="tab")
                         span.tab-nav__content-wrap.text-nowrap
-                          span.inline-block.text-ellipsis V kníhkupectvách
-                          br
+                          span.block.text-ellipsis V kníhkupectvách
                           span.status.status--error.text-color-grey.text-normal.text-ellipsis Vypredané
 
                   .tabs
@@ -537,14 +523,12 @@ block append content
                     li.tab-nav__item.flex-noshrink(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card(href='#web_6' role="tab")
                         span.tab-nav__content-wrap
-                          | Na webe
-                          br
+                          span.block.text-ellipsis Na webe
                           span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
                     li.tab-nav__item(data-tabs-item)
                       a.tab-nav__content.tab-nav__content--card.tab-nav__content--last(href='#shop_6' role="tab")
                         span.tab-nav__content-wrap.text-nowrap
-                          span.inline-block.text-ellipsis Odložiť v kníhkupectve
-                          br
+                          span.block.text-ellipsis Odložiť v kníhkupectve
                           span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
                   .tabs
