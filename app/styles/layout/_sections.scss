@@ -32,6 +32,15 @@
     background-color: _color('bg');
     padding: _get-space('v', 'small') 0;
   }
+
+  &--l-background {
+    background-size: 0;
+    background-position: top center;
+
+    @include breakpoint(l) {
+      background-size: cover;
+    }
+  }
 }
 
 .section--m-full {
