@@ -1,0 +1,60 @@
+mixin product(props = {})
+  -
+    const {
+      cover,
+      title,
+      authors,
+      discount,
+      rating,
+      price,
+      emptyBottom,
+      coverInfo = false,
+      productInfo = true,
+    } = props;
+
+  .product&attributes(attributes)
+    if cover
+      .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--large.mb-small
+        .thumbnail__img-wrap
+          img(src=`${assetsPrefix}${cover}`).img
+
+        if coverInfo
+          .thumbnail__info
+            if discount
+              .badge.badge--primary= discount
+            else if rating
+              .badge
+                +icon('star').text-color-yellow.icon--small
+                | #{' '}
+                = rating
+
+      if duration
+        .thumbnail__status
+          +discountBadge(duration)
+
+    if title
+      .product__title
+        p.text-semibold.text-size-medium.no-mrg.text-ellipsis.link.link--product(title=title)= title
+        if authors
+          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+            - const authorsArray = authors.split(', ')
+            each author in authorsArray
+              li.no-mrg= author
+
+    if productInfo
+      .bar.bar--tiny.mb-none
+        if emptyBottom
+          .bar__item
+            p &nbsp;
+        else
+          .bar__item
+            if discount && !thumbnailInfo
+              .badge.badge--primary= discount
+            else if rating && !thumbnailInfo
+              .badge
+                +icon('star').text-color-yellow.icon--small
+                | #{' '}
+                = rating
+          if price
+            .bar__item.bar__item--fill
+              .text-medium.text-semibold.text-space-left= price
