@@ -7,6 +7,9 @@ mixin inlineNav(props = {})
 
   nav
     ul.list-inline.inline-nav&attributes(attributes)
-      each item, i in items
+      each item, index in items
+        -
+          const title = typeof item === 'string' ? item : item.title;
+          const href = typeof item === 'string' ? '#' : (item.href || '#');
         li.inline-nav__item.text-large
-          a.inline-nav__link(class= active === i ? 'is-active' : '')= item
+          a.inline-nav__link(href=href, class= active === index ? 'is-active' : '')= title
