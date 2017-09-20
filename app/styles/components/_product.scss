@@ -7,9 +7,14 @@
   margin: 0 0 _get-space('v', 'large');
   text-align: center;
 
+  &__status {
+    margin-bottom: _get-space('h', 'small');
+  }
+
   &__cover {
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: _get-space('h', 'small');
   }
 
   &__img {
@@ -18,10 +23,22 @@
 
   &__title {
     transition: color $ease-300;
+    margin-bottom: _get-space('h', 'small');
   }
 
   &__caption {
     margin-top: _get-space('h', 'small');
+  }
+
+  @each $name, $size in $thumbnail-sizes {
+    &#{_get-variant-name($name)} {
+      max-width: $size;
+    }
+  }
+
+  &--align-left {
+    text-align: left;
+    #{$this}__cover { margin-left: 0; }
   }
 
   &--horizontal {
@@ -41,5 +58,9 @@
     #{$this}__title {
       color: _color('primary');
     }
+  }
+
+  &:last-child {
+    margin-bottom: 0;
   }
 }

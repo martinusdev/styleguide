@@ -20,13 +20,16 @@ block content
   main.account
 
     include modules/account-header
+    +accountHeader({ navActive: 2, subNav: false })
+      .form-control.form-control--input
+        input.input.filter__search.no-mrg-top(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
 
     section.section.section
       .wrapper-main
         .row
           .col--l-3.col--12.mb-large(data-sticky-container)
             .order-list(data-sticky, data-scroll-offset=`{"0": ${header.size.default + 40}, "768": ${header.size.m + 40}}`, data-sticky-class="is-stuck", data-sticky-for="1024px")
-              .form-control.form-control--input
+              .form-control.form-control--input.show-l
                 input.input.filter__search.no-mrg-top(type="text", name="filter-author", id="filter-author", placeholder="Hľadať v objednávkach")
               .order-list__container.overflow-auto
                 - for (i=0; i<20; i++)

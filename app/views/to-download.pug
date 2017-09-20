@@ -1,0 +1,52 @@
+extends layouts/_default
+
+block opts
+  - var pageTitle = 'Na stiahnutie'
+
+  -
+    const subNav = [
+      {
+        title: 'Všetky tituly k stiahnutiu', href: '#vsetky-tituly'
+      },
+      {
+        title: 'E-knihy', href: '#e-knihy',
+      },
+      {
+        title: 'Audioknihy', href: '#audioknihy',
+      }
+    ];
+
+block content
+  main.account
+
+    include modules/account-header
+    +accountHeader({
+      navActive: 1,
+      subNav,
+    })
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-3.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+              .form-control.form-control--input
+                input.input.filter__search.no-mrg-top(type="text", name="filter-order", id="filter-order", placeholder="Hľadať v objednávkach")
+              ul.list.list--expanded.no-pad(role="navigation")
+                each item, index in subNav
+                  li(class= index === 0 ? 'is-active' : '')
+                    a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)= item.title
+          .col--l-9.col--12
+            h2 Všetky tituly k stiahnutiu
+
+            .row.align-items-bottom
+              each item, i in [...books, ...books, ...books, ...books]
+                .col--6.col--s-4.col--m-3.mb-large
+                  +product({ size: 'large' }).mb-small.text-left
+                    +productStatus({ actionDropdown: true })
+                    +productCover({ cover: item.cover })
+                    +productTitle({ title: item.title, author: item.author })
+                    +productDownload()
+
+
+block append modals

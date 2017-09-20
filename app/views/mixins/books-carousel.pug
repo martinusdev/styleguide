@@ -29,27 +29,15 @@ mixin booksCarouselRecommended()
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
-            .product.mb-small.text-left
-              .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--large.mb-small
-                .thumbnail__img-wrap
-                  img(src=`${assetsPrefix}${item.cover}`).img
-              .product__title
-                p.text-semibold.text-size-medium.no-mrg.text-ellipsis.link.link--product(title=item.title)= item.title
-                ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
-                  - var authors = item.author.split(', ')
-                  each author in authors
-                    li.no-mrg= author
-            .bar.bar--tiny.mb-none
-              .bar__item
-                if item.discount
-                  .badge.badge--primary= item.discount
-                else
-                  .badge
-                    +icon('star').text-color-yellow.icon--small
-                    | #{' '}
-                    = item.rating
-              .bar__item.bar__item--fill
-                .text-medium.text-semibold.text-space-left= item.price
+            +product().mb-small.text-left
+              +productCover({ cover: item.cover })
+              +productTitle({ title: item.title, author: item.author })
+              +productMeta({
+                discount: item.discount,
+                rating: item.rating,
+                price: item.price
+              })
+
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium
@@ -74,34 +62,15 @@ mixin booksCarouselHorizontal(props = {})
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
-            .product.mb-small.text-left
-              .product__cover.thumbnail.thumbnail--book.thumbnail--large.thumbnail--clickable.mb-small
-                .thumbnail__img-wrap
-                  img(src=`${assetsPrefix}${item.cover}`).img
-                if duration
-                  .thumbnail__status
-                    +discountBadge(duration)
-              .product__title
-                p.text-semibold.text-size-medium.no-mrg.text-ellipsis.link.link--product(title=item.title)= item.title
-                ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
-                  - var authors = item.author.split(', ')
-                  each author in authors
-                    li.no-mrg= author
-            .bar.bar--tiny.mb-none
-              if (i == 2)
-                .bar__item
-                  p &nbsp;
-              else
-                .bar__item
-                  if item.discount
-                    .badge.badge--primary= item.discount
-                  else
-                    .badge
-                      +icon('star').text-color-yellow.icon--small
-                      | #{' '}
-                      = item.rating
-                .bar__item.bar__item--fill
-                  .text-medium.text-semibold.text-space-left= item.price
+            +product().mb-small.text-left
+              +productCover({ cover: item.cover })
+              +productTitle({ title: item.title, author: item.author })
+              +productMeta({
+                empty: i === 2,
+                discount: item.discount,
+                rating: item.rating,
+                price: item.price
+              })
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium

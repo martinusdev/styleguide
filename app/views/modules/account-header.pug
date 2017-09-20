@@ -1,31 +1,72 @@
-section.section.section--secondary.section--small
-  .wrapper-main
-    .row.align-items-middle
-      .col--l-3.mb-medium
-        .bar.no-mrg-bottom
-          .bar__item
-            img.img--fluid.img--circle.thumbnail.thumbnail--medium(src=`images/content/user-photo.png`, alt="Tomáš Ulej")
-          .bar__item.bar__item--fill
-            h1.h3.text-color-black.text-semibold.no-mrg-bottom Bartolomej Najsčítanejší
-            h2.h5 Môj martinus
-      .col--l-9.mb-medium.show-l
-        .bar.no-mrg-bottom
-          .bar__item.bar__item--fill
-            +inlineNav({ items: ['Moja knižnica', 'Na stiahnutie', 'Objednávky', 'Účet']}).no-mrg-bottom.show-l
-          .bar__item.text-right
-            button.btn.btn--clean.btn--small.no-mrg-bottom
-              | Odhlásiť sa
-              +icon('logout', 'icon--medium').icon--right
+mixin accountHeader(props = {})
+  -
+    const {
+      name = 'Bartolomej Najsčítanejší',
+      nav = [
+        {
+          title: 'Moja knižnica',
+          href: 'my-library.html',
+        },
+        {
+          title: 'Na stiahnutie',
+          href: 'to-download',
+        },
+        {
+          title: 'Objednávky',
+          href: 'orders.html',
+        },
+        {
+          title: 'Účet',
+          href: 'my-account.html',
+        },
+      ],
+      navActive = 0,
+    } = props;
 
-section.section.section--secondary.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
-  .wrapper-main
-    .bar.bar--small.mb-small
-      .bar__item.bar__item--fill
-        .form-control.form-control--select.no-mrg
-          select.select--ghost#account-sections-spy(data-scroll-offset=`{"0": ${header.size.default + 20}, "768": ${header.size.m + 20}}`)
-            each slug, link in {'Účet':'ucet', 'Adresy':'adresy', 'Platby':'platby', 'Newsletter':'newsletter', 'E-knihy':'eknihy'}
-              option(value=slug) !{link}
-      .bar__item.text-right
-        button.btn.btn--clean.btn--small.no-mrg-bottom
-          span.show-m Odhlásiť sa
-          +icon('logout', 'icon--medium').icon--right
+  section.section.section--secondary.section--small
+    .wrapper-main
+      .row.align-items-middle
+        .col--l-3.mb-medium
+          .bar.no-mrg-bottom
+            .bar__item
+              img.img--fluid.img--circle.thumbnail.thumbnail--medium(src=`images/content/user-photo.png`, alt="Tomáš Ulej")
+            .bar__item.bar__item--fill
+              h1.h3.text-color-black.text-semibold.no-mrg-bottom= name
+              h2.h5 Môj martinus
+        .col--l-9.mb-medium.show-l
+          .bar.no-mrg-bottom
+            .bar__item.bar__item--fill
+              +inlineNav({ items: nav, active: navActive }).no-mrg-bottom.show-l
+            .bar__item.text-right
+              button.btn.btn--clean.btn--small.no-mrg-bottom
+                | Odhlásiť sa
+                +icon('logout', 'icon--medium').icon--right
+
+  section.section.section--secondary.section--toolbar.hide-l(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
+    .wrapper-main
+      .bar.bar--small.mb-small
+        .bar__item.bar__item--fill
+          if nav
+            - const activeNavItem = nav.splice(navActive, 1)[0];
+            .btn-layout.btn-layout--vertical
+              .btn-dropdown
+                button.btn.btn--ghost(
+                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                  data-toggle-expand,
+                  aria-haspopup="true"
+                )
+                  = activeNavItem.title
+                  +icon('chevron-down', 'icon-dropdown').icon--medium
+                .dropdown(data-dropdown, data-toggle-expand)
+                  .dropdown__wrap
+                    each item in nav
+                      -
+                        const title = typeof item === 'string' ? item : item.title;
+                        const href = typeof item === 'string' ? '#' : (item.href || '#');
+                      a(href= href).dropdown__item= title
+          else
+            block
+        .bar__item.text-right
+          button.btn.btn--clean.btn--small.no-mrg-bottom
+            span.show-m Odhlásiť sa
+            +icon('logout', 'icon--medium').icon--right
