@@ -1,0 +1,24 @@
+.modal-overlay#gift-modal(data-modal)
+  article.modal.modal--medium
+    .modal__wrap
+      section.modal__content
+        .bar
+          .bar__item.bar__item--fill
+            h2 Vyzdvihnúť elektronický darček
+          .bar__item
+            button.btn.btn--clean.no-mrg-bottom(data-toggle="#gift-modal")
+              +icon('close').icon--medium.icon--right
+        p Na tejto stránke ste sa ocitli zrejme preto, lebo vám niekto podaroval e-knihu alebo audioknihu. Tešíme sa s vami.
+
+        p Zadajte kód do okna nižšie.
+        .row
+          .col
+            .form-control.form-control--input
+              .form-label.form-label--required
+                label.text-transform-upper(for="product-code")
+                  | kód
+              input.input(type="text", name="product-code", id="product-code", placeholder="Zadajte kód knižky")
+
+        .text-right
+          button.btn.btn--ghost.no-mrg-bottom(data-toggle="#gift-modal") Naspať
+          button.btn.no-mrg-bottom(data-toggle="#gift-modal") Pridať do mojej knižnice
