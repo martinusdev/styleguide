@@ -45,9 +45,9 @@ block content
                   +productCover({ cover: `${assetsPrefix}images/content/book-gift.svg`, type: false, clickable: false }).no-mrg-bottom
                   .product__gift
                     p.text-semibold.mb-small.text-medium Dostali ste darček?
-                    a(href="#").btn.btn--clean.no-mrg-bottom
+                    button(data-toggle="#gift-modal").btn.btn--clean.no-mrg-bottom
                       | Viac
-                      +icon('arrow-right').icon--medium
+                      +icon('arrow-right').icon--right.icon--medium
 
 
               each item, i in [...books, ...books, ...books, ...books]
@@ -60,3 +60,4 @@ block content
 
 
 block append modals
+  include ./modules/gift-modal
