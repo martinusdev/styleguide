@@ -16,14 +16,12 @@
     .swiper-wrapper
       each item, i in [...books, ...books, ...books, ...books]
         a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book
-          +product({
-            cover: item.cover,
-            discount: item.discount,
-            rating: item.rating,
-            coverInfo: true,
-            productInfo: false,
-          }).mb-medium
-
+          +product().mb-medium
+            +productCover({
+              cover: item.cover,
+              discount: item.discount,
+              rating: item.rating
+            })
 
           div(data-swipper-extra-content-source).visually-hidden
             h3.text-center.text-color-black.text-semibold.text-ellipsis.no-mrg= item.title

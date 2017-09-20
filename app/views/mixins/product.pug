@@ -1,60 +1,138 @@
-mixin product(props = {})
+mixin productCover(props = {})
+  -
+   const {
+     cover,
+     discount,
+     rating,
+     duration,
+   } = props;
+
+  .product__cover&attributes(attributes)
+    .thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--large
+      .thumbnail__img-wrap
+        img(src=`${assetsPrefix}${cover}`).img
+
+      if discount || rating
+        .thumbnail__info
+          if discount
+            .badge.badge--primary= discount
+          else if rating
+            .badge
+              +icon('star').text-color-yellow.icon--small
+              | #{' '}
+              = rating
+
+    if duration
+      .thumbnail__status
+        +discountBadge(duration)
+
+mixin productTitle(props = {})
   -
     const {
-      cover,
       title,
-      authors,
+      author
+    } = props;
+
+  .product__title&attributes(attributes)
+    p.text-semibold.text-size-medium.no-mrg.text-ellipsis.link.link--product(title=title)= title
+    if author
+      ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+        - const authors = author.split(', ')
+        each item in authors
+          li.no-mrg= item
+
+mixin productMeta(props = {})
+  -
+    const {
+      empty,
       discount,
       rating,
       price,
-      emptyBottom,
-      coverInfo = false,
-      productInfo = true,
     } = props;
 
-  .product&attributes(attributes)
-    if cover
-      .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--large.mb-small
-        .thumbnail__img-wrap
-          img(src=`${assetsPrefix}${cover}`).img
+  .product__meta&attributes(attributes)
+    .bar.bar--tiny.mb-none
+      if empty
+        .bar__item
+          p &nbsp;
+      else
+        .bar__item
+          if discount
+            .badge.badge--primary= discount
+          else if rating
+            .badge
+              +icon('star').text-color-yellow.icon--small
+              | #{' '}
+              = rating
+        if price
+          .bar__item.bar__item--fill
+            .text-medium.text-semibold.text-space-left= price
 
-        if coverInfo
-          .thumbnail__info
-            if discount
-              .badge.badge--primary= discount
-            else if rating
-              .badge
-                +icon('star').text-color-yellow.icon--small
-                | #{' '}
-                = rating
+mixin productDownload()
+  .product__action&attributes(attributes)
+    .btn-layout.btn-layout--vertical
+      .btn-dropdown
+        button.btn.btn--primary(
+          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+          data-toggle-expand,
+          aria-haspopup="true"
+        )
+          | Stiahnuť
+          +icon('chevron-down', 'icon-dropdown').icon--medium
+        .dropdown(data-dropdown, data-toggle-expand)
+          .dropdown__wrap
+            each item in [1, 2]
+              a(href="#").dropdown__item Action #{item}
 
-      if duration
-        .thumbnail__status
-          +discountBadge(duration)
+mixin productStatus(props = {})
+  -
+    const {
+      status,
+      actionDropdown,
+    } = props;
 
-    if title
-      .product__title
-        p.text-semibold.text-size-medium.no-mrg.text-ellipsis.link.link--product(title=title)= title
-        if authors
-          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
-            - const authorsArray = authors.split(', ')
-            each author in authorsArray
-              li.no-mrg= author
+  .product__status
+    .bar.no-mrg-bottom
+      if actionDropdown
+        .bar__item.align-self-right
+          .btn-dropdown.btn-dropdown--no-icon
+            button.btn.btn--clean.btn--small(
+              data-toggle='self, next',
+              data-toggle-expand,
+              aria-haspopup="true"
+            )
+              +icon('dots').icon--medium
+            .dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-toggle-expand, style="width: 200px")
+              .dropdown__wrap
+                h5.dropdown__group Stiahnuť ako:
+                a(href="#").dropdown__item
+                  +icon('download').icon--medium.text-space-right
+                  span.text-transform-upper pdf
+                a(href="#").dropdown__item
+                  +icon('download').icon--medium.text-space-right
+                  span.text-transform-upper epub
+                a(href="#").dropdown__item
+                  +icon('download').icon--medium.text-space-right
+                  span.text-transform-upper mobi
+                hr.mb-small
+                a(href="#").dropdown__item Darovať
+                hr.mb-small
+                h5.dropdown__group Označiť ako:
+                a(href="#").dropdown__item Práve čítam
+                a(href="#").dropdown__item Prečítaná
+                a(href="#").dropdown__item Kúpená ako darček
+                hr.mb-small
+                a(href="#").dropdown__item Presunúť do
+                a(href="#").dropdown__item Odstrániť moje hodnotenie
+                a(href="#").dropdown__item Odstrániť z knižnice
 
-    if productInfo
-      .bar.bar--tiny.mb-none
-        if emptyBottom
-          .bar__item
-            p &nbsp;
-        else
-          .bar__item
-            if discount && !thumbnailInfo
-              .badge.badge--primary= discount
-            else if rating && !thumbnailInfo
-              .badge
-                +icon('star').text-color-yellow.icon--small
-                | #{' '}
-                = rating
-          if price
-            .bar__item.bar__item--fill
-              .text-medium.text-semibold.text-space-left= price
+
+
+mixin product(props = {})
+  -
+    const {
+      size
+    } = props;
+
+  .product(class= size ? `product--${size}`: '')&attributes(attributes)
+    block

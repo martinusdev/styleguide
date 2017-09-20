@@ -29,14 +29,15 @@ mixin booksCarouselRecommended()
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
-            +product({
-              cover: item.cover,
-              title: item.title,
-              authors: item.author,
-              discount: item.discount,
-              rating: item.rating,
-              price: item.price
-            }).mb-small.text-left
+            +product().mb-small.text-left
+              +productCover({ cover: item.cover })
+              +productTitle({ title: item.title, author: item.author })
+              +productMeta({
+                discount: item.discount,
+                rating: item.rating,
+                price: item.price
+              })
+
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium
@@ -61,15 +62,15 @@ mixin booksCarouselHorizontal(props = {})
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
-            +product({
-              cover: item.cover,
-              title: item.title,
-              authors: item.author,
-              discount: item.discount,
-              rating: item.rating,
-              price: item.price,
-              emptyBottom: i === 2,
-            }).mb-small.text-left
+            +product().mb-small.text-left
+              +productCover({ cover: item.cover })
+              +productTitle({ title: item.title, author: item.author })
+              +productMeta({
+                empty: i === 2,
+                discount: item.discount,
+                rating: item.rating,
+                price: item.price
+              })
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium
