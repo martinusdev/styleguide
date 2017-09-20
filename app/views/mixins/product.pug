@@ -5,10 +5,21 @@ mixin productCover(props = {})
      discount,
      rating,
      duration,
+     type = 'book',
+     size = 'large',
+     href,
+     clickable = true,
    } = props;
 
+   const tag = href ? 'a': 'div';
+
   .product__cover&attributes(attributes)
-    .thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--large
+    #{tag}.thumbnail(
+      href= href ? href : undefined,
+      class= type ? `thumbnail--${type}` : '',
+      class= size ? `thumbnail--${size}` : '',
+      class= clickable ? `thumbnail--clickable`: ''
+    )
       .thumbnail__img-wrap
         img(src=`${assetsPrefix}${cover}`).img
 
@@ -30,11 +41,16 @@ mixin productTitle(props = {})
   -
     const {
       title,
-      author
+      author,
+      href
     } = props;
 
   .product__title&attributes(attributes)
-    p.text-semibold.text-size-medium.no-mrg.text-ellipsis.link.link--product(title=title)= title
+    p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=title, class= href ? '' : 'link link--product')
+      if href
+        a.link.link--product(href=href)= title
+      else
+        = title
     if author
       ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
         - const authors = author.split(', ')
@@ -70,7 +86,7 @@ mixin productMeta(props = {})
 
 mixin productDownload()
   .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical
+    .btn-layout.btn-layout--vertical.no-mrg-bottom
       .btn-dropdown
         button.btn.btn--primary(
           data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,

@@ -30,6 +30,14 @@
     margin-top: _get-space('h', 'small');
   }
 
+  &__gift {
+    padding-top: _get-space('v', 'small');
+    border: 1px dotted _color(grey);
+    border-width: 0 1px 1px;
+
+    border-radius: $default-border-radius;
+  }
+
   @each $name, $size in $thumbnail-sizes {
     &#{_get-variant-name($name)} {
       max-width: $size;
