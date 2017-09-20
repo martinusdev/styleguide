@@ -21,23 +21,24 @@ mixin accountHeader(props = {})
         },
       ],
       navActive = 0,
+      saveButton = false,
     } = props;
 
-  section.section.section--secondary.section--small
+  section.section.section--secondary.section--small.mb-none
     .wrapper-main
       .row.align-items-middle
-        .col--l-3.mb-medium
+        .col--m-4.mb-medium
           .bar.no-mrg-bottom
             .bar__item
               img.img--fluid.img--circle.thumbnail.thumbnail--medium(src=`images/content/user-photo.png`, alt="Tomáš Ulej")
             .bar__item.bar__item--fill
               h1.h3.text-color-black.text-semibold.no-mrg-bottom= name
               h2.h5 Môj martinus
-        .col--l-9.mb-medium.show-l
+        .col--m-8.mb-medium.show-m
           .bar.no-mrg-bottom
             .bar__item.bar__item--fill
               +inlineNav({ items: nav, active: navActive }).no-mrg-bottom.show-l
-            .bar__item.text-right
+            .bar__item.text-right.show-l
               button.btn.btn--clean.btn--small.no-mrg-bottom
                 | Odhlásiť sa
                 +icon('logout', 'icon--medium').icon--right
@@ -66,6 +67,11 @@ mixin accountHeader(props = {})
                       a(href= href).dropdown__item= title
           else
             block
+        if saveButton
+          .bar__item
+            button.btn
+              +icon('save', 'icon--medium').icon--left
+              | Uložiť zmeny
         .bar__item.text-right
           button.btn.btn--clean.btn--small.no-mrg-bottom
             span.show-m Odhlásiť sa

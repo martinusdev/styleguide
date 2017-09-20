@@ -118,6 +118,17 @@ $default-color-weights: (
   900,
 );
 
+$color-presets: (
+  primary: _color(primary),
+  green: _color(green),
+  orange: _color(orange),
+  violet: _color(violet),
+  blue: _color(blue),
+  yellow: _color(yellow),
+  brown: _color(brown),
+  darkblue: _color(darkblue),
+);
+
 // ----------------------------
 // GENERAL
 
@@ -1223,6 +1234,14 @@ $card: (
   well: (
     background-color: _color(bg, 500),
     after: (
+      height: 4px,
+      background-color: _color(bg, 600),
+    )
+  ),
+  material: (
+    box-shadow: 0 10px 14px 0 rgba(#000, 0.2),
+    padding-top: _get-space('v', 'small'),
+    before: (
       height: 4px,
       background-color: _color(bg, 600),
     )

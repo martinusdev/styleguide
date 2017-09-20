@@ -3,57 +3,56 @@ extends layouts/_default
 block opts
     - var pageTitle = 'Môj účet'
 
+mixin address-wrapper(props = {})
+  -
+    const {
+    type
+    } = props;
+
+  if type === 'Fakturačná'
+    .card.card--material.card--material-blue.my-account-address
+      .card__label=type
+      block
+
+  if type === 'Doručovacia'
+    .card.card--material.card--material-green.my-account-address
+      .card__label=type
+      block
+
+  if type === 'Default'
+    .card.card--material.my-account-address
+      block
+
 mixin address(props = {})
   -
     const {
       type
     } = props;
 
-  if type === 'Fakturačná'
-    .badge.badge--blue.mb-medium
-      +icon('invoice', 'icon--small').icon--left
-      | Fakturačná
-
-  if type === 'Doručovacia'
-    .badge.badge--green.mb-medium
-      +icon('invoice', 'icon--small').icon--left
-      | Doručovacia
-
-  .btn-dropdown.flex.flex-column
-    button.btn.btn--ghost.btn--icon-right.text-left(
-      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-      data-toggle-expand,
-      aria-haspopup="true"
-    )
-      = type
-      +icon('chevron-down', 'icon-dropdown').icon--medium
-    .dropdown(data-dropdown, data-toggle-expand)
-      .dropdown__wrap
-        a(href="#").dropdown__item Fakturačná
-        a(href="#").dropdown__item Doručovacia
-  .bar.align-items-top
-    .bar__item.bar__item--fill
-      block
-    .bar__item.text-right
+  +address-wrapper(props)
+    .card__status
       .btn-dropdown.btn-dropdown--no-icon
         button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
-          +icon('dots')
-        .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand, style="min-width: 80px;")
+          +icon('dots', 'icon--medium')
+        .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand, style="min-width: 180px;")
           .dropdown__wrap
+            a(href="#").dropdown__item Nastaviť ako fakturačnú
+            a(href="#").dropdown__item Nastaviť ako doručovaciu
             a(href="#", data-toggle="#account-address").dropdown__item Upraviť
             a(href="#").dropdown__item Zmazať
-
+    .card__content
+      block
 
 block content
   main.account
 
     include modules/account-header
-    +accountHeader({ navActive: 3 })
+    +accountHeader({ navActive: 3, saveButton: true })
 
-    section.section.section--m-full
+    section.section
       .wrapper-main
         .row
-          .col--l-3.show-l(data-sticky-container)
+          .col--l-2.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
               ul.list.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
                 li
@@ -66,24 +65,20 @@ block content
                   a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Newsletter
                 li
                   a(href="#eknihy", data-scroll, data-scroll-offset=header.size.default + 40) E-knihy
-          .col--l-9.col--12
+          .col--l-8.col--12(data-sticky-container)
             #ucet
               .row.align-items-middle
                 .col--fill
                   h3.h2.text-color-black.mb-medium Účet
-                .col--shrink
-                  button.btn
-                    +icon('save', 'icon--medium').icon--left
-                    | Uložiť zmeny
-              .mb-large
+              .mb-large#my-account-image(data-toggle-class="hide")
                 .row.align-items-middle.mb-medium
                   .col--3.col--m-shrink.no-pad-right
                     img(src="/images/content/user-photo.png", alt="User", width="100")
                   .col--fill
                     div
-                      button.btn.btn--clean.btn--small.no-mrg
+                      button.btn.btn--clean.btn--small.no-mrg(data-toggle='#my-account-imageupload, #my-account-image')
                         +icon('upload', 'icon--medium').icon--left
-                        | Nahrať
+                        | Nahrať#{' '}
                         span.show-s nový#{' '}
                         | obrázok
                     .mb-medium.show-m
@@ -91,6 +86,13 @@ block content
                       button.btn.btn--clean.btn--small.no-mrg
                         +icon('trash', 'icon--medium').icon--left
                         | Odstrániť
+              .my-account-imageupload.mb-large.hide.card.card--well#my-account-imageupload(data-toggle-class="hide")
+                .bar.mb-none
+                  .bar__item.bar__item--fill
+                    input(type="file")
+                  .bar__item.bar__item--shrinkable
+                    button.btn.btn--clean.btn--small.no-mrg(data-toggle='#my-account-imageupload, #my-account-image')
+                      +icon('close', 'icon--medium')
 
               hr.mb-medium
 
@@ -173,7 +175,7 @@ block content
                       | 851 02 Bratislava
                 - for (var i = 0; i<2; i++)
                   .col--m-4.flex.flex-column.mb-medium
-                    +address({ type: 'Nastaviť adresu ako'})
+                    +address({ type: 'Default'})
                       p.text-medium.mb-small
                         | Lighting Beetle
                         br
@@ -234,6 +236,14 @@ block content
                 .col--m-fill
                   .form-control.form-control--input.no-mrg-bottom
                       input.input(type="email", placeholder="Zadajte vašu e-mailovú adresu")
+
+          .col--l-2.show-l
+            .bar.bar--small.mb-small(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
+              .bar__item.bar__item--fill.text-right
+                button.btn
+                  +icon('save', 'icon--medium').icon--left
+                  | Uložiť zmeny
+
 block append modals
   include ./modules/change-password
   include ./modules/address-modal
