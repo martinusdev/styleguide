@@ -1,0 +1,160 @@
+extends layouts/_default
+
+block opts
+  - var pageTitle = 'Moja knižnica'
+
+  -
+    const subNav = [
+      {
+        title: 'Všetky moje tituly',
+        href: '#',
+        pill: 69,
+      },
+      {
+        title: 'Kúpené v kníkupectve',
+        href: '#',
+        pill: 102,
+        icon: 'smart-list'
+      },
+      {
+        title: 'Kúpené na webe',
+        href: '#',
+        pill: 9,
+        icon: 'smart-list'
+      },
+      {
+        title: 'Čítam',
+        href: '#',
+        icon: 'smart-list'
+      },
+      {
+        title: 'Prečítané',
+        href: '#',
+        pill: 8,
+        icon: 'smart-list'
+      },
+      {
+        title: 'Neprečítané',
+        href: '#',
+        pill: 2,
+        icon: 'smart-list'
+      },
+      {
+        title: 'Wishlist',
+        href: '#',
+        pill: 120,
+      },
+      {
+        title: 'Vianoce 2017',
+        href: '#',
+        pill: 8,
+      },
+      {
+        title: 'Pre bratranca',
+        href: '#',
+        pill: 2,
+      },
+    ];
+
+block content
+  main.account
+
+    include modules/account-header
+    +accountHeader({
+      navActive: 0,
+      subNav,
+    }).show-l
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-3.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+              ul.list.list--expanded.no-pad.mb-large(role="navigation")
+                each item, index in subNav
+                  li(class= index === 6 ? 'is-active' : '')
+                    a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
+                      if item.icon
+                        +icon(item.icon).icon--small.text-space-right.text-color-grey
+                      = item.title
+                      if item.pill
+                        .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
+
+              .btn-layout.btn-layout--vertical
+                button.btn.btn--ghost Pridať zoznam
+              p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
+
+          .col--l-9.col--12
+            .row
+              .col--m-6
+                .bar.bar--no-wrap.mb-medium
+                  .bar__item.hide-l
+                    a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
+                      +icon('arrow-left', 'icon--medium')
+                  .bar__item.bar__item--shrinkable
+                    h2 Wishlist
+                    p.text-size-small.text-color-grey Knihy, ktoré by som chcel vlastniť
+                  .bar__item
+                    .btn-layout.btn-layout--horizontal
+                      .btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
+                        button.btn.btn--clean(
+                          data-toggle='self, next',
+                          data-toggle-expand,
+                          aria-haspopup="true"
+                        )
+                          +icon('dots').icon--medium
+                        .dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-toggle-expand, style="width: 200px")
+                          .dropdown__wrap
+                            a(href="#").dropdown__item Action
+                            a(href="#").dropdown__item Action
+
+                      button.btn.btn--clean.no-mrg-bottom(
+                        data-toggle='self, next',
+                        data-toggle-expand,
+                        aria-haspopup="true"
+                      )
+                        +icon('share').icon--medium
+
+
+              .col--m-6
+                .form-control.form-control--input
+                  .input-addons
+                    input.input(type='text', placeholder="Hľadať v knižnici (autor, titul, ...)")
+                    .input-addons__item.no-pad
+                      button.btn
+                        +icon('plus').icon--medium.icon--left
+                        | Pridať
+
+            .row.align-items-bottom
+              each item, index in [...books, ...books, ...books, ...books]
+                -
+                  let status;
+                  switch(index) {
+                    case 3:
+                    case 4:
+                    case 7:
+                      status = 'read';
+                      break;
+                    case 2:
+                      status = 'reading';
+                      break;
+                    default:
+                  }
+                .col--6.col--s-4.col--m-3.mb-large
+                  +product({ size: 'large' }).mb-small.text-left
+                    +productStatus({ actionDropdown: 'my-library', status: status })
+                    +productCover({ cover: item.cover, href: '#' })
+                    +productTitle({ title: item.title, author: item.author, href: '#' })
+                    if index === 1
+                      +productToRate()
+                    else if index === 3
+                      +productRating
+                    else if index === 5
+                      +productRating({ stars: 0 })
+                    else if index === 6
+                      +productRating({ stars: 5 })
+                    else
+                      +productBuy()
+
+
+block append modals
