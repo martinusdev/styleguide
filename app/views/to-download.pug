@@ -40,12 +40,22 @@ block content
             h2 Všetky tituly k stiahnutiu
 
             .row.align-items-bottom
+              .col--6.col--s-4.col--m-3.mb-large
+                +product({ size: 'large' }).mb-small.product--gift
+                  +productCover({ cover: `${assetsPrefix}images/content/book-gift.svg`, type: false, clickable: false }).no-mrg-bottom
+                  .product__gift
+                    p.text-semibold.mb-small.text-medium Dostali ste darček?
+                    a(href="#").btn.btn--clean.no-mrg-bottom
+                      | Viac
+                      +icon('arrow-right').icon--medium
+
+
               each item, i in [...books, ...books, ...books, ...books]
                 .col--6.col--s-4.col--m-3.mb-large
                   +product({ size: 'large' }).mb-small.text-left
                     +productStatus({ actionDropdown: true })
-                    +productCover({ cover: item.cover })
-                    +productTitle({ title: item.title, author: item.author })
+                    +productCover({ cover: item.cover, href: '#' })
+                    +productTitle({ title: item.title, author: item.author, href: '#' })
                     +productDownload()
 
 
