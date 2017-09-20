@@ -23,7 +23,7 @@ mixin accountHeader(props = {})
       navActive = 0,
     } = props;
 
-  section.section.section--secondary.section--small
+  section.section.section--secondary.section--small&attributes(attributes)
     .wrapper-main
       .row.align-items-middle
         .col--l-3.mb-medium
@@ -42,7 +42,7 @@ mixin accountHeader(props = {})
                 | Odhlásiť sa
                 +icon('logout', 'icon--medium').icon--right
 
-  section.section.section--secondary.section--toolbar.hide-l(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
+  section.section.section--secondary.section--toolbar.hide-l(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)&attributes(attributes)
     .wrapper-main
       .bar.bar--small.mb-small
         .bar__item.bar__item--fill
