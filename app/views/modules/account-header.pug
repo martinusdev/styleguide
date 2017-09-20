@@ -21,23 +21,6 @@ mixin accountHeader(props = {})
         },
       ],
       navActive = 0,
-      subNav = [
-        {
-          title: 'Účet', href: '#ucet'
-        },
-        {
-          title: 'Adresy', href: '#adresy',
-        },
-        {
-          title: 'Platby', href: '#platby',
-        },
-        {
-          title: 'Newsletter', href: '#newsletter',
-        },
-        {
-          title: 'E-knihy', href: '#eknihy'
-        }
-      ]
     } = props;
 
   section.section.section--secondary.section--small
@@ -63,16 +46,24 @@ mixin accountHeader(props = {})
     .wrapper-main
       .bar.bar--small.mb-small
         .bar__item.bar__item--fill
-          if subNav
-            .form-control.form-control--select.no-mrg
-              select.select--ghost#account-sections-spy(data-scroll-offset=`{"0": ${header.size.default + 20}, "768": ${header.size.m + 20}}`)
-                each item, index in subNav
-                  -
-                    const title = typeof item === 'string' ? item : item.title;
-                    let href = typeof item === 'string' ? '#' : (item.href || '#');
-                    href = href.charAt( 0 ) === '#' ? href.slice(1) : href;
-
-                  option(value=href) !{title}
+          if nav
+            - const activeNavItem = nav.splice(navActive, 1)[0];
+            .btn-layout.btn-layout--vertical
+              .btn-dropdown
+                button.btn.btn--ghost(
+                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                  data-toggle-expand,
+                  aria-haspopup="true"
+                )
+                  = activeNavItem.title
+                  +icon('chevron-down', 'icon-dropdown').icon--medium
+                .dropdown(data-dropdown, data-toggle-expand)
+                  .dropdown__wrap
+                    each item in nav
+                      -
+                        const title = typeof item === 'string' ? item : item.title;
+                        const href = typeof item === 'string' ? '#' : (item.href || '#');
+                      a(href= href).dropdown__item= title
           else
             block
         .bar__item.text-right
