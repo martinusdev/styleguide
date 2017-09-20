@@ -69,6 +69,27 @@
       #{$prop}: #{$value};
     }
   }
+
+  &--more {
+    position: relative;
+    padding-right: 30px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      left: auto;
+      transform: translateY(-50%);
+
+      height: 16px;
+      width: 16px;
+
+      background-image: svg-load('./../icons_/app/chevron-right.svg', fill=_color(grey, 200));
+      background-size: 16px;
+      background-repeat: no-repeat;
+    }
+  }
 }
 
 @mixin dropdown-group (
