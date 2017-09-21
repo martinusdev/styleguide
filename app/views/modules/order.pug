@@ -4,14 +4,18 @@
       button.btn.btn--clean.no-mrg-bottom
         +icon('arrow-left', 'icon--medium')
     .col--fill
-      h1.h2.mb-small Objednávka č. 123
-      .text-small.text-color-grey Objednané 12. 4. 2017
+      h1.h2.mb-none Objednávka č. 123
+      .text-color-grey Objednané 12. 4. 2017
     .col--shrink
+      button.btn.btn--primary.no-mrg-bottom
+        | Zaplatiť#{' '}
+        span.show-m kartou online
+      span.text-space-left
       button.btn.btn--ghost.no-mrg-bottom.text-space-right.show-m
         +icon('trash', 'icon--medium').icon--left
         | Stornovať
       button.btn.btn--clean.no-mrg-bottom.text-space-right.hide-m
-        +icon('trash', 'icon--medium').icon--left
+        +icon('trash', 'icon--medium')
   .row.mb-large.show-m
   .row.mb-large-m
     // progress bar
@@ -29,207 +33,155 @@
                   +icon('time', 'icon--medium').bg-default
                 if (i>currentStep)
                   .order-progress__blank-circle
-              .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
+              .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '')
+                if (i == currentStep)
+                  | Dokončili ste
+                else
+                  | Dokončili ste objednávku
 
 
-  h2 Sumár objednávky
+  .bar
+    .bar__item.bar__item--fill
+      h2 Sumár objednávky
+    .bar__item
+      button.btn.btn--ghost.no-mrg-bottom
+        +icon('download', 'icon--medium').icon--left
+        | Stiahnuť faktúru
 
-  .order-packages
-    // zasielka 1
-    .package.mb-large.border-bottom-grey
-      .bar.align-items-middle.mb-medium
-        .bar__item
-          h2.h4
-            +icon('check-circle', 'icon--medium').text-color-success.text-space-right
-            | Zásielka 1.
-        .bar__break.hide-s
-        .bar__item.bar__item--fill
-          span.text-medium.text-space-right
-            span.text-color-grey Odoslané 13. 4. 2017.#{' '}
-            span.text-color-black Kuriér GLS
-          .hide-s
-          span.text-medium.text-space-right
-            span.text-color-grey Číslo zásielky#{' '}
-            span.text-color-black HSKDJF546546
-        .bar__item
-          button.btn.btn--clean.no-mrg-bottom.show-m
-            +icon('download', 'icon--medium').icon--left
-            | Stiahnuť faktúru
-          button.btn.btn--clean.no-mrg-bottom.hide-m
-            +icon('download', 'icon--medium')
-      each a, i in Array(2)
-        .package__item.mb-small
-          .bar.align-items-top.no-mrg-bottom
-            .bar__item.no-pad-right
-              img(src="images/content/books/sample-1.jpg").thumbnail.thumbnail--book.thumbnail--medium
-            .bar__item.bar__item--fill
-              .bar.no-mrg-bottom.align-items-top
-                .bar__item.bar__item--shrinkable
+  .row
+    .col--l-6
+      .order-summary.mb-large.card.card--material
+        .card__content.mb-medium
+          .order-summary__item.border-bottom-grey.mb-medium
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.text-color-black Spôsob doručenia
+            .bar.mb-medium.text-medium
+              .bar__item.bar__item--fill
+                b Pošta (na adresu)
+              .bar__item.text-right
+                .text-semibold 1,99 €
+
+          .order-summary__item.border-bottom-grey.mb-medium
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.text-color-black Spôsob doručenia
+            .bar.mb-medium.text-medium
+              .bar__item.bar__item--fill
+                b 1x červený papier
+                  br
+                  | Neprikladať faktúru
+
+          .order-summary__item
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.text-color-black Fakturačná adresa
+            .bar.mb-medium.text-medium
+              .bar__item.bar__item--fill
+                b Jozef Novák, Budyšínska 51, 851 02 Bratislava
+
+          .order-summary__item.border-bottom-grey.mb-medium
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.text-color-black Doručovacia adresa
+            .bar.mb-medium.text-medium
+              .bar__item.bar__item--fill
+                b Jozef Novák, Budyšínska 51, 851 02 Bratislava
+
+          .order-summary__item.border-bottom-grey.mb-medium
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.no-mrg-bottom.text-color-black Spôsob platby
+              .bar__item.text-right
+                button.btn.btn--clean.show-m
+                  +icon('download', 'icon--small').icon--left
+                  | Stiahnuť faktúru
+
+            .bar.mb-medium.text-medium
+              .bar__item.bar__item--fill
+                b Kartou (vopred)
+                  br
+                  | Darčeková poukážka
+              .bar__item.text-right
+                .text-semibold 1,99 €
+
+          .order-summary__item.border-bottom-grey.mb-medium
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.no-mrg-bottom.text-color-black Darovali ste centy a stali ste sa Anjelom!
+              .bar__item.text-right
+                button.btn.btn--clean.no-mrg-bottom
+                  +icon('chevron-down', 'icon--medium')
+            .bar.mb-medium.text-medium
+              .bar__item.bar__item--fill
+                b Zaokrúhliť na 10€
+              .bar__item.text-right
+                .text-semibold 1,56 €
+
+          .text-right
+            span.text-large.text-space-right Spolu k úhrade
+            span.h2.text-bold 10,00 €
+
+        .card__content.bg-secondary
+          .bar.align-items-center.no-mrg-top
+            .bar__item.text-medium Zásielku pripravili:
+            .bar__item
+              each a, i in Array(5)
+                img(class=i !== 4 ? 'text-space-right' : '', src="/images/content/user-photo.png", width="45", alt="Avatar")
+
+    .col--l-6
+      .order-packages
+        // zasielka 1
+        .package.mb-large
+          .bar.align-items-middle.mb-medium
+            .bar__item
+              +icon('check-circle', 'icon--medium').text-color-success
+            .bar__item
+              h2.h5
+                | Zásielka 1.
+              .text-small
+                span.text-color-grey 13. 4. 2017#{' '}
+                span.text-color-black Kuriér GLS#{' '}
+                a(href="#").link HSKDJF546546
+
+          each a, i in Array(2)
+            .package__item.mb-small.border-bottom-grey
+              .bar.align-items-middle.mb-small
+                .bar__item.no-pad-right
+                  img(src="images/content/books/sample-1.jpg").thumbnail.thumbnail--book.thumbnail--small
+                .bar__item.bar__item--fill
                   .text-semibold Rybaření pro začátečníky a názov na dva riadky
                   .text-small.text-color-grey Armin Göllner
-                .bar__break.hide-m
-                .bar__item.bar__item--fill
+                .bar__item.bar__item--shrinkable.text-right
+                  .text-medium
+                    span.text-color-grey 1x#{' '}
+                    span.text-semibold 123,26 €
                   button.btn.btn--clean.no-pad-top.no-pad-bottom
                     +icon('heart', 'icon--medium')
                   span.text-medium V#{' '}
                     a.link(href="#") knižnici
-                .bar__item
-                  span.text-medium
-                    | 1x#{' '}
-                    span.text-semibold 3940,26 €
-      .bar
-        .bar__item.bar__item--fill(style="padding-left: 70px")
-          .text-semibold Spolu za túto zásielku
-        .bar__item
-          .text-medium.text-semibold 15,26 €
-      .bar.align-items-right
-        .bar__item.text-medium Zásielku pripravili:
-        .bar__item
-          each a, i in Array(5)
-            img(class=i!==4 ? 'text-space-right' : '', src="/images/content/user-photo.png", width="45", alt="Avatar")
 
-    // zasielka 2
-    .package.mb-large.border-bottom-grey
-      .bar.align-items-middle.mb-medium
-        .bar__item
-          h2.h4
-            +icon('time', 'icon--medium').text-color-grey.text-space-right
-            | Zásielka 2.
-        .bar__break.hide-s
-        .bar__item.bar__item--fill
-          .hide-s
-          span.text-medium.text-space-right
-            span.text-color-grey Zásielka sa pripravuje - tieto tituly sme pre vás objednali a čakáme na ich doručenie
-      .package__item.mb-small
-        .bar.align-items-top.no-mrg-bottom
-          .bar__item.no-pad-right
-            img(src="images/content/books/sample-22.jpg").thumbnail.thumbnail--book.thumbnail--medium
-          .bar__item.bar__item--fill
-              .bar.no-mrg-bottom.align-items-top
-                .bar__item.bar__item--shrinkable
-                  .text-semibold Rybaření pro začátečníky a názov na dva riadky
-                  .text-small.text-color-grey Armin Göllner
-                .bar__break.hide-m
-                .bar__item.bar__item--fill
-                  button.btn.btn--clean.no-pad-top.no-pad-bottom
-                    +icon('heart', 'icon--medium')
-                  span.text-medium V#{' '}
-                    a.link(href="#") knižnici
-                .bar__item
-                  span.text-medium
-                    | 1x#{' '}
-                    span.text-semibold 3940,26 €
-      .bar
-        .bar__item.bar__item--fill(style="padding-left: 70px")
-          .text-semibold Spolu za túto zásielku
-        .bar__item
-          .text-medium.text-semibold 15,26 €
-      .bar.align-items-right
-        .bar__item.text-medium Zásielku pripravili:
-        .bar__item
-          each a, i in Array(5)
-            img(class=i!==4 ? 'text-space-right' : '', src="/images/content/user-photo.png", width="45", alt="Avatar")
 
-    // neodoslane
-    .package.mb-large.border-bottom-grey
-      .bar.align-items-middle.mb-medium
-        .bar__item
-          h2.h4
-            +icon('time', 'icon--medium').text-color-grey.text-space-right
-            | Zatiaľ nepripravené tituly
-        .bar__break.hide-s
-      .package__item.mb-small
-        .bar.align-items-top.no-mrg-bottom
-          .bar__item.no-pad-right
-            img(src="images/content/books/sample-15.jpg").thumbnail.thumbnail--book.thumbnail--medium
-          .bar__item.bar__item--fill
-              .bar.no-mrg-bottom.align-items-top
-                .bar__item.bar__item--shrinkable
-                  .text-semibold Rybaření pro začátečníky a názov na dva riadky
-                  .text-small.text-color-grey Armin Göllner
-                .bar__break.hide-m
-                .bar__item.bar__item--fill
-                  button.btn.btn--clean.no-pad-top.no-pad-bottom
-                    +icon('heart', 'icon--medium')
-                  span.text-medium V#{' '}
-                    a.link(href="#") knižnici
-                .bar__item
-                  span.text-medium
-                    | 1x#{' '}
-                    span.text-semibold 3940,26 €
-      .bar
-        .bar__item.bar__item--fill(style="padding-left: 70px")
-          .text-semibold Spolu za túto zásielku
-        .bar__item
-          .text-medium.text-semibold 15,26 €
-
-  .order-summary.mb-large
-    .order-summary__item.border-bottom-grey.mb-medium
-      .bar
-        .bar__item.bar__item--fill.bar__item--shrinkable
-          h3.h4.text-color-black Spôsob doručenia
-      .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill
-          div Pošta (na adresu)
-        .bar__item.text-right
-          .text-semibold 1,99 €
-
-    .order-summary__item.border-bottom-grey.mb-medium
-      .bar
-        .bar__item.bar__item--fill.bar__item--shrinkable
-          h3.h4.text-color-black Spôsob doručenia
-      .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill
-          div 1x červený papier
-            br
-            | Neprikladať faktúru
-
-    .order-summary__item
-      .bar
-        .bar__item.bar__item--fill.bar__item--shrinkable
-          h3.h4.text-color-black Fakturačná adresa
-      .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill
-          div Jozef Novák, Budyšínska 51, 851 02 Bratislava
-
-    .order-summary__item.border-bottom-grey.mb-medium
-      .bar
-        .bar__item.bar__item--fill.bar__item--shrinkable
-          h3.h4.text-color-black Doručovacia adresa
-      .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill
-          div Jozef Novák, Budyšínska 51, 851 02 Bratislava
-
-    .order-summary__item.border-bottom-grey.mb-medium
-      .bar
-        .bar__item.bar__item--fill.bar__item--shrinkable
-          h3.h4.no-mrg-bottom.text-color-black Spôsob platby
-        .bar__item.text-right
-          button.btn.btn--clean.show-m
-            +icon('download', 'icon--medium').icon--left
-            | Stiahnuť faktúru za prijatú platbu
-
-      .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill
-          div Kartou (vopred)
-            br
-            | Darčeková poukážka
-        .bar__item.text-right
-          .text-semibold 1,99 €
-
-    .order-summary__item.border-bottom-grey.mb-medium
-      .bar
-        .bar__item.bar__item--fill.bar__item--shrinkable
-          h3.h4.no-mrg-bottom.text-color-black Darovali ste centy a stali ste sa Anjelom!
-        .bar__item.text-right
-          button.btn.btn--clean.no-mrg-bottom
-            +icon('chevron-down', 'icon--medium')
-      .bar.mb-medium.text-medium
-        .bar__item.bar__item--fill
-          div Zaokrúhliť na 10€
-        .bar__item.text-right
-          .text-semibold 1,56 €
-
-    .text-right
-      span.text-large.text-space-right Spolu k úhrade
-      span.h2.text-bold 10,00 €
+        // neodoslane
+        .package.mb-large
+          .bar.align-items-middle.mb-medium
+            .bar__item
+              +icon('time', 'icon--medium').text-color-grey
+            .bar__item
+              h2.h5
+                | Zatiaľ nepripravené tituly
+          .package__item.mb-small
+            .bar.align-items-middle.mb-small
+              .bar__item.no-pad-right
+                img(src="images/content/books/sample-15.jpg").thumbnail.thumbnail--book.thumbnail--small
+              .bar__item.bar__item--fill
+                .text-semibold Rybaření pro začátečníky a názov na dva riadky
+                .text-small.text-color-grey Armin Göllner
+              .bar__item.bar__item--shrinkable.text-right
+                .text-medium
+                  span.text-color-grey 1x#{' '}
+                  span.text-semibold 123,26 €
+                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                  +icon('heart', 'icon--medium')
+                span.text-medium V#{' '}
+                  a.link(href="#") knižnici

@@ -11,5 +11,5 @@ mixin inlineNav(props = {})
         -
           const title = typeof item === 'string' ? item : item.title;
           const href = typeof item === 'string' ? '#' : (item.href || '#');
-        li.inline-nav__item.text-large
+        li.inline-nav__item.text-size-regular
           a.inline-nav__link(href=href, class= active === index ? 'is-active' : '')= title
