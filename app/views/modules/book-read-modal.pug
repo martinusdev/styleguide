@@ -1,0 +1,52 @@
+.modal-overlay#book-read-modal(data-modal)
+  article.modal.modal--medium
+    .modal__wrap
+      section.modal__content
+        .bar
+          .bar__item.bar__item--fill
+            h2 Vyzdvihnúť elektronický darček
+          .bar__item
+            button.btn.btn--clean.no-mrg-bottom(data-toggle="#book-read-modal")
+              +icon('close').icon--medium.icon--right
+
+        .row
+          .col--m-6.ofst--center.text-center
+            .thumbnail.thumbnail--large.thumbnail--center.mb-small
+              .thumbnail__img-wrap
+                img(src=`${assetsPrefix}images/content/books/sample-1.jpg`).img
+            h3 Rybaření pro začátečníky a názov na dva riadky
+        .row.mb-large
+          .col--m-6.ofst--center
+            p.mb-small Túto knižku ste prečítali dňa:
+
+            .row.row--form
+              .col--4
+                .form-control.form-control--select
+                  .form-label
+                    label.text-transform-upper(for="day")
+                      | Deň
+                  select.js-select(id="day", name="day", data-select-position="top")
+                    each option, index in Array(31)
+                      option(value= index + 1)= index + 1
+              .col--4
+                .form-control.form-control--select
+                  .form-label
+                    label.text-transform-upper(for="month")
+                      | Mesiac
+                  select.js-select(id="month", name="month", data-select-position="top")
+                    each option, index in Array(12)
+                      option(value= index + 1)= index + 1
+              .col--4
+                .form-control.form-control--select
+                  .form-label
+                    label.text-transform-upper(for="year")
+                      | Rok
+                  select.js-select(id="year", name="year", data-select-position="top")
+                    each option, index in Array(100)
+                      option(value= 2017 - index, selected= index === 0 ? true: undefined)= 2017 - index
+
+        .btn-layout.btn-layout--s-horizontal.btn-layout--vertical.align-items-right
+          button.btn.btn--ghost(data-toggle="#book-read-modal")
+            +icon('trash').icon--medium.icon--left
+            | Odstrániť z prečítaných
+          button.btn(data-toggle="#book-read-modal") Uložiť
