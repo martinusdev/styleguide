@@ -1,0 +1,21 @@
+.modal-overlay#share-list-modal(data-modal)
+  article.modal.modal--medium
+    .modal__wrap
+      section.modal__content
+        .bar
+          .bar__item.bar__item--fill
+            h2 Zdieľať zoznam
+          .bar__item
+            button.btn.btn--clean.no-mrg-bottom(data-toggle="#share-list-modal")
+              +icon('close').icon--medium.icon--right
+
+        .row
+          .col
+            .form-control.form-control--input
+              .input-addons
+                input.input(type='text', value="https://www.martinus.sk/")#clipboard
+                .input-addons__item.no-pad
+                  button.btn.btn--link(data-clipboard, data-clipboard-target="#clipboard") Koprírovať
+
+        .btn-layout.btn-layout--s-horizontal.btn-layout--vertical.align-items-right
+          button.btn(data-toggle="#share-list-modal") Zavrieť

@@ -109,9 +109,7 @@ block content
                             a(href="#").dropdown__item Zmazať
 
                       button.btn.btn--clean.no-mrg-bottom(
-                        data-toggle='self, next',
-                        data-toggle-expand,
-                        aria-haspopup="true"
+                        data-toggle='#share-list-modal'
                       )
                         +icon('share').icon--medium
 
@@ -160,3 +158,4 @@ block content
 
 block append modals
   include ./modules/book-read-modal
+  include ./modules/share-list-modal

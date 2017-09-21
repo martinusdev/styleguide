@@ -81,7 +81,27 @@ block content
                         .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
 
             .btn-layout.btn-layout--vertical
-              button.btn.btn--ghost Pridať zoznam
+              .btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
+                button.btn.btn--ghost(
+                  data-toggle='self, next',
+                  data-toggle-expand,
+                  aria-haspopup="true"
+                )
+                  | Pridať zoznam
+                .dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-dropdown-interactive, data-toggle-expand, style="width: 200px")
+                  .dropdown__wrap
+                    .box.no-mrg-bottom
+                      .bar.flex-nowrap
+                        .bar__item.bar__item--fill.text-nowrap
+                          | Nový zoznam
+                        .bar__item
+                          button.btn.btn--clean.btn--small(data-toggle=`#wishlist-button-${id}, #wishlist-dropdown-${id}`)
+                            +icon('close', 'icon--small', 'Naspäť')
+                      .form-control.form-control--input
+                        input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
+                      .btn-layout--vertical
+                        button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+
             p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
 
           .col--l-9.col--12.show-l
@@ -109,9 +129,7 @@ block content
                             a(href="#").dropdown__item Zmazať
 
                       button.btn.btn--clean.no-mrg-bottom(
-                        data-toggle='self, next',
-                        data-toggle-expand,
-                        aria-haspopup="true"
+                        data-toggle='#share-list-modal'
                       )
                         +icon('share').icon--medium
 
@@ -160,3 +178,4 @@ block content
 
 block append modals
   include ./modules/book-read-modal
+  include ./modules/share-list-modal

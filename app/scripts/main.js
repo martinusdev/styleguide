@@ -23,6 +23,7 @@ import MegaMenu from './modules/MegaMenu';
 import RadiocheckToggle from './modules/RadiocheckToggle';
 import Header from './modules/Header';
 import AudioPlayer from './modules/AudioPlayer';
+import Clipboard from './modules/Clipboard';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -48,6 +49,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Header = Header;
   window.myApp.RadiocheckToggle = RadiocheckToggle;
   window.myApp.AudioPlayer = AudioPlayer;
+  window.myApp.Clipboard = Clipboard;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
@@ -88,6 +90,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.header = new Header();
 
   window.myApp.audioPlayers = new AudioPlayer();
+  window.myApp.clipboard = new Clipboard();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });
