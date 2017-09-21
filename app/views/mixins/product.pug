@@ -162,7 +162,7 @@ mixin productStatus(props = {})
                 if actionDropdown === 'my-library'
                   h5.dropdown__group Označiť ako:
                   a(href="#").dropdown__item Práve čítam
-                  a(href="#").dropdown__item.dropdown__item--more
+                  a(href="#", data-toggle="#book-read-modal").dropdown__item.dropdown__item--more
                     +icon('check-circle').icon--small.text-color-success.text-space-right
                     | Prečítaná
                     span.text-color-grey.text-space-left 5.4.2015
@@ -187,7 +187,7 @@ mixin productStatus(props = {})
                   hr.mb-small
                   h5.dropdown__group Označiť ako:
                   a(href="#").dropdown__item Práve čítam
-                  a(href="#").dropdown__item Prečítaná
+                  a(href="#", data-toggle="#book-read-modal").dropdown__item Prečítaná
                   a(href="#").dropdown__item Kúpená ako darček
                   hr.mb-small
                   a(href="#").dropdown__item Presunúť do

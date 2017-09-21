@@ -199,6 +199,10 @@ export default class Select {
         config.shouldSort = true;
       }
 
+      if (select.hasAttribute('data-select-position')) {
+        config.position = select.getAttribute('data-select-position');
+      }
+
       config.callbackOnCreateTemplates = template =>
         getTemplates(template, select, this.config);
 
