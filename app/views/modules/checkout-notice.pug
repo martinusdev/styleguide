@@ -2,6 +2,13 @@
   article.modal.modal--full
     .row.no-mrg-horizontal.modal__wrap
       section.modal__content.col--l-8.col--m-6.show-m.bg-secondary
+
+        .bar
+          .bar__item.bar__item--fill.text-left
+            a.link(href="#").text-size-medium
+              +icon('arrow-left', 'icon--medium')
+              span.text-space-left Chcem pokračovať v nákupe
+
         h5 Posledné z vášho wishlistu
         .row
           .col--l-6
@@ -73,8 +80,3 @@
                 .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-small
                   a(href="#").btn.btn--ghost Ísť do košíka
                   a(href="#").btn.btn--primary Objednať teraz
-
-                .bar
-                  .bar__item.bar__item--fill.text-right
-                    a.link(href="#").text-size-medium Chcem pokračovať v nákupe
-                      +icon('arrow-right')
