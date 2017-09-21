@@ -100,7 +100,7 @@ mixin ludiNajviacZaujma
           each item, i in [...books, ...books ]
             if i < 4
               li(class=`${i < 3 ? 'mb-medium' : ''}`)
-                +product-horizontal(item).no-mrg
+                +product-horizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
 
 mixin najoblubenejsieSerie
   section.mb-large
