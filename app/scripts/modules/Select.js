@@ -1,6 +1,29 @@
 import Choices
   from './../../../node_modules/choices.js/assets/scripts/dist/choices';
 
+let lang = 'sk';
+
+const texts = {
+  sk: {
+    loadingText: 'Nahrávam...',
+    noResultsText: 'Žiadne výsledky',
+    noChoicesText: 'Na výber nie sú žiadne možnosti',
+    itemSelectText: 'Kliknutím vyberte',
+    addItemText: value => `Stlačením ENTER pridajte <b>"${value}"</b>`,
+    maxItemText: maxItemCount =>
+      `Iba ${maxItemCount} hodnot môže byť pridaných.`,
+  },
+  cz: {
+    loadingText: 'Nahrávam...',
+    noResultsText: 'Žádné výsledky',
+    noChoicesText: 'Na výběr nejsou žádné možnosti',
+    itemSelectText: 'Kliknutím vyberte',
+    addItemText: value => `Stlačením ENTER přidejte <b>"${value}"</b>`,
+    maxItemText: maxItemCount =>
+      `Iba ${maxItemCount} hodnot múže býť přidaných.`,
+  },
+};
+
 const defaultConfig = {
   search: false,
   searchEnabled: false,
@@ -127,7 +150,7 @@ function getTemplates(template, select, config) {
 export default class Select {
   constructor(selector = '.js-select', config) {
     this.selector = selector;
-    this.config = { ...defaultConfig, ...config };
+    this.config = { ...defaultConfig, ...texts[lang], ...config };
 
     this._onShowDropdown = this._onShowDropdown.bind(this);
     this._onHideDropdown = this._onHideDropdown.bind(this);
@@ -135,6 +158,10 @@ export default class Select {
     this.elements = this._init();
 
     return this;
+  }
+
+  static setLang(newLang) {
+    lang = newLang;
   }
 
   // eslint-disable-next-line class-methods-use-this
