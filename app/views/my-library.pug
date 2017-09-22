@@ -81,7 +81,27 @@ block content
                         .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
 
               .btn-layout.btn-layout--vertical
-                button.btn.btn--ghost Pridať zoznam
+                .btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
+                  button.btn.btn--ghost(
+                    data-toggle='self, next',
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    | Pridať zoznam
+                  #addList.dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-dropdown-interactive, data-toggle-expand)
+                    .dropdown__wrap
+                      .box.no-mrg-bottom
+                        .bar.flex-nowrap
+                          .bar__item.bar__item--fill.text-nowrap
+                            | Nový zoznam
+                          .bar__item
+                            button.btn.btn--clean.btn--small(data-toggle='#addList')
+                              +icon('close', 'icon--small', 'Naspäť')
+                        .form-control.form-control--input
+                          input(name="addListInput", id="addListInput", placeholder="napr. otcovi na Vianoce").input
+                        .btn-layout--vertical
+                          button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+
               p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
 
           .col--l-9.col--12
@@ -105,25 +125,24 @@ block content
                           +icon('dots').icon--medium
                         .dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-toggle-expand, style="width: 200px")
                           .dropdown__wrap
-                            a(href="#").dropdown__item Action
-                            a(href="#").dropdown__item Action
+                            a(href="#").dropdown__item Premenovať
+                            a(href="#").dropdown__item Zmazať
 
                       button.btn.btn--clean.no-mrg-bottom(
-                        data-toggle='self, next',
-                        data-toggle-expand,
-                        aria-haspopup="true"
+                        data-toggle='#share-list-modal'
                       )
                         +icon('share').icon--medium
 
 
-              .col--m-6
-                .form-control.form-control--input
-                  .input-addons
-                    input.input(type='text', placeholder="Hľadať v knižnici (autor, titul, ...)")
-                    .input-addons__item.no-pad
-                      button.btn
-                        +icon('plus').icon--medium.icon--left
-                        | Pridať
+              //- TODO: Hladat v kniznici
+              //- .col--m-6
+              //-   .form-control.form-control--input
+              //-     .input-addons
+              //-       input.input(type='text', placeholder="Hľadať v knižnici (autor, titul, ...)")
+              //-       .input-addons__item.no-pad
+              //-         button.btn
+              //-           +icon('plus').icon--medium.icon--left
+              //-           | Pridať
 
             .row.align-items-bottom
               each item, index in [...books, ...books, ...books, ...books]
@@ -159,3 +178,4 @@ block content
 
 block append modals
   include ./modules/book-read-modal
+  include ./modules/share-list-modal
