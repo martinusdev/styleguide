@@ -28,7 +28,7 @@ const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
 
 window.addEventListener('DOMContentLoaded', () => {
-  window.myApp = {};
+  window.myApp = window.myApp || {};
   window.myApp.Alert = Alert;
   window.myApp.Toggle = Toggle;
   window.myApp.Dropdown = Dropdown;
@@ -62,6 +62,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.dropdowns = new Dropdown();
 
   window.myApp.tabs = new Tab();
+
+  Select.setLang(window.myApp.selectLanguage);
 
   window.myApp.selects = new Select();
 
