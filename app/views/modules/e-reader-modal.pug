@@ -1,0 +1,44 @@
+.modal-overlay#e-reader-modal(data-modal)
+	article.modal.modal--medium
+		.modal__wrap
+			section.modal__content
+				.bar
+					.bar__item.bar__item--fill
+						h2 Poslať e-knihu do čítačky e-mailom
+					.bar__item
+						button.btn.btn--clean.no-mrg-bottom(data-toggle="#e-reader-modal")
+							+icon('close').icon--medium.icon--right
+				p
+					|Ak používate čítačku#{' '}
+					b PocketBook
+					|, zadajte do políčka Váš PocketBook e-mail (adresa@pbsync.com). Príjem e-mailov z Martinus.sk stačí povoliť po prvom odoslaní e-knihy z Vašej e-knižnice. Viac informácií pre Vás
+					a.link #{' '}máme tu.
+
+				p
+					|Ak používate čítačku#{' '}
+					b Kindle
+					|, zadajte do políčka Váš Kindle e-mail (adresa@kindle.com). Skontrolujte prosím, či máte povolený príjem e-mailov z @martinus.sk v nastavení Vášho Kindle účtu. Nastavenia
+					a.link #{' '}môžete zmeniť tu
+					|. Viac informácií pre Vás
+					a.link #{' '}máme tu.
+
+				p Zadajte e-mail Vašej čítačky
+				.row
+					.col
+						.form-control.form-control--input
+							.form-label.form-label--required
+								label.text-transform-upper(for="email")
+									| e-mail
+							input.input(type="text", name="email", id="email", placeholder="Zadajte e-mail Vašej čítačky")
+						.form-control.form-control--checkbox
+							.checkbox
+								input.radiocheck__input(type="checkbox" id="always" name="always")
+								label.radiocheck__control(for="always")
+								label.radiocheck__label(for="always")
+									| Posielať na túto adresu ďalšie e-knihy automaticky
+							.text-small.text-color-grey (automaticky deaktivuje možnosť ich darovania)
+
+
+				.text-right
+					button.btn.btn--ghost.no-mrg-bottom(data-toggle="#e-reader-modal") Naspať
+					button.btn.no-mrg-bottom(data-toggle="#e-reader-modal") Odoslať e-knihu

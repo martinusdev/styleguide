@@ -652,22 +652,29 @@ $button-styles: (
   ),
   success: (
     default: (
+      position: relative,
       color: $color-white,
-      border-color: transparent,
       background-color: _color(success, 500),
-      box-shadow: none,
-    ),
-    focus: (
-      color: $color-white,
-      border-color: transparent,
-      background-color: _color(success, 200),
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
     ),
     active: (
       color: $color-white,
-      border-color: transparent,
       background-color: _color(success, 600),
+      box-shadow: none,
     ),
-  )
+    after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
+      background-color: _color(success, 600),
+      height: 4px,
+    ),
+    group: (
+      border-color: _color(success, 600),
+    ),
+  ),
 );
 
 /// Default button color weights used for calculation button states. Used when hover/active/ colors are not defined.

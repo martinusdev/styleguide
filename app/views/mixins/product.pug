@@ -84,21 +84,46 @@ mixin productMeta(props = {})
           .bar__item.bar__item--fill
             .text-medium.text-semibold.text-space-left= price
 
-mixin productDownload()
+mixin productDownload(props = {})
+  -
+    const {
+      buttonClass = 'primary',
+      title = 'Stiahnuť'
+    } = props;
+
   .product__action&attributes(attributes)
     .btn-layout.btn-layout--vertical.no-mrg-bottom
       .btn-dropdown
-        button.btn.btn--primary(
+        button.btn(
+          class='btn--' + buttonClass,
           data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
           data-toggle-expand,
           aria-haspopup="true"
         )
-          | Stiahnuť
+          = title
           +icon('chevron-down', 'icon-dropdown').icon--medium
-        .dropdown(data-dropdown, data-toggle-expand)
+        .dropdown(data-dropdown, data-toggle-expand, style="width: 200px")
           .dropdown__wrap
-            each item in [1, 2]
-              a(href="#").dropdown__item Action #{item}
+            h5.dropdown__group Stiahnuť ako:
+            a(href="#", data-toggle="#audiobook-modal").dropdown__item
+              +icon('download').icon--small.text-space-right
+              span.text-transform-upper.text-small mp3
+            a(href="#").dropdown__item
+              +icon('download').icon--small.text-space-right
+              span.text-transform-upper.text-small pdf
+            a(href="#").dropdown__item
+              +icon('download').icon--small.text-space-right
+              span.text-transform-upper.text-small epub
+            a(href="#").dropdown__item
+              +icon('download').icon--small.text-space-right
+              span.text-transform-upper.text-small mobi
+            h5.dropdown__group Poslať:
+            a(href="#", data-toggle="#e-reader-modal").dropdown__item
+              +icon('upload').icon--small.text-space-right
+              span.text-transform-upper.text-small poslať do čítačky
+            a(href="#").dropdown__item
+              +icon('upload').icon--small.text-space-right
+              span.text-transform-upper.text-small darovať
 
 mixin productBuy(props = {})
   -
@@ -173,17 +198,25 @@ mixin productStatus(props = {})
                   a(href="#").dropdown__item Odstrániť z knižnice
                 else
                   h5.dropdown__group Stiahnuť ako:
+                  a(href="#", data-toggle="#audiobook-modal").dropdown__item
+                    +icon('download').icon--small.text-space-right
+                    span.text-transform-upper.text-small mp3
                   a(href="#").dropdown__item
                     +icon('download').icon--small.text-space-right
-                    span.text-transform-upper pdf
+                    span.text-transform-upper.text-small pdf
                   a(href="#").dropdown__item
                     +icon('download').icon--small.text-space-right
-                    span.text-transform-upper epub
+                    span.text-transform-upper.text-small epub
                   a(href="#").dropdown__item
                     +icon('download').icon--small.text-space-right
-                    span.text-transform-upper mobi
-                  hr.mb-small
-                  a(href="#").dropdown__item Darovať
+                    span.text-transform-upper.text-small mobi
+                  h5.dropdown__group Poslať:
+                  a(href="#", data-toggle="#e-reader-modal").dropdown__item
+                    +icon('upload').icon--small.text-space-right
+                    span.text-transform-upper.text-small poslať do čítačky
+                  a(href="#").dropdown__item
+                    +icon('upload').icon--small.text-space-right
+                    span.text-transform-upper.text-small darovať
                   hr.mb-small
                   h5.dropdown__group Označiť ako:
                   a(href="#").dropdown__item Práve čítam
@@ -192,7 +225,7 @@ mixin productStatus(props = {})
                   hr.mb-small
                   a(href="#").dropdown__item Presunúť do
                   a(href="#").dropdown__item Odstrániť moje hodnotenie
-                  a(href="#").dropdown__item Odstrániť z knižnice
+                  a(href="#").dropdown__item.text-color-error Odstrániť z knižnice
 
 
 

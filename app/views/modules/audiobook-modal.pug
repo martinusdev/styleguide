@@ -1,0 +1,47 @@
+.modal-overlay#audiobook-modal(data-modal)
+	article.modal.modal--medium
+		.modal__wrap
+			section.modal__content
+				.bar
+					.bar__item.bar__item--fill
+						h2 Stiahnuť audioknihu
+					.bar__item
+						button.btn.btn--clean.no-mrg-bottom(data-toggle="#audiobook-modal")
+							+icon('close').icon--medium.icon--right
+
+			section.modal__content
+				.bar.align-items-top
+					.bar__item.bar__item--fill
+						article.product.product--horizontal
+							.product__img.product__cover
+								.thumbnail.thumbnail--book.thumbnail--small
+									.thumbnail__img-wrap
+										img(src=`${assetsPrefix}images/content/books/sample-1.jpg`).img
+
+							.product__caption
+								.bar.bar--small.no-mrg-bottom
+									.bar__item.bar__item--fill.align-items-middle
+										.text-semibold.block.line-medium.text-color-grey-dark.mb-none Hobbit
+										ul.list-inline.list-inline--delimited.text-color-grey.text-size-medium.mb-small
+											li.no-mrg J.R.R. Tolkien
+
+					.bar__item.bar__item--shrinkable
+						button.btn.btn--primary
+							+icon('download', 'icon--medium').icon--left
+							| Stiahnuť všetky kapitoly
+
+			.mb-small.border-bottom-grey-2
+
+			section.modal__content
+				ol.list--default
+					each i in [1,2,3,4,5,6,7,8,9,10]
+						li.border-bottom-grey.mb-small
+							.bar.text-medium.mb-small
+								.bar__item.bar__item--fill.text-semibold Názov kapitoly
+								.bar__item.bar__item--shrinkable.text-right 18 MB
+								.bar__item.bar__item--shrinkable.text-right
+									button.btn.btn--clean.btn--small
+										+icon('download').icon--left
+										| Stiahnuť
+
+
