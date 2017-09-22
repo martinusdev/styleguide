@@ -112,10 +112,22 @@ mixin productBuy(props = {})
         +icon('cart').icon--left.icon--medium
         = price
 
-mixin productToRate()
+mixin productToRate(props = {})
+  -
+    const {
+      stars = 3,
+      id = Math.floor((Math.random() * 10000)),
+    } = props;
   .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
-      button.btn Hodnotiť
+    .btn-layout.btn-layout--vertical.no-mrg-bottom(data-toggle-class="hide")
+      button.btn(data-toggle=`parent, #product-rating-${id}`) Hodnotiť
+    .badge.badge--large.badge--block.hide(id=`product-rating-${id}`, data-toggle-class="hide")
+      .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced(data-stars)
+        - for (var abc = 0; abc<5; abc++)
+          input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
+          label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+abc)
+            +icon('star').icon--medium
+
 
 mixin productRating(props = {})
   -
@@ -123,10 +135,11 @@ mixin productRating(props = {})
       stars = 3,
     } = props;
   .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
-      button.btn.btn--ghost
-        each item, index in Array(5)
-          +icon('star')(class= index < stars ? 'text-color-yellow' : 'text-color-grey-light').icon--small
+    .badge.badge--large.badge--block
+      .rating-star.align-items-spaced
+        each star, starIndex in Array(5)
+          +icon('star').rating-star__item.icon--medium(class=`${starIndex < stars ? 'is-active' : ''}`)
+
 
 mixin productStatus(props = {})
   -
