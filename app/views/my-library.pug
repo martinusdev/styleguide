@@ -70,7 +70,7 @@ block content
         .row
           .col--l-3.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
-              ul.list.list--expanded.no-pad.mb-large(role="navigation")
+              ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
                 each item, index in subNav
                   li(class= index === 6 ? 'is-active' : '')
                     a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
