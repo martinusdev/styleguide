@@ -23,7 +23,15 @@
   display: inline-flex;
   align-items: center;
 
-  min-height: _get-rem(24px);
+  &--block {
+    width: 100%;
+  }
+
+  @each $size, $props in $badge-sizes {
+    &#{_get-variant-name($size)} {
+      @include css-map($props);
+    }
+  }
 
   .icon--medium {
     height: _get-rem(22px);
