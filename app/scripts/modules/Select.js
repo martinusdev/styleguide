@@ -170,6 +170,18 @@ export default class Select {
     if (container.classList.contains('is-flipped')) {
       container.classList.add('is-flipped-helper');
     }
+
+    const searchInput = container.querySelector(
+      '.choices__list--dropdown .choices__input',
+    );
+
+    if (searchInput) {
+      // search input is not focused by default - perhaps due animation?
+      // timeout fixes this issue
+      setTimeout(() => {
+        searchInput.focus();
+      }, 100);
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -224,6 +236,7 @@ export default class Select {
         config.searchEnabled = true;
         config.searchChoices = true;
         config.shouldSort = true;
+        config.classNames.input = 'input';
       }
 
       if (select.hasAttribute('data-select-position')) {
@@ -231,7 +244,7 @@ export default class Select {
       }
 
       config.callbackOnCreateTemplates = template =>
-        getTemplates(template, select, this.config);
+        getTemplates(template, select, config);
 
       const choice = new Choices(select, config);
 
