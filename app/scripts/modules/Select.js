@@ -1,5 +1,6 @@
 import Choices
   from './../../../node_modules/choices.js/assets/scripts/dist/choices';
+import { nodeListToArray } from './Utils';
 
 let lang = 'sk';
 
@@ -254,7 +255,7 @@ export default class Select {
         choice.disable();
       }
 
-      const classes = select.classList;
+      const classes = nodeListToArray(select.classList);
       const unwantedClasses = ['choices__input', 'is-hidden', 'js-select'];
       classes.forEach(className => {
         if (!unwantedClasses.includes(className)) {
