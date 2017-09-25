@@ -236,7 +236,6 @@ export default class Select {
         config.searchEnabled = true;
         config.searchChoices = true;
         config.shouldSort = true;
-        config.classNames.input = 'input';
       }
 
       if (select.hasAttribute('data-select-position')) {
@@ -262,6 +261,15 @@ export default class Select {
           choice.containerOuter.classList.add(className);
         }
       });
+
+      if (config.searchEnabled) {
+        const input = choice.dropdown.querySelector('input');
+
+        if (input) {
+          input.classList.add('input');
+          input.classList.add('input--search');
+        }
+      }
 
       select.addEventListener('showDropdown', this._onShowDropdown);
       select.addEventListener('hideDropdown', this._onHideDropdown);
