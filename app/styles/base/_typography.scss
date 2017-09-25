@@ -191,9 +191,8 @@ hr {
   }
 
   .list {
-    li.is-active {
+    li {
       position: relative;
-      font-weight: $font-weight-semibold;
 
       &::before {
         content: '';
@@ -205,7 +204,9 @@ hr {
         width: 10px;
         height: 2px;
 
-        background: linear-gradient(to left, _color(primary, 500) 0, _color(primary, 500) 5px, _color(primary, 600) 5px, _color(primary, 600) 20px);
+        background: _color(primary);
+        opacity: 0;
+        transition: opacity $ease-300;
       }
 
       @include breakpoint(l) {
@@ -214,6 +215,18 @@ hr {
           left: -40px;
         }
       };
+    }
+
+    &--with-hover li:hover,
+    &--with-hover li:focus,
+    li.is-active {
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    li.is-active {
+      font-weight: $font-weight-semibold;
     }
   }
 

@@ -1,239 +1,269 @@
 mixin productCover(props = {})
-  -
-   const {
-     cover,
-     discount,
-     rating,
-     duration,
-     type = 'book',
-     size = 'large',
-     href,
-     clickable = true,
-   } = props;
+	-
+		const {
+			cover,
+			discount,
+			rating,
+			duration,
+			type = 'book',
+			size = 'large',
+			href,
+			clickable = true,
+		} = props;
 
-   const tag = href ? 'a': 'div';
+		const tag = href ? 'a': 'div';
 
-  .product__cover&attributes(attributes)
-    #{tag}.thumbnail(
-      href= href ? href : undefined,
-      class= type ? `thumbnail--${type}` : '',
-      class= size ? `thumbnail--${size}` : '',
-      class= clickable ? `thumbnail--clickable`: ''
-    )
-      .thumbnail__img-wrap
-        img(src=`${assetsPrefix}${cover}`).img
+	.product__cover&attributes(attributes)
+		#{tag}.thumbnail(
+			href= href ? href : undefined,
+			class= type ? `thumbnail--${type}` : '',
+			class= size ? `thumbnail--${size}` : '',
+			class= clickable ? `thumbnail--clickable`: ''
+		)
+			.thumbnail__img-wrap
+				img(src=`${assetsPrefix}${cover}`).img
 
-      if discount || rating
-        .thumbnail__info
-          if discount
-            .badge.badge--primary= discount
-          else if rating
-            .badge
-              +icon('star').text-color-yellow.icon--small
-              | #{' '}
-              = rating
+			if discount || rating
+				.thumbnail__info
+					if discount
+						.badge.badge--primary= discount
+					else if rating
+						.badge
+							+icon('star').text-color-yellow.icon--small
+							| #{' '}
+							= rating
 
-    if duration
-      .thumbnail__status
-        +discountBadge(duration)
+		if duration
+			.thumbnail__status
+				+discountBadge(duration)
 
 mixin productTitle(props = {})
-  -
-    const {
-      title,
-      author,
-      href
-    } = props;
+	-
+		const {
+			title,
+			author,
+			href
+		} = props;
 
-  .product__title&attributes(attributes)
-    p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=title, class= href ? '' : 'link link--product')
-      if href
-        a.link.link--product(href=href)= title
-      else
-        = title
-    if author
-      ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
-        - const authors = author.split(', ')
-        each item in authors
-          li.no-mrg= item
+	.product__title&attributes(attributes)
+		p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=title, class= href ? '' : 'link link--product')
+			if href
+				a.link.link--product(href=href)= title
+			else
+				= title
+		if author
+			ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+				- const authors = author.split(', ')
+				each item in authors
+					li.no-mrg= item
 
 mixin productMeta(props = {})
-  -
-    const {
-      empty,
-      discount,
-      rating,
-      price,
-    } = props;
+	-
+		const {
+			empty,
+			discount,
+			rating,
+			price,
+		} = props;
 
-  .product__meta&attributes(attributes)
-    .bar.bar--tiny.mb-none
-      if empty
-        .bar__item
-          p &nbsp;
-      else
-        .bar__item
-          if discount
-            .badge.badge--primary= discount
-          else if rating
-            .badge
-              +icon('star').text-color-yellow.icon--small
-              | #{' '}
-              = rating
-        if price
-          .bar__item.bar__item--fill
-            .text-medium.text-semibold.text-space-left= price
+	.product__meta&attributes(attributes)
+		.bar.bar--tiny.mb-none
+			if empty
+				.bar__item
+					p &nbsp;
+			else
+				.bar__item
+					if discount
+						.badge.badge--primary= discount
+					else if rating
+						.badge
+							+icon('star').text-color-yellow.icon--small
+							| #{' '}
+							= rating
+				if price
+					.bar__item.bar__item--fill
+						.text-medium.text-semibold.text-space-left= price
 
 mixin productDownload(props = {})
-  -
-    const {
-      buttonClass = 'primary',
-      title = 'Stiahnuť'
-    } = props;
+	-
+		const {
+			buttonClass = 'primary',
+			title = 'Stiahnuť'
+		} = props;
 
-  .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
-      .btn-dropdown
-        button.btn(
-          class='btn--' + buttonClass,
-          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-          data-toggle-expand,
-          aria-haspopup="true"
-        )
-          = title
-          +icon('chevron-down', 'icon-dropdown').icon--medium
-        .dropdown(data-dropdown, data-toggle-expand, style="width: 200px")
-          .dropdown__wrap
-            h5.dropdown__group Stiahnuť ako:
-            a(href="#", data-toggle="#audiobook-modal").dropdown__item
-              +icon('download').icon--small.text-space-right
-              span.text-transform-upper.text-small mp3
-            a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
-              span.text-transform-upper.text-small pdf
-            a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
-              span.text-transform-upper.text-small epub
-            a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
-              span.text-transform-upper.text-small mobi
-            h5.dropdown__group Poslať:
-            a(href="#", data-toggle="#e-reader-modal").dropdown__item
-              +icon('upload').icon--small.text-space-right
-              span.text-transform-upper.text-small poslať do čítačky
-            a(href="#").dropdown__item
-              +icon('upload').icon--small.text-space-right
-              span.text-transform-upper.text-small darovať
+	.product__action&attributes(attributes)
+		.btn-layout.btn-layout--vertical.no-mrg-bottom
+			.btn-dropdown
+				button.btn(
+					class='btn--' + buttonClass,
+					data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+					data-toggle-expand,
+					aria-haspopup="true"
+				)
+					= title
+					+icon('chevron-down', 'icon-dropdown').icon--medium
+				.dropdown(data-dropdown, data-toggle-expand, style="width: 200px")
+					.dropdown__wrap
+						h5.dropdown__group Stiahnuť ako:
+						a(href="#", data-toggle="#audiobook-modal").dropdown__item
+							+icon('download').icon--small.text-space-right
+							span.text-transform-upper.text-small mp3
+						a(href="#").dropdown__item
+							+icon('download').icon--small.text-space-right
+							span.text-transform-upper.text-small pdf
+						a(href="#").dropdown__item
+							+icon('download').icon--small.text-space-right
+							span.text-transform-upper.text-small epub
+						a(href="#").dropdown__item
+							+icon('download').icon--small.text-space-right
+							span.text-transform-upper.text-small mobi
+						h5.dropdown__group Poslať:
+						a(href="#", data-toggle="#e-reader-modal").dropdown__item
+							+icon('upload').icon--small.text-space-right
+							span.text-transform-upper.text-small poslať do čítačky
+						a(href="#").dropdown__item
+							+icon('upload').icon--small.text-space-right
+							span.text-transform-upper.text-small darovať
 
 mixin productBuy(props = {})
-  -
-    const {
-      price = '143,50 €'
-    } = props;
+	-
+		const {
+			price = '143,50 €'
+		} = props;
 
-  .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
-      button.btn.btn--primary
-        +icon('cart').icon--left.icon--medium
-        = price
+	.product__action&attributes(attributes)
+		.btn-layout.btn-layout--vertical.no-mrg-bottom
+			button.btn.btn--primary
+				+icon('cart').icon--left.icon--medium
+				= price
 
-mixin productToRate()
-  .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
-      button.btn Hodnotiť
+mixin productToRate(props = {})
+	-
+		const {
+			stars = 3,
+			id = Math.floor((Math.random() * 10000)),
+		} = props;
+	.product__action&attributes(attributes)
+		.btn-layout.btn-layout--vertical.no-mrg-bottom(data-toggle-class="hide")
+			button.btn(data-toggle=`parent, #product-rating-${id}`) Hodnotiť
+		.badge.badge--large.badge--block.hide(id=`product-rating-${id}`, data-toggle-class="hide")
+			.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced(data-stars)
+				- for (var abc = 0; abc<5; abc++)
+					input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
+					label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+abc)
+						+icon('star').icon--medium
+
 
 mixin productRating(props = {})
-  -
-    const {
-      stars = 3,
-    } = props;
-  .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
-      button.btn.btn--ghost
-        each item, index in Array(5)
-          +icon('star')(class= index < stars ? 'text-color-yellow' : 'text-color-grey-light').icon--small
+	-
+		const {
+			stars = 3,
+		} = props;
+	.product__action&attributes(attributes)
+		.badge.badge--large.badge--block
+			.rating-star.align-items-spaced
+				each star, starIndex in Array(5)
+					+icon('star').rating-star__item.icon--medium(class=`${starIndex < stars ? 'is-active' : ''}`)
+
 
 mixin productStatus(props = {})
-  -
-    const {
-      status,
-      actionDropdown,
-    } = props;
+	-
+		const {
+			status,
+			actionDropdown,
+			id = Math.floor((Math.random() * 10000)),
+		} = props;
 
-  .product__status
-    .bar.bar--tiny.no-mrg-bottom
-      if status
-        .bar__item
-          if status === 'read'
-            p.no-mrg-bottom.text-small.text-color-success
-              +icon('check-circle').text-space-right.text-vam
-              | Prečítané
-          else if status === 'reading'
-            p.no-mrg-bottom.text-small.text-color-grey
-              +icon('time').text-space-right.text-vam
-              | Čítam
+	.product__status
+		.bar.bar--tiny.no-mrg-bottom
+			if status
+				.bar__item
+					if status === 'read'
+						p.no-mrg-bottom.text-small.text-color-success
+							+icon('check-circle').text-space-right.text-vam
+							| Prečítané
+					else if status === 'reading'
+						p.no-mrg-bottom.text-small.text-color-grey
+							+icon('time').text-space-right.text-vam
+							| Čítam
 
-      if actionDropdown
-        .bar__item.align-self-right
-          .btn-dropdown.btn-dropdown--no-icon
-            button.btn.btn--clean.btn--small(
-              data-toggle='self, next',
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              +icon('dots').icon--medium
-            .dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-toggle-expand, style="width: 200px")
-              .dropdown__wrap
-                if actionDropdown === 'my-library'
-                  h5.dropdown__group Označiť ako:
-                  a(href="#").dropdown__item Práve čítam
-                  a(href="#", data-toggle="#book-read-modal").dropdown__item.dropdown__item--more
-                    +icon('check-circle').icon--small.text-color-success.text-space-right
-                    | Prečítaná
-                    span.text-color-grey.text-space-left 5.4.2015
-                  a(href="#").dropdown__item Kúpená ako darček
-                  hr.mb-small
-                  a(href="#").dropdown__item.dropdown__item--more Presunúť do
-                  a(href="#").dropdown__item Odstrániť moje hodnotenie
-                  a(href="#").dropdown__item Odstrániť z knižnice
-                else
-                  h5.dropdown__group Stiahnuť ako:
-                  a(href="#", data-toggle="#audiobook-modal").dropdown__item
-                    +icon('download').icon--small.text-space-right
-                    span.text-transform-upper.text-small mp3
-                  a(href="#").dropdown__item
-                    +icon('download').icon--small.text-space-right
-                    span.text-transform-upper.text-small pdf
-                  a(href="#").dropdown__item
-                    +icon('download').icon--small.text-space-right
-                    span.text-transform-upper.text-small epub
-                  a(href="#").dropdown__item
-                    +icon('download').icon--small.text-space-right
-                    span.text-transform-upper.text-small mobi
-                  h5.dropdown__group Poslať:
-                  a(href="#", data-toggle="#e-reader-modal").dropdown__item
-                    +icon('upload').icon--small.text-space-right
-                    span.text-transform-upper.text-small poslať do čítačky
-                  a(href="#").dropdown__item
-                    +icon('upload').icon--small.text-space-right
-                    span.text-transform-upper.text-small darovať
-                  hr.mb-small
-                  h5.dropdown__group Označiť ako:
-                  a(href="#").dropdown__item Práve čítam
-                  a(href="#", data-toggle="#book-read-modal").dropdown__item Prečítaná
-                  a(href="#").dropdown__item Kúpená ako darček
-                  hr.mb-small
-                  a(href="#").dropdown__item Presunúť do
-                  a(href="#").dropdown__item Odstrániť moje hodnotenie
-                  a(href="#").dropdown__item.text-color-error Odstrániť z knižnice
-
-
+			if actionDropdown
+				.bar__item.align-self-right
+					.btn-dropdown.btn-dropdown--no-icon
+						button.btn.btn--clean.btn--small(
+							data-toggle='self, next',
+							data-toggle-expand,
+							aria-haspopup="true"
+						)
+							+icon('dots').icon--medium
+						.dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-dropdown-interactive, data-toggle-expand, style="width: 200px")
+							.dropdown__wrap
+								if actionDropdown === 'my-library'
+									div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
+										h5.dropdown__group Označiť ako:
+										a(href="#").dropdown__item Práve čítam
+										a(href="#", data-toggle="#book-read-modal").dropdown__item.dropdown__item--more
+											+icon('check-circle').icon--small.text-color-success.text-space-right
+											| Prečítaná
+											span.text-color-grey.text-space-left 5.4.2015
+										a(href="#").dropdown__item Kúpená ako darček
+										hr.mb-small
+										a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Presunúť do
+										a(href="#").dropdown__item Odstrániť moje hodnotenie
+										a(href="#").dropdown__item Odstrániť z knižnice
+									.hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
+										.bar.no-mrg-bottom
+											.bar__item.bar__item--fill
+												h5.dropdown__group Presunúť do:
+											.bar__item
+												button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
+													+icon('close', 'icon--small', 'Naspäť')
+										a(href="#").dropdown__item Na vianoce
+										a(href="#").dropdown__item Pre brata
+								else
+									div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
+										h5.dropdown__group Stiahnuť ako:
+										a(href="#", data-toggle="#audiobook-modal").dropdown__item
+											+icon('download').icon--small.text-space-right
+											span.text-transform-upper.text-small mp3
+										a(href="#").dropdown__item
+											+icon('download').icon--small.text-space-right
+											span.text-transform-upper.text-small pdf
+										a(href="#").dropdown__item
+											+icon('download').icon--small.text-space-right
+											span.text-transform-upper.text-small epub
+										a(href="#").dropdown__item
+											+icon('download').icon--small.text-space-right
+											span.text-transform-upper.text-small mobi
+										h5.dropdown__group Poslať:
+										a(href="#", data-toggle="#e-reader-modal").dropdown__item
+											+icon('upload').icon--small.text-space-right
+											span.text-transform-upper.text-small poslať do čítačky
+										a(href="#").dropdown__item
+											+icon('upload').icon--small.text-space-right
+											span.text-transform-upper.text-small darovať
+										hr.mb-small
+										h5.dropdown__group Označiť ako:
+										a(href="#").dropdown__item Práve čítam
+										a(href="#", data-toggle="#book-read-modal").dropdown__item Prečítaná
+										a(href="#").dropdown__item Kúpená ako darček
+										hr.mb-small
+										a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Presunúť do
+										a(href="#").dropdown__item Odstrániť moje hodnotenie
+										a(href="#").dropdown__item Odstrániť z knižnice
+									.hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
+										.bar.no-mrg-bottom
+											.bar__item.bar__item--fill
+												h5.dropdown__group Presunúť do:
+											.bar__item
+												button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
+													+icon('close', 'icon--small', 'Naspäť')
 
 mixin product(props = {})
-  -
-    const {
-      size
-    } = props;
+	-
+		const {
+			size
+		} = props;
 
-  .product(class= size ? `product--${size}`: '')&attributes(attributes)
-    block
+	.product(class= size ? `product--${size}`: '')&attributes(attributes)
+		block
