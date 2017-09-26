@@ -1,5 +1,7 @@
 extends layouts/_default
 
+include ./mixins/checkoutCardDone
+
 block opts
     - var pageTitle = 'Košík - Platba'
     - var checkoutHeader = true;
@@ -34,20 +36,20 @@ block content
 
             include modules/checkout/cart
 
-            +checkout-card-done({
+            +checkoutCardDone({
               id: 'delivery',
               title: 'Zvoľte spôsob doručenia',
               summary: 'Balíkomat',
               price: '1,99 €',
             })
 
-            +checkout-card-done({
+            +checkoutCardDone({
               id: 'delivery-balikomat',
               title: 'Odberné miesto',
               summary: 'Bratislava, Cubicon, Staré Grunty 24',
             })
 
-            +checkout-card-done({
+            +checkoutCardDone({
               id: 'billing-address',
               title: 'Fakturačná adresa',
               summary: 'Lighting Beetle s.r.o. Budyšínska 8, 831 03 Bratislava',

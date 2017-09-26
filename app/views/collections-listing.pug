@@ -1,16 +1,23 @@
 extends layouts/_default
 
+include ./mixins/booksCarouselHorizontal
+include ./mixins/breadcrumbs
+include ./mixins/inlineNav
+include ./mixins/sectionHeader
+include ./mixins/icon
+
 block opts
     - var pageTitle = 'Kolekcia'
 
 block content
+
   mixin najoblubenejsieSerie
     section.mb-large
       article.card
         .card__status
           img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100', alt="Tomáš Ulej")
         .card__content.card__content--overflow
-          +section-header({ header: 'Najobľúbenejšie série', more: false, center: true, small: true })
+          +sectionHeader({ header: 'Najobľúbenejšie série', more: false, center: true, small: true })
           h2.text-center Všetko z IT sveta
           include ./modules/collection-carousel
 

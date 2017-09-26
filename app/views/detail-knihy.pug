@@ -1,5 +1,12 @@
 extends layouts/_default
 
+include ./mixins/booksCarouselRecommended
+include ./mixins/breadcrumbs
+include ./mixins/pagination
+include ./mixins/review
+include ./mixins/sectionHeader
+include ./mixins/icon
+
 block opts
     - var pageTitle = 'Detail knihy'
 
@@ -204,7 +211,7 @@ block content
 
       section.section.section--secondary.section--overflow
         .wrapper-main
-          +section-header({ header: 'Odporúčané knihy a kolekcie', more: false })
+          +sectionHeader({ header: 'Odporúčané knihy a kolekcie', more: false })
 
           +booksCarouselRecommended.carousel--fade-outside
 
@@ -654,7 +661,7 @@ block content
 
     section.section.section--secondary.section--overflow
       .wrapper-main
-        +section-header({ header: 'Odporúčané knihy a kolekcie' })
+        +sectionHeader({ header: 'Odporúčané knihy a kolekcie' })
 
         +booksCarouselRecommended.carousel--fade-outside
 

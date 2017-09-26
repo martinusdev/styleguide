@@ -1,5 +1,10 @@
 extends layouts/_default
 
+include ./mixins/booksCarouselHorizontal
+include ./mixins/carouselTiles
+include ./mixins/productHorizontal
+include ./mixins/sectionHeader
+
 block opts
     - var pageTitle = 'Homepage'
 
@@ -7,7 +12,7 @@ mixin preVas
   section.mb-large
     article.card
       .card__content.card__content--overflow
-        +section-header({ header: 'Pre Vás', more: false, center: true })
+        +sectionHeader({ header: 'Pre Vás', more: false, center: true })
         +booksCarouselHorizontal
 
 mixin banner(banner)
@@ -19,7 +24,7 @@ mixin tyzdenneKolekcie
   section.mb-large
     article.card
       .card__content.card__content--overflow
-        +section-header({ header: 'Týždenné kolekcie', more: false, center: true, small: true })
+        +sectionHeader({ header: 'Týždenné kolekcie', more: false, center: true, small: true })
         h2.text-center Knihy do vašej kuchyne
         include ./modules/collection-carousel
 
@@ -38,7 +43,7 @@ mixin novinky
   section.mb-large
     article.card
       .card__content.card__content--overflow
-        +section-header({ header: 'Novinky', more: false, center: true })
+        +sectionHeader({ header: 'Novinky', more: false, center: true })
         +booksCarouselHorizontal
 
 mixin najoblubenejsieKolekcie
@@ -47,7 +52,7 @@ mixin najoblubenejsieKolekcie
       .card__status
         img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100', alt="Tomáš Ulej")
       .card__content.card__content--overflow
-        +section-header({ header: 'Najobľúbenejšie kolekcie', small: true, more: false, center: true })
+        +sectionHeader({ header: 'Najobľúbenejšie kolekcie', small: true, more: false, center: true })
         h2.text-center Biografie slávnych
         include ./modules/collection-carousel
 
@@ -59,7 +64,7 @@ mixin najpredavaniejsieZPonuky
   section.mb-large
     .card
       .card__content
-        +section-header({ header: 'Najpredávanejšie z ponuky', more: false, center: true })
+        +sectionHeader({ header: 'Najpredávanejšie z ponuky', more: false, center: true })
         .btn-layout.btn-layout--vertical.mb-large
           .btn-group.btn-group--horizontal.btn-group--fill(data-tabs-container)
             a(href='#tab-ranking-books', role="tab", data-tabs-item).btn.btn--ghost.is-active Knihy
@@ -75,8 +80,8 @@ mixin najpredavaniejsieZPonuky
                 each item, i in [...books, ...books ]
                   if i < 10
                     li.mb-medium(class=i > 4 ? 'show-l' : '')
-                      //- +product-horizontal(item).no-mrg
-                      +product-horizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
+                      //- +productHorizontal(item).no-mrg
+                      +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
 
       .card__content
         .btn-layout.btn-layout--vertical
@@ -86,8 +91,8 @@ mixin akcioveTituly
   section.mb-large
     .card
       .card__content
-        +section-header({ header: 'Akciové tituly', more: false, center: true })
-        +product-horizontal({ discountUnderBook: true, discount: 'Ušetrite 3,50 €', description: 'Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.', coverSize: 'large', duration: {} })
+        +sectionHeader({ header: 'Akciové tituly', more: false, center: true })
+        +productHorizontal({ discountUnderBook: true, discount: 'Ušetrite 3,50 €', description: 'Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.', coverSize: 'large', duration: {} })
       .card__content.card__content--overflow
         +booksCarouselHorizontal({ duration: {} })
 
@@ -95,12 +100,12 @@ mixin ludiNajviacZaujma
   section.mb-large
     .card
       .card__content
-        +section-header({ header: 'Ľudí najviac zaujíma', more: false, center: true })
+        +sectionHeader({ header: 'Ľudí najviac zaujíma', more: false, center: true })
         ul.list.list--unstyled
           each item, i in [...books, ...books ]
             if i < 4
               li(class=`${i < 3 ? 'mb-medium' : ''}`)
-                +product-horizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
+                +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
 
 mixin najoblubenejsieSerie
   section.mb-large
@@ -108,7 +113,7 @@ mixin najoblubenejsieSerie
       .card__status
         img.img--fluid.img--circle.thumbnail.thumbnail--small(src='https://placehold.it/100x100', alt="Tomáš Ulej")
       .card__content.card__content--overflow
-        +section-header({ header: 'Najobľúbenejšie série', more: false, center: true, small: true })
+        +sectionHeader({ header: 'Najobľúbenejšie série', more: false, center: true, small: true })
         h2.text-center Všetko z IT sveta
         include ./modules/collection-carousel
 

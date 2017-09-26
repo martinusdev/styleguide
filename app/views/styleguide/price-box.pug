@@ -1,5 +1,8 @@
 extends templates/layout
 
+include ./../mixins/icon
+include ./../mixins/addTo
+
 //- Options
 block prepend opts
   - var page = helpers.getPageIds('modules.priceBox', l_sitemap);
@@ -18,8 +21,6 @@ block prepend content
 
 //- Content
 block append content
-
-
   +content-section(contents[0])
     +content-sub-section('Price box No.1 - Default')
 
