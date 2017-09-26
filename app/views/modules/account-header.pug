@@ -67,6 +67,26 @@ mixin accountHeader(props = {})
                       a(href= href).dropdown__item= title
           else
             block
+        if subNav
+          .bar__item.bar__item--fill
+            - const activeSubNavItem = subNav[0];
+              .btn-layout.btn-layout--vertical
+                .btn-dropdown
+                  button.btn.btn--ghost(
+                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                  data-toggle-expand,
+                  aria-haspopup="true"
+                  )
+                    = activeSubNavItem.title
+                    +icon('chevron-down', 'icon-dropdown').icon--medium
+                  .dropdown(data-dropdown, data-toggle-expand)
+                    .dropdown__wrap
+                      each item, i in subNav
+                        -
+                          const title = typeof item === 'string' ? item : item.title;
+                          const href = typeof item === 'string' ? '#' : (item.href || '#');
+                        if (i != 0)
+                          a(href= href).dropdown__item= title
         if saveButton
           .bar__item
             button.btn

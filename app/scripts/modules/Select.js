@@ -1,5 +1,6 @@
 import Choices
   from './../../../node_modules/choices.js/assets/scripts/dist/choices';
+import { nodeListToArray } from './Utils';
 
 let lang = 'sk';
 
@@ -170,6 +171,18 @@ export default class Select {
     if (container.classList.contains('is-flipped')) {
       container.classList.add('is-flipped-helper');
     }
+
+    const searchInput = container.querySelector(
+      '.choices__list--dropdown .choices__input',
+    );
+
+    if (searchInput) {
+      // search input is not focused by default - perhaps due animation?
+      // timeout fixes this issue
+      setTimeout(() => {
+        searchInput.focus();
+      }, 100);
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -231,7 +244,7 @@ export default class Select {
       }
 
       config.callbackOnCreateTemplates = template =>
-        getTemplates(template, select, this.config);
+        getTemplates(template, select, config);
 
       const choice = new Choices(select, config);
 
@@ -242,13 +255,22 @@ export default class Select {
         choice.disable();
       }
 
-      const classes = select.classList;
+      const classes = nodeListToArray(select.classList);
       const unwantedClasses = ['choices__input', 'is-hidden', 'js-select'];
       classes.forEach(className => {
         if (!unwantedClasses.includes(className)) {
           choice.containerOuter.classList.add(className);
         }
       });
+
+      if (config.searchEnabled) {
+        const input = choice.dropdown.querySelector('input');
+
+        if (input) {
+          input.classList.add('input');
+          input.classList.add('input--search');
+        }
+      }
 
       select.addEventListener('showDropdown', this._onShowDropdown);
       select.addEventListener('hideDropdown', this._onHideDropdown);

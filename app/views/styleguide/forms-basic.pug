@@ -645,6 +645,27 @@ block append content
               <option>Option 1</option>
             </select>
 
+    +content-sub-section('Select searchable')
+
+      +p Select options can be searched with <code class='l-code-inline'>[data-autocomplete]</code> attribute as shown on example below. If <code class='l-code-inline'>placeholder</code> attribute is set on select, value will be used as placeholder on search input.
+
+      +demo
+        +demo-example
+          .row
+            .col--l-6
+              .form-control.form-control--select
+                select.js-select(data-autocomplete, placeholder="Search in options")
+                  option(selected, disabled, placeholder) This is select with search
+                  each option in ['Apple', 'Pineapple', 'Apricot' , 'Banana']
+                    option #{option}
+        +demo-code
+          :code
+            <select class="js-select" data-autocomplete placeholder="Search in options">
+              <option selected disabled placeholder>This is a placeholder</option>
+              <option>Option 1</option>
+              ...
+            </select>
+
 
     +content-sub-section('Select with long texts')
       +p By default, select dropdown has width of select. If you need dropdown with different size, you can set the width <code class='l-code-inline'>[data-select-dropdown-width</code>.

@@ -6,7 +6,7 @@ block opts
   -
     const subNav = [
       {
-        title: 'Všetky tituly k stiahnutiu', href: '#vsetky-tituly'
+        title: 'Všetky', href: '#vsetky-tituly'
       },
       {
         title: 'E-knihy', href: '#e-knihy',
@@ -22,7 +22,7 @@ block content
     include modules/account-header
     +accountHeader({
       navActive: 1,
-      subNav,
+      subNav: subNav,
     })
 
     section.section
@@ -56,8 +56,13 @@ block content
                     +productStatus({ actionDropdown: true })
                     +productCover({ cover: item.cover, href: '#' })
                     +productTitle({ title: item.title, author: item.author, href: '#' })
-                    +productDownload()
+                    +productDownload({
+                        buttonClass: (i == 1) ? 'success' : 'primary',
+                        title: (i == 1) ? 'Zadarmo' : 'Stiahnuť'
+                    })
 
 
 block append modals
   include ./modules/gift-modal
+  include ./modules/e-reader-modal
+  include ./modules/audiobook-modal
