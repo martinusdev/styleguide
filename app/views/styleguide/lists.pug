@@ -1,5 +1,7 @@
 extends templates/layout
 
+include ./../mixins/productHorizontal
+
 //- Options
 block prepend opts
   - var page = helpers.getPageIds('components.lists', l_sitemap);
@@ -87,7 +89,7 @@ block append content
               each item, i in [...books, ...books ]
                 if i < 3
                   li.mb-medium(class=i > 4 ? 'show-m' : '')
-                    +product-horizontal(item)
+                    +productHorizontal(item)
 
       +demo-code
         :code

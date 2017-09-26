@@ -1,5 +1,7 @@
 extends layouts/_default
 
+include ./mixins/checkoutCardDone
+
 block opts
     - var pageTitle = 'Košík - Sumár'
     - var checkoutHeader = true;
@@ -33,26 +35,26 @@ block content
           .col--l-8.ofst--center
             include modules/checkout/cart
 
-            +checkout-card-done({
+            +checkoutCardDone({
               id: 'delivery',
               title: 'Zvoľte spôsob doručenia',
               summary: 'Balíkomat',
               price: '1,99 €',
             })
 
-            +checkout-card-done({
+            +checkoutCardDone({
               id: 'delivery-balikomat',
               title: 'Odberné miesto',
               summary: 'Bratislava, Cubicon, Staré Grunty 24',
             })
 
-            +checkout-card-done({
+            +checkoutCardDone({
               id: 'billing-address',
               title: 'Fakturačná adresa',
               summary: 'Lighting Beetle s.r.o. Budyšínska 8, 831 03 Bratislava',
             })
 
-            +checkout-card-done({
+            +checkoutCardDone({
               id: 'gift',
               title: 'Darčekové balenie',
               summary: '2x červený papier <br>Neprikladať faktúru',

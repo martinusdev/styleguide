@@ -1,5 +1,9 @@
 extends layouts/_default
 
+include mixins/libraryCarousel
+include mixins/sectionHeader
+include mixins/icon
+
 block opts
     - var pageTitle = 'Ďakujeme'
 
@@ -54,7 +58,7 @@ block content
                           if (i>currentStep)
                             .order-progress__blank-circle
                         .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
-              
+
               .row.align-items-middle
                 .col--m-shrink
                   .bar.align-items-middle.mb-small
@@ -71,11 +75,11 @@ block content
                         | ďakujeme za Váš nákup! Hneď ako vašu objednávku pripravím a odošlem, budeme vás o tom informovať e-mailom. V prípade akýchkoľvek otázok mi neváhajte napísať!
                       button.btn.btn--ghost.no-mrg-bottom Skontrolovať objednávku
                       button.btn.btn--ghost.no-mrg-bottom Poslať správu
-              
+
     section.section.section--secondary.section--overflow
       .wrapper-main
         .mb-large
-          +section-header({ header: 'Zakúpené tituly sme pridali do Vašej knižnice', more: 'Prezrieť kinžnicu' })
+          +sectionHeader({ header: 'Zakúpené tituly sme pridali do Vašej knižnice', more: 'Prezrieť kinžnicu' })
         .mb-large
           +libraryCarousel()
         .text-center.mb-large

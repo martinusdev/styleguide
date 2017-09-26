@@ -1,3 +1,6 @@
+include product
+include icon
+
 mixin booksCarouselRecommended()
   -
     var swiperConfig = {
@@ -38,39 +41,6 @@ mixin booksCarouselRecommended()
                 price: item.price
               })
 
-
-      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-        +icon('arrow-left').icon--medium
-      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-        +icon('arrow-right').icon--medium
-
-mixin booksCarouselHorizontal(props = {})
-  -
-    const {
-      duration,
-    } = props;
-    var swiperConfig = {
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
-      slidesPerView: 'auto',
-      slidesPerGroup: 1,
-      spaceBetween: 20,
-    };
-    swiperConfig = JSON.stringify(swiperConfig);
-  .carousel.carousel--fade-outside.carousel--fade-outside-white&attributes(attributes)
-    .swiper-container(data-swiper-options=swiperConfig)
-      .swiper-wrapper
-        each item, i in [...books, ...books, ...books, ...books]
-          a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
-            +product().mb-small.text-left
-              +productCover({ cover: item.cover })
-              +productTitle({ title: item.title, author: item.author })
-              +productMeta({
-                empty: i === 2,
-                discount: item.discount,
-                rating: item.rating,
-                price: item.price
-              })
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium

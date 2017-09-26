@@ -1,3 +1,6 @@
+include ./../mixins/productHorizontal
+include ./../mixins/icon
+
 .modal-overlay#checkout-notice(data-modal)
   article.modal.modal--full
     .row.no-mrg-horizontal.modal__wrap
@@ -12,30 +15,30 @@
         h5 Posledné z vášho wishlistu
         .row
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
 
         h5 Zákazníci si kúpili aj...
         .row
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
         .row
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
         .row.show-l
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
           .col--l-6
-            +product-horizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
+            +productHorizontal({ truncnateTitle: true, showCartButton: true, titleClass: 'text-color-grey-dark', breakBeforePrice: false }).mb-medium
 
       section.modal__content.col--l-4.col--m-6.no-pad
         .bar.bar--vertical
-          .bar__item.bar__item--fill                
+          .bar__item.bar__item--fill
 
             article.card.card--success.mb-medium
               .card__content
@@ -45,7 +48,7 @@
                   .bar__item
                     button.btn.btn--clean.mb-small(data-toggle="#checkout-notice")
                       +icon('close').icon--medium.icon--right
-                +product-horizontal({
+                +productHorizontal({
                   trash: true,
                   rating: false,
                   titleClass: 'text-color-grey-dark',
