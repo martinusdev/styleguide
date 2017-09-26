@@ -12,19 +12,25 @@ mixin productCover(props = {})
       size = 'large',
       href,
       clickable = true,
+      collection = false,
     } = props;
 
     const tag = href ? 'a': 'div';
 
-  .product__cover&attributes(attributes)
+  .product__cover.clearfix(class=collection===true ? 'collection' : '')&attributes(attributes)
     #{tag}.thumbnail(
       href= href ? href : undefined,
       class= type ? `thumbnail--${type}` : '',
       class= size ? `thumbnail--${size}` : '',
       class= clickable ? `thumbnail--clickable`: ''
     )
-      .thumbnail__img-wrap
-        img(src=`${assetsPrefix}${cover}`).img
+      if collection
+        each i, index in Array(5)
+          .thumbnail__img-wrap
+            img(src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).img
+      else
+        .thumbnail__img-wrap
+          img(src=`${assetsPrefix}${cover}`).img
 
       if discount || rating
         .thumbnail__info
