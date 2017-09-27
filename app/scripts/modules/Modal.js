@@ -260,6 +260,7 @@ export default class Modal {
     const scrollTop =
       document.documentElement.scrollTop || document.body.scrollTop;
     document.body.setAttribute('data-lock-scrolltop', scrollTop);
+    const pageContainer = document.getElementById('page-container');
 
     // add locking styles to body
     document.body.style.height = '100%';
@@ -267,6 +268,14 @@ export default class Modal {
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
     document.body.style.WebkitOverflowScrolling = 'auto';
+
+    // add locking styles to scrollTop
+    pageContainer.style.height = '100%';
+    pageContainer.style.width = '100%';
+    pageContainer.style.overflow = 'hidden';
+    pageContainer.style.position = 'fixed';
+    // scroll page-container to scrollTop position
+    pageContainer.scrollTop = scrollTop;
 
     // add modal class
     document.body.classList.add(className);
@@ -279,9 +288,9 @@ export default class Modal {
 
   static unlockBody(className = defaultConfig.modalBodyIsOpen) {
     const scrollTop = document.body.getAttribute('data-lock-scrolltop');
+    const pageContainer = document.getElementById('page-container');
 
     // remove locking styles from body
-    // add locking styles to body
     document.body.style.height = '';
     document.body.style.width = '';
     document.body.style.overflow = '';
@@ -289,6 +298,12 @@ export default class Modal {
 
     // add modal class
     document.body.classList.remove(className);
+
+    // remove locking styles from page-container
+    pageContainer.style.height = '';
+    pageContainer.style.width = '';
+    pageContainer.style.overflow = '';
+    pageContainer.style.position = '';
 
     // set scroll position back
 
