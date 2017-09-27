@@ -71,11 +71,15 @@ img {
   }
 
   &--clickable {
-    transition: box-shadow $ease-200;
+    #{$this}__img-wrap {
+      transition: box-shadow $ease-200;
+    }
 
     &:hover,
     &:active {
-      box-shadow: 0 10px 20px 0 rgba(#000, 0.3);
+      #{$this}__img-wrap {
+        box-shadow: 0 10px 20px 0 rgba(#000, 0.3);
+      }
     }
   }
 
