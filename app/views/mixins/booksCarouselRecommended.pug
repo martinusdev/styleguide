@@ -33,15 +33,13 @@ mixin booksCarouselRecommended()
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
             +product().mb-small.text-left
-              if (i<2)
-                +productCover({ cover: item.cover,  collection: true })
-              else
-                +productCover({ cover: item.cover })
-              +productTitle({ title: item.title, author: item.author })
+              +productCover({ cover: item.cover, collection: i<2 })
+              +productTitle({ title: i >= 2 ? item.author : `Kolekcia ${i + 1}`, author: i >= 2 ? item.author : false })
               +productMeta({
                 discount: item.discount,
                 rating: item.rating,
-                price: item.price
+                price: item.price,
+                collection: i < 2,
               })
 
 
