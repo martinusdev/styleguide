@@ -41,19 +41,20 @@ html.no-js
   //- BODY
 
   body(class=`${pageClass}`)
+    #page-container
 
-    if checkoutHeader
-      include ./../modules/header/checkout-header
-    else
-      include ./../modules/header/header
+      if checkoutHeader
+        include ./../modules/header/checkout-header
+      else
+        include ./../modules/header/header
 
-    block content
+      block content
 
-    include ./../modules/footer
+      include ./../modules/footer
 
-    block modals
+      block modals
 
-    .alert-container(data-alert-area)
+      .alert-container(data-alert-area)
 
     //- -----------------------------------------------
     //- SCRIPTS
