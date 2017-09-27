@@ -13,11 +13,12 @@ mixin productCover(props = {})
       href,
       clickable = true,
       collection = false,
+      badge,
     } = props;
 
     const tag = href ? 'a': 'div';
 
-  .product__cover.clearfix(class=collection===true ? 'collection' : '')&attributes(attributes)
+  .product__cover(class=collection===true ? 'collection' : '')&attributes(attributes)
     #{tag}.thumbnail(
       href= href ? href : undefined,
       class= type ? `thumbnail--${type}` : '',
@@ -42,9 +43,12 @@ mixin productCover(props = {})
               | #{' '}
               = rating
 
-    if duration
+    if duration || badge
       .thumbnail__status
-        +discountBadge(duration)
+        if duration
+          +discountBadge(duration)
+        if badge
+          .thumbnail-badge.thumbnail-badge--simple(data-thumbnail-badge=badge)
 
 mixin productTitle(props = {})
   -
@@ -267,6 +271,17 @@ mixin productStatus(props = {})
                       .bar__item
                         button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
                           +icon('close', 'icon--small', 'Naspäť')
+
+mixin productPreview(props = {})
+  -
+    const {
+      text = 'Pozrieť ukážku'
+    } = props;
+
+  .product__preview-link.text-center
+    button.btn.btn--clean(data-toggle="#product-preview")
+      +icon('eye').icon--left.icon--medium
+      = text
 
 mixin product(props = {})
   -
