@@ -66,6 +66,59 @@ block append content
                       if (i>currentStep)
                         .order-progress__blank-circle
                     .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
+        +demo-code
+          :code
+            <div class="order-progress mb-large">
+              <div class="swiper-container" data-swiper-options="...">
+                <div class="swiper-wrapper">
+                  
+                  <!-- step success -->
+                  <div class="order-progress__item swiper-slide text-center">
+                    <div class="order-progress__icon text-color-success">
+                      <svg class="icon icon-order-progress-1 icon--xxlarge" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-order-progress-1"></use>
+                      </svg>
+                    </div>
+                    <div class="mb-small text-color-success">
+                      <svg class="icon icon-check-circle icon--medium bg-default" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-check-circle"></use>
+                      </svg>
+                    </div>
+                    <div class="text-medium order-progress__status">Dokončili ste objednávku</div>
+                  </div>
+
+                  <!-- step current -->
+                  <div class="order-progress__item swiper-slide text-center current">
+                    <div class="order-progress__icon">
+                      <svg class="icon icon-order-progress-2 icon--xxlarge" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-order-progress-2"></use>
+                      </svg>
+                    </div>
+                    <div class="mb-small">
+                      <svg class="icon icon-time icon--medium bg-default" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-time"></use>
+                      </svg>
+                    </div>
+                    <div class="text-medium order-progress__status text-semibold">Dokončili ste objednávku</div>
+                  </div>
+
+                  <!-- step next -->
+                  <div class="order-progress__item swiper-slide text-center">
+                    <div class="order-progress__icon">
+                      <svg class="icon icon-order-progress-3 icon--xxlarge" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-order-progress-3"></use>
+                      </svg>
+                    </div>
+                    <div class="mb-small">
+                      <div class="order-progress__blank-circle"></div>
+                    </div>
+                    <div class="text-medium order-progress__status">Dokončili ste objednávku</div>
+                  </div>
+                  ...
+                </div>
+              </div>
+            </div>
+        //- end: demo
 
     +content-sub-section('Order progress - Error')
 
@@ -100,6 +153,60 @@ block append content
                           .order-progress__blank-circle
                       .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
 
+        +demo-code
+          :code
+            <div class="order-progress mb-large">
+              <div class="swiper-container" data-swiper-options="...">
+                <div class="swiper-wrapper">
+                  
+                  <!-- step success -->
+                  <div class="order-progress__item swiper-slide text-center">
+                    <div class="order-progress__icon text-color-success">
+                      <svg class="icon icon-order-progress-1 icon--xxlarge" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-order-progress-1"></use>
+                      </svg>
+                    </div>
+                    <div class="mb-small text-color-success">
+                      <svg class="icon icon-check-circle icon--medium bg-default" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-check-circle"></use>
+                      </svg>
+                    </div>
+                    <div class="text-medium order-progress__status">Dokončili ste objednávku</div>
+                  </div>
+
+                  <!-- step error -->
+                  <div class="order-progress__item swiper-slide text-center current">
+                    <div class="order-progress__icon text-color-error">
+                      <svg class="icon icon-order-progress-2 icon--xxlarge" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-order-progress-2"></use>
+                      </svg>
+                    </div>
+                    <div class="mb-small text-color-error">
+                      <svg class="icon icon-error icon--medium bg-default" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-error"></use>
+                      </svg>
+                    </div>
+                    <div class="text-medium order-progress__status text-semibold">Platba neúspešná</div>
+                  </div>
+
+                  <!-- step next -->
+                  <div class="order-progress__item swiper-slide text-center">
+                    <div class="order-progress__icon">
+                      <svg class="icon icon-order-progress-3 icon--xxlarge" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="../icons_/app.svg#icon-order-progress-3"></use>
+                      </svg>
+                    </div>
+                    <div class="mb-small">
+                      <div class="order-progress__blank-circle"></div>
+                    </div>
+                    <div class="text-medium order-progress__status">Dokončili ste objednávku</div>
+                  </div>
+                  ...
+                </div>
+              </div>
+            </div>
+        //- end: demo
+
     +content-sub-section('Order progress - Done')
 
       +demo
@@ -124,3 +231,42 @@ block append content
                 button.btn.btn--ghost EPUB
                 button.btn.btn--ghost MOBI
               button.btn.btn--primary Stiahnuť všetky tituly
+
+        +demo-code
+          :code
+            <div class="row mb-large">
+              <div class="col--m-6">
+                <div class="order-progress">
+                  <div class="swiper-container" data-swiper-options="...">
+                    <div class="swiper-wrapper">
+
+                      <!-- steps -->
+                      <div class="order-progress__item swiper-slide text-center">
+                        ...
+                      </div>
+
+                      <div class="order-progress__item swiper-slide text-center current">
+                        ...
+                      </div>
+
+                      <div class="order-progress__item swiper-slide text-center">
+                        ...
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col--12 mb-large hide-m"></div>
+
+              <!-- download -->
+              <div class="col--m-6 text-center">
+                <div class="btn-group btn-group--horizontal align-items-center">
+                  <button class="btn btn--ghost">PDF</button>
+                  <button class="btn btn--ghost">EPUB</button>
+                  <button class="btn btn--ghost">MOBI</button>
+                </div>
+                <button class="btn btn--primary">Stiahnuť všetky tituly</button>
+              </div>
+            </div>
+        //- end: demo
