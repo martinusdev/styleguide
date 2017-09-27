@@ -114,3 +114,18 @@ block append content
             td <code class='l-code-inline'>Boolean</code>
             td <code class='l-code-inline'>null</code>
             td If true, selected option can be cleared to placeholder or empty value with button.
+
+  +content-section(contents[2])
+
+    +content-sub-section('Change select default language')
+
+      +p Js-select language can be set in by changing value of <code class='l-code-inline'>window.myApp.selectLanguage</code>. Default value is <code class='l-code-inline'>sk</code> and it can be set to <code class='l-code-inline'>cz</code>.
+
+      +demo(true)
+        +demo-code
+          :code
+            <script>
+              window.myApp = window.myApp || {};
+              window.myApp.selectLanguage = 'sk';
+            </script>
+
