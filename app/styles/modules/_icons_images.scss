@@ -55,6 +55,7 @@ img {
 // THUMBNAILS
 
 .thumbnail {
+  $this: #{&};
   display: block;
   position: relative;
 
@@ -78,15 +79,14 @@ img {
     }
   }
 
-  &--large-shadow {
-    box-shadow: -20px 10px 14px 0 rgba(#000, 0.2), -10px 0 5px 0 rgba(#000, 0.1); // todo generalize shadows
-  }
-
   &--book {
     position: relative;
     border-radius: $default-border-radius;
-    box-shadow: 0 10px 14px 0 rgba(#000, 0.2);
     user-select: none;
+
+    #{$this}__img-wrap {
+      box-shadow: 0 10px 14px 0 rgba(#000, 0.2);
+    }
 
     .img {
       border-radius: $default-border-radius;
@@ -104,6 +104,10 @@ img {
 
       background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
     }
+  }
+
+  &--large-shadow &__img-wrap {
+    box-shadow: -20px 10px 14px 0 rgba(#000, 0.2), -10px 0 5px 0 rgba(#000, 0.1); // todo generalize shadows
   }
 
   &__img-wrap {

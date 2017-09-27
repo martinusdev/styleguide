@@ -13,11 +13,12 @@ mixin productCover(props = {})
       href,
       clickable = true,
       collection = false,
+      badge,
     } = props;
 
     const tag = href ? 'a': 'div';
 
-  .product__cover.clearfix(class=collection===true ? 'collection' : '')&attributes(attributes)
+  .product__cover(class=collection===true ? 'collection' : '')&attributes(attributes)
     #{tag}.thumbnail(
       href= href ? href : undefined,
       class= type ? `thumbnail--${type}` : '',
@@ -42,9 +43,12 @@ mixin productCover(props = {})
               | #{' '}
               = rating
 
-    if duration
+    if duration || badge
       .thumbnail__status
-        +discountBadge(duration)
+        if duration
+          +discountBadge(duration)
+        if badge
+          .thumbnail-badge.thumbnail-badge--simple(data-thumbnail-badge=badge)
 
 mixin productTitle(props = {})
   -
@@ -73,25 +77,33 @@ mixin productMeta(props = {})
       discount,
       rating,
       price,
+      collection,
     } = props;
 
   .product__meta&attributes(attributes)
-    .bar.bar--tiny.mb-none
-      if empty
-        .bar__item
-          p &nbsp;
-      else
-        .bar__item
-          if discount
-            .badge.badge--primary= discount
-          else if rating
-            .badge
-              +icon('star').text-color-yellow.icon--small
-              | #{' '}
-              = rating
-        if price
+    if !empty
+      .bar.bar--tiny.mb-none
+        if collection
+          .bar__item
+            img.img.img--circle.thumbnail.thumbnail--small(src="http://placehold.it/100x100")
           .bar__item.bar__item--fill
-            .text-medium.text-semibold.text-space-left= price
+            .text-color-grey.text-small.text-ellipsis Kolekciu pripravil
+            .text-small.text-ellipsis Jana Šlinská
+
+        else
+          if discount || rating
+            .bar__item
+              if discount
+                .badge.badge--primary.text-space-right= discount
+              else if rating
+                .badge.text-space-right
+                  +icon('star').text-color-yellow.icon--small
+                  | #{' '}
+                  = rating
+          if price
+            .bar__item.bar__item--fill
+              .text-medium.text-semibold= price
+
 
 mixin productDownload(props = {})
   -
@@ -267,6 +279,17 @@ mixin productStatus(props = {})
                       .bar__item
                         button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
                           +icon('close', 'icon--small', 'Naspäť')
+
+mixin productPreview(props = {})
+  -
+    const {
+      text = 'Pozrieť ukážku'
+    } = props;
+
+  .product__preview-link.text-center
+    button.btn.btn--clean(data-toggle="#product-preview")
+      +icon('eye').icon--left.icon--medium
+      = text
 
 mixin product(props = {})
   -

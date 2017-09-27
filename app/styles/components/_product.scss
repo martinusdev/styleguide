@@ -12,6 +12,7 @@
   }
 
   &__cover {
+    position: relative;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: _get-space('h', 'small');
@@ -51,6 +52,18 @@
   &__title {
     transition: color $ease-300;
     margin-bottom: _get-space('h', 'small');
+
+    min-height: 39px;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  &__action {
+    min-height: 40px;
   }
 
   &__caption {

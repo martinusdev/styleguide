@@ -3,6 +3,7 @@ extends layouts/_default
 include ./mixins/addTo
 include ./mixins/breadcrumbs
 include ./mixins/icon
+include ./mixins/product
 
 block opts
     - var pageTitle = 'Kolekcia'
@@ -72,18 +73,13 @@ block content
           .wrapper-main
             .row
               .col--l-shrink.text-left-l.text-center
-                .product.no-mrg-bottom
-                  .product__cover.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--xlarge.mb-medium
-                    .product__image-container
-                      img(src="images/content/books/sample-3.jpg").img
-                    .thumbnail__info
-                      .badge
-                        +icon('star').text-color-yellow.icon--small
-                        | 3.5
-                  .product__preview-link.text-center
-                    button.btn.btn--clean(data-toggle="#product-preview")
-                      +icon('eye').icon--left.icon--medium
-                      | Pozrieť ukážku
+                +product().no-mrg-bottom
+                  +productCover({
+                    cover: 'images/content/books/sample-3.jpg',
+                    rating: 3.5,
+                    size: 'xlarge'
+                  }).mb-medium
+                  +productPreview()
               .col--m-fill
                 ul.list-inline.list-inline--delimited.mb-small
                   li

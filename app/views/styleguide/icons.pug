@@ -216,42 +216,60 @@ block append content
         .bar.bar--wrap
           .bar__item
             .thumbnail.thumbnail--small
-              img.img--fluid.img--circle(src='https://placehold.it/25x25')
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/25x25')
           .bar__item
             .thumbnail.thumbnail--medium
-              img.img--fluid.img--circle(src='https://placehold.it/50x50')
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/50x50')
           .bar__item
             .thumbnail.thumbnail--medium-large
-              img.img--fluid.img--circle(src='https://placehold.it/65x65')
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/65x65')
           .bar__item
             .thumbnail.thumbnail--large
-              img.img--fluid.img--circle(src='https://placehold.it/120x120')
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/120x120')
           .bar__item
             .thumbnail.thumbnail--xlarge
-              img.img--fluid.img--circle(src='https://placehold.it/170x170')
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/170x170')
           .bar__item
             .thumbnail.thumbnail--huge
-              img.img--fluid.img--circle(src='https://placehold.it/270x270')
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/270x270')
 
       +demo-code
         :code
           <div class="thumbnail thumbail--small">
-            <img class="img" src="..." alt="...">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
           </div>
           <div class="thumbnail thumbail--medium">
-            <img class="img" src="..." alt="...">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
           </div>
           <div class="thumbnail thumbail--medium-large">
-            <img class="img" src="..." alt="...">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
           </div>
           <div class="thumbnail thumbail--large">
-            <img class="img" src="..." alt="...">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
           </div>
           <div class="thumbnail thumbail--xlarge">
-            <img class="img" src="..." alt="...">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
           </div>
           <div class="thumbnail thumbail--huge">
-            <img class="img" src="..." alt="...">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
           </div>
 
     +content-sub-section('Accessibility')
@@ -324,12 +342,15 @@ block append content
       +demo
         +demo-example
           .thumbnail.thumbnail--book.thumbnail--large
-            img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .thumbnail__img-wrap
+              img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
 
         +demo-code
           :code
             <div class="thumbnail thumbnail--book">
-              <img class="img " src="..." alt="...">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
             </div>
 
     +content-sub-section('Thumbnail status')
@@ -339,14 +360,17 @@ block append content
       +demo
         +demo-example
           .thumbnail.thumbnail--book.thumbnail--large
-            img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .thumbnail__img-wrap
+              img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
             .thumbnail__status
               +discountBadge(duration)
 
         +demo-code
           :code
             <div class="thumbnail--book thumbnail--large">
-              <img class="img" src="..." alt="..." />
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
               <div class="thumbnail__status">
                 ...
               </div>
@@ -361,21 +385,25 @@ block append content
           .bar
             .bar__item
               .thumbnail.thumbnail--book.thumbnail--large
-                img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail__img-wrap
+                  img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 .thumbnail__info
                   .badge
                     +icon('star').text-color-yellow.icon--small
                     |  3.5
             .bar__item
               .thumbnail.thumbnail--book.thumbnail--large
-                img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail__img-wrap
+                  img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                 .thumbnail__info
                   .badge.badge--primary -50%
 
         +demo-code
           :code
             <div class="thumbnail--book thumbnail--large">
-              <img class="img" src="..." alt="..." />
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
               <div class="thumbnail__info">
                 ...
               </div>
