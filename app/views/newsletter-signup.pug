@@ -1,0 +1,73 @@
+extends layouts/_default
+
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Prihlásenie do odberu správ'
+
+block content
+  main
+    section.section.section--secondary.section--m-full
+      .wrapper-main
+        .row
+           article.card.col--l-10.ofst--center.mb-large.no-pad-horizontal
+              .card__header.card-header.no-mrg
+                h2.card-header__title.no-mrg-top Prihlásenie do odberu správ
+
+              section.card__content.card__content--large.mb-medium
+                .row.no-mrg
+                  .col--m-4
+                    .bar.bar--vertical
+                      .bar__item
+                        .thumbnail.thumbnail--medium-large
+                          img.img--fluid(src="https://placehold.it/65x65", alt="Len pre vás")
+                      .bar__item.bar__item--fill
+                        h4 Len pre vás
+                        p.text-size-medium Využívajte špeciálne zľavy pripravené iba pre odberateľov našich noviniek.
+                  .col--m-4
+                    .bar.bar--vertical
+                      .bar__item
+                        .thumbnail.thumbnail--medium-large
+                          img.img--fluid(src="https://placehold.it/65x65", alt="Len pre vás")
+                      .bar__item.bar__item--fill
+                        h4 Knižné novinky
+                        p.text-size-medium Nenechajte si ujsť knižné novinky z našej ponuky, výpredaje, zľavy a súťaže!
+                  .col--m-4
+                    .bar.bar--vertical
+                      .bar__item
+                        .thumbnail.thumbnail--medium-large
+                          img.img--fluid(src="https://placehold.it/65x65", alt="Len pre vás")
+                      .bar__item.bar__item--fill
+                        h4 Z prvej ruky
+                        p.text-size-medium O akciách ako Najväčší knižný hrdina alebo Poštovné zadarmo sa dozviete medzi prvými.
+
+
+              section.card__content
+                .row
+                  .col--m-6.col--s-8.ofst--center
+                    p.text-center.text-size-large
+                      | Zadajte Váš email pre prihlásenie alebo odhlásenie:
+
+                    .form-control.form-control--input
+                      .form-label.form-label.form-label--required
+                        label.text-transform-upper.text-size-small(for="reglog_email")
+                          | e-mail
+                      input.input(type="email", name="email", id="reglog_email", placeholder="Váš e-mail", required)
+
+                    .form-control.form-control--group
+                      .form-label.form-label
+                        label.text-transform-upper.text-size-small(for="gender")
+                          | Pohlavie
+                      .radiocheck-group
+                        .form-control.form-control--radio
+                          .radio
+                            input.radiocheck__input(type='radio', id='female', name='gender')
+                            label.radiocheck__control(for='female')
+                            label.radiocheck__label(for='female') Žena
+                          .radio
+                            input.radiocheck__input(type='radio', id='male', name='gender')
+                            label.radiocheck__control(for='male')
+                            label.radiocheck__label(for='male') Muž
+
+                    div.btn-layout--vertical.mb-medium
+                      button.btn.btn--primary Pokračovať
