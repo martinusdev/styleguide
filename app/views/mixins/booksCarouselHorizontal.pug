@@ -23,10 +23,11 @@ mixin booksCarouselHorizontal(props = {})
               +productCover({ cover: item.cover })
               +productTitle({ title: item.title, author: item.author })
               +productMeta({
-                empty: i === 2,
                 discount: item.discount,
                 rating: item.rating,
-                price: item.price
+                price: item.price,
+                soldOut: item.soldOut,
+                upcoming: item.upcoming,
               })
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
