@@ -78,6 +78,8 @@ mixin productMeta(props = {})
       rating,
       price,
       collection,
+      soldOut,
+      upcoming,
     } = props;
 
   .product__meta&attributes(attributes)
@@ -91,18 +93,25 @@ mixin productMeta(props = {})
             .text-small.text-ellipsis Jana Šlinská
 
         else
-          if discount || rating
+          if discount || rating || soldOut
             .bar__item
               if discount
                 .badge.badge--primary.text-space-right= discount
+              else if soldOut
+                .badge.badge--primary.text-size-small Vypredané
               else if rating
                 .badge.text-space-right
                   +icon('star').text-color-yellow.icon--small
                   | #{' '}
                   = rating
+
+          if upcoming
+            .bar__item
+              .badge.badge--primary.text-size-small Chystáme
+
           if price
             .bar__item.bar__item--fill
-              .text-medium.text-semibold= price
+              .text-medium.text-semibold(class=upcoming || soldOut ? 'text-size-small': '')= price
 
 
 mixin productDownload(props = {})
