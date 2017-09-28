@@ -24,6 +24,7 @@ const defaultConfig = {
   buttonDisabledClass: 'is-disabled',
   onInit: swiper => {
     swiper.container[0].classList.add('is-initialized');
+    swiper.update(true);
   },
   lazyIframeSelector: 'iframe[src]',
   watchSlidesVisibility: true,
