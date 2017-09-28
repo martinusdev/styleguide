@@ -18,24 +18,25 @@
     margin-bottom: _get-space('h', 'small');
 
     &.collection .thumbnail--book {
+      min-width: _get-rem(120px);
       padding-bottom: _get-rem(4px);
     }
 
     &.collection .thumbnail__img-wrap {
       position: absolute;
-      bottom: 0;
+      top: 20px;
       width: 75%;
       z-index: 3;
     }
 
     &.collection .thumbnail__img-wrap:nth-child(2) {
-      bottom: 10px;
+      top: 10px;
       left: 12.5%;
       z-index: 2;
     }
 
     &.collection .thumbnail__img-wrap:nth-child(3) {
-      bottom: 20px;
+      top: 0;
       left: 25%;
       z-index: 1;
     }
