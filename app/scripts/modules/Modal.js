@@ -270,12 +270,14 @@ export default class Modal {
     document.body.style.WebkitOverflowScrolling = 'auto';
 
     // add locking styles to scrollTop
-    pageContainer.style.height = '100%';
-    pageContainer.style.width = '100%';
-    pageContainer.style.overflow = 'hidden';
-    pageContainer.style.position = 'fixed';
-    // scroll page-container to scrollTop position
-    pageContainer.scrollTop = scrollTop;
+    if (pageContainer) {
+      pageContainer.style.height = '100%';
+      pageContainer.style.width = '100%';
+      pageContainer.style.overflow = 'hidden';
+      pageContainer.style.position = 'fixed';
+      // scroll page-container to scrollTop position
+      pageContainer.scrollTop = scrollTop;
+    }
 
     // add modal class
     document.body.classList.add(className);
@@ -300,10 +302,12 @@ export default class Modal {
     document.body.classList.remove(className);
 
     // remove locking styles from page-container
-    pageContainer.style.height = '';
-    pageContainer.style.width = '';
-    pageContainer.style.overflow = '';
-    pageContainer.style.position = '';
+    if (pageContainer) {
+      pageContainer.style.height = '';
+      pageContainer.style.width = '';
+      pageContainer.style.overflow = '';
+      pageContainer.style.position = '';
+    }
 
     // set scroll position back
 
