@@ -53,9 +53,14 @@ export default class Dropdown {
   }
 
   _onToggle(e) {
-    this.target = e.detail.target;
-    if (e.detail.trigger) {
+    if (
+      (e.detail.trigger && !this.target) ||
+      !this.target.contains(e.detail.target)
+    ) {
       this.trigger = e.detail.trigger;
+    }
+    if (!this.target || !this.target.contains(e.detail.target)) {
+      this.target = e.detail.target;
     }
 
     // attach events only if dropdown is open
