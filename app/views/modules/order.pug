@@ -9,6 +9,8 @@ include ./../mixins/icon
       h1.h2.mb-none Objednávka č. 123
       .text-color-grey Objednané 12. 4. 2017
     .col--shrink
+      a(data-tooltip, title="Bla bla bla zatial nepotrvrdena platba, dont panic...")
+        +icon('info', 'icon--medium')
       button.btn.btn--primary.no-mrg-bottom
         | Zaplatiť#{' '}
         span.show-m kartou online
@@ -133,37 +135,94 @@ include ./../mixins/icon
 
     .col--l-6
       .order-packages
-        // zasielka 1
+
+        // digital
         .package.mb-large
           .bar.align-items-middle.mb-medium
             .bar__item
               +icon('check-circle', 'icon--medium').text-color-success
             .bar__item
               h2.h5
+                | Elektronický obsah
+
+          .package__item.mb-small.border-bottom-grey
+            .bar.align-items-middle.mb-small
+              .bar__item.no-pad-right
+                .thumbnail.thumbnail--book.thumbnail--small
+                  .thumbnail__img-wrap
+                    img(src="https://i1.martinus.sk/tovar/_l/279/l279265.jpg")
+              .bar__item.bar__item--fill
+                .text-semibold Muž, ktorý hľadal svoj tieň
+                .text-small.text-color-grey David Lagercrantz
+                a.btn.btn--small.btn--clean.no-pad
+                  +icon('download', 'icon--small')
+                  | #{' '}Stiahnuť
+              .bar__item.bar__item--shrinkable.text-right
+                .text-medium
+                  span.text-color-grey 1x#{' '}
+                  span.text-semibold 8,84 €
+                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                  +icon('heart', 'icon--medium')
+                span.text-medium V#{' '}
+                  a.link(href="#") knižnici
+
+          .package__item.mb-small
+            .bar.align-items-middle.mb-small
+              .bar__item.no-pad-right
+                .thumbnail.thumbnail--book.thumbnail--small
+                  .thumbnail__img-wrap
+                    img(src="https://i1.martinus.sk/tovar/_l/242/l242240.jpg")
+              .bar__item.bar__item--fill
+                .text-semibold Darčeková poukážka - 15 EUR
+                a.btn.btn--small.btn--clean.no-pad
+                  +icon('download', 'icon--small')
+                  | #{' '}Stiahnuť
+                a.btn.btn--small.btn--clean.no-pad.text-space-left
+                  +icon('eye', 'icon--small')
+                  | #{' '}Zobraziť
+              .bar__item.bar__item--shrinkable.text-right
+                .text-medium
+                  span.text-color-grey 1x#{' '}
+                  span.text-semibold 15,00 €
+                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                  +icon('heart', 'icon--medium')
+                span.text-medium V#{' '}
+                  a.link(href="#") knižnici
+
+        // zasielka 1
+        .package.mb-large
+          .bar.align-items-middle.mb-medium
+            .bar__item
+              +icon('check-circle', 'icon--medium').text-color-success
+            .bar__item.bar__item--fill
+              h2.h5
                 | Zásielka 1.
               .text-small
                 span.text-color-grey 13. 4. 2017#{' '}
                 span.text-color-black Kuriér GLS#{' '}
                 a(href="#").link HSKDJF546546
+            .bar__item.text-right
+              a.btn.btn--small.btn--clean.no-pad
+                +icon('download', 'icon--small')
+                | #{' '}faktúra
 
-          each a, i in Array(2)
-            .package__item.mb-small.border-bottom-grey
-              .bar.align-items-middle.mb-small
-                .bar__item.no-pad-right
-                  .thumbnail.thumbnail--book.thumbnail--small
-                    .thumbnail__img-wrap
-                      img(src="images/content/books/sample-1.jpg")
-                .bar__item.bar__item--fill
-                  .text-semibold Rybaření pro začátečníky a názov na dva riadky
-                  .text-small.text-color-grey Armin Göllner
-                .bar__item.bar__item--shrinkable.text-right
-                  .text-medium
-                    span.text-color-grey 1x#{' '}
-                    span.text-semibold 123,26 €
-                  button.btn.btn--clean.no-pad-top.no-pad-bottom
-                    +icon('heart', 'icon--medium')
-                  span.text-medium V#{' '}
-                    a.link(href="#") knižnici
+          .package__item.mb-small
+            .bar.align-items-middle.mb-small
+              .bar__item.no-pad-right
+                .thumbnail.thumbnail--book.thumbnail--small
+                  .thumbnail__img-wrap
+                    img(src="images/content/books/sample-1.jpg")
+              .bar__item.bar__item--fill
+                .text-semibold Rybaření pro začátečníky a názov na dva riadky
+                .text-small.text-color-grey Armin Göllner
+              .bar__item.bar__item--shrinkable.text-right
+                .text-medium
+                  span.text-color-grey 1x#{' '}
+                  span.text-semibold 123,26 €
+                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                  +icon('heart', 'icon--medium')
+                span.text-medium V#{' '}
+                  a.link(href="#") knižnici
 
 
         // neodoslane
@@ -173,7 +232,72 @@ include ./../mixins/icon
               +icon('time', 'icon--medium').text-color-grey
             .bar__item
               h2.h5
-                | Zatiaľ nepripravené tituly
+                | Vybavuje sa
+          .package__item.mb-small
+            .bar.align-items-middle.mb-small
+              .bar__item.no-pad-right
+                .thumbnail.thumbnail--book.thumbnail--small
+                  .thumbnail__img-wrap
+                    img(src="images/content/books/sample-15.jpg")
+              .bar__item.bar__item--fill
+                .text-semibold Rybaření pro začátečníky a názov na dva riadky
+                .text-small.text-color-grey Armin Göllner
+                b.text-size-medium.text-color-success Na sklade
+              .bar__item.bar__item--shrinkable.text-right
+                .text-medium
+                  span.text-color-grey 1x#{' '}
+                  span.text-semibold 123,26 €
+                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                  +icon('heart', 'icon--medium')
+                span.text-medium V#{' '}
+                  a.link(href="#") knižnici
+
+          .package__item.mb-small
+            .bar.align-items-middle.mb-small
+              .bar__item.no-pad-right
+                .thumbnail.thumbnail--book.thumbnail--small
+                  .thumbnail__img-wrap
+                    img(src="images/content/books/sample-15.jpg")
+              .bar__item.bar__item--fill
+                .text-semibold Rybaření pro začátečníky
+                .text-small.text-color-grey Armin Göllner
+                b.text-size-medium.text-color-yellow Objednané u distribútora
+              .bar__item.bar__item--shrinkable.text-right
+                .text-medium
+                  span.text-color-grey 1x#{' '}
+                  span.text-semibold 123,26 €
+                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                  +icon('heart', 'icon--medium')
+                span.text-medium V#{' '}
+                  a.link(href="#") knižnici
+
+          .package__item.mb-small
+            .bar.align-items-middle.mb-small
+              .bar__item.no-pad-right
+                .thumbnail.thumbnail--book.thumbnail--small
+                  .thumbnail__img-wrap
+                    img(src="images/content/books/sample-15.jpg")
+              .bar__item.bar__item--fill
+                .text-semibold Rybaření pro začátečníky
+                .text-small.text-color-grey Armin Göllner
+                b.text-size-medium.text-color-blue Predpredaj
+              .bar__item.bar__item--shrinkable.text-right
+                .text-medium
+                  span.text-color-grey 1x#{' '}
+                  span.text-semibold 123,26 €
+                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                  +icon('heart', 'icon--medium')
+                span.text-medium V#{' '}
+                  a.link(href="#") knižnici
+
+        // zrusene
+        .package.mb-large
+          .bar.align-items-middle.mb-medium
+            .bar__item
+              +icon('close', 'icon--medium').text-color-error
+            .bar__item
+              h2.h5
+                | Zrušené
           .package__item.mb-small
             .bar.align-items-middle.mb-small
               .bar__item.no-pad-right
