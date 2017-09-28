@@ -16,10 +16,10 @@ include ./../mixins/icon
       .product-preview__control.show-m
         .bar.bar--vertical
           .bar__item
-            button.btn.btn--large.btn--equal.btn--ghost.bg-default(data-toggle='#product-preview-slider, self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-zoom-out`)
+            button.btn.btn--large.btn--equal.btn--ghost-inverse(data-toggle='#product-preview-slider, self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-zoom-out`)
               +icon('zoom-in').icon--medium
           .bar__item
-            button.btn.btn--large.btn--equal.btn--ghost.bg-default(data-product-preview-prev)
+            button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-prev)
               +icon('arrow-up').icon--medium
           .bar__item.text-center
             p.text-semibold
@@ -27,7 +27,7 @@ include ./../mixins/icon
               span.text-color-grey  /#{' '}
               span.text-color-grey 5
           .bar__item
-            button.btn.btn--large.btn--equal.btn--ghost.bg-default(data-product-preview-next)
+            button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-next)
               +icon('arrow-down').icon--medium
 
       .product-preview__slider(data-product-preview-slider)#product-preview-slider
@@ -49,21 +49,3 @@ include ./../mixins/icon
               a(href="#").btn.btn--ghost.btn--icon-left
                 +icon('download').icon--medium
                 | MOBI
-
-        .card.show-m
-          .card__content
-            .form-control.form-control--select
-              select#product-preview-product-select(data-select-product)
-            ul.list-inline
-              li
-                a.link.text-size-medium(href='#') Brožovaná väzba
-              li
-                a.link.text-size-medium(href='#') E-kniha
-              li
-                a.link.text-size-medium(href='#') Audio kniha
-
-            .btn-layout.btn-layout--horizontal.btn-layout--fill
-              a.btn.btn--primary(href='#')
-                +icon('cart').icon--medium.icon--left
-                | Vložiť do košíka
-              +addTo()
