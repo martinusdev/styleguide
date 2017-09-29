@@ -56,13 +56,28 @@ include ./../mixins/icon
     .col--l-6
       .order-summary.mb-large.card.card--material
         .card__content.mb-medium
+
           .order-summary__item.border-bottom-grey.mb-medium
             .bar.mb-none
               .bar__item.bar__item--fill.bar__item--shrinkable
                 h3.h5.text-color-black Spôsob doručenia
-            .bar.mb-medium.text-medium
+            .bar.text-medium.align-items-top
               .bar__item.bar__item--fill
-                b Pošta (na adresu)
+                b slovenská pošta
+                div
+                  | Roman Klčo, Malá Maňa 32, 94145 Maňa,
+                  br
+                  | Slovenská republika
+                  br
+                  | SMS poslať na číslo
+                  b #{' '}+421914134156
+              .bar__item.text-right
+                .text-semibold 2,99 €
+            .bar.text-medium.align-items-top
+              .bar__item.bar__item--fill
+                b 1x červený papier
+                  br
+                  | Neprikladať faktúru
               .bar__item.text-right
                 .text-semibold 1,99 €
 
@@ -76,6 +91,40 @@ include ./../mixins/icon
                   br
                   | Neprikladať faktúru
 
+          .order-summary__item.border-bottom-grey.mb-medium
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.no-mrg-bottom.text-color-black Spôsob platby
+              .bar__item.text-right
+                button.btn.btn--clean.show-m.no-pad
+                  +icon('download', 'icon--small').icon--left
+                  | faktúra
+
+            .mb-medium
+              .bar.mb-none.text-medium
+                .bar__item.bar__item--fill
+                  b Kartou (vopred)
+                .bar__item.text-right
+                  .text-semibold 1,99 €
+              .bar.mb-none.text-medium
+                .bar__item.bar__item--fill
+                  b Darčeková poukážka
+                .bar__item.text-right
+                  .text-semibold -10,00 €
+              .bar.mb-none.text-medium
+                .bar__item.bar__item--fill
+                  b Anjelské drobné
+                .bar__item.text-right
+                  .text-semibold 0,25 €
+
+          .order-summary__item.border-bottom-grey.mb-medium
+            .bar.mb-none
+              .bar__item.bar__item--fill.bar__item--shrinkable
+                h3.h5.text-color-black Poznámka
+            .bar.mb-medium.text-medium
+              .bar__item.bar__item--fill
+                b Ste uplne super a tesim sa na knizky
+
           .order-summary__item
             .bar.mb-none
               .bar__item.bar__item--fill.bar__item--shrinkable
@@ -83,44 +132,6 @@ include ./../mixins/icon
             .bar.mb-medium.text-medium
               .bar__item.bar__item--fill
                 b Jozef Novák, Budyšínska 51, 851 02 Bratislava
-
-          .order-summary__item.border-bottom-grey.mb-medium
-            .bar.mb-none
-              .bar__item.bar__item--fill.bar__item--shrinkable
-                h3.h5.text-color-black Doručovacia adresa
-            .bar.mb-medium.text-medium
-              .bar__item.bar__item--fill
-                b Jozef Novák, Budyšínska 51, 851 02 Bratislava
-
-          .order-summary__item.border-bottom-grey.mb-medium
-            .bar.mb-none
-              .bar__item.bar__item--fill.bar__item--shrinkable
-                h3.h5.no-mrg-bottom.text-color-black Spôsob platby
-              .bar__item.text-right
-                button.btn.btn--clean.show-m
-                  +icon('download', 'icon--small').icon--left
-                  | Stiahnuť faktúru
-
-            .bar.mb-medium.text-medium
-              .bar__item.bar__item--fill
-                b Kartou (vopred)
-                  br
-                  | Darčeková poukážka
-              .bar__item.text-right
-                .text-semibold 1,99 €
-
-          .order-summary__item.border-bottom-grey.mb-medium
-            .bar.mb-none
-              .bar__item.bar__item--fill.bar__item--shrinkable
-                h3.h5.no-mrg-bottom.text-color-black Darovali ste centy a stali ste sa Anjelom!
-              .bar__item.text-right
-                button.btn.btn--clean.no-mrg-bottom
-                  +icon('chevron-down', 'icon--medium')
-            .bar.mb-medium.text-medium
-              .bar__item.bar__item--fill
-                b Zaokrúhliť na 10€
-              .bar__item.text-right
-                .text-semibold 1,56 €
 
           .text-right
             span.text-large.text-space-right Spolu k úhrade
