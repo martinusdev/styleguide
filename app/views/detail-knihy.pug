@@ -259,7 +259,7 @@ block content
               .box.box--enlarged.box--notice
                 p Milí Martinusáci, v čase od 29. 6. 2017 do 20. 8. 2017 prebieha vo vydavateľstve Orbis Pictus Istropolizana dovolenka. Objednávky na tituly z tohto vydavateľstva budeme vybavovať v rámci našich možností čo najskôr, no napriek našej snahe môže nastať situácia, že s ich vybavovaním budeme meškať. (Prípadné nevybavené objednávky budeme evidovať a vybavíme ich ako najskôr to bude možné po skončení ich dovolenkovej prestávky.) Ďakujeme za pochopenie.
 
-              section.mb-large#popis-knihy
+              section.mb-large#popis-knihy(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
 
                 h2.mb-medium Popis knihy
                 div#book-desription(data-collapse="300")
@@ -328,7 +328,7 @@ block content
                         .col--12.text-center
                           button.btn(type="submit") odoslať upozornenie
 
-              section.mb-large#podrobnosti
+              section.mb-large#podrobnosti(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
                 .card.card--well.text-medium.no-pad-bottom
                   .card__content
                     .row.no-mrg-bottom
@@ -427,7 +427,7 @@ block content
                     a.link.text-size-medium(hre="#") Viac hodnotení od ľudí z Martinusu
                       +icon('arrow-right')
 
-              section.mb-large#recenzie
+              section.mb-large#recenzie(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
                 h2 Recenzie
 
                 .card.card--well.mb-large
@@ -596,7 +596,7 @@ block content
 
               hr
 
-              section.mb-large#o-autorovi
+              section.mb-large#o-autorovi(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
                 .bar
                   .bar__item.bar__item--fill
                     h2 O autorovi
@@ -641,7 +641,7 @@ block content
                   a.link.text-size-medium(href="javascript:void(0)", data-toggle="#about-author, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                     +icon('arrow-down')
 
-              section.mb-large#vydavatelstvo
+              section.mb-large#vydavatelstvo(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
                 .bar
                   .bar__item.bar__item--fill
                     h2 Vydavateľstvo
@@ -765,3 +765,18 @@ block append scripts
         if (typeof e.target.className === 'string' && e.target.className.includes('rating-star__input'))
           e.target.parentElement.classList.add("checked");
       });
+
+      //- const hash = window.location.hash;
+      //- if (hash !== '') {
+      //-   const anchorSection = document.getElementById(hash.substr(1));
+      //-   anchorSection.classList.add('anchor-helper');
+      //-     document.addEventListener('click', removeAnchor, true);
+      //- }
+
+      //- function removeAnchor() {
+      //-   const anchorSections = document.getElementsByClassName('anchor-helper');
+      //-   Array.from(anchorSections).forEach((section)=> {
+      //-     section.classList.remove('anchor-helper');
+      //-   });
+      //-   document.removeEventListener('click', removeAnchor, true);
+      //- }

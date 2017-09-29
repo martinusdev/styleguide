@@ -24,6 +24,7 @@ import RadiocheckToggle from './modules/RadiocheckToggle';
 import Header from './modules/Header';
 import AudioPlayer from './modules/AudioPlayer';
 import Clipboard from './modules/Clipboard';
+import AnchorScroll from './modules/AnchorScroll';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -50,6 +51,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.RadiocheckToggle = RadiocheckToggle;
   window.myApp.AudioPlayer = AudioPlayer;
   window.myApp.Clipboard = Clipboard;
+  window.myApp.AnchorScroll = AnchorScroll;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
@@ -93,6 +95,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   window.myApp.audioPlayers = new AudioPlayer();
   window.myApp.clipboard = new Clipboard();
+
+  window.myApp.anchorScroll = new AnchorScroll();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });
