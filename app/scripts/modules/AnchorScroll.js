@@ -18,6 +18,7 @@ export default class AnchorScroll {
     if (this.selector === '') {
       return;
     }
+
     const anchorSection = document.getElementById(this.selector.substr(1));
     const helperElement = document.createElement('div');
 
@@ -35,9 +36,10 @@ export default class AnchorScroll {
     });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   destroy() {
-    console.log(this);
     const anchorSections = document.getElementsByClassName('anchor-helper');
+
     Array.from(anchorSections).forEach(section => {
       section.classList.remove('anchor-helper');
       section.getElementsByClassName('helper-element')[0].remove();
