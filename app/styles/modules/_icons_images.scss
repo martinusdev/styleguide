@@ -143,3 +143,33 @@ img {
 
   .img { margin-bottom: 0; }
 }
+
+.portrait {
+  background: _color('primary');
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 50%;
+
+  @each $name, $size in $thumbnail-sizes {
+    &#{_get-variant-name($name)} {
+      width: $size;
+    }
+  }
+}
+
+.portrait::before {
+  content: "";
+  width: 1px;
+  margin-left: -1px;
+  float: left;
+  height: 0;
+  padding-top: 100%;
+}
+
+.portrait::after {
+  content: "";
+  display: table;
+  clear: both;
+}
