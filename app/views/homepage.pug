@@ -241,11 +241,11 @@ block content
             loop: true,
           };
           swiperFooterConfige = JSON.stringify(swiperFooterConfig);
-        .carousel.carousel--fade-outside.carousel-cards
+        .carousel.carousel--fade-outside.carousel--fade-outside-white.carousel-cards
           .swiper-container(data-swiper-options=swiperFooterConfig, data-swiper-up="m")
             .swiper-wrapper
               each item, i in swiperFooterContent
-                .swiper-slide.carousel-card
+                .swiper-slide.carousel-cards__item
                   .card.card--well
                     .card__content
                       .bar.no-mrg-bottom
