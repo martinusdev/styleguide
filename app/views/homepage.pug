@@ -213,3 +213,48 @@ block content
       +carouselTiles(tiles)
 
     include ./modules/seen-items
+
+    section.bg-default
+      .wrapper-main
+        -
+          var swiperFooterContent = [
+            {
+              icon: 'martinus',
+              text: 'Knihy predavame uz takmer 30 rokov'
+            },
+            {
+              icon: 'delivery',
+              text: '20.000 titulov skladom'
+            },
+            {
+              icon: 'breadcrumbs',
+              text: '10 knihkupectiev po celom Slovensku'
+            },
+          ];
+          var swiperFooterConfig = {
+            nextButton: '.carousel__btn--next',
+            prevButton: '.carousel__btn--prev',
+            slidesPerView: 'auto',
+            slidesPerGroup: 1,
+            spaceBetween: 20,
+            centeredSlides: true,
+            loop: true,
+          };
+          swiperFooterConfige = JSON.stringify(swiperFooterConfig);
+        .carousel.carousel--fade-outside.carousel--fade-outside-white.carousel-cards
+          .swiper-container(data-swiper-options=swiperFooterConfig, data-swiper-up="m")
+            .swiper-wrapper
+              each item, i in swiperFooterContent
+                .swiper-slide.carousel-cards__item
+                  .card.card--well
+                    .card__content
+                      .bar.no-mrg-bottom
+                        .bar__item.bar__item--shrinkable
+                          +icon(item.icon, 'text-color-grey')
+                        .bar__item.bar__item--fill
+                          p.text-medium= item.text
+
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+              +icon('arrow-left').icon--medium
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+              +icon('arrow-right').icon--medium
