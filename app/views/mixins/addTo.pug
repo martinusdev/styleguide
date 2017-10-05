@@ -16,18 +16,8 @@ mixin addTo(props = {})
     .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
       .dropdown__wrap
         div(id=`wishlist-list-${id}` data-toggle-class="hide")
-          .dropdown__item
-            .form-control.form-control--checkbox.no-mrg-bottom
-              .checkbox
-                input.radiocheck__input(type='checkbox', id='checkbox-whishlist', name='checkbox-whishlist')
-                label.radiocheck__control(for='checkbox-whishlist')
-                label.radiocheck__label(for='checkbox-whishlist') Wishlist
-          .dropdown__item
-            .form-control.form-control--checkbox.no-mrg-bottom
-              .checkbox
-                input.radiocheck__input(type='checkbox', id='checkbox-moj-zoznam', name='checkbox-moj-zoznamt')
-                label.radiocheck__control(for='checkbox-moj-zoznam')
-                label.radiocheck__label(for='checkbox-moj-zoznam') Môj zoznam
+          a.dropdown__item(href="#").dropdown__item Wishlist
+          a.dropdown__item(href="#").dropdown__item--checked Môj zoznam
           button(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`).btn.btn--clean.text-left.text-nowrap
             +icon('plus').icon--left.icon--medium.text-color-grey
             | Nový záznam

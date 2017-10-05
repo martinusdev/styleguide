@@ -90,6 +90,31 @@
       background-repeat: no-repeat;
     }
   }
+
+  &--checked {
+    position: relative;
+    padding-left: _get-space('h', 'large');
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      transform: translateY(-50%);
+
+      height: 16px;
+      width: 16px;
+
+      background-image: svg-load('./../icons_/app/check-circle.svg', fill=_color(success));
+      background-size: 16px;
+      background-repeat: no-repeat;
+    }
+
+    &:focus::before,
+    &:hover::before {
+      background-image: svg-load('./../icons_/app/close.svg', fill=_color(grey, 200));
+    }
+  }
 }
 
 @mixin dropdown-group (
