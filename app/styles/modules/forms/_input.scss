@@ -38,6 +38,10 @@
 
       &.is-error {
         @include css-map($props, 'error');
+
+        &--no-cross { // stylelint-disable-line
+          @include css-map($props, 'error--no-cross');
+        }
       }
 
       &.is-valid {
