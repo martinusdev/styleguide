@@ -1,5 +1,24 @@
 .card.mb-medium#confirmation
   .card__content
+    .row.mb-medium
+      .col--m-2.col--s-4
+        img.img.img--fluid.img--circle(src="//www.martinus.sk/data/img/custom/75835_taska.jpeg")
+      .col--m-10.col--s-8
+        p.mb-small.text-medium.line-default
+          | Milujete knihy? Pre všetkých knihomoľov sme pripravili#{' '}
+          strong špeciálnu knihomoľskú tašku
+          | #{' '}s nápisom #{' '}
+          i "Táto taška nie je ani spolovice tak ťažká, ako by bol život bez kníh"
+          | . Pribalíme vám ju?
+
+        .form-control.form-control--checkbox
+          .checkbox
+            input.radiocheck__input(type='checkbox', id='summary_upsell', name='summary_upsell')
+            label.radiocheck__control(for='summary_upsell')
+            label.radiocheck__label(for='summary_upsell')
+              span.text-size-medium.text-semibold Pridať do objednávky knihomoľskú tašku za 1,99 €
+
+  .card__content
     .bar
       .bar__item.bar__item--fill
         h2 Darujte centy a stanete sa Dobrým Anjelom
