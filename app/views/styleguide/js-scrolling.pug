@@ -1,0 +1,43 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('javascripts.scrolling', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/scripts/modules/AnchorScroll.js', 'app/scripts/modules/ScrollSpy.js', 'app/scripts/modules/SmoothScroll.js', 'app/scripts/modules/Sticky.js'], contents)
+
+    +p-big Documentation for scrolling realated modules.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- SELECT
+  +content-section(contents[0])
+
+    +content-sub-section('Offset')
+      +p All modules which uses scroll for interaction, e.g. smooth scrolling, scroll spying, element sticking or setting scroll position based on hash in url uses <code class='l-code-inline'>[data-scroll-offset]</code> attribute to specify offset from window top.
+
+      +p Default value for whole page, which can be overridden localy with <code class='l-code-inline'>[data-scroll-offset]</code>, can be set with <code class='l-code-inline'>window.myApp.scrollOffset</code>.
+
+      +p <code class='l-code-inline'>[data-scroll-offset]</code> can be specified as number (of pixels) or responsive map with key as breakpoint (in pixels) and value as offset. Example is shown below.
+
+      +demo(true)
+        +demo-code
+          :code
+            <a href="#" data-scroll data-scroll-offset="85" />
+            <!-- or responsive -->
+            <a href="#" data-scroll data-scroll-offset="{"0": "85", "768": "95"}" />
+
+            <script>
+              window.myApp = window.myApp = {};
+              window.myApp.scrollOffset = 85;
+              // or responsive
+              window.myApp.scrollOffset = {0: 85, 768: 95};
+            </script>

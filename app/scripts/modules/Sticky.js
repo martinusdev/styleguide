@@ -4,7 +4,9 @@ import { getValueFromResponsiveMap } from './Utils';
 
 function getOffset(element) {
   const currentOffset =
-    JSON.parse(element.getAttribute('data-scroll-offset')) || 0;
+    JSON.parse(element.getAttribute('data-scroll-offset')) ||
+    window.myApp.scrollOffset ||
+    0;
 
   return getValueFromResponsiveMap(currentOffset, window.innerWidth);
 }
