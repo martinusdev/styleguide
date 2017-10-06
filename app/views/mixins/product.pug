@@ -210,12 +210,16 @@ mixin productStatus(props = {})
         .bar__item
           if status === 'read'
             p.no-mrg-bottom.text-small.text-color-success
-              +icon('check-circle').text-space-right.text-vam
+              +icon('check-circle').text-space-right-tiny.text-vam
               | Prečítané
           else if status === 'reading'
-            p.no-mrg-bottom.text-small.text-color-grey
-              +icon('time').text-space-right.text-vam
-              | Čítam
+            p.no-mrg-bottom.text-small.text-color-blue
+              +icon('time').text-space-right-tiny.text-vam
+              | Práve čítam
+      else
+        .bar__item
+          p.no-mrg-bottom.text-small.text-color-grey
+            | Neprečítané
 
       if actionDropdown
         .bar__item.align-self-right
