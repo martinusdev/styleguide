@@ -10,12 +10,12 @@ section.section.section--toolbar.no-pad.hide-l.text-center.bg-default(data-stick
     span Zúženie výberu
   button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-order")
     +icon('order', 'icon--large').icon--left
-    span Zoradit
+    span Zoradiť
 
 section.section
   .wrapper-main
     .row
-      #mobile-reduction.col--l-3.mobile-wrapper.mb-medium(data-toggle-lock)
+      #mobile-reduction.col--l-3.mobile-wrapper.mb-medium-l(data-toggle-lock)
         .mobile-wrapper__header
           .mobile-wrapper__header-title Zúženie výberu
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
@@ -33,7 +33,7 @@ section.section
                       a.link(class=(i === 0) ? 'active' : '')
                         | !{link}
           include category-filter
-          .hide-l.align-items-bottom.box.no-mrg-bottom
+        .mobile-wrapper__footer
             .btn-layout.btn-layout--vertical.no-mrg-bottom
               button.btn Zúžiť výber
       .col--l-9.col--12
@@ -42,7 +42,7 @@ section.section
         if carousel
           h2.mb-large Najobľúbenejšie tituly a kolekcie
           +booksCarouselRecommended()
-        #mobile-order.mobile-wrapper.mb-medium(data-toggle-lock)
+        #mobile-order.mobile-wrapper.mb-medium-l(data-toggle-lock)
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
             .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-order")
