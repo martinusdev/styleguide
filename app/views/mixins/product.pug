@@ -177,10 +177,10 @@ mixin productToRate(props = {})
     .btn-layout.btn-layout--vertical.no-mrg-bottom(data-toggle-class="hide")
       button.btn(data-toggle=`parent, #product-rating-${id}`) Hodnotiť
     .badge.badge--large.badge--block.hide(id=`product-rating-${id}`, data-toggle-class="hide")
-      .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced(data-stars)
-        - for (var abc = 0; abc<5; abc++)
-          input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
-          label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+abc)
+      .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
+        - for (var index = 0; index<5; index++)
+          input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+index)
+          label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+index)
             +icon('star').icon--medium
 
 
@@ -191,9 +191,11 @@ mixin productRating(props = {})
     } = props;
   .product__action&attributes(attributes)
     .badge.badge--large.badge--block
-      .rating-star.align-items-spaced
-        each star, starIndex in Array(5)
-          +icon('star').rating-star__item.icon--medium(class=`${starIndex < stars ? 'is-active' : ''}`)
+      .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
+        - for (var index = 0; index<5; index++)
+          input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+index)
+          label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+index, class= index < stars ? 'is-active': '')
+            +icon('star').icon--medium
 
 
 mixin productStatus(props = {})
