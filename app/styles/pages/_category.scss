@@ -4,8 +4,8 @@
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      height: 100vh;
+      right: 0;
+      bottom: 0;
       padding: 0;
       z-index: $z-index-overlay;
       background-color: $default-bg-color;
@@ -56,5 +56,18 @@
     @include breakpoint('l') {
       flex: 1 0 1px;
     }
+  }
+}
+
+.mobile-wrapper__footer {
+  @include breakpoint('l', 'downfrom') {
+    padding: _get-space('v', 'small');
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+  }
+
+  @include breakpoint('l') {
+    display: none;
   }
 }
