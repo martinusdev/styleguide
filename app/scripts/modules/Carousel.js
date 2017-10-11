@@ -69,7 +69,8 @@ export default class SwiperSlider {
           breakpointDown,
           window.innerWidth,
           BREAKPOINTS,
-        )
+        ) &&
+        swiper.querySelectorAll('.swiper-slide').length
       ) {
         const swiperInstance = new Swiper(swiper, swiperConfig);
         swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);
@@ -169,5 +170,13 @@ export default class SwiperSlider {
         slide.setAttribute('data-carousel-fan-index', index - offset);
       }
     });
+  }
+
+  update() {
+    this.instances.forEach(instance => instance.update());
+  }
+
+  destroy() {
+    this.instances.forEach(instance => instance.destroy());
   }
 }
