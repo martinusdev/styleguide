@@ -6,16 +6,16 @@ include ./../mixins/icon
 section.section.section--toolbar.no-pad.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap)
   .wrapper-main
-    .btn-layout.btn-layout--horizontal.align-items-justify.no-mrg-bottom
+    .btn-layout.btn-layout--horizontal.no-mrg-bottom
       button.btn.btn--clean.is-active.no-mrg-bottom(data-toggle="#mobile-reduction").no-mrg-right
-        +icon('reduction', 'icon--large').icon--left
-        | Zúženie
-        span.show-s  výberu
+        +icon('reduction', 'icon--medium').icon--left
+        span.show-s Zúženie výberu
       button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-order").no-mrg-right
-        +icon('order', 'icon--large').icon--left
-        | Zoradiť
+        +icon('order', 'icon--medium').icon--left
+        span.show-s Zoradiť
       button.btn.btn--clean.no-mrg-bottom
-        +icon('close', 'icon--large')
+        +icon('close', 'icon--medium').icon--left
+        | Zrušiť
 
 section.section
   .wrapper-main
