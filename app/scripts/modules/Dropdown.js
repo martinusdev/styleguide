@@ -48,8 +48,51 @@ export default class Dropdown {
     );
 
     this.dropdowns.forEach(dropdown => {
+      this.constructor.setDropdownPosition(dropdown);
+
       dropdown.addEventListener(TOGGLE_EVT, this._onToggle);
     });
+  }
+
+  static setDropdownPosition(target) {
+    const body = document.body;
+    const html = document.documentElement;
+
+    // TODO: top/bottom posiiton switch - little bit harder because of animation of height
+    // const winHeight = Math.max(
+    //   body.scrollHeight,
+    //   body.offsetHeight,
+    //   html.clientHeight,
+    //   html.scrollHeight,
+    //   html.offsetHeight,
+    // );
+
+    const winWidth = Math.max(
+      body.scrollWidth,
+      body.offsetWidth,
+      html.clientWidth,
+      html.scrollWidth,
+      html.offsetWidth,
+    );
+
+    const dimensions = target.getBoundingClientRect();
+
+    // const dropdownPosTop = Math.ceil(dimensions.top + window.pageYOffset);
+    const dropdownPosRight = Math.ceil(dimensions.right + window.pageXOffset);
+    const dropdownPosLeft = Math.ceil(dimensions.left + window.pageXOffset);
+
+    // const shouldFlipTop = dropdownPosTop >= winHeight;
+
+    const shouldFlipRight = dropdownPosRight >= winWidth;
+    const shouldFlipLeft = dropdownPosLeft <= 0;
+
+    if (shouldFlipLeft && target.classList.contains('dropdown--align-right')) {
+      target.classList.remove('dropdown--align-right');
+    }
+
+    if (shouldFlipRight) {
+      target.classList.add('dropdown--align-right');
+    }
   }
 
   _onToggle(e) {
@@ -65,47 +108,7 @@ export default class Dropdown {
 
     // attach events only if dropdown is open
     if (isActive(this.target)) {
-      const body = document.body;
-      const html = document.documentElement;
-
-      // TODO: top/bottom posiiton switch - little bit harder because of animation of height
-      // const winHeight = Math.max(
-      //   body.scrollHeight,
-      //   body.offsetHeight,
-      //   html.clientHeight,
-      //   html.scrollHeight,
-      //   html.offsetHeight,
-      // );
-
-      const winWidth = Math.max(
-        body.scrollWidth,
-        body.offsetWidth,
-        html.clientWidth,
-        html.scrollWidth,
-        html.offsetWidth,
-      );
-
-      const dimensions = this.target.getBoundingClientRect();
-
-      // const dropdownPosTop = Math.ceil(dimensions.top + window.pageYOffset);
-      const dropdownPosRight = Math.ceil(dimensions.right + window.pageXOffset);
-      const dropdownPosLeft = Math.ceil(dimensions.left + window.pageXOffset);
-
-      // const shouldFlipTop = dropdownPosTop >= winHeight;
-
-      const shouldFlipRight = dropdownPosRight >= winWidth;
-      const shouldFlipLeft = dropdownPosLeft <= 0;
-
-      if (
-        shouldFlipLeft &&
-        this.target.classList.contains('dropdown--align-right')
-      ) {
-        this.target.classList.remove('dropdown--align-right');
-      }
-
-      if (shouldFlipRight) {
-        this.target.classList.add('dropdown--align-right');
-      }
+      this.constructor.setDropdownPosition(this.target);
 
       this._addListeners();
     }
