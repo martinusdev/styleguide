@@ -195,6 +195,7 @@ mixin productRating(props = {})
         - for (var index = 0; index<5; index++)
           input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+index)
           label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+index, class= index < stars ? 'is-active': '')
+            // or `.text-color-yellow` on svg
             +icon('star').icon--medium
 
 
