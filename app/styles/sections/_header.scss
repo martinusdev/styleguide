@@ -220,9 +220,11 @@
     z-index: $z-index-topbar + 1;
   }
 
-  .btn-dropdown {
-    .header-btn {
-      padding-right: _get-space('h');
+  @include breakpoint(l) {
+    .btn-dropdown {
+      .header-btn {
+        padding-right: _get-space('h');
+      }
     }
   }
 
