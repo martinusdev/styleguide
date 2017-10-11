@@ -5,6 +5,9 @@
   &__search {
     display: none;
 
+    // ugly fix - flexbox is calculating wrong width and button is overflowing
+    max-width: calc(100% - 45px);
+
     .form-control {
       width: 100%;
     }
@@ -220,9 +223,11 @@
     z-index: $z-index-topbar + 1;
   }
 
-  .btn-dropdown {
-    .header-btn {
-      padding-right: _get-space('h');
+  @include breakpoint(l) {
+    .btn-dropdown {
+      .header-btn {
+        padding-right: _get-space('h');
+      }
     }
   }
 
