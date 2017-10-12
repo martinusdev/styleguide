@@ -2,10 +2,8 @@
 // Toggle
 // module for handling toggle actions
 
-import { customEventPolyfill, triggerResize } from './Utils';
+import { triggerResize } from './Utils';
 import { lockBody, unlockBody } from './Modal';
-
-customEventPolyfill();
 
 export const TRIGGER_EVT = 'triggerToggle';
 export const TOGGLE_EVT = 'toggle';

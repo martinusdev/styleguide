@@ -1,7 +1,5 @@
-import { closestPolyfill, transitionEnd, triggerResize } from './Utils';
+import { transitionEnd, triggerResize } from './Utils';
 import { TOGGLE_EVT, doToggle } from './Toggle';
-
-closestPolyfill();
 
 const defaultConfig = {
   allowMultipleAttr: 'data-modal-allow-multiple',

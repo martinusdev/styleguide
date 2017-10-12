@@ -1,7 +1,4 @@
-import { closestPolyfill } from './Utils';
 import { TOGGLE_EVT, doToggle } from './Toggle';
-
-closestPolyfill();
 
 const defaultConfig = {
   dataInteractive: 'data-dropdown-interactive',
