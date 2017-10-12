@@ -3,7 +3,10 @@ import svg4everybody from 'svg4everybody';
 import {
   customEventPolyfill,
   requestAnimationFramePolyfill,
-} from './modules/Utils';
+  closestPolyfill,
+  includesPolyfill,
+} from './modules/Polyfills';
+
 import Alert from './modules/Alert';
 import Select from './modules/Select';
 import Toggle from './modules/Toggle';
@@ -57,7 +60,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
   svg4everybody();
   customEventPolyfill();
+  closestPolyfill();
   requestAnimationFramePolyfill();
+  includesPolyfill();
 
   window.myApp.megaMenu = new MegaMenu();
 

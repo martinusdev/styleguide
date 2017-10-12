@@ -2,16 +2,8 @@
 // Tabs
 // module for handling tabs
 
-import {
-  customEventPolyfill,
-  closestPolyfill,
-  windowOffset,
-  getSiblings,
-} from './Utils';
+import { windowOffset, getSiblings } from './Utils';
 import { TOGGLE_EVT } from './Toggle';
-
-customEventPolyfill();
-closestPolyfill();
 
 const defaultConfig = {
   activeClass: 'is-active',

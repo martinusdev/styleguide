@@ -2,10 +2,8 @@
 // Toggle
 // module for handling toggle actions
 
-import { customEventPolyfill, escapeSelectorName } from './Utils';
+import { escapeSelectorName } from './Utils';
 import { TRIGGER_EVT, TOGGLE_EVT } from './Toggle';
-
-customEventPolyfill();
 
 const defaultConfig = {
   toggleClass: 'hide',
