@@ -3,6 +3,9 @@ extends layouts/_default
 include ./mixins/breadcrumbs
 include ./mixins/icon
 
+block append head
+  link(rel="stylesheet", href=`${assetsPrefix}styles/gallery.css`)
+
 block opts
     - var pageTitle = 'Bookstores'
 
@@ -65,7 +68,7 @@ block content
                       h2.mb-small Martinus na Obchodnej
                       .bar.no-mrg-bottom
                         .bar__item
-                          a(href="#") Prezrieť galériu
+                          a#gallery-link(href="#") Prezrieť galériu
                             +icon('arrow-right')
                         .bar__item
                           a(href="#") Virtuálna prehliadka
@@ -104,8 +107,39 @@ block content
                       button.btn.btn--clean(data-toggle="#product-preview")
                         +icon('foursquare').icon--left.icon--medium
                         | Foursquare
+                if (i == 0)
+                  #lightgallery.hide
+                    a#gallery-trigger(href="http://www.martinus.sk/data/img/custom/75682_bratislava_2.jpg")
+                      img(src="http://www.martinus.sk/data/img/custom/75682_bratislava_2.jpg")
+                    a(href="http://www.martinus.sk/data/img/custom/75762_bratislava_3.jpg")
+                      img(src="http://www.martinus.sk/data/img/custom/75762_bratislava_3.jpg")
+                    a(href="http://www.martinus.sk/data/img/custom/75980_bratislava_4.jpg")
+                      img(src="http://www.martinus.sk/data/img/custom/75980_bratislava_4.jpg")
+                    a(href="http://www.martinus.sk/data/img/custom/75814_bratislava_5.jpg")
+                      img(src="http://www.martinus.sk/data/img/custom/75814_bratislava_5.jpg")
+
 
 block append scripts
+  script(src=`${assetsPrefix}scripts/gallery.js`)
+
+  script.
+    lightGallery(document.getElementById('lightgallery'), {
+        thumbnail: true,
+        hash: false,
+        download: false,
+        fullScreen: false,
+        zoom: false
+    })
+    var galleryTrigger = document.getElementById('gallery-trigger')
+    var galleryTriggerEvt = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window
+    });
+    document.getElementById('gallery-link').addEventListener('click', function () {
+        var canceled = !galleryTrigger.dispatchEvent(galleryTriggerEvt);
+    })
+
   script.
     function initMap() {
       for(var i=0; i < 3; i++) {
