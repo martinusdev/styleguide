@@ -5,7 +5,7 @@
 // wrapper
 .checkbox,
 .radio {
-  display: inline-flex;
+  display: flex;
   align-items: flex-start;
 }
 
@@ -151,9 +151,15 @@
 
   // checkbox / radio labels
   &__label {
-    display: block;
+    // display: block;
     cursor: pointer;
     flex: 1;
+
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      flex: 1 0 auto;
+      max-width: calc(100% - 30px);
+      min-width: 1px;
+    }
 
     @include css-map($radio-check-label);
   }
@@ -178,13 +184,10 @@
   // checkbox and radio groups
 
   &-group {
-    @include clearfix;
-    display: inline-block;
+    display: block;
 
     .checkbox,
     .radio {
-      float: left;
-      clear: both;
       margin: 0;
     }
   }
