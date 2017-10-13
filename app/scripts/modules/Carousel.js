@@ -140,7 +140,9 @@ export default class SwiperSlider {
     const offset = Math.floor(numberOfActiveSlides / 2);
 
     // remove old indexes
-    container.querySelectorAll('[data-carousel-fan-index]').forEach(slide => {
+    nodeListToArray(
+      container.querySelectorAll('[data-carousel-fan-index]'),
+    ).forEach(slide => {
       slide.removeAttribute('data-carousel-fan-index');
     });
 
