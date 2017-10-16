@@ -137,6 +137,16 @@ export default class MegaMenu {
       className: 'is-active',
       state: false,
     });
+
+    // fix MagaMenu height for ios manually (innerHeight - header height)
+    setTimeout(() => {
+      const headerHeight = document.querySelector('.header .header__wrapper')
+        .offsetHeight;
+
+      if (this.isMegaMenuOpen) {
+        this.megaMenu.style.maxHeight = `${window.innerHeight - headerHeight}px`;
+      }
+    }, 200); // magic number
   }
 
   _handleClickOutside(e) {
