@@ -170,6 +170,11 @@ export default class Modal {
         once: true,
       },
     );
+
+    // fix modal dialog height for ios manually (innerHeight)
+    setTimeout(() => {
+      this.dialog.style.maxHeight = `${window.innerHeight}px`;
+    }, 200); // magic number
   }
 
   _deactivateModal() {
@@ -265,7 +270,6 @@ export default class Modal {
     document.body.style.width = '100%';
     document.body.style.overflow = 'hidden';
     document.body.style.position = 'fixed';
-    document.body.style.WebkitOverflowScrolling = 'auto';
 
     // add locking styles to scrollTop
     if (pageContainer) {
