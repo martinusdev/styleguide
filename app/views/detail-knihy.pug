@@ -137,7 +137,7 @@ block content
                           .text-color-grey -2%
 
               h1.product-detail__title.mb-small Základy rybolovu pro kluky a holky
-              h3.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+              h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
               ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
                   li
                     a.link(href="#") Frank Weissert
@@ -262,18 +262,43 @@ block content
               section.mb-large#popis-knihy(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
 
                 h2.mb-medium Popis knihy
-                div#book-desription(data-collapse="300")
-                  p Vždy bolo ťažké byť Harrym Potterom a nie je to ľahké ani dnes, keď je prepracovaným zamestnancom Ministerstva mágie, manželom a otcom troch školopovinných detí.
+                div#book-description(data-collapse="300")
+                  .cms-article
+                    p
+                      i Vždy bolo ťažké byť Harrym Potterom a nie je to ľahké ani dnes, keď je prepracovaným zamestnancom Ministerstva mágie.
+                      b - J.K. Rownling
 
-                  p Harry zápasí s minulosťou, ktorá sa ustavične vracia. Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
+                    h3 Nejaky podnadpis
 
-                  p Nová hra Jacka Thorna Harry Potter a prekliate dieťa vychádza z pôvodného nového príbehu J.K. Rowlingovej, Johna Tiffanyho a Jacka Thorna. Je to ôsmy príbeh o Harrym Potterovi a prvý, ktorý sa objavil na javisku. Toto knižné vydanie scenára prináša pokračovanie príbehu Harryho Pottera, jeho priateľov a rodiny bezprostredne po svetovej premiére hry v londýnskom West Ende 30. júla 2016.
+                    p Harry zápasí s minulosťou, ktorá sa #{' '}
+                      a(href="#") ustavične vracia
+                      | . Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
 
-                  p Prvá oficiálna divadelná hra o Harrym Potterovi mala premiéru v sobotu 30. júla v Palace Theatre v londýnskom West Ende. Prvých 175-tisíc vstupeniek sa minulý rok vypredalo v priebehu ôsmich hodín. Tvorcovia sa preto rozhodli, že hru, ktorú mali pôvodne uvádzať do 27. mája 2017, predĺžia až do 10. decembra toho roku.
+                    ul
+                      li Nejaka polozka zoznamu
+                      li Nejaka polozka zoznamu
+                      li Nejaka polozka zoznamu
+                      li Nejaka polozka zoznamu
+                      li Nejaka polozka zoznamu
+                      li Nejaka polozka zoznamu
 
-                  p.mb-medium Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+                    h3 Zoznam titulov
+                    ol
+                      li
+                        a(href="#") Nejaka polozka zoznamu
+                      li
+                        a(href="#") Nejaka polozka zoznamu
+                      li
+                        a(href="#") Nejaka polozka zoznamu
+                      li
+                        a(href="#") Nejaka polozka zoznamu
+                      li
+                        a(href="#") Nejaka polozka zoznamu
+
+                    p.mb-medium Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+
                 .product-read-more
-                  a.link.text-size-medium(href="javascript:void(0)", data-toggle="#book-desription, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                  a.link.text-size-medium(href="javascript:void(0)", data-toggle="#book-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
                     +icon('arrow-down')
 
               section.mb-large.hide-l
