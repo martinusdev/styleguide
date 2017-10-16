@@ -70,7 +70,8 @@ export default class SwiperSlider {
           window.innerWidth,
           BREAKPOINTS,
         ) &&
-        swiper.querySelectorAll('.swiper-slide').length
+        swiper.querySelectorAll('.swiper-slide').length &&
+        !swiper.classList.contains('is-initialized')
       ) {
         const swiperInstance = new Swiper(swiper, swiperConfig);
         swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);
@@ -176,6 +177,7 @@ export default class SwiperSlider {
 
   update() {
     this.instances.forEach(instance => instance.update());
+    this._init();
   }
 
   destroy() {
