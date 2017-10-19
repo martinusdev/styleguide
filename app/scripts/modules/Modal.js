@@ -156,21 +156,6 @@ export default class Modal {
 
     this._handleMultipleModals();
 
-    this.target.addEventListener(
-      transitionEnd,
-      () => {
-        setTimeout(() => {
-          triggerResize();
-          this.target.dispatchEvent(
-            new CustomEvent(MODAL_OPEN, { bubbles: true }),
-          );
-        }, 0);
-      },
-      {
-        once: true,
-      },
-    );
-
     // fix modal dialog height for ios manually (innerHeight)
     setTimeout(() => {
       this.dialog.style.maxHeight = `${window.innerHeight}px`;
