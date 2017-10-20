@@ -48,7 +48,7 @@ export default class NumberSpinner {
       return;
     }
 
-    const changeEvent = new Event('change');
+    const changeEvent = new CustomEvent('change');
 
     if (action === 'increase') {
       const max = parseInt(input.getAttribute('max'), 10);
