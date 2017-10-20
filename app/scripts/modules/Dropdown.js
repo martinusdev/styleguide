@@ -31,6 +31,8 @@ export default class Dropdown {
     });
 
     this._removeListeners();
+
+    this.dropdowns = [];
   }
 
   update() {
