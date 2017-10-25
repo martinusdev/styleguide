@@ -62,6 +62,18 @@
       &--border {
         @include bar-border;
       }
+
+      &--line {
+        background-image: svg-load('./../images/content/line.svg');
+        background-repeat: repeat-x;
+        background-position-y: center;
+      }
+
+      &--line > * {
+        background-color: $color-white;
+        padding: 0 _get-space('h', 'small');
+        display: inline-block;
+      }
     }
 
     &--vertical {
