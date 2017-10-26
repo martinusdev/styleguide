@@ -42,55 +42,71 @@ block content
       .wrapper-main
         .row
           .col--l-8
-            .row
-              .col--12
-                article.card
-                  .card__status
-                    +icon('eye').icon--medium.text-color-grey
-                  .card__content.text-center
-                    h5.mb-small Kolekcia 34. týždna
-                    h2.mb-small Knihy do vašej kuchyne
-                    p.text-size-medium.text-color-grey.no-mrg-bottom Obsahuje 27 kníh
+            article.card
+              .card__status
+                +icon('eye').icon--medium.text-color-grey
+              .card__content.text-center
+                h5.mb-small Kolekcia 34. týždna
+                h2.mb-small Knihy do vašej kuchyne
+                p.text-size-medium.text-color-grey.no-mrg-bottom Obsahuje 27 kníh
 
-                  .card__content.card__content--overflow
-                    hr.mb-medium
-                    .bar
-                      .bar__item.bar.no-mrg-bottom
-                          .bar__item
-                            .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                          .bar__item.text-size-medium
-                            p.mb-small
-                              span.text-semibold Vyberá Tomáš Ulej
-                              br
-                              a.link(href='#', title="Tomáš Ulej") Sledovať autora kolekcie
-                      .bar__item.bar__item--border.show-m
-                      .bar__break.hide-m
-                      .bar__item.bar__item--fill.bar__item--shrinkable
-                        p.no-mrg.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
-                    hr
+              .card__content.card__content--overflow
+                hr.mb-medium
+                .bar
+                  .bar__item.bar.no-mrg-bottom
+                    .bar__item
+                      .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                    .bar__item.text-size-medium
+                      p.mb-small
+                        span.text-semibold Vyberá Tomáš Ulej
+                        br
+                        a.link(href='#', title="Tomáš Ulej") Sledovať autora kolekcie
+                  .bar__item.bar__item--border.show-m
+                  .bar__break.hide-m
+                  .bar__item.bar__item--fill.bar__item--shrinkable
+                    p.no-mrg.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
+                hr
 
-                    +booksCarouselHorizontal
+                +booksCarouselHorizontal
 
-                  .card__content.text-center
-                      button.btn.btn--ghost Celá kolekcia
-              .col--m-6
-                +najoblubenejsieSerie
-                +najoblubenejsieSerie
-
-              .col--m-6
-                +najoblubenejsieSerie
-                +najoblubenejsieSerie
-
-
+              .card__content.text-center
+                button.btn.btn--ghost Celá kolekcia
 
           .col--l-4
-            .row
-              .col--m-6.col--l-12
-                +najoblubenejsieSerie
-              .col--m-6.col--l-12
-                +najoblubenejsieSerie
-              .col--m-6.col--l-12
-                +najoblubenejsieSerie
+            article.card
+              .card__content.card__content--overflow
+                h2.text-center Najpopulárnejšie
+
+              .card__content
+                ul.list.list--counter.no-pad
+                  each i in Array(5)
+                    li.mb-medium
+                      article.product.product--horizontal
+                        .product__img.product__cover.collection
+                          .thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--medium-large
+                            each i, index in Array(3)
+                              .thumbnail__img-wrap
+                                img(src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).img
+                        .product__caption
+                          a(href="#").link.link--product.block.mb-small.line-medium.text-size-regular
+                            | Desať starých slovenských kníh, ktoré sú svieže aj dnes
+                          .bar.bar--tiny.mb-none
+                            .bar__item
+                              .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                            .bar__item.bar__item--fill
+                              .text-small.text-ellipsis Jana Šlinská
+        .row
+          .col--l-4
+            +najoblubenejsieSerie
+            +najoblubenejsieSerie
+
+          .col--l-4
+            +najoblubenejsieSerie
+            +najoblubenejsieSerie
+
+          .col--l-4
+            +najoblubenejsieSerie
+            +najoblubenejsieSerie
 
   include ./modules/seen-items
   include ./modules/seen-items-delete
