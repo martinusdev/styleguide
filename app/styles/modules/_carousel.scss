@@ -2,6 +2,77 @@
 // Carousel
 // ---------------------------------------------
 
+@mixin carousel-fade($mode) {
+  position: relative;
+  overflow: visible;
+
+  margin-left: -(_map-deep-get($carousel, $mode, size));
+  margin-right: -(_map-deep-get($carousel, $mode, size));
+  padding: 0 _map-deep-get($carousel, $mode, size);
+
+  .swiper-container { overflow: visible; }
+
+  .swiper-container {
+    margin: 0;
+
+    // stylelint-disable-next-line
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      width: _map-deep-get($carousel, $mode, size);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    &::after { // stylelint-disable-line
+      right: -(_map-deep-get($carousel, $mode, size));
+      left: auto;
+
+      background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient)));
+    }
+
+    &::before { // stylelint-disable-line
+      left: -(_map-deep-get($carousel, $mode, size));
+      right: auto;
+
+      background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient)));
+    }
+  }
+
+  &-white {
+    .swiper-container { // stylelint-disable-line
+      &::before { // stylelint-disable-line
+        background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient-white)));
+      }
+      &::after { // stylelint-disable-line
+        background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient-white)));
+      }
+    }
+  }
+
+  .carousel__btn--prev {
+    left: _map-deep-get($carousel, btns, offsetH, default);
+  }
+
+  .carousel__btn--next {
+    right: _map-deep-get($carousel, btns, offsetH, default);
+  }
+
+  @include breakpoint(l) {
+    .carousel__btn--prev {
+      left: _map-deep-get($carousel, btns, offsetH, l);
+    }
+
+    .carousel__btn--next {
+      right: _map-deep-get($carousel, btns, offsetH, l);
+    }
+  };
+}
+
 .carousel {
   margin-bottom: _get-space('v', 'large');
 
@@ -35,74 +106,12 @@
   }
 
   &--fade-outside {
-    position: relative;
-    overflow: visible;
+    @include carousel-fade(fade);
+  }
 
-    margin-left: -(_map-deep-get($carousel, fade, size));
-    margin-right: -(_map-deep-get($carousel, fade, size));
-    padding: 0 _map-deep-get($carousel, fade, size);
-
-    .swiper-container { overflow: visible; }
-
-    .swiper-container {
-      margin: 0;
-
-      // stylelint-disable-next-line
-      &::before,
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        bottom: 0;
-
-        width: _map-deep-get($carousel, fade, size);
-        z-index: 2;
-        pointer-events: none;
-      }
-
-      &::after { // stylelint-disable-line
-        right: -(_map-deep-get($carousel, fade, size));
-        left: auto;
-
-        background: linear-gradient(to right, (_map-deep-get($carousel, fade, gradient)));
-      }
-
-      &::before { // stylelint-disable-line
-        left: -(_map-deep-get($carousel, fade, size));
-        right: auto;
-
-        background: linear-gradient(to left, (_map-deep-get($carousel, fade, gradient)));
-      }
-    }
-
-    &-white {
-      .swiper-container { // stylelint-disable-line
-        &::before { // stylelint-disable-line
-          background: linear-gradient(to left, (_map-deep-get($carousel, fade, gradient-white)));
-        }
-        &::after { // stylelint-disable-line
-          background: linear-gradient(to right, (_map-deep-get($carousel, fade, gradient-white)));
-        }
-      }
-    }
-
-    .carousel__btn--prev {
-      left: _map-deep-get($carousel, btns, offsetH, default);
-    }
-
-    .carousel__btn--next {
-      right: _map-deep-get($carousel, btns, offsetH, default);
-    }
-
-    @include breakpoint(l) {
-      .carousel__btn--prev {
-        left: _map-deep-get($carousel, btns, offsetH, l);
-      }
-
-      .carousel__btn--next {
-        right: _map-deep-get($carousel, btns, offsetH, l);
-      }
-    };
+  &--fade-inside {
+    @include carousel-fade(fade-inside);
+    overflow: hidden;
   }
 
   &--fade-inactive {
