@@ -23,7 +23,22 @@ block content
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
-    section.section.section--l-background(style=`background-image: url(${assetsPrefix}images/content/collections-header.png)`)
+    section.section.section--books-header
+      -
+        var count = 20;
+        var cols = 10;
+        var _w = 200;
+        var _h = 300;
+        var width = count * _w;
+        var height = count / cols * _h;
+      .books-header.show-l
+        each num, i in Array(count)
+          -
+            var x = i % cols * _w;
+            var y = Math.floor(i / cols) * _h;
+          .thumbnail.thumbnail--book(style="left: " + x + "px; top: " + y + "px")
+            .thumbnail__img-wrap
+              img(src="images/content/books/sample-" + i + ".jpg")
       .wrapper-main
         .row
           .col--l-5

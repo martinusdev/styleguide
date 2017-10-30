@@ -146,6 +146,9 @@ img {
   .img { margin-bottom: 0; }
 }
 
+// ----------------------------
+// PORTRAITS
+
 .portrait {
   background: _color('primary');
   overflow: hidden;
@@ -174,4 +177,30 @@ img {
   content: "";
   display: table;
   clear: both;
+}
+
+// ----------------------------
+// BOOKS HEADER
+
+.books-header {
+  z-index: -1;
+  position: absolute;
+  right: 70%;
+  top: -150%;
+  transform: rotate(45deg) scale(1);
+
+  @include breakpoint('xl') {
+    right: 50%;
+  }
+
+  .thumbnail--book {
+    width: map_get($thumbnail-sizes, xlarge);
+    height: map_get($thumbnail-sizes, xlarge) * 1.4;
+    position: absolute;
+  }
+
+  img {
+    width: map_get($thumbnail-sizes, xlarge);
+    height: map_get($thumbnail-sizes, xlarge) * 1.4;
+  }
 }
