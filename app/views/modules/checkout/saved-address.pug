@@ -12,12 +12,25 @@
           select.js-select
               option(selected disabled placeholder) Moyzesova 55
               option Moyzesova 55
-        p
-          | Katarína Bohmová
-          br
-          |Moyzesova 55
-          br
-          | 851 02 Bratislava
+
+        .bar.align-items-top
+          .bar__item.bar__item--fill
+            p
+              | Katarína Bohmová
+              br
+              |Moyzesova 55
+              br
+              | 851 02 Bratislava
+              br
+              | +421901901901
+          .bar__item.bar__item--shrinkable
+            .btn-dropdown.btn-dropdown--no-icon
+              button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
+                +icon('dots', 'icon--medium')
+              .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand, style="min-width: 180px;")
+                .dropdown__wrap
+                  a(href="#", data-toggle="#account-address").dropdown__item Upraviť
+
         .form-control.form-control--checkbox
           .checkbox
             input.radiocheck__input(type='checkbox', id='checkout_billing_address', name='checkout_billing_address', data-toggle="#billing-address-saved")
@@ -39,17 +52,29 @@
             select.js-select
                 option(selected disabled placeholder) Moyzesova 55
                 option Moyzesova 55
-          p
-            | Lighting Beetle s.r.o.
-            br
-            | Bydučínska 51
-            br
-            | 12585 Bratislava
-            br
-            | IČO: 546556434
-            br
-            | DIČ: SK4545456557484
+          .bar.align-items-top
+            .bar__item.bar__item--fill
+              p
+                | Lighting Beetle s.r.o.
+                br
+                | Bydučínska 51
+                br
+                | 12585 Bratislava
+                br
+                | IČO: 546556434
+                br
+                | DIČ: SK4545456557484
+            .bar__item.bar__item--shrinkable
+              .btn-dropdown.btn-dropdown--no-icon
+                button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
+                  +icon('dots', 'icon--medium')
+                .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand, style="min-width: 180px;")
+                  .dropdown__wrap
+                    a(href="#", data-toggle="#account-address").dropdown__item Upraviť
 
           .btn-layout--vertical.no-mrg
             button.btn.btn--primary.is-disabled(type="submit")
               | Poslať sem
+
+block append modals
+  include ./../address-modal
