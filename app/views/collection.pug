@@ -4,6 +4,7 @@ include ./mixins/addTo
 include ./mixins/breadcrumbs
 include ./mixins/icon
 include ./mixins/product
+include ./mixins/xmas
 
 block opts
     - var pageTitle = 'Kolekcia'
@@ -119,6 +120,8 @@ block content
                   .bar.bar--vertical.no-mrg-bottom
                     .bar__item
                       .h2.text-bold 12,99 €
+                    .bar__item
+                      +xmas()
                     .bar__item
                       .btn-layout.btn-layout--vertical
                         button.btn.btn--primary

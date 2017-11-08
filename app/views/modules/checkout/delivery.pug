@@ -1,3 +1,5 @@
+include ./../../mixins/xmas
+
 .card#delivery
   .card__content
     h2 Zvoľte spôsob doručenia
@@ -19,6 +21,7 @@
                         | Kuriér GLS
                       span.block.text-size-small
                         | Doručenie na druhý deň od odoslania
+                      +xmas({type: 'short'})
                     span.bar__item.text-size-medium.text-semibold
                       | 4.28€
 
@@ -33,6 +36,7 @@
                         | Pošta (na adresu)
                       span.block.text-size-small
                         | Doručenie na druhý deň od odoslania
+                      +xmas({type: 'short', status: 2})
                     span.bar__item.text-size-medium.text-semibold
                       | 1.99€
 
@@ -47,6 +51,7 @@
                         | Osobný odber
                       span.block.text-size-small
                         | Doručenie na druhý deň od odoslania
+                      +xmas({type: 'short'})
                     span.bar__item.text-size-medium.text-semibold
                       | zadarmo
 
@@ -64,6 +69,7 @@
                         | Balíkomat
                       span.block.text-size-small
                         | Doručenie na druhý deň od odoslania
+                      +xmas({type: 'short'})
                     span.bar__item.text-size-medium.text-semibold
                       | 1.99€
 
@@ -78,6 +84,7 @@
                         | Pošta (na poštu)
                       span.block.text-size-small
                         | Doručenie na druhý deň od odoslania
+                      +xmas({type: 'short', status: 2})
                     span.bar__item.text-size-medium.text-semibold
                       | 1.99€
 
@@ -92,6 +99,7 @@
                         | Zasielkovňa
                       span.block.text-size-small
                         | Doručenie na druhý deň od odoslania
+                      +xmas({type: 'short'})
                     span.bar__item.text-size-medium.text-semibold
                       | zadarmo
 

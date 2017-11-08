@@ -2,6 +2,7 @@ extends layouts/_default
 
 include ./mixins/addTo
 include ./mixins/icon
+include ./mixins/xmas
 
 block opts
     - var pageTitle = 'Kosik'
@@ -31,7 +32,9 @@ block content
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          a.text-semibold.no-mrg.block.link.link--product.line-medium(href="detail-knihy.html")=item.title
+                          a.text-semibold.no-mrg.block.link.link--product.line-medium(href="detail-knihy.html")
+                            +xmas({type: 'icon'}).text-space-right-tiny
+                            =item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                             - var authors = item.author.split(', ')
                             each author in authors
@@ -95,7 +98,9 @@ block content
                     .cart-item
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          span.text-semibold.line-medium(class=item.ebook ? 'text-space-right' : '')= item.title
+                          span.text-semibold.line-medium(class=item.ebook ? 'text-space-right' : '')
+                            +xmas({type: 'icon'}).text-space-right-tiny
+                            = item.title
                           if item.ebook
                             span.badge.text-nowrap E-kniha
                         .cart-item__column.cart-item__column--wishlist

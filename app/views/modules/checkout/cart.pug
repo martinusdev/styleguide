@@ -1,4 +1,5 @@
 include ./../../mixins/icon
+include ./../../mixins/xmas
 
 .card.card--done.mb-small#cart
   .card__content
@@ -18,7 +19,9 @@ include ./../../mixins/icon
             .cart-item.cart-item--summary(class=item.ebook ? 'cart-item--has-tags' : '')
               .cart-item__content
                 .cart-item__column.cart-item__column--product-name
-                  a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html")=item.title
+                  a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html")
+                    +xmas({type: 'icon'}).text-space-right-tiny
+                    =item.title
                 if item.ebook
                   .cart-item__column.cart-item__column--tags
                     .badge.text-nowrap E-kniha

@@ -2,6 +2,7 @@ include ./../mixins/addTo
 include ./../mixins/booksCarouselRecommended
 include ./../mixins/pagination
 include ./../mixins/icon
+include ./../mixins/xmas
 
 section.section.section--toolbar.no-pad.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
@@ -180,6 +181,7 @@ section.section
                 .text-center.show-m
                   h2.text-bold.mb-small 201,99 €
                   .badge.badge--primary.mb-small Zľava 10%
+                  +xmas({status: 0})
                   p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
                     em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
                     | .

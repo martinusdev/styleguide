@@ -1,0 +1,52 @@
+include icon
+
+mixin xmas(props = {})
+  -
+    const {
+      status = 1,
+      type = 'pricebox', // pricebox, short, icon
+      size = 'small' // small, medium
+    } = props;
+
+    const statusText = [
+      'Stíhame do vianoc',
+      'Stíhame do vianoc',
+      'Nestíhame do vianoc'
+    ]
+
+    const statusColor = [
+      'text-color-success',
+      'text-color-success',
+      'text-color-error'
+    ]
+
+    const shortText = [
+    'do vianoc',
+    'do vianoc',
+    'do vianoc nie'
+    ]
+
+  if (type == 'pricebox')
+    .inline-block(data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+      .bar.mb-small
+        .bar__item.bar__item--shrinkable.text-space-right-tiny
+          +icon('xmas', 'icon--large')(class=statusColor[status])
+        .bar__item.text-left.line-medium.text-medium
+          span.text-semibold(class=statusColor[status])= statusText[status]
+          if (status == 1)
+            br
+            span.text-color-grey (osobný odber, GLS)
+
+  if (type == 'icon')
+    if (size == 'small')
+      +icon('xmas-small')(class=statusColor[status], data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+    if (size == 'medium')
+      +icon('xmas', 'icon--medium')(class=statusColor[status], data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+
+  if (type == 'short')
+    .inline-block(data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+      .bar.mb-none
+        .bar__item.bar__item--shrinkable.text-space-right-tiny
+          +icon('xmas-small')(class=statusColor[status])
+        .bar__item.text-left.line-medium.text-medium
+          span.text-semibold(class=statusColor[status])= shortText[status]

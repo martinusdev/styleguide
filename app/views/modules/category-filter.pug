@@ -1,11 +1,22 @@
 include ./../mixins/icon
-
+include ./../mixins/xmas
 .filter
   .row.show-l.align-items-middle.mb-medium
     .col--fill
       h2.no-mrg Filter
     .col--shrink
       a.link.text-transform-upper.text-small zmazať filter
+  .filter__cat
+    .filter__cat-name
+      .form-control.form-control--group.no-mrg-bottom
+        .radiocheck-group
+          .form-control.form-control--checkbox
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="filter-news")
+              label.radiocheck__control(for="filter-news")
+              label.radiocheck__label.text-medium(for="filter-news")
+                | Stíhame do Vianoc
+                +icon('xmas-small').icon--small.text-color-success
   dl.filter__cat
     dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom

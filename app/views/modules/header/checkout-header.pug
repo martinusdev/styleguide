@@ -1,5 +1,8 @@
 include ./../../mixins/icon
 
+-
+  const xmas = true
+
 header.header
   .header__wrapper
     .wrapper-main
@@ -9,9 +12,14 @@ header.header
             img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
             img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
         .bar__item.bar__item--fill.header__checkout-info.text-center
-          span.text-color-success
-            +icon('guard').icon--medium.text-space-right
-            | Bezpečný nákup
+          if xmas
+            span.text-color-success
+              +icon('xmas').icon--medium.text-space-right
+              | Stíhame do vianoc
+          else
+            span.text-color-success
+              +icon('guard').icon--medium.text-space-right
+              | Bezpečný nákup
         .bar__item
           .bar.no-mrg-bottom
             .bar__item.show-l
