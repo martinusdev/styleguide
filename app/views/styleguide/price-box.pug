@@ -2,6 +2,7 @@ extends templates/layout
 
 include ./../mixins/icon
 include ./../mixins/addTo
+include ./../mixins/xmas
 
 //- Options
 block prepend opts
@@ -179,15 +180,14 @@ block append content
                             .badge.badge--primary Ušetríte 3,50 €
 
                         .card__content
+
+                          +xmas()
+
                           p.mb-small.text-color-grey-dark Máme na#{' '}
                             em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
                             | ,#{' '}posielame#{' '}
                             em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
                             | .
-                          p.mb-medium.text-color-grey-dark
-                            +icon('star-half').icon--medium.text-space-right.text-vab
-                            em(data-tooltip, title="Toto je tooltip vysvetlivka")
-                              | Nestíhame do Vianoc
                           .btn-layout--vertical
                             button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
                               +icon('cart').icon--left.icon--medium
@@ -242,17 +242,14 @@ block append content
                                 .badge.badge--primary Ušetríte 3,50 €
 
                         .card__content
+
+                          +xmas({status: 2})
+
                           p.mb-small.text-color-grey-dark Máme na#{' '}
                             em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
                             | ,#{' '}posielame#{' '}
                             em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
                             | .
-                          p.no-mrg.text-color-grey-dark
-                            +icon('star-half').icon--medium.text-space-right.text-vab
-                            em(data-tooltip, title="Toto je tooltip vysvetlivka")
-                              | Stíhame do Vianoc
-                          p.mb-small.text-color-grey-dark
-                            | (GLS, Balíkomat, osobný odber)
                           .btn-layout--vertical
                             button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
                               +icon('cart').icon--left.icon--medium

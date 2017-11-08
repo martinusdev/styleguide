@@ -1,4 +1,5 @@
 include ./../mixins/addTo
+include ./../mixins/xmas
 
 .price-box
   ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
@@ -30,6 +31,9 @@ include ./../mixins/addTo
                 .badge.badge--primary Ušetríte 3,50 €
 
         .card__content
+
+          +xmas()
+
           p.mb-small.text-color-grey-dark Máme na#{' '}
             em(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
             | ,#{' '}posielame#{' '}

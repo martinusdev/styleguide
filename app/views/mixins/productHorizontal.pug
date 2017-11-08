@@ -1,5 +1,6 @@
 include discountBadge
 include icon
+include xmas
 
 mixin productHorizontal(props = {})
   -
@@ -48,6 +49,8 @@ mixin productHorizontal(props = {})
             each author in authors
               li.no-mrg= author
           .bar.bar--small.bar--vertical-small.mb-small
+            .bar__item
+              +xmas({type: 'icon'})
             if discount && !discountUnderBook
               .bar__item
                 .badge.badge--primary= discount
