@@ -20,40 +20,40 @@ include ./../../mixins/icon
 
   const defaultCategories = [{
    title: 'Biografie, životopisy',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8'],
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8'],
   }, {
    title: 'Cudzojazyčná lit.',
    entries: ['Ostatné jazyky', 'Dvojjazyčné vydania', 'Španielsky jazyk', 'Francúzsky jazyk', 'Nemecký jazyk', 'Anglický jazyk', '+ 2 ďalšie']
   }, {
    title: 'Deti a mládež',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'Domov, hobby',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'Ekonomika, právo',
    entries: ['Sociálne zabezpečenie', 'Verejná správa', 'Súkromné právo', 'Verejné právo', 'Medzinárodné právo', '+ ďalších 5']
   }, {
    title: 'Ezoterika, mystika',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'Geografia, cestovanie',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'História',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'Manažment, biznis',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'Medicína, zdravie',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'Motivačná literatúra',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }, {
    title: 'Náboženstvo, cirkev',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', '+ ďalších 8']
+   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
   }];
 
   const megaMenu = [
@@ -87,7 +87,7 @@ include ./../../mixins/icon
       }],
       categories: [{
         title: 'Káva a čaj',
-        entries: ['Káva typ 1', 'Káva typ 2', 'Čaj typ 1', 'Čaj typ 1', '+ ďalších 8'],
+        entries: ['Káva typ 1', 'Káva typ 2', 'Čaj typ 1', 'Čaj typ 1', 'ďalších 8'],
       }, {
         title: 'Hudba',
         entries: ['Hudba typ 1', 'Hudba typ 2', 'Hudba typ iny typ', 'Techno', '+ 25 ďalších']
@@ -132,7 +132,7 @@ mixin megaMenuContent(props = {})
             .col--l-4.col--m-6
               a(href="#").mega-menu-categories__title
                 span.link=category.title
-              ul.list--comma.text-size-small.no-pad.show-m
+              ul.list--dot.text-size-small.no-pad.show-m
                 each entry in category.entries
                   li
                     a.link.link--grey(href="#")= entry

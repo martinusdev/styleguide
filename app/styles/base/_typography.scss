@@ -340,6 +340,16 @@ hr {
       display: inline;
     }
   }
+
+  .list--dot li {
+    display: inline;
+
+    &:not(:last-child)::after {
+      content: ' • ';
+      display: inline;
+      color: _color(gray, 300);
+    }
+  }
 }
 
 @include list-classes;
