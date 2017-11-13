@@ -33,8 +33,10 @@ mixin booksCarouselRecommended()
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
             +product().mb-small.text-left
+              if item.ad
+                .h5.mb-tiny reklama
               +productCover({ cover: item.cover, collection: i<2 })
-              +productTitle({ title: i >= 2 ? item.author : `Kolekcia ${i + 1}`, author: i >= 2 ? item.author : false })
+              +productTitle({ collection: i<2, title: i >= 2 ? item.author : `Kolekcia ${i + 1}`, author: i >= 2 ? item.author : false, ad: item.ad })
               +productMeta({
                 discount: item.discount,
                 rating: item.rating,

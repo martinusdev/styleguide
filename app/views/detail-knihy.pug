@@ -246,7 +246,12 @@ block content
                 .thumbnail.thumbnail--book.mb-medium.thumbnail--xlarge
                   .thumbnail__img-wrap
                     img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                h2.mb-medium O knihe
+
+                .h2.text-bold.mb-small.text-center 12,99 €
+                .btn-layout--vertical.mb-large
+                  button.btn.btn--primary.btn--medium.mb-small(data-toggle='#checkout-notice')
+                    | Do košíka
+
                 ul.list.list--with-hover.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
                   - const aboutBookScrollOffset = `{"0": ${header.size.default + 80}, "768": ${header.size.m + 10}}`;
                   li

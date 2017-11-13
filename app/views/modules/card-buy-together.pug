@@ -5,19 +5,25 @@ article.card.card--well.text-center
     .h2 Kúpite výhodne spolu
   .card__content
     .bar.align-items-bottom
-      .bar__item.bar__item--fill
-        .thumbnail.thumbnail--book.thumbnail--large
+      .bar__item.bar__item--fill.text-right.text-left-l
+        .thumbnail.thumbnail--book.thumbnail--large.inline-block
           .thumbnail__img-wrap
             img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-5.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
       .bar__item.bar__item--fill
         .thumbnail.thumbnail--book.thumbnail--large
           .thumbnail__img-wrap
             img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-8.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-    .badges.badges--inline.align-items-center
-      .badge.badge--primary Ušetríte 3,50 €
+
+  .card__content
+    .row
+      .col--6.col--m-12.text-right.text-center-m
+        .h2.text-bold.mb-tiny 12,99 €
+      .col--6.col--m-12.text-left.text-center-m
+        .badges.badges--inline.align-items-center.no-mrg-bottom
+          .badge.badge--primary Ušetríte 3,50 €
+
   .card__content
     .btn-layout--vertical
       button.btn.btn--primary.btn--large.mb-small
         +icon('cart').icon--left.icon--medium
-        | Kúpiť spolu za#{' '}
-        span.text-nowrap 20,32 €
+        | Kúpiť spolu
