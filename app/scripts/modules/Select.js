@@ -110,6 +110,34 @@ const storeListChoice = (
   `;
 };
 
+const imageListTemplate = ({ label, customProperties }) => `
+  <div class="bar mb-none">
+    ${customProperties && customProperties.image ? `<div class="bar__item bar__item--shrinkable"><img class="img--rounded" src="${customProperties.image}"></div>` : ''}
+    <div class="bar__item bar__item--fill">
+      <span>${label}</span>
+    </div>
+    <div class="bar__item bar__item--shrinkable text-right">
+      ${customProperties && customProperties.price ? `<span class="text-vam text-color-grey">${customProperties.price}</span>` : ''}
+    </div>
+  </div>`;
+
+const imageListChoice = (
+  { customProperties, disabled, label, id, value },
+  config,
+) => `
+  <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
+    <div class="bar mb-none">
+      ${customProperties && customProperties.image ? `<div class="bar__item bar__item--shrinkable"><img class="img--rounded" width="40" src="${customProperties.image}"></div>` : ''}
+      <div class="bar__item bar__item--fill">
+        <span>${label}</span>
+      </div>
+      <div class="bar__item bar__item--shrinkable text-right">
+        ${customProperties && customProperties.price ? `<span class="text-vam text-color-grey">${customProperties.price}</span>` : ''}
+      </div>
+    </div>
+  </div>
+  `;
+
 const choiceListTemplate = (width = 'none', config) => `
   <div class="${config.classNames.list}" dir="ltr" role="listbox" style="width:${width}"></div>
 `;
@@ -129,6 +157,14 @@ function getTemplates(template, select, config) {
       ...{ templates },
       item: data => template(storeListTemplate(data)),
       choice: data => template(storeListChoice(data, config)),
+    };
+  }
+
+  if (select.hasAttribute('data-select-image')) {
+    templates = {
+      ...{ templates },
+      item: data => template(imageListTemplate(data)),
+      choice: data => template(imageListChoice(data, config)),
     };
   }
 

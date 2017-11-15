@@ -59,3 +59,41 @@ block content
             include modules/checkout/gift
 
             include modules/checkout/payment
+
+block append scripts
+  script.
+      document.addEventListener('myAppLoaded', function() {
+
+          for (var i = 0; i < 4; i++) {
+              var storeListSelect = new window.myApp.Select('#gift-package-select-' + i, {
+                  choices: [
+                      {
+                          value: 'package-0',
+                          label: 'Bez špeciálneho balenia',
+                          id: 1,
+                          customProperties: {
+                              price: '0,00 €'
+                          }
+                      },
+                      {
+                          value: 'package-1',
+                          label: 'Modrý darčekový papier',
+                          id: 1,
+                          customProperties: {
+                              image: 'images/content/package/package-1.png',
+                              price: '1,99 €'
+                          }
+                      },
+                      {
+                          value: 'package-2',
+                          label: 'Červený darčekový papier',
+                          id: 1,
+                          customProperties: {
+                              image: 'images/content/package/package-2.png',
+                              price: '1,99 €'
+                          }
+                      },
+                  ]
+              });
+          }
+      });

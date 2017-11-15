@@ -10,18 +10,17 @@
 
   .card__content
     each item, i in books
-      .bar(id=`cart-item${i}`).align-items-top
-        .bar__item
-          .thumbnail.thumbnail--book.thumbnail--medium
-            .thumbnail__img-wrap
-              img(src=`${assetsPrefix}${item.cover}`)
-        .bar__item.bar__item--fill.text-size-medium=item.title
-        .bar__break.hide-m
-        .bar__item.bar__item--fill
-          .form-control.form-control--select
-            select.js-select
-                option(selected disabled placeholder) Bez špeciálneho balenia 0.00€
-                option Bez špeciálneho balenia 0.00€
+      if i < 4
+        .bar(id=`cart-item${i}`).align-items-top
+          .bar__item
+            .thumbnail.thumbnail--book.thumbnail--medium
+              .thumbnail__img-wrap
+                img(src=`${assetsPrefix}${item.cover}`)
+          .bar__item.bar__item--fill.text-size-medium=item.title
+          .bar__break.hide-m
+          .bar__item.bar__item--fill
+            .form-control.form-control--select
+              select(data-select-image, id='gift-package-select-' + i)
 
   hr.mb-small
 
