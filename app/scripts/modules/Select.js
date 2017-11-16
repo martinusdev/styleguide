@@ -110,6 +110,23 @@ const storeListChoice = (
   `;
 };
 
+const storeListChoices = config => `
+  <div class="${config.classNames.list}" dir="ltr" role="listbox" style="min-width:270px; max-height: none;">
+  </div>
+`;
+
+const storeListDropdown = config => `
+  <div class="${config.classNames.list} ${config.classNames.listDropdown}" aria-expanded="false">
+    <div class="text-left text-size-small box mb-none bg-secondary">
+        <div>
+            <span class="text-vam status status--success text-color-grey text-space-right-tiny">na sklade</span>
+            <span class="text-vam status status--orange text-color-grey text-space-right-tiny">posledné kusy</span>
+            <span class="text-vam status status--grey text-color-grey text-space-right-tiny">nedostupné</span>
+        </div>
+    </div>
+  </div>
+`;
+
 const imageListTemplate = ({ label, customProperties }) => `
   <div class="bar mb-none">
     ${customProperties && customProperties.image ? `<div class="bar__item bar__item--shrinkable"><img class="img--rounded" src="${customProperties.image}"></div>` : ''}
@@ -157,6 +174,8 @@ function getTemplates(template, select, config) {
       ...{ templates },
       item: data => template(storeListTemplate(data)),
       choice: data => template(storeListChoice(data, config)),
+      choiceList: () => template(storeListChoices(config)),
+      dropdown: () => template(storeListDropdown(config)),
     };
   }
 
@@ -277,6 +296,10 @@ export default class Select {
 
       if (select.hasAttribute('data-select-position')) {
         config.position = select.getAttribute('data-select-position');
+      }
+
+      if (select.hasAttribute('data-select-small')) {
+        config.classNames.item = `${config.classNames.item} ${config.classNames.item}--small`;
       }
 
       config.callbackOnCreateTemplates = template =>

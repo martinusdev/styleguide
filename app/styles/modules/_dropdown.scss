@@ -67,6 +67,12 @@
     }
   }
 
+  &--small {
+    @each $prop, $value in map-get($dropdown-menu-item, 'small') {
+      #{$prop}: #{$value};
+    }
+  }
+
   &--more {
     position: relative;
     padding-right: 30px;
