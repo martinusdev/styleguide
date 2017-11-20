@@ -224,10 +224,9 @@ mixin productStatus(props = {})
             p.no-mrg-bottom.text-small.text-color-blue
               +icon('time').text-space-right-tiny.text-vam
               | Práve čítam
-      else
-        .bar__item
-          p.no-mrg-bottom.text-small.text-color-grey
-            | Neprečítané
+          else if status === 'notread'
+            p.no-mrg-bottom.text-small.text-color-grey
+              | Neprečítané
 
       if actionDropdown
         .bar__item.align-self-right

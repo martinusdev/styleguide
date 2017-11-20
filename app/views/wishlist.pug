@@ -1,0 +1,41 @@
+extends layouts/_default
+
+include mixins/product
+include ./mixins/icon
+
+block opts
+  - var pageTitle = 'Wishlist'
+
+block content
+  main
+
+    section.section
+      .wrapper-main
+        .row
+          .col--m-6
+            .bar.bar--no-wrap.mb-medium
+              .bar__item.hide-l
+                a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
+                  +icon('arrow-left', 'icon--medium')
+              .bar__item.bar__item--shrinkable
+                h2 Môj zdieľaný wishlist
+                p.text-size-small.text-color-grey Knihy, ktoré by som chcel vlastniť
+              .bar__item
+                .btn-layout.btn-layout--horizontal
+                  button.btn.btn--clean.no-mrg-bottom(
+                  data-toggle='#share-list-modal'
+                  )
+                    +icon('share').icon--medium
+
+        .row.align-items-bottom
+          each item, index in [...books, ...books, ...books, ...books]
+            .col--6.col--s-4.col--m-3.col--l-2.mb-large.text-center
+              +product({ size: 'large' }).mb-small.text-left.inline-block
+                +productCover({ cover: item.cover, href: '#' })
+                +productTitle({ title: item.title, author: item.author, href: '#' })
+                +productBuy()
+
+
+block append modals
+  include ./modules/book-read-modal
+  include ./modules/share-list-modal
