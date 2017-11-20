@@ -741,7 +741,73 @@ block append scripts
           ]
         });
 
-        var storeListSelect = new window.myApp.Select('.store-list-select', {
+        var dataStoreList = {
+          "choices": [{
+              "value": 24,
+              "label": "Bansk\u00e1 Bystrica",
+              "id": 24,
+              "selected": false,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 10,
+              "label": "Bratislava (Cubicon)",
+              "id": 10,
+              "selected": false,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 7,
+              "label": "Bratislava (Obchodn\u00e1)",
+              "id": 7,
+              "selected": true,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 12,
+              "label": "Ko\u0161ice (OC Gal\u00e9ria)",
+              "id": 12,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 22,
+              "label": "Lu\u010denec (OC Gal\u00e9ria)",
+              "id": 22,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 1,
+              "label": "Martin",
+              "id": 1,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 4,
+              "label": "Nitra (OC Centro)",
+              "id": 4,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 18,
+              "label": "Poprad (OC F\u00f3rum)",
+              "id": 18,
+              "selected": false,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 19,
+              "label": "Pova\u017esk\u00e1 Bystrica",
+              "id": 19,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 5,
+              "label": "\u017dilina (SC Mirage)",
+              "id": 5,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }]
+        };
+
+        var storeListSelect = new window.myApp.Select('.store-list-select', dataStoreList);
+
+        /*var storeListSelect = new window.myApp.Select('.store-list-select', {
           choices: [
             {
               value: 'ba-obchodna',
@@ -780,7 +846,7 @@ block append scripts
               }
             },
           ]
-        });
+        });*/
 
         storeListSelect.elements[0].setValueByChoice('ba-cubicon');
       });
