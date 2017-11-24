@@ -126,7 +126,7 @@ block content
                   p Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
               .col--m-3.mb-large.mb-none-m
                 .product-item__price-box.text-center
-                    .mb-small
+                    .mb-small.show-m
                       .h2.text-bold 12,99 €
                     .mb-small
                       +xmas()
@@ -134,7 +134,8 @@ block content
                       .btn-layout.btn-layout--vertical
                         button.btn.btn--primary
                           +icon('cart').icon--left.icon--medium
-                          | Vložiť do košíka
+                          span.show-m Vložiť do košíka
+                          span.hide-m Kúpiť za 12,99 €
                     .mb-small
                       +addTo()
 
