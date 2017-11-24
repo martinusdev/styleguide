@@ -16,19 +16,19 @@ include ./../mixins/icon
             .form-control.form-control--radio
               .radio
                 input.radiocheck__input#wishlist-private(type="radio", checked, name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
-                label.radiocheck__control
+                label.radiocheck__control(for="wishlist-private")
                 label.radiocheck__label(for="wishlist-private") Súkromný
           .bar__item
             .form-control.form-control--radio
               .radio
                 input.radiocheck__input#wishlist-link(type="radio", name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
-                label.radiocheck__control
+                label.radiocheck__control(for="wishlist-link")
                 label.radiocheck__label(for="wishlist-link") Dostupný cez odkaz
           .bar__item
             .form-control.form-control--radio
               .radio
                 input.radiocheck__input#wishlist-public(type="radio", name="wishlist-setting")
-                label.radiocheck__control
+                label.radiocheck__control(for="wishlist-public")
                 label.radiocheck__label(for="wishlist-public") Verejný
 
         #wishlist-share.hide
