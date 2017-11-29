@@ -122,9 +122,13 @@ mixin megaMenuContent(props = {})
           h5= pagesTitle
 
         ul.list--expanded.no-pad.no-mrg-bottom
+          li
+            a.link.link--black(href="#")
+              | Vianočné kolekcie
+              +icon('xmas').icon--medium.text-color-success
           each page in pages
             li
-              a.link.link--black.link--show(href=page.href)= page.title
+              a.link.link--black(href=page.href)= page.title
 
       .mega-menu__categories.mega-menu-categories
         .row
