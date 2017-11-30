@@ -38,7 +38,7 @@ header.header
               )
                 | Filmy
                 +icon('chevron-down', 'icon-dropdown').icon--small
-            .btn-dropdown.no-mrg.show-l
+            .btn-dropdown.no-mrg.hide
               button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger
                 data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
@@ -65,6 +65,10 @@ header.header
                 aria-haspopup="true"
               )
                 +icon('menu').icon--medium
+
+        .bar__item.bar__item--shrinkable.header__ad.show-m
+          img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
+          | <style>.header__wrapper::after{background: #7d609a;}</style>
 
         .bar__item.bar__item--fill.header__search.header-search
           .hide-m.header-search__toggle.no-mrg

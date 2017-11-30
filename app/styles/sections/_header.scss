@@ -6,7 +6,9 @@
     display: none;
 
     // ugly fix - flexbox is calculating wrong width and button is overflowing
-    max-width: calc(100% - 45px);
+    @include breakpoint(m, down) {
+      max-width: calc(100% - 45px);
+    }
 
     .form-control {
       width: 100%;
@@ -252,6 +254,7 @@
       .header__nav,
       .header__user,
       .header__cart,
+      .header__ad,
       .header-search__toggle {
         display: none;
       }
