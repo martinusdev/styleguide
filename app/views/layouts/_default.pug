@@ -55,14 +55,16 @@ html.no-js
     | }(document, 'script', 'facebook-jssdk'));</script>
     #page-container
 
-      if checkoutHeader
-        include ./../modules/header/checkout-header
-      else
-        include ./../modules/header/header
+      block header
+        if checkoutHeader
+          include ./../modules/header/checkout-header
+        else
+          include ./../modules/header/header
 
       block content
 
-      include ./../modules/footer
+      block footer
+        include ./../modules/footer
 
       block modals
 
