@@ -19,6 +19,9 @@ block content
               .col--12.ofst--0.col--m-8.ofst--m-2
 
                 .mb-large
+                  img(src='images/content/campaign/pf2018/logo.svg', width="100")
+
+                .mb-large
                 .mb-large
                   p Čo najlepšieho vám môžeme zaželať do roku 2018?
                     br
@@ -37,17 +40,17 @@ block content
         .pf2018-header__content
           .wrapper-main
             .row
-              .col--8.ofst--2.col--m-4.ofst--m-4
+              .col--8.ofst--2.col--m-4.ofst--m-4.text-center
                 .mb-large
-                img.mb-large(src='images/content/campaign/pf2018/hdg.svg')
-                img(src='images/content/campaign/pf2018/hobbit.svg')
+                img.mb-large(src='images/content/campaign/pf2018/hdg.svg', width='80%')
+                img(src='images/content/campaign/pf2018/hobbit.svg', width='80%')
 
       section.section
         .wrapper-main
           .text-center
             .row
               .col--12.ofst--0.col--m-8.ofst--m-2
-                h1 Vitajte v zázračnom Offline svete!
+                h1.h2 Vitajte v zázračnom Offline svete!
 
                 p Vo svete, kde máte viac času čítať, premýšľať a rozprávať sa. Vo svete, kde vás svetlo z monitora nepripraví o spánok a búrlivá diskusia na Facebooku o pokoj.
 
@@ -72,7 +75,7 @@ block scripts
   script.
 
     var xhr = new XMLHttpRequest();
-    var file = "images/content/campaign/pf2018/logo.svg";
+    var file = "https://s3.eu-west-3.amazonaws.com/sk.martinus.pf2018/reachable.txt";
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4) {
@@ -94,7 +97,7 @@ block scripts
             //console.log('Connecting...');
 
             var rand = Math.round(Math.random() * 10000);
-            xhr.open('HEAD', file + "?rand=" + rand, true);
+            xhr.open('GET', file + "?rand=" + rand, true);
             xhr.send(null);
 
         }, 3000);
