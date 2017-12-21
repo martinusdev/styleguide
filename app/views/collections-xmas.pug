@@ -32,9 +32,10 @@ block content
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
-    section.section.xmas2017-collection-header
+    //-section.section.xmas2017-collection-header
+    section.section(style="background: url('images/content/campaign/xmas2017/bg-last-minute.jpg') no-repeat center center; background-size: cover;")
       .wrapper-main
-        .row
+        //-.row
           .col--m-8.text-center.text-left-m
             h1.mb-small Získajte krásne nálepky na darčeky!
             p Osem knižných nálepiek na darčeky vám radi pribalíme ku každému nákupu až do Vianoc.
@@ -43,7 +44,14 @@ block content
               +icon('footer-package', 'icon--medium icon--left')
               |potrebujem poradiť
 
-        img(src="images/content/campaign/xmas2017/bg-stickers.png", width="100%")
+        //-img(src="images/content/campaign/xmas2017/bg-stickers.png", width="100%")
+
+        .mb-medium.hide-m
+        .mb-large.text-color-white
+          h1.mb-medium Venujte najrýchlejšie knižné darčeky
+          p Hodil by sa vám darček naozaj na poslednú chvíľu alebo pre niekoho za siedmimi horami?
+            br
+            | Vyberte si darčekovú poukážku či niektorú zo skvelých e-kníh!
 
     .modal-overlay.active#xmas-help(data-modal)
       article.modal.modal--medium
