@@ -63,7 +63,40 @@ block append content
             </section>
           </article>
     //- end: demo
+    
+    +content-sub-section('Variants')
+      +p Standard cards support modifiers for background colors and section padding sizes.
+      
+      +demo
+        +demo-example
+          .row
+            .col--m-6
+              article.card.card--success
+                section.card__content
+                  h3 Success card
+                  p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore qui voluptate et non ex laboris ullamco consequat culpa consequat qui magna qui labore dolore do velit sint.
 
+            .col--m-6
+              article.card.card--info
+                section.card__content.card__content--large
+                  h3 Info card with padded content.
+                  p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et.
+        +demo-code
+          :code
+            <!-- success card -->
+            <article class="card card--success">
+              <section class="card__content">
+                ...
+              </section>
+            </article>
+
+            <!-- info card with padded content-->
+            <article class="card card--info">
+              <section class="card__content card__content--large">
+                ...
+              </section>
+            </article>
+    
     +content-sub-section('Material card')
 
       +p Material cards have shadows and top colored border with optional uppercase label. Can be used with color classes: <b>primary, green, orange, violet, blue, yellow, brown, darkblue</b>
@@ -71,26 +104,12 @@ block append content
       +demo
         +demo-example
           .row
-            .col--m-6.col--l-3
-              .card.card--material
-                .card__label Label
-                .card__content
-                  p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
-            .col--m-6.col--l-3
-              .card.card--material.card--material-primary
-                .card__label Label
-                .card__content
-                  p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
-            .col--m-6.col--l-3
-              .card.card--material.card--material-blue
-                .card__label Label
-                .card__content
-                  p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
-            .col--m-6.col--l-3
-              .card.card--material.card--material-green
-                .card__label Label
-                .card__content
-                  p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
+            each item in ['', 'primary', 'green', 'orange', 'violet', 'blue', 'yellow', 'brown', 'darkblue',]
+              .col--m-6.col--l-3
+                .card.card--material(class='card--material-' + item)
+                  .card__label Label
+                  .card__content
+                    p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident amet aute id aute culpa esse elit dolor labore voluptate in cillum Ut dolor mollit ad.
         +demo-code
           :code
             <article class="card card--material">
@@ -156,6 +175,91 @@ block append content
               <div class="card__status">
                 ...
               </div>
+              ...
+            </article>
+            
+    +content-sub-section('Arrowhead card')
+
+      +p Arrowhead card has a small nub pointing outside the card. It's only shown on screens larger than <code class="l-code-inline">m</code> and the position must be always specified.
+      
+      +note 
+        +p Currently the only card with non-white bg that properly supports arrowhead is Well, and only on the left side
+
+      +demo
+        +demo-example
+          .row(style='background: #666; padding-top: 1em')
+            .col--m-6
+              article.card.card--arrowhead.card--arrowhead-top
+                .card__content
+                  p arrowhead top
+            .col--m-6
+              article.card.card--arrowhead.card--arrowhead-right
+                .card__content
+                  p arrowhead right
+            .col--m-6
+              article.card.card--arrowhead.card--arrowhead-bottom
+                .card__content
+                  p arrowhead bottom
+            .col--m-6
+              article.card.card--well.card--arrowhead.card--arrowhead-left
+                .card__content
+                  p arrowhead left
+        +demo-code
+          :code
+            <!-- arrowhead top -->
+            <article class="card card--arrowhead card--arrowhead-top">
+              ...
+            </article>
+            
+            <!-- arrowhead right -->
+            <article class="card card--arrowhead card--arrowhead-right">
+              ...
+            </article>
+            
+            <!-- arrowhead bottom -->
+            <article class="card card--arrowhead card--arrowhead-bottom">
+              ...
+            </article>
+            
+            <!-- arrowhead left -->
+            <article class="card card--well card--arrowhead card--arrowhead-left">
+              ...
+            </article>
+    
+    +content-sub-section('Speechbubble card')
+
+      +p Speechbubble card has a small nub on the bottom left, mimicking a comic style callout.
+      
+      +note 
+        +p Speechbubbles are supported on cards with standard white and <code class="l-code-inline">.bg-secondary</code> backgrounds.
+
+      +demo
+        +demo-example
+          .row(style='background: #666; padding-top: 1em')
+            .col--m-6
+              article.card.card--speech-bubble
+                .card__content Hey, what can i say?
+        +demo-code
+          :code
+            <!-- Speechbubble card -->
+            <article class="card card--speech-bubble">
+              ...
+            </article>
+            
+    +content-sub-section('Done card')
+
+      +p Done card has a check symbol as a sign of completed step/action.
+      
+      +demo
+        +demo-example
+          .row(style='background: #666; padding-top: 1em')
+            .col--m-6
+              article.card.card--done
+                .card__content We're all done here.
+        +demo-code
+          :code
+            <!-- Speechbubble card -->
+            <article class="card card--done">
               ...
             </article>
 
