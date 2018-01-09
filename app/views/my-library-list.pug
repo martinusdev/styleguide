@@ -93,17 +93,18 @@ block content
                     | Pridať zoznam
                   #addList.dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-dropdown-interactive, data-toggle-expand)
                     .dropdown__wrap
-                      .box.no-mrg-bottom
-                        .bar.flex-nowrap
-                          .bar__item.bar__item--fill.text-nowrap
-                            | Nový zoznam
-                          .bar__item
-                            button.btn.btn--clean.btn--small(data-toggle='#addList')
-                              +icon('close', 'icon--small', 'Naspäť')
-                        .form-control.form-control--input
-                          input(name="addListInput", id="addListInput", placeholder="napr. otcovi na Vianoce").input
-                        .btn-layout--vertical
-                          button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+                      .card.mb-none
+                        .card__content.card__content--condensed
+                          .bar.flex-nowrap
+                            .bar__item.bar__item--fill.text-nowrap
+                              | Nový zoznam
+                            .bar__item
+                              button.btn.btn--clean.btn--small(data-toggle='#addList')
+                                +icon('close', 'icon--small', 'Naspäť')
+                          .form-control.form-control--input
+                            input(name="addListInput", id="addListInput", placeholder="napr. otcovi na Vianoce").input
+                          .btn-layout--vertical
+                            button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
 
             p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
 

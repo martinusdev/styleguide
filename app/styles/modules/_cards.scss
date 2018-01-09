@@ -14,6 +14,8 @@
   $border-radius: _map-deep-get($card, 'default', 'border-radius');
   $after: map-get($_card, after);
   $before: map-get($_card, before);
+  $clickable: map-get($_card, clickable);
+  $_card: map_remove($_card, before);
   $_card: map_remove($_card, after);
 
   display: flex;
@@ -45,6 +47,20 @@
       @include css-map($after);
       border-bottom-left-radius: $border-radius;
       border-bottom-right-radius: $border-radius;
+    }
+  }
+
+  @if $clickable {
+    &.card--clickable {
+      transition: background-color $ease-out-200, box-shadow $ease-out-200;
+
+      &:hover {
+        @include css-map($clickable, 'hover');
+      }
+
+      &:focus {
+        @include css-map($clickable, 'focus');
+      }
     }
   }
 
@@ -135,6 +151,10 @@
     &__content {
       @include card-section($grow: 1);
 
+      > *:last-child:not([class*='mb\-']) {
+        margin-bottom: _get-space('v', 'small');
+      }
+
       @each $breakpoint, $variants in _get-breakpoint-map($card-section) {
         @include breakpoint($breakpoint) {
           @each $variant, $props in $variants {
@@ -148,13 +168,15 @@
               &:last-child { //stylelint-disable-line
                 padding-bottom: nth(map-get($props, padding), 1) * 2;
               }
+
+              @if ($variant == 'condensed') {
+                > *:last-child:not([class*='mb\-']) {  //stylelint-disable-line
+                  margin-bottom: 0;
+                }
+              }
             }
           }
         }
-      }
-
-      > *:last-child {
-        margin-bottom: _get-space('v', 'small');
       }
     }
 
