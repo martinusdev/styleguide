@@ -14,7 +14,7 @@ block prepend content
 
   +main-info(['app/styles/modules/_cart-item.scss'], contents)
 
-    +p-big Documentation of Cart component.
+    +p-big Documentation of Cart Item component.
 
   //- end: main info
 
@@ -23,6 +23,10 @@ block append content
 
   //- MEDIA QUERIES
   +content-section(contents[0])
+  
+    +p Cart items display data about items in cart. There is also a condensed variant with a little different markup.
+    
+    +content-sub-section('Default')
 
     +demo
       +demo-example
@@ -91,4 +95,68 @@ block append content
               </div>
             </li>
           </ul>
+    
+    +content-sub-section('Condensed')
+    
+      +demo
+        +demo-example
+          ul.list.list--cart.list--unstyled
+            li.list__item
+              .cart-item.cart-item--summary.cart-item--has-tags
+                .cart-item__content
+                  .cart-item__column.cart-item__column--product-name
+                    a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html") Základy rybolovu pro kluky a holky
+                  .cart-item__column.cart-item__column--tags
+                    .badge.text-nowrap E-kniha
+                  .cart-item__column.cart-item__column--qty
+                    .text-size-medium.no-mrg
+                      | 1x
+                  .cart-item__column.cart-item__column--price
+                    .text-semibold.text-size-medium.text-nowrap 12,99 &euro;
+            li.list__item
+              .cart-item.cart-item--summary
+                .cart-item__content
+                  .cart-item__column.cart-item__column--product-name
+                    a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html") Základy rybolovu pro kluky a holky
+                  .cart-item__column.cart-item__column--qty
+                    .text-size-medium.no-mrg
+                      | 1x
+                  .cart-item__column.cart-item__column--price
+                    .text-semibold.text-size-medium.text-nowrap 12,99 &euro;
+        +demo-code
+          :code
+            <ul class="list list--cart list--unstyled">
+              <li class="list__item">
+                <div class="cart-item cart-item--summary cart-item--has-tags">
+                  <div class="cart-item__content">
+                    <div class="cart-item__column cart-item__column--product-name"><a>...<a/></div>
+                    <div class="cart-item__column cart-item__column--tags">
+                      // badges
+                    </div>
+                    <div class="cart-item__column cart-item__column--qty">
+                      ...
+                    </div>
+                    <div class="cart-item__column cart-item__column--price">
+                      ...
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              <li class="list__item">
+                <div class="cart-item cart-item--summary">
+                  <div class="cart-item__content">
+                    <div class="cart-item__column cart-item__column--product-name"><a>...</a></div>
+                    <div class="cart-item__column cart-item__column--qty">
+                      ...
+                    </div>
+                    <div class="cart-item__column cart-item__column--price">
+                      ...
+                    </div>
+                  </div>
+                </div>
+              </li>
+
+              ...
+            </ul>
     //- end: demo
