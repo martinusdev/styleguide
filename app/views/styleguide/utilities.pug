@@ -90,6 +90,10 @@ block append content
           | Icon
           +icon-sg('sg-home', 'icon--xlarge').text-vabl
           | with <code class='l-code-inline'>.text-vabl</code>
+        p
+          | Icon
+          +icon-sg('sg-home', 'icon--xlarge').text-vamd
+          | with <code class='l-code-inline'>.text-vamd</code>
 
         hr
 
@@ -112,8 +116,14 @@ block append content
           span.text-space-left Text with space on left side
           code.l-code-inline .text-space-left
         p.text-nospace
+          span.text-space-left-tiny Text with tiny space on left side
+          code.l-code-inline .text-space-left-tiny
+        p.text-nospace
           span.text-space-right Text with space on right side
           code.l-code-inline .text-space-right
+        p.text-nospace
+          span.text-space-right-tiny Text with tiny space on right side
+          code.l-code-inline .text-space-right-tiny
 
         hr
 
@@ -160,7 +170,9 @@ block append content
           <p class="text-nospace">
             ...
             <span class="text-space-left">text space left</span>
+            <span class="text-space-left-tiny">text tiny space left</span>
             <span class="text-space-right">text space right</span>
+            <span class="text-space-right-tiny">text tiny space right</span>
           </p>
 
           <p class="text-nowrap">...</p>
@@ -172,7 +184,7 @@ block append content
       +demo
         +demo-example
           ul.l-text-colors
-            each color in ['theme', 'theme-400', 'yellow', 'blue', 'black', 'semiblack', 'grey', 'grey-light','grey-dark', 'white', 'semiwhite', 'error', 'success']
+            each color in ['theme', 'theme-400', 'theme-200', 'theme-100', 'black', 'semiblack', 'grey', 'grey-light', 'grey-dark', 'white', 'semiwhite', 'yellow', 'blue', 'success', 'error', 'orange',]
               li
                 span(class='text-color-' + color)= color
 
@@ -181,8 +193,8 @@ block append content
             <ul>
               <li><span class="text-color-theme">theme</span></li>
               <li><span class="text-color-theme-400">theme-400</span></li>
-              <li><span class="text-color-yellow">yellow</span></li>
-              <li><span class="text-color-blue">blue</span></li>
+              <li><span class="text-color-theme-200">theme-200</span></li>
+              <li><span class="text-color-theme-100">theme-100</span></li>
               <li><span class="text-color-black">black</span></li>
               <li><span class="text-color-semiblack">semiblack</span></li>
               <li><span class="text-color-grey">grey</span></li>
@@ -190,9 +202,12 @@ block append content
               <li><span class="text-color-grey-dark">grey-dark</span></li>
               <li><span class="text-color-white">white</span></li>
               <li><span class="text-color-semiwhite">semiwhite</span></li>
-              <li><span class="text-color-error">error</span></li>
+              <li><span class="text-color-yellow">yellow</span></li>
+              <li><span class="text-color-blue">blue</span></li>
               <li><span class="text-color-success">success</span></li>
-            </ul>
+              <li><span class="text-color-error">error</span></li>
+              <li><span class="text-color-orange">orange</span></li>
+            </ul> 
       //- end: demo
   //- end: section
 
@@ -225,6 +240,15 @@ block append content
             <div class="no-pad-vertical"> reset top and bottom padding </div>
             <div class="no-pad-horizontal"> reset left and right padding </div>
       //- end: demo
+      
+    +content-sub-section('Flexbox utilities', 'flexbox-utils')
+      
+      +ul
+        li <code class="l-code-inline">.flex</code> assigns <code class="l-code-inline">display: flex</code>
+        li <code class="l-code-inline">.flex-column</code> assigns <code class="l-code-inline">flex-direction: column</code>
+        li <code class="l-code-inline">.flex-1</code> assigns <code class="l-code-inline">flex: 1</code>
+        li <code class="l-code-inline">.flex-noshrink</code> assigns <code class="l-code-inline">flex-shrink: 0</code>
+        li <code class="l-code-inline">.flex-nowrap</code> assigns <code class="l-code-inline">flex-wrap: nowrap</code>
 
     +content-sub-section('Flexbox alignment', 'flexbox-alignment')
 
@@ -393,6 +417,13 @@ block append content
         +ul
           li <code class='l-code-inline'>.clearfix</code> for clearing floats inside container.
           li <code class='l-code-inline'>.clear</code> for clearing floats after floated elements.
+          
+    +content-sub-section('Display utilities')
+    
+      +ul
+        li <code class='l-code-inline'>.inline-block</code> for displaying anything as inline-block.
+        li <code class='l-code-inline'>.block</code> for displaying anything as block.
+        li <code class='l-code-inline'>.block-fill</code> for displaying anything as block with forced 100% width.
 
   +content-section(contents[2])
 
@@ -477,9 +508,18 @@ block append content
       +ul
           li.bg-default <code class='l-code-inline'>.bg-default</code> for default background color.
           li.bg-secondary <code class='l-code-inline'>.bg-secondary</code> for secondary background color.
-
+          li.bg-blue <code class='l-code-inline'>.bg-blue</code> for blue background color.
+          li.bg-teal <code class='l-code-inline'>.bg-teal</code> for teal background color.
+          li.bg-green <code class='l-code-inline'>.bg-green</code> for green background color.
+    
+    +p Border utilites:
+      +ul
+        li.border-bottom-grey <code class='l-code-inline'>.border-bottom-grey</code> for 1px grey bottom border 
+        li.border-bottom-grey-2 <code class='l-code-inline'>.border-bottom-grey-2</code> for 2px grey bottom border 
+    
     +p Various other utilites contains:
       +ul
         li <code class='l-code-inline'>.clickable</code> for making pointer cursor.
         li <code class='l-code-inline'>.visually-hidden</code> for hidding element visually without <code class='l-code-inline'>display: none;</code>.
         li <code class='l-code-inline'>.overflow-hidden</code> for setting <code class='l-code-inline'>overflow: hidden;</code>.
+        li <code class='l-code-inline'>.overflow-auto</code> for setting <code class='l-code-inline'>overflow: auto;</code>.

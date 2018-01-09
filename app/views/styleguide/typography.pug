@@ -83,9 +83,26 @@ block append content
           <hr />
     //- end: demo
   //- end: section
+  
+  //- Links
+  +content-section(contents[2])
+
+    +demo
+      +demo-example
+        ul.list--unstyled
+          each item in ['', 'grey', 'black', 'product']
+            li
+              a(href='#' class='link link--' + item)= 'Link ' + item
+      +demo-code
+        :code
+          <a href="#" class="link">...</a>
+          <a href="#" class="link link--grey">...</a>
+          <a href="#" class="link link--black">...</a>
+          <a href="#" class="link link--product">...</a>
+          
 
   //- LISTS
-  +content-section(contents[2])
+  +content-section(contents[3])
 
     +p There styles for unordered, ordered and description lists and their inline variations.
 
@@ -281,7 +298,7 @@ block append content
   //- end: section
 
   //- UTILITIES
-  +content-section(contents[3])
+  +content-section(contents[4])
 
     +demo
       +demo-example
@@ -343,7 +360,7 @@ block append content
       +demo-code
         :code
 
-  +content-section(contents[4])
+  +content-section(contents[5])
 
     +demo
       +demo-example
@@ -442,6 +459,6 @@ block append content
           </ul>
 
   //- UTILITIES
-  +content-section(contents[5], true)
+  +content-section(contents[6], true)
 
     +p Text utilities are covered in <a href="utilities#{assetsPrefix}#typography-utilities">Utilites</a> section.

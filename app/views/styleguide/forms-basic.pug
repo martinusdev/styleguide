@@ -111,6 +111,10 @@ block append content
             <input placeholder="Large" class="input input--large" type="text">
             <input placeholder="Medium" class="input" type="text">
             <input placeholder="Small" class="input input--small" type="text">
+            
+            <input placeholder="Large" class="input input--large input--short" type="text">
+            <input placeholder="Medium" class="input input--short" type="text">
+            <input placeholder="Small" class="input input--small input--short" type="text">
       //- end: demo
 
   //- end: section
@@ -458,7 +462,7 @@ block append content
 
     +content-sub-section('Select types')
 
-      +p There is several types of select. Default with border around to match other form elements style, <code class='l-code-inline'>.select--clean</code> without borders and <code class='l-code-inline'>.select--ghost</code> with border similar to dropdown.
+      +p There is several types of select. Default with border around to match other form elements style, <code class='l-code-inline'>.select--clean</code> without borders, <code class='l-code-inline'>.select--ghost</code> with border similar to dropdown and <code class='l-code-inline'>.select--brown</code> for a stylized select.
 
       +demo
         +demo-example
@@ -497,6 +501,9 @@ block append content
 
             <!-- ghost -->
             <select class="select--ghost js-select"></select>
+            
+            <!-- brown -->
+            <select class="select--brown js-select"></select>
 
     +content-sub-section('Select states')
 
@@ -515,6 +522,39 @@ block append content
                 select.js-select.is-error
                   each option in [1,2,3,4,5]
                     option Option #{option}
+                    
+            .col--l-6
+              .form-control.form-control--select
+                select.select--clean.js-select(disabled)
+                  each option in [1,2,3,4,5]
+                    option Option #{option}
+            .col--l-6
+              .form-control.form-control--select
+                select.select--clean.js-select.is-error
+                  each option in [1,2,3,4,5]
+                    option Option #{option}
+                    
+            .col--l-6
+              .form-control.form-control--select
+                select.select--ghost.js-select(disabled)
+                  each option in [1,2,3,4,5]
+                    option Option #{option}
+            .col--l-6
+              .form-control.form-control--select
+                select.select--ghost.js-select.is-error
+                  each option in [1,2,3,4,5]
+                    option Option #{option}
+                    
+            .col--l-6
+              .form-control.form-control--select
+                select.select--brown.js-select(disabled)
+                  each option in [1,2,3,4,5]
+                    option Option #{option}
+            .col--l-6
+              .form-control.form-control--select
+                select.select--brown.js-select.is-error
+                  each option in [1,2,3,4,5]
+                    option Option #{option}
         +demo-code
           :code
             <!-- disabled -->
@@ -523,14 +563,44 @@ block append content
               ...
             </select>
 
-            <!-- readonly -->
-            <select class="js-select readonly">
+            <!-- error -->
+            <select class="js-select error">
+              <option>Option 1</option>
+              ...
+            </select>
+            
+            <!-- clean disabled -->
+            <select disabled="" class="select--clean js-select">
               <option>Option 1</option>
               ...
             </select>
 
-            <!-- error -->
-            <select class="js-select error">
+            <!-- clean error -->
+            <select class="select--clean js-select error">
+              <option>Option 1</option>
+              ...
+            </select>
+            
+            <!-- ghost disabled -->
+            <select disabled="" class="select--ghost js-select">
+              <option>Option 1</option>
+              ...
+            </select>
+
+            <!-- ghost error -->
+            <select class="select--ghost js-select error">
+              <option>Option 1</option>
+              ...
+            </select>
+            
+            <!-- brown disabled -->
+            <select disabled="" class="select--brown js-select">
+              <option>Option 1</option>
+              ...
+            </select>
+
+            <!-- brown error -->
+            <select class="select--brown js-select error">
               <option>Option 1</option>
               ...
             </select>
@@ -704,74 +774,74 @@ block append content
             </select>
 
   //- end: section
-  +content-section(contents[4], true)
-
-    +p Select can be created by using native <code class='l-code-inline'>&lt;select multiple&gt;</code> element with class <code class='l-code-inline'>.js-select</code>. Then javascript will dynamicaly inject HTML DOM for custom select.
-
-    +dependency('Javascript')
-
-      +p Select component requires plugin:
-        | #{' '}
-        a.l-a(href="https://github.com/jshjohnson/Choices") Choices.js
-
-    +demo
-      +demo-example
-        .row
-          .col--l-6
-            .form-control.form-control--select
-              select.js-select(multiple, placeholder="This is a placeholder")
-                each option, i in [1,2,3,4,5,6]
-                  option(selected=i === 0) Option #{option}
-      +demo-code
-        :code
-          <select class="js-select" multiple>
-            <option>Option 1</option>
-            <option>Option 2</option>
-            ...
-          </select>
-
-
-    +content-sub-section('Multiselect sizes')
-
-      +p There are three default sizes of select: medium, small and large. These can be set by using classes <code class='l-code-inline'>.select--[size]</code> on hidden native select element.
-
-      +demo
-        +demo-example
-          .row
-            .col--l-6
-              .form-control.form-control--select
-                select.js-select.select--large(multiple, placeholder="This is placeholder")
-                  option(selected) Large
-                  each option in [1,2,3,4,5,]
-                    option Option #{option}
-
-              .form-control.form-control--select
-                select.js-select(multiple, placeholder="This is placeholder")
-                  option(selected) Medium
-                  each option in [1,2,3,4,5,]
-                    option Option #{option}
-
-              .form-control.form-control--select
-                select.js-select.select--small(multiple, placeholder="This is placeholder")
-                  option(selected) Small
-                  each option in [1,2,3,4,5,]
-                    option Option #{option}
-        +demo-code
-          :code
-            <!-- large -->
-            <select class="js-select select--large" multiple>
-              <option>Option 1</option>
-              ...
-            </select>
-
-            <!-- medium -->
-            <select class="js-select" multiple>
-              <option>Option 1</option>
-              ...
-            </select>
-
-            <!-- small -->
-            <select class="js-select select--small" multiple>
-              <option>Option 1</option>
-              ...
-            </select>
+  //- +content-section(contents[4], true)
+  //- 
+  //-   +p Select can be created by using native <code class='l-code-inline'>&lt;select multiple&gt;</code> element with class <code class='l-code-inline'>.js-select</code>. Then javascript will dynamicaly inject HTML DOM for custom select.
+  //- 
+  //-   +dependency('Javascript')
+  //- 
+  //-     +p Select component requires plugin:
+  //-       | #{' '}
+  //-       a.l-a(href="https://github.com/jshjohnson/Choices") Choices.js
+  //- 
+  //-   +demo
+  //-     +demo-example
+  //-       .row
+  //-         .col--l-6
+  //-           .form-control.form-control--select
+  //-             select.js-select(multiple, placeholder="This is a placeholder")
+  //-               each option, i in [1,2,3,4,5,6]
+  //-                 option(selected=i === 0) Option #{option}
+  //-     +demo-code
+  //-       :code
+  //-         <select class="js-select" multiple>
+  //-           <option>Option 1</option>
+  //-           <option>Option 2</option>
+  //-           ...
+  //-         </select>
+  //- 
+  //- 
+  //-   +content-sub-section('Multiselect sizes')
+  //- 
+  //-     +p There are three default sizes of select: medium, small and large. These can be set by using classes <code class='l-code-inline'>.select--[size]</code> on hidden native select element.
+  //- 
+  //-     +demo
+  //-       +demo-example
+  //-         .row
+  //-           .col--l-6
+  //-             .form-control.form-control--select
+  //-               select.js-select.select--large(multiple, placeholder="This is placeholder")
+  //-                 option(selected) Large
+  //-                 each option in [1,2,3,4,5,]
+  //-                   option Option #{option}
+  //- 
+  //-             .form-control.form-control--select
+  //-               select.js-select(multiple, placeholder="This is placeholder")
+  //-                 option(selected) Medium
+  //-                 each option in [1,2,3,4,5,]
+  //-                   option Option #{option}
+  //- 
+  //-             .form-control.form-control--select
+  //-               select.js-select.select--small(multiple, placeholder="This is placeholder")
+  //-                 option(selected) Small
+  //-                 each option in [1,2,3,4,5,]
+  //-                   option Option #{option}
+  //-       +demo-code
+  //-         :code
+  //-           <!-- large -->
+  //-           <select class="js-select select--large" multiple>
+  //-             <option>Option 1</option>
+  //-             ...
+  //-           </select>
+  //- 
+  //-           <!-- medium -->
+  //-           <select class="js-select" multiple>
+  //-             <option>Option 1</option>
+  //-             ...
+  //-           </select>
+  //- 
+  //-           <!-- small -->
+  //-           <select class="js-select select--small" multiple>
+  //-             <option>Option 1</option>
+  //-             ...
+  //-           </select>

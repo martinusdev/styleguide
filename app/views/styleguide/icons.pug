@@ -61,6 +61,10 @@ block append content
         +demo-example
           ul.l-icons
             li.l-icons_item
+              +icon-sg('sg-home', 'icon--xxlarge')
+              br
+              abbr(title=icon).text-color-grey XXL
+            li.l-icons_item
               +icon-sg('sg-home', 'icon--xlarge')
               br
               abbr(title=icon).text-color-grey XL
@@ -337,11 +341,28 @@ block append content
           </div>
 
 
-    +content-sub-section('Thumbnail book')
+    +content-sub-section('Variants')
 
       +demo
         +demo-example
-          .thumbnail.thumbnail--book.thumbnail--large
+          .bar
+            .bar__item
+              | Book
+              .thumbnail.thumbnail--book.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .bar__item
+              | Large shadow
+              .thumbnail.thumbnail--large-shadow.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .bar__item
+              | Clickable
+              a.thumbnail.thumbnail--clickable.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+          | Center
+          .thumbnail.thumbnail--center.thumbnail--large
             .thumbnail__img-wrap
               img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
 
@@ -352,10 +373,28 @@ block append content
                 <img class="img" src="..." alt="...">
               </div>
             </div>
+            
+            <div class="thumbnail thumbnail--large-shadow">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+            </div>
+            
+            <a class="thumbnail thumbnail--clickable">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+            </a>
+            
+            <div class="thumbnail thumbnail--center">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+            </div>
 
-    +content-sub-section('Thumbnail status')
+    +content-sub-section('Thumbnail status and thumbnail badge')
 
-      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with badge as discount coutdown is shown below.
+      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with <code class='l-code-inline'>.thumbnail-badge</code> as discount coutdown is shown below.
 
       +demo
         +demo-example
@@ -372,7 +411,10 @@ block append content
                 <img class="img" src="..." alt="...">
               </div>
               <div class="thumbnail__status">
-                ...
+                <div class="thumbnail-badge">
+                  <svg>...</svg>
+                  <span class="thumbnail-badge__value text">3 dni</span>
+                </div>
               </div>
             </div>
 
