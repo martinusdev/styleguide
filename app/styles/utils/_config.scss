@@ -1268,14 +1268,30 @@ $card: (
   default: (
     background-color: $color-white,
     border-radius: $default-border-radius,
-    after: ()
+    after: (),
+    clickable: (
+      hover: (
+        background-color: _color(grey, 50),
+      ),
+      focus: (
+        background-color: _color(grey, 100),
+      ),
+    ),
   ),
   well: (
     background-color: _color(bg, 500),
     after: (
       height: 4px,
       background-color: _color(bg, 600),
-    )
+    ),
+    clickable: (
+      hover: (
+        background-color: _color(bg, 600),
+      ),
+      focus: (
+        background-color: _color(bg, 650),
+      ),
+    ),
   ),
   material: (
     box-shadow: 0 10px 14px 0 rgba(#000, 0.2),
@@ -1283,7 +1299,17 @@ $card: (
     before: (
       height: 4px,
       background-color: _color(bg, 600),
-    )
+    ),
+    clickable: (
+      hover: (
+        box-shadow: 0 10px 18px 0 rgba(#000, 0.3),
+        background-color: inherit,
+      ),
+      focus: (
+        box-shadow: 0 10px 8px 0 rgba(#000, 0.2),
+        background-color: inherit,
+      ),
+    ),
   ),
   success: (
     background-color: _color(success, 100),
@@ -1291,6 +1317,9 @@ $card: (
   info: (
     background-color: _color(info, 50),
   ),
+  notice: (
+    background-color: _color(yellow, 100),
+  )
 );
 
 $card-section: (
@@ -1300,6 +1329,9 @@ $card-section: (
     ),
     large: (
       padding: _get-space('v') _get-space('h', 'large') 0,
+    ),
+    condensed: (
+      padding: _get-space('v', 'tiny') _get-space('h', 'small'),
     )
   ),
 );
@@ -1621,11 +1653,6 @@ $section: (
   white: (
     background-color: $color-white,
   ),
-);
-
-$boxes: (
-  success: ( background-color: _color(success, 100) ),
-  notice: ( background-color: _color(yellow, 100) )
 );
 
 // ----------------------------

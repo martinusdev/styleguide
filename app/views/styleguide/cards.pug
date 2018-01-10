@@ -65,7 +65,7 @@ block append content
     //- end: demo
     
     +content-sub-section('Variants')
-      +p Standard cards support modifiers for background colors and section padding sizes.
+      +p Standard cards support modifiers for background colors and content padding sizes.
       
       +demo
         +demo-example
@@ -81,6 +81,12 @@ block append content
                 section.card__content.card__content--large
                   h3 Info card with padded content.
                   p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et.
+                  
+            .col--m-6
+              article.card.card--notice
+                section.card__content.card__content--condensed
+                  h3 Notice card with condensed content.
+                  p Nullam id dolor id nibh ultricies vehicula ut id elit..
         +demo-code
           :code
             <!-- success card -->
@@ -93,6 +99,13 @@ block append content
             <!-- info card with padded content-->
             <article class="card card--info">
               <section class="card__content card__content--large">
+                ...
+              </section>
+            </article>
+            
+            <!-- notice card with condensed content-->
+            <article class="card card--info">
+              <section class="card__content card__content--condensed">
                 ...
               </section>
             </article>
@@ -149,11 +162,32 @@ block append content
                     button.btn.btn--clean.no-mrg
                       +icon('heart').icon--left.icon--medium
                       | Pridať do
-            +demo-code
-              :code
-                <article class="card card--well">
-                  ...
-                </article>
+        +demo-code
+          :code
+            <article class="card card--well">
+              ...
+            </article>
+            
+    +content-sub-section('Clickable card')
+
+      +p In case you need to use a default/well/material card as an anchor element, add the <code class='l-code-inline'>.card--clickable</code> modifier to handle hover and focus styles.
+
+      +demo
+        +demo-example
+          .row
+            each item in ['', 'well', 'material', ]
+              .col--m-6.col--l-4
+                a.card.card--clickable(href='javascript:void(0)' class='card--' + item)
+                  if item == 'material'
+                    .card__label Label
+                  .card__content
+                    | Clickity click
+              
+        +demo-code
+          :code
+            <article class="card card--well">
+              ...
+            </article>
 
     +content-sub-section('Card status')
 

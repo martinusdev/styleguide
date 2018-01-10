@@ -22,17 +22,18 @@ mixin addTo(props = {})
             +icon('plus').icon--left.icon--medium.text-color-grey
             | Nový záznam
         .hide(id=`wishlist-add-item-${id}` data-toggle-class="hide")
-          .box.no-mrg-bottom
-            .bar.flex-nowrap
-              .bar__item.no-mrg-right
-                button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`)
-                  +icon('chevron-left', 'icon--medium', 'Naspäť')
-              .bar__item.align-self-center.text-center.text-nowrap
-                | Nový záznam
-              .bar__item
-                button.btn.btn--clean.btn--small(data-toggle=`#wishlist-button-${id}, #wishlist-dropdown-${id}`)
-                  +icon('close', 'icon--small', 'Naspäť')
-            .form-control.form-control--input
-              input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
-            .btn-layout--vertical
-              button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+          .card.mb-none
+            .card__content.card__content--condensed
+              .bar.flex-nowrap
+                .bar__item.no-mrg-right
+                  button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`)
+                    +icon('chevron-left', 'icon--medium', 'Naspäť')
+                .bar__item.align-self-center.text-center.text-nowrap
+                  | Nový záznam
+                .bar__item
+                  button.btn.btn--clean.btn--small(data-toggle=`#wishlist-button-${id}, #wishlist-dropdown-${id}`)
+                    +icon('close', 'icon--small', 'Naspäť')
+              .form-control.form-control--input
+                input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
+              .btn-layout--vertical
+                button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
