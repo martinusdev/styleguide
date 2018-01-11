@@ -77,7 +77,7 @@ header.header
           .hide-m.header-search__back
             button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
               +icon('arrow-left').icon--medium
-          .header-search__search
+          .header-search__search(style="position: relative;")
             .form-control.form-control--input.no-mrg-bottom
               .input-addons
                 input.input.input--dark#search-in-header(type='text', placeholder="Titul, kategória alebo autor", data-input, data-toggle-focus)
@@ -87,6 +87,22 @@ header.header
                   .btn.btn--primary.text-nowrap
                     +icon('search', '', 'Search').icon--medium.icon--left
                     | Hladať
+            if pageTitle == 'Homepage'
+              .dropdown.dropdown--arrowhead.is-active(aria-expanded="true")
+                .dropdown__wrap
+                  a.dropdown__item.dropdown__item--small Harr
+                    b y Potter a Prekliate Dieťa
+                  a.dropdown__item.dropdown__item--small Harr
+                    b y Potter a Kameň Mudrcov
+                  a.dropdown__item.dropdown__item--small Harr
+                    b y Potter a Fénixov Rád
+                  a.dropdown__item.dropdown__item--small Harr
+                    b y Potter a Ohnivá Čaša
+                  hr.mb-tiny
+                  a.dropdown__item.dropdown__item--small Herec#{' '}
+                    b Harrison Ford
+                  a.dropdown__item.dropdown__item--small Kategória#{' '}
+                    b Fantasy
 
         .bar__item.header__user
           +userMenu()
