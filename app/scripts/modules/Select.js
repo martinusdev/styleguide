@@ -117,8 +117,8 @@ const storeListChoices = config => `
 
 const storeListDropdown = config => `
   <div class="${config.classNames.list} ${config.classNames.listDropdown}" aria-expanded="false">
-    <div class="text-left text-size-small box mb-none bg-secondary">
-        <div>
+    <div class="text-left text-size-small card mb-none bg-secondary">
+        <div class="card__content--condensed">
             <span class="text-vam status status--success text-color-grey text-space-right-tiny">na sklade</span>
             <span class="text-vam status status--orange text-color-grey text-space-right-tiny">posledné kusy</span>
             <span class="text-vam status status--grey text-color-grey text-space-right-tiny">nedostupné</span>
