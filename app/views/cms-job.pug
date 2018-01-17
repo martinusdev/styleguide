@@ -1,0 +1,88 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Text page'
+    -
+      const navigation = [
+        {
+          title: 'Martinus hľadá posily',
+          href: 'href',
+        }, {
+          title: 'Akých ľudí do Martinusu hľadáme?',
+          href: 'najcastejsie-otazky',
+        }, {
+          title: 'Novinky s pracovnými ponukami',
+          href: 'postovne',
+        }, {
+          title: 'Vieš o niekom?',
+          href: 'sposob-platby',
+        },
+      ];
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Martinus hľadá posily'] })
+
+    .section
+      .wrapper-main
+        .row
+          .col--l-3.show-l
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+              +icon('arrow-left', 'icon--medium')
+              span Späť na martinus centrum
+
+            h2.h4 Pridaj sa
+
+            ul.list.list--expanded.no-pad(role="navigation")
+              each section, i in navigation
+                li.mb-medium(class=i === 0 ? 'is-active' : '')
+                  a.text-medium(href=`#${section.href}`, data-scroll) !{section.title}
+
+          article.col--l-9.col--m-9.ofst--m-center.col--12.mb-large
+
+            .bar.align-items-top
+              .bar__item.bar__item--fill
+                h1 Hľadáme nášho kulturistu (HR manažér/ka)
+              .bar__item.bar__item--shrinkable.show-l
+                a.btn.btn--primary.btn--large
+                  +icon('file').icon--left.icon--medium
+                  | Pošli nám svoje CV
+
+            .hide-l
+              a.btn.btn--primary.btn--large
+                +icon('file').icon--left.icon--medium
+                | Pošli nám svoje CV
+
+            h2.h4.mb-large V Martinuse sa snažíme robiť veci inak. S vášňou, pretože milujeme to, čo robíme. Ľudsky, pretože nám záleží na spokojnosti našich zákazníkov i kolegov. S predsavzatím urobiť niečo navyše, aby bol život krajší. Máš chuť to robiť s nami? Tak čítaj ďalej!
+
+            .card.card--well.mb-large
+              .card__content
+                h3 Rozmýšľaš podobne?
+                p Veríš, že aj firma so stovkami zamestnancov si stále dokáže uchovať mnoho z príjemnej rodinnej atmosféry? Chceš byť ten/tá, kto bude vytvárať pre Martinusákov lepšie miesto pre prácu, aby oni mohli denne prinášať radosť našim zákazníkom?
+                p Hovoria o tebe, že máš zmysel pre detail, no pritom sa vieš pozrieť na veci aj z helikoptéry? Rád/a sa pozeráš dopredu nielen pár týždňov, ale aj pár rokov? Máš už predchádzajúce skúsenosti na HR pozícii?
+                p Si doma v problematike pracovného práva, výberu ľudí, vzdelávania, hodnotenia a odmeňovania, tvorenia kultúry firmy? Si ten, kto má neutíchajúcu chuť učiť sa a zároveň svoje skúsenosti využívať neustále novými, lepšími spôsobmi? Tak sa pridaj k nám!
+
+            h3 Čo ťa u nás čaká?
+
+            p Budeš pracovať na tom, aby sme vždy mali tých <strong>správnych ľudí na správnych stoličkách</strong> (alebo hoci aj tuli vakoch), vzdelávať a <strong>rozvíjať ich</strong> (pretože každý deň chceme byť o kúsok lepší), no zároveň nám pomáhať, aby sme nemali núdzu o ďalších skvelých záujemcov o prácu u nás. Budeš s nami <strong>tvoriť dobrý systém odmeňovania</strong>, milých benefitov pre našich ľudí, konštruktívneho hodnotenia i dávania vzájomnej spätnej väzby.
+
+            h3 Čím ťa Martinus odmení?
+
+            p Budeš mať možnosť <strong>písať významné kapitoly príbehu Martinusu</strong>. Naše firemné benefity (celofirmné teambuildingy, odmeny rôzneho druhu, zľavy nielen na knihy, školenia a&nbsp;iné.) si budeš užívať a zároveň ich kreovať. Ocitneš sa v&nbsp;tíme, ktorý ťa povzbudí, aby si <strong>vydoloval(a) zo seba maximum</strong> a&nbsp;popri tom sa budeš častokrát dokonca baviť.
+
+            p <strong>Zaujala ťa naša ponuka?</strong>  Tak nám, prosím, na <a class="link" "mailto:pridajsa@martinus.sk"="">pridajsa@martinus.sk</a> do 31.1.2018 pošli svoj životopis a motivačný list… no napokon, v tomto si profík ty, takže vieš, čo by si očakával/a od správneho kandidáta :-). Tešíme sa na teba!
+
+            p <strong>PS:</strong> Chceš vedieť trochu viac, ako to u nás funguje? Pozri si náš interný dokument - <a class="link" href="http://citam.sk/sprievodca" target="_blank"><strong>Sprievodca Martinusáka</strong></a>, ktorý dostaneš aj po nástupe k nám.
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.myApp.scrollOffset = {0: 85, 768: 95};
