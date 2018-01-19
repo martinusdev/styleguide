@@ -76,13 +76,13 @@ block content
                 .product-detail__image
                   .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-medium.clickable(data-toggle="#product-preview")
                     .thumbnail__img-wrap
-                      img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                .show-m
-                  .product-detail__preview-link.text-center
-                    button.btn.btn--clean(data-toggle="#product-preview")
+                      img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-14.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+
+                  .product-detail__preview-link.text-center.show-m
+                    button.btn.btn--clean.mb-none(data-toggle="#product-preview")
                       +icon('eye').icon--left.icon--medium
                       span.show-m Pozrieť ukážku
-
+                .show-m
                   .product-detail__preview-link.text-center
                     button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
                       +icon('play').icon--left.icon--medium
@@ -489,6 +489,8 @@ block content
                             input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
                             label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+abc)
                               +icon('star').icon--xlarge
+                        p Ďakujeme za hodnotenie!#{' '}
+                          a.link Zrušiť
 
                       .col--l-4
                         .btn-layout.btn-layout--vertical.no-mrg

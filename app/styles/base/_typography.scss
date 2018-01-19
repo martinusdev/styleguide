@@ -212,11 +212,17 @@ hr {
       };
     }
 
+    &--line-visible li::before {
+      opacity: 1;
+      background: _color(grey);
+    }
+
     &--with-hover li:hover,
     &--with-hover li:focus,
     li.is-active {
       &::before {
         opacity: 1;
+        background: _color(primary);
       }
     }
 

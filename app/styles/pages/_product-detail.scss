@@ -3,14 +3,33 @@
 // ---------------------------------------------
 
 .product-detail {
+  $this: &;
+
   &__image {
     max-width: 170px;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 
     @include breakpoint(m) {
       max-width: none;
     };
+
+    #{$this}__preview-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba($color-black, 0.5);
+    }
+
+    #{$this}__preview-link .btn {
+      color: _color(grey, 400);
+    }
+
+    #{$this}__preview-link .btn:hover {
+      color: $color-white;
+    }
   }
 
   &__author {

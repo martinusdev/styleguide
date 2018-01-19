@@ -31,12 +31,10 @@ section.section
             .show-l.mb-large
               //-h2 Podkategórie
               nav
-                ul.text-medium.no-pad
+                ul.text-medium.list.list--with-hover.list--line-visible
                   each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
-                    li.align-items-middle
-                      +icon('minus').icon--medium.text-color-grey
-                      | &nbsp;
-                      a.link(class=(i === 0) ? 'active' : '')
+                    li(class=(i === 0) ? 'is-active' : '').mb-tiny
+                      a.link
                         | !{link}
           include category-filter
         .mobile-wrapper__footer
