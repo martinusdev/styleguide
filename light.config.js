@@ -25,6 +25,23 @@ module.exports = (paths, config) => {
           removeFill: false,
         },
       },
+      // react support - uncomment for future use
+      /*scripts: {
+        module: {
+          rules: [
+            {
+              test: /.jsx?$/,
+              exclude: /node_modules|bower_components|scripts\/plugins/,
+              use: {
+                loader: 'babel-loader',
+                query: {
+                  presets: ['es2016', 'react'],
+                },
+              },
+            },
+          ],
+        },
+      },*/
     },
   };
 };
