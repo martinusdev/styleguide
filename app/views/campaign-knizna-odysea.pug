@@ -1,0 +1,29 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Knižná odysea'
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knižná odysea'] })
+
+    section.section
+      .wrapper-main
+        .text-center
+          h1 Knižná odysea
+
+    #container
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.myApp.scrollOffset = {0: 85, 768: 95};
+  script(src=`${assetsPrefix}scripts/knizna-odysea.js`)
