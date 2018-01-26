@@ -1,12 +1,12 @@
 import * as THREE from 'three';
-import OrbitControls from 'orbit-controls-es6';
+// import OrbitControls from 'orbit-controls-es6';
 
 let clock;
 let container;
 let camera;
 let scene;
 let renderer;
-let controls;
+// let controls;
 let listener;
 
 let ground;
@@ -103,8 +103,8 @@ function init() {
   listener = new THREE.AudioListener();
   camera.add(listener);
 
-  controls = new OrbitControls(camera, renderer.domElement);
-  controls.target = new THREE.Vector3(0, 0.6, 0);
+  // controls = new OrbitControls(camera, renderer.domElement);
+  // controls.target = new THREE.Vector3(0, 0.6, 0);
 
   hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.6);
   hemiLight.color.setHSL(0.6, 1, 0.6);
