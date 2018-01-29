@@ -9,18 +9,27 @@ block opts
 block content
   main
 
-    section.section--breadcrumbs
-      .wrapper-main
-        .bar.no-mrg-bottom
-          .bar__item.bar__item--shrinkable
-            +breadcrumbs({ breadcrumbs: ['Knižná odysea'] })
+    canvas#container(style="position: fixed; left: 0; top: 0; width: 100%; height: 100%;")
+    div(style="position: relative; z-index: 1; min-height: 500px;")
 
-    section.section
-      .wrapper-main
-        .text-center
-          h1 Knižná odysea
+      section.section--breadcrumbs
+        .wrapper-main
+          .bar.no-mrg-bottom
+            .bar__item.bar__item--shrinkable
+              +breadcrumbs({ breadcrumbs: ['Knižná odysea'] })
 
-    #container
+      section.section
+        .wrapper-main
+          .text-center
+            h1 Knižná odysea
+
+          .row
+            .col--12.col--m-4
+              article.block.mb-medium#view-1(style="min-height: 300px;")
+            .col--12.col--m-4
+              article.block.mb-medium#view-2(style="min-height: 300px;")
+            .col--12.col--m-4
+              article.block.mb-medium#view-3(style="min-height: 300px;")
 
 block scripts
   script.
