@@ -49,7 +49,7 @@ export default class KOContext {
     this.renderer.setClearColor(0x000000, 0);
     this.renderer.setScissorTest(false);
     this.renderer.clear();
-    this.renderer.setClearColor(0x000000, 0.1);
+    this.renderer.setClearColor(0x000000, 0);
     this.renderer.setScissorTest(true);
 
     this.scenes.forEach(scene => {
