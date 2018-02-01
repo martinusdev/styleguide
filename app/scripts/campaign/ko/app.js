@@ -6,23 +6,23 @@ export default class KOApp {
   static start() {
     const context = new KOContext('container');
 
-    // const scene = new KOScene(
-    //   'view-1',
-    //   'images/content/campaign/knizna-odysea/models/planet.json',
-    // );
-    // scene.loadScene();
-    //
-    // const scene2 = new KOScene(
-    //   'view-2',
-    //   'images/content/campaign/knizna-odysea/models/planet.json',
-    // );
-    // scene2.loadScene();
-    //
-    // const scene3 = new KOScene(
-    //   'view-3',
-    //   'images/content/campaign/knizna-odysea/models/Knihonaut-animated.json',
-    // );
-    // scene3.loadModel();
+    const scene = new KOScene(
+      'view-1',
+      'images/content/campaign/knizna-odysea/models/planet.json',
+    );
+    scene.loadScene();
+
+    const scene2 = new KOScene(
+      'view-2',
+      'images/content/campaign/knizna-odysea/models/planet.json',
+    );
+    scene2.loadScene();
+
+    const scene3 = new KOScene(
+      'view-3',
+      'images/content/campaign/knizna-odysea/models/Knihonaut-animated.json',
+    );
+    scene3.loadModel();
 
     const scene4 = new KOScene(
       'view-4',
@@ -42,9 +42,9 @@ export default class KOApp {
     );
     scene6.loadScene();
 
-    // context.addScene(scene);
-    // context.addScene(scene2);
-    // context.addScene(scene3);
+    context.addScene(scene);
+    context.addScene(scene2);
+    context.addScene(scene3);
     context.addScene(scene4);
     context.addScene(scene5);
     context.addScene(scene6);
