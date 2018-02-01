@@ -3,6 +3,8 @@ export default class KOMap {
     this.container = document.getElementById(selector);
     this.target = document.getElementById(target);
 
+    this.deadzone = 250;
+
     this.headerHeight = document.querySelector(
       '.header .header__wrapper',
     ).offsetHeight;
@@ -66,6 +68,11 @@ export default class KOMap {
 
     this.xv *= 0.02;
     this.yv *= 0.02;
+
+    // deadzone
+    if (this.x > this.deadzone && this.x < this._w - this.deadzone) {
+      this.xv = 0;
+    }
   }
 
   _update() {

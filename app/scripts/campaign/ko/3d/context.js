@@ -5,6 +5,9 @@ export default class KOContext {
     this.canvas = document.getElementById(selector);
     this.scenes = [];
 
+    this.canvasHeight = this.canvas.clientHeight;
+    console.log(this.canvasHeight);
+
     this.clock = new THREE.Clock();
 
     this.renderer = new THREE.WebGLRenderer({
@@ -31,6 +34,14 @@ export default class KOContext {
   }
 
   _updateSize() {
+    if (window.innerWidth < 768) {
+      this.canvas.style.height = '100%';
+      this.canvas.style.position = 'fixed';
+    } else {
+      this.canvas.style.height = `${this.canvasHeight}px`;
+      this.canvas.style.position = 'absolute';
+    }
+
     const width = this.canvas.clientWidth;
     const height = this.canvas.clientHeight;
 
@@ -73,7 +84,7 @@ export default class KOContext {
       const width = rect.right - rect.left;
       const height = rect.bottom - rect.top;
       const left = rect.left;
-      const top = rect.top;
+      const top = rect.top - this.canvas.getBoundingClientRect().y;
 
       this.renderer.setViewport(left, top, width, height);
       this.renderer.setScissor(left, top, width, height);
