@@ -1,4 +1,4 @@
-export default class KOMap {
+export default class GGMap {
   constructor(selector, target) {
     this.container = document.getElementById(selector);
     this.target = document.getElementById(target);

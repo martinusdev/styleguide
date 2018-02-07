@@ -1,42 +1,42 @@
-import KOMap from './map';
-import KOContext from './3d/context';
-import KOScene from './3d/scene';
+import GGMap from './map';
+import GGContext from './context';
+import GGScene from './scene';
 
-export default class KOApp {
+export default class GGApp {
   static start() {
-    const context = new KOContext('container');
+    const context = new GGContext('container');
 
-    const scene = new KOScene(
+    const scene = new GGScene(
       'view-1',
       'http://knihonaut.blur.sk/models/planet.json',
     );
     scene.loadScene();
 
-    const scene2 = new KOScene(
+    const scene2 = new GGScene(
       'view-2',
       'http://knihonaut.blur.sk/models/planet.json',
     );
     scene2.loadScene();
 
-    const scene3 = new KOScene(
+    const scene3 = new GGScene(
       'view-3',
       'http://knihonaut.blur.sk/models/Knihonaut-animated.json',
     );
     scene3.loadModel();
 
-    const scene4 = new KOScene(
+    const scene4 = new GGScene(
       'view-4',
       'http://knihonaut.blur.sk/models/Knihonaut-animated.json',
     );
     scene4.loadModel();
 
-    const scene5 = new KOScene(
+    const scene5 = new GGScene(
       'view-5',
       'http://knihonaut.blur.sk/models/planet.json',
     );
     scene5.loadScene();
 
-    const scene6 = new KOScene(
+    const scene6 = new GGScene(
       'view-6',
       'http://knihonaut.blur.sk/models/planet.json',
     );
@@ -49,7 +49,7 @@ export default class KOApp {
     context.addScene(scene5);
     context.addScene(scene6);
 
-    const map = new KOMap('map', 'map-container');
+    const map = new GGMap('map', 'map-container');
     map.dummy();
   }
 }

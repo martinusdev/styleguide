@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-export default class KOObject {
+export default class GGObject {
   constructor(selector) {
     this.selector = selector;
 

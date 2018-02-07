@@ -1,12 +1,11 @@
 import * as THREE from 'three';
 
-export default class KOContext {
+export default class GGContext {
   constructor(selector) {
     this.canvas = document.getElementById(selector);
     this.scenes = [];
 
     this.canvasHeight = this.canvas.clientHeight;
-    console.log(this.canvasHeight);
 
     this.clock = new THREE.Clock();
 
