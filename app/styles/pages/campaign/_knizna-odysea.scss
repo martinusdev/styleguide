@@ -1,5 +1,140 @@
-$ko-color-background: #3d245e;
+$ko-color-violet-dark: #3d245e;
+$ko-color-violet: #8781bd;
+$ko-color-green: #e1ff6b;
 
-.knizna-odysea-header {
-  background: $ko-color-background;
+.ko-text-color-green {
+  color: $ko-color-green;
+}
+
+.ko-link--green {
+  color: $ko-color-green;
+
+  &:hover {
+    color: $ko-color-green;
+  }
+}
+
+.ko-link--green.is-active {
+  color: $ko-color-green;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.ko-border--violet {
+  border-color: $ko-color-violet;
+}
+
+.ko-page {
+  background: #3c2560;
+}
+
+.ko-header {
+  background: $ko-color-violet-dark;
+
+  .collapsed:not(.is-active)::after {
+    background: linear-gradient(to top, rgba($ko-color-violet-dark, 1), rgba($ko-color-violet-dark, 0));
+  }
+}
+
+.ko-user {
+  &__email {
+    max-width: 85%;
+  }
+}
+
+.ko-planets {
+  background: url('../images/content/campaign/knizna-odysea/space.jpg') no-repeat;
+  background-size: cover;
+
+  &__btn .icon {
+    width: _get-rem(72px);
+    height: auto;
+    color: $color-white;
+    opacity: 0.8;
+
+    @include breakpoint('s', 'down') {
+      width: _get-rem(48px);
+    }
+  }
+
+  &__btn:hover .icon {
+    opacity: 1;
+  }
+
+  &__btn.is-disabled {
+    opacity: 0.3;
+  }
+
+  .carousel__btn {
+    display: flex;
+
+    @include breakpoint('s', 'down') {
+      top: 90%;
+    }
+  }
+
+  .carousel__btn--prev {
+    left: 5%;
+
+    @include breakpoint('m') {
+      left: 15%;
+    }
+
+    @include breakpoint('l') {
+      left: 25%;
+    }
+  }
+
+  .carousel__btn--next {
+    right: 5%;
+
+    @include breakpoint('m') {
+      right: 15%;
+    }
+
+    @include breakpoint('l') {
+      right: 25%;
+    }
+  }
+}
+
+.ko-planets-item {
+  width: 80%;
+  position: relative;
+
+  @include breakpoint('m') {
+    width: 50%;
+  }
+
+  @include breakpoint('l') {
+    width: 35%;
+  }
+
+  &__image {
+    transform: scale(0.7);
+    transition: transform $ease-600;
+  }
+
+  .swiper-slide-active &__image {
+    transform: scale(1);
+  }
+
+  &__content {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5%;
+
+    .h2 {
+      text-shadow: 0 0 50px $color-black;
+    }
+  }
+
+  .swiper-slide-active &__content {
+    display: block;
+  }
 }
