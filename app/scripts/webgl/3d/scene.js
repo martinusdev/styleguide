@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 
-export default class KOScene {
+export default class GGScene {
   constructor(selector, file) {
     this.container = document.getElementById(selector);
     this.file = file;

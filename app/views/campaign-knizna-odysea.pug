@@ -5,34 +5,87 @@ include ./mixins/icon
 
 block opts
     - var pageTitle = 'Knižná odysea'
+    - var campaignHeader = true
+    - var pageClass = 'ko-page'
 
 block content
   main
 
-    section.section()
+    section.section.ko-header.text-color-white
       .wrapper-main
-        .text-center
-          h1 Knižná odysea
+        .row.align-items-top.mb-medium
+          .col--m-3.mb-medium.text-center
+            a(href="#").show-m
+              img(src="images/content/campaign/knizna-odysea/logo-sk.svg", width="270")
+            a(href="#").hide-m
+              img(src="images/content/campaign/knizna-odysea/logo-horizontal-sk.svg", width="270")
+          .col--m-5.col--l-6.mb-medium.text-center.text-left-m
+            h1.h2.mb-small Lorem ipsum dolor sit amet
+            .show-m
+              p.mb-none Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis arcu a vulputate tincidunt. Vivamus nisl arcu, accumsan eu imperdiet nec, ornare eget felis. Vivamus quis dui ac arcu euismod suscipit sit amet sed augue bla bla
+                a(href="#").link.ko-link--green #{' '}kompletné pravidlá.
+            .hide-m
+              p.mb-none#ko-description(data-collapse="70") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis arcu a vulputate tincidunt. Vivamus nisl arcu, accumsan eu imperdiet nec, ornare eget felis. Vivamus quis dui ac arcu euismod suscipit sit amet sed augue bla bla
+                a(href="#").link.ko-link--green #{' '}kompletné pravidlá.
+              a.link.ko-link--green.text-size-medium(href="javascript:void(0)", data-toggle="#ko-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                +icon('arrow-down')
+          .col--m-4.col--l-3
+            .ko-user
+              .bar.bar--vertical
+                .bar__item.border-bottom-grey.ko-border--violet
+                  .bar
+                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email
+                      +icon('user').icon--medium.text-space-right
+                      span.text-semibold klco.roman@gmail.com
+                    .bar__item.bar__item--fill.text-right
+                      a(href="#").link.link--product
+                        +icon('logout').icon--medium
+                .bar__item.text-center.text-left-m
+                  | Môžeš vyhrať:#{' '}
+                  b.text-bold.ko-text-color-green.h2 12
+                  b #{' '}zo 128 kníh
+                  .text-small
+                    a.link.ko-link--green Zdvojnásob svoju výhru nákupom v Martinus.sk!
 
-    div(style="position: relative; min-height: 600px;")
-      canvas#container(style="position: absolute; left: 0; top: 0; width: 100%; height: 700px; pointer-events:none; z-index: 1;")
+    section.section.ko-planets
+      -
+        var swiperConfig = {
+        nextButton: '.carousel__btn--next',
+        prevButton: '.carousel__btn--prev',
+        slidesPerView: 'auto',
+        slidesPerGroup: 1,
+        spaceBetween: 20,
+        centeredSlides: true,
+        loop: false,
+        slideToClickedSlide: false,
+        };
+        swiperConfig = JSON.stringify(swiperConfig);
+      .carousel.carousel--fade-inactive.carousel--disable-inactive
+        .swiper-container(data-swiper-options=swiperConfig)
+          .swiper-wrapper
+            each item, i in Array(3)
+              .swiper-slide.ko-planets-item
+                img(src=`${assetsPrefix}images/content/campaign/knizna-odysea/planets/07-dune@2x.png`).ko-planets-item__image
+                .ko-planets-item__content.text-center
+                  .text-color-white
+                    .h5.mb-none.text-color-white výzva pre tento deň
+                    .h2.mb-small.text-transform-upper pantomíma
+                  .btn.btn--primary.btn--large.mb-small
+                    +icon('play').icon--medium.icon--left
+                    | Spustiť výzvu
+                  div
+                    +icon('star').text-color-white.icon--large
+                    +icon('star').text-color-white.icon--large
+                    +icon('star').text-color-white.icon--large
 
-      section.show-m#map(style="width: 100%; height: 650px; overflow: hidden; position: absolute; top: 0; left: 0;")
-        div#map-container(style="position: absolute; top: 0; left: 0; width: 2500px; height: 650px; background: url('images/content/campaign/knizna-odysea/textures/stars.jpg');")
-          article.block.mb-medium#view-4(style="min-width: 400px; min-height: 300px; position: absolute; top: 50px; left: 100px;")
-          article.block.mb-medium#view-5(style="min-width: 400px; min-height: 300px; position: absolute; top: 100px; left: 1200px;")
-            h4.text-color-white.mb-none Lorem ipsum
-            p.text-color-grey Lorem ipsum dolr sit amet
-          article.block.mb-medium#view-6(style="min-width: 400px; min-height: 300px; position: absolute; top: 300px; left: 600px;")
 
-      .hide-m
-        .row
-          .col--12.col--m-4
-            article.block.mb-medium#view-1(style="min-height: 300px;")
-          .col--12.col--m-4
-            article.block.mb-medium#view-2(style="min-height: 300px;")
-          .col--12.col--m-4
-            article.block.mb-medium#view-3(style="min-height: 300px;")
+
+          button.carousel__btn.carousel__btn--prev.ko-planets__btn.clickable
+            +icon('arrow-left')
+          button.carousel__btn.carousel__btn--next.ko-planets__btn.clickable
+            +icon('arrow-right')
+
+
 
 block scripts
   script(src=`${assetsPrefix}scripts/knizna-odysea.js`)

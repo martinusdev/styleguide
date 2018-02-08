@@ -1,0 +1,18 @@
+include ./../../mixins/icon
+
+header.header
+  .header__wrapper
+    .wrapper-main
+      .bar.header__bar
+        .bar__item.header__logo
+          a(href="#")
+            img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
+            img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
+        .bar__item.bar__item--shrinkable.show-m
+          .btn.btn--ghost-inverse
+            | Do kníhkupectva
+            +icon('arrow-right').icon--right
+        .bar__item.bar__item--fill
+          .social-buttons.text-right
+            | <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+            | <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

@@ -1,3 +1,3 @@
-import KOApp from './campaign/ko/app';
+// import GGObject from './webgl/3d/_sample';
 
-KOApp.start();
+// const knihonaut = new GGObject('knihonaut');
