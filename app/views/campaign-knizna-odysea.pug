@@ -95,15 +95,11 @@ block content
                 img(src=`${assetsPrefix}images/content/campaign/knizna-odysea/planets/07-dune@2x.png`).ko-planets-item__image
                 .ko-planets-item__content.text-center
                   .text-color-white
-                    .h5.mb-none.text-color-white výzva pre tento deň
+                    .h5.mb-none.text-color-white.text-size-regular výzva pre tento deň
                     .h2.mb-small.text-transform-upper pantomíma
-                  .btn.btn--primary.btn--large.mb-small
+                  .btn.btn--primary.btn--large.mb-small(data-toggle="#challenge")
                     +icon('play').icon--medium.icon--left
-                    | Spustiť výzvu
-                  div
-                    +icon('star').text-color-white.icon--large
-                    +icon('star').text-color-white.icon--large
-                    +icon('star').text-color-white.icon--large
+                    | Otvoriť výzvu
 
 
 
@@ -112,7 +108,69 @@ block content
           button.carousel__btn.carousel__btn--next.ko-planets__btn.clickable
             +icon('arrow-right')
 
+  .modal-overlay#challenge(data-modal)
+    article.modal.modal--full
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h5 výzva na dnešný deň
+            .h2.text-transform-upper pantomíma
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#challenge")
+              +icon('close').icon--medium
+        .row.ko-video-background
+          .ofst--m-2
+          .col--m-8
+            .ko-video
+              | <iframe width="560" height="315" src="https://www.youtube.com/embed/docIm4sExSk?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        .modal__content
+          .mb-medium
+          .row
+            .ofst--m-3
+            .col--m-6
+              h3.h2 Zadaj knihy, ktoré si rozlúštil vo videu
+              form.mb-large
+                .form-control.form-control--input#input-guess
+                  .input-addons
+                    input.input(type="text", placeholder="Názov knihy...")
+                    .input-addons__item.no-pad
+                      button.btn.btn--primary#btn-guess
+                        | Hľadaj
 
+              h3.h3 Uhádnuté knihy
+              hr
+              .text-center.text-regular.text-color-grey
+                | Zatiaľ si neuhádol žiadne knihy
+
+              each i in Array(3)
+                .product.product--horizontal.mb-small
+                  .product__cover
+                    .thumbnail.thumbnail--book.thumbnail--small
+                      a(href=`#`)
+                        .thumbnail__img-wrap
+                          img(src=`${assetsPrefix}images/content/books/sample-1.jpg`).img
+                  .product__caption
+                    .product__title
+                      a.link.link--product Hobbit
+                      ul.text-size-small.text-color-grey.no-mrg.text-ellipsis.list-inline.list-inline--delimited
+                        li.no-mrg J.R.R. Tolkien
+
+        .modal__footer
 
 block scripts
   script(src=`${assetsPrefix}scripts/knizna-odysea.js`)
+  script
+    .
+      window.addEventListener('DOMContentLoaded', function() {
+        window.myApp.koTimeline.set(10);
+      });
+
+      document.getElementById('btn-guess').addEventListener('click', function(e) {
+        e.preventDefault();
+        const input = document.getElementById('input-guess');
+        input.classList.add('animation-shake');
+        input.querySelector('input').classList.add('is-error');
+        setTimeout(() => {
+          input.classList.remove('animation-shake');
+        }, 1000);
+      });

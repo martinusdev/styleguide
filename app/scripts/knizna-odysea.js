@@ -64,7 +64,3 @@ export default class KOTimeline {
 }
 
 window.myApp.koTimeline = new KOTimeline();
-
-window.addEventListener('DOMContentLoaded', () => {
-  window.myApp.koTimeline.set(10);
-});
