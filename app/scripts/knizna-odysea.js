@@ -1,4 +1,5 @@
 import { nodeListToArray } from './modules/Utils';
+import GGScene from './webgl/3d/scene';
 
 export default class KOTimeline {
   constructor() {
@@ -64,3 +65,9 @@ export default class KOTimeline {
 }
 
 window.myApp.koTimeline = new KOTimeline();
+
+window.myApp.koKnihonaut = new GGScene(
+  'knihonaut-scene',
+  'http://knihonaut.blur.sk/models/Knihonaut-animated.json',
+);
+window.myApp.koKnihonaut.loadModel();

@@ -14,10 +14,10 @@ block content
     section.section.ko-header.text-color-white
       .wrapper-main
         .row.align-items-top.mb-none
-          .col--m-3.mb-medium.mb-none-m.text-center
-            a(href="#").show-m
+          .col--m-3.mb-medium.mb-none-m.text-center#knihonaut-open
+            a.show-m
               img(src="images/content/campaign/knizna-odysea/logo-sk.svg", width="270")
-            a(href="#").hide-m
+            a.hide-m
               img(src="images/content/campaign/knizna-odysea/logo-horizontal-sk.svg", width="270")
           .col--m-5.col--l-6.mb-medium.mb-none-m.text-center.text-left-m
             h1.h2.mb-small Lorem ipsum dolor sit amet
@@ -108,6 +108,21 @@ block content
           button.carousel__btn.carousel__btn--next.ko-planets__btn.clickable
             +icon('arrow-right')
 
+    #knihonaut.ko-knihonaut
+      .bar
+        .bar__item
+          #knihonaut-scene.ko-knihonaut__scene
+        .bar__item.bar__item--fill
+          .card.card--arrowhead.card--arrowhead-left
+            .card__content
+              .bar
+                .bar__item.bar__item--fill
+                  h3.h3.mb-none Ahoj, som Knihonaut
+                .bar__item.bar__item--shrinkable
+                  .btn.btn--small.clickable.btn--clean#knihonaut-close
+                    +icon('close').icon--small
+              p.text-size-medium Budem ťa sprevádzať knižnou galaxiou a pomôžem ti objaviť skryté tajomstvá knižných planét. Ak ti niečo nebude jasné, klikni na mňa a pomôžem ti.
+
   .modal-overlay#challenge(data-modal)
     article.modal.modal--full
       .modal__wrap
@@ -165,7 +180,7 @@ block scripts
         window.myApp.koTimeline.set(10);
       });
 
-      document.getElementById('btn-guess').addEventListener('click', function(e) {
+      document.getElementById('btn-guess').addEventListener('click', e => {
         e.preventDefault();
         const input = document.getElementById('input-guess');
         input.classList.add('animation-shake');
@@ -173,4 +188,14 @@ block scripts
         setTimeout(() => {
           input.classList.remove('animation-shake');
         }, 1000);
+      });
+
+      document.getElementById('knihonaut-close').addEventListener('click', e => {
+        document.getElementById('knihonaut').classList.remove('ko-knihonaut--active');
+        window.myApp.koKnihonaut.stop();
+      });
+
+      document.getElementById('knihonaut-open').addEventListener('click', e => {
+      document.getElementById('knihonaut').classList.add('ko-knihonaut--active');
+        window.myApp.koKnihonaut.play();
       });

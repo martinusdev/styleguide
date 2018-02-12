@@ -5,10 +5,18 @@ export default class GGScene {
     this.container = document.getElementById(selector);
     this.file = file;
     this.loaded = false;
+    this.playing = false;
+
+    this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    this.renderer.setClearColor(0x000000, 0);
+    this.renderer.setPixelRatio(window.devicePixelRatio);
+
+    this.container.appendChild(this.renderer.domElement);
+
+    this.clock = new THREE.Clock();
 
     this.objectLoader = new THREE.ObjectLoader();
     this.jsonLoader = new THREE.JSONLoader();
-
     this.scene = new THREE.Scene();
 
     this.camera = new THREE.PerspectiveCamera(
@@ -17,7 +25,7 @@ export default class GGScene {
       0.1,
       1000,
     );
-    this.camera.position.set(0, 0, 10);
+    this.camera.position.set(0, 0.5, 8);
 
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0xffaa00, 1);
     this.scene.add(hemiLight);
@@ -25,6 +33,16 @@ export default class GGScene {
     const dirLight = new THREE.DirectionalLight(0xffffff, 1);
     dirLight.position.set(2, 1.75, 1);
     this.scene.add(dirLight);
+
+    window.addEventListener('resize', () => this._updateSize(), false);
+    this._updateSize();
+
+    this._animate = () => {
+      window.requestAnimationFrame(this._animate);
+      this._render();
+    };
+
+    this._animate();
   }
 
   loadScene() {
@@ -43,34 +61,54 @@ export default class GGScene {
       materials.forEach(material => {
         material.skinning = true;
       });
-      const model = new THREE.SkinnedMesh(
+      this.model = new THREE.SkinnedMesh(
         geometry,
         new THREE.MeshFaceMaterial(materials),
       );
-      model.receiveShadow = true;
+      this.model.receiveShadow = true;
 
-      this.mixer = new THREE.AnimationMixer(model);
+      this.mixer = new THREE.AnimationMixer(this.model);
       const action = this.mixer.clipAction(geometry.animations[0]);
       action.enabled = true;
 
-      this.scene.add(model);
+      this.scene.add(this.model);
       action.play();
+
+      this.model.rotation.y = 0.25;
 
       this.loaded = true;
     });
   }
 
   _updateSize() {
+    this.renderer.setSize(
+      this.container.clientWidth,
+      this.container.clientHeight,
+    );
+
     this.camera.aspect =
       this.container.clientWidth / this.container.clientHeight;
+
     this.camera.updateProjectionMatrix();
   }
 
-  _render(delta) {
-    this.scene.children[2].rotation.y -= delta * 0.25;
+  _render() {
+    const delta = this.clock.getDelta();
 
     if (this.mixer) {
       this.mixer.update(delta);
     }
+
+    if (this.playing) {
+      this.renderer.render(this.scene, this.camera);
+    }
+  }
+
+  play() {
+    this.playing = true;
+  }
+
+  stop() {
+    this.playing = false;
   }
 }
