@@ -11,9 +11,10 @@ const defaultConfig = {
   localModalAnchorAttr: 'data-modal-anchor',
   ajaxEnabledAttr: 'data-modal-ajax',
   ajaxLoadingClass: 'modal--loading',
+  toggleClassName: 'is-active',
 };
 
-const isActive = el => el.classList.contains('is-active');
+const isActive = el => el.classList.contains(defaultConfig.toggleClassName);
 export const MODAL_AJAX_LOAD_EVT = 'modalAjaxLoad';
 export const MODAL_AJAX_LOADED_EVT = 'modalAjaxLoaded';
 export const MODAL_OPEN = 'modalOpen';
@@ -68,7 +69,7 @@ export default class Modal {
       }
 
       if (target.hasAttribute(this.selector)) {
-        doToggle({ target });
+        doToggle({ target, className: this.config.toggleClassName });
       }
     }
   }
