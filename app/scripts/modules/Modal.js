@@ -238,7 +238,7 @@ export default class Modal {
       window.history.replaceState(
         undefined,
         undefined,
-        `#${this.activeModals[this.activeModals.length - 1].overlay.getAttribute('id')}`,
+        `${window.location.pathname}#${this.activeModals[this.activeModals.length - 1].overlay.getAttribute('id')}`,
       );
     }
   }
