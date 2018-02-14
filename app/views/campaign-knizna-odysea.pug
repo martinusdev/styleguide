@@ -30,7 +30,12 @@ block content
               a.link.ko-link--green.text-size-medium(href="javascript:void(0)", data-toggle="#ko-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                 +icon('arrow-down')
           .col--m-4.col--l-3.mb-none-m
-            .ko-user
+            .text-center.text-right-m
+              .btn.btn--primary.btn--medium.mb-small(data-toggle="#login")
+                +icon('user').icon--small.icon--left
+                | Prihlásiť do súťaže
+
+            .ko-user.hide
               .bar.bar--vertical
                 .bar__item.border-bottom-grey.ko-border--violet
                   .bar
@@ -67,7 +72,13 @@ block content
         .swiper-container(data-swiper-options=swiperConfig).ko-timeline
           .swiper-wrapper
             each item, i in Array(31)
-              .swiper-slide.ko-timeline-item.ko-text-color-violet.clickable(data-tooltip, title="2 z 3", data-position="bottom", data-id=`${i}`)
+              .swiper-slide.ko-timeline-item.ko-text-color-violet.clickable(
+                data-tooltip,
+                title=(i > 10) ? 'neaktívne' : '2 z 3',
+                data-position="bottom",
+                data-id=`${i}`,
+                class=(i < 5) ? 'is-complete' : '',
+                class=(i > 10) ? 'is-disabled' : '')
                 .text-center
                   .text-small
                     | #{i+1}.3.
@@ -97,9 +108,12 @@ block content
                   .text-color-white
                     .h5.mb-none.text-color-white.text-size-regular výzva pre tento deň
                     .h2.mb-small.text-transform-upper pantomíma
-                  .btn.btn--primary.btn--large.mb-small(data-toggle="#challenge")
-                    +icon('play').icon--medium.icon--left
-                    | Otvoriť výzvu
+                  if (i < 11)
+                    .btn.btn--primary.btn--large.mb-small(data-toggle="#challenge")
+                      +icon('play').icon--medium.icon--left
+                      | Otvoriť výzvu
+                  else
+                    .badge.badge--violet Výzva sa odomkne #{i+1}.3.
 
 
 
@@ -108,7 +122,7 @@ block content
           button.carousel__btn.carousel__btn--next.ko-planets__btn.clickable
             +icon('arrow-right')
 
-    #knihonaut.ko-knihonaut
+    //-#knihonaut.ko-knihonaut
       .bar
         .bar__item
           #knihonaut-scene.ko-knihonaut__scene
@@ -122,6 +136,24 @@ block content
                   .btn.btn--small.clickable.btn--clean#knihonaut-close
                     +icon('close').icon--small
               p.text-size-medium Budem ťa sprevádzať knižnou galaxiou a pomôžem ti objaviť skryté tajomstvá knižných planét. Ak ti niečo nebude jasné, klikni na mňa a pomôžem ti.
+
+  .modal-overlay#login(data-modal)
+    article.modal
+      .modal__wrap
+        .modal__header
+          .modal__header__headline
+            h2 Prihlásenie
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#login")
+              +icon('close').icon--medium
+        .modal__content
+          form
+            .form-control.form-control--input
+              .input-addons
+                input.input(type="text", placeholder="Tvoj e-mail...")
+                .input-addons__item.no-pad
+                  button.btn.btn--primary
+                    | Prihlásiť
 
   .modal-overlay#challenge(data-modal)
     article.modal.modal--full
@@ -149,8 +181,15 @@ block content
                   .input-addons
                     input.input(type="text", placeholder="Názov knihy...")
                     .input-addons__item.no-pad
-                      button.btn.btn--primary#btn-guess
+                      .btn.btn--primary#btn-guess
                         | Hľadaj
+
+              .card.card--success
+                .card__content
+                  .bar.mb-none
+                    .bar__item
+                      +icon('check-circle').icon--large.text-color-success
+                    .bar__item.text-color-success Gratulujeme! Uhádol si všetky knihy v tejto výzve.
 
               h3.h3 Uhádnuté knihy
               hr
@@ -176,26 +215,27 @@ block scripts
   script(src=`${assetsPrefix}scripts/knizna-odysea.js`)
   script
     .
-      window.addEventListener('DOMContentLoaded', function() {
+      window.addEventListener('DOMContentLoaded', () => {
         window.myApp.koTimeline.set(10);
-      });
 
-      document.getElementById('btn-guess').addEventListener('click', e => {
-        e.preventDefault();
-        const input = document.getElementById('input-guess');
-        input.classList.add('animation-shake');
-        input.querySelector('input').classList.add('is-error');
-        setTimeout(() => {
-          input.classList.remove('animation-shake');
-        }, 1000);
-      });
+        const title = 'Ahoj, som Knihonaut';
+        const content =
+        '<p class="text-size-medium">Budem ťa sprevádzať knižnou galaxiou a pomôžem ti objaviť skryté tajomstvá knižných planét. Ak ti niečo nebude jasné, klikni na mňa a pomôžem ti.</p>';
 
-      document.getElementById('knihonaut-close').addEventListener('click', e => {
-        document.getElementById('knihonaut').classList.remove('ko-knihonaut--active');
-        window.myApp.koKnihonaut.stop();
-      });
+        document.getElementById('knihonaut-open').addEventListener('click', e => {
+          window.myApp.koKnihonaut.show({ title, content });
+        });
 
-      document.getElementById('knihonaut-open').addEventListener('click', e => {
-        document.getElementById('knihonaut').classList.add('ko-knihonaut--active');
-        window.myApp.koKnihonaut.play();
+        console.log(document.getElementById('btn-guess'));
+
+        document.getElementById('btn-guess').addEventListener('click', e => {
+          e.preventDefault();
+          const input = document.getElementById('input-guess');
+          input.classList.add('animation-shake');
+          input.querySelector('input').classList.add('is-error');
+          setTimeout(() => {
+            input.classList.remove('animation-shake');
+          }, 1000);
+        });
+
       });

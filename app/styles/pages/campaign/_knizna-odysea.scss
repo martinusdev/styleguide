@@ -1,3 +1,4 @@
+$ko-color-dark: #17061f;
 $ko-color-violet-dark: #3d245e;
 $ko-color-violet: #8781bd;
 $ko-color-violet-hover: #cbc7e4;
@@ -70,11 +71,28 @@ $ko-color-green: #e1ff6b;
     color: $color-white;
     font-weight: $font-weight-semibold;
   }
+
+  &.is-complete {
+    color: $ko-color-green;
+  }
+
+  &.is-disabled {
+    color: $color-white;
+
+    .text-small {
+      opacity: 0.2;
+    }
+
+    .icon {
+      color: $ko-color-dark;
+    }
+  }
 }
 
 .ko-planets {
   background: url('../images/content/campaign/knizna-odysea/space.jpg') no-repeat;
   background-size: cover;
+  background-position: center center;
 
   &__btn .icon {
     width: _get-rem(72px);
@@ -150,11 +168,14 @@ $ko-color-green: #e1ff6b;
   }
 
   &__content {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
     position: absolute;
     left: 0;
     right: 0;
     bottom: 15%;
+    transition: visibility $ease-400, opacity $ease-600, transform $ease-600;
+    transform: scale(0.3);
 
     .h2 {
       text-shadow: 0 0 30px $color-black;
@@ -166,7 +187,9 @@ $ko-color-green: #e1ff6b;
   }
 
   .swiper-slide-active &__content {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
