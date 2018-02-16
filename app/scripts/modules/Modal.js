@@ -41,7 +41,11 @@ export default class Modal {
     return this;
   }
 
-  _init() {
+  update() {
+    this._init(false);
+  }
+
+  _init(load = true) {
     this.modals.push.apply(
       this.modals,
       document.querySelectorAll(`[${this.selector}]`),
@@ -56,7 +60,9 @@ export default class Modal {
     });
 
     this._assignAccessibilityAttributes();
-    this._openModalOnLoad();
+    if (load) {
+      this._openModalOnLoad();
+    }
     return this.modals;
   }
 
