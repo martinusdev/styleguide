@@ -15,16 +15,20 @@ export default class KOTimeline {
         document.querySelectorAll('.ko-timeline-item'),
       );
 
-      this.swipers.planets.on('onTransitionStart', swiper =>
-        this._slideChange(swiper),
-      );
-
-      this.timelineItems.forEach(item => {
-        item.addEventListener('click', e => this._itemClick(e), false);
-      });
+      this.initialize();
     });
 
     window.addEventListener('resize', () => this._onResize(), false);
+  }
+
+  initialize() {
+    this.swipers.planets.on('onTransitionStart', swiper =>
+      this._slideChange(swiper),
+    );
+
+    this.timelineItems.forEach(item => {
+      item.addEventListener('click', e => this._itemClick(e), false);
+    });
   }
 
   _onResize() {
