@@ -15,6 +15,8 @@ export default class KOTimeline {
         document.querySelectorAll('.ko-timeline-item'),
       );
 
+      this.background = document.querySelector('.ko-planets');
+
       this.initialize();
     });
 
@@ -57,6 +59,8 @@ export default class KOTimeline {
     timelineItem.classList.add('is-active');
 
     this.swipers.timeline._slideTo(this.item);
+
+    this.background.style.backgroundPositionX = `${this.item * 3}%`;
   }
 
   set(id) {
