@@ -39,7 +39,7 @@ export default class Knihonaut {
     this.content = document.getElementById('knihonaut-content');
     this.scene = new GGScene(
       'knihonaut-scene',
-      'http://knihonaut.blur.sk/models/Knihonaut-animated.json',
+      '//mrtns.eu/assets/martinus/campaign/knizna-odysea/models/Knihonaut-animated.json',
     );
     this.scene.loadModel();
   }

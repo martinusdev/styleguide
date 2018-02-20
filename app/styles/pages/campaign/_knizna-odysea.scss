@@ -70,6 +70,7 @@ $ko-color-green: #e1ff6b;
     transform: scale(1.3) translateY(-3px);
     color: $color-white;
     font-weight: $font-weight-semibold;
+    opacity: 1 !important;
   }
 
   &.is-complete {
@@ -78,21 +79,19 @@ $ko-color-green: #e1ff6b;
 
   &.is-disabled {
     color: $color-white;
-
-    .text-small {
-      opacity: 0.2;
-    }
-
-    .icon {
-      color: $ko-color-dark;
-    }
+    opacity: 0.2;
   }
 }
 
 .ko-planets {
   background: url('../images/content/campaign/knizna-odysea/space.jpg') no-repeat;
-  background-size: cover;
-  background-position: center center;
+  background-size: 200%;
+  background-position: 0 top;
+  transition: background-position $ease-600;
+
+  @include breakpoint('m') {
+    background-size: 120%;
+  }
 
   &__btn .icon {
     width: _get-rem(72px);
