@@ -305,11 +305,12 @@ block scripts
         window.myApp.koTimeline.set(5);
 
         const title = 'Ahoj, som Knihonaut';
+        const icon = 'icons_/app.svg#icon-close';
         const content =
         '<p class="text-size-medium">Budem ťa sprevádzať knižnou galaxiou a pomôžem ti objaviť skryté tajomstvá knižných planét. Ak ti niečo nebude jasné, klikni na mňa a pomôžem ti. <a class="link ko-link--green" href="#about" data-toggle="#about">viac o mne</a></p>';
 
         document.getElementById('knihonaut-open').addEventListener('click', e => {
-          window.myApp.koKnihonaut.show({ title, content });
+          window.myApp.koKnihonaut.show({ title, content, icon });
           window.myApp.toggles.update();
         });
 
