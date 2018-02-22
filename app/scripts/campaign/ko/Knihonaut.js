@@ -22,9 +22,7 @@ const templateContent = data => `
     </div>
     <div class="bar__item bar__item--shrinkable">
       <div class="btn btn--small clickable btn--clean" id="knihonaut-close">
-          <svg class="icon icon-close  icon--small" role="img" aria-hidden="true">
-            <use xlink:href="${data.icon}"></use>
-          </svg>
+          ${data.icon}
       </div>
     </div>
   </div>
