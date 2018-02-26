@@ -88,6 +88,25 @@ $ko-color-green: #e1ff6b;
   background-size: 200%;
   background-position: 0 top;
   transition: background-position $ease-600;
+  position: relative;
+
+  &-bonus {
+    background: url('../images/content/campaign/knizna-odysea/bonus.png') no-repeat;
+    width: 134px;
+    height: 111px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    overflow: hidden;
+
+    &__txt {
+      width: 173px;
+      margin-top: 15px;
+      transform-origin: center center;
+      transform: rotate(40deg);
+    }
+  }
 
   @include breakpoint('m') {
     background-size: 120%;
