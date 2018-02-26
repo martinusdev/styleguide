@@ -1,0 +1,18 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Blog Article'
+    - var blogHeader = true;
+
+block content
+  main
+
+    section.section
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.myApp.scrollOffset = {0: 85, 768: 95};

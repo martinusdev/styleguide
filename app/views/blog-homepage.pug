@@ -1,0 +1,171 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Blog Homepage'
+    - var blogHeader = true;
+
+block content
+  main
+
+    section.section.section--breadcrumbs
+      .wrapper-main
+        nav
+          ul.list-inline.inline-nav.mb-none
+            each item in ['Recenzie', 'Lookbook', 'Tlačové správy', 'Drobnôstky', 'Nejaká kategória']
+              li.inline-nav__item
+                a.inline-nav__link #{item}
+
+    section.section
+      .wrapper-main
+        .row
+          .col--m-6
+            img.img(src="images/content/text-page/text-page-1.jpg")
+          .col--m-6
+            h1.h1.mb-medium
+              a.link.text-bold Nadpis hlavného článku
+            .bar.mb-medium.text-medium
+              .bar__item.flex.align-items-middle
+                .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                span.text-semibold.text-space-left Tomáš Ulej
+              .bar__item.bar__item--border
+              .bar__item
+                .h5.show-m štvrtok #{' '}
+                  b 21. decembra 2017
+                  | #{' '}16:50
+                .h5.hide-m št #{' '}
+                  b 21.12. 2017
+                  | #{' '}16:50
+              .bar__item.show-s
+                +icon('time').text-space-right-tiny
+                b 15 minút čítania
+              .bar__item.hide-s
+                +icon('time').text-space-right-tiny
+                b 15
+
+            p.hide-m-only V rubrike O knihách a ľuďoch vám vždy posledný pondelok v mesiaci prezradíme o niekom z nášho kníhkupectva čosi viac ;-) Dostane 15 otázok. Niektoré o knihách, niektoré zo života. A dostane ešte jedno privilégium: odporučiť vám knihu, na ktorú bude nasledujúci týždeň zľava až 25%!
+
+            .text-right
+              a.btn.btn--clean
+                | Celý článok
+                +icon('arrow-right').icon--right
+
+        hr
+
+        each i in [0, 1]
+          .row
+            each j in [0, 1]
+              .col--m-6
+                h2.h2.mb-medium
+                  a.link Nadpis ďalšieho článku
+                .bar.mb-medium.text-medium
+                  .bar__item.flex.align-items-middle
+                    .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                    span.text-semibold.text-space-left Tomáš Ulej
+                  .bar__item.bar__item--border
+                  .bar__item
+                    .h5.show-m štvrtok #{' '}
+                      b 21. decembra 2017
+                      | #{' '}16:50
+                    .h5.hide-m št #{' '}
+                      b 21.12. 2017
+                      | #{' '}16:50
+                  .bar__item.show-l
+                    +icon('time').text-space-right-tiny
+                    b 15 minút čítania
+                  .bar__item.hide-l
+                    +icon('time').text-space-right-tiny
+                    b 15
+
+                .row
+                  .col--m-6
+                    img.img(src="images/content/stores/store-ba.jpg")
+                  .col--m-6
+                    p(data-collapse="150") V rubrike O knihách a ľuďoch vám vždy posledný pondelok v mesiaci prezradíme o niekom z nášho kníhkupectva čosi viac ;-) Dostane 15 otázok. Niektoré o knihách, niektoré zo života. A dostane ešte jedno privilégium: odporučiť vám knihu, na ktorú bude nasledujúci týždeň zľava až 25%!
+                    .text-right
+                      a.btn.btn--clean
+                        | Celý článok
+                        +icon('arrow-right').icon--right
+
+    section.section.section--secondary
+      .wrapper-main
+        .row
+          .col--m-6
+
+            .card
+              .card__content.card__content--overflow
+                .bar
+                  .bar__item.bar__item--fill
+                    h2.h3
+                      +icon('youtube').text-space-right
+                      | Náš Youtube
+                -
+                  var swiperConfig = {
+                    nextButton: '.carousel__btn--next',
+                    prevButton: '.carousel__btn--prev',
+                    slidesPerView: 3,
+                    slidesPerGroup: 3,
+                    spaceBetween: 10,
+                    breakpoints: {
+                      768: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2,
+                      },
+                    },
+                  };
+                  swiperConfig = JSON.stringify(swiperConfig);
+                .carousel.carousel--fade-outside.carousel--fade-outside-white
+                  .swiper-container(data-swiper-options=swiperConfig)
+                    .swiper-wrapper
+                      each i in [0, 1, 2, 3, 5, 6, 7, 8]
+                        a.swiper-slide(href=`#`)
+                          img.img(src="images/content/stores/store-ba.jpg")
+
+                    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+                      +icon('arrow-left').icon--medium
+                    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+                      +icon('arrow-right').icon--medium
+
+          .col--m-6
+
+            .card
+              .card__content.card__content--overflow
+                .bar
+                  .bar__item.bar__item--fill
+                    h2.h3
+                      +icon('instagram').text-space-right
+                      | Náš Instagram
+
+                -
+                  var swiperConfig = {
+                  nextButton: '.carousel__btn--next',
+                  prevButton: '.carousel__btn--prev',
+                  slidesPerView: 3,
+                  slidesPerGroup: 3,
+                  spaceBetween: 10,
+                  breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        slidesPerGroup: 2,
+                      },
+                    },
+                  };
+                  swiperConfig = JSON.stringify(swiperConfig);
+                .carousel.carousel--fade-outside.carousel--fade-outside-white
+                  .swiper-container(data-swiper-options=swiperConfig)
+                    .swiper-wrapper
+                      each i in [0, 1, 2, 3, 5, 6, 7, 8]
+                        a.swiper-slide(href=`#`)
+                          img.img(src="images/content/stores/store-ba.jpg")
+
+                    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+                      +icon('arrow-left').icon--medium
+                    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+                      +icon('arrow-right').icon--medium
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.myApp.scrollOffset = {0: 85, 768: 95};
