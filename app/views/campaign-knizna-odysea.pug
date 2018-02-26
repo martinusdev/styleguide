@@ -14,7 +14,7 @@ block content
     section.section.ko-header.text-color-white
       .wrapper-main
         .row.align-items-top.mb-none
-          .col--m-3.mb-medium.mb-none-m.text-center#knihonaut-open
+          .col--m-3.mb-medium.mb-none-m.text-center
             a.show-m
               img(src="images/content/campaign/knizna-odysea/logo-sk.svg", width="270")
             a.hide-m
@@ -90,6 +90,10 @@ block content
                   +icon('hex').icon--medium
 
     section.ko-planets
+      a(href="#").ko-planets-bonus.clickable
+        .ko-planets-bonus__txt.text-center
+          h2.h3.text-color-white.mb-none Psst!
+          .text-color-white.text-small Tajný bonus
       -
         var swiperConfig = {
         id: 'planets',
@@ -306,7 +310,7 @@ block scripts
         window.myApp.koTimeline.set(5);
 
         const title = 'Ahoj, som Knihonaut';
-        const icon = '<svg class="icon icon-close  icon--small" role="img" aria-hidden="true"><use xlink:href="icons_/app.svg#icon-close"></use></svg>';
+        const icon = '<svg class="icon icon-close icon--small" role="img" aria-hidden="true"><use xlink:href="icons_/app.svg#icon-close"></use></svg>';
         const content =
         '<p class="text-size-medium">Budem ťa sprevádzať knižnou galaxiou a pomôžem ti objaviť skryté tajomstvá knižných planét. Ak ti niečo nebude jasné, klikni na mňa a pomôžem ti. <a class="link ko-link--green" href="#about" data-toggle="#about">viac o mne</a></p>';
 
