@@ -7,16 +7,6 @@ export default class KOTimeline {
     this.timelineItems = [];
 
     window.addEventListener('DOMContentLoaded', () => {
-      window.myApp.carousels.instances.forEach(swiper => {
-        this.swipers[swiper.params.id] = swiper;
-      });
-
-      this.timelineItems = nodeListToArray(
-        document.querySelectorAll('.ko-timeline-item'),
-      );
-
-      this.background = document.querySelector('.ko-planets');
-
       this.initialize();
     });
 
@@ -24,6 +14,16 @@ export default class KOTimeline {
   }
 
   initialize() {
+    window.myApp.carousels.instances.forEach(swiper => {
+      this.swipers[swiper.params.id] = swiper;
+    });
+
+    this.background = document.querySelector('.ko-planets');
+
+    this.timelineItems = nodeListToArray(
+      document.querySelectorAll('.ko-timeline-item'),
+    );
+
     this.swipers.planets.on('onTransitionStart', swiper =>
       this._slideChange(swiper),
     );
