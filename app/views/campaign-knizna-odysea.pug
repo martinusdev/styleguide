@@ -26,7 +26,7 @@ block content
                 a(href="#", data-toggle="#rules").link.ko-link--green #{' '}kompletné pravidlá.
             .hide-m
               p.mb-none#ko-description(data-collapse="70") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis arcu a vulputate tincidunt. Vivamus nisl arcu, accumsan eu imperdiet nec, ornare eget felis. Vivamus quis dui ac arcu euismod suscipit sit amet sed augue bla bla
-                a(href="#").link.ko-link--green #{' '}kompletné pravidlá.
+                a(href="#", data-toggle="#rules").link.ko-link--green #{' '}kompletné pravidlá.
               a.link.ko-link--green.text-size-medium(href="javascript:void(0)", data-toggle="#ko-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                 +icon('arrow-down')
           .col--m-4.col--l-3.mb-none-m
@@ -247,8 +247,8 @@ block content
 
               h3.h2 Jak hrát?
 
-              .row.mb-large
-                .col--m-8
+              .row
+                .col--m-8.mb-large
                   ol.list--default.list--expanded.list--no-offset
                     li
                       b Planetek, na kterých na tebe čeká záludný úkol, je celkem 30.
@@ -263,10 +263,12 @@ block content
                       | Máš neomezený počet pokusů, takže pokud si myslíš, že znáš správnou odpověď, neváhej a zadej ji do příslušného políčka a klikni na “Odeslat”! Hned se dozvíš, jestli je tvá odpověď skutečně správná.
                     li
                       b Zapojit se můžeš kdykoli od 1. do 31. března.
-                .col--m-4
-                  img(src=`${assetsPrefix}images/content/campaign/knizna-odysea/content/hp.png`).img
+                .col--m-4.mb-large
+                  img(src=`${assetsPrefix}images/content/campaign/knizna-odysea/content/moon.png`).img
+                  .text-medium.text-center
+                    i mesiac knihy :-)
 
-              .mb-large
+              .mb-large.show-m
                 img(src=`${assetsPrefix}images/content/campaign/knizna-odysea/content/scene.png`).img
 
               h3.h2 Co můžeš vyhrát?
