@@ -96,15 +96,15 @@ block content
           .text-color-white.text-small Tajný bonus
       -
         var swiperConfig = {
-        id: 'planets',
-        nextButton: '.carousel__btn--next',
-        prevButton: '.carousel__btn--prev',
-        slidesPerView: 'auto',
-        slidesPerGroup: 1,
-        spaceBetween: 20,
-        centeredSlides: true,
-        loop: false,
-        slideToClickedSlide: false,
+          id: 'planets',
+          nextButton: '.carousel__btn--next',
+          prevButton: '.carousel__btn--prev',
+          slidesPerView: 'auto',
+          slidesPerGroup: 1,
+          spaceBetween: 20,
+          centeredSlides: true,
+          loop: false,
+          slideToClickedSlide: false,
         };
         swiperConfig = JSON.stringify(swiperConfig);
       .carousel.carousel--fade-inactive.carousel--disable-inactive
@@ -118,8 +118,8 @@ block content
                 .ko-planets-item__content.text-center
                   if (i < 10)
                     .text-color-white
-                      .h5.mb-none.text-color-white.text-size-regular výzva pre tento deň
-                      .h2.mb-small.text-transform-upper pantomíma
+                      .h5.mb-none.text-color-white.text-size-regular dnes: pantomíma
+                      .h2.mb-small.text-transform-upper beta malej medvedice
                       .btn.btn--primary.btn--large.mb-small(data-toggle="#challenge")
                         +icon('play').icon--medium.icon--left
                         | Otvoriť výzvu
@@ -167,7 +167,7 @@ block content
                     | Prihlásiť
 
   .modal-overlay#challenge(data-modal)
-    article.modal.modal--full
+    article.modal.modal--medium
       .modal__wrap
         .modal__header.mb-none
           .modal__header__headline.text-center
@@ -177,15 +177,15 @@ block content
             .btn.btn--clean(data-toggle="#challenge")
               +icon('close').icon--medium
         .row.ko-video-background
-          .ofst--m-2
-          .col--m-8
+          .ofst--m-1
+          .col--m-10
             .ko-video
               | <iframe width="560" height="315" src="https://www.youtube.com/embed/docIm4sExSk?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         .modal__content
           .mb-medium
           .row
-            .ofst--m-3
-            .col--m-6
+            .ofst--m-1
+            .col--m-10
               h3.h2 Zadaj knihy, ktoré si rozlúštil vo videu
               form.mb-large
                 .form-control.form-control--input#input-guess
@@ -200,7 +200,11 @@ block content
                   .bar.mb-none
                     .bar__item
                       +icon('check-circle').icon--large.text-color-success
-                    .bar__item.text-color-success Gratulujeme! Uhádol si všetky knihy v tejto výzve.
+                    .bar__item.bar__item--fill.text-color-success
+                      | Gratulujeme! Uhádol si všetky knihy v tejto výzve.
+                    .bar__item.bar__item--shrinkable
+                      button.btn.btn--small.btn--clean ďalej
+                        +icon('arrow-right')
 
               h3.h3 Uhádnuté knihy
               hr
@@ -231,37 +235,48 @@ block content
           .modal__header__action
             .btn.btn--clean(data-toggle="#rules")
               +icon('close').icon--medium
-        .row
-          .ofst--m-2
-          .col--m-8
-
-            h2 Popis knihy
-
-            .card.card--notice
-              .card__content
-                p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit magna eu lacinia fringilla. Nulla ligula justo, suscipit nec dui sit amet, consectetur dapibus lacus.
-
-            p
-              i „Neprišiel si včas, moknem tu už hodinu a z hlavy mi zatieklo po chrbte až na riť!“#{' '}
-                b - Richard Krausz
-
-            p Je rok 1992 a Československo sa rozpadáva. Detektív Krauz z oddelenia vrážd sa dostáva k prípadu umučeného kostolníka. Jeho smrť mala ostať tajomstvom, ale klinec zatlčený v lebke núti Krauza pátrať aj napriek všetkým varovaniam. Pravdu o prepojení ŠtB a Cirkvi svätej môže priniesť len muž prezývaný Červený kapitán. Stretnutie s týmto „expertom na finálne výsluchy“ ale málokto prežije...
-
-            h3 Drsná detektívka slovenského knižného fenoménu Dominika Dána
-
-            p Predalo sa viac ako 700 000 kníh a konečne prichádza dlhoočakávaný film. Stovky trikových záberov, jeden z najväčších rozpočtov v slovenskom filme a príbeh inšpirovaný skutočnými udalosťami, v ktorom treba ísť cez mŕtvoly.
-
-            p Tento titul nájdete v našej ponuke aj s podpisom autora.
-
-            h3 Drsná detektívka slovenského knižného fenoménu Dominika Dána
-
-            p Predalo sa viac ako 700 000 kníh a konečne prichádza dlhoočakávaný film. Stovky trikových záberov, jeden z najväčších rozpočtov v slovenskom filme a príbeh inšpirovaný skutočnými udalosťami, v ktorom treba ísť cez mŕtvoly.
-
-            p Je rok 1992 a Československo sa rozpadáva. Detektív Krauz z oddelenia vrážd sa dostáva k prípadu umučeného kostolníka. Jeho smrť mala ostať tajomstvom, ale klinec zatlčený v lebke núti Krauza pátrať aj napriek všetkým varovaniam. Pravdu o prepojení ŠtB a Cirkvi svätej môže priniesť len muž prezývaný Červený kapitán. Stretnutie s týmto „expertom na finálne výsluchy“ ale málokto prežije...
-
-            p Je rok 1992 a Československo sa rozpadáva. Detektív Krauz z oddelenia vrážd sa dostáva k prípadu umučeného kostolníka. Jeho smrť mala ostať tajomstvom, ale klinec zatlčený v lebke núti Krauza pátrať aj napriek všetkým varovaniam. Pravdu o prepojení ŠtB a Cirkvi svätej môže priniesť len muž prezývaný Červený kapitán. Stretnutie s týmto „expertom na finálne výsluchy“ ale málokto prežije...
-
         .modal__content
+          .row
+            .ofst--m-2
+            .col--m-8
+
+              h2.mb-small Vítej, knihonautko, vítej, knihonaute!
+              h3.h4 Přečti si návod, jak hrát Knižní odyseu, ať se mezi knižními světy a planetkami neztratíš!
+
+              hr
+
+              h3 Jak hrát?
+
+              ol.list--default.list--expanded.list--no-offset
+                li
+                  b Planetek, na kterých na tebe čeká záludný úkol, je celkem 30.
+                  | Každý den od 1. do 30. března se odemkne jedna z nich a umožní ti plnit úkol, který ukrývá.
+                li
+                  b Celkem se musíš vypořádat se třemi druhy úkolů.
+                  | S pantomimou, s kreslením a se slovním popisem. Všemi těmito způsoby jsme - s pomocí spisovatelek, herců a dalších osobností - ztvárnili knížky, které musíš uhodnout.
+                li
+                  b U každého úkolu - videa uvidíš, kolik knih se v něm ukrývá a kolik musíš uhodout, abys úkol splnil/a.
+                li
+                  b Pod videem najdeš políčko pro vyplnění názvu uhodnutých knih.
+                  | Máš neomezený počet pokusů, takže pokud si myslíš, že znáš správnou odpověď, neváhej a zadej ji do příslušného políčka a klikni na “Odeslat”! Hned se dozvíš, jestli je tvá odpověď skutečně správná.
+                li
+                  b Zapojit se můžeš kdykoli od 1. do 31. března.
+
+              h3 Co můžeš vyhrát?
+
+              p Za každý splněný úkol se ti připočtou 3 knihy, kolik knih aktuálně můžeš vyhrát uvidíš nahoře na stránce.
+                br
+                | Po skončení soutěže vylosujeme jednoho výherce či výherkyni, který/á vyhraje knihy podle toho, kolik splnil/a úkolů.#{' '}
+                b Pokud v březnu nakoupíš v Martinusu, tvoji výhru v případě, že tě vylosujeme, ještě zdvojnásobíme! Vyhrát tedy můžeš až 180 knih.
+
+              p To ale není všechno, těšit se můžeš i na Tajné bonusy, které se na stránce budou objevovat a umožní ti vyhrát další knihomolské ceny. Sleduj proto pozorně tuto stránku!
+
+              p Tvým průvodcem knižním vesmírem je zkušený Knihonaut. Objeví se vždycky, když je potřeba dozvědět se něco důležitého o hře nebo nějakou tu zajímavost z knižního světa. Tak si nenech ujít žádnou novinku, kterou ti přinese!
+
+              p Držíme palce!
+
+              p Chceš si přečíst detailní pravidla soutěže?#{' '}
+                a.link Klikni sem.
 
   .modal-overlay#about(data-modal)
     article.modal.modal--full
