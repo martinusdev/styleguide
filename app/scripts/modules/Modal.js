@@ -239,13 +239,13 @@ export default class Modal {
       window.history.replaceState(
         undefined,
         undefined,
-        window.location.pathname,
+        `${window.location.pathname}${window.location.search}`,
       );
     } else {
       window.history.replaceState(
         undefined,
         undefined,
-        `${window.location.pathname}#${this.activeModals[this.activeModals.length - 1].overlay.getAttribute('id')}`,
+        `${window.location.pathname}${window.location.search}#${this.activeModals[this.activeModals.length - 1].overlay.getAttribute('id')}`,
       );
     }
   }
