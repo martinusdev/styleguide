@@ -27,32 +27,35 @@ block content
 
     article.cms-article
 
-      section.section
+      section
+        .parallax-image.parallax-image--medium.parallax-image--dark(style="background-image: url('http://blog.martinus.sk/wp-content/uploads/2018/02/DSC4932-768x513.jpg');")
+
+      section.section.section--secondary
         .wrapper-main
-          h1.h1.mb-medium 7 zaujímavostí o fenoméne Pýcha a predsudok
-          .bar.mb-medium.text-medium
-            .bar__item.flex.align-items-middle
-              .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-              span.text-semibold.text-space-left Tomáš Ulej
-            .bar__item.bar__item--border
-            .bar__item
-              .h5.show-m štvrtok #{' '}
-                b 21. decembra 2017
-                | #{' '}16:50
-              .h5.hide-m št #{' '}
-                b 21.12. 2017
-                | #{' '}16:50
-            .bar__item.show-s
-              +icon('time').text-space-right-tiny
-              b 15 minút čítania
-            .bar__item.hide-s
-              +icon('time').text-space-right-tiny
-              b 15
+          .row
+            .ofst--m-2
+            .col--m-8
+              h1.h1.mb-medium 7 zaujímavostí o fenoméne Pýcha a predsudok
+              .bar.mb-medium.text-medium
+                .bar__item.flex.align-items-middle
+                  .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                  span.text-semibold.text-space-left Tomáš Ulej
+                .bar__item.bar__item--border
+                .bar__item
+                  .h5.show-m štvrtok #{' '}
+                    b 21. decembra 2017
+                    | #{' '}16:50
+                  .h5.hide-m št #{' '}
+                    b 21.12. 2017
+                    | #{' '}16:50
+                .bar__item.show-s
+                  +icon('time').text-space-right-tiny
+                  b 15 minút čítania
+                .bar__item.hide-s
+                  +icon('time').text-space-right-tiny
+                  b 15
 
-          p.h4 Ak ste si tiež zamilovali svetovú klasiku z pera Jane Austen, možno vás poteší pár doplňujúcich informácii o príbehu a jeho autorke. Nech žije Elizabeth, pán Darcy a všetká tá galantnosť dávnych čias! :-) Gratulujeme – práve túto nedeľu oslávi román svoje 203. narodeniny.
-
-      section.section
-        .parallax-image.parallax-image--medium.parallax-image--dark(style="background-image: url('images/content/text-page/text-page-1.jpg');")
+              p.h4.mb-large Ak ste si tiež zamilovali svetovú klasiku z pera Jane Austen, možno vás poteší pár doplňujúcich informácii o príbehu a jeho autorke. Nech žije Elizabeth, pán Darcy a všetká tá galantnosť dávnych čias! :-) Gratulujeme – práve túto nedeľu oslávi román svoje 203. narodeniny.
 
       section.section
         .wrapper-main
@@ -68,8 +71,8 @@ block content
           .row
             .ofst--m-2
             .col--m-8
-              h2 Knihy spomenuté v článku
-              hr
+              h3.text-color-grey Knihy spomenuté v článku
+              hr.mb-none
           +booksCarouselRecommended.carousel--fade-outside
 
           .row
@@ -84,14 +87,21 @@ block content
               h2.h3 4. Aj Austenová mala blízky vzťah so svojou sestrou, podobne ako Elizabeth
               p Písali si takmer každý deň, zverovali sa jedna druhej a vždy chceli bývať v jednej miestnosti, hoci každá mohla mať svoju spálňu. Taký bol vzťah dvoch sestier Jane a Cassandry Austenových. Niet sa čomu čudovať, že v románe nachádzame podobne vykreslený sesterský vzťah.
 
-          .row
-            .col--m-5
-              img.img(src="images/content/stores/store-ba.jpg")
-            .col--m-5
               h2.h3 5. Pán Darcy je fakt boháč!
 
               p V novinách The Telegraph vyrátali v roku 2013, že v tom období by majetok pána Darcyho predstavoval 12 miliónov libier. Nie sa teda čomu čudovať, že ohľadom voľby tej „najsprávnejšej“ snúbenice pre tohto zámožného muža vzniklo toľko úsilia..
 
+          .row
+            .col--m-2
+              .h5 Obrazok a tak
+              hr.mb-medium
+              p.text-medium Sem by mohol ist popis obrazka ak treba
+            .col--m-8
+              img.img(src="http://blog.martinus.sk/wp-content/uploads/2018/02/DSC4942-768x513.jpg")
+
+          .row
+            .ofst--m-2
+            .col--m-8
               h2.h3 6. Inšpirácia pre názov
 
               p Román dostal svoj názov podľa knihy Cecilia od Fanny Burney, kde sa fráza “pýcha a predsudok” vyskytla trikrát.
@@ -109,15 +119,6 @@ block content
                 i #{' '}“Od prvého momentu som vedela, že ťa nikdy nebudem chcieť.”
                 | #{' '}je v Elizabethinom podaní prerozprávaná nasledovne:
                 i #{' '}“Od samého začiatku – takmer by som povedala, od prvej chvíle, čo vás poznám, vaše správanie vzbudilo vo mne najhlbšie presvedčenie o vašej arogancii, povýšenosti a sebeckom pohŕdaní citmi iných ľudí, a položilo základ toho nesúhlasu, na ktorom nasledujúce udalosti vystavali nemenný odpor, a nepoznala som vás ešte ani mesiac a už som cítila, že ste posledným mužom na svete, za ktorého by som bola ochotná vydať sa.”
-
-
-              .card.card--notice
-                .card__content
-                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit magna eu lacinia fringilla. Nulla ligula justo, suscipit nec dui sit amet, consectetur dapibus lacus.
-
-              p
-                i „Neprišiel si včas, moknem tu už hodinu a z hlavy mi zatieklo po chrbte až na riť!“#{' '}
-                  b - Richard Krausz
 
           .row
             .col--m-2
@@ -150,24 +151,19 @@ block content
                 li
                   a(href='#') Noc temných klamstiev
 
-              h3 Iný zoznam
-
-              ul
-                li Položka zoznamu
-                li Položka zoznamu
-                li Položka zoznamu
-                li Položka zoznamu
-
-          .row
-            .col--m-12
-              img(src="images/content/text-page/text-page-1.jpg").img
-
           .row
             .ofst--m-2
             .col--m-8
               p Je rok 1992 a Československo sa rozpadáva. Detektív Krauz z oddelenia vrážd sa dostáva k prípadu umučeného kostolníka. Jeho smrť mala ostať tajomstvom, ale klinec zatlčený v lebke núti Krauza pátrať aj napriek všetkým varovaniam. Pravdu o prepojení ŠtB a Cirkvi svätej môže priniesť len muž prezývaný Červený kapitán. Stretnutie s týmto „expertom na finálne výsluchy“ ale málokto prežije...
 
-              h3 Drsná detektívka slovenského knižného fenoménu Dominika Dána
+              .card.card--notice
+                .card__content
+                  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit magna eu lacinia fringilla. Nulla ligula justo, suscipit nec dui sit amet, consectetur dapibus lacus.
+
+              p
+                i „Neprišiel si včas, moknem tu už hodinu a z hlavy mi zatieklo po chrbte až na riť!“#{' '}
+                  b - Richard Krausz
+
               p Predalo sa viac ako 700 000 kníh a konečne prichádza dlhoočakávaný film. Stovky trikových záberov, jeden z najväčších rozpočtov v slovenskom filme a príbeh inšpirovaný skutočnými udalosťami, v ktorom treba ísť cez mŕtvoly.
               p Tento titul nájdete v našej ponuke aj s podpisom autora.
               p
@@ -175,6 +171,35 @@ block content
                 a(href="#") Film Červený kapitán je povinná jazda pre fanúšikov Dominika Dána
 
       section.section
+        .wrapper-main
+          .row.mb-large
+            .ofst--m-2
+            .col--m-8
+              .card.card--info
+                .card__content
+                  .bar
+                    .bar__item.bar__item--shrinkable.show-s
+                      .portrait.portrait--xlarge(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                    .bar__item.bar__item--fill
+                      .bar
+                        .bar__item.bar__item--shrinkable.hide-s
+                          .portrait.portrait--medium.hide-s(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill
+                          h2 Meno Autora
+                          .h5 Čo robí a tak
+                      p.mb-small Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit magna eu lacinia fringilla. Nulla ligula justo, suscipit nec dui sit amet, consectetur dapibus lacus.
+                      a.link Články autora
+
+      section.section.section--secondary
+        .wrapper-main
+          h2 Ďalšie zaujímavé články
+          .row.mb-large
+            each j in [0, 1, 2, 3]
+              .col--m-3.col--6
+                img.img(src="images/content/stores/store-ba.jpg").no-mrg-bottom
+                .mb-small
+                h3
+                  a.link Nadpis ďalšieho článku
 
 block scripts
   script.
