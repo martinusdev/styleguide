@@ -59,7 +59,8 @@ export default class Modal {
       }
     });
 
-    this._assignAccessibilityAttributes();
+    // do accessibility posielame load parameter, lebo pri otvoreni modalu nechceme tabindex -1
+    this._assignAccessibilityAttributes(load);
     if (load) {
       this._openModalOnLoad();
     }
@@ -80,13 +81,15 @@ export default class Modal {
     }
   }
 
-  _assignAccessibilityAttributes() {
+  _assignAccessibilityAttributes(tabindex = true) {
     this.modals.forEach(modal => {
       const dialog = modal.querySelector(this.config.modalDialogSelector);
 
       if (dialog) {
         dialog.setAttribute('role', 'dialog');
-        dialog.setAttribute('tabindex', '-1');
+        if (tabindex) {
+          dialog.setAttribute('tabindex', '-1');
+        }
         dialog.setAttribute('aria-hidden', 'true');
 
         const headline = dialog.querySelector(
