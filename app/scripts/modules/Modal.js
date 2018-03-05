@@ -159,6 +159,7 @@ export default class Modal {
     this.dialog.style.zIndex =
       this.config.modalZindex + this.activeModals.length;
     this.dialog.setAttribute('aria-hidden', 'false');
+    this.dialog.setAttribute('tabindex', '0');
     this.dialog.addEventListener('blur', this._onBlur, true);
 
     this._handleMultipleModals();
@@ -188,6 +189,7 @@ export default class Modal {
           );
         }
         this.activeModals[i].dialog.setAttribute('aria-hidden', 'true');
+        this.activeModals[i].dialog.setAttribute('tabindex', '-1');
         this.activeModals[i].dialog.zIndex = 0;
         this.activeModals[i].dialog.classList.remove('is-active');
 
