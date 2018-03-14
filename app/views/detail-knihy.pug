@@ -202,6 +202,73 @@ block content
                 | <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
                 | <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+      section.section
+        .wrapper-main
+          .card.card--info
+            .card__content
+              .bar
+                .bar__item
+                  h2 Vydavateľský portál
+                .bar__item
+                  a.link ísť na stránku vydavateľstva
+              div
+                .badge.badge--green BB 6
+                .badge.badge--green BA-C 6
+                .badge.badge--green BA-O 6
+                .badge.badge--green KE 6
+                .badge.badge--green LC 6
+                .badge.badge--green MT-G 6
+                .badge.badge--green NR 6
+                .badge.badge--green PP 6
+                .badge.badge--green PB 6
+                .badge.badge--green ZA 6
+                .badge.badge--orange IKAR 100
+              hr.mb-small
+              .bar.mb-small
+                .bar__item.bar__item--fill.text-size-medium.text-color-grey
+                  b Janko Mrkvička, Ikar (21.2.2017)
+                  | #{' '}EAN:#{' '}
+                  b 233433233
+                  | #{' '}MOC:#{' '}
+                  b 10€
+                  | #{' '}Naša cena:#{' '}
+                  b 9,50€
+                  | #{' '}Zľava:#{' '}
+                  b 6%
+                  | #{' '}Hodnotenie #{' '}
+                  b 3,9
+                .bar__break.hide-m
+                .bar__item
+                  button.btn.btn--small.btn--ghost
+                    +icon('edit').icon--small.icon--left
+                    | Chcem upraviť titul
+              hr
+              .row.mb-none
+                .col--m-3.mb-medium.mb-none-m
+                  .bar.bar--vertical.mb-none
+                    .bar__item--shrinkable
+                      h2.text-size-regular Vývoj predaja (E-shopy)
+                    .bar__item
+                      canvas#chart-1
+                .col--m-3.mb-medium.mb-none-m
+                  .bar.bar--vertical.mb-none
+                    .bar__item--shrinkable
+                      h2.text-size-regular Predaje (Kníhkupectvá)
+                    .bar__item
+                      canvas#chart-2
+                .col--m-3.mb-medium.mb-none-m
+                  .bar.bar--vertical.mb-none
+                    .bar__item--shrinkable
+                      h2.text-size-regular Jednotlivé kníhkupectvá
+                    .bar__item
+                      canvas#chart-3
+                .col--m-3.mb-medium.mb-none-m
+                  .bar.bar--vertical.mb-none
+                    .bar__item--shrinkable
+                      h2.text-size-regular Vývoj ceny
+                    .bar__item
+                      canvas#chart-4
+
       section.section.section--secondary.controversial
         .wrapper-main
           .row
@@ -717,6 +784,113 @@ block append modals
 
   //- book reservation modal
   include ./modules/book-reservation
+
+block append scripts
+  script(src=`${assetsPrefix}scripts/charts.js`)
+  script.
+    [1,2,3,4].forEach(i => {
+      var ctx = document.getElementById("chart-" + i).getContext('2d');
+      if (i == 3) {
+        var myChart = new window.myApp.chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["BA Obchodná", "NR", "BB", "ZA", "MT",],
+            datasets: [{
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            }
+          }
+        });
+      } else if (i == 4) {
+        var myChart = new window.myApp.chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ["1.3.", "2.3.", "3.3.", "4.3.", "5.3.", "6.3."],
+            datasets: [{
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              borderColor: 'rgba(255,99,132,1)',
+              borderWidth: 1
+            },
+            {
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 1, 4, 7, 4, 8],
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            }
+          }
+        });
+      } else {
+        var myChart = new window.myApp.chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["1.3.", "2.3.", "3.3.", "4.3.", "5.3.", "6.3."],
+            datasets: [{
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+              ],
+              borderColor: [
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
+      }
+    });
 
 block append scripts
     script.
