@@ -2,10 +2,81 @@
   .card__content
     .row.mb-none
       .col--m-3
-        | Lorem ipsum
+        h2.text-size-regular Základné štatistiky
+        dl
+          dt Počet predaných titulov
+          dd
+            | Kníhkupectvá:#{' '}
+            b 450
+            | #{' '}
+            | Eshop:#{' '}
+            b 450
+        p.text-medium
+          | Tituly na našom sklade:#{' '}
+          b 430
+          br
+          | Dostupné u dodávateľov:#{' '}
+          b 450
+          br
+          | Novinky v aktuálnom roku:#{' '}
+          b 320
+          br
+        .btn-dropdown.mb-medium.mb-none-m
+          button.btn.btn--clean.no-pad(
+          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+          data-toggle-expand,
+          aria-haspopup="true"
+          )
+            +icon('invoice').icon--left.icon--medium
+            | Zobraziť tituly v topke
+          .dropdown(data-dropdown, data-toggle-expand, style="width: 300px;").dropdown--nowrap.dropdown--space
+            .h5 Tituly vydavateľstva Ikar v TOP
+            ul.list--unstyled
+              li.text-medium
+                | 2.#{' '}
+                a.link.link--product Peter Vian: Kocúr v Čižmách
+              li.text-medium
+                | 2.#{' '}
+                a.link.link--product Peter Vian: Kocúr v Čižmách
+              li.text-medium
+                | 2.#{' '}
+                a.link.link--product Peter Vian: Kocúr v Čižmách
+              li.text-medium
+                | 2.#{' '}
+                a.link.link--product Peter Vian: Kocúr v Čižmách
+      .col--m-3.mb-medium.mb-none-m
+        .bar.bar--vertical.mb-none
+          .bar__item--shrinkable
+            h2.text-size-regular Vývoj predaja (E-shopy)
+          .bar__item
+            canvas#chart-1
+      .col--m-3.mb-medium.mb-none-m
+        .bar.bar--vertical.mb-none
+          .bar__item--shrinkable
+            h2.text-size-regular (Kníhkupectvá)
+          .bar__item
+            canvas#chart-2
       .col--m-3
-        canvas#chart-1
-      .col--m-3
-        canvas#chart-2
-      .col--m-3
-        | Lorem ipsum
+        h2.text-size-regular Nastavenia
+        ul.list--unstyled.text-medium
+          li.mb-small
+            | Program:#{' '}
+            b bezplatný#{' '}
+            a.link zmeniť
+          li.mb-small
+            | Rozšírené štatistiky pri tituloch:#{' '}
+            b zapnuté#{' '}
+            a.link vypnúť
+          li.mb-small
+          .bar
+            .bar__item.bar__item--shrinkable
+              | Zobrazovať dáta:#{' '}
+            .bar__item.bar__item--fill
+              select.js-select
+                option za 14 dní
+                option za mesiac
+                option za 6 mesiacov
+        a.btn.btn--clean.no-pad
+          +icon('upload').icon--left.icon--medium
+          | Exportovať štatistiky (csv)
+

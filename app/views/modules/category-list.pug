@@ -126,73 +126,105 @@ section.section
                           +icon('heart').icon--medium
 
               .col--m-shrink.product-item__price-box
-                if formats
-                  .btn-layout.btn-layout--vertical.mb-medium
-                    .btn-dropdown.no-mrg
-                      button.btn.btn--ghost.btn--icon-right.text-left(
-                        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                        data-toggle-expand,
-                        aria-haspopup="true"
-                      )
-                        .bar.text-small.no-mrg-bottom
-                          .bar__item.bar__item--fill
-                            div Pevná väzba
-                            .text-color-grey.text-small.text-transform-none.text-normal.hide-m Posielame ihneď
-                          .bar__item.text-right.text-small.hide-m
-                            .text-semibold.text-color-black 18,00 €
-                            .text-color-grey -10%
-                        +icon('chevron-down', 'icon-dropdown').icon--medium
-                      .dropdown(data-dropdown, data-toggle-expand)
-                        .dropdown__wrap
-                          a(href="#").dropdown__item
-                            .bar.text-small.no-mrg-bottom
-                              .bar__item.bar__item--fill
-                                div Pevná väzba
-                                .text-color-grey Posielame ihneď
-                              .bar__item.text-right
-                                .text-semibold.text-color-black 18,00 €
-                                .text-color-grey -10%
-                          a(href="#").dropdown__item
-                            .bar.text-small.no-mrg-bottom
-                              .bar__item.bar__item--fill
-                                div Brožovaná väzba
-                                .text-color-grey Posielame ihneď
-                              .bar__item.text-right
-                                .text-semibold.text-color-black 16,00 €
-                                .text-color-grey -10%
-                          a(href="#").dropdown__item
-                            .bar.text-small.no-mrg-bottom
-                              .bar__item.bar__item--fill
-                                div E-kniha
-                                .text-color-grey Posielame ihneď
-                              .bar__item.text-right
-                                .text-semibold.text-color-black 8,00 €
-                                .text-color-grey -5%
-                          a(href="#").dropdown__item
-                            .bar.text-small.no-mrg-bottom
-                              .bar__item.bar__item--fill
-                                div Audio kniha
-                                .text-color-grey Posielame ihneď
-                              .bar__item.text-right
-                                .text-semibold.text-color-black 12,00 €
-                                .text-color-grey -2%
-                .text-center.show-m
-                  h2.text-bold.mb-small 201,99 €
-                  .badge.badge--primary.mb-small Zľava 10%
-                  +xmas({status: 0})
-                  p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
-                    em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-                    | .
-                    if i == 1
-                      | Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
+                //- PUBLISHER PORTAL
+                if i === 0 && publisher
+                  .card.card--material.card--material-blue
+                    .card__label
+                      | štatistiky
+                    .card__content.card__content--condensed
+                      p.text-medium
+                        b Predaných titulov
+                        br
+                        | E-shopy (14 dní):#{' '}
+                        b 433
+                        br
+                        | E-shopy (celkovo):#{' '}
+                        b 233
+                        br
+                        | Kníhkupectvá (14 dní):#{' '}
+                        b 54
+                        br
+                        | Kníhkupectvá (celkovo):#{' '}
+                        b 43
+                        br
+                      p.text-medium
+                        | U dodávateľov:#{' '}
+                        b 32
+                        br
+                        | Vo wishlistoch má:#{' '}
+                        b 233 ľudí
+                        br
+                        | Rezervovalo si:#{' '}
+                        b 233 ľudí
+                        br
 
-                  .btn-layout--vertical
-                    button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                      +icon('cart').icon--left.icon--medium
-                      span.text-semibold Vložiť do košíka
+                else
+                  if formats
+                    .btn-layout.btn-layout--vertical.mb-medium
+                      .btn-dropdown.no-mrg
+                        button.btn.btn--ghost.btn--icon-right.text-left(
+                          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                          data-toggle-expand,
+                          aria-haspopup="true"
+                        )
+                          .bar.text-small.no-mrg-bottom
+                            .bar__item.bar__item--fill
+                              div Pevná väzba
+                              .text-color-grey.text-small.text-transform-none.text-normal.hide-m Posielame ihneď
+                            .bar__item.text-right.text-small.hide-m
+                              .text-semibold.text-color-black 18,00 €
+                              .text-color-grey -10%
+                          +icon('chevron-down', 'icon-dropdown').icon--medium
+                        .dropdown(data-dropdown, data-toggle-expand)
+                          .dropdown__wrap
+                            a(href="#").dropdown__item
+                              .bar.text-small.no-mrg-bottom
+                                .bar__item.bar__item--fill
+                                  div Pevná väzba
+                                  .text-color-grey Posielame ihneď
+                                .bar__item.text-right
+                                  .text-semibold.text-color-black 18,00 €
+                                  .text-color-grey -10%
+                            a(href="#").dropdown__item
+                              .bar.text-small.no-mrg-bottom
+                                .bar__item.bar__item--fill
+                                  div Brožovaná väzba
+                                  .text-color-grey Posielame ihneď
+                                .bar__item.text-right
+                                  .text-semibold.text-color-black 16,00 €
+                                  .text-color-grey -10%
+                            a(href="#").dropdown__item
+                              .bar.text-small.no-mrg-bottom
+                                .bar__item.bar__item--fill
+                                  div E-kniha
+                                  .text-color-grey Posielame ihneď
+                                .bar__item.text-right
+                                  .text-semibold.text-color-black 8,00 €
+                                  .text-color-grey -5%
+                            a(href="#").dropdown__item
+                              .bar.text-small.no-mrg-bottom
+                                .bar__item.bar__item--fill
+                                  div Audio kniha
+                                  .text-color-grey Posielame ihneď
+                                .bar__item.text-right
+                                  .text-semibold.text-color-black 12,00 €
+                                  .text-color-grey -2%
+                  .text-center.show-m
+                    h2.text-bold.mb-small 201,99 €
+                    .badge.badge--primary.mb-small Zľava 10%
+                    +xmas({status: 0})
+                    p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
+                      em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                      | .
+                      if i == 1
+                        | Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
 
-                    +addTo()
+                    .btn-layout--vertical
+                      button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+                        +icon('cart').icon--left.icon--medium
+                        span.text-semibold Vložiť do košíka
 
+                      +addTo()
 
           //- HLADATE DARCEK
           if i === 2
