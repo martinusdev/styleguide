@@ -9,6 +9,15 @@
 // Visibility utilities
 
 // ---------------------------------------------
+// BACKGROUND UTILITIES
+
+@each $variant, $color in $color-presets {
+  .bg-#{$variant} {
+    background-color: $color;
+  }
+}
+
+// ---------------------------------------------
 // TYPOGRAPHY UTILITIES
 
 .line-default { line-height: _map-deep-get($typography-settings, 'default', 'base-line-height'); }
