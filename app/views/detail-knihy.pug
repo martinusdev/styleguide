@@ -209,8 +209,17 @@ block content
               .bar
                 .bar__item
                   h2 Vydavateľský portál
-                .bar__item
+                .bar__item.bar__item--fill
                   a.link ísť na stránku vydavateľstva
+                .bar__item.bar__item--shrinkable
+                  .bar.mb-none
+                    .bar__item.bar__item--shrinkable
+                      | Zobrazovať dáta:#{' '}
+                    .bar__item.bar__item--fill
+                      select.js-select(data-select-dropdown-width="120px")
+                        option za 14 dní
+                        option za mesiac
+                        option za 6 mesiacov
               div
                 .badge.badge--green BB 6
                 .badge.badge--green BA-C 6
