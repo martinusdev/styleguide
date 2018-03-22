@@ -2,6 +2,7 @@ extends layouts/_default
 
 include ./mixins/breadcrumbs
 include ./mixins/icon
+include ./mixins/pagination
 
 block opts
     - var pageTitle = 'Blog Homepage'
@@ -17,6 +18,8 @@ block content
             each item in ['Recenzie', 'Lookbook', 'Tlačové správy', 'Drobnôstky', 'Nejaká kategória']
               li.inline-nav__item
                 a.inline-nav__link #{item}
+        .mb-small
+        h1.mb-small Lookbook
 
     section.section
       .wrapper-main
@@ -55,7 +58,7 @@ block content
         hr
 
         each i in [0, 1]
-          .row
+          .row.mb-medium
             each j in [0, 1]
               .col--m-6
                 h2.h2.mb-medium
@@ -88,6 +91,8 @@ block content
                       a.btn.btn--clean
                         | Celý článok
                         +icon('arrow-right').icon--right
+
+        +pagination.align-items-center.mb-large
 
     section.section.section--secondary
       .wrapper-main
