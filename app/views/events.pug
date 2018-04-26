@@ -1,0 +1,147 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+include ./mixins/pagination
+
+block opts
+    - var pageTitle = 'Besedy'
+
+block content
+  -
+    var swiperConfig = {
+      slidesPerView: 1,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+    };
+
+  main.collection
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy', 'Besedy'] })
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-7
+            h1.mb-small Naše besedy
+            h2.h4 Program v kníhkupectvách Martinus.sk
+
+            p Milí Martinusáci, našim cieľom je, aby ste do nášho kníhkupectva chodili nielen vtedy, keď zatúžite po novej knihe. Chceme, aby ste sa u nás zastavili vždy, keď budete mať chuť si oddýchnuť a nadýchať sa atmosféry kníh. Preto pre vás organizujeme rôzne zaujímavé akcie, autogramiády autorov, besedy so zaujímavými ľuďmi a veľa ďalšieho.
+
+          .col--l-5
+            .mb-medium
+              img.img.img--rounded(src="/images/content/text-page/text-page-1.jpg")
+
+    section.section
+      .wrapper-main
+        .bar
+          .bar__item.bar__item--shrinkable
+            h2 Bratislava (Obchodná)
+          .bar__break.hide-s
+          .bar__item.bar__item--fill
+            a.btn.btn--clean.no-pad
+              | na stránku kníhkupectva
+              +icon('arrow-right').icon--small.icon--right
+
+    section.section.no-pad-top.mb-medium
+      - for (var i = 0; i<4; i++)
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+          .wrapper-main
+            .row
+              .col--s-shrink.text-center.show-m
+                .h1.mb-none 14
+                .h4.mb-none Máj
+                .h2 2018
+              .col--4.col--s-shrink.text-left
+                img.img.img--rounded(src="http://mrtns.eu/img/custom/14855_whisky_web.png", width="200")
+              .col--8.hide-s
+                h3.h4.mb-tiny 14. 5. 2018 o 18:00
+                h2.h3.text-bold.mb-small Prezentácia knihy Tretia planéta
+                .text-medium
+                  a.link
+                    +icon('facebook').icon--small
+                    | udalosť na facebooku
+
+              .col--s-fill
+                .show-s
+                  h2.text-bold.mb-small Prezentácia knihy Tretia planéta
+                  h3.h4.mb-medium 14. 5. 2018 o 18:00
+
+                p.show-m Kniha fotografií a postrehov cestovateľa a frontmana legendárnej kapely Slobodná Európa z jeho potuliek po tretej planéte Slnečnej sústavy. Hudobník, pilot, kameraman a režisér Milo Láber, známy skôr pod prezývkou Whisky, dodnes navštívil zhruba 80 krajín. Zameriava sa najmä na miesta, kde ešte civilizácia a turistický ruch nestihli zničiť prírodu a tradičný spôsob života.
+                .hide-m
+                  p.mb-none(id='event-description-' + i, data-collapse="100", class=(i % 2 == 0) ? 'bg-secondary' : '') Kniha fotografií a postrehov cestovateľa a frontmana legendárnej kapely Slobodná Európa z jeho potuliek po tretej planéte Slnečnej sústavy. Hudobník, pilot, kameraman a režisér Milo Láber, známy skôr pod prezývkou Whisky, dodnes navštívil zhruba 80 krajín. Zameriava sa najmä na miesta, kde ešte civilizácia a turistický ruch nestihli zničiť prírodu a tradičný spôsob života.
+                  .product-read-more.mb-medium
+                    a.link.text-size-medium(href="javascript:void(0)", data-toggle="#event-description-" + i + ", self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                      +icon('arrow-down')
+                a.btn.btn--facebook.show-s.hide-l
+                  +icon('facebook').icon--medium.icon--left
+                  | Udalosť na facebooku
+              .col--l-shrink.show-l
+                a.btn.btn--facebook
+                  +icon('facebook').icon--medium.icon--left
+                  | Udalosť na facebooku
+
+    .mb-large.text-center
+      a.btn.btn--clean
+        | staršie besedy
+        +icon('arrow-right').icon--small.icon--right
+
+    section.section
+      .wrapper-main
+        .bar
+          .bar__item.bar__item--shrinkable
+            h2 Nitra (OC Centro)
+          .bar__item.bar__item--fill
+            a.btn.btn--clean
+              | na stránku kníhkupectva
+              +icon('arrow-right').icon--small.icon--right
+
+    section.section.no-pad-top.mb-medium
+      - for (var i = 0; i<3; i++)
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+          .wrapper-main
+            .row
+              .col--s-shrink.text-center.show-m
+                .h1.mb-none 14
+                .h4.mb-none Máj
+                .h2 2018
+              .col--4.col--s-shrink.text-left
+                img.img.img--rounded(src="http://mrtns.eu/img/custom/14855_whisky_web.png", width="200")
+              .col--8.hide-s
+                h3.h4.mb-tiny 14. 5. 2018 o 18:00
+                h2.h3.text-bold.mb-small Prezentácia knihy Tretia planéta
+                .hide-l.text-medium
+                  a.link
+                    +icon('facebook').icon--small
+                    | udalosť na facebooku
+
+              .col--s-fill
+                .show-s
+                  h2.text-bold.mb-small Prezentácia knihy Tretia planéta
+                  h3.h4.mb-medium 14. 5. 2018 o 18:00
+
+                p.show-m Kniha fotografií a postrehov cestovateľa a frontmana legendárnej kapely Slobodná Európa z jeho potuliek po tretej planéte Slnečnej sústavy. Hudobník, pilot, kameraman a režisér Milo Láber, známy skôr pod prezývkou Whisky, dodnes navštívil zhruba 80 krajín. Zameriava sa najmä na miesta, kde ešte civilizácia a turistický ruch nestihli zničiť prírodu a tradičný spôsob života.
+                .hide-m
+                  p.mb-none(id='event-description-' + i, data-collapse="100", class=(i % 2 == 0) ? 'bg-secondary' : '') Kniha fotografií a postrehov cestovateľa a frontmana legendárnej kapely Slobodná Európa z jeho potuliek po tretej planéte Slnečnej sústavy. Hudobník, pilot, kameraman a režisér Milo Láber, známy skôr pod prezývkou Whisky, dodnes navštívil zhruba 80 krajín. Zameriava sa najmä na miesta, kde ešte civilizácia a turistický ruch nestihli zničiť prírodu a tradičný spôsob života.
+                  .product-read-more.mb-medium
+                    a.link.text-size-medium(href="javascript:void(0)", data-toggle="#event-description-" + i + ", self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                      +icon('arrow-down')
+              .col--l-shrink.show-l
+                a.btn.btn--facebook
+                  +icon('facebook').icon--medium.icon--left
+                  | Udalosť
+
+    .mb-large.text-center
+      a.btn.btn--clean
+        | staršie besedy
+        +icon('arrow-right').icon--small.icon--right
+
+  include ./modules/seen-items
+  include ./modules/seen-items-delete
+
+
+block append modals
+  include ./modules/product-preview
