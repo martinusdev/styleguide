@@ -121,9 +121,9 @@ block append content
                 .bar__item
                   h1 J. K. Rowling
                 .bar__item.bar__item--fill
-                  button.btn.btn--clean
-                    +icon('eye', 'icon--large').text-color-grey
-                    span.text-space-left.show-m sledovať autora
+                  button.btn.btn--clean(data-tooltip, title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. <b>Praesent porttitor</b> justo vitae placerat placerat.")
+                    +icon('eye', 'icon--large').icon--left.text-color-grey
+                    span.show-m sledovať autora
               .bar
                 .bar__item.flex.align-items-middle
                   +icon('star', 'icon--medium').text-color-yellow
@@ -133,3 +133,20 @@ block append content
                     .badge.badge--orange Sci-fi, fantasy, horrory
                     .badge.badge--green Detektívky
                     .badge.badge--blue Young adult
+
+    +content-sub-section('Author header following')
+
+      +demo
+        +demo-example
+
+          .row
+            .col--12
+              .bar.mb-small.mb-medium-m
+                .bar__item
+                  h1 J. K. Rowling
+                .bar__item.bar__item--fill
+                  button.btn.btn--clean.text-color-success.btn--hover
+                    +icon('check-circle', 'icon--large').icon--left.btn--hover-hidden
+                    +icon('close', 'icon--large').icon--left.btn--hover-visible
+                    span.show-m.btn--hover-hidden sledujete autora
+                    span.show-m.btn--hover-visible zrušiť sledovanie
