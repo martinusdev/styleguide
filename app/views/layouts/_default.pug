@@ -53,7 +53,21 @@ html.no-js
     | js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=227452250615460';
     | fjs.parentNode.insertBefore(js, fjs);
     | }(document, 'script', 'facebook-jssdk'));</script>
+
     #page-container
+
+      .section.section--small.bg-yellow
+        .wrapper-main
+          .bar
+            .bar__item.bar__item--fill
+              | Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje.
+              br
+              | Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
+            .bar__break.hide-m
+            .bar__item.bar__item--shrinkable.text-right
+              a.link(href="#") Viac informácií
+            .bar__item.bar__item--shrinkable.text-right
+              a.btn.btn--primary súhlasím
 
       block header
         if checkoutHeader

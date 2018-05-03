@@ -313,6 +313,12 @@
   background-color: $green-bg-color;
 }
 
+@each $variant, $color in $color-presets {
+  .bg-#{$variant} {
+    background-color: $color;
+  }
+}
+
 .border-bottom-grey { border-bottom: 1px solid $text-color-grey-light; }
 .border-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
 
