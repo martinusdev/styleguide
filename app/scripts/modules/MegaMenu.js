@@ -71,7 +71,9 @@ export default class MegaMenu {
 
     if (this.isMegaMenuOpen) {
       if (window.innerWidth < BREAKPOINTS.l) {
-        lockBody();
+        if (!document.body.classList.contains('has-header-warning')) {
+          lockBody();
+        }
       }
 
       setTimeout(() => {
@@ -79,7 +81,9 @@ export default class MegaMenu {
       });
     } else {
       if (window.innerWidth < BREAKPOINTS.l) {
-        unlockBody();
+        if (!document.body.classList.contains('has-header-warning')) {
+          unlockBody();
+        }
       }
 
       document.removeEventListener('click', this._handleClickOutside);
