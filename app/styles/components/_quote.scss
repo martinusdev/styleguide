@@ -1,0 +1,25 @@
+.quote {
+  text-align: center;
+
+  &__delimiter {
+    margin-bottom: _get-space('v');
+    width: _get-rem(100px);
+    height: 2px;
+    background: _color(primary);
+    content: ' ';
+    display: inline-block;
+  }
+
+  &__text {
+    color: _color(grey, 700);
+    font-size: _get-rem(18px);
+    line-height: 24/18;
+    margin-bottom: _get-space('v');
+    font-style: italic;
+  }
+
+  &__author {
+    font-weight: $font-weight-semibold;
+    color: _color(primary);
+  }
+}
