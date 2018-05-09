@@ -542,9 +542,54 @@ block content
                             +icon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
                       .bar__item
                         .text-size-medium 2.3.2017
-                    p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
-                    a.link.text-size-medium(hre="#") Viac hodnotení od ľudí z Martinusu
-                      +icon('arrow-right')
+                    p.bg-blue.mb-none(data-collapse="150") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí. Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                    a.link.text-size-medium(href="javascript:void(0)", data-toggle="previous, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                      +icon('arrow-down')
+
+                  #review-martinus-more.hide(data-toggle-class="hide")
+                    .mb-large
+                    .card__content.mb-large
+                      .bar
+                        .bar__item
+                          .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill
+                          .text-semibold Adela Ostrolúcka
+                          .text-size-medium Event Manager
+                        .bar__break.hide-m
+                        .bar__item
+                          +icon('smile', 'icon--medium').text-color-success
+                        .bar__item
+                          .rating-star
+                            each star, starIndex in Array(5)
+                              +icon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
+                        .bar__item
+                          .text-size-medium 2.3.2017
+                      p.bg-blue.mb-none Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí. Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+
+                    .card__content.mb-large
+                      .bar
+                        .bar__item
+                          .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill
+                          .text-semibold Adela Ostrolúcka
+                          .text-size-medium Event Manager
+                        .bar__break.hide-m
+                        .bar__item
+                          +icon('smile', 'icon--medium').text-color-success
+                        .bar__item
+                          .rating-star
+                            each star, starIndex in Array(5)
+                              +icon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
+                        .bar__item
+                          .text-size-medium 2.3.2017
+                      p.bg-blue.mb-none Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí. Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+
+                  .card__content
+                    .bar
+                      .bar__item.bar__item--fill.text-right
+                        a.btn.btn--small.btn--ghost(href="javascript:void(0)", data-toggle="#review-martinus-more, self", data-toggle-icon="icons_/app.svg#icon-minus", data-toggle-text="Menej hodnotení od ľudí z Martinusu")
+                          +icon('plus').icon--left
+                          | <span data-toggle-text-target>Viac hodnotení od ľudí z Martinusu</span>
 
               section.mb-large#recenzie(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
                 h2 Recenzie
