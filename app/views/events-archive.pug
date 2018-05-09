@@ -4,6 +4,9 @@ include ./mixins/breadcrumbs
 include ./mixins/icon
 include ./mixins/pagination
 
+block append head
+  link(rel="stylesheet", href=`${assetsPrefix}styles/gallery.css`)
+
 block opts
     - var pageTitle = 'Besedy'
 
@@ -41,7 +44,7 @@ block content
         .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
           .wrapper-main
             .row
-              .col--s-shrink.text-center.show-m
+              .col--s-1.text-center.show-m
                 .h1.mb-none 14
                 .h4.mb-none Máj
                 .h2 2018
@@ -73,6 +76,26 @@ block content
                 a.btn.btn--facebook
                   +icon('facebook').icon--medium.icon--left
                   | Udalosť na facebooku
+            .row.mb-medium
+              .col--s-1.show-m
+              .col--fill
+                #lightgallery.gallery.gallery--small
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75682_bratislava_2.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75682_bratislava_2.jpg")
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75762_bratislava_3.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75762_bratislava_3.jpg")
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75980_bratislava_4.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75980_bratislava_4.jpg")
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75814_bratislava_5.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75814_bratislava_5.jpg")
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75682_bratislava_2.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75682_bratislava_2.jpg")
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75762_bratislava_3.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75762_bratislava_3.jpg")
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75980_bratislava_4.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75980_bratislava_4.jpg")
+                  a.gallery__item(href="http://www.martinus.sk/data/img/custom/75814_bratislava_5.jpg")
+                    img(src="http://www.martinus.sk/data/img/custom/75814_bratislava_5.jpg")
 
     section.section
       .wrapper-main
@@ -84,3 +107,15 @@ block content
 
 block append modals
   include ./modules/product-preview
+
+block append scripts
+  script(src=`${assetsPrefix}scripts/gallery.js`)
+
+  script.
+    lightGallery(document.getElementById('lightgallery'), {
+      thumbnail: true,
+      hash: false,
+      download: false,
+      fullScreen: false,
+      zoom: false
+    });
