@@ -1,0 +1,177 @@
+extends layouts/_default
+
+include ./mixins/icon
+include ./mixins/product
+include ./mixins/productHorizontal
+
+block opts
+  - var pageTitle = 'Môj profil'
+  - var headerWarning = false
+
+block content
+  main.account
+
+    section.section.bg-blue-ci
+      .wrapper-main
+        .row
+          .col--m-3
+            .bar
+              .bar__item(style="position: relative;")
+                .portrait.portrait--xlarge.show-m(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                .portrait.portrait--large.hide-m(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                .badge.badge--blue(style="position: absolute; top: 0;")
+                  .h1.mb-none 13
+              .bar__break.show-m
+              .bar__item
+                h1.h2.text-color-white.no-mrg-bottom Nataša Martinus
+                h2.h5.text-color-white Môj profil
+
+          .col--m-9.text-center
+            -
+              var swiperConfig = {
+                nextButton: '.carousel__btn--next',
+                prevButton: '.carousel__btn--prev',
+                slidesPerView: 'auto',
+                slidesPerGroup: 5,
+                spaceBetween: 20,
+                breakpoints: {
+                  768: {
+                    slidesPerGroup: 2,
+                  },
+                  480: {
+                    slidesPerGroup: 1,
+                  }
+                },
+              };
+              swiperConfig = JSON.stringify(swiperConfig);
+            .carousel.carousel--shelf.mb-large.inline-block.mb-none-m
+              .swiper-container(data-swiper-options=swiperConfig)
+                .swiper-wrapper
+                  each item, index in books
+                    if index < 5
+                      +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+                        +productCover({cover: item.cover, href: '#'}).mb-none
+
+
+    section.section
+      .wrapper-main
+        .row
+
+          .col--l-3.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+
+              h5 O mne
+              p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra lobortis massa, sit amet viverra risus. Nullam ac pellentesque purus, non placerat tortor. Praesent maximus orci ac risus sollicitudin interdum. Vivamus diam mauris, blandit at convallis sed, rutrum vel libero.
+
+              h5 Obľúbené literárne žánre
+              ul.list--unstyled.mb-large
+                li Sci-fi & Fantasy
+                li Detektívky
+                li Odborná literatúra
+
+              h5 Obľúbení autori
+              ul.list--unstyled.mb-large
+                li Douglas Adams
+                li George Orwell
+                li Odborná literatúra
+
+              h5 Moje wishlisty
+              ul.list--unstyled.mb-large
+                li
+                  a.link Najlepšie fantasy
+                li
+                  a.link Vesmírne opery
+
+          .col--l-9.col--12
+
+
+            .row.mb-large
+              .col--1.show-m
+                .bar
+                  .bar__item.bar__item--shrinkable
+                    .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+              .col--12.col--m-11
+                .bar
+                  .bar__item.bar__item--fill
+                    .bar.mb-none
+                      .bar__item.bar__item--shrinkable.hide-m
+                        .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                      .bar__item.bar__item--fill
+                        p
+                          b Nataša Martinus
+                          | #{' '}získal/a odznak#{' '}
+                          b Magický návrat
+                  .bar__break.hide-m
+                  .bar__item.bar__item--shrinkable.text-right
+                    .h5 24.5.2018 20:31
+
+                hr.mb-medium
+
+                .card.card--well.inline-block
+                  .card__content
+                    +icon('footer-package').icon--large
+
+            .row.mb-large
+              .col--1.show-m
+                .bar
+                  .bar__item.bar__item--shrinkable
+                    .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+              .col--12.col--m-11
+                .bar
+                  .bar__item.bar__item--fill
+                    .bar.mb-none
+                      .bar__item.bar__item--shrinkable.hide-m
+                        .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                      .bar__item.bar__item--fill
+                        p
+                          b Nataša Martinus
+                          | #{' '}pridal/a knihu do knižnice ako#{' '}
+                          b prečítanú
+                  .bar__break.hide-m
+                  .bar__item.bar__item--shrinkable.text-right
+                    .h5 24.5.2018 20:31
+
+                hr.mb-medium
+                -
+                  var item = {
+                  xmas: false
+                  };
+                .card.card--well.inline-block
+                  .card__content
+                    +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+
+            each i in [1, 2, 3]
+              .row.mb-large
+                .col--1.show-m
+                  .bar
+                    .bar__item.bar__item--shrinkable
+                      .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                .col--12.col--m-11
+                  .bar
+                    .bar__item.bar__item--fill
+                      .bar.mb-none
+                        .bar__item.bar__item--shrinkable.hide-m
+                          .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill
+                          p
+                            b Nataša Martinus
+                            | #{' '}napísal/a recenziu
+                    .bar__break.hide-m
+                    .bar__item.bar__item--shrinkable
+                      .rating-star.bar__item.align-items-center.no-mrg-top
+                        each star, starIndex in Array(5)
+                          +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
+                    .bar__item.bar__item--shrinkable.text-right
+                      .h5 24.5.2018 20:31
+
+                  hr.mb-medium
+
+                  p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
+
+                  -
+                    var item = {
+                    xmas: false
+                    };
+                  .card.card--well.inline-block
+                    .card__content
+                      +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
