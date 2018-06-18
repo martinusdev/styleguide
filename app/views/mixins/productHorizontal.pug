@@ -22,6 +22,7 @@ mixin productHorizontal(props = {})
       titleClass = 'text-size-medium',
       breakBeforePrice,
       edit = false,
+      xmas = true
     } = props;
 
   article.product.product--horizontal&attributes(attributes)
@@ -49,8 +50,9 @@ mixin productHorizontal(props = {})
             each author in authors
               li.no-mrg= author
           .bar.bar--small.bar--vertical-small.mb-small
-            .bar__item
-              +xmas({type: 'icon'})
+            if xmas
+              .bar__item
+                +xmas({type: 'icon'})
             if discount && !discountUnderBook
               .bar__item
                 .badge.badge--primary= discount

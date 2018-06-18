@@ -233,6 +233,27 @@
   &--lazy {
     min-height: 18rem;
   }
+
+  &--shelf {
+    border-bottom: 20px solid rgba(255, 255, 255, 0.4);
+    position: relative;
+
+    .swiper-container {
+      @include breakpoint('m') {
+        padding-left: 20px;
+      }
+    }
+
+    &::after {
+      content: " ";
+      display: block;
+      position: absolute;
+      top: 110%;
+      width: 100%;
+      height: 20px;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, transparent 75%);
+    }
+  }
 }
 
 .carousel-tiles {

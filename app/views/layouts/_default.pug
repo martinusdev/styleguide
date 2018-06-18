@@ -56,18 +56,19 @@ html.no-js
 
     #page-container
 
-      .section.section--small.bg-yellow.header-warning
-        .wrapper-main
-          .bar
-            .bar__item.bar__item--fill
-              | Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje.
-              br
-              | Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
-            .bar__break.hide-m
-            .bar__item.bar__item--shrinkable.text-right
-              a.link(href="#") Viac informácií
-            .bar__item.bar__item--shrinkable.text-right
-              a.btn.btn--primary súhlasím
+      if headerWarning != false
+        .section.section--small.bg-yellow.header-warning
+          .wrapper-main
+            .bar
+              .bar__item.bar__item--fill
+                | Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje.
+                br
+                | Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
+              .bar__break.hide-m
+              .bar__item.bar__item--shrinkable.text-right
+                a.link(href="#") Viac informácií
+              .bar__item.bar__item--shrinkable.text-right
+                a.btn.btn--primary súhlasím
 
       block header
         if checkoutHeader
