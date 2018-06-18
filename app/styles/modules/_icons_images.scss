@@ -279,3 +279,47 @@ $thumbnail-badge: (
     }
   }
 }
+
+// ----------------------------
+// CLUB BADGES
+
+.club-badge {
+  background: _color('primary');
+  position: relative;
+  border-radius: 50%;
+  padding: 10%;
+
+  @each $name, $size in $thumbnail-sizes {
+    &#{_get-variant-name($name)} {
+      width: $size;
+      padding: $size / 10;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .year {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+.club-badge::before {
+  content: "";
+  width: 1px;
+  margin-left: -1px;
+  float: left;
+  height: 0;
+  padding-top: 100%;
+}
+
+.club-badge::after {
+  content: "";
+  display: table;
+  clear: both;
+}
