@@ -1,8 +1,41 @@
 include product
 include icon
 
-mixin booksCarouselRecommended()
+mixin booksCarouselSwiperWrapper(props = {})
   -
+    const {
+      counter = false
+    } = props;
+
+  if counter
+    ul.swiper-wrapper.list--counter.no-pad
+      block
+  else
+    .swiper-wrapper
+      block
+
+mixin booksCarouselSwiperSlide(props = {})
+  -
+    const {
+      counter = false
+    } = props;
+
+  if counter
+    li.swiper-slide.carousel__product-detail
+      a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+        block
+  else
+    a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).swiper-slide.carousel__product-detail
+      block
+
+mixin booksCarouselRecommended(props = {})
+  -
+    const {
+      collections = true,
+      ads = true,
+      counter = false
+    } = props;
+
     var swiperConfig = {
       slidesPerView: 'auto',
       slidesPerGroup: 7,
@@ -27,23 +60,24 @@ mixin booksCarouselRecommended()
       },
     };
     swiperConfig = JSON.stringify(swiperConfig);
-  .carousel.carousel--fade-inside.carousel--fade-inside-white&attributes(attributes)
+  .carousel&attributes(attributes)
     .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
-      .swiper-wrapper
+      +booksCarouselSwiperWrapper({counter: counter})
         each item, i in [...books, ...books, ...books, ...books]
-          a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
+          +booksCarouselSwiperSlide({counter: counter})
             +product().mb-small.text-left
-              if item.ad
+              if item.ad && ads
                 .h5.mb-tiny reklama
-              +productCover({ cover: item.cover, collection: i<2 })
-              +productTitle({ collection: i<2, title: i >= 2 ? item.author : `Kolekcia ${i + 1}`, author: i >= 2 ? item.author : false, ad: item.ad })
+              +productCover({cover: item.cover, collection: i < 2 && collections})
+              +productTitle({
+                collection: i < 2 && collections,
+                title: i < 2 && collections ? `Kolekcia ${i + 1}` : item.author, author: i < 2 && collections ? false : item.author, ad: item.ad && ads })
               +productMeta({
                 discount: item.discount,
                 rating: item.rating,
                 price: item.price,
-                collection: i < 2,
+                collection: i < 2 && collections,
               })
-
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium

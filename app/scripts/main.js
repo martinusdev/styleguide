@@ -28,6 +28,7 @@ import Header from './modules/Header';
 import AudioPlayer from './modules/AudioPlayer';
 import Clipboard from './modules/Clipboard';
 import AnchorScroll from './modules/AnchorScroll';
+import EqualColumns from './modules/EqualColumns';
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -55,6 +56,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.AudioPlayer = AudioPlayer;
   window.myApp.Clipboard = Clipboard;
   window.myApp.AnchorScroll = AnchorScroll;
+  window.myApp.EqualColumns = EqualColumns;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
@@ -102,6 +104,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.clipboard = new Clipboard();
 
   window.myApp.anchorScroll = new AnchorScroll();
+
+  window.myApp.equalColumns = new EqualColumns();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });
