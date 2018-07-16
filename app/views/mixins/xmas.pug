@@ -26,27 +26,28 @@ mixin xmas(props = {})
     'do vianoc nie'
     ]
 
-  if (type == 'pricebox')
-    div(class= status == 1 ? '' : 'inline-block', data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
-      .bar.mb-small
-        .bar__item.bar__item--shrinkable.text-space-right-tiny
-          +icon('xmas', 'icon--large')(class=statusColor[status])
-        .bar__item.bar__item--fill.text-left.line-medium.text-medium
-          span.text-semibold(class=statusColor[status])= statusText[status]
-          if (status == 1)
-            br
-            span.text-color-grey (osobný odber, GLS, slovenská pošta)
+  if xmas
+    if (type == 'pricebox')
+      div(class= status == 1 ? '' : 'inline-block', data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+        .bar.mb-small
+          .bar__item.bar__item--shrinkable.text-space-right-tiny
+            +icon('xmas', 'icon--large')(class=statusColor[status])
+          .bar__item.bar__item--fill.text-left.line-medium.text-medium
+            span.text-semibold(class=statusColor[status])= statusText[status]
+            if (status == 1)
+              br
+              span.text-color-grey (osobný odber, GLS, slovenská pošta)
 
-  if (type == 'icon')
-    if (size == 'small')
-      +icon('xmas-small')(class=statusColor[status], data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
-    if (size == 'medium')
-      +icon('xmas', 'icon--medium')(class=statusColor[status], data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+    if (type == 'icon')
+      if (size == 'small')
+        +icon('xmas-small')(class=statusColor[status], data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+      if (size == 'medium')
+        +icon('xmas', 'icon--medium')(class=statusColor[status], data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
 
-  if (type == 'short')
-    .inline-block(data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
-      .bar.mb-none
-        .bar__item.bar__item--shrinkable.text-space-right-tiny
-          +icon('xmas-small')(class=statusColor[status])
-        .bar__item.bar__item--fill.text-left.line-medium.text-medium
-          span.text-semibold(class=statusColor[status])= shortText[status]
+    if (type == 'short')
+      .inline-block(data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
+        .bar.mb-none
+          .bar__item.bar__item--shrinkable.text-space-right-tiny
+            +icon('xmas-small')(class=statusColor[status])
+          .bar__item.bar__item--fill.text-left.line-medium.text-medium
+            span.text-semibold(class=statusColor[status])= shortText[status]

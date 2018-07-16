@@ -96,8 +96,9 @@ mixin productMeta(props = {})
             .text-small.text-ellipsis Jana Šlinská
 
         else
-          .bar__item
-            +xmas({type: 'icon'})
+          if xmas
+            .bar__item
+              +xmas({type: 'icon'})
           if discount || rating || soldOut
             .bar__item
               if discount
