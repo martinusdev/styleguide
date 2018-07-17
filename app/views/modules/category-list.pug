@@ -106,14 +106,18 @@ section.section
                           span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov
                       .text-color-grey.mb-small.text-medium Armin Göllner
                     .bar.bar--small.mb-small.show-s
-                      .bar__item
-                        .badge
-                          +icon('star', 'icon--small').text-color-yellow
-                          span.text-normal.text-space-left 3,5
-                      .bar__item.bar__item--border
-                        a.link.text-medium.text-space-left(href="#recenzie", data-scroll) 234x
-                      .bar__item
-                        .badge.badge--blue Novinka
+                      .bar__item.bar__item--shrinkable
+                        .badges.mb-none
+                          a.badge.mb-small
+                            +icon('star', 'icon--medium').text-color-yellow
+                            span.text-normal.text-space-left 3,5
+                            span.link.text-space-left(href="#recenzie", data-scroll) 234x
+                          .badge.badge--green.mb-small Na sklade
+                          .badge.badge--blue.mb-small Novinka
+                          if i == 0
+                            for j in [1, 2, 3, 4, 5]
+                              .badge.mb-small Badge
+
 
                     div(data-collapse="60")
                       p.text-small.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
