@@ -22,6 +22,8 @@ export default class AnchorScroll {
     }
 
     const anchorSection = document.getElementById(this.selector.substr(1));
+    if (anchorSection === null) return;
+
     const helperElement = document.createElement('div');
 
     helperElement.className = 'helper-element';
