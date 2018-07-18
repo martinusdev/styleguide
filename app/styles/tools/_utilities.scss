@@ -134,6 +134,12 @@
   }
 }
 
+@each $breakpoint, $size in $breakpoints {
+  @include breakpoint($breakpoint, down) {
+    @include spacing-reset-classes( #{'--' + $breakpoint + '-down'} );
+  }
+}
+
 .clearfix { @include clearfix; }
 .clear { clear: both; }
 
