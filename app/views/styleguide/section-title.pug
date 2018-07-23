@@ -1,0 +1,103 @@
+extends templates/layout
+
+include ./../mixins/icon
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('modules.section-title', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/pages/_section-title.scss'], contents)
+
+    +p-big Documentation for cms section titles.
+
+  //- end: main info
+
+//- Content
+block append content
+
+  +content-section(contents[0])
+    +content-sub-section('Section title - static logo')
+
+      +demo
+        +demo-example
+
+          section(style="background-color: #274c4b;")
+            .wrapper-main.section-title-wrapper(style="background-image: url('../images/content/campaign/textbooks/header-bg.jpg');")
+              .section-title
+                .section-title__item.section-title__item--static
+                  img(src=`${assetsPrefix}images/content/logo-black.svg`, alt="Martinus", style="height: 28px;")
+                .section-title__item
+                  | Lorem ipsum
+                .section-title__item
+                  | Lorem ipsum dolor sit amet
+
+        +demo-code
+          :code
+            <section style="background-color: #274c4b;">
+              <div class="wrapper-main section-title-wrapper" style="background-image: url('../images/content/campaign/textbooks/header-bg.jpg');">
+                <div class="section-title">
+                  <div class="section-title__item section-title__item--static"><img src="../images/content/logo-black.svg" alt="Martinus" style="height: 28px;"></div>
+                  <div class="section-title__item">Lorem ipsum</div>
+                  <div class="section-title__item">Lorem ipsum dolor sit amet</div>
+                </div>
+              </div>
+            </section>
+
+    +content-sub-section('Section title - dynamic type')
+
+      +demo
+        +demo-example
+
+          section(style="background-color: #009dd0;")
+            .wrapper-main.section-title-wrapper
+              .section-title
+                .section-title__item
+                  | Lorem ipsum dolor sit amet
+                .section-title__item
+                  | Lorem ipsum
+                .section-title__item
+                  | Lorem ipsum dolor sit amet
+
+        +demo-code
+          :code
+            <section style="background-color: #009dd0;">
+              <div class="wrapper-main section-title-wrapper">
+                <div class="section-title">
+                  <div class="section-title__item">Lorem ipsum dolor sit amet</div>
+                  <div class="section-title__item">Lorem ipsum</div>
+                  <div class="section-title__item">Lorem ipsum dolor sit amet</div>
+                </div>
+              </div>
+            </section>
+
+    +content-sub-section('Section title - colors')
+
+      +demo
+        +demo-example
+
+          section(style="background-color: #835c9e;")
+            .wrapper-main.section-title-wrapper
+              .section-title
+                .section-title__item(style="background-color: #00bdf2; color: #fff;")
+                  | Lorem ipsum dolor sit amet
+                .section-title__item(style="background-color: #009dd0; color: #fff;")
+                  | Lorem ipsum
+                .section-title__item(style="background-color: #00bdf2; color: #fff;")
+                  | Lorem ipsum dolor sit amet
+
+        +demo-code
+          :code
+            <section style="background-color: #835c9e;">
+              <div class="wrapper-main section-title-wrapper">
+                <div class="section-title">
+                  <div class="section-title__item" style="background-color: #00bdf2; color: #fff;">Lorem ipsum dolor sit amet</div>
+                  <div class="section-title__item" style="background-color: #009dd0; color: #fff;">Lorem ipsum</div>
+                  <div class="section-title__item" style="background-color: #00bdf2; color: #fff;">Lorem ipsum dolor sit amet</div>
+                </div>
+              </div>
+            </section>

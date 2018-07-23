@@ -20,9 +20,16 @@ block content
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Učebnice'] })
 
-    section(style="background: #274c4b;")
-      .wrapper-main
-        img(src="images/content/campaign/textbooks/header.jpg")
+    section(style="background-color: #274c4b;")
+      .wrapper-main.section-title-wrapper(style="background-image: url('images/content/campaign/textbooks/header-bg.jpg');")
+        .section-title
+          .section-title__item.section-title__item--static
+            img(src=`${assetsPrefix}images/content/logo-black.svg`, alt="Martinus", style="height: 28px;")
+            //| Tu bude nejaky text
+          .section-title__item
+            | Učebnice
+          .section-title__item
+            | prehľadne • rýchlo • za skvelé ceny
 
     section.section.section--secondary.section--small
       .wrapper-main
