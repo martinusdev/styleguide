@@ -17,10 +17,12 @@ block content
           .col--m-3
             .bar
               .bar__item(style="position: relative;")
-                .portrait.portrait--xlarge.show-m(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                .portrait.portrait--large.hide-m(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                .portrait.portrait--xlarge.show-m(style="background-image: url('images/content/avatars/f.jpg');")
+                .portrait.portrait--large.hide-m(style="background-image: url('images/content/avatars/f.jpg');")
                 .badge.badge--blue(style="position: absolute; top: 0;")
                   .h1.mb-none 13
+                div(style="position: absolute; bottom: 0;")
+                  img(src="images/content/logo-small.svg")
               .bar__break.show-m
               .bar__item
                 h1.h2.text-color-white.no-mrg-bottom Nataša Martinus
@@ -48,9 +50,12 @@ block content
               .swiper-container(data-swiper-options=swiperConfig)
                 .swiper-wrapper
                   each item, index in books
-                    if index < 5
+                    if index < 3
                       +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
                         +productCover({cover: item.cover, href: '#'}).mb-none
+                  each item, index in [1,2]
+                    +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+                      +productCover({cover: 'images/content/book-empty.svg', href: '#'}).mb-none
 
     section.section
       .wrapper-main
@@ -63,16 +68,16 @@ block content
               p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra lobortis massa, sit amet viverra risus. Nullam ac pellentesque purus, non placerat tortor. Praesent maximus orci ac risus sollicitudin interdum. Vivamus diam mauris, blandit at convallis sed, rutrum vel libero.
 
               h5 Obľúbené literárne žánre
-              ul.list--unstyled.mb-large
-                li Sci-fi & Fantasy
-                li Detektívky
-                li Odborná literatúra
+              .badges
+                .badge.mb-small Sci-fi & Fantasy
+                .badge.mb-small Detektívky
+                .badge.mb-small Odborná literatúra
 
               h5 Obľúbení autori
-              ul.list--unstyled.mb-large
-                li Douglas Adams
-                li George Orwell
-                li Odborná literatúra
+              .badges
+                .badge.mb-small Douglas Adams
+                .badge.mb-small George Orwell
+                .badge.mb-small Odborná literatúra
 
               h5 Moje wishlisty
               ul.list--unstyled.mb-large
@@ -86,84 +91,58 @@ block content
             h2 Moje odznaky
 
             .mb-large
-              #badges.row.mb-medium(data-collapse="250")
-                .col--3.col--m-2.mb-medium
+              #badges.club-badges
+                .club-badges__item
                   .club-badge
                     img(src="images/content/club/badges/badges-01.png")
-                .col--3.col--m-2.mb-medium
+                .club-badges__item
                   .club-badge.bg-blue-ci
                     img(src="images/content/club/badges/badges-02.png")
                     .year
                       .badge.badge--blue 2018
-                .col--3.col--m-2.mb-medium
-                  .club-badge.bg-violet
-                    img(src="images/content/club/badges/badges-03.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge.bg-green-ci
-                    img(src="images/content/club/badges/badges-04.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge.bg-orange
-                    img(src="images/content/club/badges/badges-05.png")
-                .col--3.col--m-2.mb-medium
+                .club-badges__item
                   .club-badge.bg-yellow
-                    img(src="images/content/club/badges/badges-06.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-07.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-08.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-09.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-10.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-11.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-12.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-13.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-14.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-15.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-16.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-17.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-18.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-19.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-20.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-21.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-22.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-23.png")
-                .col--3.col--m-2.mb-medium
-                  .club-badge(style="background: #eee;")
-                    img(src="images/content/club/badges/badges-24.png")
-
-              a.link.text-size-medium(href="javascript:void(0)", data-toggle="#badges, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Zobraziť viac</span>#{' '}
-                +icon('arrow-down')
+                    img(src="images/content/club/badges/badges-03.png")
+                .club-badges__item
+                  .club-badge.bg-green
+                      img(src="images/content/club/badges/badges-04.png")
+                .club-badges__item
+                  .club-badge.bg-violet
+                    img(src="images/content/club/badges/badges-05.png")
+                .club-badges__item
+                  .club-badge
+                    img(src="images/content/club/badges/badges-01.png")
+                .club-badges__item
+                  .club-badge.bg-blue-ci
+                    img(src="images/content/club/badges/badges-02.png")
+                    .year
+                      .badge.badge--blue 2018
+                .club-badges__item
+                  .club-badge.bg-yellow
+                    img(src="images/content/club/badges/badges-03.png")
+                .club-badges__item
+                  .club-badge.bg-green
+                    img(src="images/content/club/badges/badges-04.png")
+                .club-badges__item
+                  .club-badge.bg-violet
+                    img(src="images/content/club/badges/badges-05.png")
+                .club-badges__item
+                  .club-badge
+                    img(src="images/content/club/badges/badges-01.png")
+                .club-badges__item
+                  .club-badge.bg-blue-ci
+                    img(src="images/content/club/badges/badges-02.png")
+                    .year
+                      .badge.badge--blue 2018
+                .club-badges__item
+                  .club-badge.bg-yellow
+                    img(src="images/content/club/badges/badges-03.png")
+                .club-badges__item
+                  .club-badge.bg-green
+                    img(src="images/content/club/badges/badges-04.png")
+                .club-badges__item
+                  .club-badge.bg-violet
+                    img(src="images/content/club/badges/badges-05.png")
 
             h2 Moje aktivity
 
