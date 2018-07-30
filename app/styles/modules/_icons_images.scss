@@ -283,6 +283,28 @@ $thumbnail-badge: (
 // ----------------------------
 // CLUB BADGES
 
+.club-badges {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -1%;
+
+  @include breakpoint('m') {
+    margin: 0 -0.5%;
+  }
+
+  &__item {
+    width: 20%;
+    padding: 0 1%;
+    margin-bottom: 2%;
+
+    @include breakpoint('m') {
+      width: 10%;
+      padding: 0 0.5%;
+      margin-bottom: 1%;
+    }
+  }
+}
+
 .club-badge {
   background: _color('primary');
   position: relative;
