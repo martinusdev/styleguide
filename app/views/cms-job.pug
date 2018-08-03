@@ -8,10 +8,13 @@ block opts
     -
       const navigation = [
         {
+          title: 'Úvodná stránka',
+          href: 'href',
+        }, {
           title: 'Martinus hľadá posily',
           href: 'href',
         }, {
-          title: 'Akých ľudí do Martinusu hľadáme?',
+          title: 'Akých ľudí hľadáme?',
           href: 'najcastejsie-otazky',
         }, {
           title: 'Novinky s pracovnými ponukami',
@@ -29,7 +32,7 @@ block content
       .wrapper-main
         .bar.no-mrg-bottom
           .bar__item.bar__item--shrinkable
-            +breadcrumbs({ breadcrumbs: ['Martinus hľadá posily'] })
+            +breadcrumbs({ breadcrumbs: ['Budeš našou posilou?'] })
 
     .section
       .wrapper-main
@@ -89,7 +92,17 @@ block content
                   label.radiocheck__control(for="check-send")
                   label.radiocheck__label(for="check-send") Súhlasím so spracovaním osobných údajov *
 
-            h2.h4.mb-large V Martinuse sa snažíme robiť veci inak. S vášňou, pretože milujeme to, čo robíme. Ľudsky, pretože nám záleží na spokojnosti našich zákazníkov i kolegov. S predsavzatím urobiť niečo navyše, aby bol život krajší. Máš chuť to robiť s nami? Tak čítaj ďalej!
+            h2.h4.mb-large
+              | Vítame ťa na stránke, kde hľadáme nových kolegov a kolegyne! Vlastne, hľadáme viac než to – kamarátov, s ktorými nás bude práca baviť a s ktorými si navzájom budeme motiváciou. Tých z vás, čo vždy robia veci najlepšie ako vedia a zapadnú medzi nás ako knižka na voľné miesto v poličke. Možno si to práve ty! :-)
+              br
+              br
+              | Ak chceš vidieť viac „z našej kuchyne“, pozri si sekcie#{' '}
+              a.link Akých ľudí hľadáme
+              | #{' '}alebo#{' '}
+              a.link Sprievodca martinusáka
+              | . Nižšie nájdeš aktuálne ponuky, ale nezabudni nám nechať kontakt do budúcnosti, ak aj práve teraz žiadna z nich nie je pre teba tá pravá.
+            a.btn.btn--primary Pošlite mi zaujímavé ponuky!
+            .mb-large
 
             .row
               .col--l-6
