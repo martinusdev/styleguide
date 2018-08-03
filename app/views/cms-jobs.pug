@@ -29,7 +29,9 @@ block content
       .wrapper-main
         .bar.no-mrg-bottom
           .bar__item.bar__item--shrinkable
-            +breadcrumbs({ breadcrumbs: ['Martinus hľadá posily'] })
+            +breadcrumbs({ breadcrumbs: ['Budeš našou posilou?'] })
+
+    section(style="height: 400px; background: url('images/content/cms/team-bw.jpg') no-repeat center; background-size: cover;")
 
     .section
       .wrapper-main
@@ -41,17 +43,46 @@ block content
 
             h2.h4 Pridaj sa
 
-            ul.list.list--expanded.no-pad(role="navigation")
+            ul.list.list--expanded.no-pad(role="navigation").mb-large
               each section, i in navigation
                 li.mb-medium(class=i === 0 ? 'is-active' : '')
                   a.text-medium(href=`#${section.href}`, data-scroll) !{section.title}
 
+            h2.h4 Najnovšie ponuky
+
+            ul.text-medium.list.list--expanded.no-pad.list--with-hover.list--line-visible
+              li
+                a.link Martinus: HR manažér (Bratislava, TPP)
+              li
+                a.link Martinus: HR manažér (Bratislava, TPP)
+              li
+                a.link Martinus: HR manažér (Bratislava, TPP)
+              li
+                a.link Martinus: HR manažér (Bratislava, TPP)
+              li
+                a.link Martinus: HR manažér (Bratislava, TPP)
+              li
+                a.link Martinus: HR manažér (Bratislava, TPP)
+
           article.col--l-9.col--m-9.ofst--m-center.col--12.mb-large
 
-            h1 Martinus hľadá posily
-            h2.h4.mb-large Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam porttitor magna nunc, vitae lobortis sapien lacinia eu. Pellentesque commodo, orci ut rutrum dignissim, tellus neque mollis ante, nec fermentum nibh nunc sit amet ex. Phasellus felis ligula, volutpat vitae ex vel, dictum tristique enim.
+            h1 Budeš našou posilou v tímoch Martinusu či Foxfordu?
+            h2.h4.mb-medium
+              | Vítame ťa na stránke, kde hľadáme nových kolegov a kolegyne! Vlastne, hľadáme viac než to – kamarátov, s ktorými nás bude práca baviť a s ktorými si navzájom budeme motiváciou. Tých z vás, čo vždy robia veci najlepšie ako vedia a zapadnú medzi nás ako knižka na voľné miesto v poličke. Možno si to práve ty! :-)
+              br
+              br
+              | Ak chceš vidieť viac „z našej kuchyne“, pozri si sekcie#{' '}
+              a.link Akých ľudí hľadáme
+              | #{' '}alebo#{' '}
+              a.link Sprievodca martinusáka
+              | . Nižšie nájdeš aktuálne ponuky, ale nezabudni nám nechať kontakt do budúcnosti, ak aj práve teraz žiadna z nich nie je pre teba tá pravá.
+            a.btn.btn--primary Pošlite mi zaujímavé ponuky!
+            .mb-large
 
             .bar.mb-large
+              .bar__item.bar__item--fill
+                h2 Najnovšie ponuky
+              .bar__break.hide-m
               .bar__item
                 .form-control.form-control--select
                   select.js-select.select--ghost(data-select-dropdown-width="200px")
