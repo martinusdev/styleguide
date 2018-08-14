@@ -46,6 +46,41 @@ section.section
             .btn-layout.btn-layout--vertical.no-mrg-bottom
               button.btn Zúžiť výber
       .col--l-9.col--12
+        if searchCard
+          p Našli sme v:
+          .card.card--well
+            .card__content
+              .row
+                .col--m-4.mb-medium.mb-none-m
+                  h2.h5 vydavatelia
+                  ul.list--unstyled
+                    for i in [1, 2, 3, 4]
+                      li.bar.mb-tiny
+                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                          +icon('breadcrumbs').icon--medium.text-color-grey
+                        .bar__item.bar__item--fill.line-small
+                          a.link Ikar
+                .col--m-4.mb-medium.mb-none-m
+                  h2.h5 kategórie
+                  ul.list--unstyled.mb-small
+                    for i in [1, 2, 3, 4]
+                      li.bar.mb-tiny
+                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                          +icon('folder').icon--medium.text-color-grey
+                        .bar__item.bar__item--fill.line-small
+                          a.link Kategória
+                  a.link.text-medium + ďalších 5
+                    +icon('arrow-down').icon--small
+                .col--m-4
+                  h2.h5 autori
+                  ul.list--unstyled
+                    for i in [1, 2, 3, 4]
+                      li.bar.mb-tiny
+                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                          +icon('user').icon--medium.text-color-grey
+                        .bar__item.bar__item--fill.line-small
+                          a.link Meno Autora
+
         if description
           p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
         if carousel
