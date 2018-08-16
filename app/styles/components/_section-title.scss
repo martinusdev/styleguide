@@ -20,11 +20,16 @@
     background: #fff;
     padding: 12px 24px 12px 18px;
     font-weight: $font-weight-semibold;
-    font-size: 18px;
-    line-height: 22px;
+    font-size: 16px;
+    line-height: 20px;
 
     img {
       max-width: none;
+    }
+
+    @include breakpoint('m') {
+      font-size: 18px;
+      line-height: 22px;
     }
   }
 
@@ -39,11 +44,16 @@
   &__item:nth-child(2) {
     background: _color(primary);
     padding: 14px 28px 14px 21px;
-    font-size: 36px;
-    line-height: 40px;
+    font-size: 28px;
+    line-height: 34px;
     font-weight: $font-weight-bold;
     color: $color-white;
     margin-left: 28px;
+
+    @include breakpoint('m') {
+      font-size: 36px;
+      line-height: 40px;
+    }
   }
 
   &__item:nth-child(3) {
