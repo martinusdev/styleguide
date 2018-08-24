@@ -316,3 +316,57 @@
 }
 
 @include card-classes;
+
+.flip-card {
+  perspective: 1000px;
+  cursor: pointer;
+
+  &__content {
+    transition: transform 0.5s ease-in-out;
+    transform-style: preserve-3d;
+    position: relative;
+  }
+
+  &__content--rounded {
+    .flip-card__front,
+    .flip-card__back {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+  }
+
+  &__front,
+  &__back {
+    backface-visibility: hidden;
+  }
+
+  &__front {
+    z-index: 2;
+    transform: rotateY(0deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+  }
+
+  &--hover:hover {
+    .flip-card__content {
+      transform: rotateY(-10deg);
+    }
+  }
+
+  &--45 {
+    .flip-card__content {
+      transform: rotateY(-45deg);
+    }
+  }
+
+  &--180 {
+    .flip-card__content {
+      transform: rotateY(-180deg);
+    }
+  }
+}
