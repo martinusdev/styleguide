@@ -13,66 +13,192 @@ block content
       .wrapper-main
         .bar.no-mrg-bottom
           .bar__item.bar__item--shrinkable
-            +breadcrumbs({ breadcrumbs: ['Martinus vianoce 2017'] })
+            +breadcrumbs({ breadcrumbs: ['Zberateľské záložky'] })
 
-    section(style="background-color: #274c4b;")
-      .wrapper-main.section-title-wrapper(style="background-image: url('images/content/campaign/textbooks/header-bg.jpg');")
+    section(style="background: url('images/content/campaign/bookmarks2018/header-bg2.jpg') no-repeat center center; background-size: cover;")
+      .wrapper-main.section-title-wrapper
         .section-title
           .section-title__item.section-title__item--static
-            img(src=`${assetsPrefix}images/content/logo-black.svg`, alt="Martinus", style="height: 28px;")
-            //| Tu bude nejaky text
-          .section-title__item
-            | Učebnice
-          .section-title__item
-            | prehľadne • rýchlo • za skvelé ceny
+            img(src="images/content/logo-small.svg", style="height: 28px; position: relative; top: -1px;").text-space-right-tiny
+            | Zberateľské záložky
+          .section-title__item(style="background: #36acab;")
+            | Ktorý obraz si poskladáte?
 
-    .section
+    section.section.show-l
       .wrapper-main
-        article
+        ul.tab-nav(data-tabs-container).tab-nav--block
+          li.tab-nav__item(data-tabs-item)
+            a.tab-nav__content.tab-nav__content--link(href='#tab-1' role="tab")
+              .tab-nav__content-wrap Zbierajte záložky!
+          li.tab-nav__item(data-tabs-item)
+            a.tab-nav__content.tab-nav__content--link(href='#tab-2' role="tab")
+              .tab-nav__content-wrap O ilustráciách
+          li.tab-nav__item(data-tabs-item)
+            a.tab-nav__content.tab-nav__content--link(href='#tab-3' role="tab")
+              .tab-nav__content-wrap Darček (a ako ho získať)
+          li.tab-nav__item(data-tabs-item)
+            a.tab-nav__content.tab-nav__content--link(href='#tab-4' role="tab")#tab-4-button
+              .tab-nav__content-wrap Galéria záložiek
+
+    section.section.section--secondary.hide-l.section--small
+      .wrapper-main
+        select.js-select.select--ghost
+          option Zbierajte záložky!
+          option O ilustráciách
+          option Darček (a ako ho získať)
+          option Galéria záložiek
+        .mb-medium
+
+    section.section.tabs
+      .wrapper-main
+        article#tab-1.tab
           .cms-article
 
-            .text-center
-              p.text-semibold.mb-large Kniha je nejoblíbenější vánoční dárek! Udělejte letos svým blízkým radost novým čtením a vyhněte se shonu.
-                br
-                | Čím dříve u nás knižní dárky vyberete, tím větší dárek od nás dostanete pro sebe ;-)
+            .row.align-items-middle
+              .col--m-6.mb-large
+                h2 Milí knihomoli a knihomoľky,
+                p
+                  b od 1. septembra 2018 do 30. júna 2019 získate každý mesiac#{' '}
+                  | ku všetkým nákupom v Martinuse originálnu zberateľskú záložku!
+                p
+                  b Všetkých 10 záložiek spolu vytvorí krásny knižný obraz#{' '}
+                  | – ale pozor, čaká vás rozhodnutie! Na jednej strane záložky je totiž obraz od#{' '}
+                  a Lenky Javorskej
+                  | , na druhej strane od autorskej dvojice#{' '}
+                  a Tomski&Polanski
+                  | . Dokážete si vybrať, alebo skúsite vyskladať obidva? :-)
+                p
+                  b Keď sa vám podarí získať všetky záložky, čaká vás výnimočná odmena!#{' '}
+                  | O darčeku pre vlastníkov všetkých 10 záložiek#{' '}
+                  a zistíte viac tu
+                  | .
+              .col--m-6
+                img(src="images/content/campaign/bookmarks2018/illustration-1.png")
 
-            .row.mb-large.text-center
-              .ofst--m-2.col--m-8
-                p Jak to funguje? Každý větší nákup v hodnotě alespoň 999 Kč odměníme poukázkami v hodnotě až 1000 Kč. Ty budete moci využít po celý rok 2018 a jistě vám pomohou v novém roce přečíst spoustu knih! Ke všem objednávkám teď navíc přibalujeme samolepky na dárky s motivy Knižní šifry. Kdopak dostane Švejka? ;-)
+            .row
+              .col--m-8
 
-                p Protože chceme, abyste si užili sváteční pohodu, rádi bychom vás popostrčili a zbavili stresu. Čím dříve tedy knihy objednáte, tím větší hodnotu budou mít poukázky, které od nás dostanete.
+                .mb-large
+                  h2 Ako vyzerá aktuálna záložka?
+                  p
+                    | Ďalšie záložky si#{' '}
+                    a môžete pozrieť tu
+                    | . Pokiaľ vám niektorá chýba, môžete ju skúsiť získať#{' '}
+                    a výmenou od ostatných martinusákov!
 
-            .row.mb-large
-              .col--m-4
-                .card.card--material.card--material-primary.text-center
+                .flip-card.flip-card--hover(data-toggle="self", data-toggle-class="flip-card--180").mb-large
+                  .flip-card__content.flip-card__content--rounded
+                    .flip-card__front
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-A.jpg", style="max-width: none; width: 100%;").no-mrg
+                    .flip-card__back
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-B.jpg", style="max-width: none; width: 100%;").no-mrg
+
+
+        article#tab-2.tab
+          .cms-article
+
+            .row.align-items-middle
+              .col--m-6.mb-large
+                h2 Obraz na jednu stranu vytvorilo duo Tomski&Polanski
+                p
+                  b Tomski&Polanski je pražský ilustrátor so štyrmi rukami#{' '}
+                  | , z ktorých dve patria Lukášovi a ďalšie dve Ilone. Ich tvorba je založená na výraznej farebnej palete, skrytej symbolike a tiež na pojedaní zeleniny, filozofickej literatúre a výletoch po svete. Z prevažujúceho digitálneho kreslenia týchto výtvarníkov často bolia oči, a tak si odskakujú k tradičným technikám ako akryl, pastel, airbrush a ďalšie ufúľané remeselné procesy. Hoci sa ilustráciou už dlho profesionálne živia (pošepky povedané – zarábajú si tým), neustále ich to baví.#{' '}
+                  b Želajú pekné záložkobranie.
+              .col--m-6
+                img(src="images/content/campaign/bookmarks2018/illustration-2.png")
+
+            .row.align-items-middle
+              .col--m-6.show-m
+                img(src="images/content/campaign/bookmarks2018/illustration-3.png")
+              .col--m-6.mb-large
+                h2 Dielo na opačnej strane záložky namaľovala Lenka Javorská
+                p
+                  b Lenka Javorská sa venuje ilustrácii a grafickému dizajnu#{' '}
+                  | , pričom farby a štetce ju lákali odmalička. Najprv ju zvábili vo vrecku na výtvarnú výchovu, neskôr sa začala venovať farbičkám v počítači. Mimochodom, svojmu počítaču Lenka dala meno, volá ho Bublifuk. Vytvára v ňom snové a hravé obrázky, ktorými chce deťom otvárať nepoznané svety a dospelákov zasa na chvíľu vrátiť do detských čias… obliecť si pruhované ponožky, čítať medzi hviezdami, vyplávať na oceán...
+                  b Pridajte sa aj vy! :-)
+              .col--m-6.hide-m
+                img(src="images/content/campaign/bookmarks2018/illustration-3.png")
+
+        article#tab-3.tab
+          .cms-article
+
+            .row.align-items-top
+              .col--m-6.mb-large
+                h2 Odmena pre skutočných zberateľov
+                p
+                  | Najúspešnejší zberatelia (tí, ktorí#{' '}
+                  b získajú všetkých 10 záložiek
+                  | ) sa budú chcieť pochváliť pred celým svetom! Kedže nosiť so sebou neustále 10 záložiek nie je praktické,
+                  b darujeme im nádhernú bavlnenú tašku s obojstrannou potlačou#{' '}
+                  | , ktorú špeciálne pre Martinus navrhli autori záložkových obrazov –#{' '}
+                  a Lenka a Tomski&Polanski
+                  | .
+                .card.card--material.card--material-blue
                   .card__content
-                    .badge.badge--primary.text-size-regular.mb-small 6.11. - 19.11.
-                    h2.mb-small 1000 Kč na knihy
-                    hr.mb-tiny
-                    .h4 ke každé objednávce alespoň za 999 Kč
+                    h3.text-color-blue O taške
+                    p Na celom svete nebude veľa knihomoľov, ktorí sa ňou budú môcť pýšiť! Bude podľa nás naozaj krásna a obrázky na nej budú vychádzať zo záložkových motívov, no nebudú úplne rovnaké. Aby sme nepokazili prekvapenie, zatiaľ vám celú tašku s potlačou neukážeme ;-)
 
-              .col--m-4
-                .card.card--material.card--material-orange.text-center
-                  .card__content
-                    .badge.badge--orange.text-size-regular.mb-small 20.11. - 3.12.
-                    h2.mb-small 500 Kč na knihy
-                    hr.mb-tiny
-                    .h4 ke každé objednávce alespoň za 999 Kč
+              .col--m-6.mb-large
+                h2 Odpovede na časté otázky
+                p
+                  | Záložky prikladáme k objednávkam (s fyzickými knihami) a nákupom od septembra 2018 do júna 2019.#{' '}
+                  b Každá záložka má svoj kalendárny mesiac, po ktorom ju nahradí ďalšia.
+                hr.mb-medium
+                p
+                  | V kníhkupectvách nájdete vždy aktuálnu záložku,#{' '}
+                  b v prípade online nákupov rozhoduje dátum objednávky#{' '}
+                  | (napríklad septembrovú záložku získate aj v prípade, že ste objednávali 30.9. a zásielku vám odošleme 1.10.).
+                hr.mb-medium
+                p
+                  | Tým z vás, ktorí#{' '}
+                  b z jedného online konta urobia objednávky v každom z 10 mesiacov#{' '}
+                  | , pribalíme darček automaticky k najbližšej objednávke.#{' '}
+                hr.mb-medium
+                p
+                  | Tí,#{' '}
+                  b ktorí získajú všetkých 10 záložiek z rôznych zdrojov,#{' '}
+                  | môžu od júla do konca septembra 2019 navštíviť#{' '}
+                  a naše kníhkupectvá#{' '}
+                  | , kde ukážu hotovú zbierku. Za to im tiež radi na mieste dáme rovnaký darček.
 
-              .col--m-4
-                .card.card--material.card--material-yellow.text-center
-                  .card__content
-                    .badge.badge--yellow.text-size-regular.mb-small 4.12. - 17.12.
-                    h2.mb-small 250 Kč na knihy
-                    hr.mb-tiny
-                    .h4 ke každé objednávce alespoň za 999 Kč
+        article#tab-4.tab
+          .cms-article
+            .row
+              .col--m-8.ofst--m-2
 
-            .row.mb-large.text-center
-              .ofst--m-2.col--m-8
-                p Poukázky vám zašleme nejpozději 15. ledna. Mohou být spojené s minimální hodnotou objednávky či určené pro nákup knih určitého žánru či kategorie.
+                .mb-large.text-center
+                  h2 Ako vyzerajú zatiaľ odhalené zberateľské záložky?
+                  p Pokiaľ vám niektorá chýba, môžete ju skúsiť získať#{' '}
+                    a výmenou od ostatných martinusákov!
 
-                p Máte nějaké otázky nebo chcete třeba poradit s výběrem dárků? Ozvěte se nám na Facebooku nebo e-mailem na#{' '}
-                  b naslovicko@martinus.cz.
+                .flip-card.flip-card--hover(data-toggle="self", data-toggle-class="flip-card--180").mb-medium
+                  .flip-card__content.flip-card__content--rounded
+                    .flip-card__front
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-A.jpg", style="max-width: none; width: 100%;").no-mrg
+                    .flip-card__back
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-B.jpg", style="max-width: none; width: 100%;").no-mrg
+
+                .flip-card.flip-card--hover(data-toggle="self", data-toggle-class="flip-card--180").mb-medium
+                  .flip-card__content.flip-card__content--rounded
+                    .flip-card__front
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-A.jpg", style="max-width: none; width: 100%;").no-mrg
+                    .flip-card__back
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-B.jpg", style="max-width: none; width: 100%;").no-mrg
+
+                .flip-card.flip-card--hover(data-toggle="self", data-toggle-class="flip-card--180").mb-medium
+                  .flip-card__content.flip-card__content--rounded
+                    .flip-card__front
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-A.jpg", style="max-width: none; width: 100%;").no-mrg
+                    .flip-card__back
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-B.jpg", style="max-width: none; width: 100%;").no-mrg
+
+                .flip-card.flip-card--hover(data-toggle="self", data-toggle-class="flip-card--180").mb-medium
+                  .flip-card__content.flip-card__content--rounded
+                    .flip-card__front
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-A.jpg", style="max-width: none; width: 100%;").no-mrg
+                    .flip-card__back
+                      img(src="images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-B.jpg", style="max-width: none; width: 100%;").no-mrg
+
 
 
 
@@ -80,3 +206,27 @@ block scripts
   script.
     window.myApp = window.myApp = {};
     window.myApp.scrollOffset = {0: 85, 768: 95};
+
+    document.getElementById('tab-4-button').addEventListener('click', function() {
+      var i = 0;
+      var bookmarks = document.querySelectorAll('.flip-card').forEach(function (el) {
+
+        setTimeout(function () {
+          el.classList.add('flip-card--45');
+          setTimeout(function () {
+            el.classList.remove('flip-card--45');
+          }, 500);
+        }, 150 * i);
+
+        el.addEventListener('click', function (e) {
+          var tgt = e.currentTarget;
+          if (tgt.classList.contains('flip-card--hover')) {
+            tgt.classList.remove('flip-card--hover');
+          } else {
+            tgt.classList.add('flip-card--hover');
+          }
+        });
+
+        i++;
+      });
+    });
