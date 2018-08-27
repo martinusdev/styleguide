@@ -1,0 +1,167 @@
+extends layouts/_default
+
+include ./mixins/icon
+include ./mixins/product
+include ./mixins/productHorizontal
+
+block opts
+  - var pageTitle = 'Môj klubový profil'
+  - var previewButton = true
+
+block content
+  main.account
+
+    include modules/account-header
+    +accountHeader({ navActive: 4, saveButton: true })
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-2.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+              ul.list.list--with-hover.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
+                li
+                  a(href="#klub", data-scroll, data-scroll-offset=header.size.default + 40) Klub
+                li
+                  a(href="#favorites", data-scroll, data-scroll-offset=header.size.default + 40) Moje obľúbené
+                li
+                  a(href="#klub-news", data-scroll, data-scroll-offset=header.size.default + 40) Novinky
+          .col--l-8.col--12(data-sticky-container)
+            #klub
+              .row.align-items-middle
+                .col--fill
+                  h3.h2.text-color-black.mb-medium Klubový profil
+              .mb-large#my-account-image(data-toggle-class="hide")
+                .row.align-items-middle.mb-medium
+                  .col--3.col--m-shrink.no-pad-right
+                    img(src="/images/content/user-photo.png", alt="User", width="100")
+                  .col--fill
+                    div
+                      button.btn.btn--clean.btn--small.no-mrg(data-toggle='#my-account-imageupload, #my-account-image')
+                        +icon('upload', 'icon--medium').icon--left
+                        | Nahrať#{' '}
+                        span.show-s nový#{' '}
+                        | obrázok
+                    .mb-medium.show-m
+                    div
+                      button.btn.btn--clean.btn--small.no-mrg
+                        +icon('trash', 'icon--medium').icon--left
+                        | Odstrániť
+              .my-account-imageupload.mb-large.hide.card.card--well#my-account-imageupload(data-toggle-class="hide")
+                .bar.mb-none
+                  .bar__item.bar__item--fill
+                    input(type="file")
+                  .bar__item.bar__item--shrinkable
+                    button.btn.btn--clean.btn--small.no-mrg(data-toggle='#my-account-imageupload, #my-account-image')
+                      +icon('close', 'icon--medium')
+
+              hr.mb-medium
+
+              .row
+                .col--m-4
+                  .form-control.form-control--input
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Meno
+                    input.input(type="text")
+                  .form-control.form-control--input
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Priezvisko
+                    input.input(type="text")
+                .col--m-4
+                  .form-control.form-control--input
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey E-mail
+                    input.input(type="email")
+                  .form-control.form-control--select
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Dátum narodenia
+                    .row.row--form
+                      .col--4
+                        select.js-select
+                          each day in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]
+                            option=day
+                      .col--4
+                        select.js-select
+                          each month in ['Jan','Feb','Mar','Apr','Máj','Jún','Júl','Aug','Sep','Okt','Nov','Dec']
+                            option=month
+                      .col--4
+                        select.js-select
+                          option 1998
+                          option 1999
+                .col--m-4
+                  .form-control.form-control--input
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Vaša klubová karta
+                    input.input(type="text")
+
+              hr.mb-large
+
+            #favorites
+              h3.h2.text-color-black Moje obľúbené
+
+              h4.h3 Obľúbené knihy
+              .row.mb-medium.align-items-middle
+                .col--m-4
+                  .form-control.form-control--input.mb-none.mb-medium-m(style="position: relative;")
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Pridajte knihu
+                    input.input(type="text")
+                .col--m-8
+                  .mb-tiny
+                  each item, index in books
+                    if index < 3
+                      .badge.mb-tiny=item.title
+
+
+              h4.h3 Obľúbení autori
+              .row.mb-medium.align-items-middle
+                .col--m-4
+                  .form-control.form-control--input.mb-none.mb-medium-m(style="position: relative;")
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Pridajte autora
+                    input.input(type="text")
+                    .dropdown.dropdown--arrowhead.is-active(aria-expanded="true")
+                      .dropdown__wrap
+                        a.dropdown__item.dropdown__item--small Harr
+                          b y Potter a Prekliate Dieťa
+                        a.dropdown__item.dropdown__item--small Harr
+                          b y Potter a Kameň Mudrcov
+                        a.dropdown__item.dropdown__item--small Harr
+                          b y Potter a Fénixov Rád
+                        a.dropdown__item.dropdown__item--small Harr
+                          b y Potter a Ohnivá Čaša
+                        hr.mb-tiny
+                        a.dropdown__item.dropdown__item--small Herec#{' '}
+                          b Harrison Ford
+                        a.dropdown__item.dropdown__item--small Kategória#{' '}
+                          b Fantasy
+                .col--m-8
+                  .mb-tiny
+                  each item, index in books
+                    if index < 5
+                      .badge.mb-tiny=item.author
+
+              hr.mb-large
+
+            #klub-news
+              h3.h2.text-color-black.mb-medium Klubové novinky
+              .form-control.form-control--checkbox.mb-large
+                .checkbox.radiocheck--medium
+                  input.radiocheck__input(type="checkbox", id="newsletter-delivery")
+                  label.radiocheck__control(for="newsletter-delivery")
+                  label.radiocheck__label(for="newsletter-delivery") Prajem si dostávať klubové novinky
+
+          .col--l-2.show-l
+            .bar.bar--vertical.align-items-bottom.mb-small(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
+              .bar__item
+                button.btn
+                  +icon('save', 'icon--medium').icon--left
+                  | Uložiť zmeny
+              .bar__item
+                button.btn.btn--primary
+                  +icon('eye', 'icon--medium').icon--left
+                  | Náhľad profilu
+
+block append modals
+  include ./modules/change-password
+  include ./modules/address-modal

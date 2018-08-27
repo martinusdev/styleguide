@@ -22,6 +22,10 @@ mixin accountHeader(props = {})
           title: 'Účet',
           href: 'my-account.html',
         },
+        {
+          title: 'Klub',
+          href: 'club-settings.html',
+        },
       ],
       navActive = 0,
       saveButton = false,
@@ -95,6 +99,12 @@ mixin accountHeader(props = {})
             button.btn
               +icon('save', 'icon--medium').icon--left
               | Uložiť zmeny
+        if previewButton
+          .bar__item
+            button.btn.btn--primary
+              +icon('eye', 'icon--medium').icon--left
+              | Náhľad
+
         .bar__item.text-right
           button.btn.btn--clean.btn--small.no-mrg-bottom
             span.show-m Odhlásiť sa
