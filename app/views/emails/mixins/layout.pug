@@ -1,0 +1,66 @@
+mixin page(props = {})
+  -
+    const {
+      color = sColorGrey,
+    } = props;
+
+  +table(cellpadding="0", cellspacing="0", width="100%", bgcolor=`${color}`, style=`background-color: #${color};`)
+    block
+
+mixin container(props = {})
+  -
+    const {} = props;
+
+  +table(cellpadding="0", cellspacing="0", width="600").container&attributes(attributes)
+    block
+
+mixin row(props = {})
+  -
+    const {} = props;
+
+  tr&attributes(attributes)
+    block
+
+mixin margin(props = {})
+  -
+    const {
+      size = 'medium',
+    } = props;
+  tr
+    td(height=`${sizes[size]}`)
+
+mixin col(props = {})
+  -
+    const {} = props;
+
+  td&attributes(attributes)
+    block
+
+mixin header(props = {})
+  -
+    const {
+      color = '000000',
+    } = props;
+
+  tr(cellpadding="0", cellspacing="0", width="100%", bgcolor=`${color}`, style=`background-color: #${color};`)
+    td(align="center")
+      block
+      +colorLine()
+
+mixin content(props = {})
+  -
+    const {} = props;
+
+  tr(cellpadding="0", cellspacing="0", width="100%")&attributes(attributes)
+    td(align="center")
+      block
+
+mixin footer(props = {})
+  -
+    const {
+      color = sColorGreyLight,
+    } = props;
+
+  tr(cellpadding="0", cellspacing="0", width="100%", bgcolor=`${color}`, style=`background-color: #${color};`)
+    td(align="center")
+      block

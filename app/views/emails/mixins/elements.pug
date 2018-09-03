@@ -1,0 +1,42 @@
+mixin table()
+  table(role="presentation")&attributes(attributes)
+    block
+
+mixin colorLine()
+  +table(cellpadding="0", cellspacing="0", style=`font-size:0px;width:100%;background:url(http://martinus-emails.lbx.sk/images/martinus-bg-bars-small.png) top center / auto repeat;`, align="center", border="0", background="http://martinus-emails.lbx.sk/images/martinus-bg-bars-small.png")
+    tr
+      td(style=`text-align:center;vertical-align:top;direction:ltr;font-size:0px;padding:10px;padding-bottom:5px;padding-top:0px;`)
+
+mixin button(props = {})
+  -
+    const {
+      text = 'Button',
+      color = sColorPrimary,
+      shadowColor = sColorPrimaryDark,
+    } = props;
+
+  a.font-medium(href="#", style=`text-align: center; text-transform: uppercase; letter-spacing: 2px; border-radius: 5px; border-bottom: 4px solid #${shadowColor}; background-color: #${color}; color: #ffffff; display: block; font-size: ${sFontMedium}; text-decoration: none; padding: 10px 10px 6px 10px; font-weight: bold;`)
+    =text
+
+mixin strikethrough()
+  span(style=`text-decoration: line-through; color: #828282; white-space: nowrap;`)&attributes(attributes)
+    block
+
+mixin tag(props = {})
+  -
+    const {
+      color = sColorGreyDark,
+      fontSize = sFontMedium,
+    } = props;
+  span(style=`background-color: #fff; font-size: ${fontSize}; border: 1px solid #${color}; color: #${color}; border-radius: 3px; padding: 2px 5px; font-weight: bold; white-space: nowrap;`)&attributes(attributes)
+    block
+
+mixin thumb(props = {})
+  -
+    const {
+      cover = null,
+      width = "100%",
+    } = props;
+
+  a(href="#")
+    img(src=`${cover}`, width=`${width}`, style=`width: ${width}; max-width: ${width}; box-shadow: 1px 2px 6px rgba(0,0,0,.4); border-radius: 3px !important;`)

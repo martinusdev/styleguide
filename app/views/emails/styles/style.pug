@@ -1,0 +1,116 @@
+-
+  const sFontFamily = 'font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif  !important;';
+
+  const sColorGreyLight = 'f6f6f6';
+  const sColorGrey = 'e4e7e9';
+  const sColorGreyDark = '625D58';
+  const sColorPrimary = 'D22121';
+  const sColorPrimaryDark = 'BA111B';
+  const sColorRed = 'D22121';
+  const sColorOrange = 'F28629';
+  const sColorGreen = '33AB4E';
+  const sColorBlue = '0069BA';
+
+  const sFontSmall = '12px';
+  const sFontMedium = '14px';
+  const sFontLarge = '16px';
+  const sFontH2 = '18px';
+  const sFontH1 = '24px';
+
+  const sFontSmallM = '10px';
+  const sFontMediumM = '12px';
+  const sFontLargeM = '14px';
+  const sFontH2M = '16px';
+  const sFontH1M = '20px';
+
+  const sizes = {
+    'small': 10,
+    'medium': 20,
+    'large': 40
+  }
+
+mixin style()
+  style
+    .
+      @media screen and (max-width: 599px) {
+        .container{
+          width: 95%;
+        }
+      }
+
+      .show-l {
+        display: block !important;
+      }
+
+      .show-l table {
+        display: table !important;
+        visibility: visible !important;
+        max-height: none !important;
+        max-width: none !important;
+        height: auto !important;
+        width: 100% !important;
+        overflow: auto !important;
+        mso-hide: none !important;
+      }
+
+      .show-s {
+        display: none !important;
+      }
+
+      .show-s table {
+        display: none !important;
+        visibility: hidden !important;
+        max-height: 0px !important;
+        max-width: 0px !important;
+        height: 0px !important;
+        width: 0px !important;
+        overflow: hidden !important;
+        mso-hide: all !important;
+      }
+
+      @media only screen and (max-width: 479px) {
+
+        body{font-size: 13px !important;}
+
+        h1 {font-size: 20px !important;}
+
+        h2 {font-size: 16px !important;}
+
+        .font-small {font-size: 10px !important;}
+        .font-medium {font-size: 12px !important;}
+        .font-large {font-size: 14px !important;}
+        .font-h2 {font-size: 16px !important;}
+        .font-h1 {font-size: 20px !important;}
+
+        .show-l {
+          display: none !important;
+        }
+
+        .show-l table {
+          display: none !important;
+          visibility: hidden !important;
+          max-height: 0px !important;
+          max-width: 0px !important;
+          height: 0px !important;
+          width: 0px !important;
+          overflow: hidden !important;
+          mso-hide: all !important;
+        }
+
+        .show-s {
+          display: block !important;
+        }
+
+
+        .show-s table {
+          display: table !important;
+          visibility: visible !important;
+          max-height: none !important;
+          max-width: none !important;
+          height: auto !important;
+          width: 100% !important;
+          overflow: auto !important;
+          mso-hide: none !important;
+        }
+
+      }

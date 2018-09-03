@@ -42,11 +42,11 @@ block content
 
     section.section.section--secondary.hide-l.section--small
       .wrapper-main
-        select.js-select.select--ghost
-          option Zbierajte záložky!
-          option O ilustráciách
-          option Darček (a ako ho získať)
-          option Galéria záložiek
+        select.js-select.select--ghost#select-tabs
+          option(value="#") Zbierajte záložky!
+          option(value="#") O ilustráciách
+          option(value="#") Darček (a ako ho získať)
+          option(value="#") Galéria záložiek
         .mb-medium
 
     section.section.tabs
@@ -274,6 +274,10 @@ block scripts
   script.
     window.myApp = window.myApp = {};
     window.myApp.scrollOffset = {0: 85, 768: 95};
+
+    document.getElementById('select-tabs').addEventListener('change', function () {
+      window.location.href = this.value;
+    });
 
     document.getElementById('tab-4-button').addEventListener('click', function() {
       var i = 0;

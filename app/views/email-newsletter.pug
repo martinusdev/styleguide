@@ -1,0 +1,70 @@
+extends emails/layouts/_default
+
+include ./emails/mixins/elements
+include ./emails/mixins/components
+include ./emails/mixins/layout
+
+block opts
+  - var pageTitle = 'Newsletter'
+  - var headerMenu = ['Knihy', 'Filmy', 'Hry', 'Ostatné']
+
+block content
+
+  +page()
+    +content(bgcolor="ffffff", style=`background-color: #ffffff;`)
+      +container
+        +margin({size: 'medium'})
+        +row()
+          +col(width="50%", style=`font-size: ${sFontMedium};`).font-medium
+            | Nový Dominik Dán už dostupný za 5,35€. Jo Nesbo opäť vo Foxforde!
+          +col(width="50%", align="right", style=`font-size: ${sFontMedium};`).font-medium
+            | Nezobrazuje sa vám e-mail správne?#{' '}
+            a(href="#") Prezrite si ho vo svojom prehliadači
+        +margin({size: 'medium'})
+    +header()
+      +container
+        +row
+          +col(height="60")
+            a
+              img(src="https://www.martinus.sk/images/martinus-logo.png", width="150")
+          +col(align="right", style=`color: #fff; font-size: ${sFontLarge}; font-weight: bold;`).font-medium
+            each item, i in headerMenu
+              if i > 0
+                | #{' '}|#{' '}
+              a(style="color: #fff; text-decoration: none;")
+                =item
+    +content()
+      +container
+        +margin({size: 'medium'})
+        +row
+          +col
+            +card()
+              h1(style=`font-size: ${sFontH1};`).font-h1 Pekný deň Tomáš
+              p(style=`font-size: ${sFontLarge};`).font-large ďakujeme za objednávku, vaše elektronické knihy sú už teraz k dispozícii - nájdete ich v sekcii Moja knižnica po prihlásení.
+        +row
+          +col
+            img(src="http://placehold.it/600x200", width="100%")
+        +margin({size: 'medium'})
+        +row
+          +col
+            +card()
+              each item, i in books
+                if i < 2
+                  +product({data: item})
+        +margin({size: 'medium'})
+        +row
+          +col
+            +card()
+              +table(cellpadding="0", cellspacing="0", width="100%")
+                +row
+                  each item, i in books
+                    if i > 0 && i < 4
+                      +col(valign="bottom", width="33%", align="center")
+                        +thumb({cover: item.cover, width: "60%"})
+                +margin({size: 'small'})
+                +row
+                  each item, i in books
+                    if i > 0 && i < 4
+                      +col(valign="top", width="33%", align="center")
+                        +product({data: item, type: 'vertical'})
+        +margin({size: 'large'})
