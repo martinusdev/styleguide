@@ -30,6 +30,8 @@ import Clipboard from './modules/Clipboard';
 import AnchorScroll from './modules/AnchorScroll';
 import EqualColumns from './modules/EqualColumns';
 
+import Choices from '../../node_modules/choices.js/assets/scripts/dist/choices';
+
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
 
@@ -57,6 +59,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Clipboard = Clipboard;
   window.myApp.AnchorScroll = AnchorScroll;
   window.myApp.EqualColumns = EqualColumns;
+
+  window.myApp.Choices = Choices;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
