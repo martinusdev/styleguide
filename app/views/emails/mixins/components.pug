@@ -1,8 +1,10 @@
 mixin card(props = {})
   -
-    const {} = props;
+    const {
+      secondary = false,
+    } = props;
 
-  +table(cellpadding="0", cellspacing="0", width="100%", bgcolor="ffffff")
+  +table(cellpadding="0", cellspacing="0", width="100%", bgcolor=`${secondary ? sColorBeige : 'ffffff'}`, style=`background-color: #${secondary ? sColorBeige : 'ffffff'};`)
     +row()
       +col(style=`padding: 20px;`).padding
         block
@@ -10,37 +12,42 @@ mixin card(props = {})
 mixin pricebox(props = {})
   -
     const {
-      before = '8,90 €',
+      before = null,
       after = '8,46 €',
       discount = '-5 %',
       size = 'medium',
       button = 'Do košíka',
+      wide = false,
     } = props;
 
-  +table(cellpadding="5")
+  +table(cellpadding="5", style="margin-left: -5px;")
     +row
-      +col(align="center", style=`line-height: 1.3; font-size: ${sFontMedium};`).font-medium
-        if size == 'medium'
+      +col(align="center", style=`line-height: 1.3; font-size: ${sFontMedium};${sFontFamily}`).font-medium
+        if size == 'medium' && before != null
           +strikethrough()=before
           br
         if size == 'medium'
           +tag({color: sColorPrimary}).font-medium=discount
         if size == 'small'
           +tag({color: sColorPrimary, fontSize: '12px'}).font-small=discount
-      +col
+      +col(style=`${sFontFamily}`)
         if size == 'medium'
-          span(style=`font-size: ${sFontH1}; font-weight: bold; white-space: nowrap;`).font-h1=after
+          span(style=`font-size: ${sFontH1}; font-weight: bold; white-space: nowrap;${sFontFamily}`).font-h1=after
         if size == 'small'
-          span(style=`font-size: ${sFontH2}; font-weight: bold; white-space: nowrap;`).font-h2=after
-    if button != null
+          span(style=`font-size: ${sFontH2}; font-weight: bold; white-space: nowrap;${sFontFamily}`).font-h2=after
+      if button != null && wide
+        +col(style=`${sFontFamily}`)
+          +button({text: button})
+    if button != null && !wide
       +row
-        +col(colspan="2")
+        +col(colspan="2", style=`${sFontFamily}`)
           +button({text: button})
 
 mixin product(props = {})
   -
     const {
       type = 'horizontal',
+      small = false,
       part = null,
       data = null,
     } = props;
@@ -48,25 +55,26 @@ mixin product(props = {})
   if type == 'horizontal'
     +table(cellpadding="10", cellspacing="0", width="100%")
       +row
-        +col(valign="top", width="40%")
+        +col(valign="top", width=`${small ? "20%" : "35%"}`)
           +thumb({cover: data.cover})
-        +col(valign="top", width="60%")
-          h2(style=`margin-bottom: 3px; margin-top: 0; font-size: ${sFontH2}`).font-h2
-            a(style=`color: #000;`)
+        +col(valign="top", width=`${small ? "80%" : "65%"}`)
+          h2(style=`margin-bottom: 3px; margin-top: 0; font-size: ${sFontH2};${sFontFamily}`).font-h2
+            a(href="#", style=`${sLinkProduct}`).linkProduct
               =data.title
-          p(style=`margin: 0; color: #000; font-size: ${sFontMedium};`).font-medium
+          p(style=`margin: ${small ? "0 0 "+ sizes['small'] +"px 0" : "0"}; color: #000; font-size: ${sFontMedium};${sFontFamily};`).font-medium
             =data.author
-          p(style=`font-size: 12px; font-size: ${sFontSmall}`).font-small
-            | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet enim ac nulla accumsan, nec gravida metus pharetra. Duis faucibus felis enim, nec fringilla lectus commodo vitae.
+          if small == false
+            p(style=`font-size: 12px; font-size: ${sFontSmall}${sFontFamily}`).font-small
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet enim ac nulla accumsan, nec gravida metus pharetra. Duis faucibus felis enim, nec fringilla lectus commodo vitae.
 
-          +pricebox
+          +pricebox({wide: small})
 
   if type == 'vertical'
 
-    h2(style=`margin-bottom: 3px; margin-top: 0; font-size: ${sFontMedium};`).font-medium
-      a(style="color: #000;")
+    h2(style=`margin-bottom: 3px; margin-top: 0; font-size: ${sFontMedium};${sFontFamily};`).font-medium
+      a(href="#", style=`${sLinkProduct}`).linkProduct
         =data.title
-    p(style=`margin: 0; color: #${sColorGreyDark}; font-size: ${sFontSmall};`).font-small
+    p(style=`margin: 0; color: #${sColorGreyDark}; font-size: ${sFontSmall};${sFontFamily};`).font-small
       =data.author
     +pricebox({size: 'small', button: null})
 

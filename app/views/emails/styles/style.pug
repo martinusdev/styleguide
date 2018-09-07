@@ -10,6 +10,7 @@
   const sColorOrange = 'F28629';
   const sColorGreen = '33AB4E';
   const sColorBlue = '0069BA';
+  const sColorBeige = 'FBF7F5';
 
   const sFontSmall = '12px';
   const sFontMedium = '14px';
@@ -22,6 +23,11 @@
   const sFontLargeM = '14px';
   const sFontH2M = '16px';
   const sFontH1M = '20px';
+
+  const sLink = 'color:' + sColorBlue + ';';
+  const sLinkProduct = 'color:' + sColorPrimary + ';text-decoration: none;';
+  const sA = 'border: 0; cursor: pointer;';
+  const sHeaderButton = 'margin: 0 5px; background-color: #3c3c3c; display: inline-block; padding: 3px 5px; border-radius: 3px;';
 
   const sizes = {
     'small': 10,
@@ -36,6 +42,23 @@ mixin style()
         .container{
           width: 95%;
         }
+      }
+
+      .link {
+        color: #0069BA;
+      }
+
+      .link:hover {
+        color: #1381d6;
+      }
+
+      .linkProduct {
+        color: #D22121;
+        text-decoration: none;
+      }
+
+      .linkProduct:hover {
+        color: #BA111B;
       }
 
       .show-l {
@@ -69,6 +92,14 @@ mixin style()
       }
 
       @media only screen and (max-width: 479px) {
+
+        .padding {
+          padding: 10px !important;
+        }
+
+        .headerButton {
+          margin: 0 2px !important;
+        }
 
         body{font-size: 13px !important;}
 

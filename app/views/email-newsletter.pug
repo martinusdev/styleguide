@@ -10,47 +10,35 @@ block opts
 
 block content
 
-  +page()
+  +page({color: 'ffffff'})
     +content(bgcolor="ffffff", style=`background-color: #ffffff;`)
       +container
         +margin({size: 'medium'})
         +row()
-          +col(width="50%", style=`font-size: ${sFontMedium};`).font-medium
+          +col(width="50%", style=`font-size: ${sFontMedium};${sFontFamily}`).font-medium
             | Nový Dominik Dán už dostupný za 5,35€. Jo Nesbo opäť vo Foxforde!
-          +col(width="50%", align="right", style=`font-size: ${sFontMedium};`).font-medium
+          +col(width="50%", align="right", style=`font-size: ${sFontMedium};${sFontFamily}`).font-medium
             | Nezobrazuje sa vám e-mail správne?#{' '}
-            a(href="#") Prezrite si ho vo svojom prehliadači
+            a(href="#", style=`${sLink}`).link Prezrite si ho vo svojom prehliadači
         +margin({size: 'medium'})
     +header()
       +container
         +row
           +col(height="60")
-            a
+            a(href="#", style=`${sLink}`).link
               img(src="https://www.martinus.sk/images/martinus-logo.png", width="150")
-          +col(align="right", style=`color: #fff; font-size: ${sFontLarge}; font-weight: bold;`).font-medium
+          +col(align="right", style=`color: #fff; font-size: ${sFontLarge}; ${sFontFamily} font-weight: bold;`).font-medium
             each item, i in headerMenu
-              if i > 0
-                | #{' '}|#{' '}
-              a(style="color: #fff; text-decoration: none;")
+              a(href="#", style=`color: #fff; text-decoration: none; ${sHeaderButton}`).headerButton
                 =item
     +content()
       +container
-        +margin({size: 'medium'})
-        +row
+        //-+margin({size: 'medium'})
+        //-+row
           +col
             +card()
-              h1(style=`font-size: ${sFontH1};`).font-h1 Pekný deň Tomáš
-              p(style=`font-size: ${sFontLarge};`).font-large ďakujeme za objednávku, vaše elektronické knihy sú už teraz k dispozícii - nájdete ich v sekcii Moja knižnica po prihlásení.
-        +row
-          +col
-            img(src="http://placehold.it/600x200", width="100%")
-        +margin({size: 'medium'})
-        +row
-          +col
-            +card()
-              each item, i in books
-                if i < 2
-                  +product({data: item})
+              h1(style=`font-size: ${sFontH1}; ${sFontFamily}`).font-h1 Pekný deň Tomáš
+              p(style=`font-size: ${sFontLarge}; ${sFontFamily}`).font-large ďakujeme za objednávku, vaše elektronické knihy sú už teraz k dispozícii - nájdete ich v sekcii Moja knižnica po prihlásení.
         +margin({size: 'medium'})
         +row
           +col
@@ -67,4 +55,51 @@ block content
                     if i > 0 && i < 4
                       +col(valign="top", width="33%", align="center")
                         +product({data: item, type: 'vertical'})
+        +margin({size: 'large'})
+        +row
+          +col
+            a(href="#", style=`${sA}`)
+              img(src="http://placehold.it/600x200", width="100%", style="width: 100%; display: block;")
+        +row
+          +col
+            each item, i in books
+              if i < 2
+                +card({secondary: i % 2 == 1})
+                  +product({data: item})
+        +margin({size: 'medium'})
+        +heading() Knižné novinky pre vás
+        +row
+          +col
+            +card({secondary: true})
+              each item, i in books
+                if i < 2
+                  +product({data: item, small: true})
+            +colorLine()
+        +margin({size: 'medium'})
+    +footer({color: 'ffffff'})
+      +container()
+        +margin({size: 'medium'})
+        +row
+          +col(align="center", style=`font-size: ${sFontMedium};${sFontFamily}`).font-medium
+            a(href="#", style=`${sLink}`).link
+              img(src="https://www.martinus.sk/images/martinus-logo-primary@2x.png", width="150")
+            br
+            br
+            b Martinus - Internetové kníhkupectvo
+            br
+            span Martinus, s.r.o., Gorkého 4, 036 01 Martin
+            br
+            span Telefón: 043 / 3260 360
+            br
+            span E-mail:#{' '}
+            a(href="#", style=`${sLink}`).link info@martinus.sk
+            br
+            span Web:#{' '}
+            a(href="#", style=`${sLink}`).link www.martinus.sk
+        +row
+          +col(align="center", style=`font-size: ${sFontMedium};${sFontFamily}`).font-medium
+            p
+              | Tento e-mail vám posielame na e-mailovú adresu {{customer.email}}, pretože ste prihlásený k ich odberu na Martinus.sk. Príliš veľa e-mailov?#{' '}
+              a(href="#", style=`${sLink}`).link Odhlásiť sa
+              | #{' '}z odberu noviniek.
         +margin({size: 'large'})
