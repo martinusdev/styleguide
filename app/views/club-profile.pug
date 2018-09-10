@@ -34,8 +34,12 @@ block content
                     | #{' '}
                     a.btn.btn--small.btn--equal
                       +icon('link').icon--small
-                h2.h5.text-color-white
-                  | Môj profil
+                .bar
+                  .bar__item
+                    .badge
+                      | 1239 bodov
+                    +icon('info').icon--medium.text-color-white(title="Lorem ipsum dolor sit amet", data-tooltip)
+
 
 
           .col--m-9.text-center
@@ -97,6 +101,30 @@ block content
                   a.link Vesmírne opery
 
           .col--l-9.col--12
+
+            h2 Moje benefity
+              +icon('info').icon--medium(title="Lorem ipsum dolor sit amet", data-tooltip)
+            .row
+              .col--m-3.col--6
+                .card.card--material.card--material-green.line-small
+                  .card__label 379 bodov
+                  .card__content.card__content--condensed
+                    b.text-medium Knihomoľská taška
+              .col--m-3.col--6
+                .card.card--material.card--material-green.line-small
+                  .card__label 749 bodov
+                  .card__content.card__content--condensed
+                    b.text-medium Zľava 2€ nad 19€
+              .col--m-3.col--6
+                .card.card--material
+                  .card__label 1199 bodov
+                  .card__content.card__content--condensed.line-small
+                    b.text-medium.text-color-grey-dark Zľava 25% na najdrahšiu knihu
+              .col--m-3.col--6
+                .card.card--material
+                  .card__label 1999 bodov
+                  .card__content.card__content--condensed.line-small
+                    b.text-medium.text-color-grey-dark Zľava 15% na celý nákup
 
             h2 Moje odznaky
 
