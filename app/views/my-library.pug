@@ -136,6 +136,28 @@ block content
                         data-toggle='#share-list-modal'
                       )
                         +icon('share').icon--medium
+              .col--m-6
+                .bar
+                  .bar__item.bar__item--shrinkable
+                    b Pridať knihu:
+                  .bar__item.bar__item--fill
+                    .form-control.form-control--input.mb-none(style="position: relative;")
+                      input.input(type="text")
+                      .dropdown.dropdown--arrowhead.is-active(aria-expanded="true")
+                        .dropdown__wrap
+                          each item, i in books
+                            a.dropdown__item
+                              .product.product--horizontal
+                                .product__img.product__cover.mb-none
+                                  .thumbnail.thumbnail--book.thumbnail--small
+                                    .thumbnail__img-wrap
+                                      img(src=`${assetsPrefix}${item.cover}`).img
+
+                                .product__caption
+                                  .bar.bar--small.no-mrg-bottom
+                                    .bar__item.bar__item--fill
+                                      .text-semibold.block.mb-none.line-medium=item.title
+                                      .text-color-grey.text-size-small= item.author
 
 
               //- TODO: Hladat v kniznici

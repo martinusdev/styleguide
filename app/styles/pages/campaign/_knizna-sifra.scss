@@ -1,0 +1,42 @@
+$ks-color-dark: #1d1d1d;
+$ks-color-inverse: #a3a3a3;
+
+.ks-text-color-inverse {
+  color: $ks-color-inverse;
+}
+
+.ks-link--inverse {
+  color: $ks-color-inverse;
+
+  &:hover {
+    color: $ks-color-inverse;
+  }
+}
+
+.ks-page {
+  background: $ks-color-dark;
+}
+
+.ks-header {
+  background: $ks-color-dark;
+
+  .collapsed:not(.is-active)::after {
+    background: linear-gradient(to top, rgba($ks-color-dark, 1), rgba($ks-color-dark, 0));
+  }
+}
+
+.ks-user {
+  &__email {
+    max-width: 85%;
+  }
+}
+
+.ks-list > li {
+  padding-left: 45px;
+}
+
+.ks-list > li::before {
+  top: 5px;
+  left: 0;
+  z-index: 0;
+}
