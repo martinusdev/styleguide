@@ -58,12 +58,12 @@ html.no-js
                   .form-control.form-control--input
                     .form-label
                       label Meno
-                    input.input(type="text")
+                    input.input(type="text", placeholder="Zadajte vaše meno a priezvisko")
                 .col--m-6
-                  .form-control.form-control--input.has-error
+                  .form-control.form-control--input.has-erroryarn
                     .form-label
                       label Telefónne číslo
-                    input.input.is-error(type="text")
+                    input.input.is-error(type="text", placeholder="Zadajte vaše telefónne číslo, napr. 0905778881")
 
               .row.mb-medium
                 each item, i in [1,2,3,4,5,6,7,8,9,10]
@@ -78,8 +78,9 @@ html.no-js
                         span.text-medium.text-color-grey Autor Poviedky
 
               .row.mb-medium
-                .col--m-6.ofst--m-3.text-center
+                .col--m-8.ofst--m-2.text-center
                   button.btn.btn--primary Hlasovať
+                  p.text-small Po odoslaní hlasovania budú údaje o vašom mene a telefónnom čísle uložené do našej databázy pre účely vyhodnotenia súťaže a overenia hlasovania. Po skončení súťaže všetky osobné informácie anonymizujeme.
 
         section.section.section--secondary
           .wrapper-main
