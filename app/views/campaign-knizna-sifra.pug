@@ -3,6 +3,9 @@ extends layouts/_default
 include ./mixins/breadcrumbs
 include ./mixins/icon
 
+block append head
+  link(rel="stylesheet", href=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.css`, integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==", crossorigin="")
+
 block opts
     - var pageTitle = 'Knižná šifra'
     - var campaignHeader = true
@@ -14,17 +17,19 @@ block content
     section.section.ks-header.text-color-white
       .wrapper-main
         .row.align-items-top.mb-none
-          .col--m-3.mb-medium.mb-none-m.text-center
-            a.show-m
-              img(src="images/content/campaign/knizna-sifra4/logo.png", width="270")
-            a.hide-m
-              img(src="images/content/campaign/knizna-sifra4/logo.png", width="270")
+          .col--m-3.mb-medium.text-center
+            a(href="#")
+              img(src="images/content/campaign/knizna-sifra4/logo/sk.svg", width="270")
           .col--m-5.col--l-6.mb-medium.mb-none-m
             h1.h2.mb-medium Hľadaj knihy ukryté v obraze
             .show-m
               p.mb-none
                 ul.list--counter.no-pad.ks-list
-                  li.mb-small Počas marca sa bude obraz postupne odkrývať. Ak si chceš pomôcť, skoč sa pozrieť na celý obraz.
+                  li.mb-small
+                    b Počas marca#{' '}
+                    | sa bude obraz postupne odkrývať.
+                    br
+                    | Ak si chceš pomôcť, skoč sa pozrieť na celý obraz.
                   li.mb-small Keď ťa vyžrebujeme, za každý uhádnutý názov získavaš knižku. Ak počas marca urobíš v Martinuse ľubovoľný nákup, tvoju výhru zdvojnásobíme
                   li.mb-small Za každú knižku zakúpenú na www.martinus.sk počas marca získaš pomôcku k niektorej časti obrazu.
                     a(href="#", data-toggle="#rules").link.ks-link--inverse #{' '}kompletné pravidlá.
@@ -67,7 +72,58 @@ block content
 
     section.section
       .wrapper-main
-        img(src="images/content/campaign/knizna-sifra4/img.jpg", width="100%")
+        img(src="http://www.martinus.sk/kniznasifra/index.php?getimage", width="100%")
+
+    section.section
+      .wrapper-main
+        .row
+          .col--m-8.ofst--m-2
+            .card.card--well.mb-large
+              .card__content
+                h2.mb-none Aké knihy sa ti podarilo nájsť?
+                p.text-color-grey Zadaj postupne všetky knihy, ktoré si našiel ukryté v obraze.
+                .bar
+                  .bar__item.bar__item--fill
+                    .form-control.form-control--input
+                      .input-addons.input-addons--large
+                        .input-addons__item.show-m
+                          +icon('search').icon--medium
+                        input.input.input--large(type="text", placeholder="Napr. Malý princ")
+                        .input-addons__item.no-pad.hide-m
+                          button.btn.btn--primary.btn--large.btn--equal
+                            +icon('search').icon--medium.icon--left
+                  .bar__item.bar__item--shrinkable.show-m
+                    button.btn.btn--primary.btn--large Hľadať
+                .bar.mb-none
+                  .bar__item.bar__item--fill
+                    .alert.alert--error-light
+                      | Mrzí nás to, ale túto knihu do obrazu maliar nezašifroval :-(
+                  .bar__break.hide-m
+                  .bar__item.bar__item--shrinkable
+                    a.btn.btn--clean.btn--small
+                      | späť
+                      span.show-m #{' '}na obraz
+                      +icon('arrow-up').icon--small
+                  .bar__item.bar__item--shrinkable
+                    a.btn.btn--clean.btn--small
+                      | nájdené knihy#{' '}
+                      +icon('arrow-down').icon--small
+
+            p.mb-large
+              b Nezabudni#{' '}
+              | – Šifra je najväčšia zábava, keď sa máš komu pochváliť úspechmi :-) Zdieľaj na:
+              a(href="#")
+                +icon('facebook').icon--medium
+              a(href="#")
+                +icon('instagram').icon--medium
+
+    section.section
+      .wrapper-main
+        h2 Úspešne odšifrované knihy#{' '}
+          | 2 / 64
+
+
+
 
   .modal-overlay#login(data-modal)
     article.modal
@@ -86,3 +142,6 @@ block content
                 .input-addons__item.no-pad
                   button.btn.btn--primary
                     | Prihlásiť
+
+block append scripts
+  script(src=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.js`, integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==", crossorigin="")
