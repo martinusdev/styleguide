@@ -16,8 +16,20 @@ $ks-color-grey-light: #dadada;
   }
 }
 
+.ks-border--inverse {
+  border-color: $ks-color-inverse;
+}
+
 .ks-page {
   background: $color-white;
+
+  .leaflet-container {
+    background: transparent;
+  }
+
+  .leaflet-bottom.leaflet-right {
+    display: none;
+  }
 }
 
 .ks-header {
@@ -42,4 +54,29 @@ $ks-color-grey-light: #dadada;
   top: 5px;
   left: 0;
   z-index: 0;
+}
+
+.ks-map {
+  width: 100%;
+  height: 400px;
+
+  @include breakpoint('m') {
+    height: 700px;
+  }
+}
+
+.ks-progress {
+  display: flex;
+
+  &__item {
+    height: _get-space('v');
+    background: _color(grey, 500);
+    flex: 1 0 1px;
+    margin-right: 2px;
+    border-radius: 2px;
+  }
+
+  &__item--active {
+    background: #fff;
+  }
 }
