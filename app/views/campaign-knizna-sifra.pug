@@ -2,6 +2,7 @@ extends layouts/_default
 
 include ./mixins/breadcrumbs
 include ./mixins/icon
+include ./mixins/booksCarouselHorizontal
 
 block append head
   link(rel="stylesheet", href=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.css`, integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==", crossorigin="")
@@ -188,7 +189,7 @@ block content
             .h5 bonusová otázka na dnešný deň
             .h2.text-transform-upper Nadpis
           .modal__header__action
-            .btn.btn--clean(data-toggle="#challenge")
+            .btn.btn--clean(data-toggle="#bonus")
               +icon('close').icon--medium
         .row.ko-video-background
           .ofst--m-1
@@ -219,6 +220,44 @@ block content
                     .bar__item.bar__item--shrinkable
                       button.btn.btn--small.btn--clean ďalej
                         +icon('arrow-right')
+
+  .modal-overlay#gift(data-modal)
+    article.modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            img(src="images/content/campaign/knizna-sifra4/gift.svg", width="200", style="position: absolute; top: -20px; left: -20px; width: 200px;")
+            .h5 odomknutý darček
+            .h2.text-transform-upper Gratulujeme!
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#gift")
+              +icon('close').icon--medium
+        .modal__content
+          .row
+            .ofst--m-1
+            .col--m-10
+
+              p Gratulujeme! Podarilo sa ti lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget dignissim ipsum. Nam eu porta tortor. Curabitur nec sem et mauris eleifend malesuada ac at ipsum.
+
+              .card.card--success.mb-large
+                .card__content
+                  .bar.mb-none.align-items-center
+                    .bar__item
+                      +icon('check-circle').icon--large.text-color-success
+                    .bar__item.bar__item--fill.text-color-success
+                      .h2 ABCD-EFGH-IJKL-MNOP
+                    .bar__item.bar__item--shrinkable
+                      button.btn.btn--small.btn--clean skopírovať
+
+              h2 Obľúbené vianočné darčeky
+
+              +booksCarouselHorizontal
+
+              .text-center
+                a(href="#").btn.btn--primary
+                  | vianočný pomocník
+                  +icon('arrow-right').icon--right
+
 
 block append scripts
   script(src=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.js`, integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==", crossorigin="")
