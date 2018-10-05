@@ -22,7 +22,7 @@ block content
             a(href="#")
               img(src="images/content/campaign/knizna-sifra4/logo/sk.svg", width="270")
           .col--m-5.col--l-6.mb-medium.mb-none-m
-            h1.mb-medium Hľadaj knihy ukryté v obraze
+            h1.mb-medium.ks-text Hľadaj knihy ukryté v obraze
             .show-m
               p.mb-none
                 ul.list--counter.no-pad.ks-list
@@ -79,7 +79,12 @@ block content
                   .text-small
                     a.link.ks-link--inverse Zdvojnásob svoju výhru nákupom v Martinus.sk!
 
-    section.section
+    section.section.section--secondary(style="position:relative;")
+      a(href="#").ks-bonus.clickable
+        .ks-bonus__txt.text-center
+          h2.h3.text-color-white.mb-none Psst!
+          .text-color-white.text-small Tajný bonus
+
       .wrapper-main
         #image-map.ks-map
 
@@ -129,7 +134,9 @@ block content
     section.section.section--secondary
       .wrapper-main
         h2 Úspešne odšifrované knihy#{' '}
-          | 2 / 64
+          span.ks-status
+            span.ks-status__num 2
+            span.text-color-grey #{' '}/ 64
 
         .row.mb-large
 
@@ -153,7 +160,7 @@ block content
               .bar.bar--vertical.mb-none
                 .bar__item.bar__item--fill.no-mrg
                   .card__content.line-small.no-pad-bottom
-                    a.link.link--product.text-medium Velmi dlhy nazov knihy na dva alebo tri riadky
+                    a.link.link--product.text-size-medium Velmi dlhy nazov knihy na dva alebo tri riadky
                     .text-color-grey.text-small.mb-small Walter Isaacson
                 .bar__item.bar__item--shrinkable.no-mrg
                   .card__content.line-small
@@ -161,7 +168,7 @@ block content
 
           each item, i in [1,2,3,4]
             .col--m-2.col--4.flex
-              article.card.block(style="width: 100%;")
+              article.card.block(style="width: 100%; border: 2px dotted #ccc;")
 
   .modal-overlay#login(data-modal)
     article.modal
@@ -258,6 +265,42 @@ block content
                   | vianočný pomocník
                   +icon('arrow-right').icon--right
 
+  .modal-overlay#rules(data-modal)
+    article.modal.modal--full
+      .modal__wrap
+        .modal__header
+          .modal__header__headline.text-center
+            .h2.text-transform-upper pravidlá
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#rules")
+              +icon('close').icon--medium
+        .modal__content
+          .row
+            .ofst--m-2
+            .col--m-8
+
+              h2.h1.mb-small Hľadaj knihy skryté v obraze
+
+              hr
+
+              h3.h2 Ako hrať?
+
+              p Rozlúšti s nami Knižnú šifru a vyhraj! Každý pracovný deň až do 1. decembra budeme odkrývať novú časť obrazu, do ktorého autor schoval 64 kníh rôznych žánrov a z rôznych období. Nezabudni, hľadáme presne tie knihy, ktoré do obrazu ukryl maliar! Ak sa ti nedarí, možno hľadáš niečo, čo tam autor nezašifroval. Áno, môže to byť ťažké, veď Martinus.sk má v ponuke vyše 200 000 kníh :-) Prihlás sa svojím e-mailom alebo cez Facebook a odhaľ všetky tajomstvá Šifry!
+
+              h3.h2 Zdvojnásob svoju výhru!
+
+              .row
+                .col--m-8
+                  p Ak ťa po skončení súťaže vyžrebujeme, za každú nájdenú knihu z obrazu alebo uhádnutú Bonusovú otázku vyhráš jednu podľa vlastného výberu v podobe darčekovej poukážky v hodnote 10€. Navyše, ak do 1. decembra urobíš ľubovoľný nákup v kníhkupectve Martinus, tvoju výhru zdvojnásobíme!
+                  .card.card--info
+                    .card__content
+                      | Napríklad, ak nájdeš 42 kníh ukrytých v obraze a do 1. decembra si kúpiš aspoň jednu knihu v kníhkupectve Martinus, na webe alebo v kamenných kníhkupectvách (odlož si účtenku!), vyhráš darčekovú poukážku v hodnote až 840€.
+                .col--m-4
+                  img(src="https://www.martinus.sk/kniznasifra/img/vyhra.png").img
+
+              .text-center
+                a(href="#").btn.btn--primary Pozrieť podrobné pravidlá súťaže
+
 
 block append scripts
   script(src=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.js`, integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==", crossorigin="")
@@ -268,9 +311,17 @@ block append scripts
         maxZoom: 4,
         center: [0, 0],
         zoom: 1,
+        zoomControl: false,
         crs: L.CRS.Simple,
-        scrollWheelZoom: false
+        scrollWheelZoom: false,
       });
+
+      var zoom = L.control.zoom({
+        zoomInTitle: 'Priblížiť',
+        zoomOutTitle: 'Oddialiť',
+        position: 'topright'
+      });
+      zoom.addTo(map);
 
       var w = 2562,
           h = 2562,

@@ -1,6 +1,8 @@
 $ks-color-dark: #5c3d33;
 $ks-color-inverse: #f68c3d;
 $ks-color-primary: #e13736;
+$ks-color-beige: #e5ae73;
+$ks-color-beige-light: #f9e5cd;
 $ks-color-grey: #5f5f5f;
 $ks-color-grey-light: #dadada;
 
@@ -8,11 +10,15 @@ $ks-color-grey-light: #dadada;
   color: $ks-color-inverse;
 }
 
+.ks-text-color-beige {
+  color: $ks-color-beige;
+}
+
 .ks-link--inverse {
-  color: $ks-color-inverse;
+  color: $ks-color-beige;
 
   &:hover {
-    color: $ks-color-inverse;
+    color: $ks-color-beige-light;
   }
 }
 
@@ -82,5 +88,35 @@ $ks-color-grey-light: #dadada;
 
   &__item--active {
     background: #fff;
+  }
+}
+
+.ks-bonus {
+  background: url('../images/content/campaign/knizna-sifra4/bonus.png') no-repeat;
+  width: 134px;
+  height: 111px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  overflow: hidden;
+  z-index: $z-index-topbar - 1;
+
+  &__txt {
+    width: 173px;
+    margin-top: 15px;
+    transform-origin: center center;
+    transform: rotate(40deg);
+  }
+}
+
+.ks-status {
+  background: #fff;
+  display: inline-block;
+  padding: 5px 15px;
+  border: 2px solid $ks-color-beige-light;
+  border-radius: 5px;
+
+  &__num {
+    color: $ks-color-primary;
   }
 }
