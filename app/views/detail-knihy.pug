@@ -959,6 +959,12 @@ block append scripts
 block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {
+
+        var myAlert = new window.myApp.Alert({
+          icon: 'check-circle',
+          text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
+        });
+
         var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
           choices: [
             {
