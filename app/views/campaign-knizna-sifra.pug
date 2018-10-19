@@ -1,336 +1,120 @@
-extends layouts/_default
+extends campaign-knizna-sifra-layout
 
-include ./mixins/breadcrumbs
 include ./mixins/icon
-include ./mixins/booksCarouselHorizontal
 
-block append head
-  link(rel="stylesheet", href=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.css`, integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==", crossorigin="")
+block tab
 
-block opts
-    - var pageTitle = 'Knižná šifra'
-    - var campaignHeader = true
-    - var pageClass = 'ks-page'
+  section.section.section--small.show-l
+    .wrapper-main
+      ul.tab-nav.tab-nav--block
+        li.tab-nav__item.is-active
+          a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra.html')
+            .tab-nav__content-wrap Hľadaj skryté knihy
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra-about.html')
+            .tab-nav__content-wrap Výhry a pravidlá
 
-block content
-  main
+  section.section.section--secondary.hide-l.section--small(style="z-index: 1999;")
+    .wrapper-main
+      select.js-select.select--ghost#select-tabs
+        option(value="campaign-knizna-sifra.html", selected) Hľadaj skryté knihy
+        option(value="campaign-knizna-sifra.html") Výhry a pravidlá
+      .mb-medium
 
-    section.section.ks-header.text-color-white
-      .wrapper-main
-        .row.align-items-top.mb-none
-          .col--m-3.mb-medium.text-center
+  section.section.section--secondary(style="position:relative;")
+    .wrapper-main.hide-m
+      a(href="#").card.ks-bonus-mobile
+        .card__content.card__content--condensed.text-center
+          h2.h3.text-color-white.mb-none
+            | Psst!#{' '}
+            span.text-small Tajný bonus
+
+    a(href="#").ks-bonus.clickable.show-m
+      .ks-bonus__txt.text-center
+        h2.h3.text-color-white.mb-none Psst!
+        .text-color-white.text-small Tajný bonus
+
+    .wrapper-main
+      #image-map.ks-map
+
+  section.section
+    .wrapper-main
+      .row
+        .col--m-8.ofst--m-2
+          .card.card--well.mb-large
+            .card__content
+              h2.mb-none Aké knihy sa ti podarilo nájsť?
+              p.text-color-grey Zadaj postupne všetky knihy, ktoré si našiel ukryté v obraze.
+              .bar
+                .bar__item.bar__item--fill.no-mrg--m-down
+                  .form-control.form-control--input
+                    .input-addons.input-addons--large
+                      .input-addons__item.show-m
+                        +icon('search').icon--medium
+                      input.input.input--large(type="text", placeholder="Napr. Malý princ")
+                      .input-addons__item.no-pad.hide-m
+                        button.btn.btn--primary.btn--large.btn--equal
+                          +icon('search').icon--medium.icon--left
+                .bar__item.bar__item--shrinkable.show-m
+                  button.btn.btn--primary.btn--large Hľadať
+              .bar.mb-none
+                .bar__item.bar__item--fill.no-mrg--m-down
+                  .alert.alert--error-light
+                    | Mrzí nás to, ale túto knihu do obrazu maliar nezašifroval :-(
+                .bar__break.hide-m
+                .bar__item.bar__item--shrinkable
+                  a.btn.btn--clean.btn--small
+                    | späť
+                    span.show-m #{' '}na obraz
+                    +icon('arrow-up').icon--small
+                .bar__item.bar__item--shrinkable
+                  a.btn.btn--clean.btn--small
+                    | nájdené knihy#{' '}
+                    +icon('arrow-down').icon--small
+
+          p.mb-large.text-center
+            b Nezabudni#{' '}
+            | – Šifra je najväčšia zábava, keď sa máš komu pochváliť úspechmi :-) Zdieľaj na:
             a(href="#")
-              img(src="images/content/campaign/knizna-sifra4/logo/sk.svg", width="270")
-          .col--m-5.col--l-6.mb-medium.mb-none-m
-            h1.mb-medium.ks-text Hľadaj knihy ukryté v obraze
-            .show-m
-              p.mb-none
-                ul.list--counter.no-pad.ks-list
-                  li.mb-small
-                    b Počas marca#{' '}
-                    | sa bude obraz postupne odkrývať.
-                    br
-                    | Ak si chceš pomôcť, skoč sa pozrieť na celý obraz.
-                  li.mb-small Keď ťa vyžrebujeme, za každý uhádnutý názov získavaš knižku. Ak počas marca urobíš v Martinuse ľubovoľný nákup, tvoju výhru zdvojnásobíme
-                  li.mb-small Za každú knižku zakúpenú na www.martinus.sk počas marca získaš pomôcku k niektorej časti obrazu.
-                    a(href="#", data-toggle="#rules").link.ks-link--inverse #{' '}kompletné pravidlá.
-            .hide-m
-              .mb-none#ks-description(data-collapse="70")
-                ul.list--counter.no-pad.ks-list
-                  li.mb-small Počas marca sa bude obraz postupne odkrývať. Ak si chceš pomôcť, skoč sa pozrieť na celý obraz.
-                  li.mb-small Keď ťa vyžrebujeme, za každý uhádnutý názov získavaš knižku. Ak počas marca urobíš v Martinuse ľubovoľný nákup, tvoju výhru zdvojnásobíme
-                  li.mb-small Za každú knižku zakúpenú na www.martinus.sk počas marca získaš pomôcku k niektorej časti obrazu.
-                    a(href="#", data-toggle="#rules").link.ks-link--inverse #{' '}kompletné pravidlá.
-              a.link.ks-link--inverse.text-size-medium(href="javascript:void(0)", data-toggle="#ks-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
-                +icon('arrow-down')
-          .col--m-4.col--l-3.mb-none-m
+              +icon('facebook').icon--medium
+            a(href="#")
+              +icon('instagram').icon--medium
 
-            .text-center.text-right-m
-              .btn.btn--primary.btn--medium.mb-small(data-toggle="#login")
-                +icon('user').icon--small.icon--left
-                | Prihlásiť sa
-              .btn.btn--medium.mb-small
-                +icon('facebook').icon--small.icon--left
-                | Prihlásiť sa na facebooku
+  section.section.section--secondary
+    .wrapper-main
+      h2 Úspešne odšifrované knihy#{' '}
+        span.ks-status
+          span.ks-status__num 2
+          span.text-color-grey #{' '}/ 64
 
-            .ks-user
-              .bar.bar--vertical
-                .bar__item.border-bottom-grey.ks-border--inverse
-                  .bar
-                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email.no-mrg-bottom
-                      +icon('user').icon--medium.text-space-right
-                      span.text-semibold klco.roman@gmail.com
-                    .bar__item.bar__item--fill.text-right.no-mrg-bottom
-                      a(href="#").link.link--product
-                        +icon('logout').icon--medium
-                .bar__item.text-center.text-left-m
-                  | Môžeš vyhrať:#{' '}
-                  b.text-bold.ks-text-color-inverse.h2 12
-                  b #{' '}zo 128 kníh
-                  .mb-small
-                    .ks-progress
-                      - var i = 0;
-                      while i < 12
-                        .ks-progress__item.ks-progress__item--active
-                        - i++;
-                      while i > 11 && i < 64
-                        .ks-progress__item
-                        - i++;
-                  .text-small
-                    a.link.ks-link--inverse Zdvojnásob svoju výhru nákupom v Martinus.sk!
+      .row.mb-large
 
-    section.section.section--secondary(style="position:relative;")
-      a(href="#").ks-bonus.clickable
-        .ks-bonus__txt.text-center
-          h2.h3.text-color-white.mb-none Psst!
-          .text-color-white.text-small Tajný bonus
+        .col--m-2.col--6.flex
+          article.card.card--material.card--material-green.no-pad-top
+            a(href="#")
+              img(src="images/content/campaign/knizna-sifra4/img-card.jpg", width="100%")
+            .bar.bar--vertical.mb-none
+              .bar__item.bar__item--fill.no-mrg
+                .card__content.line-small.no-pad-bottom
+                  a.link.link--product.text-medium Steve Jobs
+                  .text-color-grey.text-small.mb-small Walter Isaacson
+              .bar__item.bar__item--shrinkable.no-mrg
+                .card__content.line-small
+                  a(href="#").btn.btn--small.btn--ghost.block.mb-none viac info
 
-      .wrapper-main
-        #image-map.ks-map
+        .col--m-2.col--6.flex
+          article.card.card--material.card--material-green.no-pad-top
+            a(href="#")
+              img(src="images/content/campaign/knizna-sifra4/img-card.jpg", width="100%")
+            .bar.bar--vertical.mb-none
+              .bar__item.bar__item--fill.no-mrg
+                .card__content.line-small.no-pad-bottom
+                  a.link.link--product.text-size-medium Velmi dlhy nazov knihy na dva alebo tri riadky
+                  .text-color-grey.text-small.mb-small Walter Isaacson
+              .bar__item.bar__item--shrinkable.no-mrg
+                .card__content.line-small
+                  a(href="#").btn.btn--small.btn--ghost.block.mb-none viac info
 
-    section.section
-      .wrapper-main
-        .row
-          .col--m-8.ofst--m-2
-            .card.card--well.mb-large
-              .card__content
-                h2.mb-none Aké knihy sa ti podarilo nájsť?
-                p.text-color-grey Zadaj postupne všetky knihy, ktoré si našiel ukryté v obraze.
-                .bar
-                  .bar__item.bar__item--fill.no-mrg--m-down
-                    .form-control.form-control--input
-                      .input-addons.input-addons--large
-                        .input-addons__item.show-m
-                          +icon('search').icon--medium
-                        input.input.input--large(type="text", placeholder="Napr. Malý princ")
-                        .input-addons__item.no-pad.hide-m
-                          button.btn.btn--primary.btn--large.btn--equal
-                            +icon('search').icon--medium.icon--left
-                  .bar__item.bar__item--shrinkable.show-m
-                    button.btn.btn--primary.btn--large Hľadať
-                .bar.mb-none
-                  .bar__item.bar__item--fill.no-mrg--m-down
-                    .alert.alert--error-light
-                      | Mrzí nás to, ale túto knihu do obrazu maliar nezašifroval :-(
-                  .bar__break.hide-m
-                  .bar__item.bar__item--shrinkable
-                    a.btn.btn--clean.btn--small
-                      | späť
-                      span.show-m #{' '}na obraz
-                      +icon('arrow-up').icon--small
-                  .bar__item.bar__item--shrinkable
-                    a.btn.btn--clean.btn--small
-                      | nájdené knihy#{' '}
-                      +icon('arrow-down').icon--small
-
-            p.mb-large.text-center
-              b Nezabudni#{' '}
-              | – Šifra je najväčšia zábava, keď sa máš komu pochváliť úspechmi :-) Zdieľaj na:
-              a(href="#")
-                +icon('facebook').icon--medium
-              a(href="#")
-                +icon('instagram').icon--medium
-
-    section.section.section--secondary
-      .wrapper-main
-        h2 Úspešne odšifrované knihy#{' '}
-          span.ks-status
-            span.ks-status__num 2
-            span.text-color-grey #{' '}/ 64
-
-        .row.mb-large
-
-          .col--m-2.col--6.flex
-            article.card.card--material.card--material-green.no-pad-top
-              a(href="#")
-                img(src="images/content/campaign/knizna-sifra4/img-card.jpg", width="100%")
-              .bar.bar--vertical.mb-none
-                .bar__item.bar__item--fill.no-mrg
-                  .card__content.line-small.no-pad-bottom
-                    a.link.link--product.text-medium Steve Jobs
-                    .text-color-grey.text-small.mb-small Walter Isaacson
-                .bar__item.bar__item--shrinkable.no-mrg
-                  .card__content.line-small
-                    a(href="#").btn.btn--small.btn--ghost.block.mb-none viac info
-
-          .col--m-2.col--6.flex
-            article.card.card--material.card--material-green.no-pad-top
-              a(href="#")
-                img(src="images/content/campaign/knizna-sifra4/img-card.jpg", width="100%")
-              .bar.bar--vertical.mb-none
-                .bar__item.bar__item--fill.no-mrg
-                  .card__content.line-small.no-pad-bottom
-                    a.link.link--product.text-size-medium Velmi dlhy nazov knihy na dva alebo tri riadky
-                    .text-color-grey.text-small.mb-small Walter Isaacson
-                .bar__item.bar__item--shrinkable.no-mrg
-                  .card__content.line-small
-                    a(href="#").btn.btn--small.btn--ghost.block.mb-none viac info
-
-          each item, i in [1,2,3,4]
-            .col--m-2.col--4.flex
-              article.card.block(style="width: 100%; border: 2px dotted #ccc;")
-
-  .modal-overlay#login(data-modal)
-    article.modal
-      .modal__wrap
-        .modal__header
-          .modal__header__headline
-            h2 Prihlásenie
-          .modal__header__action
-            .btn.btn--clean(data-toggle="#login")
-              +icon('close').icon--medium
-        .modal__content
-          form
-            .form-control.form-control--input
-              .input-addons
-                input.input(type="text", placeholder="Tvoj e-mail...")
-                .input-addons__item.no-pad
-                  button.btn.btn--primary
-                    | Prihlásiť
-
-  .modal-overlay#bonus(data-modal)
-    article.modal.modal--medium
-      .modal__wrap
-        .modal__header.mb-none
-          .modal__header__headline.text-center
-            .h5 bonusová otázka na dnešný deň
-            .h2.text-transform-upper Nadpis
-          .modal__header__action
-            .btn.btn--clean(data-toggle="#bonus")
-              +icon('close').icon--medium
-        .row.ko-video-background
-          .ofst--m-1
-          .col--m-10
-            .ko-video
-              | <iframe width="560" height="315" src="https://www.youtube.com/embed/docIm4sExSk?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        .modal__content
-          .mb-medium
-          .row
-            .ofst--m-1
-            .col--m-10
-              h3.h2 Zadaj odpoveď
-              form.mb-large
-                .form-control.form-control--input#input-guess
-                  .input-addons
-                    input.input(type="text", placeholder="Text odpovede...")
-                    .input-addons__item.no-pad
-                      .btn.btn--primary#btn-guess
-                        | Hľadaj
-
-              .card.card--success
-                .card__content
-                  .bar.mb-none
-                    .bar__item
-                      +icon('check-circle').icon--large.text-color-success
-                    .bar__item.bar__item--fill.text-color-success
-                      | Gratulujeme! Získavaš naviac 2 knihy, ktoré bla bla...
-                    .bar__item.bar__item--shrinkable
-                      button.btn.btn--small.btn--clean ďalej
-                        +icon('arrow-right')
-
-  .modal-overlay#gift(data-modal)
-    article.modal.modal--medium
-      .modal__wrap
-        .modal__header.mb-none
-          .modal__header__headline.text-center
-            img(src="images/content/campaign/knizna-sifra4/gift.svg", width="200", style="position: absolute; top: -20px; left: -20px; width: 200px;")
-            .h5 odomknutý darček
-            .h2.text-transform-upper Gratulujeme!
-          .modal__header__action
-            .btn.btn--clean(data-toggle="#gift")
-              +icon('close').icon--medium
-        .modal__content
-          .row
-            .ofst--m-1
-            .col--m-10
-
-              p Gratulujeme! Podarilo sa ti lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget dignissim ipsum. Nam eu porta tortor. Curabitur nec sem et mauris eleifend malesuada ac at ipsum.
-
-              .card.card--success.mb-large
-                .card__content
-                  .bar.mb-none.align-items-center
-                    .bar__item
-                      +icon('check-circle').icon--large.text-color-success
-                    .bar__item.bar__item--fill.text-color-success
-                      .h2 ABCD-EFGH-IJKL-MNOP
-                    .bar__item.bar__item--shrinkable
-                      button.btn.btn--small.btn--clean skopírovať
-
-              h2 Obľúbené vianočné darčeky
-
-              +booksCarouselHorizontal
-
-              .text-center
-                a(href="#").btn.btn--primary
-                  | vianočný pomocník
-                  +icon('arrow-right').icon--right
-
-  .modal-overlay#rules(data-modal)
-    article.modal.modal--full
-      .modal__wrap
-        .modal__header
-          .modal__header__headline.text-center
-            .h2.text-transform-upper pravidlá
-          .modal__header__action
-            .btn.btn--clean(data-toggle="#rules")
-              +icon('close').icon--medium
-        .modal__content
-          .row
-            .ofst--m-2
-            .col--m-8
-
-              h2.h1.mb-small Hľadaj knihy skryté v obraze
-
-              hr
-
-              h3.h2 Ako hrať?
-
-              p Rozlúšti s nami Knižnú šifru a vyhraj! Každý pracovný deň až do 1. decembra budeme odkrývať novú časť obrazu, do ktorého autor schoval 64 kníh rôznych žánrov a z rôznych období. Nezabudni, hľadáme presne tie knihy, ktoré do obrazu ukryl maliar! Ak sa ti nedarí, možno hľadáš niečo, čo tam autor nezašifroval. Áno, môže to byť ťažké, veď Martinus.sk má v ponuke vyše 200 000 kníh :-) Prihlás sa svojím e-mailom alebo cez Facebook a odhaľ všetky tajomstvá Šifry!
-
-              h3.h2 Zdvojnásob svoju výhru!
-
-              .row
-                .col--m-8
-                  p Ak ťa po skončení súťaže vyžrebujeme, za každú nájdenú knihu z obrazu alebo uhádnutú Bonusovú otázku vyhráš jednu podľa vlastného výberu v podobe darčekovej poukážky v hodnote 10€. Navyše, ak do 1. decembra urobíš ľubovoľný nákup v kníhkupectve Martinus, tvoju výhru zdvojnásobíme!
-                  .card.card--info
-                    .card__content
-                      | Napríklad, ak nájdeš 42 kníh ukrytých v obraze a do 1. decembra si kúpiš aspoň jednu knihu v kníhkupectve Martinus, na webe alebo v kamenných kníhkupectvách (odlož si účtenku!), vyhráš darčekovú poukážku v hodnote až 840€.
-                .col--m-4
-                  img(src="https://www.martinus.sk/kniznasifra/img/vyhra.png").img
-
-              .text-center
-                a(href="#").btn.btn--primary Pozrieť podrobné pravidlá súťaže
-
-
-block append scripts
-  script(src=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.js`, integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==", crossorigin="")
-  script
-    .
-      var map = L.map('image-map', {
-        minZoom: 1,
-        maxZoom: 4,
-        center: [0, 0],
-        zoom: 1,
-        zoomControl: false,
-        crs: L.CRS.Simple,
-        scrollWheelZoom: false,
-      });
-
-      var zoom = L.control.zoom({
-        zoomInTitle: 'Priblížiť',
-        zoomOutTitle: 'Oddialiť',
-        position: 'topright'
-      });
-      zoom.addTo(map);
-
-      var w = 2562,
-          h = 2562,
-          url = 'http://www.martinus.sk/kniznasifra/index.php?getimage';
-
-      var southWest = map.unproject([0, h], map.getMaxZoom()-1);
-      var northEast = map.unproject([w, 0], map.getMaxZoom()-1);
-      var bounds = new L.LatLngBounds(southWest, northEast);
-
-      L.imageOverlay(url, bounds).addTo(map);
-
-      map.setMaxBounds(bounds);
+        each item, i in [1,2,3,4]
+          .col--m-2.col--4.flex
+            article.card.block(style="width: 100%; border: 2px dotted #ccc;")

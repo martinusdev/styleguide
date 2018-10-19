@@ -1,0 +1,69 @@
+extends campaign-knizna-sifra-layout
+
+include ./mixins/icon
+
+block tab
+
+  section.section.section--small.show-l
+    .wrapper-main
+      ul.tab-nav.tab-nav--block
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra.html')
+            .tab-nav__content-wrap Hľadaj skryté knihy
+        li.tab-nav__item.is-active
+          a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra-about.html')
+            .tab-nav__content-wrap Výhry a pravidlá
+
+  section.section.section--secondary.hide-l.section--small
+    .wrapper-main
+      select.js-select.select--ghost#select-tabs
+        option(value="campaign-knizna-sifra.html") Hľadaj skryté knihy
+        option(value="campaign-knizna-sifra.html", selected) Výhry a pravidlá
+      .mb-medium
+
+  section.section
+    .wrapper-main
+      .row.mb-large
+        .ofst--m-1
+        .col--m-10
+
+          h3.h2 Hľadaj knihy skryté v obraze
+
+          p
+            | Rozlúšti s nami Knižnú šifru a vyhraj!#{' '}
+            b Každý pracovný deň až do 7. decembra
+            | #{' '}budeme odkrývať novú časť obrazu, do ktorého autor schoval#{' '}
+            b 64 kníh
+            | #{' '}rôznych žánrov a z rôznych období.
+
+          p Nezabudni, hľadáme presne tie knihy, ktoré do obrazu ukryl maliar! Ak sa ti nedarí, možno hľadáš niečo, čo tam autor nezašifroval. Áno, môže to byť ťažké, veď Martinus.sk má v ponuke takmer 300 000 kníh  :-)
+
+          p
+            a.link Prihlás sa svojím e-mailom
+            | #{' '}alebo#{' '}
+            a.link cez Facebook
+            | #{' '}a odhaľ všetky tajomstvá Šifry!
+
+          .mb-large
+
+          .row.mb-medium
+            .col--m-8
+              h3.h2 Zdvojnásob svoju výhru!
+
+              p
+                | Ak ťa po skončení súťaže vyžrebujeme, za každú nájdenú knihu z obrazu vyhráš jednu knižku podľa vlastného výberu v podobe darčekovej poukážky#{' '}
+                b v hodnote 10€
+                | . Navyše, ak #{' '}
+                b do 7. decembra
+                | #{' '}urobíš ľubovoľný nákup v kníhkupectve Martinus,#{' '}
+                b tvoju výhru zdvojnásobíme!
+              .card.card--info
+                .card__content
+                  .text-italic.text-color-grey-dark Napríklad, ak nájdeš 42 kníh ukrytých v obraze a do 7. decembra si kúpiš aspoň jednu knihu v kníhkupectve Martinus, na webe alebo v kamenných kníhkupectvách (odlož si účtenku!), vyhráš darčekovú poukážku v hodnote až 840€.
+            .col--m-4
+              img(src="https://www.martinus.sk/kniznasifra/img/vyhra.png").img
+
+          .text-center
+            a(href="#").btn Pozrieť podrobné pravidlá súťaže
+            span.text-space-right
+            a(href="#").btn.btn--primary Prihlásiť sa do súťaže
