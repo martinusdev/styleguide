@@ -17,7 +17,7 @@ block content
 
     section.section.ks-header.text-color-white
       .wrapper-main
-        .row.align-items-top.mb-none
+        .row.align-items-top.mb-medium
           .col--m-3.mb-medium.text-center
             a(href="#")
               img(src="images/content/campaign/knizna-sifra4/logo/sk.svg", width="270")
@@ -231,7 +231,7 @@ block append scripts
 
       var map = L.map('image-map', {
         minZoom: 1,
-        maxZoom: 4,
+        maxZoom: 3,
         center: [0, 0],
         zoom: 1,
         zoomControl: false,
@@ -248,10 +248,13 @@ block append scripts
 
       var w = 2562,
           h = 2562,
-          url = 'http://www.martinus.sk/kniznasifra/index.php?getimage';
+          url = 'http://www.martinus.sk/kniznasifra2018/index.php?getimage';
+      var wrapperWidth = document.querySelector('.wrapper-main').offsetWidth - 40;
+      var mapContainer = document.querySelector('.ks-map');
+      mapContainer.style.height = wrapperWidth + 'px';
 
-      var southWest = map.unproject([0, h], map.getMaxZoom()-1);
-      var northEast = map.unproject([w, 0], map.getMaxZoom()-1);
+      var southWest = map.unproject([0, wrapperWidth*2], map.getMaxZoom()-1);
+      var northEast = map.unproject([wrapperWidth*2, 0], map.getMaxZoom()-1);
       var bounds = new L.LatLngBounds(southWest, northEast);
 
       L.imageOverlay(url, bounds).addTo(map);
