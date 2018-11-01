@@ -32,26 +32,25 @@ block content
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
-    //-section.section.xmas2017-collection-header
-    section.section(style="background: url('images/content/campaign/xmas2017/bg-last-minute.jpg') no-repeat center center; background-size: cover;")
+    section.section.xmas2018-collection-header.xmas2018-collection-header--helper
       .wrapper-main
-        //-.row
+        .row
           .col--m-8.text-center.text-left-m
-            h1.mb-small Získajte krásne nálepky na darčeky!
-            p Osem knižných nálepiek na darčeky vám radi pribalíme ku každému nákupu až do Vianoc.
-          .col--m-4.text-center.text-right-m
-            a.btn.btn--primary.btn--large(data-toggle="#xmas-help")
+            h1.mb-medium Získejte poukázky na knihy a ušetřete až 1000 Kč
+            .row.mb-large
+              .col--m-8
+                .bar.align-items-top
+                  .bar__item.bar__item--shrinkable.show-m
+                    .mb-small
+                    .h2.mb-none.icon-voucher.icon-voucher--inverse.inline-block 1000 Kč
+                  .bar__item.bar__item--fill
+                    p K nákupu nad 999 Kč nyní získáte poukázky v celkové hodnotě 1000 Kč, abyste nový rok začali s novým čtením! Více o tom, jaké poukázky můžete získat, se#{' '}
+                      a.link.ks-link--inverse(href="#") dozvíte tu.
+          .col--m-4.text-center.text-right-m.mb-medium
+            .mb-medium.hide-m
+            a.btn.btn--primary.btn--medium(data-toggle="#xmas-help")
               +icon('footer-package', 'icon--medium icon--left')
-              |potrebujem poradiť
-
-        //-img(src="images/content/campaign/xmas2017/bg-stickers.png", width="100%")
-
-        .mb-medium.hide-m
-        .mb-large.text-color-white
-          h1.mb-medium Venujte najrýchlejšie knižné darčeky
-          p Hodil by sa vám darček naozaj na poslednú chvíľu alebo pre niekoho za siedmimi horami?
-            br
-            | Vyberte si darčekovú poukážku či niektorú zo skvelých e-kníh!
+              |Chci poradit dárky
 
     .modal-overlay.active#xmas-help(data-modal)
       article.modal.modal--medium
