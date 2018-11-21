@@ -15,12 +15,17 @@ block content
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Martinus vianoce 2017'] })
 
-    section.section.xmas2017-cms-header
-      .wrapper-main
-        .text-center
-          h1.text-color-white Placeholder nadpis
+    section(style="background: url('../images/content/campaign/xmas2017/bg-cz.jpg') no-repeat center center; background-size: cover;")
+      .wrapper-main.section-title-wrapper
+        .section-title
+          .section-title__item
+            | Lorem ipsum dolor sit amet
+          .section-title__item
+            | Lorem ipsum
+          .section-title__item
+            | Lorem ipsum dolor sit amet
 
-    .section
+    section.section
       .wrapper-main
         article
           .cms-article
@@ -35,6 +40,49 @@ block content
                 p Jak to funguje? Každý větší nákup v hodnotě alespoň 999 Kč odměníme poukázkami v hodnotě až 1000 Kč. Ty budete moci využít po celý rok 2018 a jistě vám pomohou v novém roce přečíst spoustu knih! Ke všem objednávkám teď navíc přibalujeme samolepky na dárky s motivy Knižní šifry. Kdopak dostane Švejka? ;-)
 
                 p Protože chceme, abyste si užili sváteční pohodu, rádi bychom vás popostrčili a zbavili stresu. Čím dříve tedy knihy objednáte, tím větší hodnotu budou mít poukázky, které od nás dostanete.
+
+            .row.product-detail.mb-large
+              .col--12.col--s-3.col--m-4.col--l-3.ofst--l-2
+                .product-detail__preview
+                  .product-detail__image
+                    .thubnail--large-shambnail.thumbnail--book.thumdow.thumbnail--huge.mb-medium
+                      .thumbnail__img-wrap
+                        img.img.img--fluid.no-mrg(src=`${assetsPrefix}images/content/books/sample-14.jpg`, alt="")
+
+              article.col--12.col--s-9.col--m-8.col--l-5
+                h1.product-detail__title.mb-small Základy rybolovu pro kluky a holky
+                h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+                ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
+                  li
+                    a.link(href="#") Frank Weissert
+                  li
+                    a.link(href="#") Jack Thorne
+                  li
+                    a.link(href="#") John Tiffany
+
+                article.card.card--well.text-center.text-size-medium
+                  .card__content
+                    .row
+                      .col--6.col--m-12.text-right.text-center-m
+                        .h1.price-box__price.no-mrg-bottom 12,99 €
+                      .col--6.col--m-12.text-left.text-center-m
+                        p.text-color-grey-dark.mb-none.mb-small-m
+                          span.show-m Bežná cena#{' '}
+                          span.hide-m Bežne#{' '}
+                          span.text-strikethrough 15,42 €
+                        .badges.badges--inline.align-items-center.no-mrg-bottom
+                          .badge.badge--primary Ušetríte 3,50 €
+                  .card__content
+                    p.mb-small.text-color-success Máme na#{' '}
+                      em.text-color-success(data-tooltip, title="Toto je tooltip vysvetlivka") sklade
+                      | ,#{' '}posielame#{' '}
+                      em.text-color-success(data-tooltip, title="Táto kniha sa môže na cestu ku vám vybrať prakticky okamžite! Ak si ju objednáte do 13:00 v pracovný deň, odošleme vám ju ešte dnes, inak najneskôr nasledujúci pracovný deň.") ihneď
+                      | .
+                    .row
+                      .col--m-8.ofst--m-2
+                        button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+                          +icon('cart').icon--left.icon--medium
+                          | Vložiť do košíka
 
             .row.mb-large
               .col--m-4
