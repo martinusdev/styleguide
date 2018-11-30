@@ -840,6 +840,13 @@ block content
     include ./modules/seen-items
     include ./modules/seen-items-delete
 
+    section.section.section-sticky-bottom.hide-m
+      .wrapper-main
+        .btn-layout--vertical.mb-medium
+          button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+            +icon('cart').icon--left.icon--medium
+            | Vložiť do košíka
+
 block append modals
   include ./modules/product-preview
 
@@ -960,10 +967,10 @@ block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {
 
-        var myAlert = new window.myApp.Alert({
+        /*var myAlert = new window.myApp.Alert({
           icon: 'check-circle',
           text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
-        });
+        });*/
 
         var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
           choices: [
