@@ -42,6 +42,26 @@
                 option(selected disabled placeholder) Zaokrúhliť na 20 € (dar = 5,95 €)
                 option Zaokrúhliť na 20 € (dar = 5,95 €)
 
+  .card__content
+    .bar
+      .bar__item.bar__item--fill
+        h2 Darček zadarmo: vyberte si chýbajúcu zberateľskú záložku
+
+  .card__content.no-pad-top.no-mrg
+    .row
+      .col--m-6.col--s-11.text-size-medium
+        p
+          b Zbierate naše špeciálne zberateľské záložky a chýba vám nejaká?#{' '}
+          | Práve teraz si okrem januárovej môžete#{' '}
+          b zadarmo doplniť ďalšiu
+          | . Iba si vyberte, ktorú potrebujete.
+
+      .col--m-6.col--s-11
+        .bar
+          .bar__item.bar__item--fill
+            .form-control.form-control--select
+              select(data-select-wide-image, id='wide-image-select')
+
   .card__content.no-pad.no-mrg
     hr
 
@@ -97,3 +117,35 @@
 
 p.text-color-grey.text-size-small.text-space-left
   | * Podmienky obsahujú aj vyžadované predzmluvné informácie ohľadom prevádzkovateľa internetového obchodu, tovaru, dodacích a platobných podmienok, práva na odstúpenie od zmluvy, záručných podmienok, postupe pri uplatňovaní reklamácií, ochrany osobných údajov a ostatné informácie v súlade s 3 zákona 102/2014 Z.z. a v súlade ustanoveniami zákona 122/2013 Z.z.
+
+block append scripts
+  script.
+    document.addEventListener('myAppLoaded', function() {
+
+      var imageListSelect = new window.myApp.Select('#wide-image-select', {
+        choices: [
+          {
+            value: 'bookmark-0',
+            label: 'Nepotrebujem doplniť záložku',
+            id: 1,
+            customProperties: {}
+          },
+          {
+            value: 'bookmark-1',
+            label: 'Októbrová záložka',
+            id: 2,
+            customProperties: {
+              image: 'https://mrtns.eu/assets/martinus/lb/images/content/campaign/bookmarks2018/bookmarks/2018-q1w2-A.jpg',
+            }
+          },
+          {
+            value: 'bookmark-2',
+            label: 'Novembrová záložka',
+            id: 3,
+            customProperties: {
+              image: 'https://www.martinus.sk/data/img/custom/89793_3A_2018.jpg',
+            }
+          },
+        ]
+      });
+    });
