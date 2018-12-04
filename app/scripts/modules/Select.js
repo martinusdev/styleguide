@@ -155,6 +155,27 @@ const imageListChoice = (
   </div>
   `;
 
+const wideImageListTemplate = ({ label, customProperties }, width) => `
+  <div class="mb-none" style="width:${width}">
+    <div class="mb-none">
+      <span>${label}</span>
+    </div>
+  </div>`;
+
+const wideImageListChoice = (
+  { customProperties, disabled, label, id, value },
+  config,
+) => `
+  <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
+    <div class="mb-none">
+      <div class="mb-none">
+        <span>${label}</span>
+      </div>
+      ${customProperties && customProperties.image ? `<div class="mb-none"><img class="img img--rounded" src="${customProperties.image}"></div>` : ''}
+    </div>
+  </div>
+  `;
+
 const choiceListTemplate = (width = 'none', config) => `
   <div class="${config.classNames.list}" dir="ltr" role="listbox" style="width:${width}"></div>
 `;
@@ -184,6 +205,22 @@ function getTemplates(template, select, config) {
       ...{ templates },
       item: data => template(imageListTemplate(data)),
       choice: data => template(imageListChoice(data, config)),
+    };
+  }
+
+  if (select.hasAttribute('data-select-wide-image')) {
+    templates = {
+      ...{ templates },
+      item: data =>
+        template(
+          wideImageListTemplate(
+            data,
+            select.hasAttribute('data-select-width')
+              ? select.getAttribute('data-select-width')
+              : 'none',
+          ),
+        ),
+      choice: data => template(wideImageListChoice(data, config)),
     };
   }
 
