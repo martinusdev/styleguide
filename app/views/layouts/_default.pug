@@ -1,3 +1,4 @@
+include ./../mixins/icon
 //- -----------------------------------------------
 //- VARIABLES AND DATA
 
@@ -6,7 +7,8 @@
 - const xmas = true
 
 - var gdpr = false;
-- var headerWarning = gdpr ? ' has-header-warning' : '';
+- var headerWarningActive = true;
+- var headerWarning = headerWarningActive ? ' has-header-warning' : '';
 
 //- -----------------------------------------------
 //- OPTIONS
@@ -60,19 +62,20 @@ html.no-js
 
     #page-container
 
-      if headerWarning != false && gdpr
-        .section.section--small.bg-yellow.header-warning
+      if headerWarningActive != false
+        .section.section--small.header-warning.no-pad.bg-black
           .wrapper-main
-            .bar
-              .bar__item.bar__item--fill
-                | Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje.
-                br
-                | Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
-              .bar__break.hide-m
-              .bar__item.bar__item--shrinkable.text-right
-                a.link(href="#") Viac informácií
-              .bar__item.bar__item--shrinkable.text-right
-                a.btn.btn--primary súhlasím
+            .mb-tiny
+            .bar.mb-none
+              .bar__item.bar__item--fill.text-color-grey-light
+                +icon('delivery')
+                small #{' '}Prepáčte, ak bude vaša objednávka 1-2 dni meškať.#{' '}
+                  a(href="#").link prečo?
+              //-.bar__break.hide-m
+                .bar__item.bar__item--shrinkable.text-right
+                  a.link(href="#") Viac informácií
+                .bar__item.bar__item--shrinkable.text-right
+                  a.btn.btn--primary súhlasím
 
       block header
         if checkoutHeader
