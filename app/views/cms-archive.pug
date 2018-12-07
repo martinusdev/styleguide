@@ -1,0 +1,148 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Text page'
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Martinus vianoce 2017'] })
+
+    section.bg-blue-ci
+      .wrapper-main.section-title-wrapper
+        .section-title
+          .section-title__item.section-title__item--static
+            img(src=`${assetsPrefix}images/content/logo-black.svg`, alt="Martinus", style="height: 28px;")
+          .section-title__item
+            | Archív
+
+    section.section
+      .wrapper-main
+        article
+          .cms-article
+
+            .bar
+              .bar__item.bar__item--fill
+                h1 Vitajte v archíve Martinus.sk
+              .bar__item.bar__item--shrinkable
+                select.js-select.select--ghost
+                  option Rok
+                  option 2018
+                  option 2017
+                  option 2016
+                  option 2015
+                  option 2014
+                  option 2013
+                  option 2012
+
+            p.h4.mb-large Milí Martinusáci, vítame vás v našom archíve - mieste, na ktorom sme sa snažili zhromaždiť čo najviac projektov, ktoré sme pre vás za tie roky prichystali. Veríme, že vás malý výlet do "histórie" poteší rovnako, ako potešil aj nás :-)
+              br
+              br
+              | Vaši knihomoli z Martinus.sk
+
+
+          h2.mb-large.text-center
+            +icon('calendar')
+            | #{' '}2018
+
+          .row.mb-large
+            .col--m-4
+              .card
+                img.img.img--rounded(src="https://www.martinus.sk/data/img/custom/17308_odysea.png")
+                .card__header.card-header
+                  h3.card-header__title.text-left Knižná odysea
+                  .card-header__action
+                    a(href="#").btn.btn--equal.btn--round.btn--ghost
+                      +icon('arrow-up-right').icon--medium
+                .card__content
+                  p.mb-tiny Marec oslavujeme každoročne a teraz sme sa vydali na dobrodružnú cestu literárnymi svetmi! Uhádli ste záludnosti ukryté na knižných planétach?
+
+            .col--m-4
+              .card
+                img.img.img--rounded(src="https://www.martinus.sk/data/img/custom/47039_PF.png")
+                .card__header.card-header
+                  h3.card-header__title.text-left PF 2017
+                  .card-header__action
+                    a(href="#").btn.btn--equal.btn--round.btn--ghost
+                      +icon('arrow-up-right').icon--medium
+                .card__content
+                  p.mb-tiny Ktorý hrdina vás bude sprevádzať rokom 2017? Máme pre vás takého, o ktorom ste ešte nechyrovali!
+
+            .col--m-4
+              .card
+                img.img.img--rounded(src="https://www.martinus.sk/data/img/custom/64060_knizne_dilemy.png")
+                .card__header.card-header
+                  h3.card-header__title.text-left Knižné dilemy
+                  .card-header__action
+                    button(href="#", data-toggle="#archive-modal").btn.btn--equal.btn--round.btn--ghost
+                      +icon('zoom-in').icon--medium
+                .card__content
+                  p.mb-tiny Marec je mesiacom knihy a tak sme spoločne odpovedali na otázky, ako inak by sa mohli obľúbené príbehy odohrávať...
+
+          h2.mb-large.text-center
+            +icon('calendar')
+            | #{' '}2018
+
+          .row.mb-large
+            .col--m-4
+              .card
+                img.img.img--rounded(src="https://www.martinus.sk/data/img/custom/17308_odysea.png")
+                .card__header.card-header
+                  h3.card-header__title.text-left Knižná odysea
+                  .card-header__action
+                    a(href="#").btn.btn--equal.btn--round.btn--ghost
+                      +icon('arrow-up-right').icon--medium
+                .card__content
+                  p.mb-tiny Marec oslavujeme každoročne a teraz sme sa vydali na dobrodružnú cestu literárnymi svetmi! Uhádli ste záludnosti ukryté na knižných planétach?
+
+            .col--m-4
+              .card
+                img.img.img--rounded(src="https://www.martinus.sk/data/img/custom/47039_PF.png")
+                .card__header.card-header
+                  h3.card-header__title.text-left PF 2017
+                  .card-header__action
+                    a(href="#").btn.btn--equal.btn--round.btn--ghost
+                      +icon('arrow-up-right').icon--medium
+                .card__content
+                  p.mb-tiny Ktorý hrdina vás bude sprevádzať rokom 2017? Máme pre vás takého, o ktorom ste ešte nechyrovali!
+
+            .col--m-4
+              .card
+                img.img.img--rounded(src="https://www.martinus.sk/data/img/custom/64060_knizne_dilemy.png")
+                .card__header.card-header
+                  h3.card-header__title.text-left Knižné dilemy
+                  .card-header__action
+                    a(href="#").btn.btn--equal.btn--round.btn--ghost
+                      +icon('zoom-in').icon--medium
+                .card__content
+                  p.mb-tiny Marec je mesiacom knihy a tak sme spoločne odpovedali na otázky, ako inak by sa mohli obľúbené príbehy odohrávať...
+
+  .modal-overlay#archive-modal(data-modal)
+    article.modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h2.text-transform-upper Knižné dilemy
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#archive-modal")
+              +icon('close').icon--medium
+
+        img.img(src="https://www.martinus.sk/data/img/custom/64060_knizne_dilemy.png")
+
+        .modal__content
+          .row
+            .ofst--m-1
+            .col--m-10
+              p Marec je mesiacom knihy a tak sme spoločne odpovedali na otázky, ako inak by sa mohli obľúbené príbehy odohrávať...
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.myApp.scrollOffset = {0: 85, 768: 0};
