@@ -6,6 +6,12 @@
   white-space: nowrap;
   overflow-x: scroll;
   overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  @include breakpoint('m') {
+    white-space: normal;
+    overflow: auto;
+  }
 
   &__item {
     .icon-martinus {
