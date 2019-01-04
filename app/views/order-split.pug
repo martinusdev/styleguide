@@ -1,0 +1,84 @@
+extends layouts/_default
+
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Objednávky'
+
+block content
+ - var currentStep = 2
+  -
+    var swiperConfig = {
+      slidesPerView: 6,
+      simulateTouch: false,
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          simulateTouch: true,
+        },
+      },
+    };
+
+  main.account
+
+    section.section.section
+      .wrapper-main
+
+        .mb-large
+          h1.h2.mb-none Objednávka č. 123
+          .text-color-grey
+            | Prosím skontrolujte zoznam titulov a potvrďte rozdelenie objednávky kliknutím nižšie.
+            br
+            b Nebudeme vám účtovať ďalšie poplatky za poštovné.
+
+        .row
+          .col--l-6.mb-large
+            h2.h3 Zásielka č. 1
+            hr
+            each item, i in books
+              .bar.align-items-middle
+                .bar__item.no-pad-right
+                  .thumbnail.thumbnail--book.thumbnail--medium
+                    .thumbnail__img-wrap
+                      img(src=`${item.cover}`)
+                .bar__item.bar__item--fill
+                  .text-semibold #{item.title}
+                  .text-small.text-color-grey #{item.author}
+                .bar__item.bar__item--shrinkable.text-right
+                  .badge.badge--green Odoslané
+                  .text-color-grey 4.1.2019
+
+          .col--l-6.mb-large
+            h2.h3 Zásielka č. 2
+            hr
+            each item, i in books
+              if i < 3
+                .bar.align-items-middle
+                  .bar__item.no-pad-right
+                    .thumbnail.thumbnail--book.thumbnail--medium
+                      .thumbnail__img-wrap
+                        img(src=`${item.cover}`)
+                  .bar__item.bar__item--fill
+                    .text-semibold #{item.title}
+                    .text-small.text-color-grey #{item.author}
+                  .bar__item.bar__item--shrinkable.text-right
+                    .badge.badge--orange Objednané
+                    .text-color-grey 4.1.2019
+            each item, i in books
+              if i < 2
+                .bar.align-items-middle
+                  .bar__item.no-pad-right
+                    .thumbnail.thumbnail--book.thumbnail--medium
+                      .thumbnail__img-wrap
+                        img(src=`${item.cover}`)
+                  .bar__item.bar__item--fill
+                    .text-semibold #{item.title}
+                    .text-small.text-color-grey #{item.author}
+                  .bar__item.bar__item--shrinkable.text-right
+                    .badge Spracováva sa
+                    .text-color-grey 4.1.2019
+
+        .text-center.mb-large
+          button.btn.btn--primary.btn--large Rozdeliť objednávku
+          br
+          a.link Rozmyslel som si to, počkam na celú objednávku
