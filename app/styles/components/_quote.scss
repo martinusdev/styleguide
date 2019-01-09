@@ -1,5 +1,13 @@
 .quote {
   text-align: center;
+  position: relative;
+
+  &__send {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+  }
 
   &__delimiter {
     margin-bottom: _get-space('v');
@@ -22,5 +30,11 @@
     font-weight: $font-weight-semibold;
     font-size: $font-size-medium;
     color: $color-black;
+  }
+}
+
+.quote:hover {
+  .quote__send {
+    display: inline-block;
   }
 }
