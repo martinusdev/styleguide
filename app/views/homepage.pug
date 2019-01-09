@@ -223,26 +223,26 @@ block content
         .row
           .col--m-8.ofst--m-2
             .quote
-              a.btn.btn--small.btn--clean.no-pad-top.quote__send
-                +icon('upload').icon--small.icon--left
-                | Pošlite nám dobré vety
+              .quote__send
+                a.btn.btn--small.btn--clean.no-pad-top
+                  +icon('upload').icon--small.icon--left
+                  | Pošlite nám dobré vety
+                a(href="#").btn.btn--small.btn--clean.no-pad
+                  +icon('instagram')
+                  | #{' '}dobrevety
               .quote__delimiter
               p.quote__text „Dnes mám na lásku skromnejšiu, menej univerzálnejšiu definíciu: láska je, keď niekto odchádza a ty máš pocit, že by si mu chcel niečo povedať.“
-        .row
-          .col--m-4.ofst--m-4.text-center
-            .quote-book.inline-block
-              .bar.align-items-middle
-                .bar__item.bar__item--shrinkable
-                  .thumbnail.thumbnail--book.thumbnail--medium
-                    .thumbnail__img-wrap
-                      a(href="#")
-                        img(src=`https://mrtns.eu/tovar/_l/183/l183781.jpg?v=1496740665`)
-                .bar__item.bar__item--fill.text-left
-                  a.link.link--product.text-semibold Letmý sneh
-                  .text-small.text-color-grey.mb-tiny Pavel Vilikovský
-                  a(href="#").btn.btn--small.btn--clean.no-pad
-                    +icon('instagram')
-                    | #{' '}dobrevety
+
+              .quote-book.inline-block
+                .bar.align-items-middle
+                  .bar__item.bar__item--shrinkable
+                    .thumbnail.thumbnail--book.thumbnail--small
+                      .thumbnail__img-wrap
+                        a(href="#")
+                          img(src=`https://mrtns.eu/tovar/_l/183/l183781.jpg?v=1496740665`)
+                  .bar__item.bar__item--fill.text-left
+                    a.link.link--product.text-semibold Letmý sneh lorem ipsum
+                    .text-small.text-color-grey.mb-tiny Pavel Vilikovský
 
     section.bg-default.section.section--overflow
       .wrapper-main
