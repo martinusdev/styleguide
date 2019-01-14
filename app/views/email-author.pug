@@ -1,0 +1,107 @@
+extends emails/layouts/_default
+
+include ./emails/mixins/elements
+include ./emails/mixins/components
+include ./emails/mixins/layout
+
+block opts
+  - var pageTitle = 'Newsletter'
+  - var headerMenu = ['Knihy', 'Filmy', 'Hry', 'Ostatné']
+
+block content
+
+  +page({color: 'ffffff'})
+    +header()
+      +container
+        +row
+          +col(height="60")
+            a(href="#", style=`${sLink}`).link
+              img(src="https://www.martinus.sk/images/martinus-logo.png", width="150")
+          +col(align="right", style=`color: #fff; font-size: ${sFontLarge}; ${sFontFamily} font-weight: bold;`).font-medium
+            each item, i in headerMenu
+              a(href="#", style=`color: #fff; text-decoration: none; ${sHeaderButton}`).headerButton
+                =item
+    +content()
+      +container
+        +margin({size: 'medium'})
+        +row
+          +col(align="center")
+            img(src="https://placehold.it/200x200", width="200", style="border-radius: 50%;")
+            br
+            h2(style=`font-size: ${sFontH1}; ${sFontFamily}`).font-h1 Meno Autora
+            +tag({color: sColorOrange}) Detektívky
+            | &nbsp;
+            +tag({color: sColorGreen}) Sci-fi a fantasy
+        +margin({size: 'medium'})
+        +row
+          +col
+            h1(style=`font-size: ${sFontH1}; ${sFontFamily}`).font-h1 Pekný deň Tomáš
+            p(style=`font-size: ${sFontLarge}; ${sFontFamily}`).font-large Ďakujem za nákup mojej knihy Tajomná Komnata. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim tincidunt neque, sed facilisis dolor faucibus nec. Sed posuere nulla vel libero congue, et dictum erat suscipit. Vivamus vel ante quam. Integer lacinia eleifend metus, eu tristique diam ultrices eu.
+        +margin({size: 'medium'})
+        +heading() Knihy, ktoré sa mi páčia
+        +row
+          +col
+            +card({secondary: true})
+              +table(cellpadding="0", cellspacing="0", width="100%")
+                +row
+                  each item, i in books
+                    if i > 0 && i < 4
+                      +col(valign="bottom", width="33%", align="center")
+                        +thumb({cover: item.cover, width: "60%"})
+                +margin({size: 'small'})
+                +row
+                  each item, i in books
+                    if i > 0 && i < 4
+                      +col(valign="top", width="33%", align="center")
+                        +product({data: item, type: 'vertical'})
+        +margin({size: 'medium'})
+        +heading() Ďalšie moje knihy
+          +row
+            +col
+              +card
+                +table(cellpadding="0", cellspacing="0", width="100%")
+                  +row
+                    each item, i in books
+                      if i > 0 && i < 4
+                        +col(valign="bottom", width="33%", align="center")
+                          +thumb({cover: item.cover, width: "60%"})
+                  +margin({size: 'small'})
+                  +row
+                    each item, i in books
+                      if i > 0 && i < 4
+                        +col(valign="top", width="33%", align="center")
+                          +product({data: item, type: 'vertical'})
+        +margin({size: 'medium'})
+        +row
+          +col(align="center")
+            +card({secondary: true})
+              h2(style=`text-align: center; font-size: ${sFontH1}; ${sFontFamily}`).font-h1 Chcete vedieť, keď vydám novú knihu?
+              +button({text: 'Sledovať Meno Autora'})
+        +margin({size: 'large'})
+    +footer({color: 'ffffff'})
+      +container()
+        +margin({size: 'medium'})
+        +row
+          +col(align="center", style=`font-size: ${sFontMedium};${sFontFamily}`).font-medium
+            a(href="#", style=`${sLink}`).link
+              img(src="https://www.martinus.sk/images/martinus-logo-primary@2x.png", width="150")
+            br
+            br
+            b Martinus - Internetové kníhkupectvo
+            br
+            span Martinus, s.r.o., Gorkého 4, 036 01 Martin
+            br
+            span Telefón: 043 / 3260 360
+            br
+            span E-mail:#{' '}
+            a(href="#", style=`${sLink}`).link info@martinus.sk
+            br
+            span Web:#{' '}
+            a(href="#", style=`${sLink}`).link www.martinus.sk
+        +row
+          +col(align="center", style=`font-size: ${sFontMedium};${sFontFamily}`).font-medium
+            p
+              | Tento e-mail vám posielame na e-mailovú adresu {{customer.email}}, pretože ste prihlásený k ich odberu na Martinus.sk. Príliš veľa e-mailov?#{' '}
+              a(href="#", style=`${sLink}`).link Odhlásiť sa
+              | #{' '}z odberu noviniek.
+        +margin({size: 'large'})

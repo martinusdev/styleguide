@@ -625,7 +625,7 @@ block content
 
                       .col--l-4
                         .btn-layout.btn-layout--vertical.no-mrg
-                          button.btn(data-toggle="#add-review") Pridať recenziu
+                          button.btn(data-toggle="#add-review-modal") Pridať recenziu
                     .row.hide#add-review(data-toggle-class="hide")
                       .col--12.mb-medium
                       .col--12.mb-medium
@@ -846,6 +846,75 @@ block content
           button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
             +icon('cart').icon--left.icon--medium
             | Vložiť do košíka
+
+  .modal-overlay.active#add-review-modal(data-modal)
+    .modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h2.text-transform-upper Máte minútku?
+            .h5 Doplňte viac o knihe
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#add-review-modal")
+              +icon('close').icon--medium
+        .modal__content.bg-secondary
+          .bar.align-items-middle
+            .bar__item.bar__item--shrinkable
+              .rating-star.align-items-center.mb-small
+                - for (var abc = 0; abc<5; abc++)
+                  .rating-star__item(class=`${abc < 3 ? 'is-active' : ''}`)
+                    +icon('star').icon--xlarge
+            .bar__item.bar__item--shrinkable
+              p Ďakujeme za hodnotenie.#{' '}
+                a(href="#").link Zmeniť
+        .modal__content
+          .form-control.form-control--input
+            .form-label
+              label.text-transform-upper.text-small.text-color-grey Názov recenzie
+            input.input(type="text", placeholder="Napíšte názov recenzie")
+          .form-control.form-control--textarea
+            .form-label
+              label.text-transform-upper.text-small.text-color-grey Text recenzie
+            textarea.input(rows="5", placeholder="Napíšte svoju recenziu. Recenzia musí mať aspoň 150 znakov.")
+
+          .mb-medium
+            .row.mb-none.align-items-middle
+              .col--m-6
+                .form-control.form-control--input.mb-tiny(style="position: relative;")
+                  .form-label
+                    label.text-transform-upper.text-small.text-color-grey Ďalšie knihy, ktoré sa vám páčili
+                  input.input(type="text", placeholder="Začnite písať názov knihy...")
+            each item, index in books
+              if index < 3
+                .badge.mb-tiny=item.title
+
+          .form-control.form-control--checkbox
+            .checkbox
+              input.radiocheck__input(type="checkbox", id="review-spoiler")
+              label.radiocheck__control(for="review-spoiler")
+              label.radiocheck__label(for="review-spoiler") Môj príspevok prezrádza momenty z deja.
+          .mb-large
+            p.text-medium
+              span(data-toggle-text="Recenzia bude uverejnená anonymne. ") Recenzia bude uverejnená pod menom#{' '}
+                span.text-semibold Bartolomej.#{' '}
+              a.link(href="javascript:void(0)", data-toggle="self, #anonymous, previous", data-toggle-text="Uverejniť pod menom Bartolomej.") Uverejniť anonymne.
+            .row#anonymous.hide(data-toggle-class="hide")
+              .col--m-6
+                .form-control.form-control--input
+                  .form-label
+                    label.text-transform-upper.text-small.text-color-grey.form-label--required Meno
+                  input.input(type="text", placeholder="Vaše meno")
+              .col--m-6
+                .form-control.form-control--input
+                  .form-label
+                    label.text-transform-upper.text-small.text-color-grey.form-label--required E-mail
+                  input.input(type="email", placeholder="Váš email")
+          .btn-layout--horizontal.align-items-center
+            button.btn.btn--ghost(type="button" data-toggle="#add-review-modal") Zrušiť
+            button.btn(type="button" data-toggle="#flag-review") Odoslať recenziu
+          .text-small.text-center Odoslaním príspevku súhlasíte s našimi#{' '}
+            a.link(href="#") podmienkami používania služby recenzií
+            | .
 
 block append modals
   include ./modules/product-preview
