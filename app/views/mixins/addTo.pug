@@ -15,12 +15,37 @@ mixin addTo(props = {})
       | #{text}
     .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
       .dropdown__wrap
-        div(id=`wishlist-list-${id}` data-toggle-class="hide")
-          a.dropdown__item(href="#").dropdown__item Wishlist
-          a.dropdown__item(href="#").dropdown__item--checked Môj zoznam
-          button(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`).btn.btn--clean.text-left.text-nowrap
-            +icon('plus').icon--left.icon--medium.text-color-grey
-            | Nový záznam
+        div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
+          h5.dropdown__group Označiť ako:
+          a(href="#").dropdown__item
+            +icon('circle').icon--small.text-color-grey.text-space-right
+            b Neprečítané
+          a(href="#").dropdown__item
+            +icon('time').icon--small.text-color-blue.text-space-right
+            | Práve čítam
+          a(href="#", data-toggle="#book-read-modal").dropdown__item
+            +icon('check-circle').icon--small.text-color-success.text-space-right
+            | Prečítaná
+          hr.mb-small
+          each item, i in ['Wishlist', 'Vianoce', 'Slovenská klasika']
+            .dropdown__item
+              .checkbox
+                input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
+                label(for=`list-checkv`).radiocheck__control
+                label(for=`list-check${i}`).radiocheck__label=item
+          a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Ďalšie zoznamy
+        .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
+          .bar.no-mrg-bottom
+            .bar__item.bar__item--fill
+              h5.dropdown__group Presunúť do:
+            .bar__item
+              button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
+                +icon('close', 'icon--small', 'Naspäť')
+          a(href="#").dropdown__item Do školy
+          a(href="#").dropdown__item Pre brata
+        button(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`).btn.btn--clean.text-left.text-nowrap
+          +icon('plus').icon--left.icon--medium.text-color-grey
+          | Nový zoznam
         .hide(id=`wishlist-add-item-${id}` data-toggle-class="hide")
           .card.mb-none
             .card__content.card__content--condensed
@@ -29,7 +54,7 @@ mixin addTo(props = {})
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #wishlist-list-${id}`)
                     +icon('chevron-left', 'icon--medium', 'Naspäť')
                 .bar__item.align-self-center.text-center.text-nowrap
-                  | Nový záznam
+                  | Nový zoznam
                 .bar__item
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-button-${id}, #wishlist-dropdown-${id}`)
                     +icon('close', 'icon--small', 'Naspäť')
