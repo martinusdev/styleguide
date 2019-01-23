@@ -85,7 +85,7 @@ block content
 
               .btn-layout.btn-layout--vertical
                 .btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
-                  button.btn.btn--ghost(
+                  button.btn(
                     data-toggle='self, next',
                     data-toggle-expand,
                     aria-haspopup="true"
@@ -108,7 +108,7 @@ block content
 
               p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
 
-          .col--l-9.col--12
+          .col--l-9.col--12.mb-large
             .row
               .col--m-6
                 .bar.bar--no-wrap.mb-medium
@@ -137,7 +137,7 @@ block content
                       )
                         +icon('share').icon--medium
               .col--m-6
-                .bar
+                //-.bar
                   .bar__item.bar__item--shrinkable
                     b Pridať knihu:
                   .bar__item.bar__item--fill
@@ -203,6 +203,12 @@ block content
                       .product__action
                     else
                       +productBuy()
+
+            .mb-medium
+            .btn-layout.btn-layout--horizontal.align-items-center.mb-large
+              button.btn.btn--ghost
+                | Načítať ďalšie
+                +icon('arrow-down').icon--medium.icon--right
 
 
 block append modals
