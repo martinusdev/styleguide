@@ -603,27 +603,15 @@ block content
                 .card.card--well.mb-large
                   .card__content
                     .row.align-items-center.align-items-middle
-                      .col--3.show-l
-                        div.text-center
-                          +icon('avatar').text-space-half.icon--xlarge.text-color-grey
-                          br
-                          | Ja
-                          //- img.img.img--circle(src="http://placehold.it/48x48")
-                      .col--l-5.col--l-border.text-center
+                      .col--l-7.text-center
                         p.mb-small Ako sa vám páčila kniha?
-                        //- .rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
-                        //-   each i in Array(5)
-                        //-     a(href="#").rating-star__item
-                        //-       +icon('star').icon--xlarge
                         #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
                           - for (var abc = 0; abc<5; abc++)
                             input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
                             label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+abc)
                               +icon('star').icon--xlarge
-                        p Ďakujeme za hodnotenie!#{' '}
-                          a.link Zrušiť
 
-                      .col--l-4
+                      .col--l-5
                         .btn-layout.btn-layout--vertical.no-mrg
                           button.btn(data-toggle="#add-review-modal") Pridať recenziu
                     .row.hide#add-review(data-toggle-class="hide")
@@ -852,21 +840,25 @@ block content
       .modal__wrap
         .modal__header.mb-none
           .modal__header__headline.text-center
-            .h2.text-transform-upper Máte minútku?
-            .h5 Doplňte viac o knihe
+            .h2.h3 Máte minútku? Napíšte recenziu a pomôžte ostatným čitateľom
           .modal__header__action
             .btn.btn--clean(data-toggle="#add-review-modal")
               +icon('close').icon--medium
         .modal__content.bg-secondary
-          .bar.align-items-middle
-            .bar__item.bar__item--shrinkable
-              .rating-star.align-items-center.mb-small
+          .row.align-items-center.align-items-middle
+            .col--l-7.text-center
+              p.mb-small Ako sa vám páčila kniha?
+              #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l.checked(data-stars)
                 - for (var abc = 0; abc<5; abc++)
-                  .rating-star__item(class=`${abc < 3 ? 'is-active' : ''}`)
+                  input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + abc)
+                  label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-" + abc)
                     +icon('star').icon--xlarge
-            .bar__item.bar__item--shrinkable
-              p Ďakujeme za hodnotenie.#{' '}
-                a(href="#").link Zmeniť
+            .col--l-5
+              .btn-layout.btn-layout--vertical.no-mrg
+                button.btn(data-toggle="#add-review-modal", disabled)
+                  +icon('check-circle')
+                  | #{' '}ohodnotené
+
         .modal__content
           .form-control.form-control--input
             .form-label
@@ -877,7 +869,7 @@ block content
               label.text-transform-upper.text-small.text-color-grey Text recenzie
             textarea.input(rows="5", placeholder="Napíšte svoju recenziu. Recenzia musí mať aspoň 150 znakov.")
 
-          .mb-medium
+          //-.mb-medium
             .row.mb-none.align-items-middlet
               .col--m-6
                 .form-control.form-control--input.mb-tiny(style="position: relative;")

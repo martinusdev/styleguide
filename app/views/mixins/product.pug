@@ -243,16 +243,28 @@ mixin productStatus(props = {})
                 if actionDropdown === 'my-library'
                   div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
                     h5.dropdown__group Označiť ako:
-                    a(href="#").dropdown__item Práve čítam
-                    a(href="#", data-toggle="#book-read-modal").dropdown__item.dropdown__item--more
+                    a(href="#").dropdown__item
+                      +icon('time').icon--small.text-color-blue.text-space-right
+                      | Práve čítam
+                    a(href="#", data-toggle="#book-read-modal").dropdown__item
                       +icon('check-circle').icon--small.text-color-success.text-space-right
                       | Prečítaná
-                      span.text-color-grey.text-space-left 5.4.2015
-                    a(href="#").dropdown__item Kúpená ako darček
                     hr.mb-small
                     a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Presunúť do
-                    a(href="#").dropdown__item Odstrániť moje hodnotenie
-                    a(href="#").dropdown__item Odstrániť z knižnice
+                    a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-delete-${id}`).dropdown__item.dropdown__item--more Odstrániť z
+                  .hide(id=`my-library-dropdown-delete-${id}` data-toggle-class="hide")
+                    .bar.no-mrg-bottom
+                      .bar__item.bar__item--fill
+                        h5.dropdown__group Odstrániť:
+                      .bar__item
+                        button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-delete-${id}`)
+                          +icon('close', 'icon--small', 'Naspäť')
+                    a(href="#").dropdown__item
+                      +icon('trash').icon--small.text-space-right
+                      | z tohto zoznamu
+                    a(href="#").dropdown__item
+                      +icon('trash').icon--small.text-space-right
+                      | z celej knižnice
                   .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
                     .bar.no-mrg-bottom
                       .bar__item.bar__item--fill
@@ -292,7 +304,8 @@ mixin productStatus(props = {})
                     hr.mb-small
                     a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Presunúť do
                     a(href="#").dropdown__item Odstrániť moje hodnotenie
-                    a(href="#").dropdown__item Odstrániť z knižnice
+                    a(href="#").dropdown__item Odstrániť z tohto zoznamu
+                    a(href="#").dropdown__item Odstrániť z knižnice aj z nákupov
                   .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
                     .bar.no-mrg-bottom
                       .bar__item.bar__item--fill
