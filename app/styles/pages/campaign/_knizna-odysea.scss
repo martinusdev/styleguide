@@ -4,6 +4,13 @@ $ko-color-violet: #8781bd;
 $ko-color-violet-hover: #cbc7e4;
 $ko-color-green: #e1ff6b;
 
+$ko2-color-dark: #0a041e;
+$ko2-color-violet-dark: #302071;
+$ko2-color-violet: #8781bd;
+$ko2-color-violet-hover: #cbc7e4;
+$ko2-color-blue: #0ff;
+$ko2-color-pink: #f0f;
+
 .ko-text-color-green {
   color: $ko-color-green;
 }
@@ -45,6 +52,63 @@ $ko-color-green: #e1ff6b;
   }
 }
 
+.ko2-text-color-blue {
+  color: $ko2-color-blue;
+}
+
+.ko2-text-color-pink {
+  color: $ko2-color-pink;
+}
+
+.ko2-link--blue {
+  color: $ko2-color-blue;
+
+  &:hover {
+    color: $ko2-color-blue;
+  }
+}
+
+.ko2-link--blue.is-active {
+  color: $ko2-color-blue;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.ko2-page {
+  background: $ko2-color-dark;
+}
+
+.ko2-header {
+  background: $ko2-color-violet-dark;
+
+  .collapsed:not(.is-active)::after {
+    background: linear-gradient(to top, rgba($ko2-color-violet-dark, 1), rgba($ko2-color-violet-dark, 0));
+  }
+}
+
+.btn--ko2 {
+  background: $ko2-color-pink;
+  background: linear-gradient(to right, rgba($ko2-color-blue, 1), rgba($ko2-color-pink, 1));
+  border: 0;
+
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background-color: $ko2-color-violet;
+    height: 4px;
+  }
+}
+
+.btn--ko2:hover {
+  background: linear-gradient(to right, rgba($ko2-color-blue, 1), rgba($ko2-color-pink, 0.5));
+}
+
 .ko-user {
   &__email {
     max-width: 85%;
@@ -81,6 +145,10 @@ $ko-color-green: #e1ff6b;
     color: $color-white;
     opacity: 0.2;
   }
+}
+
+.ko2-timeline-item.is-complete {
+  color: $ko2-color-blue;
 }
 
 .ko-planets {
@@ -161,6 +229,15 @@ $ko-color-green: #e1ff6b;
     @include breakpoint('l') {
       right: 30%;
     }
+  }
+}
+
+.ko2-planets {
+  background: url('../images/content/campaign/knizna-odysea/space2.jpg') no-repeat;
+  background-position-y: center;
+
+  &-bonus {
+    background: url('../images/content/campaign/knizna-odysea/bonus2.png') no-repeat;
   }
 }
 
