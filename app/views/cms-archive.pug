@@ -32,7 +32,7 @@ block content
               .bar__item.bar__item--fill
                 h1 Vitajte v archíve Martinus.sk
               .bar__item.bar__item--shrinkable
-                select.js-select.select--ghost
+                select.js-select.select--ghost#archive-year
                   option Rok
                   option 2018
                   option 2017
@@ -48,7 +48,7 @@ block content
               | Vaši knihomoli z Martinus.sk
 
 
-          h2.mb-large.text-center
+          h2.mb-large.text-center#2018
             +icon('calendar')
             | #{' '}2018
 
@@ -86,9 +86,9 @@ block content
                 .card__content
                   p.mb-tiny Marec je mesiacom knihy a tak sme spoločne odpovedali na otázky, ako inak by sa mohli obľúbené príbehy odohrávať...
 
-          h2.mb-large.text-center
+          h2.mb-large.text-center#2017
             +icon('calendar')
-            | #{' '}2018
+            | #{' '}2017
 
           .row.mb-large
             .col--m-4
@@ -146,3 +146,13 @@ block scripts
   script.
     window.myApp = window.myApp = {};
     window.myApp.scrollOffset = {0: 85, 768: 0};
+
+    document.addEventListener('DOMContentLoaded', function (e) {
+      document.getElementById('archive-year').addEventListener('change', function (e) {
+
+        var tgt = 'cms-archive.html#' + e.currentTarget.value;
+        setTimeout(function() {
+          window.location.href = tgt;
+        }, 50);
+      });
+    });

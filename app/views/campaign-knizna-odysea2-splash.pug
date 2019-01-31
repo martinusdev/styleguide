@@ -1,0 +1,52 @@
+extends layouts/index
+
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Knižná šifra'
+    - var campaignHeader = true
+    - var pageClass = 'ks-page'
+
+block content
+
+  header.header
+    .header__wrapper(data-sticky)
+      .wrapper-main
+        .bar.header__bar
+          .bar__item.header__logo
+            a(href="#")
+              img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
+              img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
+          .bar__item.bar__item--fill.show-s
+            .btn.btn--ghost-inverse
+              | Do kníhkupectva
+              +icon('arrow-right').icon--right
+          .bar__item.bar__item--fill.text-right.show-m
+            .text-color-white.text-medium Páči sa ti Knižná odysea?
+          .bar__item.bar__item--shrinkable
+            .btn.btn--medium.btn--ghost-inverse
+              img(src=`${assetsPrefix}images/content/campaign/assets/instagram.png`, alt="Instagram", width="20").icon--left
+              | Sleduj nás na Instagrame!
+
+  main.ko-header.ko2-header(style=`background: url('${assetsPrefix}images/content/campaign/knizna-odysea/space2.jpg') no-repeat center center; background-size: cover;`)
+
+    section.section.text-color-white(style="min-height: 600px;")
+      .wrapper-main
+        .mb-large
+        .row.align-items-top.mb-large
+          .col--m-6.ofst--m-3.text-center
+            .mb-large
+              a
+                img(src="images/content/campaign/knizna-odysea/logo2/logo-sk.svg", width="80%")
+
+            h1.text-color-white.mb-large Začíname 1. marca
+        .row
+          .col--m-6.ofst--m-3.text-center
+            h2.h3 Nechajte nám váš e-mail a o spustení sa dozviete ako prvý.
+            form.mb-large
+              .form-control.form-control--input#input-guess
+                .input-addons
+                  input.input(type="text", placeholder="Váš e-mail...")
+                  .input-addons__item.no-pad
+                    .btn.btn--ko2#btn-guess
+                      | Odoslať
