@@ -4,6 +4,29 @@ include ./mixins/icon
 include ./mixins/product
 include ./mixins/productHorizontal
 
+mixin userAbout ()
+  h5 O mne
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra lobortis massa, sit amet viverra risus. Nullam ac pellentesque purus, non placerat tortor. Praesent maximus orci ac risus sollicitudin interdum. Vivamus diam mauris, blandit at convallis sed, rutrum vel libero.
+
+  h5 Obľúbené literárne žánre
+  .badges
+    .badge.mb-small Sci-fi & Fantasy
+    .badge.mb-small Detektívky
+    .badge.mb-small Odborná literatúra
+
+  h5 Obľúbení autori
+  .badges
+    .badge.mb-small Douglas Adams
+    .badge.mb-small George Orwell
+    .badge.mb-small Odborná literatúra
+
+  h5 Moje wishlisty
+  ul.list--unstyled.mb-large
+    li
+      a.link Najlepšie fantasy
+    li
+      a.link Vesmírne opery
+
 block opts
   - var pageTitle = 'Môj profil'
   - var headerWarning = false
@@ -36,9 +59,12 @@ block content
                       +icon('link').icon--small
                 .bar
                   .bar__item
-                    .badge
+                    span.badge
                       | 1239 bodov
                     +icon('info').icon--medium.text-color-white(title="Lorem ipsum dolor sit amet", data-tooltip)
+                    a.btn.btn--small.btn--clean
+                      +icon('edit').icon--small
+                      | #{' '}Upraviť
 
 
 
@@ -77,28 +103,14 @@ block content
 
           .col--l-3.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+              +userAbout
 
-              h5 O mne
-              p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra lobortis massa, sit amet viverra risus. Nullam ac pellentesque purus, non placerat tortor. Praesent maximus orci ac risus sollicitudin interdum. Vivamus diam mauris, blandit at convallis sed, rutrum vel libero.
-
-              h5 Obľúbené literárne žánre
-              .badges
-                .badge.mb-small Sci-fi & Fantasy
-                .badge.mb-small Detektívky
-                .badge.mb-small Odborná literatúra
-
-              h5 Obľúbení autori
-              .badges
-                .badge.mb-small Douglas Adams
-                .badge.mb-small George Orwell
-                .badge.mb-small Odborná literatúra
-
-              h5 Moje wishlisty
-              ul.list--unstyled.mb-large
-                li
-                  a.link Najlepšie fantasy
-                li
-                  a.link Vesmírne opery
+          .hide-l.mb-large
+            #user-about(data-collapse="150")
+              +userAbout
+            a.link.text-medium(href="javascript:void(0)", data-toggle="#user-about, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej")
+              | <span data-toggle-text-target>Zobraziť viac</span>
+              +icon('arrow-down').icon--left
 
           .col--l-9.col--12
 
@@ -129,7 +141,7 @@ block content
             h2 Moje odznaky
 
             .mb-large
-              #badges.club-badges
+              #badges.club-badges(data-collapse="150").mb-small
                 .club-badges__item
                   .club-badge
                     img(src="images/content/club/badges/badges-01.png")
@@ -181,6 +193,10 @@ block content
                 .club-badges__item
                   .club-badge.bg-violet
                     img(src="images/content/club/badges/badges-05.png")
+
+              a.link.text-medium(href="javascript:void(0)", data-toggle="#badges, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej")
+                | <span data-toggle-text-target>Zobraziť viac</span>
+                +icon('arrow-down').icon--left
 
             h2 Moje aktivity
 
