@@ -31,7 +31,7 @@ mixin addTo(props = {})
             .dropdown__item
               .checkbox
                 input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
-                label(for=`list-checkv`).radiocheck__control
+                label(for=`list-check${i}`).radiocheck__control
                 label(for=`list-check${i}`).radiocheck__label=item
           a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Ďalšie zoznamy
         .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
