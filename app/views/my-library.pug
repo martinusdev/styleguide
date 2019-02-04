@@ -1,6 +1,7 @@
 extends layouts/_default
 
 include mixins/product
+include mixins/xmas
 include ./mixins/icon
 
 block opts
@@ -110,14 +111,17 @@ block content
 
           .col--l-9.col--12.mb-large
             .row
-              .col--m-6
+              .col--m-8
                 .bar.bar--no-wrap.mb-medium
                   .bar__item.hide-l
                     a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
                       +icon('arrow-left', 'icon--medium')
                   .bar__item.bar__item--shrinkable
-                    h2 Wishlist
-                    p.text-size-small.text-color-grey Knihy, ktoré by som chcel vlastniť
+                    .bar.mb-none
+                      .bar__item
+                        h2 Wishlist
+                      .bar__item.show-m
+                        .pill.pill--blue 17
                   .bar__item
                     .btn-layout.btn-layout--horizontal
                       .btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
@@ -133,17 +137,25 @@ block content
                             a(href="#").dropdown__item Zmazať
 
                       button.btn.btn--clean.no-mrg-bottom(
-                        data-toggle='#share-list-modal'
+                        data-toggle='#share-list-modal',
+                        data-tooltip,
+                        title="Zdieľať"
                       )
                         +icon('share').icon--medium
+                      button.btn.btn--clean.no-mrg-bottom(data-tooltip, title="Hromadná úprava", data-toggle="#bulk-edit")
+                        +icon('collection').icon--medium
+                      button.btn.btn--equal.no-mrg-bottom.hide-m(data-toggle="#add-item")
+                        +icon('plus').icon--medium
+
+            .row
               .col--m-6
-                //-.bar
+                .bar.show-m#add-item(data-toggle-class="show-m")
                   .bar__item.bar__item--shrinkable
-                    b Pridať knihu:
+                    | Pridať:
                   .bar__item.bar__item--fill
                     .form-control.form-control--input.mb-none(style="position: relative;")
-                      input.input(type="text")
-                      .dropdown.dropdown--arrowhead.is-active(aria-expanded="true")
+                      input.input(type="text", placeholder="Začnite písat názov knihy, filmu, ...")
+                      .dropdown.dropdown--arrowhead
                         .dropdown__wrap
                           each item, i in books
                             a.dropdown__item
@@ -158,6 +170,20 @@ block content
                                     .bar__item.bar__item--fill
                                       .text-semibold.block.mb-none.line-medium=item.title
                                       .text-color-grey.text-size-small= item.author
+
+              .col--m-6
+                .bar.mb-large.align-items-right
+                  .bar__item
+                    .form-control.form-control--select
+                      select.js-select.select--ghost(data-select-dropdown-width="150px")
+                        option Zoradiť
+                        option Dátum pridania
+                        option Dátum nákupu
+                        option Zmena stavu čítania
+                  .bar__item
+                    button.btn.btn--primary
+                      +icon('cart').icon--left.icon--medium
+                      | 236,50 €
 
 
               //- TODO: Hladat v kniznici
@@ -190,7 +216,16 @@ block content
                   +product({ size: 'large' }).mb-small.text-left.inline-block
                     +productStatus({ actionDropdown: 'my-library', status: status })
                     +productCover({ cover: item.cover, href: '#' })
-                    +productTitle({ title: item.title, author: item.author, href: '#' })
+                    .bar.mb-small.align-items-top
+                      .bar__item.bar__item--fill.no-mrg-right
+                        +productTitle({ title: item.title, author: item.author, href: '#' })
+                      .bar__item.bar__item--shrinkable
+                        if index < 5
+                          .text-color-success
+                            +icon('transit').icon--small.text-space-left-tiny(data-tooltip, title="Na sklade. Posielame do 3 dní.")
+                        else
+                          .text-color-grey
+                            +icon('transit').icon--small.text-space-left-tiny(data-tooltip, title="Na objednávku do troch týždňov.")
                     if index === 1
                       +productToRate()
                     else if index === 3
@@ -214,3 +249,69 @@ block content
 block append modals
   include ./modules/book-read-modal
   include ./modules/share-list-modal
+
+  .modal-overlay#bulk-edit(data-modal)
+    article.modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline
+
+            .bar.mb-none
+              .bar__item
+                h2 Wishlist
+              .bar__item.show-m
+                .pill.pill--blue 17
+
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#bulk-edit")
+              +icon('close').icon--medium
+        .bg-secondary
+          .modal__content
+            .bar
+              .bar__item.bar__item--shrinkable
+                .checkbox
+                  input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
+                  label(for=`list-check${i}`).radiocheck__control
+              .bar__item.bar__item--fill
+              .bar__item.bar__item--shrinkable
+                .btn-layout.btn-layout--horizontal
+                  button.btn.btn--ghost.btn--small(disabled)
+                    | Presunúť
+                    +icon('chevron-down').icon--small.icon--right
+                  button.btn.btn--ghost.btn--small(disabled)
+                    | Označiť
+                    +icon('chevron-down').icon--small.icon--right
+                  button.btn.btn--clean.btn--small.no-mrg(type="button" data-toggle=`#cart-item${i}`, disabled)
+                    +icon('trash', 'icon--medium')
+
+        .modal__content
+          each item, i in books
+            .bar.align-items-middle.mb-small
+              .bar__item.bar__item--shrinkable
+                .checkbox
+                  input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
+                  label(for=`list-check${i}`).radiocheck__control
+              .bar__item.bar__item--shrinkable
+                a.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--small(href="detail-knihy.html")
+                  .thumbnail__img-wrap
+                    img.img(src=`${assetsPrefix}${item.cover}`)
+              .bar__item.bar__item--fill
+                .cart-item__column.cart-item__column--product-name
+                  a.text-semibold.no-mrg.block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
+                    +xmas({type: 'icon'}).text-space-right-tiny
+                    =item.title
+                  ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.text-ellipsis.mb-none
+                    - var authors = item.author.split(', ')
+                    each author in authors
+                      li= author
+              .bar__item.bar__item--shrinkable.show-m
+                .text-semibold.text-size-medium.text-nowrap= item.price
+              .bar__item.bar__item--shrinkable
+                if i < 3
+                  +icon('time').text-color-blue.icon--small(data-tooltip, title="Práve čítam")
+                else
+                  +icon('check-circle').text-color-success.icon--small(data-tooltip, title="Prečítaná")
+              //-.bar__item.bar__item--shrinkable
+                button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                  +icon('trash', 'icon--medium')
+            .border-bottom-grey.mb-small
