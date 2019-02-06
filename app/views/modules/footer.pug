@@ -4,71 +4,85 @@ footer.footer
   .wrapper-main
     section.mb-medium.border-bottom-grey
       p.text-color-yellow
-        | Aj z drobných vecí sa dajú urobiť veľké. Vďaka vašim Anjelskym drobným ste pri nákupoch na Martinuse darovali už
-        b.text-color-white #{' '}405 843,32 € na Dobrého Anjela
-        | . Ďakujeme!
+        | Aj z drobných vecí sa dajú urobiť veľké. Vďaka vašim Anjelským drobným ste
+        | pri nákupoch na Martinuse darovali už
+        b.text-color-white 
+          | 542 459,18 € na Dobrého
+          | Anjela
+        | .
+        |                         Ďakujeme!
     section.row.mb-medium
-      .col--l-2.col--m-4
+      .col--l-2.col--12
         .row
+          - var sections = ['Knihy', 'E-knihy', 'Filmy', 'Hry', 'Káva a čaj'];
           .col--6.col--m-12
-            ul.list--unstyled.list--expanded.mb-small
-              each item in ['Knihy', 'Filmy']
+            ul.list--unstyled.list--expanded.mb-medium.show-m
+              each item in sections
                 li
                   a.link.text-color-white(href='#')= item
-          .col--6.col--m-12
-            ul.list--unstyled.list--expanded.mb-medium
-              each item in ['Spoločenské hry', 'Káva čaj']
+            ul.list-inline.mb-medium.hide-m
+              each item in sections
                 li
                   a.link.text-color-white(href='#')= item
-
-      .col--l-3.col--m-6
+      .col--l-3.col--12
         h5 Kníhkupectvá
+        .bar.bar--small
+          .bar__item
+            a.link.text-color-white.text-size-medium.text-bold(href='#')= footer.activeStore
+          .bar__item
+            - var state = 'closing'; //- open, closing, closed
+            .text-size-medium(class='text-color-' + footer.store[state].color)= footer.store[state].text
+          .bar__item
+            .text-size-medium 08:00 - 20:00
         .row
-          .col--4
+          .col--6.col--l-5
             ul.list--unstyled.mb-medium
-              each item in ['Bratislava', 'Košice', 'Lučenec', 'Martin']
+              each item in ['Bratislava', 'Košice', 'Lučenec', 'Martin', 'Nitra', 'Poprad']
                 li
                   a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-          .col--8
+          .col--6.col--l-7
             ul.list--unstyled.mb-medium
-              each item in ['Poprad', 'Považská Bystrica', 'Nitra', 'Žilina']
+              each item in ['Považská Bystrica', 'Banská Bystrica', 'Trnava', 'Žilina']
                 li
                   a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-      .col--l-2.col--m-4
+              li
+                a.link.text-color-white.text-size-medium.text-normal(href='#')
+                  b Besedy
+              
+      .col--l-2.col--6
         h5 Nakupujte u nás
         ul.list--unstyled.mb-medium
           each item in ['Prečo práve u nás?', 'Ako nakupovať', 'Najčastejšie otázky', 'Poštovné', 'Možnosti platby']
             li
               a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-      .col--l-2.col--m-4.col--6
-        h5 Naše projekty
-        ul.list--unstyled.mb-medium
-          each item in ['Knihobežník', 'Slovensko číta', 'Čo mám čítať ďalej', 'Poviedky o nevere', 'Slovensko píše román']
-            li
-              a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-      .col--l-2.col--m-4.col--6
+      .col--l-2.col--6
         h5 Martinus.sk
         ul.list--unstyled.mb-medium
-          each item in ['Martinus.sk', 'Náš príbeh', 'O nás', 'Kontakty']
+          each item in ['Náš príbeh', 'Náš blog', 'Kontakty', 'Partnerský systém', 'Pridaj sa k nám', 'Marketing']
             li
               a.link.text-color-white.text-size-medium.text-normal(href='#')= item
-      .col--12.hide-m
-        a.link.text-color-white.text-size-medium.text-normal(href='#') Nakupovanie v Martinuse
+      .col--l-2.col--6
+        h5 Kontakt
+        ul.list--unstyled.mb-medium
+          li
+            a.link.text-color-white.text-size-medium.text-normal(href='#') info@martinus.sk
+          li.text-color-white.text-size-medium.text-normal Telefón: 043/3260 360 
+          li.text-color-white.text-size-medium.text-normal v pracovné dni 8:00-18:00
 
     section.row.mb-medium.align-items-middle
-      .col--m-8.col--l-7
+      .col--m-9.col--l-8
         .bar
           .bar__item.bar__item--fill
             .form-control.form-control--m-inline.form-control--input.no-mrg-bottom
               .form-label.form-label--large
-                label.text-color-white.form-label--large(for='newsletter-input') Knižné a filmové novinky na e-mail:
+                label.text-color-white.form-label--large(for='newsletter-input') Knižné a filmové novinky na e-mail (pre osoby staršie ako 16 rokov):
               .bar.bar--small.no-mrg-bottom
                 .bar__item.bar__item--fill
                   input.input.input--dark(type='text', placeholder='Napíšte nám váš e-mail', id='newsletter-input')
                 .bar__item
                   button.btn.btn--primary Odoslať
 
-      .col--m-4.col--l-5
+      .col--m-3.col--l-4
         .bar.footer__social
           .bar__item
             a(href='#')
@@ -88,9 +102,11 @@ footer.footer
         .bar.bar--small.mb-medium.footer__copy.align-items-middle
           .bar__item
             img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
-          .bar__item.bar__item--fill &copy; 2011 Martinus. Internetové kníhkupectvo. Všetky práva vyhradené.
+          .bar__item.bar__item--fill &copy; 2000-2019 Martinus. Internetové kníhkupectvo. Všetky práva vyhradené.
       .col--l-5.text-right
         ul.list-inline
+          li
+            a.link.text-color-white(href='#').text-normal.text-medium Odvolanie súhlasu s cookies
           li
             a.link.text-color-white(href='#').text-normal.text-medium Obchodné podmienky
           li
