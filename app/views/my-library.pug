@@ -18,30 +18,35 @@ block opts
         title: 'Kúpené v kníkupectve',
         href: '#',
         pill: 102,
-        icon: 'smart-list'
+        icon: 'smart-list',
+        iconColor: 'text-color-grey'
       },
       {
         title: 'Kúpené na webe',
         href: '#',
         pill: 9,
-        icon: 'smart-list'
+        icon: 'smart-list',
+        iconColor: 'text-color-grey'
       },
       {
         title: 'Čítam',
         href: '#',
-        icon: 'smart-list'
+        icon: 'time',
+        iconColor: 'text-color-blue'
       },
       {
         title: 'Prečítané',
         href: '#',
         pill: 8,
-        icon: 'smart-list'
+        icon: 'check-circle',
+        iconColor: 'text-color-success'
       },
       {
         title: 'Neprečítané',
         href: '#',
         pill: 2,
-        icon: 'smart-list'
+        icon: 'circle',
+        iconColor: 'text-color-grey'
       },
       {
         title: 'Wishlist',
@@ -79,7 +84,7 @@ block content
                   li(class= index === 6 ? 'is-active' : '')
                     a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
                       if item.icon
-                        +icon(item.icon).icon--small.text-space-right.text-color-grey
+                        +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
                       = item.title
                       if item.pill
                         .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
@@ -110,48 +115,37 @@ block content
               p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
 
           .col--l-9.col--12.mb-large
-            .row
-              .col--m-8
-                .bar.bar--no-wrap.mb-medium
-                  .bar__item.hide-l
-                    a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
-                      +icon('arrow-left', 'icon--medium')
-                  .bar__item.bar__item--shrinkable
-                    .bar.mb-none
-                      .bar__item
-                        h2 Wishlist
-                      .bar__item.show-m
-                        .pill.pill--blue 17
-                  .bar__item
-                    .btn-layout.btn-layout--horizontal
-                      .btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
-                        button.btn.btn--clean(
-                          data-toggle='self, next',
-                          data-toggle-expand,
-                          aria-haspopup="true"
-                        )
-                          +icon('dots').icon--medium
-                        .dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-toggle-expand, style="width: 200px")
-                          .dropdown__wrap
-                            a(href="#").dropdown__item Premenovať
-                            a(href="#").dropdown__item Zmazať
-
-                      button.btn.btn--clean.no-mrg-bottom(
-                        data-toggle='#share-list-modal',
-                        data-tooltip,
-                        title="Zdieľať"
-                      )
-                        +icon('share').icon--medium
-                      button.btn.btn--clean.no-mrg-bottom(data-tooltip, title="Hromadná úprava", data-toggle="#bulk-edit")
-                        +icon('collection').icon--medium
-                      button.btn.btn--equal.no-mrg-bottom.hide-m(data-toggle="#add-item")
-                        +icon('plus').icon--medium
+            .bar.mb-medium
+              .bar__item.hide-l
+                a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
+                  +icon('arrow-left', 'icon--medium')
+              .bar__item.bar__item--shrinkable
+                h2 Wishlist
+              .bar__break.hide-m
+              .bar__item.bar__item--fill
+                .btn-layout.btn-layout--horizontal.align-items-middle
+                  button.btn.btn--clean(data-toggle='#edit')
+                    +icon('edit').icon--medium.icon--left
+                    span.show-m Nastavenie
+                  button.btn.btn--clean.no-mrg-bottom(data-toggle="#bulk-edit")
+                    +icon('collection').icon--medium.icon--left
+                    span.show-m Hromadná úprava
+                  button.btn.btn--equal.btn--small.mb-none(data-toggle="#add-item")
+                    +icon('plus').icon--medium
+              .bar__item.bar__item--shrinkable.show-m
+                | Zoradiť:
+              .bar__item.bar__item--shrinkable
+                .form-control.form-control--select.inline-block
+                  select.js-select.select--ghost(data-select-dropdown-width="150px")
+                    option Najnovšie
+                    option Dátum nákupu
+                    option Zmena stavu čítania
 
             .row
               .col--m-6
-                .bar.show-m#add-item(data-toggle-class="show-m")
+                .bar.hide#add-item(data-toggle-class="hide")
                   .bar__item.bar__item--shrinkable
-                    | Pridať:
+                    | Pridať titul:
                   .bar__item.bar__item--fill
                     .form-control.form-control--input.mb-none(style="position: relative;")
                       input.input(type="text", placeholder="Začnite písat názov knihy, filmu, ...")
@@ -170,20 +164,6 @@ block content
                                     .bar__item.bar__item--fill
                                       .text-semibold.block.mb-none.line-medium=item.title
                                       .text-color-grey.text-size-small= item.author
-
-              .col--m-6
-                .bar.mb-large.align-items-right
-                  .bar__item
-                    .form-control.form-control--select
-                      select.js-select.select--ghost(data-select-dropdown-width="150px")
-                        option Zoradiť
-                        option Dátum pridania
-                        option Dátum nákupu
-                        option Zmena stavu čítania
-                  .bar__item
-                    button.btn.btn--primary
-                      +icon('cart').icon--left.icon--medium
-                      | 236,50 €
 
 
               //- TODO: Hladat v kniznici
@@ -245,10 +225,105 @@ block content
                 | Načítať ďalšie
                 +icon('arrow-down').icon--medium.icon--right
 
+            .card.card--well
+              .card__content
+                .bar.mb-none
+                  .bar__item.bar__item--fill.text-left.text-right-m
+                    .h3.inline-block.text-space-right Hodnota zoznamu:
+                    .h2.inline-block 346,50 €
+                  .bar__break.hide-m
+                  .bar__item.bar__item--shrinkable
+                    button.btn.btn--primary Vložiť všetky tituly do košíka
+
 
 block append modals
   include ./modules/book-read-modal
-  include ./modules/share-list-modal
+
+  .modal-overlay#edit(data-modal)
+    article.modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline
+
+            h2 Nastavenie zoznamu
+
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#edit")
+              +icon('close').icon--medium
+
+        .modal__content
+          .row
+            .col--m-6
+              .form-control.form-control--input
+                .form-label
+                  label Názov
+                .input-addons
+                  input.input(type="text", value="Wishlist")
+                  .input-addons__item.no-pad
+                    button.btn Zmeniť
+
+        .modal__content
+          .bar
+            .bar__item
+              .form-control.form-control--radio
+                .radio
+                  input.radiocheck__input#wishlist-private(type="radio", checked, name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
+                  label.radiocheck__control(for="wishlist-private")
+                  label.radiocheck__label(for="wishlist-private") Súkromný
+            .bar__break.hide-m
+            .bar__item
+              .form-control.form-control--radio
+                .radio
+                  input.radiocheck__input#wishlist-link(type="radio", name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
+                  label.radiocheck__control(for="wishlist-link")
+                  label.radiocheck__label(for="wishlist-link") Dostupný cez odkaz
+            .bar__break.hide-m
+            .bar__item
+              .form-control.form-control--radio
+                .radio
+                  input.radiocheck__input#wishlist-public(type="radio", name="wishlist-setting", data-radiocheck-toggle="#edit-collection")
+                  label.radiocheck__control(for="wishlist-public")
+                  label.radiocheck__label(for="wishlist-public") Čitateľská kolekcia
+
+          #wishlist-share.hide
+            .row
+              .col
+                .form-control.form-control--input
+                  .input-addons
+                    input.input(type='text', value="https://www.martinus.sk/")#clipboard
+                    .input-addons__item.no-pad
+                      button.btn.btn--link(data-clipboard, data-clipboard-target="#clipboard") Koprírovať
+            .bar
+              .bar__item
+                b Zdieľať:
+              .bar__item.bar__item--fill
+                .btn-layout.btn-layout--horizontal
+                  a.btn.btn--clean.btn--icon-left
+                    +icon('fb').icon--medium
+                    | Facebook
+                  a.btn.btn--clean.btn--icon-left
+                    +icon('twitter').icon--medium.icon--left
+                    | Twitter
+
+          #edit-collection.hide
+            .row
+              .col--m-6
+                .form-control.form-control--input
+                  .form-label
+                    label Kategória kolekcie
+                  select.js-select
+                    option Nezaradené
+                    option Dovolenkové čítanie
+                    option Do vane :)
+                    option Dlhé zimné večery
+                    option Tipy na darčeky
+                    option Osobný rast
+                    option Do školy
+
+        .modal__content
+          button.btn.btn--clean
+            +icon('trash').icon--medium.icon--left
+            | Zmazať zoznam
 
   .modal-overlay#bulk-edit(data-modal)
     article.modal.modal--medium
@@ -258,7 +333,7 @@ block append modals
 
             .bar.mb-none
               .bar__item
-                h2 Wishlist
+                h2 Hromadná úprava: Wishlist
               .bar__item.show-m
                 .pill.pill--blue 17
 
@@ -278,9 +353,6 @@ block append modals
                   button.btn.btn--ghost.btn--small(disabled)
                     | Presunúť
                     +icon('chevron-down').icon--small.icon--right
-                  button.btn.btn--ghost.btn--small(disabled)
-                    | Označiť
-                    +icon('chevron-down').icon--small.icon--right
                   button.btn.btn--clean.btn--small.no-mrg(type="button" data-toggle=`#cart-item${i}`, disabled)
                     +icon('trash', 'icon--medium')
 
@@ -298,14 +370,13 @@ block append modals
               .bar__item.bar__item--fill
                 .cart-item__column.cart-item__column--product-name
                   a.text-semibold.no-mrg.block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
-                    +xmas({type: 'icon'}).text-space-right-tiny
                     =item.title
                   ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.text-ellipsis.mb-none
                     - var authors = item.author.split(', ')
                     each author in authors
                       li= author
-              .bar__item.bar__item--shrinkable.show-m
-                .text-semibold.text-size-medium.text-nowrap= item.price
+              .bar__item.bar__item--shrinkable.show-m(style="max-width: 200px;")
+                .text-color-grey.text-small Wishlist, Na vianoce, Kultové sci-fi
               .bar__item.bar__item--shrinkable
                 if i < 3
                   +icon('time').text-color-blue.icon--small(data-tooltip, title="Práve čítam")

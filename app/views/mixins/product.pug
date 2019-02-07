@@ -259,7 +259,7 @@ mixin productStatus(props = {})
                           input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
                           label(for=`list-checkv`).radiocheck__control
                           label(for=`list-check${i}`).radiocheck__label=item
-                    a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Ďalšie zoznamy
+                    a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Všetky zoznamy
                     a.dropdown__item
                       +icon('trash').icon--small.text-space-right
                       | Odstrániť z knižnice
@@ -270,8 +270,12 @@ mixin productStatus(props = {})
                       .bar__item
                         button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
                           +icon('close', 'icon--small', 'Naspäť')
-                    a(href="#").dropdown__item Do školy
-                    a(href="#").dropdown__item Pre brata
+                    each item, i in ['Wishlist', 'Vianoce', 'Slovenská klasika']
+                      .dropdown__item
+                        .checkbox
+                          input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
+                          label(for=`list-checkv`).radiocheck__control
+                          label(for=`list-check${i}`).radiocheck__label=item
                 else
                   div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
                     h5.dropdown__group Stiahnuť ako:
