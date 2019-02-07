@@ -34,7 +34,7 @@ export default class Observables {
       const bookHeaderClass = 'header-book-detail';
       // create instance
       const observer = new MutationObserver(mutations => {
-        Array.from(mutations).forEach(mutation => {
+        mutations.forEach(mutation => {
           // book-detail observer
           // if book detail sticky bar has fixed position
           // show a special header with book details
