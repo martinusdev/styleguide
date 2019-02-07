@@ -140,11 +140,11 @@ block content
               h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
               ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
                   li
-                    a.link(href="#") Frank Weissert
+                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-theme="light") Frank Weissert
                   li
-                    a.link(href="#") Jack Thorne
+                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-theme="light") Jack Thorne
                   li
-                    a.link(href="#") John Tiffany
+                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-theme="light") John Tiffany
               .bar.bar--small.hide-m
                 .bar__item.text-medium
                   a.link(href="#") Inspira Publishing
@@ -916,6 +916,10 @@ block append modals
 
   //- book reservation modal
   include ./modules/book-reservation
+  
+block append tooltips 
+  //- author tooltip
+  include ./modules/tooltip-author
 
 block append scripts
   script(src=`${assetsPrefix}scripts/charts.js`)
