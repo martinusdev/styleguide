@@ -39,6 +39,16 @@ block append content
           .bar__item
             button.btn.btn--ghost(data-tooltip, title="This is tooltip text") This button has tooltip
 
+          #tooltip-light.hide
+            .card
+              .card__content
+                h3 This is a content of hidden tooltip template
+                p You can put more html here
+                button.btn.btn-primary.mb-none Test
+
+          .bar__item
+            button.btn.btn--ghost(data-tooltip, data-theme="light", data-html="#tooltip-light") Tooltip from html template
+
           .bar__item
             +icon('user').icon--large(data-tooltip, title="This is tooltip text on icon")
       +demo-code
@@ -47,6 +57,17 @@ block append content
 
           <button class="btn btn--ghost" data-tooltip title="This is tooltip text">..</button>
 
+          <div class="hide" id="tooltip-light">
+            <div class="card">
+              <div class="card__content">
+                <h3>This is a content of hidden tooltip template</h3>
+                <p>You can put more html here</p>
+                <button class="btn btn-primary mb-none">Test</button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn--ghost" data-tooltip="data-tooltip" data-theme="light" data-html="#tooltip-light">Tooltip from html template</button>
+          
           <svg class="icon icon-user icon--large" role="img" aria-hidden="true" data-tooltip data-tooltipped="" title="This is tooltip text on icon">.../svg>
 
     +content-sub-section('Tooltip positions')
