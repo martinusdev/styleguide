@@ -253,6 +253,7 @@
 
   &.is-search-active {
     @include breakpoint(s, down) {
+      .header__book,
       .header__logo,
       .header__subbrand,
       .header__nav,
@@ -269,6 +270,53 @@
     &__search {
       flex: 0;
     }
+  }
+
+  .book-detail-show {
+    display: none;
+  }
+}
+
+.header.header-book-detail {
+  .header__book {
+    max-height: map-get($header-height, default);
+
+    @include breakpoint(m) {
+      max-height: map-get($header-height, 'm');
+    }
+  }
+
+  @include breakpoint(m, 'down') {
+    .header__buy__text {
+      min-width: _get-rem(230px);
+    }
+  }
+
+  .header__search {
+    width: auto;
+    order: 0;
+    flex: 0 1 0%;
+    margin-right: 10%;
+
+    @include breakpoint(s) {
+      flex: 0 1 35%;
+    }
+
+    @include breakpoint(l) {
+      flex: 0 1 25%;
+    }
+
+    @include breakpoint(xl) {
+      flex: 0 1 30%;
+    }
+  }
+
+  .book-detail-show {
+    display: flex;
+  }
+
+  .book-detail-hide {
+    display: none;
   }
 }
 
