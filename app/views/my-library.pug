@@ -120,13 +120,16 @@ block content
                 a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
                   +icon('arrow-left', 'icon--medium')
               .bar__item.bar__item--shrinkable
-                h2 Wishlist
+                h2.mb-none Wishlist
+                small.text-color-grey.block(style="margin-top: -3px;")
+                  +icon('guard').icon--small.text-space-right-tiny
+                  a(data-toggle="#edit").link súkromný
               .bar__break.hide-m
               .bar__item.bar__item--fill
                 .btn-layout.btn-layout--horizontal.align-items-middle
                   button.btn.btn--clean(data-toggle='#edit')
                     +icon('edit').icon--medium.icon--left
-                    span.show-m Nastavenie
+                    span.show-m Upraviť
                   button.btn.btn--clean.no-mrg-bottom(data-toggle="#bulk-edit")
                     +icon('collection').icon--medium.icon--left
                     span.show-m Hromadná úprava
@@ -245,7 +248,7 @@ block append modals
         .modal__header.mb-none
           .modal__header__headline
 
-            h2 Nastavenie zoznamu
+            h2 Úpravy zoznamu
 
           .modal__header__action
             .btn.btn--clean(data-toggle="#edit")
@@ -368,13 +371,19 @@ block append modals
                   .thumbnail__img-wrap
                     img.img(src=`${assetsPrefix}${item.cover}`)
               .bar__item.bar__item--fill
-                .cart-item__column.cart-item__column--product-name
-                  a.text-semibold.no-mrg.block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
-                    =item.title
-                  ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.text-ellipsis.mb-none
-                    - var authors = item.author.split(', ')
-                    each author in authors
-                      li= author
+                a.text-semibold.no-mrg.block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
+                  =item.title
+                ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.text-ellipsis.mb-none
+                  - var authors = item.author.split(', ')
+                  each author in authors
+                    li= author
+              .bar__item.bar__item--shrinkable
+                .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
+                  - for (var index = 0; index<5; index++)
+                    input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + index)
+                    label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-" + index, class= index < stars ? 'is-active' : '')
+                      // or `.text-color-yellow` on svg
+                      +icon('star').icon--medium
               .bar__item.bar__item--shrinkable.show-m(style="max-width: 200px;")
                 .text-color-grey.text-small Wishlist, Na vianoce, Kultové sci-fi
               .bar__item.bar__item--shrinkable
