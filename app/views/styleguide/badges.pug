@@ -31,6 +31,21 @@ block append content
           .badge Mutilple
           .badge badges
           .badge in line.
+        
+        .badges
+          .badge 
+            | closeable
+            button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
+              +icon('close').icon--small.icon--right
+          .badge 
+            | badges
+            button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
+              +icon('close').icon--small.icon--right
+          .badge 
+            | in line
+            button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
+              +icon('close').icon--small.icon--right
+            
       +demo-code
         :code
 

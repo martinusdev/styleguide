@@ -2,7 +2,7 @@
 // INPUT
 // ---------------------------------------------
 
-.input {
+@mixin input() {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -91,4 +91,8 @@
       // stylelint-enable max-nesting-depth
     }
   }
+}
+
+.input {
+  @include input;
 }

@@ -1,0 +1,287 @@
+extends layouts/_default
+
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Novinky na e-mail'
+
+block content
+  main.account
+
+    include modules/account-header
+    +accountHeader({ navActive: 4, saveButton: true })
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-2.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+              ul.list.list--with-hover.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
+                li
+                  a(href="#ucet", data-scroll, data-scroll-offset=header.size.default + 40) Účet
+                li
+                  a(href="#adresy", data-scroll, data-scroll-offset=header.size.default + 40) Adresy
+                li
+                  a(href="#platby", data-scroll, data-scroll-offset=header.size.default + 40) Platby
+                li
+                  a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Newsletter
+                li
+                  a(href="#eknihy", data-scroll, data-scroll-offset=header.size.default + 40) E-knihy
+          .col--l-8.col--12(data-sticky-container)
+            #newsletter
+              h3.h2.text-color-black.mb-medium Pravidelný newsletter s novinkami
+              p Chcete mať najrýchlejšie informácie o nových knihách? Alebo našich špeciálnych ponukách a zľavách? Tu si môžete nastaviť aké e-maily od nás budete dostávať.
+              
+              p
+                a.link.text-size-medium(href="javascript:void(0)") Neprichádza náš newsletter na vaše Gmail konto?
+
+              .form-control.form-control--checkbox.mb-large
+                .checkbox.radiocheck--medium
+                  input.radiocheck__input(type="checkbox", id="general-info")
+                  label.radiocheck__control(for="general-info")
+                  label.radiocheck__label(for="general-info") 
+                      | Základné e-maily týkajúce sa nášho zmluvného vzťahu
+                      +icon('info').icon--medium(data-tooltip, title="Deserunt cillum in reprehenderit duis ullamco")
+
+            #newsletter-vyber
+              h3.h2.text-color-black.mb-none Sledovaní autori
+              p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
+
+              .row
+                .col--12.col--m-6
+                  .form-control.form-control--input.mb-large
+                    .form-label
+                      label(for="autor-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Autori
+                    #autor-autocomplete-container
+
+              #autori-vybrane.badges
+                .badge 
+                  | Pavel Vilikovský
+                  button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
+                    +icon('close').icon--small.icon--right
+                .badge 
+                  | Milan Lasica
+                  button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
+                    +icon('close').icon--small.icon--right
+                .badge 
+                  | Tomáš Ulej
+                  button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
+                    +icon('close').icon--small.icon--right
+
+              h3.h2.text-color-black.mb-none Sledované série
+              p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
+              
+              .row
+                .col--12.col--m-6
+                  .form-control.form-control--input.mb-large
+                    .form-label
+                      label(for="seria-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Série
+                    #seria-autocomplete-container
+              
+              h3.h2.text-color-black.mb-none Sledované edície
+              p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
+
+              .row
+                .col--12.col--m-6
+                  .form-control.form-control--input.mb-large
+                    .form-label
+                      label(for="edicia-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Edície
+                    #edicia-autocomplete-container
+
+              h3.h2.text-color-black.mb-none Sledované vydavateľstvá
+              p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
+
+              .row
+                .col--12.col--m-6
+                  .form-control.form-control--input.mb-large
+                    .form-label
+                      label(for="vydavatelstvo-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Vydavateľstvá
+                    #vydavatelstvo-autocomplete-container
+
+              h3.h2.text-color-black.mb-none Sledované knihy
+              p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
+
+              .row
+                .col--12.col--m-6
+                  .form-control.form-control--input.mb-large
+                    .form-label
+                      label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
+                    #kniha-autocomplete-container
+
+          .col--l-2.show-l
+            .bar.bar--small.mb-small(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
+              .bar__item.bar__item--fill.text-right
+                button.btn
+                  +icon('save', 'icon--medium').icon--left
+                  | Uložiť zmeny
+
+ 
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.addEventListener('DOMContentLoaded', () => {
+      const allResults = {
+        author: [
+          {
+            raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+            image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+            name: 'J. K. Rowling',
+            description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+          },
+          {
+            raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+            image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+            name: 'J. K. Rowling',
+            description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+          },
+          {
+            raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+            image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+            name: 'J. K. Rowling',
+            description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+          },
+        ],
+        book: [
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+        ],
+        collections: [
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            images: [
+              'images/content/books/sample-1.jpg',
+              'images/content/books/sample-2.jpg',
+              'images/content/books/sample-3.jpg',
+              'images/content/books/sample-4.jpg',
+              'images/content/books/sample-5.jpg',
+            ],
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            images: [
+              'images/content/books/sample-1.jpg',
+              'images/content/books/sample-2.jpg',
+              'images/content/books/sample-3.jpg',
+              'images/content/books/sample-4.jpg',
+              'images/content/books/sample-5.jpg',
+            ],
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            images: [
+              'images/content/books/sample-1.jpg',
+              'images/content/books/sample-2.jpg',
+              'images/content/books/sample-3.jpg',
+              'images/content/books/sample-4.jpg',
+              'images/content/books/sample-5.jpg',
+            ],
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+        ],
+        text: [
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov.',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+        ],
+      };
+
+      const filter = type => (query, populateResults) => {
+        const results = allResults[type];
+        const filteredResults = results.filter(result =>
+          result.raw.match(new RegExp(query, 'gi')),
+        );
+        populateResults(filteredResults);
+      };
+
+      window.myApp.autocompleteAutor = new window.myApp.Autocomplete(
+        document.getElementById('autor-autocomplete-container'),
+        {
+          id: 'autor-autocomplete',
+          templateType: 'author',
+          source: filter('author'),
+          onConfirm: value => {
+            let newAuthor = document.createElement('div');
+            newAuthor.innerHTML = `
+              <div class="badge">
+                ${value.name}
+                <button class="btn btn--clean btn--small btn--equal mb-none" href="#">
+                  <svg class="icon icon-close  icon--small icon--right" role="img" aria-hidden="true">
+                    <use xlink:href="icons_/app.svg#icon-close"></use>
+                  </svg>
+                </button>
+              </div>
+            `;
+            
+            document.querySelector('#autori-vybrane').appendChild(newAuthor);
+          }
+        },
+      );
+      window.myApp.autocompleteKniha = new window.myApp.Autocomplete(
+        document.getElementById('kniha-autocomplete-container'),
+        {
+          id: 'kniha-autocomplete',
+          templateType: 'book',
+          source: filter('book'),
+        },
+      );
+      window.myApp.autocompleteSeria = new window.myApp.Autocomplete(
+        document.getElementById('seria-autocomplete-container'),
+        {
+          id: 'seria-autocomplete',
+          templateType: 'collections',
+          source: filter('collections'),
+        },
+      );
+      window.myApp.autocompleteEdicia = new window.myApp.Autocomplete(
+        document.getElementById('edicia-autocomplete-container'),
+        {
+          id: 'edicia-autocomplete',
+          templateType: 'collections',
+          source: filter('collections'),
+        },
+      );
+      window.myApp.autocompleteVydavatelstvo = new window.myApp.Autocomplete(
+        document.getElementById('vydavatelstvo-autocomplete-container'),
+        {
+          id: 'vydavatelstvo-autocomplete',
+          templateType: 'text',
+          source: filter('text'),
+        },
+      );
+    });
