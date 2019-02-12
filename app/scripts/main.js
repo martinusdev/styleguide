@@ -1,4 +1,3 @@
-/** docs at https://github.com/alphagov/accessible-autocomplete */
 import svg4everybody from 'svg4everybody';
 
 import {
