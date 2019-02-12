@@ -15,15 +15,15 @@ const defaultConfig = {
 
 const defaultTemplates = {
   author: {
-    inputValue: value => (value && value.name ? value.name : value),
+    inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="row">
-        <div class="col--3 col--l-5 align-self-middle">
-          <div class="author-photo">
+        <div class="col--3 col--l-5 align-self-middle pr-none">
+          <div class="author-photo no-pad">
             <div class="portrait" style="background-image: url('${value.image}');"></div>
           </div>
         </div>
-        <div class="col--fill align-self-middle">
+        <div class="col--9 col--l-7 align-self-middle">
           <div class="h4 text-bold mb-small">${value.name}</div>
           <p class="mb-none">${value.description}</p>
         </div>
@@ -31,10 +31,10 @@ const defaultTemplates = {
     `,
   },
   book: {
-    inputValue: value => (value && value.name ? value.name : value),
+    inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="row">
-        <div class="col--fill align-self-middle">
+        <div class="col--3 align-self-middle">
           <div class="thumbnail thumbnail--book">
             <div class="thumbnail__img-wrap">
               <img class="img img--fluid" src="${value.image}" alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany">
@@ -49,7 +49,7 @@ const defaultTemplates = {
     `,
   },
   collection: {
-    inputValue: value => (value && value.name ? value.name : value),
+    inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="row">
         <div class="col--fill align-self-middle">
@@ -71,7 +71,7 @@ const defaultTemplates = {
     `,
   },
   text: {
-    inputValue: value => (value && value.name ? value.name : value),
+    inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="row">
         <div class="col--12 align-self-middle">
@@ -102,9 +102,6 @@ export default class Autocomplete {
     this.instance = accessibleAutocomplete({
       element: this.element,
       templates: this.templates[type] || false,
-      onConfirm: value => {
-        console.log(value);
-      },
       ...this.config,
     });
   }

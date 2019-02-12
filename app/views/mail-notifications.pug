@@ -5,6 +5,25 @@ include ./mixins/icon
 block opts
     - var pageTitle = 'Novinky na e-mail'
 
+mixin checkbox(props = {})
+  -
+    const {
+      id,
+      text,
+      tooltip, 
+      disabled,
+      checked
+    } = props;
+    
+  .form-control.form-control--checkbox
+    .checkbox.radiocheck--medium
+      input.radiocheck__input(type="checkbox", id=id, checked=checked, disabled=disabled)
+      label.radiocheck__control(for=id, disabled=disabled)
+      label.radiocheck__label(for=id)
+        block
+        +icon('info').icon--medium(data-tooltip, title=tooltip)
+          
+
 block content
   main.account
 
@@ -14,99 +33,107 @@ block content
     section.section
       .wrapper-main
         .row
-          .col--l-2.show-l(data-sticky-container)
+          .col--l-3.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
               ul.list.list--with-hover.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
                 li
-                  a(href="#ucet", data-scroll, data-scroll-offset=header.size.default + 40) Účet
+                  a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Pravidelný newsletter
                 li
-                  a(href="#adresy", data-scroll, data-scroll-offset=header.size.default + 40) Adresy
+                  a(href="#autori", data-scroll, data-scroll-offset=header.size.default + 40) Sledovaní autori
                 li
-                  a(href="#platby", data-scroll, data-scroll-offset=header.size.default + 40) Platby
+                  a(href="#serie", data-scroll, data-scroll-offset=header.size.default + 40) Sledované série
                 li
-                  a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Newsletter
+                  a(href="#edicie", data-scroll, data-scroll-offset=header.size.default + 40) Sledované edície
                 li
-                  a(href="#eknihy", data-scroll, data-scroll-offset=header.size.default + 40) E-knihy
-          .col--l-8.col--12(data-sticky-container)
+                  a(href="#vydavatelstva", data-scroll, data-scroll-offset=header.size.default + 40) Sledované vydavateľstvá
+                li
+                  a(href="#knihy", data-scroll, data-scroll-offset=header.size.default + 40) Sledované knihy
+          .col--l-7.col--12(data-sticky-container)
             #newsletter
               h3.h2.text-color-black.mb-medium Pravidelný newsletter s novinkami
               p Chcete mať najrýchlejšie informácie o nových knihách? Alebo našich špeciálnych ponukách a zľavách? Tu si môžete nastaviť aké e-maily od nás budete dostávať.
               
               p
                 a.link.text-size-medium(href="javascript:void(0)") Neprichádza náš newsletter na vaše Gmail konto?
+            
+              .text-space-left
+                +checkbox({ id: 'general-info', disabled: 'disabled', checked: 'checked', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                  | Základné e-maily týkajúce sa nášho zmluvného vzťahu
+                +checkbox({ id: 'reviews', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                  | E-maily s prosbou o recenziu knihy, hodnotenie našich služieb a podobne
+                +checkbox({ id: 'intrested-in', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                  | Tituly, ktoré vás zaujali
+                +checkbox({ id: 'discounts-orders', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                  | Zľavové poukazy, e-maily o neukončeých objednávkach
+                +checkbox({ id: 'newsletter-special', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                  | Newsletter a špeciálne ponuky
+                +checkbox({ id: 'club-news', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                  | Klubové novinky
 
-              .form-control.form-control--checkbox.mb-large
-                .checkbox.radiocheck--medium
-                  input.radiocheck__input(type="checkbox", id="general-info")
-                  label.radiocheck__control(for="general-info")
-                  label.radiocheck__label(for="general-info") 
-                      | Základné e-maily týkajúce sa nášho zmluvného vzťahu
-                      +icon('info').icon--medium(data-tooltip, title="Deserunt cillum in reprehenderit duis ullamco")
-
-            #newsletter-vyber
+            #autori
               h3.h2.text-color-black.mb-none Sledovaní autori
               p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
 
               .row
-                .col--12.col--m-6
-                  .form-control.form-control--input.mb-large
+                .col--12.col--m-8
+                  .form-control.form-control--input.mb-medium
                     .form-label
                       label(for="autor-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Autori
                     #autor-autocomplete-container
 
-              #autori-vybrane.badges
-                .badge 
-                  | Pavel Vilikovský
-                  button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
-                .badge 
-                  | Milan Lasica
-                  button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
-                .badge 
-                  | Tomáš Ulej
-                  button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
-
+              .badges#autori-vybrane
+                
+            #serie
               h3.h2.text-color-black.mb-none Sledované série
               p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
               
               .row
                 .col--12.col--m-6
-                  .form-control.form-control--input.mb-large
+                  .form-control.form-control--input.mb-medium
                     .form-label
                       label(for="seria-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Série
                     #seria-autocomplete-container
+                .col--12.col--m-6.flex.align-items-middle
+                  .badges#serie-vybrane
               
+            #edicie
               h3.h2.text-color-black.mb-none Sledované edície
               p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
 
               .row
-                .col--12.col--m-6
-                  .form-control.form-control--input.mb-large
+                .col--12.col--m-8
+                  .form-control.form-control--input.mb-medium
                     .form-label
                       label(for="edicia-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Edície
                     #edicia-autocomplete-container
 
+              .badges#edicie-vybrane
+
+            #vydavatelstva
               h3.h2.text-color-black.mb-none Sledované vydavateľstvá
               p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
 
               .row
-                .col--12.col--m-6
-                  .form-control.form-control--input.mb-large
+                .col--12.col--m-8
+                  .form-control.form-control--input.mb-medium
                     .form-label
                       label(for="vydavatelstvo-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Vydavateľstvá
                     #vydavatelstvo-autocomplete-container
 
+              .badges#vydavatelstva-vybrane
+
+            #knihy
               h3.h2.text-color-black.mb-none Sledované knihy
               p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
 
               .row
-                .col--12.col--m-6
-                  .form-control.form-control--input.mb-large
+                .col--12.col--m-8
+                  .form-control.form-control--input.mb-medium
                     .form-label
                       label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
                     #kniha-autocomplete-container
+
+              .badges#knihy-vybrane
 
           .col--l-2.show-l
             .bar.bar--small.mb-small(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
@@ -149,19 +176,19 @@ block scripts
             description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
           },
           {
-            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            raw: 'Základy rybolovu pro kluky a holky 2 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
             image: 'images/content/books/sample-15.jpg',
-            name: 'Základy rybolovu pro kluky a holky',
+            name: 'Základy rybolovu pro kluky a holky 2',
             description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
           },
           {
-            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            raw: 'Základy rybolovu pro kluky a holky 3 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
             image: 'images/content/books/sample-15.jpg',
-            name: 'Základy rybolovu pro kluky a holky',
+            name: 'Základy rybolovu pro kluky a holky 3',
             description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
           },
         ],
-        collections: [
+        collection: [
           {
             raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
             images: [
@@ -202,19 +229,16 @@ block scripts
         text: [
           {
             raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
-            image: 'images/content/books/sample-15.jpg',
             name: 'Základy rybolovu pro kluky a holky',
             description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
           },
           {
             raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
-            image: 'images/content/books/sample-15.jpg',
             name: 'Základy rybolovu pro kluky a holky',
-            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov. Praktický návod ako stretnúť, spoznať a získať ženu svojich snov.',
+            description: 'Ullamco veniam culpa nulla nulla deserunt qui incididunt Lorem deserunt veniam sit. Quis reprehenderit fugiat eiusmod velit aute mollit eu enim dolor cupidatat adipisicing nulla ea. Ad eiusmod laboris ex velit adipisicing labore in do cillum. Occaecat dolor laboris veniam cillum.',
           },
           {
             raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
-            image: 'images/content/books/sample-15.jpg',
             name: 'Základy rybolovu pro kluky a holky',
             description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
           },
@@ -229,51 +253,51 @@ block scripts
         populateResults(filteredResults);
       };
 
+      const onConfirm = (id, prop = 'name') => (value) => {
+          let newAuthor = document.createElement('div');
+          newAuthor.className = 'badge';
+          newAuthor.innerHTML = `
+              ${value[prop]}
+              <button class="btn btn--clean btn--small btn--equal mb-none" href="#">
+                <svg class="icon icon-close  icon--small icon--right" role="img" aria-hidden="true">
+                  <use xlink:href="icons_/app.svg#icon-close"></use>
+                </svg>
+              </button>
+          `;
+
+          newAuthor.querySelector('button').addEventListener('click', (evt) => {
+            newAuthor.remove();
+          });
+          
+          document.querySelector(id).appendChild(newAuthor);
+      };
+
       window.myApp.autocompleteAutor = new window.myApp.Autocomplete(
         document.getElementById('autor-autocomplete-container'),
         {
           id: 'autor-autocomplete',
           templateType: 'author',
           source: filter('author'),
-          onConfirm: value => {
-            let newAuthor = document.createElement('div');
-            newAuthor.innerHTML = `
-              <div class="badge">
-                ${value.name}
-                <button class="btn btn--clean btn--small btn--equal mb-none" href="#">
-                  <svg class="icon icon-close  icon--small icon--right" role="img" aria-hidden="true">
-                    <use xlink:href="icons_/app.svg#icon-close"></use>
-                  </svg>
-                </button>
-              </div>
-            `;
-            
-            document.querySelector('#autori-vybrane').appendChild(newAuthor);
-          }
-        },
-      );
-      window.myApp.autocompleteKniha = new window.myApp.Autocomplete(
-        document.getElementById('kniha-autocomplete-container'),
-        {
-          id: 'kniha-autocomplete',
-          templateType: 'book',
-          source: filter('book'),
-        },
+          placeholder: 'Pridať autora? Začnite písať',
+          onConfirm: onConfirm('#autori-vybrane')
+        }
       );
       window.myApp.autocompleteSeria = new window.myApp.Autocomplete(
         document.getElementById('seria-autocomplete-container'),
         {
           id: 'seria-autocomplete',
-          templateType: 'collections',
-          source: filter('collections'),
+          templateType: 'collection',
+          source: filter('collection'),
+          onConfirm: onConfirm('#serie-vybrane')
         },
       );
       window.myApp.autocompleteEdicia = new window.myApp.Autocomplete(
         document.getElementById('edicia-autocomplete-container'),
         {
           id: 'edicia-autocomplete',
-          templateType: 'collections',
-          source: filter('collections'),
+          templateType: 'collection',
+          source: filter('collection'),
+          onConfirm: onConfirm('#edicie-vybrane')
         },
       );
       window.myApp.autocompleteVydavatelstvo = new window.myApp.Autocomplete(
@@ -282,6 +306,16 @@ block scripts
           id: 'vydavatelstvo-autocomplete',
           templateType: 'text',
           source: filter('text'),
+          onConfirm: onConfirm('#vydavatelstva-vybrane')
+        },
+      );
+      window.myApp.autocompleteKniha = new window.myApp.Autocomplete(
+        document.getElementById('kniha-autocomplete-container'),
+        {
+          id: 'kniha-autocomplete',
+          templateType: 'book',
+          source: filter('book'),
+          onConfirm: onConfirm('#knihy-vybrane')
         },
       );
     });
