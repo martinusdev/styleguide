@@ -10,7 +10,28 @@ const defaultConfig = {
   defaultValue: undefined,
   displayMenu: 'overlay',
   confirmOnBlur: false,
+  minLength: 2,
+  name: 'input-autocomplete',
+  showNoOptionsFound: true,
   placeholder: 'Začnite písať...',
+  // i18n
+  tNoResults: () => 'Nenašli sme žiadne výsledky.',
+  tQueryTooShort: minQueryLength => `Minimálny počet znakov ${minQueryLength}`,
+  tStatusQueryTooShort: minQueryLength =>
+    `Minimálny počet znakov ${minQueryLength}`,
+  tStatusNoResults: () => 'Nenašli sme žiadne výsledky.',
+  tStatusSelectedOption: (selectedOption, length, index) =>
+    `Možnosť ${selectedOption} (${index + 1} z ${length}) je označená.`,
+  tStatusResults: (length, contentSelectedOption) => {
+    let message = 'výsledok zobrazený';
+    if (length > 1 && length < 5) {
+      message = 'výsledky zobrazené';
+    } else if (length >= 5) {
+      message = 'výsledkov zobrazených';
+    }
+
+    return `<span>${length} ${message}. ${contentSelectedOption}</span>`;
+  },
 };
 
 const defaultTemplates = {
