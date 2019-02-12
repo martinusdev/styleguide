@@ -1,0 +1,31 @@
+include ./../mixins/icon
+
+#author-tooltip.hide.card
+  .card__content.card__content--condensed
+    .bar.mb-small.mb-medium-m
+      .bar__item
+        span.h3 J. K. Rowling
+      .bar__item.bar__item--fill
+        .bar.mb-none.align-items-right
+          .bar__item.flex.align-items-middle
+            +icon('star', 'icon--medium').text-color-yellow
+            span.h3.text-bold.text-space-left 4,5
+          .bar__item
+            button.btn.btn--clean
+              +icon('eye', 'icon--medium').icon--left.text-color-grey
+              span.show-m sledovať
+    .bar.bar--no-wrap.align-items-top
+      .bar__item
+        .thumbnail.thumbnail--book.thumbnail--medium
+          .thumbnail__img-wrap
+            img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+      .bar__item.bar__item--shrinkable
+        .badges
+          .badge.badge--orange Sci-fi, fantasy, horrory
+          .badge.badge--green Detektívky
+          .badge.badge--blue Young adult
+        p.text-left Commodo fugiat officia esse ipsum ut ad irure officia mollit in sit Lorem sunt. In veniam Lorem est culpa ad. Voluptate elit et sint sit ullamco consectetur magna excepteur. Occaecat dolore quis nostrud quis cillum enim officia magna. Laborum pariatur occaecat ad ullamco dolor nostrud Lorem adipisicing.
+  .card__footer
+    button.btn.btn--clean.mb-none
+      +icon('collection')
+      span.text-space-left Všetky knihy autora

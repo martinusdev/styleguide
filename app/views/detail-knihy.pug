@@ -9,6 +9,7 @@ include ./mixins/icon
 
 block opts
     - var pageTitle = 'Detail knihy'
+    - var bookHeader = true;
 
 block content
   main
@@ -140,11 +141,11 @@ block content
               h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
               ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
                   li
-                    a.link(href="#") Frank Weissert
+                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-theme="light") Frank Weissert
                   li
-                    a.link(href="#") Jack Thorne
+                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-theme="light") Jack Thorne
                   li
-                    a.link(href="#") John Tiffany
+                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-theme="light") John Tiffany
               .bar.bar--small.hide-m
                 .bar__item.text-medium
                   a.link(href="#") Inspira Publishing
@@ -328,7 +329,7 @@ block content
         .wrapper-main
           .row(data-sticky-container)
             .col--l-2.col--m-3.show-m
-              div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.m + 40, style="padding: 20px;")
+              div(data-observe, data-observe-book-detail, data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.m + 40, style="padding: 20px;")
                 .thumbnail.thumbnail--book.mb-medium.thumbnail--xlarge
                   .thumbnail__img-wrap
                     img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
@@ -916,6 +917,10 @@ block append modals
 
   //- book reservation modal
   include ./modules/book-reservation
+  
+block append tooltips 
+  //- author tooltip
+  include ./modules/tooltip-author
 
 block append scripts
   script(src=`${assetsPrefix}scripts/charts.js`)
