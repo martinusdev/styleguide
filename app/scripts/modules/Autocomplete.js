@@ -16,7 +16,6 @@ const defaultConfig = {
   placeholder: 'Začnite písať...',
   // i18n
   tNoResults: () => 'Nenašli sme žiadne výsledky.',
-  tQueryTooShort: minQueryLength => `Minimálny počet znakov ${minQueryLength}`,
   tStatusQueryTooShort: minQueryLength =>
     `Minimálny počet znakov ${minQueryLength}`,
   tStatusNoResults: () => 'Nenašli sme žiadne výsledky.',
