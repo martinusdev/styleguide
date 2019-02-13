@@ -2,7 +2,7 @@
 // INPUT
 // ---------------------------------------------
 
-.input {
+@mixin input() {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -48,10 +48,6 @@
         @include css-map($props, 'success');
       }
     }
-
-    &--search {
-      @include css-map($props, 'search');
-    }
   }
 
   //  input sizes
@@ -91,4 +87,19 @@
       // stylelint-enable max-nesting-depth
     }
   }
+}
+
+@mixin input-search($suffix: '--search') {
+  @each $variant, $props in $input {
+    &#{_get-variant-name($variant)} {
+      &#{$suffix} {
+        @include css-map($props, 'search');
+      }
+    }
+  }
+}
+
+.input {
+  @include input;
+  @include input-search;
 }

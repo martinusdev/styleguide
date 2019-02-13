@@ -1,0 +1,35 @@
+// ---------------------------------------------
+// AUTOCOMPLETE
+// ---------------------------------------------
+// @import './../../../node_modules/accessible-autocomplete/dist/accessible-autocomplete.min.css';
+@import './forms/input';
+@import './dropdown';
+
+.autocomplete__input {
+  @include input;
+  @include input-search('');
+  padding-right: 40px !important;
+}
+
+.autocomplete__menu {
+  @include dropdown-menu;
+  @include dropdown-size;
+  @include dropdown-menu-arrowhead;
+  @include dropdown-wrapper;
+  padding-left: 0 !important;
+  overflow-x: hidden;
+
+  &--visible {
+    @include dropdown-visible;
+    @include dropdown-visible-arrowhead;
+  }
+}
+
+.autocomplete__option {
+  @include dropdown-item;
+  cursor: pointer;
+}
+
+.autocomplete__wrapper {
+  position: relative;
+}
