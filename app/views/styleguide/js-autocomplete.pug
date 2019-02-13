@@ -1,0 +1,258 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('javascripts.autocomplete', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/scripts/modules/Autocomplete.js'], contents)
+
+    +p-big Documentation for autocomplete javascript module.
+
+    +p 
+      strong API documentation 
+      | can be found at 
+      a.link(href="https://github.com/alphagov/accessible-autocomplete") 
+        | https://github.com/alphagov/accessible-autocomplete
+
+  //- end: main info
+
+//- Content
+block append content
+
+  //- SELECT
+  +content-section(contents[0])
+
+    +content-sub-section('Usage')
+
+      +p 
+        | Simplest autocomplete which we can use is autocomplete with predefined results
+
+      +demo(true)
+        +demo-example
+          .form-control.form-control--input
+            .form-label
+              label(for="my-autocomplete").visually-hidden Label
+            #my-autocomplete-container
+          
+        +demo-code
+          :code
+            <div class="form-control form-control--input">
+              <div class="form-label">
+                <label class="visually-hidden" for="my-autocomplete">
+                  Label
+                </label>
+              </div>
+              <div id="my-autocomplete-container"></div>
+            </div>
+            <script>
+              var myAutocomplete = new window.myApp.Autocomplete(
+                document.getElementById('my-autocomplete-container'),
+                {
+                  autocompleteOptions: {
+                    id: 'my-autocomplete', // id of inserted input
+                    source: [
+                      'First option',
+                      'Second option',
+                      'Third option',
+                      'Fourth option',
+                    ]
+                  }, 
+                }
+              );
+            </script>
+
+    +content-sub-section('Templates')
+
+      +p 
+        | There is four types of templates which can be used in 
+        | autocomplete options. It's 
+        | <code class='l-code-inline'>author</code> 
+        | <code class='l-code-inline'>book</code> 
+        | <code class='l-code-inline'>collection</code> 
+        | <code class='l-code-inline'>text</code> 
+      +p     
+        | Each template has predefined structure. In this example
+        | we use template <code class='l-code-inline'>author</code>.
+      +p
+        | To work properly we have to init autocomplete with option 
+        | <code class='l-code-inline'>templateType: 'author'</code>
+        | and results should have above mentioned structure.
+        | For example templateType <code class='l-code-inline'>author</code> 
+        | should have values
+        | <code class='l-code-inline'>raw</code>,
+        | <code class='l-code-inline'>image</code>,
+        | <code class='l-code-inline'>name</code>,
+        | <code class='l-code-inline'>description</code>. 
+      +p 
+        | For deeper understaning of templates usage 
+        | visit 
+        a(href="https://github.com/alphagov/accessible-autocomplete#templates-default-undefined").
+          API Templates
+      +demo(true)
+        +demo-example
+          .form-control.form-control--input
+            .form-label
+              label(for="author-autocomplete").visually-hidden Autor
+            #author-autocomplete-container
+          
+        +demo-code
+          :code
+            <div class="form-control form-control--input">
+              <div class="form-label">
+                <label class="visually-hidden" for="author-autocomplete">
+                  Autor
+                </label>
+              </div>
+              <div id="author-autocomplete-container"></div>
+            </div>
+            <script>
+              var authorResults = [
+                {
+                  raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+                  image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+                  name: 'J. K. Rowling',
+                  description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+                },
+                {
+                  raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+                  image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+                  name: 'J. K. Rowling',
+                  description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+                },
+                {
+                  raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+                  image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+                  name: 'J. K. Rowling',
+                  description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+                },
+              ];
+              var authorAutocomplete = new window.myApp.Autocomplete(
+                document.getElementById('author-autocomplete-container'),
+                {
+                  autocompleteOptions: {
+                    id: 'author-autocomplete', // id of inserted input
+                    placeholder: 'Pridať autora? Začnite písať...',
+                  },
+                  templateType: 'author',
+                  results: authorResults
+                }
+              );
+            </script>
+
+  +content-section(contents[1])
+
+    +content-sub-section('Defaults')
+
+      +p <code class='l-code-inline'>new Autocomplete(element, config)</code>
+
+      .l-table-wrap
+        table.l-table
+          thead
+            tr
+              th Name
+              th Type
+              th Default
+              th Description
+          tbody
+            tr
+              td element
+              td <code class='l-code-inline'>HTMLElement</code>
+              td <code class='l-code-inline'>undefined</code>
+              td Initialization element
+            tr
+              td config
+              td <code class='l-code-inline'>Object</code>
+              td 
+                +demo(true)
+                  +demo-code
+                    :code
+                      { 
+                        autocompleteOptions: {
+                          autoselect: false,
+                          defaultValue: undefined,
+                          displayMenu: 'overlay',
+                          confirmOnBlur: false,
+                          minLength: 0,
+                          name: 'input-autocomplete',
+                          showNoOptionsFound: true,
+                        }, 
+                        templateType: undefined, 
+                        results: [] 
+                      }
+
+              td Config object. All config for autocompleteOptions from
+                | #{' '}
+                a.l-a(href="https://github.com/alphagov/accessible-autocomplete") Accessible autocomplete
+                |  are available.
+
+  +content-section(contents[2])
+
+    +content-sub-section('Change autocomplete default language')
+
+      +p Autocomplete language can be set in by changing value of <code class='l-code-inline'>window.myApp.selectLanguage</code>. Default value is <code class='l-code-inline'>sk</code> and it can be set to <code class='l-code-inline'>cz</code>.
+
+      +demo(true)
+        +demo-code
+          :code
+            <script>
+              window.myApp = window.myApp || {};
+              window.myApp.selectLanguage = 'sk';
+            </script>
+
+block scripts
+  script.
+    window.myApp = window.myApp || {};
+    window.addEventListener('DOMContentLoaded', () => {
+      var myAutocomplete = new window.myApp.Autocomplete(
+        document.getElementById('my-autocomplete-container'),
+        {
+          autocompleteOptions: {
+            id: 'my-autocomplete', // id of inserted input
+            source: [
+              'First option',
+              'Second option',
+              'Third option',
+              'Fourth option',
+            ]
+          }, 
+        }
+      );
+
+      const authorResults = [
+        {
+          raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+          image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+          name: 'J. K. Rowling',
+          description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+        },
+        {
+          raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+          image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+          name: 'J. K. Rowling',
+          description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+        },
+        {
+          raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+          image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+          name: 'J. K. Rowling',
+          description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+        },
+      ];
+
+      var authorAutocomplete = new window.myApp.Autocomplete(
+        document.getElementById('author-autocomplete-container'),
+        {
+          autocompleteOptions: {
+            id: 'author-autocomplete', // id of inserted input
+            placeholder: 'Pridať autora? Začnite písať...',
+          }, 
+          templateType: 'author',
+          results: authorResults
+        }
+      );
+    });
