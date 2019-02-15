@@ -72,8 +72,6 @@ block content
                     rating: 3.5,
                     size: 'xlarge'
                   }).mb-medium
-                  .show-s
-                    +productPreview()
               .col--8.hide-s
                 ul.list-inline.list-inline--delimited.mb-small
                   li
@@ -99,6 +97,10 @@ block content
                     .bar__item
                       a.link.text-medium(href="#") Tomáš Ulej
                       .text-small.text-color-grey Autor kolekcie
+                    .bar__item
+                      .rating-star.bar__item.align-items-center
+                        each star, starIndex in Array(5)
+                          +icon('star').rating-star__item.icon--large.is-active
                 else
                   p Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
               .col--m-3.mb-large.mb-none-m

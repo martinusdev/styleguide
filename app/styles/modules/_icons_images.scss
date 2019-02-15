@@ -25,6 +25,11 @@
   }
 }
 
+.icon--inline {
+  position: relative;
+  top: -0.1em;
+}
+
 // ----------------------------
 // IMAGES
 
@@ -318,12 +323,20 @@ $thumbnail-badge: (
   @each $name, $size in $thumbnail-sizes {
     &#{_get-variant-name($name)} {
       width: $size;
+      height: $size;
       padding: $size / 10;
     }
   }
 
-  img {
-    width: 100%;
+  &--small {
+    padding: 0;
+    line-height: 0;
+    text-align: center;
+
+    img {
+      width: 80%;
+      padding-top: 10%;
+    }
   }
 
   .year {
