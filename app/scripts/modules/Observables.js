@@ -43,13 +43,24 @@ export default class Observables {
             mutation.target.hasAttribute('data-observe-book-detail')
           ) {
             const isSpecial = this.header.classList.contains(bookHeaderClass);
-            const isFixed = mutation.target.style.position === 'fixed';
-            if (isFixed) {
-              if (!isSpecial) {
-                this.header.classList.add(bookHeaderClass);
+
+            const style = window.getComputedStyle(mutation.target);
+            const styleParent = window.getComputedStyle(
+              mutation.target.parentNode,
+            );
+            // d attribute is when display has !important in css
+            const isHidden =
+              style.display === 'none' || styleParent.display === 'none';
+            // if its sticky but not visible
+            if (!isHidden) {
+              const isFixed = mutation.target.style.position === 'fixed';
+              if (isFixed) {
+                if (!isSpecial) {
+                  this.header.classList.add(bookHeaderClass);
+                }
+              } else if (isSpecial) {
+                this.header.classList.remove(bookHeaderClass);
               }
-            } else if (isSpecial) {
-              this.header.classList.remove(bookHeaderClass);
             }
           }
         });

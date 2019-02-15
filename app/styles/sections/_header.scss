@@ -253,7 +253,6 @@
 
   &.is-search-active {
     @include breakpoint(s, down) {
-      .header__book,
       .header__logo,
       .header__subbrand,
       .header__nav,
@@ -286,28 +285,48 @@
     }
   }
 
-  @include breakpoint(m, 'down') {
-    .header__buy__text {
-      min-width: _get-rem(230px);
+  @include breakpoint(l, 'down') {
+    .header__book__name {
+      min-width: _get-rem(138px);
     }
+  }
+
+  .header__buy__text {
+    min-width: _get-rem(230px);
   }
 
   .header__search {
     width: auto;
     order: 0;
     flex: 0 1 0%;
-    margin-right: 10%;
 
     @include breakpoint(s) {
+      flex: 0 1 15%;
+    }
+
+    @include breakpoint(m) {
       flex: 0 1 35%;
     }
 
     @include breakpoint(l) {
       flex: 0 1 25%;
+      margin-right: 10%;
     }
 
     @include breakpoint(xl) {
       flex: 0 1 30%;
+    }
+  }
+
+  &.is-search-active {
+    @include breakpoint(s, down) {
+      .header__book {
+        display: none;
+      }
+
+      .header__search {
+        flex: 1 0 auto;
+      }
     }
   }
 
