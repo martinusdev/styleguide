@@ -280,6 +280,10 @@
   .header__book {
     max-height: map-get($header-height, default);
 
+    @include breakpoint(s, down) {
+      font-size: $font-size-medium;
+    }
+
     @include breakpoint(m) {
       max-height: map-get($header-height, 'm');
     }
