@@ -2,6 +2,17 @@
 // DROPDOWN
 // ---------------------------------------------
 
+@mixin dropdown-visible-arrowhead () {
+  transform: scale(1, 1) translateX(-50%);
+}
+
+@mixin dropdown-visible () {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+  transform: scale(1, 1);
+}
+
 @mixin dropdown-menu (
   $dropdown-menu: $dropdown-menu
 ) {
@@ -21,13 +32,10 @@
   }
 
   &[aria-expanded='true'] {
-    opacity: 1;
-    visibility: visible;
-    transition-delay: 0s;
-    transform: scale(1, 1);
+    @include dropdown-visible;
 
     &.dropdown--arrowhead {
-      transform: scale(1, 1) translateX(-50%);
+      @include dropdown-visible-arrowhead;
     }
   }
 
@@ -129,44 +137,52 @@
   @include css-map($dropdown-menu-group);
 }
 
+@mixin dropdown-wrapper() {
+  overflow: auto;
+  max-height: $dropdown-menu-max-h;
+}
+
+@mixin dropdown-menu-arrowhead() {
+  margin-top: 10px;
+  border-radius: 3px;
+  overflow: visible;
+
+  transform: scale(1, 0.1) translateX(-50%);
+  left: 50%;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    top: -9px;
+    left: 50%;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    transform: translateX(-50%);
+  }
+
+  .dropdown__item {
+    text-align: left;
+  }
+}
+
 @mixin dropdown() {
   .dropdown {
     @include dropdown-menu;
     @include dropdown-size;
 
     &__wrap {
-      overflow: auto;
-      max-height: $dropdown-menu-max-h;
+      @include dropdown-wrapper;
     }
 
     &__item { @include dropdown-item; }
     &__group { @include dropdown-group; }
 
     &--arrowhead {
-      margin-top: 10px;
-      border-radius: 3px;
-      overflow: visible;
-
-      transform: scale(1, 0.1) translateX(-50%);
-      left: 50%;
-
-      &::before {
-        content: '';
-        display: inline-block;
-        width: 0;
-        height: 0;
-        position: absolute;
-        top: -9px;
-        left: 50%;
-        border-left: 8px solid transparent;
-        border-right: 8px solid transparent;
-        border-bottom: 8px solid #fff;
-        transform: translateX(-50%);
-      }
-
-      .dropdown__item {
-        text-align: left;
-      }
+      @include dropdown-menu-arrowhead;
     }
   }
 }
