@@ -44,6 +44,7 @@ const defaultConfig = {
     minLength: 0,
     name: 'input-autocomplete',
     showNoOptionsFound: true,
+    onConfirm: () => {},
   },
   templateType: null,
   results: [],
@@ -73,7 +74,7 @@ const defaultTemplates = {
         <div class="col--3 align-self-middle">
           <div class="thumbnail thumbnail--book">
             <div class="thumbnail__img-wrap">
-              <img class="img img--fluid" src="${value.image}" alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany">
+              <img class="img img--fluid" src="${value.image}" alt="${value.name}">
             </div>
           </div>
         </div>
@@ -93,7 +94,7 @@ const defaultTemplates = {
           <div class="thumbnail thumbnail--book">
             ${value.images.map(image => `
               <div class="thumbnail__img-wrap">
-                <img class="img" src="${image}">
+                <img class="img" alt="" src="${image}">
               </div>
             `)}
           </div>
