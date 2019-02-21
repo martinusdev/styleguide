@@ -172,20 +172,91 @@ block content
                     | Prihlásiť
 
   .modal-overlay#challenge(data-modal)
-    article.modal.modal--medium
+    article.modal.modal--medium(style="max-width: 100%;")
       .modal__wrap
-        .modal__header.mb-none
+        .ko2-header.bar.align-items-center
+          .bar__item
+            .mb-medium
+            a(href="#")
+              img(src="images/content/campaign/knizna-odysea/logo2/logo-small-sk.svg", width="270").img
+        .modal__header.mb-none.no-pad-top
           .modal__header__headline.text-center
-            .h5 výzva na dnešný deň
-            .h2.text-transform-upper pantomíma
+            .h3.text-transform-upper úloha na tento deň
           .modal__header__action
             .btn.btn--clean(data-toggle="#challenge")
               +icon('close').icon--medium
-        .row.ko-video-background
+        //-.row.ko-video-background
           .ofst--m-1
           .col--m-10
             .ko-video
               | <iframe width="560" height="315" src="https://www.youtube.com/embed/docIm4sExSk?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        .modal__content
+          h3.h2 Literárne dvojičky
+
+          p Vo svete literatúry nájdeme postavy a autorov, ktorí toho majú veľa spoločného. A to často napriek tomu, že nevystupujú v rovnakom príbehu či žijú dokonca v rôznych historických dobách. Zistite podľa nápovied, čo spája jednotlivé osoby, vyplňte tajničku a získate meno.
+
+          b Aké?
+
+          p Ide o skutočné meno legendárneho spisovateľa, ktorý je však na celom svete známy pod svojím pseudonymom. Ktorého autora máme na mysli? :-)
+
+          img(src="https://placehold.it/800x500")
+
+          ol.list.no-pad
+            li.list__item.list__item--clickable(data-toggle="#q1, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 1. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q1.hide(data-toggle-class="hide") Hľadáme meno, ktoré spája hneď niekoľko dám. Ryšavú teenagerku z chudobej rodiny, ktorá prežíva prvú lásku s chlapcom kórejského pôvodu. Čudácku úradníčku s priezviskom pripomínajúcim slona, ktorá trpí pod vplyvom svojej despotickej matky. Niekdajšiu prvú dámu USA, ktorá sa významne pričinila o zmeny v oblasti sociálnej politiky a napísala niekoľko kníh. A aj skupina Beatles má pesničku s rovnakým ženským menom. :-)
+
+            li.list__item.list__item--clickable(data-toggle="#q2, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 2. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q2.hide(data-toggle-class="hide") Aké meno majú spoločné nepríjemná bulvárna novinárka z najznámejších čarodejníckych novín a hollywoodska hviezda, podľa ktorej kráľ hororu Stephen King pomenoval svoju slávnu sfilmovanú novelu?
+            li.list__item.list__item--clickable(data-toggle="#q3, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 3. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q3.hide(data-toggle-class="hide") Toto meno spája až štyroch pánov z literárneho sveta. Prvý z nich je autorom historických trilerov z prostredia politiky, armády či tajných služieb. Druhý sa preslávil ako herec a spevák, svetu literatúry však dal aj sériu kníh o partii mladých iluzionistov s radom trikov v rukáve. Tretí menovec vydal vlani výborne hodnotenú detektívku odohrávajúcu sa v meste na Temži, ktorú sme vám odporúčali aj v našich Youtube videách. Štvrtý pán stvoril vo svojich knihách najznámejšieho kanibala sveta.
+            li.list__item.list__item--clickable(data-toggle="#q4, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 4. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q4.hide(data-toggle-class="hide") Toto meno pozná určite každá milovníčka romantických príbehov! Spája totiž chlapáckeho, ale pyšného hlavného hrdinu z najznámejšieho románu Jane Austenovej s úspešným priateľom bláznivej Bridget Jonesovej. A pikoška – obe tieto postavy si na filmovom plátne zahral rovnaký herec.
+            li.list__item.list__item--clickable(data-toggle="#q5, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 5. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q5.hide(data-toggle-class="hide") Švédsky novinár odhaľujúci s pomocou geniálnej hackerky tie najväčšie škandály a mladý detektív, ktorého vykreslila rovnaká fantázia ako Pipi Dlhú pančuchu. Títo dvaja majú niečo spoločné. :-)
+            li.list__item.list__item--clickable(data-toggle="#q6, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 6. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q6.hide(data-toggle-class="hide") Aj v tomto prípade spája hľadané meno hneď niekoľko vecí. Ide o priezvisko skúseného a tajomného čarodejníckeho detektíva v službách londýnskej polície. Rovnako sa volá aj zakladateľka moderného ošetrovateľstva. A napokon, pod týmto menom vyšiel v originále vynikajúci vojnový román Kristin Hannah.
+            li.list__item.list__item--clickable(data-toggle="#q7, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 7. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q7.hide(data-toggle-class="hide") Hľadáme meno, ktoré spája jedného z najväčších géniov – zloduchov vo svete klasickej literatúry, hlavnú postavu slávnej Kerouacovej knihy a súčasnú autorku úspešných ženských románov.
+            li.list__item.list__item--clickable(data-toggle="#q8, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 8. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q8.hide(data-toggle-class="hide") Dvaja autori majú spoločné jedno meno. Kým jeden ho používa ako priezvisko, ten druhý dostal toto meno do vienka ako krstné. Ten prvý sa preslávil svojimi spoločenskými románmi, ale aj knižkami z prostredia cirkusu. Druhého poznajú knihomoli po celom svete ako autora životopisných románov o slávnych maliaroch, spisovateľoch či vedcoch.
+            li.list__item.list__item--clickable(data-toggle="#q9, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
+              .list__item__section.list__item__section--primary
+                a.link 9. Nápoveda
+              .list__item__section.list__item__section--secondary.text-right
+                +icon('chevron-down').icon--medium.text-color-grey
+              p#q9.hide(data-toggle-class="hide") A na záver neobídeme ani fantasy. Hľadáme totiž meno postavy z knižnej série, ktorej fanúšikovia presne vedia, aký dôležitý je v živote každého človeka uterák. Rovnaké meno má aj model auta, ktoré bolo veľmi populárnym v prvej polovici 20. storočia a dodnes ho vídať na televíznych obrazovkách v dobových filmoch a seriáloch.
         .modal__content
           .mb-medium
           .row
@@ -210,24 +281,6 @@ block content
                     .bar__item.bar__item--shrinkable
                       button.btn.btn--small.btn--clean ďalej
                         +icon('arrow-right')
-
-              h3.h3 Uhádnuté knihy
-              hr
-              .text-center.text-regular.text-color-grey
-                | Zatiaľ si neuhádol žiadne knihy
-
-              each i in Array(3)
-                .product.product--horizontal.mb-small
-                  .product__cover
-                    .thumbnail.thumbnail--book.thumbnail--small
-                      a(href=`#`)
-                        .thumbnail__img-wrap
-                          img(src=`${assetsPrefix}images/content/books/sample-1.jpg`).img
-                  .product__caption
-                    .product__title
-                      a.link.link--product Hobbit
-                      ul.text-size-small.text-color-grey.no-mrg.text-ellipsis.list-inline.list-inline--delimited
-                        li.no-mrg J.R.R. Tolkien
 
         .modal__footer
 
