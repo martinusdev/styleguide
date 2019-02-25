@@ -92,11 +92,13 @@ const defaultTemplates = {
         <div class="col--3 align-self-middle">
         <div class="product__cover collection">
           <div class="thumbnail thumbnail--book">
-            ${value.images.map(image => `
-              <div class="thumbnail__img-wrap">
-                <img class="img" alt="" src="${image}">
-              </div>
-            `)}
+            ${value.images
+              .map(image => `
+                <div class="thumbnail__img-wrap">
+                  <img class="img" alt="" src="${image}">
+                </div>
+              `)
+              .join('')}
           </div>
         </div>
         </div>

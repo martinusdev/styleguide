@@ -1,11 +1,22 @@
-const defaultConfig = {};
+const defaultConfig = {
+  observerConfig: {
+    attributes: true,
+    characterData: true,
+    childList: true,
+  },
+};
 
 export default class Observables {
-  constructor(selector = '[data-observe]', config) {
+  constructor(selector, callback, config) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
+    this.observerConfig = {
+      ...defaultConfig.observerConfig,
+      ...config.observerConfig,
+    };
 
+    this.mutationCallback = callback;
     this.observables = [];
-    this.header = document.querySelector('.header');
+    this.observer = null;
 
     this._init();
 
@@ -13,9 +24,7 @@ export default class Observables {
   }
 
   destroy() {
-    this.observables.forEach(observable => {
-      observable.disconnect();
-    });
+    this.observer.disconnect();
   }
 
   update() {
@@ -31,47 +40,11 @@ export default class Observables {
         window.WebKitMutationObserver ||
         window.MozMutationObserver;
 
-      const bookHeaderClass = 'header-book-detail';
       // create instance
-      const observer = new MutationObserver(mutations => {
-        mutations.forEach(mutation => {
-          // book-detail observer
-          // if book detail sticky bar has fixed position
-          // show a special header with book details
-          if (
-            mutation.type === 'attributes' &&
-            mutation.target.hasAttribute('data-observe-book-detail')
-          ) {
-            const isSpecial = this.header.classList.contains(bookHeaderClass);
-
-            const style = window.getComputedStyle(mutation.target);
-            const styleParent = window.getComputedStyle(
-              mutation.target.parentNode,
-            );
-            // d attribute is when display has !important in css
-            const isHidden =
-              style.display === 'none' || styleParent.display === 'none';
-            // if its sticky but not visible
-            if (!isHidden) {
-              const isFixed = mutation.target.style.position === 'fixed';
-              if (isFixed) {
-                if (!isSpecial) {
-                  this.header.classList.add(bookHeaderClass);
-                }
-              } else if (isSpecial) {
-                this.header.classList.remove(bookHeaderClass);
-              }
-            }
-          }
-        });
-      });
-      // config for observer
-      const config = {
-        attributes: true,
-      };
+      this.observer = new MutationObserver(this.mutationCallback);
       // observe all the observable elements
       this.observables.forEach(observable => {
-        observer.observe(observable, config);
+        this.observer.observe(observable, this.observerConfig);
       });
     }
   }

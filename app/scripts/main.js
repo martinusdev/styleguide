@@ -119,6 +119,4 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.equalColumns = new EqualColumns();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
-
-  window.myApp.observables = new Observables();
 });
