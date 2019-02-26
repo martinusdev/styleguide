@@ -731,27 +731,23 @@ block content
                           button.btn.btn--clean.no-mrg-right(data-toggle="#flag-review" data-toggle-self="false")
                             +icon('flag').icon--medium
 
-                +review({ source: true })
-                  .text-semibold Nadpis recenzie
-                  p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+                +review({ source: true, verified: true, martinus: true, })
+                  | Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
-                +review({ reply: true, name: 'Darina Dobrovská', address: false, review: 0, likes: 25})
-                  .text-semibold Nadpis recenzie
-                  p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+                +review({ reply: true, name: 'Darina Dobrovská', review: 0, likes: 25, profile: true,})
+                  | Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
-                +review({ reply: false, name: 'Ondrej Vykecal', address: false, review: 0, likes: 25})
-                  .text-semibold Nadpis recenzie
-                  #review-123456-spoiler-notice(data-toggle-class="hide")
-                    p.text-color-grey Tento príspevok je spoiler, takze urcite zvaz ci si to kuknes, lebo to mozes niekedy v buducnosti olutovat. Ked to tak neurobis, tak budes mat problem a tak podobne.
-                      br
-                      button.link(href="#review-123456-spoiler" data-toggle="#review-123456-spoiler, #review-123456-spoiler-notice") Prajete si ho zobraziť?
-                  #review-123456-spoiler.hide(data-toggle-class="hide")
-                    p Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
+                +review({ reply: false, name: 'Ondrej Vykecal', review: 0, likes: 25, verified: true,})
+                  span#review-123456-spoiler-notice(data-toggle-class="hide")
+                    span.text-color-grey Tento príspevok je spoiler, takze urcite zvaz ci si to kuknes, lebo to mozes niekedy v buducnosti olutovat. Ked to tak neurobis, tak budes mat problem a tak podobne.
+                    br
+                    button.link(href="#review-123456-spoiler" data-toggle="#review-123456-spoiler, #review-123456-spoiler-notice") Prajete si ho zobraziť?
+                  span#review-123456-spoiler.hide(data-toggle-class="hide")
+                    | Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Nullam quis risus eget urna mollis ornare vel eu leo. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor. Vestibulum id ligula porta felis euismod semper.
 
 
                 +review({ avatar: true, name: 'Tomáš Ulej a mam strasne dlhe meno a uvidime co sa stane'})
-                  .text-semibold Nadpis recenzie
-                  p Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
+                  | Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti.
 
                 +pagination
 

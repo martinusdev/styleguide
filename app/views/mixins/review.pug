@@ -5,14 +5,17 @@ mixin review(props = {})
     const {
       avatar,
       name = 'Kamil Peteraj',
-      address = 'Martinus, Obchodná BA',
+      address = false,
       stars = 4,
       date = '2. 3. 2017',
       likes = 0,
       dislikes = 0,
       reply,
       id = Math.floor((Math.random() * 1000)),
-      source = false
+      source = false,
+      verified = false,
+      martinus = false,
+      profile = false,
     } = props;
   article.review(class= reply ? 'review--reply' : '')
     header.review__header.bar.mb-small
@@ -21,20 +24,41 @@ mixin review(props = {})
           .portrait(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
         else
           +icon('avatar').icon--xlarge.text-color-grey
-      .review__header-name.bar__item.bar__item--fill.bar__item--shrinkable
-        .text-semibold= name
+        if martinus
+          div(style="position: absolute; bottom: 0; right: 0;")
+            img(src="images/content/logo-small.svg", width="16").block
+        else if profile
+          .badge.badge--blue.line-small(style="position: absolute; bottom: 0; right: 0;") 13
+      .review__header-name.bar__item.bar__item--fill
+        if profile
+          a.link= name
+        else
+          .text-semibold= name
         if address
           div.text-color-grey-dark= address
+      if profile
+        .bar__item.bar__item--fill
+          .club-badge.club-badge--small.inline-block.bg-grey
+            img(src="images/content/club/badges/badges-01.png")
+          .club-badge.club-badge--small.inline-block.bg-grey
+            img(src="images/content/club/badges/badges-03.png")
+          .club-badge.club-badge--small.inline-block.bg-grey
+            img(src="images/content/club/badges/badges-04.png")
       .bar__break.hide-m
-      .review__header-rating-date.bar__item.bar
-        .rating-star.bar__item.align-items-center.no-mrg-top
+      .review__header-rating-date.bar__item.bar.mb-small
+        .rating-star.bar__item.align-items-center
           each star, starIndex in Array(5)
             +icon('star').rating-star__item.icon--large(class=`${starIndex < stars ? 'is-active' : ''}`)
-        .review__header-date.bar__item.no-mrg-top
+        .review__header-date.bar__item
           span.text-color-grey-dark= date
 
     div.review__body.mb-not-last
-      block
+      p
+        if verified
+          .text-transform-upper.text-size-small.inline-block.text-semibold.text-space-right.text-color-beige
+            +icon('check-circle').icon--small.text-space-right-tiny.icon--inline
+            | overený nákup
+        block
     footer.review__footer
       .bar
         .bar__item.bar__item--shrinkable
