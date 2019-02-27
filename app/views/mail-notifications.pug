@@ -49,26 +49,25 @@ block content
                 li
                   a(href="#knihy", data-scroll, data-scroll-offset=header.size.default + 40) Sledované knihy
           .col--l-7.col--12(data-sticky-container)
-            #newsletter
+            #newsletter.mb-large
               h3.h2.text-color-black.mb-medium Pravidelný newsletter s novinkami
               p Chcete mať najrýchlejšie informácie o nových knihách? Alebo našich špeciálnych ponukách a zľavách? Tu si môžete nastaviť aké e-maily od nás budete dostávať.
               
               p
                 a.link.text-size-medium(href="javascript:void(0)") Neprichádza náš newsletter na vaše Gmail konto?
-            
-              .text-space-left
-                +checkbox({ id: 'general-info', disabled: 'disabled', checked: 'checked', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
-                  | Základné e-maily týkajúce sa nášho zmluvného vzťahu
-                +checkbox({ id: 'reviews', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
-                  | E-maily s prosbou o recenziu knihy, hodnotenie našich služieb a podobne
-                +checkbox({ id: 'intrested-in', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
-                  | Tituly, ktoré vás zaujali
-                +checkbox({ id: 'discounts-orders', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
-                  | Zľavové poukazy, e-maily o neukončeých objednávkach
-                +checkbox({ id: 'newsletter-special', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
-                  | Newsletter a špeciálne ponuky
-                +checkbox({ id: 'club-news', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
-                  | Klubové novinky
+
+              +checkbox({ id: 'general-info', disabled: 'disabled', checked: 'checked', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                | Základné e-maily týkajúce sa nášho zmluvného vzťahu
+              +checkbox({ id: 'reviews', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                | E-maily s prosbou o recenziu knihy, hodnotenie našich služieb a podobne
+              +checkbox({ id: 'intrested-in', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                | Tituly, ktoré vás zaujali
+              +checkbox({ id: 'discounts-orders', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                | Zľavové poukazy, e-maily o neukončeých objednávkach
+              +checkbox({ id: 'newsletter-special', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                | Newsletter a špeciálne ponuky
+              +checkbox({ id: 'club-news', tooltip: 'Dolore et labore ullamco amet veniam occaecat cillum fugiat eu nostrud.'})
+                | Klubové novinky
 
             #autori
               h3.h2.text-color-black.mb-none Sledovaní autori
