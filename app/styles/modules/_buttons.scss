@@ -91,11 +91,17 @@
   @if map-has-key($states, 'after') {
     position: relative;
     overflow: hidden;
+    transform: translateZ(0);
 
     &::after {
       content: '';
 
       @include css-map($states, 'after');
+    }
+
+    &.btn--equal::after {
+      content: '';
+      flex: 1 0 auto;
     }
   }
 
@@ -108,6 +114,11 @@
       display: inline-block;
 
       @include css-map($states, 'before');
+    }
+
+    &.btn--equal::before {
+      content: '';
+      flex: 1 0 auto;
     }
   }
 }
@@ -128,16 +139,6 @@
   align-items: center;
   padding: 0;
   line-height: 0;
-
-  &::before {
-    content: '';
-    flex: 1 0 auto;
-  }
-
-  &::after {
-    content: '';
-    flex: 1 0 auto;
-  }
 
   @each $variant, $values in $button-sizes {
     &.btn#{_get-variant-name($variant)} {

@@ -1,15 +1,20 @@
 include ./../../mixins/userMenu
 include ./../../mixins/icon
 
+- var bookClassHide = bookHeader ? 'book-detail-hide' : '';
+
 header.header
-  .header__wrapper(data-sticky)
+  .header__wrapper(data-sticky, data-sticky-class="is-stuck")
     .wrapper-main
       .bar.header__bar
         .bar__item.header__logo
-          a(href="#")
+          a(href="#", class=bookClassHide)
             img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
             img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
-        .bar__item.header__nav
+          if bookHeader
+            a(href="#").book-detail-show
+              img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
+        .bar__item.header__nav(class=bookClassHide)
           .btn-layout.btn-layout--horizontal
             .btn-dropdown.no-mrg.show-l
               button.btn.btn--clean.header-btn(
@@ -47,7 +52,6 @@ header.header
               )
                 | Hry
                 +icon('chevron-down', 'icon-dropdown').icon--small
-
             .btn-dropdown.no-mrg.btn-dropdown--no-icon.show-l
               button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger="#mega-menu-other"
@@ -56,7 +60,6 @@ header.header
                 aria-haspopup="true"
               )
                 +icon('dots').icon--medium
-
             .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
               button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger
@@ -66,7 +69,7 @@ header.header
               )
                 +icon('menu').icon--medium
 
-        .bar__item.bar__item--shrinkable.header__ad.show-m
+        .bar__item.bar__item--shrinkable.header__ad.show-m(class=bookClassHide)
           img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
           | <style>.header__wrapper::after{background: #7d609a;}</style>
 
@@ -104,12 +107,31 @@ header.header
                   a.dropdown__item.dropdown__item--small Kategória#{' '}
                     b Fantasy
 
-        .bar__item.header__user
+        .bar__item.header__user(class=bookClassHide)
           +userMenu()
 
-        .bar__item.header__cart
+        .bar__item.header__cart(class=bookClassHide)
           a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
             +icon('cart').icon--medium
+        
+        if bookHeader
+          .bar__item.bar__item--fill.header__book.book-detail-show
+            .bar.bar--no-wrap.mb-none.align-self-right
+              .bar__item
+                .thumbnail.thumbnail--book.thumbnail--small
+                  .thumbnail__img-wrap
+                    img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+              .bar__item.bar__item--shrinkable.text-color-white.header__book__name
+                  | Základy rybolovu pro kluky a holky
+              .bar__item.show-s
+                .h3.text-color-white.text-bold 14,65 €
+              .bar__item.show-m
+                button.btn.btn--primary.btn--equal
+                  +icon('cart').icon--medium
+              .bar__item.bar__item--shrinkable.text-color-success.header__buy__text.show-l
+                  | Pridajte ešte tento titul do košíka a dopravu máte zdarma
+
+      
 
   include ./megamenu
   include ./../checkout-notice

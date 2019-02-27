@@ -1,11 +1,10 @@
+include ./icon
+
 mixin loader(props = {})
   -
     const {
       size = 'medium',
-      color,
+      color = 'grey',
     } = props;
 
-  .loader(class= size ? `loader--${size}` : '', class= color ? `loader--${color}` : '', aria-hidden="true")
-    .loader__page
-    .loader__page
-    .loader__page
+  +icon('loader', 'loader icon--' + size + ' text-color-' + color)

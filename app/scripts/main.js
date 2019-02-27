@@ -29,8 +29,13 @@ import AudioPlayer from './modules/AudioPlayer';
 import Clipboard from './modules/Clipboard';
 import AnchorScroll from './modules/AnchorScroll';
 import EqualColumns from './modules/EqualColumns';
+import Autocomplete from './modules/Autocomplete';
+import Observables from './modules/Observables';
 
 import Choices from '../../node_modules/choices.js/assets/scripts/dist/choices';
+
+// eslint-disable-next-line
+require('mutationobserver-shim');
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
@@ -59,6 +64,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Clipboard = Clipboard;
   window.myApp.AnchorScroll = AnchorScroll;
   window.myApp.EqualColumns = EqualColumns;
+  window.myApp.Autocomplete = Autocomplete;
+  window.myApp.Observables = Observables;
 
   window.myApp.Choices = Choices;
 
