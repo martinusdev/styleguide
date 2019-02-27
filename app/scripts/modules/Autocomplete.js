@@ -37,7 +37,7 @@ const texts = {
 const defaultConfig = {
   /** docs at https://github.com/alphagov/accessible-autocomplete */
   autocompleteOptions: {
-    autoselect: false,
+    autoselect: true,
     defaultValue: undefined,
     displayMenu: 'overlay',
     confirmOnBlur: false,
@@ -54,15 +54,15 @@ const defaultTemplates = {
   author: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="row">
-        <div class="col--3 align-self-middle pr-none">
+      <div class="bar mb-none">
+        <div class="bar__item bar__item--shrinkable align-self-middle pr-none">
           <div class="author-photo no-pad">
-            <div class="portrait" style="background-image: url('${value.image}');"></div>
+            <div class="portrait portrait--medium" style="background-image: url('${value.image}');"></div>
           </div>
         </div>
-        <div class="col--9 align-self-middle">
-          <div class="h4 text-bold mb-small">${value.name}</div>
-          <p class="mb-none">${value.description}</p>
+        <div class="bar__item bar__item--fill align-self-middle">
+          <div class="text-semibold text-size-regular">${value.name}</div>
+          <p class="mb-none text-color-grey">${value.description}</p>
         </div>
       </div>
     `,
@@ -70,17 +70,17 @@ const defaultTemplates = {
   book: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="row">
-        <div class="col--3 align-self-middle">
-          <div class="thumbnail thumbnail--book">
+      <div class="bar mb-none">
+        <div class="bar__item bar__item--shrinkable align-self-middle">
+          <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
-              <img class="img img--fluid" src="${value.image}" alt="${value.name}">
+              <img class="img" src="${value.image}" alt="${value.name}">
             </div>
           </div>
         </div>
-        <div class="col--9 align-self-middle">
-          <div class="h4 text-bold mb-small">${value.name}</div>
-          <p class="mb-none">${value.description}</p>
+        <div class="bar__item bar__item--fill align-self-middle">
+          <div class="text-size-regular text-semibold">${value.name}</div>
+          <p class="mb-none text-color-grey">${value.description}</p>
         </div>
       </div>
     `,
@@ -88,10 +88,10 @@ const defaultTemplates = {
   collection: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="row">
-        <div class="col--3 align-self-middle">
+      <div class="bar mb-none">
+        <div class="bar__item bar__item--shrinkable align-self-middle">
         <div class="product__cover collection">
-          <div class="thumbnail thumbnail--book">
+          <div class="thumbnail thumbnail--book thumbnail--medium">
             ${value.images
               .map(image => `
                 <div class="thumbnail__img-wrap">
@@ -102,9 +102,9 @@ const defaultTemplates = {
           </div>
         </div>
         </div>
-        <div class="col--9 align-self-middle">
-          <div class="h4 text-bold mb-small">${value.name}</div>
-          <p class="mb-none">${value.description}</p>
+        <div class="bar__item bar__item--fill align-self-middle">
+          <div class="text-size-regular text-semibold">${value.name}</div>
+          <p class="mb-none text-color-grey">${value.description}</p>
         </div>
       </div>
     `,
