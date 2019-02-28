@@ -28,12 +28,12 @@ footer.footer
         h5 Kníhkupectvá
         .bar.bar--small
           .bar__item
-            a.link.text-color-white.text-size-medium.text-bold(href='#')= footer.activeStore
-          .bar__item
+            a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
             - var state = 'closing'; //- open, closing, closed
-            .text-size-medium(class='text-color-' + footer.store[state].color)= footer.store[state].text
-          .bar__item
-            .text-size-medium 08:00 - 20:00
+            span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-theme="light")
+              = footer.store[state].text
+              +icon('info').icon--small.text-color-grey-light(style="position: relative; top: -0.05em;")
+
         .row
           .col--6.col--l-5
             ul.list--unstyled.mb-medium
@@ -111,3 +111,39 @@ footer.footer
             a.link.text-color-white(href='#').text-normal.text-medium Obchodné podmienky
           li
             a.link.text-color-white(href='#').text-normal.text-medium Ochrana súkromia
+
+block append tooltips
+  #store-tooltip.hide.card
+    .card__content.card__content--condensed.text-left
+      .mb-small
+        a.link.text-bold Považská Bystrica
+      .bar.bar--no-wrap
+        .bar__item
+          | Pondelok
+          br
+          | Utorok
+          br
+          b Streda
+          br
+          | Štvrtok
+          br
+          | Piatok
+          br
+          | Sobota
+          br
+          | Nedeľa
+          br
+        .bar__item
+          | 09:00 - 21:00
+          br
+          | 09:00 - 21:00
+          br
+          b 09:00 - 21:00
+          br
+          | 09:00 - 21:00
+          br
+          | 09:00 - 21:00
+          br
+          | 09:00 - 21:00
+          br
+          | 09:00 - 21:00

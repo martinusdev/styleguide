@@ -14,17 +14,15 @@ include ./../mixins/icon
             button.btn.btn--clean
               +icon('eye', 'icon--medium').icon--left.text-color-grey
               span.show-m sledovať
-    .bar.bar--no-wrap.align-items-top
-      .bar__item
-        .thumbnail.thumbnail--book.thumbnail--medium
-          .thumbnail__img-wrap
-            img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-      .bar__item.bar__item--shrinkable
-        .badges
-          .badge.badge--orange Sci-fi, fantasy, horrory
-          .badge.badge--green Detektívky
-          .badge.badge--blue Young adult
-        p.text-left Commodo fugiat officia esse ipsum ut ad irure officia mollit in sit Lorem sunt. In veniam Lorem est culpa ad. Voluptate elit et sint sit ullamco consectetur magna excepteur. Occaecat dolore quis nostrud quis cillum enim officia magna. Laborum pariatur occaecat ad ullamco dolor nostrud Lorem adipisicing.
+    .row.align-items-top
+      .col--2.col--m-3
+        .portrait(style="background-image: url('images/content/avatars/f.jpg');")
+      .col--10.col--m-9.no-pad-left
+        .badges.mb-small
+          .badge.badge--orange.mb-tiny Sci-fi, fantasy, horrory
+          .badge.badge--green.mb-tiny Detektívky
+          .badge.badge--blue.mb-tiny Young adult
+        p.text-left.mb-none Commodo fugiat officia esse ipsum ut ad irure officia mollit in sit Lorem sunt. In veniam Lorem est culpa ad. Voluptate elit et sint sit ullamco consectetur magna excepteur. Occaecat dolore quis nostrud quis cillum enim officia magna. Laborum pariatur occaecat ad ullamco dolor nostrud Lorem adipisicing.
   .card__footer
     button.btn.btn--clean.mb-none
       +icon('collection')

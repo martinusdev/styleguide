@@ -1181,39 +1181,42 @@ block append scripts
           }
         });
       });
-      
-      var bookObserve = function(mutations) {
-        var header = document.querySelector('.header');
-        var bookHeaderClass = 'header-book-detail';
-        mutations.forEach( function (mutation) {
-          const isSpecial = header.classList.contains(bookHeaderClass);
 
-          const target = mutation.target;
-          const style = window.getComputedStyle(target);
-          const styleParent = window.getComputedStyle(
-            target.parentNode,
-          );
-          // d attribute is when display has !important in css
-          const isHidden =
-            style.display === 'none' || styleParent.display === 'none';
-          // if its sticky but not visible
-          if (!isHidden) {
-            const isFixed = target.style.position === 'fixed';
-            if (isFixed) {
-              if (!isSpecial) {
-                header.classList.add(bookHeaderClass);
+      var bookObserveOn = true;
+      var bookObserve = function(mutations) {
+        if (bookObserveOn) {
+          var header = document.querySelector('.header');
+          var bookHeaderClass = 'header-book-detail';
+          mutations.forEach(function (mutation) {
+            const isSpecial = header.classList.contains(bookHeaderClass);
+
+            const target = mutation.target;
+            const style = window.getComputedStyle(target);
+            const styleParent = window.getComputedStyle(
+              target.parentNode,
+            );
+            // d attribute is when display has !important in css
+            const isHidden =
+              style.display === 'none' || styleParent.display === 'none';
+            // if its sticky but not visible
+            if (!isHidden) {
+              const isFixed = target.style.position === 'fixed';
+              if (isFixed) {
+                if (!isSpecial) {
+                  header.classList.add(bookHeaderClass);
+                }
+              } else if (isSpecial) {
+                header.classList.remove(bookHeaderClass);
               }
-            } else if (isSpecial) {
-              header.classList.remove(bookHeaderClass);
             }
-          }
-        });
+          });
+        }
       };
 
       document.addEventListener('myAppInit', function() {
         window.myApp.bookObserver = new window.myApp.Observables(
-          '[data-observe-book-detail]', 
-          bookObserve, 
+          '[data-observe-book-detail]',
+          bookObserve,
           { observerConfig: { attributes: true } }
         );
       });
