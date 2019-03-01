@@ -6,27 +6,35 @@ mixin addTo(props = {})
       text = 'Pridať do',
       icon = 'heart',
       iconClass = '',
+      link = false,
+      status = true,
       id = Math.floor((Math.random() * 1000)),
     } = props;
 
   .btn-dropdown.btn-dropdown--no-icon&attributes(attributes)
-    button.btn.btn--clean.no-mrg(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)
-      +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
-      | #{text}
+    if link
+      a.link.text-medium(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)=text
+    else
+      button.btn.btn--clean.no-mrg(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)
+        +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
+        | #{text}
     .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
       .dropdown__wrap
         div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
-          h5.dropdown__group Označiť ako:
-          a(href="#").dropdown__item
-            +icon('circle').icon--small.text-color-grey.text-space-right
-            b Neprečítané
-          a(href="#").dropdown__item
-            +icon('time').icon--small.text-color-blue.text-space-right
-            | Práve čítam
-          a(href="#", data-toggle="#book-read-modal").dropdown__item
-            +icon('check-circle').icon--small.text-color-success.text-space-right
-            | Prečítaná
-          hr.mb-small
+          if status
+            h5.dropdown__group Označiť ako:
+            a(href="#").dropdown__item
+              +icon('circle').icon--small.text-color-grey.text-space-right
+              b Neprečítané
+            a(href="#").dropdown__item
+              +icon('time').icon--small.text-color-blue.text-space-right
+              | Práve čítam
+            a(href="#", data-toggle="#book-read-modal").dropdown__item
+              +icon('check-circle').icon--small.text-color-success.text-space-right
+              | Prečítaná
+            hr.mb-small
+          else
+            p Odložte si knihu do jedného zo zoznamov
           each item, i in ['Wishlist', 'Vianoce', 'Slovenská klasika']
             .dropdown__item
               .checkbox

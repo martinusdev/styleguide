@@ -15,6 +15,7 @@ block content
       .wrapper-main
         .row
           .col--l-8.ofst--center.card.no-pad-horizontal
+
             .card__content.mb-medium
               .bar.bar--small
                 .bar__item
@@ -54,8 +55,8 @@ block content
                                 |
                                 a.link(href="#") Jana Šlinská
 
-                        .cart-item__column.cart-item__column--wishlist
-                          +addTo({ text: '' }).no-mrg-bottom
+                        .cart-item__column.cart-item__column--wishlist.hide-m
+                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).no-mrg-bottom
                         .cart-item__column.cart-item__column--qty
                           .form-control.form-control--input.no-mrg
                             .input-addons.input-addons--small.align-items-right
@@ -69,6 +70,7 @@ block content
                         .cart-item__column.cart-item__column--price
                           .text-semibold.text-size-medium.text-nowrap= item.price
                         .cart-item__column.cart-item__column--remove
+                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).no-mrg-bottom.show-m
                           button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
                 li.list__item.align-items-bottom.mt-small
