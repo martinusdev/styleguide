@@ -44,6 +44,12 @@ accepts@~1.3.3:
     mime-types "~2.1.16"
     negotiator "0.6.1"
 
+accessible-autocomplete@~1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/accessible-autocomplete/-/accessible-autocomplete-1.6.2.tgz#cb69d37748ba5b0351c84422468538890e25759c"
+  dependencies:
+    preact "^8.3.1"
+
 acorn-dynamic-import@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/acorn-dynamic-import/-/acorn-dynamic-import-2.0.2.tgz#c752bd210bef679501b6c6cb7fc84f8f47158cc4"
@@ -118,9 +124,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-animated-scroll-to@~1.1.1:
-  version "1.1.8"
-  resolved "https://registry.yarnpkg.com/animated-scroll-to/-/animated-scroll-to-1.1.8.tgz#870b1670e899f0fb8ff039577ad7116366dea7d6"
+animated-scroll-to@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/animated-scroll-to/-/animated-scroll-to-1.2.2.tgz#d6688e72f3ecec1a296fc2b36fe29290e7fff694"
 
 ansi-cyan@^0.1.1:
   version "0.1.1"
@@ -1434,6 +1440,26 @@ character-parser@^2.1.1:
   dependencies:
     is-regex "^1.0.3"
 
+chart.js@^2.7.2:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.7.3.tgz#cdb61618830bf216dc887e2f7b1b3c228b73c57e"
+  dependencies:
+    chartjs-color "^2.1.0"
+    moment "^2.10.2"
+
+chartjs-color-string@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/chartjs-color-string/-/chartjs-color-string-0.5.0.tgz#8d3752d8581d86687c35bfe2cb80ac5213ceb8c1"
+  dependencies:
+    color-name "^1.0.0"
+
+chartjs-color@^2.1.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/chartjs-color/-/chartjs-color-2.2.0.tgz#84a2fb755787ed85c39dd6dd8c7b1d88429baeae"
+  dependencies:
+    chartjs-color-string "^0.5.0"
+    color-convert "^0.5.3"
+
 cheerio@0.*:
   version "0.22.0"
   resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-0.22.0.tgz#a9baa860a3f9b595a6b81b1a86873121ed3a269e"
@@ -1455,9 +1481,9 @@ cheerio@0.*:
     lodash.reject "^4.4.0"
     lodash.some "^4.4.0"
 
-choices.js@~3.0.2:
-  version "3.0.3"
-  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-3.0.3.tgz#28aa0e96328c22ae074be5fe6e9eda5384e54b45"
+choices.js@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/choices.js/-/choices.js-3.0.4.tgz#c0f76bd795e7b36939e87891a0cf17402fb6a2d2"
   dependencies:
     classnames "^2.2.5"
     fuse.js "^2.2.2"
@@ -1624,6 +1650,10 @@ collection-visit@^1.0.0:
   dependencies:
     map-visit "^1.0.0"
     object-visit "^1.0.0"
+
+color-convert@^0.5.3:
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
 
 color-convert@^1.3.0, color-convert@^1.9.0:
   version "1.9.1"
@@ -3446,6 +3476,17 @@ glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@~7.1.1, glob@~7.1.2:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+glob@^7.1.3:
+  version "7.1.3"
+  resolved "https://registry.yarnpkg.com/glob/-/glob-7.1.3.tgz#3960832d3f1574108342dafd3a67b332c0969df1"
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 glob@~3.1.21:
   version "3.1.21"
   resolved "https://registry.yarnpkg.com/glob/-/glob-3.1.21.tgz#d29e0a055dea5138f4d07ed40e8982e83c2066cd"
@@ -3928,7 +3969,7 @@ gulp-util@~2.2.10, gulp-util@~2.2.14, gulp-util@~2.2.9:
     through2 "^0.5.0"
     vinyl "^0.2.1"
 
-"gulp-yaml-merge@github:adammockor/gulp-yaml-merge":
+gulp-yaml-merge@adammockor/gulp-yaml-merge:
   version "1.0.0"
   resolved "https://codeload.github.com/adammockor/gulp-yaml-merge/tar.gz/933fbb957829a6d13d1236f463152c8d4fff0089"
   dependencies:
@@ -3961,7 +4002,7 @@ gulplog@^1.0.0:
   dependencies:
     glogg "^1.0.0"
 
-gumshoe@adammockor/gumshoe#80a5d8ee7eaa43e2bb7405b68579563e79c71883:
+"gumshoe@github:adammockor/gumshoe#80a5d8ee7eaa43e2bb7405b68579563e79c71883":
   version "3.5.0"
   resolved "https://codeload.github.com/adammockor/gumshoe/tar.gz/80a5d8ee7eaa43e2bb7405b68579563e79c71883"
 
@@ -5636,6 +5677,10 @@ lodash@^3.10.1:
   version "3.10.1"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-3.10.1.tgz#5bf45e8e49ba4189e17d482789dfd15bd140b7b6"
 
+lodash@^4.17.11:
+  version "4.17.11"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
+
 lodash@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-1.0.2.tgz#8f57560c83b59fc270bd3d561b690043430e2551"
@@ -5984,6 +6029,10 @@ module-not-found-error@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/module-not-found-error/-/module-not-found-error-1.0.1.tgz#cf8b4ff4f29640674d6cdd02b0e3bc523c2bbdc0"
 
+moment@^2.10.2:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -6018,6 +6067,10 @@ multipipe@^0.1.0, multipipe@^0.1.2:
   resolved "https://registry.yarnpkg.com/multipipe/-/multipipe-0.1.2.tgz#2a8f2ddf70eed564dff2d57f1e1a137d9f05078b"
   dependencies:
     duplexer2 "0.0.2"
+
+mutationobserver-shim@~0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/mutationobserver-shim/-/mutationobserver-shim-0.3.3.tgz#65869630bc89d7bf8c9cd9cb82188cd955aacd2b"
 
 mute-stream@0.0.5:
   version "0.0.5"
@@ -6736,9 +6789,9 @@ pluralize@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/pluralize/-/pluralize-1.2.1.tgz#d1a21483fd22bb41e58a12fa3421823140897c45"
 
-popper.js@^1.12.4:
-  version "1.13.0"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.13.0.tgz#e1e7ff65cc43f7cf9cf16f1510a75e81f84f4565"
+popper.js@^1.12.9:
+  version "1.14.7"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.7.tgz#e31ec06cfac6a97a53280c3e55e4e0c860e7738e"
 
 portscanner@2.1.1:
   version "2.1.1"
@@ -7048,6 +7101,10 @@ pre-commit@~1.2.2:
     cross-spawn "^5.0.1"
     spawn-sync "^1.0.15"
     which "1.2.x"
+
+preact@^8.3.1:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-8.4.2.tgz#1263b974a17d1ea80b66590e41ef786ced5d6a23"
 
 prelude-ls@~1.1.2:
   version "1.1.2"
@@ -7798,7 +7855,7 @@ sax@~1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
 
-scrollmonitor@~1.2.3:
+scrollmonitor@^1.2.4:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/scrollmonitor/-/scrollmonitor-1.2.4.tgz#823d04cc1574aa3b71de7cc70ef91ebe633344a0"
 
@@ -7983,7 +8040,7 @@ slice-ansi@1.0.0:
   dependencies:
     is-fullwidth-code-point "^2.0.0"
 
-smooth-scroll@adammockor/smooth-scroll#6e9cfb9efe9982433ea8ae1a0843bf7b3bde8aef:
+"smooth-scroll@github:adammockor/smooth-scroll#6e9cfb9efe9982433ea8ae1a0843bf7b3bde8aef":
   version "12.1.4"
   resolved "https://codeload.github.com/adammockor/smooth-scroll/tar.gz/6e9cfb9efe9982433ea8ae1a0843bf7b3bde8aef"
 
@@ -8235,7 +8292,7 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
-sticky-js@jurajk/sticky-js#8595f1405a89a87f2d80df7284c7c84392fb66c5:
+"sticky-js@github:jurajk/sticky-js#8595f1405a89a87f2d80df7284c7c84392fb66c5":
   version "1.2.0"
   resolved "https://codeload.github.com/jurajk/sticky-js/tar.gz/8595f1405a89a87f2d80df7284c7c84392fb66c5"
 
@@ -8612,7 +8669,7 @@ svg-tags@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/svg-tags/-/svg-tags-1.0.0.tgz#58f71cee3bd519b59d4b2a843b6c7de64ac04764"
 
-svg4everybody@~2.1.8:
+svg4everybody@^2.1.9:
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/svg4everybody/-/svg4everybody-2.1.9.tgz#5bd9f6defc133859a044646d4743fabc28db7e2d"
 
@@ -8820,11 +8877,11 @@ tiny-emitter@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.0.2.tgz#82d27468aca5ade8e5fd1e6d22b57dd43ebdfb7c"
 
-tippy.js@~1.2.0:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-1.2.2.tgz#4e705f5f7eb4aceb480174c533d68ef775453a82"
+tippy.js@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/tippy.js/-/tippy.js-1.4.2.tgz#c628545796e353e36a19f5f601a398c36c615d31"
   dependencies:
-    popper.js "^1.12.4"
+    popper.js "^1.12.9"
 
 to-absolute-glob@^0.1.1:
   version "0.1.1"
