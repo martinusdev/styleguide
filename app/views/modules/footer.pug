@@ -26,13 +26,16 @@ footer.footer
                   a.link.text-color-white(href='#')= item
       .col--l-3.col--12
         h5 Kníhkupectvá
-        .bar.bar--small
-          .bar__item
-            a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
-            - var state = 'closing'; //- open, closing, closed
-            span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-theme="light")
-              = footer.store[state].text
-              +icon('info').icon--small.text-color-grey-light(style="position: relative; top: -0.05em;")
+
+        .mb-medium
+          .bar.bar--small.mb-none
+            .bar__item
+              a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
+              - var state = 'closing'; //- open, closing, closed
+              span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-theme="light")
+                = footer.store[state].text
+                +icon('info').icon--small.text-color-grey-light(style="position: relative; top: -0.05em;")
+          a.link.text-medium Zmeniť moje kníhkupectvo
 
         .row
           .col--6.col--l-5
@@ -117,33 +120,43 @@ block append tooltips
     .card__content.card__content--condensed.text-left
       .mb-small
         a.link.text-bold Považská Bystrica
-      .bar.bar--no-wrap
-        .bar__item
-          | Pondelok
-          br
-          | Utorok
-          br
-          b Streda
-          br
-          | Štvrtok
-          br
-          | Piatok
-          br
-          | Sobota
-          br
-          | Nedeľa
-          br
-        .bar__item
-          | 09:00 - 21:00
-          br
-          | 09:00 - 21:00
-          br
-          b 09:00 - 21:00
-          br
-          | 09:00 - 21:00
-          br
-          | 09:00 - 21:00
-          br
-          | 09:00 - 21:00
-          br
-          | 09:00 - 21:00
+      .mb-medium
+        .row
+          .col--6
+            | Pondelok
+          .col--6.text-nowrap
+            | 09:00 - 21:00
+        .row
+          .col--6
+            | Utorok
+          .col--6.text-nowrap
+            | 09:00 - 21:00
+        .row
+          .col--6
+            | Streda
+          .col--6.text-nowrap
+            | 09:00 - 21:00
+        .row
+          .col--6
+            | Štvrtok
+          .col--6.text-nowrap
+            | 09:00 - 21:00
+        .row
+          .col--6
+            | Piatok
+          .col--6.text-nowrap
+            | 09:00 - 21:00
+        .row
+          .col--6
+            | Sobota
+          .col--6.text-nowrap
+            | 09:00 - 21:00
+        .row
+          .col--6
+            | Nedeľa
+          .col--6.text-nowrap
+            | 09:00 - 21:00
+
+      a.btn.btn--small.btn--ghost
+        | Viac o kníhkupectve
+        +icon('arrow-right').icon--right.icon--medium
