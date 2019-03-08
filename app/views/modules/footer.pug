@@ -27,15 +27,13 @@ footer.footer
       .col--l-3.col--12
         h5 Kníhkupectvá
 
-        .mb-medium
-          .bar.bar--small.mb-none
-            .bar__item
-              a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
-              - var state = 'closing'; //- open, closing, closed
-              span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-theme="light")
-                = footer.store[state].text
-                +icon('info').icon--small.text-color-grey-light(style="position: relative; top: -0.05em;")
-          a.link.text-medium Zmeniť moje kníhkupectvo
+        .bar.bar--small
+          .bar__item
+            a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
+            - var state = 'closing'; //- open, closing, closed
+            span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-theme="light")
+              = footer.store[state].text
+              +icon('info').icon--small.text-color-grey-light(style="position: relative; top: -0.05em;")
 
         .row
           .col--6.col--l-5
@@ -157,6 +155,9 @@ block append tooltips
           .col--6.text-nowrap
             | 09:00 - 21:00
 
-      a.btn.btn--small.btn--ghost
-        | Viac o kníhkupectve
-        +icon('arrow-right').icon--right.icon--medium
+      .mb-none
+        a.btn.btn--small.btn--ghost.mb-small
+          | Viac o kníhkupectve
+          +icon('arrow-right').icon--right.icon--medium
+
+      a.link.text-medium Zmeniť moje kníhkupectvo
