@@ -24,15 +24,17 @@ export default class EqualColumns {
 
   _init() {
     const rows = document.querySelectorAll(this.config.selector);
-    rows.forEach(row => {
-      const columns = row.querySelectorAll(this.config.childSelector);
-      let maxHeight = 0;
-      columns.forEach(column => {
-        if (column.offsetHeight > maxHeight) maxHeight = column.offsetHeight;
+    if (rows) {
+      rows.forEach(row => {
+        const columns = row.querySelectorAll(this.config.childSelector);
+        let maxHeight = 0;
+        columns.forEach(column => {
+          if (column.offsetHeight > maxHeight) maxHeight = column.offsetHeight;
+        });
+        columns.forEach(column => {
+          column.style.height = `${maxHeight}px`;
+        });
       });
-      columns.forEach(column => {
-        column.style.height = `${maxHeight}px`;
-      });
-    });
+    }
   }
 }
