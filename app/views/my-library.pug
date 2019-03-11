@@ -150,34 +150,10 @@ block content
                   .bar__item.bar__item--shrinkable
                     | Pridať titul:
                   .bar__item.bar__item--fill
-                    .form-control.form-control--input.mb-none(style="position: relative;")
-                      input.input(type="text", placeholder="Začnite písat názov knihy, filmu, ...")
-                      .dropdown.dropdown--arrowhead
-                        .dropdown__wrap
-                          each item, i in books
-                            a.dropdown__item
-                              .product.product--horizontal
-                                .product__img.product__cover.mb-none
-                                  .thumbnail.thumbnail--book.thumbnail--small
-                                    .thumbnail__img-wrap
-                                      img(src=`${assetsPrefix}${item.cover}`).img
-
-                                .product__caption
-                                  .bar.bar--small.no-mrg-bottom
-                                    .bar__item.bar__item--fill
-                                      .text-semibold.block.mb-none.line-medium=item.title
-                                      .text-color-grey.text-size-small= item.author
-
-
-              //- TODO: Hladat v kniznici
-              //- .col--m-6
-              //-   .form-control.form-control--input
-              //-     .input-addons
-              //-       input.input(type='text', placeholder="Hľadať v knižnici (autor, titul, ...)")
-              //-       .input-addons__item.no-pad
-              //-         button.btn
-              //-           +icon('plus').icon--medium.icon--left
-              //-           | Pridať
+                    .form-control.form-control--input.mb-none
+                      .form-label
+                        label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
+                      #kniha-autocomplete-container
 
             .row.align-items-bottom
               each item, index in [...books, ...books, ...books, ...books]
@@ -395,3 +371,54 @@ block append modals
                 button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
                   +icon('trash', 'icon--medium')
             .border-bottom-grey.mb-small
+
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.addEventListener('DOMContentLoaded', () => {
+      const allResults = {
+        book: [
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 2 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 2',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 3 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 3',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+        ],
+      };
+
+      const filter = type => (query, populateResults) => {
+        const results = allResults[type];
+        const filteredResults = results.filter(result =>
+            result.raw.match(new RegExp(query, 'gi')),
+          );
+        populateResults(filteredResults);
+      };
+
+      window.myApp.autocompleteKniha = new window.myApp.Autocomplete(
+        document.getElementById('kniha-autocomplete-container'),
+        {
+          autocompleteOptions: {
+            id: 'kniha-autocomplete',
+            source: filter('book'),
+            onConfirm: (value) => {
+              console.log(value);
+            }
+          },
+          templateType: 'book',
+        },
+      );
+    });
