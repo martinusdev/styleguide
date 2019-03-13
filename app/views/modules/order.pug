@@ -156,6 +156,11 @@ include ./../mixins/icon
               h2.h5
                 | Elektronický obsah
 
+          .form-control.form-control--input.mb-medium
+            .form-label
+              label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
+            #kniha-autocomplete-container
+
           .package__item.mb-small.border-bottom-grey
             .bar.align-items-middle.mb-small
               .bar__item.no-pad-right
@@ -350,3 +355,54 @@ include ./../mixins/icon
               .bar__item.bar__item--shrinkable.text-right
                 button.btn.btn--clean.no-mrg(type="button")
                   +icon('trash', 'icon--medium')
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.addEventListener('DOMContentLoaded', () => {
+      const allResults = {
+        book: [
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 2 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 2',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 3 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 3',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+        ],
+      };
+
+      const filter = type => (query, populateResults) => {
+        const results = allResults[type];
+        const filteredResults = results.filter(result =>
+            result.raw.match(new RegExp(query, 'gi')),
+          );
+        populateResults(filteredResults);
+      };
+
+      window.myApp.autocompleteKniha = new window.myApp.Autocomplete(
+      document.getElementById('kniha-autocomplete-container'),
+        {
+          autocompleteOptions: {
+            id: 'kniha-autocomplete',
+            source: filter('book'),
+            onConfirm: (value) => {
+              console.log(value);
+            },
+            placeholder: 'Pridať knihu do objednávky? Začnite písať...'
+          },
+        templateType: 'book',
+        },
+      );
+    });
