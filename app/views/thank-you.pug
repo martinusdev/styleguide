@@ -60,7 +60,7 @@ block content
                             .order-progress__blank-circle
                         .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
 
-              .row.align-items-middle
+              .row.align-items-middle.mb-large
                 .col--m-shrink
                   .bar.align-items-middle.mb-small
                     .bar__item
@@ -74,13 +74,24 @@ block content
                       p.text-medium Milý Peter,
                         br
                         | ďakujeme za Váš nákup! Hneď ako vašu objednávku pripravím a odošlem, budeme vás o tom informovať e-mailom. V prípade akýchkoľvek otázok mi neváhajte napísať!
-                      button.btn.btn--ghost.no-mrg-bottom Skontrolovať objednávku
+                      button.btn.btn--ghost.mb-small.mb-none-m Skontrolovať objednávku
                       button.btn.btn--ghost.no-mrg-bottom Poslať správu
+
+              .alert.alert--light
+                | Tituly, ktoré ste mali vo wishliste, sme presunuli do zoznamu nákupov vo vašej knižnici. Môžete si ich skontrolovať nižšie a odškrtnúť, ktoré v knižnici nechcete mať. Napríklad, ak ste titul kúpili ako darček.
 
     section.section.section--secondary.section--overflow
       .wrapper-main
         .mb-large
-          +sectionHeader({ header: 'Zakúpené tituly sme pridali do Vašej knižnice', more: 'Prezrieť kinžnicu' })
+          .bar.mb-medium
+            .bar__item.bar__item--fill
+              h2
+                | Zakúpené tituly sme pridali do Vašej knižnice
+                +icon('info').icon--medium(data-tooltip, title="Lorem ipsum dolor sit amtet")
+            .bar__break.hide-m
+            .bar__item
+              a.link(href="#").text-medium Prejsť do mojej knižnice
+              +icon('arrow-right')
         .mb-large
           +libraryCarousel()
         .text-center.mb-large
