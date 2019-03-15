@@ -1,0 +1,57 @@
+//- -----------------------------------------------
+//- VARIABLES AND DATA
+
+- const assetsPrefix = '';
+- const htmlPostfix = '.html';
+
+//- -----------------------------------------------
+//- HTML
+
+doctype html
+html.no-js
+
+  //- -----------------------------------------------
+  //- HEAD
+
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=yes")
+
+    title= pageTitle
+
+    meta(name="description", content="")
+    meta(name='keywords', content='')
+    link(rel="shortcut icon", href=`${assetsPrefix}favicon.ico`)
+
+    link(rel="stylesheet", href=`${assetsPrefix}fonts/Tabac-Sans/style.css`)
+    link(rel="stylesheet", href=`${assetsPrefix}styles/dobrevety.css`)
+    link(rel="stylesheet", href=`https://fonts.googleapis.com/css?family=Spectral:400,600&amp;subset=latin-ext`)
+
+    script(src=`${assetsPrefix}scripts/plugins/modernizr.js`)
+
+    block head
+
+  //- -----------------------------------------------
+  //- BODY
+
+  body
+
+    .dobraveta
+      .dobraveta__bg(style=`background-image: url("https://mrtns.eu/tovar/_l/266/l266320.jpg?v=1497529360");`)
+      .dobraveta__content
+        .bar.bar--vertical
+          .bar__item.bar__item--fill
+            .dobraveta__quote „Vernosť je iba istý druh telesnej alebo myšlienkovej lenivosti“ povedala krutá vojvodkyňa a stiahla si zips na sukni. „A hoci ja mám veľa nerestí, z lenivosti ma nikto obviniť nemôže.“
+          .bar__item.bar__item--shrinkable
+            .dobraveta__info
+              .dobraveta__title
+                h1.mb-small(style="color: #3b8a68;") Krásna strojvodkyňa, krutá vojvodkyňa
+              .dobraveta__author.mb-large
+                h2.text-color-grey Pavel Vilikovský
+              .text-color-grey.text-size-regular @dobrevety
+        .dobraveta__cover
+          .thumbnail.thumbnail--book
+            .thumbnail__img-wrap
+              img.img(src="https://mrtns.eu/tovar/_l/266/l266320.jpg?v=1497529360")
+
