@@ -77,9 +77,6 @@ block content
                       button.btn.btn--ghost.mb-small.mb-none-m Skontrolovať objednávku
                       button.btn.btn--ghost.no-mrg-bottom Poslať správu
 
-              .alert.alert--light
-                | Tituly, ktoré ste mali vo wishliste, sme presunuli do zoznamu nákupov vo vašej knižnici. Môžete si ich skontrolovať nižšie a odškrtnúť, ktoré v knižnici nechcete mať. Napríklad, ak ste titul kúpili ako darček.
-
     section.section.section--secondary.section--overflow
       .wrapper-main
         .mb-large
@@ -92,8 +89,54 @@ block content
             .bar__item
               a.link(href="#").text-medium Prejsť do mojej knižnice
               +icon('arrow-right')
-        .mb-large
-          +libraryCarousel()
+        .row.mb-large
+          //+libraryCarousel()
+          each item, id in books
+            .col--m-3
+              .card
+                .card__content.card__content--condensed
+                  .bar
+                    .bar__item
+                      a(href="detail-knihy.html").thumbnail.thumbnail--medium
+                        .thumbnail__img-wrap
+                          img(src=`${item.cover}`, alt="Kniha", width="74")
+                    .bar__item.bar__item--fill
+                      .line-small.text-medium.mb-tiny
+                        a.text-semibold.link.link--product.text-ellipsis.block(href="detail-knihy.html")=item.title
+                      .text-size-small.text-color-grey.text-ellipsis.mb-small=item.author
+                      .btn-layout.btn-layout--horizontal
+                        button.btn.btn--ghost.btn--small(
+                        data-toggle='self, next',
+                        data-toggle-expand,
+                        aria-haspopup="true"
+                        )
+                          | Presunúť
+                          +icon('chevron-down').icon--small.icon--right
+                        .dropdown.dropdown--nowrap(data-dropdown, data-dropdown-interactive, data-toggle-expand, style="width: 200px")
+                          .dropdown__wrap
+                            div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
+                              each item, i in ['Wishlist', 'Vianoce', 'Slovenská klasika']
+                                .dropdown__item
+                                  .checkbox
+                                    input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
+                                    label(for=`list-check${i}`).radiocheck__control
+                                    label(for=`list-check${i}`).radiocheck__label=item
+                              a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Všetky zoznamy
+                            .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
+                              .bar.no-mrg-bottom
+                                .bar__item.bar__item--fill
+                                  h5.dropdown__group Presunúť do:
+                                .bar__item
+                                  button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
+                                    +icon('close', 'icon--small', 'Naspäť')
+                              each item, i in ['Wishlist', 'Vianoce', 'Slovenská klasika']
+                                .dropdown__item
+                                  .checkbox
+                                    input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
+                                    label(for=`list-check${i}`).radiocheck__control
+                                    label(for=`list-check${i}`).radiocheck__label=item
+                        button.btn.btn--clean.btn--small.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                          +icon('trash', 'icon--medium')
         .text-center.mb-large
           a.btn(href="/")
             +icon('arrow-left').icon--medium
