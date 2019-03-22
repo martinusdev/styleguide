@@ -147,6 +147,11 @@ include ./../mixins/icon
     .col--l-6
       .order-packages
 
+        .form-control.form-control--input.mb-large
+          .form-label
+            label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
+          #kniha-autocomplete-container
+
         // digital
         .package.mb-large
           .bar.align-items-middle.mb-medium
@@ -155,11 +160,6 @@ include ./../mixins/icon
             .bar__item
               h2.h5
                 | Elektronický obsah
-
-          .form-control.form-control--input.mb-medium
-            .form-label
-              label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
-            #kniha-autocomplete-container
 
           .package__item.mb-small.border-bottom-grey
             .bar.align-items-middle.mb-small
@@ -361,24 +361,27 @@ block scripts
     window.myApp = window.myApp = {};
     window.addEventListener('DOMContentLoaded', () => {
       const allResults = {
-        book: [
+        item: [
           {
             raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
             image: 'images/content/books/sample-15.jpg',
             name: 'Základy rybolovu pro kluky a holky',
-            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            description: 'J.K. Rowling, <span class="text-color-success">Na sklade</span>',
+            price: '8,99€'
           },
           {
             raw: 'Základy rybolovu pro kluky a holky 2 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
             image: 'images/content/books/sample-15.jpg',
             name: 'Základy rybolovu pro kluky a holky 2',
-            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            description: 'Dan Brown, <span class="text-color-success">Do troch dní</span>',
+            price: ''
           },
           {
             raw: 'Základy rybolovu pro kluky a holky 3 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
             image: 'images/content/books/sample-15.jpg',
             name: 'Základy rybolovu pro kluky a holky 3',
-            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            description: 'Dominik Dan, <span class="text-color-grey">Do troch týždňov</span>',
+            price: '8,99€'
           },
         ],
       };
@@ -396,13 +399,13 @@ block scripts
         {
           autocompleteOptions: {
             id: 'kniha-autocomplete',
-            source: filter('book'),
+            source: filter('item'),
             onConfirm: (value) => {
               console.log(value);
             },
             placeholder: 'Pridať knihu do objednávky? Začnite písať...'
           },
-        templateType: 'book',
+        templateType: 'item',
         },
       );
     });

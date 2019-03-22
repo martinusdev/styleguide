@@ -1,0 +1,26 @@
+extends layouts/_default
+
+include mixins/libraryCarousel
+include mixins/sectionHeader
+include mixins/icon
+
+block opts
+    - var pageTitle = 'Ďakujeme'
+    - var orderHeader = true;
+    - const pageClass = 'bg-secondary';
+
+block content
+  main
+    section.section.section--secondary.section--m-full
+      .wrapper-main
+        .row
+          article.card.col--l-8.ofst--center
+            section.card__content
+              .mb-large
+              .text-center
+                +icon('order-progress-4', 'icon--xxlarge')
+              .mb-large
+                h1.h2.mb-small.text-center Vaša objednávka č. 8512435 bola úspešne odovzdaná dopravcovi!
+                p.text-medium.text-center.no-mrg-bottom Stav zásielky si viete skontrolovať na stránke dopravcu
+              .mb-large.text-center
+                button.btn.btn--primary Zobraziť stav zásielky
