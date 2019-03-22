@@ -67,6 +67,27 @@ const defaultTemplates = {
       </div>
     `,
   },
+  item: {
+    inputValue: () => '', // set value of input onConfirm
+    suggestion: value => `
+      <div class="bar mb-none">
+        <div class="bar__item bar__item--shrinkable align-self-middle">
+          <div class="thumbnail thumbnail--book thumbnail--medium">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="${value.image}" alt="${value.name}">
+            </div>
+          </div>
+        </div>
+        <div class="bar__item bar__item--fill align-self-middle">
+          <div class="text-size-regular text-semibold">${value.name}</div>
+          <p class="mb-none text-color-grey">${value.description}</p>
+        </div>
+        <div class="bar__item bar__item--shrinkable align-self-middle">
+          <div class="text-bold">${value.price}</div>
+        </div>
+      </div>
+    `,
+  },
   book: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `

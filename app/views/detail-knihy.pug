@@ -833,7 +833,33 @@ block content
             +icon('cart').icon--left.icon--medium
             | Vložiť do košíka
 
-  .modal-overlay.active#add-review-modal(data-modal)
+  .modal-overlay.active#after-review-modal(data-modal)
+    .modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h2 Poznáte nový čitateľský profil?
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#after-review-modal")
+              +icon('close').icon--medium
+
+        img.img(src="https://mrtns.eu/img/custom/62683_header_profil.jpg")
+
+        .modal__content
+
+          .alert.alert--success-light
+            .bar.mb-none
+              .bar__item.bar__item--shrinkable
+                +icon('check-circle').icon--large
+              .bar__item.bar__item--fill
+                | Ďakujeme za recenziu. Lorem ipsum dolor sit amet
+
+          .text-center.mb-medium
+            p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin id posuere nisl, pulvinar facilisis ligula. Aenean rutrum velit eget elementum vehicula. Nullam sollicitudin arcu eleifend nibh ornare, volutpat commodo sem pulvinar.
+
+            a(href="#").btn.btn--primary Aktivovať čitateľský profil
+
+  .modal-overlay#add-review-modal(data-modal)
     .modal.modal--medium
       .modal__wrap
         .modal__header.mb-none
