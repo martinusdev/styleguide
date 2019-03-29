@@ -15,10 +15,16 @@ mixin heading()
 
 mixin button(props = {})
   -
+    if (props.type == 'secondary') {
+      props.color = '625d58';
+      props.shadowColor = '625d58';
+    }
+
     const {
       text = 'Button',
       color = sColorPrimary,
       shadowColor = sColorPrimaryDark,
+      type = 'primary'
     } = props;
 
   a.font-medium(href="#", style=`text-align: center; text-transform: uppercase; letter-spacing: 2px; border-radius: 5px; border-bottom: 4px solid #${shadowColor}; background-color: #${color}; color: #ffffff; display: block; font-size: ${sFontMedium}; text-decoration: none; padding: 10px 10px 6px 10px; font-weight: bold;`)
