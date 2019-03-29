@@ -36,6 +36,19 @@ mixin col(props = {})
   td&attributes(attributes)
     block
 
+mixin center(props = {})
+  -
+    const {
+      width = "50%"
+    } = props;
+
+  +table(cellpadding="0", cellspacing="0", width="100%")
+    +row
+      +col
+      +col(width=`${width}`)
+        block
+      +col
+
 mixin header(props = {})
   -
     const {

@@ -42,6 +42,11 @@ block content
         +margin({size: 'medium'})
         +row
           +col
+            +center
+              +button({text: "Velky call to action button"})
+        +margin({size: 'medium'})
+        +row
+          +col
             +card()
               +table(cellpadding="0", cellspacing="0", width="100%")
                 +row
@@ -67,6 +72,31 @@ block content
                 +card({secondary: i % 2 == 1})
                   +product({data: item})
         +margin({size: 'medium'})
+
+        +row
+          +col
+            +card({secondary: true})
+              h2(style=`font-size: ${sFontH1}; ${sFontFamily}`).font-h1 Staňte sa partnerom Martinusu a získajte odmenu za každý nákup
+              p Martinus odmeňuje tých, ktorí sa stanú jeho partnermi a zo svojich stránok odkazujú na jeho web. Partnerský systém ponúka možnosť zaregistrovať sa blogerom, knižným portálom, autorom či komukoľvek, kto sa zaoberá knihami. Z každého takto sprostredkovaného nákupu môžete dostať buď finančnú odmenu alebo obľúbené darčekové poukážky.
+              +center
+                +button({text: "Prečítať článok", type: "secondary"})
+
+        +margin({size: 'medium'})
+
+        +row
+          +col
+            +card({secondary: true})
+              +table(cellpadding="10", cellspacing="0", width="100%")
+                +row
+                  +col
+                    h2(style=`font-size: ${sFontH1}; ${sFontFamily}`).font-h1 Neil Gaiman: Nikdekoľvek
+                    p Richard Mayhew žil ako celkom obyčajný človek, až kým nezachránil dievča, čo sa pred ním zrazu objavilo zranené na ulici. Ani sa nenazdal a ocitol sa vo svete, o akom sa mu nesnívalo v najhorších – a ani najlepších – snoch.
+                  +col(width="35%")
+                    div(style="transform: rotate(-10deg);")
+                      +thumb({cover: 'https://mrtns.eu/tovar/_l/462/l462313.jpg?v=1553524331'}) 
+
+
+
         +heading() Knižné novinky pre vás
         +row
           +col
