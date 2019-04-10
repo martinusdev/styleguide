@@ -4,55 +4,75 @@ include ./../mixins/pagination
 include ./../mixins/icon
 include ./../mixins/xmas
 
-mixin itemGroup
+mixin itemGroup(id)
   div&attributes(attributes)
-    each format, f in ['kniha', 'e-kniha', 'audiokniha mp3', 'audiokniha na mp3']
-      .bar.align-items-middle.mb-small(class=(f!==3) ? 'border-bottom-grey' : '')
-        .bar__item.bar__item--fill.mb-small-m
-          .bar.bar--vertical.bar--vertical-small.mb-none
-            .bar__item.no-mrg
-              h5.text-semibold.inline-block.link.link--grey=format
-              //a.link.link--product Základy rybolovu pro kluky a holky
-            .bar__item
-              .badges.mb-none
-                if f == 0
-                  a.badge.mb-small.mb-none-m
-                    +icon('star', 'icon--medium').text-color-yellow
-                    span.text-normal.text-space-left 3.5
-                    span.link.text-space-left(href="#recenzie", data-scroll) 234x
-                  .badge.badge--green.mb-small.mb-none-m Na sklade
-                  .badge.badge--blue.mb-small.mb-none-m Novinka
-                else if f == 1
-                  .badge.badge--green.mb-small.mb-none-m PDF
-                  .badge.badge--green.mb-small.mb-none-m EPUB
-                  .badge.badge--green.mb-small.mb-none-m MOBI
-                else if f == 2
-                  .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
-                else if f == 3
-                  .badge.badge--green.mb-small.mb-none-m MP3 na CD
-                  .badge.badge--green.mb-small.mb-none-m Na sklade
-        .bar__break.hide-m
-        .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-none-m
-          .bar.bar--small.no-mrg.bar--no-wrap
-            .bar__item.no-mrg
-              .badge.badge--primary -20%
-            .bar__item.no-mrg
-              .text-bold.text-space-left 8,99
-        .bar__item.bar__item--fill.hide-m
-        .bar__item.bar__item--shrinkable.no-mrg-top
-          .bar.bar--vertical.bar--vertical-small.mb-none
-            .bar__item.no-mrg.show-m
-              p.mb-none.text-color-grey-dark.text-medium.text-center Posielame#{' '}
-                em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-                | .
-            .bar__item.no-mrg
-              button.btn.btn--clean.no-mrg.hide-m
-                +icon('cart').icon--medium.text-color-theme
-              button.btn.btn--primary.btn--small.mb-none(data-toggle='#checkout-notice').show-m
-                +icon('cart').icon--left.icon--small
-                span.text-semibold Vložiť do košíka
+    +groupItem('kniha', 0)
+    +groupItem('e-kniha', 1)
+    .hide(data-toggle-class="hide", id=`item-group-more${id}`)
+      +groupItem('audiokniha mp3', 2)
+      +groupItem('audiokniha cd', 3)
+    .mb-medium
+      a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
+        +icon('plus')
+        | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac formátov</span>
+      span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
-              +addTo({text: ''})
+mixin groupItem(name, id)
+  .bar.align-items-middle.mb-small(class=(id !== 3) ? 'border-bottom-grey' : '')
+    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
+      .bar.bar--vertical.bar--vertical-small.mb-none
+        .bar__item.no-mrg
+          h5.text-semibold.inline-block.link.link--grey=name
+          //a.link.link--product Základy rybolovu pro kluky a holky
+          .inline-block.hide-m.text-size-small
+            if id == 0
+              span.text-color-success.text-space-right-tiny Na sklade
+              span.text-color-blue Novinka
+            else if id == 1
+              span.text-color-success.text-space-right-tiny PDF
+              span.text-color-success.text-space-right-tiny EPUB
+              span.text-color-success MOBI
+            else if id == 3
+              span.text-color-success Na sklade
+        .bar__item.show-m
+          .badges.mb-none
+            if id == 0
+              a.badge.mb-small.mb-none-m
+                +icon('star', 'icon--medium').text-color-yellow
+                span.text-normal.text-space-left 3.5
+                span.link.text-space-left(href="#recenzie", data-scroll) 234x
+              .badge.badge--green.mb-small.mb-none-m Na sklade
+              .badge.badge--blue.mb-small.mb-none-m Novinka
+            else if id == 1
+              .badge.badge--green.mb-small.mb-none-m PDF
+              .badge.badge--green.mb-small.mb-none-m EPUB
+              .badge.badge--green.mb-small.mb-none-m MOBI
+            else if id == 2
+              .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
+            else if id == 3
+              .badge.badge--green.mb-small.mb-none-m MP3 na CD
+              .badge.badge--green.mb-small.mb-none-m Na sklade
+    .bar__item.bar__item--shrinkable.no-mrg-top.mb-none.no-mrg-horizontal--m-down
+      .bar.bar--small.no-mrg.bar--no-wrap
+        .bar__item.no-mrg
+          .badge.badge--primary -20%
+        .bar__item.no-mrg
+          .text-bold.text-space-left 8,99
+    .bar__item.bar__item--shrinkable.no-mrg-top
+      .bar.bar--vertical.bar--vertical-small.mb-none
+        .bar__item.no-mrg.show-m
+          p.mb-none.text-color-grey-dark.text-medium.text-center Posielame#{' '}
+            em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+            | .
+        .bar__item.no-mrg
+          button.btn.btn--clean.no-mrg.hide-m
+            +icon('cart').icon--medium.text-color-theme
+          button.btn.btn--primary.btn--small.mb-none(data-toggle='#checkout-notice').show-m
+            +icon('cart').icon--left.icon--small
+            span.text-semibold Vložiť do košíka
+
+          +addTo({text: ''})
+
 
 
 
@@ -255,9 +275,9 @@ section.section
                           .text-center.show-m
                             h2.text-bold.mb-small od #{item.price}
 
-                      +itemGroup.show-m
+                      +itemGroup(1).show-m
 
-              +itemGroup.hide-m
+              +itemGroup(2).hide-m
 
           else
             .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
