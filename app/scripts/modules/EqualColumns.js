@@ -24,7 +24,7 @@ export default class EqualColumns {
 
   _init() {
     const rows = document.querySelectorAll(this.config.selector);
-    if (rows) {
+    if (rows && rows.length > 0) {
       rows.forEach(row => {
         const columns = row.querySelectorAll(this.config.childSelector);
         let maxHeight = 0;
