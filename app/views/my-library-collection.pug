@@ -41,23 +41,25 @@ block content
             .thumbnail__img-wrap
               img(src="images/content/books/sample-" + i + ".jpg")
       .wrapper-main
-        .bar
-          .bar__item(style="position: relative;")
-            .portrait.portrait--large.show-m(style="background-image: url('images/content/avatars/f.jpg');")
-            .portrait.portrait--medium.hide-m(style="background-image: url('images/content/avatars/f.jpg');")
-            .badge.badge--blue(style="position: absolute; top: 0;")
-              .h2.mb-none 13
-          .bar__item
-            .bar.mb-none
+        .row
+          .col--m-7
+            .bar
+              .bar__item(style="position: relative;")
+                .portrait.portrait--large.show-m(style="background-image: url('images/content/avatars/f.jpg');")
+                .portrait.portrait--medium.hide-m(style="background-image: url('images/content/avatars/f.jpg');")
+                .badge.badge--blue(style="position: absolute; top: 0;")
+                  .h2.mb-none 13
               .bar__item.bar__item--fill
-                h2.no-mrg-bottom Nataša Martinus
-                h1 Kultové sci-fi
-              .bar__item.bar__item--shrinkable
-                a.btn.btn--small.btn--equal
-                  +icon('fb').icon--small
-                | #{' '}
-                a.btn.btn--small.btn--equal
-                  +icon('link').icon--small
+                .bar.mb-none
+                  .bar__item.bar__item--fill
+                    h2.no-mrg-bottom Nataša Martinus
+                    h1 Dlhý názov kolekcie, ktorý bude treba zalomiť
+                  .bar__item.bar__item--shrinkable
+                    a.btn.btn--small.btn--equal
+                      +icon('fb').icon--small
+                    | #{' '}
+                    a.btn.btn--small.btn--equal
+                      +icon('link').icon--small
 
 
     section.section.no-pad-top
