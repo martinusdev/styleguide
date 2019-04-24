@@ -201,6 +201,61 @@ block content
                 | <span data-toggle-text-target>Zobraziť viac</span>
                 +icon('arrow-down').icon--left
 
+            h2 Moje čitateľské kolekcie
+
+            -
+              var swiperConfig = {
+                slidesPerView: 'auto',
+                slidesPerGroup: 7,
+                nextButton: '.carousel__btn--next',
+                prevButton: '.carousel__btn--prev',
+                breakpoints: {
+                  1024: {
+                    slidesPerGroup: 5,
+                  },
+                  768: {
+                    spaceBetween: 20,
+                    slidesPerGroup: 3,
+                  },
+                  640: {
+                    spaceBetween: 20,
+                    slidesPerGroup: 2,
+                  },
+                  480: {
+                    spaceBetween: 20,
+                    slidesPerGroup: 1,
+                  }
+                },
+              };
+              swiperConfig = JSON.stringify(swiperConfig);
+            .carousel&attributes(attributes)
+              .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
+                .swiper-wrapper
+                  each item,i in books
+                    if i < 2
+                      a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).swiper-slide.carousel__product-detail
+                        +product().mb-small.text-left
+                          +productCover({cover: item.cover, collection: true})
+                          +productTitle({
+                            collection: true, title: 'Kolekcia', author: false
+                          })
+                  a(href=`${assetsPrefix}my-library${htmlPostfix}#add-list`).swiper-slide.carousel__product-detail(style="position: relative;")
+                    +product().mb-small.text-left
+                      .product__cover.collection
+                        .thumbnail.thumbnail--book.thumbnail--large
+                          each i, index in Array(3)
+                            .thumbnail__img-wrap
+                              img(src=`${assetsPrefix}images/content/book-empty.svg`).img
+                      +productTitle({
+                        collection: true, title: 'Pridať kolekciu', author: false
+                      })
+                    +icon('plus').icon--xxlarge.text-color-grey(style="position: absolute; left: 25%; transform: translateX(-25%); top: 15%; z-index: 4;")
+
+              button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+                +icon('arrow-left').icon--medium
+              button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+                +icon('arrow-right').icon--medium
+
             h2 Moje aktivity
 
             .row.mb-large
