@@ -193,6 +193,12 @@ $typography-settings: (
 // but you can override ANYTHING here
 $typography-overrides: (
   null: (
+    '.h0' : (
+      font-size: _get-rem(40px),
+      line-height: 49/42,
+      margin-bottom: _get-space('v', 'large'),
+      font-weight: $font-weight-bold,
+    ),
     'h1, .h1' : (
       font-size: _get-rem(22px),
       line-height: 49/42,
@@ -227,6 +233,9 @@ $typography-overrides: (
     ),
   ),
   m: (
+    '.h0' : (
+      font-size: _get-rem(60px),
+    ),
     'h1, .h1' : (
       font-size: _get-rem(42px),
     ),

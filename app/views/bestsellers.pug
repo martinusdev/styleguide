@@ -1,0 +1,168 @@
+extends layouts/_default
+
+include ./mixins/addTo
+include ./mixins/breadcrumbs
+include ./mixins/icon
+include ./mixins/product
+include ./mixins/xmas
+
+block opts
+    - var pageTitle = 'Bestsellery'
+
+block content
+  -
+    var swiperConfig = {
+      slidesPerView: 1,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+    };
+
+  main.collection
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy', 'Bestsellery'] })
+
+    section.section
+      .wrapper-main
+        .row.align-items-middle
+          .col--12.col--m-3
+            h1.mb-medium TOP100
+          .col--12.col--m-6.mb-medium.mb-none-m
+            .bar.mb-none.align-items-center.show-m
+              each item, i in ['Knihy', 'E-knihy', 'Filmy', 'Hry']
+                .bar__item.text-center
+                  a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
+                    .card__content
+                      +icon('footer-reading').icon--xlarge.text-color-grey
+                      .h3.mb-none= item
+            .bar.mb-none.align-items-center.hide-m
+              each item, i in ['Knihy', 'E-knihy', 'Filmy', 'Hry']
+                .bar__item.text-center
+                  a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
+                    .card__content.card__content--condensed
+                      +icon('footer-reading').icon--medium.text-color-grey
+                      .h3.mb-none= item
+          .col--12.col--m-2.ofst--m-1.mb-medium.mb-none-m
+            select.js-select.select--ghost
+              option Rok
+              option 2018
+              option 2017
+              option 2016
+              option 2015
+              option 2014
+              option 2013
+              option 2012
+
+        //nav
+          ul.list-inline
+            each item, i in ['Knihy', 'Filmy', 'Hry']
+              li
+                a.link.link--black(href="#", class= i == 0 ? 'text-bold' : '')
+                  +icon('footer-reading').icon--medium.text-space-right.text-color-grey
+                  = item
+
+    section.section.section--secondary
+      .wrapper-main
+        .row.mb-large
+          each item, i in Array(3)
+            .col--m-4
+              .card.card--material
+                img.img(src="images/content/top100/10dni.png", style="position: absolute; z-index: 10; width: 60px; right: 10px; top: 0px;")
+                .card__content
+                  .h0.text-color-grey-dark(style="position:absolute;")= i+1
+                  .bar.align-items-center
+                    .bar__item
+                      +product().no-mrg-bottom
+                        +productCover({
+                          cover: 'images/content/books/sample-3.jpg',
+                          rating: 3.5,
+                          size: 'xlarge'
+                        }).mb-medium
+
+                  .text-center
+                    ul.list-inline.list-inline--delimited.mb-none
+                      li
+                        a.link(href="#") Walter Isaacson
+                    h2.mb-small
+                      a(href="#").link.link--product.text-bold Steve Jobs
+
+                  hr.mb-medium
+
+                  .bar.align-items-middle.bar--vertical
+                    .bar__item.no-mrg-bottom
+                      .bar.bar--small.bar--no-wrap.mb-small
+                        .bar__item.no-mrg
+                          .badge.badge--primary -20%
+                        .bar__item.no-mrg
+                          .h2.text-bold.text-space-left 8,99€
+                    .bar__item
+                      button.btn.btn--primary.mb-none(data-toggle='#checkout-notice')
+                        +icon('cart').icon--left.icon--small
+                        span.text-semibold Vložiť do košíka
+                      +addTo({text: ''}).mb-none
+
+    section.section.no-pad-top
+      - for (var i = 0; i<8; i++)
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+          .wrapper-main
+            .row
+              .col--1
+                .h0.text-color-grey-dark= i+4
+              .col--4.col--s-shrink.text-left
+                +product().no-mrg-bottom
+                  +productCover({
+                    cover: 'images/content/books/sample-3.jpg',
+                    rating: 3.5,
+                    size: 'xlarge'
+                  }).mb-medium
+                    img.img(src="images/content/top100/10dni.png", style="position: absolute; z-index: 10; width: 40px; right: 10px; top: -5px;")
+              .col--7.hide-s
+                ul.list-inline.list-inline--delimited.mb-small
+                  li
+                    a.link(href="#") Frank Weissert
+
+                h2.h3.mb-small
+                  a(href="#").link.link--product.text-bold Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
+                h3.h4.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+              .col--s-fill
+                .show-s
+                  ul.list-inline.list-inline--delimited.mb-small
+                    li
+                      a.link(href="#") Frank Weissert
+
+                  h2.mb-small
+                    a(href="#").link.link--product.text-bold Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
+                  h3.h4.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+
+                p Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
+
+              .col--m-3.mb-large.mb-none-m
+                .product-item__price-box.text-center
+                    .mb-small.show-m
+                      .h2.text-bold 12,99 €
+                    .mb-small
+                      +xmas()
+                    .mb-small
+                      .btn-layout.btn-layout--vertical
+                        button.btn.btn--primary
+                          +icon('cart').icon--left.icon--medium
+                          span.show-m Vložiť do košíka
+                          span.hide-m Kúpiť za 12,99 €
+                    .mb-small
+                      +addTo()
+
+    section.section.section--secondary
+      .wrapper-main
+        .row
+          .col--m-4.ofst--m-center
+            .btn-layout--vertical.mb-large-m.mb-medium-s
+              button.btn.btn--ghost Načítať ďalšie knihy (+5)
+
+  include ./modules/seen-items
+  include ./modules/seen-items-delete
+
+
+block append modals
+  include ./modules/product-preview
