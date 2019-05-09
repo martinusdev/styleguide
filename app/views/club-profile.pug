@@ -59,9 +59,13 @@ block content
                     //a.btn.btn--small.btn--clean
                       +icon('edit').icon--small
                       | #{' '}Upraviť
-                    a.btn.btn--small
-                      +icon('eye').icon--medium.icon--left
-                      | #{' '}Sledovať
+                    form
+                      button.btn.btn--small.mb-none
+                        +icon('eye').icon--medium.icon--left
+                        | #{' '}Sledovať
+                      button.btn.btn--small.mb-none.btn--clean
+                        +icon('check-circle').icon--small.icon--left
+                        | #{' '}Sledované
                   .bar__item.bar__item--shrinkable
                     a.btn.btn--small.btn--equal
                       +icon('fb').icon--small
