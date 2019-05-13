@@ -1,0 +1,110 @@
+// VENDORS
+@import './../../node_modules/normalize.css/normalize';
+
+// UTILS
+@import 'utils/_mixins_functions';
+@import 'utils/_variables';
+@import 'utils/_config';
+@import 'utils/_media';
+
+// BASE
+@import 'base/_globals';
+@import 'base/_typography';
+
+// LAYOUT
+@import 'layout/_grid';
+
+// MODULES
+@import 'modules/_bar';
+@import 'modules/_lists';
+@import 'modules/_icons_images';
+
+// TOOLS
+@import 'tools/_utilities';
+
+// SHAME
+@import 'shame/_shame';
+
+$blur-size: 50px;
+
+@each $variant, $color in $color-presets {
+  .bg-#{$variant} {
+    background-color: $color;
+  }
+}
+
+@each $variant, $color in $color-presets {
+  .bg-light-#{$variant} {
+    background-color: _color-shade($color, 400);
+  }
+}
+
+@each $variant, $color in $color-presets {
+  .color-#{$variant} {
+    color: $color;
+  }
+}
+
+.review-card {
+  display: block;
+  width: 827px;
+  height: 583px;
+  position: relative;
+  overflow: hidden;
+  //border: 1px solid #ccc;
+  transform: translate3d(25%, 25%, 0) scale(1.5, 1.5);
+  padding: 40px;
+}
+
+.review-rating {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+}
+
+.review-heading {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
+
+  &__item {
+    max-width: 400px;
+  }
+
+  &__item:first-child,
+  &__item:nth-child(3) {
+    background: #fff;
+    padding: 12px 24px 12px 18px;
+    font-weight: $font-weight-semibold;
+    font-size: 18px;
+    line-height: 22px;
+    border: 2px solid $color-black;
+
+    img {
+      max-width: none;
+    }
+  }
+
+  &__item--static:first-child,
+  &__item--static:nth-child(3) {
+    height: 44px;
+    line-height: 39px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &__item:nth-child(2) {
+    background: $color-black;
+    padding: 14px 28px 14px 21px;
+    font-size: 36px;
+    line-height: 40px;
+    font-weight: $font-weight-bold;
+    color: $color-white;
+    margin-left: 28px;
+    margin-top: -2px;
+  }
+
+  &__item:nth-child(3) {
+    margin-top: -2px;
+  }
+}

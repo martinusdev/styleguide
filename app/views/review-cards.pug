@@ -1,0 +1,70 @@
+include ./mixins/icon
+
+//- -----------------------------------------------
+//- VARIABLES AND DATA
+
+- const assetsPrefix = '';
+- const htmlPostfix = '.html';
+
+//- -----------------------------------------------
+//- HTML
+
+doctype html
+html.no-js
+
+  //- -----------------------------------------------
+  //- HEAD
+
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=yes")
+
+    title= pageTitle
+
+    meta(name="description", content="")
+    meta(name='keywords', content='')
+    link(rel="shortcut icon", href=`${assetsPrefix}favicon.ico`)
+
+    link(rel="stylesheet", href=`${assetsPrefix}fonts/Tabac-Sans/style.css`)
+    link(rel="stylesheet", href=`${assetsPrefix}styles/review-cards.css`)
+    link(rel="stylesheet", href=`https://fonts.googleapis.com/css?family=Spectral:400,600&amp;subset=latin-ext`)
+
+    script(src=`${assetsPrefix}scripts/plugins/modernizr.js`)
+
+    block head
+
+    style
+      .
+        body {
+          -webkit-print-color-adjust: exact !important;
+        }
+
+  //- -----------------------------------------------
+  //- BODY
+
+  body
+
+    .review-card
+      .review-card__content
+        .review-heading
+          .review-heading__item.review-heading__item--static
+            img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus", style="height: 28px;").text-space-right-tiny
+            | náš názor na knihu
+          .review-heading__item#review-h1
+            | Klub nerozbitných detí
+          .review-heading__item
+            | Slávka Kubíková
+
+        .mb-large
+        p.text-italic Podľa mňa by si túto knihu mal prečítať každý rodič, hlavne starý rodič (aby pochopil príčiny pravidiel a zákazov rodičov a nerobil presný opak a podkopával tak rodičovskú autoritu), či učiteľ a pod. Človek sa častokrát zamyslí nad svojím prístupom a vzťahom k deťom a ich výchove, hlavne v tomto uponáhľanom svete. Rozhovory v knihe ponúkajú "priklady" ako sa to dá robiť aj inak.
+
+        .review-rating
+          .bar.mb-none
+            .bar__item
+              each item, i in Array(5)
+                +icon('star').icon--xlarge
+            .bar__item
+              .text-bold(style="font-size: 42px;") 4,5
+          p.text-medium.text-center priemerné hodnotenie našich čitateľov
+
