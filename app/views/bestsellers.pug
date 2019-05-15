@@ -80,6 +80,17 @@ block content
                           rating: 3.5,
                           size: 'xlarge'
                         }).mb-medium
+                        p.text-size-small.mb-none
+                          if (i % 3 === 0)
+                            +icon('arrow-up-right').text-color-success.icon--small.text-vat
+                          if (i % 3 === 1)
+                            +icon('arrow-down-right').text-color-error.icon--small.text-vat
+                          if (i % 3 === 2)
+                            +icon('arrow-right').text-color-grey.icon--small.text-vat
+                          | #{' '}
+                          span.text-semibold 120
+                          |  dní#{' '}
+                          span.text-color-grey.show-m v TOP 100
 
                   .text-center
                     ul.list-inline.list-inline--delimited.mb-none
@@ -118,6 +129,19 @@ block content
                     size: 'xlarge'
                   }).mb-medium
                     img.img(src="images/content/top100/10dni.png", style="position: absolute; z-index: 10; width: 40px; right: 10px; top: -5px;")
+                    .mb-medium
+                    p.text-size-small.mb-none
+                      if (i % 3 === 0)
+                        +icon('arrow-up-right').text-color-success.icon--small.text-vat
+                      if (i % 3 === 1)
+                        +icon('arrow-down-right').text-color-error.icon--small.text-vat
+                      if (i % 3 === 2)
+                        +icon('arrow-right').text-color-grey.icon--small.text-vat
+                      | #{' '}
+                      span.text-semibold 120
+                      |  dní#{' '}
+                      span.text-color-grey.show-m v TOP 100
+
               .col--7.hide-s
                 ul.list-inline.list-inline--delimited.mb-small
                   li
