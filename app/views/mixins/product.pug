@@ -60,11 +60,12 @@ mixin productTitle(props = {})
       author,
       href,
       ad,
-      collection = false
+      collection = false,
+      small = false,
     } = props;
 
   .product__title&attributes(attributes)
-    p.text-semibold.text-size-medium.no-mrg.text-ellipsis(title=title, class= href ? '' : 'link', class= !collection ? 'link--product' : '', class= ad ? 'text-color-orange' : '')
+    p.text-semibold.no-mrg.text-ellipsis(title=title, class= small ? 'text-size-small' : 'text-size-medium', class= href ? '' : 'link', class= !collection ? 'link--product' : '', class= ad ? 'text-color-orange' : '')
       if href
         a.link.link--product(href=href)= title
       else
