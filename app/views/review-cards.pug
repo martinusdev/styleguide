@@ -32,6 +32,9 @@ html.no-js
 
     script(src=`${assetsPrefix}scripts/plugins/modernizr.js`)
 
+    script(src=`//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js`)
+    link(rel="stylesheet", href=`//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css`, type="text/css", media="screen", charset="utf-8")
+
     block head
 
     style
@@ -46,25 +49,67 @@ html.no-js
   body
 
     .review-card
-      .review-card__content
-        .review-heading
-          .review-heading__item.review-heading__item--static
-            img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus", style="height: 28px;").text-space-right-tiny
-            | náš názor na knihu
-          .review-heading__item#review-h1
-            | Klub nerozbitných detí
-          .review-heading__item
-            | Slávka Kubíková
+      .bar.bar--vertical.bar--vertical-small.no-mrg
+        .bar__item.bar__item--shrinkable.no-mrg
+          .review-heading
+            .review-heading__item.review-heading__item--static
+              img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus", style="height: 28px;").text-space-right-tiny
+              | náš názor na knihu
+            .review-heading__item#review-h1(data-medium-editor)
+              | Klub nerozbitných detí
+            .review-heading__item(data-medium-editor)
+              | Slávka Kubíková
 
-        .mb-large
-        p.text-italic Podľa mňa by si túto knihu mal prečítať každý rodič, hlavne starý rodič (aby pochopil príčiny pravidiel a zákazov rodičov a nerobil presný opak a podkopával tak rodičovskú autoritu), či učiteľ a pod. Človek sa častokrát zamyslí nad svojím prístupom a vzťahom k deťom a ich výchove, hlavne v tomto uponáhľanom svete. Rozhovory v knihe ponúkajú "priklady" ako sa to dá robiť aj inak.
+        .bar__item.bar__item--fill.no-mrg
+          .bar.bar--vertical.no-mrg.align-items-center
+            .bar__item.no-mrg
+              p.text-italic(data-medium-editor) Podľa mňa by si túto knihu mal prečítať každý rodič, hlavne starý rodič (aby pochopil príčiny pravidiel a zákazov rodičov a nerobil presný opak a podkopával tak rodičovskú autoritu), či učiteľ a pod. Človek sa častokrát zamyslí nad svojím prístupom a vzťahom k deťom a ich výchove, hlavne v tomto uponáhľanom svete. Rozhovory v knihe ponúkajú "priklady" ako sa to dá robiť aj inak.
 
-        .review-rating
-          .bar.mb-none
-            .bar__item
-              each item, i in Array(5)
-                +icon('star').icon--xlarge
-            .bar__item
-              .text-bold(style="font-size: 42px;") 4,5
-          p.text-medium.text-center priemerné hodnotenie našich čitateľov
+        .bar__item.bar__item--shrinkable.no-mrg
+          .review-rating.inline-block
+            .bar.mb-none
+              .bar__item.js-stars
+                each item, i in Array(5)
+                  if i > 3
+                    +icon('star-half').icon--xlarge
+                  else
+                    +icon('star').icon--xlarge
+              .bar__item
+                .text-bold(style="font-size: 42px;", data-medium-editor).js-star-rating 4,5
+            p.text-medium.text-center priemerné hodnotenie našich čitateľov
 
+    script
+      .
+        let ratingStar = '<svg class="icon icon-star icon--xlarge" role="img" aria-hidden="true"><use xlink:href="icons_/app.svg#icon-star"></use></svg>';
+        let ratingStarHalf = '<svg class="icon icon-star-half icon--xlarge" role="img" aria-hidden="true"><use xlink:href="icons_/app.svg#icon-star-half"></use></svg>';
+
+        var ratingStarContainer, ratingStarValue;
+
+        function getStarRating(ratingStarValue) {
+
+          var ratingStars = '';
+          var ratingBaseValue = Math.floor(ratingStarValue);
+          for (var i = 0; i < ratingBaseValue; i++) {
+            ratingStars += ratingStar;
+          }
+
+          if (ratingStarValue == ratingBaseValue)
+            return ratingStars;
+
+          ratingStars += ((ratingStarValue - ratingBaseValue) > 0.5) ? ratingStar : ratingStarHalf;
+
+          return ratingStars;
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+          window.mediumEditor = new MediumEditor('[data-medium-editor]', {toolbar: false, disableReturn: true});
+          window.mediumEditor.subscribe('blur', function (event, editable) {
+            if (editable.classList.contains('js-star-rating')) {
+
+              ratingStarContainer = editable.parentNode.parentNode.querySelector('.js-stars');
+              var ratingStarValue = parseFloat(editable.innerHTML.replace(',', '.'));
+
+              ratingStarContainer.innerHTML = getStarRating(ratingStarValue);
+            }
+          });
+        });
