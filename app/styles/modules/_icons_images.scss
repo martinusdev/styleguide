@@ -374,3 +374,27 @@ $thumbnail-badge: (
 .icon-voucher--inverse {
   border-color: $color-white;
 }
+
+// ----------------------------
+// BESTSELLER FLAGS
+
+$book-flag-widths: (
+  small: 40px,
+  medium: 50px,
+  medium-large: 60px,
+  large: 70px
+);
+
+.book-flag {
+  z-index: $z-index-default;
+
+  @each $name, $size in $book-flag-widths {
+    &#{_get-variant-name($name)} {
+      width: $size * 0.75;
+
+      @include breakpoint('m') {
+        width: $size;
+      }
+    }
+  }
+}
