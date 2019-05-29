@@ -85,6 +85,9 @@ html.no-js
 
   body
 
+    -
+      var scale = 0.74;
+
     div(style="position: absolute; top: 20px; right: 20px; z-index: 10;")
       .bar
         .bar__item
@@ -95,13 +98,13 @@ html.no-js
             +icon('file').icon--medium
             | #{' '}vytlačiť
 
-    .bar.no-mrg(style="width: 1654px; transform: translate3d(0, 0, 0) scale(1, 1);").js-row1
+    .bar.no-mrg(style=`width: 1654px; transform: translate3d(0, 0, 0) scale(${scale}, ${scale});`).js-row1
       .bar__item.no-mrg
         +reviewCard
       .bar__item.no-mrg
         +reviewCard
 
-    .bar.no-mrg(style="width: 1654px; transform: translate3d(0, 0, 0) scale(1, 1);").js-row2
+    .bar.no-mrg(style=`width: 1654px; transform: translate3d(0, 0, 0) scale(${scale}, ${scale});`).js-row2
       .bar__item.no-mrg
         +reviewCard
       .bar__item.no-mrg
@@ -109,6 +112,7 @@ html.no-js
 
     script
       .
+        var scale = 0.74;
         var printing = false;
 
         let ratingStar = '<svg class="icon icon-star icon--xlarge" role="img" aria-hidden="true"><use xlink:href="icons_/app.svg#icon-star"></use></svg>';
@@ -136,12 +140,12 @@ html.no-js
 
           document.querySelector('.js-print').addEventListener('click', (e) => {
             if (!printing) {
-              document.querySelector('.js-row2').style.transform = 'translate3d(0, -50%, 0) scale(1, 1)';
+              document.querySelector('.js-row2').style.transform = 'translate3d(0, -50%, 0) scale('+scale+', '+scale+')';
               e.target.innerHTML = '<svg class="icon icon-chevron-left icon--medium" role="img" aria-hidden="true"><use xlink:href="icons_/app.svg#icon-chevron-left"></use></svg> naspäť';
               printing = true;
               window.print();
             } else {
-              document.querySelector('.js-row2').style.transform = 'translate3d(0, 0, 0) scale(1, 1)';
+              document.querySelector('.js-row2').style.transform = 'translate3d(0, 0, 0) scale('+scale+', '+scale+')';
               e.target.innerHTML = '<svg class="icon icon-file icon--medium" role="img" aria-hidden="true"><use xlink:href="icons_/app.svg#icon-file"></use></svg> vytlačiť';
               printing = false;
             }
