@@ -14,6 +14,7 @@ function getOffset(anchor, toggle) {
 const defaultConfig = {
   speed: 200,
   offset: getOffset,
+  updateURL: false,
 };
 
 export default class SmoothScroll {
