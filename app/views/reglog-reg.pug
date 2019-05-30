@@ -47,21 +47,29 @@ block content
                     .form-label.form-label--required
                       label.text-transform-upper.text-size-small(for="reglog_reg_surname")
                         | meno
-                    div(style="position: relative;")
+                    .form-tooltip-wrapper
                       input.input(type="text", name="reg_surname", id="reglog_reg_surname", placeholder="Zadajte meno")
-                      div(style="position: absolute; left: 105%; top: 0; border: 1px solid #33AB4E; min-width: 200px; max-width: 200px; padding: 0.4375em 0.5em; border-radius: 3px; box-shadow: 0px 3px 5px rgba(0,0,0,0.1); color: #33AB4E; font-size: 16px;") Nejaka validacna hlaska, ktora bude na dva riadky
+                      .form-tooltip.form-tooltip--success.active Nejaka validacna hlaska
 
                   .form-control.form-control--input
                     .form-label.form-label--required
                       label.text-transform-upper.text-size-small(for="reglog_reg_lastname")
                         | priezvisko
-                    input.input(type="text", name="reg_lastname", id="reglog_reg_lastname", placeholder="Zadajte priezvisko")
+                    .form-tooltip-wrapper
+                      input.input(type="text", name="reg_lastname", id="reglog_reg_lastname", placeholder="Zadajte priezvisko")
+                      .form-tooltip.active Nejaka validacna hlaska
+                        span.show-m , ktora bude na dva riadky a ma aj#{' '}
+                          a.link nejaky odkaz
+                          | #{' '}a mozno aj#{' '}
+                          a.link dva
 
                   .form-control.form-control--input.mb-large
                     .form-label.form-label--required
                       label.text-transform-upper.text-size-small(for="reglog_reg_password")
                         | heslo
-                    input.input(type="password", name="reg_password", id="reglog_reg_password", placeholder="Zadajte heslo")
+                    .form-tooltip-wrapper
+                      input.input(type="password", name="reg_password", id="reglog_reg_password", placeholder="Zadajte heslo")
+                      .form-tooltip.form-tooltip--warning.active Nejaka validacna hlaska
 
                   h4.text-center.mb-medium
                     | Nepovinné údaje
