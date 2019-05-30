@@ -1,0 +1,166 @@
+/* FORM TOOLTIPS */
+
+$form-tooltip-colors: (
+  info: _color(info),
+  success: _color(success),
+  warning: _color(warning),
+  error: _color(error)
+);
+
+$form-tooltip-sizes: (
+  small: 150px,
+  medium: 200px,
+  medium-large: 250px,
+  large: 300px
+);
+
+.form-tooltip-wrapper {
+  position: relative;
+}
+
+.form-tooltip-wrapper--inline {
+  display: inline-block;
+}
+
+.form-tooltip {
+  position: absolute;
+  width: 200px;
+  padding: 0.4375em 0.5em;
+  border-radius: 3px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+  transition: all 0.3s ease-out;
+  opacity: 0;
+  background: $color-white;
+  z-index: $z-index-sticky;
+  margin-left: 10px;
+
+  color: _color(grey);
+  border: 1px solid _color(grey);
+  top: -110%;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+
+  @include breakpoint('m') {
+    top: 0;
+    left: 105%;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.form-tooltip.active {
+  opacity: 1;
+  top: -100%;
+
+  @include breakpoint('m') {
+    left: 100%;
+    top: 0;
+  }
+}
+
+.form-tooltip-wrapper--inline {
+  .form-tooltip {
+    left: 105%;
+    top: -8px;
+    transform: translate3d(0, 0, 0);
+    margin-left: 20px;
+  }
+}
+
+.form-tooltip-wrapper--inline {
+  .form-tooltip.active {
+    left: 100%;
+    top: -8px;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.form-tooltip::before {
+  content: ' ';
+  position: absolute;
+  border: 10px solid transparent;
+
+  border-right-color: transparent;
+  border-top-color: _color(grey);
+
+  left: 50%;
+  top: 100%;
+  transform: translate3d(-50%, 0, 0);
+
+  @include breakpoint('m') {
+    border-right-color: _color(grey);
+    border-top-color: transparent;
+    left: -20px;
+    top: 10px;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.form-tooltip::after {
+  content: ' ';
+  position: absolute;
+  border: 8px solid transparent;
+
+  border-right-color: transparent;
+  border-top-color: $color-white;
+
+  left: 50%;
+  top: 100%;
+  transform: translate3d(-50%, 0, 0);
+
+  @include breakpoint('m') {
+    border-right-color: $color-white;
+    border-top-color: transparent;
+    left: -16px;
+    top: 12px;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.form-tooltip-wrapper--inline {
+  .form-tooltip::before {
+    border-right-color: _color(grey);
+    border-top-color: transparent;
+    left: -20px;
+    top: 10px;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .form-tooltip::after {
+    border-right-color: $color-white;
+    border-top-color: transparent;
+    left: -16px;
+    top: 12px;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@each $variant, $color in $form-tooltip-colors {
+  .form-tooltip#{_get-variant-name($variant)} {
+    color: $color;
+    border: 1px solid $color;
+  }
+
+  .form-tooltip#{_get-variant-name($variant)}::before {
+    border-right-color: transparent;
+    border-top-color: $color;
+
+    @include breakpoint('m') {
+      border-right-color: $color;
+      border-top-color: transparent;
+    }
+  }
+
+  .form-tooltip-wrapper--inline {
+    .form-tooltip#{_get-variant-name($variant)}::before {
+      border-right-color: $color;
+      border-top-color: transparent;
+    }
+  }
+}
+
+@each $variant, $size in $form-tooltip-sizes {
+  .form-tooltip#{_get-variant-name($variant)} {
+    width: $size;
+  }
+}
