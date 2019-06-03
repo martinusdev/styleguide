@@ -152,7 +152,7 @@ block content
                   button.btn.btn--clean(data-toggle='#edit')
                     +icon('edit').icon--medium.icon--left
                     span.show-m Upraviť
-                  button.btn.btn--clean.no-mrg-bottom(data-toggle="#bulk-edit")
+                  button.btn.btn--clean.no-mrg-bottom(data-toggle="#bulk-edit", disabled)
                     +icon('collection').icon--medium.icon--left
                     span.show-m Hromadná úprava
                   button.btn.btn--equal.btn--small.mb-none(data-toggle="#add-item")
@@ -160,11 +160,17 @@ block content
               .bar__item.bar__item--shrinkable.show-m
                 | Zoradiť:
               .bar__item.bar__item--shrinkable
-                .form-control.form-control--select.inline-block
+                .form-control.form-control--select.inline-block.text-space-right
                   select.js-select.select--ghost(data-select-dropdown-width="150px")
                     option Najnovšie
                     option Dátum nákupu
                     option Zmena stavu čítania
+
+                a.btn.btn--primary
+                  +icon('eye').icon--medium.hide-m
+                  span.show-m
+                    +icon('eye').icon--medium.icon--left
+                    | náhľad
 
             .row
               .col--m-6
@@ -187,7 +193,13 @@ block content
                       .bar__item.bar__item--shrinkable
                         +icon('footer-reading').icon--xxlarge.text-color-grey
                       .bar__item.bar__item--fill
-                        | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies sapien, condimentum ultricies augue. Cras fringilla nisl eu finibus accumsan. Phasellus nibh erat, pulvinar nec volutpat ut, aliquam quis nulla.
+                        p.mb-medium Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies sapien, condimentum ultricies augue. Cras fringilla nisl eu finibus accumsan. Phasellus nibh erat, pulvinar nec volutpat ut, aliquam quis nulla.
+                        form
+                          .form-control.mb-none
+                            .input-addons
+                              .input-addons__item
+                                +icon('search')
+                              input.input.input-addons__item(type="text")
 
             .row.align-items-bottom
               each item, index in [...books, ...books, ...books, ...books]
