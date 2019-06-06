@@ -263,6 +263,56 @@
 
 @include visibility-classes;
 
+@mixin is-consent-visibility-classes() {
+  .is-consent-show-inline {
+    display: inline !important;
+  }
+
+  .is-consent-show-inline-block {
+    display: inline-block !important;
+  }
+
+  .is-consent-show-flex {
+    display: flex !important;
+  }
+
+  .is-consent-show {
+    display: block !important;
+  }
+
+  .is-consent-hide {
+    display: none !important;
+  }
+
+  .is-consent-invisible {
+    visibility: hidden;
+  }
+
+  @each $breakpoint, $size in $breakpoints {
+    @if $breakpoint != 'xs' {
+      .is-consent-show-#{$breakpoint} {
+        @include show-for($breakpoint);
+      }
+
+      .is-consent-hide-#{$breakpoint} {
+        @include hide-for($breakpoint);
+      }
+    }
+
+    .is-consent-show-#{$breakpoint}-only {
+      @include show-for-only($breakpoint);
+    }
+
+    .is-consent-hide-#{$breakpoint}-only {
+      @include hide-for-only($breakpoint);
+    }
+  }
+}
+
+.is-consent {
+  @include is-consent-visibility-classes;
+}
+
 // ---------------------------------------------
 // 3. OTHER UTILITIES
 

@@ -1,0 +1,50 @@
+include ./product
+
+
+mixin collectionItem (props = {})
+  -
+    const {
+      buttonMore = false,
+      user = false,
+      label = 'Najoblubenejsie kolekcie',
+      title = 'Kultové sci-fi'
+    } = props;
+
+  article.card
+    +collectionItemContent(props)
+
+mixin collectionItemContent (props = {})
+  -
+    const {
+      buttonMore = false,
+      user = false,
+      label = 'Najoblubenejsie kolekcie',
+      title = 'Kultové sci-fi'
+    } = props;
+
+  if user
+    .card__content
+      .bar.mb-none.align-items-center.bar--small
+        .bar__item
+          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+        .bar__item
+          a.link.text-medium Nataša Martinusová
+      h2.text-center
+        a.link= title
+      hr
+
+  if !user
+    .card__status
+      .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+    .card__content.card__content--overflow
+      +sectionHeader({ header: label, more: false, center: true, small: true })
+    h2.text-center
+      a.link= title
+
+  .card__content
+    include ./../modules/collection-carousel
+
+  if buttonMore
+    .card__content
+      .btn-layout.btn-layout--vertical
+        button.btn.btn--ghost Celá kolekcia

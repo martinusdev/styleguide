@@ -4,6 +4,7 @@ include ./mixins/booksCarouselHorizontal
 include ./mixins/carouselTiles
 include ./mixins/productHorizontal
 include ./mixins/sectionHeader
+include ./mixins/collectionItem
 
 block opts
     - var pageTitle = 'Homepage'
@@ -24,10 +25,8 @@ mixin banner(banner)
 mixin tyzdenneKolekcie
   section.mb-large
     article.card
-      .card__content.card__content--overflow
-        +sectionHeader({ header: 'Týždenné kolekcie', more: false, center: true, small: true })
-        h2.text-center Knihy do vašej kuchyne
-        include ./modules/collection-carousel
+
+      +collectionItemContent({label: "Tyzdenne kolekcie"})
 
       .card__content
         .btn-layout.btn-layout--vertical.mb-medium
@@ -46,20 +45,6 @@ mixin novinky
       .card__content.card__content--overflow
         +sectionHeader({ header: 'Novinky', more: false, center: true })
         +booksCarouselHorizontal
-
-mixin najoblubenejsieKolekcie
-  section.mb-large
-    article.card
-      .card__status
-        .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-      .card__content.card__content--overflow
-        +sectionHeader({ header: 'Najobľúbenejšie kolekcie', small: true, more: false, center: true })
-        h2.text-center Biografie slávnych
-        include ./modules/collection-carousel
-
-      .card__content
-        .btn-layout.btn-layout--vertical
-          button.btn.btn--ghost Celá kolekcia
 
 mixin najpredavaniejsieZPonuky
   section.mb-large
@@ -108,70 +93,6 @@ mixin ludiNajviacZaujma
               li(class=`${i < 3 ? 'mb-medium' : ''}`)
                 +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
 
-mixin najoblubenejsieSerie
-  section.mb-large
-    article.card
-      .card__status
-        .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-      .card__content.card__content--overflow
-        +sectionHeader({ header: 'Najobľúbenejšie série', more: false, center: true, small: true })
-        h2.text-center Všetko z IT sveta
-        include ./modules/collection-carousel
-
-      .card__content
-        .btn-layout.btn-layout--vertical
-          button.btn.btn--ghost Celá kolekcia
-
-mixin citatelskaKolekcia
-  .card__content
-    .bar.mb-none.align-items-center.bar--small
-      .bar__item
-        .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-      .bar__item
-        a.link.text-medium Nataša Martinusová
-    hr
-
-  .card__content.card__content--overflow
-    h2.text-center
-      a.link Kultové sci-fi
-
-    -
-      var swiperConfig = {
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
-      slidesPerView: 'auto',
-      slidesPerGroup: 1,
-      spaceBetween: 0,
-      centeredSlides: true,
-      loop: true,
-      speed: 0,
-      };
-
-      swiperConfig = JSON.stringify(swiperConfig);
-    .carousel.carousel--fan
-      .swiper-container(data-swiper-options=swiperConfig)
-        .swiper-wrapper
-          each item, i in [...books, ...books, ...books, ...books]
-            a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book
-              +product().mb-medium
-                +productCover({
-                  cover: item.cover,
-                  discount: item.discount,
-                  rating: item.rating,
-                  collection: i == 3
-                })
-
-        div(data-swipper-extra-content-target)
-
-        button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-          +icon('arrow-left').icon--medium
-        button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-          +icon('arrow-right').icon--medium
-
-  .card__content
-    .btn-layout.btn-layout--vertical
-      button.btn.btn--ghost Celá kolekcia
-
 block content
   main.bg-secondary
     section.section
@@ -189,9 +110,9 @@ block content
 
           .col--l-4.col--m-6
             +novinky
-            +najoblubenejsieKolekcie
+            +collectionItem
             +ludiNajviacZaujma
-            +najoblubenejsieSerie
+            +collectionItem
 
           .col--l-4.col--m-6
             +najpredavaniejsieZPonuky
@@ -208,8 +129,8 @@ block content
 
           .col--m-6
             +najpredavaniejsieZPonuky
-            +najoblubenejsieKolekcie
-            +najoblubenejsieSerie
+            +collectionItem
+            +collectionItem
             +ludiNajviacZaujma
 
         // mobile
@@ -220,7 +141,7 @@ block content
             +novinky
             +tyzdenneKolekcie
             +banner('Main')
-            +najoblubenejsieKolekcie
+            +collectionItem
             +akcioveTituly
 
         .row
@@ -306,8 +227,8 @@ block content
               article.card
                 .card__content
                   +sectionHeader({ header: 'Čitateľské kolekcie', small: true, more: false, center: true })
-                +citatelskaKolekcia
-                +citatelskaKolekcia
+                +collectionItemContent({user: true})
+                +collectionItemContent({user: true})
 
     //-section.section
       h2.text-center.mb-medium Máme pre vás aj

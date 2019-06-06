@@ -40,9 +40,15 @@ include ./../mixins/xmas
             em(data-tooltip, title="Táto kniha sa môže na cestu ku vám vybrať prakticky okamžite! Ak si ju objednáte do 13:00 v pracovný deň, odošleme vám ju ešte dnes, inak najneskôr nasledujúci pracovný deň.") ihneď
             | .
           .btn-layout--vertical
-            button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-              +icon('cart').icon--left.icon--medium
-              | Vložiť do košíka
+
+            if (pageTitle == 'Detail knihy')
+              button.btn.btn--primary.btn--large.mb-small.is-consent-show-m(data-toggle='#checkout-notice')
+                +icon('cart').icon--left.icon--medium
+                | Vložiť do košíka
+            else
+              button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
+                +icon('cart').icon--left.icon--medium
+                | Vložiť do košíka
 
             +addTo()
 
