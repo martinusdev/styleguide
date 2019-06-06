@@ -5,62 +5,12 @@ include ./mixins/breadcrumbs
 include ./mixins/inlineNav
 include ./mixins/sectionHeader
 include ./mixins/icon
+include ./mixins/collectionItem
 
 block opts
     - var pageTitle = 'Čitateľské kolekcie'
 
 block content
-
-  mixin citatelskaKolekcia
-    section.mb-large
-      article.card
-        .card__content
-          .bar.mb-none
-            .bar__item.bar__item--shrinkable
-              .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-            .bar__item.bar__item--fill.text-left
-              a.link.text-medium Nataša Martinusová
-          hr
-
-        .card__content.card__content--overflow
-          h2.text-center Kultové sci-fi
-
-          -
-            var swiperConfig = {
-            nextButton: '.carousel__btn--next',
-            prevButton: '.carousel__btn--prev',
-            slidesPerView: 'auto',
-            slidesPerGroup: 1,
-            spaceBetween: 0,
-            centeredSlides: true,
-            loop: true,
-            speed: 0,
-            };
-
-            swiperConfig = JSON.stringify(swiperConfig);
-          .carousel.carousel--fan
-            .swiper-container(data-swiper-options=swiperConfig)
-              .swiper-wrapper
-                each item, i in [...books, ...books, ...books, ...books]
-                  a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__book
-                    +product().mb-medium
-                      +productCover({
-                        cover: item.cover,
-                        discount: item.discount,
-                        rating: item.rating,
-                        collection: i == 3
-                      })
-
-              div(data-swipper-extra-content-target)
-
-              button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-                +icon('arrow-left').icon--medium
-              button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-                +icon('arrow-right').icon--medium
-
-        .card__content
-          .btn-layout.btn-layout--vertical
-            button.btn.btn--ghost Celá kolekcia
 
   main.collection
     section.section--breadcrumbs
@@ -96,16 +46,16 @@ block content
 
         .row
           .col--l-4
-            +citatelskaKolekcia
-            +citatelskaKolekcia
+            +collectionItem({user: true})
+            +collectionItem({user: true})
 
           .col--l-4
-            +citatelskaKolekcia
-            +citatelskaKolekcia
+            +collectionItem({user: true})
+            +collectionItem({user: true})
 
           .col--l-4
-            +citatelskaKolekcia
-            +citatelskaKolekcia
+            +collectionItem({user: true})
+            +collectionItem({user: true})
 
   include ./modules/seen-items
   include ./modules/seen-items-delete

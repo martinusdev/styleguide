@@ -5,25 +5,12 @@ include ./mixins/breadcrumbs
 include ./mixins/inlineNav
 include ./mixins/sectionHeader
 include ./mixins/icon
+include ./mixins/collectionItem
 
 block opts
     - var pageTitle = 'Kolekcia'
 
 block content
-
-  mixin najoblubenejsieSerie
-    section.mb-large
-      article.card
-        .card__status
-          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-        .card__content.card__content--overflow
-          +sectionHeader({ header: 'Najobľúbenejšie série', more: false, center: true, small: true })
-          h2.text-center Všetko z IT sveta
-          include ./modules/collection-carousel
-
-        .card__content
-          .btn-layout.btn-layout--vertical
-            button.btn.btn--ghost Celá kolekcia
 
   main.collection
     section.section--breadcrumbs
@@ -102,16 +89,16 @@ block content
                               .text-small.text-ellipsis Jana Šlinská
         .row
           .col--l-4
-            +najoblubenejsieSerie
-            +najoblubenejsieSerie
+            +collectionItem
+            +collectionItem
 
           .col--l-4
-            +najoblubenejsieSerie
-            +najoblubenejsieSerie
+            +collectionItem
+            +collectionItem
 
           .col--l-4
-            +najoblubenejsieSerie
-            +najoblubenejsieSerie
+            +collectionItem
+            +collectionItem
 
   include ./modules/seen-items
   include ./modules/seen-items-delete
