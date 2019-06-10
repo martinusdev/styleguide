@@ -18,13 +18,30 @@ block content
     };
 
   main.collection
-    section.section--breadcrumbs
+
+    section.section--breadcrumbs(style="position: relative;")
       .wrapper-main
         .bar.no-mrg-bottom
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Čitateľské kolekcie', 'Kultové Sci-fi (Nataša Martinusová)'] })
 
+      div(style="position: absolute; top: 10px; right: 10px; width: 400px; z-index: 10;").show-m
+        .card.card--material.card--material-blue
+          .card__content
+            .bar
+              .bar__item.bar__item--shrinkable
+                +icon('footer-reading').icon--xxlarge.text-color-grey
+              .bar__item.bar__item--fill
+                p.text-size-medium
+                  b Odporučiť niekomu výber knižiek je zodpovedná úloha!
+                  | #{' '}Preto sme to trochu uľahčili a aj vy máte možnosť ľahko vytvoriť a zdieľať takúto kolekciu.#{' '}
+                  b Skúste si jednu vytvoriť
+                  | #{' '}už dnes, napríklad pre vlastný prehľad či potešenie :-)
+            .text-center
+              span.btn.mb-none Chcem vytvoriť kolekciu
+
     section.section.section--books-header
+
       -
         var count = 12;
         var cols = 6;
