@@ -17,6 +17,13 @@ block content
       prevButton: '.carousel__btn--prev',
     };
 
+    var menu = [
+      {title: "Knihy", icon: "books"},
+      {title: "E-knihy", icon: "ebooks"},
+      {title: "Filmy", icon: "movies"},
+      {title: "Hry", icon: "games"},
+    ];
+
   main.collection
     section.section--breadcrumbs
       .wrapper-main
@@ -28,22 +35,22 @@ block content
       .wrapper-main
         .row.align-items-middle
           .col--12.col--m-3
-            h1.mb-medium TOP100
+            h1.mb-medium Bestsellery
           .col--12.col--m-6.mb-medium.mb-none-m
             .bar.mb-none.align-items-center.show-m
-              each item, i in ['Knihy', 'E-knihy', 'Filmy', 'Hry']
+              each item, i in menu
                 .bar__item.text-center
                   a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
                     .card__content
-                      +icon('footer-reading').icon--xlarge.text-color-grey
-                      .h3.mb-none= item
+                      +icon(`products-${item.icon}`).icon--xlarge.text-color-grey
+                      .h3.mb-none= item.title
             .bar.mb-none.align-items-center.hide-m
-              each item, i in ['Knihy', 'E-knihy', 'Filmy', 'Hry']
+              each item, i in menu
                 .bar__item.text-center
                   a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
                     .card__content.card__content--condensed
-                      +icon('footer-reading').icon--medium.text-color-grey
-                      .h3.mb-none= item
+                      +icon(`products-${item.icon}`).icon--medium.text-color-grey
+                      .h3.mb-none= item.title
           .col--12.col--m-2.ofst--m-1.mb-medium.mb-none-m
             select.js-select.select--ghost
               option Rok
@@ -67,10 +74,10 @@ block content
       .wrapper-main
         .row.mb-large
           each item, i in Array(3)
-            .col--m-4
-              .card.card--material
+            .col--m-4.flex
+              .card.card--material.w-100
                 img.book-flag.book-flag--medium-large(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: 0px;")
-                .card__content
+                .card__content.flex-fill
                   .h0.text-color-grey-dark(style="position:absolute;")= i+1
                   .bar.align-items-center
                     .bar__item
@@ -97,9 +104,15 @@ block content
                       li
                         a.link(href="#") Walter Isaacson
                     h2.mb-small
-                      a(href="#").link.link--product.text-bold Steve Jobs
+                      a(href="#").link.link--product.text-bold
+                        if i == 1
+                          | Dlhy nazov knihy na dva riadky
+                        else
+                          | Steve Jobs
 
                   hr.mb-medium
+
+                .card__content.flex-shrinkable
 
                   .bar.align-items-middle.bar--vertical
                     .bar__item.no-mrg-bottom
