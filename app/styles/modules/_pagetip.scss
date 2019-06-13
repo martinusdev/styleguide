@@ -1,0 +1,38 @@
+$pagetip-sizes: (
+  small: 250px,
+  medium: 400px,
+  large: 600px
+);
+
+.pagetip {
+  position: relative;
+
+  @include breakpoint('m') {
+    position: absolute;
+    z-index: $z-index-alert;
+
+    &--top {
+      top: 10px;
+    }
+
+    &--bottom {
+      bottom: 10px;
+    }
+
+    &--left {
+      left: 10px;
+    }
+
+    &--right {
+      right: 10px;
+    }
+  }
+
+  @each $variant, $size in $pagetip-sizes {
+    &--#{$variant} {
+      @include breakpoint('m') {
+        max-width: $size;
+      }
+    }
+  }
+}
