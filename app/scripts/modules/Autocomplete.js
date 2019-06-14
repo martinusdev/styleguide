@@ -48,6 +48,8 @@ const defaultConfig = {
   },
   templateType: null,
   results: [],
+  debounceSource: () => {},
+  debounceInterval: 200,
 };
 
 const defaultTemplates = {
@@ -154,6 +156,8 @@ export default class Autocomplete {
 
     this.templates = defaultTemplates;
 
+    this.timeout = null;
+
     this.init();
 
     this.element.Autocomplete = this;
@@ -168,14 +172,7 @@ export default class Autocomplete {
       element: this.element,
       templates: this.templates[type] || undefined,
       source: (query, populateResults) => {
-        // this can be ajax call or default values
-        const results = this.config.results;
-        const regex = new RegExp(query, 'i');
-        const filteredResults = results.filter(result => {
-          const raw = (typeof result === 'object' && result.raw) || result;
-          return raw.match(regex);
-        });
-        populateResults(filteredResults);
+        this.source(query, populateResults);
       },
       // i18n
       placeholder: texts[this.lang].placeholder,
@@ -196,6 +193,24 @@ export default class Autocomplete {
       },
       ...this.autocompleteConfig,
     });
+  }
+
+  source(query, populateResults) {
+    if (this.config.debounceSource) {
+      clearTimeout(this.timeout);
+      this.timeout = setTimeout(
+        () => this.config.debounceSource(query, populateResults),
+        this.config.debounceInterval,
+      );
+    } else {
+      const results = this.config.results;
+      const regex = new RegExp(query, 'i');
+      const filteredResults = results.filter(result => {
+        const raw = (typeof result === 'object' && result.raw) || result;
+        return raw.match(regex);
+      });
+      populateResults(filteredResults);
+    }
   }
 
   static getInstance(el) {

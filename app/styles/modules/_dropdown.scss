@@ -57,6 +57,14 @@
   will-change: scroll-position;
 }
 
+@mixin dropdown-item-focus (
+  $dropdown-menu-item: $dropdown-menu-item
+) {
+  @each $prop, $value in map-get($dropdown-menu-item, 'focus') {
+    #{$prop}: #{$value};
+  }
+}
+
 @mixin dropdown-item (
   $dropdown-menu-item: $dropdown-menu-item
 ) {
@@ -70,9 +78,7 @@
   &:focus,
   &:hover,
   &.is-active {
-    @each $prop, $value in map-get($dropdown-menu-item, 'focus') {
-      #{$prop}: #{$value};
-    }
+    @include dropdown-item-focus();
   }
 
   &--small {
