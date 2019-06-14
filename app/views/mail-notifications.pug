@@ -273,22 +273,22 @@ block scripts
         {
           autocompleteOptions: {
             id: 'autor-autocomplete',
-            source: filter('author'),
             placeholder: 'Pridať autora? Začnite písať',
             onConfirm: onConfirm('#autori-vybrane')
           },
           templateType: 'author',
+          debounceSource: filter('author'),
         }
       );
-      window.myApp.autocompleteSeria = new window.myApp.Autocomplete(
+     window.myApp.autocompleteSeria = new window.myApp.Autocomplete(
         document.getElementById('seria-autocomplete-container'),
         {
           autocompleteOptions: {
             id: 'seria-autocomplete',
-            source: filter('collection'),
-            onConfirm: onConfirm('#serie-vybrane')
+            onConfirm: onConfirm('#serie-vybrane'),
           },
           templateType: 'collection',
+          debounceSource: filter('collection'),
         },
       );
       window.myApp.autocompleteEdicia = new window.myApp.Autocomplete(

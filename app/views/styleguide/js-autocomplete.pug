@@ -183,7 +183,9 @@ block append content
                           onConfirm: () => {},
                         }, 
                         templateType: undefined, 
-                        results: [] 
+                        results: [],
+                        debounceSource: (query, populateResults) => {},
+                        debounceInterval: 200,
                       }
 
               td Config object. All config for autocompleteOptions from
