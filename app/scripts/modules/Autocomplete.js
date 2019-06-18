@@ -56,13 +56,13 @@ const defaultTemplates = {
   author: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="bar mb-none">
-        <div class="bar__item bar__item--shrinkable align-self-middle pr-none">
+      <div class="flex">
+        <div class="flex-shrinkable align-self-middle pr-none text-space-right">
           <div class="author-photo no-pad">
             <div class="portrait portrait--medium" style="background-image: url('${value.image}');"></div>
           </div>
         </div>
-        <div class="bar__item bar__item--fill align-self-middle">
+        <div class="flex-fill align-self-middle">
           <div class="text-semibold text-size-regular">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
@@ -72,19 +72,19 @@ const defaultTemplates = {
   item: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="bar mb-none">
-        <div class="bar__item bar__item--shrinkable align-self-middle">
+      <div class="flex">
+        <div class="flex-shrinkable text-space-right align-self-middle">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
               <img class="img" src="${value.image}" alt="${value.name}">
             </div>
           </div>
         </div>
-        <div class="bar__item bar__item--fill align-self-middle">
+        <div class="flex-fill text-space-right align-self-middle">
           <div class="text-size-regular text-semibold">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
-        <div class="bar__item bar__item--shrinkable align-self-middle">
+        <div class="flex-shrinkable align-self-middle">
           <div class="text-bold">${value.price}</div>
         </div>
       </div>
@@ -93,15 +93,15 @@ const defaultTemplates = {
   book: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="bar mb-none">
-        <div class="bar__item bar__item--shrinkable align-self-middle">
+      <div class="flex">
+        <div class="flex-shrinkable text-space-right align-self-middle">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
               <img class="img" src="${value.image}" alt="${value.name}">
             </div>
           </div>
         </div>
-        <div class="bar__item bar__item--fill align-self-middle">
+        <div class="flex-fill align-self-middle">
           <div class="text-size-regular text-semibold">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
@@ -111,8 +111,8 @@ const defaultTemplates = {
   collection: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="bar mb-none">
-        <div class="bar__item bar__item--shrinkable align-self-middle">
+      <div class="flex">
+        <div class="flex-shrinkable text-space-right align-self-middle">
         <div class="product__cover collection">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             ${value.images
@@ -125,7 +125,7 @@ const defaultTemplates = {
           </div>
         </div>
         </div>
-        <div class="bar__item bar__item--fill align-self-middle">
+        <div class="flex-fill align-self-middle">
           <div class="text-size-regular text-semibold">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
