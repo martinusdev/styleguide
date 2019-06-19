@@ -964,6 +964,61 @@ block append tooltips
   //- author tooltip
   include ./modules/tooltip-author
 
+  #reader-tooltip.hide.card
+    .card__content.card__content--condensed
+      .bar.mb-small.mb-medium-m
+        .bar__item
+          a.h3.link Darina Dobrovská
+        .bar__item.bar__item--fill
+          .bar.mb-none.align-items-right
+            .bar__item
+              button.btn.btn--clean
+                +icon('eye', 'icon--medium').icon--left.text-color-grey
+                span.show-m sledovať
+              button.btn.btn--small.mb-none.btn--clean
+                +icon('check-circle').icon--small.icon--left
+                | #{' '}Sledované
+      .row.align-items-top
+        .col--2.col--m-3
+          .portrait(style="background-image: url('images/content/avatars/f.jpg');")
+        .col--10.col--m-9.no-pad-left
+          #badges.club-badges(data-collapse="150").mb-small
+            .club-badges__item
+              .club-badge
+                img(src="images/content/club/badges/badges-01.png")
+            .club-badges__item
+              .club-badge.bg-yellow
+                img(src="images/content/club/badges/badges-02.png")
+            .club-badges__item
+              .club-badge.bg-green
+                img(src="images/content/club/badges/badges-03.png")
+            .club-badges__item
+              .club-badge.bg-violet
+                img(src="images/content/club/badges/badges-04.png")
+            .club-badges__item
+              .club-badge
+                img(src="images/content/club/badges/badges-05.png")
+            .club-badges__item
+              .club-badge
+                img(src="images/content/club/badges/badges-06.png")
+            .club-badges__item
+              .club-badge.bg-yellow
+                img(src="images/content/club/badges/badges-07.png")
+            .club-badges__item
+              .club-badge.bg-green
+                img(src="images/content/club/badges/badges-08.png")
+            .club-badges__item
+              .club-badge.bg-violet
+                img(src="images/content/club/badges/badges-09.png")
+            .club-badges__item
+              .club-badge
+                img(src="images/content/club/badges/badges-10.png")
+          p.text-left.mb-none Milujem knihy... Všetky... Nové, staré, hrubé, tenké... Hlavne tie, ktoré sú moje! Raz som povedala mame, že by som chcela vlastné kníhkupectvo. Podľa nej to bol zlý nápad, lebo by som nedovolila, aby si ľudia brali moje knihy...
+    .card__footer
+      button.btn.btn--clean.mb-none
+        span.text-space-left zobraziť čitateľský profil
+        +icon('arrow-right')
+
 block append scripts
   script(src=`${assetsPrefix}scripts/charts.js`)
   script.

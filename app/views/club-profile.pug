@@ -3,6 +3,7 @@ extends layouts/_default
 include ./mixins/icon
 include ./mixins/product
 include ./mixins/productHorizontal
+include ./mixins/breadcrumbs
 
 mixin userAbout ()
   h5 O mne
@@ -33,6 +34,12 @@ block opts
 
 block content
   main.account
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Čitateľské profily', 'Nataša Martinus']})
 
     section.section.bg-blue-ci
       .wrapper-main

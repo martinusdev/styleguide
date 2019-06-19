@@ -3,6 +3,7 @@ extends layouts/_default
 include ./mixins/icon
 include ./mixins/product
 include ./mixins/productHorizontal
+include ./mixins/breadcrumbs
 
 block opts
   - var pageTitle = 'Čitateľské profily'
@@ -11,11 +12,13 @@ block opts
 block content
   main.account
 
-    section.bg-blue-ci.section-portraits(style="position: relative; overflow: hidden;")
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Čitateľské profily']})
 
-      each item, i in [1,2,3,4,5]
-        each item, j in [1,2,3,4,5,6,7,8,9,10]
-          a.portrait.portrait--large.portrait--shadow(href="#",style="position: absolute;background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+    section(style="background: url('//mrtns.eu/img/custom/62683_header_profil.jpg') no-repeat center center; background-size: cover;")
 
       .wrapper-main.section-title-wrapper
         .section-title(style="position: relative;")
