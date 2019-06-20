@@ -9,7 +9,7 @@ $pagetip-sizes: (
 
   @include breakpoint('m') {
     position: absolute;
-    z-index: $z-index-alert;
+    z-index: $z-index-topbar - 1;
     transition: all 0.5s ease-out;
 
     &--hidden-top {
@@ -18,6 +18,10 @@ $pagetip-sizes: (
 
     &--hidden-bottom {
       bottom: -200px;
+    }
+
+    &--top-absolute {
+      top: 80px !important;
     }
 
     &--top {
