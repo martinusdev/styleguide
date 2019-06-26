@@ -1,0 +1,170 @@
+extends layouts/_default
+
+include ./mixins/addTo
+include ./mixins/breadcrumbs
+include ./mixins/icon
+include ./mixins/product
+include ./mixins/xmas
+
+block opts
+    - var pageTitle = 'Bestsellery'
+
+block content
+  -
+    var swiperConfig = {
+      slidesPerView: 1,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+    };
+
+    var menu = [
+      {title: "Knihy", icon: "books"},
+      {title: "E-knihy", icon: "ebooks"},
+      {title: "Filmy", icon: "movies"},
+      {title: "Hry", icon: "games"},
+    ];
+
+  main.collection
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy', 'Bestsellery'] })
+
+    section.section
+      .wrapper-main
+        .row.align-items-middle
+          .col--12.col--m-3
+            h1.mb-medium Bestsellery
+          .col--12.col--m-6.mb-medium.mb-none-m
+            .bar.mb-none.align-items-center.show-m
+              each item, i in menu
+                .bar__item.text-center
+                  a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
+                    .card__content
+                      +icon(`products-${item.icon}`).icon--xlarge.text-color-grey
+                      .h3.mb-none= item.title
+            .bar.mb-none.align-items-center.hide-m
+              each item, i in menu
+                .bar__item.text-center
+                  a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
+                    .card__content.card__content--condensed
+                      +icon(`products-${item.icon}`).icon--medium.text-color-grey
+                      .h3.mb-none= item.title
+          .col--12.col--m-2.ofst--m-1.mb-medium.mb-none-m
+            select.js-select.select--ghost
+              option Rok
+              option 2018
+              option 2017
+              option 2016
+              option 2015
+              option 2014
+              option 2013
+              option 2012
+
+        //nav
+          ul.list-inline
+            each item, i in ['Knihy', 'Filmy', 'Hry']
+              li
+                a.link.link--black(href="#", class= i == 0 ? 'text-bold' : '')
+                  +icon('footer-reading').icon--medium.text-space-right.text-color-grey
+                  = item
+
+    section.section.no-pad-top
+      - for (var i = 0; i<8; i++)
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+          .wrapper-main
+            .row
+              .col--1
+                .h0.text-color-grey-dark= i+1
+              .col--4.col--s-shrink.text-left
+                +product().no-mrg-bottom
+                  +productCover({
+                    cover: 'images/content/books/sample-3.jpg',
+                    rating: 3.5,
+                    size: 'xlarge'
+                  }).mb-medium
+                    img.book-flag.book-flag--medium(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: -5px;")
+                  .mb-medium
+                  p.text-size-small.mb-none
+                    if (i % 3 === 0)
+                      +icon('arrow-up-right').text-color-success.icon--small.text-vat
+                    if (i % 3 === 1)
+                      +icon('arrow-down-right').text-color-error.icon--small.text-vat
+                    if (i % 3 === 2)
+                      +icon('arrow-right').text-color-grey.icon--small.text-vat
+                    | #{' '}
+                    span.text-semibold 120
+                    |  dní#{' '}
+                    span.text-color-grey.show-m v TOP 100
+
+              .col--7.hide-s
+                ul.list-inline.list-inline--delimited.mb-small
+                  li
+                    a.link(href="#") Frank Weissert
+
+                h2.h3.mb-small
+                  a(href="#").link.link--product.text-bold Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
+                h3.h4.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+              .col--s-fill
+                .show-s
+                  ul.list-inline.list-inline--delimited.mb-small
+                    li
+                      a.link(href="#") Frank Weissert
+
+                  h2.mb-small
+                    a(href="#").link.link--product.text-bold Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
+                  h3.h4.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
+
+                p Každý sa túži dožiť šťastnej a dôstojnej staroby. Mnohým sa celoživotné snaženie vydarí a ich život vyústi do vysnívanej pokojnej jesene, iní majú smolu, dožijú sa ignorácie od rodiny a nezriedka im ide o život. Práve o holé životy ide aj starým ľuďom...
+
+                if (i < 3)
+                  article.card.card--speech-bubble(class=(i % 2 == 0) ? 'bg-default' : 'bg-secondary' )
+                    .card__content.text-medium
+                      p.mb-none(data-collapse="80", id=`book-review-${i}`, class=(i % 2 == 0) ? 'bg-default' : 'bg-secondary') Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Boli asi 3 momenty, pri ktorých mi vyhŕkli slzy a momenty, pri ktorých som sa zasmiala. Pre mňa úplne úžasný príbeh, čakala som, čo ešte vyťažia z tohto čarodejníckeho sveta a páčilo sa mi, na čo sa autori zamerali. Neuberiem ani jednu hviezdičku, i keď sa mi zdal príbeh príliš krátky a po 6 hodinách sa moje potešenie skončilo a ja som nevedela, čo budem ďalej robiť, cítila som sa prázdno ako po každej novovydanej knihe Harryho Pottera. Niekedy majú ľudia príliš veľké očakávania a sami si zničia dojem z kníh, pretože čakajú až nemožné.
+                      .review-read-more
+                        a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#book-review-${i}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+                          +icon('arrow-down')
+                  .bar.bar--small
+                    .bar__item
+                      .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                    .bar__item
+                      a.link.text-medium(href="#") Kristína Nemilá
+                    .bar__item
+                      .rating-star.align-items-center
+                        each star, starIndex in Array(5)
+                          +icon('star').rating-star__item.icon--large.is-active
+
+              .col--m-3.mb-large.mb-none-m
+                .product-item__price-box.text-center
+                    .mb-small.show-m
+                      .h2.text-bold 12,99 €
+                      .badge.badge--primary.mb-small Zľava 10%
+                      +xmas({status: 0})
+                    p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
+                      em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                      | .
+                    .mb-small
+                      +xmas()
+                    .mb-small
+                      .btn-layout.btn-layout--vertical
+                        button.btn.btn--primary
+                          +icon('cart').icon--left.icon--medium
+                          span.show-m Vložiť do košíka
+                          span.hide-m Kúpiť za 12,99 €
+                    .mb-small
+                      +addTo()
+
+    section.section.section--secondary
+      .wrapper-main
+        .row
+          .col--m-4.ofst--m-center
+            .btn-layout--vertical.mb-large-m.mb-medium-s
+              button.btn.btn--ghost Načítať ďalšie knihy (+5)
+
+  include ./modules/seen-items
+  include ./modules/seen-items-delete
+
+
+block append modals
+  include ./modules/product-preview
