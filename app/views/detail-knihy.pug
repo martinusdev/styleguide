@@ -965,7 +965,7 @@ block append tooltips
   include ./modules/tooltip-author
 
   #reader-tooltip.hide.card
-    .card__content.card__content--condensed
+    .card__content.card__content--condensed.text-left
       .bar.mb-small.mb-medium-m
         .bar__item
           a.h3.link Darina Dobrovská
@@ -1007,13 +1007,21 @@ block append tooltips
             .club-badges__item
               .club-badge.bg-green
                 img(src="images/content/club/badges/badges-08.png")
-            .club-badges__item
-              .club-badge.bg-violet
-                img(src="images/content/club/badges/badges-09.png")
-            .club-badges__item
-              .club-badge
-                img(src="images/content/club/badges/badges-10.png")
+
+          .bar
+            .bar__item.bar__item--shrinkable.text-space-right
+              .product__img.product__cover
+                .thumbnail.thumbnail--book.thumbnail--small
+                  a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+                    .thumbnail__img-wrap
+                      img(src=`https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754`).img
+            .bar__item.bar__item--fill
+              .h5.mb-none Práve čítam
+              a.link.link--product Základy rybolovu pro kluky a holky
+
           p.text-left.mb-none Milujem knihy... Všetky... Nové, staré, hrubé, tenké... Hlavne tie, ktoré sú moje! Raz som povedala mame, že by som chcela vlastné kníhkupectvo. Podľa nej to bol zlý nápad, lebo by som nedovolila, aby si ľudia brali moje knihy...
+
+
     .card__footer
       button.btn.btn--clean.mb-none
         span.text-space-left zobraziť čitateľský profil
