@@ -6,6 +6,18 @@ include ./mixins/productHorizontal
 include ./mixins/breadcrumbs
 
 mixin userAbout ()
+
+  .h5.mb-none Práve čítam
+  .bar
+    .bar__item.bar__item--shrinkable.text-space-right
+      .product__img.product__cover
+        .thumbnail.thumbnail--book.thumbnail--small
+          a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+            .thumbnail__img-wrap
+              img(src=`https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754`).img
+    .bar__item.bar__item--fill
+      a.link.link--product Základy rybolovu pro kluky a holky
+
   h5 O mne
   p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra lobortis massa, sit amet viverra risus. Nullam ac pellentesque purus, non placerat tortor. Praesent maximus orci ac risus sollicitudin interdum. Vivamus diam mauris, blandit at convallis sed, rutrum vel libero.
 
