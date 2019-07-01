@@ -101,7 +101,8 @@ block content
                   li
                     a.link(href="#") Frank Weissert
 
-                h2.h3.text-bold.mb-small Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
+                h2.h3.text-bold.mb-small
+                  a.link.link--product.text-bold Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
                 h3.h4.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
               .col--s-fill
                 .show-s
@@ -109,7 +110,8 @@ block content
                     li
                       a.link(href="#") Frank Weissert
 
-                  h2.text-bold.mb-small Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
+                  h2.text-bold.mb-small
+                    a.link.link--product.text-bold Lahodne s Ellou - Lahodné prísady a fantastické jedlo, ktoré si vy a vaše telo zamilujete
                   h3.h4.mb-medium Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
 
                 if (i>0 && i<=2)
@@ -129,18 +131,23 @@ block content
                   p Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
               .col--m-3.mb-large.mb-none-m
                 .product-item__price-box.text-center
-                    .mb-small.show-m
-                      .h2.text-bold 12,99 €
-                    .mb-small
-                      +xmas()
-                    .mb-small
-                      .btn-layout.btn-layout--vertical
-                        button.btn.btn--primary
-                          +icon('cart').icon--left.icon--medium
-                          span.show-m Vložiť do košíka
-                          span.hide-m Kúpiť za 12,99 €
-                    .mb-small
-                      +addTo()
+                  .mb-small.show-m
+                    .h2.text-bold 12,99 €
+                    .badge.badge--primary.mb-small Zľava 10%
+                    +xmas({status: 0})
+                  p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
+                    em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+                    | .
+                  .mb-small
+                    +xmas()
+                  .mb-small
+                    .btn-layout.btn-layout--vertical
+                      button.btn.btn--primary
+                        +icon('cart').icon--left.icon--medium
+                        span.show-m Vložiť do košíka
+                        span.hide-m Kúpiť za 12,99 €
+                  .mb-small
+                    +addTo()
 
     section.section.section--secondary
       .wrapper-main
