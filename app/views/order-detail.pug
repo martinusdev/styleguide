@@ -27,6 +27,15 @@ block content
           .col--l-3.col--12.show-l.mb-large(data-sticky-container)
             .order-list(data-sticky, data-scroll-offset=`{"0": ${header.size.default + 40}, "768": ${header.size.m + 40}}`, data-sticky-class="is-stuck", data-sticky-for="1024px")
               .order-list__container.overflow-auto
+                .bar
+                  .bar__item.bar__item--shrinkable.text-medium Rok:
+                  .bar__item.bar__item--fill
+                    .form-control.form-control--select
+                      select.js-select.select--ghost
+                        option 2019
+                        option 2018
+                        option 2017
+                        option 2016
                 - for (i=0; i<20; i++)
                   a.order-list__item.card.card--clickable(href="order-detail.html", class=i === 0 ? "card--well bg-secondary" : "border-bottom-grey")
                     .card__content.card__content--condensed
