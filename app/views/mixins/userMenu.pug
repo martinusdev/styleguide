@@ -11,9 +11,17 @@ mixin userMenu(props = {})
       +icon('user').icon--medium.icon--left.header-user__icon
       span.header-user__name #{userName}
 
-    .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false")
-      .dropdown__wrap
-        h5.dropdown__group Môj MARTINUS
-        a(href="#").dropdown__item Knižnica
-        a(href="#").dropdown__item Objednávky
-        a(href="#").dropdown__item Účet
+    .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 150px; max-height: 400px;")
+      .dropdown__wrap(style="max-height: 400px;")
+        .dropdown__group.bg-secondary
+          h5.mb-none Môj MARTINUS
+          span.text-medium.text-color-grey.text-semibold Janko Martinusák
+        a(href="#").dropdown__item Na stiahnutie
+        a(href="#").dropdown__item Moje objednávky
+        a(href="#").dropdown__item Môj wishlist
+        a(href="#").dropdown__item Moja knižnica
+        a(href="#").dropdown__item Môj účet
+        a(href="#").dropdown__item
+          | Založiť profil
+          +icon('plus').text-color-success.icon--medium(style="position: relative; top: -0.15em;")
+        a(href="#").dropdown__item Odhlásiť

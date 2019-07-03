@@ -141,17 +141,20 @@ block content
               .bar__item.hide-l
                 a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
                   +icon('arrow-left', 'icon--medium')
-              .bar__item.bar__item--shrinkable
+              .bar__item.bar__item--shrinkable.text-space-right-tiny
                 h2.mb-none Wishlist
                 small.text-color-grey.block(style="margin-top: -3px;")
                   +icon('guard').icon--small.text-space-right-tiny
                   a(data-toggle="#edit").link súkromný
+              .bar__item.bar__item--shrinkable
+                button.btn.btn--clean.btn--equal(data-toggle='#edit')
+                  +icon('smart-list').icon--medium
               .bar__break.hide-m
               .bar__item.bar__item--fill
                 .btn-layout.btn-layout--horizontal.align-items-middle
                   button.btn.btn--clean(data-toggle='#edit')
-                    +icon('edit').icon--medium.icon--left
-                    span.show-m Upraviť
+                    +icon('share').icon--medium.icon--left
+                    span.show-m Zdieľať
                   button.btn.btn--clean.no-mrg-bottom(data-toggle="#bulk-edit", disabled)
                     +icon('collection').icon--medium.icon--left
                     span.show-m Hromadná úprava
@@ -195,11 +198,12 @@ block content
                       .bar__item.bar__item--fill
                         p.mb-medium Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut ultricies sapien, condimentum ultricies augue. Cras fringilla nisl eu finibus accumsan. Phasellus nibh erat, pulvinar nec volutpat ut, aliquam quis nulla.
                         form
-                          .form-control.mb-none
-                            .input-addons
-                              .input-addons__item
-                                +icon('search')
-                              input.input.input-addons__item(type="text")
+                          .bar.mb-none
+                            .bar__item.bar__item--fill
+                              .form-control.mb-none
+                                input.input.autocomplete__input.autocomplete__input--default(type="text")
+                            .bar__item
+                              button.btn vyhľadať
 
             .row.align-items-bottom
               each item, index in [...books, ...books, ...books, ...books]

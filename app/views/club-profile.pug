@@ -377,3 +377,21 @@ block content
                   .card.card--well.inline-block
                     .card__content
                       +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+
+  .modal-overlay.active#calculating-modal(data-modal)
+    .modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h2 Váš profil bude čoskoro pripravený
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#after-review-modal")
+              +icon('close').icon--medium
+
+        img.img(src="https://mrtns.eu/img/custom/62683_header_profil.jpg")
+
+        .modal__content
+          .text-center.mb-medium
+            p Údaje o vašom profile sa ešte chvíľu budú prepočítavať. Profil si samozrejme môžete pozrieť hneď, ale niektoré údaje a odznaky v ňom ešte môžu chýbať. Zvyčajne to netrvá dlhšie ako dve minutky.
+            p Ďakujeme za trpezlivosť :)
+            a(href="#").btn Zobraziť profil
