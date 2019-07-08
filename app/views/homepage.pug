@@ -8,7 +8,7 @@ include ./mixins/collectionItem
 
 block opts
     - var pageTitle = 'Homepage'
-    - var gdpr = true;
+    - var gdpr = false;
 
 mixin preVas
   section.mb-large
@@ -359,3 +359,29 @@ block content
               +icon('arrow-left').icon--medium
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
               +icon('arrow-right').icon--medium
+
+  .modal-overlay.active#gdpr-modal(data-modal)
+    .modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h2 Súhlas s uložením údajov
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#gdpr-modal")
+              +icon('close').icon--medium
+
+        .modal__content
+          .mb-medium
+
+          .row.mb-none
+            .col--m-8.ofst--m-2
+              .text-center.mb-large
+                p Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje. Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
+
+              .bar.align-items-center
+                .bar__item
+                  a.link Viac informácií
+                .bar__item
+                  a(href="#").btn.btn--ghost Neskôr
+                .bar__item
+                  a(href="#").btn.btn--primary Súhlasím
