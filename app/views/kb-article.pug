@@ -132,7 +132,7 @@ block content
                 ul.list--no-offset
                   each  item, i in treeMenu
                     li.text-space-left.mb-small
-                      a.link=item
+                      a.text-medium.link.link--black(class=i==2 ? 'text-semibold' : 'text-color-grey-dark')=item
                   li.text-space-left.mb-small
                     a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-1", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
                       +icon('chevron-right').text-color-grey.icon--medium.text-space-right-tiny
@@ -141,7 +141,7 @@ block content
                       ul.list--no-offset
                         each  item, i in treeMenu
                           li.text-space-left.mb-small
-                            a.link=item
+                            a.text-medium.link.link--black(class=i==2 ? 'text-semibold' : 'text-color-grey-dark')=item
                         li.text-space-left.mb-small
                           a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-2", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
                             +icon('chevron-right').text-color-grey.icon--medium.text-space-right-tiny
@@ -150,10 +150,10 @@ block content
                             ul.list--no-offset
                               each  item, i in treeMenu
                                 li.text-space-left.mb-small
-                                  a.link=item
+                                  a.text-medium.link.link--black(class=i==2 ? 'text-semibold' : 'text-color-grey-dark')=item
                         each  item, i in treeMenu
                           li.text-space-left.mb-small
-                            a.link=item
+                            a.text-medium.link.link--black(class=i==2 ? 'text-semibold' : 'text-color-grey-dark')=item
                     a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-x", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
                       +icon('chevron-right').text-color-grey.icon--medium.text-space-right-tiny
                       | Naše hodnoty
