@@ -5,7 +5,8 @@ include ./../mixins/xmas
     .col--fill
       h2.no-mrg Filter
     .col--shrink
-      a.link.text-transform-upper.text-small zmazať filter
+      if !collapseFilters
+        a.link.text-transform-upper.text-small zmazať filter
   if xmas
     .filter__cat
       .filter__cat-name
@@ -21,9 +22,9 @@ include ./../mixins/xmas
   dl.filter__cat
     dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-show-only", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Zobrazit iba
-          +icon('chevron-up', 'icon--medium').text-color-grey
-    dd.filter__cat-items#filter-show-only(data-toggle-class="hide")
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-show-only", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Zobrazit iba
+          +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-show-only(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
       .form-control.form-control--group.no-mrg-bottom
         .radiocheck-group
           .form-control.form-control--checkbox
@@ -57,9 +58,9 @@ include ./../mixins/xmas
   dl.filter__cat
     dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-product-type", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Typ produktu
-          +icon('chevron-up', 'icon--medium').text-color-grey
-    dd.filter__cat-items#filter-product-type(data-toggle-class="hide")
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-product-type", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Typ produktu
+          +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-product-type(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
       .form-control.form-control--group.no-mrg-bottom
         .radiocheck-group
           .form-control.form-control--checkbox
@@ -81,9 +82,9 @@ include ./../mixins/xmas
   dl.filter__cat
     dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-formats", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Formáty
-          +icon('chevron-up', 'icon--medium').text-color-grey
-    dd.filter__cat-items#filter-formats(data-toggle-class="hide")
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-formats", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Formáty
+          +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-formats(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
       .form-control.form-control--group.no-mrg-bottom
         .radiocheck-group
           .form-control.form-control--checkbox
@@ -125,9 +126,9 @@ include ./../mixins/xmas
   dl.filter__cat
     dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-authors", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Autori
-          +icon('chevron-up', 'icon--medium').text-color-grey
-    dd.filter__cat-items#filter-authors(data-toggle-class="hide")
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-authors", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Autori
+          +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-authors(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
       .form-control.form-control--input
         input.input.filter__search(type="text", name="filter-author", id="filter-author", placeholder="Vyhľadajte autora")
       .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
@@ -178,9 +179,9 @@ include ./../mixins/xmas
   dl.filter__cat
     dt.filter__cat-name
       .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-languages", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger) Jazyky
-          +icon('chevron-up', 'icon--medium').text-color-grey
-    dd.filter__cat-items#filter-languages(data-toggle-class="hide")
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-languages", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Jazyky
+          +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
+    dd.filter__cat-items#filter-languages(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
       .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
         .radiocheck-group
           .form-control.form-control--checkbox
