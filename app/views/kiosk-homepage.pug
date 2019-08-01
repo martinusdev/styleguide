@@ -1,0 +1,131 @@
+extends layouts/_kiosk
+
+include ./mixins/booksCarouselRecommended
+include ./mixins/breadcrumbs
+include ./mixins/pagination
+include ./mixins/review
+include ./mixins/sectionHeader
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Homepage';
+    - var backButton = true;
+
+block content
+  main
+    div(data-sticky-container)
+
+      section.section.section--secondary.no-pad-top(style="background-color: #133f7e;")
+        .wrapper-main
+          a(href='#')
+            img.show-m.img.img--fluid(src="images/content/banners/banner.jpg").no-mrg
+            img.hide-m.img.img--fluid(src="images/content/banners/banner-mobile.jpg").no-mrg
+
+      section.section.section--small.section--secondary
+        .wrapper-main
+          h2.mb-medium Práve teraz sa najviac kupuje na Obchodnej
+          -
+            var swiperConfig = {
+              slidesPerView: 'auto',
+              slidesPerGroup: 7,
+              nextButton: '.carousel__btn--next',
+              prevButton: '.carousel__btn--prev',
+              breakpoints: {
+                1024: {
+                  slidesPerGroup: 5,
+                },
+                768: {
+                  spaceBetween: 20,
+                  slidesPerGroup: 3,
+                },
+                640: {
+                  spaceBetween: 20,
+                  slidesPerGroup: 2,
+                },
+                480: {
+                  spaceBetween: 20,
+                  slidesPerGroup: 1,
+                }
+              },
+            };
+            swiperConfig = JSON.stringify(swiperConfig);
+          .carousel.carousel--fade-outside.mb-medium
+            .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
+              ul.swiper-wrapper.list--counter.no-pad(data-equal-columns)
+                each item, i in [...books, ...books, ...books, ...books]
+                  li.swiper-slide.carousel__product-detail(data-equal-column)
+                    .product.mb-small.text-left.flex.flex-column.align-items-right(style="height: 100%;")
+                      +productCover({cover: item.cover, href: 'kiosk-detail.html'})
+                      +productTitle({title: item.title, author: item.author, href: 'kiosk-detail.html'})
+
+              button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+                +icon('arrow-left').icon--medium
+              button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+                +icon('arrow-right').icon--medium
+
+      section.section.section--small
+        .wrapper-main
+          +kioskFeatured
+            h2.mb-medium Posledné detektívky, čo nás zaujali
+
+        hr
+
+        .wrapper-main
+          +kioskFeatured
+            h2.mb-medium Posledné romány, čo nás zaujali
+
+        hr
+
+        .wrapper-main
+          +kioskFeatured
+            h2.mb-medium Posledné sci-fi a fantasy, čo nás zaujali
+
+block append modals
+
+  .modal-overlay.modal-overlay--dark#map-modal(data-modal)
+    article.modal.modal--full.hide
+    .product-preview
+      .product-preview__header.bar
+        .bar__item.bar__item--fill
+          h2.text-color-white.show-m Sherlock Holmes 2: Dobrodružstvá Sherlocka Holmesa
+        .bar__item
+          button.btn.btn--clean(data-toggle="#map-modal").text-color-white
+            span Zatvoriť
+            +icon('close').icon--medium.icon--right
+
+      .product-preview__content
+        | mapa sem
+
+  .modal-overlay.modal-overlay--dark#product-preview(data-modal)
+    article.modal.modal--full.hide
+    .product-preview(data-product-preview)
+      .product-preview__header.bar
+        .bar__item.bar__item--fill
+          h2.text-color-white.show-m Sherlock Holmes 2: Dobrodružstvá Sherlocka Holmesa
+        .bar__item
+          button.btn.btn--clean(data-toggle="#product-preview").text-color-white
+            span Zatvoriť
+            +icon('close').icon--medium.icon--right
+
+      .product-preview__content
+        .product-preview__control.show-m
+          .bar.bar--vertical
+            .bar__item
+              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-toggle='#product-preview-slider, self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-zoom-out`)
+                +icon('zoom-in').icon--medium
+            .bar__item
+              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-prev)
+                +icon('arrow-up').icon--medium
+            .bar__item.text-center
+              p.text-semibold
+                span.text-color-white(data-product-preview-page) 1
+                span.text-color-grey  /#{' '}
+                span.text-color-grey 5
+            .bar__item
+              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-next)
+                +icon('arrow-down').icon--medium
+
+        .product-preview__slider(data-product-preview-slider)#product-preview-slider
+          each product, index in Array(5)
+            .product-preview__page(data-product-preview-slide=`${index}`)
+              img.img--fluid(src=`${assetsPrefix}images/content/book-preview/preview-1.jpg`)
