@@ -1,0 +1,128 @@
+extends layouts/_default
+
+include ./mixins/icon
+include ./mixins/breadcrumbs
+include ./modules/club-profile
+
+block opts
+  - var pageTitle = 'Môj profil'
+  - var headerWarning = false
+
+block content
+  main.account
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Čitateľské profily', 'Janko Martinusák']})
+
+
+    +userHeader({activeItem: 0, private: true})
+
+    //section.section.bg-blue-ci
+      .wrapper-main
+        .row
+          .col--m-3
+            .bar
+              .bar__item(style="position: relative;")
+                .portrait.portrait--xlarge.show-m(style="background-image: url('images/content/avatars/f.jpg');")
+                .portrait.portrait--large.hide-m(style="background-image: url('images/content/avatars/f.jpg');")
+                .badge.badge--blue(style="position: absolute; top: 0;")
+                  .h1.mb-none 13
+                div(style="position: absolute; bottom: 0;")
+                  img(src="images/content/logo-small.svg")
+              .bar__break.show-m
+              .bar__item
+                .bar.mb-none
+                  .bar__item.bar__item--fill
+                    h1.h2.text-color-white.mb-tiny Janko Martinusák
+                .bar
+                  .bar__item
+                    //span.badge
+                      | 1239 bodov
+                    //+icon('info').icon--medium.text-color-white(title="Lorem ipsum dolor sit amet", data-tooltip)
+                    //a.btn.btn--small.btn--clean
+                      +icon('edit').icon--small
+                      | #{' '}Upraviť
+                    form
+                      button.btn.btn--small.mb-none
+                        +icon('eye').icon--medium.icon--left
+                        | #{' '}Sledovať
+                      button.btn.btn--small.mb-none.btn--clean
+                        +icon('check-circle').icon--small.icon--left
+                        | #{' '}Sledované
+                  .bar__item.bar__item--shrinkable
+                    a.btn.btn--small.btn--equal
+                      +icon('fb').icon--small
+                    | #{' '}
+                    a.btn.btn--small.btn--equal
+                      +icon('link').icon--small
+
+
+
+          .col--m-9.text-center
+            -
+              var swiperConfig = {
+                nextButton: '.carousel__btn--next',
+                prevButton: '.carousel__btn--prev',
+                slidesPerView: 'auto',
+                slidesPerGroup: 5,
+                spaceBetween: 20,
+                breakpoints: {
+                  768: {
+                    slidesPerGroup: 2,
+                  },
+                  480: {
+                    slidesPerGroup: 1,
+                  }
+                },
+              };
+              swiperConfig = JSON.stringify(swiperConfig);
+            .carousel.carousel--shelf.mb-large.inline-block.mb-none-m
+              .swiper-container(data-swiper-options=swiperConfig)
+                .swiper-wrapper
+                  each item, index in books
+                    if index < 3
+                      +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+                        +productCover({cover: item.cover, href: '#'}).mb-none
+                  each item, index in [1,2]
+                    +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+                      +productCover({cover: 'images/content/book-empty.svg', href: '#'}).mb-none
+
+    section.section
+      .wrapper-main
+        .row
+
+          .col--l-3.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+              +userAbout
+
+          .hide-l.mb-large
+            #user-about(data-collapse="150")
+              +userAbout
+            a.link.text-medium(href="javascript:void(0)", data-toggle="#user-about, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej")
+              | <span data-toggle-text-target>Zobraziť viac</span>
+              +icon('arrow-down').icon--left
+
+          .col--l-9.col--12
+
+            +userFeed
+
+  .modal-overlay.active#calculating-modal(data-modal)
+    .modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h2 Váš profil bude čoskoro pripravený
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#after-review-modal")
+              +icon('close').icon--medium
+
+        img.img(src="https://mrtns.eu/img/custom/62683_header_profil.jpg")
+
+        .modal__content
+          .text-center.mb-medium
+            p Údaje o vašom profile sa ešte chvíľu budú prepočítavať. Profil si samozrejme môžete pozrieť hneď, ale niektoré údaje a odznaky v ňom ešte môžu chýbať. Zvyčajne to netrvá dlhšie ako dve minutky.
+            p Ďakujeme za trpezlivosť :)
+            a(href="#").btn Zobraziť profil

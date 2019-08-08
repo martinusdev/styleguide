@@ -6,13 +6,12 @@ include ./mixins/productHorizontal
 
 block opts
   - var pageTitle = 'Môj klubový profil'
-  - var previewButton = true
 
 block content
   main.account
 
     include modules/account-header
-    +accountHeader({ navActive: 4, saveButton: true })
+    +accountHeader({ navActive: 6, saveButton: true, previewButton: true })
 
     section.section
       .wrapper-main
@@ -154,11 +153,11 @@ block content
           .col--l-2.show-l
             .bar.bar--vertical.align-items-bottom.mb-small(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
               .bar__item
-                button.btn
+                a.btn(href="club-profile-private.html")
                   +icon('save', 'icon--medium').icon--left
                   | Uložiť zmeny
               .bar__item
-                button.btn.btn--primary
+                a.btn.btn--primary(href="club-profile-public.html")
                   +icon('eye', 'icon--medium').icon--left
                   | Náhľad profilu
 

@@ -11,39 +11,39 @@ block opts
     const subNav = [
       {
         title: 'Všetky moje tituly',
-        href: '#',
+        href: 'my-library.html',
         pill: 69,
       },
       {
         title: 'Kúpené v kníkupectve',
-        href: '#',
+        href: 'my-library.html',
         pill: 102,
         icon: 'smart-list',
         iconColor: 'text-color-grey'
       },
       {
         title: 'Kúpené na webe',
-        href: '#',
+        href: 'my-library.html',
         pill: 9,
         icon: 'smart-list',
         iconColor: 'text-color-grey'
       },
       {
         title: 'Čítam',
-        href: '#',
+        href: 'my-library.html',
         icon: 'time',
         iconColor: 'text-color-blue'
       },
       {
         title: 'Prečítané',
-        href: '#',
+        href: 'my-library.html',
         pill: 8,
         icon: 'check-circle',
         iconColor: 'text-color-success'
       },
       {
         title: 'Neprečítané',
-        href: '#',
+        href: 'my-library.html',
         pill: 2,
         icon: 'circle',
         iconColor: 'text-color-grey'
@@ -52,21 +52,21 @@ block opts
     const subNav2 = [
       {
         title: 'Wishlist',
-        href: '#',
+        href: 'my-library.html',
         pill: 120,
         icon: 'guard',
         iconColor: 'text-color-grey'
       },
       {
         title: 'Vianoce 2017',
-        href: '#',
+        href: 'my-library.html',
         pill: 8,
         icon: 'link',
         iconColor: 'text-color-grey'
       },
       {
         title: 'Pre bratranca',
-        href: '#',
+        href: 'my-library.html',
         pill: 2,
         icon: 'eye',
         iconColor: 'text-color-grey'
@@ -78,7 +78,7 @@ block content
 
     include modules/account-header
     +accountHeader({
-      navActive: 0,
+      navActive: 4,
       subNav,
     }).show-l
 
@@ -187,8 +187,8 @@ block content
                       #kniha-autocomplete-container
 
 
-            .mb-large
-            .row.mb-large
+            //.mb-large
+            //.row.mb-large
               .col--m-8.ofst--m-2
                 .card.bg-blue
                   .card__content

@@ -4,12 +4,8 @@ include ./../mixins/icon
 mixin accountHeader(props = {})
   -
     const {
-      name = 'Bartolomej Najsčítanejší',
+      name = 'Janko Martinusák',
       nav = [
-        {
-          title: 'Moja knižnica',
-          href: 'my-library.html',
-        },
         {
           title: 'Na stiahnutie',
           href: 'to-download',
@@ -27,32 +23,57 @@ mixin accountHeader(props = {})
           href: 'mail-notifications.html',
         },
         {
-          title: 'Klub',
+          title: 'Moja knižnica',
+          href: 'my-library.html',
+        },
+        {
+          title: 'Môj profil',
+          href: 'club-profile-private.html',
+        },
+        {
+          title: 'Úpravy profilu',
           href: 'club-settings.html',
+        },
+        {
+          title: 'Náhľad profilu',
+          href: 'club-profile-public.html',
         },
       ],
       navActive = 0,
       saveButton = false,
+      previewButton = false,
     } = props;
 
   section.section.section--secondary.section--small.mb-none&attributes(attributes)
     .wrapper-main
-      .row.align-items-middle
-        .col--m-4.mb-medium
-          .bar.no-mrg-bottom
-            .bar__item
-              .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-            .bar__item.bar__item--fill
-              h1.h3.text-color-black.text-semibold.no-mrg-bottom= name
-              h2.h5 Môj martinus
-        .col--m-8.mb-medium.show-m
-          .bar.no-mrg-bottom
-            .bar__item.bar__item--fill
-              +inlineNav({ items: nav, active: navActive }).no-mrg-bottom.show-l
-            .bar__item.text-right.show-l
-              button.btn.btn--clean.btn--small.no-mrg-bottom
-                | Odhlásiť sa
-                +icon('logout', 'icon--medium').icon--right
+        .bar.mb-medium
+          .bar__item
+            .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+          .bar__item.bar__item--shrinkable
+            h1.h3.text-color-black.text-semibold.no-mrg-bottom= name
+            h2.h5 Môj martinus
+          .bar__item.bar__item--fill.show-l.text-center
+            +inlineNav({ items: nav, active: navActive, max: 4 }).no-mrg-bottom
+          .bar__item.bar__item--shrinkable.show-l
+            nav
+              ul.list-inline.inline-nav.no-mrg-bottom
+                li.inline-nav__item.text-size-regular
+                  a.inline-nav__link(href="my-library.html", class = pageTitle == 'Moja knižnica' ? 'is-active' : '') Moja knižnica
+
+                .btn-dropdown.btn-dropdown--no-icon.mb-none
+                  a.inline-nav__link(data-toggle-expand data-toggle="next", class = pageTitle.indexOf('profil') != -1 ? 'is-active' : '') Môj profil
+                    +icon('chevron-down').icon--medium
+                  .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false")
+                    .dropdown__wrap
+                      a(href="club-profile-private.html").dropdown__item Zobraziť
+                      a(href="club-settings.html").dropdown__item Upraviť
+                      a(href="club-profile-public.html").dropdown__item Náhľad
+
+          .bar__item.bar__item--border.show-l
+          .bar__item.text-right.show-l
+            button.btn.btn--clean.btn--small.no-mrg-bottom.no-pad
+              | Odhlásiť sa
+              +icon('logout', 'icon--medium').icon--right
 
   section.section.section--secondary.section--toolbar.hide-l(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)&attributes(attributes)
     .wrapper-main
@@ -102,12 +123,11 @@ mixin accountHeader(props = {})
           .bar__item
             button.btn
               +icon('save', 'icon--medium').icon--left
-              | Uložiť zmeny
+              | Uložiť
         if previewButton
           .bar__item
-            button.btn.btn--primary
-              +icon('eye', 'icon--medium').icon--left
-              | Náhľad
+            button.btn.btn--primary.btn--equal
+              +icon('eye', 'icon--medium')
 
         .bar__item.text-right
           button.btn.btn--clean.btn--small.no-mrg-bottom
