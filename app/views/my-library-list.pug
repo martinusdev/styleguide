@@ -3,75 +3,10 @@ extends layouts/_default
 include mixins/product
 include mixins/xmas
 include ./mixins/icon
+include modules/my-library-sidenav
 
 block opts
   - var pageTitle = 'Moja knižnica'
-
-  -
-    const subNav = [
-    {
-    title: 'Všetky moje tituly',
-    href: 'my-library.html',
-    pill: 69,
-    },
-    {
-    title: 'Kúpené v kníkupectve',
-    href: 'my-library.html',
-    pill: 102,
-    icon: 'smart-list',
-    iconColor: 'text-color-grey'
-    },
-    {
-    title: 'Kúpené na webe',
-    href: 'my-library.html',
-    pill: 9,
-    icon: 'smart-list',
-    iconColor: 'text-color-grey'
-    },
-    {
-    title: 'Čítam',
-    href: 'my-library.html',
-    icon: 'time',
-    iconColor: 'text-color-blue'
-    },
-    {
-    title: 'Prečítané',
-    href: 'my-library.html',
-    pill: 8,
-    icon: 'check-circle',
-    iconColor: 'text-color-success'
-    },
-    {
-    title: 'Neprečítané',
-    href: 'my-library.html',
-    pill: 2,
-    icon: 'circle',
-    iconColor: 'text-color-grey'
-    },
-    ];
-    const subNav2 = [
-    {
-    title: 'Wishlist',
-    href: 'my-library.html',
-    pill: 120,
-    icon: 'guard',
-    iconColor: 'text-color-grey'
-    },
-    {
-    title: 'Vianoce 2017',
-    href: 'my-library.html',
-    pill: 8,
-    icon: 'link',
-    iconColor: 'text-color-grey'
-    },
-    {
-    title: 'Pre bratranca',
-    href: 'my-library.html',
-    pill: 2,
-    icon: 'eye',
-    iconColor: 'text-color-grey'
-    },
-    ];
 
 block content
   main.account
@@ -87,54 +22,7 @@ block content
         .row
           .col--l-3
             div
-              ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
-                each item, index in subNav
-                  li(class= index === 6 ? 'is-active' : '')
-                    a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
-                      if item.icon
-                        +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
-                      = item.title
-                      if item.pill
-                        .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
-
-              h2.h3 Moje zoznamy a kolekcie
-
-              ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
-                each item, index in subNav2
-                  li(class= index === 6 ? 'is-active' : '')
-                    a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
-                      if item.icon
-                        +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
-                      = item.title
-                      if item.pill
-                        .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
-
-              .btn-layout.btn-layout--vertical
-                button.btn(data-toggle='#add-list')
-                  | Pridať zoznam alebo kolekciu
-                //.btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
-                  button.btn(
-                    data-toggle='self, next',
-                    data-toggle-expand,
-                    aria-haspopup="true"
-                  )
-                    | Pridať zoznam
-                  #addList.dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-dropdown-interactive, data-toggle-expand)
-                    .dropdown__wrap
-                      .card.mb-none
-                        .card__content.card__content--condensed
-                          .bar.flex-nowrap
-                            .bar__item.bar__item--fill.text-nowrap
-                              | Nový zoznam
-                            .bar__item
-                              button.btn.btn--clean.btn--small(data-toggle='#addList')
-                                +icon('close', 'icon--small', 'Naspäť')
-                          .form-control.form-control--input
-                            input(name="addListInput", id="addListInput", placeholder="napr. otcovi na Vianoce").input
-                          .btn-layout--vertical
-                            button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
-
-              p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
+              +myLibrarySidenav2
 
           .col--l-9.col--12.mb-large.show-l
             .bar.mb-medium
