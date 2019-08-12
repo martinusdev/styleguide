@@ -23,8 +23,9 @@ mixin kioskFeatured
             .bar.bar--small
               .bar__item
                 .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-              .bar__item
+              .bar__item.line-small
                 span.text-semibold.text-medium Tomáš Ulej
+                .text-small Kníhkupec
               .bar__item
                 .rating-star.bar__item.align-items-center.no-mrg
                   each star, starIndex in Array(5)
@@ -100,7 +101,7 @@ html.no-js
                 .header-search__search(style="max-width: 100%;")
                   form#search-form.form-control.form-control--input.no-mrg-bottom
                     .input-addons
-                      input.input.input--dark#search-in-header(type='text', placeholder="Hľadáte knihu? Ťuknite a začnite písať...", data-input, data-toggle-focus)
+                      input.input.input--dark#search-in-header(type='text', placeholder="Hľadáte knihu? Ťuknite a začnite písať...", data-input, data-toggle-focus, autocomplete="off")
                       .input-addons__item.header-search__empty.input-addons__item--dark
                         +icon('search', '', 'Search').icon--medium
                       .input-addons__item.input-addons__item.no-pad.header-search__value
@@ -155,17 +156,36 @@ html.no-js
 
     block scripts
       script.
+
+        function showSearch() {
+          document.querySelector('#search-modal').classList.remove('hide');
+          window.myApp.Modal.lockBody();
+        }
+
+        function hideSearch() {
+          document.querySelector('#search-modal').classList.add('hide');
+          window.myApp.Modal.unlockBody();
+        }
+
         document.addEventListener('myAppLoaded', function() {
 
           let search = document.querySelector('#search-form');
-          document.querySelector('#search-modal-close').addEventListener('click', function(){
-            document.querySelector('#search-modal').classList.add('hide');
-            window.myApp.Modal.unlockBody();
-          });
-          search.addEventListener('submit', function(e){
-            e.preventDefault();
 
-            document.querySelector('#search-modal').classList.remove('hide');
-            window.myApp.Modal.lockBody();
+          search.addEventListener('click', function (e) {
+            showSearch();
           });
+
+          search.addEventListener('keydown', function (e) {
+            showSearch();
+          });
+
+          search.addEventListener('submit', function (e) {
+            e.preventDefault();
+            window.location.href = 'kiosk-detail.html';
+          });
+
+          document.querySelector('#search-modal-close').addEventListener('click', function(){
+            hideSearch();
+          });
+
         });

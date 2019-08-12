@@ -1,0 +1,381 @@
+include ../mixins/icon
+include ../mixins/product
+include ../mixins/productHorizontal
+
+mixin userHeader (props = {})
+
+  -
+    const {
+      private = false,
+      activeItem = 0,
+    } = props;
+
+    var items = [
+      {
+        title: 'Profil',
+        link: 'club-profile-public.html'
+      },
+      {
+        title: 'Kolekcie',
+        link: 'club-library.html'
+      }
+    ];
+
+  section.section.section--small.bg-blue-ci.mb-none
+    .wrapper-main
+      .bar.mb-medium
+        .bar__item(style="position: relative;").mb-medium.mb-none-m
+          .portrait.portrait--large(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+          div(style="position: absolute; bottom: 0;")
+            img(src="images/content/logo-small.svg")
+        .bar__item.bar__item--shrinkable
+          .flex
+            .flex-shrinkable.text-space-right
+              h1.h1.text-color-white.mb-tiny Janko Martinusák
+            .flex-shrinkable
+              .badge.badge--blue
+                .h1.mb-none 13
+          .bar.mb-none
+            .bar__item
+              if (private)
+                a.btn.btn--small.mb-none(href="club-settings.html")
+                  +icon('edit').icon--medium.icon--left
+                  | #{' '}Upraviť
+              else
+                form
+                  button.btn.btn--small.mb-none
+                    +icon('eye').icon--medium.icon--left
+                    | #{' '}Sledovať
+            .bar__item.bar__item--shrinkable
+              a.btn.btn--small.btn--equal
+                +icon('fb').icon--small
+              | #{' '}
+              a.btn.btn--small.btn--equal
+                +icon('link').icon--small
+
+        .bar__break.hide-m
+        .bar__item.bar__item--fill.text-left.text-left.text-right-m
+          nav
+            ul.list-inline.mb-none.inline-nav
+              each item, i in items
+                li.text-space-right.inline-nav__item
+                  a.h2.link.link--white.text-space-right.inline-nav__link(href=`${item.link}`, class= i == activeItem ? 'is-active' : '')= item.title
+
+mixin userAbout (props = {})
+  -
+    const {
+      private = false,
+    } = props;
+
+  if !private
+    .mb-medium
+      p.mb-small Páči sa ti môj profil a chcel by si mať podobný aj ty?
+      button.btn Založiť si profil
+
+  .h5.mb-none Práve čítam
+  .bar
+    .bar__item.bar__item--shrinkable.text-space-right
+      .product__img.product__cover
+        .thumbnail.thumbnail--book.thumbnail--small
+          a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+            .thumbnail__img-wrap
+              img(src=`https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754`).img
+    .bar__item.bar__item--fill
+      a.link.link--product Základy rybolovu pro kluky a holky
+
+  h5 O mne
+  p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris viverra lobortis massa, sit amet viverra risus. Nullam ac pellentesque purus, non placerat tortor. Praesent maximus orci ac risus sollicitudin interdum. Vivamus diam mauris, blandit at convallis sed, rutrum vel libero.
+
+  h5 Obľúbené literárne žánre
+  .badges
+    .badge.mb-small Sci-fi & Fantasy
+    .badge.mb-small Detektívky
+    .badge.mb-small Odborná literatúra
+
+  h5 Obľúbení autori
+  .badges
+    .badge.mb-small Douglas Adams
+    .badge.mb-small George Orwell
+    .badge.mb-small Odborná literatúra
+
+  h5 Moje wishlisty
+  ul.list--unstyled.mb-large
+    li
+      a.link Najlepšie fantasy
+    li
+      a.link Vesmírne opery
+
+
+
+mixin userFeed()
+
+  //h2 Moje benefity
+    +icon('info').icon--medium(title="Lorem ipsum dolor sit amet", data-tooltip)
+  //.row
+    .col--m-3.col--6
+      .card.card--material.card--material-green.line-small
+        .card__label 379 bodov
+        .card__content.card__content--condensed
+          b.text-medium Knihomoľská taška
+    .col--m-3.col--6
+      .card.card--material.card--material-green.line-small
+        .card__label 749 bodov
+        .card__content.card__content--condensed
+          b.text-medium Zľava 2€ nad 19€
+    .col--m-3.col--6
+      .card.card--material
+        .card__label 1199 bodov
+        .card__content.card__content--condensed.line-small
+          b.text-medium.text-color-grey-dark Zľava 25% na najdrahšiu knihu
+    .col--m-3.col--6
+      .card.card--material
+        .card__label 1999 bodov
+        .card__content.card__content--condensed.line-small
+          b.text-medium.text-color-grey-dark Zľava 15% na celý nákup
+
+  -
+    var swiperConfig = {
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+      slidesPerView: 'auto',
+      slidesPerGroup: 5,
+      spaceBetween: 20,
+      breakpoints: {
+        768: {
+          slidesPerGroup: 2,
+        },
+        480: {
+          slidesPerGroup: 1,
+        }
+      },
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+
+  h2 Moje srdcovky
+
+  .card.card--material.card--material-primary
+    .card__content
+      .carousel
+        .swiper-container(data-swiper-options=swiperConfig)
+          .swiper-wrapper
+            each item, index in books
+              if index < 3
+                +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+                  +productCover({cover: item.cover, href: '#'}).mb-none
+            each item, index in [1,2]
+              +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+                +productCover({cover: 'images/content/book-empty.svg', href: '#'}).mb-none
+
+  h2 Moje odznaky
+
+  .mb-large
+    #badges.club-badges(data-collapse="150").mb-small
+      .club-badges__item
+        .club-badge.bg-orange
+          img(src="images/content/club/badges/badges-43.png")
+      .club-badges__item
+        .club-badge
+          img(src="images/content/club/badges/badges-01.png")
+      .club-badges__item
+        .club-badge.bg-blue-ci
+          img(src="images/content/club/badges/badges-02.png")
+          .year
+            .badge.badge--blue 2018
+      .club-badges__item
+        .club-badge.bg-yellow
+          img(src="images/content/club/badges/badges-03.png")
+      .club-badges__item
+        .club-badge.bg-green
+            img(src="images/content/club/badges/badges-04.png")
+      .club-badges__item
+        .club-badge.bg-violet
+          img(src="images/content/club/badges/badges-05.png")
+      .club-badges__item
+        .club-badge
+          img(src="images/content/club/badges/badges-01.png")
+      .club-badges__item
+        .club-badge.bg-blue-ci
+          img(src="images/content/club/badges/badges-02.png")
+          .year
+            .badge.badge--blue 2018
+      .club-badges__item
+        .club-badge.bg-yellow
+          img(src="images/content/club/badges/badges-03.png")
+      .club-badges__item
+        .club-badge.bg-green
+          img(src="images/content/club/badges/badges-04.png")
+      .club-badges__item
+        .club-badge.bg-violet
+          img(src="images/content/club/badges/badges-05.png")
+      .club-badges__item
+        .club-badge
+          img(src="images/content/club/badges/badges-01.png")
+      .club-badges__item
+        .club-badge.bg-blue-ci
+          img(src="images/content/club/badges/badges-02.png")
+          .year
+            .badge.badge--blue 2018
+      .club-badges__item
+        .club-badge.bg-yellow
+          img(src="images/content/club/badges/badges-03.png")
+      .club-badges__item
+        .club-badge.bg-green
+          img(src="images/content/club/badges/badges-04.png")
+      .club-badges__item
+        .club-badge.bg-violet
+          img(src="images/content/club/badges/badges-05.png")
+
+    a.link.text-medium(href="javascript:void(0)", data-toggle="#badges, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej")
+      | <span data-toggle-text-target>Zobraziť viac</span>
+      +icon('arrow-down').icon--left
+
+  h2 Moje čitateľské kolekcie
+
+  -
+    var swiperConfig = {
+      slidesPerView: 'auto',
+      slidesPerGroup: 7,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+      breakpoints: {
+        1024: {
+          slidesPerGroup: 5,
+        },
+        768: {
+          spaceBetween: 20,
+          slidesPerGroup: 3,
+        },
+        640: {
+          spaceBetween: 20,
+          slidesPerGroup: 2,
+        },
+        480: {
+          spaceBetween: 20,
+          slidesPerGroup: 1,
+        }
+      },
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel&attributes(attributes)
+    .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
+      .swiper-wrapper
+        each item,i in books
+          if i < 2
+            a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).swiper-slide.carousel__product-detail
+              +product().mb-small.text-left
+                +productCover({cover: item.cover, collection: true})
+                +productTitle({
+                  collection: true, title: 'Kolekcia', author: false
+                })
+        a(href=`${assetsPrefix}my-library${htmlPostfix}#add-list`, style="position: relative;").swiper-slide.carousel__product-detail
+          +product().mb-small.text-left
+            .product__cover.collection
+              .thumbnail.thumbnail--book.thumbnail--large
+                each i, index in Array(3)
+                  .thumbnail__img-wrap
+                    img(src=`${assetsPrefix}images/content/book-empty.svg`).img
+            +productTitle({
+              collection: true, title: 'Pridať kolekciu', author: false
+            })
+          +icon('plus').icon--xxlarge.text-color-grey(style="position: absolute; left: 25%; transform: translateX(-25%); top: 15%; z-index: 4;")
+
+    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+      +icon('arrow-left').icon--medium
+    button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+      +icon('arrow-right').icon--medium
+
+  h2 Moje aktivity
+
+  .row.mb-large
+    .col--1.show-m
+      .bar
+        .bar__item.bar__item--shrinkable
+          .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+    .col--12.col--m-11
+      .bar
+        .bar__item.bar__item--fill
+          .bar.mb-none
+            .bar__item.bar__item--shrinkable.hide-m
+              .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+            .bar__item.bar__item--fill
+              p
+                b Janko Martinusák
+                | #{' '}získal/a odznak#{' '}
+                b Magický návrat
+        .bar__break.hide-m
+        .bar__item.bar__item--shrinkable.text-right
+          .h5 24.5.2018 20:31
+
+      hr.mb-medium
+
+      .card.card--well.inline-block
+        .card__content
+          .club-badge.club-badge--large.bg-blue-ci
+            img(src="images/content/club/badges/badges-02.png")
+            .year
+              .badge.badge--blue 2018
+
+  .row.mb-large
+    .col--1.show-m
+      .bar
+        .bar__item.bar__item--shrinkable
+          .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+    .col--12.col--m-11
+      .bar
+        .bar__item.bar__item--fill
+          .bar.mb-none
+            .bar__item.bar__item--shrinkable.hide-m
+              .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+            .bar__item.bar__item--fill
+              p
+                b Janko Martinusák
+                | #{' '}pridal/a knihu do knižnice ako#{' '}
+                b prečítanú
+        .bar__break.hide-m
+        .bar__item.bar__item--shrinkable.text-right
+          .h5 24.5.2018 20:31
+
+      hr.mb-medium
+      -
+        var item = {
+        xmas: false
+        };
+      .card.card--well.inline-block
+        .card__content
+          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+
+  each i in [1, 2, 3]
+    .row.mb-large
+      .col--1.show-m
+        .bar
+          .bar__item.bar__item--shrinkable
+            .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+      .col--12.col--m-11
+        .bar
+          .bar__item.bar__item--fill
+            .bar.mb-none
+              .bar__item.bar__item--shrinkable.hide-m
+                .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
+              .bar__item.bar__item--fill
+                p
+                  b Janko Martinusák
+                  | #{' '}napísal/a recenziu
+          .bar__break.hide-m
+          .bar__item.bar__item--shrinkable
+            .rating-star.bar__item.align-items-center.no-mrg-top
+              each star, starIndex in Array(5)
+                +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
+          .bar__item.bar__item--shrinkable.text-right
+            .h5 24.5.2018 20:31
+
+        hr.mb-medium
+
+        p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
+
+        -
+          var item = {
+          xmas: false
+          };
+        .card.card--well.inline-block
+          .card__content
+            +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg

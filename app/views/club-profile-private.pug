@@ -1,0 +1,60 @@
+extends layouts/_default
+
+include ./mixins/icon
+include ./modules/club-profile
+
+block opts
+  - var pageTitle = 'Môj profil'
+  - var headerWarning = false
+
+block content
+  main.account
+
+    include modules/account-header
+    +accountHeader({
+      navActive: 5,
+      subNav,
+      saveButton: true,
+      previewButton: true,
+    })
+
+    section.section
+      .wrapper-main
+        .row
+
+          .col--l-3.show-l(data-sticky-container)
+            div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
+              +userAbout({private: true})
+
+          .hide-l.mb-large
+            .btn-layout.btn-layout--horizontal.align-items-right
+              a.btn.btn--clean
+                +icon('fb').icon--medium.icon--left
+                | #{'Zdieľať'}
+              a.btn.btn--clean
+                +icon('link').icon--medium.icon--left
+                | #{'kopírovať odkaz'}
+            #user-about(data-collapse="150")
+              +userAbout({private: true})
+            a.link.text-medium(href="javascript:void(0)", data-toggle="#user-about, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej")
+              | <span data-toggle-text-target>Zobraziť viac</span>
+              +icon('arrow-down').icon--left
+
+          .col--l-9.col--12
+
+            .btn-layout.btn-layout--horizontal.align-items-right.mb-none.show-l
+              a.btn.btn--clean
+                +icon('fb').icon--medium.icon--left
+                | #{'Zdieľať'}
+              a.btn.btn--clean
+                +icon('link').icon--medium.icon--left
+                | #{'Kopírovať odkaz'}
+              form
+                a(href="club-settings.html").btn.mb-none
+                  +icon('edit').icon--medium.icon--left
+                  | #{' '}Upraviť
+              a.btn.btn--primary(href="club-profile-public.html")
+                +icon('eye', 'icon--medium').icon--left
+                | Náhľad profilu
+
+            +userFeed()

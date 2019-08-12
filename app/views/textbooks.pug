@@ -30,43 +30,84 @@ block content
           .section-title__item(style="background-color: #37b855")
             | prehľadne • spoľahlivo • za skvelé ceny
 
-    section.section.section--secondary.section--small
+    section.section.section--small.show-l
       .wrapper-main
-        .bar
-          .bar__item.bar__item--shrinkable
-            b Začnite výberom tu:
-          .bar__break.hide-m
-          .bar__item.bar__item--fill.no-mrg-right--s-down
-            select.js-select
-              option Vyberte si...
-              option Jazykové učebnice
-              option Iné učebnice a encyklopédie
-              option Monitor, príjmačky, maturity
-              option Jazykové slovníky
-          .bar__break.hide-m
-          .bar__item.bar__item--fill.no-mrg-right--s-down
-            select.js-select
-              option Vyberte si...
-              option Jazykové učebnice
-              option Iné učebnice a encyklopédie
-              option Monitor, príjmačky, maturity
-              option Jazykové slovníky
-          .bar__break.hide-m
-          .bar__item.bar__item--fill.no-mrg-right--s-down
-            select.js-select
-              option Vyberte si...
-              option Jazykové učebnice
-              option Iné učebnice a encyklopédie
-              option Monitor, príjmačky, maturity
-              option Jazykové slovníky
-          .bar__break.hide-m
-          .bar__item.bar__item--fill.no-mrg-right--s-down
-            select.js-select
-              option Vyberte si...
-              option Jazykové učebnice
-              option Iné učebnice a encyklopédie
-              option Monitor, príjmačky, maturity
-              option Jazykové slovníky
+        ul.tab-nav.tab-nav--block
+          li.tab-nav__item.is-active
+            a.tab-nav__content.tab-nav__content--link
+              .tab-nav__content-wrap Encyklopédie
+          li.tab-nav__item
+            a.tab-nav__content.tab-nav__content--link
+              .tab-nav__content-wrap Monitor
+          li.tab-nav__item
+            a.tab-nav__content.tab-nav__content--link
+              .tab-nav__content-wrap Jazykové učebnice
+          li.tab-nav__item
+            a.tab-nav__content.tab-nav__content--link
+              .tab-nav__content-wrap Slovníky
+          li.tab-nav__item
+            a.tab-nav__content.tab-nav__content--link
+              .tab-nav__content-wrap
+                span.text-space-right-tiny Písacie potreby  
+                .badge.badge--green nové
+          li.tab-nav__item
+            a.tab-nav__content.tab-nav__content--link
+              .tab-nav__content-wrap
+                span.text-space-right-tiny Batohy
+                  span.show-l #{' '}a príslušenstvo
+                .badge.badge--green nové
+
+    section.section.section--secondary.hide-l.section--small
+      .wrapper-main
+        select.js-select.select--ghost#select-tabs
+          option(value="#") Monitory
+          option(value="#") Učebnice
+          option(value="#") Slovníky
+          option(value="#") Písacie potreby
+          option(value="#") Batohy a príslušenstvo
+        .mb-medium
+
+    section.section
+      .wrapper-main
+        .card.card--material.card--material-grey
+          .card__label
+            | sprievodca učebnicami
+          .card__content
+            .bar.mb-none
+              .bar__item.bar__item--shrinkable
+                b Začnite výberom tu:
+              .bar__break.hide-m
+              .bar__item.bar__item--fill.no-mrg-right--s-down
+                select.js-select
+                  option Vyberte si...
+                  option Jazykové učebnice
+                  option Iné učebnice a encyklopédie
+                  option Monitor, príjmačky, maturity
+                  option Jazykové slovníky
+              .bar__break.hide-m
+              .bar__item.bar__item--fill.no-mrg-right--s-down
+                select.js-select
+                  option Vyberte si...
+                  option Jazykové učebnice
+                  option Iné učebnice a encyklopédie
+                  option Monitor, príjmačky, maturity
+                  option Jazykové slovníky
+              .bar__break.hide-m
+              .bar__item.bar__item--fill.no-mrg-right--s-down
+                select.js-select
+                  option Vyberte si...
+                  option Jazykové učebnice
+                  option Iné učebnice a encyklopédie
+                  option Monitor, príjmačky, maturity
+                  option Jazykové slovníky
+              .bar__break.hide-m
+              .bar__item.bar__item--fill.no-mrg-right--s-down
+                select.js-select
+                  option Vyberte si...
+                  option Jazykové učebnice
+                  option Iné učebnice a encyklopédie
+                  option Monitor, príjmačky, maturity
+                  option Jazykové slovníky
 
     section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset=header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
       .wrapper-main

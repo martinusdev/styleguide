@@ -2,6 +2,7 @@ include ./../../mixins/userMenu
 include ./../../mixins/icon
 
 - var bookClassHide = bookHeader ? 'book-detail-hide' : '';
+- var headerPromo = false;
 
 header.header
   .header__wrapper(data-sticky)
@@ -69,9 +70,10 @@ header.header
               )
                 +icon('menu').icon--medium
 
-        .bar__item.bar__item--shrinkable.header__ad.show-m(class=bookClassHide)
-          img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
-          | <style>.header__wrapper::after{background: #7d609a;}</style>
+        if headerPromo
+          .bar__item.bar__item--shrinkable.header__ad.show-m(class=bookClassHide)
+            img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
+            | <style>.header__wrapper::after{background: #7d609a;}</style>
 
         .bar__item.bar__item--fill.header__search.header-search
           .hide-m.header-search__toggle.no-mrg

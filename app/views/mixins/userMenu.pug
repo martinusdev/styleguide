@@ -3,7 +3,7 @@ include icon
 mixin userMenu(props = {})
   -
     const {
-      userName = 'Bartolomej'
+      userName = 'Janko'
     } = props;
 
   .btn-dropdown.btn-dropdown--no-icon.header-user
@@ -16,12 +16,16 @@ mixin userMenu(props = {})
         .dropdown__group.bg-secondary
           h5.mb-none Môj MARTINUS
           span.text-medium.text-color-grey.text-semibold Janko Martinusák
-        a(href="#").dropdown__item Na stiahnutie
-        a(href="#").dropdown__item Moje objednávky
-        a(href="#").dropdown__item Môj wishlist
-        a(href="#").dropdown__item Moja knižnica
-        a(href="#").dropdown__item Môj účet
-        a(href="#").dropdown__item
+        a(href="to-download.html").dropdown__item Na stiahnutie
+        a(href="my-library.html").dropdown__item Wishlist
+        a(href="orders.html").dropdown__item Moje objednávky
+        a(href="my-account.html").dropdown__item Môj účet
+        .dropdown__group
+          hr.no-mrg
+        a(href="my-library.html").dropdown__item Moja knižnica
+        a(href="club-profile-private.html").dropdown__item
           | Založiť profil
           +icon('plus').text-color-success.icon--medium(style="position: relative; top: -0.15em;")
-        a(href="#").dropdown__item Odhlásiť
+        .dropdown__group
+          hr.no-mrg
+        a(href="#").dropdown__item.text-color-error Odhlásiť

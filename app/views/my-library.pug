@@ -2,83 +2,18 @@ extends layouts/_default
 
 include mixins/product
 include mixins/xmas
-include ./mixins/icon
+include mixins/icon
+include modules/my-library-sidenav
 
 block opts
   - var pageTitle = 'Moja knižnica'
-
-  -
-    const subNav = [
-      {
-        title: 'Všetky moje tituly',
-        href: '#',
-        pill: 69,
-      },
-      {
-        title: 'Kúpené v kníkupectve',
-        href: '#',
-        pill: 102,
-        icon: 'smart-list',
-        iconColor: 'text-color-grey'
-      },
-      {
-        title: 'Kúpené na webe',
-        href: '#',
-        pill: 9,
-        icon: 'smart-list',
-        iconColor: 'text-color-grey'
-      },
-      {
-        title: 'Čítam',
-        href: '#',
-        icon: 'time',
-        iconColor: 'text-color-blue'
-      },
-      {
-        title: 'Prečítané',
-        href: '#',
-        pill: 8,
-        icon: 'check-circle',
-        iconColor: 'text-color-success'
-      },
-      {
-        title: 'Neprečítané',
-        href: '#',
-        pill: 2,
-        icon: 'circle',
-        iconColor: 'text-color-grey'
-      },
-    ];
-    const subNav2 = [
-      {
-        title: 'Wishlist',
-        href: '#',
-        pill: 120,
-        icon: 'guard',
-        iconColor: 'text-color-grey'
-      },
-      {
-        title: 'Vianoce 2017',
-        href: '#',
-        pill: 8,
-        icon: 'link',
-        iconColor: 'text-color-grey'
-      },
-      {
-        title: 'Pre bratranca',
-        href: '#',
-        pill: 2,
-        icon: 'eye',
-        iconColor: 'text-color-grey'
-      },
-    ];
 
 block content
   main.account
 
     include modules/account-header
     +accountHeader({
-      navActive: 0,
+      navActive: 4,
       subNav,
     }).show-l
 
@@ -87,54 +22,7 @@ block content
         .row
           .col--l-3.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
-              ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
-                each item, index in subNav
-                  li(class= index === 6 ? 'is-active' : '')
-                    a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
-                      if item.icon
-                        +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
-                      = item.title
-                      if item.pill
-                        .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
-
-              h2.h3 Moje zoznamy a kolekcie
-
-              ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
-                each item, index in subNav2
-                  li(class= index === 6 ? 'is-active' : '')
-                    a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
-                      if item.icon
-                        +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
-                      = item.title
-                      if item.pill
-                        .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
-
-              .btn-layout.btn-layout--vertical
-                button.btn(data-toggle='#add-list')
-                  | Pridať zoznam alebo kolekciu
-                //.btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
-                  button.btn(
-                    data-toggle='self, next',
-                    data-toggle-expand,
-                    aria-haspopup="true"
-                  )
-                    | Pridať zoznam
-                  #addList.dropdown.dropdown--align-right.dropdown--nowrap(data-dropdown, data-dropdown-interactive, data-toggle-expand)
-                    .dropdown__wrap
-                      .card.mb-none
-                        .card__content.card__content--condensed
-                          .bar.flex-nowrap
-                            .bar__item.bar__item--fill.text-nowrap
-                              | Nový zoznam
-                            .bar__item
-                              button.btn.btn--clean.btn--small(data-toggle='#addList')
-                                +icon('close', 'icon--small', 'Naspäť')
-                          .form-control.form-control--input
-                            input(name="addListInput", id="addListInput", placeholder="napr. otcovi na Vianoce").input
-                          .btn-layout--vertical
-                            button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
-
-              p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
+              +myLibrarySidenav2
 
           .col--l-9.col--12.mb-large
             .bar.mb-medium
@@ -160,14 +48,21 @@ block content
                     span.show-m Hromadná úprava
                   button.btn.btn--equal.btn--small.mb-none(data-toggle="#add-item")
                     +icon('plus').icon--medium
-              .bar__item.bar__item--shrinkable.show-m
+              //.bar__item.bar__item--shrinkable.show-m
                 | Zoradiť:
               .bar__item.bar__item--shrinkable
                 .form-control.form-control--select.inline-block.text-space-right
+                  select.js-select.select--ghost(data-select-dropdown-width="200px")
+                    option Od najnovších
+                    option Podľa dátum nákupu
+                    option Podľa zmeny stavu čítania
+
+                //.form-control.form-control--select.inline-block.text-space-right
                   select.js-select.select--ghost(data-select-dropdown-width="150px")
-                    option Najnovšie
-                    option Dátum nákupu
-                    option Zmena stavu čítania
+                    option Všetky
+                    option Neprečítané
+                    option Chcem čítať
+                    option Čítal som
 
                 a.btn.btn--primary
                   +icon('eye').icon--medium.hide-m
@@ -187,8 +82,8 @@ block content
                       #kniha-autocomplete-container
 
 
-            .mb-large
-            .row.mb-large
+            //.mb-large
+            //.row.mb-large
               .col--m-8.ofst--m-2
                 .card.bg-blue
                   .card__content
