@@ -39,7 +39,7 @@
 
     &.collection .thumbnail__img-wrap:nth-child(2) {
       position: absolute;
-      bottom: 10px;
+      top: 10px;
       left: 12.5%;
       z-index: 2;
       // transform: translate(12.5%, calc(-100% - 30px));
@@ -47,13 +47,18 @@
 
     &.collection .thumbnail__img-wrap:nth-child(3) {
       position: absolute;
-      bottom: 20px;
+      top: 20px;
       left: 25%;
       z-index: 1;
     }
 
     &.collection .thumbnail__img-wrap:nth-child(n + 4) {
       display: none;
+    }
+
+    &.collection .thumbnail__info {
+      opacity: 1;
+      z-index: 5;
     }
   }
 

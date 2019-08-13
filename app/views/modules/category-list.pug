@@ -6,11 +6,11 @@ include ./../mixins/xmas
 
 mixin itemGroup(id)
   div&attributes(attributes)
-    +groupItem('kniha', 0)
-    +groupItem('e-kniha', 1)
+    +groupItem('Kniha', 0)
+    +groupItem('E-kniha', 1)
     .hide(data-toggle-class="hide", id=`item-group-more${id}`)
-      +groupItem('audiokniha mp3', 2)
-      +groupItem('audiokniha cd', 3)
+      +groupItem('Audiokniha mp3', 2)
+      +groupItem('Audiokniha cd', 3)
     .mb-medium
       a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
         +icon('plus')
@@ -22,7 +22,7 @@ mixin groupItem(name, id)
     .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-none
         .bar__item.no-mrg
-          h5.text-semibold.inline-block.link.link--grey=name
+          a.text-semibold.text-medium.inline-block.link=name
           //a.link.link--product Základy rybolovu pro kluky a holky
           .inline-block.hide-m.text-size-small
             if id == 0
@@ -37,10 +37,6 @@ mixin groupItem(name, id)
         .bar__item.show-m
           .badges.mb-none
             if id == 0
-              a.badge.mb-small.mb-none-m
-                +icon('star', 'icon--medium').text-color-yellow
-                span.text-normal.text-space-left 3.5
-                span.link.text-space-left(href="#recenzie", data-scroll) 234x
               .badge.badge--green.mb-small.mb-none-m Na sklade
               .badge.badge--blue.mb-small.mb-none-m Novinka
             else if id == 1
@@ -61,9 +57,14 @@ mixin groupItem(name, id)
     .bar__item.bar__item--shrinkable.no-mrg-top
       .bar.bar--vertical.bar--vertical-small.mb-none
         .bar__item.no-mrg.show-m
-          p.mb-none.text-color-grey-dark.text-medium.text-center Posielame#{' '}
-            em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-            | .
+          if id == 1
+            p.mb-none.text-color-grey-dark.text-medium.text-center(style="max-width: 150px; margin: 0 auto;") Na sklade, objednávajte#{' '}
+              em(data-tooltip, title="Toto je tooltip vysvetlivka") však rýchlo
+              | .
+          else
+            p.mb-none.text-color-grey-dark.text-medium.text-center Posielame#{' '}
+              em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
+              | .
         .bar__item.no-mrg
           button.btn.btn--clean.no-mrg.hide-m
             +icon('cart').icon--medium.text-color-theme
@@ -264,6 +265,11 @@ section.section
                             h2.h3.mb-tiny
                               a.link.link--product(href="detail-knihy.html") #{item.title}
                             .text-color-grey.mb-small.text-medium #{item.author}
+                            .badges.mb-small
+                              a.badge.mb-none
+                                +icon('star', 'icon--medium').text-color-yellow
+                                span.text-normal.text-space-left 3.5
+                                span.link.text-space-left(href="#recenzie", data-scroll) 234x
 
                             div(data-collapse="60")
                               p.text-medium.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
