@@ -15,7 +15,7 @@ block content
       navActive: 5,
       subNav,
       saveButton: true,
-      previewButton: true,
+      previewButton: false,
     })
 
     section.section
@@ -49,11 +49,14 @@ block content
               a.btn.btn--clean
                 +icon('link').icon--medium.icon--left
                 | #{'Kopírovať odkaz'}
+              a.btn.btn--clean(href="club-profile-public.html")
+                +icon('eye').icon--medium.icon--left
+                | #{'pozrieť ako návštevník'}
               form
                 a(href="club-settings.html").btn.mb-none
                   +icon('edit').icon--medium.icon--left
                   | #{' '}Upraviť
-              a.btn.btn--primary(href="club-profile-public.html")
+              //a.btn.btn--primary(href="club-profile-public.html")
                 +icon('eye', 'icon--medium').icon--left
                 | Náhľad profilu
 

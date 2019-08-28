@@ -10,7 +10,7 @@ mixin myLibrarySidenav2()
         pill: 120,
         locked: true
       },
-      {
+      /*{
         title: 'Kúpené na webe',
         href: 'my-library.html',
         pill: 12,
@@ -25,6 +25,26 @@ mixin myLibrarySidenav2()
         icon: 'footer-stores',
         iconColor: 'text-color-grey',
         locked: true
+      },*/
+      {
+        title: 'Neprečítané',
+        href: 'my-library.html',
+        pill: 2,
+        icon: 'circle',
+        iconColor: 'text-color-grey'
+      },
+      {
+        title: 'Čítam',
+        href: 'my-library.html',
+        icon: 'time',
+        iconColor: 'text-color-blue'
+      },
+      {
+        title: 'Prečítané',
+        href: 'my-library.html',
+        pill: 8,
+        icon: 'check-circle',
+        iconColor: 'text-color-success'
       },
       {
         title: 'Wishlist',
@@ -72,6 +92,20 @@ mixin myLibrarySidenav2()
     button.btn(data-toggle='#add-list')
       | Pridať zoznam alebo kolekciu
   p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...
+
+  h2.h3 Filter
+  .form-control
+    .checkbox
+      input.radiocheck__input#check-purchases(type="checkbox")
+      label(for="check-purchases").radiocheck__control
+      label(for="check-purchases").radiocheck__label.text-medium Len zakúpené knihy#{' '}
+        span.text-color-grey (15)
+  .form-control
+    .checkbox
+      input.radiocheck__input#check-purchases(type="checkbox")
+      label(for="check-purchases").radiocheck__control
+      label(for="check-purchases").radiocheck__label.text-medium Len zakúpené v kníhkupectve#{' '}
+        span.text-color-grey (15)
 
 mixin myLibrarySidenav()
   -
