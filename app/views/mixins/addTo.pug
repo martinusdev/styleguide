@@ -34,7 +34,7 @@ mixin addTo(props = {})
               +icon('check-circle').icon--small.text-color-success.text-space-right
               | Prečítaná
             hr.mb-small
-          else
+          if !status
             .dropdown__item.text-size-small Odložte si knihu do jedného zo zoznamov
           each item, i in ['Wishlist', 'Vianoce', 'Slovenská klasika']
             .dropdown__item

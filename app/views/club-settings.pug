@@ -11,7 +11,7 @@ block content
   main.account
 
     include modules/account-header
-    +accountHeader({ navActive: 6, saveButton: true, previewButton: true })
+    +accountHeader({ navActive: 6, saveButton: true, previewButton: false })
 
     section.section
       .wrapper-main
@@ -156,7 +156,7 @@ block content
                 a.btn(href="club-profile-private.html")
                   +icon('save', 'icon--medium').icon--left
                   | Uložiť zmeny
-              .bar__item
+              //.bar__item
                 a.btn.btn--primary(href="club-profile-public.html")
                   +icon('eye', 'icon--medium').icon--left
                   | Náhľad profilu

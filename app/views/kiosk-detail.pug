@@ -252,7 +252,14 @@ block append modals
             +icon('close').icon--medium.icon--right
 
       .product-preview__content
-        img.img(src="https://www.martinus.sk/images/kiosk/map-7.png", style="width: auto; height: 100%; margin: 0 auto; display: block;")
+        div(style="width: 85%; height: auto; margin: 0 auto;")
+          div(style="position: relative;")
+            div(style="padding-top: 75%; content: ' '; height: 0; line-height: 0;")
+            img.img.no-mrg(src="https://www.martinus.sk/images/kiosk/map-7.png", style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;")
+
+            +icon('user').icon--large.text-color-blue(style="position: absolute; left: 45%; bottom: 32%;")
+            +icon('pin').icon--xlarge(style="position: absolute; left: 20%; bottom: 60%; color: #39FF14;")
+
 
   .modal-overlay.modal-overlay--dark#product-preview(data-modal)
     article.modal.modal--full.hide

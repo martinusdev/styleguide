@@ -57,18 +57,8 @@ block content
                     option Podľa dátum nákupu
                     option Podľa zmeny stavu čítania
 
-                //.form-control.form-control--select.inline-block.text-space-right
-                  select.js-select.select--ghost(data-select-dropdown-width="150px")
-                    option Všetky
-                    option Neprečítané
-                    option Chcem čítať
-                    option Čítal som
-
-                a.btn.btn--primary
-                  +icon('eye').icon--medium.hide-m
-                  span.show-m
-                    +icon('eye').icon--medium.icon--left
-                    | náhľad
+                a.btn.btn--equal(data-tooltip, title="Zobraziť náhľad kolekcie")
+                  +icon('eye').icon--medium
 
             .row
               .col--m-6
