@@ -51,9 +51,11 @@ block content
             swiperConfig = JSON.stringify(swiperConfig);
           .carousel.carousel--fade-outside.mb-medium
             .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
-              ul.swiper-wrapper.list--counter.no-pad(data-equal-columns)
+              //ul.swiper-wrapper.list--counter.no-pad(data-equal-columns)
+              ul.swiper-wrapper.list--counter.no-pad
                 each item, i in [...books, ...books, ...books, ...books]
-                  li.swiper-slide.carousel__product-detail(data-equal-column)
+                  //li.swiper-slide.carousel__product-detail(data-equal-column)
+                  li.swiper-slide.carousel__product-detail
                     .product.mb-small.text-left.flex.flex-column.align-items-right(style="height: 100%;")
                       +productCover({cover: item.cover, href: 'kiosk-detail.html'})
                       +productTitle({title: item.title, author: item.author, href: 'kiosk-detail.html'})

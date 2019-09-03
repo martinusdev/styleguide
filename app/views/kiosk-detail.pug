@@ -70,6 +70,11 @@ block content
                 | <span data-toggle-text-target>Čítaj viac</span>#{' '}
                 +icon('arrow-down')
 
+              .mb-large
+              h5.mb-small Upozornenie
+              p.text-color-grey-dark Obsah tejto knihy je vnímaný ako kontroverzný. Pri čítaní každej knihy odporúčame nezabúdať na kritické myslenie a názory odborníkov v danej oblasti. Zisk z predaja tejto knihy putuje na podporu neziskových organizácií SuperTrieda a Slovenská debatná asociácia
+                a.link.text-medium.text-space-left
+
           section.mb-large
             .bar
               .bar__item.bar__item--fill
@@ -257,8 +262,10 @@ block append modals
             div(style="padding-top: 75%; content: ' '; height: 0; line-height: 0;")
             img.img.no-mrg(src="https://www.martinus.sk/images/kiosk/map-7.png", style="position: absolute; top: 0; left: 0; right: 0; bottom: 0;")
 
-            +icon('user').icon--large.text-color-blue(style="position: absolute; left: 45%; bottom: 32%;")
-            +icon('pin').icon--xlarge(style="position: absolute; left: 20%; bottom: 60%; color: #39FF14;")
+            div(style="position: absolute; left: 45%; top: 68%;")
+              +icon('user').icon--large.text-color-blue(style="position: relative; top: -2rem; left: -1rem;")
+            div(style="position: absolute; left: 20%; top: 40%; color: #39FF14;")
+              +icon('pin').icon--xlarge(style="position: relative; top: -3rem; left: -1.5rem;")
 
 
   .modal-overlay.modal-overlay--dark#product-preview(data-modal)
