@@ -21,7 +21,7 @@ block content
             img.show-m.img.img--fluid(src="images/content/banners/banner.jpg").no-mrg
             img.hide-m.img.img--fluid(src="images/content/banners/banner-mobile.jpg").no-mrg
 
-      section.section.section--small.section--secondary
+      section.section.section--small.section--secondary.section--overflow
         .wrapper-main
           h2.mb-medium Práve teraz sa najviac kupuje na Obchodnej
           -
@@ -50,7 +50,7 @@ block content
             };
             swiperConfig = JSON.stringify(swiperConfig);
           .carousel.carousel--fade-outside.mb-medium
-            .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
+            .swiper-container.swiper-container-horizontal(data-swiper-options=swiperConfig)
               //ul.swiper-wrapper.list--counter.no-pad(data-equal-columns)
               ul.swiper-wrapper.list--counter.no-pad
                 each item, i in [...books, ...books, ...books, ...books]
@@ -83,51 +83,3 @@ block content
             h2.mb-medium Posledné sci-fi a fantasy, čo nás zaujali
 
 block append modals
-
-  .modal-overlay.modal-overlay--dark#map-modal(data-modal)
-    article.modal.modal--full.hide
-    .product-preview
-      .product-preview__header.bar
-        .bar__item.bar__item--fill
-          h2.text-color-white.show-m Sherlock Holmes 2: Dobrodružstvá Sherlocka Holmesa
-        .bar__item
-          button.btn.btn--clean(data-toggle="#map-modal").text-color-white
-            span Zatvoriť
-            +icon('close').icon--medium.icon--right
-
-      .product-preview__content
-        | mapa sem
-
-  .modal-overlay.modal-overlay--dark#product-preview(data-modal)
-    article.modal.modal--full.hide
-    .product-preview(data-product-preview)
-      .product-preview__header.bar
-        .bar__item.bar__item--fill
-          h2.text-color-white.show-m Sherlock Holmes 2: Dobrodružstvá Sherlocka Holmesa
-        .bar__item
-          button.btn.btn--clean(data-toggle="#product-preview").text-color-white
-            span Zatvoriť
-            +icon('close').icon--medium.icon--right
-
-      .product-preview__content
-        .product-preview__control.show-m
-          .bar.bar--vertical
-            .bar__item
-              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-toggle='#product-preview-slider, self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-zoom-out`)
-                +icon('zoom-in').icon--medium
-            .bar__item
-              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-prev)
-                +icon('arrow-up').icon--medium
-            .bar__item.text-center
-              p.text-semibold
-                span.text-color-white(data-product-preview-page) 1
-                span.text-color-grey  /#{' '}
-                span.text-color-grey 5
-            .bar__item
-              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-next)
-                +icon('arrow-down').icon--medium
-
-        .product-preview__slider(data-product-preview-slider)#product-preview-slider
-          each product, index in Array(5)
-            .product-preview__page(data-product-preview-slide=`${index}`)
-              img.img--fluid(src=`${assetsPrefix}images/content/book-preview/preview-1.jpg`)
