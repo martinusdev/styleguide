@@ -130,23 +130,27 @@ html.no-js
           section.section
             div(style="width: 100%; overflow-x: scroll; overflow-y: hidden; -webkit-overflow-scrolling: touch; white-space: nowrap;")
               .wrapper-main.mb-medium
-                .row
+                //.row
                   .col--8.ofst--2.text-color-grey-light.text-center
                     +icon('search').icon--xlarge.mb-medium
                     p Nebol nájdený žiadny titul vyhovujúci zadaným podmienkam.
                       br
                       | Skúste prosím zmeniť vyhľadávaný výraz.
-                //each item, index in [...books, ...books]
+                each item, index in [...books, ...books]
                   .inline-block(style="width: 120px;")
                     +product().mb-small
                       +productCover({cover: item.cover, size: 'medium-large', href: 'kiosk-detail.html'}).inline-block
                       .product__title
                         p.text-semibold.no-mrg.text-ellipsis.text-size-medium.link--product
                           a.link.link--product(href='kiosk-detail.html')= item.title
-                          ul.list-inline.list-inline--delimited.text-size-small.no-mrg.text-ellipsis.text-color-grey-light
+                          ul.list-inline.list-inline--delimited.text-size-small.text-ellipsis.text-color-grey-light.mb-tiny
                             - const authors = item.author.split(', ')
-                            each item in authors
+                            each item, i in authors
                               li.no-mrg= item
+                          if index == 3
+                            .badge(style="background: transparent; color: #828282; border-color: #828282;") Nemáme
+                          else
+                            .badge.badge--green(style="background: transparent;") Máme
 
       block tooltips
 
