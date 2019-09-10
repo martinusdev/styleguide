@@ -27,8 +27,8 @@ block content
 
             article.col--9
 
-              .bar.align-items-top
-                .bar__item.bar__item--fill
+              .row.align-items-top
+                .col--m-8
                   h1.product-detail__title.mb-small Základy rybolovu
                   h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
                   ul.list-inline.list-inline--delimited.product-detail__author.mb-small.text-semibold
@@ -52,13 +52,21 @@ block content
                               | 3,5
                           .text-medium.text-space-left.show-m(href="#recenzie", data-scroll) 234x
 
-                .bar__item.bar__item--shrinkable.text-center
-                  .card.card--success
+                .col--m-4.text-center
+                  //.card.card--success
                     .card__content
                       .h1.mb-small 12,99 €
                       .h3.mb-small.text-color-success Máme v kníhkupectve
                       button.btn.btn--success.mb-small(data-toggle="#map-modal")
                         | ukázať na mape
+
+                  .card.card--success
+                    .card__content
+                      .h1.mb-small 12,99 €
+                      .h3.mb-small.text-color-success Máme v kníhkupectve
+                      .text-small Pre tento titul momentálne nevieme zobraziť aktuálnu polohu. Oslovte, prosím, niektorého z našich kníhkupcov.
+
+                  //.alert.alert--light Pre tento titul momentálne nevieme zobraziť aktuálnu polohu. Oslovte, prosím, niektorého z našich kníhkupcov.
 
               div#book-description(data-collapse="100")
                 .cms-article
