@@ -150,13 +150,13 @@ block content
               article.card
                 .card__content.card__content--overflow
                   h2.text-center Novinky v čitateľských profiloch
-                  .btn-group.btn-group--horizontal.btn-group--fill.mb-large
+                  .btn-group.btn-group--horizontal.btn-group--fill.mb-none
                     button.btn.btn--ghost.is-active Všetky
                     button.btn.btn--ghost Sledované
 
                 .card__content
 
-                  .row.mb-large
+                  //.row.mb-large
                     .col--1.show-m
                       .bar
                         .bar__item.bar__item--shrinkable
@@ -191,7 +191,7 @@ block content
                         .card__content
                           +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
 
-                  .row.mb-large
+                  //.row.mb-large
                     .col--1.show-m
                       .bar
                         .bar__item.bar__item--shrinkable
@@ -219,9 +219,75 @@ block content
                       p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
 
 
-                  .btn-layout.btn-layout--horizontal.align-items-center
-                    button.btn.btn--ghost Všetky novinky z čitateľských profilov
-                    button.btn Založiť čitateľský profil
+
+              .row.mb-medium
+                .col--m-6
+                  .card
+                    .card__content
+
+                      .bar.bar--vertical.align-items-middle
+                        .bar__item.bar__item--shrinkable
+                          .portrait.portrait--large(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill.text-center
+                          .h3
+                            a.link Janko Martinusák
+                          span napísal/a recenziu
+
+                      .bar.align-items-center
+                        .bar__item.bar__item--shrinkable
+                          .rating-star.bar__item.align-items-center.no-mrg-top
+                            each star, starIndex in Array(5)
+                              +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
+                        .bar__item.bar__item--shrinkable.text-right
+                          .h5 24.5.2018 20:31
+
+                      hr.mb-medium
+
+                      p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
+
+                      -
+                        var item = {
+                        xmas: false
+                        };
+                      .card.card--well.inline-block.mb-none
+                        .card__content
+                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+
+                .col--m-6
+                  .card
+                    .card__content
+
+                      .bar.bar--vertical.align-items-middle
+                        .bar__item.bar__item--shrinkable
+                          .portrait.portrait--large(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill.text-center
+                          .h3
+                            a.link Janko Martinusák
+                          span napísal/a recenziu
+
+                      .bar.align-items-center
+                        .bar__item.bar__item--shrinkable
+                          .rating-star.bar__item.align-items-center.no-mrg-top
+                            each star, starIndex in Array(5)
+                              +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
+                        .bar__item.bar__item--shrinkable.text-right
+                          .h5 24.5.2018 20:31
+
+                      hr.mb-medium
+
+                      p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
+
+                      -
+                        var item = {
+                        xmas: false
+                        };
+                      .card.card--well.inline-block.mb-none
+                        .card__content
+                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+
+              .btn-layout.btn-layout--horizontal.align-items-center
+                button.btn.btn--ghost Všetky novinky z čitateľských profilov
+                button.btn Založiť čitateľský profil
 
           .col--m-4
             section.mb-large

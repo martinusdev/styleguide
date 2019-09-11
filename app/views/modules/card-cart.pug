@@ -1,6 +1,106 @@
 include ./../mixins/addTo
 include ./../mixins/xmas
 
+mixin addTo2(props = {})
+  -
+    const {
+    text = 'Pridať do',
+    icon = 'heart',
+    iconClass = '',
+    link = false,
+    status = true,
+    id = Math.floor((Math.random() * 1000)),
+    buttonClass = 'btn--clean',
+    info = false,
+    purchased = false,
+    } = props;
+
+  if purchased
+    .mb-medium.text-color-grey
+      +icon('check-circle').icon--small
+      | #{' '}Zakúpené dňa 10.9. 2019
+  .btn-dropdown.btn-dropdown--no-icon&attributes(attributes)
+    if link
+      a.link.text-medium(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)=text
+    else
+      button.btn.no-mrg(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand, class=buttonClass ? buttonClass : "")
+        +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
+        | #{text}
+
+    .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
+      .dropdown__wrap(style="min-width: 150px;")
+        div(id=`my-library-dropdown-${id}` data-toggle-class="hide")
+          if !status
+            .dropdown__item.text-size-small Odložte si knihu do jedného zo zoznamov
+          each item, i in ['Wishlist', 'Vianoce', 'Slovenská klasika']
+            .dropdown__item
+              .checkbox
+                input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
+                label(for=`list-check${i}`).radiocheck__control
+                label(for=`list-check${i}`).radiocheck__label=item
+          a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Ďalšie zoznamy
+          a(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`).dropdown__item
+            | Nový zoznam
+            +icon('plus').icon--left.icon--medium.text-color-success
+          if status
+            a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`).dropdown__item.dropdown__item--more Označiť ako
+        .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
+          .bar.no-mrg-bottom
+            .bar__item.no-mrg-right
+              button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-list-${id}, #my-library-dropdown-${id}`)
+                +icon('chevron-left', 'icon--medium', 'Naspäť')
+            .bar__item.bar__item--fill
+              h5.dropdown__group Presunúť do:
+            .bar__item
+              button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`)
+                +icon('close', 'icon--small', 'Naspäť')
+          a(href="#").dropdown__item Do školy
+          a(href="#").dropdown__item Pre brata
+        .hide(id=`wishlist-add-item-${id}` data-toggle-class="hide")
+          .card.mb-none
+            .card__content.card__content--condensed
+              .bar.flex-nowrap
+                .bar__item.no-mrg-right
+                  button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
+                    +icon('chevron-left', 'icon--medium', 'Naspäť')
+                .bar__item.align-self-center.text-center.text-nowrap
+                  | Nový zoznam
+                .bar__item
+                  button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
+                    +icon('close', 'icon--small', 'Naspäť')
+              .form-control.form-control--input
+                input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
+              .btn-layout--vertical
+                button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+        .hide(id=`my-library-dropdown-states-${id}` data-toggle-class="hide")
+          .bar.no-mrg-bottom
+            .bar__item.no-mrg-right
+              button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-states-${id}, #my-library-dropdown-${id}`)
+                +icon('chevron-left', 'icon--medium', 'Naspäť')
+            .bar__item.bar__item--fill
+              h5.dropdown__group Označiť ako:
+            .bar__item
+              button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`)
+                +icon('close', 'icon--small', 'Naspäť')
+          a(href="#").dropdown__item
+            +icon('circle').icon--small.text-color-grey.text-space-right
+            b Neprečítané
+          a(href="#").dropdown__item
+            +icon('time').icon--small.text-color-blue.text-space-right
+            | Práve čítam
+          a(href="#", data-toggle="#book-read-modal").dropdown__item
+            +icon('check-circle').icon--small.text-color-success.text-space-right
+            | Prečítaná
+
+  if info
+    span Pridané do: #{' '}
+      a.link Môj Wishlist
+      | #{', '}
+      a.link Moje naj
+      | #{', '}
+      a.link Slovenské fantasy
+
+
 .price-box
   ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
     li.tab-nav__item.flex-noshrink(data-tabs-item)
@@ -50,7 +150,7 @@ include ./../mixins/xmas
                 +icon('cart').icon--left.icon--medium
                 | Vložiť do košíka
 
-            +addTo()
+            +addTo2({info: true, buttonClass: 'btn--ghost', purchased: true})
 
     section#shop.tab.text-size-medium
       article.card.card--well.text-center

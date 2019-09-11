@@ -20,9 +20,8 @@ block content
     section.section
       .wrapper-main
         .row
-          .col--l-3.show-l(data-sticky-container)
-            div(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
-              +myLibrarySidenav2
+          .col--l-3.show-l
+            +myLibrarySidenav2
 
           .col--l-9.col--12.mb-large
             .bar.mb-medium
@@ -225,23 +224,23 @@ block append modals
             .bar__item
               .form-control.form-control--radio
                 .radio
-                  input.radiocheck__input#wishlist-private(type="radio", checked, name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
-                  label.radiocheck__control(for="wishlist-private")
-                  label.radiocheck__label(for="wishlist-private") Súkromný
+                  input.radiocheck__input#wishlist-private2(type="radio", checked, name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
+                  label.radiocheck__control(for="wishlist-private2")
+                  label.radiocheck__label(for="wishlist-private2") Súkromný
             .bar__break.hide-m
             .bar__item
               .form-control.form-control--radio
                 .radio
-                  input.radiocheck__input#wishlist-link(type="radio", name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
-                  label.radiocheck__control(for="wishlist-link")
-                  label.radiocheck__label(for="wishlist-link") Dostupný cez odkaz
+                  input.radiocheck__input#wishlist-link2(type="radio", name="wishlist-setting", data-radiocheck-toggle="#wishlist-share")
+                  label.radiocheck__control(for="wishlist-link2")
+                  label.radiocheck__label(for="wishlist-link2") Dostupný cez odkaz
             .bar__break.hide-m
             .bar__item
               .form-control.form-control--radio
                 .radio
-                  input.radiocheck__input#wishlist-public(type="radio", name="wishlist-setting", data-radiocheck-toggle="#edit-collection")
-                  label.radiocheck__control(for="wishlist-public")
-                  label.radiocheck__label(for="wishlist-public") Čitateľská kolekcia
+                  input.radiocheck__input#wishlist-public2(type="radio", name="wishlist-setting", data-radiocheck-toggle="#edit-collection")
+                  label.radiocheck__control(for="wishlist-public2")
+                  label.radiocheck__label(for="wishlist-public2") Čitateľská kolekcia
 
           #wishlist-share.hide
             .row
@@ -265,6 +264,14 @@ block append modals
 
           #edit-collection.hide
             .row
+              .col
+                .form-control.form-control--input
+                  .input-addons
+                    input.input(type='text', value="https://www.martinus.sk/")#clipboard
+                    .input-addons__item.no-pad
+                      button.btn.btn--link(data-clipboard, data-clipboard-target="#clipboard") Koprírovať
+            a.link Ako uvidia návštevníci moju kolekciu?
+            //.row
               .col--m-6
                 .form-control.form-control--input
                   .form-label
