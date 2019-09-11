@@ -98,14 +98,32 @@ mixin myLibrarySidenav2()
     .checkbox
       input.radiocheck__input#check-purchases(type="checkbox")
       label(for="check-purchases").radiocheck__control
-      label(for="check-purchases").radiocheck__label.text-medium Len zakúpené knihy#{' '}
+      label(for="check-purchases").radiocheck__label.text-medium Zakúpené knihy#{' '}
         span.text-color-grey (15)
   .form-control
     .checkbox
-      input.radiocheck__input#check-purchases(type="checkbox")
-      label(for="check-purchases").radiocheck__control
-      label(for="check-purchases").radiocheck__label.text-medium Len zakúpené v kníhkupectve#{' '}
-        span.text-color-grey (15)
+      input.radiocheck__input#check-purchases-offline(type="checkbox")
+      label(for="check-purchases-offline").radiocheck__control
+      label(for="check-purchases-offline").radiocheck__label.text-medium Zakúpené v kníhkupectve#{' '}
+        span.text-color-grey (3)
+  .form-control
+    .checkbox
+      input.radiocheck__input#check-unread(type="checkbox")
+      label(for="check-unread").radiocheck__control
+      label(for="check-unread").radiocheck__label.text-medium.text-color-grey Neprečítané#{' '}
+        span.text-color-grey (9)
+  .form-control
+    .checkbox
+      input.radiocheck__input#check-read(type="checkbox")
+      label(for="check-read").radiocheck__control
+      label(for="check-read").radiocheck__label.text-medium.text-color-success Prečítané#{' '}
+        span.text-color-grey (34)
+  .form-control
+    .checkbox
+      input.radiocheck__input#check-reading(type="checkbox")
+      label(for="check-reading").radiocheck__control
+      label(for="check-reading").radiocheck__label.text-medium.text-color-blue Čítam#{' '}
+        span.text-color-grey (2)
 
 mixin myLibrarySidenav()
   -
