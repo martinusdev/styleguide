@@ -175,14 +175,23 @@ section.section
             .card__content
               .row
                 .col--m-4.mb-medium.mb-none-m
-                  h2.h5 vydavatelia
+                  .mb-medium
+                    h2.h5 vydavatelia
+                    ul.list--unstyled
+                      for i in [1, 2]
+                        li.bar.mb-tiny
+                          .bar__item.bar__item--shrinkable.text-space-right-tiny
+                            +icon('breadcrumbs').icon--medium.text-color-grey
+                          .bar__item.bar__item--fill.line-small
+                            a.link Ikar
+                  h2.h5 čitateľské kolekcie
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
                         .bar__item.bar__item--shrinkable.text-space-right-tiny
-                          +icon('breadcrumbs').icon--medium.text-color-grey
+                          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item.bar__item--fill.line-small
-                          a.link Ikar
+                          a.link Moje fantasy
                 .col--m-4.mb-medium.mb-none-m
                   h2.h5 kategórie
                   ul.list--unstyled.mb-small
@@ -201,14 +210,23 @@ section.section
                   a.link.text-medium + ďalších 5
                     +icon('arrow-down').icon--small
                 .col--m-4
-                  h2.h5 autori
+                  .mb-medium
+                    h2.h5 autori
+                    ul.list--unstyled
+                      for i in [1, 2]
+                        li.bar.mb-tiny
+                          .bar__item.bar__item--shrinkable.text-space-right-tiny
+                            +icon('user').icon--medium.text-color-grey
+                          .bar__item.bar__item--fill.line-small
+                            a.link Meno Autora
+                  h2.h5 čitateľské profily
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
                         .bar__item.bar__item--shrinkable.text-space-right-tiny
-                          +icon('user').icon--medium.text-color-grey
+                          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item.bar__item--fill.line-small
-                          a.link Meno Autora
+                          a.link Janko Martinusak
 
         if description
           p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...

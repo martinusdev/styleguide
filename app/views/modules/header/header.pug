@@ -92,22 +92,7 @@ header.header
                   .btn.btn--primary.text-nowrap
                     +icon('search', '', 'Search').icon--medium.icon--left
                     | Hladať
-            if pageTitle == ''
-              .dropdown.dropdown--arrowhead.is-active(aria-expanded="true")
-                .dropdown__wrap
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Prekliate Dieťa
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Kameň Mudrcov
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Fénixov Rád
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Ohnivá Čaša
-                  hr.mb-tiny
-                  a.dropdown__item.dropdown__item--small Herec#{' '}
-                    b Harrison Ford
-                  a.dropdown__item.dropdown__item--small Kategória#{' '}
-                    b Fantasy
+            block headerSearchDropdown
 
         .bar__item.header__user(class=bookClassHide)
           +userMenu()

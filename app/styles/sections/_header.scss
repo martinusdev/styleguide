@@ -238,17 +238,18 @@
 
   @include breakpoint(m, 'down') {
     &__user { order: 1; }
-    &__cart { order: 2; }
+    &__notifications { order: 2; }
+    &__cart { order: 3; }
 
     &__search {
       display: block;
-      order: 3;
+      order: 4;
       max-width: _get-rem(300px);
       justify-content: flex-start;
       min-width: auto;
     }
 
-    &__nav { order: 4; }
+    &__nav { order: 5; }
   }
 
   &.is-search-active {
