@@ -2,138 +2,146 @@ include ./../../mixins/userMenu
 include ./../../mixins/icon
 
 - var bookClassHide = bookHeader ? 'book-detail-hide' : '';
-- var headerPromo = false;
+  - var headerPromo = false;
 
-header.header
-  .header__wrapper(data-sticky)
-    .wrapper-main
-      .bar.header__bar
-        .bar__item.header__logo
-          a(href="#", class=bookClassHide)
-            img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
-            img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
-          if bookHeader
-            a(href="#").book-detail-show
-              img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
-        .bar__item.header__nav(class=bookClassHide)
-          .btn-layout.btn-layout--horizontal
-            .btn-dropdown.no-mrg.show-l
-              button.btn.btn--clean.header-btn(
+  header.header
+    .header__wrapper(data-sticky)
+      .wrapper-main
+        .bar.header__bar
+          .bar__item.header__logo
+            a(href="#", class=bookClassHide)
+              img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
+              img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
+            if bookHeader
+              a(href="#").book-detail-show
+                img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
+          .bar__item.header__nav(class=bookClassHide)
+            .btn-layout.btn-layout--horizontal
+              .btn-dropdown.no-mrg.show-l
+                button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger="#mega-menu-knihy"
                 data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
-              )
-                | Knihy
-                +icon('chevron-down', 'icon-dropdown').icon--small
-            .btn-dropdown.no-mrg.show-l
-              button.btn.btn--clean.header-btn(
+                )
+                  | Knihy
+                  +icon('chevron-down', 'icon-dropdown').icon--small
+              .btn-dropdown.no-mrg.show-l
+                button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger="#mega-menu-eknihy"
                 data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
-              )
-                | E-Knihy
-                +icon('chevron-down', 'icon-dropdown').icon--small
-            .btn-dropdown.no-mrg.show-l
-              button.btn.btn--clean.header-btn(
+                )
+                  | E-Knihy
+                  +icon('chevron-down', 'icon-dropdown').icon--small
+              .btn-dropdown.no-mrg.show-l
+                button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger
                 data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
-              )
-                | Filmy
-                +icon('chevron-down', 'icon-dropdown').icon--small
-            .btn-dropdown.no-mrg.hide
-              button.btn.btn--clean.header-btn(
+                )
+                  | Filmy
+                  +icon('chevron-down', 'icon-dropdown').icon--small
+              .btn-dropdown.no-mrg.hide
+                button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger
                 data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
                 aria-haspopup="true"
-              )
-                | Hry
-                +icon('chevron-down', 'icon-dropdown').icon--small
-            .btn-dropdown.no-mrg.btn-dropdown--no-icon.show-l
-              button.btn.btn--clean.header-btn(
+                )
+                  | Hry
+                  +icon('chevron-down', 'icon-dropdown').icon--small
+              .btn-dropdown.no-mrg.btn-dropdown--no-icon.show-l
+                button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger="#mega-menu-other"
                 data-toggle='self',
                 data-toggle-expand,
                 aria-haspopup="true"
-              )
-                +icon('dots').icon--medium
-            .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
-              button.btn.btn--clean.header-btn(
+                )
+                  +icon('dots').icon--medium
+              .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
+                button.btn.btn--clean.header-btn(
                 data-mega-menu-trigger
                 data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
                 data-toggle-expand,
                 aria-haspopup="true"
-              )
-                +icon('menu').icon--medium
+                )
+                  +icon('menu').icon--medium
 
-        if headerPromo
-          .bar__item.bar__item--shrinkable.header__ad.show-m(class=bookClassHide)
-            img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
-            | <style>.header__wrapper::after{background: #7d609a;}</style>
+          if headerPromo
+            .bar__item.bar__item--shrinkable.header__ad.show-m(class=bookClassHide)
+              img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
+              | <style>.header__wrapper::after{background: #7d609a;}</style>
 
-        .bar__item.bar__item--fill.header__search.header-search
-          .hide-m.header-search__toggle.no-mrg
-            button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
-              +icon('search').icon--medium
-          .hide-m.header-search__back
-            button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
-              +icon('arrow-left').icon--medium
-          .header-search__search(style="position: relative;")
-            .form-control.form-control--input.no-mrg-bottom
-              .input-addons
-                input.input.input--dark#search-in-header(type='text', placeholder="Titul, kategória alebo autor", data-input, data-toggle-focus)
-                .input-addons__item.header-search__empty.input-addons__item--dark
+          .bar__item.bar__item--fill.header__search.header-search
+            .hide-m.header-search__toggle.no-mrg
+              button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+                +icon('search').icon--medium
+            .hide-m.header-search__back
+              button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+                +icon('arrow-left').icon--medium
+            .header-search__search(style="position: relative;")
+              .form-control.form-control--input.no-mrg-bottom
+                .input-addons
+                  input.input.input--dark#search-in-header(type='text', placeholder="Titul, kategória alebo autor", data-input, data-toggle-focus)
+                  .input-addons__item.header-search__empty.input-addons__item--dark
                     +icon('search', '', 'Search').icon--medium
-                .input-addons__item.input-addons__item.no-pad.header-search__value
-                  .btn.btn--primary.text-nowrap
-                    +icon('search', '', 'Search').icon--medium.icon--left
-                    | Hladať
-            if pageTitle == ''
-              .dropdown.dropdown--arrowhead.is-active(aria-expanded="true")
-                .dropdown__wrap
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Prekliate Dieťa
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Kameň Mudrcov
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Fénixov Rád
-                  a.dropdown__item.dropdown__item--small Harr
-                    b y Potter a Ohnivá Čaša
-                  hr.mb-tiny
-                  a.dropdown__item.dropdown__item--small Herec#{' '}
-                    b Harrison Ford
-                  a.dropdown__item.dropdown__item--small Kategória#{' '}
-                    b Fantasy
+                  .input-addons__item.input-addons__item.no-pad.header-search__value
+                    .btn.btn--primary.text-nowrap
+                      +icon('search', '', 'Search').icon--medium.icon--left
+                      | Hladať
+              block headerSearchDropdown
 
-        .bar__item.header__user(class=bookClassHide)
-          +userMenu()
+          .bar__item.header__user(class=bookClassHide)
+            +userMenu()
 
-        .bar__item.header__cart(class=bookClassHide)
-          a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
-            +icon('cart').icon--medium
-        
-        if bookHeader
-          .bar__item.bar__item--fill.header__book.book-detail-show
-            .bar.bar--no-wrap.mb-none.align-self-right
-              .bar__item
-                .thumbnail.thumbnail--book.thumbnail--small
-                  .thumbnail__img-wrap
-                    img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-              .bar__item.bar__item--shrinkable.text-color-white.text-size-medium.line-small.header__book__name
+          .bar__item.header__notifications(class=bookClassHide)
+            .btn-dropdown.btn-dropdown--no-icon
+              a.btn.btn--clean.header-btn(style="padding-right: 0.625rem;", data-toggle-expand, data-toggle="self, next", data-notification="2")
+                +icon('bell').icon--medium
+
+              .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 300px; max-height: 400px;")
+                .dropdown__wrap(style="max-height: 400px;")
+                  .dropdown__group.bg-secondary
+                    h5.mb-none Oznámenia
+                  each item, i in Array(5)
+                    a.flex.dropdown__item.dropdown__item--small.align-items-middle
+                      .flex-shrinkable.text-space-right.text-space-left-tiny
+                        .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                      .flex-fill.text-space-right
+                        b Janko Martinusak#{' '}
+                        span.text-color-grey-dark
+                          | pridal recenziu ku knihe#{' '}
+                          b Harry Potter a Fenixov rad
+                    if i < 4
+                      hr.mb-tiny
+                    else
+                      .mb-tiny
+
+          .bar__item.header__cart(class=bookClassHide)
+            a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
+              +icon('cart').icon--medium
+
+          if bookHeader
+            .bar__item.bar__item--fill.header__book.book-detail-show
+              .bar.bar--no-wrap.mb-none.align-self-right
+                .bar__item
+                  .thumbnail.thumbnail--book.thumbnail--small
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src="images/content/books/sample-15.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .bar__item.bar__item--shrinkable.text-color-white.text-size-medium.line-small.header__book__name
                   | Základy rybolovu pro kluky a holky
-              .bar__item.show-s
-                .h3.text-color-white.text-bold 14,65 €
-              .bar__item.show-m
-                button.btn.btn--primary.btn--equal
-                  +icon('cart').icon--medium
-              .bar__item.bar__item--shrinkable.text-color-success.text-size-medium.line-small.header__buy__text.show-l
+                .bar__item.show-s
+                  .h3.text-color-white.text-bold 14,65 €
+                .bar__item.show-m
+                  button.btn.btn--primary.btn--equal
+                    +icon('cart').icon--medium
+                .bar__item.bar__item--shrinkable.text-color-success.text-size-medium.line-small.header__buy__text.show-l
                   | Pridajte ešte tento titul do košíka a dopravu máte zdarma
 
-      
 
-  include ./megamenu
-  include ./../checkout-notice
+
+    include ./megamenu
+    include ./../checkout-notice

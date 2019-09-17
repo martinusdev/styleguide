@@ -93,6 +93,44 @@ mixin ludiNajviacZaujma
               li(class=`${i < 3 ? 'mb-medium' : ''}`)
                 +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
 
+include ./mixins/userMenu
+
+block headerSearchDropdown
+  .dropdown.dropdown--arrowhead.is-active(aria-expanded="true")
+    .dropdown__wrap
+      a.dropdown__item.dropdown__item--small Harr
+        b y Potter a Prekliate Dieťa
+      a.dropdown__item.dropdown__item--small Harr
+        b y Potter a Kameň Mudrcov
+      hr.mb-tiny
+      a.dropdown__item.dropdown__item--small Herec#{' '}
+        b Harrison Ford
+      a.dropdown__item.dropdown__item--small Kategória#{' '}
+        b Fantasy
+      hr.mb-tiny
+      a.flex.dropdown__item.dropdown__item--small
+        .flex-shrinkable.text-space-right
+          | Kolekcia#{' '}
+        .flex-shrinkable.text-space-right-tiny
+          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+        .flex-fill
+          b Moje fantasy
+      a.flex.dropdown__item.dropdown__item--small
+        .flex-shrinkable.text-space-right
+          | Kolekcia#{' '}
+        .flex-shrinkable.text-space-right-tiny
+          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+        .flex-fill
+          b Pre deti
+      hr.mb-tiny
+      a.flex.dropdown__item.dropdown__item--small
+        .flex-shrinkable.text-space-right
+          | Profil#{' '}
+        .flex-shrinkable.text-space-right-tiny
+          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+        .flex-fill
+          b Janko Martinusak
+
 block content
   main.bg-secondary
     section.section

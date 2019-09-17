@@ -6,6 +6,7 @@ include ./mixins/pagination
 include ./mixins/review
 include ./mixins/sectionHeader
 include ./mixins/icon
+include ./mixins/collectionItem
 
 block opts
     - var pageTitle = 'Detail knihy';
@@ -841,6 +842,11 @@ block content
 
             .col--l-3.show-l
               include ./modules/card-buy-together
+
+              article.card.card--well
+                .card__content
+                  h2.text-center Nachádza sa v kolekcii
+                +collectionItemContent({user: true})
 
     section.section.section--secondary.section--overflow
       .wrapper-main
