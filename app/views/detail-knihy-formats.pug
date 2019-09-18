@@ -24,9 +24,12 @@ mixin itemGroup(id)
     .hide(data-toggle-class="hide", id=`item-group-more${id}`)
       +groupItem('Audiokniha cd', 3)
     .mb-medium
-      a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
+      //a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
         +icon('plus')
         | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac formátov</span>
+      a.link.text-size-medium(data-toggle="#modal-formats")
+        +icon('plus')
+        | Zobraziť viac#{' '}
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
 mixin groupItem(name, id)
@@ -306,3 +309,25 @@ block append scripts
           }
         });
       });
+
+block modals
+  .modal-overlay#modal-formats(data-modal)
+    .modal.modal--medium
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__action
+            .thumbnail.thumbnail--book.thumbnail--medium.mb-none
+              .thumbnail__img-wrap
+                img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-14.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+          .modal__header__headline.text-center
+            .h2.h3 Všetky formáty titulu
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#modal-formats")
+              +icon('close').icon--medium
+
+        .modal__content
+          +groupItem('Kniha, pevná väzba', 0)
+          +groupItem('Kniha, brožovaná väzba', 0)
+          +groupItem('E-kniha', 1)
+          +groupItem('Audiokniha mp3', 2)
+          +groupItem('Audiokniha cd', 3)
