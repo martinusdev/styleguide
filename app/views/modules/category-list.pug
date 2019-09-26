@@ -265,10 +265,19 @@ section.section
           if i === 0
             //GROUPED ITEM
             .product-item.product-item--border-bottom.bg-default
-              .row
-                .col--m-fill.product-item__content
-                  .row.mb-medium
-                    .col--s-shrink.col--3.no-pad-right
+              .row.mb-medium.product-item__content
+                .col--shrink.no-pad-right.show-m
+                  +product
+                    +productCover({
+                      href: 'detail-knihy.html',
+                      badge: categoryListBadge ? i + 1 : false,
+                      cover: `${item.cover}`,
+                      collection: true,
+                      })
+                .col--fill
+                  .row.mb-medium.mb-none-m
+
+                    .col--s-shrink.col--3.no-pad-right.hide-m
                       +product
                         +productCover({
                           href: 'detail-knihy.html',
@@ -276,32 +285,29 @@ section.section
                           cover: `${item.cover}`,
                           collection: true,
                           })
-                    .col--s-fill.col--9
-                      .row
-                        .col--m-fill
-                          .mb-small-m
-                            h2.h3.mb-tiny
-                              a.link.link--product(href="detail-knihy.html") #{item.title}
-                            .text-color-grey.mb-small.text-medium #{item.author}
-                            .badges.mb-small
-                              a.badge.mb-none
-                                +icon('star', 'icon--medium').text-color-yellow
-                                span.text-normal.text-space-left 3.5
-                                span.link.text-space-left(href="#recenzie", data-scroll) 234x
 
-                            div(data-collapse="60")
-                              p.text-medium.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
-                            .mb-medium.show-s
-                              a(href="detail-knihy.html").link.text-medium Viac o knihe
-                                +icon('arrow-right', 'icon--small')
+                    .col--fill
+                      .mb-small-m
+                        h2.h3.mb-tiny
+                          a.link.link--product(href="detail-knihy.html") #{item.title}
+                        .text-color-grey.mb-small.text-medium #{item.author}
+                        .badges.mb-small
+                          a.badge.mb-none
+                            +icon('star', 'icon--medium').text-color-yellow
+                            span.text-normal.text-space-left 3.5
+                            span.link.text-space-left(href="#recenzie", data-scroll) 234x
 
-                        .col--m-shrink.product-item__price-box
-                          .text-center.show-m
-                            h2.text-bold.mb-small od #{item.price}
+                        div(data-collapse="60")
+                          p.text-medium.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
+                        .mb-medium.show-s
+                          a(href="detail-knihy.html").link.text-medium Viac o knihe
+                            +icon('arrow-right', 'icon--small')
 
-                      +itemGroup(1).show-m
+                    .col--m-shrink.product-item__price-box
+                      .text-center.show-m
+                        h2.text-bold.mb-small od #{item.price}
 
-              +itemGroup(2).hide-m
+                  +itemGroup(1)
 
           else
             .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
