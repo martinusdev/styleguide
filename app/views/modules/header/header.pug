@@ -2,7 +2,7 @@ include ./../../mixins/userMenu
 include ./../../mixins/icon
 
 - var bookClassHide = bookHeader ? 'book-detail-hide' : '';
-  - var headerPromo = false;
+- var headerPromo = false;
 
   header.header
     .header__wrapper(data-sticky)
@@ -102,8 +102,8 @@ include ./../../mixins/icon
               a.btn.btn--clean.header-btn(style="padding-right: 0.625rem;", data-toggle-expand, data-toggle="self, next", data-notification="2")
                 +icon('bell').icon--medium
 
-              .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 300px; max-height: 400px;")
-                .dropdown__wrap(style="max-height: 400px;")
+              .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 300px; max-height: 420px;")
+                .dropdown__wrap(style="max-height: 420px;")
                   .dropdown__group.bg-secondary
                     h5.mb-none Oznámenia
                   each item, i in Array(5)
@@ -115,10 +115,12 @@ include ./../../mixins/icon
                         span.text-color-grey-dark
                           | pridal recenziu ku knihe#{' '}
                           b Harry Potter a Fenixov rad
-                    if i < 4
-                      hr.mb-tiny
-                    else
-                      .mb-tiny
+                    hr.mb-tiny
+                  a.flex.dropdown__item.dropdown__item--small.align-items-center
+                    .flex-shrinkable
+                      | Viac noviniek
+                      +icon('arrow-right')
+                  .mb-tiny
 
           .bar__item.header__cart(class=bookClassHide)
             a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
