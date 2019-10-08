@@ -414,9 +414,12 @@
     }
 
     @return $color;
-  } @else {
+  } @else if type-of($theme) == color {
     @return _color-shade($theme, $weight);
   }
+
+  // testing
+  @return 'magenta';
 }
 
 @function _color-shade($color, $weight) {
