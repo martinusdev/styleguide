@@ -1,5 +1,5 @@
 import Choices
-  from './../../../node_modules/choices.js/public/assets/scripts/choices';
+  from './../../../node_modules/choices.js/assets/scripts/dist/choices';
 import { nodeListToArray } from './Utils';
 // import Autocomplete from './Autocomplete';
 
