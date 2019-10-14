@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Light - Styleguide</title>
+    <meta name="author" content="Lighting Beetle s.r.o.">
+    <meta name="description" content="Light is SCSS/Pug foundation for living styleguides">
+    <meta name="keywords" content="Living Styleguide, Styleguide, SCSS, Pug">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta name="theme-color" content="#ff5722">
+    <link rel="stylesheet" href="../fonts/Tabac/fonts.1f89903e.css">
+    <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
+    <link rel="stylesheet" href="../styles/main.caf838b9.css">
+    <link rel="stylesheet" href="../styles/light.d23d5e85.css">
+    <script src="../scripts/plugins/modernizr.c201a9b4.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".js-scrollspy" data-offset="150" id="top">
+    <!-- offcanvas-->
+    <div class="l-offcanvas" data-role="offcanvas">
+      <!-- content main-->
+      <article class="l-content-main" id="top">
+        <!-- header-->
+        <header class="l-header-main"> 
+          <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
+          <div class="l-wrap-main">
+            <h1 class="js-header"> <a href="#top" data-smoothscroll="#top">Grid</a></h1>
+            <div class="js-scrollspy l-headnav" id="header-navigation">
+              <ul class="l-headnav_list nav">
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#media" data-smoothscroll="#media" data-toggle-target="#header-navigation" data-toggle="dropdown">Media queries</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#wrappers" data-smoothscroll="#wrappers" data-toggle-target="#header-navigation" data-toggle="dropdown">Wrappers</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#grid" data-smoothscroll="#grid" data-toggle-target="#header-navigation" data-toggle="dropdown">Grid</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <div class="l-content-main_inner">
+          <section class="l-main-info" id="main-info">
+            <div class="l-wrap-main">
+              <p class="l-big">Documentation of media queries, grids, wrappers and layout utility classes.
+              </p>
+              <div class="l-box-desc">
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/utils/_media.scss</code><br/><code class="l-code">app/styles/layout/_grid.scss</code><br/><code class="l-code">app/styles/tools/_utilities.scss</code><br/>
+              </div>
+            </div>
+          </section>
+          <aside class="l-nav-contents js-scrollspy">
+            <p class="l-nav-contents_headline">Contents</p>
+            <ul class="l-nav-contents_list nav">
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#media" data-smoothscroll="#media">Media queries</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#wrappers" data-smoothscroll="#wrappers">Wrappers</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#grid" data-smoothscroll="#grid">Grid</a></li>
+            </ul>
+          </aside>
+          <section id="media">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Media queries
+              </h2>
+              <p class="l-p">There are three main media queries for screen layouts: S, M, L; and two supplementary media queries XS and XL. Breakpoints for these layouts are described bellow.
+              </p>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Breakpoints
+                </h3>
+                <dl class="l-dl">
+                  <dt>
+                    <big>XL</big>
+                  </dt>
+                  <dd>width &gt; 1280px</dd>
+                  <dt>
+                    <big>L</big>
+                  </dt>
+                  <dd>width &gt; 960px</dd>
+                  <dt>
+                    <big>M</big>
+                  </dt>
+                  <dd>width &gt; 768px</dd>
+                  <dt>
+                    <big>S</big>
+                  </dt>
+                  <dd>width &gt; 480px</dd>
+                  <dt>
+                    <big>XS</big>
+                  </dt>
+                  <dd>width &gt; 0px</dd>
+                </dl>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Mixins
+                </h3>
+                <article class="l-demo is-active no-example">
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code class="scss">@include breakpoint(m) {
+  ... styles M and up ...
+}
+@include breakpoint(xl, down) {
+  ... styles smaller than XL ...
+}
+@include breakpoint(s, only) {
+  ... styles S only ...
+}
+@include breakpoint(640px) {
+  ... styles 640px and up ...
+}
+@include breakpoint(1200px, down) {
+  ... styles 1200px and down ...
+}
+@include breakpoint(s, l) {
+  ... styles S up and L down (smaller than L, in this case S and M)...
+}
+@include breakpoint(200px, 400px) {
+  ... styles between 200px and 400px ...
+}</code></pre>
+                  </div>
+                </article>
+              </div>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="wrappers">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Wrappers
+              </h2>
+              <p class="l-p">By default there is one main wrapper class <code class='l-code-inline'>.wrapper-main</code>.
+              </p>
+              <dl class="l-dl">
+                <dt>
+                  <big>wrapper-main</big>
+                </dt>
+                <dd>width: 1200px</dd>
+              </dl>
+              <article class="l-demo is-active no-example">
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;div class='wrapper-main'&gt;
+  ...
+&lt;/div&gt;</code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="grid">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Grid
+              </h2>
+              <p class="l-p">Grid has mobile first design and consists of 12 columns across 5 different media breakpoints XS (default) / S / M / L / XL.
+              </p>
+              <div class="l-box-desc l-box-note">
+                <p class="l-box-desc_headline">Note</p>
+                <p class="l-p">Start by creating horizontal container with a class of <code class='l-code-inline'>.row</code>. Now you can add elements with a class beginning with <code class='l-code-inline'>.col-</code> and specify width of each with <code class='l-code-inline'>.col-[-breakpoint]-[width]</code>, where breakpoint is one of s/m/l/xl and width is number 1-12. There is no need to specify the xs breakpoint, because it's default by definition of mobile first philosophy.
+                </p>
+                <p class="l-p">Basic column behavior gets applied on any element with class containing <code class='l-code-inline'>.col--</code>. Therefore a <code class='l-code-inline'>.col--m-5</code> will automatically behave as <code class='l-code-inline'>.col--12</code> on viewports smaller than M.
+                </p>
+              </div>
+              <div class="l-box-desc l-box-warn">
+                <p class="l-box-desc_headline">Warning</p>
+                <p class="l-p">Media queries for layouts are set by min width, so for example stuff for layout M are inherited also in L and XL.
+                </p>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Basic
+                </h3>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--m-5 col--l-3 col--xl-4">
+                        <div class="l-debug"><span class="show-xl">XL4</span><span class="show-l-only">L3</span><span class="show-m-only">M5</span><span class="hide-m">12</span></div>
+                      </div>
+                      <div class="col--m-7 col--l-6 col--xl-4">
+                        <div class="l-debug"><span class="show-xl">XL4</span><span class="show-l-only">L6</span><span class="show-m-only">M7</span><span class="hide-m">12</span></div>
+                      </div>
+                      <div class="col--l-3 col--xl-4">
+                        <div class="l-debug"><span class="show-xl">XL4</span><span class="show-l-only">L3</span><span class="hide-l">12</span></div>
+                      </div>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--m-5 col--l-4">
+                        <div class="l-debug"><span class="show-l">L4</span><span class="show-m-only">M5</span><span class="hide-m">12</span></div>
+                      </div>
+                      <div class="col--m-7 col--l-8">
+                        <div class="l-debug"><span class="show-l">L8</span><span class="show-m-only">M7</span><span class="hide-m">12</span></div>
+                      </div>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--s-6 col--xl-7">
+                        <div class="l-debug"><span class="show-xl">XL7</span><span class="show-s hide-xl">S6</span><span class="hide-s">12</span></div>
+                      </div>
+                      <div class="col--l-6 col--xl-5">
+                        <div class="l-debug"><span class="show-xl">XL5</span><span class="show-l-only">L6</span><span class="hide-l">12</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col--m-5 col--l-3 col--xl-4&quot;&gt; … &lt;/div&gt;
+  &lt;div class=&quot;col--m-7 col--l-6 col--xl-4&quot;&gt; … &lt;/div&gt;
+  &lt;div class=&quot;col--l-3 col--xl-4&quot;&gt; … &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col--m-5 col--l-4&quot;&gt; … &lt;/div&gt;
+  &lt;div class=&quot;col--m-7 col--l-8&quot;&gt; … &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col--s-6 col--xl-7&quot;&gt; … &lt;/div&gt;
+  &lt;div class=&quot;col--l-6 col--xl-5&quot;&gt; … &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Automatic sizing
+                </h3>
+                <p class="l-p">In addition to exact sizing, columns can take all available space or just the space they need using <code class='l-code-inline'>.col-[-breakpoint]-fill</code> and <code class='l-code-inline'>.col-[-breakpoint]-shrink</code>
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--3">
+                        <div class="l-debug">XS3</div>
+                      </div>
+                      <div class="col--fill">
+                        <div class="l-debug">Fill all available space</div>
+                      </div>
+                      <div class="col--shrink">
+                        <div class="l-debug">Shrink</div>
+                      </div>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--fill">
+                        <div class="l-debug">Fill all available space</div>
+                      </div>
+                      <div class="col--fill">
+                        <div class="l-debug">Fill all available space</div>
+                      </div>
+                      <div class="col--fill">
+                        <div class="l-debug">Fill all available space</div>
+                      </div>
+                      <div class="col--fill">
+                        <div class="l-debug">Fill all available space</div>
+                      </div>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--shrink">
+                        <div class="l-debug">Shrink</div>
+                      </div>
+                      <div class="col--shrink">
+                        <div class="l-debug">Shrink</div>
+                      </div>
+                      <div class="col--shrink">
+                        <div class="l-debug">Shrink</div>
+                      </div>
+                      <div class="col--shrink">
+                        <div class="l-debug">Shrink</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col col--3&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--fill&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--shrink&quot;&gt; ... &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col col--fill&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--fill&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--fill&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--fill&quot;&gt; ... &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col col--shrink&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--shrink&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--shrink&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--shrink&quot;&gt; ... &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="alignment">
+                <h3 class="l-h3">Alignment
+                </h3>
+                <p class="l-p">Grid alignment utilities are covered in <a href="utilities.html#flexbox-alignment">Utilites</a> section.
+                </p>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Nesting
+                </h3>
+                <p class="l-p">Rows and columns can be also nested.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--l-3 no-mrg-bottom-l">
+                        <div class="l-debug"><span class="show-l">L3</span><span class="hide-l">12</span></div>
+                      </div>
+                      <div class="col--l-9 no-mrg-bottom">
+                        <div class="l-debug l-debug-nopad">
+                          <div class="row row--space">
+                            <div class="col--m-6 no-mrg-bottom-m">
+                              <div class="l-debug"><span class="show-m">Nested M6</span><span class="hide-m">Nested 12</span></div>
+                            </div>
+                            <div class="col--m-6 no-mrg-bottom">
+                              <div class="l-debug"><span class="show-m">Nested M6</span><span class="hide-m">Nested 12</span></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col col--l-3&quot;&gt; ... &lt;/div&gt;
+  &lt;div class=&quot;col col--l-9&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col--m-6&quot;&gt; ... &lt;/div&gt;
+      &lt;div class=&quot;col--m-6&quot;&gt; ... &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Offsets
+                </h3>
+                <p class="l-p">Colums can be moved to the right by using classes like <code class='l-code-inline'>.ofst-[-breakpoint]-[width]</code>. You can also center column with class <code class='l-code-inline'>.ofst-[-breakpoint]-center</code>.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--6 col--s-5 ofst--s-1 col--m-4 col--l-3">
+                        <div class="l-debug"><span class="hide-s">6</span><span class="show-s-only">S5, ofst S1</span><span class="show-m-only">M4, ofst S1</span><span class="show-l">L3, ofst S1</span></div>
+                      </div>
+                      <div class="col--2 col--s-10 ofst--s-1 col--l-7 ofst--l-1">
+                        <div class="l-debug"><span class="hide-s">12</span><span class="show-s hide-l">S10, ofst S1</span><span class="show-l">L7, ofst L1</span></div>
+                      </div>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--m-10 col--l-8 ofst--l-center">
+                        <div class="l-debug"><span class="hide-m">12</span><span class="show-m hide-l">M10</span><span class="show-l">L8, center L</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col--6 col--s-5 ofst--s-1 col--m-4 col--l-3&quot;&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class=&quot;col--2 col--s-10 ofst--s-1 col--l-7 ofst--l-1&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col--m-10 col--l-8 ofst--l-center&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Vertical space
+                </h3>
+                <p class="l-p">Vertical space between rows can be created by using class <code class='l-code-inline'>.row--space</code>.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col">
+                        <div class="l-debug"><span>12</span></div>
+                      </div>
+                    </div>
+                    <div class="row row--space">
+                      <div class="col--l-6">
+                        <div class="l-debug"><span class="show-l">L6, col L nospace</span><span class="hide-l">XS12, col space</span></div>
+                      </div>
+                      <div class="col--l-6">
+                        <div class="l-debug"><span class="show-l">L6, col L nospace</span><span class="hide-l">XS12, col space</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;row row--l-space&quot;&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row row--l-space&quot;&gt;
+  &lt;div class=&quot;col col--l-6 col--space col--l-nospace&quot;&gt;
+    ...
+  &lt;/div&gt;
+  &lt;div class=&quot;col col--l-6 col--space col--l-nospace&quot;&gt;
+    ...
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                </article>
+                <div class="l-sub-section" id="">
+                  <h3 class="l-h3">Column border
+                  </h3>
+                  <p class="l-p">Border between two columns can be added on second column with class <code class='l-code-inline'>.col--border</code> which adds border on the left site in the middle of these two columns.
+                  </p>
+                  <article class="l-demo">
+                    <div class="l-demo_example">
+                      <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                          <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                            <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                          </svg></a>
+                      </div>
+                      <div class="row row--space">
+                        <div class="col--3">
+                          <div class="l-debug">Column</div>
+                        </div>
+                        <div class="col--fill col--border">
+                          <div class="l-debug">Column with border</div>
+                        </div>
+                        <div class="col--3">
+                          <div class="l-debug">Column</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="l-demo_code">
+                      <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                      <pre class="prettyprint"><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col--3&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;col--fill col--border&quot;&gt;...&lt;/div&gt;
+  &lt;div class=&quot;col--3&quot;&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+                    </div>
+                  </article>
+                </div>
+                <div class="l-sub-section" id="">
+                  <h3 class="l-h3">Grid layout
+                  </h3>
+                  <p class="l-p">Grid layout sizes its children into an evenly spaced layout. Use <code class='l-code-inline'>.grid</code> to set the base styles and add modifiers per breakpoint and number of items in one row <code class='l-code-inline'>.grid-[-breakpoint]-[number]</code>
+                  </p>
+                  <p class="l-p">To add spacing between items use <code class='l-code-inline'>.grid--spaced</code>. You can even break the layout using <code class="l-code-inline">.col-[-breakpoint]-[width]</code> on any grid item.
+                  </p>
+                  <article class="l-demo">
+                    <div class="l-demo_example">
+                      <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                          <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                            <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                          </svg></a>
+                      </div><code class="l-code-inline">.grid.grid--1.grid--s-2.grid--m-3.grid--l-4</code>
+                      <div class="grid grid--1 grid--s-2 grid--m-3 grid--l-4">
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                      </div>
+                      <hr><code class="l-code-inline">.grid.grid--spaced</code>
+                      <div class="grid grid--spaced grid--1 grid--s-2 grid--m-3 grid--l-4">
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                        <div>
+                          <div class="l-debug">&nbsp;</div>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="grid grid--1 grid--s-2 grid--m-3 grid--l-4">
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug col--m-8 col--l-6"><code class="text-center">
+                            <div class="hide-m">12</div>
+                            <div class="show-m-only">.col--m-8</div>
+                            <div class="show-l">.col--l-6</div></code></div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                        <div class="l-debug">&nbsp;</div>
+                      </div>
+                    </div>
+                    <div class="l-demo_code">
+                      <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                      <pre class="prettyprint"><code>&lt;div class=&quot;grid grid--1 grid--s-2 grid--m-3 grid--l-4&quot;&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;grid grid--spaced grid--1 grid--s-2 grid--m-3 grid--l-4&quot;&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </article>
+      <aside class="l-wrap-navs">
+        <!-- navigation main-->
+        <nav class="l-nav-main" data-role="dropdown"><a class="l-nav-main_headline" href="../index.html">Martinus - Styleguide</a>
+          <ul class="l-nav-main_list js-scrollbar" data-role="sidebar">
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Introduction
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="index.html">Get started</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link is-active selected" data-toggle="self, next">Foundations
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub is-active">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="color-palette.html">Color Palette</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="typography.html">Typography</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="icons.html">Icons / Images</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="grid.html">Grid</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="utilities.html">Utilities</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Components
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
+                                    <svg class="icon icon-sg-add " role="img" aria-hidden="true">
+                                      <use xlink:href="../icons_/styleguide.svg#icon-sg-add"></use>
+                                    </svg></a>
+                  <ul class="l-nav-main_list-sub2">
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-basic.html">- Basic</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-labels.html">- Labels</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
+                  </ul>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cart.html">Cart</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tables.html">Tables</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cards.html">Cards</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="lists.html">Lists</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tabs.html">Tabs</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="modals.html">Modals</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="dropdowns.html">Dropdowns</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="badges.html">Badges, pills</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="carousels.html">Carousels</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tooltips.html">Tooltips</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="alerts.html">Alerts</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="loaders.html">Loaders</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Modules
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="price-box.html">Price Boxes</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="order-progress.html">Order progress</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="author.html">Author</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="section-title.html">Section title</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Javascripts
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-select.html">Select</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-autocomplete.html">Autocomplete</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-toggle.html">Toggle</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-alert.html">Alert</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-scrolling.html">Scrolling</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- end: navigation main-->
+      </aside>
+      <!-- end: content main-->
+    </div>
+    <!-- end: offcanvas-->
+    <script src="../scripts/vendor.8a435637.js"></script>
+    <script src="../scripts/main.62c03111.js"></script>
+    <script src="../scripts/light.b99a3ceb.js"></script>
+    <div class="alert-container" data-alert-area></div>
+  </body>
+</html>

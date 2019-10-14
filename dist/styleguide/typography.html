@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Light - Styleguide</title>
+    <meta name="author" content="Lighting Beetle s.r.o.">
+    <meta name="description" content="Light is SCSS/Pug foundation for living styleguides">
+    <meta name="keywords" content="Living Styleguide, Styleguide, SCSS, Pug">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta name="theme-color" content="#ff5722">
+    <link rel="stylesheet" href="../fonts/Tabac/fonts.1f89903e.css">
+    <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
+    <link rel="stylesheet" href="../styles/main.caf838b9.css">
+    <link rel="stylesheet" href="../styles/light.d23d5e85.css">
+    <script src="../scripts/plugins/modernizr.c201a9b4.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".js-scrollspy" data-offset="150" id="top">
+    <!-- offcanvas-->
+    <div class="l-offcanvas" data-role="offcanvas">
+      <!-- content main-->
+      <article class="l-content-main" id="top">
+        <!-- header-->
+        <header class="l-header-main"> 
+          <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
+          <div class="l-wrap-main">
+            <h1 class="js-header"> <a href="#top" data-smoothscroll="#top">Typography</a></h1>
+            <div class="js-scrollspy l-headnav" id="header-navigation">
+              <ul class="l-headnav_list nav">
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#headings" data-smoothscroll="#headings" data-toggle-target="#header-navigation" data-toggle="dropdown">Headings</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#text" data-smoothscroll="#text" data-toggle-target="#header-navigation" data-toggle="dropdown">Text</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#links" data-smoothscroll="#links" data-toggle-target="#header-navigation" data-toggle="dropdown">Links</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#lists" data-smoothscroll="#lists" data-toggle-target="#header-navigation" data-toggle="dropdown">Lists</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#cms-article" data-smoothscroll="#cms-article" data-toggle-target="#header-navigation" data-toggle="dropdown">CMS article</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#product-article" data-smoothscroll="#product-article" data-toggle-target="#header-navigation" data-toggle="dropdown">Product article</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#utilities" data-smoothscroll="#utilities" data-toggle-target="#header-navigation" data-toggle="dropdown">Utilities</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <div class="l-content-main_inner">
+          <section class="l-main-info" id="main-info">
+            <div class="l-wrap-main">
+              <p class="l-big">Documentation of headings, texts, list and all elements related to typography, including utility classes for text.
+              </p>
+              <div class="l-box-desc">
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/base/_typography.scss</code><br/><code class="l-code">app/styles/tools/_utilities.scss</code><br/>
+              </div>
+            </div>
+          </section>
+          <aside class="l-nav-contents js-scrollspy">
+            <p class="l-nav-contents_headline">Contents</p>
+            <ul class="l-nav-contents_list nav">
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#headings" data-smoothscroll="#headings">Headings</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#text" data-smoothscroll="#text">Text</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#links" data-smoothscroll="#links">Links</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#lists" data-smoothscroll="#lists">Lists</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#cms-article" data-smoothscroll="#cms-article">CMS article</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#product-article" data-smoothscroll="#product-article">Product article</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#utilities" data-smoothscroll="#utilities">Utilities</a></li>
+            </ul>
+          </aside>
+          <section id="headings">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Headings
+              </h2>
+              <p class="l-p">There are four main headlines: h1-h5.
+              </p>
+              <div class="l-box-desc l-box-note">
+                <p class="l-box-desc_headline">Note</p>
+                <p class="l-p">In case that html tag mismatch style of headline, you can use classes <code class='l-code-inline'>.h1</code> - <code class='l-code-inline'>.h5</code>.
+                </p>
+              </div>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <h1>Nadpis knihy 42 /49</h1>
+                  <h2>Nadpis sekcie 25 /31</h2>
+                  <h3>Podnadpis 18 / 24</h3>
+                  <h4>Nadpis stvrtej urovne 18/ 24 SemiBold</h4>
+                  <h5>Material design nadpis 12 / 20</h5>
+                  <hr>
+                  <h1>Základy rybolovu pro kluky a holky</h1>
+                  <h3 class="h4">Praktický návod ako stretnúť, spoznať a získať ženu svojich snov</h3>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;h1&gt;Headline 1...&lt;/h1&gt;
+&lt;h2&gt;Headline 2...&lt;/h2&gt;
+&lt;h3&gt;Headline 3...&lt;/h3&gt;
+&lt;h4&gt;Headline 4...&lt;/h4&gt;
+&lt;h5&gt;Headline 5...&lt;/h5&gt;
+</code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="text">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Text
+              </h2>
+              <p class="l-p">There are styles for default text, hero-text, description text and small text.
+              </p>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <p><strong>Body text:</strong> Lorem ipsum <a class='link'>Ullamco voluptate</a> veniam consectetur mollit adipisicing labore cupidatat ad in dolore   consectetur culpa sit Duis cupidatat Duis laboris <a class='link'>voluptate</a> est nulla  enim laboris sit sint deserunt ullamco in fugiat dolor ullamco esse id ut <em>aliqua labore</em> pariatur lcommodo consectetur reprehenderit minim <strong>consectetur incididunt</strong> adipisicing deserunt pariatur non eiusmod velit ut quis aliquip qui occaecat in ex in adipisicing sunt.</p>
+                  <p>Lorem ipsum dolor sit amet, <span class="text-italic">consectetur adipisicing elit</span>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <p class="text-medium"><strong>Medium text:</strong> Lorem ipsum Dolore veniam in ex ut culpa sunt incididunt aliquip et eu consectetur culpa quis elit anim magna enim dolor dolor officia occaecat sed tempor irure fugiat ullamco et laboris reprehenderit amet tempor sit nulla ut proident ex exercitation veniam.</p>
+                  <p class="text-small"><strong>Small text:</strong> Lorem ipsum Dolore veniam in ex ut culpa sunt incididunt aliquip et eu consectetur culpa quis elit anim magna enim dolor dolor officia occaecat sed tempor irure fugiat ullamco et laboris reprehenderit amet tempor sit nulla ut proident ex exercitation veniam.</p>
+                  <hr>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;p&gt;
+  &lt;strong&gt;Body text:&lt;/strong&gt; Lorem ipsum &lt;a class=&quot;link&quot;&gt;Ullamco voluptate&lt;/a&gt; ...
+  &lt;em&gt;aliqua labore&lt;/em&gt; pariatur ...
+&lt;/p&gt;
+&lt;p class=&quot;text-desc&quot;&gt;
+  &lt;strong&gt;Description text:&lt;/strong&gt; Lorem ipsum ...
+&lt;/p&gt;
+&lt;p class=&quot;text-small&quot;&gt;
+  &lt;strong&gt;Small text:&lt;/strong&gt; Lorem ipsum ...
+&lt;/p&gt;
+
+&lt;hr /&gt;</code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="links">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Links
+              </h2>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <ul class="list--unstyled">
+                    <li><a class="link link--" href="#">Link </a></li>
+                    <li><a class="link link--grey" href="#">Link grey</a></li>
+                    <li><a class="link link--black" href="#">Link black</a></li>
+                    <li><a class="link link--product" href="#">Link product</a></li>
+                  </ul>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;a href=&quot;&#35;&quot; class=&quot;link&quot;&gt;...&lt;/a&gt;
+&lt;a href=&quot;&#35;&quot; class=&quot;link link--grey&quot;&gt;...&lt;/a&gt;
+&lt;a href=&quot;&#35;&quot; class=&quot;link link--black&quot;&gt;...&lt;/a&gt;
+&lt;a href=&quot;&#35;&quot; class=&quot;link link--product&quot;&gt;...&lt;/a&gt;
+
+</code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="lists">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Lists
+              </h2>
+              <p class="l-p">There styles for unordered, ordered and description lists and their inline variations.
+              </p>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Unordered list
+                </h3>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <ul class="list--default">
+                      <li>Est dolor incididunt eiusmod.</li>
+                      <li>Ad dolor ea aliquip officia.
+                        <ul>
+                          <li>Est dolor incididunt eiusmod.</li>
+                          <li>Ad dolor ea aliquip officia.</li>
+                        </ul>
+                      </li>
+                      <li>Aliqua anim esse eu ex.</li>
+                      <li class="is-active">Est sit enim est.</li>
+                      <li>Labore deserunt elit dolor commodo mollit.</li>
+                    </ul>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;ul class=&quot;list--default&quot;&gt;
+  &lt;li&gt;Est dolor incididunt eiusmod.&lt;/li&gt;
+  &lt;li&gt;Ad dolor ea aliquip officia.
+    &lt;ul&gt;
+      &lt;li&gt;...&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;is-active&quot;&gt;...&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Ordered list
+                </h3>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <ol class="list--default">
+                      <li>Est dolor incididunt eiusmod.</li>
+                      <li>Ad dolor ea aliquip officia.
+                        <ol>
+                          <li>Est dolor incididunt eiusmod.</li>
+                          <li>Ad dolor ea aliquip officia.</li>
+                        </ol>
+                      </li>
+                      <li>Aliqua anim esse eu ex.</li>
+                      <li>Est sit enim est.</li>
+                      <li>Labore deserunt elit dolor commodo mollit.</li>
+                    </ol>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;ol class=&quot;list--default&quot;&gt;
+  &lt;li&gt;Est dolor incididunt eiusmod.&lt;/li&gt;
+  &lt;li&gt;Ad dolor ea aliquip officia.
+    &lt;ol&gt;
+      &lt;li&gt;...&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Custom lists
+                </h3>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <ul class="list--no-offset">
+                      <li><strong>List no offset</strong></li>
+                      <li>Ad dolor</li>
+                      <li>Aliqua anim</li>
+                      <li>Est sit</li>
+                    </ul>
+                    <hr>
+                    <ul class="list--expanded">
+                      <li><strong>List expanded</strong></li>
+                      <li>Ad dolor</li>
+                      <li>Aliqua anim</li>
+                      <li>Est sit</li>
+                    </ul>
+                    <hr>
+                    <ul class="list--unstyled">
+                      <li><strong>List unstyled</strong></li>
+                      <li>Ad dolor</li>
+                      <li>Aliqua anim</li>
+                      <li>Est sit</li>
+                    </ul>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;!-- list no offset --&gt;
+&lt;ul class=&quot;list--no-offset&quot;&gt;
+  &lt;li&gt;&lt;strong&gt;List no offset&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Ad dolor&lt;/li&gt;
+  &lt;li&gt;Aliqua anim&lt;/li&gt;
+  &lt;li&gt;Est sit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- list expanded --&gt;
+&lt;ul class=&quot;list--expanded&quot;&gt;
+  &lt;li&gt;&lt;strong&gt;List expanded&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Ad dolor&lt;/li&gt;
+  &lt;li&gt;Aliqua anim&lt;/li&gt;
+  &lt;li&gt;Est sit&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- list unstyled --&gt;
+&lt;ul class=&quot;list--unstyled&quot;&gt;
+  &lt;li&gt;&lt;strong&gt;List unstyled&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;Ad dolor&lt;/li&gt;
+  &lt;li&gt;Aliqua anim&lt;/li&gt;
+  &lt;li&gt;Est sit&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Inline list
+                </h3>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <ul class="list-inline">
+                      <li><strong>List inline</strong></li>
+                      <li>Ad dolor</li>
+                      <li>Aliqua anim</li>
+                      <li>Est sit</li>
+                      <li>Labore deserunt</li>
+                    </ul>
+                    <ul class="list-inline list-inline--expanded">
+                      <li><strong>List inline expanded</strong></li>
+                      <li>Ad dolor</li>
+                      <li>Aliqua anim</li>
+                      <li>Est sit</li>
+                      <li>Labore deserunt</li>
+                    </ul>
+                    <ul class="list-inline list-inline--line">
+                      <li><strong>List inline line</strong></li>
+                      <li>Ad dolor</li>
+                      <li>Aliqua anim</li>
+                      <li>Est sit</li>
+                      <li>Labore deserunt</li>
+                    </ul>
+                    <ul class="list-inline list-inline--delimited">
+                      <li><strong>List inline delimited</strong></li>
+                      <li>Ad dolor</li>
+                      <li>Aliqua anim</li>
+                      <li>Est sit</li>
+                      <li>Labore deserunt</li>
+                    </ul>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;ul class=&quot;list-inline&quot;&gt;
+  &lt;li&gt;&lt;strong&gt;List inline&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class=&quot;list-inline list-inline--expanded&quot;&gt;
+  &lt;li&gt;&lt;strong&gt;List inline expanded&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;...&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul class=&quot;list-inline list-inline--line&quot;&gt;
+  &lt;li&gt;&lt;strong&gt;List inline line&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;...r&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Description list
+                </h3>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <dl>
+                      <dt>Description list</dt>
+                      <dd>Do dolor anim sit dolore ex.</dd>
+                      <dt>Veniam ut amet</dt>
+                      <dd>Non dolore in sed.</dd>
+                      <dt>Eiusmod aute</dt>
+                      <dd>Eu sed sint irure.</dd>
+                    </dl>
+                    <hr class="l-hr">
+                    <dl class="dl-inline">
+                      <dt>Description list inline</dt>
+                      <dd>Do dolor anim sit dolore ex.</dd>
+                      <dt>Veniam ut amet</dt>
+                      <dd>Non dolore in sed.</dd>
+                      <dt>Eiusmod aute</dt>
+                      <dd>Eu sed sint irure.</dd>
+                    </dl>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;dl&gt;
+  &lt;dt&gt;Description list&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;dl class=&quot;dl-inline&quot;&gt;
+  &lt;dt&gt;Description list inline&lt;/dt&gt;
+  &lt;dd&gt;...&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="cms-article">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">CMS article
+              </h2>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <article class="cms-article">
+                    <h1>Header 1</h1>
+                    <h2>Header 2</h2>
+                    <h3>Header 3</h3>
+                    <h4>Header 4</h4>
+                    <h5>Header 5</h5>
+                    <p>Leverage agile <a href="#">frameworks to provide a robust synopsis</a> for high level overviews. Iterative approaches to corporate strategy <strong>foster collaborative thinking</strong> to further the overall value proposition. <i>Organically grow</i> the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+                    <p><small>This is smaller text.</small></p>
+                    <ul>
+                      <li><a href="#">Link in list 1</a></li>
+                      <li>Normal text 1</li>
+                      <li><a href="#">Link in list 2</a></li>
+                      <li><a href="#">Link in list 3</a></li>
+                      <li><strong>Bold text</strong></li>
+                    </ul>
+                    <ol>
+                      <li><a href="#">Link in list 1</a></li>
+                      <li>Normal text 1</li>
+                      <li><a href="#">Link in list 2</a></li>
+                      <li><a href="#">Link in list 3</a></li>
+                      <li>Normal text 2</li>
+                    </ol><img src="http://placehold.it/600x100">
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>Column 1</th>
+                          <th>Longer column name</th>
+                          <th>Column 3</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Et fugiat</td>
+                          <td>Voluptate dolore</td>
+                          <td>979</td>
+                        </tr>
+                        <tr>
+                          <td>Quis deserunt</td>
+                          <td>Aliqua sint laboris ut</td>
+                          <td>1023</td>
+                        </tr>
+                        <tr>
+                          <td>Voluptate dolore</td>
+                          <td>Voluptate dolore</td>
+                          <td>12</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </article>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code></code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="product-article">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Product article
+              </h2>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <article class="cms-article">
+                    <h2>Popis knihy</h2>
+                    <div class="card card--notice">
+                      <div class="card__content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit magna eu lacinia fringilla. Nulla ligula justo, suscipit nec dui sit amet, consectetur dapibus lacus.</p>
+                      </div>
+                    </div>
+                    <p><i>„Neprišiel si včas, moknem tu už hodinu a z hlavy mi zatieklo po chrbte až na riť!“ <b>- Richard Krausz</b></i></p>
+                    <p>Je rok 1992 a Československo sa rozpadáva. Detektív Krauz z oddelenia vrážd sa dostáva k prípadu umučeného kostolníka. Jeho smrť mala ostať tajomstvom, ale klinec zatlčený v lebke núti Krauza pátrať aj napriek všetkým varovaniam. Pravdu o prepojení ŠtB a Cirkvi svätej môže priniesť len muž prezývaný Červený kapitán. Stretnutie s týmto „expertom na finálne výsluchy“ ale málokto prežije...</p>
+                    <h3>Drsná detektívka slovenského knižného fenoménu Dominika Dána</h3>
+                    <p>Predalo sa viac ako 700 000 kníh a konečne prichádza dlhoočakávaný film. Stovky trikových záberov, jeden z najväčších rozpočtov v slovenskom filme a príbeh inšpirovaný skutočnými udalosťami, v ktorom treba ísť cez mŕtvoly.</p>
+                    <p>Tento titul nájdete v našej ponuke aj s podpisom autora.</p>
+                    <p><b>Z nášho blogu: </b><a href="#">Film Červený kapitán je povinná jazda pre fanúšikov Dominika Dána</a></p>
+                    <h3>Autorove tituly</h3>
+                    <ol>
+                      <li><a href="#">Popol všetkých zarovná</a></li>
+                      <li><a href="#">Nehanebné neviniatko</a></li>
+                      <li><a href="#">Beštia</a></li>
+                      <li><a href="#">Sára</a></li>
+                      <li><a href="#">Cela číslo 17</a></li>
+                      <li><a href="#">Červený kapitán</a></li>
+                      <li><a href="#">Hriech náš každodenný</a></li>
+                      <li><a href="#">Knieža Smrť</a></li>
+                      <li><a href="#">Noc temných klamstiev</a></li>
+                    </ol>
+                    <h3>Iný zoznam</h3>
+                    <ul>
+                      <li>Položka zoznamu</li>
+                      <li>Položka zoznamu</li>
+                      <li>Položka zoznamu</li>
+                      <li>Položka zoznamu</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;h2&gt;Popis knihy&lt;/h2&gt;
+
+&lt;div class=&quot;card card--notice&quot;&gt;
+  &lt;div class=&quot;card__content&quot;&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas suscipit magna eu lacinia fringilla. Nulla ligula justo, suscipit nec dui sit amet, consectetur dapibus lacus.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;i&gt;„Neprišiel si včas, moknem tu už hodinu a z hlavy mi zatieklo po chrbte až na riť!“ &lt;b&gt;- Richard Krausz&lt;/b&gt;&lt;/i&gt;&lt;/p&gt;
+
+&lt;p&gt;Je rok 1992 a Československo sa rozpadáva. Detektív Krauz z oddelenia vrážd sa dostáva k prípadu umučeného kostolníka. Jeho smrť mala ostať tajomstvom, ale klinec zatlčený v lebke núti Krauza pátrať aj napriek všetkým varovaniam. Pravdu o prepojení ŠtB a Cirkvi svätej môže priniesť len muž prezývaný Červený kapitán. Stretnutie s týmto „expertom na finálne výsluchy“ ale málokto prežije...&lt;/p&gt;
+
+&lt;h3&gt;Drsná detektívka slovenského knižného fenoménu Dominika Dána&lt;/h3&gt;
+
+&lt;p&gt;Predalo sa viac ako 700 000 kníh a konečne prichádza dlhoočakávaný film. Stovky trikových záberov, jeden z najväčších rozpočtov v slovenskom filme a príbeh inšpirovaný skutočnými udalosťami, v ktorom treba ísť cez mŕtvoly.&lt;/p&gt;
+
+&lt;p&gt;Tento titul nájdete v našej ponuke aj s podpisom autora.&lt;/p&gt;
+
+&lt;p&gt;&lt;b&gt;Z nášho blogu: &lt;/b&gt;&lt;a href=&quot;&#35;&quot;&gt;Film Červený kapitán je povinná jazda pre fanúšikov Dominika Dána&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3&gt;Autorove tituly&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Popol všetkých zarovná&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Nehanebné neviniatko&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Beštia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Sára&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Cela číslo 17&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Červený kapitán&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Hriech náš každodenný&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Knieža Smrť&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&#35;&quot;&gt;Noc temných klamstiev&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3&gt;Iný zoznam&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Položka zoznamu&lt;/li&gt;
+  &lt;li&gt;Položka zoznamu&lt;/li&gt;
+  &lt;li&gt;Položka zoznamu&lt;/li&gt;
+  &lt;li&gt;Položka zoznamu&lt;/li&gt;
+&lt;/ul&gt;
+</code></pre>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="utilities">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Utilities
+              </h2>
+              <p class="l-p">Text utilities are covered in <a href="utilities../#typography-utilities">Utilites</a> section.
+              </p>
+            </div>
+          </section>
+        </div>
+      </article>
+      <aside class="l-wrap-navs">
+        <!-- navigation main-->
+        <nav class="l-nav-main" data-role="dropdown"><a class="l-nav-main_headline" href="../index.html">Martinus - Styleguide</a>
+          <ul class="l-nav-main_list js-scrollbar" data-role="sidebar">
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Introduction
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="index.html">Get started</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link is-active selected" data-toggle="self, next">Foundations
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub is-active">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="color-palette.html">Color Palette</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="typography.html">Typography</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="icons.html">Icons / Images</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="grid.html">Grid</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="utilities.html">Utilities</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Components
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
+                                    <svg class="icon icon-sg-add " role="img" aria-hidden="true">
+                                      <use xlink:href="../icons_/styleguide.svg#icon-sg-add"></use>
+                                    </svg></a>
+                  <ul class="l-nav-main_list-sub2">
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-basic.html">- Basic</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-labels.html">- Labels</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
+                  </ul>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cart.html">Cart</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tables.html">Tables</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cards.html">Cards</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="lists.html">Lists</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tabs.html">Tabs</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="modals.html">Modals</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="dropdowns.html">Dropdowns</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="badges.html">Badges, pills</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="carousels.html">Carousels</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tooltips.html">Tooltips</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="alerts.html">Alerts</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="loaders.html">Loaders</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Modules
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="price-box.html">Price Boxes</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="order-progress.html">Order progress</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="author.html">Author</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="section-title.html">Section title</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Javascripts
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-select.html">Select</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-autocomplete.html">Autocomplete</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-toggle.html">Toggle</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-alert.html">Alert</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-scrolling.html">Scrolling</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- end: navigation main-->
+      </aside>
+      <!-- end: content main-->
+    </div>
+    <!-- end: offcanvas-->
+    <script src="../scripts/vendor.8a435637.js"></script>
+    <script src="../scripts/main.62c03111.js"></script>
+    <script src="../scripts/light.b99a3ceb.js"></script>
+    <div class="alert-container" data-alert-area></div>
+  </body>
+</html>
