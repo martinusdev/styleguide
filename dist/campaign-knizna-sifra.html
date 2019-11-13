@@ -12,11 +12,11 @@
     <meta name="theme-color" content="#D22121">
     <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
     <link rel="stylesheet" href="fonts/Tabac-Sans/style.b0d0f9cd.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <script src="scripts/plugins/modernizr.c201a9b4.js"></script>
+    <link rel="stylesheet" href="styles/main.e55ec023.css">
+    <script src="scripts/plugins/modernizr.72fdcb16.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin="">
   </head>
-  <body class="ks-page">
+  <body class="ks-page has-header-warning">
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -26,6 +26,28 @@
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     <div id="page-container">
+      <!--.section.section--small.header-warning.no-pad.bg-yellow
+      .wrapper-main
+        .mb-tiny
+        .bar.mb-tiny
+          .bar__item.bar__item--fill.text-color-black
+            +icon('footer-package')
+            small  Prepáčte, ak bude vaša objednávka 1-2 dni meškať. 
+              a(href="#").link prečo?
+      -->
+      <div class="section section--small header-warning no-pad bg-violet">
+        <div class="wrapper-main">
+          <div class="mb-tiny"></div>
+          <div class="bar mb-tiny align-items-middle">
+            <div class="bar__item bar__item--shrinkable text-space-right-tiny">
+              <svg class="icon icon-footer-package  icon--medium text-color-white" role="img" aria-hidden="true">
+                <use xlink:href="icons_/app.svg#icon-footer-package"></use>
+              </svg>
+            </div>
+            <div class="bar__item bar__item--fill text-color-white line-small"><small> Nezmeškajte 5€ poukážku k nákupu! <a class="link link--white text-bold" href="#">Viac info</a></small></div>
+          </div>
+        </div>
+      </div>
       <header class="header">
         <div class="header__wrapper" data-sticky>
           <div class="wrapper-main">
@@ -1341,8 +1363,8 @@
       window.myApp = window.myApp || {};
       window.myApp.selectLanguage = 'sk';
     </script>
-    <script src="scripts/vendor.8a435637.js"></script>
-    <script src="scripts/main.0ad2ed2e.js"></script>
+    <script src="scripts/vendor.65bc34aa.js"></script>
+    <script src="scripts/main.d75dc88d.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmcfNr4Wrku7nwOEnrnoq33yPgH_Xi7uo&amp;callback=initMap" async defer></script>
     <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
     <script>

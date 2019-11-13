@@ -12,10 +12,10 @@
     <meta name="theme-color" content="#D22121">
     <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
     <link rel="stylesheet" href="fonts/Tabac-Sans/style.b0d0f9cd.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <script src="scripts/plugins/modernizr.c201a9b4.js"></script>
+    <link rel="stylesheet" href="styles/main.e55ec023.css">
+    <script src="scripts/plugins/modernizr.72fdcb16.js"></script>
   </head>
-  <body class="undefined">
+  <body class="undefined has-header-warning">
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -25,6 +25,28 @@
     fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
     <div id="page-container">
+      <!--.section.section--small.header-warning.no-pad.bg-yellow
+      .wrapper-main
+        .mb-tiny
+        .bar.mb-tiny
+          .bar__item.bar__item--fill.text-color-black
+            +icon('footer-package')
+            small  Prepáčte, ak bude vaša objednávka 1-2 dni meškať. 
+              a(href="#").link prečo?
+      -->
+      <div class="section section--small header-warning no-pad bg-violet">
+        <div class="wrapper-main">
+          <div class="mb-tiny"></div>
+          <div class="bar mb-tiny align-items-middle">
+            <div class="bar__item bar__item--shrinkable text-space-right-tiny">
+              <svg class="icon icon-footer-package  icon--medium text-color-white" role="img" aria-hidden="true">
+                <use xlink:href="icons_/app.svg#icon-footer-package"></use>
+              </svg>
+            </div>
+            <div class="bar__item bar__item--fill text-color-white line-small"><small> Nezmeškajte 5€ poukážku k nákupu! <a class="link link--white text-bold" href="#">Viac info</a></small></div>
+          </div>
+        </div>
+      </div>
       <header class="header">
         <div class="header__wrapper" data-sticky>
           <div class="wrapper-main">
@@ -1284,7 +1306,7 @@
                           </div>
                           <div class="bar__item bar__item--fill">
                             <div class="progress-bar">
-                              <div class="progress-bar__value progress-bar--round progress-bar__value--blue" style="width: 80%"></div>
+                              <div class="progress-bar__value progress-bar--round progress-bar__value--blue" style="width: 80%;"></div>
                             </div>
                           </div>
                           <div class="bar__item"><span class="text-size-medium">30 €</span></div>
@@ -16159,7 +16181,7 @@
           </div>
         </section>
       </main>
-      <div class="modal-overlay active" id="gdpr-modal" data-modal>
+      <div class="modal-overlay modal-overlay--dark" id="gdpr-modal" data-modal>
         <div class="modal modal--medium">
           <div class="modal__wrap">
             <div class="modal__header mb-none">
@@ -16176,18 +16198,21 @@
             </div>
             <div class="modal__content">
               <div class="mb-medium"></div>
-              <div class="row mb-none">
-                <div class="col--m-8 ofst--m-2">
-                  <div class="text-center mb-large">
-                    <p>Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje. Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.</p>
-                  </div>
-                  <div class="bar align-items-center">
-                    <div class="bar__item"><a class="link">Viac informácií</a></div>
-                    <div class="bar__item"><a class="btn btn--ghost" href="#">Neskôr</a></div>
-                    <div class="bar__item"><a class="btn btn--primary" href="#">Súhlasím</a></div>
-                  </div>
+              <div class="row mb-large align-items-middle">
+                <div class="ofst--m-1 col--m-2 text-center mb-medium mb-none-m">
+                    <svg class="icon icon-martinus  text-color-theme" role="img" aria-hidden="true" style="width: 6rem; height: 6rem;">
+                      <use xlink:href="icons_/app.svg#icon-martinus"></use>
+                    </svg>
+                </div>
+                <div class="col--m-8 text-center text-left-m">
+                  <p class="mb-none">Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje. Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.</p>
                 </div>
               </div>
+              <div class="bar align-items-center">
+                <div class="bar__item"><a class="btn btn--ghost btn--large" href="#">Neskôr</a></div>
+                <div class="bar__item"><a class="btn btn--success btn--large" href="#">Súhlasím</a></div>
+              </div>
+              <div class="text-center mb-large"><a class="link">Viac informácií</a></div>
             </div>
           </div>
         </div>
@@ -16388,8 +16413,8 @@
       window.myApp = window.myApp || {};
       window.myApp.selectLanguage = 'sk';
     </script>
-    <script src="scripts/vendor.8a435637.js"></script>
-    <script src="scripts/main.0ad2ed2e.js"></script>
+    <script src="scripts/vendor.65bc34aa.js"></script>
+    <script src="scripts/main.d75dc88d.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmcfNr4Wrku7nwOEnrnoq33yPgH_Xi7uo&amp;callback=initMap" async defer></script>
   </body>
 </html>
