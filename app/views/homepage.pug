@@ -464,7 +464,7 @@ block content
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
               +icon('arrow-right').icon--medium
 
-  .modal-overlay.active#gdpr-modal(data-modal)
+  .modal-overlay.modal-overlay--dark#gdpr-modal(data-modal)
     .modal.modal--medium
       .modal__wrap
         .modal__header.mb-none
@@ -477,15 +477,17 @@ block content
         .modal__content
           .mb-medium
 
-          .row.mb-none
-            .col--m-8.ofst--m-2
-              .text-center.mb-large
-                p Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje. Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
+          .row.mb-large.align-items-middle
+            .ofst--m-1.col--m-2.text-center.mb-medium.mb-none-m
+              +icon('martinus').text-color-theme(style="width: 6rem; height: 6rem;")
+            .col--m-8.text-center.text-left-m
+              p.mb-none Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje. Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
 
-              .bar.align-items-center
-                .bar__item
-                  a.link Viac informácií
-                .bar__item
-                  a(href="#").btn.btn--ghost Neskôr
-                .bar__item
-                  a(href="#").btn.btn--primary Súhlasím
+          .bar.align-items-center
+            .bar__item
+              a(href="#").btn.btn--ghost.btn--large Neskôr
+            .bar__item
+              a(href="#").btn.btn--success.btn--large Súhlasím
+
+          .text-center.mb-large
+            a.link Viac informácií

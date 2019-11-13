@@ -188,7 +188,7 @@ export default class MegaMenu {
   }
 
   update() {
-    this.destory();
+    this.destroy();
     this._init();
   }
 

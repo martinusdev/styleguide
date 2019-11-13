@@ -7,7 +7,7 @@ include ./../mixins/icon
 - const xmas = false;
 
 - var gdpr = false;
-- var headerWarningActive = false;
+- var headerWarningActive = true;
 - var headerWarning = headerWarningActive ? ' has-header-warning' : '';
 
 //- -----------------------------------------------
@@ -63,22 +63,23 @@ html.no-js
     #page-container
 
       if headerWarningActive != false
-        .section.section--small.header-warning.no-pad.bg-yellow
+        //.section.section--small.header-warning.no-pad.bg-yellow
           .wrapper-main
             .mb-tiny
             .bar.mb-tiny
               .bar__item.bar__item--fill.text-color-black
-                +icon('delivery')
+                +icon('footer-package')
                 small #{' '}Prepáčte, ak bude vaša objednávka 1-2 dni meškať.#{' '}
                   a(href="#").link prečo?
-        .section.section--small.header-warning.no-pad.bg-black
+        .section.section--small.header-warning.no-pad.bg-violet
           .wrapper-main
             .mb-tiny
-            .bar.mb-none
-              .bar__item.bar__item--fill.text-color-grey-light
-                +icon('delivery')
-                small #{' '}Prepáčte, ak bude vaša objednávka 1-2 dni meškať.#{' '}
-                  a(href="#").link prečo?
+            .bar.mb-tiny.align-items-middle
+              .bar__item.bar__item--shrinkable.text-space-right-tiny
+                +icon('footer-package').icon--medium.text-color-white
+              .bar__item.bar__item--fill.text-color-white.line-small
+                small #{' '}Nezmeškajte 5€ poukážku k nákupu!#{' '}
+                  a(href="#").link.link--white.text-bold Viac info
 
       block header
         if checkoutHeader

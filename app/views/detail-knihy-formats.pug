@@ -19,10 +19,10 @@ mixin itemGroup(id)
     h2.h3 Ďalšie formáty tejto knihy
     //+groupItem('Kniha', 0)
     //+groupItem('Kniha, český jazyk', 0)
-    +groupItem('E-kniha', 1)
-    +groupItem('Audiokniha mp3', 2)
+    +groupItem('E-kniha', 1, 'Vydavatelstvo Publishing, 2019', true)
+    +groupItem('Audiokniha mp3', 2, 'Vydavatelstvo Publishing, 2019', true)
     .hide(data-toggle-class="hide", id=`item-group-more${id}`)
-      +groupItem('Audiokniha cd', 3)
+      +groupItem('Audiokniha cd', 3, 'Vydavatelstvo Publishing, 2019', true)
     .mb-medium
       //a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
         +icon('plus')
@@ -32,14 +32,16 @@ mixin itemGroup(id)
         | Zobraziť viac#{' '}
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
-mixin groupItem(name, id)
-  .bar.align-items-middle.mb-small(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-small-m.no-mrg-horizontal--m-down
-      .bar.mb-none
-        .bar__item.no-mrg-top--m-down
+mixin groupItem(name, id, details, inline)
+  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
+    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
+      .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
+        .bar__item.no-mrg
           a.text-semibold.text-medium.inline-block.link=name
+          | #{' '}
+          span.text-medium.text-color-grey(class=inline ? 'show-m' : '')=details
           //a.link.link--product Základy rybolovu pro kluky a holky
-          .inline-block.hide-m.text-size-small.no-mrg-top
+          .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
             if id == 0
               span.text-color-success.text-space-right-tiny Na sklade
               span.text-color-blue Novinka
@@ -49,8 +51,7 @@ mixin groupItem(name, id)
               span.text-color-success MOBI
             else if id == 3
               span.text-color-success Na sklade
-        .bar__item.show-m
-          .badges.mb-none
+        .bar__item(class=inline ? 'show-m' : '')
             if id == 0
               .badge.badge--green.mb-small.mb-none-m Na sklade
               .badge.badge--blue.mb-small.mb-none-m Novinka
@@ -69,8 +70,9 @@ mixin groupItem(name, id)
           .badge.badge--primary -20%
         .bar__item.no-mrg
           .text-bold.text-space-left 8,99
-    .bar__item.bar__item--shrinkable.no-mrg-top
-      +addTo({text: ''})
+        .bar__item.no-mrg
+          a.link.text-space-left-tiny
+            +icon('arrow-right').icon--medium
 
 block content
   main
@@ -326,8 +328,8 @@ block modals
               +icon('close').icon--medium
 
         .modal__content
-          +groupItem('Kniha, pevná väzba', 0)
-          +groupItem('Kniha, brožovaná väzba', 0)
-          +groupItem('E-kniha', 1)
-          +groupItem('Audiokniha mp3', 2)
-          +groupItem('Audiokniha cd', 3)
+          +groupItem('Kniha, ', 0, 'pevná väzba, vydavatelstvo Publishing, 2019')
+          +groupItem('Kniha', 0, 'brožovaná väzba, vydavatelstvo Publishing, 2019')
+          +groupItem('E-kniha', 1, 'vydavatelstvo Publishing, 2019')
+          +groupItem('Audiokniha mp3', 2, 'vydavatelstvo Publishing, 2019')
+          +groupItem('Audiokniha cd', 3, 'vydavatelstvo Publishing, 2019')

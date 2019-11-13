@@ -44,8 +44,8 @@ export default class Header {
   }
 
   update() {
-    this.destory();
-    this.init();
+    this.destroy();
+    this._init();
   }
 
   destroy() {
