@@ -6,7 +6,7 @@ include ./../mixins/xmas
 
 mixin itemGroup(id)
   div&attributes(attributes)
-    +groupItem('Kniha', 0, 'Vydavatelstvo Publishing, 2019')
+    +groupItem('Kniha', 0, 'Vydavatelstvo Publishing, 2019', true)
     +groupItem('E-kniha', 1, 'Vydavatelstvo Publishing, 2019')
     .hide(data-toggle-class="hide", id=`item-group-more${id}`)
       +groupItem('Audiokniha mp3', 2, 'Vydavatelstvo Publishing, 2019')
@@ -17,7 +17,7 @@ mixin itemGroup(id)
         | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac formátov</span>
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
-mixin groupItem(name, id, publisher)
+mixin groupItem(name, id, publisher, xmasmode)
   .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
     .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
@@ -57,7 +57,8 @@ mixin groupItem(name, id, publisher)
         .bar__item.no-mrg
           .text-bold.text-space-left 8,99
         .bar__item.no-mrg
-          +xmas({type: 'icon', size: 'medium'}).text-space-left-tiny
+          +xmas({type: 'icon', size: 'medium'}).text-space-left-tiny(class=xmasmode ? '' : 'invisible')
+
     .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-none-m
       .bar.bar--vertical.bar--vertical-small.mb-none.mb-tiny-m
         .bar__item.show-m.no-mrg(style="max-width: 200px;")
