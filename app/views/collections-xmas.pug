@@ -36,8 +36,8 @@ block content
       .wrapper-main
         .row.mb-large
           .col--m-6.text-center.text-left-m
-            h1.mb-medium Získajte 5€ poukážku
-            .bar.align-items-top
+            h1.mb-medium Pod akýkoľvek stromček nájdeme tie pravé knižky
+            //.bar.align-items-top
               .bar__item.bar__item--shrinkable.show-m
                 .mb-small
                 .h2.mb-none.icon-voucher.icon-voucher--inverse.inline-block 5€
@@ -52,6 +52,13 @@ block content
             a.btn.btn--primary.btn--medium(data-toggle="#xmas-help")
               +icon('footer-package', 'icon--medium icon--left')
               | Potrebujem poradiť
+
+    //http://mrtns.eu/assets/martinus/lb/images/content/campaign/xmas2019/
+    style
+      | .xmas2019-collection-header--helper{ background-image: url('images/content/campaign/xmas2019/bg-collection-helper-weirwood.jpg'); }
+      | @media screen and (max-width: 640px) {
+      |  .xmas2019-collection-header--helper{ background-image: url('images/content/campaign/xmas2019/bg-collection-helper-weirwood-m.jpg'); }
+      | }
 
     .modal-overlay.active#xmas-help(data-modal)
       article.modal.modal--medium
