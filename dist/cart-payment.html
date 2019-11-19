@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Košík - Platba</title>
+    <meta name="author" content="Lighting Beetle s.r.o.">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="theme-color" content="#D22121">
+    <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
+    <link rel="stylesheet" href="fonts/Tabac-Sans/style.b0d0f9cd.css">
+    <link rel="stylesheet" href="styles/main.e55ec023.css">
+    <script src="scripts/plugins/modernizr.72fdcb16.js"></script>
+  </head>
+  <body class="bg-secondary has-header-warning">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=227452250615460';
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div id="page-container">
+      <!--.section.section--small.header-warning.no-pad.bg-yellow
+      .wrapper-main
+        .mb-tiny
+        .bar.mb-tiny
+          .bar__item.bar__item--fill.text-color-black
+            +icon('footer-package')
+            small  Prepáčte, ak bude vaša objednávka 1-2 dni meškať. 
+              a(href="#").link prečo?
+      -->
+      <div class="section section--small header-warning no-pad bg-violet">
+        <div class="wrapper-main">
+          <div class="mb-tiny"></div>
+          <div class="bar mb-tiny align-items-middle">
+            <div class="bar__item bar__item--shrinkable text-space-right-tiny">
+              <svg class="icon icon-footer-package  icon--medium text-color-white" role="img" aria-hidden="true">
+                <use xlink:href="icons_/app.svg#icon-footer-package"></use>
+              </svg>
+            </div>
+            <div class="bar__item bar__item--fill text-color-white line-small"><small> Nezmeškajte 5€ poukážku k nákupu! <a class="link link--white text-bold" href="#">Viac info</a></small></div>
+          </div>
+        </div>
+      </div>
+      <header class="header">
+        <div class="header__wrapper" data-sticky>
+          <div class="wrapper-main">
+            <div class="bar header__bar">
+              <div class="bar__item header__logo"><a href="#"><img class="show-l" src="images/content/logo.svg" alt="Martinus"><img class="hide-l" src="images/content/logo-small.svg" alt="Martinus"></a></div>
+              <div class="bar__item bar__item--fill header__checkout-info text-center"><span class="text-color-success">
+                        <svg class="icon icon-xmas  icon--medium text-space-right" role="img" aria-hidden="true">
+                          <use xlink:href="icons_/app.svg#icon-xmas"></use>
+                        </svg>Stíhame do vianoc</span>
+              </div>
+              <div class="bar__item">
+                <div class="bar no-mrg-bottom">
+                  <div class="bar__item show-l"><span class="text-color-grey text-size-medium">Celková suma:</span></div>
+                  <div class="bar__item">
+                    <div class="h2 no-mrg text-color-white">21,77 €</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="bg-secondary">
+        <section class="section--toolbar" data-sticky data-scroll-offset="{&quot;0&quot;: 65, &quot;768&quot;: 75}" data-sticky-class="is-stuck" data-sticky-wrap>
+          <div class="wrapper-main">
+            <div class="row align-items-center">
+              <div class="bar bar--small bar--progress col--l-8 ofst--center mb-small">
+                <div class="bar__item bar__item--fill text-center">Košík
+                  <div class="progress-bar">
+                    <div class="progress-bar__value progress-bar__value--green" style="width: 100%;"></div>
+                  </div>
+                </div>
+                <div class="bar__item bar__item--fill text-center">Doručenie
+                  <div class="progress-bar">
+                    <div class="progress-bar__value progress-bar__value--green" style="width: 25%;"></div>
+                  </div>
+                </div>
+                <div class="bar__item bar__item--fill text-center">Platba
+                  <div class="progress-bar">
+                    <div class="progress-bar__value progress-bar__value--green" style="width: 0;"></div>
+                  </div>
+                </div>
+                <div class="bar__item bar__item--fill text-center">Sumár
+                  <div class="progress-bar">
+                    <div class="progress-bar__value progress-bar__value--green" style="width: 0;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section">
+          <div class="wrapper-main">
+            <div class="row">
+              <div class="col--l-8 ofst--center">
+                <div class="card card--done mb-small" id="cart">
+                  <div class="card__content">
+                    <div class="bar">
+                      <div class="bar__item">
+                        <h2>Váš košík</h2>
+                      </div>
+                      <div class="bar__item bar__item--fill">
+                        <div class="pill pill--blue">4</div>
+                      </div>
+                      <div class="bar__item">
+                        <button class="btn btn--clean no-mrg no-pad-right">
+                                          <svg class="icon icon-edit  icon--medium icon--left" role="img" aria-hidden="true">
+                                            <use xlink:href="icons_/app.svg#icon-edit"></use>
+                                          </svg>Upraviť
+                        </button>
+                      </div>
+                    </div>
+                    <div id="cart-summary" data-collapse="220">
+                      <ul class="list list--cart list--unstyled">
+                        <li class="list__item" id="cart-item0" data-toggle-class="is-active">
+                          <div class="cart-item cart-item--summary cart-item--has-tags">
+                            <div class="cart-item__content">
+                              <div class="cart-item__column cart-item__column--product-name"><a class="text-size-medium no-mrg link link--product" href="detail-knihy.html">
+                                                                  <svg class="icon icon-xmas-small  text-color-success text-space-right-tiny" role="img" aria-hidden="true" data-tooltip title="Toto je vysvetlivka k vianociam">
+                                                                    <use xlink:href="icons_/app.svg#icon-xmas-small"></use>
+                                                                  </svg>Základy rybolovu pro kluky a holky</a></div>
+                              <div class="cart-item__column cart-item__column--tags">
+                                <div class="badge text-nowrap">E-kniha</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--qty">
+                                <div class="text-size-medium no-mrg">1x</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--price">
+                                <div class="text-semibold text-size-medium text-nowrap">12,99 €</div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list__item" id="cart-item1" data-toggle-class="is-active">
+                          <div class="cart-item cart-item--summary">
+                            <div class="cart-item__content">
+                              <div class="cart-item__column cart-item__column--product-name"><a class="text-size-medium no-mrg link link--product" href="detail-knihy.html">
+                                                                  <svg class="icon icon-xmas-small  text-color-success text-space-right-tiny" role="img" aria-hidden="true" data-tooltip title="Toto je vysvetlivka k vianociam">
+                                                                    <use xlink:href="icons_/app.svg#icon-xmas-small"></use>
+                                                                  </svg>Hobbit</a></div>
+                              <div class="cart-item__column cart-item__column--qty">
+                                <div class="text-size-medium no-mrg">1x</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--price">
+                                <div class="text-semibold text-size-medium text-nowrap">7,26 €</div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list__item" id="cart-item2" data-toggle-class="is-active">
+                          <div class="cart-item cart-item--summary">
+                            <div class="cart-item__content">
+                              <div class="cart-item__column cart-item__column--product-name"><a class="text-size-medium no-mrg link link--product" href="detail-knihy.html">
+                                                                  <svg class="icon icon-xmas-small  text-color-success text-space-right-tiny" role="img" aria-hidden="true" data-tooltip title="Toto je vysvetlivka k vianociam">
+                                                                    <use xlink:href="icons_/app.svg#icon-xmas-small"></use>
+                                                                  </svg>Ako ju získať</a></div>
+                              <div class="cart-item__column cart-item__column--qty">
+                                <div class="text-size-medium no-mrg">1x</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--price">
+                                <div class="text-semibold text-size-medium text-nowrap">12,00 €</div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list__item" id="cart-item3" data-toggle-class="is-active">
+                          <div class="cart-item cart-item--summary">
+                            <div class="cart-item__content">
+                              <div class="cart-item__column cart-item__column--product-name"><a class="text-size-medium no-mrg link link--product" href="detail-knihy.html">
+                                                                  <svg class="icon icon-xmas-small  text-color-success text-space-right-tiny" role="img" aria-hidden="true" data-tooltip title="Toto je vysvetlivka k vianociam">
+                                                                    <use xlink:href="icons_/app.svg#icon-xmas-small"></use>
+                                                                  </svg>Ako ju získať 2</a></div>
+                              <div class="cart-item__column cart-item__column--qty">
+                                <div class="text-size-medium no-mrg">1x</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--price">
+                                <div class="text-semibold text-size-medium text-nowrap">12,00 €</div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list__item" id="cart-item4" data-toggle-class="is-active">
+                          <div class="cart-item cart-item--summary">
+                            <div class="cart-item__content">
+                              <div class="cart-item__column cart-item__column--product-name"><a class="text-size-medium no-mrg link link--product" href="detail-knihy.html">
+                                                                  <svg class="icon icon-xmas-small  text-color-success text-space-right-tiny" role="img" aria-hidden="true" data-tooltip title="Toto je vysvetlivka k vianociam">
+                                                                    <use xlink:href="icons_/app.svg#icon-xmas-small"></use>
+                                                                  </svg>Hobbit</a></div>
+                              <div class="cart-item__column cart-item__column--qty">
+                                <div class="text-size-medium no-mrg">1x</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--price">
+                                <div class="text-semibold text-size-medium text-nowrap">7,26 €</div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li class="list__item" id="cart-item5" data-toggle-class="is-active">
+                          <div class="cart-item cart-item--summary">
+                            <div class="cart-item__content">
+                              <div class="cart-item__column cart-item__column--product-name"><a class="text-size-medium no-mrg link link--product" href="detail-knihy.html">
+                                                                  <svg class="icon icon-xmas-small  text-color-success text-space-right-tiny" role="img" aria-hidden="true" data-tooltip title="Toto je vysvetlivka k vianociam">
+                                                                    <use xlink:href="icons_/app.svg#icon-xmas-small"></use>
+                                                                  </svg>Steve Jobs - mam taký dlhší názov Venenatis Purus Ridiculus Justo Adipiscing</a></div>
+                              <div class="cart-item__column cart-item__column--qty">
+                                <div class="text-size-medium no-mrg">1x</div>
+                              </div>
+                              <div class="cart-item__column cart-item__column--price">
+                                <div class="text-semibold text-size-medium text-nowrap">17,99 €</div>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="text-center"><span class="link text-size-medium" data-toggle="#cart-summary, self" data-toggle-icon="icons_/app.svg#icon-arrow-up" data-toggle-text="Zobraziť všetky(+3)" data-collapse-trigger><span data-toggle-text-target>Zobraziť všetký(+3)</span> 
+                                        <svg class="icon icon-arrow-down " role="img" aria-hidden="true">
+                                          <use xlink:href="icons_/app.svg#icon-arrow-down"></use>
+                                        </svg></span></div>
+                  </div>
+                  <div class="card__footer">
+                    <div class="bar align-items-bottom">
+                      <div class="bar__item--fill">
+                        <div class="text-color-success">
+                                          <svg class="icon icon-footer-shipping  icon--medium text-space-right" role="img" aria-hidden="true">
+                                            <use xlink:href="icons_/app.svg#icon-footer-shipping"></use>
+                                          </svg>Výborne! Objednávku vám vieme odoslať ešte dnes!
+                        </div>
+                      </div>
+                      <div class="bar__item bar__item--shrinkable"><span class="h3">Spolu</span></div>
+                      <div class="bar__item bar__item--shrinkable"><span class="h2"><strong>21.45€</strong></span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card--done mb-small" id="delivery">
+                  <div class="card__content">
+                    <div class="bar">
+                      <div class="bar__item bar__item--fill">
+                        <h2>Zvoľte spôsob doručenia</h2>
+                      </div>
+                      <div class="bar__item">
+                        <button class="btn btn--clean no-mrg no-pad-right">
+                                          <svg class="icon icon-edit  icon--medium icon--left" role="img" aria-hidden="true">
+                                            <use xlink:href="icons_/app.svg#icon-edit"></use>
+                                          </svg>Upraviť
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__content no-pad-top mb-medium">
+                    <div class="bar no-mrg">
+                      <div class="bar__item bar__item--fill text-size-medium">Balíkomat</div>
+                      <div class="bar__item text-size-medium"><strong>1,99 €</strong></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card--done mb-small" id="delivery-balikomat">
+                  <div class="card__content">
+                    <div class="bar">
+                      <div class="bar__item bar__item--fill">
+                        <h2>Odberné miesto</h2>
+                      </div>
+                      <div class="bar__item">
+                        <button class="btn btn--clean no-mrg no-pad-right">
+                                          <svg class="icon icon-edit  icon--medium icon--left" role="img" aria-hidden="true">
+                                            <use xlink:href="icons_/app.svg#icon-edit"></use>
+                                          </svg>Upraviť
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__content no-pad-top mb-medium">
+                    <div class="bar no-mrg">
+                      <div class="bar__item bar__item--fill text-size-medium">Bratislava, Cubicon, Staré Grunty 24</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card card--done mb-small" id="billing-address">
+                  <div class="card__content">
+                    <div class="bar">
+                      <div class="bar__item bar__item--fill">
+                        <h2>Fakturačná adresa</h2>
+                      </div>
+                      <div class="bar__item">
+                        <button class="btn btn--clean no-mrg no-pad-right">
+                                          <svg class="icon icon-edit  icon--medium icon--left" role="img" aria-hidden="true">
+                                            <use xlink:href="icons_/app.svg#icon-edit"></use>
+                                          </svg>Upraviť
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__content no-pad-top mb-medium">
+                    <div class="bar no-mrg">
+                      <div class="bar__item bar__item--fill text-size-medium">Lighting Beetle s.r.o. Budyšínska 8, 831 03 Bratislava</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-small" id="gift-wrap">
+                  <div class="card__content">
+                    <div class="bar">
+                      <div class="bar__item bar__item--fill">
+                        <h2>Je to darček ?</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__content no-pad-top no-mrg">
+                    <p class="text-size-medium">Radi Vám tovar zabalíme do niektorého z dostupných darčekových papierov alebo špecialnej ochrannej fólie :)</p>
+                  </div>
+                  <div class="card__content">
+                    <div class="bar align-items-top" id="cart-item0">
+                      <div class="bar__item">
+                        <div class="thumbnail thumbnail--book thumbnail--medium">
+                          <div class="thumbnail__img-wrap"><img src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754"></div>
+                        </div>
+                      </div>
+                      <div class="bar__item bar__item--fill text-size-medium">Základy rybolovu pro kluky a holky</div>
+                      <div class="bar__break hide-m"></div>
+                      <div class="bar__item bar__item--fill">
+                        <div class="form-control form-control--select">
+                          <select data-select-image id="gift-package-select-0"></select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bar align-items-top" id="cart-item1">
+                      <div class="bar__item">
+                        <div class="thumbnail thumbnail--book thumbnail--medium">
+                          <div class="thumbnail__img-wrap"><img src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317"></div>
+                        </div>
+                      </div>
+                      <div class="bar__item bar__item--fill text-size-medium">Hobbit</div>
+                      <div class="bar__break hide-m"></div>
+                      <div class="bar__item bar__item--fill">
+                        <div class="form-control form-control--select">
+                          <select data-select-image id="gift-package-select-1"></select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bar align-items-top" id="cart-item2">
+                      <div class="bar__item">
+                        <div class="thumbnail thumbnail--book thumbnail--medium">
+                          <div class="thumbnail__img-wrap"><img src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391"></div>
+                        </div>
+                      </div>
+                      <div class="bar__item bar__item--fill text-size-medium">Ako ju získať</div>
+                      <div class="bar__break hide-m"></div>
+                      <div class="bar__item bar__item--fill">
+                        <div class="form-control form-control--select">
+                          <select data-select-image id="gift-package-select-2"></select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="bar align-items-top" id="cart-item3">
+                      <div class="bar__item">
+                        <div class="thumbnail thumbnail--book thumbnail--medium">
+                          <div class="thumbnail__img-wrap"><img src="https://mrtns.eu/tovar/_m/310/m310659.jpg?v=1533280320"></div>
+                        </div>
+                      </div>
+                      <div class="bar__item bar__item--fill text-size-medium">Ako ju získať 2</div>
+                      <div class="bar__break hide-m"></div>
+                      <div class="bar__item bar__item--fill">
+                        <div class="form-control form-control--select">
+                          <select data-select-image id="gift-package-select-3"></select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr class="mb-small">
+                  <div class="card__content">
+                    <div class="row">
+                      <div class="col--s-11 col--m-6 ofst--center">
+                        <div class="form-control form-control--checkbox text-center mb-large">
+                          <div class="checkbox">
+                            <input class="radiocheck__input" type="checkbox" id="gift_no_invoice" name="gift_no_invoice">
+                            <label class="radiocheck__control" for="gift_no_invoice"></label>
+                            <label class="radiocheck__label" for="gift_no_invoice">Nepriložiť faktúru, je to prekvapenie</label>
+                          </div>
+                        </div>
+                        <div class="btn-layout--vertical no-mrg">
+                          <button class="btn is-disabled" type="submit">hotovo, mam zabalené !</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card mb-small" id="payment">
+                  <div class="card__content">
+                    <div class="bar">
+                      <div class="bar__item bar__item--fill">
+                        <h2>Spôsob platby ?</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__content">
+                    <div class="form-control form-control--radio">
+                      <div class="radio">
+                        <input class="radiocheck__input" type="radio" id="payment_card" name="payment_options" data-radiocheck-toggle="#payment_card_options">
+                        <label class="radiocheck__control" for="payment_card"></label>
+                        <label class="radiocheck__label text-semibold" for="payment_card">Kartou (vopred)<img class="text-space-left" src="images/content/banks/sk/visa.png" alt="VISA" width="32"><img class="text-space-left" src="images/content/banks/sk/mastercard.png" alt="mastercard" width="32"></label>
+                      </div>
+                      <div class="form-control form-control--checkbox hide" id="payment_card_options">
+                        <div class="checkbox">
+                          <input class="radiocheck__input" type="checkbox" id="payment_save_card" name="payment_save_card">
+                          <label class="radiocheck__control" for="payment_save_card"></label>
+                          <label class="radiocheck__label" for="payment_save_card"><span class="text-size-medium text-semibold">Bezpečne zapamätať číslo mojej karty <span class="text-normal">pre ďalšie nákupy</span></span></label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-control form-control--radio">
+                      <div class="radio">
+                        <input class="radiocheck__input" type="radio" id="payment_ib" name="payment_options" data-radiocheck-toggle="#payment_ib_options">
+                        <label class="radiocheck__control" for="payment_ib"></label>
+                        <label class="radiocheck__label" for="payment_ib"><span class="block text-semibold">Internet bankingom mojej banky<img class="text-space-left" src="images/content/banks/sk/tatra-banka.png" alt="tatra bank" width="32"><img class="text-space-left" src="images/content/banks/sk/slsp.png" alt="SLSP" width="32"><img class="text-space-left" src="images/content/banks/sk/vub.png" alt="VUB" width="32"><img class="text-space-left" src="images/content/banks/sk/unicredit.png" alt="unicredit" width="32"><img class="text-space-left" src="images/content/banks/sk/postova-banka.png" alt="postova banka" width="32"><img class="text-space-left" src="images/content/banks/sk/sberbank.png" alt="sberbank" width="32"></span><span class="text-size-medium">Tatra Banka, SLSP, VÚB, UniCredit, ČSOB, Poštová banka, Sberbank</span></label>
+                      </div>
+                      <div class="form-control hide" id="payment_ib_options">
+                        <div class="row">
+                          <div class="col--m-4">
+                            <ul class="list list--unstyled list--clean">
+                              <li class="list__item">
+                                <div class="form-control form-control--radio no-mrg">
+                                  <div class="radio">
+                                    <input class="radiocheck__input" type="radio" id="payment_ib_option1" name="payment_ib_options">
+                                    <label class="radiocheck__control" for="payment_ib_option1"></label>
+                                    <label class="radiocheck__label text-semibold" for="payment_ib_option1">TatraPay</label>
+                                  </div>
+                                </div>
+                              </li>
+                              <li class="list__item">
+                                <div class="form-control form-control--radio no-mrg">
+                                  <div class="radio">
+                                    <input class="radiocheck__input" type="radio" id="payment_ib_option2" name="payment_ib_options">
+                                    <label class="radiocheck__control" for="payment_ib_option2"></label>
+                                    <label class="radiocheck__label text-semibold" for="payment_ib_option2">UniPlatba</label>
+                                  </div>
+                                </div>
+                              </li>
+                              <li class="list__item">
+                                <div class="form-control form-control--radio no-mrg">
+                                  <div class="radio">
+                                    <input class="radiocheck__input" type="radio" id="payment_ib_option3" name="payment_ib_options">
+                                    <label class="radiocheck__control" for="payment_ib_option3"></label>
+                                    <label class="radiocheck__label text-semibold" for="payment_ib_option3">Sberbank WEBpay</label>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="col--m-5">
+                            <ul class="list list--unstyled list--clean">
+                              <li class="list__item">
+                                <div class="form-control form-control--radio no-mrg">
+                                  <div class="radio">
+                                    <input class="radiocheck__input" type="radio" id="payment_ib_option4" name="payment_ib_options">
+                                    <label class="radiocheck__control" for="payment_ib_option4"></label>
+                                    <label class="radiocheck__label text-semibold" for="payment_ib_option4">SporoPay</label>
+                                  </div>
+                                </div>
+                              </li>
+                              <li class="list__item">
+                                <div class="form-control form-control--radio no-mrg">
+                                  <div class="radio">
+                                    <input class="radiocheck__input" type="radio" id="payment_ib_option5" name="payment_ib_options">
+                                    <label class="radiocheck__control" for="payment_ib_option5"></label>
+                                    <label class="radiocheck__label text-semibold" for="payment_ib_option5">Poštová banka Platba ONLINE</label>
+                                  </div>
+                                </div>
+                              </li>
+                              <li class="list__item">
+                                <div class="form-control form-control--radio no-mrg">
+                                  <div class="radio">
+                                    <input class="radiocheck__input" type="radio" id="payment_ib_option6" name="payment_ib_options">
+                                    <label class="radiocheck__control" for="payment_ib_option6"></label>
+                                    <label class="radiocheck__label text-semibold" for="payment_ib_option6">ePlatby VÚB</label>
+                                  </div>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-control form-control--radio">
+                      <div class="radio">
+                        <input class="radiocheck__input" type="radio" id="payment_paypal" name="payment_options">
+                        <label class="radiocheck__control" for="payment_paypal"></label>
+                        <label class="radiocheck__label text-semibold" for="payment_paypal">PayPal<img class="text-space-left" src="images/content/banks/sk/paypal.png" alt="paypal" width="32"></label>
+                      </div>
+                    </div>
+                    <div class="form-control form-control--radio">
+                      <div class="radio">
+                        <input class="radiocheck__input" type="radio" id="payment_viamo" name="payment_options">
+                        <label class="radiocheck__control" for="payment_viamo"></label>
+                        <label class="radiocheck__label text-semibold" for="payment_viamo">Viamo<img class="text-space-left" src="images/content/banks/sk/viamo.png" alt="viamo" width="32"></label>
+                      </div>
+                    </div>
+                    <div class="form-control form-control--radio">
+                      <div class="radio">
+                        <input class="radiocheck__input" type="radio" id="payment_mcm" name="payment_options">
+                        <label class="radiocheck__control" for="payment_mcm"></label>
+                        <label class="radiocheck__label text-semibold" for="payment_mcm">MasterCard Mobile<img class="text-space-left" src="images/content/banks/sk/mastercard.png" alt="mastercard" width="32"></label>
+                      </div>
+                    </div>
+                    <div class="form-control form-control--radio">
+                      <div class="radio align-items-top">
+                        <input class="radiocheck__input" type="radio" id="payment_invoice" name="payment_options">
+                        <label class="radiocheck__control" for="payment_invoice"></label>
+                        <label class="radiocheck__label mb-medium" for="payment_invoice"><span class="block text-semibold">Platba zálohovou faktúrou (iba pre firmy a inštitúcie)
+                                            <svg class="icon icon-info  icon--small text-color-grey" role="img" aria-hidden="true">
+                                              <use xlink:href="icons_/app.svg#icon-info"></use>
+                                            </svg></span><span class="text-size-medium">Tovar bude odoslaný až po pripísaní platby na náš účet.</span>
+                          <p class="text-color-orange text-size-medium">Inštrukcie k predfaktúre vám zašleme po skompletizovaní objednávky</p>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__content no-pad-top mb-medium">
+                    <div class="row">
+                      <div class="col--s-12 col--m-11 ofst--center">
+                        <div class="mb-medium"><a class="link text-size-medium" data-toggle="#gift">Využiť darčekovú poukážku alebo ISIC, ITIC, EURO<26 zľavu</a></div>
+                        <div class="row hide" id="gift" data-toggle-class="hide">
+                          <div class="col--m-6">
+                            <div class="form-control form-control--input">
+                              <div class="form-label form-label--required">
+                                <label class="text-transform-upper text-size-small" for="cislo-poukazky">Zadajte číslo poukážky</label>
+                              </div>
+                              <div class="input-addons">
+                                <input class="input" type="text" name="cislo-poukazky" id="cislo-poukazky" placeholder="V tvare XYZ321">
+                                <div class="input-addons__item no-pad">
+                                  <button class="btn btn--ghost">Overiť</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col--m-6">
+                            <div class="form-control form-control--input">
+                              <div class="form-label form-label--required">
+                                <label class="text-transform-upper text-size-small" for="cislo-poukazky">Zadajte číslo preukazu</label>
+                              </div>
+                              <div class="input-addons">
+                                <input class="input" type="text" name="cislo-poukazky" id="cislo-poukazky" placeholder="ISIC, ITIC alebo EURO&lt;26">
+                                <div class="input-addons__item no-pad">
+                                  <button class="btn btn--ghost">Overiť</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card__content">
+                    <div class="row">
+                      <div class="col--s-11 col--m-7 ofst--center">
+                        <div class="btn-layout--vertical mb-small">
+                          <button class="btn btn--primary is-disabled" type="submit">Potvrdiť výber</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="wrapper-main">
+          <section class="mb-medium border-bottom-grey">
+            <p class="text-color-yellow">
+              Aj z drobných vecí sa dajú urobiť veľké. Vďaka vašim Anjelským drobným ste
+              pri nákupoch na Martinuse darovali už<b class="text-color-white">
+                 542 459,18 € na Dobrého
+                Anjela</b>.
+                                      Ďakujeme!
+            </p>
+          </section>
+          <section class="row mb-medium">
+            <div class="col--l-2 col--12">
+              <div class="row">
+                <div class="col--6 col--m-12">
+                  <ul class="list--unstyled list--expanded mb-medium show-m">
+                    <li><a class="link text-color-white" href="#">Knihy</a></li>
+                    <li><a class="link text-color-white" href="#">E-knihy</a></li>
+                    <li><a class="link text-color-white" href="#">Filmy</a></li>
+                    <li><a class="link text-color-white" href="#">Hry</a></li>
+                    <li><a class="link text-color-white" href="#">Káva a čaj</a></li>
+                  </ul>
+                  <ul class="list-inline mb-medium hide-m">
+                    <li><a class="link text-color-white" href="#">Knihy</a></li>
+                    <li><a class="link text-color-white" href="#">E-knihy</a></li>
+                    <li><a class="link text-color-white" href="#">Filmy</a></li>
+                    <li><a class="link text-color-white" href="#">Hry</a></li>
+                    <li><a class="link text-color-white" href="#">Káva a čaj</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col--l-3 col--12">
+              <h5>Kníhkupectvá</h5>
+              <div class="bar bar--small">
+                <div class="bar__item"><a class="link text-color-white text-size-medium text-bold text-space-right" href="#">Považská Bystrica</a><span class="text-size-medium clickable text-color-orange" data-tooltip data-html="#store-tooltip" data-theme="light">Zatvoríme o 21:00
+                          <svg class="icon icon-info  icon--small text-color-grey-light" role="img" aria-hidden="true" style="position: relative; top: -0.05em;">
+                            <use xlink:href="icons_/app.svg#icon-info"></use>
+                          </svg></span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col--6 col--l-5">
+                  <ul class="list--unstyled mb-medium">
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Bratislava</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Košice</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Lučenec</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Martin</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Nitra</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Poprad</a></li>
+                  </ul>
+                </div>
+                <div class="col--6 col--l-7">
+                  <ul class="list--unstyled mb-medium">
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Považská Bystrica</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Banská Bystrica</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Trnava</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#">Žilina</a></li>
+                    <li><a class="link text-color-white text-size-medium text-normal" href="#"><b>Besedy</b></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col--l-2 col--6">
+              <h5>Nakupujte u nás</h5>
+              <ul class="list--unstyled mb-medium">
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Prečo práve u nás?</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Ako nakupovať</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Najčastejšie otázky</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Poštovné</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Možnosti platby</a></li>
+              </ul>
+            </div>
+            <div class="col--l-2 col--6">
+              <h5>Martinus.sk</h5>
+              <ul class="list--unstyled mb-medium">
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Náš príbeh</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Náš blog</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Kontakty</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Partnerský systém</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Pridaj sa k nám</a></li>
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">Marketing</a></li>
+              </ul>
+            </div>
+            <div class="col--l-2 col--6">
+              <h5>Kontakt</h5>
+              <ul class="list--unstyled mb-medium">
+                <li><a class="link text-color-white text-size-medium text-normal" href="#">info@martinus.sk</a></li>
+                <li class="text-color-white text-size-medium text-normal">Telefón: 043/3260 360 </li>
+                <li class="text-color-white text-size-medium text-normal">v pracovné dni 8:00-18:00</li>
+              </ul>
+            </div>
+          </section>
+          <section class="row mb-medium align-items-middle">
+            <div class="col--m-9 col--l-8">
+              <div class="bar">
+                <div class="bar__item bar__item--fill">
+                  <div class="form-control form-control--m-inline form-control--input no-mrg-bottom">
+                    <div class="form-label form-label--large">
+                      <label class="text-color-white form-label--large" for="newsletter-input">Knižné a filmové novinky na e-mail (pre osoby staršie ako 16 rokov):</label>
+                    </div>
+                    <div class="bar bar--small no-mrg-bottom">
+                      <div class="bar__item bar__item--fill">
+                        <input class="input input--dark" type="text" placeholder="Napíšte nám váš e-mail" id="newsletter-input">
+                      </div>
+                      <div class="bar__item">
+                        <button class="btn btn--primary">Odoslať</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col--m-3 col--l-4">
+              <div class="bar footer__social">
+                <div class="bar__item"><a href="#">
+                          <svg class="icon icon-fb  icon--medium" role="img" aria-hidden="true">
+                            <use xlink:href="icons_/app.svg#icon-fb"></use>
+                          </svg></a></div>
+                <div class="bar__item"><a href="#">
+                          <svg class="icon icon-google  icon--medium" role="img" aria-hidden="true">
+                            <use xlink:href="icons_/app.svg#icon-google"></use>
+                          </svg></a></div>
+                <div class="bar__item"><a href="#">
+                          <svg class="icon icon-instagram  icon--medium" role="img" aria-hidden="true">
+                            <use xlink:href="icons_/app.svg#icon-instagram"></use>
+                          </svg></a></div>
+                <div class="bar__item"><a href="#">
+                          <svg class="icon icon-youtube  icon--medium" role="img" aria-hidden="true">
+                            <use xlink:href="icons_/app.svg#icon-youtube"></use>
+                          </svg></a></div>
+              </div>
+            </div>
+          </section>
+          <section class="row align-items-middle">
+            <div class="col--l-7">
+              <div class="bar bar--small mb-medium footer__copy align-items-middle">
+                <div class="bar__item"><img src="images/content/logo-small.svg" alt="Martinus"></div>
+                <div class="bar__item bar__item--fill">&copy; 2000-2019 Martinus. Internetové kníhkupectvo. Všetky práva vyhradené.</div>
+              </div>
+            </div>
+            <div class="col--l-5 text-right">
+              <ul class="list-inline">
+                <li><a class="link text-color-white text-normal text-medium" href="#">Odvolanie súhlasu s cookies</a></li>
+                <li><a class="link text-color-white text-normal text-medium" href="#">Obchodné podmienky</a></li>
+                <li><a class="link text-color-white text-normal text-medium" href="#">Ochrana súkromia</a></li>
+              </ul>
+            </div>
+          </section>
+        </div>
+      </footer>
+      <div class="hide card" id="store-tooltip">
+        <div class="card__content card__content--condensed text-left">
+          <div class="mb-small"><a class="link text-bold">Považská Bystrica</a></div>
+          <div class="mb-medium">
+            <div class="row">
+              <div class="col--6">Pondelok</div>
+              <div class="col--6 text-nowrap">09:00 - 21:00</div>
+            </div>
+            <div class="row">
+              <div class="col--6">Utorok</div>
+              <div class="col--6 text-nowrap">09:00 - 21:00</div>
+            </div>
+            <div class="row">
+              <div class="col--6">Streda</div>
+              <div class="col--6 text-nowrap">09:00 - 21:00</div>
+            </div>
+            <div class="row">
+              <div class="col--6">Štvrtok</div>
+              <div class="col--6 text-nowrap">09:00 - 21:00</div>
+            </div>
+            <div class="row">
+              <div class="col--6">Piatok</div>
+              <div class="col--6 text-nowrap">09:00 - 21:00</div>
+            </div>
+            <div class="row">
+              <div class="col--6">Sobota</div>
+              <div class="col--6 text-nowrap">09:00 - 21:00</div>
+            </div>
+            <div class="row">
+              <div class="col--6">Nedeľa</div>
+              <div class="col--6 text-nowrap">09:00 - 21:00</div>
+            </div>
+          </div>
+          <div class="mb-none"><a class="btn btn--small btn--ghost mb-small">Viac o kníhkupectve
+                    <svg class="icon icon-arrow-right  icon--right icon--medium" role="img" aria-hidden="true">
+                      <use xlink:href="icons_/app.svg#icon-arrow-right"></use>
+                    </svg></a></div><a class="link text-medium">Zmeniť moje kníhkupectvo</a>
+        </div>
+      </div>
+      <div class="alert-container" data-alert-area></div>
+    </div>
+    <script>
+      window.myApp = window.myApp || {};
+      window.myApp.selectLanguage = 'sk';
+    </script>
+    <script src="scripts/vendor.65bc34aa.js"></script>
+    <script src="scripts/main.d75dc88d.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmcfNr4Wrku7nwOEnrnoq33yPgH_Xi7uo&amp;callback=initMap" async defer></script>
+    <script>
+      document.addEventListener('myAppLoaded', function() {
+      
+          for (var i = 0; i < 4; i++) {
+              var storeListSelect = new window.myApp.Select('#gift-package-select-' + i, {
+                  choices: [
+                      {
+                          value: 'package-0',
+                          label: 'Bez špeciálneho balenia',
+                          id: 1,
+                          customProperties: {
+                              price: '0,00 €'
+                          }
+                      },
+                      {
+                          value: 'package-1',
+                          label: 'Modrý darčekový papier',
+                          id: 1,
+                          customProperties: {
+                              image: 'images/content/package/package-1.png',
+                              price: '1,99 €'
+                          }
+                      },
+                      {
+                          value: 'package-2',
+                          label: 'Červený darčekový papier',
+                          id: 1,
+                          customProperties: {
+                              image: 'images/content/package/package-2.png',
+                              price: '1,99 €'
+                          }
+                      },
+                  ]
+              });
+          }
+      });
+    </script>
+  </body>
+</html>

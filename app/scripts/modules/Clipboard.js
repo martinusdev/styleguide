@@ -49,7 +49,7 @@ export default class Clipboard {
   }
 
   update() {
-    this.destory();
+    this.destroy();
     this._init();
   }
 

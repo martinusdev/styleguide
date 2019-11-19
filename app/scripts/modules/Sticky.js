@@ -32,8 +32,8 @@ export default class StickyWrapper {
   }
 
   update() {
-    this.destory();
-    this.init();
+    this.destroy();
+    this._init();
   }
 
   destroy() {

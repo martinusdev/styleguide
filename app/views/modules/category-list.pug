@@ -6,23 +6,25 @@ include ./../mixins/xmas
 
 mixin itemGroup(id)
   div&attributes(attributes)
-    +groupItem('Kniha', 0)
-    +groupItem('E-kniha', 1)
+    +groupItem('Kniha', 0, 'Vydavatelstvo Publishing, 2019')
+    +groupItem('E-kniha', 1, 'Vydavatelstvo Publishing, 2019')
     .hide(data-toggle-class="hide", id=`item-group-more${id}`)
-      +groupItem('Audiokniha mp3', 2)
-      +groupItem('Audiokniha cd', 3)
+      +groupItem('Audiokniha mp3', 2, 'Vydavatelstvo Publishing, 2019')
+      +groupItem('Audiokniha cd', 3, 'Vydavatelstvo Publishing, 2019')
     .mb-medium
       a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
         +icon('plus')
         | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac formátov</span>
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
-mixin groupItem(name, id)
+mixin groupItem(name, id, publisher)
   .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
     .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
         .bar__item.no-mrg
           a.text-semibold.text-medium.inline-block.link=name
+          | #{' '}
+          span.text-medium.text-color-grey.show-m=publisher
           //a.link.link--product Základy rybolovu pro kluky a holky
           .inline-block.hide-m.text-size-small
             if id == 0
@@ -54,6 +56,8 @@ mixin groupItem(name, id)
           .badge.badge--primary -20%
         .bar__item.no-mrg
           .text-bold.text-space-left 8,99
+        .bar__item.no-mrg
+          +xmas({type: 'icon', size: 'medium'}).text-space-left-tiny
     .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-none-m
       .bar.bar--vertical.bar--vertical-small.mb-none.mb-tiny-m
         .bar__item.show-m.no-mrg(style="max-width: 200px;")
@@ -290,6 +294,7 @@ section.section
                       .mb-small-m
                         h2.h3.mb-tiny
                           a.link.link--product(href="detail-knihy.html") #{item.title}
+                          .badge EN
                         .text-color-grey.mb-small.text-medium #{item.author}
                         .badges.mb-small
                           a.badge.mb-none
@@ -341,6 +346,7 @@ section.section
                         h2.h3.mb-tiny
                           a.link.link--product(href="detail-knihy.html") #{item.title}
                             span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov
+                          .badge CZ
                         .text-color-grey.mb-small.text-medium #{item.author}
                       .bar.bar--small.mb-small.show-s
                         .bar__item.bar__item--shrinkable

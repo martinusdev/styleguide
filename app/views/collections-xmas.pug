@@ -32,25 +32,33 @@ block content
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
-    section.section.xmas2018-collection-header.xmas2018-collection-header--helper
+    section.section.xmas2019-collection-header.xmas2019-collection-header--helper
       .wrapper-main
-        .row
-          .col--m-8.text-center.text-left-m
-            h1.mb-medium Získejte poukázky na knihy a ušetřete až 1000 Kč
-            .row.mb-large
-              .col--m-8
-                .bar.align-items-top
-                  .bar__item.bar__item--shrinkable.show-m
-                    .mb-small
-                    .h2.mb-none.icon-voucher.icon-voucher--inverse.inline-block 1000 Kč
-                  .bar__item.bar__item--fill
-                    p K nákupu nad 999 Kč nyní získáte poukázky v celkové hodnotě 1000 Kč, abyste nový rok začali s novým čtením! Více o tom, jaké poukázky můžete získat, se#{' '}
-                      a.link.ks-link--inverse(href="#") dozvíte tu.
-          .col--m-4.text-center.text-right-m.mb-medium
-            .mb-medium.hide-m
+        .row.mb-large
+          .col--m-6.text-center.text-left-m
+            h1.mb-medium Pod akýkoľvek stromček nájdeme tie pravé knižky
+            //.bar.align-items-top
+              .bar__item.bar__item--shrinkable.show-m
+                .mb-small
+                .h2.mb-none.icon-voucher.icon-voucher--inverse.inline-block 5€
+              .bar__item.bar__item--fill
+                p Nakúpte do 18. novembra aspoň za 39€ a získajte od nás aj zľavu 5€ po Novom roku! Pošleme vám ju ju e-mailom a bude platiť na nákupy od 15€.
+
+            .mb-large.mb-medium-m
+              p Vybrali sme pre vás knižky, ktoré určite potešia vašich blízkych. Ak máte špeciálnu požiadavku,#{' '}
+                a.link.ks-link--inverse(data-toggle="#xmas-help") radi vám pomôžeme!
+              .hide-m.mb-large.mb-none-m &nbsp;
+
             a.btn.btn--primary.btn--medium(data-toggle="#xmas-help")
               +icon('footer-package', 'icon--medium icon--left')
-              |Chci poradit dárky
+              | Potrebujem poradiť
+
+    //http://mrtns.eu/assets/martinus/lb/images/content/campaign/xmas2019/
+    style
+      | .xmas2019-collection-header--helper{ background-image: url('images/content/campaign/xmas2019/bg-collection-helper-weirwood.jpg'); }
+      | @media screen and (max-width: 640px) {
+      |  .xmas2019-collection-header--helper{ background-image: url('images/content/campaign/xmas2019/bg-collection-helper-weirwood-m.jpg'); }
+      | }
 
     .modal-overlay.active#xmas-help(data-modal)
       article.modal.modal--medium

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Light - Styleguide</title>
+    <meta name="author" content="Lighting Beetle s.r.o.">
+    <meta name="description" content="Light is SCSS/Pug foundation for living styleguides">
+    <meta name="keywords" content="Living Styleguide, Styleguide, SCSS, Pug">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta name="theme-color" content="#ff5722">
+    <link rel="stylesheet" href="../fonts/Tabac/fonts.1f89903e.css">
+    <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
+    <link rel="stylesheet" href="../styles/main.e55ec023.css">
+    <link rel="stylesheet" href="../styles/light.16cebda7.css">
+    <script src="../scripts/plugins/modernizr.72fdcb16.js"></script>
+  </head>
+  <body data-spy="scroll" data-target=".js-scrollspy" data-offset="150" id="top">
+    <!-- offcanvas-->
+    <div class="l-offcanvas" data-role="offcanvas">
+      <!-- content main-->
+      <article class="l-content-main" id="top">
+        <!-- header-->
+        <header class="l-header-main"> 
+          <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
+          <div class="l-wrap-main">
+            <h1 class="js-header"> <a href="#top" data-smoothscroll="#top">Autocomplete</a></h1>
+            <div class="js-scrollspy l-headnav" id="header-navigation">
+              <ul class="l-headnav_list nav">
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#autocomplete" data-smoothscroll="#autocomplete" data-toggle-target="#header-navigation" data-toggle="dropdown">Autocomplete</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#options" data-smoothscroll="#options" data-toggle-target="#header-navigation" data-toggle="dropdown">Options</a></li>
+                <li class="l-headnav_item"><a class="l-headnav_link js-toggle" href="#localization" data-smoothscroll="#localization" data-toggle-target="#header-navigation" data-toggle="dropdown">Localization</a></li>
+              </ul>
+            </div>
+          </div>
+        </header>
+        <div class="l-content-main_inner">
+          <section class="l-main-info" id="main-info">
+            <div class="l-wrap-main">
+              <p class="l-big">Documentation for autocomplete javascript module.
+              </p>
+              <p class="l-p"> <strong>API documentation </strong>can be found at <a class="link" href="https://github.com/alphagov/accessible-autocomplete">
+                   https://github.com/alphagov/accessible-autocomplete</a>
+              </p>
+              <div class="l-box-desc">
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/scripts/modules/Autocomplete.js</code><br/>
+              </div>
+            </div>
+          </section>
+          <aside class="l-nav-contents js-scrollspy">
+            <p class="l-nav-contents_headline">Contents</p>
+            <ul class="l-nav-contents_list nav">
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#autocomplete" data-smoothscroll="#autocomplete">Autocomplete</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#options" data-smoothscroll="#options">Options</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#localization" data-smoothscroll="#localization">Localization</a></li>
+            </ul>
+          </aside>
+          <section id="autocomplete">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Autocomplete
+              </h2>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Usage
+                </h3>
+                <p class="l-p">
+                   Simplest autocomplete which we can use is autocomplete with predefined results
+                </p>
+                <article class="l-demo is-active no-example">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="form-control form-control--input">
+                      <div class="form-label">
+                        <label class="visually-hidden" for="my-autocomplete">Label</label>
+                      </div>
+                      <div id="my-autocomplete-container"></div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;form-control form-control--input&quot;&gt;
+  &lt;div class=&quot;form-label&quot;&gt;
+    &lt;label class=&quot;visually-hidden&quot; for=&quot;my-autocomplete&quot;&gt;
+      Label
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;my-autocomplete-container&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  var myAutocomplete = new window.myApp.Autocomplete(
+    document.getElementById('my-autocomplete-container'),
+    {
+      autocompleteOptions: {
+        id: 'my-autocomplete', // id of inserted input
+        source: [
+          'First option',
+          'Second option',
+          'Third option',
+          'Fourth option',
+        ]
+      }, 
+    }
+  );
+&lt;/script&gt;
+</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Templates
+                </h3>
+                <p class="l-p">
+                   There is four types of templates which can be used in 
+                  autocomplete options. It's 
+                  <code class='l-code-inline'>author</code> 
+                  <code class='l-code-inline'>book</code> 
+                  <code class='l-code-inline'>collection</code> 
+                  <code class='l-code-inline'>text</code> 
+                </p>
+                <p class="l-p">
+                      Each template has predefined structure. In this example
+                  we use template <code class='l-code-inline'>author</code>.
+                </p>
+                <p class="l-p">
+                  To work properly we have to init autocomplete with option 
+                  <code class='l-code-inline'>templateType: 'author'</code>
+                  and results should have above mentioned structure.
+                  For example templateType <code class='l-code-inline'>author</code> 
+                  should have values
+                  <code class='l-code-inline'>raw</code>,
+                  <code class='l-code-inline'>image</code>,
+                  <code class='l-code-inline'>name</code>,
+                  <code class='l-code-inline'>description</code>. 
+                </p>
+                <p class="l-p">
+                   For deeper understaning of templates usage 
+                  visit <a href="https://github.com/alphagov/accessible-autocomplete#templates-default-undefined">API Templates</a>
+                </p>
+                <article class="l-demo is-active no-example">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="form-control form-control--input">
+                      <div class="form-label">
+                        <label class="visually-hidden" for="author-autocomplete">Autor</label>
+                      </div>
+                      <div id="author-autocomplete-container"></div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;form-control form-control--input&quot;&gt;
+  &lt;div class=&quot;form-label&quot;&gt;
+    &lt;label class=&quot;visually-hidden&quot; for=&quot;author-autocomplete&quot;&gt;
+      Autor
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div id=&quot;author-autocomplete-container&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;script&gt;
+  var authorResults = [
+    {
+      raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+      image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+      name: 'J. K. Rowling',
+      description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+    },
+    {
+      raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+      image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+      name: 'J. K. Rowling',
+      description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+    },
+    {
+      raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+      image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+      name: 'J. K. Rowling',
+      description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+    },
+  ];
+  var authorAutocomplete = new window.myApp.Autocomplete(
+    document.getElementById('author-autocomplete-container'),
+    {
+      autocompleteOptions: {
+        id: 'author-autocomplete', // id of inserted input
+        placeholder: 'Pridať autora? Začnite písať...',
+      },
+      templateType: 'author',
+      results: authorResults
+    }
+  );
+&lt;/script&gt;
+</code></pre>
+                  </div>
+                </article>
+              </div>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="options">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Options
+              </h2>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Defaults
+                </h3>
+                <p class="l-p"><code class='l-code-inline'>new Autocomplete(element, config)</code>
+                </p>
+                <div class="l-table-wrap">
+                  <table class="l-table">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Default</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>element</td>
+                        <td><code class='l-code-inline'>HTMLElement</code></td>
+                        <td><code class='l-code-inline'>undefined</code></td>
+                        <td>Initialization element</td>
+                      </tr>
+                      <tr>
+                        <td>config</td>
+                        <td><code class='l-code-inline'>Object</code></td>
+                        <td> 
+                          <article class="l-demo is-active no-example">
+                            <div class="l-demo_code">
+                              <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                              <pre class="prettyprint"><code>{ 
+  autocompleteOptions: {
+    autoselect: false,
+    defaultValue: undefined,
+    displayMenu: 'overlay',
+    confirmOnBlur: false,
+    minLength: 0,
+    name: 'input-autocomplete',
+    showNoOptionsFound: true,
+    onConfirm: () =&gt; {},
+  }, 
+  templateType: undefined, 
+  results: [],
+  debounceSource: (query, populateResults) =&gt; {},
+  debounceInterval: 200,
+}
+</code></pre>
+                            </div>
+                          </article>
+                        </td>
+                        <td>Config object. All config for autocompleteOptions from <a class="l-a" href="https://github.com/alphagov/accessible-autocomplete">Accessible autocomplete</a> are available.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="localization">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Localization
+              </h2>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Change autocomplete default language
+                </h3>
+                <p class="l-p">Autocomplete language can be set in by changing value of <code class='l-code-inline'>window.myApp.selectLanguage</code>. Default value is <code class='l-code-inline'>sk</code> and it can be set to <code class='l-code-inline'>cz</code>.
+                </p>
+                <article class="l-demo is-active no-example">
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;script&gt;
+  window.myApp = window.myApp || {};
+  window.myApp.selectLanguage = 'sk';
+&lt;/script&gt;
+</code></pre>
+                  </div>
+                </article>
+              </div>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+        </div>
+      </article>
+      <aside class="l-wrap-navs">
+        <!-- navigation main-->
+        <nav class="l-nav-main" data-role="dropdown"><a class="l-nav-main_headline" href="../index.html">Martinus - Styleguide</a>
+          <ul class="l-nav-main_list js-scrollbar" data-role="sidebar">
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Introduction
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="index.html">Get started</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Foundations
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="color-palette.html">Color Palette</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="typography.html">Typography</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="icons.html">Icons / Images</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="grid.html">Grid</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="utilities.html">Utilities</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Components
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
+                                    <svg class="icon icon-sg-add " role="img" aria-hidden="true">
+                                      <use xlink:href="../icons_/styleguide.svg#icon-sg-add"></use>
+                                    </svg></a>
+                  <ul class="l-nav-main_list-sub2">
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-basic.html">- Basic</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-labels.html">- Labels</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
+                  </ul>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cart.html">Cart</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tables.html">Tables</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cards.html">Cards</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="lists.html">Lists</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tabs.html">Tabs</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="modals.html">Modals</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="dropdowns.html">Dropdowns</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="badges.html">Badges, pills</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="carousels.html">Carousels</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tooltips.html">Tooltips</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="alerts.html">Alerts</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="loaders.html">Loaders</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Modules
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="price-box.html">Price Boxes</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="order-progress.html">Order progress</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="author.html">Author</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="section-title.html">Section title</a>
+                </li>
+              </ul>
+            </li>
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link is-active selected" data-toggle="self, next">Javascripts
+                                <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
+                                  <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
+                                </svg></a>
+              <ul class="l-nav-main_list-sub is-active">
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-select.html">Select</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="js-autocomplete.html">Autocomplete</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-toggle.html">Toggle</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-alert.html">Alert</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-scrolling.html">Scrolling</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+        <!-- end: navigation main-->
+      </aside>
+      <!-- end: content main-->
+    </div>
+    <!-- end: offcanvas-->
+    <script src="../scripts/vendor.65bc34aa.js"></script>
+    <script src="../scripts/main.d75dc88d.js"></script>
+    <script src="../scripts/light.cab3c809.js"></script>
+    <script>
+      window.myApp = window.myApp || {};
+      window.addEventListener('DOMContentLoaded', () => {
+        var myAutocomplete = new window.myApp.Autocomplete(
+          document.getElementById('my-autocomplete-container'),
+          {
+            autocompleteOptions: {
+              id: 'my-autocomplete', // id of inserted input
+              source: [
+                'First option',
+                'Second option',
+                'Third option',
+                'Fourth option',
+              ]
+            }, 
+          }
+        );
+      
+        const authorResults = [
+          {
+            raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+            image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+            name: 'J. K. Rowling',
+            description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+          },
+          {
+            raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+            image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+            name: 'J. K. Rowling',
+            description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+          },
+          {
+            raw: 'J. K. Rowling Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky, po napísaní a vydaní kníh o huncútskom čarodejníkovi Harrym Potterovi najčítanejšia detská autorka sveta. Jej najznámejším dielom je aj naďalej séria o Harrym Potterovi, v ktorej jej vyšlo 7 románov, jedna divadelná hra a množstvo dodatočných kníh. Okrem toho napísala román so sociálnou tematikou Prázdne miesto a následne sa pod pseudonymom Robert Galbraith pustila do detektívnej série s Cormoranom Strikeom v hlavnej úlohe. V roku 2016 uzrela svetlo sveta divadelná hra zo sveta Harryho Pottera, ktorá sa odohráva 20 rokov po skončení siedmeho dielu. Na jej vzniku sa podielala samotná J. K. Rowlingová spolu so scenáristom Jackom Thornom (1978) a divadelným režisérom Johnom Tiffanym (1971). Obaja sú držiteľmi mnohých ocenení a autormi medzinárodne úspešných divadelných hier.',
+            image: '//www.martinus.sk/data/autori/img/a1002.jpg',
+            name: 'J. K. Rowling',
+            description: 'Joanne K. Rowlingová, britská autorka, matka dcéry Jessiky',
+          },
+        ];
+      
+        var authorAutocomplete = new window.myApp.Autocomplete(
+          document.getElementById('author-autocomplete-container'),
+          {
+            autocompleteOptions: {
+              id: 'author-autocomplete', // id of inserted input
+              placeholder: 'Pridať autora? Začnite písať...',
+            }, 
+            templateType: 'author',
+            results: authorResults
+          }
+        );
+      });
+    </script>
+    <div class="alert-container" data-alert-area></div>
+  </body>
+</html>
