@@ -31,7 +31,7 @@ import AnchorScroll from './modules/AnchorScroll';
 import EqualColumns from './modules/EqualColumns';
 import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
-// import CarouselLite from './modules/CarouselLite';
+import CarouselLite from './modules/CarouselLite';
 
 import Choices from '../../node_modules/choices.js/assets/scripts/dist/choices';
 
@@ -67,7 +67,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.EqualColumns = EqualColumns;
   window.myApp.Autocomplete = Autocomplete;
   window.myApp.Observables = Observables;
-  // window.myApp.CarouselLite = CarouselLite;
+  window.myApp.CarouselLite = CarouselLite;
 
   window.myApp.Choices = Choices;
 
