@@ -63,7 +63,7 @@ mixin booksCarouselRecommended(props = {})
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel&attributes(attributes)
-    .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
+    .swiper-container.swiper-container--fullwidth(data-swiper-options=swiperConfig)
       +booksCarouselSwiperWrapper({counter: counter})(data-equal-columns)
         each item, i in [...books, ...books, ...books, ...books]
           +booksCarouselSwiperSlide({counter: counter})(data-equal-column)

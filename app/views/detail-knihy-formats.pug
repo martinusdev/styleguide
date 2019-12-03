@@ -196,7 +196,41 @@ block content
       .wrapper-main
         +sectionHeader({ header: 'Odporúčané knihy a kolekcie', more: false })
 
-        +booksCarouselRecommended.carousel--fade-outside
+        -
+          const collections = true,
+                ads = true,
+                counter = false,
+                cartButton = false,
+                productInfo = true;
+
+        .carousel-lite.mb-large
+          .carousel-lite__container
+            .carousel-lite__wrapper
+              each item, i in [...books, ...books, ...books, ...books]
+                +product().mb-small.text-left.carousel-lite__slide
+                  if item.ad && ads
+                    .h5.mb-tiny reklama
+                  +productCover({cover: item.cover, collection: i < 2 && collections})
+                  +productTitle({
+                    collection: i < 2 && collections,
+                    title: i < 2 && collections ? `Kolekcia ${i + 1}` : item.title, author: i < 2 && collections ? false : item.author, ad: item.ad && ads })
+                  if productInfo
+                    if cartButton
+                      +productBuy({price: item.price})
+                    else
+                      +productMeta({
+                        discount: item.discount,
+                        rating: item.rating,
+                        price: item.price,
+                        collection: i < 2 && collections,
+                        soldOut: item.soldOut,
+                        upcoming: item.upcoming,
+                      })
+
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+              +icon('arrow-left').icon--medium
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+              +icon('arrow-right').icon--medium
 
 block append scripts
     script.

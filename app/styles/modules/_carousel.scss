@@ -363,3 +363,33 @@
     display: block;
   }
 }
+
+.carousel-lite {
+  position: relative;
+  overflow: hidden;
+  height: 19rem;
+
+  &__container {
+    height: 20rem;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+
+    @media (prefers-reduced-motion: reduce) {
+      scroll-behavior: auto;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__slide {
+    flex-shrink: 0;
+  }
+
+  .product {
+    margin-right: 40px;
+    width: 120px;
+  }
+}
