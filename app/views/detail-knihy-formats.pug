@@ -203,9 +203,9 @@ block content
                 cartButton = false,
                 productInfo = true;
 
-        .carousel-lite.mb-large
-          .carousel-lite__container
-            .carousel-lite__wrapper
+        .carousel-lite.mb-large.mj-carousel
+          .carousel-lite__container.mj-carousel__scroll
+            .carousel-lite__wrapper.mj-carousel__content
               each item, i in [...books, ...books, ...books, ...books]
                 +product().mb-small.text-left.carousel-lite__slide
                   if item.ad && ads
@@ -227,14 +227,20 @@ block content
                         upcoming: item.upcoming,
                       })
 
-            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev
               +icon('arrow-left').icon--medium
-            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next.mj-carousel__btn--next
               +icon('arrow-right').icon--medium
+
+block append tooltips
+  //- author tooltip
+  include ./modules/tooltip-author
 
 block append scripts
     script.
       document.addEventListener('myAppLoaded', function() {
+
+        var carousel = new window.myApp.CarouselLite(document.querySelector('.mj-carousel'));
 
         /*var myAlert = new window.myApp.Alert({
           icon: 'check-circle',

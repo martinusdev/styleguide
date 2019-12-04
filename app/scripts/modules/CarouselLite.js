@@ -56,6 +56,10 @@ export default class Carousel {
   }
 
   static _animate() {
+    if (Carousel.state == null) {
+      return;
+    }
+
     const state = Carousel.state;
     state.element.scroll(state.initialScroll.x + state.diff.x, 0);
     Carousel.state.animationRequested = false;
@@ -67,6 +71,10 @@ export default class Carousel {
    */
   static _mouseclick(event) {
     event.preventDefault();
+
+    if (Carousel.state == null) {
+      return false;
+    }
 
     // we only want to ignore one click event, so this handler removes itself :)
     event.target.removeEventListener('click', Carousel._mouseclick);
