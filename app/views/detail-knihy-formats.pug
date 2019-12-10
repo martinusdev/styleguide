@@ -84,6 +84,7 @@ block header
     header.header
       .header__wrapper(data-sticky)
         .wrapper-main.position-relative
+
           img(src="images/content/logo/xmas.png").logo-xmas
           style.
             .logo-xmas{
@@ -97,10 +98,17 @@ block header
                 left: 34px;
               }
             }
+
+            @media screen and (max-width: 1024px) {
+              .is-search-active .logo-xmas {
+                display: none;
+              }
+            }
             .header__wrapper::after{
               background: rgb(196,7,11);
               background: linear-gradient(90deg, rgba(126,0,3,1) 0%, rgba(250,61,65,1) 50%, rgba(143,0,3,1) 100%);
             }
+
           .bar.header__bar
             .bar__item.header__logo
               a(href="#", class=bookClassHide)
