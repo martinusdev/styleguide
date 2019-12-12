@@ -4,9 +4,9 @@ include ./../mixins/icon
 
 mixin kioskFeatured
   block
-  .bar.mb-none
+  .row.mb-none
     - for (var i = 0; i<2; i++)
-      .bar__item.bar__item--fill
+      .col--m-6
         .bar.align-items-top.mb-none
           .bar__item.bar__item--shrinkable
             .thumbnail.thumbnail--book.thumbnail--large(data-toggle="#product-preview")
@@ -97,8 +97,8 @@ html.no-js
                     a(href="#").book-detail-show
                       img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
 
-              .bar__item.bar__item--fill.header__search(style="max-width: 100%;")
-                .header-search__search(style="max-width: 100%;")
+              .bar__item.bar__item--fill.header__search(style="max-width: 100%; flex: 1;")
+                .header-search__search(style="max-width: 100%; display: flex;")
                   form#search-form.form-control.form-control--input.no-mrg-bottom
                     .input-addons
                       input.input.input--dark#search-in-header(type='text', placeholder="Hľadáte knihu? Ťuknite a začnite písať...", data-input, data-toggle-focus, autocomplete="off")
