@@ -91,6 +91,10 @@
   @if map-has-key($states, 'after') {
     position: relative;
     overflow: hidden;
+    -moz-transform: translateZ(0); //stylelint-disable-line
+    -webkit-transform: translateZ(0); //stylelint-disable-line
+    -o-transform: translateZ(0); //stylelint-disable-line
+    -ms-transform: translateZ(0); //stylelint-disable-line
     transform: translateZ(0);
 
     &::after {
