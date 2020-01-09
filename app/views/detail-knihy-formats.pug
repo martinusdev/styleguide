@@ -356,12 +356,41 @@ block content
               a.link(href="#popis-knihy", data-scroll, data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.m + 20}}`) čítaj viac#{' '}
                 +icon('arrow-down')
 
-            +itemGroup(1).show-m
+            .show-m
+              h2.h3 Ďalšie formáty tejto knihy
+              a.btn.btn--ghost.text-space-right
+                +icon('products-ebooks').icon--left.icon--medium
+                | E-kniha#{' '}
+                span.text-color-grey 9,99€
+              a.btn.btn--ghost.text-space-right
+                +icon('products-audiobooks').icon--left.icon--medium
+                | audiokniha#{' '}
+                span.text-color-grey 13,99€
+              a.btn.btn--ghost
+                +icon('products-books').icon--left.icon--medium
+                | pevná väzba#{' '}
+                span.text-color-grey 13,99€
+            //+itemGroup(1).show-m
 
 
           .col--l-3.col--m-6.ofst--m-4.ofst--l-0
 
-            +itemGroup(2).hide-m
+            .hide-m.mb-medium
+              h2.h3 Ďalšie formáty tejto knihy
+              .btn-layout.btn-layout--vertical
+                a.btn.btn--ghost.mb-small
+                  +icon('products-ebooks').icon--left.icon--medium
+                  | E-kniha#{' '}
+                  span.text-color-grey 9,99€
+                a.btn.btn--ghost.mb-small
+                  +icon('products-audiobooks').icon--left.icon--medium
+                  | audiokniha#{' '}
+                  span.text-color-grey 13,99€
+                a.btn.btn--ghost.mb-small
+                  +icon('products-books').icon--left.icon--medium
+                  | pevná väzba#{' '}
+                  span.text-color-grey 13,99€
+            //+itemGroup(2).hide-m
 
             include ./modules/card-cart
 
