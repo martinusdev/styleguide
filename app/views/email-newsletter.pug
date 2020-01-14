@@ -106,6 +106,89 @@ block content
                   +product({data: item, small: true})
             +colorLine()
         +margin({size: 'medium'})
+
+        +heading() Vaša objednávka
+        +row
+          +col
+            +table(width="100%", cellpadding="10", cellspacing="5")
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col Číslo Vašej objednávky:
+                +col
+                  b 112785521
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col(colspan="2") (Ak nám pri akejkoľvek otázke ohľadom Vašej objednávky uvediete aj toto číslo, uľahčí nám to prácu.)
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col Predpokladaný čas expedovania:
+                +col
+                  span(style=`color:#${sColorGreen};`)
+                    b 11 dní
+                    br
+                    | (Tovar by ste mohli mať doma#{' '}
+                    b 14. augusta 2014#{' '}
+                    |)
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col Dátum a čas prijatia objednávky:
+                +col
+                  b 10.7.2014 22:30
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col(colspan="2")
+                  b Objednaný tovar:
+                  +table
+                    +margin({size: 'small'})
+                  +table
+                    +row
+                      +col(width="20") 1ks
+                      +col(width="40")
+                        +thumb({cover: 'http://www.martinus.sk/data/tovar/_m/151/m151312.jpg', width: 35})
+                      +col
+                        a(style=`color:#${sColorPrimary};`) Sila zvyku
+                        br
+                        span(style=`color:#${sColorGreyDark};`) Charles Duhigg
+                        br
+                        span(style=`color:#${sColorBlue};`)
+                          small Paráda, ľudia pred vami dali tejto knihe vysoké hodnotenie, to nebude zlý výber!
+                      +col
+                        b 9,90 EUR
+
+                    +row
+                      +col(width="20") 1ks
+                      +col(width="40")
+                        +thumb({cover: 'http://www.martinus.sk/data/tovar/_m/151/m151312.jpg', width: 35})
+                      +col
+                        a(style=`color:#${sColorPrimary};`) Sila zvyku
+                        br
+                        span(style=`color:#${sColorGreyDark};`) Charles Duhigg
+                      +col
+                        b 9,90 EUR
+
+                    +row
+                      +col(width="20") 1ks
+                      +col(width="40")
+                        +thumb({cover: 'http://www.martinus.sk/data/tovar/_m/151/m151312.jpg', width: 35})
+                      +col
+                        a(style=`color:#${sColorPrimary};`) Sila zvyku
+                        br
+                        span(style=`color:#${sColorGreyDark};`) Charles Duhigg
+                      +col
+                        b 9,90 EUR
+
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col Poštovné:
+                +col
+                  b 0,00 EUR
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col Spôsob platby:
+                +col
+                  b CardPay
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col Celková suma:
+                +col
+                  b 9,90 EUR (vrátane DPH)
+              +row(bgcolor=`${sColorGreyLight}`)
+                +col Adresa na doručenie:
+                +col
+                  b elektronické doručenie / download
+
     +footer({color: 'ffffff'})
       +container()
         +margin({size: 'medium'})
