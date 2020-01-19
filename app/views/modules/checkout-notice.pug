@@ -197,6 +197,12 @@ include ./../mixins/icon
                 .bar.align-items-bottom.text-color-grey.text-size-medium
                   .bar__item.bar__item--fill.text-right U nás ušetríte 2,00 €
 
-                .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-none
+                .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-small
                   a(href="#").btn.btn--ghost Ísť do košíka
                   a(href="#").btn.btn--primary Objednať teraz
+
+                .flex.align-items-middle.mb-none
+                  button.btn.btn--success.btn--medium.mb-none.is-consent-show-m.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+                    +icon('fwd').icon--left.icon--medium
+                    | Zrýchlený nákup
+                  +icon('info').icon--medium.text-color-grey(data-tooltip, title="S tymto butonom nakupite strasne rychlo, ze si ani nevsimnete")

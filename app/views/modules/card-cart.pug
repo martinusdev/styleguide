@@ -150,6 +150,13 @@ mixin addTo2(props = {})
                 +icon('cart').icon--left.icon--medium
                 | Vložiť do košíka
 
+            if (pageTitle == 'Detail knihy 2')
+              .flex.align-items-middle
+                button.btn.btn--success.btn--medium.mb-none.is-consent-show-m.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+                  +icon('fwd').icon--left.icon--medium
+                  | Zrýchlený nákup
+                +icon('info').icon--medium.text-color-grey(data-tooltip, title="S tymto butonom nakupite strasne rychlo, ze si ani nevsimnete")
+
             +addTo2({info: true, buttonClass: 'btn--ghost', purchased: true})
 
     section#shop.tab.text-size-medium

@@ -12,7 +12,7 @@ include ./mixins/userMenu
 include ./mixins/icon
 
 block opts
-    - var pageTitle = 'Detail knihy';
+    - var pageTitle = 'Detail knihy 2';
     - var bookHeader = true;
     //- var pageClass = 'is-consent';
     - var gdpr = false;
@@ -358,18 +358,23 @@ block content
 
             .show-m
               h2.h3 Ďalšie formáty tejto knihy
-              a.btn.btn--ghost.text-space-right
+              a.btn.btn--ghost.text-space-right.mb-small
                 +icon('products-ebooks').icon--left.icon--medium
                 | E-kniha#{' '}
                 span.text-color-grey 9,99€
-              a.btn.btn--ghost.text-space-right
+              a.btn.btn--ghost.text-space-right.mb-small
                 +icon('products-audiobooks').icon--left.icon--medium
                 | audiokniha#{' '}
                 span.text-color-grey 13,99€
-              a.btn.btn--ghost
+              a.btn.btn--ghost.mb-small
                 +icon('products-books').icon--left.icon--medium
                 | pevná väzba#{' '}
                 span.text-color-grey 13,99€
+              div
+                a.link.text-size-medium(data-toggle="#modal-formats")
+                  +icon('plus')
+                  | Zobraziť viac#{' '}
+                span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
             //+itemGroup(1).show-m
 
 
@@ -580,3 +585,85 @@ block modals
           +groupItem('E-kniha', 1, 'vydavatelstvo Publishing, 2019')
           +groupItem('Audiokniha mp3', 2, 'vydavatelstvo Publishing, 2019')
           +groupItem('Audiokniha cd', 3, 'vydavatelstvo Publishing, 2019')
+
+  .modal-overlay#quick-checkout(data-modal)
+    article.modal.modal--small
+      section.modal__content.no-pad
+        .bar.bar--vertical
+          .bar__item.bar__item--fill.no-mrg-bottom
+
+            article.card.card--success.mb-small.mb-medium-m
+              .card__content
+                .bar.border-bottom-grey.no-mrg--m-down
+                  .bar__item.bar__item--fill.no-mrg--m-down
+                    h3.text-color-success.mb-medium.text-semibold.mb-none.mb-small-m Zrýchlený nákup
+                  .bar__item.no-mrg--m-down
+                    button.btn.btn--clean.mb-none.mb-small-m(data-toggle="#quick-checkout")
+                      +icon('close').icon--medium.icon--right
+                .mb-small.mb-none-m
+                +productHorizontal({
+                  trash: true,
+                  rating: false,
+                  titleClass: 'text-color-grey-dark',
+                  coverSize: 'medium-large',
+                  trash: false,
+                }).no-mrg-bottom.show-m
+                +productHorizontal({
+                  trash: true,
+                  rating: false,
+                  titleClass: 'text-color-grey-dark text-medium',
+                  coverSize: 'medium',
+                  trash: false,
+                }).no-mrg-bottom.hide-m
+            .text-center
+              a.link(href="#").text-size-medium.text-space-right Zobraziť všetky (+3)#{' '}
+              button.btn.btn--primary.btn--small.mb-none objednať
+
+          .bar__item.no-mrg-bottom
+            .card
+              .card__content.no-pad-bottom
+                .flex.mb-small
+                  .flex-shrinkable.text-space-right
+                    h3.mb-none Doručenie
+                  .flex-shrinkable
+                    a.link zmeniť
+                b Slovenská pošta na adresu:
+                .mb-medium
+                  | Lighting Beetle s.r.o.
+                  br
+                  | Bydučínska 51
+                  br
+                  | 12585 Bratislava
+                  small.text-color-grey.flex.align-items-middle
+                    +icon('info').icon--small
+                    span.text-space-right-tiny Doručovacia adresa je rovnaká ako fakturačná
+                    a.link zmeniť
+
+                .flex
+                  .flex-shrinkable.text-space-right
+                    h3.mb-none Platba
+                  .flex-shrinkable
+                    a.link zmeniť
+                b Kartou#{' '}
+                | **** **** **** 4567
+                img.text-space-left(src=`${assetsPrefix}images/content/banks/sk/visa.png`, alt="VISA", width="32")
+
+          .bar__item
+            article.card
+              .card__content
+
+                .bar.align-items-bottom.mb-none
+                  .bar__item Spolu
+                  .bar__item.bar__item--fill.text-right
+                    h1 21,77 €
+
+                .bar.align-items-bottom.text-color-grey.text-size-medium
+                  .bar__item.bar__item--fill.text-right U nás ušetríte 2,00 €
+
+                .row
+                  .col--s-11.col--m-7.ofst--center
+                    button.block-fill.clickable(type="submit")
+                      .btn-layout--vertical.mb-small
+                        .btn.btn--primary
+                          | záväzne objednať a zaplatiť
+                      p.no-mrg.text-center.text-size-small Objednávka vyžaduje platbu za tovar
