@@ -145,14 +145,18 @@ mixin addTo2(props = {})
               button.btn.btn--primary.btn--large.mb-small.is-consent-show-m(data-toggle='#checkout-notice')
                 +icon('cart').icon--left.icon--medium
                 | Vložiť do košíka
+            else if (pageTitle == 'Detail knihy 2')
+              button.btn.btn--primary.btn--large.mb-small.is-consent-show-m(data-toggle='#checkout-notice')
+                +icon('cart').icon--left.icon--medium
+                | Vložiť do košíka
             else
               button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
                 +icon('cart').icon--left.icon--medium
                 | Vložiť do košíka
 
             if (pageTitle == 'Detail knihy 2')
-              .flex.align-items-middle
-                button.btn.btn--success.btn--medium.mb-none.is-consent-show-m.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+              .flex.align-items-middle.is-consent-show-m
+                button.btn.btn--success.btn--medium.mb-none.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
                   +icon('fwd').icon--left.icon--medium
                   | Zrýchlený nákup
                 +icon('info').icon--medium.text-color-grey(data-tooltip, title="S tymto butonom nakupite strasne rychlo, ze si ani nevsimnete")

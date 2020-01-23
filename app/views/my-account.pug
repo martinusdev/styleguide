@@ -66,6 +66,8 @@ block content
                 li
                   a(href="#platby", data-scroll, data-scroll-offset=header.size.default + 40) Platby
                 li
+                  a(href="#zrychleny-nakup", data-scroll, data-scroll-offset=header.size.default + 40) Zrýchlený nákup
+                li
                   a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Newsletter
                 li
                   a(href="#eknihy", data-scroll, data-scroll-offset=header.size.default + 40) E-knihy
@@ -229,6 +231,36 @@ block content
                         +icon('trash', 'icon--medium').icon--left
                         span.show-s Odstrániť
                   hr.mb-small
+
+            #zrychleny-nakup
+              h3.h2.text-color-black.mb-medium Zrýchlený nákup
+
+              p Tu si môžete nastaviť adresu a spôsob platby pre#{' '}
+                em(data-tooltip, title="S tymto butonom nakupite strasne rychlo, ze si ani nevsimnete") zrýchlený nákup
+              .row.mb-large
+                .col--m-6
+                  .form-control.mb-small
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Adresa
+                    select.js-select
+                      option Obchodná 26, Bratislava
+                  .checkbox.mb-medium
+                    input.radiocheck__input(type='checkbox', id='quick-checkout-address', name='quick-checkout-address', data-radiocheck-toggle="#quick-checkout-address2")
+                    label.radiocheck__control(for='quick-checkout-address')
+                    label.radiocheck__label(for='quick-checkout-address')
+                      | Chcem použiť inú fakturačnú adresu
+
+                  .form-control.mb-large.hide#quick-checkout-address2
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Fakturačná adresa
+                    select.js-select
+                      option Obchodná 26, Bratislava
+
+                  .form-control
+                    .form-label
+                      label.text-transform-upper.text-small.text-color-grey Spôsob platby
+                    select.js-select
+                      option Zapamätaná karta **** **** **** 4567 (VISA)
 
             #newsletter
               h3.h2.text-color-black.mb-medium Newsletter

@@ -14,7 +14,7 @@ include ./mixins/icon
 block opts
     - var pageTitle = 'Detail knihy 2';
     - var bookHeader = true;
-    //- var pageClass = 'is-consent';
+    - var pageClass = 'is-consent';
     - var gdpr = false;
 
 mixin itemGroup(id)
@@ -444,6 +444,16 @@ block content
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next.mj-carousel__btn--next
               +icon('arrow-right').icon--medium
 
+    section.section.section-sticky-bottom.hide-m
+      .wrapper-main
+        .btn-layout--horizontal.mb-medium
+          button.btn.btn--primary.btn--medium.mb-small(data-toggle='#checkout-notice').flex-fill
+            +icon('cart').icon--left.icon--medium
+            | Vložiť do košíka
+          button.btn.btn--success.btn--medium.mb-none.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+            +icon('fwd').icon--left.icon--medium
+            | Zrýchlený nákup
+
 block append tooltips
   //- author tooltip
   include ./modules/tooltip-author
@@ -600,24 +610,27 @@ block modals
                   .bar__item.no-mrg--m-down
                     button.btn.btn--clean.mb-none.mb-small-m(data-toggle="#quick-checkout")
                       +icon('close').icon--medium.icon--right
+
+                .card.card--notice
+                  .card__content.card__content--condensed.text-medium
+                    p.mb-tiny Prajete si zapamätať tieto nastavenia pre ďalšie zrýchlené nákupy? Kedykoľvek ich môžete zmeniť v#{' '}
+                      a.link nastaveniach účtu
+                    .checkbox
+                      input.radiocheck__input(type='checkbox', id='quick-checkout-remember', name='quick-checkout-remember')
+                      label.radiocheck__control(for='quick-checkout-remember')
+                      label.radiocheck__label.text-semibold(for='quick-checkout-remember')
+                        | Zapamätať nastavenie pre ďalšie zrýchlené nákupy
+
                 .mb-small.mb-none-m
-                +productHorizontal({
-                  trash: true,
-                  rating: false,
-                  titleClass: 'text-color-grey-dark',
-                  coverSize: 'medium-large',
-                  trash: false,
-                }).no-mrg-bottom.show-m
                 +productHorizontal({
                   trash: true,
                   rating: false,
                   titleClass: 'text-color-grey-dark text-medium',
                   coverSize: 'medium',
                   trash: false,
-                }).no-mrg-bottom.hide-m
+                }).no-mrg-bottom
             .text-center
               a.link(href="#").text-size-medium.text-space-right Zobraziť všetky (+3)#{' '}
-              button.btn.btn--primary.btn--small.mb-none objednať
 
           .bar__item.no-mrg-bottom
             .card
