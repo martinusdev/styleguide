@@ -70,6 +70,8 @@ block content
                 li
                   a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Newsletter
                 li
+                  a(href="#notifikacie", data-scroll, data-scroll-offset=header.size.default + 40) Notifikácie
+                li
                   a(href="#eknihy", data-scroll, data-scroll-offset=header.size.default + 40) E-knihy
           .col--l-8.col--12(data-sticky-container)
             #ucet
@@ -269,6 +271,30 @@ block content
                   input.radiocheck__input(type="checkbox", id="newsletter-delivery")
                   label.radiocheck__control(for="newsletter-delivery")
                   label.radiocheck__label(for="newsletter-delivery") Prajem si dostávať newsletter
+
+            #notifikacie
+              h3.h2.text-color-black.mb-medium Dôležité notifikácie o objednávke
+              p Nastavte si, ako vám môžeme posielať dôležité informácie o objednávke (napr. informáciu o jej expedovaní, alebo že si po ňu môžete prísť do kníhkupectva)
+
+              .form-control.form-control--radio
+                .radio
+                  input.radiocheck__input(type='radio', id='notifications_sms', name='notifications', checked, data-radiocheck-toggle="#notifications-messenger")
+                  label.radiocheck__control(for='notifications_sms')
+                  label.radiocheck__label(for='notifications_sms') Posielať pomocou SMS na číslo uvedené pri mojej adrese
+
+              .form-control.form-control--radio
+                .radio
+                  input.radiocheck__input(type='radio', id='notifications_messenger', name='notifications' data-radiocheck-toggle="#notifications-messenger")
+                  label.radiocheck__control(for='notifications_messenger')
+                  label.radiocheck__label(for='notifications_messenger')
+                    | Pomocou Facebook Messengera
+
+                .card.card--info.form-control.hide#notifications-messenger
+                  .card__content
+                    p.mb-small Zaškrtnite prosím ešte možnosť "odosielať do Messengera" a nezabudnite stlačiť tlačidlo "Uložiť zmeny".
+                    img(src='images/content/messenger/button-mockup.png').mb-none
+
+              .mb-large
 
             #eknihy
               h3.h2.text-color-black.mb-medium E-knihy
