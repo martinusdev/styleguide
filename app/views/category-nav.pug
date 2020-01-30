@@ -1,0 +1,84 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+include ./mixins/booksCarouselRecommended
+
+block opts
+    - var pageTitle = 'Kategoria'
+    - var filterStickyOffset = header.size.default + 61
+    - var subcategories = false
+    - var carousel = false
+    - var formats = false
+    - var description = false
+
+    -
+      var menu = [
+        {title: "Sci-fi", icon: "rocket-launch"},
+        {title: "Fantasy", icon: "dragon"},
+        {title: "Mysteriózna, dobrodružná", icon: "flashlight"},
+        {title: "Young adult", icon: "unicorn"},
+        {title: "Rozprávky, básničky", icon: "atom"},
+        {title: "Knižky pre najmenších", icon: "duck"},
+        {title: "Walt Disney", icon: "book-spells"},
+        {title: "Encyklopédie, náučné knihy", icon: "atlas"},
+        {title: "Všetky", icon: "books"},
+      ];
+
+block content
+  main
+    section.section.section--secondary.no-pad-top(style="background-color: #133f7e;")
+      .wrapper-main
+        a(href='#')
+          img.show-m.img.img--fluid(src="images/content/banners/banner.jpg").no-mrg
+          img.hide-m.img.img--fluid(src="images/content/banners/banner-mobile.jpg").no-mrg
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy'] })
+
+    section.section--secondary.section.no-pad-top
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item
+            h1 Deti a mládež
+          .bar__item.bar__item--fill
+            button.btn.btn--clean
+              +icon('eye', 'icon--large').icon--medium.icon--left
+              span.show-m sledovať kategóriu
+        .mb-medium.show-l
+
+    section.section--secondary.section.section--toolbar.no-pad-top.show-l
+      .wrapper-main
+        .bar.mb-medium.align-items-top
+          each item, i in menu
+            .bar__item.text-center(style="width: 6rem")
+              a.link
+                i.fal.fa-3x(class=`fa-${item.icon}`).text-color-grey.mb-small
+                .text-medium= item.title
+
+    section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset=header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
+      .wrapper-main
+        .btn-layout.btn-layout--vertical.mb-small
+          .btn-dropdown.no-mrg
+            button.btn.btn--ghost.btn--icon-right.text-left(
+              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+              data-toggle-expand,
+              aria-haspopup="true"
+            )
+              | Všetky
+              +icon('chevron-down', 'icon-dropdown').icon--medium
+            .dropdown(data-dropdown, data-toggle-expand)
+              .dropdown__wrap
+                each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
+                  a(href="#").dropdown__item !{link}
+
+    section.section.section--overflow
+      .wrapper-main
+        h2 Najobľúbenejšie tituly a kolekcie
+        +booksCarouselRecommended.carousel--fade-outside.carousel--fade-outside-white
+
+    - let categoryListBadge = true;
+    include modules/category-list
