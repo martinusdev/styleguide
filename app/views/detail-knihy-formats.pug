@@ -127,8 +127,14 @@ mixin groupItem2(name, id, details, inline)
         .bar__item.no-mrg
           .text-bold.text-space-left.text-space-right 8,99
         .bar__item.no-mrg
-          button.btn.btn--primary.btn--medium.btn--equal.mb-none(data-toggle='#checkout-notice')
-            +icon('cart').icon--medium
+          if id != 0
+            button.btn.btn--primary.btn--small.btn--equal.mb-none(data-toggle='#checkout-notice')
+              +icon('cart').icon--small
+      .text-center.mb-small.text-medium
+        if id == 0
+          .text-color-grey-dark vypredané
+        else
+          .text-color-success posielame do 3 dní
 
 block header
   - var bookClassHide = bookHeader ? 'book-detail-hide' : '';
@@ -425,8 +431,8 @@ block content
                 span.text-color-grey 13,99€
               div
                 a.link.text-size-medium(data-toggle="#modal-formats")
-                  +icon('plus')
-                  | Zobraziť viac#{' '}
+                  +icon('arrow-down')
+                  | všetky formáty#{' '}
                 span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
             //+itemGroup(1).show-m
 
@@ -448,6 +454,10 @@ block content
                   +icon('products-books').icon--left.icon--medium
                   | pevná väzba#{' '}
                   span.text-color-grey 13,99€
+              .text-center
+                a.link.text-size-medium(data-toggle="#modal-formats")
+                  +icon('arrow-down')
+                  | všetky formáty#{' '}
             //+itemGroup(2).hide-m
 
             include ./modules/card-cart
@@ -534,11 +544,16 @@ block content
 
               h2.mb-large Ďalšie formáty tejto knihy
 
+              h3 Knihy
               +groupItem2('Kniha, ', 0, 'pevná väzba, vydavatelstvo Publishing, 2019')
               +groupItem2('Kniha', 0, 'brožovaná väzba, vydavatelstvo Publishing, 2019')
+
+              h3 E-knihy a audioknihy
               +groupItem2('E-kniha', 1, 'vydavatelstvo Publishing, 2019')
               +groupItem2('Audiokniha mp3', 2, 'vydavatelstvo Publishing, 2019')
               +groupItem2('Audiokniha cd', 3, 'vydavatelstvo Publishing, 2019')
+
+              h3 Bazárové tituly
               +groupItem2('Bazárový titul', 4, 'vydavatelstvo Publishing, 2019')
               +groupItem2('Bazárový titul', 5, 'vydavatelstvo Publishing, 2019')
               +groupItem2('Bazárový titul', 6, 'vydavatelstvo Publishing, 2019')

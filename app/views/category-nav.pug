@@ -50,30 +50,16 @@ block content
               span.show-m sledovať kategóriu
         .mb-medium.show-l
 
-    section.section--secondary.section.section--toolbar.no-pad-top.show-l
+    section.section--secondary.section.section--toolbar
       .wrapper-main
-        .bar.mb-medium.align-items-top
-          each item, i in menu
-            .bar__item.text-center(style="width: 6rem")
-              a.link
-                i.fal.fa-3x(class=`fa-${item.icon}`).text-color-grey.mb-small
-                .text-medium= item.title
-
-    section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset=header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
-      .wrapper-main
-        .btn-layout.btn-layout--vertical.mb-small
-          .btn-dropdown.no-mrg
-            button.btn.btn--ghost.btn--icon-right.text-left(
-              data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-              data-toggle-expand,
-              aria-haspopup="true"
-            )
-              | Všetky
-              +icon('chevron-down', 'icon-dropdown').icon--medium
-            .dropdown(data-dropdown, data-toggle-expand)
-              .dropdown__wrap
-                each link, i in ['Všetky', 'Rozprávky, básničky', 'Knihy pre najmenšich, Walt Disney', 'Špeciálne, darčekové', 'Beletria', 'Encyklopédie, náučné knihy', 'Komiks', 'Voľný čas, samolepky']
-                  a(href="#").dropdown__item !{link}
+        .carousel-lite.mj-carousel(style="height: 7rem;")
+          .carousel-lite__container.mj-carousel__scroll
+            .carousel-lite__wrapper.mj-carousel__content.align-items-top
+              each item, i in menu
+                .carousel-lite__slide.text-center(style="width: 6rem")
+                  a.link
+                    i.fal.fa-3x(class=`fa-${item.icon}`).text-color-grey.mb-small
+                    .text-medium= item.title
 
     section.section.section--overflow
       .wrapper-main

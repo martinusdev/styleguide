@@ -1,4 +1,4 @@
-extends layouts/_default
+extends layouts/_me
 
 include ./mixins/breadcrumbs
 include ./mixins/icon
@@ -8,60 +8,7 @@ include ./mixins/sectionHeader
 block opts
     - var pageTitle = 'Knowledge Article'
     - var treeMenu = ['Príbeh, ktorý (takmer) napísal sám život…', 'Najskôr ako korešpondencia', 'Lýdia ušla do škótskeho Las Vegas', 'Pán Darcy je fakt boháč!', 'Kniha bola prvýkrát publikovaná anonymne']
-
-block header
-  header.header
-    .header__wrapper(data-sticky)
-      .wrapper-main
-        .bar
-          .bar__item
-            .flex.align-items-middle
-              .flex-shrinkable.text-space-right
-                a(href="#")
-                  img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
-                  img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
-              .flex-fill
-                .h3.text-color-white.text-transform-upper.mb-none ja
-
-          .bar__item.bar__item--fill
-            .btn-layout.btn-layout--horizontal.show-m
-              button.btn.btn--clean.btn--lowercase.header-btn
-                | Hodnotenia
-              button.btn.btn--clean.btn--lowercase.header-btn
-                | Dovolenky a štipendiá
-              button.btn.btn--clean.btn--lowercase.header-btn
-                | Moji kolegovia
-              button.btn.btn--clean.btn--lowercase.header-btn
-                | Vedma
-
-          .bar__item
-            .btn-dropdown.btn-dropdown--no-icon
-              button.btn.btn--clean.btn--lowercase.header-btn.header-btn--no-arrow(data-toggle-expand data-toggle="self, next")
-                +icon('plus').icon--medium.icon--left.header-user__icon
-                | Požiadať
-
-              .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 150px; max-height: 400px;")
-                .dropdown__wrap(style="max-height: 400px;")
-                  a(href="#").dropdown__item Dovolenku
-                  a(href="#").dropdown__item Pracovnú cestu
-                  a(href="#").dropdown__item Štipendium
-
-          .bar__item.hide-m.no-mrg-right--m-down
-            button.btn.btn--clean.btn--lowercase.header-btn.header-btn--no-arrow(data-toggle="#mobile-sidebar")
-              +icon('menu').icon--medium.icon--left.header-user__icon
-
-          .bar__item.show-m
-            .btn-dropdown.btn-dropdown--no-icon
-              button.btn.btn--clean.btn--lowercase.header-btn.header-btn--no-arrow(data-toggle-expand data-toggle="self, next")
-                +icon('user').icon--medium.icon--left.header-user__icon
-                span.header-user__name Janko
-
-              .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 150px; max-height: 400px;")
-                .dropdown__wrap(style="max-height: 400px;")
-                  .dropdown__group.bg-secondary
-                    span.text-medium.text-color-grey.text-semibold Janko Martinusák
-                  a(href="#").dropdown__item Odhlásiť
-
+    - var mobileSidebar = true;
 block content
   main
 
@@ -75,54 +22,7 @@ block content
       .wrapper-main
         .row
           #mobile-sidebar.col--m-3.mobile-wrapper.mb-medium-l(data-toggle-lock)
-            .mobile-wrapper__header
-              .flex-fill
-                .flex.align-items-middle
-                  .flex-shrinkable.text-space-right
-                    a(href="#")
-                      img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
-                      img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
-                  .flex-fill
-                    .h3.text-transform-upper.mb-none ja
-
-              .flex-shrinkable
-                .btn-dropdown.btn-dropdown--no-icon.mb-none
-                  button.btn.btn--clean.btn--lowercase(data-toggle-expand data-toggle="self, next")
-                    +icon('user').icon--medium.icon--left
-                    span Janko
-
-                  .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 150px; max-height: 400px;")
-                    .dropdown__wrap(style="max-height: 400px;")
-                      .dropdown__group.bg-secondary
-                        span.text-medium.text-color-grey.text-semibold Janko Martinusák
-                      a(href="#").dropdown__item Odhlásiť
-
-                .btn.btn--clean(data-toggle="#mobile-sidebar").mb-none
-                  +icon('close', 'icon--medium')
-
-            .mobile-wrapper__content
-
-              .hide-m.mb-medium.breadcrumbs(style="flex: 0 0 50px;")
-                div(style="width: 600px;")
-                  .btn-group.btn-group--horizontal
-                    button.btn.btn--ghost
-                      | Hodnotenia
-                    button.btn.btn--ghost
-                      | Dovolenky a štipendiá
-                    button.btn.btn--ghost
-                      | Moji kolegovia
-                    button.btn.btn--ghost
-                      | Vedma
-
-              h2.h3.mb-small Hľadať
-              .bar.mb-large
-                .bar__item.bar__item--fill.text-space-right-tiny
-                  .form-control.mb-none
-                    input.input.autocomplete__input.autocomplete__input--default(type="text")
-                .bar__item
-                  button.btn vyhľadať
-
-
+            +mobileSidebar
               h2.h3.mb-small Témy
 
               a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level", data-toggle-icon="../icons_/app.svg#icon-chevron-right", data-collapse-trigger)
