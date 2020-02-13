@@ -1,0 +1,46 @@
+extends layouts/_me
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+include ./mixins/booksCarouselRecommended
+include ./mixins/sectionHeader
+
+block opts
+    - var pageTitle = 'Moje vzdelávanie'
+
+block head
+  script(src=`https://cdn.jsdelivr.net/npm/pikaday/pikaday.js`)
+  link(rel="stylesheet", href=`https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css`)
+  style.
+    .pika-button:hover { background: #d22121; }
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Ja', 'Moje vzdelávanie']})
+
+    section.section--secondary
+      .wrapper-main
+        .row
+          .col--m-6
+            .btn-group.btn-group--horizontal.btn-group--fill
+              a.btn(href="me-education.html") Moje vzdelávanie
+              a.btn(href="me-education-list.html") Naše vzdelávanie
+        .card
+          .card__content
+            h2.mb-small Knihy o design thinkingu (Creative confidence a The art of innovation)
+            .mb-large Tomáš Ulej
+
+            p V Martinuse chcem pomôcť tento rok rozvíjať oveľa viac niečo čomu sa hovorí design thinking - v skratke ide o spôsob, ako rozumieť zákazníkom, zamestnancom do tej miery, že pre nich dokážete vymýšľať nové zlepšenia presne tak, aby im vyhovovali... toto sú dve knihy zakladateľov celého procesu a veľmi sa na ne teším :)
+
+block modals
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    //window.myApp.scrollOffset = {0: 85, 768: 95};
+

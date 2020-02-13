@@ -1,0 +1,38 @@
+extends layouts/_me
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+include ./mixins/booksCarouselRecommended
+include ./mixins/sectionHeader
+
+block opts
+    - var pageTitle = 'Moje hodnotenia'
+
+block head
+  script(src=`https://cdn.jsdelivr.net/npm/pikaday/pikaday.js`)
+  link(rel="stylesheet", href=`https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css`)
+  style.
+    .pika-button:hover { background: #d22121; }
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Ja', 'Moje hodnotenia']})
+
+    section.section--secondary
+      .wrapper-main
+        .card
+          .card__content
+            | asdasd
+
+block modals
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    //window.myApp.scrollOffset = {0: 85, 768: 95};
+
