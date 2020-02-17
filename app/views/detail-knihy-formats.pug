@@ -113,10 +113,10 @@ mixin groupItem2(name, id, details, inline)
             .badge.badge--green.mb-small.mb-none-m Na sklade
           else if id == 4
             .badge.mb-small.mb-none-m Bazár
-            .badge.badge--yellow.mb-small.mb-none-m Ako nová
+            .badge.badge--green.mb-small.mb-none-m Ako nová
           else if id == 5
             .badge.mb-small.mb-none-m Bazár
-            .badge.badge--orange.mb-small.mb-none-m Mierne opotrebená
+            .badge.badge--yellow.mb-small.mb-none-m Mierne opotrebená
           else if id == 6
             .badge.mb-small.mb-none-m Bazár
             .badge.badge--primary.mb-small.mb-none-m Poškodená
@@ -133,7 +133,7 @@ mixin groupItem2(name, id, details, inline)
       .text-center.mb-small.text-medium
         if id == 0
           .text-color-grey-dark vypredané
-        else
+        else if id < 4
           .text-color-success posielame do 3 dní
 
 block header
@@ -418,22 +418,36 @@ block content
             .show-m
               h2.h3 Ďalšie formáty tejto knihy
               a.btn.btn--ghost.text-space-right.mb-small
-                +icon('products-ebooks').icon--left.icon--medium
-                | E-kniha#{' '}
-                span.text-color-grey 9,99€
+                .flex.align-items-middle
+                  .flex-shrinkable
+                    +icon('products-ebooks').icon--left.icon--medium
+                  .flex-fill.text-left
+                    | E-kniha#{' '}
+                    .text-color-grey 9,99€
               a.btn.btn--ghost.text-space-right.mb-small
-                +icon('products-audiobooks').icon--left.icon--medium
-                | audiokniha#{' '}
-                span.text-color-grey 13,99€
+                .flex.align-items-middle
+                  .flex-shrinkable
+                    +icon('products-audiobooks').icon--left.icon--medium
+                  .flex-fill.text-left
+                    | audiokniha#{' '}
+                    .text-color-grey 13,99€
+              a.btn.btn--ghost.text-space-right.mb-small
+                .flex.align-items-middle
+                  .flex-shrinkable
+                    +icon('products-books').icon--left.icon--medium
+                  .flex-fill.text-left
+                    | pevná väzba#{' '}
+                    .text-color-grey 13,99€
+
               a.btn.btn--ghost.mb-small
-                +icon('products-books').icon--left.icon--medium
-                | pevná väzba#{' '}
-                span.text-color-grey 13,99€
-              div
-                a.link.text-size-medium(data-toggle="#modal-formats")
-                  +icon('arrow-down')
-                  | všetky formáty#{' '}
-                span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
+                .flex.align-items-middle
+                  .flex-shrinkable
+                    +icon('arrow-down').icon--left.icon--medium
+                  .flex-fill.text-left
+                    | všetky
+                    br
+                    | formáty
+
             //+itemGroup(1).show-m
 
 
@@ -441,21 +455,19 @@ block content
 
             .hide-m.mb-medium
               h2.h3 Ďalšie formáty tejto knihy
-              .btn-layout.btn-layout--vertical
+              .btn-layout.btn-layout--horizontal
                 a.btn.btn--ghost.mb-small
-                  +icon('products-ebooks').icon--left.icon--medium
                   | E-kniha#{' '}
-                  span.text-color-grey 9,99€
+                  .text-color-grey 9,99€
                 a.btn.btn--ghost.mb-small
-                  +icon('products-audiobooks').icon--left.icon--medium
                   | audiokniha#{' '}
-                  span.text-color-grey 13,99€
+                  .text-color-grey 13,99€
                 a.btn.btn--ghost.mb-small
-                  +icon('products-books').icon--left.icon--medium
                   | pevná väzba#{' '}
-                  span.text-color-grey 13,99€
+                  .text-color-grey 13,99€
               .text-center
-                a.link.text-size-medium(data-toggle="#modal-formats")
+                //a.link.text-size-medium(data-toggle="#modal-formats")
+                a.link.text-size-medium
                   +icon('arrow-down')
                   | všetky formáty#{' '}
             //+itemGroup(2).hide-m
@@ -544,6 +556,11 @@ block content
 
               h2.mb-large Ďalšie formáty tejto knihy
 
+              h3 Čítané kusy
+              +groupItem2('Bazárový titul', 4, '')
+              +groupItem2('Bazárový titul', 5, '')
+              +groupItem2('Bazárový titul', 6, '')
+
               h3 Knihy
               +groupItem2('Kniha, ', 0, 'pevná väzba, vydavatelstvo Publishing, 2019')
               +groupItem2('Kniha', 0, 'brožovaná väzba, vydavatelstvo Publishing, 2019')
@@ -552,11 +569,6 @@ block content
               +groupItem2('E-kniha', 1, 'vydavatelstvo Publishing, 2019')
               +groupItem2('Audiokniha mp3', 2, 'vydavatelstvo Publishing, 2019')
               +groupItem2('Audiokniha cd', 3, 'vydavatelstvo Publishing, 2019')
-
-              h3 Bazárové tituly
-              +groupItem2('Bazárový titul', 4, 'vydavatelstvo Publishing, 2019')
-              +groupItem2('Bazárový titul', 5, 'vydavatelstvo Publishing, 2019')
-              +groupItem2('Bazárový titul', 6, 'vydavatelstvo Publishing, 2019')
 
               .card.card--notice
                 .card__content
