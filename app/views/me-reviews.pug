@@ -8,12 +8,6 @@ include ./mixins/sectionHeader
 block opts
     - var pageTitle = 'Moje hodnotenia'
 
-block head
-  script(src=`https://cdn.jsdelivr.net/npm/pikaday/pikaday.js`)
-  link(rel="stylesheet", href=`https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css`)
-  style.
-    .pika-button:hover { background: #d22121; }
-
 block content
   main
 
@@ -27,12 +21,49 @@ block content
       .wrapper-main
         .card
           .card__content
-            | asdasd
+            h2 Priemerné hodnotenia
+            div(style="height: 300px;")
+              canvas#chart
+
+        .card
+          .card__content
+            h2 Slovné hodnotenia
+
+            table(cellpadding="0", cellspacing="0", width="100%").table.table--striped
+              tr
+                td
+                  b Dátum
+                td
+                  b Text
+              tr
+                td 12.1.2020
+                td Lorem ipsum dolor sit amet
+              tr
+                td 12.1.2020
+                td Lorem ipsum dolor sit amet
 
 block modals
 
 block scripts
+  script(src=`${assetsPrefix}scripts/charts.js`)
   script.
-    window.myApp = window.myApp = {};
-    //window.myApp.scrollOffset = {0: 85, 768: 95};
+    var ctx = document.getElementById("chart").getContext('2d');
+    var myChart = new window.myApp.chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["január", "február", "marec", "apríl", "máj", "jún"],
+        datasets: [{
+          label: 'Priemerné hodntenia',
+          data: [3.2, 4, 4.3, 5, 4.5, 2.6],
+          backgroundColor: 'rgba(0, 0, 0, 0)',
+          borderColor: 'rgba(255,99,132,1)',
+          borderWidth: 1
+        }],
+      },
+      options: {
+        legend: {
+          display: false
+        }
+      }
+    });
 
