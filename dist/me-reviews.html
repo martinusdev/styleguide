@@ -15,12 +15,6 @@
     <link rel="stylesheet" href="styles/main.ddae437b.css">
     <script src="scripts/plugins/modernizr.72fdcb16.js"></script>
     <script src="https://kit.fontawesome.com/ab4eee0eea.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
-    <style>
-      .pika-button:hover { background: #d22121; }
-      
-    </style>
   </head>
   <body class="undefined">
     <div id="fb-root"></div>
@@ -156,7 +150,31 @@
         <section class="section--secondary">
           <div class="wrapper-main">
             <div class="card">
-              <div class="card__content">asdasd</div>
+              <div class="card__content">
+                <h2>Priemerné hodnotenia</h2>
+                <div style="height: 300px;">
+                  <canvas id="chart"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card__content">
+                <h2>Slovné hodnotenia</h2>
+                <table class="table table--striped" cellpadding="0" cellspacing="0" width="100%">
+                  <tr>
+                    <td><b>Dátum</b></td>
+                    <td><b>Text</b></td>
+                  </tr>
+                  <tr>
+                    <td>12.1.2020</td>
+                    <td>Lorem ipsum dolor sit amet</td>
+                  </tr>
+                  <tr>
+                    <td>12.1.2020</td>
+                    <td>Lorem ipsum dolor sit amet</td>
+                  </tr>
+                </table>
+              </div>
             </div>
           </div>
         </section>
@@ -359,9 +377,27 @@
     </script>
     <script src="scripts/vendor.65bc34aa.js"></script>
     <script src="scripts/main.d2a86483.js"></script>
+    <script src="scripts/charts.bc7440c9.js"></script>
     <script>
-      window.myApp = window.myApp = {};
-      //window.myApp.scrollOffset = {0: 85, 768: 95};
+      var ctx = document.getElementById("chart").getContext('2d');
+      var myChart = new window.myApp.chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["január", "február", "marec", "apríl", "máj", "jún"],
+          datasets: [{
+            label: 'Priemerné hodntenia',
+            data: [3.2, 4, 4.3, 5, 4.5, 2.6],
+            backgroundColor: 'rgba(0, 0, 0, 0)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1
+          }],
+        },
+        options: {
+          legend: {
+            display: false
+          }
+        }
+      });
     </script>
   </body>
 </html>
