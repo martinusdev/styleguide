@@ -1,0 +1,185 @@
+extends layouts/_affiliate
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Partnerský systém'
+    - var loggedIn = true
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Partnerský systém']})
+
+    section.section
+      .wrapper-main
+
+        .row
+          .col--m-6
+            .btn-group.btn-group--horizontal.btn-group--fill
+              a.btn.btn--ghost.is-active(href="#")
+                +icon('breadcrumbs').icon--medium.icon--left.show-m
+                | Hlavná stránka
+              a.btn.btn--ghost(href="#")
+                +icon('file').icon--medium.icon--left.show-m
+                | Všeobecné podmienky
+              a.btn.btn--ghost(href="#")
+                +icon('info').icon--medium.icon--left.show-m
+                | FAQ - časté otázky
+
+        .card.card--well.mb-large
+          .card__content
+            .text-center
+              h1.mb-medium Vítame Vás v Partnerskom systéme Martinusu
+              .row
+                .col--m-10.ofst--m-1
+                  p Ako partner Martinusu môžete získať províziu až do výšky 7% z nákupu, ktorý u nás urobia Vaši návštevníci.
+
+                  p.mb-medium.mb-none-m Províziu získavate, keď na svoju stránku umiestnite náš link alebo banner vytvorený pomocou partnerského systému – keď po kliknutí na takýto odkaz vykoná návštevník nákup v našom internetovom kníhkupectve, získa pre Vás províziu, ktorú si môžete nechať vyplatiť:
+
+        .row.mb-large
+          .col--m-3.flex
+            .card.card--material.card--material-yellow
+              .card__content.text-center
+                h2.h3 Províziu vo výške 5 %
+                p.mb-none z nákupu získate pri vyplácaní provízie na účet
+
+          .col--m-3.flex
+            .card.card--material.card--material-orange
+              .card__content.text-center
+                h2.h3 Províziu vo výške 5 %
+                p.mb-none je možné vyplatiť od minimálnej sumy 33€.
+
+          .col--m-3.flex
+            .card.card--material.card--material-primary
+              .card__content.text-center
+                h2.h3 Províziu vo výške 7 %
+                p.mb-none z nákupu získate, ak si zvolíte vyplácanie provízie v podobe elektronických nákupných poukážok na Martinuse
+          .col--m-3.flex
+            .card.card--material.card--material-violet
+              .card__content.text-center
+                h2.h3 Províziu vo výške 7 %
+                p.mb-none si môžete nechať vyplatiť v minimálnej hodnote 10€. Elektronické poukážky z provízie vo výške 7% sú platné iba v internetovom kníhkupectve Martinus
+
+        .bar
+          .bar__item.bar__item--fill
+            h2.mb-none Rýchle prehľady
+            p Podrobnejšie údaje nájdete na podstránke#{' '}
+              a.link Prehľady a štatistiky.
+          .bar__break.hide-m
+          .bar__item.bar__item--shrinkable
+            a.btn
+              +icon('invoice').icon--medium.icon--left
+              | Zobraziť prehľady a štatistiky
+
+        .mb-large
+          | <table class="table table--striped">
+          |         <tbody><tr>
+          |             <th>&nbsp;</th>
+          |             <th>Tento kalendárny mesiac</th>
+          |             <th>Celkovo</th>
+          |         </tr>
+          |         <tr>
+          |             <td class="grey">Suma objednávok</td>
+          |             <td class="centered">0,00&nbsp;€</td>
+          |             <td class="centered">6,91&nbsp;€</td>
+          |
+          |         </tr>
+          |         <tr>
+          |             <td class="grey">Počet objednávok</td>
+          |             <td class="centered">0</td>
+          |             <td class="centered">1</td>
+          |
+          |         </tr>
+          |         <tr>
+          |             <td class="grey">Výška provízie (v základnej výške 5 %)</td>
+          |             <td class="centered">0,00&nbsp;€</td>
+          |             <td class="centered">0,35&nbsp;€</td>
+          |
+          |         </tr>
+          |     </tbody></table>
+
+        .bar
+          .bar__item.bar__item--fill
+            h2.mb-none Platby
+          .bar__break.hide-m
+          .bar__item.bar__item--shrinkable
+            a.btn.btn--success
+              +icon('card').icon--medium.icon--left
+              | Vyplatiť provízie
+
+        .mb-large
+          | <table class="table table--striped">
+          |         <tbody><tr>
+          |             <th>Dátum</th>
+          |             <th>Suma</th>
+          |             <th>Typ</th>
+          |         </tr>
+          |         <tr>
+          |             <td class="grey">31.1.2020</td>
+          |             <td class="centered">0,00&nbsp;€</td>
+          |             <td class="centered">na účet</td>
+          |
+          |         </tr>
+          |         <tr>
+          |             <td class="grey">28.2.2020</td>
+          |             <td class="centered">0,00&nbsp;€</td>
+          |             <td class="centered">poukážka</td>
+          |
+          |         </tr>
+          |         <tr>
+          |             <td class="grey">31.3.2020</td>
+          |             <td class="centered">0,00&nbsp;€</td>
+          |             <td class="centered">na účet</td>
+          |
+          |         </tr>
+          |     </tbody></table>
+
+        .bar
+          .bar__item.bar__item--fill
+            h2.mb-none Najpredávanejšie tituly tohto partnerského konta od jeho založenia
+
+        p.text-size-small * Uvedené ceny vychádzajú z aktuálneho katalógu a nemusia sa zhodovať s cenami v minulých objednávkach.
+
+
+block modals
+  .modal-overlay.modal-overlay--dark#login-modal(data-modal)
+    .modal.modal--small
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline.text-center
+            .h2 Prihlásenie
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#login-modal")
+              +icon('close').icon--medium
+
+        .modal__content
+          p.text-center.text-size-large
+            | Pre prihlásenie alebo registráciu vložte prosím váš e-email:
+
+          .form-control.form-control--input
+            .form-label
+              label.text-transform-upper.text-size-small(for="reglog_email")
+                | e-mail
+            input.input(type="email", name="email", id="reglog_email", placeholder="Váš e-mail")
+
+          div.btn-layout--vertical.mb-medium
+            button.btn.btn--primary Pokračovať
+
+          hr.mb-medium
+
+          div.btn-layout--vertical.mb-medium
+            button.btn.btn--facebook
+              +icon('fb').icon--left.icon--medium
+              | Prihlásenie cez facebook
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    //window.myApp.scrollOffset = {0: 85, 768: 95};
+
