@@ -13,7 +13,7 @@ const texts = {
     itemSelectText: 'Kliknutím vyberte',
     addItemText: value => `Stlačením ENTER pridajte <b>"${value}"</b>`,
     maxItemText: maxItemCount =>
-      `Iba ${maxItemCount} hodnot môže byť pridaných.`,
+      `Iba ${maxItemCount} hodnôt môže byť pridaných.`,
   },
   cz: {
     loadingText: 'Nahrávam...',
@@ -22,7 +22,7 @@ const texts = {
     itemSelectText: 'Kliknutím vyberte',
     addItemText: value => `Stlačením ENTER přidejte <b>"${value}"</b>`,
     maxItemText: maxItemCount =>
-      `Iba ${maxItemCount} hodnot múže býť přidaných.`,
+      `Iba ${maxItemCount} hodnot může být přidaných.`,
   },
 };
 
