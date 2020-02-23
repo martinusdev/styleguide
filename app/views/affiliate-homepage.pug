@@ -19,18 +19,25 @@ block content
     section.section
       .wrapper-main
 
-        .row
-          .col--m-6
-            .btn-group.btn-group--horizontal.btn-group--fill
-              a.btn.btn--ghost.is-active(href="#")
-                +icon('breadcrumbs').icon--medium.icon--left.show-m
-                | Hlavná stránka
-              a.btn.btn--ghost(href="#")
-                +icon('file').icon--medium.icon--left.show-m
-                | Všeobecné podmienky
-              a.btn.btn--ghost(href="#")
-                +icon('info').icon--medium.icon--left.show-m
-                | FAQ - časté otázky
+        .btn-group.btn-group--horizontal.btn-group--fill
+          a.btn.btn--ghost.is-active(href="#")
+            +icon('breadcrumbs').icon--medium.icon--left.show-m
+            | Hlavná stránka
+          a.btn.btn--ghost(href="#")
+            +icon('invoice').icon--medium.icon--left.show-m
+            | Prehľady a štatistiky
+          a.btn.btn--ghost(href="#")
+            +icon('card').icon--medium.icon--left.show-m
+            | Vyplatiť provízie
+          a.btn.btn--ghost(href="#")
+            +icon('share').icon--medium.icon--left.show-m
+            | Generátor odkazov
+          a.btn.btn--ghost(href="#")
+            +icon('file').icon--medium.icon--left.show-m
+            | Všeobecné podmienky
+          a.btn.btn--ghost(href="#")
+            +icon('info').icon--medium.icon--left.show-m
+            | FAQ - časté otázky
 
         .card.card--well.mb-large
           .card__content
@@ -86,20 +93,20 @@ block content
           |         </tr>
           |         <tr>
           |             <td class="grey">Suma objednávok</td>
-          |             <td class="centered">0,00&nbsp;€</td>
-          |             <td class="centered">6,91&nbsp;€</td>
+          |             <td class="centered">17,18&nbsp;€</td>
+          |             <td class="centered">3&nbsp;135,85&nbsp;€</td>
           |
           |         </tr>
           |         <tr>
           |             <td class="grey">Počet objednávok</td>
-          |             <td class="centered">0</td>
           |             <td class="centered">1</td>
+          |             <td class="centered">152</td>
           |
           |         </tr>
           |         <tr>
           |             <td class="grey">Výška provízie (v základnej výške 5 %)</td>
-          |             <td class="centered">0,00&nbsp;€</td>
-          |             <td class="centered">0,35&nbsp;€</td>
+          |             <td class="centered">0,86&nbsp;€</td>
+          |             <td class="centered">156,88&nbsp;€</td>
           |
           |         </tr>
           |     </tbody></table>
@@ -120,29 +127,131 @@ block content
           |             <th>Suma</th>
           |             <th>Typ</th>
           |         </tr>
-          |         <tr>
-          |             <td class="grey">31.1.2020</td>
-          |             <td class="centered">0,00&nbsp;€</td>
-          |             <td class="centered">na účet</td>
-          |
+          |                 <tr>
+          |             <td>2014-12</td>
+          |             <td class="centered">5,95&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
           |         </tr>
-          |         <tr>
-          |             <td class="grey">28.2.2020</td>
-          |             <td class="centered">0,00&nbsp;€</td>
-          |             <td class="centered">poukážka</td>
-          |
+          |                 <tr>
+          |             <td>2014-11</td>
+          |             <td class="centered">44,05&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
           |         </tr>
-          |         <tr>
-          |             <td class="grey">31.3.2020</td>
-          |             <td class="centered">0,00&nbsp;€</td>
-          |             <td class="centered">na účet</td>
-          |
+          |                 <tr>
+          |             <td>2014-03</td>
+          |             <td class="centered">1,69&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
           |         </tr>
-          |     </tbody></table>
+          |                 <tr>
+          |             <td>2015-01</td>
+          |             <td class="centered">1,78&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
+          |         </tr>
+          |                 <tr>
+          |             <td>2014-12</td>
+          |             <td class="centered">26,50&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
+          |         </tr>
+          |                 <tr>
+          |             <td>2015-04</td>
+          |             <td class="centered">5,57&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
+          |         </tr>
+          |                 <tr>
+          |             <td>2015-03</td>
+          |             <td class="centered">4,49&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
+          |         </tr>
+          |                 <tr>
+          |             <td>2015-02</td>
+          |             <td class="centered">1,07&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
+          |         </tr>
+          |                 <tr>
+          |             <td>2015-12</td>
+          |             <td class="centered">11,40&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
+          |         </tr>
+          |                 <tr>
+          |             <td>2015-11</td>
+          |             <td class="centered">3,63&nbsp;€</td>
+          |             <td class="centered">Darčeková poukážka</td>
+          |         </tr>
+          |             </tbody></table>
 
         .bar
           .bar__item.bar__item--fill
             h2.mb-none Najpredávanejšie tituly tohto partnerského konta od jeho založenia
+
+        .mb-large
+          | <table class="table table--striped">
+          |                             <tbody><tr>
+          |                     <td>1.</td>
+          |                     <td width="80">
+          |                                                     <img src="http://www.martinus.sk//data/tovar/_s/186/s186186.jpg" style="border-width: 1px" height="40" alt="pic">
+          |                                             </td>
+          |                     <td class="left">
+          |                         <a class="link" target="_blank" href="http://www.martinus.sk/?uItem=186186">Bodaj bi!</a><br>
+          |                         Tomáš Ulej  ·  Vydavateľstvo: Koloman Kertész Bagala, 2014                    </td>
+          |                     <td>9,00&nbsp;€ *</td>
+          |                     <td>(24x)</td>
+          |                 </tr>
+          |                             <tr>
+          |                     <td>2.</td>
+          |                     <td>
+          |                                                     <img src="http://www.martinus.sk//data/tovar/_s/309/s309728.jpg" style="border-width: 1px" height="40" alt="pic">
+          |                                             </td>
+          |                     <td class="left">
+          |                         <a class="link" target="_blank" href="http://www.martinus.sk/?uItem=309728">Žuvot</a><br>
+          |                         Tomáš Ulej, Matúš Maťátko (ilustrátor)  ·  Vydavateľstvo: Koloman Kertész Bagala, 2018                    </td>
+          |                     <td>10,00&nbsp;€ *</td>
+          |                     <td>(17x)</td>
+          |                 </tr>
+          |                             <tr>
+          |                     <td>3.</td>
+          |                     <td>
+          |                                                     <img src="http://www.martinus.sk//data/tovar/_s/229/s229862.jpg" style="border-width: 1px" height="40" alt="pic">
+          |                                             </td>
+          |                     <td class="left">
+          |                         <a class="link" target="_blank" href="http://www.martinus.sk/?uItem=229862">Stručný etymologický slovník slovenčiny</a><br>
+          |                         Ľubor Králik  ·  Vydavateľstvo: VEDA, 2016                    </td>
+          |                     <td>24,94&nbsp;€ *</td>
+          |                     <td>(9x)</td>
+          |                 </tr>
+          |                             <tr>
+          |                     <td>4.</td>
+          |                     <td>
+          |                                                     <img src="http://www.martinus.sk//data/tovar/_s/130/s130557.jpg" style="border-width: 1px" height="40" alt="pic">
+          |                                             </td>
+          |                     <td class="left">
+          |                         <a class="link" target="_blank" href="http://www.martinus.sk/?uItem=130557">Ale</a><br>
+          |                         Tomáš Ulej  ·  Vydavateľstvo: Koloman Kertész Bagala, 2012                    </td>
+          |                     <td>10,00&nbsp;€ *</td>
+          |                     <td>(9x)</td>
+          |                 </tr>
+          |                             <tr>
+          |                     <td>5.</td>
+          |                     <td>
+          |                                                     <img src="http://www.martinus.sk//data/tovar/_s/452/s452599.jpg" style="border-width: 1px" height="40" alt="pic">
+          |                                             </td>
+          |                     <td class="left">
+          |                         <a class="link" target="_blank" href="http://www.martinus.sk/?uItem=452599">Milá zoo</a><br>
+          |                         Rod Campbell  ·  Vydavateľstvo: Svojtka&amp;Co., 2018                    </td>
+          |                     <td>7,47&nbsp;€ *</td>
+          |                     <td>(6x)</td>
+          |                 </tr>
+          |                             <tr>
+          |                     <td>6.</td>
+          |                     <td>
+          |                                                     <img src="http://www.martinus.sk//data/tovar/_s/583/s583467.jpg" style="border-width: 1px" height="40" alt="pic">
+          |                                             </td>
+          |                     <td class="left">
+          |                         <a class="link" target="_blank" href="http://www.martinus.sk/?uItem=583467">Dobrú noc a sladké sny</a><br>
+          |                         Amber Stewart, Layn Marlow  ·  Vydavateľstvo: Fortuna Libri, 2019                    </td>
+          |                     <td>5,62&nbsp;€ *</td>
+          |                     <td>(6x)</td>
+          |                 </tr>
+          |                     </tbody></table>
 
         p.text-size-small * Uvedené ceny vychádzajú z aktuálneho katalógu a nemusia sa zhodovať s cenami v minulých objednávkach.
 
