@@ -27,7 +27,6 @@ const texts = {
 };
 
 const defaultConfig = {
-  search: false,
   searchEnabled: false,
   searchChoices: false,
   shouldSort: false,
@@ -344,7 +343,7 @@ export default class Select {
 
       const choice = new Choices(select, config);
 
-      choice.containerOuter.classList.add('select');
+      choice.containerOuter.element.classList.add('select');
 
       // disable input if [disabled] or '.disabled'
       if (select.disabled || select.classList.contains('disabled')) {
@@ -355,12 +354,12 @@ export default class Select {
       const unwantedClasses = ['choices__input', 'is-hidden', 'js-select'];
       classes.forEach(className => {
         if (!unwantedClasses.includes(className)) {
-          choice.containerOuter.classList.add(className);
+          choice.containerOuter.element.classList.add(className);
         }
       });
 
       if (config.searchEnabled) {
-        const input = choice.dropdown.querySelector('input');
+        const input = choice.dropdown.element.querySelector('input');
 
         if (input) {
           input.classList.add('input');

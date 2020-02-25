@@ -276,6 +276,12 @@ $select-selector: 'choices' !default;
 
 .#{$select-selector}__placeholder { opacity: .5; }
 
+.#{$select-selector}__input[hidden],
+.#{$select-selector}[data-type*='select-one'] .#{$select-selector}__input[hidden],
+.#{$select-selector}[data-type*='select-multiple'] .#{$select-selector}__input[hidden] {
+  display: none;
+}
+
 .#{$select-selector}__item[data-value="choice-hidden"] {
   display: none;
 }
