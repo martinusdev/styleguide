@@ -1,0 +1,23 @@
+extends layouts/_affiliate
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Partnerský systém'
+    - var loggedIn = true
+
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Partnerský systém', 'Vyplatiť provízie']})
+
+    section.section
+      .wrapper-main
+
+        +affiliateNav(2)

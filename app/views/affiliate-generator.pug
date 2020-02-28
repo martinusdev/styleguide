@@ -19,26 +19,152 @@ block content
     section.section
       .wrapper-main
 
-        .btn-group.btn-group--horizontal.btn-group--fill
-          a.btn.btn--ghost(href="#")
-            +icon('breadcrumbs').icon--medium.icon--left.show-m
-            | Hlavná stránka
-          a.btn.btn--ghost(href="#")
-            +icon('invoice').icon--medium.icon--left.show-m
-            | Prehľady a štatistiky
-          a.btn.btn--ghost(href="#")
-            +icon('card').icon--medium.icon--left.show-m
-            | Vyplatiť provízie
-          a.btn.btn--ghost.is-active(href="#")
-            +icon('share').icon--medium.icon--left.show-m
-            | Generátor odkazov
-          a.btn.btn--ghost(href="#")
-            +icon('file').icon--medium.icon--left.show-m
-            | Všeobecné podmienky
-          a.btn.btn--ghost(href="#")
-            +icon('info').icon--medium.icon--left.show-m
-            | FAQ - časté otázky
+        +affiliateNav(3)
 
         .card.card--well.mb-large
           .card__content
-            | asd
+            .text-center
+              h1.mb-medium Generátor odkazov a bannerov
+              .row
+                .col--m-10.ofst--m-1
+                  p Na tejto stránke si môžete vygenerovať odkaz alebo banner, ktorý potom umiestnite na svoju stránku.
+
+                  p Vyberte si, prosím, z dvoch možností: buď budete odkaz alebo banner#{' '}
+                    b smerovať na domovskú stránku Martinusu#{' '}
+                    |, alebo môžete pre vyššiu úspešnosť priamo#{' '}
+                    b cieliť na náš konkrétny produkt#{' '}
+                    | . Pre vloženie bannera skopírujte vygenerovaný kód a vložte ho do kódu svojej stránky. Môžete tiež použiť priamy textový odkaz (hyperlink).
+
+                  .alert.alert--success-light.inline-block.mb-medium.mb-none-m
+                    p.mb-none Váš identifikátor
+                    .h2.mb-none ZNKRJ2
+
+        .bar.align-items-top.mb-large
+          .bar__item.bar__item--fill
+            p Ak chcete smerovať návštevníkov na kategóriu na stránke, napríklad E-knihy, môžete použiť rovnaké bannery ako pri smerovaní titulnú stránku, len zmeňte v linku či kóde časť URL adresy pred otáznikom.
+
+            | Príklad:
+            pre.alert.alert--light https://www.martinus.sk/?z=XXXXXX&utm_source=z%3DXXXXXX&utm_medium=banner1_468x60&utm_campaign=partner
+            | zmeňte na
+            pre.alert.alert--light https://www.martinus.sk/eknihy/?z=XXXXXX&utm_source=z%3DXXXXXX&utm_medium=banner1_468x60&utm_campaign=partner
+            | a link či banner bude smerovať na celú kategóriu E-knihy.
+
+        hr
+
+        ul.tab-nav(data-tabs-container, role="tablist").mb-large
+          li.tab-nav__item(data-tabs-item)
+            a.tab-nav__content.tab-nav__content--link Smerovať ľudí priamo na konkrétny produkt
+          li.tab-nav__item(data-tabs-item)
+            a.tab-nav__content.tab-nav__content--link Smerovať ľudí na domovskú stránku Martinusu
+          li.tab-nav__item(data-tabs-item)
+            a.tab-nav__content.tab-nav__content--link XML export vybraných kníh
+
+        .row
+          .col--m-6
+            p Vyhľadajte titul, na ktorý chcete odkazovať, alebo vložte adresu produktu z www.martinus.sk
+
+            .form-control.form-control--input.mb-large
+              .form-label
+                label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
+              #kniha-autocomplete-container
+
+        h2 Textový odkaz (blog, sociálne siete)
+
+        .card.card--well
+          .card__content
+            p Chcete v článku na blogu, sociálnej sieti alebo inde na webe uviesť odkaz na tento produkt? Použite tento odkaz:
+            textarea.input.mb-medium https://www.martinus.sk/?uItem=240773&z=ZNKRJ2&utm_source=z%3DZNKRJ2&utm_medium=url&utm_campaign=partner
+            button.btn kopírovať
+
+        h2 Banner pre Váš web
+
+        .card.card--well
+          .card__content
+            .row
+              .col--m-6
+                textarea(rows="4").input.mb-medium
+                  | <script type="text/javascript" src="//partner.mrtns.eu/banners/banner.js?type=banner&brand_id=1&uItem=240773&size=skyscraper&show_price=1&color=teal&z=ZNKRJ2"></script>
+                button.btn kopírovať
+
+                .form-control.form-control--select
+                  .form-label
+                    label.text-transform-upper.text-size-small(for="banner_format")
+                      | Formát
+                  select.js-select.select--ghost(name="banner_format", id="banner_format")
+                    option Square
+
+                .form-control.form-control--select
+                  .form-label
+                    label.text-transform-upper.text-size-small(for="banner_color")
+                      | Farba
+                  select.js-select.select--ghost(name="banner_color", id="banner_color")
+                    option Žltá
+                    option Biela
+                    option Zelená
+                    option Modrá
+
+                .form-control.form-control--select
+                  .form-label
+                    label.text-transform-upper.text-size-small(for="banner_price")
+                      | Cena
+                  select.js-select.select--ghost(name="banner_price", id="banner_price")
+                    option S cenou
+
+              .col--m-6
+                | <iframe width="300" height="300" frameborder="0" src="https://partner.martinus.sk/banners/generator.php?uItem=240773&amp;size=square&amp;show_price=1&amp;color=yellow" scrolling="no" id="banner_iframe"></iframe>
+
+        .mb-large
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.addEventListener('DOMContentLoaded', () => {
+      const allResults = {
+        item: [
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'J.K. Rowling, <span class="text-color-success">Na sklade</span>',
+            price: '8,99€'
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 2 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 2',
+            description: 'Dan Brown, <span class="text-color-success">Do troch dní</span>',
+            price: ''
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 3 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 3',
+            description: 'Dominik Dan, <span class="text-color-grey">Do troch týždňov</span>',
+            price: '8,99€'
+          },
+        ],
+      };
+
+    const filter = type => (query, populateResults) => {
+      const results = allResults[type];
+      const filteredResults = results.filter(result =>
+          result.raw.match(new RegExp(query, 'gi')),
+        );
+      populateResults(filteredResults);
+    };
+
+    window.myApp.autocompleteKniha = new window.myApp.Autocomplete(
+      document.getElementById('kniha-autocomplete-container'),
+      {
+        autocompleteOptions: {
+          id: 'kniha-autocomplete',
+          source: filter('item'),
+          onConfirm: (value) => {
+          console.log(value);
+    },
+    placeholder: 'Pridať knihu do objednávky? Začnite písať...'
+    },
+    templateType: 'item',
+    },
+    );
+    });

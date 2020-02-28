@@ -12,6 +12,24 @@ include ./../mixins/me/mobileSidebar
 - var headerWarning = headerWarningActive ? ' has-header-warning' : '';
 - var loggedIn = true
 
+mixin affiliateNav(active)
+
+  -
+    const links = [
+      {title: 'Hlavná stránka', icon: 'breadcrumbs', link: 'affiliate-homepage.html'},
+      {title: 'Prehľady a štatistiky', icon: 'invoice', link: 'affiliate-stats.html'},
+      {title: 'Vyplatiť provízie', icon: 'card', link: 'affiliate-payout.html'},
+      {title: 'Generátor odkazov', icon: 'share', link: 'affiliate-generator.html'},
+      {title: 'Všeobecné podmienky', icon: 'file', link: 'affiliate-article.html'},
+      {title: 'FAQ - časté otázky', icon: 'info', link: 'affiliate-article.html'}
+    ];
+
+  .btn-group.btn-group--horizontal.btn-group--fill
+    each item, i in links
+      a.btn.btn--ghost(href=`${item.link}`, class=(i==active) ? 'is-active' : '')
+        +icon(item.icon).icon--medium.icon--left.show-m
+        =item.title
+
 //- -----------------------------------------------
 //- OPTIONS
 

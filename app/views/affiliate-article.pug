@@ -1,0 +1,447 @@
+extends layouts/_affiliate
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Partnerský systém'
+    - var loggedIn = true
+
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Partnerský systém', 'Všeobecné podmienky']})
+
+    section.section
+      .wrapper-main
+
+        +affiliateNav(4)
+
+        .row
+          .col--l-3.show-l
+            ul.list.list--expanded.no-pad(role="navigation")
+              |    <li class="is-active"><a href="#uvod">Úvodné ustanovenia</a></li>
+              |    <li><a href="#pojmy">Definícia pojmov</a></li>
+              |    <li><a href="#vop">Všeobecné podmienky a spôsob propagácie</a></li>
+              |    <li><a href="#propagacia">Spôsob propagácie</a></li>
+              |    <li><a href="#narok">Nárok Partnera na províziu</a></li>
+              |         <li><a href="#ochrana">Ochrana osobných údajov a&nbsp;duševné vlastníctvo</a></li>
+              |    <li><a href="#cas">Doba platnosti a&nbsp;skončenie Zmluvy</a></li>
+              |    <li><a href="#zaver">Záverečné ustanovenia</a></li>
+              |    </ul>
+
+          article.col--l-9.col--m-9.ofst--m-center.col--12.mb-large
+            | <div class="span9 vopdiv">
+            |     <h1>Všeobecné obchodné podmienky Partnerského systému Martinus</h1>
+            |
+            |     <p>Pravidlá Partnerského systému spoločnosti Martinus, s.r.o., Gorkého 4, 036 01 Martin, IČO: 45 503 249, zapísaná do Obchodného registra Okresného súdu Žilina, oddiel Sro, vložka číslo 52711/L.</p>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">1.</div>
+            |         <span>
+            |             <h2 id="uvod">Úvodné ustanovenia</h2>
+            |         </span>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">1.1</div>
+            |         <div>Tieto všeobecné obchodné podmienky upravujú účasť na Partnerskom sytéme, ktorého prevádzkovateľom je spoločnosť Martinus, s.r.o., so sídlom Gorkého 4, 036 01 Martin, IČO: 45 503 249, a sú neoddeliteľnou súčasťou Zmluvy uzatvorenej medzi spoločnosťou Martinus, s.r.o. a Partnerom.</div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">1.2</div>
+            |         <div>
+            |             Spoločnosť Martinus, s.r.o. v rámci svojej hlavnej aktivity, prevádzky internetového kníhkupectva, vytvorila a vyvinula ponuku Partnerského systému určeného každému Partnerovi, ktorého účasť bude schválená s cieľom propagovať produkty spoločnosti Martinus, s.r.o. na internetových stránkach patriacich Partnerovi za protihodnotu v podobe vyplatenia provízie.
+            |         </div>
+            |     </div>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">2.</div>
+            |         <div>
+            |             <h2 id="pojmy">Definícia pojmov</h2>
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">2.1</div>
+            |         <div>
+            |             Pojmy použité v&nbsp;týchto Pravidlách, pokiaľ sú označené veľkým začiatočným písmenom, budú mať význam uvedený nižšie:
+            |             <ul>
+            |                 <li>Pravidlá – tieto všeobecné obchodné podmienky upravujúce účasť na Partnerskom systéme spoločnosti Martinus, s.r.o.;</li>
+            |                 <li>Prevádzkovateľ – spoločnosť Martinus, s.r.o., so sídlom Gorkého 4, 036 01 Martin, IČO: 45 503 249, IČ DPH: SK2023008911, zapísaná do Obchodného registra Okresného súdu Žilina, oddiel: Sro, vložka číslo: 17247/L;</li>
+            |                 <li>Záujemca – osoba, ktorá požiada o členstvo v Partnerskom systéme vyplnením registračného formulára prostredníctvom partnerskej platformy;</li>
+            |                 <li>Partner – každá právnická osoba alebo fyzická osoba, ktorá je plnoletá (dovŕšila vek 18 rokov) a&nbsp;je spôsobilá na právne úkony, ktorá sa registrovala v&nbsp;Partnersom systéme a&nbsp;bol jej otvorený používateľský účet;</li>
+            |                 <li>Zákazník – každý návštevník internetového obchodu Martinus, ktorý si objedná tovar a za objednaný tovar zaplatí;</li>
+            |                 <li>Webstránka – internetová stránka, na ktorej bude umiestnený HTML kód, a ktorá je vo vlastníctve alebo v užívaní Partnera, a ktorú uviedol Partner pri registrácii do Partnerského systému alebo následne začal využívať s&nbsp;používateľským účtom k Partnerskému systému;</li>
+            |                 <li>HTML kód – znamená špeciálny kód, ktorý je Partnerovi pridelený Prevádzkovateľom a po vložení na Webstránku Partnera sa zobrazuje ako reklamná plocha alebo odkaz;</li>
+            |                 <li>Referenčný kód – je jedinečný špeciálny kód Partnera, ktorý slúži na identifikáciu reklamných bannerov alebo odkazov;</li>
+            |                 <li>Reklamná plocha – znamená banner alebo textový odkaz, ktorého výsledkom sú umiestnenia jedinečného HTML kódu vloženého na Web-stránku Partnera;</li>
+            |                 <li>Sociálna sieť – špecifická stránka prevádzkovaná tretím subjektom, ktorej funkcionalita umožňuje zverejňovať Partnerom internetové odkazy na svojich profiloch (napr. Facebook, LinkedIn, Twitter a&nbsp;pod.).</li>
+            |                 <li>Zmluva – partnerská zmluva uzatvorená medzi Prevádzkovateľom a&nbsp;Partnerom elektronickou cestou za podmienok uvedených v&nbsp;týchto Pravidlách.</li>
+            |             </ul>
+            |         </div>
+            |     </div>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">3.</div>
+            |         <div>
+            |             <h2 id="vop">Všeobecné podmienky pre účasť na Partnerskom systéme a registrácia do Partnerského systému</h2>
+            |         </div>
+            |     </div>
+            |
+            |     <div class="text">
+            |         <div class="tsp">3.1</div>
+            |         <div>
+            |             Partnerom sa môžu stať právnické osoby a fyzické osoby staršie ako 18 rokov, ktoré sú spôsobilé na právne úkony v plnom rozsahu, a sú vlastníkmi alebo používateľmi Web-stránky.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">3.2</div>
+            |         <div>
+            |             Účasť v Partnerskom systéme vzniká registráciou Záujemcu do Partnerského systému a&nbsp;zriadením používateľského účtu zo strany Prevádzkovateľa.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">3.3</div>
+            |         <div>
+            |             Registrácia do Partnerského systému prebieha uzatvorením Zmluvy, a to odoslaním návrhu na uzavretie Zmluvy Záujemcom elektronicky vo forme formulára a jeho elektronickou akceptáciou (v lehote 5 pracovných dní) zo strany Prevádzkovateľa.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">3.4</div>
+            |         <div>
+            |             Pri vyplnení registračného online formulára, ktorý sa nachádza na partnerskej platforme, Záujemca uvedie všetky povinné údaje. Odoslaním elektronického návrhu Záujemca potvrdzuje, že sa oboznámil s&nbsp;týmito Pravidlami a že s nimi bezvýhradne súhlasí, a&nbsp;rovnako, že súhlasí s komunikáciou v elektronickej podobe, a to predovšetkým prostredníctvom elektronickej pošty (e-mailu) a internetu.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">3.5</div>
+            |         <div>
+            |             Záujemca nemá nárok na registráciu do Partnerského systému Prevádzkovateľa a Prevádzkovateľ môže návrh Záujemcu na uzavretie Zmluvy odmietnuť aj bez uvedenia dôvodu. Odmietnutie návrhu Zmluvy bude Záujemcovi oznámené elektronickou poštou na jeho e-mailovú adresu. V&nbsp;prípade, ak Prevádzkovateľ neakceptuje návrh Záujemcu lehote 5 pracovných dní od jeho obdržania, prípadne mu&nbsp;v&nbsp;tejto lehote neoznámi odmietnutie návrhu, platí, že Prevádzkovateľ návrh Záujemcu na uzavretie Zmluvy odmietol.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">3.6</div>
+            |         <div>
+            |             Okamihom akceptácie návrhu Zmluvy sa Záujemca stáva Partnerom, pričom Partner aj Prevádzkovateľ sú týmto okamihom povinní dodržiavať Pravidlá, ktoré sú neoddeliteľnou súčasťou Zmluvy. Prevádzkovateľ zriadi Partnerovi používateľský účet, na ktorom mu je povinný umožniť sledovanie štatistík o zrealizovaných objednávkach a výške jeho provízie.
+            |         </div>
+            |     </div>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">4.</div>
+            |         <div>
+            |             <h2 id="propagacia">Spôsob propagácie</h2>
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.1</div>
+            |         <div>
+            |             Partner sa účasťou v&nbsp;Partnerskom systéme Prevádzkovateľa zaväzuje, že vytvorí na svojej Webstránke reklamné plochy, t.j. umiestni na svoju Web-stránku banner alebo textový odkaz smerujúci na internetový obchod Prevádzkovateľa alebo na konkrétne produkty Prevádzkovateľa. Partner je povinný využívať pre každú formu propagácie jedinečný HTML kód, ktorý obsahuje Partnerov Referenčný kód, ktorý mu je pridelený Prevádzkovateľom v Partnerskom systéme prostredníctvom generátora odkazov.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.2</div>
+            |         <div>
+            |             Prevádzkovateľ sa zaväzuje, že Partnerovi vyplatí províziu vo výške určenej Prevádzkovateľom a vo forme, ktorú si Partner vyberie z možností určených Prevádzkovateľom. Prevádzkovateľ si vyhradzuje právo kedykoľvek jednostranne zmeniť výšku provízie (zvýšenie, zníženie), pričom sa zaväzuje, že o zmenách bude Partnera vopred informovať.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.3</div>
+            |         <div>
+            |             Provízia sa Partnerovi započítava len z&nbsp;objednávok, ktoré Zákazník vytvorí najneskôr do siedmich (7) dní po prvom príchode na stránku Prevádzkovateľa (www.martinus.sk) prostredníctvom odkazu na Partnerovej Webstránke. Lehota sedem (7) dní začína plynúť vždy dňom (vrátane) kedy  Zákazník klikne na odkaz, ktorý spĺňa všetky podmienky Partnerského systému.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.4</div>
+            |         <div>
+            |             Nárok na províziu vzniká Partnerovi až na základe riadneho zaplatenia ceny tovaru, ktorý si Zákazník objednal prostredníctvom odkazu umiestneného na Partnerovej Webstránke, tj. v&nbsp;momente prijatia úhrady v&nbsp;hotovosti alebo pripísaním príslušnej sumy na bankový účet Prevádzkovateľa.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.5</div>
+            |         <div>
+            |             Provízia bude Partnerovi vyplatená iba zo skutočne&nbsp;realizovanej a&nbsp;zaplatenej časti objednávok. V&nbsp;prípade, ak Prevádzkovateľ Zákazníkovi cenu tovaru vráti, či už z&nbsp;dôvodu, že Zákazník neskôr objednávku zruší alebo tovar vráti, prípadne tovar nebude možné dodať pre nedostupnosť, Partnerovi nárok na províziu nevzniká.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.6</div>
+            |         <div>
+            |             Podmienkou na získanie provízie je, aby Zákazník, ktorý navštívi Webstránku Partnera, mal zapnuté cookies vo svojom internetovom prehliadači a&nbsp;nevyužíval akúkoľvek formu anonymizácie, ktorá by znemožnila priradenie objednávky ku konkrétnemu Partnerovi.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.7</div>
+            |         <div>
+            |             Reklamná plocha nemôže byť umiestnená na webstránky, ktorých obsah je v rozpore s právnymi predpismi, či dobrými mravmi, na webstránky, ktoré majú pornografický charakter a na webstránky, ktoré predovšetkým slúžia k zobrazovaniu reklamy, alebo sú určené na propagáciu a šírenie extrémizmu, alebo inak môžu poškodiť dobré meno Prevádzkovateľa.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.8</div>
+            |         <div>
+            |             Pri umiestnení Reklamnej plochy alebo HTML kódu Partnerom na Webstránku nesmie byť návštevník Webstránky akýmkoľvek spôsobom uvádzaný do omylu, že po kliknutí na Reklamnú plochu alebo HTML kód bude presmerovaný na inú stránku či doménu než www.martinus.sk.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.9</div>
+            |         <div>
+            |             Partner nesmie vyvíjať žiadne aktivity smerujúce k neoprávnenému zvýšeniu provízie, predovšetkým nesmie uskutočňovať nasledovné aktivity:
+            |             <ol style="list-style: lower-alpha">
+            |                 <li>Umiestnenie odkazu, ktorý sa aktivuje ihneď po vstupe na Webstránku Partnera;</li>
+            |                 <li>Modifikácia HTML kódu vytvoreného Prevádzkovateľom;</li>
+            |                 <li>Modifikácia grafiky vytvorenej Prevádzkovateľom;</li>
+            |                 <li>Umiestnenie reklamnej plochy na inú stránku, ako pre ktorú bol banner vytvorený;</li>
+            |                 <li>Umiestnenie reklamnej plochy na stránku, ktorá je súčasťou inej stránky;</li>
+            |                 <li>Umiestnenie reklamnej plochy na stránku, ktorú nevlastní ani legálne a&nbsp;v&nbsp;súlade s&nbsp;jej pravidlami neužíva Partner;</li>
+            |                 <li>Umiestnenie banneru v pop-up okne na zvláštnej stránke aktivovanej v rovnakom okamihu ako Webstránka Partnera;</li>
+            |                 <li>Zasielanie nevyžiadanej pošty o&nbsp;Webstránke Partnera;</li>
+            |                 <li>Napodobňovanie vzhľadu webových stránok Prevádzkovateľa alebo iného právneho subjektu s cieľom vyvolať dojem, že ide o službu poskytovanú Prevádzkovateľom alebo iným právnym subjektom.</li>
+            |                 <li>Motivovanie Návštevníka ku kliku či návšteve zavádzajúcim tvrdením alebo prísľubom, a&nbsp;to vrátane formulácií, ktoré by mohli Návštevníka uviesť do omylu, že zľava poskytovaná na stránke Prevádzkovateľa za odlišných podmienok je dostupná unikátne cez stránku či kód Partnera;</li>
+            |                 <li>Distribuovanie HTML kódu alebo umiestňovanie reklamných plôch do affiliate sietí, systémov určených na presmerovávanie návštev Webstránky (redirect systémov), hromadne rozposielaných mailov, ani iných nástrojov, ktoré slúžia k navyšovaniu návštevnosti, a&nbsp;to predovšetkým nástrojov bez možnosti priamej kontroly zo strany Prevádzkovateľa.</li>
+            |             </ol>
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.10</div>
+            |         <div>
+            |             Ak umiestnenie reklamného odkazu je v&nbsp;rozpore s&nbsp;týmito Pravidlami, Prevádzkovateľ si vyhradzuje právo požiadať Partnera o&nbsp;bezodkladné odstránenie reklamného odkazu z Webstránky, pričom odmietnutie zo strany Partnera zakladá právo Prevádzkovateľa na odstúpenie od Zmluvy.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.11</div>
+            |         <div>
+            |             Žiadne ustanovenie týchto Pravidiel nezbavuje účastníkov Zmluvy právnej zodpovednosti podľa platných predpisov Slovenskej republiky, predovšetkým vo vzťahu k ochrane dobrej povesti Prevádzkovateľa a&nbsp;zodpovednsoti za škodu spôsobenú porušením povinnosti.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.12</div>
+            |         <div>
+            |             Ustanovenia tohto článku 4. Pravidiel sa obdobne uplatnia aj v&nbsp;prípade propagácie internetového obchodu a&nbsp;produktov Prevádzkovateľa na Sociálnych sieťach, pričom ustanovenia bodu 4.9 písm. d) a f) sa v&nbsp;takom prípade neaplikujú. Takýto spôsob propagácie zároveň nesmie porušovať žiadne pravidlá a&nbsp;podmienky stanovené dotknutými Sociálnymi sieťami.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">4.13</div>
+            |         <div>
+            |             Partnerovi vzniká nárok na províziu z uskutočnených objednávok pri umiestnení reklamného odkazu smerujúceho na:
+            |             <ol style="list-style: lower-alpha">
+            |                 <li>Webstránku Prevádzkovateľa (www.martinus.sk), alebo</li>
+            |                 <li>zoznamy titulov na Webstránke Prevádzkovateľa, alebo</li>
+            |                 <li>akciové ponuky na Webstránke Prevádzkovateľa, alebo</li>
+            |                 <li>detail akéhokoľvek produktu na Webstránke Prevádzkovateľa.</li>
+            |             </ol>
+            |         </div>
+            |     </div>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">5.</div>
+            |         <div>
+            |             <h2 id="narok">Nárok Partnera na províziu</h2>
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.1</div>
+            |         <div>
+            |             Výška provízie Partnera je určená percentom z&nbsp;obratu, tj. hodnoty tovaru bez DPH zakúpeného Zákazníkmi, ktorých sprostredkoval Partner. Prevádzkovateľ je oprávnený vylúčiť z&nbsp;obratu objednávky (nákupy), na ktoré sa vzťahovala mimoriadna zľava. Do obratu sa rovnako nezapočítavajú súvisiace služby (poštové a balné), nákup darčekových poukážok a príspevky Zákazníka na neziskové organizácie. Partner má nárok na províziu z nákupov, ktoré boli dokončené v čase trvania Zmluvy.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.2</div>
+            |         <div>
+            |             Podľa voľby Partnera môže byť provízia vyplatená v&nbsp;súlade s&nbsp;nasledujúcimi podmienkami:
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.2.1</div>
+            |         <div>
+            |             vo forme finančnej odmeny vyplatenej bezhotovostným prevodom na účet Partnera – provízia vo výške 5 % z obratu, ktorý sprostredkoval Partner. Nárok na vyplatenie finančnej domeny prevodom na bankový účet vzniká Partnerovi v prípade, keď celková výška provízie dosiahne aspoň sumu 33,- EUR, bankové poplatky idú na ťarchu Prevádzkovateľa;
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.2.2</div>
+            |         <div>
+            |             vo forme nákupnej poukážky – provízia vo výške 7 % z obratu, ktorý sprostredkoval Partner. Vyplatenie provízie vo forme nákupnej poukážky je možné kedykoľvek, keď jej hodnota dosiahne aspoň 10,- EUR. Nákupné poukážky budú Partnerovi zaslané elektronickou poštou na emailovú adresu Partnera;
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.3</div>
+            |         <div>
+            |             Provízia bude Partnerovi vyplatená:
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.3.1</div>
+            |         <div>
+            |             ak je Partnerom fyzická osoba nepodnikateľ, na základe žiadosti prostredníctvom rozhrania Partnerského systému, pričom Prevádzkovateľ vyplatí províziu najneskôr do 30 dní po overení nároku Partnera na jej vyplatenie;
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.3.2</div>
+            |         <div>
+            |             ak je Partnerom fyzická osoba podnikateľ alebo právnická osoba, na základe riadne vystaveného daňového dokladu (faktúra) najneskôr do 30 dní po&nbsp;doručení faktúry Partnera Prevádzkovateľovi a overení nároku Partnera na vyplatenie provízie. V&nbsp;prípade, ak daňový doklad (fakúra) Partnera nespĺňa zákonom stanovené náležitosti a/alebo je vystavená na sumu, ktorá nezodpovedá overenej výške provízie, Prevádzkovateľ o&nbsp;tomto bezodkladne informuje Partnera a&nbsp;faktúru vráti za účelom jej opravy, v&nbsp;takom prípade je provízia splatná až po doručení opraveného daňového dokladu (faktúry). Provízia Partnera môže byť navýšená o&nbsp;príslušnú sadzbu DPH len ak Partner pri registrácii resp. kedykoľvek neskôr oznámil Prevádzkovateľovi príslušné účtovné/fakturačné údaje (IČ DPH).
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.4</div>
+            |         <div>
+            |             Nárok na vyplatenie provízie uplatní Partner na základe žiadosti urobenej cez používateľský účet v Partnerskom systéme.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.5</div>
+            |         <div>
+            |             Nárok na províziu vzniká iba v prípade, ak žiadny jednotlivý zákazník alebo fakturačná adresa netvorí viac ako tretinu všetkých nákupov, pričom na identifikáciu jednotlivého zákazníka môže slúžiť email, meno s adresou alebo ich kombinácia. Toto obmedzenie sa vzťahuje aj na rôzne osoby s rovnakou fakturačnou adresou. V opačnom prípade má Poskytovateľ právo celú províziu zamietnuť s&nbsp;cieľom zamedzenia zneužívania Partnerského systému na účely, ktoré nesmerujú k&nbsp;propagácii stránky, tovaru a&nbsp;produktov Prevádzkovateľa.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.6</div>
+            |         <div>
+            |             Za účelom vylúčenia akýchkoľvek pochybností, Partner nemá nárok na náhradu nákladov spojených s činnosťou podľa Zmluvy a&nbsp;Pravidiel, a&nbsp;prípadné náklady sú zohľadnené v&nbsp;provízii.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.7</div>
+            |         <div>
+            |             Z&nbsp;vyplatenej provízie je Partner povinný odviesť daň vo výške podľa platnej legislatívy. Prevádzkovateľ v&nbsp;žiadnom prípade nezodpovedá za splnenie registračnej a daňovej povinnosti Partnera.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.8</div>
+            |         <div>
+            |             Zmluvné strany sa dohodli, že výška provízie sa počíta pomocou softvéru, a&nbsp;to výlučne podľa údajov zaregistrovaných daným softvérom. Partner má počas trvania Zmluvy neobmedzený prístup na svoj účet a na svoje štatistiky, ktoré sú neustále dostupné na partnerskej platforme.
+            |             <br>V prípade sporu ohľadne počtu objednávok a/alebo výšky provízie sa za dôkaz považujú výhradne údaje registrované a vypočítané daným softvérom.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">5.9</div>
+            |         <div>
+            |             Prekliky na www.martinus.sk z odkazov, ktoré nebude Prevádzkovateľ pri kontrole kedykoľvek schopný jednoznačne priradiť k Webstránke uvedenej v konte Partnera (predovšetkým, no nie výlučne prekliky, ktorých URL nebude obsahovať doménu Webstránky), nebude Prevádzkovateľ akceptovať. Zároveň si Prevádzkovateľ, v prípade, že nastane takáto situácia, vyhradzuje právo nevyplatiť Partnerovi nazbierané provízie a bezodkladne odstúpiť od Zmluvy.
+            |         </div>
+            |     </div>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">6.</div>
+            |         <div>
+            |             <h2 id="ochrana">Ochrana osobných údajov a&nbsp;duševné vlastníctvo</h2>
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">6.1</div>
+            |         <div>
+            |             <span style="text-decoration: underline;">Osobné údaje</span>.
+            |             V&nbsp;prípade, ak niektoré údaje poskytnuté Vami ako Záujemcom resp. Partnerom (fyzická osoba) majú povahu osobných údajov, tieto osobné údaje budú spracované a&nbsp;použité u&nbsp;nás - Prevádzkovateľa len v&nbsp;rozsahu nevyhnutnom pre spracovanie návrhu na uzavretie Zmluvy a&nbsp;v&nbsp;prípade jej uzavretia budú spracúvané a&nbsp;uchovávané predovšetkým za účelom
+            |             <ul>
+            |                 <li>plnenia Zmluvy, najmä v&nbsp;súvislosti s vedením používateľského účtu Vás ako Partnera a&nbsp;ich uchovávaním v&nbsp;našom účtovnom a&nbsp;fakturačnom systéme</li>
+            |                 <li>na našu vzájomnú komunikáciu a</li>
+            |                 <li>aby sme reagovali na nároky, ktoré boli voči nám uplatnené, pri konaniach pred štátnymi a inými orgánmi, ktoré kontrolujú našu činnosť, a aby sme vymáhali nároky, ktoré nám vznikli.</li>
+            |             </ul>
+            |             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            |             Osobné údaje uchovávame po dobu trvania Zmluvy a&nbsp;päť rokov po jej skončení, ak neexistuje iný právny základ, ktorý odôvodňuje ich ďalšie uchovávanie.
+            |             Všetky ostatné relevantné informácie o&nbsp;spracúvaní osobných údajov u&nbsp;nás (komu ich sprístupňujeme, ako ich chránime, aké sú práva dotknutých osôb) nájdete&nbsp;<a href="https://www.martinus.sk/pomoc/ochrana-sukromia">TU</a>.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">6.2</div>
+            |         <div>
+            |             <span style="text-decoration: underline;">Duševné vlastníctvo Prevádzkovateľa</span>. Partnerský systém je služba (program, softvér) vytvorená a vyvinutá Prevádzkovateľom, ktorý je výlučným majiteľom všetkých autorských práv a&nbsp;práv duševného vlastníctva, ktoré využíva v rámci svojej podnikateľskej činnosti. Uvedené platí rovnako na odkazy (bannery). Partner nie je oprávnený odkaz alebo akúkoľvek jeho časť (banner) meniť, prenajímať, požičiavať, predávať, šíriť a ani z&nbsp;neho alebo na jeho základe vytvárať odvodené diela alebo výrobky. Prevádzkovateľ má kedykoľvek právo zmeniť obsah aj formu odkazu, prípadne obmedziť či pozastaviť jeho zobrazovanie na Webstránke Partnera.
+            |         </div>
+            |     </div>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">7.</div>
+            |         <div>
+            |             <h2 id="cas">Doba platnosti a&nbsp;skončenie Zmluvy</h2>
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.1</div>
+            |         <div>
+            |             Zmluva sa uzatvára na dobu neurčitú.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.2</div>
+            |         <div>
+            |             Zmluva zaniká:
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.2.1</div>
+            |         <div>
+            |             <strong>Dohodou</strong>. K dohode dôjde elektronicky v rámci používateľského účtu Partnera odoslaním žiadosti o&nbsp;zrušenie používateľského účtu zo strany Partnera alebo Prevádzkovateľa a elektronickou akceptáciou druhou stranou. V okamihu doručenia akceptácie (oznámenie v používateľskom účte Partnera alebo doručením e-mailu na adresu Partnera) dôjde k zrušeniu používateľského účtu a&nbsp;týmto okamihom Zmluva zaniká.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.2.2</div>
+            |         <div>
+            |             <strong>Výpoveďou</strong>. Výpoveďou je oprávnená ukončiť Zmluvu ktorákoľvek strana i bez uvedenia dôvodu, elektronicky odoslaním výpovede v rámci používateľského účtu Partnera alebo doručením e-mailu na adresu Partnera. Výpovedná lehota je jeden mesiac a začína plynúť prvým dňom mesiaca nasledujúcom po odoslaní výpovede.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.2.3</div>
+            |         <div>
+            |             <strong>Odstúpením</strong>. Partner je oprávnený odstúpiť od Zmluvy v&nbsp;prípade, ak je Prevádzkovateľ v omeškaní s vyplatením provízie o viac ako 30 dní, a to elektronicky oznámením o&nbsp;odstúpení v rámci používateľského účtu Partnera. Prevádzkovateľ je oprávnený odstúpiť od Zmluvy v&nbsp;prípade závažného porušenia Zmluvy zo strany Partnera, predovšetkým ak Partner v&nbsp;rozpore s&nbsp;bodom 4.8 Pravidiel vyvíja akúkoľvek činnosť smerujúcu k neoprávnenému navyšovaniu provízie, alebo v&nbsp;rozpore s&nbsp;bodom 4.7 Pravidiel je obsah Webstránky Partnera v rozpore s&nbsp;platnými právnymi predpismi, s dobrými mravmi či Pravidlami, a&nbsp;to elektronicky oznámením o&nbsp;odstúpení v rámci používateľského účtu Partnera alebo doručením e-mailu na adresu Partnera.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.2.4</div>
+            |         <div>
+            |             <strong>Opomenutím</strong>.
+            |             Prevádzkovateľ je oprávnený odstúpiť od Zmluvy v&nbsp;prípade, že Partner po obdobie dlhšie než 2 roky aktívne nepoužíva Partnerský systém, napríklad nepožiadal viac než 2 roky o&nbsp;vyplatenie provízie.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.3</div>
+            |         <div>
+            |             Bezodkladne po zániku Zmluvy je Partner povinný odstrániť zo svojej Webstránky všetky reklamné plochy. Prevádzkovateľ v&nbsp;prípade požiadania vyplatí Partnerovi prípadnú províziu, ktorá vznikla ku dňu skončenia Zmluvy, nie však skôr ako dôjde k&nbsp;splneniu povinnosti Partnera podľa predchádzajúcej vety.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.4</div>
+            |         <div>
+            |             Ak dôjde ku zrušeniu používateľského účtu výpoveďou, opomenutím alebo dohodou, potom je Partner povinný zaslať faktúru alebo písomnú žiadosť Prevádzkovateľovi na vyplatenie odmeny, na ktorú mal Partner nárok ku dňu zrušenia používateľského účtu, v&nbsp;takom prípade sa minimálny limit stanovený v&nbsp;bode 5.4 týchto Pravidiel neuplatní.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">7.5</div>
+            |         <div>
+            |             Zánikom Zmluvy nie je dotknutý nárok na náhradu škody vzniknutej porušením Zmluvy, a&nbsp;rovnako nie je dotknutá platnosť tých ustanovení, ktoré vzhľadom na svoju povahu majú trvať aj po ukončení Zmluvy.
+            |         </div>
+            |     </div>
+            |
+            |     <div class="h2">
+            |         <div class="hsp">8.</div>
+            |         <div>
+            |             <h2 id="zaver">Záverečné ustanovenia</h2>
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">8.1</div>
+            |         <div>
+            |             Prevádzkovateľ si vyhradzuje právo jednostranne zmeniť Pravidlá, v&nbsp;takom prípade bude Partner o zmene Pravidiel vopred informovaný a&nbsp;návrh aktualizovaného znenia Pravidiel bude zaslaný Partnerovi elektronickou poštou (na e-mailovú adresu). Aktualizované Pravidlá nadobudnú účinnosť zverejnením na webstránke Prevádzkovateľa partner.martinus.sk s uvedením dátumu ich aktualizácie. Právne vzťahy strán sa posudzujú vždy podľa Pravidiel platných v&nbsp;čase vzniku zmluvného vzťahu, resp. zmluvného nároku (provízia). Ak Partner s upravenými Pravidlami nesúhlasí, je povinný oznámiť túto skutočnosť Prevádzkovateľovi elektronicky v rámci používateľského účtu Partnera, v&nbsp;dôsledku čoho Zmluva zaniká akoby došlo k&nbsp;odstúpeniu Partnera v&nbsp;súlade s&nbsp;bodom 7.2.3 týchto Pravidiel.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">8.2</div>
+            |         <div>
+            |             V prípade, že niektoré ustanovenie Pravidiel je alebo sa stane z akéhokoľvek dôvodu neplatné alebo neúčinné, nespôsobuje táto skutočnosť neplatnosť alebo neúčinnosť ostatných ustanovení Pravidiel.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">8.3</div>
+            |         <div>
+            |             Zmluva a&nbsp;Pravidlá sa riadia a vykladajú v súlade s&nbsp;platnými právnymi predpismi Slovenskej republiky.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">8.4</div>
+            |         <div>
+            |             V prípade sporu týkajúceho sa Zmluvy sú strany povinné pred začatím akéhokoľvek súdneho konania, rokovať za účelom vyriešenia mimosúdnou cestou v lehote dvoch (2) mesiacov odo dňa vzniku sporu. V prípade zlyhania mimosúdneho urovnania, bude spor medzi stranami týkajúci sa Zmluvy riešený príslušným všeobecným súdom Slovenskej republiky.
+            |         </div>
+            |     </div>
+            |     <div class="text">
+            |         <div class="tsp">8.5</div>
+            |         <div>
+            |             Tieto Pravidlá nadobúdajú účinnosť dňa 1. apríla 2017.
+            |         </div>
+            |     </div>
+            | </div>
