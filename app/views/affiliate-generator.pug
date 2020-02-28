@@ -1,0 +1,44 @@
+extends layouts/_affiliate
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Partnerský systém'
+    - var loggedIn = true
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Partnerský systém', 'Generátor odkazov']})
+
+    section.section
+      .wrapper-main
+
+        .btn-group.btn-group--horizontal.btn-group--fill
+          a.btn.btn--ghost(href="#")
+            +icon('breadcrumbs').icon--medium.icon--left.show-m
+            | Hlavná stránka
+          a.btn.btn--ghost(href="#")
+            +icon('invoice').icon--medium.icon--left.show-m
+            | Prehľady a štatistiky
+          a.btn.btn--ghost(href="#")
+            +icon('card').icon--medium.icon--left.show-m
+            | Vyplatiť provízie
+          a.btn.btn--ghost.is-active(href="#")
+            +icon('share').icon--medium.icon--left.show-m
+            | Generátor odkazov
+          a.btn.btn--ghost(href="#")
+            +icon('file').icon--medium.icon--left.show-m
+            | Všeobecné podmienky
+          a.btn.btn--ghost(href="#")
+            +icon('info').icon--medium.icon--left.show-m
+            | FAQ - časté otázky
+
+        .card.card--well.mb-large
+          .card__content
+            | asd
