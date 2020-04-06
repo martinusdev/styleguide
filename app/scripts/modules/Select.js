@@ -184,16 +184,16 @@ function getTemplates(template, select, config) {
   if (select.hasAttribute('data-select-product')) {
     templates = {
       ...{ templates },
-      item: data => template(productSelectTemplate(data)),
-      choice: data => template(productSelectChoice(data, config)),
+      item: (classNames, data) => template(productSelectTemplate(data)),
+      choice: (classNames, data) => template(productSelectChoice(data, config)),
     };
   }
 
   if (select.hasAttribute('data-select-store')) {
     templates = {
       ...{ templates },
-      item: data => template(storeListTemplate(data)),
-      choice: data => template(storeListChoice(data, config)),
+      item: (classNames, data) => template(storeListTemplate(data)),
+      choice: (classNames, data) => template(storeListChoice(data, config)),
       choiceList: () => template(storeListChoices(config)),
       dropdown: () => template(storeListDropdown(config)),
     };
@@ -202,15 +202,15 @@ function getTemplates(template, select, config) {
   if (select.hasAttribute('data-select-image')) {
     templates = {
       ...{ templates },
-      item: data => template(imageListTemplate(data)),
-      choice: data => template(imageListChoice(data, config)),
+      item: (classNames, data) => template(imageListTemplate(data)),
+      choice: (classNames, data) => template(imageListChoice(data, config)),
     };
   }
 
   if (select.hasAttribute('data-select-wide-image')) {
     templates = {
       ...{ templates },
-      item: data =>
+      item: (classNames, data) =>
         template(
           wideImageListTemplate(
             data,
@@ -219,7 +219,7 @@ function getTemplates(template, select, config) {
               : 'none',
           ),
         ),
-      choice: data => template(wideImageListChoice(data, config)),
+      choice: (classNames, data) => template(wideImageListChoice(data, config)),
     };
   }
 
