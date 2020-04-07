@@ -9,7 +9,9 @@ const defaultConfig = {
 
 export default class Tooltip {
   constructor(selector = '[data-tooltip]', config) {
-    this.config = { ...defaultConfig, ...{ selector }, ...config };
+    this.config = { ...defaultConfig, ...config };
+
+    this.selector = selector;
 
     this.tooltips = [];
 
@@ -28,6 +30,8 @@ export default class Tooltip {
   }
 
   _init() {
-    this.tooltips = tippy(this.config.selector, this.config);
+    this.targets = Array.from(document.querySelectorAll(this.selector));
+
+    this.tooltips = tippy(this.targets, this.config);
   }
 }
