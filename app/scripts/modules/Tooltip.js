@@ -5,6 +5,12 @@ const defaultConfig = {
   arrow: true,
   interactive: true,
   delay: 150,
+  content(reference) {
+    // use title as a default tooltip content
+    const title = reference.getAttribute('title');
+    reference.removeAttribute('title');
+    return title;
+  },
 };
 
 export default class Tooltip {
@@ -30,8 +36,17 @@ export default class Tooltip {
   }
 
   _init() {
-    this.targets = Array.from(document.querySelectorAll(this.selector));
+    const targets = Array.from(document.querySelectorAll(this.selector));
+    this.tooltips = targets.map(target => {
+      const targetConfig = {};
 
-    this.tooltips = tippy(this.targets, this.config);
+      // fetch html element to put in tooltip
+      const element = document.querySelector(target.getAttribute('data-html'));
+      if (element) {
+        targetConfig.content = element.innerHTML;
+      }
+
+      return tippy(target, { ...this.config, ...targetConfig });
+    });
   }
 }
