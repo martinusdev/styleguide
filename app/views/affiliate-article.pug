@@ -1,0 +1,63 @@
+extends layouts/_affiliate
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Partnerský systém'
+    - var loggedIn = true
+
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Partnerský systém', 'Všeobecné podmienky']})
+
+    section.section
+      .wrapper-main
+
+        +affiliateNav(4)
+
+        .row
+          .col--l-3.show-l
+            ul.list.list--expanded.no-pad(role="navigation")
+              |    <li class="is-active"><a href="#uvod">Úvodné ustanovenia</a></li>
+              |    <li><a href="#pojmy">Definícia pojmov</a></li>
+              |    <li><a href="#vop">Všeobecné podmienky a spôsob propagácie</a></li>
+              |    <li><a href="#propagacia">Spôsob propagácie</a></li>
+              |    <li><a href="#narok">Nárok Partnera na províziu</a></li>
+              |         <li><a href="#ochrana">Ochrana osobných údajov a&nbsp;duševné vlastníctvo</a></li>
+              |    <li><a href="#cas">Doba platnosti a&nbsp;skončenie Zmluvy</a></li>
+              |    <li><a href="#zaver">Záverečné ustanovenia</a></li>
+              |    </ul>
+
+          article.col--l-9.col--m-9.ofst--m-center.col--12.mb-large
+            h1 Všeobecné obchodné podmienky Partnerského systému Martinus
+            |
+            p Pravidlá Partnerského systému spoločnosti Martinus, s.r.o., Gorkého 4, 036 01 Martin, IČO: 45 503 249, zapísaná do Obchodného registra Okresného súdu Žilina, oddiel Sro, vložka číslo 52711/L.
+            |
+            h2 1. Úvodné ustanovenia
+
+            p 1.1 Tieto všeobecné obchodné podmienky upravujú účasť na Partnerskom sytéme, ktorého prevádzkovateľom je spoločnosť Martinus, s.r.o., so sídlom Gorkého 4, 036 01 Martin, IČO: 45 503 249, a sú neoddeliteľnou súčasťou Zmluvy uzatvorenej medzi spoločnosťou Martinus, s.r.o. a Partnerom.
+
+            p 1.2 Spoločnosť Martinus, s.r.o. v rámci svojej hlavnej aktivity, prevádzky internetového kníhkupectva, vytvorila a vyvinula ponuku Partnerského systému určeného každému Partnerovi, ktorého účasť bude schválená s cieľom propagovať produkty spoločnosti Martinus, s.r.o. na internetových stránkach patriacich Partnerovi za protihodnotu v podobe vyplatenia provízie.
+            |
+            h2 2. Definícia pojmov
+            p 2.1 Pojmy použité v&nbsp;týchto Pravidlách, pokiaľ sú označené veľkým začiatočným písmenom, budú mať význam uvedený nižšie:
+
+            ul.list--default
+              li Pravidlá – tieto všeobecné obchodné podmienky upravujúce účasť na Partnerskom systéme spoločnosti Martinus, s.r.o.;</li>
+              li Prevádzkovateľ – spoločnosť Martinus, s.r.o., so sídlom Gorkého 4, 036 01 Martin, IČO: 45 503 249, IČ DPH: SK2023008911, zapísaná do Obchodného registra Okresného súdu Žilina, oddiel: Sro, vložka číslo: 17247/L;</li>
+              li Záujemca – osoba, ktorá požiada o členstvo v Partnerskom systéme vyplnením registračného formulára prostredníctvom partnerskej platformy;</li>
+              li Partner – každá právnická osoba alebo fyzická osoba, ktorá je plnoletá (dovŕšila vek 18 rokov) a&nbsp;je spôsobilá na právne úkony, ktorá sa registrovala v&nbsp;Partnersom systéme a&nbsp;bol jej otvorený používateľský účet;</li>
+              li Zákazník – každý návštevník internetového obchodu Martinus, ktorý si objedná tovar a za objednaný tovar zaplatí;</li>
+              li Webstránka – internetová stránka, na ktorej bude umiestnený HTML kód, a ktorá je vo vlastníctve alebo v užívaní Partnera, a ktorú uviedol Partner pri registrácii do Partnerského systému alebo následne začal využívať s&nbsp;používateľským účtom k Partnerskému systému;</li>
+              li HTML kód – znamená špeciálny kód, ktorý je Partnerovi pridelený Prevádzkovateľom a po vložení na Webstránku Partnera sa zobrazuje ako reklamná plocha alebo odkaz;</li>
+              li Referenčný kód – je jedinečný špeciálny kód Partnera, ktorý slúži na identifikáciu reklamných bannerov alebo odkazov;</li>
+              li Reklamná plocha – znamená banner alebo textový odkaz, ktorého výsledkom sú umiestnenia jedinečného HTML kódu vloženého na Web-stránku Partnera;</li>
+              li Sociálna sieť – špecifická stránka prevádzkovaná tretím subjektom, ktorej funkcionalita umožňuje zverejňovať Partnerom internetové odkazy na svojich profiloch (napr. Facebook, LinkedIn, Twitter a&nbsp;pod.).</li>
+              li Zmluva – partnerská zmluva uzatvorená medzi Prevádzkovateľom a&nbsp;Partnerom elektronickou cestou za podmienok uvedených v&nbsp;týchto Pravidlách.</li>

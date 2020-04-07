@@ -1,0 +1,839 @@
+extends layouts/_affiliate
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Partnerský systém'
+    - var loggedIn = true
+
+
+block content
+  main
+
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({breadcrumbs: ['Partnerský systém', 'Vyplatiť provízie']})
+
+    section.section
+      .wrapper-main
+
+        +affiliateNav(2)
+
+        h1.mb-medium Vyplatiť provízie
+
+        p Na tejto stránke môžete požiadať o vyplatenie provízií z objednávok v nasledujúcej výške:
+
+        .row.mb-large
+          .col--m-3.flex
+            .card.card--material.card--material-yellow
+              .card__content.text-center
+                h2.h3 Províziu vo výške 5 %
+                p.mb-none z nákupu získate pri vyplácaní provízie na účet
+
+          .col--m-3.flex
+            .card.card--material.card--material-orange
+              .card__content.text-center
+                h2.h3 Províziu vo výške 5 %
+                p.mb-none je možné vyplatiť od minimálnej sumy 33€.
+
+          .col--m-3.flex
+            .card.card--material.card--material-primary
+              .card__content.text-center
+                h2.h3 Províziu vo výške 7 %
+                p.mb-none z nákupu získate, ak si zvolíte vyplácanie provízie v podobe elektronických nákupných poukážok na Martinuse
+          .col--m-3.flex
+            .card.card--material.card--material-violet
+              .card__content.text-center
+                h2.h3 Províziu vo výške 7 %
+                p.mb-none si môžete nechať vyplatiť v minimálnej hodnote 10€. Elektronické poukážky z provízie vo výške 7% sú platné iba v internetovom kníhkupectve Martinus
+
+        h2 Provízie
+
+        .form-control.form-control--group
+          .radiocheck-group
+
+            .form-control.form-control--radio
+              .radio
+                input.radiocheck__input(type='radio', id='payout1', name='payout')
+                label.radiocheck__control(for='payout1')
+                label.radiocheck__label(for='payout1')
+                    | Na účet (prosím, uistite sa, že ste pri#{' '}
+                    a.link Registrácii
+                    | #{' '}uviedli správne číslo účtu)
+            .form-control.form-control--radio
+              .radio
+                input.radiocheck__input(type='radio', id='payout2', name='payout')
+                label.radiocheck__control(for='payout2')
+                label.radiocheck__label(for='payout2')
+                  | Darčekovou poukážkou na mailovú adresu tohto konta
+
+        p Pri voľbe spôsobu vyplatenia provízie sa sumy automaticky prepočítajú na 5% alebo 7%. Keď si zvolíte vyplatenie provízií za určité mesiace jedným spôsobom, automaticky sa tým zablokuje možnosť ich vyplatenia druhým variantom platby.
+          br
+          | V prípade, že ste registrovaný ako právnická osoba, príde Vám po odoslaní žiadosti e-mail s fakturačnými údajmi, keďže pre vyplatenie provízie bude z Vašej strany nutné zaslať faktúru.
+
+        | <table class="table table--striped mb-large">
+        |             <tbody><tr>
+        |                 <td colspan="2"></td>
+        |                 <td style="text-align: center;" colspan="2">
+        |                     Vyplatené                </td>
+        |                 <td style="text-align: center;" colspan="4">
+        |                     Požiadať o vyplatenie                </td>
+        |             </tr>
+        |             <tr>
+        |                 <th>
+        |                     Obdobie                    <span class="toggle-tooltip" data-toggle="tooltip" data-original-title="Obdobie, za ktoré sú sčítané faktúry v&nbsp;položke Suma faktúr">
+        |                         <i class="fa fa-question fa-xs"></i>
+        |                     </span>
+        |                 </th>
+        |                 <th>
+        |                     Suma faktúr bez DPH                    <span class="toggle-tooltip" data-toggle="tooltip" data-original-title="Súčet hodnôt objednávok za dané obdobie, z&nbsp;ktorých je možné vyplatiť províziu">
+        |                         <i class="fa fa-question fa-xs"></i>
+        |                     </span>
+        |                 </th>
+        |                                 <th class="text-right" style="width: 150px;">
+        |                     na účet                    <span class="toggle-tooltip" data-toggle="tooltip" data-original-title="Koľko z tohto mesiaca už bolo vyplatené">
+        |                         <i class="fa fa-question fa-xs"></i>
+        |                     </span>
+        |                 </th>
+        |                 <th class="text-right" style="width: 150px;">
+        |                     poukážkou                    <span class="toggle-tooltip" data-toggle="tooltip" data-original-title="Koľko z tohto mesiaca už bolo vyplatené">
+        |                         <i class="fa fa-question fa-xs"></i>
+        |                     </span>
+        |                 </th>
+        |
+        |                 <th rel="1" style="width: 150px">
+        |                     <label>
+        |                         na účet (5%)
+        |                         <span class="toggle-tooltip" data-toggle="tooltip" data-original-title="Výška provízie pri zvolenom spôsobe vyplatenia">
+        |                             <i class="fa fa-question fa-xs"></i>
+        |                         </span>
+        |                     </label>
+        |                 </th>
+        |                 <th style="background: #edfbcb;" rel="2" style="width: 150px">
+        |                     <label>
+        |                         poukážkou (7%)
+        |                         <span class="toggle-tooltip" data-toggle="tooltip" data-original-title="Výška provízie pri zvolenom spôsobe vyplatenia">
+        |                             <i class="fa fa-question fa-xs"></i>
+        |                         </span>
+        |                     </label>
+        |                 </th>
+        |                                 <th>
+        |                     &nbsp;
+        |                 </th>
+        |                 <th></th>
+        |             </tr>
+        |                             <tr>
+        |                     <td>2020-02</td>
+        |                     <td style="text-align: center;">
+        |                         17,18&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                                                 <td rel="1">
+        |                             0,86&nbsp;€                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             1,20&nbsp;€                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                         <label>
+        |                                     <input type="checkbox" name="payoff_month[]" value="2020-02">
+        |                                  </label>                    </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2020-01</td>
+        |                     <td style="text-align: center;">
+        |                         9,99&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                                                 <td rel="1">
+        |                             0,50&nbsp;€                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             0,70&nbsp;€                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                         <label>
+        |                                     <input type="checkbox" name="payoff_month[]" value="2020-01">
+        |                                  </label>                    </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2019-12</td>
+        |                     <td style="text-align: center;">
+        |                         11,40&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                                                 <td rel="1">
+        |                             0,57&nbsp;€                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             0,80&nbsp;€                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                         <label>
+        |                                     <input type="checkbox" name="payoff_month[]" value="2019-12">
+        |                                  </label>                    </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2019-09</td>
+        |                     <td style="text-align: center;">
+        |                         8,57&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                                                 <td rel="1">
+        |                             0,43&nbsp;€                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             0,60&nbsp;€                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                         <label>
+        |                                     <input type="checkbox" name="payoff_month[]" value="2019-09">
+        |                                  </label>                    </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2019-05</td>
+        |                     <td style="text-align: center;">
+        |                         91,47&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                                                 <td rel="1">
+        |                             4,57&nbsp;€                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             6,41&nbsp;€                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                         <label>
+        |                                     <input type="checkbox" name="payoff_month[]" value="2019-05">
+        |                                  </label>                    </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2019-03</td>
+        |                     <td style="text-align: center;">
+        |                         6,33&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             0,44&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2018-12</td>
+        |                     <td style="text-align: center;">
+        |                         134,17&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             9,39&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2018-11</td>
+        |                     <td style="text-align: center;">
+        |                         29,28&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             2,05&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2018-10</td>
+        |                     <td style="text-align: center;">
+        |                         39,64&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             2,78&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2018-08</td>
+        |                     <td style="text-align: center;">
+        |                         25,03&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             1,75&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2018-07</td>
+        |                     <td style="text-align: center;">
+        |                         239,56&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             16,79&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2018-05</td>
+        |                     <td style="text-align: center;">
+        |                         35,85&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             2,16&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2017-12</td>
+        |                     <td style="text-align: center;">
+        |                         84,81&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             5,94&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2017-11</td>
+        |                     <td style="text-align: center;">
+        |                         32,01&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             2,24&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2017-08</td>
+        |                     <td style="text-align: center;">
+        |                         7,50&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             0,53&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2017-03</td>
+        |                     <td style="text-align: center;">
+        |                         8,49&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                                                 <td rel="1">
+        |                             0,42&nbsp;€                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             0,59&nbsp;€                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                         <label>
+        |                                     <input type="checkbox" name="payoff_month[]" value="2017-03">
+        |                                  </label>                    </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2016-10</td>
+        |                     <td style="text-align: center;">
+        |                         10,53&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             0,74&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2016-08</td>
+        |                     <td style="text-align: center;">
+        |                         13,14&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             0,92&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2016-07</td>
+        |                     <td style="text-align: center;">
+        |                         13,16&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             0,92&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2016-06</td>
+        |                     <td style="text-align: center;">
+        |                         112,36&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             7,87&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2016-05</td>
+        |                     <td style="text-align: center;">
+        |                         95,23&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             6,65&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2016-04</td>
+        |                     <td style="text-align: center;">
+        |                         149,87&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             10,49&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2016-03</td>
+        |                     <td style="text-align: center;">
+        |                         90,04&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             6,31&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-12</td>
+        |                     <td style="text-align: center;">
+        |                         163,09&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             11,40&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-11</td>
+        |                     <td style="text-align: center;">
+        |                         51,93&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             3,63&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-10</td>
+        |                     <td style="text-align: center;">
+        |                         65,00&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             4,55&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-09</td>
+        |                     <td style="text-align: center;">
+        |                         104,31&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             7,30&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-06</td>
+        |                     <td style="text-align: center;">
+        |                         25,30&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             1,77&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-04</td>
+        |                     <td style="text-align: center;">
+        |                         79,64&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             5,57&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-03</td>
+        |                     <td style="text-align: center;">
+        |                         64,16&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             4,49&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-02</td>
+        |                     <td style="text-align: center;">
+        |                         15,29&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             1,07&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2015-01</td>
+        |                     <td style="text-align: center;">
+        |                         1,63&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             1,78&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2014-12</td>
+        |                     <td style="text-align: center;">
+        |                         321,38&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             32,45&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2014-11</td>
+        |                     <td style="text-align: center;">
+        |                         629,32&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             44,05&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                                 <tr>
+        |                     <td>2014-03</td>
+        |                     <td style="text-align: center;">
+        |                         24,11&nbsp;€                    </td>
+        |
+        |                                             <td class="text-right">
+        |                             -                        </td>
+        |                                             <td class="text-right">
+        |                             1,69&nbsp;€                        </td>
+        |                                                                 <td rel="1">
+        |                             -                        </td>
+        |                                             <td style="background: #edfbcb;" rel="2">
+        |                             -                        </td>
+        |
+        |                     <td style="width: 20px;">
+        |                                             </td>
+        |                     <td>
+        |                                             </td>
+        |                 </tr>
+        |                             <tr>
+        |                 <td>
+        |                     CELKOVO                </td>
+        |                 <td class="text-color-orange">
+        |                     2&nbsp;810,77&nbsp;€                </td>
+        |                 <td class="text-right text-color-orange">
+        |                     0,00&nbsp;€                </td>
+        |                 <td class="text-right text-color-orange">
+        |                     197,72&nbsp;€                </td>
+        |                 <td style="text-align:center;" colspan="3">
+        |                                             <div class="final-sum" style="display: none;" rel="1">
+        |                             Spolu na vyplatenie:
+        |                             <span class="text-color-orange">
+        |                                 7,35&nbsp;€                            </span>
+        |                         </div>
+        |                                             <div class="final-sum" style="display: block;" rel="2">
+        |                             Spolu na vyplatenie:
+        |                             <span class="text-color-orange">
+        |                                 10,30&nbsp;€                            </span>
+        |                         </div>
+        |                 </td>
+        |                 <td>
+        |                 </td>
+        |             </tr>
+        |         </tbody></table>
+
+        .bar.align-items-bottom.mb-large
+          .bar__item.bar__item--fill
+            .form-control.form-control--input
+              .form-label
+                label Poznámka
+              textarea.input(rows="3")
+          .bar__break.hide-m
+          .bar__item.bar__item--shrinkable
+            button.btn.btn--success Požiadať o vyplatenie
