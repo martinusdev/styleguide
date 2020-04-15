@@ -1,0 +1,233 @@
+extends layouts/_default
+
+include ./mixins/addTo
+include ./mixins/icon
+include ./mixins/xmas
+include modules/my-library-sidenav
+
+block opts
+    - var pageTitle = 'Kosik'
+    - const pageClass = 'bg-secondary';
+
+mixin groupItem2(name, id, details, inline, cena)
+  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
+    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
+      .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
+        .bar__item.no-mrg
+          a.text-semibold.text-medium.inline-block.link=name
+          | #{' '}
+          span.text-medium.text-color-grey(class=inline ? 'show-m' : '')=details
+          //a.link.link--product Základy rybolovu pro kluky a holky
+          .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
+            if id == 0
+              span.text-color-success.text-space-right-tiny Na sklade
+              span.text-color-blue Novinka
+            else if id == 1
+              span.text-color-success.text-space-right-tiny PDF
+              span.text-color-success.text-space-right-tiny EPUB
+              span.text-color-success MOBI
+            else if id == 3
+              span.text-color-success Na sklade
+        .bar__item(class=inline ? 'show-m' : '')
+          if id == 0
+            .badge.badge--green.mb-small.mb-none-m Na sklade
+            .badge.badge--blue.mb-small.mb-none-m Novinka
+          else if id == 1
+            .badge.badge--green.mb-small.mb-none-m PDF
+            .badge.badge--green.mb-small.mb-none-m EPUB
+            .badge.badge--green.mb-small.mb-none-m MOBI
+          else if id == 2
+            .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
+          else if id == 3
+            .badge.badge--green.mb-small.mb-none-m MP3 na CD
+            .badge.badge--green.mb-small.mb-none-m Na sklade
+          else if id == 4
+            span.badge.badge--green.mb-small.mb-none-m Ako nová
+          else if id == 5
+            .badge.badge--yellow.mb-small.mb-none-m Mierne opotrebená
+          else if id == 6
+            .badge.badge--primary.mb-small.mb-none-m Poškodená
+    .bar__item.bar__item--shrinkable.no-mrg-top.mb-none.no-mrg-horizontal--m-down
+      .bar.bar--small.no-mrg.bar--no-wrap
+        .bar__item.no-mrg
+          .text-bold.text-space-left.text-space-right Žiaľ, nevykupujeme :(
+        .bar__item.no-mrg
+          button.btn.btn--primary.mb-none(data-toggle='#checkout-notice') Chcem vykúpiť
+            +icon('cart').icon--small
+
+
+      .text-center.mb-small.text-medium
+        if id == 0
+          .text-color-grey-dark vypredané
+        else if id < 4
+          .text-color-success posielame do 3 dní
+
+
+block content
+
+  main.bg-secondary
+    section.section
+      .wrapper-main
+        .row
+          .col--l-8.ofst--center.card.no-pad-horizontal
+
+            .card__content.mb-medium
+              .bar.bar--small
+                .bar__item
+                article
+                  h1 Knihotoč: výkup kníh
+                  p Máte doma knihy, ktoré <strong>vám zaberajú miesto</strong>? Pomôžte im <strong>nájsť nových čitateľov</strong>. Začnite písať názov knihy a my vám povieme za koľko by sme knihu vykúpili. Po potvrdení výkupného košíka vám <strong>pošleme inštrukcie, ako nám poslať knihy</strong> a tiež darčekový kód s výslednou sumou, za ktorú si môžete nakúpiť ďalšie knihy u nás na Martinuse.
+
+                  article.card.card--success
+                    section.card__content
+                      h3 Výborne! Pošlite nám knihy a čakajte od nás mail
+                      p Všetko prebehlo hladko! Ďakujeme pekne za to, že pomáhate knihám dostať sa späť medzi ľudí.
+                      p Teraz, prosím, knihy prineste <strong>do ktoréhokoľvek nášho kníhkupectva</strong>. Ak by ste nevedeli, ktoré je najbližšie - <a href="https://www.martinus.sk/knihkupectva" class="link">tu nájdete zoznam</a>.
+                      p Po prijatí kníh vám mailom pošleme darčekový kód na nákup ďalších kníh.
+
+
+
+
+
+                  div
+                    .bar
+                      .bar__item.bar__item--shrinkable
+                        | Pridať titul:
+                      .bar__item.bar__item--fill
+                        .form-control.form-control--input.mb-none
+                          .form-label
+                            label(for="kniha-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Knihy
+                          #kniha-autocomplete-container
+                  ul.list.list--cart.list--unstyled
+                    each item, i in books
+                      if (i == 0)
+                        li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
+                          .cart-item
+                            .cart-item__thumbnail
+                              a.thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable(href="detail-knihy.html")
+                                .thumbnail__img-wrap
+                                  img.img(src=`${assetsPrefix}${item.cover}`)
+                            .cart-item__content
+                              .cart-item__column.cart-item__column--product-name
+                                a.text-semibold.no-mrg.block.link.link--product.line-medium(href="detail-knihy.html")
+                                  +xmas({type: 'icon'}).text-space-right-tiny
+                                  =item.title
+                                ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
+                                  - var authors = item.author.split(', ')
+                                  each author in authors
+                                    li= author
+                  +groupItem2('Čítaná', 4, '', '8,99')
+                  +groupItem2('Čítaná', 5, '', 'Žiaľ, nevykupujeme :(')
+
+
+
+
+
+
+
+
+
+        .row
+          .col--l-8.ofst--center.card.no-pad-horizontal
+
+            .card__content.mb-medium
+              .bar.bar--small
+                .bar__item
+                  h1.h2 Váš výkupný košík
+                .bar__item
+
+
+              ul.list.list--cart.list--unstyled
+                each item, i in books
+                  li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
+                    .cart-item
+                      .cart-item__thumbnail
+                        a.thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable(href="detail-knihy.html")
+                          .thumbnail__img-wrap
+                            img.img(src=`${assetsPrefix}${item.cover}`)
+                      .cart-item__content
+                        .cart-item__column.cart-item__column--product-name
+                          a.text-semibold.no-mrg.block.link.link--product.line-medium(href="detail-knihy.html")
+                            +xmas({type: 'icon'}).text-space-right-tiny
+                            =item.title
+                          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
+                            - var authors = item.author.split(', ')
+                            each author in authors
+                              li= author
+
+                          .badges.show-m
+                            if (item.ebook)
+                              .badge.text-nowrap Čítaná
+                            if (item.preorder)
+                              .badge.badge--green.text-nowrap Ako nová
+
+
+                        .cart-item__column.cart-item__column--price
+                          .text-semibold.text-size-medium.text-nowrap= item.price
+                        .cart-item__column.cart-item__column--remove
+                          button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                            +icon('trash', 'icon--medium')
+                li.list__item.align-items-bottom.mt-small
+                  .list__item__section.list__item__section--primary.text-right
+                    span.h3 Spolu
+                  .list__item__section.list__item__section--secondary
+                    span.h2
+                      strong 21.45€
+            .card_footer
+              .col--m-6.ofst--center
+                .btn-layout--vertical.btn-layout--s-horizontal.btn-layout--fill.mb-large
+                  a(href="/homepage.html").btn.btn--primary Vykúpiť tieto tituly
+
+
+
+
+
+block scripts
+  script.
+    window.myApp = window.myApp = {};
+    window.addEventListener('DOMContentLoaded', () => {
+      const allResults = {
+        book: [
+          {
+            raw: 'Základy rybolovu pro kluky a holky Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 2 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 2',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+          {
+            raw: 'Základy rybolovu pro kluky a holky 3 Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+            image: 'images/content/books/sample-15.jpg',
+            name: 'Základy rybolovu pro kluky a holky 3',
+            description: 'Praktický návod ako stretnúť, spoznať a získať ženu svojich snov',
+          },
+        ],
+      };
+
+      const filter = type => (query, populateResults) => {
+        const results = allResults[type];
+        const filteredResults = results.filter(result =>
+            result.raw.match(new RegExp(query, 'gi')),
+          );
+        populateResults(filteredResults);
+      };
+
+      window.myApp.autocompleteKniha = new window.myApp.Autocomplete(
+        document.getElementById('kniha-autocomplete-container'),
+        {
+          autocompleteOptions: {
+            id: 'kniha-autocomplete',
+            source: filter('book'),
+            onConfirm: (value) => {
+              console.log(value);
+            }
+          },
+          templateType: 'book',
+        },
+      );
+    });
