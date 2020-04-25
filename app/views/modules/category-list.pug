@@ -169,7 +169,10 @@ section.section
                     li(class=(i === 0) ? 'is-active' : '').mb-tiny
                       a.link
                         | !{link}
-          include category-filter
+          if filterSmall
+            include category-filter-small
+          else
+            include category-filter
         .mobile-wrapper__footer
             .btn-layout.btn-layout--vertical.no-mrg-bottom
               button.btn Zúžiť výber
@@ -261,6 +264,19 @@ section.section
             .hide-l.align-items-bottom.flex.flex-1
               .btn-layout.btn-layout--vertical.no-mrg-bottom
                 button.btn Zoradiť
+
+        if filters
+          .badges.mb-large
+            .text-space-right Filtre:
+            .badge
+              | Žáner (Sci-fi)
+              .btn.btn--small.btn--clean.btn--equal.mb-none
+                +icon('close').icon--small
+            .badge
+              | Väzba mäkká
+              .btn.btn--small.btn--clean.btn--equal.mb-none
+                +icon('close').icon--small
+
         each item, i in books
           -
             var itemType = 'default';

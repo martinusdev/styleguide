@@ -6,14 +6,17 @@ include ./mixins/booksCarouselRecommended
 
 block opts
     - var pageTitle = 'Kategoria'
-    - var filterStickyOffset = header.size.default + 61
+    - var filterStickyOffset = header.size.default
     - var subcategories = false
     - var carousel = false
     - var formats = false
     - var description = false
+    - var filterSmall = true
+    - var filters = true
 
     -
       var menu = [
+        {title: "Všetky", icon: "list-alt"},
         {title: "Sci-fi", icon: "rocket-launch"},
         {title: "Fantasy", icon: "dragon"},
         {title: "Mysteriózna, dobrodružná", icon: "flashlight"},
@@ -50,9 +53,29 @@ block content
               span.show-m sledovať kategóriu
         .mb-medium.show-l
 
+        .bg-secondary#category-description(data-collapse="100")
+          .cms-article
+
+            .row
+              .col--3
+                img.img(src="images/content/author.png")
+              .col--9
+                p Harry zápasí s minulosťou, ktorá sa #{' '}
+                  a(href="#") ustavične vracia
+                  | . Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
+
+                p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+
+                p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+
+
+        .product-read-more.mb-medium
+          a.link.text-size-medium(href="javascript:void(0)", data-toggle="#category-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+            +icon('arrow-down')
+
     section.section--secondary.section.section--toolbar
       .wrapper-main
-        .carousel-lite.mj-carousel(style="height: 7rem;")
+        .carousel-lite.mj-carousel(style="height: 7rem;").carousel-lite--fade-inside
           .carousel-lite__container.mj-carousel__scroll
             .carousel-lite__wrapper.mj-carousel__content.align-items-top
               each item, i in menu
@@ -61,7 +84,7 @@ block content
                     i.fal.fa-3x(class=`fa-${item.icon}`).text-color-grey.mb-small
                     .text-medium= item.title
 
-    section.section.section--overflow
+    //section.section.section--overflow
       .wrapper-main
         h2 Najobľúbenejšie tituly a kolekcie
         +booksCarouselRecommended.carousel--fade-outside.carousel--fade-outside-white
