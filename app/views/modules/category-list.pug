@@ -236,12 +236,40 @@ section.section
                         .bar__item.bar__item--fill.line-small
                           a.link Janko Martinusak
 
+        if navIcons
+
+          #category-description(data-collapse="200")
+            .cms-article
+              .row
+                .col--3
+                  img.img(src="images/content/author.png")
+                .col--9
+                  p Harry zápasí s minulosťou, ktorá sa #{' '}
+                    a(href="#") ustavične vracia
+                    | . Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
+
+                  p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+
+                  p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+
+          .mb-large
+            a.link.text-size-medium(href="javascript:void(0)", data-toggle="#category-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+              +icon('arrow-down')
+
+          .mb-large.carousel-lite.mj-carousel(style="height: 5rem;").carousel-lite--fade-inside
+            .carousel-lite__container.mj-carousel__scroll
+              .carousel-lite__wrapper.mj-carousel__content.align-items-stretch
+                each item, i in menu
+                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").text-space-right.flex.align-items-middle
+                    i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.text-space-right
+                    span.link.line-small= item.title
+
         if description
           p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
         if carousel
           h2.mb-large Najobľúbenejšie tituly a kolekcie
           +booksCarouselRecommended().carousel--fade-inside.carousel--fade-inside-white
-        #mobile-order.mobile-wrapper.mb-medium-l(data-toggle-lock)
+        #mobile-order.mobile-wrapper.mb-medium-l(data-toggle-lock).hide-m
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
             .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-order")
@@ -266,16 +294,30 @@ section.section
                 button.btn Zoradiť
 
         if filters
-          .badges.mb-large
+          .badges.mb-tiny
             .text-space-right Filtre:
-            .badge
+            .badge.mb-tiny
               | Žáner (Sci-fi)
               .btn.btn--small.btn--clean.btn--equal.mb-none
                 +icon('close').icon--small
-            .badge
+            .badge.mb-tiny
               | Väzba mäkká
               .btn.btn--small.btn--clean.btn--equal.mb-none
                 +icon('close').icon--small
+            .btn.btn--small.btn--clean.mb-none zmazať filter
+
+        if navIcons
+          ul.tab-nav(data-tabs-container).text-size-medium.mb-large.show-m.bg-secondary
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najobľúbenejšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najlacnejšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najdrahšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najnovšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najstaršie
 
         each item, i in books
           -
