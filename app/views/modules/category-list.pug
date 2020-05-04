@@ -263,6 +263,10 @@ section.section
                   a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").text-space-right.flex.align-items-middle
                     i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.text-space-right
                     span.link.line-small= item.title
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev(style="left: 10px;")
+              +icon('arrow-left').icon--medium
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next.mj-carousel__btn--next(style="right: 10px;")
+              +icon('arrow-right').icon--medium
 
         if description
           p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
@@ -564,3 +568,10 @@ section.section
                           span.text-semibold Vložiť do košíka
 
         +pagination.align-items-center.mb-large
+
+block append scripts
+  script.
+    document.addEventListener('myAppLoaded', function() {
+
+      var carousel = new window.myApp.CarouselLite(document.querySelector('.mj-carousel'));
+      });
