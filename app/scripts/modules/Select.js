@@ -116,17 +116,10 @@ const storeListChoices = config => `
   </div>
 `;
 
-const storeListDropdown = config => `
-  <div class="${config.classNames.list} ${config.classNames.listDropdown}" aria-expanded="false">
-    <div class="text-left text-size-small card mb-none bg-secondary">
-        <div class="card__content--condensed">
-            <span class="text-vam status status--success text-color-grey text-space-right-tiny">na sklade</span>
-            <span class="text-vam status status--orange text-color-grey text-space-right-tiny">posledné kusy</span>
-            <span class="text-vam status status--grey text-color-grey text-space-right-tiny">nedostupné</span>
-        </div>
-    </div>
-  </div>
-`;
+const storeListDropdown = config =>
+  config.store_list_header
+    .replace('config.classNames.list', config.classNames.list)
+    .replace('config.classNames.listDropdown', config.classNames.listDropdown);
 
 const imageListTemplate = ({ label, customProperties }) => `
   <div class="bar mb-none">
