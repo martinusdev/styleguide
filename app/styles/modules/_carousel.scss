@@ -394,3 +394,35 @@
     width: 120px;
   }
 }
+
+.carousel-lite--fade-inside {
+  .carousel-lite__container {
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+
+      width: _map-deep-get($carousel, fade-inside, size);
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    &::after {
+      //right: -(_map-deep-get($carousel, fade-inside, size));
+      right: 0;
+      left: auto;
+
+      background: linear-gradient(to right, (_map-deep-get($carousel, fade-inside, gradient-white)));
+    }
+
+    &::before {
+      //left: -(_map-deep-get($carousel, fade-inside, size));
+      left: 0;
+      right: auto;
+
+      background: linear-gradient(to left, (_map-deep-get($carousel, fade-inside, gradient-white)));
+    }
+  }
+}
