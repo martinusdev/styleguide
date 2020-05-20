@@ -33,8 +33,7 @@ import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
 import CarouselLite from './modules/CarouselLite';
 
-import Choices
-  from '../../node_modules/choices.js/public/assets/scripts/choices';
+import Choices from '../../node_modules/choices.js/assets/scripts/dist/choices';
 
 // eslint-disable-next-line
 require('mutationobserver-shim');

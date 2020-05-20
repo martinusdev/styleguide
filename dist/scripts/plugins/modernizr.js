@@ -1,5 +1,5 @@
 /*!
- * modernizr v3.11.1
+ * modernizr v3.5.0
  * Build https://modernizr.com/download?-addtest-fnbind-printshiv-setclasses-testprop-dontmin
  *
  * Copyright (c)
@@ -10,7 +10,6 @@
  *  Patrick Kettner
  *  Stu Cox
  *  Richard Herrera
- *  Veeck
 
  * MIT License
  */
@@ -23,20 +22,21 @@
  * of control over the experience.
 */
 
-;(function(scriptGlobalObject, window, document, undefined){
-
+;(function(window, document, undefined){
   var tests = [];
   
 
   /**
+   *
    * ModernizrProto is the constructor for Modernizr
    *
    * @class
    * @access public
    */
+
   var ModernizrProto = {
     // The current version, dummy
-    _version: '3.11.1',
+    _version: '3.5.0',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
@@ -95,20 +95,20 @@
    * @function is
    * @param {*} obj - A thing we want to check the type of
    * @param {string} type - A string to compare the typeof against
-   * @returns {boolean} true if the typeof the first parameter is exactly the specified type, false otherwise
+   * @returns {boolean}
    */
+
   function is(obj, type) {
     return typeof obj === type;
   }
-
   ;
 
   /**
    * Run through all tests and detect their support in the current UA.
    *
    * @access private
-   * @returns {void}
    */
+
   function testRunner() {
     var featureNames;
     var feature;
@@ -143,6 +143,7 @@
         // Run the test, or use the raw value if it's not a function
         result = is(feature.fn, 'function') ? feature.fn() : feature.fn;
 
+
         // Set each of the names on the Modernizr object
         for (nameIdx = 0; nameIdx < featureNames.length; nameIdx++) {
           featureName = featureNames[nameIdx];
@@ -157,8 +158,8 @@
           if (featureNameSplit.length === 1) {
             Modernizr[featureNameSplit[0]] = result;
           } else {
-            // cast to a Boolean, if not one already or if it doesnt exist yet (like inputtypes)
-            if (!Modernizr[featureNameSplit[0]] || Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
+            // cast to a Boolean, if not one already
+            if (Modernizr[featureNameSplit[0]] && !(Modernizr[featureNameSplit[0]] instanceof Boolean)) {
               Modernizr[featureNameSplit[0]] = new Boolean(Modernizr[featureNameSplit[0]]);
             }
 
@@ -178,6 +179,7 @@
    * @access private
    * @returns {HTMLElement|SVGElement} The root element of the document
    */
+
   var docElement = document.documentElement;
   
 
@@ -187,8 +189,8 @@
    * @access private
    * @returns {boolean}
    */
-  var isSVG = docElement.nodeName.toLowerCase() === 'svg';
 
+  var isSVG = docElement.nodeName.toLowerCase() === 'svg';
   
 
   /**
@@ -198,6 +200,7 @@
    * @function setClasses
    * @param {string[]} classes - Array of class names
    */
+
   // Pass in an and array of class names, e.g.:
   //  ['no-webp', 'borderradius', ...]
   function setClasses(classes) {
@@ -217,15 +220,14 @@
 
     if (Modernizr._config.enableClasses) {
       // Add the new classes
-      if (classes.length > 0) {
-        className += ' ' + classPrefix + classes.join(' ' + classPrefix);
-      }
+      className += ' ' + classPrefix + classes.join(' ' + classPrefix);
       if (isSVG) {
         docElement.className.baseVal = className;
       } else {
         docElement.className = className;
       }
     }
+
   }
 
   ;
@@ -264,7 +266,7 @@
   
 
 
-  // _l tracks listeners for async tests, as well as tests that execute after the initial run
+   // _l tracks listeners for async tests, as well as tests that execute after the initial run
   ModernizrProto._l = {};
 
   /**
@@ -272,13 +274,12 @@
    * asynchronous, they may not finish before your scripts run. As a result you
    * will get a possibly false negative `undefined` value.
    *
-   * @memberOf Modernizr
+   * @memberof Modernizr
    * @name Modernizr.on
    * @access public
    * @function on
    * @param {string} feature - String name of the feature detect
-   * @param {Function} cb - Callback function returning a Boolean - true if feature is supported, false if not
-   * @returns {void}
+   * @param {function} cb - Callback function returning a Boolean - true if feature is supported, false if not
    * @example
    *
    * ```js
@@ -291,6 +292,7 @@
    * });
    * ```
    */
+
   ModernizrProto.on = function(feature, cb) {
     // Create the list of listeners if it doesn't exist
     if (!this._l[feature]) {
@@ -313,15 +315,15 @@
    * _trigger is the private function used to signal test completion and run any
    * callbacks registered through [Modernizr.on](#modernizr-on)
    *
-   * @memberOf Modernizr
+   * @memberof Modernizr
    * @name Modernizr._trigger
    * @access private
    * @function _trigger
    * @param {string} feature - string name of the feature detect
-   * @param {Function|boolean} [res] - A feature detection function, or the boolean =
+   * @param {function|boolean} [res] - A feature detection function, or the boolean =
    * result of a feature detection function
-   * @returns {void}
    */
+
   ModernizrProto._trigger = function(feature, res) {
     if (!this._l[feature]) {
       return;
@@ -345,12 +347,11 @@
   /**
    * addTest allows you to define your own feature detects that are not currently
    * included in Modernizr (under the covers it's the exact same code Modernizr
-   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)).
-   * Just like the official detects, the result
+   * uses for its own [feature detections](https://github.com/Modernizr/Modernizr/tree/master/feature-detects)). Just like the offical detects, the result
    * will be added onto the Modernizr object, as well as an appropriate className set on
    * the html element when configured to do so
    *
-   * @memberOf Modernizr
+   * @memberof Modernizr
    * @name Modernizr.addTest
    * @optionName Modernizr.addTest()
    * @optionProp addTest
@@ -358,9 +359,8 @@
    * @function addTest
    * @param {string|object} feature - The string name of the feature detect, or an
    * object of feature detect names and test
-   * @param {Function|boolean} test - Function returning true if feature is supported,
+   * @param {function|boolean} test - Function returning true if feature is supported,
    * false if not. Otherwise a boolean representing the results of a feature detection
-   * @returns {object} the Modernizr object to allow chaining
    * @example
    *
    * The most common way of creating your own feature detects is by calling
@@ -385,7 +385,7 @@
    *  in a statement that will return a boolean value works just fine.
    *
    * ```js
-   * Modernizr.addTest('hasjquery', 'jQuery' in window);
+   * Modernizr.addTest('hasJquery', 'jQuery' in window);
    * ```
    *
    * Just like before, when the above runs `Modernizr.hasjquery` will be true if
@@ -412,9 +412,10 @@
    * There is really no difference between the first methods and this one, it is
    * just a convenience to let you write more readable code.
    */
+
   function addTest(feature, test) {
 
-    if (typeof feature === 'object') {
+    if (typeof feature == 'object') {
       for (var key in feature) {
         if (hasOwnProp(feature, key)) {
           addTest(key, feature[ key ]);
@@ -427,11 +428,11 @@
       var last = Modernizr[featureNameSplit[0]];
 
       // Again, we don't check for parent test existence. Get that right, though.
-      if (featureNameSplit.length === 2) {
+      if (featureNameSplit.length == 2) {
         last = last[featureNameSplit[1]];
       }
 
-      if (typeof last !== 'undefined') {
+      if (typeof last != 'undefined') {
         // we're going to quit if you're trying to overwrite an existing test
         // if we were to allow it, we'd do this:
         //   var re = new RegExp("\\b(no-)?" + feature + "\\b");
@@ -440,10 +441,10 @@
         return Modernizr;
       }
 
-      test = typeof test === 'function' ? test() : test;
+      test = typeof test == 'function' ? test() : test;
 
       // Set the value (this is the magic, right here).
-      if (featureNameSplit.length === 1) {
+      if (featureNameSplit.length == 1) {
         Modernizr[featureNameSplit[0]] = test;
       } else {
         // cast to a Boolean, if not one already
@@ -455,7 +456,7 @@
       }
 
       // Set a single class (either `feature` or `no-feature`)
-      setClasses([(!!test && test !== false ? '' : 'no-') + featureNameSplit.join('-')]);
+      setClasses([(!!test && test != false ? '' : 'no-') + featureNameSplit.join('-')]);
 
       // Trigger the event
       Modernizr._trigger(feature, test);
@@ -472,19 +473,19 @@
   
 
 
-  /**
-   * @optionName html5printshiv
-   * @optionProp html5printshiv
-   */
+/**
+  * @optionName html5printshiv
+  * @optionProp html5printshiv
+  */
 
   // Take the html5 variable out of the html5shiv scope so we can return it.
   var html5;
   if (!isSVG) {
+
     /**
      * @preserve HTML5 Shiv 3.7.3 | @afarkas @jdalton @jon_neal @rem | MIT/GPL2 Licensed
      */
     ;(function(window, document) {
-      /*jshint evil:true */
       /** version */
       var version = '3.7.3';
 
@@ -525,8 +526,8 @@
             var frag = document.createDocumentFragment();
             return (
               typeof frag.cloneNode == 'undefined' ||
-              typeof frag.createDocumentFragment == 'undefined' ||
-              typeof frag.createElement == 'undefined'
+                typeof frag.createDocumentFragment == 'undefined' ||
+                typeof frag.createElement == 'undefined'
             );
           }());
         } catch(e) {
@@ -684,16 +685,16 @@
         };
 
         ownerDocument.createDocumentFragment = Function('h,f', 'return function(){' +
-          'var n=f.cloneNode(),c=n.createElement;' +
-          'h.shivMethods&&(' +
-          // unroll the `createElement` calls
-          getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
-            data.createElem(nodeName);
-            data.frag.createElement(nodeName);
-            return 'c("' + nodeName + '")';
-          }) +
+                                                        'var n=f.cloneNode(),c=n.createElement;' +
+                                                        'h.shivMethods&&(' +
+                                                        // unroll the `createElement` calls
+                                                        getElements().join().replace(/[\w\-:]+/g, function(nodeName) {
+                                                          data.createElem(nodeName);
+                                                          data.frag.createElement(nodeName);
+                                                          return 'c("' + nodeName + '")';
+                                                        }) +
           ');return n}'
-        )(html5, data.frag);
+                                                       )(html5, data.frag);
       }
 
       /*--------------------------------------------------------------------------*/
@@ -712,13 +713,13 @@
 
         if (html5.shivCSS && !supportsHtml5Styles && !data.hasCSS) {
           data.hasCSS = !!addStyleSheet(ownerDocument,
-            // corrects block display not defined in IE6/7/8/9
-            'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
-            // adds styling not present in IE6/7/8/9
-            'mark{background:#FF0;color:#000}' +
-            // hides non-rendered elements
-            'template{display:none}'
-          );
+                                        // corrects block display not defined in IE6/7/8/9
+                                        'article,aside,dialog,figcaption,figure,footer,header,hgroup,main,nav,section{display:block}' +
+                                        // adds styling not present in IE6/7/8/9
+                                        'mark{background:#FF0;color:#000}' +
+                                        // hides non-rendered elements
+                                        'template{display:none}'
+                                       );
         }
         if (!supportsUnknownElements) {
           shivMethods(ownerDocument, data);
@@ -815,10 +816,10 @@
         var docEl = document.documentElement;
         return !(
           typeof document.namespaces == 'undefined' ||
-          typeof document.parentWindow == 'undefined' ||
-          typeof docEl.applyElement == 'undefined' ||
-          typeof docEl.removeNode == 'undefined' ||
-          typeof window.attachEvent == 'undefined'
+            typeof document.parentWindow == 'undefined' ||
+            typeof docEl.applyElement == 'undefined' ||
+            typeof docEl.removeNode == 'undefined' ||
+            typeof window.attachEvent == 'undefined'
         );
       }());
 
@@ -1003,10 +1004,11 @@
         module.exports = html5;
       }
 
-    }(typeof window !== "undefined" ? window : this, document));
+    }(typeof window !== 'undefined' ? window : this, document));
   }
 
   ;
+
 
   /**
    * contains checks to see if a string contains another string
@@ -1015,8 +1017,9 @@
    * @function contains
    * @param {string} str - The string we want to check for substrings
    * @param {string} substr - The substring we want to search the first string for
-   * @returns {boolean} true if and only if the first string 'str' contains the second string 'substr'
+   * @returns {boolean}
    */
+
   function contains(str, substr) {
     return !!~('' + str).indexOf(substr);
   }
@@ -1033,6 +1036,7 @@
    * @function createElement
    * @returns {HTMLElement|SVGElement} An HTML or SVG element
    */
+
   function createElement() {
     if (typeof document.createElement !== 'function') {
       // This is the case in IE7, where the type of createElement is "object".
@@ -1052,6 +1056,7 @@
    *
    * @access private
    */
+
   var modElem = {
     elem: createElement('modernizr')
   };
@@ -1084,6 +1089,7 @@
    * @returns {HTMLElement|SVGElement} Returns the real body of a document, or an
    * artificially created element that stands in for the body
    */
+
   function getBody() {
     // After page load injecting a fake body doesn't work so check if body exists
     var body = document.body;
@@ -1105,11 +1111,12 @@
    * @access private
    * @function injectElementWithStyles
    * @param {string} rule - String representing a css rule
-   * @param {Function} callback - A function that is used to test the injected element
+   * @param {function} callback - A function that is used to test the injected element
    * @param {number} [nodes] - An integer representing the number of additional nodes you want injected
    * @param {string[]} [testnames] - An array of strings that are used as ids for the additional nodes
-   * @returns {boolean} the result of the specified callback test
+   * @returns {boolean}
    */
+
   function injectElementWithStyles(rule, callback, nodes, testnames) {
     var mod = 'modernizr';
     var style;
@@ -1168,6 +1175,7 @@
     }
 
     return !!ret;
+
   }
 
   ;
@@ -1181,12 +1189,12 @@
    * @param {string} name - String name of camelCase prop we want to convert
    * @returns {string} The kebab-case version of the supplied name
    */
+
   function domToCSS(name) {
     return name.replace(/([A-Z])/g, function(str, m1) {
       return '-' + m1.toLowerCase();
     }).replace(/^ms-/, '-ms-');
   }
-
   ;
 
 
@@ -1196,11 +1204,11 @@
    *
    * @access private
    * @function computedStyle
-   * @param {HTMLElement|SVGElement} elem - The element we want to find the computed styles of
-   * @param {string|null} [pseudo] - An optional pseudo element selector (e.g. :before), of null if none
-   * @param {string} prop - A CSS property
-   * @returns {CSSStyleDeclaration} the value of the specified CSS property
+   * @param {HTMLElement|SVGElement} - The element we want to find the computed styles of
+   * @param {string|null} [pseudoSelector]- An optional pseudo element selector (e.g. :before), of null if none
+   * @returns {CSSStyleDeclaration}
    */
+
   function computedStyle(elem, pseudo, prop) {
     var result;
 
@@ -1233,15 +1241,16 @@
    *
    * @access private
    * @function nativeTestProps
-   * @param {Array} props - An array of property names
+   * @param {array} props - An array of property names
    * @param {string} value - A string representing the value we want to check via @supports
    * @returns {boolean|undefined} A boolean when @supports exists, undefined otherwise
    */
+
   // Accepts a list of property names and a single value
   // Returns `undefined` if native detection not available
   function nativeTestProps(props, value) {
     var i = props.length;
-    // Start with the JS API: https://www.w3.org/TR/css3-conditional/#the-css-interface
+    // Start with the JS API: http://www.w3.org/TR/css3-conditional/#the-css-interface
     if ('CSS' in window && 'supports' in window.CSS) {
       // Try every prefixed variant of the property
       while (i--) {
@@ -1260,7 +1269,7 @@
       }
       conditionText = conditionText.join(' or ');
       return injectElementWithStyles('@supports (' + conditionText + ') { #modernizr { position: absolute; } }', function(node) {
-        return computedStyle(node, null, 'position') === 'absolute';
+        return computedStyle(node, null, 'position') == 'absolute';
       });
     }
     return undefined;
@@ -1276,12 +1285,12 @@
    * @param {string} name - String name of kebab-case prop we want to convert
    * @returns {string} The camelCase version of the supplied name
    */
+
   function cssToDOM(name) {
     return name.replace(/([a-z])-([a-z])/g, function(str, m1, m2) {
       return m1 + m2.toUpperCase();
     }).replace(/^-/, '');
   }
-
   ;
 
   // testProps is a generic CSS / DOM property test.
@@ -1312,12 +1321,12 @@
     var afterInit, i, propsLength, prop, before;
 
     // If we don't have a style element, that means we're running async or after
-    // the core tests, so we'll need to create our own elements to use.
+    // the core tests, so we'll need to create our own elements to use
 
-    // Inside of an SVG element, in certain browsers, the `style` element is only
+    // inside of an SVG element, in certain browsers, the `style` element is only
     // defined for valid tags. Therefore, if `modernizr` does not have one, we
     // fall back to a less used element and hope for the best.
-    // For strict XHTML browsers the hardly used samp element is used.
+    // for strict XHTML browsers the hardly used samp element is used
     var elems = ['modernizr', 'tspan', 'samp'];
     while (!mStyle.style && elems.length) {
       afterInit = true;
@@ -1359,16 +1368,16 @@
           // supported. If `value` is empty string, it'll fail here (because
           // it hasn't changed), which matches how browsers have implemented
           // CSS.supports()
-          if (mStyle.style[prop] !== before) {
+          if (mStyle.style[prop] != before) {
             cleanElems();
-            return prefixed === 'pfx' ? prop : true;
+            return prefixed == 'pfx' ? prop : true;
           }
         }
         // Otherwise just return true, or the property name if this is a
         // `prefixed()` call
         else {
           cleanElems();
-          return prefixed === 'pfx' ? prop : true;
+          return prefixed == 'pfx' ? prop : true;
         }
       }
     }
@@ -1382,7 +1391,7 @@
    * testProp() investigates whether a given style property is recognized
    * Property names can be provided in either camelCase or kebab-case.
    *
-   * @memberOf Modernizr
+   * @memberof Modernizr
    * @name Modernizr.testProp
    * @access public
    * @optionName Modernizr.testProp()
@@ -1391,7 +1400,7 @@
    * @param {string} prop - Name of the CSS property to check
    * @param {string} [value] - Name of the CSS value to check
    * @param {boolean} [useValue] - Whether or not to check the value if @supports isn't supported
-   * @returns {boolean} an empty string if the property is supported, undefined if its unsupported
+   * @returns {boolean}
    * @example
    *
    * Just like [testAllProps](#modernizr-testallprops), only it does not check any vendor prefixed
@@ -1411,10 +1420,10 @@
    * Modernizr.testProp('pointerEvents', 'penguin') // false
    * ```
    */
+
   var testProp = ModernizrProto.testProp = function(prop, value, useValue) {
     return testProps([prop], undefined, value, useValue);
   };
-
   
 
   /**
@@ -1422,10 +1431,11 @@
    *
    * @access private
    * @function fnBind
-   * @param {Function} fn - a function you want to change `this` reference to
+   * @param {function} fn - a function you want to change `this` reference to
    * @param {object} that - the `this` you want to call the function with
-   * @returns {Function} The wrapped version of the supplied function
+   * @returns {function} The wrapped version of the supplied function
    */
+
   function fnBind(fn, that) {
     return function() {
       return fn.apply(that, arguments);
@@ -1449,9 +1459,9 @@
   }
 
   // Leak Modernizr namespace
-  scriptGlobalObject.Modernizr = Modernizr;
+  window.Modernizr = Modernizr;
 
 
 ;
 
-})(window, window, document);
+})(window, document);
