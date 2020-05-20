@@ -1108,13 +1108,13 @@ $breakpoints: (
         &[data-color-theme="#{$color-theme}"] {
           @each $weight in $default-color-weights {
             &[data-color-weight="#{$weight}"] {
-              background: _color(#{$color-theme}, $weight);
+              background: _color($color-theme, $weight);
               .color {
                 background: white;
                 display: inline-block;
                 padding: 3px;
                 &:before {
-                  content: _color(#{$color-theme}, $weight) + ': ';
+                  content: _color($color-theme, $weight) + ': ';
                 }
               }
             }

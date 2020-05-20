@@ -1,8 +1,24 @@
 module.exports = (paths, config) => {
   const imageminCfg = config.icons().imageminCfg;
 
-  imageminCfg.svgoPlugins[0].removeStyleElement = false;
-  imageminCfg.svgoPlugins[0].removeFill = false;
+  // add/change custom svgo plugin configs
+  const plugins = imageminCfg.svgo.plugins;
+  const customPluginConfig = {
+    removeStyleElement: false,
+    removeFill: false,
+  };
+  
+  Object.entries(customPluginConfig).forEach(([name, value]) => {
+    // is it in the array?
+    const pluginIndex = plugins.findIndex(p => Object.keys(p).includes(name));
+    if(pluginIndex !== -1) {
+      // if yes change value to false
+      imageminCfg.svgo.plugins[pluginIndex][name] = value;
+    } else {
+      // if no add it
+      imageminCfg.svgo.plugins = [...imageminCfg.svgo.plugins, {[name]: value}];
+    }
+  })
 
   return {
     paths: {
