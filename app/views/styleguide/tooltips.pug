@@ -47,7 +47,7 @@ block append content
                 button.btn.btn-primary.mb-none Test
 
           .bar__item
-            button.btn.btn--ghost(data-tooltip, data-tippy-theme="light", data-html="#tooltip-light") Tooltip from html template
+            button.btn.btn--ghost(data-tooltip, data-theme="light", data-html="#tooltip-light") Tooltip from html template
 
           .bar__item
             +icon('user').icon--large(data-tooltip, title="This is tooltip text on icon")
@@ -66,32 +66,32 @@ block append content
               </div>
             </div>
           </div>
-          <button class="btn btn--ghost" data-tooltip="data-tooltip" data-tippy-theme="light" data-html="#tooltip-light">Tooltip from html template</button>
+          <button class="btn btn--ghost" data-tooltip="data-tooltip" data-theme="light" data-html="#tooltip-light">Tooltip from html template</button>
           
           <svg class="icon icon-user icon--large" role="img" aria-hidden="true" data-tooltip data-tooltipped="" title="This is tooltip text on icon">.../svg>
 
-    +content-sub-section('Tooltip placements')
+    +content-sub-section('Tooltip positions')
 
-      +p Tooltip can be positioned on: <code class='l-code-inline'>top(default)/right/bottom/left</code> with attribute <code class='l-code-inline'>data-tippy-placement</code> as shown on example below.
+      +p Tooltip can be positioned on: <code class='l-code-inline'>top(default)/right/bottom/left</code> with attribute <code class='l-code-inline'>data-position</code> as shown on example below.
 
       +demo
         +demo-example
           .bar
             .bar__item
-              button.btn.btn--ghost(data-tooltip, title="This is tooltip text") Placement: top (default)
+              button.btn.btn--ghost(data-tooltip, title="This is tooltip text") Position: top (default)
             .bar__item
-              button.btn.btn--ghost(data-tooltip, data-tippy-placement="right", title="This is tooltip text") Placement: right
+              button.btn.btn--ghost(data-tooltip, data-position="right", title="This is tooltip text") Position: right
             .bar__item
-              button.btn.btn--ghost(data-tooltip, data-tippy-placement="bottom", title="This is tooltip text") Placement: bottom
+              button.btn.btn--ghost(data-tooltip, data-position="bottom", title="This is tooltip text") Position: bottom
             .bar__item
-              button.btn.btn--ghost(data-tooltip, data-tippy-placement="left", title="This is tooltip text") Placement: left
+              button.btn.btn--ghost(data-tooltip, data-position="left", title="This is tooltip text") Position: left
 
         //- +demo-code
         //-   :code
         //-     <button class="btn btn--ghost" data-tooltip title="This is tooltip text">..</button>
-        //-     <button class="btn btn--ghost" data-tooltip data-tippy-placement="right" title="This is tooltip text">..</button>
-        //-     <button class="btn btn--ghost" data-tooltip data-tippy-placement="bottom" title="This is tooltip text">..</button>
-        //-     <button class="btn btn--ghost" data-tooltip data-tippy-placement="left" title="This is tooltip text">..</button>
+        //-     <button class="btn btn--ghost" data-tooltip data-position="right" title="This is tooltip text">..</button>
+        //-     <button class="btn btn--ghost" data-tooltip data-position="bottom" title="This is tooltip text">..</button>
+        //-     <button class="btn btn--ghost" data-tooltip data-position="left" title="This is tooltip text">..</button>
 
 
 //- end: section

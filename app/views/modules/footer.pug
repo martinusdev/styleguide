@@ -31,7 +31,7 @@ footer.footer
           .bar__item
             a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
             - var state = 'closing'; //- open, closing, closed
-            span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-tippy-theme="light")
+            span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-theme="light")
               = footer.store[state].text
               +icon('info').icon--small.text-color-grey-light(style="position: relative; top: -0.05em;")
 
