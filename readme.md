@@ -1,4 +1,7 @@
-# Light
+# Martinus LB styleguide
+
+Styleguide for [Martinus](https://www.martinus.sk), designed and created by [Lighting Beetle
+](https://github.com/lightingbeetle).
 
 > Light is backbone for living styleguides.
 
