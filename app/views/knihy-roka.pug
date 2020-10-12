@@ -1,0 +1,21 @@
+extends layouts/_kiosk
+
+include ./mixins/booksCarouselRecommended
+include ./mixins/breadcrumbs
+include ./mixins/pagination
+include ./mixins/review
+include ./mixins/sectionHeader
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Knihy roka';
+    - var backButton = false;
+
+block content
+  main
+    div
+      section.section
+        .wrapper-main
+          h1 Knihy roka
+
+block append modals
