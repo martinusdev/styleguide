@@ -1,7 +1,7 @@
 extends layouts/_default
 
 include ./mixins/breadcrumbs
-include ./mixins/booksCarouselRecommended
+include ./mixins/booksCarouselBookOfTheYear
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -55,7 +55,7 @@ block content
           .col--m-4
             h2 Román a beletria
           .col--m-8
-            +booksCarouselRecommended
+            +booksCarouselBookOfTheYear
     section
       .wrapper-main
         .row

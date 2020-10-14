@@ -1,0 +1,76 @@
+include product
+include icon
+
+mixin booksCarouselSwiperWrapper(props = {})
+  -
+    const {
+      counter = false
+    } = props;
+
+  if counter
+    ul.swiper-wrapper.list--counter.no-pad
+      block
+  else
+    .swiper-wrapper
+      block
+
+mixin booksCarouselSwiperSlide(props = {})
+  -
+    const {
+      counter = false
+    } = props;
+
+  if counter
+    li.swiper-slide.carousel__product-detail
+      a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+        block
+  else
+    a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).swiper-slide.carousel__product-detail
+      block
+
+mixin booksCarouselBookOfTheYear(props = {})
+  -
+    const {
+      collections = true,
+      ads = true,
+      counter = false,
+      cartButton = false,
+      productInfo = true,
+    } = props;
+
+    var swiperConfig = {
+      slidesPerView: 'auto',
+      slidesPerGroup: 7,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+      breakpoints: {
+        1024: {
+          slidesPerGroup: 5,
+        },
+        768: {
+          spaceBetween: 20,
+          slidesPerGroup: 3,
+        },
+        640: {
+          spaceBetween: 20,
+          slidesPerGroup: 2,
+        },
+        480: {
+          spaceBetween: 20,
+          slidesPerGroup: 1,
+        }
+      },
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel&attributes(attributes)
+    .swiper-container.swiper-container--fullwidth(data-swiper-options=swiperConfig)
+      +booksCarouselSwiperWrapper({counter: counter})(data-equal-columns)
+        each item, i in [...books, ...books, ...books, ...books]
+          +booksCarouselSwiperSlide({counter: counter})(data-equal-column)
+            +product().mb-small.text-left
+              +productCover({cover: item.cover, collection: i < 2 && collections})
+
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+        +icon('arrow-left').icon--medium
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+        +icon('arrow-right').icon--medium
