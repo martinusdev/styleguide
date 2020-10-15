@@ -3,6 +3,7 @@ extends layouts/_default
 include ./mixins/booksCarouselBookOfTheYear
 include ./mixins/knihy-roka/breadcrumbs
 include ./mixins/knihy-roka/hero-banner
+include ./mixins/knihy-roka/introduction
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -12,18 +13,7 @@ block content
   main
     +breadcrumbsKnihyRoka
     +heroBanner
-    +heroBanner("children")
-    section.section.section--secondary.mb-large
-      .wrapper-main
-        .row.mb-large
-          .col--m-6
-            p Tuto ide text, ktory opisuje, co je projekt kniha roka zac. Mohol by opisat proces, akym sa knihy vyberali. Mozno nieco z backstagu. Mozno par teplych slov od MMeska. Mozno nejaky citat z knihy? Ja naozaj neviem, proste taky obkec, aby ked ho navstevnik precital, tak mal pocit ze knihy roka 2020 je martinusacka knizna alternativa Oscarov a tie knihy, ktore su nizsie, naozaj stoji za to a boli vyberane poriadne, odborne a s laskou.
-
-            a(href="#dospely", style=`${sLink}`).link Knihy roka 2020
-            br
-            a(href="#deti", style=`${sLink}`).link Detské knihy roka 2020
-          .col--m-4.ofst--m-2
-            img(src='/images/knihy-roka/video-placeholder.png')
+    +introduction
     section#dospely
       .wrapper-main
         h2 Kategórie
@@ -80,6 +70,4 @@ block content
                     dd
                       a.link(href="#") Jana Šlinská
             a.mb-large Viac o knihe >
-    section#deti
-      .wrapper-main
-        h2 Detske knihy roka 2020
+    +heroBanner("children")
