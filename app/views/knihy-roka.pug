@@ -1,7 +1,7 @@
 extends layouts/_default
 
-include ./mixins/breadcrumbs
 include ./mixins/booksCarouselBookOfTheYear
+include ./mixins/knihy-roka/breadcrumbs
 include ./mixins/knihy-roka/hero-banner
 
 block opts
@@ -10,11 +10,7 @@ block opts
 
 block content
   main
-    section.section--breadcrumbs
-      .wrapper-main
-        .bar.no-mrg-bottom
-          .bar__item.bar__item--shrinkable
-            +breadcrumbs({breadcrumbs: ['Knihy', 'Knihy roka 2020']})
+    +breadcrumbsKnihyRoka
     +heroBanner
     +heroBanner("children")
     section.section.section--secondary.mb-large
