@@ -1,32 +1,6 @@
 include product
 include icon
-
-mixin booksCarouselSwiperWrapper(props = {})
-  -
-    const {
-      counter = false
-    } = props;
-
-  if counter
-    ul.swiper-wrapper.list--counter.no-pad
-      block
-  else
-    .swiper-wrapper
-      block
-
-mixin booksCarouselSwiperSlide(props = {})
-  -
-    const {
-      counter = false
-    } = props;
-
-  if counter
-    li.swiper-slide.carousel__product-detail
-      a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
-        block
-  else
-    a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).swiper-slide.carousel__product-detail
-      block
+include booksCarouselRecommended
 
 mixin booksCarouselBookOfTheYear(props = {})
   -
