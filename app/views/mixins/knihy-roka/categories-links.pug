@@ -1,0 +1,5 @@
+mixin categoriesLinks(links = ['Beletria', 'Reportáž a literatúra faktu', 'Populárno - náučná literatúra', 'Dizajn', 'Tipy vydavateľov'])
+  ul.tab-nav(data-tabs-container).sticky
+    each link in links
+      li.tab-nav__item(data-tabs-item)
+        a.tab-nav__content.tab-nav__content--link #{link}

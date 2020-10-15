@@ -4,6 +4,7 @@ include ./mixins/booksCarouselBookOfTheYear
 include ./mixins/knihy-roka/breadcrumbs
 include ./mixins/knihy-roka/hero-banner
 include ./mixins/knihy-roka/introduction
+include ./mixins/knihy-roka/categories-links
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -17,17 +18,7 @@ block content
     section#dospely
       .wrapper-main
         h2 Kategórie
-        ul.tab-nav(data-tabs-container).sticky
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link Román a beletria
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link Reportáž a literatúra faktu
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link Populárno - náučná literatúra
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link Dizajn
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link Tipy vydavateľov
+        +categoriesLinks
         .row.mb-large
           .col--m-4
             h2 Román a beletria
