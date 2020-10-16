@@ -9,6 +9,7 @@ include ./mixins/knihy-roka/categoryCarousel
 include ./mixins/knihy-roka/heroBanner
 include ./mixins/knihy-roka/introduction
 include ./mixins/knihy-roka/bookHorizontal
+include ./mixins/knihy-roka/bookVertical
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -33,6 +34,13 @@ block content
             +anotation
             +anotationAuthor
             +bookHorizontal
+        .row
+          .col--m-4
+            +bookVertical
+          .col--m-4
+            +bookVertical
+          .col--m-4
+            +bookVertical
         .row
           .col--m-6
             p sem pojde kniha
