@@ -5,6 +5,7 @@ include ./mixins/knihy-roka/hero-banner
 include ./mixins/knihy-roka/introduction
 include ./mixins/knihy-roka/categories-links
 include ./mixins/knihy-roka/category-carousel
+include ./mixins/knihy-roka/background-section-title
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -24,8 +25,7 @@ block content
       .wrapper-main
         .row
           .col--m-6
-            h2 Názov kategórie
-            p Sem opiseme, co je toto za kategoriu. Ze vlastne co v nej moze ocakavat, podla coho boli knihy vyberane a podobne. Bla bla Nulla vestibulum eleifend nulla. Suspendisse potenti. Aliquam turpis nisi, venenatis non, accumsan nec, imperdiet laoreet, lacus. In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh. Nullam hendrerit viverra dolor. Vestibulum fringilla, lectus id viverra malesuada, enim mi adipiscing ligula, et bibendum lacus lectus id sem.
+            +backgroundSectionTitle
           .col--m-6
             .bar.no-mrg-bottom
               .bar__item.bar__item--shrinkable
