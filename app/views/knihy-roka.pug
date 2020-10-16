@@ -10,6 +10,7 @@ include ./mixins/knihy-roka/heroBanner
 include ./mixins/knihy-roka/introduction
 include ./mixins/knihy-roka/bookHorizontal
 include ./mixins/knihy-roka/bookVertical
+include ./mixins/icon
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -57,7 +58,8 @@ block content
                     dt Tento titul číta aj
                     dd
                       a.link(href="#") Jana Šlinská
-            a.mb-large Viac o knihe >
+            a(href="detail-knihy.html").link.text-medium.text-color-theme Viac o knihe
+              +icon('arrow-right', 'icon--small')
     +heroBanner("children")
     section#deti
       .wrapper-main
