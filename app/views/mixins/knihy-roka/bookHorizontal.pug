@@ -1,0 +1,20 @@
+include ../product
+
+mixin bookHorizontal(data={cover:'images/content/books/sample-3.jpg', title: 'Dobré znamenia', author: 'Neil Gaiman, Terry Pratchett', publisher: ' • SnowMouse Publishing, 2020 • 6. diel série', description: 'Koniec sveta sa nezadržateľne blíži. Zhromažďujú sa armády dobra a zla, z hlbín sa dvíha Atlantída, z neba padajú žaby, naplno horia vášne. Zdá sa, že všetko ide presne podľa Božieho plánu. Démon Crowley a anjel Azirafal už dlho žijú na zemi medzi smrteľníkmi a celkom si tu zvykli.'})
+  .section.product-item.no-mrg-bottom
+    .wrapper-main
+      .row
+        .col--4.col--s-shrink.text-left
+          +product().no-mrg-bottom
+            +productCover({
+              cover: data.cover,
+              size: 'xlarge'
+            }).mb-medium
+        .col--s-fill
+          h2.text-bold.mb-small
+            a.link.link--product.text-bold #{data.title}
+          div
+            a.link(href="#") #{data.author}
+            span.text-color-grey #{data.publisher}
+          p #{data.description}
+          a(href="#", style=`${sLink}`).link viac o knihe

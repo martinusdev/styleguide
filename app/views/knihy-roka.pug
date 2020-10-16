@@ -8,6 +8,7 @@ include ./mixins/knihy-roka/categoriesLinks
 include ./mixins/knihy-roka/categoryCarousel
 include ./mixins/knihy-roka/heroBanner
 include ./mixins/knihy-roka/introduction
+include ./mixins/knihy-roka/bookHorizontal
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -31,13 +32,7 @@ block content
           .col--m-6
             +anotation
             +anotationAuthor
-            .bar.no-mrg-bottom
-              .bar__item.bar__item--shrinkable
-                span sem pojde fotka
-              .bar__item.bar__item--fill
-                h3 Názov knihy
-                p Nulla vestibulum eleifend nulla. Suspendisse potenti. Aliquam turpis nisi, venenatis non, accumsan nec, imperdiet laoreet, lacus. In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh.
-                a.mb-large Viac o knihe >
+            +bookHorizontal
         .row
           .col--m-6
             p sem pojde kniha
