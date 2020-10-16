@@ -1,7 +1,7 @@
 include ../product
 include ../icon
 
-mixin bookHorizontal(data={cover:'images/content/books/sample-3.jpg', title: 'Dobré znamenia', author: 'Neil Gaiman, Terry Pratchett', publisher: ' • SnowMouse Publishing, 2020 • 6. diel série', description: 'Koniec sveta sa nezadržateľne blíži. Zhromažďujú sa armády dobra a zla, z hlbín sa dvíha Atlantída, z neba padajú žaby, naplno horia vášne. Zdá sa, že všetko ide presne podľa Božieho plánu. Démon Crowley a anjel Azirafal už dlho žijú na zemi medzi smrteľníkmi a celkom si tu zvykli.'})
+mixin bookHorizontal(data={cover:'images/content/books/sample-3.jpg', coverSize: 'xlarge', title: 'Dobré znamenia', author: 'Neil Gaiman, Terry Pratchett', publisher: ' • SnowMouse Publishing, 2020 • 6. diel série', description: 'Koniec sveta sa nezadržateľne blíži. Zhromažďujú sa armády dobra a zla, z hlbín sa dvíha Atlantída, z neba padajú žaby, naplno horia vášne. Zdá sa, že všetko ide presne podľa Božieho plánu. Démon Crowley a anjel Azirafal už dlho žijú na zemi medzi smrteľníkmi a celkom si tu zvykli.'})
   .section.product-item.no-mrg-bottom
     .wrapper-main
       .row
@@ -9,7 +9,7 @@ mixin bookHorizontal(data={cover:'images/content/books/sample-3.jpg', title: 'Do
           +product().no-mrg-bottom
             +productCover({
               cover: data.cover,
-              size: 'xlarge'
+              size: data.coverSize
             }).mb-medium
         .col--s-fill
           h2.text-bold.mb-small
