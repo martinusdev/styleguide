@@ -1,5 +1,5 @@
-mixin categoriesLinks(links = ['Beletria', 'Reportáž a literatúra faktu', 'Populárno - náučná literatúra', 'Dizajn', 'Tipy vydavateľov'])
+mixin categoriesLinks(links = [{link:'Beletria', color: 'beletria'}, {link:'Reportáž a literatúra faktu', color: 'reportaz-a-literatura-faktu'}, {link:'Populárno - náučná literatúra', color: 'popularno-naucna-literatura'}, {link:'Dizajn', color: 'dizajn'}, {link:'Tipy vydavateľov', color: 'tipy-vydavatelov'}])
   ul.tab-nav(data-tabs-container).sticky
-    each link in links
-      li.tab-nav__item(data-tabs-item)
-        a.tab-nav__content.tab-nav__content--link #{link}
+    each data in links
+      li(class=`${data.color}`).tab-nav__item(data-tabs-item)
+        a.tab-nav__content.tab-nav__content--link #{data.link}
