@@ -55,3 +55,12 @@
     margin: 0 auto;
   }
 }
+// stylelint-disable selector-max-compound-selectors
+.tab-nav {
+  .beletria {
+    &.is-active > .tab-nav__content--link {
+      color: #956daf;
+      border-color: #956daf;
+    }
+  }
+}
