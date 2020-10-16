@@ -6,6 +6,8 @@ include ./mixins/knihy-roka/introduction
 include ./mixins/knihy-roka/categories-links
 include ./mixins/knihy-roka/category-carousel
 include ./mixins/knihy-roka/background-section-title
+include ./mixins/knihy-roka/anotation
+include ./mixins/knihy-roka/anotation-author
 
 block opts
   - var pageTitle = 'Knihy roka';
@@ -27,13 +29,8 @@ block content
           .col--m-6
             +backgroundSectionTitle
           .col--m-6
-            .bar.no-mrg-bottom
-              .bar__item.bar__item--shrinkable
-                span sem pojde fotka
-              .bar__item.bar__item--fill
-                h3 Recenzista/ka
-                p.mb-large Sem mozme citovat recenziu na knihu nizsie, ktora je highlighnuta. A ze preco tu vlastne je. Obhajime to, ze bola vybrana pravom a vybrala ju akreditovana osoba.
-            p Sem by sme mohli dat anotaciu knihy. Alebo nejaky citat z nej. Alebo par teplych slov o tom, ze preco tu ta kniha je. Nulla vestibulum eleifend nulla. Suspendisse potenti. Aliquam turpis nisi, venenatis non, accumsan nec, imperdiet laoreet, lacus. In purus est, mattis eget, imperdiet nec, fermentum congue, tortor. Aenean ut nibh.
+            +anotation
+            +anotationAuthor
             .bar.no-mrg-bottom
               .bar__item.bar__item--shrinkable
                 span sem pojde fotka
