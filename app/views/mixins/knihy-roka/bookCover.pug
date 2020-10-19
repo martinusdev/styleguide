@@ -1,0 +1,22 @@
+mixin bookCover(props = {})
+  -
+    console.log(props)
+    const {
+      cover,
+      type = 'book',
+      size = 'large',
+      clickable = true,
+      id,
+    } = props;
+
+    const tag = 'a';
+
+  .product__cover&attributes(attributes)
+    #{tag}.thumbnail(
+      class= type ? `thumbnail--${type}` : '',
+      class= size ? `thumbnail--${size}` : '',
+      class= clickable ? `thumbnail--clickable`: '',
+      data-toggle= `#modal-${id}`
+    )
+      .thumbnail__img-wrap
+        img(src=`${assetsPrefix}${cover}`).img

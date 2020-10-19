@@ -1,6 +1,5 @@
 include ../product
 include ../icon
-include ./checkoutModal
 
 mixin bookVertical(props = {})
   -
@@ -33,4 +32,3 @@ mixin bookVertical(props = {})
             span.text-color-grey #{publisher}
       a(data-toggle=`#modal-${id}`).link.text-medium.text-color-theme Viac o knihe
         +icon('arrow-right', 'icon--small')
-  +checkoutModal({id, title})
