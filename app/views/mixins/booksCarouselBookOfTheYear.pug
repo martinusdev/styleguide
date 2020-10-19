@@ -39,10 +39,9 @@ mixin booksCarouselBookOfTheYear(props = {})
   .carousel&attributes(attributes)
     .swiper-container.swiper-container--fullwidth(data-swiper-options=swiperConfig)
       +booksCarouselSwiperWrapper({counter: counter})(data-equal-columns)
-        each item, i in [...books, ...books, ...books, ...books]
+        each id in ['u658361', 'u721103', 'u707887', 'u721773', 'u725927', 'u711363', 'u698619', 'u721777', 'u698929', 'u716559', 'u668745', 'u705403']
           +booksCarouselSwiperSlide({counter: counter})(data-equal-column)
-            +product().mb-small.text-left
-              +productCover({cover: item.cover, collection: i < 2 && collections})
+            +productCover({cover: beletria[id].cover})
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium
