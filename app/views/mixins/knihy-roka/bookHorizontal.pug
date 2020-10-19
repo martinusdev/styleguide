@@ -1,22 +1,35 @@
 include ../product
 include ../icon
 
-mixin bookHorizontal(data={cover:'images/content/books/sample-3.jpg', coverSize: 'xlarge', title: 'Dobré znamenia', author: 'Neil Gaiman, Terry Pratchett', publisher: ' • SnowMouse Publishing, 2020 • 6. diel série', description: 'Koniec sveta sa nezadržateľne blíži. Zhromažďujú sa armády dobra a zla, z hlbín sa dvíha Atlantída, z neba padajú žaby, naplno horia vášne. Zdá sa, že všetko ide presne podľa Božieho plánu. Démon Crowley a anjel Azirafal už dlho žijú na zemi medzi smrteľníkmi a celkom si tu zvykli.'})
+mixin bookHorizontal(props = {})
+  -
+    const {
+      cover = "images/content/books/sample-3.jpg",
+      coverSize = "xlarge",
+      title = "Dobré znamenia",
+      author = "Neil Gaiman, Terry Pratchett",
+      publisher = " • SnowMouse Publishing, 2020 • 6. diel série",
+      description = "Koniec sveta sa nezadržateľne blíži. Zhromažďujú sa armády dobra a zla, z hlbín sa dvíha Atlantída, z neba padajú žaby, naplno horia vášne. Zdá sa, že všetko ide presne podľa Božieho plánu. Démon Crowley a anjel Azirafal už dlho žijú na zemi medzi smrteľníkmi a celkom si tu zvykli.",
+      detailLink = '#',
+      detailText = 'Viac o knihe',
+    } = props;
+
   .section.product-item.no-mrg-bottom
     .wrapper-main
       .row
         .col--4.col--s-shrink.text-left
           +product().no-mrg-bottom
             +productCover({
-              cover: data.cover,
-              size: data.coverSize
+              cover: cover,
+              size: coverSize
             }).mb-medium
         .col--s-fill
           h2.text-bold.mb-small
-            a.link.link--product.text-bold #{data.title}
+            a.link.link--product.text-bold #{title}
           div
-            a.link(href="#") #{data.author}
-            span.text-color-grey #{data.publisher}
-          p #{data.description}
-          a(href="detail-knihy.html").link.text-medium.text-color-theme Viac o knihe
+            a.link(href="#") #{author}
+            span.text-color-grey #{publisher}
+          p #{description}
+            //- todo
+          a(href=`${detailLink}`).link.text-medium.text-color-theme #{detailText}
             +icon('arrow-right', 'icon--small')

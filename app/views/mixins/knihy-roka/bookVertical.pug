@@ -1,18 +1,28 @@
 include ../product
 include ../icon
 
-mixin bookVertical(data={cover:'images/content/books/sample-3.jpg', title: 'Dobré znamenia', author: 'Neil Gaiman, Terry Pratchett', publisher: ' • SnowMouse Publishing, 2020 • 6. diel série'})
+mixin bookVertical(props = {})
+  -
+    const {
+      cover = "images/content/books/sample-3.jpg",
+      title = "Dobré znamenia",
+      author = "Neil Gaiman, Terry Pratchett",
+      publisher = " • SnowMouse Publishing, 2020 • 6. diel série",
+      detailLink = '#',
+      detailText = 'Viac o knihe',
+    } = props;
+
   .section.product-item.no-mrg-bottom.book-vertical
     .wrapper-main.text-center
       +product().no-mrg-bottom
         +productCover({
-          cover: data.cover,
+          cover: cover,
           size: 'xlarge'
         }).mb-medium.text-center
       h2.text-bold.mb-small
-        a.link.link--product.text-bold #{data.title}
+        a.link.link--product.text-bold #{title}
       div
-        a.link(href="#") #{data.author}
-        span.text-color-grey #{data.publisher}
-      a(href="detail-knihy.html").link.text-medium.text-color-theme Viac o knihe
+        a.link(href="#") #{author}
+        span.text-color-grey #{publisher}
+      a(href=`${detailLink}`).link.text-medium.text-color-theme #{detailText}
         +icon('arrow-right', 'icon--small')
