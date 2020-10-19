@@ -1,15 +1,20 @@
 include ../product
 include ../icon
+include ./checkoutModal
 
 mixin bookVertical(props = {})
   -
     const {
-      cover = "images/content/books/sample-3.jpg",
-      title = "Dobré znamenia",
-      author = "Neil Gaiman, Terry Pratchett",
-      publisher = " • SnowMouse Publishing, 2020 • 6. diel série",
-      detailLink = '#',
-      detailText = 'Viac o knihe',
+      cover = "https://mrtns.eu/tovar/_l/658/l658361.jpg",
+      coverSize = "xlarge",
+      title = "Normálni ľudia",
+      author = "Sally Rooney",
+      authorUrl = null,
+      publisher = "Lindeni",
+      description = "Tento román sprevádzajú zmiešané reakcie, pretože niečím vyrušuje... V mnohých ohľadoch je ako mozaika. Počas čítania sa vám môže zdať, že sa tam vlastne veľa nedeje, po poslednej bodke sa však pred vami zjaví celý obraz. Je to romanca, spoločenský román aj dráma z prostredia rodiny. Ale predovšetkým je to skvelá knižka o dvoch dušiach, ktoré k sebe patria.",
+      id = 658361,
+      recommender = "Ivana Hrenáková",
+      recommenderUrl = null,
     } = props;
 
   .section.product-item.no-mrg-bottom.book-vertical
@@ -19,10 +24,13 @@ mixin bookVertical(props = {})
           cover: cover,
           size: 'xlarge'
         }).mb-medium.text-center
-      h2.text-bold.mb-small
+      h2(data-toggle=`#modal-${id}`).text-bold.mb-small
         a.link.link--product.text-bold #{title}
-      div
-        a.link(href="#") #{author}
-        span.text-color-grey #{publisher}
-      a(href=`${detailLink}`).link.text-medium.text-color-theme #{detailText}
+      ul.list--dot.no-pad
+          li
+            a.link(href=`${authorUrl}`) #{author}
+          li
+            span.text-color-grey #{publisher}
+      a(data-toggle=`#modal-${id}`).link.text-medium.text-color-theme Viac o knihe
         +icon('arrow-right', 'icon--small')
+  +checkoutModal({id, title})
