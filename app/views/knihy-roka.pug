@@ -17,8 +17,8 @@ block opts
   - var backButton = false;
 
 block content
-  each id in beletriaIds
-    +checkoutModal(beletria[id])
+  each val, key in beletria
+    +checkoutModal(key)
   main
     section
       .wrapper-main
