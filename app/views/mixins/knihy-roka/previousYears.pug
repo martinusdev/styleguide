@@ -1,0 +1,19 @@
+mixin previousYears(props = {})
+  -
+    const {
+      years = [
+        {
+          content: 'Knihy roka 2019',
+          href: 'https://www.martinus.sk/collections/knihy-roka-2019'
+        },
+        {
+          content: 'Knihy roka 2018',
+          href: 'https://www.martinus.sk/collections/knihy-roka-2018'
+        },
+      ],
+    } = props;
+
+  .btn-layout--vertical.btn-layout--m-horizontal.mb-large
+    each year in years
+      - console.log(year.href)
+      a(href=year.href).btn #{year.content}
