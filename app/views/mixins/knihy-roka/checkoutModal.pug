@@ -13,13 +13,13 @@ mixin checkoutModal(props = {})
       recommenderUrl = null,
     } = props;
 
-  .modal-overlay(data-modal, id=`modal-${id}`)
+  .modal-overlay(data-modal, id=`u${id}`)
     article.modal.modal--full
       .modal__wrap
         header.modal__header
           h3.modal__header__headline #{title}
           .modal__header__action
-            button.btn.btn--link(data-toggle=`#modal-${id}`, type="button")
+            button.btn.btn--link(data-toggle=`#u${id}`, type="button")
               +icon-sg('sg-close', 'icon--medium', 'Close')
 
         section.modal__content
