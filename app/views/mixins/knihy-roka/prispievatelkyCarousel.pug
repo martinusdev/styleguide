@@ -28,10 +28,9 @@ mixin prispievatelkyCarousel(props = {})
           .swiper-slide.carousel__product-detail
             .text-center
               .portrait.portrait--large.portrait--center.mb-medium(style=`background-image: url(${val.photo});`)
-              strong #{val.name}
-              br
-              span #{val.category}
-              br
+              p.mb-small
+                strong #{val.name}
+              p.mb-small.text-color-grey #{val.category}
               p #{val.bio}
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
