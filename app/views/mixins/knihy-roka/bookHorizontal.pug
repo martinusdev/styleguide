@@ -7,8 +7,7 @@ mixin bookHorizontal(props = {})
       cover = "https://mrtns.eu/tovar/_l/658/l658361.jpg",
       coverSize = "xlarge",
       title = "Normálni ľudia",
-      author = "Sally Rooney",
-      authorUrl = null,
+      authors = { name: "Sally Rooney", url: null },
       publisher = "Lindeni",
       description = "Tento román sprevádzajú zmiešané reakcie, pretože niečím vyrušuje... V mnohých ohľadoch je ako mozaika. Počas čítania sa vám môže zdať, že sa tam vlastne veľa nedeje, po poslednej bodke sa však pred vami zjaví celý obraz. Je to romanca, spoločenský román aj dráma z prostredia rodiny. Ale predovšetkým je to skvelá knižka o dvoch dušiach, ktoré k sebe patria.",
       id = 658361,
@@ -30,7 +29,10 @@ mixin bookHorizontal(props = {})
             a.link.link--product.text-bold #{title}
           ul.list--dot.no-pad
             li
-              a.link(href="#") #{author}
+              each val, key in authors
+                if key >= 1
+                  span , 
+                a.link(href=`${val.url}`) #{val.name}
             li
               span.text-color-grey #{publisher}
           p #{description}
