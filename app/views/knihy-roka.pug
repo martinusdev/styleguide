@@ -38,8 +38,8 @@ block content
           .col--m-6
             +backgroundSection
           .col--m-6
-            +annotation
-            +annotationAuthor
+            +annotation({annotation: beletria.u721103.review})
+            +annotationAuthor(beletria.u721103.recommender)
             +bookHorizontal(beletria.u721103)
         .row
           .col--m-4
@@ -48,7 +48,10 @@ block content
             +bookVertical(beletria.u711363)
           .col--m-4
             +bookVertical(beletria.u698619)
-        +bookHorizontal(beletria.u705403)
+    section.section--secondary
+      +bookHorizontal(beletria.u705403)
+    section
+      .wrapper-main
         .row
           .col--m-6
             +bookHorizontal(beletria.u721777)
