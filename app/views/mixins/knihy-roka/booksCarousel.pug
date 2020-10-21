@@ -6,7 +6,9 @@ include ./bookCover
 
 mixin booksCarousel(props = {})
   -
-    const {} = props;
+    const {
+      category = beletria
+    } = props;
 
     var swiperConfig = {
       slidesPerView: 'auto',
@@ -24,9 +26,9 @@ mixin booksCarousel(props = {})
   .carousel&attributes(attributes)
     .swiper-container.swiper-container--fullwidth(data-swiper-options=swiperConfig)
       +booksCarouselSwiperWrapper({})(data-equal-columns)
-        each val, key in beletria
+        each val, key in category
           .swiper-slide.carousel__product-detail
-            +bookCover(beletria[key])
+            +bookCover(category[key])
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
         +icon('arrow-left').icon--medium
