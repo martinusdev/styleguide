@@ -1,16 +1,21 @@
 mixin checkoutModal(props = {})
   -
     const {
-      cover = "https://mrtns.eu/tovar/_l/658/l658361.jpg",
+      cover = "https://mrtns.eu/tovar/_l/721/l721103.jpg",
       coverSize = "xlarge",
-      title = "Normálni ľudia",
-      author = "Sally Rooney",
-      authorUrl = null,
-      publisher = "Lindeni",
-      description = "Tento román sprevádzajú zmiešané reakcie, pretože niečím vyrušuje... V mnohých ohľadoch je ako mozaika. Počas čítania sa vám môže zdať, že sa tam vlastne veľa nedeje, po poslednej bodke sa však pred vami zjaví celý obraz. Je to romanca, spoločenský román aj dráma z prostredia rodiny. Ale predovšetkým je to skvelá knižka o dvoch dušiach, ktoré k sebe patria.",
-      id = 658361,
-      recommender = "Ivana Hrenáková",
-      recommenderUrl = null,
+      title = "Tajný príbeh",
+      authors = [
+        { name: "Donna Tartt", url: "https://www.martinus.sk/authors/donna-tartt" },
+      ],
+      publisher = "Slovart",
+      description = "Strhujúci debut autorky svetového bestsellera Stehlík. Úprimná spoveď hlavného hrdinu Richarda Papena, ktorý sa v spomienkach vracia do svojich študentských rokov na malej vermontskej univerzite, kde našiel taký životný štýl, po akom vždy túžil...",
+      review = "Len ťažko sa dá vypichnúť konkrétna vec, ktorá z tejto knihy robí veľký román. Príbeh, prostredie, postavy, štýl písania – všetko spolu hrá ako celok. Je to príbeh, ktorý vám pripomenie, že život nie je vôbec čierno-biely, buď-alebo, dobrý-zlý. A že to, čo je logické, ešte nemusí byť správne či morálne.",
+      id = 721103,
+      recommender = {
+        name: "Ivana Hrenáková",
+        position: "projektová manažérka pre marketing",
+        bio: "Knihomoľ telom, dušou aj zamestnaním.",
+      },
     } = props;
 
   .modal-overlay(data-modal, id=`u${id}`)
