@@ -72,3 +72,23 @@
 .swiper--prispievatelky .swiper-wrapper {
   align-items: flex-start;
 }
+
+.card--anotation {
+  background-color: _color(info, 100);
+  border-bottom-left-radius: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: _color(info, 100);
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -10px;
+    margin-bottom: -20px;
+  }
+}
