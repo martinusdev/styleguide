@@ -30,7 +30,7 @@ mixin bookVertical(props = {})
         }).mb-medium.text-center
       h2(data-toggle=`#u${id}`).text-bold.mb-small
         a.link.link--product.text-bold #{title}
-      ul.list--dot.no-pad
+      ul.list--dot.no-pad.mb-small
         li
           each val, key in authors
             if key >= 1
@@ -38,5 +38,5 @@ mixin bookVertical(props = {})
             a.link(href=`${val.url}`) #{val.name}
         li
           span.text-color-grey #{publisher}
-      a(data-toggle=`#u${id}`).link.text-medium.text-color-theme Viac o knihe
+      a(data-toggle=`#u${id}` style="display:block;").link.text-medium.text-color-theme.mb-medium Viac o knihe
         +icon('arrow-right', 'icon--small')

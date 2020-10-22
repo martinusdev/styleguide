@@ -41,6 +41,6 @@ mixin bookHorizontal(props = {})
                 a.link(href=`${val.url}`) #{val.name}
             li
               span.text-color-grey #{publisher}
-          p #{description}
-          a(data-toggle=`#u${id}`).link.text-medium.text-color-theme Viac o knihe
+          p.mb-small #{description}
+          a(data-toggle=`#u${id}` style="display:block;").link.text-medium.text-color-theme.mb-large Viac o knihe
             +icon('arrow-right', 'icon--small')
