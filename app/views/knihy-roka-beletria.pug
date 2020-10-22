@@ -26,30 +26,36 @@ block content
       .wrapper-main
         h2 Kategórie
         +categoriesLinks({
-        links: [
-          {
-            href: "Beletria",
-            color: "beletria",
-          },
-          {
-            href: "Reportáž a literatúra faktu",
-            color: "reportaz-a-literatura-faktu",
-          },
-          {
-            href: "Populárno - náučná literatúra",
-            color: "popularno-naucna-literatura",
-          },
-          {
-            href: "Dizajn",
-            color: "dizajn",
-          },
-          {
-            href: "Tipy vydavateľov",
-            color: "tipy-vydavatelov",
-          },
-        ],
-      })
-    +categoryCarousel({category: beletria, className: 'beletria', description: 'Dobrý príbeh unesie našu myseľ a výkupné si pýta stránku po stránke.', title: 'Beletria'})
+          links: [
+            {
+              href: "Beletria",
+              color: "beletria",
+            },
+            {
+              href: "Reportáž a literatúra faktu",
+              color: "reportaz-a-literatura-faktu",
+            },
+            {
+              href: "Populárno - náučná literatúra",
+              color: "popularno-naucna-literatura",
+            },
+            {
+              href: "Dizajn",
+              color: "dizajn",
+            },
+            {
+              href: "Tipy vydavateľov",
+              color: "tipy-vydavatelov",
+            },
+          ],
+        })
+    +categoryCarousel({
+      category: beletria,
+      className: "beletria",
+      description:
+        "Dobrý príbeh unesie našu myseľ a výkupné si pýta stránku po stránke.",
+      title: "Beletria",
+    })
 
     //- BIG HIGHLIGHT
     section.section
@@ -57,10 +63,10 @@ block content
         .row.mb-large
           .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
             +backgroundSection({
-              imageUrl: '/images/knihy-roka/mood/03.jpg'
+              imageUrl: "/images/knihy-roka/mood/03.jpg",
             })
           .col--l-6
-            +annotation({annotation: beletria.u721103.review})
+            +annotation({ annotation: beletria.u721103.review })
             +annotationAuthor(beletria.u721103.recommender)
             +bookHorizontal(beletria.u721103)
 
@@ -89,7 +95,7 @@ block content
             +bookHorizontal(beletria.u658361)
           .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
             +backgroundSection({
-              imageUrl: '/images/knihy-roka/mood/02.jpg'
+              imageUrl: "/images/knihy-roka/mood/02.jpg",
             })
 
     //- HIGHLIGHT
@@ -113,8 +119,22 @@ block content
       .wrapper-main
         .mb-large
         h2 Kategórie pre deti
-        +categoriesLinks({links: [{ href: "Vo veku 0-3 roky", color: "" },{ href: "Vo veku 4-6 rokov", color: "" },{ href: "Vo veku 7-10 rokov", color: "" },{ href: "Vo veku 11-13 rokov", color: "" },{ href: "Vo veku 14-16 rokov", color: "" },]})
-    +categoryCarousel({category: deti1, className: 'deti1', description: 'Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.', title: 'Vo veku 0-3 roky'})
+        +categoriesLinks({
+          links: [
+            { href: "Vo veku 0-3 roky", color: "" },
+            { href: "Vo veku 4-6 rokov", color: "" },
+            { href: "Vo veku 7-10 rokov", color: "" },
+            { href: "Vo veku 11-13 rokov", color: "" },
+            { href: "Vo veku 14-16 rokov", color: "" },
+          ],
+        })
+    +categoryCarousel({
+      category: deti1,
+      className: "deti1",
+      description:
+        "Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.",
+      title: "Vo veku 0-3 roky",
+    })
 
     //- STĹPEC LEFT - 2
     section.section
@@ -122,7 +142,7 @@ block content
         .row.mb-large
           .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
             +backgroundSection({
-              imageUrl: '/images/knihy-roka/mood/08.jpg'
+              imageUrl: "/images/knihy-roka/mood/08.jpg",
             })
           .col--l-6
             +bookHorizontal(deti1.u758407)
