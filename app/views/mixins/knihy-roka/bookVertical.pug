@@ -30,7 +30,10 @@ mixin bookVertical(props = {})
           each val, key in authors
             if key >= 1
               span , 
-            a.link(href=`${val.url}`) #{val.name}
+            if val.url
+              a.link(href=`${val.url}`) #{val.name}
+            else
+              strong #{val.name}
         li
           span.text-color-grey #{publisher}
       a(data-toggle=`#u${id}` style="display:block;").link.text-medium.text-color-theme.mb-medium Viac o knihe

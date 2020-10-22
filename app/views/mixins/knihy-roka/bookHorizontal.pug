@@ -21,7 +21,7 @@ mixin bookHorizontal(props = {})
   .section.product-item.no-mrg-bottom
     .wrapper-main
       .row
-        .col--s-shrink
+        .col--4.col--s-shrink.text-left
           +product().no-mrg-bottom
             +productCover({
               cover: cover,
@@ -35,7 +35,10 @@ mixin bookHorizontal(props = {})
               each val, key in authors
                 if key >= 1
                   span , 
-                a.link(href=`${val.url}`) #{val.name}
+                if val.url
+                  a.link(href=`${val.url}`) #{val.name}
+                else
+                  strong #{val.name}
             li
               span.text-color-grey #{publisher}
           if showReview
