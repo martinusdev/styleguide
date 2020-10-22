@@ -1,0 +1,24 @@
+extends layouts/_default
+
+include ./mixins/knihy-roka/annotation
+include ./mixins/knihy-roka/annotationAuthor
+include ./mixins/knihy-roka/backgroundSection
+include ./mixins/knihy-roka/bookHorizontal
+include ./mixins/knihy-roka/bookVertical
+include ./mixins/knihy-roka/breadcrumbsKnihyRoka
+include ./mixins/knihy-roka/categoriesLinks
+include ./mixins/knihy-roka/categoryCarousel
+include ./mixins/knihy-roka/heroBanner
+include ./mixins/knihy-roka/introduction
+include ./mixins/knihy-roka/previousYears
+include ./mixins/knihy-roka/prispievatelkyCarousel
+
+block opts
+  - var pageTitle = 'Tipy vydavateľov';
+  - var backButton = false;
+
+block content
+  main
+    +breadcrumbsKnihyRoka
+    +heroBanner
+    +introduction
