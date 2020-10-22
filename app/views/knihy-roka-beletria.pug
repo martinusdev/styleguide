@@ -10,6 +10,7 @@ include ./mixins/knihy-roka/categoryCarousel
 include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
+include ./mixins/knihy-roka/bigHighlight
 
 block opts
   - var pageTitle = 'Beletria';
@@ -58,18 +59,10 @@ block content
       title: "Beletria",
     })
 
-    //- BIG HIGHLIGHT
-    section.section
-      .wrapper-main
-        .row.mb-large
-          .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
-            +backgroundSection({
-              imageUrl: "/images/knihy-roka/mood/03.jpg",
-            })
-          .col--l-6
-            +annotation({ annotation: beletria.u721103.review })
-            +annotationAuthor(beletria.u721103.recommender)
-            +bookHorizontal(beletria.u721103)
+    +bigHighlight({
+      imageUrl: "/images/knihy-roka/mood/03.jpg",
+      book: beletria.u721103,
+    })
 
     +riadok({
       books: [beletria.u707887, beletria.u711363, beletria.u698619],

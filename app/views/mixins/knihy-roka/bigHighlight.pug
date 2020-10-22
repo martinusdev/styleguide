@@ -1,0 +1,18 @@
+include ./backgroundSection
+include ./annotation
+include ./annotationAuthor
+include ./bookHorizontal
+
+mixin bigHighlight(props ={})
+  -
+    const { book, imageUrl } = props;
+
+  section.section
+      .wrapper-main
+        .row.mb-large
+          .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
+            +backgroundSection({ imageUrl })
+          .col--l-6
+            +annotation({ annotation: book.review })
+            +annotationAuthor(book.recommender)
+            +bookHorizontal(book)
