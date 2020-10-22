@@ -5,13 +5,11 @@ include ./mixins/knihy-roka/annotationAuthor
 include ./mixins/knihy-roka/backgroundSection
 include ./mixins/knihy-roka/bookHorizontal
 include ./mixins/knihy-roka/bookVertical
-include ./mixins/knihy-roka/breadcrumbsKnihyRoka
 include ./mixins/knihy-roka/categoriesLinks
 include ./mixins/knihy-roka/categoryCarousel
-include ./mixins/knihy-roka/heroBanner
-include ./mixins/knihy-roka/introduction
 include ./mixins/knihy-roka/previousYears
 include ./mixins/knihy-roka/prispievatelkyCarousel
+include ./mixins/knihy-roka/postheader
 
 block opts
   - var pageTitle = 'Populárno - náučná literatúra';
@@ -19,6 +17,4 @@ block opts
 
 block content
   main
-    +breadcrumbsKnihyRoka
-    +heroBanner
-    +introduction
+    +postheader
