@@ -9,6 +9,7 @@ include ./mixins/knihy-roka/categoriesLinks
 include ./mixins/knihy-roka/categoryCarousel
 include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
+include ./mixins/knihy-roka/riadok
 
 block opts
   - var pageTitle = 'Beletria';
@@ -70,16 +71,9 @@ block content
             +annotationAuthor(beletria.u721103.recommender)
             +bookHorizontal(beletria.u721103)
 
-    //- RIADOK
-    section.section
-      .wrapper-main
-        .row.mb-large
-          .col--m-4.align-self-bottom
-            +bookVertical(beletria.u707887)
-          .col--m-4.align-self-bottom
-            +bookVertical(beletria.u711363)
-          .col--m-4.align-self-bottom
-            +bookVertical(beletria.u698619)
+    +riadok({
+      books: [beletria.u707887, beletria.u711363, beletria.u698619],
+    })
 
     //- HIGHLIGHT
     section.section.section--secondary.mb-large
@@ -102,16 +96,9 @@ block content
     section.section.section--secondary.mb-large
       +bookHorizontal(beletria.u698929)
 
-    //- RIADOK
-    section.section
-      .wrapper-main
-        .row.mb-large
-          .col--m-4.align-self-bottom
-            +bookVertical(beletria.u725927)
-          .col--m-4.align-self-bottom
-            +bookVertical(beletria.u716559)
-          .col--m-4.align-self-bottom
-            +bookVertical(beletria.u721773)
+    +riadok({
+      books: [beletria.u725927, beletria.u716559, beletria.u721773],
+    })
 
     +heroBanner("children")
 
@@ -148,15 +135,8 @@ block content
             +bookHorizontal(deti1.u758407)
             +bookHorizontal(deti1.u777669)
 
-    //- RIADOK
-    section.section.section--secondary
-      .wrapper-main
-        .row.mb-large
-          .col--m-4.align-self-bottom
-            +bookVertical(deti1.u706587)
-          .col--m-4.align-self-bottom
-            +bookVertical(deti1.u801211)
-          .col--m-4.align-self-bottom
-            +bookVertical(deti1.u801215)
+    +riadok({
+      books: [deti1.u706587, deti1.u801211, deti1.u801215],
+    })
 
     +prefooter
