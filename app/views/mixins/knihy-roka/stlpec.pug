@@ -1,0 +1,19 @@
+include ./backgroundSection
+include ./annotation
+include ./annotationAuthor
+include ./bookHorizontal
+
+mixin stlpec(props ={})
+  -
+    const { books, imageUrl } = props;
+
+  section.section
+    .wrapper-main
+      .row.mb-large
+        .col--l-6
+          each book in books
+            +bookHorizontal(book)
+        .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
+          +backgroundSection({
+            imageUrl,
+          })

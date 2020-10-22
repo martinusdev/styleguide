@@ -12,6 +12,7 @@ include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/bigHighlight
 include ./mixins/knihy-roka/highlight
+include ./mixins/knihy-roka/stlpec
 
 block opts
   - var pageTitle = 'Beletria';
@@ -71,18 +72,10 @@ block content
 
     +highlight({book: beletria.u705403})
 
-    //- STĹPEC LEFT - 3
-    section.section
-      .wrapper-main
-        .row.mb-large
-          .col--l-6
-            +bookHorizontal(beletria.u721777)
-            +bookHorizontal(beletria.u668745)
-            +bookHorizontal(beletria.u658361)
-          .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
-            +backgroundSection({
-              imageUrl: "/images/knihy-roka/mood/02.jpg",
-            })
+    +stlpec({
+      books: [beletria.u721777, beletria.u668745, beletria.u658361],
+      imageUrl: "/images/knihy-roka/mood/02.jpg",
+    })
 
     +highlight({book: beletria.u698929})
 
@@ -113,17 +106,10 @@ block content
       title: "Vo veku 0-3 roky",
     })
 
-    //- STĹPEC LEFT - 2
-    section.section
-      .wrapper-main
-        .row.mb-large
-          .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
-            +backgroundSection({
-              imageUrl: "/images/knihy-roka/mood/08.jpg",
-            })
-          .col--l-6
-            +bookHorizontal(deti1.u758407)
-            +bookHorizontal(deti1.u777669)
+    +stlpec({
+      books: [deti1.u758407, deti1.u777669],
+      imageUrl: "/images/knihy-roka/mood/08.jpg",
+    })
 
     +riadok({
       books: [deti1.u706587, deti1.u801211, deti1.u801215],
