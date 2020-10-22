@@ -11,6 +11,7 @@ include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/bigHighlight
+include ./mixins/knihy-roka/highlight
 
 block opts
   - var pageTitle = 'Beletria';
@@ -68,9 +69,7 @@ block content
       books: [beletria.u707887, beletria.u711363, beletria.u698619],
     })
 
-    //- HIGHLIGHT
-    section.section.section--secondary.mb-large
-      +bookHorizontal(beletria.u705403)
+    +highlight({book: beletria.u705403})
 
     //- STĹPEC LEFT - 3
     section.section
@@ -85,9 +84,7 @@ block content
               imageUrl: "/images/knihy-roka/mood/02.jpg",
             })
 
-    //- HIGHLIGHT
-    section.section.section--secondary.mb-large
-      +bookHorizontal(beletria.u698929)
+    +highlight({book: beletria.u698929})
 
     +riadok({
       books: [beletria.u725927, beletria.u716559, beletria.u721773],

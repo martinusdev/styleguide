@@ -1,0 +1,11 @@
+include ./backgroundSection
+include ./annotation
+include ./annotationAuthor
+include ./bookHorizontal
+
+mixin highlight(props ={})
+  -
+    const { book } = props;
+
+  section.section.section--secondary.mb-large
+    +bookHorizontal(book)
