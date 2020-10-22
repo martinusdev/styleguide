@@ -15,9 +15,15 @@ mixin prispievatelkyCarousel(props = {})
       prevButton: '.carousel__btn--prev',
       breakpoints: {
         1024: {},
-        768: {},
-        640: {},
-        480: {}
+        768: {
+          slidesPerView: 3,
+        },
+        640: {
+          slidesPerView: 2,
+        },
+        480: {
+          slidesPerView: 1,
+        },
       },
     };
     swiperConfig = JSON.stringify(swiperConfig);
