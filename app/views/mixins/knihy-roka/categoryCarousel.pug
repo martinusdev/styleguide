@@ -2,12 +2,7 @@ include ./booksCarousel
 
 mixin categoryCarousel(props = {})
   -
-    const {
-      title = "Beletria",
-      description = "Beletria je umelecká próza, alebo trocha nepresne, krásna literatúra, je spoločný názov prozaických umeleckých diel. Sú to najmä román, novela, črta, poviedka a umelecká reportáž. Výrazom beletria sa v minulosti označovala celá umelecká literatúra.",
-      category = beletria,
-      className = 'beletria'
-    } = props;
+    const { title, description, category, className } = props;
 
   section(class=className).swiper-table
     .wrapper-main

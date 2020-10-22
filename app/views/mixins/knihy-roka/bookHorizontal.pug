@@ -6,22 +6,15 @@ include ./annotationAuthor
 mixin bookHorizontal(props = {})
   -
     const {
-      cover = "https://mrtns.eu/tovar/_l/721/l721103.jpg",
-      coverSize = "xlarge",
-      title = "Tajný príbeh",
-      authors = [
-        { name: "Donna Tartt", url: "https://www.martinus.sk/authors/donna-tartt" },
-      ],
-      publisher = "Slovart",
-      description = "Strhujúci debut autorky svetového bestsellera Stehlík. Úprimná spoveď hlavného hrdinu Richarda Papena, ktorý sa v spomienkach vracia do svojich študentských rokov na malej vermontskej univerzite, kde našiel taký životný štýl, po akom vždy túžil...",
-      review = "Len ťažko sa dá vypichnúť konkrétna vec, ktorá z tejto knihy robí veľký román. Príbeh, prostredie, postavy, štýl písania – všetko spolu hrá ako celok. Je to príbeh, ktorý vám pripomenie, že život nie je vôbec čierno-biely, buď-alebo, dobrý-zlý. A že to, čo je logické, ešte nemusí byť správne či morálne.",
-      showReview = false,
-      id = 721103,
-      recommender = {
-        name: "Ivana Hrenáková",
-        position: "projektová manažérka pre marketing",
-        bio: "Knihomoľ telom, dušou aj zamestnaním.",
-      },
+      cover,
+      coverSize,
+      title,
+      authors,
+      publisher,
+      description,
+      review,
+      id,
+      recommender,
     } = props;
 
   .section.product-item.no-mrg-bottom
