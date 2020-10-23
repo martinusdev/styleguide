@@ -5,4 +5,4 @@ mixin categoriesLinks(props = {})
   ul.tab-nav(data-tabs-container).sticky
     each link in links
       li(class=`${link.id} tab-nav__item`, data-tabs-item="data-tabs-item")
-        a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id}`) #{link.title}
+        a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}
