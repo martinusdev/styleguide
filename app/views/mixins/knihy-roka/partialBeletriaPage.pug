@@ -1,0 +1,57 @@
+mixin partialBeletriaPage
+  section.section#dospely
+    .wrapper-main
+      h2 Kategórie
+      +categoriesLinks({
+        links: [
+          {
+            title: "Beletria",
+            id: "beletria",
+          },
+          {
+            title: "Reportáž a literatúra faktu",
+            id: "reportaz-a-literatura-faktu",
+          },
+          {
+            title: "Populárno - náučná literatúra",
+            id: "popularno-naucna-literatura",
+          },
+          {
+            title: "Dizajn",
+            id: "dizajn",
+          },
+          {
+            title: "Tipy vydavateľov",
+            id: "tipy-vydavatelov",
+          },
+        ],
+      })
+  +categoryCarousel({
+    category: beletria,
+    className: "beletria",
+    description:
+      "Dobrý príbeh unesie našu myseľ a výkupné si pýta stránku po stránke.",
+    title: "Beletria",
+  })
+
+  +bigHighlight({
+    imageUrl: "/images/knihy-roka/mood/03.jpg",
+    book: beletria.u721103,
+  })
+
+  +riadok({
+    books: [beletria.u707887, beletria.u711363, beletria.u698619],
+  })
+
+  +highlight({book: beletria.u705403})
+
+  +stlpec({
+    books: [beletria.u721777, beletria.u668745, beletria.u658361],
+    imageUrl: "/images/knihy-roka/mood/02.jpg",
+  })
+
+  +highlight({book: beletria.u698929})
+
+  +riadok({
+    books: [beletria.u725927, beletria.u716559, beletria.u721773],
+  })
