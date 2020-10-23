@@ -8,6 +8,8 @@ include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/categoriesLinksAdult
+include ./mixins/knihy-roka/partialDetiPage
 
 block opts
   - var pageTitle = 'Tipy vydavateľov';
@@ -16,4 +18,27 @@ block opts
 block content
   main
     +postheader
+    +categoriesLinksAdult
+    +categoryCarousel({
+      category: vydavatelskeTipy,
+      className: "vydavatelskeTipy",
+      description:
+        "Dobrý príbeh unesie našu myseľ a výkupné si pýta stránku po stránke.",
+      title: "vydavatelskeTipy",
+    })
+    +bigHighlight({
+      imageUrl: "/images/knihy-roka/mood/03.jpg",
+      book: vydavatelskeTipy.u780545,
+    })
+    +riadok({
+      books: [vydavatelskeTipy.u274860, vydavatelskeTipy.u720979, vydavatelskeTipy.u698931],
+    })
+    +highlight({book: vydavatelskeTipy.u752403})
+    +stlpec({
+      books: [vydavatelskeTipy.u784399, vydavatelskeTipy.u776979],
+      imageUrl: "/images/knihy-roka/mood/02.jpg",
+    })
+    +riadok({
+      books: [vydavatelskeTipy.u780545, vydavatelskeTipy.u792963, vydavatelskeTipy.u784463],
+    })
     +prefooter

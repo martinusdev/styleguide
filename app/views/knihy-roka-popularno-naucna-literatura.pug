@@ -8,6 +8,8 @@ include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/categoriesLinksAdult
+include ./mixins/knihy-roka/partialDetiPage
 
 block opts
   - var pageTitle = 'Populárno - náučná literatúra';
@@ -16,4 +18,20 @@ block opts
 block content
   main
     +postheader
+    +categoriesLinksAdult
+    +categoryCarousel({
+      category: popularnoNaucna,
+      className: "popularnoNaucna",
+      description:
+        "Zvedavému čitateľovi nestačí vedieť, čo je za rohom, chce tiež zistiť, či ten roh náhodou nepatrí dobrej knižke.",
+      title: "Populárno - náučná literatúra",
+    })
+    +bigHighlight({
+      imageUrl: "/images/knihy-roka/mood/05.jpg",
+      book: popularnoNaucna.u763965,
+    })
+    +riadok({
+      books: [popularnoNaucna.u747255, popularnoNaucna.u657845, popularnoNaucna.u625107],
+    })
+    +partialDetiPage
     +prefooter

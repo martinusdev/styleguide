@@ -8,6 +8,8 @@ include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/categoriesLinksAdult
+include ./mixins/knihy-roka/partialDetiPage
 
 block opts
   - var pageTitle = 'Reportáž a literatúra faktu';
@@ -16,4 +18,21 @@ block opts
 block content
   main
     +postheader
+    +categoriesLinksAdult
+    +categoryCarousel({
+      category: literaturaFaktu,
+      className: "literaturaFaktu",
+      description:
+        "Svet je stvorený zo štyroch živlov, na jeho pochopenie však potrebujeme aj piaty - tlačiarenský atrament.",
+      title: "literaturaFaktu",
+    })
+    +stlpec({
+      books: [literaturaFaktu.u707869, literaturaFaktu.u718621, literaturaFaktu.u707863],
+      imageUrl: "/images/knihy-roka/mood/09.jpg",
+    })
+    +highlight({book: literaturaFaktu.u683245})
+    +riadok({
+      books: [literaturaFaktu.u712231, literaturaFaktu.u707877, literaturaFaktu.u737843],
+    })
+    +partialDetiPage
     +prefooter
