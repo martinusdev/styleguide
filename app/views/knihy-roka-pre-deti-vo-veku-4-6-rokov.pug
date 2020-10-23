@@ -8,6 +8,8 @@ include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/partialBeletriaPage
+include ./mixins/knihy-roka/categoriesLinksChild
 
 block opts
   - var pageTitle = 'Knihy pre deti vo veku 4-6 rokov';
@@ -16,4 +18,21 @@ block opts
 block content
   main
     +postheader
+    +partialBeletriaPage
+    +heroBanner("children")
+    +categoriesLinksChild
+    +categoryCarousel({
+      category: deti2,
+      className: "deti2",
+      description:
+        "Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.",
+      title: "Vo veku 4-6 rokov",
+    })
+    +stlpec({
+      books: [deti2.u737767, deti2.u765781],
+      imageUrl: "/images/knihy-roka/mood/09.jpg",
+    })
+    +riadok({
+      books: [deti2.u722315, deti2.u792583, deti2.u766497],
+    })
     +prefooter

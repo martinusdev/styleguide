@@ -8,6 +8,8 @@ include ./mixins/knihy-roka/postheader
 include ./mixins/knihy-roka/prefooter
 include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/partialBeletriaPage
+include ./mixins/knihy-roka/categoriesLinksChild
 
 block opts
   - var pageTitle = 'Knihy pre deti vo veku 7-10 rokov';
@@ -16,4 +18,21 @@ block opts
 block content
   main
     +postheader
+    +partialBeletriaPage
+    +heroBanner("children")
+    +categoriesLinksChild
+    +categoryCarousel({
+      category: deti3,
+      className: "deti3",
+      description:
+        "Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.",
+      title: "Vo veku 7-10 rokov",
+    })
+    +stlpec({
+      books: [deti3.u766237, deti3.u766237],
+      imageUrl: "/images/knihy-roka/mood/07.jpg",
+    })
+    +riadok({
+      books: [deti3.u724025, deti3.u755623, deti3.u752309],
+    })
     +prefooter
