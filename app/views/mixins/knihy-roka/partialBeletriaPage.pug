@@ -1,31 +1,14 @@
+include categoriesLinksAdult
+include categoryCarousel
+include bigHighlight
+include riadok
+include highlight
+include stlpec
+include highlight
+include riadok
+
 mixin partialBeletriaPage
-  section.section#dospely
-    .wrapper-main
-      h2 Kategórie
-      +categoriesLinks({
-        links: [
-          {
-            title: "Beletria",
-            id: "beletria",
-          },
-          {
-            title: "Reportáž a literatúra faktu",
-            id: "reportaz-a-literatura-faktu",
-          },
-          {
-            title: "Populárno - náučná literatúra",
-            id: "popularno-naucna-literatura",
-          },
-          {
-            title: "Dizajn",
-            id: "dizajn",
-          },
-          {
-            title: "Tipy vydavateľov",
-            id: "tipy-vydavatelov",
-          },
-        ],
-      })
+  +categoriesLinksAdult
   +categoryCarousel({
     category: beletria,
     className: "beletria",
