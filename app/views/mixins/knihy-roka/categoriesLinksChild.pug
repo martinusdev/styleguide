@@ -1,6 +1,6 @@
 include ./categoriesLinks
 
-mixin categoriesLinksChild
+mixin categoriesLinksChild(activeIndex)
   -
     const suffix = "#deti"
   section.section#deti
@@ -30,4 +30,5 @@ mixin categoriesLinksChild
             id: `knihy-pre-deti-vo-veku-14-16-rokov${suffix}`
           },
         ],
+        activeIndex,
     })
