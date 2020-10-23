@@ -15,5 +15,6 @@ mixin bigHighlight(props ={})
         .col--l-6
           if book.review
             +annotation({ annotation: book.review })
-          +annotationAuthor(book.recommender)
+          if book.recommender
+            +annotationAuthor(book.recommender)
           +bookHorizontal(book)
