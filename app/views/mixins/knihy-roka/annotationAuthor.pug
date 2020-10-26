@@ -3,7 +3,8 @@ mixin annotationAuthor(props = {})
     const { photo, name, link, position, bio } = props;
   .bar
     .bar__item(style="position: relative;")
-      .portrait.portrait--large(style=`background-image: url(${photo});`)
+      if photo
+        .portrait.portrait--large(style=`background-image: url(${photo});`)
       if link
         div(style="position: absolute; bottom: 0; right: 0;")
           img(src="images/content/logo-small.svg")
