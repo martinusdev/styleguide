@@ -1,11 +1,11 @@
 .hero-banner {
   padding: _get-rem(50px) 0;
-  background-image: url('/images/knihy-roka/hero-banner-adult.png');
+  background-image: url('/images/knihy-roka/hero-banner-adult-mobile.png');
   background-repeat: no-repeat;
   background-size: cover;
 
   &--children {
-    background-image: url('/images/knihy-roka/hero-banner-children.png');
+    background-image: url('/images/knihy-roka/hero-banner-children-mobile.png');
   }
 
   h1 {
@@ -64,24 +64,22 @@
   &__wrapper {
     padding: _get-rem(70px) 0;
   }
-
-  &__table {
-    background-image: url('/images/knihy-roka/table.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom 0 right 0;
-    padding-bottom: _get-rem(60px);
-
-    .swiper-container {
-      max-width: _get-rem(630px);
-    }
-  }
 }
 
 .background-section {
   background-repeat: no-repeat;
   background-size: contain;
   min-height: _get-rem(880px);
+  position: relative;
+
+  .plush-toy-button {
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 4px;
+    position: absolute;
+    top: 160px;
+    left: 320px;
+  }
 }
 
 .book-vertical {
@@ -191,9 +189,53 @@
   }
 }
 
+.btn--floating {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  background-color: _color(primary);
+  z-index: 1000;
+
+  &:hover,
+  &:focus {
+    background-color: _color(primary, 600);
+  }
+}
+
+.btn-dropdown--categories {
+  width: 100%;
+  padding-top: 8px;
+
+  .btn {
+    width: 100%;
+  }
+}
+
 @media (max-width: 1024px) {
   .background-section {
     min-height: _get-rem(680px);
+  }
+}
+
+@media (min-width: 768px) {
+  .swiper-table__table {
+    background-image: url('/images/knihy-roka/table.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom 0 right 0;
+    padding-bottom: _get-rem(60px);
+
+    .swiper-container {
+      max-width: _get-rem(630px);
+    }
+  }
+
+  .hero-banner {
+    background-image: url('/images/knihy-roka/hero-banner-adult.png');
+
+    &--children {
+      background-image: url('/images/knihy-roka/hero-banner-children.png');
+    }
   }
 }
 
@@ -213,6 +255,11 @@
 
   .background-section {
     min-height: _get-rem(480px);
+
+    .plush-toy-button {
+      top: 120px;
+      left: 190px;
+    }
   }
 }
 
@@ -225,5 +272,10 @@
 
   .background-section {
     min-height: _get-rem(400px);
+  }
+
+  .btn--floating {
+    right: 25px;
+    bottom: 25px;
   }
 }

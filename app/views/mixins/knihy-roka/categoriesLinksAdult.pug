@@ -4,28 +4,30 @@ mixin categoriesLinksAdult(activeIndex)
   section.section#dospely
     .wrapper-main
       h2 Kategórie
-      +categoriesLinks({
-        links: [
-          {
-            title: "Beletria",
-            id: "beletria#dospely",
-          },
-          {
-            title: "Reportáž a literatúra faktu",
-            id: "reportaz-a-literatura-faktu#dospely",
-          },
-          {
-            title: "Populárno - náučná literatúra",
-            id: "popularno-naucna-literatura#dospely",
-          },
-          {
-            title: "Dizajn",
-            id: "dizajn#dospely",
-          },
-          {
-            title: "Tipy vydavateľov",
-            id: "tipy-vydavatelov#dospely",
-          },
-        ],
-        activeIndex,
-    })
+    .sticky(data-sticky, data-scroll-offset=`{"0": ${header.size.default}, "768": ${header.size.m}}`)
+      .wrapper-main
+        +categoriesLinks({
+          links: [
+            {
+              title: "Beletria",
+              id: "beletria#dospely",
+            },
+            {
+              title: "Reportáž a literatúra faktu",
+              id: "reportaz-a-literatura-faktu#dospely",
+            },
+            {
+              title: "Populárno - náučná literatúra",
+              id: "popularno-naucna-literatura#dospely",
+            },
+            {
+              title: "Dizajn",
+              id: "dizajn#dospely",
+            },
+            {
+              title: "Tipy vydavateľov",
+              id: "tipy-vydavatelov#dospely",
+            },
+          ],
+          activeIndex,
+      })
