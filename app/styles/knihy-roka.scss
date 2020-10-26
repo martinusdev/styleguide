@@ -64,18 +64,6 @@
   &__wrapper {
     padding: _get-rem(70px) 0;
   }
-
-  &__table {
-    background-image: url('/images/knihy-roka/table.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: bottom 0 right 0;
-    padding-bottom: _get-rem(60px);
-
-    .swiper-container {
-      max-width: _get-rem(630px);
-    }
-  }
 }
 
 .background-section {
@@ -204,6 +192,20 @@
 @media (max-width: 1024px) {
   .background-section {
     min-height: _get-rem(680px);
+  }
+}
+
+@media (min-width: 768px) {
+  .swiper-table__table {
+    background-image: url('/images/knihy-roka/table.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom 0 right 0;
+    padding-bottom: _get-rem(60px);
+
+    .swiper-container {
+      max-width: _get-rem(630px);
+    }
   }
 }
 
