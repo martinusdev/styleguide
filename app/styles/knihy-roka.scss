@@ -189,6 +189,18 @@
   }
 }
 
+.btn--floating {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  background-color: _color(primary);
+
+  &:hover,
+  &:focus {
+    background-color: _color(primary, 600);
+  }
+}
+
 @media (max-width: 1024px) {
   .background-section {
     min-height: _get-rem(680px);
@@ -242,5 +254,10 @@
 
   .background-section {
     min-height: _get-rem(400px);
+  }
+
+  .btn--floating {
+    right: 25px;
+    bottom: 25px;
   }
 }
