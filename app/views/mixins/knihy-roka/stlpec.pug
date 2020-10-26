@@ -5,7 +5,7 @@ include ./bookHorizontal
 
 mixin stlpec(props ={})
   -
-    const { books, imageUrl } = props;
+    const { books, imageUrl, isPlushToy } = props;
 
   section.section
     .wrapper-main
@@ -16,4 +16,5 @@ mixin stlpec(props ={})
         .col--m-8.col--l-6.ofst--m-center.mb-medium.align-self-middle
           +backgroundSection({
             imageUrl,
+            isPlushToy
           })

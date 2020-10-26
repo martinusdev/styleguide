@@ -2,7 +2,22 @@ mixin categoriesLinks(props = {})
   -
     const { links, activeIndex } = props;
 
-  ul.tab-nav.sticky
+  ul.tab-nav.show-m
     each link, i in links
       li(class=`${link.id.replace(/#deti/,'-deti').replace(/#dospely/, '')} tab-nav__item ${i === activeIndex ? "is-active": ''}`)
         a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}
+  .btn-layout--horizontal.hide-m
+    .btn-dropdown.btn-dropdown--categories
+      button.btn.btn--ghost(
+        data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+        data-toggle-expand,
+        aria-haspopup="true"
+      )
+        each link, i in links
+          if i === activeIndex
+            span #{link.title}
+        +icon('chevron-down', 'icon-dropdown')
+      .dropdown(data-dropdown, data-toggle-expand)
+        .dropdown__wrap
+          each link, i in links
+            a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}

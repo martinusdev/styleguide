@@ -10,6 +10,7 @@ include ./mixins/knihy-roka/riadok
 include ./mixins/knihy-roka/stlpec
 include ./mixins/knihy-roka/categoriesLinksAdult
 include ./mixins/knihy-roka/partialDetiPage
+include ./mixins/knihy-roka/floatingButton
 
 block opts
   - var pageTitle = 'Tipy vydavateľov';
@@ -22,6 +23,7 @@ block content
     +checkoutModal(deti1[key])
 
   main
+    +floatingButton
     +postheader
     +categoriesLinksAdult(4)
     +categoryCarousel({

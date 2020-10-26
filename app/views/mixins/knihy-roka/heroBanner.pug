@@ -2,11 +2,13 @@ mixin heroBanner(type)
   if type === 'children'
     section.section.hero-banner.hero-banner--children
       .wrapper-main
-        h1
+        h1.show-m
           | Detské knihy
           br
           | roka 
           span.year 2020
+        h1.hide-m Detské knihy roka
+          .year 2020
         h3 Zoznam najlepších detských kníh, vybraných odborníčkami
   else
     section.section.hero-banner
