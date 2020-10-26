@@ -1,0 +1,43 @@
+extends layouts/_default
+
+include ./mixins/knihy-roka/bigHighlight
+include ./mixins/knihy-roka/categoriesLinks
+include ./mixins/knihy-roka/categoryCarousel
+include ./mixins/knihy-roka/highlight
+include ./mixins/knihy-roka/postheader
+include ./mixins/knihy-roka/prefooter
+include ./mixins/knihy-roka/riadok
+include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/partialBeletriaPage
+include ./mixins/knihy-roka/categoriesLinksChild
+
+block opts
+  - var pageTitle = 'Knihy pre deti vo veku 11-13 rokov';
+  - var backButton = false;
+
+block content
+  each val, key in beletria
+    +checkoutModal(beletria[key])
+  each val, key in deti4
+    +checkoutModal(deti4[key])
+
+  main
+    +postheader
+    +partialBeletriaPage
+    +heroBanner("children")
+    +categoriesLinksChild(3)
+    +categoryCarousel({
+      category: deti4,
+      className: "deti4",
+      description:
+        "Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.",
+      title: pageTitle,
+    })
+    +stlpec({
+      books: [deti4.u756507, deti4.u698941],
+      imageUrl: "/images/knihy-roka/mood/11.jpg",
+    })
+    +riadok({
+      books: [deti4.u746555, deti4.u762209, deti4.u744375],
+    })
+    +prefooter

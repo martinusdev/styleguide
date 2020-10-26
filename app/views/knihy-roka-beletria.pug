@@ -1,0 +1,28 @@
+extends layouts/_default
+
+include ./mixins/knihy-roka/bigHighlight
+include ./mixins/knihy-roka/categoriesLinksChild
+include ./mixins/knihy-roka/categoryCarousel
+include ./mixins/knihy-roka/highlight
+include ./mixins/knihy-roka/postheader
+include ./mixins/knihy-roka/prefooter
+include ./mixins/knihy-roka/riadok
+include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/partialBeletriaPage
+include ./mixins/knihy-roka/partialDetiPage
+
+block opts
+  - var pageTitle = 'Beletria';
+  - var backButton = false;
+
+block content
+  each val, key in beletria
+    +checkoutModal(beletria[key])
+  each val, key in deti1
+    +checkoutModal(deti1[key])
+
+  main
+    +postheader
+    +partialBeletriaPage
+    +partialDetiPage
+    +prefooter

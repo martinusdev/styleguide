@@ -1,0 +1,43 @@
+extends layouts/_default
+
+include ./mixins/knihy-roka/bigHighlight
+include ./mixins/knihy-roka/categoriesLinks
+include ./mixins/knihy-roka/categoryCarousel
+include ./mixins/knihy-roka/highlight
+include ./mixins/knihy-roka/postheader
+include ./mixins/knihy-roka/prefooter
+include ./mixins/knihy-roka/riadok
+include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/partialBeletriaPage
+include ./mixins/knihy-roka/categoriesLinksChild
+
+block opts
+  - var pageTitle = 'Knihy pre deti vo veku 14-16 rokov';
+  - var backButton = false;
+
+block content
+  each val, key in beletria
+    +checkoutModal(beletria[key])
+  each val, key in deti5
+    +checkoutModal(deti5[key])
+
+  main
+    +postheader
+    +partialBeletriaPage
+    +heroBanner("children")
+    +categoriesLinksChild(4)
+    +categoryCarousel({
+      category: deti5,
+      className: "deti5",
+      description:
+        "Literatúra pre mladých dospelých, alebo aj „young adult“ sa v posledných rokoch teší veľkej obľube. Pútavo spracované náročné témy, ale aj oddychové texty. Čo osloví vás?",
+      title: pageTitle,
+    })
+    +stlpec({
+      books: [deti5.u758243, deti5.u600731],
+      imageUrl: "/images/knihy-roka/mood/12.jpg",
+    })
+    +riadok({
+      books: [deti5.u742153, deti5.u721085, deti5.u657817],
+    })
+    +prefooter

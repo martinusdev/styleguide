@@ -1,0 +1,50 @@
+extends layouts/_default
+
+include ./mixins/knihy-roka/bigHighlight
+include ./mixins/knihy-roka/categoriesLinks
+include ./mixins/knihy-roka/categoryCarousel
+include ./mixins/knihy-roka/highlight
+include ./mixins/knihy-roka/postheader
+include ./mixins/knihy-roka/prefooter
+include ./mixins/knihy-roka/riadok
+include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/categoriesLinksAdult
+include ./mixins/knihy-roka/partialDetiPage
+
+block opts
+  - var pageTitle = 'Tipy vydavateľov';
+  - var backButton = false;
+
+block content
+  each val, key in vydavatelskeTipy
+    +checkoutModal(vydavatelskeTipy[key])
+  each val, key in deti1
+    +checkoutModal(deti1[key])
+
+  main
+    +postheader
+    +categoriesLinksAdult(4)
+    +categoryCarousel({
+      category: vydavatelskeTipy,
+      className: "vydavatelskeTipy",
+      description:
+        "V roku 2020 sa rekordné vydanie rekordného množstva titulov posunulo smerom k Vianociam. Opýtali sme sa preto priamo vydavateľov, ktoré knižky plánované do konca roku si podľa nich nesmú nechať ujsť. Toto je ich výber, ktorý sa isto nerodil ľahko!",
+      title: pageTitle,
+    })
+    +bigHighlight({
+      imageUrl: "/images/knihy-roka/mood/18.jpg",
+      book: vydavatelskeTipy.u780545,
+    })
+    +riadok({
+      books: [vydavatelskeTipy.u274860, vydavatelskeTipy.u720979, vydavatelskeTipy.u698931],
+    })
+    +highlight({book: vydavatelskeTipy.u752403})
+    +stlpec({
+      books: [vydavatelskeTipy.u784399, vydavatelskeTipy.u776979],
+      imageUrl: "/images/knihy-roka/mood/16.jpg",
+    })
+    +riadok({
+      books: [vydavatelskeTipy.u780545, vydavatelskeTipy.u792963, vydavatelskeTipy.u784463],
+    })
+    +partialDetiPage
+    +prefooter

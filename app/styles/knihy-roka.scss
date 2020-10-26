@@ -19,11 +19,50 @@
 }
 
 .swiper-table {
-  background-color: #956daf;
   color: #fff;
 
+  &.beletria {
+    background-color: _color(violet, 500);
+  }
+
+  &.deti1 {
+    background-color: _color(teal, 500);
+  }
+
+  &.deti2 {
+    background-color: _color(orange, 500);
+  }
+
+  &.deti3 {
+    background-color: _color(brown, 500);
+  }
+
+  &.deti4 {
+    background-color: _color(violet, 500);
+  }
+
+  &.deti5 {
+    background-color: _color(orange, 500);
+  }
+
+  &.dizajn {
+    background-color: _color(grey, 800);
+  }
+
+  &.literaturaFaktu {
+    background-color: _color(orange, 500);
+  }
+
+  &.popularnoNaucna {
+    background-color: _color(blue, 500);
+  }
+
+  &.vydavatelskeTipy {
+    background-color: _color(violet, 500);
+  }
+
   &__wrapper {
-    padding: 70px 0;
+    padding: _get-rem(70px) 0;
   }
 
   &__table {
@@ -31,22 +70,18 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom 0 right 0;
-    padding-bottom: 60px;
+    padding-bottom: _get-rem(60px);
 
     .swiper-container {
-      max-width: 630px;
+      max-width: _get-rem(630px);
     }
   }
 }
 
 .background-section {
   background-repeat: no-repeat;
-  background-size: cover;
-  min-height: 880px;
-
-  .section-title__item:first-child {
-    display: none;
-  }
+  background-size: contain;
+  min-height: _get-rem(880px);
 }
 
 .book-vertical {
@@ -62,6 +97,69 @@
       border-color: #956daf;
     }
   }
+
+  .reportaz-a-literatura-faktu {
+    &.is-active > .tab-nav__content--link {
+      color: _color(orange, 500);
+      border-color: _color(orange, 500);
+    }
+  }
+
+  .popularno-naucna-literatura {
+    &.is-active > .tab-nav__content--link {
+      color: _color(blue, 500);
+      border-color: _color(blue, 500);
+    }
+  }
+
+  .dizajn {
+    &.is-active > .tab-nav__content--link {
+      color: _color(grey, 800);
+      border-color: _color(grey, 800);
+    }
+  }
+
+  .tipy-vydavatelov {
+    &.is-active > .tab-nav__content--link {
+      color: _color(violet, 500);
+      border-color: _color(violet, 500);
+    }
+  }
+
+  .beletria-deti {
+    &.is-active > .tab-nav__content--link {
+      color: _color(teal, 500);
+      border-color: _color(teal, 500);
+    }
+  }
+
+  .knihy-pre-deti-vo-veku-4-6-rokov-deti {
+    &.is-active > .tab-nav__content--link {
+      color: _color(orange, 500);
+      border-color: _color(orange, 500);
+    }
+  }
+
+  .knihy-pre-deti-vo-veku-7-10-rokov-deti {
+    &.is-active > .tab-nav__content--link {
+      color: _color(brown, 500);
+      border-color: _color(brown, 500);
+    }
+  }
+
+  .knihy-pre-deti-vo-veku-11-13-rokov-deti {
+    &.is-active > .tab-nav__content--link {
+      color: _color(violet, 500);
+      border-color: _color(violet, 500);
+    }
+  }
+
+  .knihy-pre-deti-vo-veku-14-16-rokov-deti {
+    &.is-active > .tab-nav__content--link {
+      color: _color(orange, 500);
+      border-color: _color(orange, 500);
+    }
+  }
 }
 
 .portrait--center {
@@ -71,4 +169,61 @@
 
 .swiper--prispievatelky .swiper-wrapper {
   align-items: flex-start;
+}
+
+.card--annotation {
+  background-color: _color(info, 100);
+  border-bottom-left-radius: 0;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: _get-rem(10px);
+    left: _get-rem(10px);
+    width: 0;
+    height: 0;
+    border: _get-rem(15px) solid transparent;
+    border-top-color: _color(info, 100);
+    border-bottom: 0;
+    border-left: 0;
+    margin-left: -10px;
+    margin-bottom: -20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .background-section {
+    min-height: _get-rem(680px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: _get-rem(40px) 0;
+
+    h1 {
+      font-size: _get-rem(30px);
+      margin-bottom: _get-rem(20px);
+    }
+
+    .year {
+      font-size: _get-rem(100px);
+    }
+  }
+
+  .background-section {
+    min-height: _get-rem(480px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-banner {
+    .year {
+      font-size: inherit;
+    }
+  }
+
+  .background-section {
+    min-height: _get-rem(400px);
+  }
 }

@@ -1,8 +1,6 @@
 mixin backgroundSection(props = {})
   -
-    const {
-      imageUrl = "background-image: url('/images/knihy-roka/beletria-01.png')"
-    } = props;
+    const { imageUrl } = props;
 
-  .background-section(style=imageUrl)
+  .background-section(style=`background-image: url('${imageUrl}');`)
     .wrapper-main.section-title-wrapper
