@@ -16,6 +16,11 @@ block opts
   - var backButton = false;
 
 block content
+  each val, key in popularnoNaucna
+    +checkoutModal(popularnoNaucna[key])
+  each val, key in deti1
+    +checkoutModal(deti1[key])
+
   main
     +postheader
     +categoriesLinksAdult(2)

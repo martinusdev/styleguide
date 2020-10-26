@@ -16,6 +16,11 @@ block opts
   - var backButton = false;
 
 block content
+  each val, key in beletria
+    +checkoutModal(beletria[key])
+  each val, key in deti5
+    +checkoutModal(deti5[key])
+
   main
     +postheader
     +partialBeletriaPage
