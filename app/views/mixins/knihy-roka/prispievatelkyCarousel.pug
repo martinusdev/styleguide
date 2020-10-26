@@ -1,0 +1,39 @@
+include ../product
+include ../icon
+include ../booksCarouselRecommended
+include ./checkoutModal
+include ./bookCover
+
+mixin prispievatelkyCarousel(props = {})
+  -
+    const {} = props;
+
+    var swiperConfig = {
+      slidesPerView: 4,
+      slidesPerGroup: 2,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+      breakpoints: {
+        1024: {},
+        768: {},
+        640: {},
+        480: {}
+      },
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel&attributes(attributes)
+    .swiper-container.swiper-container--fullwidth.swiper--prispievatelky(data-swiper-options=swiperConfig)
+      +booksCarouselSwiperWrapper({})(data-equal-columns)
+        each val in prispievatelky
+          .swiper-slide.carousel__product-detail
+            .text-center
+              .portrait.portrait--large.portrait--center.mb-medium(style=`background-image: url(${val.photo});`)
+              p.mb-small
+                strong #{val.name}
+              p.mb-small.text-color-grey #{val.category}
+              p #{val.bio}
+
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+        +icon('arrow-left').icon--medium
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+        +icon('arrow-right').icon--medium

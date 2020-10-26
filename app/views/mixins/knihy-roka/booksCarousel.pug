@@ -1,0 +1,34 @@
+include ../product
+include ../icon
+include ../booksCarouselRecommended
+include ./checkoutModal
+include ./bookCover
+
+mixin booksCarousel(props = {})
+  -
+    const {} = props;
+
+    var swiperConfig = {
+      slidesPerView: 'auto',
+      slidesPerGroup: 2,
+      nextButton: '.carousel__btn--next',
+      prevButton: '.carousel__btn--prev',
+      breakpoints: {
+        1024: {},
+        768: {},
+        640: {},
+        480: {}
+      },
+    };
+    swiperConfig = JSON.stringify(swiperConfig);
+  .carousel&attributes(attributes)
+    .swiper-container.swiper-container--fullwidth(data-swiper-options=swiperConfig)
+      +booksCarouselSwiperWrapper({})(data-equal-columns)
+        each val, key in beletria
+          .swiper-slide.carousel__product-detail
+            +bookCover(beletria[key])
+
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+        +icon('arrow-left').icon--medium
+      button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+        +icon('arrow-right').icon--medium

@@ -1,0 +1,36 @@
+include ../product
+include ../icon
+
+mixin bookVertical(props = {})
+  -
+    const {
+      cover = "https://mrtns.eu/tovar/_l/658/l658361.jpg",
+      coverSize = "xlarge",
+      title = "Normálni ľudia",
+      authors = { name: "Sally Rooney", url: null },
+      publisher = "Lindeni",
+      description = "Tento román sprevádzajú zmiešané reakcie, pretože niečím vyrušuje... V mnohých ohľadoch je ako mozaika. Počas čítania sa vám môže zdať, že sa tam vlastne veľa nedeje, po poslednej bodke sa však pred vami zjaví celý obraz. Je to romanca, spoločenský román aj dráma z prostredia rodiny. Ale predovšetkým je to skvelá knižka o dvoch dušiach, ktoré k sebe patria.",
+      id = 658361,
+      recommender = "Ivana Hrenáková",
+      recommenderUrl = null,
+    } = props;
+
+  .section.product-item.no-mrg-bottom.book-vertical
+    .wrapper-main.text-center
+      +product().no-mrg-bottom
+        +productCover({
+          cover: cover,
+          size: 'xlarge'
+        }).mb-medium.text-center
+      h2(data-toggle=`#u${id}`).text-bold.mb-small
+        a.link.link--product.text-bold #{title}
+      ul.list--dot.no-pad
+        li
+          each val, key in authors
+            if key >= 1
+              span , 
+            a.link(href=`${val.url}`) #{val.name}
+        li
+          span.text-color-grey #{publisher}
+      a(data-toggle=`#u${id}`).link.text-medium.text-color-theme Viac o knihe
+        +icon('arrow-right', 'icon--small')

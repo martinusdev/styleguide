@@ -9,3 +9,14 @@
 .list__item > * {
   flex-shrink: 1;
 }
+
+.sticky {
+  position: sticky;
+  top: map-get($header-height, m);
+  z-index: $z-index-sticky;
+  background-color: #fff;
+}
+
+html {
+  scroll-behavior: smooth;
+}

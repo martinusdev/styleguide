@@ -1,0 +1,74 @@
+.hero-banner {
+  padding: _get-rem(50px) 0;
+  background-image: url('/images/knihy-roka/hero-banner-adult.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &--children {
+    background-image: url('/images/knihy-roka/hero-banner-children.png');
+  }
+
+  h1 {
+    font-size: _get-rem(80px);
+    margin-bottom: _get-rem(30px);
+  }
+
+  .year {
+    font-size: _get-rem(120px);
+  }
+}
+
+.swiper-table {
+  background-color: #956daf;
+  color: #fff;
+
+  &__wrapper {
+    padding: 70px 0;
+  }
+
+  &__table {
+    background-image: url('/images/knihy-roka/table.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom 0 right 0;
+    padding-bottom: 60px;
+
+    .swiper-container {
+      max-width: 630px;
+    }
+  }
+}
+
+.background-section {
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 880px;
+
+  .section-title__item:first-child {
+    display: none;
+  }
+}
+
+.book-vertical {
+  .thumbnail--book {
+    margin: 0 auto;
+  }
+}
+// stylelint-disable selector-max-compound-selectors
+.tab-nav {
+  .beletria {
+    &.is-active > .tab-nav__content--link {
+      color: #956daf;
+      border-color: #956daf;
+    }
+  }
+}
+
+.portrait--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper--prispievatelky .swiper-wrapper {
+  align-items: flex-start;
+}
