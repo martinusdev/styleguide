@@ -1,31 +1,8 @@
 mixin categoriesLinks(props = {})
   -
-    const {
-      links = [
-        {
-          href: "Beletria",
-          color: "beletria"
-        },
-        {
-          href: "Reportáž a literatúra faktu",
-          color: "reportaz-a-literatura-faktu",
-        },
-        {
-          href: "Populárno - náučná literatúra",
-          color: "popularno-naucna-literatura",
-        },
-        {
-          href: "Dizajn",
-          color: "dizajn"
-        },
-        {
-          href: "Tipy vydavateľov",
-          color: "tipy-vydavatelov"
-        },
-      ],
-    } = props;
+    const { links, activeIndex } = props;
 
-  ul.tab-nav(data-tabs-container).sticky
-    each link in links
-      li(class=`${link.color} tab-nav__item`, data-tabs-item="data-tabs-item")
-        a.tab-nav__content.tab-nav__content--link #{link.href}
+  ul.tab-nav.sticky
+    each link, i in links
+      li(class=`${link.id.replace(/#deti/,'-deti').replace(/#dospely/, '')} tab-nav__item ${i === activeIndex ? "is-active": ''}`)
+        a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}

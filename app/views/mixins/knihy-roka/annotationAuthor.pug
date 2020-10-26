@@ -1,20 +1,17 @@
 mixin annotationAuthor(props = {})
   -
-    const {
-      authorPhoto = "https://www.martinus.sk/data/autori/img/a1666.jpg",
-      authorName = "Dominika",
-      authorLink = "#",
-      authorProfession = "kníhkupkyňa, Obchodná ulica, Bratislava",
-      authorBio = "Sem mozme napisat nieco zaujimave, co nam povie, ze osoba ktora knihy vyberala, ma pravdu.",
-    } = props;
-
+    const { photo, name, link, position, bio } = props;
   .bar
     .bar__item(style="position: relative;")
-      .portrait.portrait--large(style=`background-image: url(${authorPhoto});`)
-      div(style="position: absolute; bottom: 0; right: 0;")
-        img(src="images/content/logo-small.svg")
+      if photo
+        .portrait.portrait--large(style=`background-image: url(${photo});`)
+      if link
+        div(style="position: absolute; bottom: 0; right: 0;")
+          img(src="images/content/logo-small.svg")
     .bar__item.bar__item--fill
-      a(href=`${authorLink}`, style=`${sLink}`).link #{authorName}
+      if link
+        a(href=`${link}`).link #{name}
+      else
+        strong #{name}
       br
-      strong.text-color-grey #{authorProfession}
-      p #{authorBio}
+      strong.text-color-grey #{position}

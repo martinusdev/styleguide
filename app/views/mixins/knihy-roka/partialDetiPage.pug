@@ -1,0 +1,23 @@
+include heroBanner
+include categoriesLinksChild
+include categoryCarousel
+include stlpec
+include riadok
+
+mixin partialDetiPage
+  +heroBanner("children")
+  +categoriesLinksChild(0)
+  +categoryCarousel({
+    category: deti1,
+    className: "deti1",
+    description:
+      "Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.",
+    title: "Knihy pre deti vo veku 0-3 roky",
+  })
+  +stlpec({
+    books: [deti1.u758407, deti1.u777669],
+    imageUrl: "/images/knihy-roka/mood/08.jpg",
+  })
+  +riadok({
+    books: [deti1.u706587, deti1.u801211, deti1.u801215],
+  })
