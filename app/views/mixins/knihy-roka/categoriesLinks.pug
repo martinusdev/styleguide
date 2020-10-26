@@ -2,7 +2,7 @@ mixin categoriesLinks(props = {})
   -
     const { links, activeIndex } = props;
 
-  ul.tab-nav.sticky
+  ul.tab-nav
     each link, i in links
       li(class=`${link.id.replace(/#deti/,'-deti').replace(/#dospely/, '')} tab-nav__item ${i === activeIndex ? "is-active": ''}`)
         a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}
