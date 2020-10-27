@@ -15,7 +15,7 @@ mixin categoriesLinks(props = {})
       )
         each link, i in links
           if i === activeIndex
-            span #{link.title}
+            span.text-ellipsis #{link.title}
         +icon('chevron-down', 'icon-dropdown')
       .dropdown(data-dropdown, data-toggle-expand)
         .dropdown__wrap
