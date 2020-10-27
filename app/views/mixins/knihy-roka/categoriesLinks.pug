@@ -7,7 +7,7 @@ mixin categoriesLinks(props = {})
       li(class=`${link.id.replace(/#deti/,'-deti').replace(/#dospely/, '')} tab-nav__item ${i === activeIndex ? "is-active": ''}`)
         a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}
   .btn-layout--horizontal.hide-m
-    .btn-dropdown.btn-dropdown--categories
+    .btn-dropdown.btn-dropdown--categories.no-mrg-bottom
       button.btn.btn--ghost(
         data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
         data-toggle-expand,
