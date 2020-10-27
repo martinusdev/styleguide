@@ -3,10 +3,11 @@ include ./categoriesLinks
 mixin categoriesLinksChild(activeIndex)
   -
     const suffix = "#deti"
-  section.section#deti
+  section.section
     .wrapper-main
       .mb-large
       h2 Kategórie pre deti
+    #deti(style="padding-top: 60px; margin-top: -60px;")
     .sticky(data-sticky, data-scroll-offset=`{"0": ${header.size.default}, "768": ${header.size.m}}`)
       .wrapper-main
         +categoriesLinks({
