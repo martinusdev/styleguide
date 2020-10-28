@@ -1,0 +1,23 @@
+include categoryCarousel
+include riadok
+include highlight
+include stlpec
+
+mixin partialPopularnoNaucnaPage
+  block opts
+    - var pageTitle = 'Populárno - náučná literatúra';
+
+  +categoryCarousel({
+    category: popularnoNaucna,
+    className: "popularnoNaucna",
+    description:
+            "Zvedavému čitateľovi nestačí vedieť, čo je za rohom, chce tiež zistiť, či ten roh náhodou nepatrí dobrej knižke.",
+    title: pageTitle,
+  })
+  +bigHighlight({
+    imageUrl: "https://i1.martinus.sk/assets/martinus/lb/images/knihy-roka/mood/06.jpg",
+    book: popularnoNaucna.u763965,
+  })
+  +riadok({
+    books: [popularnoNaucna.u747255, popularnoNaucna.u657845, popularnoNaucna.u625107],
+  })

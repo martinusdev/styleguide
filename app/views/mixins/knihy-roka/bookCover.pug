@@ -1,15 +1,19 @@
 mixin bookCover(props = {})
   -
-    const { cover, type = "book", size = "large", clickable = true, id } = props;
+    const { cover, type = "book", size = "large", clickable = true, review, recommender, id } = props;
 
     const tag = 'a';
 
+  //data-toggle= `#u${id}`
   .product__cover&attributes(attributes)
     #{tag}.thumbnail(
-      class= type ? `thumbnail--${type}` : '',
-      class= size ? `thumbnail--${size}` : '',
+      class= type ? `thumbnail--${type}`: '',
+      class= size ? `thumbnail--${size}`: '',
       class= clickable ? `thumbnail--clickable`: '',
-      data-toggle= `#u${id}`
+      class='mj-boty2020-modal'
+      href=`https://www.martinus.sk?uItem=${id}`,
+      data-review=review,
+      data-recommender=JSON.stringify(recommender)
     )
       .thumbnail__img-wrap
         img(src=`${assetsPrefix}${cover}`).img

@@ -1,0 +1,22 @@
+include categoryCarousel
+include stlpec
+include riadok
+
+mixin partialDeti4Page
+  block opts
+    - var pageTitle = 'Knihy pre deti vo veku 11-13 rokov';
+
+  +categoryCarousel({
+    category: deti4,
+    className: "deti4",
+    description:
+            "Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.",
+    title: pageTitle,
+  })
+  +stlpec({
+    books: [deti4.u756507, deti4.u698941],
+    imageUrl: "https://i1.martinus.sk/assets/martinus/lb/images/knihy-roka/mood/11.jpg",
+  })
+  +riadok({
+    books: [deti4.u746555, deti4.u762209, deti4.u744375],
+  })

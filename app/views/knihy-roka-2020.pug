@@ -1,0 +1,57 @@
+extends layouts/_default
+
+include ./mixins/knihy-roka/bigHighlight
+include ./mixins/knihy-roka/categoriesLinksChild
+include ./mixins/knihy-roka/categoryCarousel
+include ./mixins/knihy-roka/highlight
+include ./mixins/knihy-roka/postheader
+include ./mixins/knihy-roka/prefooter
+include ./mixins/knihy-roka/riadok
+include ./mixins/knihy-roka/stlpec
+include ./mixins/knihy-roka/partialBeletriaPage
+include ./mixins/knihy-roka/partialReportazPage
+include ./mixins/knihy-roka/partialPopularnoNaucnaPage
+include ./mixins/knihy-roka/partialDizajnPage
+include ./mixins/knihy-roka/partialTipyVydavatelovPage
+include ./mixins/knihy-roka/partialDetiPage
+include ./mixins/knihy-roka/partialDeti2Page
+include ./mixins/knihy-roka/partialDeti3Page
+include ./mixins/knihy-roka/partialDeti4Page
+include ./mixins/knihy-roka/partialDeti5Page
+include ./mixins/knihy-roka/floatingButton
+
+block opts
+  - var pageTitle = 'Beletria';
+  - var backButton = false;
+
+block content
+
+  main
+    +floatingButton
+    +postheader
+    +categoriesLinksAdult(0)
+    article.tabs
+      section.tab#beletria-dospeli
+        +partialBeletriaPage
+      section.tab#reportaz-a-literatura-faktu-dospeli
+        +partialReportazPage
+      section.tab#popularno-naucna-literatura-dospeli
+        +partialPopularnoNaucnaPage
+      section.tab#dizajn-dospeli
+        +partialDizajnPage
+      section.tab#tipy-vydavatelov-dospeli
+        +partialTipyVydavatelovPage
+    +heroBanner("children")
+    +categoriesLinksChild(0)
+    article.tabs
+      section.tab#beletria-deti
+        +partialDetiPage
+      section.tab#knihy-pre-deti-vo-veku-4-6-rokov-deti
+        +partialDeti2Page
+      section.tab#knihy-pre-deti-vo-veku-7-10-rokov-deti
+        +partialDeti3Page
+      section.tab#knihy-pre-deti-vo-veku-11-13-rokov-deti
+        +partialDeti4Page
+      section.tab#knihy-pre-deti-vo-veku-14-16-rokov-deti
+        +partialDeti5Page
+    +prefooter
