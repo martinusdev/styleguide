@@ -1,0 +1,22 @@
+include categoryCarousel
+include stlpec
+include riadok
+
+mixin partialDeti2Page
+  block opts
+    - var pageTitle = 'Knihy pre deti vo veku 4-6 rokov';
+
+  +categoryCarousel({
+    category: deti2,
+    className: "deti2",
+    description:
+            "Dobrá detská knižka otvára bránu k zvedavosti, fantázii a múdrosti. Nepoteší len dieťa, ale zaujme aj dospelého.",
+    title: pageTitle,
+  })
+  +stlpec({
+    books: [deti2.u737767, deti2.u765781],
+    imageUrl: "https://i1.martinus.sk/assets/martinus/lb/images/knihy-roka/mood/09.jpg",
+  })
+  +riadok({
+    books: [deti2.u722315, deti2.u792583, deti2.u766497],
+  })

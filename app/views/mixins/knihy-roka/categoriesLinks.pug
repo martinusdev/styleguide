@@ -2,10 +2,10 @@ mixin categoriesLinks(props = {})
   -
     const { links, activeIndex } = props;
 
-  ul.tab-nav.show-m
+  ul.tab-nav.show-m(data-tabs-container)
     each link, i in links
-      li(class=`${link.id.replace(/#deti/,'-deti').replace(/#dospely/, '')} tab-nav__item ${i === activeIndex ? "is-active": ''}`)
-        a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}
+      li(data-tabs-item, class=`${link.id.replace(/#deti/,'-deti').replace(/#dospely/, '')} tab-nav__item ${i === activeIndex ? "is-active": ''}`)
+        a.tab-nav__content.tab-nav__content--link(href=`${link.id}`, role='tab') #{link.title}
   .btn-layout--horizontal.hide-m
     .btn-dropdown.btn-dropdown--categories.no-mrg-bottom
       button.btn.btn--ghost(

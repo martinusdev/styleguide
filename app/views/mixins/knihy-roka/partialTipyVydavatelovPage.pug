@@ -1,0 +1,32 @@
+include bigHighlight
+include categoryCarousel
+include highlight
+include riadok
+include stlpec
+
+mixin partialTipyVydavatelovPage
+  block opts
+    - var pageTitle = 'Tipy vydavateľov';
+
+  +categoryCarousel({
+    category: vydavatelskeTipy,
+    className: "vydavatelskeTipy",
+    description:
+            "V roku 2020 sa rekordné vydanie rekordného množstva titulov posunulo smerom k Vianociam. Opýtali sme sa preto priamo vydavateľov, ktoré knižky plánované do konca roku si podľa nich nesmú nechať ujsť. Toto je ich výber, ktorý sa isto nerodil ľahko!",
+    title: pageTitle,
+  })
+  +bigHighlight({
+    imageUrl: "https://i1.martinus.sk/assets/martinus/lb/images/knihy-roka/mood/18.jpg",
+    book: vydavatelskeTipy.u780545,
+  })
+  +riadok({
+    books: [vydavatelskeTipy.u274860, vydavatelskeTipy.u720979, vydavatelskeTipy.u698931],
+  })
+  +highlight({ book: vydavatelskeTipy.u752403 })
+  +stlpec({
+    books: [vydavatelskeTipy.u784399, vydavatelskeTipy.u776979],
+    imageUrl: "https://i1.martinus.sk/assets/martinus/lb/images/knihy-roka/mood/16.jpg",
+  })
+  +riadok({
+    books: [vydavatelskeTipy.u780545, vydavatelskeTipy.u792963, vydavatelskeTipy.u784463],
+  })
