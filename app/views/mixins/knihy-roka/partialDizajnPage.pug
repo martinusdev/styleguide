@@ -17,3 +17,6 @@ mixin partialDizajnPage
     books: [dizajn.u756133, dizajn.u713533, dizajn.u772075],
   })
   +highlight({ book: dizajn.u801185 })
+
+  each val, key in dizajn
+    +modalContent(dizajn[key])

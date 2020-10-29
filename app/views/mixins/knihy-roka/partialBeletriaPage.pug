@@ -3,6 +3,7 @@ include categoryCarousel
 include bigHighlight
 include riadok
 include highlight
+include modalContent
 include stlpec
 
 mixin partialBeletriaPage
@@ -35,3 +36,6 @@ mixin partialBeletriaPage
   +riadok({
     books: [beletria.u725927, beletria.u716559, beletria.u721773],
   })
+
+  each val, key in beletria
+    +modalContent(beletria[key])
