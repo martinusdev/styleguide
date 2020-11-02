@@ -20,4 +20,4 @@ mixin categoriesLinks(props = {})
       .dropdown(data-dropdown, data-toggle-expand)
         .dropdown__wrap
           each link, i in links
-            a.tab-nav__content.tab-nav__content--link(href=`knihy-roka-${link.id.replace(/knihy-/, '')}`) #{link.title}
+            a.tab-nav__content.tab-nav__content--link(href=`${link.id}`, role='tab') #{link.title}

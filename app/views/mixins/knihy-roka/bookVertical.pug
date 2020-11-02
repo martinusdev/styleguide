@@ -26,8 +26,7 @@ mixin bookVertical(props = {})
       h2.text-bold.mb-small
         a.link.link--product.text-bold.mj-boty2020-modal(
           href=`https://www.martinus.sk/?uItem=${id}`,
-          data-review=review,
-          data-recommender=JSON.stringify(recommender)
+          data-target=`#u${id}`
           ) #{title}
       ul.list--dot.no-pad.mb-small
         li
@@ -43,7 +42,6 @@ mixin bookVertical(props = {})
       a(
         href=`https://www.martinus.sk/?uItem=${id}`,
         style="display:block;",
-        data-review=review,
-        data-recommender=JSON.stringify(recommender)
+        data-target=`#u${id}`
         ).link.text-medium.text-color-theme.mb-medium.mj-boty2020-modal Viac o knihe
         +icon('arrow-right', 'icon--small')

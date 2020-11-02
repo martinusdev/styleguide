@@ -2,6 +2,7 @@ include categoryCarousel
 include riadok
 include highlight
 include stlpec
+include modalContent
 
 mixin partialReportazPage
   block opts
@@ -22,3 +23,6 @@ mixin partialReportazPage
   +riadok({
     books: [literaturaFaktu.u712231, literaturaFaktu.u707877, literaturaFaktu.u737843],
   })
+
+  each val, key in literaturaFaktu
+    +modalContent(literaturaFaktu[key])

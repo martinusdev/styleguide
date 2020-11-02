@@ -3,6 +3,7 @@ include categoryCarousel
 include highlight
 include riadok
 include stlpec
+include modalContent
 
 mixin partialTipyVydavatelovPage
   block opts
@@ -30,3 +31,6 @@ mixin partialTipyVydavatelovPage
   +riadok({
     books: [vydavatelskeTipy.u780545, vydavatelskeTipy.u792963, vydavatelskeTipy.u784463],
   })
+
+  each val, key in vydavatelskeTipy
+    +modalContent(vydavatelskeTipy[key])

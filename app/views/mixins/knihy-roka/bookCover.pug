@@ -11,9 +11,8 @@ mixin bookCover(props = {})
       class= size ? `thumbnail--${size}`: '',
       class= clickable ? `thumbnail--clickable`: '',
       class='mj-boty2020-modal'
-      href=`https://www.martinus.sk?uItem=${id}`,
-      data-review=review,
-      data-recommender=JSON.stringify(recommender)
+      href=`https://www.martinus.sk/?uItem=${id}`,
+      data-target=`#u${id}`
     )
       .thumbnail__img-wrap
         img(src=`${assetsPrefix}${cover}`).img

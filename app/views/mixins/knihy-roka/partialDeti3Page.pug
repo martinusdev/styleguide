@@ -1,6 +1,7 @@
 include categoryCarousel
 include stlpec
 include riadok
+include modalContent
 
 mixin partialDeti3Page
   block opts
@@ -20,3 +21,6 @@ mixin partialDeti3Page
   +riadok({
     books: [deti3.u724025, deti3.u755623, deti3.u752309],
   })
+
+  each val, key in deti3
+    +modalContent(deti3[key])

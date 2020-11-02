@@ -1,0 +1,28 @@
+include ./annotation
+include ./annotationAuthor
+
+mixin modalContent(props = {})
+  -
+    const {
+      cover,
+      coverSize,
+      title,
+      authors,
+      publisher,
+      description,
+      review,
+      showReview,
+      id,
+      recommender,
+    } = props;
+
+  .mj-boty2020-modal-review(id=`u${id}`)
+    if review || recommender
+      hr
+      .row
+        if review
+          .col.col--m-6
+            +annotation({ annotation: review })
+        if recommender
+          .col.col--m-6
+            +annotationAuthor(recommender)

@@ -2,6 +2,7 @@ include categoryCarousel
 include riadok
 include highlight
 include stlpec
+include modalContent
 
 mixin partialPopularnoNaucnaPage
   block opts
@@ -21,3 +22,6 @@ mixin partialPopularnoNaucnaPage
   +riadok({
     books: [popularnoNaucna.u747255, popularnoNaucna.u657845, popularnoNaucna.u625107],
   })
+
+  each val, key in popularnoNaucna
+    +modalContent(popularnoNaucna[key])
