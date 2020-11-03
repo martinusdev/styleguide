@@ -28,12 +28,12 @@ mixin checkoutModal(props = {})
 
         section.modal__content
           p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nostrum velit quae earum eum atque ipsa maxime, molestiae modi maiores voluptates, consectetur reprehenderit a libero fugit nobis nesciunt sit ducimus!
-          if review || recommender
+          if review || recommender || description
             hr
             .row
               if review
                 .col.col--m-6
-                  +annotation({annotation: review})
+                  +annotation({annotation: review || description})
               if recommender
                 .col.col--m-6
                   +annotationAuthor(recommender)
