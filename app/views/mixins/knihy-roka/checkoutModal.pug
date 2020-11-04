@@ -16,6 +16,8 @@ mixin checkoutModal(props = {})
       recommender,
     } = props;
 
+    const annotation = review || description;
+
 
   .modal-overlay(data-modal, id=`u${id}`)
     article.modal.modal--full
@@ -28,12 +30,12 @@ mixin checkoutModal(props = {})
 
         section.modal__content
           p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam nostrum velit quae earum eum atque ipsa maxime, molestiae modi maiores voluptates, consectetur reprehenderit a libero fugit nobis nesciunt sit ducimus!
-          if review || recommender
+          if recommender || annotation
             hr
             .row
-              if review
+              if annotation
                 .col.col--m-6
-                  +annotation({annotation: review})
+                  +annotation({ annotation })
               if recommender
                 .col.col--m-6
                   +annotationAuthor(recommender)
