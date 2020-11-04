@@ -25,7 +25,7 @@ export default class Tooltip {
   }
 
   destroy() {
-    this.tooltips.destroyAll();
+    this.tooltips.forEach(t => t.destroy());
   }
 
   update() {
