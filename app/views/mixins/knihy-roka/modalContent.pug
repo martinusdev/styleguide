@@ -16,13 +16,15 @@ mixin modalContent(props = {})
       recommender,
     } = props;
 
+    const annotation = review || description;
+
   .mj-boty2020-modal-review(id=`u${id}`)
-    if review || recommender
+    if  recommender || annotation
       hr
       .row
-        if review
+        if annotation
           .col.col--m-6
-            +annotation({ annotation: review })
+            +annotation({ annotation })
         if recommender
           .col.col--m-6
             +annotationAuthor(recommender)
