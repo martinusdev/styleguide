@@ -1,0 +1,16 @@
+extends homepage
+
+include ./mixins/booksCarouselHorizontal
+include ./mixins/carouselTiles
+include ./mixins/productHorizontal
+include ./mixins/sectionHeader
+include ./mixins/collectionItem
+
+block opts
+    - var pageTitle = 'New header test - v1'
+    - var testHeader1 = true;
+
+block header
+  include ./modules/header/test-header-1
+
+block headerSearchDropdown
