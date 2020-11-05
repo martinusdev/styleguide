@@ -50,7 +50,6 @@ export default class MegaMenu {
   _attachDOMEvents() {
     this.triggers.forEach(trigger => {
       trigger.addEventListener('click', this._handleTriggerClick);
-      trigger.addEventListener('mouseover', this._handleTriggerClick);
     });
   }
 
