@@ -17,4 +17,4 @@ mixin bigHighlight(props ={})
             +annotation({ annotation: book.review })
           if book.recommender
             +annotationAuthor(book.recommender)
-          +bookHorizontal(book)
+          +bookHorizontal(Object.assign({}, book, { prefereDescription: book.review }))
