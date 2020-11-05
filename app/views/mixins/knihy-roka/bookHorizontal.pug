@@ -48,7 +48,7 @@ mixin bookHorizontal(props = {})
             +annotation({annotation: review})
             +annotationAuthor(recommender)
           else
-            p.mb-small #{description}
+            p.mb-small #{review || description}
           a(
             href=`https://www.martinus.sk/?uItem=${id}`,
             style="display:block;",
