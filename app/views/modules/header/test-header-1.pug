@@ -1,8 +1,9 @@
 include ./../../mixins/userMenu
 include ./../../mixins/icon
 
-- var bookClassHide = bookHeader ? 'book-detail-hide' : '';
-- var headerPromo = false;
+block opts
+- const bookClassHide = bookHeader ? 'book-detail-hide' : '';
+- const headerPromo = false;
 
   header.header.header-test-1
     .header__wrapper(data-sticky)
@@ -91,7 +92,8 @@ include ./../../mixins/icon
             a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
               +icon('cart').icon--medium
 
+    block megamenu
+      include ./test-megamenu-1
 
-    include ./test-megamenu-1
     include ./../checkout-notice
 

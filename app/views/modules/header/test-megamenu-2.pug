@@ -2,38 +2,29 @@ include ./../../mixins/icon
 
 -
   const categoriesKnihy = [{
-    title: 'Všetka beletria',
+    title: 'Beletria',
     icon: 'fa-book-open',
-  }, {
-    title: 'Detektívky a thrillery',
-    icon: 'fa-search',
-  }, {
-    title: 'Sci-fi a fantasy',
-    icon: 'fa-wand-magic',
-  }, {
-    title: 'Klasika',
-    icon: 'fa-bookmark',
+    entries: ['Detektívky, thrillery a horory', 'Sci-fi, fantasy a komiksy', 'Romantické a erotické', 'Svetová beletria', 'Slovenská beletria', 'Klasika', 'Historické', 'Romány'],
   }, {
     title: 'Pre deti',
     icon: 'fa-smile-beam',
+    entries: ['Pre najmenších', 'Pre prvákov', 'Pre pubertiakov', 'Beletria', 'Rozprávky', 'Sci-fi, fantasy a komiksy', 'Leporelá', 'Náučné knihy'],
+  }, {
+    title: 'Odborná a náučná',
+    icon: 'fa-lightbulb-on',
+    entries: ['Motivácia a sebarozvoj', 'Management a biznis', 'Spoločnosť', 'História', 'Zdravie a životný štýl', 'Náboženstvo a ezoterika', 'Hobby', 'Encyklopédie'],
   }, {
     title: 'Kuchárky',
     icon: 'fa-knife-kitchen',
   }, {
-    title: 'Odborné a náučné',
-    icon: 'fa-lightbulb-on',
-  }, {
     title: 'Životopisy a myšlienky',
     icon: 'fa-head-side-brain',
   }, {
-    title: 'Náboženstvo a ezoterika',
-    icon: 'fa-pray',
-  }, {
-    title: 'Cudzojazyčné knihy',
-    icon: 'fa-flag',
-  }, {
     title: 'Učebnice a slovníky',
     icon: 'fa-graduation-cap',
+  }, {
+    title: 'Cudzojazyčná literatúra',
+    icon: 'fa-flag',
   }, {
     title: 'Mapy a cestovanie',
     icon: 'fa-map-marked-alt',
@@ -129,13 +120,24 @@ mixin megaMenuContentTest(props = {})
             a.link.text-size-medium= mainLinkTitle
         .row
           each category in categories
-            .col--l-3.col--6.mt-medium.mb-medium
-              a(href="#").link.link--black.mega-menu-categories__title.flex.flex-column.align-items-middle.text-center
-                if category.icon.startsWith('fa-')
-                  i.text-color-theme.fa-3x.fad(class= category.icon)
-                else
-                  +icon(category.icon).icon--xlarge.text-color-theme
-                strong.mt-small=category.title
+            .col--l-4.col--6.mt-medium
+              .flex
+                .category-icon
+                  if category.icon.startsWith('fa-')
+                    i.text-color-theme.fa-2x.fad(class= category.icon)
+                  else
+                    +icon(category.icon).icon--large.text-color-theme
+                div
+                  a(href="#").link.link--black.mega-menu-categories__title
+                    h3.mt-tiny.mb-medium=category.title
+                  if category.entries
+                    ul.no-pad-left.text-medium
+                      each item in category.entries
+                        li.mb-small
+                          a.link.link--black(href='#')= item
+                      li
+                        a.link(href='#')
+                          | + Ďalšie kategórie
         if additionalLinks
           .row
             .col
@@ -155,7 +157,7 @@ mixin megaMenuContentTest(props = {})
                 li
                   a.link(href='#')= item
 
-.header__mega-menu.mega-menu.mega-menu-test-1(data-mega-menu)
+.header__mega-menu.mega-menu.mega-menu-test-2(data-mega-menu)
   .mega-menu__contents(data-mega-menu-contents)
     each item in megaMenu
       +megaMenuContentTest(item)
