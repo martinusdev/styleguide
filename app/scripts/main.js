@@ -36,6 +36,8 @@ import CarouselLite from './modules/CarouselLite';
 import Choices
   from '../../node_modules/choices.js/public/assets/scripts/choices';
 
+import './plugins/font-awesome/all';
+
 // eslint-disable-next-line
 require('mutationobserver-shim');
 
