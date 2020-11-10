@@ -6,7 +6,7 @@ footer.footer
       p.text-color-yellow
         | Aj z drobných vecí sa dajú urobiť veľké. Vďaka vašim Anjelským drobným ste
         | pri nákupoch na Martinuse darovali už
-        b.text-color-white 
+        b.text-color-white
           | 542 459,18 € na Dobrého
           | Anjela
         | .
@@ -31,7 +31,7 @@ footer.footer
           .bar__item
             a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
             - var state = 'closing'; //- open, closing, closed
-            span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-theme="light")
+            span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-tippy-theme="light")
               = footer.store[state].text
               +icon('info').icon--small.text-color-grey-light(style="position: relative; top: -0.05em;")
 
@@ -49,7 +49,7 @@ footer.footer
               li
                 a.link.text-color-white.text-size-medium.text-normal(href='#')
                   b Besedy
-              
+
       .col--l-2.col--6
         h5 Nakupujte u nás
         ul.list--unstyled.mb-medium
@@ -67,7 +67,7 @@ footer.footer
         ul.list--unstyled.mb-medium
           li
             a.link.text-color-white.text-size-medium.text-normal(href='#') info@martinus.sk
-          li.text-color-white.text-size-medium.text-normal Telefón: 043/3260 360 
+          li.text-color-white.text-size-medium.text-normal Telefón: 043/3260 360
           li.text-color-white.text-size-medium.text-normal v pracovné dni 8:00-18:00
 
     section.row.mb-medium.align-items-middle

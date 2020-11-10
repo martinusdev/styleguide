@@ -1,7 +1,6 @@
 import Choices
-  from './../../../node_modules/choices.js/assets/scripts/dist/choices';
+  from './../../../node_modules/choices.js/public/assets/scripts/choices';
 import { nodeListToArray } from './Utils';
-// import Autocomplete from './Autocomplete';
 
 let lang = 'sk';
 
@@ -13,21 +12,20 @@ const texts = {
     itemSelectText: 'Kliknutím vyberte',
     addItemText: value => `Stlačením ENTER pridajte <b>"${value}"</b>`,
     maxItemText: maxItemCount =>
-      `Iba ${maxItemCount} hodnot môže byť pridaných.`,
+      `Iba ${maxItemCount} hodnôt môže byť pridaných.`,
   },
   cz: {
-    loadingText: 'Nahrávam...',
+    loadingText: 'Nahrávám...',
     noResultsText: 'Žádné výsledky',
     noChoicesText: 'Na výběr nejsou žádné možnosti',
     itemSelectText: 'Kliknutím vyberte',
     addItemText: value => `Stlačením ENTER přidejte <b>"${value}"</b>`,
     maxItemText: maxItemCount =>
-      `Iba ${maxItemCount} hodnot múže býť přidaných.`,
+      `Jenom ${maxItemCount} hodnot může být přidaných.`,
   },
 };
 
 const defaultConfig = {
-  search: false,
   searchEnabled: false,
   searchChoices: false,
   shouldSort: false,
@@ -53,7 +51,6 @@ const defaultConfig = {
     openState: 'is-open',
     disabledState: 'is-disabled',
     highlightedState: 'is-highlighted',
-    hiddenState: 'is-hidden',
     flippedState: 'is-flipped',
     loadingState: 'is-loading',
   },
@@ -179,16 +176,16 @@ function getTemplates(template, select, config) {
   if (select.hasAttribute('data-select-product')) {
     templates = {
       ...{ templates },
-      item: data => template(productSelectTemplate(data)),
-      choice: data => template(productSelectChoice(data, config)),
+      item: (classNames, data) => template(productSelectTemplate(data)),
+      choice: (classNames, data) => template(productSelectChoice(data, config)),
     };
   }
 
   if (select.hasAttribute('data-select-store')) {
     templates = {
       ...{ templates },
-      item: data => template(storeListTemplate(data)),
-      choice: data => template(storeListChoice(data, config)),
+      item: (classNames, data) => template(storeListTemplate(data)),
+      choice: (classNames, data) => template(storeListChoice(data, config)),
       choiceList: () => template(storeListChoices(config)),
       dropdown: () => template(storeListDropdown(config)),
     };
@@ -197,15 +194,15 @@ function getTemplates(template, select, config) {
   if (select.hasAttribute('data-select-image')) {
     templates = {
       ...{ templates },
-      item: data => template(imageListTemplate(data)),
-      choice: data => template(imageListChoice(data, config)),
+      item: (classNames, data) => template(imageListTemplate(data)),
+      choice: (classNames, data) => template(imageListChoice(data, config)),
     };
   }
 
   if (select.hasAttribute('data-select-wide-image')) {
     templates = {
       ...{ templates },
-      item: data =>
+      item: (classNames, data) =>
         template(
           wideImageListTemplate(
             data,
@@ -214,7 +211,7 @@ function getTemplates(template, select, config) {
               : 'none',
           ),
         ),
-      choice: data => template(wideImageListChoice(data, config)),
+      choice: (classNames, data) => template(wideImageListChoice(data, config)),
     };
   }
 
@@ -338,7 +335,7 @@ export default class Select {
 
       const choice = new Choices(select, config);
 
-      choice.containerOuter.classList.add('select');
+      choice.containerOuter.element.classList.add('select');
 
       // disable input if [disabled] or '.disabled'
       if (select.disabled || select.classList.contains('disabled')) {
@@ -349,12 +346,12 @@ export default class Select {
       const unwantedClasses = ['choices__input', 'is-hidden', 'js-select'];
       classes.forEach(className => {
         if (!unwantedClasses.includes(className)) {
-          choice.containerOuter.classList.add(className);
+          choice.containerOuter.element.classList.add(className);
         }
       });
 
       if (config.searchEnabled) {
-        const input = choice.dropdown.querySelector('input');
+        const input = choice.dropdown.element.querySelector('input');
 
         if (input) {
           input.classList.add('input');

@@ -32,7 +32,7 @@ mixin review(props = {})
           .badge.badge--blue.line-small(style="position: absolute; bottom: 0; right: 0;") 13
       .review__header-name.bar__item.bar__item--fill
         if profile
-          a.link(data-tooltip, data-html="#reader-tooltip", data-theme="light")= name
+          a.link(data-tooltip, data-html="#reader-tooltip", data-tippy-theme="light")= name
         else
           .text-semibold= name
         if address
