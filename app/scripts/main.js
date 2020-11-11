@@ -5,6 +5,7 @@ import {
   requestAnimationFramePolyfill,
   closestPolyfill,
   includesPolyfill,
+  arrayFromPolyfill,
 } from './modules/Polyfills';
 
 import Alert from './modules/Alert';
@@ -81,6 +82,7 @@ window.addEventListener('DOMContentLoaded', () => {
   closestPolyfill();
   requestAnimationFramePolyfill();
   includesPolyfill();
+  arrayFromPolyfill();
 
   window.myApp.megaMenu = new MegaMenu();
 
