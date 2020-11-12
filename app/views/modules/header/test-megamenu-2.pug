@@ -9,10 +9,12 @@ include ./../../mixins/icon
     title: 'Pre deti',
     icon: 'fa-smile-beam',
     entries: ['Pre najmenších', 'Pre prvákov', 'Pre pubertiakov', 'Beletria', 'Rozprávky', 'Sci-fi, fantasy a komiksy', 'Leporelá', 'Náučné knihy'],
+    hideEntries: true,
   }, {
     title: 'Odborná a náučná',
     icon: 'fa-lightbulb-on',
     entries: ['Motivácia a sebarozvoj', 'Management a biznis', 'Spoločnosť', 'História', 'Zdravie a životný štýl', 'Náboženstvo a ezoterika', 'Hobby', 'Encyklopédie'],
+    hideEntries: true,
   }, {
     title: 'Kuchárky',
     icon: 'fa-knife-kitchen',
@@ -81,7 +83,7 @@ include ./../../mixins/icon
       }, {
         title: 'Pripravujeme',
         icon: 'fas fa-spinner',
-      },]
+      }]
     }, {
       title: 'Doplnky',
       id: 'doplnky',
@@ -115,23 +117,24 @@ mixin megaMenuContentTest(props = {})
     .mega-menu__content-wrap
       .mega-menu__categories.mega-menu-categories
         .row.border-bottom-grey
-          .col.flex.align-items-justify.align-items-middle.mb-medium
-            h2.no-mrg-bottom= title
-            a.link.text-size-medium= mainLinkTitle
+          .col
+            .mega-menu--title.flex.align-items-justify.align-items-middle.mb-medium
+              h2.no-mrg-bottom= title
+              a.link.text-size-medium= mainLinkTitle
         .row
           each category in categories
-            .col--l-4.col--6.mt-medium
-              .flex
+            .col.col--l-4.col--m-6.col--category.pt-medium
+              .flex.pl-medium
                 .category-icon
                   if category.icon.startsWith('fa-')
-                    i.text-color-theme.fa-2x.fad(class= category.icon)
+                    i.text-color-theme.fa-2x.fa-fw.fad(class= category.icon)
                   else
                     +icon(category.icon).icon--large.text-color-theme
                 div
                   a(href="#").link.link--black.mega-menu-categories__title
                     h3.mt-tiny.mb-medium=category.title
                   if category.entries
-                    ul.no-pad-left.text-medium
+                    ul.no-pad-left.text-medium(class=category.hideEntries?'show-m':'')
                       each item in category.entries
                         li.mb-small
                           a.link.link--black(href='#')= item
@@ -141,21 +144,23 @@ mixin megaMenuContentTest(props = {})
         if additionalLinks
           .row
             .col
-              ul.list-inline.list-inline--expanded.text-medium.mt-medium.flex.align-items-center.align-items-middle
+              ul.list--extra-links.list-inline.list-inline--expanded.text-medium.mt-medium.flex.flex-wrap.align-items-center.align-items-middle
                 each link in additionalLinks
-                  li
-                    a.link(href='#')
+                  li.col--category
+                    a.block.pt-medium.pb-medium.link(href='#').text-center
                       i.fa-lg(class=link.icon)
                       | &nbsp;
                       = link.title
       if recommended
         .mega-menu__recommended
-          each group in recommended
-            ul.list--expanded.text-size-medium.no-pad
-              li.text-transform-upper.text-size-small= group.title
-              each item in group.entries
-                li
-                  a.link(href='#')= item
+          .row
+            each group in recommended
+              .col--6.col--m-4.col--l-12
+                ul.list--expanded.text-size-medium.no-pad
+                  li.text-transform-upper.text-size-small= group.title
+                  each item in group.entries
+                    li
+                      a.link(href='#')= item
 
 .header__mega-menu.mega-menu.mega-menu-test-2(data-mega-menu)
   .mega-menu__contents(data-mega-menu-contents)
