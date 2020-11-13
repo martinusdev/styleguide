@@ -193,6 +193,6 @@ export default class MegaMenu {
   }
 
   destroy() {
-    this.detachDOMEvents();
+    this._detachDOMEvents();
   }
 }
