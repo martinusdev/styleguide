@@ -24,6 +24,7 @@ import Input from './modules/Input';
 import NumberSpinner from './modules/NumberSpinner';
 import ProductPreview from './modules/ProductPreview';
 import MegaMenu from './modules/MegaMenu';
+import MegaMenuTest from './modules/MegaMenuTest';
 import RadiocheckToggle from './modules/RadiocheckToggle';
 import Header from './modules/Header';
 import AudioPlayer from './modules/AudioPlayer';
@@ -63,6 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.NumberSpinner = NumberSpinner;
   window.myApp.ProductPreview = ProductPreview;
   window.myApp.MegaMenu = MegaMenu;
+  window.myApp.MegaMenuTest = MegaMenuTest;
   window.myApp.Header = Header;
   window.myApp.RadiocheckToggle = RadiocheckToggle;
   window.myApp.AudioPlayer = AudioPlayer;
@@ -85,6 +87,8 @@ window.addEventListener('DOMContentLoaded', () => {
   arrayFromPolyfill();
 
   window.myApp.megaMenu = new MegaMenu();
+
+  window.myApp.megaMenuTest = new MegaMenuTest();
 
   window.myApp.toggles = new Toggle();
 
@@ -119,6 +123,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.header = new Header();
 
   window.myApp.audioPlayers = new AudioPlayer();
+
   window.myApp.clipboard = new Clipboard();
 
   window.myApp.anchorScroll = new AnchorScroll();

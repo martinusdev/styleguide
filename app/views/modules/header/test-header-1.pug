@@ -2,6 +2,29 @@ include ./../../mixins/userMenu
 include ./../../mixins/icon
 
 block opts
+
+-
+  const mainNav = [{
+    title: 'Knihy',
+    trigger: 'mega-menu-knihy',
+    link: '#',
+  }, {
+    title: 'E-Knihy',
+    link: '#',
+  }, {
+    title: 'Audioknihy',
+    link: '#',
+  }, {
+    title: 'Hry',
+    link: '#',
+  }, {
+    title: 'Filmy',
+    link: '#',
+  }, {
+    title: 'Doplnky',
+    trigger: 'mega-menu-doplnky',
+    link: '#',
+  },];
 - const bookClassHide = bookHeader ? 'book-detail-hide' : '';
 - const headerPromo = false;
 
@@ -19,43 +42,23 @@ block opts
           .bar__item.header__nav(class=bookClassHide)
             .btn-layout.btn-layout--horizontal
               .btn-dropdown.no-mrg.show-l
-                a.btn.btn--clean.header-btn(
-                data-mega-menu-trigger="#mega-menu-knihy"
-                data-toggle='self',
-                aria-haspopup="true"
-                )
-                  | Knihy
-              .btn-dropdown.no-mrg.show-l
-                a.btn.btn--clean.header-btn(
-                  href="#"
-                )
-                  | E-Knihy
-              .btn-dropdown.no-mrg.show-l
-                a.btn.btn--clean.header-btn(
-                  href="#"
-                )
-                  | Audioknihy
-              .btn-dropdown.no-mrg.show-l
-                a.btn.btn--clean.header-btn(
-                  href="#"
-                )
-                  | Hry
-              .btn-dropdown.no-mrg.show-l
-                a.btn.btn--clean.header-btn(
-                  href="#"
-                )
-                  | Filmy
-              .btn-dropdown.no-mrg.show-l
-                a.text-transform-none.btn.btn--clean.header-btn(
-                  data-mega-menu-trigger="#mega-menu-doplnky"
-                  data-toggle='self',
-                  aria-haspopup="true"
-                )
-                  | Doplnky
+                for item in mainNav
+                  if item.trigger
+                    a.btn.btn--clean.header-btn(
+                    data-mega-menu-test-trigger=`#${item.trigger}`
+                    data-toggle="self",
+                    aria-haspopup="true"
+                    )= item.title
+                  else
+                    .btn-dropdown.no-mrg.show-l
+                      a.btn.btn--clean.header-btn(
+                        href=item.link
+                      )= item.title
               .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
-                a.btn.btn--clean.header-btn(
-                data-mega-menu-trigger
-                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
+                a.btn.btn--clean.text-transform-upper.header-btn(
+                data-mega-menu-test-trigger=`#${mainNav[0].trigger}`
+                data-toggle='self',
+                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
                 data-toggle-expand,
                 aria-haspopup="true"
                 )

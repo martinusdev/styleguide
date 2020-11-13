@@ -111,24 +111,12 @@ mixin megaMenuContentTest(props = {})
     } = props;
 
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
-    .mega-menu__mobile-header(
-      data-toggle='self, parent, [data-mega-menu-contents]',
-      data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-arrow-left`,
-      data-toggle-expand,
-      aria-haspopup="true"
-    )
-      .bar
-        .bar__item.bar__item--fill= title
-        .bar__item
-          +icon('arrow-right').icon--medium.text-color-grey
     .mega-menu__content-wrap
       .mega-menu__categories.mega-menu-categories
-        .row.border-bottom-grey
-          .col
-            .mega-menu--title.flex.align-items-justify.align-items-middle.mb-medium
-              h2.no-mrg-bottom= title
-              a.link.text-size-medium= mainLinkTitle
-        .row
+        .mega-menu--title.flex.align-items-justify.align-items-middle.pb-medium.border-bottom-grey
+          h2.no-mrg-bottom= title
+          a.link.text-size-medium= mainLinkTitle
+        .row.no-mrg-horizontal
           each category in categories
             .col--l-3.col--m-4.col--6.col--category
               a(href="#").pt-medium.pb-medium.link.link--black.flex.flex-column.align-items-middle.text-center
@@ -138,7 +126,7 @@ mixin megaMenuContentTest(props = {})
                   +icon(category.icon).icon--xlarge.text-color-theme
                 strong.mt-small=category.title
         if additionalLinks
-          .row
+          .row.no-mrg-horizontal
             .col
               ul.list--extra-links.list-inline.list-inline--expanded.text-medium.mt-medium.flex.flex-wrap.align-items-center.align-items-middle
                 each link in additionalLinks
@@ -158,7 +146,18 @@ mixin megaMenuContentTest(props = {})
                     li
                       a.link(href='#')= item
 
-.header__mega-menu.mega-menu.mega-menu-test-1(data-mega-menu)
+.header__mega-menu.mega-menu.mega-menu-test-1(data-mega-menu-test)
   .mega-menu__contents(data-mega-menu-contents)
+    div.bg-grey.text-color-white.mega-menu__mobile-categories.btn-layout.btn-layout--horizontal.no-mrg-bottom
+      each item in mainNav
+        .btn-dropdown.btn-dropdown--no-icon.no-mrg
+          if item.trigger
+            a.btn(
+              data-mega-menu-test-trigger=`#${item.trigger}`,
+              data-toggle="self",
+              aria-haspopup="true",
+            )= item.title
+          else
+            a.btn(href=item.link)= item.title
     each item in megaMenu
       +megaMenuContentTest(item)

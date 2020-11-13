@@ -163,6 +163,12 @@
     flex: 0 0 280px;
   }
 
+  @include breakpoint(m, 'down') {
+    .mega-menu__content-wrap {
+      flex-direction: column;
+    }
+  }
+
   @include breakpoint('m', 'downfrom') {
     .mega-menu--title {
       padding-top: _get-space('v', 'default');
@@ -208,6 +214,22 @@
 
     @include breakpoint('m') {
       flex: 0 0 auto !important;
+    }
+  }
+
+  .mega-menu__mobile-categories {
+    overflow-x: scroll;
+    flex-wrap: nowrap !important;
+    white-space: nowrap;
+
+    .btn {
+      border-radius: 0;
+      text-transform: none;
+    }
+
+    .btn.is-active {
+      background: #fff;
+      color: #000;
     }
   }
 }
