@@ -32,6 +32,8 @@ module.exports = (paths, config) => {
   const customPluginConfigImages = {
     removeDimensions: false,
     removeViewBox: false,
+    removeStyleElement: false,
+    convertStyleToAttrs: false,
   };
 
   Object.entries(customPluginConfigImages).forEach(([name, value]) => {
