@@ -80,16 +80,20 @@ include ./../../mixins/icon
       }],
       additionalLinks: [{
         title: 'Bestsellery',
-        icon: 'fas fa-heart text-color-theme',
+        icon: 'heart-full',
+        iconColor: 'text-color-theme',
       }, {
         title: 'Akcie a zľavy',
-        icon: 'fas fa-percentage text-color-success',
+        icon: 'footer-positive',
+        iconColor: 'text-color-success',
       }, {
         title: 'Novinky',
-        icon: 'fas fa-star text-color-yellow',
+        icon: 'star',
+        iconColor: 'text-color-yellow',
       }, {
         title: 'Pripravujeme',
-        icon: 'fas fa-spinner',
+        icon: 'loader',
+        iconColor: '',
       },]
     }, {
       title: 'Doplnky',
@@ -132,7 +136,7 @@ mixin megaMenuContentTest(props = {})
                 each link in additionalLinks
                   li.col--category
                     a.block.pt-medium.pb-medium.link(href='#').text-center
-                      i.fa-lg(class=link.icon)
+                      +icon(link.icon).icon--medium(class= link.iconColor)
                       | &nbsp;
                       = link.title
       if recommended
