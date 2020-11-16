@@ -221,6 +221,18 @@
     overflow-x: scroll;
     flex-wrap: nowrap !important;
     white-space: nowrap;
+    position: sticky;
+    top: 0;
+
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+    /* stylelint-disable */
+    scrollbar-width: none;  /* Firefox */
+    /* stylelint-enable */
+
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
 
     .btn {
       border-radius: 0;
