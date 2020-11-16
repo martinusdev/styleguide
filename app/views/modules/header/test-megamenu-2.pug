@@ -73,17 +73,21 @@ include ./../../mixins/icon
       }],
       additionalLinks: [{
         title: 'Bestsellery',
-        icon: 'fas fa-heart text-color-theme',
+        icon: 'heart-full',
+        iconColor: 'text-color-theme',
       }, {
         title: 'Akcie a zľavy',
-        icon: 'fas fa-percentage text-color-success',
+        icon: 'footer-positive',
+        iconColor: 'text-color-success',
       }, {
         title: 'Novinky',
-        icon: 'fas fa-star text-color-yellow',
+        icon: 'star',
+        iconColor: 'text-color-yellow',
       }, {
         title: 'Pripravujeme',
-        icon: 'fas fa-spinner',
-      }]
+        icon: 'loader',
+        iconColor: '',
+      },]
     }, {
       title: 'Doplnky',
       id: 'doplnky',
@@ -104,27 +108,15 @@ mixin megaMenuContentTest(props = {})
     } = props;
 
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
-    .mega-menu__mobile-header(
-      data-toggle='self, parent, [data-mega-menu-contents]',
-      data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-arrow-left`,
-      data-toggle-expand,
-      aria-haspopup="true"
-    )
-      .bar
-        .bar__item.bar__item--fill= title
-        .bar__item
-          +icon('arrow-right').icon--medium.text-color-grey
     .mega-menu__content-wrap
       .mega-menu__categories.mega-menu-categories
-        .row.border-bottom-grey
-          .col
-            .mega-menu--title.flex.align-items-justify.align-items-middle.mb-medium
-              h2.no-mrg-bottom= title
-              a.link.text-size-medium= mainLinkTitle
-        .row
+        .mega-menu--title.flex.align-items-justify.align-items-middle.pb-medium.border-bottom-grey
+          h2.no-mrg-bottom= title
+          a.link.text-size-medium= mainLinkTitle
+        .row.no-mrg-horizontal
           each category in categories
-            .col.col--l-4.col--m-6.col--category.pt-medium
-              .flex.pl-medium
+            .col.col--l-4.col--m-3.col--12.col--category.pt-medium
+              .flex.pl-tiny
                 .category-icon
                   if category.icon.startsWith('fa-')
                     i.text-color-theme.fa-2x.fa-fw.fad(class= category.icon)
@@ -142,18 +134,18 @@ mixin megaMenuContentTest(props = {})
                         a.link(href='#')
                           | + Ďalšie kategórie
         if additionalLinks
-          .row
+          .row.no-mrg-horizontal
             .col
-              ul.list--extra-links.list-inline.list-inline--expanded.text-medium.mt-medium.flex.flex-wrap.align-items-center.align-items-middle
+              ul.list--extra-links.list-inline.list-inline--expanded.text-medium.mb-none.flex.flex-wrap.align-items-center.align-items-middle
                 each link in additionalLinks
                   li.col--category
                     a.block.pt-medium.pb-medium.link(href='#').text-center
-                      i.fa-lg(class=link.icon)
+                      +icon(link.icon).icon--medium(class= link.iconColor)
                       | &nbsp;
                       = link.title
       if recommended
         .mega-menu__recommended
-          .row
+          .row.no-mrg-horizontal
             each group in recommended
               .col--6.col--m-4.col--l-12
                 ul.list--expanded.text-size-medium.no-pad
@@ -164,5 +156,17 @@ mixin megaMenuContentTest(props = {})
 
 .header__mega-menu.mega-menu.mega-menu-test-2(data-mega-menu-test)
   .mega-menu__contents(data-mega-menu-contents)
+    div.bg-grey.text-color-white.mega-menu__mobile-categories.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l
+      each item in mainNav
+        .btn-dropdown.btn-dropdown--no-icon.no-mrg
+          if item.trigger
+            a.btn(
+              data-mega-menu-test-trigger=`#${item.trigger}`,
+              data-toggle="self",
+              aria-haspopup="true",
+              id=`toggle-${item.trigger}`
+            )= item.title
+          else
+            a.btn(href=item.link)= item.title
     each item in megaMenu
       +megaMenuContentTest(item)

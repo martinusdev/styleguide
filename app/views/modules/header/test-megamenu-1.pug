@@ -152,7 +152,7 @@ mixin megaMenuContentTest(props = {})
 
 .header__mega-menu.mega-menu.mega-menu-test-1(data-mega-menu-test)
   .mega-menu__contents(data-mega-menu-contents)
-    div.bg-grey.text-color-white.mega-menu__mobile-categories.btn-layout.btn-layout--horizontal.no-mrg-bottom
+    div.bg-grey.text-color-white.mega-menu__mobile-categories.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l
       each item in mainNav
         .btn-dropdown.btn-dropdown--no-icon.no-mrg
           if item.trigger
@@ -160,6 +160,7 @@ mixin megaMenuContentTest(props = {})
               data-mega-menu-test-trigger=`#${item.trigger}`,
               data-toggle="self",
               aria-haspopup="true",
+              id=`toggle-${item.trigger}`
             )= item.title
           else
             a.btn(href=item.link)= item.title
