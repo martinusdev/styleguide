@@ -130,15 +130,12 @@ mixin megaMenuContentTest(props = {})
                   +icon(category.icon).icon--xlarge.text-color-theme
                 strong.mt-small=category.title
         if additionalLinks
-          .row.no-mrg-horizontal
-            .col
-              ul.list--extra-links.list-inline.list-inline--expanded.text-medium.mt-medium.flex.flex-wrap.align-items-center.align-items-middle
-                each link in additionalLinks
-                  li.col--category
-                    a.block.pt-medium.pb-medium.link(href='#').text-center
-                      +icon(link.icon).icon--medium(class= link.iconColor)
-                      | &nbsp;
-                      = link.title
+          ul.list--extra-links.list-inline.list-inline--expanded.text-medium.mt-medium.mb-none.flex.flex-wrap.align-items-center.align-items-middle
+            each link in additionalLinks
+              li.col--category
+                a.block.pt-medium.pb-medium.link(href='#').text-center
+                  +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
+                  = link.title
       if recommended
         .mega-menu__recommended
           .row
@@ -152,7 +149,7 @@ mixin megaMenuContentTest(props = {})
 
 .header__mega-menu.mega-menu.mega-menu-test-1(data-mega-menu-test)
   .mega-menu__contents(data-mega-menu-contents)
-    div.bg-grey.text-color-white.mega-menu__mobile-categories.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l
+    div.text-color-white.mega-menu__mobile-categories.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l
       each item in mainNav
         .btn-dropdown.btn-dropdown--no-icon.no-mrg
           if item.trigger

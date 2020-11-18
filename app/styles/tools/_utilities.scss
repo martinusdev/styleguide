@@ -326,8 +326,17 @@
     .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny'); }
     .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0; }
 
-    .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny'); }
+    .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large'); }
     .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v'); }
+    .mt-small#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'small'); }
+    .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny'); }
+    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-top: 0; }
+
+    .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny'); }
+    .mr-medium#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v'); }
+
+    .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny'); }
+    .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v'); }
 
     .pb-large#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v', 'large'); }
     .pb-medium#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v'); }
@@ -335,8 +344,11 @@
     .pb-tiny#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v', 'tiny'); }
     .pb-none#{_get-variant-name($breakpoint, '-')} { padding-bottom: 0; }
 
-    .pt-tiny#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'tiny'); }
+    .pb-large#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'large'); }
     .pt-medium#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v'); }
+    .pt-small#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'small'); }
+    .pt-tiny#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'tiny'); }
+    .pt-none#{_get-variant-name($breakpoint, '-')} { padding-top: 0; }
 
     .pr-tiny#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'tiny'); }
     .pr-medium#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v'); }
@@ -347,10 +359,6 @@
 }
 
 .mb-not-last > *:last-child { margin-bottom: 0; }
-
-.mt-small {
-  margin-top: _get-space('v', 'small');
-}
 
 .clickable {
   cursor: pointer;
