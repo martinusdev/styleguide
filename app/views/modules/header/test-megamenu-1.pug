@@ -1,0 +1,168 @@
+include ./../../mixins/icon
+
+-
+  const categoriesKnihy = [{
+    title: 'Všetka beletria',
+    icon: 'fa-book-open',
+  }, {
+    title: 'Detektívky a thrillery',
+    icon: 'fa-search',
+  }, {
+    title: 'Sci-fi a fantasy',
+    icon: 'fa-wand-magic',
+  }, {
+    title: 'Klasika',
+    icon: 'fa-bookmark',
+  }, {
+    title: 'Pre deti',
+    icon: 'fa-smile-beam',
+  }, {
+    title: 'Kuchárky',
+    icon: 'fa-knife-kitchen',
+  }, {
+    title: 'Odborné a náučné',
+    icon: 'fa-lightbulb-on',
+  }, {
+    title: 'Životopisy a myšlienky',
+    icon: 'fa-head-side-brain',
+  }, {
+    title: 'Náboženstvo a ezoterika',
+    icon: 'fa-pray',
+  }, {
+    title: 'Cudzojazyčné knihy',
+    icon: 'fa-flag',
+  }, {
+    title: 'Učebnice a slovníky',
+    icon: 'fa-graduation-cap',
+  }, {
+    title: 'Mapy a cestovanie',
+    icon: 'fa-map-marked-alt',
+  }];
+
+  const categoriesDoplnky = [{
+    title: 'Doplnky a darčeky',
+    icon: 'fa-gift',
+  }, {
+    title: 'Vecičky od Martinusu',
+    icon: 'martinus',
+  }, {
+    title: 'Káva, čaj a pochutiny',
+    icon: 'fa-mug-hot',
+  }, {
+    title: 'Hrnčeky a fľaše',
+    icon: 'fa-coffee-togo',
+  }, {
+    title: 'Papierníctvo',
+    icon: 'fa-pencil-paintbrush',
+  }, {
+    title: 'Zápisníky a kalendáre',
+    icon: 'fa-calendar',
+  }, {
+    title: 'Hudba',
+    icon: 'fa-music-alt',
+  }, {
+    title: 'LP platne',
+    icon: 'fa-record-vinyl',
+  }];
+
+  const megaMenu = [
+    {
+      title: 'Knihy',
+      id: 'knihy',
+      mainLinkTitle: 'Zobraziť všetky knihy',
+      categories: categoriesKnihy,
+      recommended: [{
+        title: 'Top autori',
+        entries: ['Jo Nesbo', 'Dominik Dán', 'J. K. Rowlingová', 'Juraj Červenák']
+      }, {
+        title: 'Top série',
+        entries: ['Harry Potter', 'Zaklínač', 'Pieseň ľadu a ohňa', 'Harry Hole'],
+      }],
+      additionalLinks: [{
+        title: 'Bestsellery',
+        icon: 'heart-full',
+        iconColor: 'text-color-theme',
+      }, {
+        title: 'Akcie a zľavy',
+        icon: 'footer-positive',
+        iconColor: 'text-color-success',
+      }, {
+        title: 'Novinky',
+        icon: 'star',
+        iconColor: 'text-color-yellow',
+      }, {
+        title: 'Pripravujeme',
+        icon: 'loader',
+        iconColor: '',
+      },]
+    }, {
+      title: 'Doplnky',
+      id: 'doplnky',
+      mainLinkTitle: 'Zobraziť všetky doplnky',
+      categories: categoriesDoplnky,
+    },
+  ]
+
+mixin megaMenuContentTest(props = {})
+  -
+    const {
+      id,
+      title,
+      mainLinkTitle,
+      additionalLinks,
+      recommended,
+      categories,
+    } = props;
+
+  .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
+    .mega-menu__content-wrap
+      .mega-menu__categories.mega-menu-categories
+        .mega-menu--title.flex.align-items-justify.align-items-middle.pb-medium.border-bottom-grey
+          h2.no-mrg-bottom= title
+          a.link.text-size-medium= mainLinkTitle
+        .row.no-mrg-horizontal
+          each category in categories
+            .col--l-3.col--m-4.col--6.col--category
+              a(href="#").pt-medium.pb-medium.link.link--black.flex.flex-column.align-items-middle.text-center
+                if category.icon.startsWith('fa-')
+                  i.text-color-theme.fa-3x.fad(class= category.icon)
+                else
+                  +icon(category.icon).icon--xlarge.text-color-theme
+                strong.mt-small=category.title
+        if additionalLinks
+          .row.no-mrg-horizontal
+            .col
+              ul.list--extra-links.list-inline.list-inline--expanded.text-medium.mt-medium.flex.flex-wrap.align-items-center.align-items-middle
+                each link in additionalLinks
+                  li.col--category
+                    a.block.pt-medium.pb-medium.link(href='#').text-center
+                      +icon(link.icon).icon--medium(class= link.iconColor)
+                      | &nbsp;
+                      = link.title
+      if recommended
+        .mega-menu__recommended
+          .row
+            each group in recommended
+              .col--6.col--m-4.col--l-12
+                ul.list--expanded.text-size-medium.no-pad
+                  li.text-transform-upper.text-size-small= group.title
+                  each item in group.entries
+                    li
+                      a.link(href='#')= item
+
+.header__mega-menu.mega-menu.mega-menu-test-1(data-mega-menu-test)
+  .mega-menu__contents(data-mega-menu-contents)
+    div.bg-grey.text-color-white.mega-menu__mobile-categories.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l
+      each item in mainNav
+        .btn-dropdown.btn-dropdown--no-icon.no-mrg
+          if item.trigger
+            a.btn(
+              data-mega-menu-test-trigger=`#${item.trigger}`,
+              data-toggle="self",
+              aria-haspopup="true",
+              id=`toggle-${item.trigger}`
+            )= item.title
+          else
+            a.btn(href=item.link)= item.title
+    each item in megaMenu
+      +megaMenuContentTest(item)

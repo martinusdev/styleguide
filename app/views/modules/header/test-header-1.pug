@@ -1,0 +1,102 @@
+include ./../../mixins/userMenu
+include ./../../mixins/icon
+
+block opts
+
+-
+  const mainNav = [{
+    title: 'Knihy',
+    trigger: 'mega-menu-knihy',
+    link: '#',
+  }, {
+    title: 'E-Knihy',
+    link: '#',
+  }, {
+    title: 'Audioknihy',
+    link: '#',
+  }, {
+    title: 'Hry',
+    link: '#',
+  }, {
+    title: 'Filmy',
+    link: '#',
+  }, {
+    title: 'Doplnky',
+    trigger: 'mega-menu-doplnky',
+    link: '#',
+  },];
+- const bookClassHide = bookHeader ? 'book-detail-hide' : '';
+- const headerPromo = false;
+
+  header.header.header-test-1
+    .header__wrapper(data-sticky)
+      .wrapper-main
+        .bar.header__bar
+          .bar__item.header__logo
+            a(href="#", class=bookClassHide)
+              img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
+              img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
+            if bookHeader
+              a(href="#").book-detail-show
+                img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
+          .bar__item.header__nav(class=bookClassHide)
+            .btn-layout.btn-layout--horizontal
+              .btn-dropdown.no-mrg.show-l
+                for item in mainNav
+                  if item.trigger
+                    a.btn.btn--clean.header-btn(
+                    data-mega-menu-test-trigger=`#${item.trigger}`
+                    data-toggle="self",
+                    aria-haspopup="true"
+                    )= item.title
+                  else
+                    .btn-dropdown.no-mrg.show-l
+                      a.btn.btn--clean.header-btn(
+                        href=item.link
+                      )= item.title
+              .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
+                a.btn.btn--clean.text-transform-upper.header-btn(
+                data-mega-menu-test-trigger=`#${mainNav[0].trigger}`
+                data-toggle='self, #toggle-mega-menu-knihy',
+                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
+                data-toggle-expand,
+                aria-haspopup="true"
+                )
+                  +icon('menu').icon--medium
+
+          if headerPromo
+            .bar__item.bar__item--shrinkable.header__ad.show-m(class=bookClassHide)
+              img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
+              | <style>.header__wrapper::after{background: #7d609a;}</style>
+
+          .bar__item.bar__item--fill.header__search.header-search
+            .hide-m.header-search__toggle.no-mrg
+              button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+                +icon('search').icon--medium
+            .hide-m.header-search__back
+              button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+                +icon('arrow-left').icon--medium
+            .header-search__search(style="position: relative;")
+              .form-control.form-control--input.no-mrg-bottom
+                .input-addons
+                  input.input.input--dark#search-in-header(type='text', placeholder="Titul, kategória alebo autor", data-input, data-toggle-focus)
+                  .input-addons__item.header-search__empty.input-addons__item--dark
+                    +icon('search', '', 'Search').icon--medium
+                  .input-addons__item.input-addons__item.no-pad.header-search__value
+                    .btn.btn--primary.text-nowrap
+                      +icon('search', '', 'Search').icon--medium.icon--left
+                      | Hladať
+              block headerSearchDropdown
+
+          .bar__item.header__user(class=bookClassHide)
+            +userMenu()
+
+          .bar__item.header__cart(class=bookClassHide)
+            a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
+              +icon('cart').icon--medium
+
+    block megamenu
+      include ./test-megamenu-1
+
+    include ./../checkout-notice
+

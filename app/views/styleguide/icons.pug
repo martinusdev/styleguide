@@ -192,6 +192,39 @@ block append content
 
   +content-section(contents[1])
 
+    +p It is possible to use the following sub-set of <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> Icons.
+    +p Using just HTML, the markup is: <code class='l-code-inline'>&lt;i class="fad fa-heart"&gt;&lt;/i&gt;</code>
+    +p For more instructions on markup, styles, sizing, and coloring, please refer to <a href="https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use" target="_blank">the official documentation</a>.
+
+    +demo
+      +demo-example
+        ul.l-icons
+          each icon in icons
+            each iconStyles, iconName in icon
+              each style in iconStyles
+                case style
+                  when 'duotone'
+                    - prefix = 'fad';
+                  when 'regular'
+                    - prefix = 'far';
+                  when 'light'
+                    - prefix = 'fal';
+                  when 'brands'
+                    - prefix = 'fab';
+                  default
+                    - prefix = 'fas';
+
+                - const iconClass = `${prefix} fa-${iconName}`;
+
+                li.l-icons_item
+                  i.fa-2x(
+                    class=iconClass
+                  )
+                  br
+                  abbr(title=iconClass).text-color-grey= iconName
+
+  +content-section(contents[2])
+
     +p There are three basic image utilities: fluid, rounded and circle. Fluid utility gives image ability to change size coresponding to its parent. Circle and rounded utilities provides specific shapes for images.
 
     +demo
@@ -211,7 +244,7 @@ block append content
     //- end: demo
   //- end: section
 
-  +content-section(contents[2], true)
+  +content-section(contents[3], true)
 
     +p Image thumbnails are defined in four sizes <code class='l-code-inline'>small/medium/medium-large/large/xlarge/huge</code> as shown on example below.
 
@@ -373,19 +406,19 @@ block append content
                 <img class="img" src="..." alt="...">
               </div>
             </div>
-            
+
             <div class="thumbnail thumbnail--large-shadow">
               <div class="thumbnail__img-wrap">
                 <img class="img" src="..." alt="...">
               </div>
             </div>
-            
+
             <a class="thumbnail thumbnail--clickable">
               <div class="thumbnail__img-wrap">
                 <img class="img" src="..." alt="...">
               </div>
             </a>
-            
+
             <div class="thumbnail thumbnail--center">
               <div class="thumbnail__img-wrap">
                 <img class="img" src="..." alt="...">
