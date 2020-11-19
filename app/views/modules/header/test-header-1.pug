@@ -41,8 +41,8 @@ block opts
                 img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
           .bar__item.header__nav(class=bookClassHide)
             .btn-layout.btn-layout--horizontal
-              .btn-dropdown.no-mrg.show-l
-                for item in mainNav
+              for item in mainNav
+                .btn-dropdown.no-mrg.show-l
                   if item.trigger
                     a.btn.btn--clean.header-btn(
                     data-mega-menu-test-trigger=`#${item.trigger}`
@@ -50,10 +50,9 @@ block opts
                     aria-haspopup="true"
                     )= item.title
                   else
-                    .btn-dropdown.no-mrg.show-l
-                      a.btn.btn--clean.header-btn(
-                        href=item.link
-                      )= item.title
+                    a.btn.btn--clean.header-btn(
+                      href=item.link
+                    )= item.title
               .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
                 a.btn.btn--clean.text-transform-upper.header-btn(
                 data-mega-menu-test-trigger=`#${mainNav[0].trigger}`
