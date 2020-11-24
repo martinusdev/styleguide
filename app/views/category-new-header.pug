@@ -1,0 +1,74 @@
+extends layouts/_default
+
+include ./mixins/breadcrumbs
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Kategoria'
+    - var filterStickyOffset = header.size.default + 61
+    - var subcategories = true
+    - var carousel = true
+    - var formats = false
+    - var description = true
+    -
+      const categories = [{
+        title: 'Beletria',
+        icon: 'fa-book-open',
+      }, {
+        title: 'Rozprávky',
+        icon: 'fa-swords',
+      }, {
+        title: 'Sci-fi, fantasy a komiksy',
+        icon: 'fa-wand-magic',
+      }, {
+        title: 'Náučné knihy',
+        icon: 'fa-atlas',
+      }, {
+        title: 'Omaľovánky, vystrihovanie, papier',
+        icon: 'fa-palette',
+      }, {
+        title: 'Hlavolamy, doplňovačky, úlohy a hry',
+        icon: 'fa-question',
+      }, {
+        title: 'Kuchárske knihy',
+        icon: 'fa-knife-kitchen',
+      }, {
+        title: 'Učebnice',
+        icon: 'fa-graduation-cap',
+      }, {
+        title: 'Hračky',
+        icon: '',
+      },]
+
+block content
+  main
+    section.section--breadcrumbs
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item.bar__item--shrinkable
+            +breadcrumbs({ breadcrumbs: ['Knihy'] })
+
+    section.section--secondary.section.section--toolbar.cat-no-border-bottom.no-pad-top
+      .wrapper-main
+        .bar.no-mrg-bottom
+          .bar__item
+            h1 Knihy pre deti
+        .row.mb-small.mt-small
+          .col.bg-secondary#list-categories(data-collapse=150)
+            .btn-layout--grid.letter-spacing-none
+              each category, i in categories
+                .btn-layout-item
+                  a(href="#").btn.btn--carousel.text-transform-none.text-size-medium.flex.align-items-middle.text-left
+                    if category.icon
+                      if category.icon.startsWith('fa-')
+                        i.text-color-theme.mr-tiny.fa-fw.fa-lg.fad(class= category.icon)
+                      else
+                        +icon(category.icon).mr-tiny.text-color-theme
+                    | !{category.title}
+          .col.text-center.hide-m
+            a.link.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)
+              +icon('plus')
+              | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac kategórií</span>
+
+    - let categoryListBadge = true;
+    include modules/category-list

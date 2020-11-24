@@ -341,6 +341,38 @@
   }
 }
 
+.btn-layout--grid {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+
+  > .btn-layout-item {
+    display: flex;
+    flex: 0 1 auto;
+    padding-right: $button-layout-margin;
+    margin-bottom: $button-layout-margin;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .btn {
+      flex: 1;
+      margin-bottom: 0;
+    }
+  }
+
+  @include breakpoint('m', 'downfrom') {
+    > .btn-layout-item {
+      &:nth-child(even) {
+        padding-right: 0;
+      }
+
+      width: 50%;
+    }
+  }
+}
+
 @include button-layout-classes;
 
 // ----------------------------
