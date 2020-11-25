@@ -42,6 +42,7 @@ import './plugins/font-awesome/all';
 
 // eslint-disable-next-line
 require('mutationobserver-shim');
+require('jspolyfill-array.prototype.findIndex');
 
 const APP_LOADED = 'myAppLoaded';
 const APP_INIT = 'myAppInit';
