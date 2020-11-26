@@ -328,6 +328,9 @@
 
 @each $breakpoint, $size in $breakpoints {
   @include breakpoint( $breakpoint ) {
+    .block#{_get-variant-name($breakpoint, '-')} { display: block !important; }
+    .inline-block#{_get-variant-name($breakpoint, '-')} { display: inline-block !important; }
+
     .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large'); }
     .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v'); }
     .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small'); }
@@ -428,9 +431,6 @@
   flex-shrink: 1 !important;
 }
 
-.inline-block { display: inline-block; }
-.block { display: block; }
-
 .block-fill {
   display: block;
   width: 100%;
@@ -443,3 +443,32 @@
 
 .position-relative { position: relative; }
 .position-absolute { position: absolute; }
+
+.overflow-scroll {
+  &-x,
+  &-y,
+  &-xy {
+    white-space: nowrap;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+    /* stylelint-disable */
+    scrollbar-width: none;  /* Firefox */
+    /* stylelint-enable */
+
+    &::-webkit-scrollbar {
+      display: none !important;
+    }
+  }
+
+  &-x {
+    overflow-x: scroll;
+  }
+
+  &-y {
+    overflow-y: scroll;
+  }
+
+  &-xy {
+    overflow: scroll;
+  }
+}
