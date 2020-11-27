@@ -337,11 +337,11 @@
     .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny'); }
     .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0; }
 
-    .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large'); }
-    .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v'); }
-    .mt-small#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'small'); }
-    .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny'); }
-    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-top: 0; }
+    .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large') !important; }
+    .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v') !important; }
+    .mt-small#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'small') !important; }
+    .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny') !important; }
+    .mt-none#{_get-variant-name($breakpoint, '-')} { margin-top: 0 !important; }
 
     .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny'); }
     .mr-medium#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v'); }
@@ -366,6 +366,10 @@
 
     .pl-tiny#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'tiny'); }
     .pl-medium#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v'); }
+
+    .position-relative#{_get-variant-name($breakpoint, '-')} { position: relative; }
+    .position-absolute#{_get-variant-name($breakpoint, '-')} { position: absolute; }
+    .position-fixed#{_get-variant-name($breakpoint, '-')} { position: fixed; }
   }
 }
 
@@ -440,9 +444,6 @@
 .w-75 { width: 75%; }
 .w-50 { width: 50%; }
 .w-25 { width: 25%; }
-
-.position-relative { position: relative; }
-.position-absolute { position: absolute; }
 
 .overflow-scroll {
   &-x,
