@@ -1,6 +1,8 @@
 .filter__cat {
   margin-bottom: 0;
   border-bottom: 1px solid $text-color-grey-light;
+
+  padding-bottom: _get-rem(20px);
 }
 
 .filter__cat-name {
@@ -9,13 +11,18 @@
   }
 
   .btn {
-    font-size: $font-size-medium;
-    padding: _get-rem(20px);
+    font-size: $font-size-regular;
+    padding-top: _get-rem(20px);
+    padding-bottom: 0;
+  }
+
+  .icon {
+    top: _get-rem(10px);
   }
 }
 
 .filter__cat-items {
-  padding-bottom: _get-rem(20px);
+  margin-top: _get-space('v', 'small');
 
   @include breakpoint('l', 'downfrom') {
     padding-left: _get-rem(20px);
@@ -25,6 +32,10 @@
   .checkbox {
     flex-wrap: wrap;
     padding: _get-rem(5px) 0;
+  }
+
+  .form-control--checkbox {
+    margin-bottom: 0;
   }
 }
 

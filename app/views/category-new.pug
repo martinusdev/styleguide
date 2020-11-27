@@ -5,11 +5,13 @@ include ./mixins/icon
 
 block opts
     - var pageTitle = 'Kategoria'
-    - var filterStickyOffset = header.size.default + 61
+    - var filterStickyOffset = header.size.default
     - var subcategories = true
-    - var carousel = true
+    - var carousel = false
     - var formats = false
-    - var description = true
+    - var description = false
+    - var hideFilterHeader = true
+    - var sortLinks = ['Odporúčame', 'Najpredávanejšie', 'Najlepšie hodnotené', 'Najnovšie', 'Najlacnejšie', 'S najvyššou zľavou']
     -
       const categories = [{
         title: 'Beletria',
@@ -69,11 +71,13 @@ block content
             a.link.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)
               +icon('plus')
               | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac kategórií</span>
+      .wrapper-main
+        .row
+          .col.text-size-medium.text-transform-upper.text-color-grey.inline-block-m.block Populárne filtre
       .wrapper-main.overflow-scroll-x
         .row.mt-tiny
           .col
-            .list-inline.list-inline--offset.text-size-medium.pr-medium
-              li.text-transform-upper.text-color-grey.inline-block-m.block Populárne filtre
+            ul.list-inline.list-inline--offset.text-size-medium.pr-medium
               li
                 a.link
                   | Leporelá
@@ -90,7 +94,39 @@ block content
                 a.link
                   | Walt Disney
                   .pill.pill--blue= 115
+              li
+                a.link
+                  | Dolor sit amet
+                  .pill.pill--blue= 59
+              li
+                a.link
+                  | Pre začínajúcich čitateľov
+                  .pill.pill--blue= 859
+              li
+                a.link
+                  | Pre prváčikov
+                  .pill.pill--blue= 293
+              li
+                a.link
+                  | Lorem ipsum
+                  .pill.pill--blue= 11
+              li
+                a.link
+                  | Leporelá
+                  .pill.pill--blue= 59
+              li
+                a.link
+                  | Pre prváčikov
+                  .pill.pill--blue= 293
+              li
+                a.link
+                  | Ipsum doloris
+                  .pill.pill--blue= 859
+              li
+                a.link
+                  | Walt Disney
+                  .pill.pill--blue= 115
 
 
     - let categoryListBadge = true;
-    include modules/category-list
+    include modules/category-list-new

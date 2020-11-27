@@ -445,31 +445,33 @@
 .w-50 { width: 50%; }
 .w-25 { width: 25%; }
 
-.overflow-scroll {
-  &-x,
-  &-y,
-  &-xy {
-    white-space: nowrap;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+@include breakpoint(m, down) {
+  .overflow-scroll {
+    &-x,
+    &-y,
+    &-xy {
+      white-space: nowrap;
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
 
-    /* stylelint-disable */
-    scrollbar-width: none;  /* Firefox */
-    /* stylelint-enable */
+      /* stylelint-disable */
+      scrollbar-width: none;  /* Firefox */
+      /* stylelint-enable */
 
-    &::-webkit-scrollbar {
-      display: none !important;
+      &::-webkit-scrollbar {
+        display: none !important;
+      }
     }
-  }
 
-  &-x {
-    overflow-x: scroll;
-  }
+    &-x {
+      overflow-x: scroll;
+    }
 
-  &-y {
-    overflow-y: scroll;
-  }
+    &-y {
+      overflow-y: scroll;
+    }
 
-  &-xy {
-    overflow: scroll;
+    &-xy {
+      overflow: scroll;
+    }
   }
 }
