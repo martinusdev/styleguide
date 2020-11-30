@@ -175,6 +175,26 @@ section.section
                 a.tab-nav__content--link.text-transform-none(class= i > 0 ? 'border-bottom-grey': '')
                   | !{sortLink}
 
+        .flex.mb-tiny.align-items-middle
+          .text-size-small.text-transform-upper.text-color-grey.inline-block-m.block.mr-medium Použité filtre
+          a(href="#").link.text-size-medium Zrušiť filtre
+        .row.pl-medium-m
+          .row.overflow-scroll-x
+            .col.pl-medium
+              .badges.flex-nowrap
+                .badge.mb-small
+                  | Klasické detektívky
+                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                    +icon('close').icon--small.icon--right
+                .badge.mb-small
+                  | Agatha Christie
+                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                    +icon('close').icon--small.icon--right
+                .badge.mb-small.mr-medium
+                  | rýchlovky (do 1h)
+                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                    +icon('close').icon--small.icon--right
+
         if searchCard
           p Našli sme v:
           .card.card--well
