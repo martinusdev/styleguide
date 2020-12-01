@@ -271,8 +271,6 @@
   }
 }
 
-@include visibility-classes;
-
 @mixin is-consent-visibility-classes() {
   .is-consent-show-inline {
     display: inline !important;
@@ -317,10 +315,6 @@
       @include hide-for-only($breakpoint);
     }
   }
-}
-
-.is-consent {
-  @include is-consent-visibility-classes;
 }
 
 // ---------------------------------------------
@@ -380,6 +374,12 @@
 
 .clickable {
   cursor: pointer;
+}
+
+@include visibility-classes;
+
+.is-consent {
+  @include is-consent-visibility-classes;
 }
 
 .visually-hidden {
