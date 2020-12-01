@@ -364,7 +364,12 @@
 
   @include breakpoint('m', 'downfrom') {
     > .btn-layout-item {
+      &:nth-child(odd) {
+        padding-right: $button-layout-margin / 2;
+      }
+
       &:nth-child(even) {
+        padding-left: $button-layout-margin / 2;
         padding-right: 0;
       }
 
