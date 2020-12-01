@@ -284,29 +284,18 @@ section.section
         if carousel
           h2.mb-large Najobľúbenejšie tituly a kolekcie
           +booksCarouselRecommended().carousel--fade-inside.carousel--fade-inside-white
-        #mobile-order.mobile-wrapper.mb-medium-l(data-toggle-lock).hide-m
+        #mobile-order.mobile-wrapper.mb-medium-l(data-toggle-lock).hide-l
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
             .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-order")
               +icon('close', 'icon--medium')
           .mobile-wrapper__content
-            .bar.mb-large
-              .bar__item.text-left.show-m
-                | Počet titulov:#{' '}
-                b 1762
-              .bar__item.bar__item--fill-l.bar__item--line.text-right.text-medium
-                .bar__item-content Zoradiť podľa:
-              .bar__item
-                .form-control.form-control--select
-                  select.js-select.select--ghost
-                    option(value="ba-obchodna") Bratislava, Obchodná
-                    option(value="ba-obchodna") Bratislava, Obchodná
-                    option(value="ba-obchodna") Bratislava, Obchodná
-                    option(value="ba-obchodna") Bratislava, Obchodná
-                    option(value="ba-obchodna") Bratislava, Obchodná
-            .hide-l.align-items-bottom.flex.flex-1
-              .btn-layout.btn-layout--vertical.no-mrg-bottom
-                button.btn Zoradiť
+            ul.list.pl-none
+              each sortLink, i in sortLinks
+                li.list__item
+                  a.flex-1(class = i===0 ? 'text-color-theme': '')
+                    strong !{sortLink}
+
 
         if filters
           .badges.mb-tiny
