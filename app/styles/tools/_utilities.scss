@@ -32,6 +32,14 @@
 .text-transform-capitalize { text-transform: capitalize; }
 .text-transform-none { text-transform: none; }
 
+.letter-spacing-none {
+  letter-spacing: normal;
+
+  * {
+    letter-spacing: normal !important;
+  }
+}
+
 .text-bold { font-weight: 700; }
 .text-semibold { font-weight: 600; }
 .text-light { font-weight: 300; }
@@ -320,20 +328,24 @@
 
 @each $breakpoint, $size in $breakpoints {
   @include breakpoint( $breakpoint ) {
+    .block#{_get-variant-name($breakpoint, '-')} { display: block !important; }
+    .inline-block#{_get-variant-name($breakpoint, '-')} { display: inline-block !important; }
+
     .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large'); }
     .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v'); }
     .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small'); }
     .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny'); }
     .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0; }
 
-    .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large'); }
-    .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v'); }
-    .mt-small#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'small'); }
-    .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny'); }
-    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-top: 0; }
+    .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large') !important; }
+    .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v') !important; }
+    .mt-small#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'small') !important; }
+    .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny') !important; }
+    .mt-none#{_get-variant-name($breakpoint, '-')} { margin-top: 0 !important; }
 
     .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny'); }
     .mr-medium#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v'); }
+    .mr-none#{_get-variant-name($breakpoint, '-')} { margin-right: 0 !important; }
 
     .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny'); }
     .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v'); }
@@ -350,11 +362,17 @@
     .pt-tiny#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'tiny'); }
     .pt-none#{_get-variant-name($breakpoint, '-')} { padding-top: 0; }
 
+    .pr-none#{_get-variant-name($breakpoint, '-')} { padding-right: 0; }
     .pr-tiny#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'tiny'); }
     .pr-medium#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v'); }
 
+    .pl-none#{_get-variant-name($breakpoint, '-')} { padding-left: 0; }
     .pl-tiny#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'tiny'); }
     .pl-medium#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v'); }
+
+    .position-relative#{_get-variant-name($breakpoint, '-')} { position: relative; }
+    .position-absolute#{_get-variant-name($breakpoint, '-')} { position: absolute; }
+    .position-fixed#{_get-variant-name($breakpoint, '-')} { position: fixed; }
   }
 }
 
@@ -404,8 +422,14 @@
   background-color: $green-bg-color;
 }
 
-.border-bottom-grey { border-bottom: 1px solid $text-color-grey-light; }
-.border-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
+.border {
+  &-top-grey { border-top: 1px solid $text-color-grey-light; }
+  &-bottom-grey { border-bottom: 1px solid $text-color-grey-light; }
+  &-left-grey { border-left: 1px solid $text-color-grey-light; }
+  &-right-grey { border-right: 1px solid $text-color-grey-light; }
+
+  &-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
+}
 
 .flex { display: flex; }
 .flex-column { flex-direction: column; }
@@ -420,9 +444,6 @@
   flex-shrink: 1 !important;
 }
 
-.inline-block { display: inline-block; }
-.block { display: block; }
-
 .block-fill {
   display: block;
   width: 100%;
@@ -433,5 +454,33 @@
 .w-50 { width: 50%; }
 .w-25 { width: 25%; }
 
-.position-relative { position: relative; }
-.position-absolute { position: absolute; }
+@include breakpoint(m, down) {
+  .overflow-scroll {
+    &-x,
+    &-y,
+    &-xy {
+      white-space: nowrap;
+      -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+      /* stylelint-disable */
+      scrollbar-width: none;  /* Firefox */
+      /* stylelint-enable */
+
+      &::-webkit-scrollbar {
+        display: none !important;
+      }
+    }
+
+    &-x {
+      overflow-x: scroll;
+    }
+
+    &-y {
+      overflow-y: scroll;
+    }
+
+    &-xy {
+      overflow: scroll;
+    }
+  }
+}

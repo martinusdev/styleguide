@@ -1,12 +1,13 @@
 include ./../mixins/icon
 include ./../mixins/xmas
 .filter
-  .row.show-l.align-items-middle.mb-medium
-    .col--fill
-      h2.no-mrg Filter
-    .col--shrink
-      if !collapseFilters
-        a.link.text-transform-upper.text-small zmazať filter
+  if !hideFilterHeader
+    .row.show-l.align-items-middle.mb-medium
+      .col--fill
+        h2.no-mrg Filter
+      .col--shrink
+        if !collapseFilters
+          a.link.text-transform-upper.text-small zmazať filter
   if xmas
     .filter__cat
       .filter__cat-name
