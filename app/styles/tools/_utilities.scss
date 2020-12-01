@@ -345,6 +345,7 @@
 
     .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny'); }
     .mr-medium#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v'); }
+    .mr-none#{_get-variant-name($breakpoint, '-')} { margin-right: 0 !important; }
 
     .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny'); }
     .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v'); }
@@ -419,8 +420,14 @@
   background-color: $green-bg-color;
 }
 
-.border-bottom-grey { border-bottom: 1px solid $text-color-grey-light; }
-.border-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
+.border {
+  &-top-grey { border-top: 1px solid $text-color-grey-light; }
+  &-bottom-grey { border-bottom: 1px solid $text-color-grey-light; }
+  &-left-grey { border-left: 1px solid $text-color-grey-light; }
+  &-right-grey { border-right: 1px solid $text-color-grey-light; }
+
+  &-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
+}
 
 .flex { display: flex; }
 .flex-column { flex-direction: column; }
