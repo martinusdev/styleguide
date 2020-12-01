@@ -168,11 +168,11 @@ section.section
             .btn-layout.btn-layout--vertical.no-mrg-bottom
               button.btn Zúžiť výber
       .col--l-9.col--12
-        .div.mb-large.overflow-scroll-x
+        .div.mb-large.show-l
           ul.tab-nav.flex
             each sortLink, i in sortLinks
               li.tab-nav__item(class= i===0 ? 'is-active': '')
-                a.tab-nav__content--link.text-transform-none(class= i > 0 ? 'border-bottom-grey': '')
+                a.flex.align-items-middle.text-center.line-small.tab-nav__content--link.text-transform-none(class= i > 0 ? 'border-bottom-grey': '')
                   | !{sortLink}
 
         .flex.mb-tiny.align-items-middle
