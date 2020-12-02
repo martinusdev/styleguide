@@ -27,6 +27,10 @@
 .autocomplete__option {
   @include dropdown-item;
   cursor: pointer;
+
+  > * {
+    pointer-events: none;
+  }
 }
 
 .autocomplete__option--focused {
