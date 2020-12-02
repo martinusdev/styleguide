@@ -5,6 +5,13 @@
     border-bottom: 1px solid $default-border-color;
   }
 
+  &__description {
+    display: -webkit-box; // stylelint-disable-line
+    -webkit-line-clamp: 5; // stylelint-disable-line
+    -webkit-box-orient: vertical; // stylelint-disable-line
+    overflow: hidden;
+  }
+
   &__price-box {
     @include breakpoint('m', 'downfrom') {
       flex-direction: column;
@@ -17,6 +24,35 @@
     @include breakpoint('m') {
       width: 245px;
       max-width: 100%;
+    }
+  }
+}
+
+.product-item__variants {
+  @include breakpoint('l', 'downfrom') {
+    .col {
+      border-bottom: 1px solid $default-border-color;
+      margin-top: _get-space('v', 'tiny');
+      padding-bottom: _get-space('v', 'tiny');
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+
+  @include breakpoint('l') {
+    .col {
+      border-left: 1px solid $default-border-color;
+
+      &:first-child {
+        border-left: 0;
+      }
     }
   }
 }

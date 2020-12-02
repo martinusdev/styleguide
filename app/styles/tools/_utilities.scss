@@ -325,11 +325,11 @@
     .block#{_get-variant-name($breakpoint, '-')} { display: block !important; }
     .inline-block#{_get-variant-name($breakpoint, '-')} { display: inline-block !important; }
 
-    .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large'); }
-    .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v'); }
-    .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small'); }
-    .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny'); }
-    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0; }
+    .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large') !important; }
+    .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v') !important; }
+    .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small') !important; }
+    .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny') !important; }
+    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0 !important; }
 
     .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large') !important; }
     .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v') !important; }
@@ -337,12 +337,29 @@
     .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny') !important; }
     .mt-none#{_get-variant-name($breakpoint, '-')} { margin-top: 0 !important; }
 
-    .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny'); }
-    .mr-medium#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v'); }
+    .mr-large#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'large') !important; }
+    .mr-medium#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v') !important; }
+    .mr-small#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'small') !important; }
+    .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny') !important; }
     .mr-none#{_get-variant-name($breakpoint, '-')} { margin-right: 0 !important; }
 
-    .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny'); }
-    .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v'); }
+    .ml-large#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'large') !important; }
+    .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v') !important; }
+    .ml-small#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'small') !important; }
+    .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny') !important; }
+    .ml-none#{_get-variant-name($breakpoint, '-')} { margin-left: 0 !important; }
+
+    .m-none#{_get-variant-name($breakpoint, '-')} { margin: 0 !important; }
+
+    .my-none#{_get-variant-name($breakpoint, '-')} {
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    .mx-none#{_get-variant-name($breakpoint, '-')} {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
 
     .pb-large#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v', 'large'); }
     .pb-medium#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v'); }

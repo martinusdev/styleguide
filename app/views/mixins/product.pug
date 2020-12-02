@@ -348,3 +348,15 @@ mixin product(props = {})
 
   .product(class= size ? `product--${size}`: '')&attributes(attributes)
     block
+
+mixin productType(props = {})
+  -
+    const {
+      icon,
+      title
+    } = props;
+
+  a.link.text-medium.flex.align-items-middle
+    +icon(icon, 'text-color-grey mr-tiny icon--small flex-noshrink')
+    span.text-ellipsis #{title}
+    +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
