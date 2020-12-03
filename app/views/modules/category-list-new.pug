@@ -25,7 +25,7 @@ mixin productInfo(props = {})
       discount = false,
     } = props
 
-  .mt-tiny.product-item__info
+  .mt-tiny.product-item__info.flex-1
     div
       +productPrice({price, discount})
       ul.list--unstyled.text-medium.mb-medium-l
@@ -237,10 +237,10 @@ section.section
 
                   // Ak je viac variantov
                   .row.mt-medium.product-item__variants
-                    .col.col--l-4
+                    .col.col--l-4.flex.flex-column
                       +productType({ icon: 'products-books', title: 'Pevná väzba' })
                       +productInfo({ price: '11,99 €', xmas: true, discount: 15, status: 'lowstock' })
-                    .col.col--l-4
+                    .col.col--l-4.flex.flex-column
                       +productType({ icon: 'products-books', title: 'Pevná väzba, limitované vydanie' })
                       +productInfo({ price: '22,79 €', status: 'instock-distributor' })
                     .col.col--l-4.flex.align-items-middle.text-medium
