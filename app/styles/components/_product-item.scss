@@ -12,6 +12,39 @@
     overflow: hidden;
   }
 
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    @include breakpoint('l') {
+      flex-direction: column;
+    }
+
+    @include breakpoint('l', 'downfrom') {
+      ul li {
+        font-size: $font-size-small;
+      }
+
+      li .icon {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+
+    ul li {
+      margin-top: _get-space('v', 'tiny');
+
+      &:first-child { // stylelint-disable-line
+        margin-top: 0;
+      }
+    }
+
+    .btn {
+      margin-bottom: 0;
+    }
+  }
+
   &__price-box {
     @include breakpoint('m', 'downfrom') {
       flex-direction: column;
@@ -32,8 +65,8 @@
   @include breakpoint('l', 'downfrom') {
     .col {
       border-bottom: 1px solid $default-border-color;
-      margin-top: _get-space('v', 'tiny');
-      padding-bottom: _get-space('v', 'tiny');
+      margin-top: _get-space('v', 'small');
+      padding-bottom: _get-space('v', 'small');
 
       &:first-child {
         margin-top: 0;
