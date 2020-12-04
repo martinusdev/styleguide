@@ -27,11 +27,8 @@ mixin productInfo(props = {})
       +productRatingBadge({ rating: item.rating })
       .badge.badge--blue
         | TOP #29
-    p.text-medium.no-mrg-bottom.product-item__description
+    p.text-medium.mb-none.product-item__description
       | Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha.
-    a.link.text-medium
-      | Viac o knihe
-      +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
 
 mixin productRatingBadge(props = {})
   -
@@ -108,16 +105,16 @@ mixin productPriceInfo(props = {})
       span.text-semibold.ml-tiny.show-m Do košíka
 
 
-section.section.section--toolbar.no-pad.hide-l.bg-default(data-sticky,
+section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
   .wrapper-main.px-none
     .bar.mb-none
       .bar__item.bar__item--fill.mr-none.text-center
-        button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-reduction").no-mrg-right.text-size-medium
+        button.btn.btn--clean.mb-none.mr-none(data-toggle="#mobile-reduction").text-size-medium
           +icon('reduction', 'icon--medium').icon--left
           span Zúžiť výber
       .bar__item.bar__item--fill.border-left-grey.text-center
-        button.btn.btn--fill.btn--clean.no-mrg-bottom(data-toggle="#mobile-order").no-mrg-right.text-size-medium
+        button.btn.btn--fill.btn--clean.mb-none.mr-none(data-toggle="#mobile-order").text-size-medium
           +icon('order', 'icon--medium').icon--left
           span Zoradiť
 
@@ -129,13 +126,13 @@ section.section
           .mobile-wrapper__header-title Zúženie výberu
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
             +icon('close', 'icon--medium')
-        .mobile-wrapper__content.no-pad
+        .mobile-wrapper__content.p-none
           if filterSmall
             include category-filter-small
           else
             include category-filter
         .mobile-wrapper__footer
-            .btn-layout.btn-layout--vertical.no-mrg-bottom
+            .btn-layout.btn-layout--vertical.mb-none
               button.btn Zúžiť výber
       .col--l-9.col--12
         .div.mb-medium.show-l
@@ -266,8 +263,7 @@ section.section
                   .row.product-item__variants
                     +productInfo({item})
 
-                  // Ak je viac variantov
-                  .row.mt-medium.product-item__variants
+                  .row.mt-small.product-item__variants
                     .col.col--l-4.flex.flex-column
                       +productType({ icon: 'products-books', title: 'Pevná väzba' })
                       +productPriceInfo({ price: '11,99 €', xmas: true, discount: 15, status: 'lowstock' })
@@ -282,6 +278,7 @@ section.section
                         +icon('products-ebooks', 'ml-tiny').text-color-grey
 
           else
+            // SINGLE ITEM
             .product-item.bg-default.pb-medium.border-bottom-grey(class=(i === 2 || i === 4) ? 'mb-none-m' : '' )
               .row
                 .col--shrink.pr-none-m
@@ -297,7 +294,7 @@ section.section
                 .col--fill
                   .row.product-item__variants
                     +productInfo({item})
-                    .col.col--l-4.mt-medium.mt-none-l
+                    .col.col--l-4.mt-small.mt-none-l
                       +productType({ icon: 'products-books', title: 'Pevná väzba s prebalom', className: '' })
                       +productPriceInfo({ price: item.price, xmas: true, discount: 20 })
 
@@ -305,7 +302,7 @@ section.section
           if i === 2
             .section.section--small.bg-secondary.mb-large
               .product-item
-                .row.mb-medium.no-mrg-horizontal
+                .row.mb-medium.mx-none
                   .col--m-2.text-center
                     +icon('footer-shipping').icon--xxlarge.text-color-success
                   .col--m-10.text-center.text-left-m
@@ -316,10 +313,10 @@ section.section
           if i === 4
             .section.bg-secondary.show-m.mb-large
               .product-item
-                .row.mb-large.no-mrg-horizontal
+                .row.mb-large.mx-none
                   .col--m-fill
                     .row
-                      .col--s-shrink.col--3.no-pad-right
+                      .col--s-shrink.col--3.pr-none
                         .thumbnail
                           img(src="../images/content/gift/darcekova-poukazka@2x.png", alt="Darcekova poukazka", width="120")
                       .col--s-fill.col--9
@@ -327,7 +324,7 @@ section.section
                           br
                           | Kúpte darčekovú poukážku
                         p Obdarujte svojich blízkych presne tým, po čom vždy túžili - a ani nemusíte vedieť, čo to je!
-                        p.no-mrg-bottom
+                        p.mb-none
                           strong Darujte im darčekovú poukážku,
                           | za ktorú si môžu vybrať čokoľvek z celej pomnuky Martinus.sk - desiatky tisíc kníh, filmov, puzzle a iných skvelých darčekov. Podmienky použitia nájdete
                           a(href="#") tu
@@ -335,7 +332,7 @@ section.section
                   .col--m-shrink.product-item__price-box
                     .text-small.text.text-transform-upper.text-color-grey hodnota darčekovej poukážky
                     .btn-layout.btn-layout--vertical.mb-medium
-                      .btn-dropdown.no-mrg
+                      .btn-dropdown.m-none
                         button.btn.btn--ghost.btn--icon-right.text-left(
                           data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                           data-toggle-expand,
