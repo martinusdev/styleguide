@@ -20,7 +20,7 @@ const texts = {
     ],
   },
   cz: {
-    placeholder: 'Začněte psáť...',
+    placeholder: 'Začněte psát...',
     noResults: 'Nenašli sme žádné výsledky.',
     selectedOption: (selectedOption, length, index) =>
       `Možnost ${selectedOption} (${index + 1} z ${length}) je označena.`,
