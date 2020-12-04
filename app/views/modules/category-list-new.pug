@@ -4,6 +4,59 @@ include ./../mixins/pagination
 include ./../mixins/icon
 include ./../mixins/xmas
 
+mixin productInfo(props = {})
+  -
+    const {
+      item
+    } = props;
+
+  .col--fill
+    h2.h3.mb-none
+      a.link.link--product(href="detail-knihy.html")
+        =item.title
+        if item.subtitle
+          .inline-block-m.text-color-grey.text-normal.ml-small-m #{item.subtitle}
+    .text-medium.mb-small
+      for author, i in item.author.split(', ')
+        if i > 0
+          | ,#{' '}
+        a.link #{author}
+      span.text-color-grey.ml-small
+        | 1. diel série
+    .badges.badges--inline.mb-small.show-m
+      +productRatingBadge({ rating: item.rating })
+      .badge.badge--blue
+        | TOP #29
+    p.text-medium.no-mrg-bottom.product-item__description
+      | Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha.
+    a.link.text-medium
+      | Viac o knihe
+      +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
+
+mixin productRatingBadge(props = {})
+  -
+    const {
+      rating
+    } = props;
+
+  a.badge
+    +icon('star', '').text-color-yellow
+    span.text-color-grey #{rating}
+    span.link.text-space-left(href="#recenzie", data-scroll) 234x
+
+mixin productType(props = {})
+  -
+    const {
+      icon,
+      title,
+      className = 'product-item__variants__name',
+    } = props;
+
+  a(class= className).link.text-medium.flex.align-items-middle
+    +icon(icon, 'text-color-grey mr-tiny icon--small flex-noshrink')
+    span.text-ellipsis #{title}
+    +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
+
 mixin productPrice(props = {})
   -
     const {
@@ -11,12 +64,12 @@ mixin productPrice(props = {})
       discount = false,
     } = props
 
-  h2.text-bold.flex.align-items-middle.mb-small
+  h2.text-bold.flex.align-items-middle.mb-tiny
     | #{price}
     if (discount)
       .badge.badge--primary.ml-small -#{discount} %
 
-mixin productInfo(props = {})
+mixin productPriceInfo(props = {})
   -
     const {
       price,
@@ -31,12 +84,14 @@ mixin productInfo(props = {})
       ul.list--unstyled.text-medium.mb-medium-l
         if (status === 'instock')
           li.text-color-success
-            | Na sklade, posielame#{' '}
-            em(data-tooltip, title="Toto je tooltip").text-color-success ihneď
+            | Na sklade
+            span.show-s , posielame#{' '}
+              em(data-tooltip, title="Toto je tooltip").text-color-success ihneď
         else if (status === 'lowstock')
           li.text-color-success
-            | Na sklade, objednávajte však#{' '}
-            em(data-tooltip, title="Toto je tooltip").text-color-success rýchlo
+            | Na sklade
+            span.show-s , objednávajte však#{' '}
+              em(data-tooltip, title="Toto je tooltip").text-color-success rýchlo
         else if (status === 'presale')
           li.text-color-grey
             | Predobjednávka
@@ -55,7 +110,7 @@ mixin productInfo(props = {})
 
 section.section.section--toolbar.no-pad.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
-  .wrapper-main
+  .wrapper-main.px-none
     .bar.mb-none
       .bar__item.bar__item--fill.mr-none.text-center
         button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-reduction").no-mrg-right.text-size-medium
@@ -197,54 +252,30 @@ section.section
             //GROUPED ITEM
             .product-item.bg-default.pb-medium.border-bottom-grey
               .row
-                .col--shrink.pr-none
+                .col--shrink.pr-none-m
                   +productCover({
                     href: 'detail-knihy.html',
                     cover: `${item.cover}`,
                     collection: true,
                   })
                   .badges.badges--column.mb-small.hide-m
-                    a.badge
-                      +icon('star', '').text-color-yellow
-                      span.ml-tiny.text-color-grey 3.5
-                      span.link.text-space-left(href="#recenzie", data-scroll) 234x
+                    +productRatingBadge({rating: item.rating})
                     .badge.badge--blue
                       | TOP #29
                 .col--fill
                   .row.product-item__variants
-                    .col--fill
-                      h2.h3.mb-none
-                        a.link.link--product(href="detail-knihy.html") #{item.title}
-                      .text-medium.mb-small
-                        for author, i in item.author.split(', ')
-                          if i > 0
-                            | ,#{' '}
-                          a.link #{author}
-                        span.text-color-grey.ml-small
-                          | 1. diel série
-                      .badges.badges--inline.mb-small.show-m
-                        a.badge
-                          +icon('star', '').text-color-yellow
-                          span.ml-tiny.text-color-grey 3.5
-                          span.link.text-space-left(href="#recenzie", data-scroll) 234x
-                        .badge.badge--blue
-                          | TOP #29
-                      p.text-medium.no-mrg-bottom.product-item__description
-                        | Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha.
-                      a.link.text-medium
-                        | Viac o knihe
-                        +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
+                    +productInfo({item})
 
                   // Ak je viac variantov
                   .row.mt-medium.product-item__variants
                     .col.col--l-4.flex.flex-column
                       +productType({ icon: 'products-books', title: 'Pevná väzba' })
-                      +productInfo({ price: '11,99 €', xmas: true, discount: 15, status: 'lowstock' })
+                      +productPriceInfo({ price: '11,99 €', xmas: true, discount: 15, status: 'lowstock' })
                     .col.col--l-4.flex.flex-column
                       +productType({ icon: 'products-books', title: 'Pevná väzba, limitované vydanie' })
-                      +productInfo({ price: '22,79 €', status: 'instock-distributor' })
+                      +productPriceInfo({ price: '22,79 €', status: 'instock-distributor' })
                     .col.col--l-4.flex.align-items-middle.text-medium
-                      a.link.flex.align-items-middle
+                      a.link.flex.align-items-middle.flex-1.product-item__variants__name
                         +icon('plus', 'mr-tiny')
                         | Ďalšie formáty
                         +icon('products-books', 'ml-tiny').text-color-grey
@@ -253,47 +284,22 @@ section.section
           else
             .product-item.bg-default.pb-medium.border-bottom-grey(class=(i === 2 || i === 4) ? 'mb-none-m' : '' )
               .row
-                .col--shrink.pr-none
+                .col--shrink.pr-none-m
                   +productCover({
                     href: 'detail-knihy.html',
                     cover: `${item.cover}`,
                     collection: false,
                   })
                   .badges.badges--column.mb-small.hide-m
-                    a.badge
-                      +icon('star', '').text-color-yellow
-                      span.ml-tiny.text-color-grey 3.5
-                      span.link.text-space-left(href="#recenzie", data-scroll) 234x
+                    +productRatingBadge({rating: item.rating})
                     .badge.badge--blue
                       | TOP #29
                 .col--fill
                   .row.product-item__variants
-                    .col--fill
-                      h2.h3.mb-none
-                        a.link.link--product(href="detail-knihy.html") #{item.title}
-                      .text-medium.mb-small
-                        for author, i in item.author.split(', ')
-                          if i > 0
-                            | ,#{' '}
-                          a.link #{author}
-                        span.text-color-grey.ml-small
-                          | 1. diel série
-                      .badges.badges--inline.mb-small.show-m
-                        a.badge
-                          +icon('star', '').text-color-yellow
-                          span.ml-tiny.text-color-grey 3.5
-                          span.link.text-space-left(href="#recenzie", data-scroll) 234x
-                        .badge.badge--blue
-                          | TOP #29
-                      p.text-medium.no-mrg-bottom.product-item__description
-                        | Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha.
-                      a.link.text-medium
-                        | Viac o knihe
-                        +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
-                    // Ak je iba jeden variant
+                    +productInfo({item})
                     .col.col--l-4.mt-medium.mt-none-l
-                      +productType({ icon: 'products-books', title: 'Pevná väzba s prebalom' })
-                      +productInfo({ price: item.price, xmas: true, discount: 20 })
+                      +productType({ icon: 'products-books', title: 'Pevná väzba s prebalom', className: '' })
+                      +productPriceInfo({ price: item.price, xmas: true, discount: 20 })
 
           //- HLADATE DARCEK
           if i === 2
