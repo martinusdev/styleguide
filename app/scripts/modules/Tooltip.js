@@ -4,6 +4,7 @@ const defaultConfig = {
   animation: 'scale',
   arrow: true,
   interactive: true,
+  appendTo: () => document.body,
   delay: 150,
   content(reference) {
     // use title as a default tooltip content
