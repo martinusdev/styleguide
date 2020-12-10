@@ -14,8 +14,10 @@ mixin productInfo(props = {})
     h2.h3.mb-none
       a.link.link--product(href="detail-knihy.html")
         =item.title
+        if item.lang
+          .badge #{item.lang}
         if item.subtitle
-          .inline-block-m.text-color-grey.text-normal.ml-small-m #{item.subtitle}
+          .text-color-grey.text-normal #{item.subtitle}
     .text-medium.mb-small
       for author, i in item.author.split(', ')
         if i > 0
@@ -76,9 +78,9 @@ mixin productPriceInfo(props = {})
       typeInfo,
     } = props
 
+  +productType(typeInfo)
   .product-item__info.flex-1
     div
-      +productType(typeInfo)
       +productPrice({price, discount})
       ul.list--unstyled.list-shipping.text-medium.mb-medium-l
         if (status === 'instock')
