@@ -15,10 +15,11 @@
   &__info {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
 
-    @include breakpoint('l') {
+    @include breakpoint('xl') {
       flex-direction: column;
+      align-items: flex-start;
     }
 
     @include breakpoint('l', 'downfrom') {
@@ -68,33 +69,16 @@
 }
 
 .product-item__variants {
-  &__name {
-    @include breakpoint('l', 'downfrom') {
-      padding-top: _get-space('v', 'small');
-      border-top: 1px solid $default-border-color;
-    }
+  .product-item__info {
+    flex-direction: row;
+    align-items: center;
   }
 
-  @include breakpoint('l', 'downfrom') {
-    .col {
-      padding-bottom: _get-space('v', 'small');
-
-      &:first-of-type {
-        .product-item__variants__name { //stylelint-disable-line
-          border-top: 0;
-          padding-top: 0;
-        }
-      }
-    }
+  .list-shipping {
+    margin-bottom: 0 !important;
   }
 
-  @include breakpoint('l') {
-    .col {
-      border-left: 1px solid $default-border-color;
-
-      &:first-of-type {
-        border-left: 0;
-      }
-    }
+  .col {
+    padding-bottom: _get-space('v', 'small');
   }
 }

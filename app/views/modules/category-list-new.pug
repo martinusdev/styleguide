@@ -73,12 +73,14 @@ mixin productPriceInfo(props = {})
       xmas = false,
       status = 'instock',
       discount = false,
+      typeInfo,
     } = props
 
-  .mt-tiny.product-item__info.flex-1
+  .product-item__info.flex-1
     div
+      +productType(typeInfo)
       +productPrice({price, discount})
-      ul.list--unstyled.text-medium.mb-medium-l
+      ul.list--unstyled.list-shipping.text-medium.mb-medium-l
         if (status === 'instock')
           li.text-color-success
             | Na sklade
@@ -106,7 +108,7 @@ mixin productPriceInfo(props = {})
 
 
 section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
-  data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
+  data-scroll-offset=filterStickyOffset ? filterStickyOffset: header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
   .wrapper-main.px-none
     .bar.mb-none
       .bar__item.bar__item--fill.mr-none.text-center
@@ -264,18 +266,19 @@ section.section
                     +productInfo({item})
 
                   .row.mt-small.product-item__variants
-                    .col.col--l-4.flex.flex-column
-                      +productType({ icon: 'products-books', title: 'Pevná väzba' })
-                      +productPriceInfo({ price: '11,99 €', xmas: true, discount: 15, status: 'lowstock' })
-                    .col.col--l-4.flex.flex-column
-                      +productType({ icon: 'products-books', title: 'Pevná väzba, limitované vydanie' })
-                      +productPriceInfo({ price: '22,79 €', status: 'instock-distributor' })
-                    .col.col--l-4.flex.align-items-middle.text-medium
-                      a.link.flex.align-items-middle.flex-1.product-item__variants__name
-                        +icon('plus', 'mr-tiny')
-                        | Ďalšie formáty
-                        +icon('products-books', 'ml-tiny').text-color-grey
-                        +icon('products-ebooks', 'ml-tiny').text-color-grey
+                    .col.col--xl-8.pr-none-xl
+                      +productPriceInfo({ price: '11,99 €', xmas: true, discount: 15, status: 'lowstock', typeInfo: { icon: 'products-books', title: 'Pevná väzba' }, })
+                      hr.mb-none.mt-small
+                    .col.col--xl-8.pr-none-xl
+                      +productPriceInfo({ price: '22,79 €', status: 'instock-distributor', typeInfo: { icon: 'products-books', title: 'Pevná väzba, limitované vydanie' }, })
+                      hr.mb-none.mt-small
+                    .col.col--xl-8.pr-none-xl
+                      .product-item__info
+                        a.text-medium.link.flex.align-items-middle.flex-1.product-item__variants__name
+                          +icon('plus', 'mr-tiny')
+                          | Ďalšie formáty
+                          +icon('products-books', 'ml-tiny').text-color-grey
+                          +icon('products-ebooks', 'ml-tiny').text-color-grey
 
           else
             // SINGLE ITEM
@@ -292,11 +295,10 @@ section.section
                     .badge.badge--blue
                       | TOP #29
                 .col--fill
-                  .row.product-item__variants
+                  .row
                     +productInfo({item})
-                    .col.col--l-4.mt-small.mt-none-l
-                      +productType({ icon: 'products-books', title: 'Pevná väzba s prebalom', className: '' })
-                      +productPriceInfo({ price: item.price, xmas: true, discount: 20 })
+                    .col.col--xl-4.mt-small.mt-none-xl
+                      +productPriceInfo({ price: item.price, xmas: true, discount: 20, typeInfo: { icon: 'products-books', title: 'Pevná väzba s prebalom', className: '' } })
 
           //- HLADATE DARCEK
           if i === 2
