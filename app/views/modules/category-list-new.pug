@@ -49,7 +49,7 @@ mixin productType(props = {})
       className = 'product-item__variants__name',
     } = props;
 
-  a(class= className).link.text-medium.flex.align-items-middle
+  a(class= className).link.text-medium.flex.align-items-middle.mb-tiny
     +icon(icon, 'text-color-grey mr-tiny icon--small flex-noshrink')
     span.text-ellipsis #{title}
     +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
@@ -101,7 +101,7 @@ mixin productPriceInfo(props = {})
         if (xmas)
           li.text-color-success
             +icon('xmas', 'icon--medium mr-tiny')
-            | Stíhame do Vianoc
+            strong Stíhame do Vianoc
     button.btn.btn--primary(data-toggle='#checkout-notice')
       +icon('cart').icon--left.icon--medium.mx-none
       span.text-semibold.ml-tiny.show-m Do košíka
