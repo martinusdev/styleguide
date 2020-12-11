@@ -24,18 +24,18 @@ block content
             +myLibrarySidenav2
 
           .col--l-9.col--12.mb-large
+            h2.mb-none Wishlist
             .bar.mb-medium
               .bar__item.hide-l
                 a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
                   +icon('arrow-left', 'icon--medium')
+              .bar__item.bar__item--shrinkable.mr-tiny
+                button.btn.btn--clean.pl-tiny(data-toggle='#edit')
+                  +icon('smart-list').icon--medium
               .bar__item.bar__item--shrinkable.text-space-right-tiny
-                h2.mb-none Wishlist
                 small.text-color-grey.block(style="margin-top: -3px;")
                   +icon('guard').icon--small.text-space-right-tiny
-                  a(data-toggle="#edit").link súkromný
-              .bar__item.bar__item--shrinkable
-                button.btn.btn--clean.btn--equal(data-toggle='#edit')
-                  +icon('smart-list').icon--medium
+                  a(data-toggle="#edit").link Súkromný
               .bar__break.hide-m
               .bar__item.bar__item--fill
                 .btn-layout.btn-layout--horizontal.align-items-middle
