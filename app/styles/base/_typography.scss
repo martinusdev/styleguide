@@ -300,6 +300,18 @@ hr {
     }
   }
 
+  .list-inline--bulleted {
+    > li {
+      @include css-map($inline-list-item, 'bulleted');
+
+      &:not(:last-child)::after {
+        margin-left: _get-space('h', 'tiny');
+        content: '•';
+        color: $text-color-grey;
+      }
+    }
+  }
+
   .list-inline--condensed {
     > li {
       @include css-map($inline-list-item, 'condensed');
