@@ -127,25 +127,24 @@ mixin megaMenuContent(props = {})
       .mega-menu__categories
         .row.no-mrg-horizontal.mb-medium-m
           each category in categories
-            .col.col--m-4.col--12.col--category.flex
-              .mr-tiny.mega-menu__categories__icon
-                if category.icon.startsWith('fa-')
-                  i.text-color-theme.fa-fw.fal(class= category.icon)
-                else
-                  +icon(category.icon).icon--large.text-color-theme
-              div.flex-1
-                a(href="#").block.pt-medium.pb-medium.pb-none-m.link.link--black.mega-menu__categories__title.mb-none
-                  h3.mb-none=category.title
-                if category.entries
-                  ul.mega-menu__categories__subcategories.pl-none.text-medium.show-m.mt-tiny.mb-small
-                    each item in category.entries
-                      li.mb-none
-                        a.pt-tiny.pb-tiny.block.link.link--black(href='#')= item
-                    li
-                      a.block.mt-tiny.link.link--grey(href='#')
-                        | + Ďalšie kategórie
+            .col.col--m-4.col--12.mega-menu__categories__category
+              a(href="#").flex.align-items-middle.pt-small.pb-small.pt-medium-m.pb-none-m.link.link--black.mega-menu__categories__title.mb-none
+                .mr-tiny.mega-menu__categories__icon
+                  if category.icon.startsWith('fa-')
+                    i.text-color-theme.fa-fw.fal(class= category.icon)
+                  else
+                    +icon(category.icon).icon--large.text-color-theme
+                h3.mb-none=category.title
+              if category.entries
+                ul.mega-menu__categories__subcategories.text-medium.show-m.mt-tiny.mb-small
+                  each item in category.entries
+                    li.mb-none
+                      a.pt-tiny.pb-tiny.block.link.link--black(href='#')= item
+                  li
+                    a.block.mt-tiny.link.link--grey(href='#')
+                      | + Ďalšie kategórie
         if recommended
-          .row.no-mrg-horizontal.mt-medium-l.mb-medium
+          .row.no-mrg-horizontal.mt-large-l.mb-medium
             each group, i in recommended
               .col.col--l-6.mt-medium
                 .block.mb-tiny.text-transform-upper.text-size-small.text-nospace= group.title
