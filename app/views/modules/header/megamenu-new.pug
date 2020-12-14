@@ -9,12 +9,10 @@ include ./../../mixins/icon
     title: 'Náučná a odborná',
     icon: 'fa-lightbulb',
     entries: ['Motivácia a sebarozvoj', 'Manažment a biznis', 'Spoločnosť', 'História', 'Životopisy a myšlienky', 'Zdravie a životný štýl', 'Hobby', 'Encyklopédie'],
-    hideEntries: true,
   }, {
     title: 'Pre deti',
     icon: 'fa-smile',
     entries: ['Pre najmenších', 'Pre prvákov', 'Pre pubertiakov', 'Beletria', 'Rozprávky', 'Sci-fi, fantasy a komiksy', 'Leporelá', 'Náučné knihy'],
-    hideEntries: true,
   }, {
     title: 'Životopisy a myšlienky',
     icon: 'fa-head-side-brain',
@@ -75,6 +73,14 @@ include ./../../mixins/icon
         entries: ['Harry Potter', 'Zaklínač', 'Hunger Games', 'Pán prsteňov', 'Neapolská sága', 'Kapitán Stein a notár Barbarič', 'Harry Hole'],
       }],
       additionalLinks: [{
+        title: 'Vianočné darčeky',
+        icon: 'xmas-small',
+        iconColor: 'text-color-success',
+      }, {
+        title: 'Darčekové poukážky',
+        icon: 'footer-package',
+        iconColor: 'text-color-theme',
+      },{
         title: 'Bestsellery',
       }, {
         title: 'Akcie a zľavy',
@@ -127,7 +133,7 @@ mixin megaMenuContentTest(props = {})
                   a(href="#").block.pt-medium.pb-medium.link.link--black.mega-menu__categories__title.mb-none
                     h3.mb-none=category.title
                   if category.entries
-                    ul.mega-menu__categories__subcategories.pl-none.text-medium(class=category.hideEntries?'show-m':'')
+                    ul.mega-menu__categories__subcategories.pl-none.text-medium.show-m
                       each item in category.entries
                         li.mb-none
                           a.pt-tiny.pb-tiny.block.link.link--black(href='#')= item
@@ -136,13 +142,16 @@ mixin megaMenuContentTest(props = {})
                           | + Ďalšie kategórie
         if recommended
           .row.no-mrg-horizontal.mt-medium-l
-            each group in recommended
+            each group, i in recommended
               .col.col--l-6.mt-medium
                 .block.mb-tiny.text-transform-upper.text-size-small.text-nospace= group.title
-                ul.list-inline.list-inline--bulleted.text-size-small.no-pad.mb-medium
+                ul.list-inline.list-inline--bulleted.text-size-small.no-pad(class= i === 0 ? 'mb-none' : 'mb-medium')
                   each item in group.entries
                     li
                       a.link--black(href='#')= item
+      .mega-menu__banner
+        a(href="#")
+          img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
 
 
 .header__mega-menu.mega-menu.mega-menu--new(data-mega-menu-test)
