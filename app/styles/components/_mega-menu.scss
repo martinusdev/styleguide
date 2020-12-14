@@ -5,10 +5,9 @@
   left: 50%;
   right: 0;
   width: 100%;
-  max-width: 1024px;
-  transform: translateX(-50%);
-
+  max-width: 1180px;
   background-color: $color-white;
+  transform: translateX(-50%);
 
   @include breakpoint(m) {
     top: map-get($header-height, 'm');
@@ -55,15 +54,25 @@
   }
 
   &__recommended {
-    flex: 0 0 _get-rem(280px);
-    padding: _get-space('v') _get-space('h');
+    flex: 0 0 auto;
+    padding: _get-space('v', 'small') _get-space('h', 'small');
+    border-bottom: 1px solid $default-border-color;
 
-    background-color: _color(bg);
+    @include breakpoint(l) {
+      padding: _get-space('v') _get-space('h');
+      background-color: _color(bg);
+      flex: 0 0 _get-rem(280px);
+      border-bottom: 0;
+    }
   }
 
   &__categories {
     flex: 1 1 auto;
-    padding: _get-space('v') _get-space('h');
+    padding: 0;
+
+    &__subcategories {
+      margin-top: -0.75rem;
+    }
   }
 
   &__banner {
@@ -75,29 +84,47 @@
       left: 0;
       bottom: 0;
     }
+
+    img {
+      max-width: _get-rem(300px);
+    }
   }
 
-  &__mobile-header {
-    display: none;
+  &__mobile-navigation {
+    flex-wrap: nowrap !important;
+    position: sticky;
+    top: 0;
+    background-color: _color(grey, 700) !important;
 
-    padding: _get-space('v', 'small');
+    .btn {
+      border-radius: 0;
+      text-transform: none;
+      font-size: _get-rem(14px);
+      letter-spacing: normal;
+    }
 
-    border-bottom: 1px solid $default-border-color;
+    .btn.is-active {
+      background: #fff;
+      color: #000;
+    }
+  }
 
-    .bar { margin-bottom: 0; }
+  &__categories__icon {
+    font-size: _get-rem(24px);
 
-    &.is-active {
-      // stylelint-disable max-nesting-depth
-      .bar__item:first-child {
-        order: 2;
-        margin-left: 0;
-      }
+    @include breakpoint(m) {
+      padding-top: _get-rem(15px);
+    }
+  }
 
-      .bar__item:last-child {
-        order: 1;
-        margin-right: _get-space('h');
-      }
-      // stylelint-enable max-nesting-depth
+  @include breakpoint('m', 'downfrom') {
+    a {
+      font-size: _get-rem(14px) !important;
+    }
+
+    .col--category {
+      border-bottom: 1px solid $text-color-grey-light;
+      align-items: center;
     }
   }
 
@@ -113,13 +140,7 @@
       flex-direction: column;
     }
 
-    &__mobile-header {
-      display: block;
-      flex: 1 0 auto;
-    }
-
-    .is-active + &__content-wrap {
-      display: flex;
+    &__content-wrap {
       flex-direction: column;
     }
 
@@ -140,6 +161,23 @@
   }
 }
 
+.mega-menu__recommended__links {
+  @include breakpoint('l', 'downfrom') {
+    display: flex;
+    align-items: center;
+
+    li {
+      display: inline-flex;
+      margin-bottom: 0;
+      margin-right: _get-space('h');
+    }
+
+    li:last-child {
+      padding-right: _get-space('h');
+    }
+  }
+}
+
 .is-mega-menu-active {
   main {
     position: relative;
@@ -155,75 +193,5 @@
 
       background-color: rgba($color-black, 0.5);
     }
-  }
-}
-
-.mega-menu--new {
-  max-width: 1180px;
-  background-color: $color-white;
-
-  .mega-menu__categories {
-    padding: 0;
-  }
-
-  .mega-menu__categories__icon {
-    font-size: _get-rem(24px);
-  }
-
-  @include breakpoint(m, 'down') {
-    .mega-menu__content-wrap {
-      flex-direction: column;
-    }
-  }
-
-  @include breakpoint('m', 'downfrom') {
-    a {
-      font-size: _get-rem(14px) !important;
-    }
-
-    .list--extra-links {
-      margin: 0 !important;
-    }
-
-    .col--category {
-      border-bottom: 1px solid $text-color-grey-light;
-
-      &:nth-child(odd) {
-        border-right: 1px solid $text-color-grey-light;
-      }
-    }
-  }
-
-  .list--extra-links li {
-    flex: 1 1 50% !important;
-
-    @include breakpoint('m', 'downfrom') {
-      margin: 0 !important;
-    }
-
-    @include breakpoint('m') {
-      flex: 0 0 auto !important;
-    }
-  }
-
-  .mega-menu__mobile-navigation {
-    flex-wrap: nowrap !important;
-    position: sticky;
-    top: 0;
-    background-color: _color(grey, 700) !important;
-
-    .btn {
-      border-radius: 0;
-      text-transform: none;
-    }
-
-    .btn.is-active {
-      background: #fff;
-      color: #000;
-    }
-  }
-
-  .mega-menu__categories__subcategories {
-    margin-top: -0.75rem;
   }
 }

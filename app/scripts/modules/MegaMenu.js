@@ -1,8 +1,7 @@
-import { doToggle, isToggled } from './Toggle';
-import { lockBody, unlockBody } from './Modal';
-
-import { BREAKPOINTS } from './Const';
 import { nodeListToArray } from './Utils';
+import { doToggle, isToggled } from './Toggle';
+import { BREAKPOINTS } from './Const';
+import { lockBody, unlockBody } from './Modal';
 
 const defaultConfig = {
   selectorTriggers: '[data-mega-menu-trigger]',
@@ -71,9 +70,9 @@ export default class MegaMenu {
 
     if (this.isMegaMenuOpen) {
       if (window.innerWidth < BREAKPOINTS.l) {
-        if (!document.body.classList.contains('has-header-warning')) {
-          lockBody();
-        }
+        // if (!document.body.classList.contains('has-header-warning')) {
+        lockBody();
+        // }
       }
 
       setTimeout(() => {
@@ -81,9 +80,9 @@ export default class MegaMenu {
       });
     } else {
       if (window.innerWidth < BREAKPOINTS.l) {
-        if (!document.body.classList.contains('has-header-warning')) {
-          unlockBody();
-        }
+        // if (!document.body.classList.contains('has-header-warning')) {
+        unlockBody();
+        // }
       }
 
       document.removeEventListener('click', this._handleClickOutside);
@@ -109,48 +108,35 @@ export default class MegaMenu {
         state: target === this.openMegaMenuSection,
       });
 
-      const mobileHeaderTarget = target.querySelector(
-        '.mega-menu__mobile-header',
-      );
+      doToggle({
+        target: this.megaMenu,
+        trigger: currentTrigger,
+        className: 'is-active',
+        state: this.isMegaMenuOpen,
+      });
 
       doToggle({
-        target: mobileHeaderTarget,
+        target: document.querySelector('body'),
+        className: 'is-mega-menu-active',
+        state: this.isMegaMenuOpen,
+      });
+
+      doToggle({
+        target: document.querySelector(this.config.selectorContents),
         className: 'is-active',
-        icon: isToggled(mobileHeaderTarget) &&
-          mobileHeaderTarget.getAttribute('data-toggle-icon'),
-        expand: true,
         state: false,
       });
+
+      // fix MagaMenu height for ios manually (innerHeight - header height)
+      setTimeout(() => {
+        const headerHeight = document.querySelector('.header .header__wrapper')
+          .offsetHeight;
+
+        if (this.isMegaMenuOpen) {
+          this.megaMenu.style.maxHeight = `${window.innerHeight - headerHeight}px`;
+        }
+      }, 200); // magic number
     });
-
-    doToggle({
-      target: this.megaMenu,
-      trigger: currentTrigger,
-      className: 'is-active',
-      state: this.isMegaMenuOpen,
-    });
-
-    doToggle({
-      target: document.querySelector('body'),
-      className: 'is-mega-menu-active',
-      state: this.isMegaMenuOpen,
-    });
-
-    doToggle({
-      target: document.querySelector(this.config.selectorContents),
-      className: 'is-active',
-      state: false,
-    });
-
-    // fix MagaMenu height for ios manually (innerHeight - header height)
-    setTimeout(() => {
-      const headerHeight = document.querySelector('.header .header__wrapper')
-        .offsetHeight;
-
-      if (this.isMegaMenuOpen) {
-        this.megaMenu.style.maxHeight = `${window.innerHeight - headerHeight}px`;
-      }
-    }, 200); // magic number
   }
 
   _handleClickOutside(e) {

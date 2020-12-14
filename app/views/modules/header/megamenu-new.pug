@@ -8,7 +8,7 @@ include ./../../mixins/icon
   }, {
     title: 'Náučná a odborná',
     icon: 'fa-lightbulb',
-    entries: ['Motivácia a sebarozvoj', 'Manažment a biznis', 'Spoločnosť', 'História', 'Životopisy a myšlienky', 'Zdravie a životný štýl', 'Hobby', 'Encyklopédie'],
+    entries: ['Motivácia a sebarozvoj', 'Manažment a biznis', 'Spoločnosť', 'História', 'Životopisy a myšlienky', 'Zdravie a životný štýl', 'Hobby', 'Umenie'],
   }, {
     title: 'Pre deti',
     icon: 'fa-smile',
@@ -24,7 +24,7 @@ include ./../../mixins/icon
     icon: 'fa-graduation-cap',
   }, {
     title: 'Náboženstvo a ezoterika',
-    icon: 'fa-hands-heart',
+    icon: 'fa-praying-hands',
   }, {
     title: 'Mapy a cestovanie',
     icon: 'fa-map-marked',
@@ -83,21 +83,25 @@ include ./../../mixins/icon
       },{
         title: 'Bestsellery',
       }, {
-        title: 'Akcie a zľavy',
-      }, {
         title: 'Novinky',
       }, {
         title: 'Pripravujeme',
-      },]
+      }, {
+        title: 'Akcie',
+      }, {
+        title: 'Kolekcie',
+      },],
+      showAd: true,
     }, {
       title: 'Doplnky',
       id: 'doplnky',
       mainLinkTitle: 'Zobraziť všetky doplnky',
       categories: categoriesDoplnky,
+      showAd: false,
     },
   ]
 
-mixin megaMenuContentTest(props = {})
+mixin megaMenuContent(props = {})
   -
     const {
       id,
@@ -106,62 +110,63 @@ mixin megaMenuContentTest(props = {})
       additionalLinks,
       recommended,
       categories,
+      showAd
     } = props;
 
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
     .mega-menu__content-wrap
       if additionalLinks
-        .mega-menu__recommended
-          ul.list--expanded.no-pad
+        .mega-menu__recommended.overflow-scroll-x
+          ul.list--expanded.no-pad.mb-none.mega-menu__recommended__links
             each link in additionalLinks
               li
-                a.block.link--black(href='#')
+                a.flex.align-items-middle.link.link--black(href='#')
                   if link.icon
                     +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
                   =link.title
       .mega-menu__categories
-        .row.no-mrg-horizontal
+        .row.no-mrg-horizontal.mb-medium-m
           each category in categories
-            .col.col--l-4.col--m-3.col--12.col--category
-              .flex
-                .pt-tiny.mt-small.mr-tiny.mega-menu__categories__icon
-                  if category.icon.startsWith('fa-')
-                    i.text-color-theme.fa-fw.fal(class= category.icon)
-                  else
-                    +icon(category.icon).icon--large.text-color-theme
-                div.flex-1
-                  a(href="#").block.pt-medium.pb-medium.link.link--black.mega-menu__categories__title.mb-none
-                    h3.mb-none=category.title
-                  if category.entries
-                    ul.mega-menu__categories__subcategories.pl-none.text-medium.show-m
-                      each item in category.entries
-                        li.mb-none
-                          a.pt-tiny.pb-tiny.block.link.link--black(href='#')= item
-                      li
-                        a.block.mt-tiny.link--grey(href='#')
-                          | + Ďalšie kategórie
+            .col.col--m-4.col--12.col--category.flex
+              .mr-tiny.mega-menu__categories__icon
+                if category.icon.startsWith('fa-')
+                  i.text-color-theme.fa-fw.fal(class= category.icon)
+                else
+                  +icon(category.icon).icon--large.text-color-theme
+              div.flex-1
+                a(href="#").block.pt-medium.pb-medium.pb-none-m.link.link--black.mega-menu__categories__title.mb-none
+                  h3.mb-none=category.title
+                if category.entries
+                  ul.mega-menu__categories__subcategories.pl-none.text-medium.show-m.mt-tiny.mb-small
+                    each item in category.entries
+                      li.mb-none
+                        a.pt-tiny.pb-tiny.block.link.link--black(href='#')= item
+                    li
+                      a.block.mt-tiny.link.link--grey(href='#')
+                        | + Ďalšie kategórie
         if recommended
-          .row.no-mrg-horizontal.mt-medium-l
+          .row.no-mrg-horizontal.mt-medium-l.mb-medium
             each group, i in recommended
               .col.col--l-6.mt-medium
                 .block.mb-tiny.text-transform-upper.text-size-small.text-nospace= group.title
-                ul.list-inline.list-inline--bulleted.text-size-small.no-pad(class= i === 0 ? 'mb-none' : 'mb-medium')
+                ul.list-inline.list-inline--bulleted.text-size-small.no-pad.mb-none
                   each item in group.entries
                     li
-                      a.link--black(href='#')= item
-      .mega-menu__banner
-        a(href="#")
-          img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
+                      a.link.link--black(href='#')= item
+      if showAd
+        .mega-menu__banner.mb-medium.mb-none-l
+          a(href="#")
+            img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
 
 
-.header__mega-menu.mega-menu.mega-menu--new(data-mega-menu-test)
+.header__mega-menu.mega-menu(data-mega-menu)
   .mega-menu__contents(data-mega-menu-contents)
     div.text-color-white.mega-menu__mobile-navigation.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l.overflow-scroll-x
       each item in mainNav
         .btn-dropdown.btn-dropdown--no-icon.no-mrg
           if item.trigger
             a.btn(
-              data-mega-menu-test-trigger=`#${item.trigger}`,
+              data-mega-menu-trigger=`#${item.trigger}`,
               data-toggle="self",
               aria-haspopup="true",
               id=`toggle-${item.trigger}`
@@ -169,4 +174,4 @@ mixin megaMenuContentTest(props = {})
           else
             a.btn(href=item.link)= item.title
     each item in megaMenu
-      +megaMenuContentTest(item)
+      +megaMenuContent(item)
