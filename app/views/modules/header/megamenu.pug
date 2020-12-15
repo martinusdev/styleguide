@@ -1,97 +1,103 @@
 include ./../../mixins/icon
 
 -
-  const defaultPages = [{
-    title: 'Akcie',
-    href: '#',
+  const categoriesKnihy = [{
+    title: 'Beletria',
+    icon: 'fa-book',
+    entries: ['Detektívky, thrillery a horory', 'Sci-fi, fantasy a komiksy', 'Romantické a erotické', 'Spoločenské', 'Klasická literatúra', 'Slovenská próza', 'Historické', 'Romány'],
   }, {
-    title: 'Novinky',
-    href: '#',
+    title: 'Náučná a odborná',
+    icon: 'fa-lightbulb',
+    entries: ['Motivácia a sebarozvoj', 'Manažment a biznis', 'Spoločnosť', 'História', 'Životopisy a myšlienky', 'Zdravie a životný štýl', 'Hobby', 'Umenie'],
   }, {
-    title: 'Bestsellery',
-    href: '#',
+    title: 'Pre deti',
+    icon: 'fa-smile',
+    entries: ['Pre najmenších', 'Pre prvákov', 'Pre pubertiakov', 'Beletria', 'Rozprávky', 'Sci-fi, fantasy a komiksy', 'Leporelá', 'Náučné knihy'],
   }, {
-    title: 'Kolekcie',
-    href: '#',
+    title: 'Životopisy a myšlienky',
+    icon: 'fa-head-side-brain',
   }, {
-    title: 'Pre Vás',
-    href: '#',
+    title: 'Kuchárky',
+    icon: 'fa-hat-chef',
+  }, {
+    title: 'Učebnice a slovníky',
+    icon: 'fa-graduation-cap',
+  }, {
+    title: 'Náboženstvo a ezoterika',
+    icon: 'fa-praying-hands',
+  }, {
+    title: 'Mapy a cestovanie',
+    icon: 'fa-map-marked',
+  }, {
+    title: 'Cudzojazyčná literatúra',
+    icon: 'fa-flag',
   }];
 
-  const defaultCategories = [{
-   title: 'Biografie, životopisy',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8'],
+  const categoriesDoplnky = [{
+    title: 'Doplnky a darčeky',
+    icon: 'fa-gift',
   }, {
-   title: 'Cudzojazyčná lit.',
-   entries: ['Ostatné jazyky', 'Dvojjazyčné vydania', 'Španielsky jazyk', 'Francúzsky jazyk', 'Nemecký jazyk', 'Anglický jazyk', '+ 2 ďalšie']
+    title: 'Vecičky od Martinusu',
+    icon: 'martinus',
   }, {
-   title: 'Deti a mládež',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
+    title: 'Káva, čaj a pochutiny',
+    icon: 'fa-mug-hot',
   }, {
-   title: 'Domov, hobby',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
+    title: 'Hrnčeky a fľaše',
+    icon: 'fa-coffee-togo',
   }, {
-   title: 'Ekonomika, právo',
-   entries: ['Sociálne zabezpečenie', 'Verejná správa', 'Súkromné právo', 'Verejné právo', 'Medzinárodné právo', '+ ďalších 5']
+    title: 'Papierníctvo',
+    icon: 'fa-pencil-paintbrush',
   }, {
-   title: 'Ezoterika, mystika',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
+    title: 'Zápisníky a kalendáre',
+    icon: 'fa-calendar',
   }, {
-   title: 'Geografia, cestovanie',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
+    title: 'Hudba',
+    icon: 'fa-music',
   }, {
-   title: 'História',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
-  }, {
-   title: 'Manažment, biznis',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
-  }, {
-   title: 'Medicína, zdravie',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
-  }, {
-   title: 'Motivačná literatúra',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
-  }, {
-   title: 'Náboženstvo, cirkev',
-   entries: ['Spomienky a udalosti', 'Významné osobnosti dnes', 'Významné osobnosti minulosť', 'Umelci', 'ďalších 8']
+    title: 'LP platne',
+    icon: 'fa-record-vinyl',
   }];
 
   const megaMenu = [
     {
-     title: 'Knihy',
-     id: 'knihy',
-     pages: defaultPages,
-     pagesTitle: 'Odporúčame',
-     categories: defaultCategories,
-    }, {
-     title: 'E-knihy',
-     id: 'eknihy',
-      pages: defaultPages,
-      pagesTitle: 'Odporúčame',
-      categories: defaultCategories,
-    }, {
-      title: 'Ostatné',
-      id: 'other',
-      pages: [{
-        title: 'Kníhkupectvá',
-        href: '#',
+      title: 'Knihy',
+      id: 'knihy',
+      mainLinkTitle: 'Zobraziť všetky knihy',
+      categories: categoriesKnihy,
+      recommended: [{
+        title: 'Top autori',
+        entries: ['Dominik Dán', 'Jo Nesbo', 'Juraj Červenák', 'Andrzej Sapkowski', 'J. K. Rowlingová', 'Sarah J. Maas', 'Jørn Lier Horst', 'Louisa May Alcott']
       }, {
-        title: 'Pomoc',
-        href: '#',
-      }, {
-        title: 'Niečo 1',
-        href: '#',
-      }, {
-        title: 'Niečo 2',
-        href: '#',
+        title: 'Top série',
+        entries: ['Harry Potter', 'Zaklínač', 'Hunger Games', 'Pán prsteňov', 'Neapolská sága', 'Kapitán Stein a notár Barbarič', 'Harry Hole'],
       }],
-      categories: [{
-        title: 'Káva a čaj',
-        entries: ['Káva typ 1', 'Káva typ 2', 'Čaj typ 1', 'Čaj typ 1', 'ďalších 8'],
+      additionalLinks: [{
+        title: 'Vianočné darčeky',
+        icon: 'xmas-small',
+        iconColor: 'text-color-success',
       }, {
-        title: 'Hudba',
-        entries: ['Hudba typ 1', 'Hudba typ 2', 'Hudba typ iny typ', 'Techno', '+ 25 ďalších']
-      }],
+        title: 'Darčekové poukážky',
+        icon: 'footer-package',
+        iconColor: 'text-color-theme',
+      },{
+        title: 'Bestsellery',
+      }, {
+        title: 'Novinky',
+      }, {
+        title: 'Pripravujeme',
+      }, {
+        title: 'Akcie',
+      }, {
+        title: 'Kolekcie',
+      },],
+      showAd: true,
+    }, {
+      title: 'Doplnky',
+      id: 'doplnky',
+      mainLinkTitle: 'Zobraziť všetky doplnky',
+      categories: categoriesDoplnky,
+      showAd: false,
     },
   ]
 
@@ -100,74 +106,71 @@ mixin megaMenuContent(props = {})
     const {
       id,
       title,
-      pages,
-      pagesTitle,
+      mainLinkTitle,
+      additionalLinks,
+      recommended,
       categories,
+      showAd
     } = props;
 
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
-    .mega-menu__mobile-header(
-      data-toggle='self, parent, [data-mega-menu-contents]',
-      data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-arrow-left`,
-      data-toggle-expand,
-      aria-haspopup="true"
-    )
-      .bar
-        .bar__item.bar__item--fill= title
-        .bar__item
-          +icon('arrow-right').icon--medium.text-color-grey
     .mega-menu__content-wrap
-      .mega-menu__recommended
-        if pagesTitle
-          h5= pagesTitle
-
-        ul.list--expanded.no-pad.no-mrg-bottom
-          li
-            a.link.link--black(href="#")
-              | Vianočné kolekcie
-              +icon('xmas').icon--medium.text-color-success
-          each page in pages
-            li
-              a.link.link--black(href=page.href)= page.title
-
-      .mega-menu__categories.mega-menu-categories
-        .row
+      if additionalLinks
+        .mega-menu__recommended.overflow-scroll-x
+          ul.list--expanded.no-pad.mb-none.mega-menu__recommended__links
+            each link in additionalLinks
+              li
+                a.flex.align-items-middle.link.link--black(href='#')
+                  if link.icon
+                    +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
+                  =link.title
+      .mega-menu__categories
+        .row.no-mrg-horizontal.mb-medium-m
           each category in categories
-            .col--l-4.col--m-6
-              a(href="#").mega-menu-categories__title
-                span.link=category.title
-              ul.list--dot.text-size-small.no-pad.show-m
-                each entry in category.entries
+            .col.col--m-4.col--12.mega-menu__categories__category
+              a(href="#").flex.align-items-middle.pt-small.pb-small.pt-medium-m.pb-none-m.link.link--black.mega-menu__categories__title.mb-none
+                .mr-tiny.mega-menu__categories__icon
+                  if category.icon.startsWith('fa-')
+                    i.text-color-theme.fa-fw.fal(class= category.icon)
+                  else
+                    +icon(category.icon).icon--large.text-color-theme
+                h3.mb-none=category.title
+              if category.entries
+                ul.mega-menu__categories__subcategories.text-medium.show-m.mt-tiny.mb-small
+                  each item in category.entries
+                    li.mb-none
+                      a.pt-tiny.pb-tiny.block.link.link--black(href='#')= item
                   li
-                    a.link.link--grey(href="#")= entry
+                    a.block.mt-tiny.link.link--grey(href='#')
+                      | + Ďalšie kategórie
+        if recommended
+          .row.no-mrg-horizontal.mt-large-l.mb-medium
+            each group, i in recommended
+              .col.col--l-6.mt-medium
+                .block.mb-tiny.text-transform-upper.text-size-small.text-nospace= group.title
+                ul.list-inline.list-inline--bulleted.text-size-small.no-pad.mb-none
+                  each item in group.entries
+                    li
+                      a.link.link--black(href='#')= item
+      if showAd
+        .mega-menu__banner.mb-medium.mb-none-l
+          a(href="#")
+            img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
 
 
 .header__mega-menu.mega-menu(data-mega-menu)
   .mega-menu__contents(data-mega-menu-contents)
+    div.text-color-white.mega-menu__mobile-navigation.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l.overflow-scroll-x
+      each item in mainNav
+        .btn-dropdown.btn-dropdown--no-icon.no-mrg
+          if item.trigger
+            a.btn(
+              data-mega-menu-trigger=`#${item.trigger}`,
+              data-toggle="self",
+              aria-haspopup="true",
+              id=`toggle-${item.trigger}`
+            )= item.title
+          else
+            a.btn(href=item.link)= item.title
     each item in megaMenu
       +megaMenuContent(item)
-
-    .mega-menu__banner.text-center
-      .row
-        .col--l-12.col--m-12.col--s-8.ofst--center.mb-medium
-          .h2 Kúpite výhodne spolu
-          .row.align-items-bottom.mb-medium
-            .col--6
-              .thumbnail.thumbnail--book.thumbnail--large.align-self-right
-                .thumbnail__img-wrap
-                  img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-5.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .col--6
-              .thumbnail.thumbnail--book.thumbnail--large
-                .thumbnail__img-wrap
-                  img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-8.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-          .badges.align-items-center.mb-medium
-            .badge.badge--primary Ušetríte 3,50 €
-          button.btn.btn--primary.btn--large.mb-small
-            +icon('cart').icon--left.icon--medium
-            | Kúpiť spolu za#{' '}
-            span.text-nowrap 20,32 €
-
-      .row
-        .col--8.col--m-12.col--l-12.ofst--center
-          a(href="#")
-            img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
