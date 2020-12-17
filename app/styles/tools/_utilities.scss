@@ -17,6 +17,10 @@
   }
 }
 
+.bg-dark-grey {
+  background-color: _color(grey, 900);
+}
+
 // ---------------------------------------------
 // TYPOGRAPHY UTILITIES
 
@@ -373,13 +377,17 @@
     .pt-tiny#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'tiny'); }
     .pt-none#{_get-variant-name($breakpoint, '-')} { padding-top: 0; }
 
-    .pr-none#{_get-variant-name($breakpoint, '-')} { padding-right: 0; }
-    .pr-tiny#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'tiny'); }
+    .pr-large#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'large'); }
     .pr-medium#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v'); }
+    .pr-small#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'small'); }
+    .pr-tiny#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'tiny'); }
+    .pr-none#{_get-variant-name($breakpoint, '-')} { padding-right: 0; }
 
-    .pl-none#{_get-variant-name($breakpoint, '-')} { padding-left: 0; }
-    .pl-tiny#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'tiny'); }
+    .pl-large#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'large'); }
     .pl-medium#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v'); }
+    .pl-small#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'small'); }
+    .pl-tiny#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'tiny'); }
+    .pl-none#{_get-variant-name($breakpoint, '-')} { padding-left: 0; }
 
     .p-none#{_get-variant-name($breakpoint, '-')} { padding: 0 !important; }
 
