@@ -13,7 +13,7 @@ block opts
     - var hideFilterHeader = true
     - var filters = true
     - var searchCard = false
-    - var sortLinks = ['Naše top', 'Najpredávanejšie', 'Najlepšie hodnotené', 'Novinky', 'Najlacnejšie', 'Najvyššia zľava']
+    - var sortLinks = ['Naše top', 'Bestsellery', 'Najlepšie hodnotené', 'Novinky', 'Najlacnejšie', 'Najvyššia zľava']
     -
       const categories = [{
         title: 'Beletria',
@@ -50,9 +50,9 @@ block content
       .wrapper-main
         .bar.no-mrg-bottom
           .bar__item.bar__item--shrinkable
-            +breadcrumbs({ breadcrumbs: ['Knihy'] })
+            +breadcrumbs({ breadcrumbs: ['Knihy'], last: 'Knihy pre deti' })
 
-    section.section--secondary.section.section--toolbar.cat-no-border-bottom.no-pad-top
+    section.section--secondary.section.section--toolbar.border-bottom-none.no-pad-top
       .wrapper-main
         .bar.no-mrg-bottom
           .bar__item
@@ -70,9 +70,9 @@ block content
                         +icon(category.icon).mr-tiny.text-color-theme
                     | !{category.title}
           .col.text-center.hide-m.mb-small
-            a.link.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)
+            a.link.block.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)
               +icon('plus')
-              | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac kategórií</span>
+              | <span data-toggle-text-target>Viac kategórií</span>
       .wrapper-main
         .row
           .col.text-size-small.text-transform-upper.text-color-grey.inline-block-m.block Populárne filtre

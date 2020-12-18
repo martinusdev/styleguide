@@ -4,6 +4,7 @@ mixin breadcrumbs(props = {})
   -
     const {
       breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'],
+      last = false,
     } = props;
 
   .breadcrumbs
@@ -13,5 +14,7 @@ mixin breadcrumbs(props = {})
     each breadcrumb, i in breadcrumbs
       a.breadcrumbs__item.text-medium.link(href="#")
         span !{breadcrumb}
-      if (i < breadcrumbs.length - 1)
+      if (i < breadcrumbs.length - 1 || last)
         +icon('chevron-right', 'icon--small').text-color-grey
+    if last
+      span.breadcrumbs__item.text-medium !{last}

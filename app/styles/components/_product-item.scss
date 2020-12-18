@@ -22,7 +22,7 @@
       align-items: flex-start;
     }
 
-    @include breakpoint('l', 'downfrom') {
+    @include breakpoint('m', 'downfrom') {
       ul li {
         font-size: $font-size-small;
       }
@@ -80,5 +80,11 @@
 
   .col {
     padding-bottom: _get-space('v', 'small');
+  }
+
+  &__name {
+    @include breakpoint('m', 'downfrom') {
+      font-size: $font-size-small;
+    }
   }
 }
