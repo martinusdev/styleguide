@@ -1,5 +1,4 @@
 import svg4everybody from 'svg4everybody';
-
 import {
   customEventPolyfill,
   requestAnimationFramePolyfill,
@@ -33,11 +32,10 @@ import EqualColumns from './modules/EqualColumns';
 import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
 import CarouselLite from './modules/CarouselLite';
-
 import Choices
   from '../../node_modules/choices.js/public/assets/scripts/choices';
 
-import './plugins/font-awesome/all.min';
+import './modules/FontAwesome';
 
 // eslint-disable-next-line
 require('mutationobserver-shim');
