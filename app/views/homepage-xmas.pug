@@ -1,0 +1,36 @@
+extends homepage
+
+
+block opts
+    - var pageTitle = 'Homepage'
+    - var gdpr = false;
+
+block headerWarning
+  .section.section--small.header-warning.bg-dark-grey.text-color-white.pt-tiny.pb-tiny.pt-small-l.pb-small-l.text-size-small
+    .wrapper-main.overflow-scroll-x.pl-small.pl-large-l
+      ul.flex.align-items-justify.list--unstyled
+        li.pr-small
+          | Kníhkupectvá
+          a(href="").link--white.block
+            strong.text-color-success Otvorené
+            span.ml-tiny.show-m Predĺžená otváracia doba
+            +icon('arrow-right').show-m
+        li.pr-small
+          | Rezervácia v kníhkupectve
+          strong.block.text-color-success Stíhame do Vianoc
+        li.pr-small
+          | Osobný odber
+          strong.block.text-color-success Stíhame do Vianoc
+        li.pr-small
+          | Zásielkovňa
+          strong.block.text-color-grey Nestíha do Vianoc
+        li.pr-small
+          | Balíkobox
+          strong.block.text-color-grey Nestíha do Vianoc
+        li.pr-small
+          | Kuriér GLS
+          strong.block.text-color-success Stíha do Vianoc
+        li.pr-small
+          | Slovenská pošta
+          strong.block.text-color-grey Nestíha do Vianoc
+

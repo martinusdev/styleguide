@@ -1,8 +1,32 @@
 include ./../../mixins/userMenu
 include ./../../mixins/icon
 
-- var bookClassHide = bookHeader ? 'book-detail-hide' : '';
-- var headerPromo = false;
+block opts
+
+-
+  const mainNav = [{
+    title: 'Knihy',
+    trigger: 'mega-menu-knihy',
+    link: '#',
+  }, {
+    title: 'E-Knihy',
+    link: '#',
+  }, {
+    title: 'Audioknihy',
+    link: '#',
+  }, {
+    title: 'Hry',
+    link: '#',
+  }, {
+    title: 'Filmy',
+    link: '#',
+  }, {
+    title: 'Doplnky',
+    trigger: 'mega-menu-doplnky',
+    link: '#',
+  },];
+- const bookClassHide = bookHeader ? 'book-detail-hide' : '';
+- const headerPromo = false;
 
   header.header
     .header__wrapper(data-sticky)
@@ -10,7 +34,6 @@ include ./../../mixins/icon
         .bar.header__bar
           .bar__item.header__logo
             a(href="#", class=bookClassHide)
-              //img(src=`${assetsPrefix}images/content/logo/november.svg`, alt="Martinus").show-l
               img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
               img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
             if bookHeader
@@ -18,54 +41,23 @@ include ./../../mixins/icon
                 img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
           .bar__item.header__nav(class=bookClassHide)
             .btn-layout.btn-layout--horizontal
-              .btn-dropdown.no-mrg.show-l
-                button.btn.btn--clean.header-btn(
-                data-mega-menu-trigger="#mega-menu-knihy"
-                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
-                )
-                  | Knihy
-                  +icon('chevron-down', 'icon-dropdown').icon--small
-              .btn-dropdown.no-mrg.show-l
-                button.btn.btn--clean.header-btn(
-                data-mega-menu-trigger="#mega-menu-eknihy"
-                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
-                )
-                  | E-Knihy
-                  +icon('chevron-down', 'icon-dropdown').icon--small
-              .btn-dropdown.no-mrg.show-l
-                button.btn.btn--clean.header-btn(
-                data-mega-menu-trigger
-                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
-                )
-                  | Filmy
-                  +icon('chevron-down', 'icon-dropdown').icon--small
-              .btn-dropdown.no-mrg.hide
-                button.btn.btn--clean.header-btn(
-                data-mega-menu-trigger
-                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
-                )
-                  | Hry
-                  +icon('chevron-down', 'icon-dropdown').icon--small
-              .btn-dropdown.no-mrg.btn-dropdown--no-icon.show-l
-                button.btn.btn--clean.header-btn(
-                data-mega-menu-trigger="#mega-menu-other"
-                data-toggle='self',
-                data-toggle-expand,
-                aria-haspopup="true"
-                )
-                  +icon('dots').icon--medium
+              for item in mainNav
+                .btn-dropdown.no-mrg.show-l
+                  if item.trigger
+                    a.btn.btn--clean.header-btn(
+                    data-mega-menu-trigger=`#${item.trigger}`
+                    data-toggle="self",
+                    aria-haspopup="true"
+                    )= item.title
+                  else
+                    a.btn.btn--clean.header-btn(
+                      href=item.link
+                    )= item.title
               .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
-                button.btn.btn--clean.header-btn(
-                data-mega-menu-trigger
-                data-toggle='self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
+                a.btn.btn--clean.text-transform-upper.header-btn(
+                data-mega-menu-trigger=`#${mainNav[0].trigger}`
+                data-toggle='self, #toggle-mega-menu-knihy',
+                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
                 data-toggle-expand,
                 aria-haspopup="true"
                 )
@@ -98,31 +90,6 @@ include ./../../mixins/icon
           .bar__item.header__user(class=bookClassHide)
             +userMenu()
 
-          .bar__item.header__notifications(class=bookClassHide)
-            .btn-dropdown.btn-dropdown--no-icon
-              a.btn.btn--clean.header-btn(style="padding-right: 0.625rem;", data-toggle-expand, data-toggle="self, next", data-notification="2")
-                +icon('bell').icon--medium
-
-              .dropdown.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false", style="min-width: 300px; max-height: 420px;")
-                .dropdown__wrap(style="max-height: 420px;")
-                  .dropdown__group.bg-secondary
-                    h5.mb-none Oznámenia
-                  each item, i in Array(5)
-                    a.flex.dropdown__item.dropdown__item--small.align-items-middle
-                      .flex-shrinkable.text-space-right.text-space-left-tiny
-                        .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                      .flex-fill.text-space-right
-                        b Janko Martinusak#{' '}
-                        span.text-color-grey-dark
-                          | pridal recenziu ku knihe#{' '}
-                          b Harry Potter a Fenixov rad
-                    hr.mb-tiny
-                  a.flex.dropdown__item.dropdown__item--small.align-items-center
-                    .flex-shrinkable
-                      | Viac noviniek
-                      +icon('arrow-right')
-                  .mb-tiny
-
           .bar__item.header__cart(class=bookClassHide)
             a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
               +icon('cart').icon--medium
@@ -144,7 +111,6 @@ include ./../../mixins/icon
                 .bar__item.bar__item--shrinkable.text-color-success.text-size-medium.line-small.header__buy__text
                   | Pridajte ešte tento titul do košíka a dopravu máte zdarma
 
-
-
-    include ./megamenu
+    include megamenu
     include ./../checkout-notice
+

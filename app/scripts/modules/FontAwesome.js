@@ -1,0 +1,51 @@
+// FONT AWESOME
+import { dom, library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faAtlas,
+  faBook,
+  faCalendar,
+  faCoffeeTogo,
+  faFlag,
+  faGift,
+  faGraduationCap,
+  faHatChef,
+  faHeadSideBrain,
+  faLightbulb,
+  faMapMarked,
+  faMugHot,
+  faMusic,
+  faPencilPaintbrush,
+  faPray,
+  faPrayingHands,
+  faQuestion,
+  faRecordVinyl,
+  faSmile,
+  faStars,
+  faSwords,
+} from '@fortawesome/pro-light-svg-icons';
+
+library.add(
+  faBook,
+  faLightbulb,
+  faSmile,
+  faHeadSideBrain,
+  faHatChef,
+  faGraduationCap,
+  faMapMarked,
+  faFlag,
+  faSwords,
+  faStars,
+  faAtlas,
+  faQuestion,
+  faPencilPaintbrush,
+  faGift,
+  faCoffeeTogo,
+  faMusic,
+  faRecordVinyl,
+  faCalendar,
+  faMugHot,
+  faPrayingHands,
+  faPray,
+);
+
+dom.watch();

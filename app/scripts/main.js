@@ -1,5 +1,4 @@
 import svg4everybody from 'svg4everybody';
-
 import {
   customEventPolyfill,
   requestAnimationFramePolyfill,
@@ -24,7 +23,6 @@ import Input from './modules/Input';
 import NumberSpinner from './modules/NumberSpinner';
 import ProductPreview from './modules/ProductPreview';
 import MegaMenu from './modules/MegaMenu';
-import MegaMenuTest from './modules/MegaMenuTest';
 import RadiocheckToggle from './modules/RadiocheckToggle';
 import Header from './modules/Header';
 import AudioPlayer from './modules/AudioPlayer';
@@ -34,11 +32,10 @@ import EqualColumns from './modules/EqualColumns';
 import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
 import CarouselLite from './modules/CarouselLite';
-
 import Choices
   from '../../node_modules/choices.js/public/assets/scripts/choices';
 
-import './plugins/font-awesome/all';
+import './modules/FontAwesome';
 
 // eslint-disable-next-line
 require('mutationobserver-shim');
@@ -64,7 +61,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.NumberSpinner = NumberSpinner;
   window.myApp.ProductPreview = ProductPreview;
   window.myApp.MegaMenu = MegaMenu;
-  window.myApp.MegaMenuTest = MegaMenuTest;
   window.myApp.Header = Header;
   window.myApp.RadiocheckToggle = RadiocheckToggle;
   window.myApp.AudioPlayer = AudioPlayer;
@@ -87,8 +83,6 @@ window.addEventListener('DOMContentLoaded', () => {
   arrayFromPolyfill();
 
   window.myApp.megaMenu = new MegaMenu();
-
-  window.myApp.megaMenuTest = new MegaMenuTest();
 
   window.myApp.toggles = new Toggle();
 
