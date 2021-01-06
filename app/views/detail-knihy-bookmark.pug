@@ -72,36 +72,40 @@ block content
             .bar__item.bar__item--shrinkable
               +breadcrumbs({ breadcrumbs: ['Knihy', 'Deti a mládež', 'Encyklopédie, náučné knihy', 'Ostatné', 'Základy rybolovu pro kluky a holky'] })
 
-      //section
-        .wrapper-main
-          .pagetip.pagetip--top-absolute.pagetip--right.pagetip--medium.animated
-            .card.card--material.card--material-green
-              .card__status
-                button.btn.btn--clean.btn--equal.btn--small.mb-none
-                  +icon('close').icon--small
-              .card__content
-                .bar.mb-none
-                  .bar__item.bar__item--shrinkable
-                    +icon('smile').icon--xlarge.text-color-success
-                  .bar__item.bar__item--fill
-                    p.text-size-medium Toto je veľmi populárna kniha. Za posledný týždeň si ju kúpilo 120 ľudí!
-
       section.section
         .wrapper-main
           .row.product-detail
             .col--5.col--s-3.col--m-4.col--l-3
+              h3 Tlačená kniha
               .product-detail__preview
                 .product-detail__image.bookmark__wrap
                   .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
                     .thumbnail__img-wrap
                       img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-14.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                    img.book-flag.book-flag--large(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: -5px;")
                     .bookmark
                       +icon('martinus')
                 .text-center
                   button.btn.btn--clean.mb-none(data-toggle="#product-preview")
-                    span.show-m Pozrieť ukážku
-                    span.hide-m ukážka
+                    span Ukážka
+            .col--5.col--s-3.col--m-4.col--l-3
+              h3 E-kniha
+              .product-detail__preview
+                .product-detail__image
+                  .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-25.jpg`)
+                .text-center
+                  button.btn.btn--clean.mb-none(data-toggle="#product-preview")
+                    +icon('download').icon--left.icon--medium
+                    span.show-l Stiahnuť ukážku
+                    span.hide-l Ukážka
+            .col--5.col--s-3.col--m-4.col--l-3
+              h3 Audiokniha
+              .product-detail__preview
+                .product-detail__image
+                  .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-24.jpg`)
                 .show-m
                   .product-detail__preview-link.text-center
                     button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
@@ -110,127 +114,19 @@ block content
                     audio#audio-preview(data-audioplayer)
                       source(type="audio/aac" src="http://techslides.com/demos/samples/sample.aac")
                       .alert.alert--error-light Váš prehliadač nepodporuje HTML5 audio prehrávač.
-
-            article.col--7.col--s-9.col--m-8.col--l-6
-
-              .btn-dropdown.mb-small.show-m
-                button.btn.btn--small.btn--ghost.btn--icon-right.text-left(
-                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                  data-toggle-expand,
-                  aria-haspopup="true"
-                )
-                  | Slovenčina, pevná väzba
-                  +icon('chevron-down', 'icon-dropdown').icon--medium
-                .dropdown(data-dropdown, data-toggle-expand)
-                  .dropdown__wrap
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
-                        .bar__item.bar__item--fill
-                          div Slovenčina, e-kniha
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 18,00 €
-                          .text-color-grey -10%
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
-                        .bar__item.bar__item--fill
-                          div Slovenčina, brožovaná väzba
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 16,00 €
-                          .text-color-grey -10%
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
-                        .bar__item.bar__item--fill
-                          div Český jazyk, E-kniha
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 8,00 €
-                          .text-color-grey -5%
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
-                        .bar__item.bar__item--fill
-                          div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 12,00 €
-                          .text-color-grey -2%
-
-              h1.product-detail__title.mb-small Základy rybolovu pro kluky a holky
-              h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
-              ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
-                  li
-                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-tippy-theme="light") Frank Weissert
-                  li
-                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-tippy-theme="light") Jack Thorne
-                  li
-                    a.link(href="#", data-tooltip, data-html="#author-tooltip", data-tippy-theme="light") John Tiffany
-              .bar.bar--small.hide-m
-                .bar__item.text-medium
-                  a.link(href="#") Inspira Publishing
-                  span.text-color-grey , 2016
-
-              .bar.bar--small.mb-medium
-                .bar__item
-                  .badges.no-mrg
-                    .badge
-                      .rating-star
-                        +icon('star').rating-star__item.icon--medium.is-active
-                        +icon('star').rating-star__item.icon--medium.is-active
-                        +icon('star').rating-star__item.icon--medium.is-active
-                        +icon('star-half').rating-star__item.icon--medium.is-active
-                        +icon('star').rating-star__item.icon--medium
-                        .rating-star__value
-                          | 3,5
-                      a.link.text-medium.text-space-left.show-m(href="#recenzie", data-scroll) 234x
-                .bar__item.bar__item--shrinkable.show-m
-                  .badges.no-mrg
-                    .badge.badge--green Bestseller
-                    .badge.badge--orange Top #98
-                .bar__item.bar__item--shrinkable
-                  .text-medium
-                    +icon('coffee').icon--medium.text-space-right-tiny.text-color-grey
-                    em(data-tooltip, title="Lorem ipsum dolor sit amet").text-color-grey 3 hodiny čítania
-
-              .bar.mb-medium.show-m
-                .bar__item
-                  dl.no-mrg
-                    dt Vydavateľstvo
-                    dd
-                      a.link(href="#") Inspira Publishing
-                      span.text-color-grey , 2016
-                .bar__item.bar__item--border
-                .bar__item
-                  dl.no-mrg
-                    dt Edícia
-                    dd
-                      a.link(href="#") Rybolov
-                .bar__item.bar__item--border
-                .bar__item.bar__item--fill
-                  .bar.bar--small.align-items-top.no-mrg-bottom
-                    .bar__item
-                      .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                    .bar__item.bar__item--fill
-                      dl.no-mrg
-                        dt Tento titul číta aj
-                        dd
-                          a.link(href="#") Jana Šlinská
-
-              p.text-medium.hide-m Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy...
-
-              p.show-m Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké
-
-              p
-                a.link.text-medium(href="#popis-knihy", data-scroll, data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.m + 20}}`) Čítaj viac#{' '}
-                   +icon('arrow-down')
+            .col--5.col--s-3.col--m-4.col--l-3
+              h3 Ostatný tovar
+              .product-detail__preview
+                .product-detail__image
+                  .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-23.jpg`)
+                .text-center
+                  button.btn.btn--clean.mb-none(data-toggle="#product-preview")
+                    +icon('eye').icon--left.icon--medium
+                    span Viac fotiek
 
 
-            .col--l-3.col--m-6.ofst--m-4.ofst--l-0
-              include ./modules/card-cart
-
-              .social-buttons.text-center.mb-medium.mb-none-l
-                | <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
-                | <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
       section.section
         .wrapper-main

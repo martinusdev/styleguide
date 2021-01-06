@@ -1,0 +1,56 @@
+.bookmark {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background: _color('primary');
+  bottom: -35px;
+  left: 20px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease-in-out;
+
+  .icon {
+    transition: margin-top 0.1s ease-out;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+  }
+
+  @include breakpoint('m', 'downfrom') {
+    width: 20px;
+    height: 20px;
+    bottom: -20px;
+    left: 12px;
+
+    .icon {
+      width: 12px;
+      height: 12px;
+    }
+  }
+
+  @include breakpoint('xs') {
+    display: flex;
+  }
+}
+
+.bookmark__wrap {
+  position: relative;
+
+  &:hover {
+    .bookmark {
+      height: 37px;
+      bottom: -37px;
+
+      // stylelint-disable max-nesting-depth
+      @include breakpoint('m', 'downfrom') {
+        height: 22px;
+        bottom: -22px;
+      }
+    }
+
+    .bookmark > .icon {
+      margin-top: 2px;
+    }
+  }
+}
