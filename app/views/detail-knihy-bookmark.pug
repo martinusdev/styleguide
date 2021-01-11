@@ -92,10 +92,12 @@ block content
             .col--5.col--s-3.col--m-4.col--l-3
               h3.mb-large E-kniha
               .product-detail__preview
-                .product-detail__image
+                .product-detail__image.bookmark__wrap
                   .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
                     .thumbnail__img-wrap
                       img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-25.jpg`)
+                    .bookmark
+                      +icon('martinus')
                 .text-center
                   button.btn.btn--clean.mb-none(data-toggle="#product-preview")
                     +icon('download').icon--left.icon--medium
@@ -104,10 +106,12 @@ block content
             .col--5.col--s-3.col--m-4.col--l-3
               h3.mb-large Audiokniha
               .product-detail__preview
-                .product-detail__image
+                .product-detail__image.bookmark__wrap
                   .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
                     .thumbnail__img-wrap
                       img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-24.jpg`)
+                    .bookmark
+                      +icon('martinus')
                 .show-m
                   .product-detail__preview-link.text-center
                     button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
