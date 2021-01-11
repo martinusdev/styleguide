@@ -3,7 +3,7 @@
   width: 35px;
   height: 35px;
   background: _color('primary');
-  bottom: -35px;
+  top: -35px;
   left: 20px;
   display: none;
   align-items: center;
@@ -20,7 +20,7 @@
   @include breakpoint('m', 'downfrom') {
     width: 20px;
     height: 20px;
-    bottom: -20px;
+    top: -20px;
     left: 12px;
 
     .icon {
@@ -40,17 +40,17 @@
   &:hover {
     .bookmark {
       height: 37px;
-      bottom: -37px;
+      top: -37px;
 
       // stylelint-disable max-nesting-depth
       @include breakpoint('m', 'downfrom') {
         height: 22px;
-        bottom: -22px;
+        top: -22px;
       }
     }
 
     .bookmark > .icon {
-      margin-top: 2px;
+      margin-bottom: 2px;
     }
   }
 }
