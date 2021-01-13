@@ -91,18 +91,17 @@ block content
           .row.product-detail
             .col--5.col--s-3.col--m-4.col--l-3
               .product-detail__preview
-                .product-detail__image
-                  .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-medium.clickable(data-toggle="#product-preview")
+                .product-detail__image.bookmark__wrap
+                  .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
                     .thumbnail__img-wrap
-                      img.img.img--fluid.mb-medium(src=`${assetsPrefix}images/content/books/sample-14.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-14.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
                     img.book-flag.book-flag--large(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: -5px;")
-
-                  .product-detail__preview-link.text-left
-                    .text-space-right
-                    button.btn.btn--clean.mb-none(data-toggle="#product-preview")
-                      +icon('eye').icon--left.icon--medium
-                      span.show-m Pozrieť ukážku
-                      span.hide-m ukážka
+                    .bookmark
+                      +icon('martinus')
+                .text-center
+                  button.btn.btn--clean.mb-none(data-toggle="#product-preview")
+                    span.show-m Pozrieť ukážku
+                    span.hide-m ukážka
                 .show-m
                   .product-detail__preview-link.text-center
                     button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
