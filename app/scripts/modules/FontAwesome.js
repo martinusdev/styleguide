@@ -17,6 +17,7 @@ import {
   faPencilPaintbrush,
   faPray,
   faPrayingHands,
+  faPuzzlePiece,
   faQuestion,
   faRecordVinyl,
   faSmile,
@@ -46,6 +47,7 @@ library.add(
   faMugHot,
   faPrayingHands,
   faPray,
+  faPuzzlePiece,
 );
 
 dom.watch();
