@@ -51,6 +51,7 @@ export default class Input {
 
     item.addEventListener('change', this._handleChange);
     item.addEventListener('keyup', this._handleChange);
+    item.addEventListener('search', this._handleChange);
   }
 
   _detachEvents(item) {
@@ -59,6 +60,7 @@ export default class Input {
 
     item.removeEventListener('change', this._handleChange);
     item.removeEventListener('keyup', this._handleChange);
+    item.removeEventListener('search', this._handleChange);
   }
 
   _handleFocus(e) {
