@@ -1,0 +1,21 @@
+extends layouts/_default
+
+block opts
+  - var pageTitle = 'Knižná detektívka'
+  - var campaignKDHeader = true
+  - var pageClass = 'ks-page'
+
+
+block content
+  main
+    section.section.kd-header.text-color-white
+      .wrapper-main
+        .row.mb-large.align-items-middle
+          .col--l-2.col--m-3.show-m
+            img(src="images/content/campaign/knizna-detektivka/heroes/sherlock.png").show-m
+          .col--l-8.col--m-9.text-center.text-left-m
+            img(src="images/content/campaign/knizna-detektivka/velka-knizna-detektivka.png", alt="Veľká knižná detektívka").kd-header__logo.mb-large
+            h2.kd-header__claim.mb-large.line-medium Vypátraj so Sherlockom páchateľa, ktorý našim&nbsp;hrdinom ukradol ich obľúbené knižky.
+
+            block authSection
+              a.btn.btn--primary.mb-none(href="campaign-knizna-detektivka-auth.html") Prihlásiť sa
