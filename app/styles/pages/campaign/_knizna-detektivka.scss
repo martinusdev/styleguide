@@ -5,6 +5,29 @@
 
 .kd-user-info {
   justify-content: center;
+  flex-direction: column;
+}
+
+.kd-books-progress {
+  margin-top: 1.25rem;
+
+  &__icon {
+    margin: 5px 15px 5px 0;
+  }
+}
+
+.kd-badge-progress {
+  margin-top: 1.25rem;
+  padding: 13px;
+  border-radius: 40px;
+  background: _color('primary');
+  color: _color(white);
+}
+
+@include breakpoint('l', 'downfrom') { // TODO vymazat
+  .kd-books-progress__icon {
+    font-size: 1rem !important;
+  }
 }
 
 @include breakpoint('m') {
@@ -12,18 +35,16 @@
     max-width: 560px;
   }
 
+  .kd-badge-progress {
+    margin-top: 0;
+  }
+
   .kd-user-info {
+    flex-direction: row;
     justify-content: flex-start;
   }
 }
 
 .kd-folder {
   background: url('../images/content/campaign/knizna-detektivka/folder.jpg');
-}
-
-.kd-badge-progress {
-  padding: 13px;
-  border-radius: 40px;
-  background: _color('primary');
-  color: _color(white);
 }

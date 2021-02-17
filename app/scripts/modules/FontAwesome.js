@@ -2,7 +2,7 @@
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faAtlas,
-  faBook,
+  faBook as falFaBook,
   faCalendar,
   faCoffeeTogo,
   faFlag,
@@ -25,8 +25,11 @@ import {
   faSwords,
 } from '@fortawesome/pro-light-svg-icons';
 
+import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
+
 library.add(
-  faBook,
+  falFaBook,
+  fasFaBook,
   faLightbulb,
   faSmile,
   faHeadSideBrain,
