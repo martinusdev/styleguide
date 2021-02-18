@@ -17,4 +17,30 @@ block content
             img(src="images/content/campaign/knizna-detektivka/velka-knizna-detektivka.png", alt="Veľká knižná detektívka").kd-header__logo.mb-medium.mb-large-m.mb-medium-l
             h2.kd-header__claim.mb-medium.mb-large-m.mb-medium-l.line-medium Vypátraj so Sherlockom páchateľa, ktorý <br class="show-l">našim&nbsp;hrdinom ukradol ich obľúbené knižky.
             block authSection
-              a.btn.btn--primary.mb-none(href="campaign-knizna-detektivka-auth.html") Prihlásiť sa
+              button.btn.btn--primary.mb-none(data-toggle="#kd-modal-login") Prihlásiť sa
+
+  .modal-overlay#kd-modal-login(data-modal)
+    article.modal
+      .modal__wrap
+        .modal__header
+          .modal__header__headline
+            h2 Prihlásenie
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#kd-modal-login")
+              +icon('close').icon--medium
+        .modal__content
+          form
+            .form-control.form-control--input
+              .input-addons
+                input.input(type="text", placeholder="Prosím, zadaj svoj e-mail…")
+                .input-addons__item.no-pad
+                  a.btn.btn--primary(href="campaign-knizna-detektivka-auth.html")
+                    | Prihlásiť
+
+            a.btn.btn--medium.mb-small.btn-login.btn-fb#fb_login_after_error
+              +icon('facebook').icon--small.icon--left
+              | Prihlásiť sa cez Facebook
+
+            .text-color-grey
+              p Vyber si e-mail, ktorý bude tvojím prihlásením vo Veľkej knižnej detektívke. Okrem toho to bude náš kontakt v prípade výhry a budeme ti naň posielať aj informácie súvisiace so súťažou a jej priebehom. Z ich odberu sa môžeš kedykoľvek odhlásiť. Prečítaj si aj <a href="" class="link">podrobné pravidlá Veľkej knižnej detektívky</a>.
+              p Viac informácii o ochrane osobných údajov u nás <a href="" class="link">nájdeš tu</a>.
