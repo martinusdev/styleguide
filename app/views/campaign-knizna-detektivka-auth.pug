@@ -1,13 +1,16 @@
 extends campaign-knizna-detektivka
 
 block authSection
-  .kd-user-info.flex.align-items-middle
-    a.flex.align-items-middle.align-items-center(href="campaign-knizna-detektivka.html")
+  .kd-user.flex.align-items-middle
+    .text-ellipsis.kd-user__email
       +icon('user').icon--medium.mr-small.mb-none
       | superdlhy.sherlock.holmes@martinus.sk
-    .kd-badge-progress.ml-medium-m
-      i.fal.fa-book.fa-lg.mr-small
-      | <strong class="font-weight-bold">4</strong> / 20
+    .ml-medium-m
+      .kd-badge-progress.text-center
+        i.fal.fa-book.fa-lg.mr-small
+        | Hráš o
+        | <strong class="font-weight-bold">4</strong> z 50 kníh
+      div.text-size-small <strong>Vyhraj 2x toľko za nákup na Martinus.sk!</strong>
     //.kd-books-progress
     //  - let n = 0;
     //    while n < 20

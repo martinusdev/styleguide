@@ -3,9 +3,13 @@
   background-size: cover;
 }
 
-.kd-user-info {
+.kd-user {
   justify-content: center;
   flex-direction: column;
+
+  &__email {
+    max-width: 95%;
+  }
 }
 
 .kd-books-progress {
@@ -30,6 +34,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: _get-rem(10px);
   }
 
   &__complete {
@@ -48,6 +53,22 @@
       top: 20px;
       transform: rotate(-15deg);
     }
+  }
+
+  &__hero {
+    width: 60%;
+  }
+
+  &__date {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-weight-semibold;
+    font-size: _get-rem(18px);
+    background: rgba(255, 255, 255, 0.6);
   }
 
   &::after {
@@ -84,7 +105,7 @@
     margin-top: 0;
   }
 
-  .kd-user-info {
+  .kd-user {
     flex-direction: row;
     justify-content: flex-start;
   }

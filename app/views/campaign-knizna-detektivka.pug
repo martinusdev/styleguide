@@ -6,24 +6,35 @@ block tab
         ul.tab-nav
           li.tab-nav__item.is-active
             a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra.html')
-              .tab-nav__content-wrap Hľadaj knihy
+              .tab-nav__content-wrap Pátranie
           li.tab-nav__item
             a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra.html')
               .tab-nav__content-wrap Príbeh
           li.tab-nav__item
             a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra-about.html')
-              .tab-nav__content-wrap Ako súťažiť
+              .tab-nav__content-wrap Pravidlá
     section.kd-content.section.pb-large
       .wrapper-main
         .row
           .col--m-8
             .row
-              .col--6.col--m-4.col--l-3
-                .kd-folder
-                  .kd-folder__complete
-                    +icon('check-circle').fa-lg
-                  .kd-folder__content
-                    | aaa
+              each day in days
+                .col--6.col--m-4.col--l-3.mb-medium
+                  .kd-folder
+                    if day.done
+                      .kd-folder__complete
+                        +icon('check-circle').fa-lg
+                    .kd-folder__content
+                      if day.available
+                        a.kd-folder__hero
+                          img(src=`images/content/campaign/knizna-detektivka/heroes/${day.hero}.png`)
+                      else
+                        .kd-folder__date
+                          =day.date
           .col--m-4
-            img(src='images/content/campaign/knizna-detektivka/identikit.jpg')
+            img(src='images/content/campaign/knizna-detektivka/identikit.jpg').mb-medium
+
+            .article.card.card--material
+              .card__content
+                | Hello world.
 
