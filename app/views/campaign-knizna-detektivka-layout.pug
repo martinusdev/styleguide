@@ -1,9 +1,12 @@
 extends layouts/_default
 
 block opts
-  - var pageTitle = 'Knižná detektívka'
-  - var campaignKDHeader = true
+  - var pageTitle = 'Veľká knižná detektívka'
+  - var campaignHeader = true
   - var pageClass = 'ks-page'
+  - var headerWarningActive = false
+
+block campaignHeaderContent
 
 
 block content
@@ -18,6 +21,7 @@ block content
             h2.kd-header__claim.mb-medium.mb-large-m.mb-medium-l.line-medium Vypátraj so Sherlockom páchateľa, ktorý <br class="show-l">našim&nbsp;hrdinom ukradol ich obľúbené knižky.
             block authSection
               button.btn.btn--primary.mb-none(data-toggle="#kd-modal-login") Prihlásiť sa
+    block tab
 
   .modal-overlay#kd-modal-login(data-modal)
     article.modal

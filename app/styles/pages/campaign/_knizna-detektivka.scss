@@ -16,12 +16,57 @@
   }
 }
 
+.kd-folder {
+  background-image: url('../images/content/campaign/knizna-detektivka/folder.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &__content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__complete {
+    position: absolute;
+    content: '';
+    display: block;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    color: _color(success);
+    border-bottom: 5px solid _color(success);
+
+    .icon {
+      position: absolute;
+      right: 10px;
+      top: 20px;
+      transform: rotate(-15deg);
+    }
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
 .kd-badge-progress {
   margin-top: 1.25rem;
   padding: 13px;
   border-radius: 40px;
   background: _color('primary');
   color: _color(white);
+}
+
+.kd-content {
+  background-color: _color(secondary, 600);
 }
 
 @include breakpoint('l', 'downfrom') { // TODO vymazat
@@ -43,8 +88,4 @@
     flex-direction: row;
     justify-content: flex-start;
   }
-}
-
-.kd-folder {
-  background: url('../images/content/campaign/knizna-detektivka/folder.jpg');
 }

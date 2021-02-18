@@ -1,1 +1,29 @@
 extends campaign-knizna-detektivka-layout
+
+block tab
+    section.section.section--small
+      .wrapper-main.overflow-scroll-x
+        ul.tab-nav
+          li.tab-nav__item.is-active
+            a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra.html')
+              .tab-nav__content-wrap Hľadaj knihy
+          li.tab-nav__item
+            a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra.html')
+              .tab-nav__content-wrap Príbeh
+          li.tab-nav__item
+            a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-sifra-about.html')
+              .tab-nav__content-wrap Ako súťažiť
+    section.kd-content.section.pb-large
+      .wrapper-main
+        .row
+          .col--m-8
+            .row
+              .col--6.col--m-4.col--l-3
+                .kd-folder
+                  .kd-folder__complete
+                    +icon('check-circle').fa-lg
+                  .kd-folder__content
+                    | aaa
+          .col--m-4
+            img(src='images/content/campaign/knizna-detektivka/identikit.jpg')
+
