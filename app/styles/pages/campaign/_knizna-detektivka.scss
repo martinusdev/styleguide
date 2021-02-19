@@ -100,9 +100,39 @@
   background-color: _color(secondary, 600);
 }
 
-@include breakpoint('l', 'downfrom') { // TODO vymazat
-  .kd-books-progress__icon {
-    font-size: 1rem !important;
+.kd-dialogue {
+  flex-wrap: wrap;
+
+  &__hero {
+    flex: 0 0 100px;
+  }
+
+  &__text {
+    flex: 1;
+  }
+
+  p {
+    margin-bottom: 5px;
+
+    strong {
+      font-weight: $font-weight-bold;
+    }
+
+    &:nth-child(odd) {
+      color: _color(brown);
+    }
+  }
+}
+
+@include breakpoint('l', 'downfrom') {
+  .kd-dialogue__hero {
+    order: 1;
+    align-self: flex-end;
+  }
+
+  .kd-dialogue__text {
+    order: 2;
+    flex: 1 100%;
   }
 }
 

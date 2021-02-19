@@ -1,45 +1,96 @@
 extends campaign-knizna-detektivka-layout
 
 block tab
-    section.section.section--small
-      .wrapper-main.overflow-scroll-x
-        ul.tab-nav
-          li.tab-nav__item.is-active
-            a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-detektivka.html')
-              .tab-nav__content-wrap Pátranie
-          li.tab-nav__item
-            a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-detektivka-pribeh.html')
-              .tab-nav__content-wrap Príbeh
-          li.tab-nav__item
-            a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-detektivka-pravidla.html')
-              .tab-nav__content-wrap Pravidlá
-    section.kd-content.section.pb-large
-      .wrapper-main
-        .row
-          .col--m-8
-            .row
-              each day in days
-                .col--6.col--m-4.col--l-3.mb-medium
-                  .kd-folder
-                    if day.done
-                      .kd-folder__complete
-                        +icon('check-circle').fa-lg
-                    .kd-folder__content
-                      if day.available
-                        a.kd-folder__hero
-                          img(src=`images/content/campaign/knizna-detektivka/heroes/${day.hero}.png`)
-                      else
-                        div.kd-folder__date
-                          span(data-tooltip, title=`Pátranie začne ${day.date}`)= day.date
-          .col--m-4
-            .card
-              h2.text-color-white.bg-primary-light.mb-none.p-small.text-center.pt-small.pb-small
-                | Knižný zlodej
-              img(src='images/content/campaign/knizna-detektivka/identikit.jpg').mb-small
-              .card__content.text-center
-                p Napíš meno neznámeho páchateľa,<br>ktoré sa ti podarilo vypátrať.
+  section.section.section--small
+    .wrapper-main.overflow-scroll-x
+      ul.tab-nav
+        li.tab-nav__item.is-active
+          a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-detektivka.html')
+            .tab-nav__content-wrap Pátranie
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-detektivka-pribeh.html')
+            .tab-nav__content-wrap Príbeh
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-knizna-detektivka-pravidla.html')
+            .tab-nav__content-wrap Pravidlá
+  section.kd-content.section.pb-large
+    .wrapper-main
+      .row
+        .col--m-8
+          .row
+            each day in days
+              - modalName = day.done ? 'done' : 'available'
+
+              .col--6.col--m-4.col--l-3.mb-medium
+                .kd-folder
+                  if day.done
+                    .kd-folder__complete
+                      +icon('check-circle').fa-lg
+                  .kd-folder__content
+                    if day.available
+                      a(href="#", data-toggle=`#kd-modal-play-${modalName}`).kd-folder__hero
+                        img(src=`images/content/campaign/knizna-detektivka/heroes/${day.hero}.png`)
+                    else
+                      div.kd-folder__date
+                        span(data-tooltip, title=`Pátranie začne ${day.date}`)= day.date
+        .col--m-4
+          .card
+            h2.text-color-white.bg-primary-light.mb-none.p-small.text-center.pt-small.pb-small
+              | Knižný zlodej
+            img(src='images/content/campaign/knizna-detektivka/identikit.jpg').mb-small
+            .card__content.text-center
+              p Napíš meno neznámeho páchateľa,<br>ktoré sa ti podarilo vypátrať.
+              .form-control.form-control--input
+                input.input.input--large(type="text", placeholder="Napr. Kornélia Dlhoprstá")
+
+              button.btn.btn--primary.btn--large Hľadať
+
+  .modal-overlay#kd-modal-play-done(data-modal)
+    article.modal.modal--medium
+        .modal__content
+          .text-right
+            .btn.btn--clean.mb-none(data-toggle="#kd-modal-play-done")
+              +icon('close').icon--medium
+          .flex.kd-dialogue
+            .kd-dialogue__hero.ml-auto
+              img(src="images/content/campaign/knizna-detektivka/heroes/sherlock.png")
+            .kd-dialogue__text.text-center.pl-medium.pr-medium
+              p <strong>SH:</strong> Isabella, dobrý deň, dúfam, že vás neruším pri rodičovských povinnostiach.
+              p <strong>IS:</strong> Prosím, volajte ma Bella. Nie, nie, Renesmee sa hrá v lese, tak sa môžeme v pokoji porozprávať.
+              p <strong>SH:</strong> Ďakujem. Predpokladám, že viete, pri akej príležitosti som vás prišiel navštíviť.
+              p <strong>IS:</strong> Ide o moju ukradnutú knihu?
+              p <strong>SH:</strong> Správne. Viete mi povedať jej názov, meno hlavného hrdinu alebo aspoň priblížiť, o čom bola?
+              p <strong>IS:</strong> Názov si nepamätám, ale bola o materstve. Viete, byť matkou je niekedy naozaj ťažké a rada si prečítam oddychovú knihu, kde je hlavnou hrdinkou matka, ktorá nechce byť ako ostatné mamy na detskom ihrisku. A táto kniha bola ešte aj vtipná, pretože deti hlavnej hrdinky sa chceli navzájom zabiť a nútili mamu piť.
+
+              .alert.alert--success.mt-medium.align-items-center.block
+                +icon('check-circle').mr-tiny
+                | <strong>Výborne!</strong><br>
+                | Podarilo sa ti vypátrať hľadanú knižku. Uhádneš aj ďalšie?
+
+            .kd-dialogue__hero.mr-auto
+              img(src="images/content/campaign/knizna-detektivka/heroes/swan.png")
+
+  .modal-overlay#kd-modal-play-available(data-modal)
+      article.modal.modal--medium
+        .modal__wrap
+          .modal__content
+            .text-right
+              .btn.btn--clean.mb-none(data-toggle="#kd-modal-play-available")
+                +icon('close').icon--medium
+            .flex.kd-dialogue
+              .kd-dialogue__hero.ml-auto
+                img(src="images/content/campaign/knizna-detektivka/heroes/sherlock.png")
+              .kd-dialogue__text.text-center.pl-medium.pr-medium
+                p <strong>SH:</strong> Pán Tarzan, prosím, môžete zísť z toho stromu, aby som nemusel tak kričať?
+                p <strong>T:</strong> Už letíííííííím.
+                p <strong>SH:</strong> Keby ste mohli ešte ustúpiť o pár krokov dozadu a povedať mi, aká kniha vám to zmizla, pretože z vášho hlásenia som sa toho veľa nedozvedel.
+                p <strong>T:</strong> Dobre, dobre. Viete, ja čítať málo. Keď mi nejaká kniha zmizne, hneď si to všimnem. Táto byť neobyčajná. Pretože som si ju kúpil, aby som viac pochopiť jazyk lásky Jane. Jedine pamätať, že niekto je žblnkotajúci potôčik a niekto mŕtve more. Čo teraz? Potrebujem ju, aby ja mohol opäť ohúriť Jane.
+
+                h3.font-weight-bold.mt-large Akú knihu stratil Tarzan?
                 .form-control.form-control--input
                   input.input.input--large(type="text", placeholder="Napr. Kornélia Dlhoprstá")
 
                 button.btn.btn--primary.btn--large Hľadať
 
+              .kd-dialogue__hero.mr-auto
+                img(src="images/content/campaign/knizna-detektivka/heroes/tarzan.png")
