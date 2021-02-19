@@ -29,14 +29,13 @@ block tab
                         a.kd-folder__hero
                           img(src=`images/content/campaign/knizna-detektivka/heroes/${day.hero}.png`)
                       else
-                        .kd-folder__date
-                          =day.date
+                        div.kd-folder__date
+                          span(data-tooltip, title=`Pátranie začne ${day.date}`)= day.date
           .col--m-4
-            h2.text-color-white.bg-primary-light.mb-none.p-small.text-center.pt-small.pb-small
+            .card
+              h2.text-color-white.bg-primary-light.mb-none.p-small.text-center.pt-small.pb-small
                 | Knižný zlodej
-            img(src='images/content/campaign/knizna-detektivka/identikit.jpg').mb-medium
-
-            .article.card.card--material
-              .card__content
-                | Hello world.
+              img(src='images/content/campaign/knizna-detektivka/identikit.jpg').mb-small
+              .card__content.text-center
+                | Napíš meno neznámeho páchateľa,  ktoré sa ti podarilo vypátrať.
 
