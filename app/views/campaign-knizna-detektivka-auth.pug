@@ -6,21 +6,23 @@ block authSection
       +icon('user').icon--medium.mr-small.mb-none
       | superdlhy.sherlock.holmes@martinus.sk
     .ml-medium-m
-      .kd-badge-progress.text-center
-        i.fal.fa-book.fa-lg.mr-small
-        | Hráš o
-        | <strong class="font-weight-bold">4</strong> z 50 kníh
-      div.text-size-small <strong>Vyhraj 2x toľko za nákup na Martinus.sk!</strong>
-    //.kd-books-progress
-    //  - let n = 0;
-    //    while n < 20
-    //      if n < 4
-    //        - iconClass = 'fas text-color-theme-400';
-    //      else
-    //        - iconClass = 'fal';
-    //
-    //      i(class=iconClass).fa-book.fa-lg.kd-books-progress__icon
-    //      if n === 9
-    //        <br>
-    //      - ++n
-
+      .kd-progress
+        .kd-progress__books
+          i.fal.fa-book.fa-lg.mr-small
+          | Hráš o&nbsp;<strong class="font-weight-bold">4</strong>&nbsp;z 50 kníh
+        button(data-tooltip, data-html="#kd-double-price-tooltip", data-tippy-theme="light").kd-progress__info.text-size-small
+          | Zdvojnásob svoju výhru
+          +icon('info').ml-tiny
+      //.kd-badge-progress.text-center
+      //  i.fal.fa-book.fa-lg.mr-small
+      //  | Hráš o
+      //  | <strong class="font-weight-bold">4</strong> z 50 kníh
+      //div.text-size-small <strong>Zdvojnásob svoju výhru</strong>
+  #kd-double-price-tooltip.hide.card
+    .card__content.text-center
+      p.text-size-medium Svoju výhru môžeš zdvojnásobiť. Stačí, ak do 31. marca urobíš ľubovoľný nákup v kníhkupectve Martinus a tvoju prípadnú výhru zdvojnásobime.
+      ul.list-inline
+        li
+          a(href="campaign-knizna-detektivka-pravidla.html").link Pravidlá súťaže
+        li
+          a(href="https://www.martinus.sk").link Na Martinus
