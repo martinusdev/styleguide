@@ -47,20 +47,34 @@ block tab
 
   .modal-overlay#kd-modal-play-done(data-modal)
     article.modal.modal--medium
-        .modal__content
+        .modal__content.bg-secondary
           .text-right
             .btn.btn--clean.mb-none(data-toggle="#kd-modal-play-done")
               +icon('close').icon--medium
           .flex.kd-dialogue
             .kd-dialogue__hero.ml-auto
+              h5.text-center.text-color-beige
+                strong Sherlock
               img(src="images/content/campaign/knizna-detektivka/heroes/sherlock.png")
             .kd-dialogue__text.text-center.pl-medium.pr-medium
-              p <strong>SH:</strong> Isabella, dobrý deň, dúfam, že vás neruším pri rodičovských povinnostiach.
-              p <strong>IS:</strong> Prosím, volajte ma Bella. Nie, nie, Renesmee sa hrá v lese, tak sa môžeme v pokoji porozprávať.
-              p <strong>SH:</strong> Ďakujem. Predpokladám, že viete, pri akej príležitosti som vás prišiel navštíviť.
-              p <strong>IS:</strong> Ide o moju ukradnutú knihu?
-              p <strong>SH:</strong> Správne. Viete mi povedať jej názov, meno hlavného hrdinu alebo aspoň priblížiť, o čom bola?
-              p <strong>IS:</strong> Názov si nepamätám, ale bola o materstve. Viete, byť matkou je niekedy naozaj ťažké a rada si prečítam oddychovú knihu, kde je hlavnou hrdinkou matka, ktorá nechce byť ako ostatné mamy na detskom ihrisku. A táto kniha bola ešte aj vtipná, pretože deti hlavnej hrdinky sa chceli navzájom zabiť a nútili mamu piť.
+              article.card.card--speech-bubble
+                .card__content.text-color-beige
+                  | Isabella, dobrý deň, dúfam, že vás neruším pri rodičovských povinnostiach.
+              article.card.card--speech-bubble-end
+                .card__content
+                  | Prosím, volajte ma Bella. Nie, nie, Renesmee sa hrá v lese, tak sa môžeme v pokoji porozprávať.
+              article.card.card--speech-bubble
+                .card__content.text-color-beige
+                  | Ďakujem. Predpokladám, že viete, pri akej príležitosti som vás prišiel navštíviť.
+              article.card.card--speech-bubble-end
+                .card__content
+                  | Ide o moju ukradnutú knihu?
+              article.card.card--speech-bubble
+                .card__content.text-color-beige
+                  | Správne. Viete mi povedať jej názov, meno hlavného hrdinu alebo aspoň priblížiť, o čom bola?
+              article.card.card--speech-bubble-end
+                .card__content
+                  | Názov si nepamätám, ale bola o materstve. Viete, byť matkou je niekedy naozaj ťažké a rada si prečítam oddychovú knihu, kde je hlavnou hrdinkou matka, ktorá nechce byť ako ostatné mamy na detskom ihrisku. A táto kniha bola ešte aj vtipná, pretože deti hlavnej hrdinky sa chceli navzájom zabiť a&nbsp;nútili&nbsp;mamu&nbsp;piť.
 
               .alert.alert--success.mt-medium.align-items-center.block
                 +icon('check-circle').mr-tiny
@@ -68,10 +82,12 @@ block tab
                 | Podarilo sa ti vypátrať hľadanú knižku. Uhádneš aj ďalšie?
 
             .kd-dialogue__hero.mr-auto
+              h5.text-center
+                strong Isabella
               img(src="images/content/campaign/knizna-detektivka/heroes/swan.png")
 
   .modal-overlay#kd-modal-play-available(data-modal)
-      article.modal.modal--medium
+      article.modal.modal--medium.bg-secondary
         .modal__wrap
           .modal__content
             .text-right
@@ -79,18 +95,28 @@ block tab
                 +icon('close').icon--medium
             .flex.kd-dialogue
               .kd-dialogue__hero.ml-auto
+                h5.text-center.text-color-beige
+                  strong Sherlock
                 img(src="images/content/campaign/knizna-detektivka/heroes/sherlock.png")
               .kd-dialogue__text.text-center.pl-medium.pr-medium
-                p <strong>SH:</strong> Pán Tarzan, prosím, môžete zísť z toho stromu, aby som nemusel tak kričať?
-                p <strong>T:</strong> Už letíííííííím.
-                p <strong>SH:</strong> Keby ste mohli ešte ustúpiť o pár krokov dozadu a povedať mi, aká kniha vám to zmizla, pretože z vášho hlásenia som sa toho veľa nedozvedel.
-                p <strong>T:</strong> Dobre, dobre. Viete, ja čítať málo. Keď mi nejaká kniha zmizne, hneď si to všimnem. Táto byť neobyčajná. Pretože som si ju kúpil, aby som viac pochopiť jazyk lásky Jane. Jedine pamätať, že niekto je žblnkotajúci potôčik a niekto mŕtve more. Čo teraz? Potrebujem ju, aby ja mohol opäť ohúriť Jane.
+                article.card.card--speech-bubble
+                  .card__content.text-color-beige
+                    | Pán Tarzan, prosím, môžete zísť z toho stromu, aby som nemusel tak kričať?
+                article.card.card--speech-bubble-end
+                  .card__content
+                    | Už letíííííííím.
+                article.card.card--speech-bubble
+                  .card__content.text-color-beige
+                    | Keby ste mohli ešte ustúpiť o pár krokov dozadu a povedať mi, aká kniha vám to zmizla, pretože z vášho hlásenia som sa toho veľa nedozvedel.
+                article.card.card--speech-bubble-end
+                  .card__content
+                    | Dobre, dobre. Viete, ja čítať málo. Keď mi nejaká kniha zmizne, hneď si to všimnem. Táto byť neobyčajná. Pretože som si ju kúpil, aby som viac pochopiť jazyk lásky Jane. Jedine pamätať, že niekto je žblnkotajúci potôčik a niekto mŕtve more. Čo teraz? Potrebujem ju, aby ja mohol opäť ohúriť Jane.
 
-                h3.font-weight-bold.mt-large Akú knihu stratil Tarzan?
+                h3.font-weight-bold.mt-large Akú knihu zlodej ukradol?
                 .form-control.form-control--input
-                  input.input.input--large(type="text", placeholder="Napr. Kornélia Dlhoprstá")
-
-                button.btn.btn--primary.btn--large Hľadať
-
+                  input.input.input--large(type="text", placeholder="Napr. Malý princ")
+                button.btn.btn--primary.btn--large Pátrať
               .kd-dialogue__hero.mr-auto
+                h5.text-center
+                  strong Tarzan
                 img(src="images/content/campaign/knizna-detektivka/heroes/tarzan.png")
