@@ -15,25 +15,25 @@ block opts
     -
       const categories = [{
         title: 'Beletria',
-        icon: 'fa-book-open',
+        icon: 'fa-book',
       }, {
         title: 'Rozprávky',
         icon: 'fa-swords',
       }, {
         title: 'Sci-fi, fantasy a komiksy',
-        icon: 'fa-wand-magic',
+        icon: 'fa-stars',
       }, {
         title: 'Náučné knihy',
         icon: 'fa-atlas',
       }, {
         title: 'Omaľovánky, vystrihovanie, papier',
-        icon: 'fa-palette',
+        icon: 'fa-pencil-paintbrush',
       }, {
         title: 'Hlavolamy, doplňovačky, úlohy a hry',
         icon: 'fa-question',
       }, {
         title: 'Kuchárske knihy',
-        icon: 'fa-knife-kitchen',
+        icon: 'fa-hat-chef',
       }, {
         title: 'Učebnice',
         icon: 'fa-graduation-cap',
@@ -63,7 +63,7 @@ block content
                   a(href="#").btn.btn--carousel.text-transform-none.text-size-medium.flex.align-items-middle.text-left.pt-small.pb-small
                     if category.icon
                       if category.icon.startsWith('fa-')
-                        i.text-color-theme.mr-tiny.fa-fw.fa-lg.fad(class= category.icon)
+                        i.text-color-theme.mr-tiny.fa-fw.fa-lg.fal(class= category.icon)
                       else
                         +icon(category.icon).mr-tiny.text-color-theme
                     | !{category.title}
