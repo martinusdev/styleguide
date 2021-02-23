@@ -1,0 +1,167 @@
+.kd-header {
+  background: #583527 url('../images/content/campaign/knizna-detektivka/header-bg.jpg') no-repeat center;
+  background-size: cover;
+}
+
+.kd-user {
+  justify-content: center;
+  flex-direction: column;
+
+  &__email {
+    max-width: 95%;
+  }
+}
+
+.kd-progress {
+  margin-top: 1.25rem;
+
+  > * {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: _get-rem(35px);
+    padding: 0 _get-rem(20px);
+  }
+
+  &__books {
+    margin-right: 20px;
+  }
+
+  &__info {
+    margin-left: 40px;
+    color: $color-white;
+  }
+}
+
+.kd-folder {
+  background: url('../images/content/campaign/knizna-detektivka/folder.jpg') no-repeat center;
+  background-size: cover;
+  position: relative;
+
+  &__content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: _get-rem(10px);
+  }
+
+  &__complete {
+    position: absolute;
+    content: '';
+    display: block;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    color: _color(success);
+    border-bottom: 5px solid _color(success);
+
+    .icon {
+      position: absolute;
+      right: 10px;
+      top: 20px;
+      transform: rotate(-15deg);
+    }
+  }
+
+  &__hero {
+    width: 60%;
+  }
+
+  &__date {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: $font-weight-semibold;
+    font-size: _get-rem(18px);
+    background: rgba(255, 255, 255, 0.6);
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    padding-bottom: 100%;
+  }
+}
+
+.kd-badge-progress {
+  padding: 13px;
+  border-radius: 40px;
+  background: _color('primary');
+  color: _color(white);
+}
+
+.kd-content {
+  background-color: _color(secondary, 600);
+}
+
+.kd-dialogue {
+  flex-wrap: wrap;
+
+  &__hero {
+    flex: 0 0 100px;
+  }
+
+  &__text {
+    flex: 1;
+  }
+
+  p {
+    margin-bottom: 5px;
+
+    strong {
+      font-weight: $font-weight-bold;
+    }
+
+    &:nth-child(odd) {
+      color: _color(brown);
+    }
+  }
+
+  .card__content {
+    padding: _get-space('v', 'small');
+  }
+
+  .card--speech-bubble {
+    margin-right: 15px;
+    text-align: left;
+  }
+
+  .card--speech-bubble-end {
+    margin-left: 15px;
+    text-align: left;
+  }
+}
+
+@include breakpoint('l', 'downfrom') {
+  .kd-dialogue__hero {
+    order: 1;
+    align-self: flex-end;
+  }
+
+  .kd-dialogue__text {
+    order: 2;
+    flex: 1 100%;
+  }
+}
+
+@include breakpoint('m') {
+  .kd-header__logo {
+    max-width: 560px;
+  }
+
+  .kd-badge-progress,
+  .kd-progress {
+    margin-top: 0;
+  }
+
+  .kd-user {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}

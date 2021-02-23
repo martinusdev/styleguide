@@ -1,0 +1,526 @@
+extends layouts/_default
+
+include ./mixins/booksCarouselRecommended
+include ./mixins/breadcrumbs
+include ./mixins/pagination
+include ./mixins/review
+include ./mixins/sectionHeader
+include ./mixins/icon
+include ./mixins/collectionItem
+
+block opts
+    - var pageTitle = 'Detail knihy';
+    - var bookHeader = true;
+    - var pageClass = 'is-consent';
+    - var gdpr = true;
+
+block content
+  main
+    div(data-sticky-container)
+      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
+        .wrapper-main
+          .bar.bar--small.mb-small
+            .bar__item.bar__item--fill
+              .btn-layout.btn-layout--vertical
+                .btn-dropdown.no-mrg
+                  button.btn.btn--clean.btn--lowercase.btn--icon-right.text-left(
+                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                    data-toggle-expand,
+                    aria-haspopup="true"
+                  )
+                    span.text-size-medium Slovenčina, pevná väzba#{' '}
+                    span.text-color-grey.text-nowrap 12,99 €
+                    +icon('chevron-down', 'icon-dropdown').icon--medium
+                  .dropdown(data-dropdown, data-toggle-expand)
+                    .dropdown__wrap
+                      a(href="#").dropdown__item.text-wrap
+                        .bar.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div Slovenčina, e-kniha
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 18,00 €
+                            .text-color-grey -10%
+                      a(href="#").dropdown__item.text-wrap
+                        .bar.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div Slovenčina, brožovaná väzba
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 16,00 €
+                            .text-color-grey -10%
+                      a(href="#").dropdown__item.text-wrap
+                        .bar.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div Český jazyk, E-kniha
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 8,00 €
+                            .text-color-grey -5%
+                      a(href="#").dropdown__item.text-wrap
+                        .bar.no-mrg-bottom
+                          .bar__item.bar__item--fill
+                            div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
+                            .text-color-grey Posielame ihneď
+                          .bar__item.text-right
+                            .text-semibold.text-color-black 12,00 €
+                            .text-color-grey -2%
+
+      section.section--breadcrumbs
+        .wrapper-main
+          .bar.no-mrg-bottom
+            .bar__item.bar__item--shrinkable
+              +breadcrumbs({ breadcrumbs: ['Knihy', 'Deti a mládež', 'Encyklopédie, náučné knihy', 'Ostatné', 'Základy rybolovu pro kluky a holky'] })
+
+      section.section.mb-large
+        .wrapper-main
+          .row.product-detail
+            .col--5.col--s-3.col--m-4.col--l-3
+              h3.mb-large Tlačená kniha
+              .product-detail__preview
+                .product-detail__image.bookmark__wrap
+                  .thumbnail.thumbnail--book.thumbnail--large-shadow.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-14.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                    .bookmark
+                      +icon('martinus')
+                .text-center
+                  button.btn.btn--clean.mb-none(data-toggle="#product-preview")
+                    +icon('eye').icon--left.icon--medium
+                    span.show-l Zobraziť ukážku
+                    span.hide-l Ukážka
+            .col--5.col--s-3.col--m-4.col--l-3
+              h3.mb-large E-kniha
+              .product-detail__preview
+                .product-detail__image.bookmark__wrap
+                  .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-25.jpg`)
+                    .bookmark
+                      +icon('martinus')
+                .text-center
+                  button.btn.btn--clean.mb-none(data-toggle="#product-preview")
+                    +icon('download').icon--left.icon--medium
+                    span.show-l Stiahnuť ukážku
+                    span.hide-l Ukážka
+            .col--5.col--s-3.col--m-4.col--l-3
+              h3.mb-large Audiokniha
+              .product-detail__preview
+                .product-detail__image.bookmark__wrap
+                  .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-24.jpg`)
+                    .bookmark
+                      +icon('martinus')
+                .show-m
+                  .product-detail__preview-link.text-center
+                    button.btn.btn--clean(data-toggle="self, #audio-preview" data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-pause` data-toggle-text="Zastaviť")
+                      +icon('play').icon--left.icon--medium
+                      span.show-m(data-toggle-text-target) Prehrať ukážku
+                    audio#audio-preview(data-audioplayer)
+                      source(type="audio/aac" src="http://techslides.com/demos/samples/sample.aac")
+                      .alert.alert--error-light Váš prehliadač nepodporuje HTML5 audio prehrávač.
+            .col--5.col--s-3.col--m-4.col--l-3
+              h3.mb-large Ostatný tovar
+              .product-detail__preview
+                .product-detail__image
+                  .thumbnail.thumbnail--huge.mb-none.clickable(data-toggle="#product-preview")
+                    .thumbnail__img-wrap
+                      img.img.img--fluid(src=`${assetsPrefix}images/content/books/sample-23.jpg`)
+                .text-center
+                  button.btn.btn--clean.mb-none(data-toggle="#product-preview")
+                    +icon('eye').icon--left.icon--medium
+                    span Viac fotiek
+
+block append modals
+  include ./modules/product-preview
+
+  //- flag review modal
+  include ./modules/flag-review
+
+  //- book reservation modal
+  include ./modules/book-reservation
+
+block append tooltips
+  //- author tooltip
+  include ./modules/tooltip-author
+
+  #reader-tooltip.hide.card
+    .card__content.card__content--condensed.text-left
+      .bar.mb-small.mb-medium-m
+        .bar__item
+          a.h3.link Darina Dobrovská
+        .bar__item.bar__item--fill
+          .bar.mb-none.align-items-right
+            .bar__item
+              button.btn.btn--clean
+                +icon('eye', 'icon--medium').icon--left.text-color-grey
+                span.show-m sledovať
+              button.btn.btn--small.mb-none.btn--clean
+                +icon('check-circle').icon--small.icon--left
+                | #{' '}Sledované
+      .row.align-items-top
+        .col--2.col--m-3
+          .portrait(style="background-image: url('images/content/avatars/f.jpg');")
+        .col--10.col--m-9.no-pad-left
+          #badges.club-badges(data-collapse="150").mb-small
+            .club-badges__item
+              .club-badge
+                img(src="images/content/club/badges/badges-01.png")
+            .club-badges__item
+              .club-badge.bg-yellow
+                img(src="images/content/club/badges/badges-02.png")
+            .club-badges__item
+              .club-badge.bg-green
+                img(src="images/content/club/badges/badges-03.png")
+            .club-badges__item
+              .club-badge.bg-violet
+                img(src="images/content/club/badges/badges-04.png")
+            .club-badges__item
+              .club-badge
+                img(src="images/content/club/badges/badges-05.png")
+            .club-badges__item
+              .club-badge
+                img(src="images/content/club/badges/badges-06.png")
+            .club-badges__item
+              .club-badge.bg-yellow
+                img(src="images/content/club/badges/badges-07.png")
+            .club-badges__item
+              .club-badge.bg-green
+                img(src="images/content/club/badges/badges-08.png")
+
+          .bar
+            .bar__item.bar__item--shrinkable.text-space-right
+              .product__img.product__cover
+                .thumbnail.thumbnail--book.thumbnail--small
+                  a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+                    .thumbnail__img-wrap
+                      img(src=`https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754`).img
+            .bar__item.bar__item--fill
+              .h5.mb-none Práve čítam
+              a.link.link--product Základy rybolovu pro kluky a holky
+
+          p.text-left.mb-none Milujem knihy... Všetky... Nové, staré, hrubé, tenké... Hlavne tie, ktoré sú moje! Raz som povedala mame, že by som chcela vlastné kníhkupectvo. Podľa nej to bol zlý nápad, lebo by som nedovolila, aby si ľudia brali moje knihy...
+
+
+    .card__footer
+      button.btn.btn--clean.mb-none
+        span.text-space-left zobraziť čitateľský profil
+        +icon('arrow-right')
+
+block append scripts
+  script(src=`${assetsPrefix}scripts/charts.js`)
+  script.
+    [1,2,3,4].forEach(i => {
+      var ctx = document.getElementById("chart-" + i).getContext('2d');
+      if (i == 3) {
+        var myChart = new window.myApp.chart(ctx, {
+          type: 'pie',
+          data: {
+            labels: ["BA Obchodná", "NR", "BB", "ZA", "MT",],
+            datasets: [{
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+              ],
+              borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            }
+          }
+        });
+      } else if (i == 4) {
+        var myChart = new window.myApp.chart(ctx, {
+          type: 'line',
+          data: {
+            labels: ["1.3.", "2.3.", "3.3.", "4.3.", "5.3.", "6.3."],
+            datasets: [{
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: 'rgba(0, 0, 0, 0)',
+              borderColor: 'rgba(255,99,132,1)',
+              borderWidth: 1
+            },
+            {
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 1, 4, 7, 4, 8],
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 1
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            }
+          }
+        });
+      } else {
+        var myChart = new window.myApp.chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ["1.3.", "2.3.", "3.3.", "4.3.", "5.3.", "6.3."],
+            datasets: [{
+              label: 'Vývoj predaja (e-shopy)',
+              data: [12, 19, 3, 5, 2, 3],
+              backgroundColor: [
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+                'rgba(0, 182, 235, 0.5)',
+              ],
+              borderColor: [
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+                'rgba(0, 182, 235, 1)',
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            legend: {
+              display: false
+            },
+            scales: {
+              yAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }]
+            }
+          }
+        });
+      }
+    });
+
+block append scripts
+    script.
+      document.addEventListener('myAppLoaded', function() {
+
+        /*var myAlert = new window.myApp.Alert({
+          icon: 'check-circle',
+          text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
+        });*/
+
+        var productPreviewProductSelect = new window.myApp.Select('#product-preview-product-select', {
+          choices: [
+            {
+              value: 'pevna-vazba',
+              label: 'Pevná väzba',
+              id: 1,
+              customProperties: {
+                price: '11,50 €',
+                delivery: 'posielame ihneď',
+              }
+            },
+            {
+              value: 'e-book',
+              label: 'E-book',
+              id: 2,
+              customProperties: {
+                price: '9,50 €',
+                delivery: 'posielame ihneď',
+              }
+            },
+          ]
+        });
+
+        var dataStoreList = {
+          "choices": [{
+              "value": 24,
+              "label": "Bansk\u00e1 Bystrica",
+              "id": 24,
+              "selected": false,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 10,
+              "label": "Bratislava (Cubicon)",
+              "id": 10,
+              "selected": false,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 7,
+              "label": "Bratislava (Obchodn\u00e1)",
+              "id": 7,
+              "selected": true,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 12,
+              "label": "Ko\u0161ice (OC Gal\u00e9ria)",
+              "id": 12,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 22,
+              "label": "Lu\u010denec (OC Gal\u00e9ria)",
+              "id": 22,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 1,
+              "label": "Martin",
+              "id": 1,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 4,
+              "label": "Nitra (OC Centro)",
+              "id": 4,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 18,
+              "label": "Poprad (OC F\u00f3rum)",
+              "id": 18,
+              "selected": false,
+              "customProperties": {"status": "success"}
+          }, {
+              "value": 19,
+              "label": "Pova\u017esk\u00e1 Bystrica",
+              "id": 19,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }, {
+              "value": 5,
+              "label": "\u017dilina (SC Mirage)",
+              "id": 5,
+              "selected": false,
+              "customProperties": {"status": "orange"}
+          }]
+        };
+
+        var storeListSelect = new window.myApp.Select('.store-list-select', dataStoreList);
+
+        /*var storeListSelect = new window.myApp.Select('.store-list-select', {
+          choices: [
+            {
+              value: 'ba-obchodna',
+              label: 'Bratislava, Obchodná',
+              id: 1,
+              customProperties: {
+                status: 'success',
+                availability: '5+ ks',
+              }
+            },
+            {
+              value: 'ba-cubicon',
+              label: 'Bratislava, Cubicon',
+              id: 2,
+              customProperties: {
+                status: 'success',
+                availability: '5+ ks',
+              }
+            },
+            {
+              value: 'ke-galeria',
+              label: 'Košice, OC Galéria',
+              id: 3,
+              customProperties: {
+                status: 'orange',
+                availability: '3 ks',
+              }
+            },
+            {
+              value: 'nr-centro',
+              label: 'Nitra, OC Centro',
+              id: 4,
+              customProperties: {
+                status: 'grey',
+                availability: 'vypredané',
+              }
+            },
+          ]
+        });*/
+
+        storeListSelect.elements[0].setChoiceByValue('ba-cubicon');
+      });
+
+      document.addEventListener('myAppInit', function() {
+        var productPreview;
+
+        window.addEventListener('modalOpen', function() {
+          productPreview = new window.myApp.ProductPreview();
+        });
+
+        window.addEventListener('resize', function() {
+          if (productPreview) {
+            productPreview.update();
+          }
+        });
+      });
+
+      var bookObserveOn = true;
+      var bookObserve = function(mutations) {
+        if (bookObserveOn) {
+          var header = document.querySelector('.header');
+          var bookHeaderClass = 'header-book-detail';
+          mutations.forEach(function (mutation) {
+            const isSpecial = header.classList.contains(bookHeaderClass);
+
+            const target = mutation.target;
+            const style = window.getComputedStyle(target);
+            const styleParent = window.getComputedStyle(
+              target.parentNode,
+            );
+            // d attribute is when display has !important in css
+            const isHidden =
+              style.display === 'none' || styleParent.display === 'none';
+            // if its sticky but not visible
+            if (!isHidden) {
+              const isFixed = target.style.position === 'fixed';
+              if (isFixed) {
+                if (!isSpecial) {
+                  header.classList.add(bookHeaderClass);
+                }
+              } else if (isSpecial) {
+                header.classList.remove(bookHeaderClass);
+              }
+            }
+          });
+        }
+      };
+
+      document.addEventListener('myAppInit', function() {
+        window.myApp.bookObserver = new window.myApp.Observables(
+          '[data-observe-book-detail]',
+          bookObserve,
+          { observerConfig: { attributes: true } }
+        );
+      });
+
+      //- const hash = window.location.hash;
+      //- if (hash !== '') {
+      //-   const anchorSection = document.getElementById(hash.substr(1));
+      //-   anchorSection.classList.add('anchor-helper');
+      //-     document.addEventListener('click', removeAnchor, true);
+      //- }
+
+      //- function removeAnchor() {
+      //-   const anchorSections = document.getElementsByClassName('anchor-helper');
+      //-   Array.from(anchorSections).forEach((section)=> {
+      //-     section.classList.remove('anchor-helper');
+      //-   });
+      //-   document.removeEventListener('click', removeAnchor, true);
+      //- }

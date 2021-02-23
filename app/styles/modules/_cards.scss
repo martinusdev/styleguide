@@ -225,6 +225,29 @@
         border-color: $secondary-bg-color transparent transparent;
       }
     }
+
+    &--speech-bubble-end {
+      position: relative;
+      border-bottom-right-radius: 0;
+
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: auto;
+        bottom: -10px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 10px;
+        border-color: $color-white $color-white transparent transparent;
+      }
+
+      &.bg-secondary::after {
+        border-color: $secondary-bg-color $secondary-bg-color transparent transparent;
+      }
+    }
+
     // stylelint-disable max-nesting-depth
     &--arrowhead {
       overflow: visible;
