@@ -3,7 +3,7 @@
 import './modules/jQueryGlobalHelper';
 
 import $ from 'jquery';
-import 'bootstrap/js/scrollspy';
+import 'bootstrap/js/src/scrollspy';
 import 'jquery-mousewheel';
 import { prettyPrint } from './plugins/prettify/prettify';
 
@@ -23,4 +23,9 @@ $(document).ready(() => {
   prettyPrint();
 
   window.myLight = myLight;
+
+  $(window).on('activate.bs.scrollspy', () => {
+    $('.nav-item.active').removeClass('active');
+    $('.nav-item:has(a.active)').addClass('active');
+  });
 });
