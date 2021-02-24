@@ -98,7 +98,7 @@
     &.is-active:not(.header-btn--no-arrow) {
       position: relative;
       overflow: visible;
-      z-index: $z-index-topbar + 1;
+      z-index: $zindex-topbar + 1;
 
       &::before { // stylelint-disable-line
         content: '';
@@ -132,7 +132,7 @@
     background-color: $color-black;
     padding-top: _get-space('v') - _get-space('v', 'tiny');
     padding-bottom: _get-space('v');
-    z-index: $z-index-topbar;
+    z-index: $zindex-topbar;
 
     @include breakpoint(m) {
       height: map-get($header-height, 'm');
@@ -147,7 +147,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      z-index: $z-index-topbar;
+      z-index: $zindex-topbar;
     }
 
     @include breakpoint(s, 'down') {
@@ -225,7 +225,7 @@
   }
 
   .dropdown {
-    z-index: $z-index-topbar + 1;
+    z-index: $zindex-topbar + 1;
   }
 
   @include breakpoint(l) {

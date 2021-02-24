@@ -1,0 +1,55 @@
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include breakpoint($breakpoint) {
+    $infix: _get-variant-name($breakpoint, '-');
+
+    @each $prop, $abbrev in (margin: m, padding: p) {
+      @each $size in map-keys($spaces-horizontal) {
+        $length: _get-space('v', $size);
+
+        .#{$abbrev}-#{$size}#{$infix} { #{$prop}: $length !important; }
+
+        .#{$abbrev}t-#{$size}#{$infix},
+        .#{$abbrev}y-#{$size}#{$infix} {
+          #{$prop}-top: $length !important;
+        }
+
+        .#{$abbrev}r-#{$size}#{$infix},
+        .#{$abbrev}x-#{$size}#{$infix} {
+          #{$prop}-right: $length !important;
+        }
+
+        .#{$abbrev}b-#{$size}#{$infix},
+        .#{$abbrev}y-#{$size}#{$infix} {
+          #{$prop}-bottom: $length !important;
+        }
+
+        .#{$abbrev}l-#{$size}#{$infix},
+        .#{$abbrev}x-#{$size}#{$infix} {
+          #{$prop}-left: $length !important;
+        }
+      }
+    }
+
+    .m#{$infix}-auto { margin: auto !important; }
+
+    .mt#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-top: auto !important;
+    }
+
+    .mr#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-right: auto !important;
+    }
+
+    .mb#{$infix}-auto,
+    .my#{$infix}-auto {
+      margin-bottom: auto !important;
+    }
+
+    .ml#{$infix}-auto,
+    .mx#{$infix}-auto {
+      margin-left: auto !important;
+    }
+  }
+}

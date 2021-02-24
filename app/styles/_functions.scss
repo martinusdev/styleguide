@@ -11,6 +11,10 @@
   $size,
   $base: $default-font-size
 ) {
+  @if ($size == 0) {
+    @return 0;
+  }
+
   @return $size / $base * 1rem;
 }
 
@@ -65,15 +69,15 @@
 
 /// Get space size from $spaces-vertical or $spaces-horizontal.
 /// @param {String} $direction - Horizontal/vertical direction
-/// @param {String} $size ['default'] - Size of space
+/// @param {String} $size ['medium'] - Size of space
 /// @param {String} $local-font-size [null] - Local font size which will overide $default-font-size in em computation via _get-em.
 /// @example
 ///   _get-space('v');
 ///   _get-space('v', 'small');
-///   _get-space('v', 'default', '24px');
+///   _get-space('v', 'medium', '24px');
 ///   _get-space('h');
 ///   ...
-@function _get-space($direction, $size: 'default', $local-font-size: null) {
+@function _get-space($direction, $size: 'medium', $local-font-size: null) {
   @if $direction == 'v' or $direction == 'vertical' {
     @if map-has-key($spaces-vertical, $size) {
       $space: map-get($spaces-vertical, $size);
