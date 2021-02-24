@@ -21,8 +21,8 @@ class HeaderCollapse {
     setInterval(() => {
       if (this.didScroll) {
         if (
-          $(window).scrollTop() > 0 &&
-          $(window).scrollTop() > this.tempScroll
+          $(window).scrollTop() > 0
+          && $(window).scrollTop() > this.tempScroll
         ) {
           if (!this.animating) {
             if (!this.target.hasClass('scrolled')) {
@@ -35,8 +35,8 @@ class HeaderCollapse {
             }
           }
         } else if (
-          $(window).scrollTop() < this.tempScroll &&
-          $(window).scrollTop() < 1
+          $(window).scrollTop() < this.tempScroll
+          && $(window).scrollTop() < 1
         ) {
           if (!this.animating) {
             if (this.target.hasClass('scrolled')) {

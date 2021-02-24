@@ -22,9 +22,7 @@ export default class Clipboard {
 
   _init() {
     if (!ClipboardJs.isSupported()) {
-      nodeListToArray(document.querySelectorAll(this.selector)).forEach(item =>
-        item.setAttribute('disabled', 'true'),
-      );
+      nodeListToArray(document.querySelectorAll(this.selector)).forEach(item => item.setAttribute('disabled', 'true'),);
 
       return;
     }
@@ -37,15 +35,13 @@ export default class Clipboard {
 
   _handleSuccess(e) {
     e.trigger.classList.add('btn--success');
-    e.trigger.innerHTML =
-      e.trigger.getAttribute('data-clipboard-msg-success') ||
-      this.config.successMsg;
+    e.trigger.innerHTML = e.trigger.getAttribute('data-clipboard-msg-success')
+      || this.config.successMsg;
   }
 
   _handleError(e) {
-    e.trigger.innerHTML =
-      e.trigger.getAttribute('data-clipboard-msg-error') ||
-      this.config.errorMsg;
+    e.trigger.innerHTML = e.trigger.getAttribute('data-clipboard-msg-error')
+      || this.config.errorMsg;
   }
 
   update() {

@@ -9,10 +9,8 @@ const texts = {
   sk: {
     placeholder: 'Začnite písať...',
     noResults: 'Nenašli sme žiadne výsledky.',
-    selectedOption: (selectedOption, length, index) =>
-      `Možnosť ${selectedOption} (${index + 1} z ${length}) je označená.`,
-    queryTooShort: minQueryLength =>
-      `Minimálny počet znakov je ${minQueryLength}`,
+    selectedOption: (selectedOption, length, index) => `Možnosť ${selectedOption} (${index + 1} z ${length}) je označená.`,
+    queryTooShort: minQueryLength => `Minimálny počet znakov je ${minQueryLength}`,
     results: [
       'výsledok zobrazený',
       'výsledky zobrazené',
@@ -22,10 +20,8 @@ const texts = {
   cz: {
     placeholder: 'Začněte psát...',
     noResults: 'Nenašli sme žádné výsledky.',
-    selectedOption: (selectedOption, length, index) =>
-      `Možnost ${selectedOption} (${index + 1} z ${length}) je označena.`,
-    queryTooShort: minQueryLength =>
-      `Minimální počet znaků je ${minQueryLength}`,
+    selectedOption: (selectedOption, length, index) => `Možnost ${selectedOption} (${index + 1} z ${length}) je označena.`,
+    queryTooShort: minQueryLength => `Minimální počet znaků je ${minQueryLength}`,
     results: [
       'výsledek zobrazen',
       'výsledky zobrazeny',
@@ -116,12 +112,12 @@ const defaultTemplates = {
         <div class="product__cover collection">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             ${value.images
-              .map(image => `
+    .map(image => `
                 <div class="thumbnail__img-wrap">
                   <img class="img" alt="" src="${image}">
                 </div>
               `)
-              .join('')}
+    .join('')}
           </div>
         </div>
         </div>
@@ -182,11 +178,14 @@ export default class Autocomplete {
       tStatusSelectedOption: texts[this.lang].selectedOption,
       tStatusResults: (length, contentSelectedOption) => {
         const res = texts[this.lang].results;
-        let message = res[0];
+
+        const [message1, message2, message3] = res;
+
+        let message = message1;
         if (length > 1 && length < 5) {
-          message = res[1];
+          message = message2;
         } else if (length >= 5) {
-          message = res[2];
+          message = message3;
         }
 
         return `<span>${length} ${message}. ${contentSelectedOption}</span>`;
@@ -203,7 +202,7 @@ export default class Autocomplete {
         this.config.debounceInterval,
       );
     } else {
-      const results = this.config.results;
+      const { results } = this.config;
       const regex = new RegExp(query, 'i');
       const filteredResults = results.filter(result => {
         const raw = (typeof result === 'object' && result.raw) || result;

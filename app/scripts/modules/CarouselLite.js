@@ -60,7 +60,7 @@ export default class Carousel {
       return;
     }
 
-    const state = Carousel.state;
+    const { state } = Carousel;
     state.element.scroll(state.initialScroll.x + state.diff.x, 0);
     Carousel.state.animationRequested = false;
   }

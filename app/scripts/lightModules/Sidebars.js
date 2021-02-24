@@ -1,7 +1,7 @@
 // ----------------------------
 // Sidebars
 
-import './../plugins/custom-scrollbar/jquery.mCustomScrollbar';
+import '../plugins/custom-scrollbar/jquery.mCustomScrollbar';
 
 class Sidebars {
   constructor(selector = '.js-scrollbar') {

@@ -2,10 +2,10 @@
 export function windowOffset(el) {
   const position = { x: 0, y: 0 };
   if (el.offsetParent) {
-    do { // eslint-disable-line
+    do {
       position.x += el.offsetLeft;
       position.y += el.offsetTop;
-    } while ((el = el.offsetParent));
+    } while ((el = el.offsetParent)); // eslint-disable-line
   }
   return position;
 }

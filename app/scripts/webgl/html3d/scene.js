@@ -28,7 +28,7 @@ export default class GGScene {
   }
 
   loadScene() {
-    this.objectLoader.load(this.file, obj => {
+    this.objectLoader.load(this.file, (obj) => {
       obj.scale.set(2, 2, 2);
       obj.rotateY(Math.PI / 2);
 
@@ -40,7 +40,7 @@ export default class GGScene {
 
   loadModel() {
     this.jsonLoader.load(this.file, (geometry, materials) => {
-      materials.forEach(material => {
+      materials.forEach((material) => {
         material.skinning = true;
       });
       const model = new THREE.SkinnedMesh(
@@ -61,8 +61,7 @@ export default class GGScene {
   }
 
   _updateSize() {
-    this.camera.aspect =
-      this.container.clientWidth / this.container.clientHeight;
+    this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
     this.camera.updateProjectionMatrix();
   }
 

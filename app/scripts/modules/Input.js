@@ -66,6 +66,7 @@ export default class Input {
   _handleFocus(e) {
     e.target.classList.add(this.config.classFocus);
   }
+
   _handleBlur(e) {
     e.target.classList.remove(this.config.classFocus);
   }

@@ -35,10 +35,9 @@ export default class Observables {
   _init() {
     this.observables = document.querySelectorAll(this.config.selector);
     if (this.observables) {
-      const MutationObserver =
-        window.MutationObserver ||
-        window.WebKitMutationObserver ||
-        window.MozMutationObserver;
+      const MutationObserver = window.MutationObserver
+        || window.WebKitMutationObserver
+        || window.MozMutationObserver;
 
       // create instance
       this.observer = new MutationObserver(this.mutationCallback);

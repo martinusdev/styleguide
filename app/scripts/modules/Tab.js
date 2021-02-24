@@ -164,13 +164,12 @@ export default class Tab {
     let scrollTo = 0;
     if (!offset) {
       scrollTo = windowOffset(triggerContainer).y;
-    } else if (!isNaN(offset)) {
+    } else if (!Number.isNaN(offset)) {
       scrollTo = windowOffset(triggerContainer).y - offset;
     } else {
       const offsetContainer = document.querySelector(offset);
       if (offsetContainer) {
-        scrollTo =
-          windowOffset(triggerContainer).y - offsetContainer.offsetHeight;
+        scrollTo = windowOffset(triggerContainer).y - offsetContainer.offsetHeight;
       }
     }
     if (scrollTo) {
@@ -213,7 +212,7 @@ export default class Tab {
     el.setAttribute('aria-hidden', false);
     this._toggleTabNav(el);
     if (el.parentNode.hasAttribute('data-tab-load')) {
-      history.replaceState(undefined, undefined, `#${el.getAttribute('id')}`);
+      window.history.replaceState(undefined, undefined, `#${el.getAttribute('id')}`);
     }
     return true;
   }
@@ -229,11 +228,10 @@ export default class Tab {
       return;
     }
 
-    const currentItem =
-      triggerContainer.querySelector(
-        `${this.config.navItemSelector}.${this.config.activeClass} ${this.selector}`,
-      ) ||
-      triggerContainer.querySelector(
+    const currentItem = triggerContainer.querySelector(
+      `${this.config.navItemSelector}.${this.config.activeClass} ${this.selector}`,
+    )
+      || triggerContainer.querySelector(
         `${this.config.navItemSelector}.${this.config.activeClass}${this.selector}`,
       );
     if (trigger === currentItem) {
