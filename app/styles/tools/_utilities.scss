@@ -157,44 +157,6 @@
 .clearfix { @include clearfix; }
 .clear { clear: both; }
 
-// Flexbox alignment classes
-@mixin alignment-classes() {
-  // Children horizontal alignment
-  .align-items-right { justify-content: flex-end; }
-  .align-items-center { justify-content: center; }
-  .align-items-spaced { justify-content: space-around; }
-  .align-items-justify { justify-content: space-between; }
-  // Children vertcial alignment
-  .align-items-top { align-items: flex-start; }
-  .align-items-bottom { align-items: flex-end; }
-  .align-items-middle { align-items: center; }
-  .align-items-stretch { align-items: stretch; }
-
-  // Selft horizontal alignmnet
-  .align-self-left {
-    margin-left: 0;
-    margin-right: auto;
-  }
-
-  .align-self-right {
-    margin-left: auto;
-    margin-right: 0;
-  }
-
-  .align-self-center {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  // Self vertical alignmnet
-  .align-self-top { align-self: flex-start; }
-  .align-self-bottom { align-self: flex-end; }
-  .align-self-middle { align-self: center; }
-  .align-self-stretch { align-self: stretch; }
-}
-
-@include alignment-classes;
-
 // Visibility utilities
 @mixin show-for($breakpoint) {
   @if map-get($breakpoints, $breakpoint) {
@@ -451,19 +413,6 @@
   &-right-grey { border-right: 1px solid $text-color-grey-light; }
 
   &-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
-}
-
-.flex { display: flex; }
-.flex-column { flex-direction: column; }
-.flex-1 { flex: 1; }
-.flex-noshrink { flex-shrink: 0 !important; }
-.flex-wrap { flex-wrap: wrap; }
-.flex-nowrap { flex-wrap: nowrap; }
-.flex-fill { flex: 1 0 1px !important; }
-
-.flex-shrinkable {
-  flex: 0 0 auto !important;
-  flex-shrink: 1 !important;
 }
 
 .block-fill {

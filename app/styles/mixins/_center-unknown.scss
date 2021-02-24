@@ -1,0 +1,17 @@
+@mixin center-unknown(
+  $selector) {
+  text-align: center;
+
+  &::before {
+    content: '';
+    height: 100%;
+    margin-right: -0.5em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  #{$selector} {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}

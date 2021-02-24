@@ -1,0 +1,7 @@
+@mixin font-size(
+  $font-size,
+  $font-size-r: $default-font-size) {
+  $font-size: round($font-size);
+  font-size: $font-size;
+  font-size: ($font-size / $default-font-size) * 1rem;
+}
