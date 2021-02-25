@@ -53,9 +53,7 @@ export default class MegaMenu {
   }
 
   _detachDOMEvents() {
-    this.triggers.forEach(trigger =>
-      trigger.removeEventListener('click', this._handleTriggerClick),
-    );
+    this.triggers.forEach(trigger => trigger.removeEventListener('click', this._handleTriggerClick),);
   }
 
   _handleTriggerClick(e) {
@@ -65,8 +63,7 @@ export default class MegaMenu {
     );
 
     this.isMegaMenuOpen = !isToggled(currentTrigger);
-    this.openMegaMenuSection =
-      targetSection && document.querySelector(targetSection);
+    this.openMegaMenuSection = targetSection && document.querySelector(targetSection);
 
     if (this.isMegaMenuOpen) {
       if (window.innerWidth < BREAKPOINTS.l) {
@@ -141,9 +138,9 @@ export default class MegaMenu {
 
   _handleClickOutside(e) {
     if (
-      this.megaMenu !== e.target && // if click target is not megamenu
-      !this.megaMenu.contains(e.target) && // if click target is not in megamenu
-      !e.target.closest(this.config.selectorTriggers) // if click target is not megamenu
+      this.megaMenu !== e.target // if click target is not megamenu
+      && !this.megaMenu.contains(e.target) // if click target is not in megamenu
+      && !e.target.closest(this.config.selectorTriggers) // if click target is not megamenu
     ) {
       doToggle({
         target: this.megaMenu,

@@ -86,8 +86,7 @@ export default class GGScene {
       this.container.clientHeight,
     );
 
-    this.camera.aspect =
-      this.container.clientWidth / this.container.clientHeight;
+    this.camera.aspect = this.container.clientWidth / this.container.clientHeight;
 
     this.camera.updateProjectionMatrix();
   }

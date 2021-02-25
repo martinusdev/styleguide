@@ -98,7 +98,8 @@ export default class RadiocheckToggle {
           target = target.trim();
           if (target === 'self') {
             return trigger;
-          } else if (target === 'parent') {
+          }
+          if (target === 'parent') {
             let parentHop = 1;
             if (trigger.hasAttribute('data-parent-hop')) {
               parentHop = trigger.getAttribute('data-parent-hop');
@@ -107,9 +108,11 @@ export default class RadiocheckToggle {
               trigger = trigger.parentNode;
             }
             return trigger;
-          } else if (target === 'previous') {
+          }
+          if (target === 'previous') {
             return trigger.previousElementSibling;
-          } else if (target === 'next') {
+          }
+          if (target === 'next') {
             return trigger.nextElementSibling;
           }
           return document.querySelector(target);

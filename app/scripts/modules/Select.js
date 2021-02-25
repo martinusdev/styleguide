@@ -1,5 +1,5 @@
 import Choices
-  from './../../../node_modules/choices.js/public/assets/scripts/choices';
+  from '../../../node_modules/choices.js/public/assets/scripts/choices';
 import { nodeListToArray } from './Utils';
 
 let lang = 'sk';
@@ -11,8 +11,7 @@ const texts = {
     noChoicesText: 'Na výber nie sú žiadne možnosti',
     itemSelectText: 'Kliknutím vyberte',
     addItemText: value => `Stlačením ENTER pridajte <b>"${value}"</b>`,
-    maxItemText: maxItemCount =>
-      `Iba ${maxItemCount} hodnôt môže byť pridaných.`,
+    maxItemText: maxItemCount => `Iba ${maxItemCount} hodnôt môže byť pridaných.`,
   },
   cz: {
     loadingText: 'Nahrávám...',
@@ -20,8 +19,7 @@ const texts = {
     noChoicesText: 'Na výběr nejsou žádné možnosti',
     itemSelectText: 'Kliknutím vyberte',
     addItemText: value => `Stlačením ENTER přidejte <b>"${value}"</b>`,
-    maxItemText: maxItemCount =>
-      `Jenom ${maxItemCount} hodnot může být přidaných.`,
+    maxItemText: maxItemCount => `Jenom ${maxItemCount} hodnot může být přidaných.`,
   },
 };
 
@@ -56,8 +54,7 @@ const defaultConfig = {
   },
 };
 
-const productSelectTemplate = data =>
-  `
+const productSelectTemplate = data => `
   <div class="bar no-mrg-bottom">
     <div class="bar__item bar__item--fill">
       <p class="text-size-medium text-left text-semibold">${data.label}</p>
@@ -93,7 +90,9 @@ const storeListTemplate = ({ label, customProperties }) => {
 };
 
 const storeListChoice = (
-  { customProperties, disabled, label, id, value },
+  {
+    customProperties, disabled, label, id, value
+  },
   config,
 ) => {
   const status = customProperties && customProperties.status
@@ -113,10 +112,9 @@ const storeListChoices = config => `
   </div>
 `;
 
-const storeListDropdown = config =>
-  config.store_list_header
-    .replace('config.classNames.list', config.classNames.list)
-    .replace('config.classNames.listDropdown', config.classNames.listDropdown);
+const storeListDropdown = config => config.store_list_header
+  .replace('config.classNames.list', config.classNames.list)
+  .replace('config.classNames.listDropdown', config.classNames.listDropdown);
 
 const imageListTemplate = ({ label, customProperties }) => `
   <div class="bar mb-none">
@@ -130,7 +128,9 @@ const imageListTemplate = ({ label, customProperties }) => `
   </div>`;
 
 const imageListChoice = (
-  { customProperties, disabled, label, id, value },
+  {
+    customProperties, disabled, label, id, value
+  },
   config,
 ) => `
   <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
@@ -146,7 +146,7 @@ const imageListChoice = (
   </div>
   `;
 
-const wideImageListTemplate = ({ label, customProperties }, width) => `
+const wideImageListTemplate = ({ label }, width) => `
   <div class="mb-none" style="width:${width}">
     <div class="mb-none">
       <span>${label}</span>
@@ -154,7 +154,9 @@ const wideImageListTemplate = ({ label, customProperties }, width) => `
   </div>`;
 
 const wideImageListChoice = (
-  { customProperties, disabled, label, id, value },
+  {
+    customProperties, disabled, label, id, value
+  },
   config,
 ) => `
   <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
@@ -202,15 +204,14 @@ function getTemplates(template, select, config) {
   if (select.hasAttribute('data-select-wide-image')) {
     templates = {
       ...{ templates },
-      item: (classNames, data) =>
-        template(
-          wideImageListTemplate(
-            data,
-            select.hasAttribute('data-select-width')
-              ? select.getAttribute('data-select-width')
-              : 'none',
-          ),
+      item: (classNames, data) => template(
+        wideImageListTemplate(
+          data,
+          select.hasAttribute('data-select-width')
+            ? select.getAttribute('data-select-width')
+            : 'none',
         ),
+      ),
       choice: (classNames, data) => template(wideImageListChoice(data, config)),
     };
   }
@@ -218,13 +219,12 @@ function getTemplates(template, select, config) {
   if (select.hasAttribute('data-select-dropdown-width')) {
     templates = {
       ...{ templates },
-      choiceList: () =>
-        template(
-          choiceListTemplate(
-            select.getAttribute('data-select-dropdown-width'),
-            config,
-          ),
+      choiceList: () => template(
+        choiceListTemplate(
+          select.getAttribute('data-select-dropdown-width'),
+          config,
         ),
+      ),
     };
   }
 
@@ -305,8 +305,8 @@ export default class Select {
       }
 
       if (
-        (select.multiple && config.removeItemButton === undefined) ||
-        select.hasAttribute('data-clearable')
+        (select.multiple && config.removeItemButton === undefined)
+        || select.hasAttribute('data-clearable')
       ) {
         config.removeItemButton = true;
       }
@@ -330,8 +330,7 @@ export default class Select {
         config.classNames.item = `${config.classNames.item} ${config.classNames.item}--small`;
       }
 
-      config.callbackOnCreateTemplates = template =>
-        getTemplates(template, select, config);
+      config.callbackOnCreateTemplates = template => getTemplates(template, select, config);
 
       const choice = new Choices(select, config);
 

@@ -3,10 +3,9 @@ import Sticky from 'sticky-js';
 import { getValueFromResponsiveMap } from './Utils';
 
 function getOffset(element) {
-  const currentOffset =
-    JSON.parse(element.getAttribute('data-scroll-offset')) ||
-    window.myApp.scrollOffset ||
-    0;
+  const currentOffset = JSON.parse(element.getAttribute('data-scroll-offset'))
+    || window.myApp.scrollOffset
+    || 0;
 
   return getValueFromResponsiveMap(currentOffset, window.innerWidth);
 }

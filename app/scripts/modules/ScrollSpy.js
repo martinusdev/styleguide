@@ -7,10 +7,9 @@ function getOffset(nav) {
     return 0;
   }
 
-  const currentOffset =
-    JSON.parse(nav.getAttribute('data-scroll-offset')) ||
-    window.myApp.scrollOffset ||
-    0;
+  const currentOffset = JSON.parse(nav.getAttribute('data-scroll-offset'))
+    || window.myApp.scrollOffset
+    || 0;
 
   return getValueFromResponsiveMap(currentOffset, window.innerWidth);
 }

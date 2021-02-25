@@ -5,9 +5,8 @@ const defaultConfig = {
   activeClassName: 'is-active',
 };
 
-const isActive = el =>
-  el.classList.contains(defaultConfig.activeClassName) ||
-  el.getAttribute('aria-expanded') === 'true';
+const isActive = el => el.classList.contains(defaultConfig.activeClassName)
+  || el.getAttribute('aria-expanded') === 'true';
 
 export default class Dropdown {
   constructor(selector = '[data-dropdown]', config) {
@@ -54,7 +53,7 @@ export default class Dropdown {
   }
 
   static setDropdownPosition(target) {
-    const body = document.body;
+    const { body } = document;
     const html = document.documentElement;
 
     // TODO: top/bottom posiiton switch - little bit harder because of animation of height
@@ -96,8 +95,8 @@ export default class Dropdown {
 
   _onToggle(e) {
     if (
-      (e.detail.trigger && !this.target) ||
-      !this.target.contains(e.detail.target)
+      (e.detail.trigger && !this.target)
+      || !this.target.contains(e.detail.target)
     ) {
       this.trigger = e.detail.trigger;
     }
@@ -116,8 +115,8 @@ export default class Dropdown {
   _onClick(e) {
     if (this.trigger !== e.target && !this.trigger.contains(e.target)) {
       if (
-        !this.target.hasAttribute(this.config.dataInteractive) ||
-        !this.target.contains(e.target)
+        !this.target.hasAttribute(this.config.dataInteractive)
+        || !this.target.contains(e.target)
       ) {
         doToggle({
           target: this.trigger,

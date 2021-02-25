@@ -36,7 +36,7 @@ export default class NumberSpinner {
     );
 
     let value = parseInt(input.value, 10);
-    if (isNaN(value)) {
+    if (Number.isNaN(value)) {
       value = 0;
     }
 
@@ -53,7 +53,7 @@ export default class NumberSpinner {
     if (action === 'increase') {
       const max = parseInt(input.getAttribute('max'), 10);
       let newValue = value + step;
-      if (!isNaN(max) && newValue > max) {
+      if (!Number.isNaN(max) && newValue > max) {
         newValue = max;
       }
       input.value = newValue;
@@ -62,7 +62,7 @@ export default class NumberSpinner {
     if (action === 'decrease') {
       const min = parseInt(input.getAttribute('min'), 10);
       let newValue = value - step;
-      if (!isNaN(min) && newValue < min) {
+      if (!Number.isNaN(min) && newValue < min) {
         newValue = min;
       }
       input.value = newValue;

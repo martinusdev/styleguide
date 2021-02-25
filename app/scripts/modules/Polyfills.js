@@ -15,11 +15,10 @@ export function requestAnimationFramePolyfill() {
       }
     };
   }
-  window.requestAnimationFrame =
-    window.requestAnimationFrame ||
-    window.webkitRequestAnimationFrame ||
-    window.mozRequestAnimationFrame ||
-    polyfill;
+  window.requestAnimationFrame = window.requestAnimationFrame
+    || window.webkitRequestAnimationFrame
+    || window.mozRequestAnimationFrame
+    || polyfill;
 }
 
 /* eslint-disable */
