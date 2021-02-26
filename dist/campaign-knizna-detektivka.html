@@ -222,13 +222,28 @@
                     <div class="form-control form-control--input">
                       <input class="input input--large" type="text" placeholder="Napr. Kornélia Dlhoprstá">
                     </div>
-                    <button class="btn btn--primary btn--large">Hľadať</button>
+                    <button class="btn btn--primary btn--large" data-toggle="#kd-modal-search-done">Hľadať</button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        <div class="modal-overlay" id="kd-modal-search-done" data-modal>
+          <article class="modal modal--medium">
+            <div class="modal__content">
+              <div class="text-right">
+                <div class="btn btn--clean mb-none" data-toggle="#kd-modal-search-done">
+                        <svg class="icon icon-close  icon--medium" role="img" aria-hidden="true">
+                          <use xlink:href="icons_/app.svg#icon-close"></use>
+                        </svg>
+                </div>
+              </div>
+              <p class="text-bold">Výborne</p>
+              <p>Uhádol si.</p>
+            </div>
+          </article>
+        </div>
         <div class="modal-overlay" id="kd-modal-play-done" data-modal>
           <article class="modal modal--medium">
             <div class="modal__content bg-secondary">

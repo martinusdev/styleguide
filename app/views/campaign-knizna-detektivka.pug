@@ -43,7 +43,19 @@ block tab
               .form-control.form-control--input
                 input.input.input--large(type="text", placeholder="Napr. Kornélia Dlhoprstá")
 
-              button.btn.btn--primary.btn--large Hľadať
+              button(data-toggle="#kd-modal-search-done").btn.btn--primary.btn--large Hľadať
+
+  .modal-overlay#kd-modal-search-done(data-modal)
+    article.modal.modal--medium
+      .modal__content
+        .text-right
+          .btn.btn--clean.mb-none(data-toggle="#kd-modal-search-done")
+            +icon('close').icon--medium
+        p.text-bold
+          | Výborne
+        p
+          | Uhádol si.
+
 
   .modal-overlay#kd-modal-play-done(data-modal)
     article.modal.modal--medium
