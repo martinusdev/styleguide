@@ -28,8 +28,7 @@ block tab
                       +icon('check-circle').fa-lg
                   .kd-folder__content
                     if day.available
-                      a(href="#", data-toggle=`#kd-modal-play-${modalName}`).kd-folder__hero
-                        img(src=`images/content/campaign/knizna-detektivka/heroes/${day.hero}.png`)
+                      a(href="#", data-toggle=`#kd-modal-play-${modalName}`, style=`background-image:url(images/content/campaign/knizna-detektivka/heroes/${day.hero}.png)`).kd-folder__hero
                     else
                       div.kd-folder__date
                         span(data-tooltip, title=`Pátranie začne ${day.date}`)= day.date
