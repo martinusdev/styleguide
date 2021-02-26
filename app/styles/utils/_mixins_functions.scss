@@ -292,7 +292,7 @@
     @for $i from 1 through $exponent {
       $value: $value * $number;
     }
-  } @elseif ( $exponent < 0 ) {
+  } @else if ( $exponent < 0 ) {
     $value: 1 / _pow($number, abs($exponent));
   }
 
@@ -422,7 +422,7 @@
 @function _color-shade($color, $weight) {
   @if $weight > 500 and $color {
     @return mix(black, $color, ($weight - 500) / 5 );
-  } @elseif $weight < 500 and $color {
+  } @else if $weight < 500 and $color {
     @return mix(white, $color, (500 - $weight) / 5 );
   } @else {
     @return $color;
