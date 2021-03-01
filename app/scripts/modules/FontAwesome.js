@@ -2,19 +2,19 @@
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faAtlas,
-  faBook as falFaBook,
+  faBook as falFaBook, faBookHeart, faBookmark, faBooks,
   faCalendar,
   faCoffeeTogo,
   faCommentLines,
   faComments,
   faCut,
-  faFeather,
+  faFeather, faFileAlt,
   faFingerprint,
   faFlag,
   faGift,
-  faGraduationCap,
+  faGraduationCap, faGrimace,
   faHatChef,
-  faHeadSideBrain,
+  faHeadSideBrain, faHistory, faLaughBeam,
   faLightbulb,
   faMapMarked,
   faMugHot,
@@ -31,9 +31,9 @@ import {
   faScrollOld,
   faSmile,
   faStarExclamation,
-  faStars,
+  faStars, faSurprise,
   faSwords,
-  faUfo,
+  faUfo, faUser,
   faWandMagic,
 } from '@fortawesome/pro-light-svg-icons';
 
@@ -75,6 +75,16 @@ library.add(
   faFingerprint,
   faScrollOld,
   faFeather,
+  faBooks,
+  faBookHeart,
+  faGrimace,
+  faSurprise,
+  faHistory,
+  faLaughBeam,
+  faBookmark,
+  faUser,
+  faMapMarked,
+  faFileAlt
 );
 
 dom.watch();
