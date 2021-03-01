@@ -1,4 +1,9 @@
 .kp-logo {
+  @include breakpoint(s, 'downfrom') {
+    max-width: 60%;
+    align-self: center;
+  }
+
   @include breakpoint(m) {
     max-width: 90%;
   }
@@ -32,6 +37,25 @@
     .h2 {
       font-size: _get-rem(16px);
     }
+
+    border-bottom-width: 3px;
+  }
+
+  .kp-thanks {
+    &__photo {
+      order: 2;
+      text-align: right;
+    }
+
+    .kp-logo {
+      max-width: 50%;
+    }
+  }
+}
+
+@include breakpoint(s) {
+  .kp-thanks__photo img {
+    width: 100%;
   }
 }
 

@@ -1,1 +1,69 @@
 extends layouts/_default
+
+block opts
+  - var pageClass = 'bg-secondary'
+
+block content
+  main
+    section.section.bg-yellow.pt-medium
+      .wrapper-main
+        .row.align-items-middle.mb-medium
+          .col--s-5.col--l-3.text-center.text-left-m
+            a(href="campaign-pomocnik.html")
+              img(src="images/content/pomocnik/kp-logo.svg", alt="Knihomoľský pomocník").kp-logo
+    section.section
+      .wrapper-main
+        .row.kp-nav.mb-medium
+          .col--4
+            .kp-nav__item.pt-small.pb-small.pt-medium-m.pb-medium-m
+              div
+                .h3.text-color-theme-400.mb-none 01
+                .h2.mb-none Pre koho?
+          .col--4
+            .kp-nav__item.pt-small.pb-small.pt-medium-m.pb-medium-m
+              div
+                .h3.text-color-theme.mb-none 02
+                .h2.mb-none Akú knihu?
+          .col--4
+            .kp-nav__item.pt-small.pb-small.pt-medium-m.pb-medium-m.is-active
+              div
+                .h3.text-color-theme.mb-none 03
+                .h2.mb-none Potvrdenie
+
+    section.section.mb-large
+      .wrapper-main
+        .row.mb-medium
+          .col--m-4.text-right-m
+            label.h3 Pre koho?
+          .col--m-8
+            .badge.badge--primary Pre starého rodiča
+        .row.mb-medium
+          .col--m-4.text-right-m
+            label.h3 Akú knihu?
+          .col--m-8
+            .badge.badge--primary.mr-tiny Horor
+            .badge.badge--primary Detektívka
+        .row.mb-medium
+          .col--m-4.text-right-m
+            label(for="kp-form-note").h3 Poznámka
+          .col--m-8
+            textarea(id='kp-form-note', rows=5).input
+            .form-text.text-size-medium Ak môžete pridať ďalšie informácie o knihomoľovi či knihomoľke alebo o tom, akú knižku si želáte objaviť, napíšte nám ich sem, prosím! Naši knižní hrdinovia tak ľahšie objavia novú obľúbenú knihu pre vás alebo vašich blízkych :-)
+
+        .row.mb-medium
+          .col--m-4.text-right-m
+            label(for="kp-form-email").h3 E-mail
+          .col--m-8
+            input(type="email", id='kp-form-email').input
+            .form-text.text-size-medium Prosím, sem vyplňte e-mail, aby sme sa vám mohli ozvať
+
+        .flex.align-items-center.align-items-middle.mt-large
+          a(href="campaign-pomocnik-step2.html").btn.btn-full.btn--icon-left.mb-none
+            +icon('chevron-left').icon--medium
+            | Naspäť
+          div.ml-medium.mr-medium.text-semibold Krok 3/3
+          a(href="campaign-pomocnik-thankyou.html").btn.btn-full.btn--icon-right.btn--primary.mb-none
+            +icon('chevron-right').icon--medium
+            | Odoslať
+
+
