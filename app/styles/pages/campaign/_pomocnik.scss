@@ -3,3 +3,40 @@
     max-width: 90%;
   }
 }
+
+.kp-nav {
+  &__item {
+    display: flex;
+    justify-content: center;
+    background-color: _color(secondary, 600);
+    border-bottom: 7px solid _color(secondary, 600);
+
+    &.is-active {
+      border-color: _color(primary, 400);
+    }
+
+    &:not(.is-active) {
+      .h2 {
+        color: _color(grey, 500);
+      }
+
+      .h3 {
+        color: _color(grey, 400);
+      }
+    }
+  }
+}
+
+.kp-checkbox {
+  &:checked + .kp-label {
+    border-color: _color(primary, 400);
+  }
+}
+
+.kp-label {
+  text-transform: none;
+  letter-spacing: normal;
+  padding-top: _get-space('v');
+  padding-bottom: _get-space('v');
+  border: 2px solid _color(white);
+}

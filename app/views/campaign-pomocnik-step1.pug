@@ -1,5 +1,35 @@
 extends layouts/_default
 
+block opts
+  - var pageClass = 'bg-secondary'
+  -
+    const categories = [
+      {
+        icon: 'avatar-parent',
+        title: 'Pre rodiča',
+      },
+      {
+        icon: 'avatar-sibling',
+        title: 'Pre súrodenca',
+      },
+      {
+        icon: 'avatar-child',
+        title: 'Pre dieťa',
+      },
+      {
+        icon: 'avatar-grandparent',
+        title: 'Pre starého rodiča',
+      },
+      {
+        icon: 'avatar-friend',
+        title: 'Pre kamaráta/ku',
+      },
+      {
+        icon: 'avatar-other',
+        title: 'Pre niekoho iného',
+      }
+    ];
+
 block content
   main
     section.section.bg-yellow.pt-medium
@@ -8,3 +38,49 @@ block content
           .col--s-5.col--l-3
             a(href="campaign-pomocnik.html")
               img(src="images/content/pomocnik/kp-logo.svg", alt="Knihomoľský pomocník").kp-logo
+    section.section.mb-large
+      .wrapper-main
+        .row.kp-nav.mb-medium
+          .col--4
+            .kp-nav__item.pt-medium.pb-medium.is-active
+              div
+                .h3.text-color-theme-400.mb-none 01
+                .h2.mb-none Pre koho?
+          .col--4
+            .kp-nav__item.pt-medium.pb-medium
+              div
+                .h3.text-color-theme.mb-none 02
+                .h2.mb-none Akú knihu?
+          .col--4
+            .kp-nav__item.pt-medium.pb-medium
+              div
+                .h3.text-color-theme.mb-none 03
+                .h2.mb-none Potvrdenie
+
+        .row
+          .col--m-7
+            .card
+              .card__content
+                | Prezraďte nám, pre koho vyberáte novú knižku. Prosím, vyberte jednu možnosť. Nebojte sa, pokiaľ potrebujete poradiť s výberom pre viacero knihomoľov, nášho pomocníka môžete využiť koľkokrát len budete chcieť.
+
+        .row
+          -
+            let i = 0;
+          each category in categories
+            - i++
+            .col--m-4
+              input(type="radio", id=`check-${i}`, name="for-whom").kp-checkbox.visually-hidden
+              label(for=`check-${i}`).btn.btn--carousel.kp-label.pt-small.pb-small.flex.align-items-center.align-items-middle
+                +icon(category.icon).text-color-theme-400.icon--xlarge.mr-small
+                span.h3.mb-none
+                  =category.title
+
+        .flex.align-items-center.align-items-middle.mt-large
+          button.btn.btn-full.btn--icon-left.mb-none
+            +icon('chevron-left').icon--medium
+            | Naspäť
+          div.ml-medium.mr-medium.text-semibold Krok 1/3
+          a(href="campaign-pomocnik-step2.html").btn.btn-full.btn--icon-right.btn--primary.mb-none
+            +icon('chevron-right').icon--medium
+            | Odoslať
+
