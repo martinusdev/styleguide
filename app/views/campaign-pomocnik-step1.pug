@@ -58,19 +58,17 @@ block content
                 .h2.mb-none Potvrdenie
 
         .row
-          .col--m-7
-            .card
-              .card__content
-                | Prezraďte nám, pre koho vyberáte novú knižku. Prosím, vyberte jednu možnosť. Nebojte sa, pokiaľ potrebujete poradiť s výberom pre viacero knihomoľov, nášho pomocníka môžete využiť koľkokrát len budete chcieť.
+          .col--m-7.ofst--center
+            p.text-center.pt-medium.pb-medium Prezraďte nám, pre koho vyberáte novú knižku. Prosím, vyberte jednu možnosť. Nebojte sa, pokiaľ potrebujete poradiť s výberom pre viacero knihomoľov, nášho pomocníka môžete využiť koľkokrát len budete chcieť.
 
         .row
           -
             let i = 0;
           each category in categories
             - i++
-            .col--m-4
+            .col--m-4.mb-medium
               input(type="radio", id=`check-${i}`, name="for-whom").kp-checkbox.visually-hidden
-              label(for=`check-${i}`).btn.btn--carousel.kp-label.pt-small.pb-small.flex.align-items-center.align-items-middle
+              label(for=`check-${i}`).btn.btn--carousel.kp-label.pt-small.pb-small.flex.align-items-center.align-items-middle.mb-none
                 +icon(category.icon).text-color-theme-400.icon--xlarge.mr-small
                 span.h3.mb-none
                   =category.title
