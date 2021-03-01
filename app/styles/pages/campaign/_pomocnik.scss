@@ -27,6 +27,14 @@
   }
 }
 
+@include breakpoint(m, 'downfrom') {
+  .kp-nav__item {
+    .h2 {
+      font-size: _get-rem(16px);
+    }
+  }
+}
+
 .kp-checkbox {
   &:checked + .kp-label {
     border-color: _color(primary, 400);
