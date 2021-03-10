@@ -1520,15 +1520,18 @@ $modal-overlay: (
 $modal-dialog: (
   default: (
     width: 100%,
-    max-height: calc(100vh - (#{_get-space('v')} * 2)),
     background-color: $color-white,
     border: 1px solid $default-border-color,
     box-shadow: ($shadow-ambient-3, $shadow-direct-2),
+    max-height: 80vh,
   ),
   'm': (
     height: auto,
     width: _get-rem(480px),
     border-radius: $default-border-radius,
+  ),
+  'l': (
+    max-height: calc(100vh - (#{_get-space('v')} * 2)),
   )
 );
 
