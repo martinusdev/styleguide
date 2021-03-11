@@ -14,7 +14,7 @@ import {
   faGift,
   faGraduationCap, faGrimace,
   faHatChef,
-  faHeadSideBrain, faHistory, faLaughBeam,
+  faHeadSideBrain, faHeart, faHistory, faKissWinkHeart, faLaughBeam,
   faLightbulb,
   faMapMarked,
   faMugHot,
@@ -26,14 +26,14 @@ import {
   faPray,
   faPrayingHands,
   faPuzzlePiece,
-  faQuestion,
+  faQuestion, faQuoteRight,
   faRecordVinyl,
   faScrollOld,
   faSmile,
   faStarExclamation,
   faStars, faSurprise,
-  faSwords,
-  faUfo, faUser,
+  faSwords, faTheaterMasks,
+  faUfo, faUser, faUserSecret,
   faWandMagic,
 } from '@fortawesome/pro-light-svg-icons';
 
@@ -84,7 +84,12 @@ library.add(
   faBookmark,
   faUser,
   faMapMarked,
-  faFileAlt
+  faFileAlt,
+  faUserSecret,
+  faHeart,
+  faKissWinkHeart,
+  faTheaterMasks,
+  faQuoteRight
 );
 
 dom.watch();
