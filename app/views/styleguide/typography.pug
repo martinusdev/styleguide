@@ -83,7 +83,7 @@ block append content
           <hr />
     //- end: demo
   //- end: section
-  
+
   //- Links
   +content-section(contents[2])
 
@@ -93,13 +93,16 @@ block append content
           each item in ['', 'grey', 'black', 'product']
             li
               a(href='#' class='link link--' + item)= 'Link ' + item
+          li.bg-dark-grey
+            a(href='#').link.link--white= 'Link white'
       +demo-code
         :code
           <a href="#" class="link">...</a>
           <a href="#" class="link link--grey">...</a>
           <a href="#" class="link link--black">...</a>
           <a href="#" class="link link--product">...</a>
-          
+          <a href="#" class="link link--white">...</a>
+
 
   //- LISTS
   +content-section(contents[3])
