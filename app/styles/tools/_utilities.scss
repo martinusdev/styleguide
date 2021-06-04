@@ -329,11 +329,11 @@
     .block#{_get-variant-name($breakpoint, '-')} { display: block !important; }
     .inline-block#{_get-variant-name($breakpoint, '-')} { display: inline-block !important; }
 
-    .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large'); }
-    .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v'); }
-    .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small'); }
-    .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny'); }
-    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0; }
+    .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large') !important; }
+    .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v') !important; }
+    .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small') !important; }
+    .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny') !important; }
+    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0 !important; }
 
     .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large') !important; }
     .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v') !important; }
@@ -347,8 +347,23 @@
     .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny') !important; }
     .mr-none#{_get-variant-name($breakpoint, '-')} { margin-right: 0 !important; }
 
-    .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny'); }
-    .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v'); }
+    .ml-large#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'large') !important; }
+    .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v') !important; }
+    .ml-small#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'small') !important; }
+    .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny') !important; }
+    .ml-none#{_get-variant-name($breakpoint, '-')} { margin-left: 0 !important; }
+
+    .m-none#{_get-variant-name($breakpoint, '-')} { margin: 0 !important; }
+
+    .my-none#{_get-variant-name($breakpoint, '-')} {
+      margin-bottom: 0 !important;
+      margin-top: 0 !important;
+    }
+
+    .mx-none#{_get-variant-name($breakpoint, '-')} {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
 
     .pb-large#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v', 'large'); }
     .pb-medium#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v'); }
@@ -373,6 +388,18 @@
     .pl-small#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'small'); }
     .pl-tiny#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'tiny'); }
     .pl-none#{_get-variant-name($breakpoint, '-')} { padding-left: 0; }
+
+    .p-none#{_get-variant-name($breakpoint, '-')} { padding: 0 !important; }
+
+    .py-none#{_get-variant-name($breakpoint, '-')} {
+      padding-bottom: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    .px-none#{_get-variant-name($breakpoint, '-')} {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
 
     .position-relative#{_get-variant-name($breakpoint, '-')} { position: relative; }
     .position-absolute#{_get-variant-name($breakpoint, '-')} { position: absolute; }
@@ -449,6 +476,11 @@
   &-bottom-grey { border-bottom: 1px solid $text-color-grey-light; }
   &-left-grey { border-left: 1px solid $text-color-grey-light; }
   &-right-grey { border-right: 1px solid $text-color-grey-light; }
+
+  &-top-none { border-top: 0; }
+  &-left-none { border-left: 0; }
+  &-bottom-none { border-bottom: 0; }
+  &-right-none { border-right: 0; }
 
   &-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
 }

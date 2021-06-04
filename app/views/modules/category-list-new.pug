@@ -4,144 +4,121 @@ include ./../mixins/pagination
 include ./../mixins/icon
 include ./../mixins/xmas
 
-mixin itemGroup(id)
-  div&attributes(attributes)
-    +groupItem('Kniha', 0, 'Vydavatelstvo Publishing, 2019', true)
-    +groupItem('E-kniha', 1, 'Vydavatelstvo Publishing, 2019')
-    .hide(data-toggle-class="hide", id=`item-group-more${id}`)
-      +groupItem('Audiokniha mp3', 2, 'Vydavatelstvo Publishing, 2019')
-      +groupItem('Audiokniha cd', 3, 'Vydavatelstvo Publishing, 2019')
-    .mb-medium
-      a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
-        +icon('plus')
-        | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac formátov</span>
-      span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
-
-mixin groupItem(name, id, publisher, xmasmode)
-  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
-      .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
-        .bar__item.no-mrg
-          a.text-semibold.text-medium.inline-block.link=name
-          | #{' '}
-          span.text-medium.text-color-grey.show-m=publisher
-          //a.link.link--product Základy rybolovu pro kluky a holky
-          .inline-block.hide-m.text-size-small
-            if id == 0
-              span.text-color-success.text-space-right-tiny Na sklade
-              span.text-color-blue Novinka
-            else if id == 1
-              span.text-color-success.text-space-right-tiny PDF
-              span.text-color-success.text-space-right-tiny EPUB
-              span.text-color-success MOBI
-            else if id == 3
-              span.text-color-success Na sklade
-        .bar__item.show-m
-          .badges.mb-none
-            if id == 0
-              .badge.badge--green.mb-small.mb-none-m Na sklade
-              .badge.badge--blue.mb-small.mb-none-m Novinka
-            else if id == 1
-              .badge.badge--green.mb-small.mb-none-m PDF
-              .badge.badge--green.mb-small.mb-none-m EPUB
-              .badge.badge--green.mb-small.mb-none-m MOBI
-            else if id == 2
-              .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
-            else if id == 3
-              .badge.badge--green.mb-small.mb-none-m MP3 na CD
-              .badge.badge--green.mb-small.mb-none-m Na sklade
-    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-none-m.no-mrg-horizontal--m-down
-      .bar.bar--small.no-mrg.bar--no-wrap
-        .bar__item.no-mrg
-          .badge.badge--primary -20%
-        .bar__item.no-mrg
-          .text-bold.text-space-left 8,99
-        .bar__item.no-mrg
-          +xmas({type: 'icon', size: 'medium'}).text-space-left-tiny(class=xmasmode ? '' : 'invisible')
-
-    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-none-m
-      .bar.bar--vertical.bar--vertical-small.mb-none.mb-tiny-m
-        .bar__item.show-m.no-mrg(style="max-width: 200px;")
-          if id == 1
-            p.mb-tiny.text-color-grey-dark.text-medium.text-center Na sklade, objednávajte#{' '}
-              em(data-tooltip, title="Toto je tooltip vysvetlivka") však rýchlo
-              | .
-          else
-            p.mb-tiny.text-color-grey-dark.text-medium.text-center Posielame#{' '}
-              em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-              | .
-        .bar__item.no-mrg
-          button.btn.btn--clean.btn--small.no-mrg.hide-m
-            +icon('cart').icon--medium.text-color-theme
-          button.btn.btn--primary.btn--small.mb-tiny(data-toggle='#checkout-notice').show-m
-            +icon('cart').icon--left.icon--small
-            span.text-semibold Vložiť do košíka
-
-          +addTo({text: '', buttonClass: 'btn--small'})
-
-
-
-
-mixin formatDropdown(props = {})
+mixin productInfo(props = {})
   -
     const {
-      small = false
+      item
     } = props;
 
-  .btn-layout.btn-layout--vertical(class=(small) ? 'mb-none' : '')&attributes(attributes)
-    .btn-dropdown.no-mrg
-      button.btn.btn--ghost.btn--icon-right.text-left(
-      class=(small) ? 'btn--small' : '',
-      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-      data-toggle-expand,
-      aria-haspopup="true"
-      ) Pevná väzba
-        +icon('chevron-down', 'icon-dropdown').icon--medium
-      .dropdown(data-dropdown, data-toggle-expand)
-        .dropdown__wrap
-          a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
-              .bar__item.bar__item--fill
-                div Kniha
-                .text-color-grey Posielame ihneď
-              .bar__item.text-right
-                .text-semibold.text-color-black 18,00 €
-                .text-color-grey -10%
-          a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
-              .bar__item.bar__item--fill
-                div Ekniha
-                .text-color-grey Okamžite na stiahnutie
-              .bar__item.text-right
-                .text-semibold.text-color-black 16,00 €
-                .text-color-grey -10%
-          a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
-              .bar__item.bar__item--fill
-                div Audiokniha na CD
-                .text-color-grey Posielame ihneď
-              .bar__item.text-right
-                .text-semibold.text-color-black 8,00 €
-                .text-color-grey -5%
-          a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
-              .bar__item.bar__item--fill
-                div Audiokniha MP3
-                .text-color-grey Okamžite na stiahnutie
-              .bar__item.text-right
-                .text-semibold.text-color-black 12,00 €
-                .text-color-grey -2%
+  .col--fill
+    h2.h3.mb-none
+      a.link.link--product(href="detail-knihy.html")
+        =item.title
+        if item.lang
+          .badge #{item.lang}
+        if item.subtitle
+          .text-color-grey.text-normal #{item.subtitle}
+    .text-medium.mb-small
+      for author, i in item.author.split(', ')
+        if i > 0
+          | ,#{' '}
+        a.link #{author}
+      span.text-color-grey.ml-small
+        | 1. diel série
+    .badges.badges--inline.mb-small.show-m
+      +productRatingBadge({ rating: item.rating })
+      .badge.badge--blue
+        | TOP #29
+    p.text-medium.mb-none.product-item__description
+      | Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha.
 
-section.section.section--toolbar.no-pad.hide-l.bg-default(data-sticky,
-  data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
-  .wrapper-main
+mixin productRatingBadge(props = {})
+  -
+    const {
+      rating
+    } = props;
+
+  a.badge
+    +icon('star', '').text-color-yellow
+    span.text-color-grey #{rating}
+    span.link.text-space-left(href="#recenzie", data-scroll) 234x
+
+mixin productType(props = {})
+  -
+    const {
+      icon,
+      title,
+      className = 'product-item__variants__name',
+    } = props;
+
+  a(class= className).link.text-medium.flex.align-items-middle.mb-tiny
+    +icon(icon, 'text-color-grey mr-tiny icon--small flex-noshrink')
+    span.text-ellipsis #{title}
+    +icon('arrow-right', 'ml-tiny icon--small flex-noshrink')
+
+mixin productPrice(props = {})
+  -
+    const {
+      price,
+      discount = false,
+    } = props
+
+  h2.text-bold.flex.align-items-middle.mb-tiny
+    | #{price}
+    if (discount)
+      .badge.badge--primary.ml-small -#{discount} %
+
+mixin productPriceInfo(props = {})
+  -
+    const {
+      price,
+      xmas = false,
+      status = 'instock',
+      discount = false,
+      typeInfo,
+    } = props
+
+  +productType(typeInfo)
+  .product-item__info.flex-1
+    div
+      +productPrice({price, discount})
+      ul.list--unstyled.list-shipping.text-medium.mb-medium-l
+        if (status === 'instock')
+          li.text-color-success
+            | Na sklade
+            span.show-s , posielame#{' '}
+              em(data-tooltip, title="Toto je tooltip").text-color-success ihneď
+        else if (status === 'lowstock')
+          li.text-color-success
+            | Na sklade
+            span.show-s , objednávajte však#{' '}
+              em(data-tooltip, title="Toto je tooltip").text-color-success rýchlo
+        else if (status === 'presale')
+          li.text-color-grey
+            | Predobjednávka
+        else if (status === 'instock-distributor')
+          li.text-color-grey-dark
+            | Posielame#{' '}
+            em(data-tooltip, title="Toto je tooltip") do piatich dní
+        if (xmas)
+          li.text-color-success
+            +icon('xmas', 'icon--medium mr-tiny')
+            strong Stíhame do Vianoc
+    button.btn.btn--primary(data-toggle='#checkout-notice')
+      +icon('cart').icon--left.icon--medium.mx-none
+      span.text-semibold.ml-tiny.show-m Do košíka
+
+
+section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
+  data-scroll-offset=filterStickyOffset ? filterStickyOffset: header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
+  .wrapper-main.px-none
     .bar.mb-none
       .bar__item.bar__item--fill.mr-none.text-center
-        button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-reduction").no-mrg-right.text-size-medium
+        button.btn.btn--clean.mb-none.mr-none(data-toggle="#mobile-reduction").text-size-medium
           +icon('reduction', 'icon--medium').icon--left
           span Zúžiť výber
       .bar__item.bar__item--fill.border-left-grey.text-center
-        button.btn.btn--fill.btn--clean.no-mrg-bottom(data-toggle="#mobile-order").no-mrg-right.text-size-medium
+        button.btn.btn--fill.btn--clean.mb-none.mr-none(data-toggle="#mobile-order").text-size-medium
           +icon('order', 'icon--medium').icon--left
           span Zoradiť
 
@@ -153,13 +130,13 @@ section.section
           .mobile-wrapper__header-title Zúženie výberu
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
             +icon('close', 'icon--medium')
-        .mobile-wrapper__content.no-pad
+        .mobile-wrapper__content.p-none
           if filterSmall
             include category-filter-small
           else
             include category-filter
         .mobile-wrapper__footer
-            .btn-layout.btn-layout--vertical.no-mrg-bottom
+            .btn-layout.btn-layout--vertical.mb-none
               button.btn Zúžiť výber
       .col--l-9.col--12
         .div.mb-medium.show-l
@@ -175,25 +152,26 @@ section.section
               div.tab-nav__content.border-bottom-grey.align-items-right.text-size-small.text-color-grey.text-center
                 | 2358 produktov
 
-        .flex.mb-tiny.align-items-middle
-          .text-size-small.text-transform-upper.text-color-grey.inline-block-m.block.mr-medium Použité filtre
-          a(href="#").link.text-size-medium Zrušiť filtre
-        .row.pl-medium-m
-          .row.overflow-scroll-x
-            .col.pl-medium
-              .badges.flex-nowrap
-                .badge.mb-small
-                  | Klasické detektívky
-                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
-                .badge.mb-small
-                  | Agatha Christie
-                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
-                .badge.mb-small.mr-medium
-                  | rýchlovky (do 1h)
-                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
+        if filters
+          .flex.mb-tiny.align-items-middle
+            .text-size-small.text-transform-upper.text-color-grey.inline-block-m.block.mr-medium Použité filtre
+            a(href="#").link.text-size-medium Zrušiť filtre
+          .row.pl-medium-m
+            .row.overflow-scroll-x
+              .col.pl-medium
+                .badges.flex-nowrap
+                  .badge.mb-small
+                    | Klasické detektívky
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                      +icon('close').icon--small.icon--right
+                  .badge.mb-small
+                    | Agatha Christie
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                      +icon('close').icon--small.icon--right
+                  .badge.mb-small.mr-medium
+                    | rýchlovky (do 1h)
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                      +icon('close').icon--small.icon--right
 
         if searchCard
           p Našli sme v:
@@ -254,37 +232,6 @@ section.section
                         .bar__item.bar__item--fill.line-small
                           a.link Janko Martinusak
 
-        if navIcons
-          #category-description(data-collapse="200")
-            .cms-article
-              .row
-                .col--3
-                  img.img(src="images/content/author.png")
-                .col--9
-                  p Harry zápasí s minulosťou, ktorá sa #{' '}
-                    a(href="#") ustavične vracia
-                    | . Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
-
-                  p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
-
-                  p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
-
-          .mb-large
-            a.link.text-size-medium(href="javascript:void(0)", data-toggle="#category-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
-              +icon('arrow-down')
-
-          .mb-large.carousel-lite.mj-carousel(style="height: 5rem;").carousel-lite--fade-inside
-            .carousel-lite__container.mj-carousel__scroll
-              .carousel-lite__wrapper.mj-carousel__content.align-items-stretch
-                each item, i in menu
-                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").text-space-right.flex.align-items-middle
-                    i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.text-space-right
-                    span.link.line-small= item.title
-            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev(style="left: 10px;")
-              +icon('arrow-left').icon--medium
-            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next.mj-carousel__btn--next(style="right: 10px;")
-              +icon('arrow-right').icon--medium
-
         if description
           p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
         if carousel
@@ -305,33 +252,6 @@ section.section
                     else
                       strong !{sortLink}
 
-
-        if filters
-          .badges.mb-tiny
-            .text-space-right Filtre:
-            .badge.mb-tiny
-              | Žáner (Sci-fi)
-              .btn.btn--small.btn--clean.btn--equal.mb-none
-                +icon('close').icon--small
-            .badge.mb-tiny
-              | Väzba mäkká
-              .btn.btn--small.btn--clean.btn--equal.mb-none
-                +icon('close').icon--small
-            .btn.btn--small.btn--clean.mb-none zmazať filter
-
-        if navIcons
-          ul.tab-nav(data-tabs-container).text-size-medium.mb-large.show-m.bg-secondary
-            li.tab-nav__item(data-tabs-item)
-              a.tab-nav__content.tab-nav__content--link najobľúbenejšie
-            li.tab-nav__item(data-tabs-item)
-              a.tab-nav__content.tab-nav__content--link najlacnejšie
-            li.tab-nav__item(data-tabs-item)
-              a.tab-nav__content.tab-nav__content--link najdrahšie
-            li.tab-nav__item(data-tabs-item)
-              a.tab-nav__content.tab-nav__content--link najnovšie
-            li.tab-nav__item(data-tabs-item)
-              a.tab-nav__content.tab-nav__content--link najstaršie
-
         each item, i in books
           -
             var itemType = 'default';
@@ -340,209 +260,76 @@ section.section
 
           if i === 0
             //GROUPED ITEM
-            .product-item.product-item--border-bottom.bg-default
-              .row.mb-medium.product-item__content
-                .col--shrink.no-pad-right.show-m
-                  +product
-                    +productCover({
-                      href: 'detail-knihy.html',
-                      badge: categoryListBadge ? i + 1 : false,
-                      cover: `${item.cover}`,
-                      collection: true,
-                      })
+            .product-item.bg-default.pb-medium.border-bottom-grey
+              .row
+                .col--shrink.pr-none-m
+                  +productCover({
+                    href: 'detail-knihy.html',
+                    cover: `${item.cover}`,
+                    collection: false,
+                  })
+                  .badges.badges--column.mb-small.hide-m
+                    +productRatingBadge({rating: item.rating})
+                    .badge.badge--blue
+                      | TOP #29
                 .col--fill
-                  .row.mb-medium.mb-none-m
+                  .row.product-item__variants
+                    +productInfo({item})
 
-                    .col--s-shrink.col--3.no-pad-right.hide-m
-                      +product
-                        +productCover({
-                          href: 'detail-knihy.html',
-                          badge: categoryListBadge ? i + 1 : false,
-                          cover: `${item.cover}`,
-                          collection: true,
-                          })
-
-                    .col--fill
-                      .mb-small-m
-                        h2.h3.mb-tiny
-                          a.link.link--product(href="detail-knihy.html") #{item.title}
-                          .badge EN
-                        .text-color-grey.mb-small.text-medium #{item.author}
-                        .badges.mb-small
-                          a.badge.mb-none
-                            +icon('star', 'icon--medium').text-color-yellow
-                            span.text-normal.text-space-left 3.5
-                            span.link.text-space-left(href="#recenzie", data-scroll) 234x
-
-                        div(data-collapse="60")
-                          p.text-medium.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
-                        .mb-medium.show-s
-                          a(href="detail-knihy.html").link.text-medium Viac o knihe
-                            +icon('arrow-right', 'icon--small')
-
-                    .col--m-shrink.product-item__price-box
-                      .text-center.show-m
-                        h2.text-bold.mb-small od #{item.price}
-
-                  +itemGroup(1)
+                  .row.mt-small.product-item__variants
+                    .col.col--xl-8.pr-none-xl
+                      +productPriceInfo({ price: '11,99 €', xmas: true, discount: 15, status: 'lowstock', typeInfo: { icon: 'products-books', title: 'Pevná väzba' }, })
+                      hr.mb-none.mt-small
+                    .col.col--xl-8.pr-none-xl
+                      +productPriceInfo({ price: '22,79 €', status: 'instock-distributor', typeInfo: { icon: 'products-books', title: 'Pevná väzba, limitované vydanie' }, })
+                      hr.mb-none.mt-small
+                    .col.col--xl-8.pr-none-xl
+                      .product-item__info
+                        a.text-medium.link.flex.align-items-middle.flex-1.product-item__variants__name
+                          +icon('plus', 'mr-tiny')
+                          | Ďalšie formáty
+                          +icon('products-books', 'ml-tiny').text-color-grey
+                          +icon('products-ebooks', 'ml-tiny').text-color-grey
 
           else
-            .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
+            // SINGLE ITEM
+            .product-item.bg-default.pb-medium.border-bottom-grey(class=(i === 2 || i === 4) ? 'mb-none-m': '' )
               .row
-                .col--m-fill.product-item__content
-                  .row.mb-medium
-                    .col--s-shrink.col--3.no-pad-right
-                      +product
-                        +productCover({
-                          href: 'detail-knihy.html',
-                          badge: categoryListBadge ? i+1 : false,
-                          cover: `${item.cover}`,
-                          collection: i == 1,
-                        })
-                          img.book-flag.book-flag--medium(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: -5px;")
-                        if categoryListBadge
-                          p.text-size-small
-                            if (i % 3 === 0)
-                              +icon('arrow-up-right').text-color-success.icon--small.text-vat
-                            if (i % 3 === 1)
-                              +icon('arrow-down-right').text-color-error.icon--small.text-vat
-                            if (i % 3 === 2)
-                              +icon('arrow-right').text-color-grey.icon--small.text-vat
-                            | #{' '}
-                            span.text-semibold 120
-                            |  dní#{' '}
-                            span.text-color-grey.show-m v TOP 100
-
-                    .col--s-fill.col--9
-                      .mb-small-m
-                        h2.h3.mb-tiny
-                          a.link.link--product(href="detail-knihy.html") #{item.title}
-                            span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov
-                          .badge CZ
-                        .text-color-grey.mb-small.text-medium #{item.author}
-                      .bar.bar--small.mb-small.show-s
-                        .bar__item.bar__item--shrinkable
-                          .badges.mb-none
-                            a.badge.mb-small
-                              +icon('star', 'icon--medium').text-color-yellow
-                              span.text-normal.text-space-left #{item.rating}
-                              span.link.text-space-left(href="#recenzie", data-scroll) 234x
-                            .badge.badge--green.mb-small Na sklade
-                            .badge.badge--blue.mb-small Novinka
-
-
-                      div(data-collapse="60")
-                        p.text-medium.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
-                      .mb-medium.show-s
-                        a(href="detail-knihy.html").link.text-medium Viac o knihe
-                          +icon('arrow-right', 'icon--small')
-
-                      if itemType == 'dropdown'
-                        +formatDropdown({small: true}).hide-m
-
-                      .bar.bar--tiny.mb-none.hide-m
-                        .bar__item
-                          .badge.badge--primary -20%
-                        .bar__item.bar__item--fill
-                          .text-medium.text-semibold.text-space-left #{item.price}
-                        .bar__item
-                          button.btn.btn--clean.no-mrg
-                            +icon('cart').icon--medium.text-color-theme
-                        .bar__item
-                          button.btn.btn--clean.no-mrg
-                            +icon('heart').icon--medium
-
-                .col--m-shrink.product-item__price-box
-                  //- PUBLISHER PORTAL
-                  if i === 0 && publisher
-                    .card.card--material.card--material-blue
-                      .card__label
-                        | štatistiky
-                      .card__content.card__content--condensed
-                        p.text-medium
-                          b Predaných titulov
-                          br
-                          | E-shopy (14 dní):#{' '}
-                          b 433
-                          br
-                          | E-shopy (celkovo):#{' '}
-                          b 233
-                          br
-                          | Kníhkupectvá (14 dní):#{' '}
-                          b 54
-                          br
-                          | Kníhkupectvá (celkovo):#{' '}
-                          b 43
-                          br
-                        p.text-medium
-                          | U dodávateľov:#{' '}
-                          b 32
-                          br
-                          | Vo wishlistoch má:#{' '}
-                          b 233 ľudí
-                          br
-                          | Rezervovalo si:#{' '}
-                          b 233 ľudí
-                          br
-
-                  else
-                    if itemType == 'dropdown'
-                      +formatDropdown.show-m
-
-                    .text-center.show-m
-                      h2.text-bold.mb-small #{item.price}
-                      .badge.badge--primary.mb-small Zľava 10%
-                      +xmas({status: 0})
-                      p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
-                        em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-                        | .
-
-                      .btn-layout--vertical
-                        button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                          +icon('cart').icon--left.icon--medium
-                          span.text-semibold Vložiť do košíka
-
-                        +addTo()
+                .col--shrink.pr-none-m
+                  +productCover({
+                    href: 'detail-knihy.html',
+                    cover: `${item.cover}`,
+                    collection: false,
+                  })
+                  .badges.badges--column.mb-small.hide-m
+                    +productRatingBadge({rating: item.rating})
+                    .badge.badge--blue
+                      | TOP #29
+                .col--fill
+                  .row
+                    +productInfo({item})
+                    .col.col--xl-4.mt-small.mt-none-xl
+                      +productPriceInfo({ price: item.price, xmas: true, discount: 20, typeInfo: { icon: 'products-books', title: 'Pevná väzba s prebalom', className: '' } })
 
           //- HLADATE DARCEK
           if i === 2
             .section.section--small.bg-secondary.mb-large
               .product-item
-                .row.mb-medium.no-mrg-horizontal
+                .row.mb-medium.mx-none
                   .col--m-2.text-center
                     +icon('footer-shipping').icon--xxlarge.text-color-success
                   .col--m-10.text-center.text-left-m
                     h2.h3.mb-tiny.text-color-success Vedeli ste, že...?
                     p.mb-none až 4 knihy z 5 máme na sklade a posielame ich do nasledujúceho dňa?
 
-          //- HLADATE DARCEK
-          //if i === 2
-            .section.bg-secondary.show-m.mb-large
-              .product-item
-                .row.mb-large.no-mrg-horizontal
-                  .col--m-fill.product-item__content
-                    .bar
-                      .bar__item
-                        .thumbnail
-                          img(src="../images/content/gift/darcek@2x.png", alt="Darcek", width="120")
-                      .bar__item.bar__item--fill
-                        h2.mb-small Hľadáte darček?
-                        .bar.no-mrg-bottom
-                          .bar__item Pre:
-                          .bar__item.bar__item--fill
-                            ul.list-inline
-                              each gift in ['babku', 'kamarátku', 'syna', 'dcéru', 'mamu', 'otca', 'brata']
-                                li
-                                  a.link !{gift}
-
           //- DARCEKOVA POUKAZKA
           if i === 4
             .section.bg-secondary.show-m.mb-large
               .product-item
-                .row.mb-large.no-mrg-horizontal
+                .row.mb-large.mx-none
                   .col--m-fill
                     .row
-                      .col--s-shrink.col--3.no-pad-right
+                      .col--s-shrink.col--3.pr-none
                         .thumbnail
                           img(src="../images/content/gift/darcekova-poukazka@2x.png", alt="Darcekova poukazka", width="120")
                       .col--s-fill.col--9
@@ -550,7 +337,7 @@ section.section
                           br
                           | Kúpte darčekovú poukážku
                         p Obdarujte svojich blízkych presne tým, po čom vždy túžili - a ani nemusíte vedieť, čo to je!
-                        p.no-mrg-bottom
+                        p.mb-none
                           strong Darujte im darčekovú poukážku,
                           | za ktorú si môžu vybrať čokoľvek z celej pomnuky Martinus.sk - desiatky tisíc kníh, filmov, puzzle a iných skvelých darčekov. Podmienky použitia nájdete
                           a(href="#") tu
@@ -558,7 +345,7 @@ section.section
                   .col--m-shrink.product-item__price-box
                     .text-small.text.text-transform-upper.text-color-grey hodnota darčekovej poukážky
                     .btn-layout.btn-layout--vertical.mb-medium
-                      .btn-dropdown.no-mrg
+                      .btn-dropdown.m-none
                         button.btn.btn--ghost.btn--icon-right.text-left(
                           data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                           data-toggle-expand,
