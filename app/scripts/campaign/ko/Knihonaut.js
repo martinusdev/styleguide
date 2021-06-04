@@ -15,7 +15,7 @@ const templateContainer = () => `
   </div>
 `;
 
-const templateContent = data => `
+const templateContent = (data) => `
   <div class="bar">
     <div class="bar__item bar__item--fill">
       <h3 class="h3 mb-none">${data.title}</h3>

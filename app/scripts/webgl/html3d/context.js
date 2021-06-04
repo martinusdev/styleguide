@@ -67,22 +67,22 @@ export default class GGContext {
         return;
       }
 
-      const container = scene.container;
+      const { container } = scene;
 
       const rect = container.getBoundingClientRect();
 
       if (
-        rect.bottom < 0 ||
-        rect.top > this.canvas.clientHeight ||
-        rect.right < 0 ||
-        rect.left > this.canvas.clientWidth
+        rect.bottom < 0
+        || rect.top > this.canvas.clientHeight
+        || rect.right < 0
+        || rect.left > this.canvas.clientWidth
       ) {
         return;
       }
 
       const width = rect.right - rect.left;
       const height = rect.bottom - rect.top;
-      const left = rect.left;
+      const { left } = rect;
       const top = rect.top - this.canvas.getBoundingClientRect().y;
 
       this.renderer.setViewport(left, top, width, height);

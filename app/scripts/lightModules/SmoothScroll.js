@@ -26,8 +26,7 @@ class SmoothScroll {
   smoothScroll($trigger) {
     const $target = $($trigger.data('smoothscroll'));
 
-    const offset =
-      $target.offset().top - parseInt($('body').css('padding-top'), 10);
+    const offset = $target.offset().top - parseInt($('body').css('padding-top'), 10);
 
     const scroll = $('body').scrollTop() === 0
       ? $('html').scrollTop()

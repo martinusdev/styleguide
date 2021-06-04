@@ -140,11 +140,17 @@ section.section
               button.btn Zúžiť výber
       .col--l-9.col--12
         .div.mb-medium.show-l
-          ul.tab-nav.flex
+          ul.tab-nav.tab-nav--compact.flex
             each sortLink, i in sortLinks
               li.tab-nav__item(class= i===0 ? 'is-active': '')
-                a.pb-small.flex.align-items-middle.text-center.line-small.tab-nav__content--link.text-transform-none(class= i > 0 ? 'border-bottom-grey': '')
-                  | !{sortLink}
+                a.tab-nav__content--link(class= i > 0 ? 'border-bottom-grey': '')
+                  if (typeof sortLink === 'object')
+                    +icon(sortLink.icon)
+                  else
+                    | !{sortLink}
+            li.tab-nav__item.flex-1
+              div.tab-nav__content.border-bottom-grey.align-items-right.text-size-small.text-color-grey.text-center
+                | 2358 produktov
 
         if filters
           .flex.mb-tiny.align-items-middle
@@ -241,7 +247,10 @@ section.section
               each sortLink, i in sortLinks
                 li.list__item
                   a.flex-1(class = i===0 ? 'text-color-theme': '')
-                    strong !{sortLink}
+                    if (typeof sortLink === 'object')
+                      strong !{sortLink.title}
+                    else
+                      strong !{sortLink}
 
         each item, i in books
           -

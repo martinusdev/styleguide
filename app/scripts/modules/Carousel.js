@@ -4,13 +4,16 @@ import { doToggle } from './Toggle';
 import { nodeListToArray } from './Utils';
 import { BREAKPOINTS } from './Const';
 
-const shouldInitalize = (up, down, currentWidth, breakpoints) =>
-  !(up && breakpoints[up] >= currentWidth) &&
-  !(down && breakpoints[down] < currentWidth);
+const shouldInitalize = (
+  up,
+  down,
+  currentWidth,
+  breakpoints
+) => !(up && breakpoints[up] >= currentWidth)
+  && !(down && breakpoints[down] < currentWidth);
 
-const getTotalNumberOfSlides = container =>
-  container.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')
-    .length;
+const getTotalNumberOfSlides = container => container.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)')
+  .length;
 
 const defaultConfig = {
   paginationClickable: true,
@@ -68,9 +71,9 @@ export default class SwiperSlider {
           breakpointDown,
           window.innerWidth,
           BREAKPOINTS,
-        ) &&
-        swiper.querySelectorAll('.swiper-slide').length &&
-        !swiper.classList.contains('is-initialized')
+        )
+        && swiper.querySelectorAll('.swiper-slide').length
+        && !swiper.classList.contains('is-initialized')
       ) {
         const swiperInstance = new Swiper(swiper, swiperConfig);
         swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);

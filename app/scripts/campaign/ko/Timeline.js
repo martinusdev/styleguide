@@ -14,7 +14,7 @@ export default class KOTimeline {
   }
 
   initialize() {
-    window.myApp.carousels.instances.forEach(swiper => {
+    window.myApp.carousels.instances.forEach((swiper) => {
       this.swipers[swiper.params.id] = swiper;
     });
 
@@ -24,12 +24,10 @@ export default class KOTimeline {
       document.querySelectorAll('.ko-timeline-item'),
     );
 
-    this.swipers.planets.on('onTransitionStart', swiper =>
-      this._slideChange(swiper),
-    );
+    this.swipers.planets.on('onTransitionStart', (swiper) => this._slideChange(swiper),);
 
-    this.timelineItems.forEach(item => {
-      item.addEventListener('click', e => this._itemClick(e), false);
+    this.timelineItems.forEach((item) => {
+      item.addEventListener('click', (e) => this._itemClick(e), false);
     });
   }
 
@@ -53,7 +51,7 @@ export default class KOTimeline {
   _itemChange() {
     const timelineItem = document.querySelector(`[data-id="${this.item}"]`);
 
-    this.timelineItems.forEach(item => {
+    this.timelineItems.forEach((item) => {
       item.classList.remove('is-active');
     });
     timelineItem.classList.add('is-active');

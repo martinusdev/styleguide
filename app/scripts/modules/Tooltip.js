@@ -8,9 +8,8 @@ const defaultConfig = {
   delay: 150,
   content(reference) {
     // use title as a default tooltip content
-    const title =
-      reference.getAttribute('data-tippy-content') ||
-      reference.getAttribute('title');
+    const title = reference.getAttribute('data-tippy-content')
+      || reference.getAttribute('title');
     reference.removeAttribute('title');
     reference.setAttribute('data-tippy-content', title);
     return title;

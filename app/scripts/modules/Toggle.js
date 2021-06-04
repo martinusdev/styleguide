@@ -3,6 +3,8 @@
 // module for handling toggle actions
 
 import { triggerResize } from './Utils';
+
+/* eslint import/no-cycle: [0] */
 import { lockBody, unlockBody } from './Modal';
 
 export const TRIGGER_EVT = 'triggerToggle';
@@ -79,8 +81,7 @@ class Toggle {
     }
 
     if (text) {
-      const toggleTextTarget =
-        target.querySelector('[data-toggle-text-target]') || target;
+      const toggleTextTarget = target.querySelector('[data-toggle-text-target]') || target;
       const oldText = toggleTextTarget.innerHTML;
 
       target.setAttribute('data-toggle-text', oldText);
@@ -203,7 +204,8 @@ class Toggle {
         target = target.trim();
         if (target === 'self') {
           return trigger;
-        } else if (target === 'parent') {
+        }
+        if (target === 'parent') {
           let parentHop = 1;
           if (trigger.hasAttribute('data-parent-hop')) {
             parentHop = trigger.getAttribute('data-parent-hop');
@@ -212,9 +214,11 @@ class Toggle {
             trigger = trigger.parentNode;
           }
           return trigger;
-        } else if (target === 'previous') {
+        }
+        if (target === 'previous') {
           return trigger.previousElementSibling;
-        } else if (target === 'next') {
+        }
+        if (target === 'next') {
           return trigger.nextElementSibling;
         }
         return document.querySelector(target);
@@ -224,5 +228,4 @@ class Toggle {
 }
 
 export default Toggle;
-export const doToggle = Toggle.doToggle;
-export const isToggled = Toggle.isToggled;
+export const { doToggle, isToggled } = Toggle;

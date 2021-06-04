@@ -3,10 +3,9 @@ import SmoothScrollPlugin from 'smooth-scroll';
 import { getValueFromResponsiveMap } from './Utils';
 
 function getOffset(anchor, toggle) {
-  const currentOffset =
-    JSON.parse(toggle.getAttribute('data-scroll-offset')) ||
-    window.myApp.scrollOffset ||
-    0;
+  const currentOffset = JSON.parse(toggle.getAttribute('data-scroll-offset'))
+    || window.myApp.scrollOffset
+    || 0;
 
   return getValueFromResponsiveMap(currentOffset, window.innerWidth);
 }

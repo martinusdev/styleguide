@@ -304,7 +304,7 @@ $links: (
       font-weight: $font-weight-default,
     ),
     focus: (
-      text-decoration: none,
+      text-decoration: underline,
       color: $color-white,
     )
   ),
@@ -1460,6 +1460,14 @@ $tabs-link: (
     text-transform: uppercase,
     font-weight: 600,
   ),
+  compact: (
+    padding: _get-em(10px) _get-em(15px),
+    text-transform: none,
+    line-height: 1,
+    display: flex,
+    text-align: center,
+    align-items: center,
+  ),
   active: (
     color: _color(primary, 500),
     border-color:_color(primary, 500),
@@ -1512,15 +1520,18 @@ $modal-overlay: (
 $modal-dialog: (
   default: (
     width: 100%,
-    max-height: calc(100vh - (#{_get-space('v')} * 2)),
     background-color: $color-white,
     border: 1px solid $default-border-color,
     box-shadow: ($shadow-ambient-3, $shadow-direct-2),
+    max-height: 80vh,
   ),
   'm': (
     height: auto,
     width: _get-rem(480px),
     border-radius: $default-border-radius,
+  ),
+  'l': (
+    max-height: calc(100vh - (#{_get-space('v')} * 2)),
   )
 );
 

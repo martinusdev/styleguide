@@ -1,4 +1,5 @@
 import { transitionEnd, triggerResize } from './Utils';
+/* eslint import/no-cycle: [0] */
 import { TOGGLE_EVT, doToggle } from './Toggle';
 
 const defaultConfig = {
@@ -159,8 +160,7 @@ export default class Modal {
     }
 
     this.dialog.focus();
-    this.dialog.style.zIndex =
-      this.config.modalZindex + this.activeModals.length;
+    this.dialog.style.zIndex = this.config.modalZindex + this.activeModals.length;
     this.dialog.setAttribute('aria-hidden', 'false');
     this.dialog.setAttribute('tabindex', '');
     this.dialog.addEventListener('blur', this._onBlur, true);
@@ -168,9 +168,9 @@ export default class Modal {
     this._handleMultipleModals();
 
     // fix modal dialog height for ios manually (innerHeight)
-    setTimeout(() => {
-      this.dialog.style.maxHeight = `${window.innerHeight}px`;
-    }, 200); // magic number
+    // setTimeout(() => {
+    //   this.dialog.style.maxHeight = `${window.innerHeight}px`;
+    // }, 200); // magic number
   }
 
   _deactivateModal() {
@@ -199,9 +199,9 @@ export default class Modal {
         if (this.activeModals.length === 1 && this.originalTrigger) {
           this.originalTrigger.focus();
         } else if (
-          this._isMultipleAllowed() &&
-          this.activeModals.length > 1 &&
-          this.activeModals[i].trigger
+          this._isMultipleAllowed()
+          && this.activeModals.length > 1
+          && this.activeModals[i].trigger
         ) {
           this.activeModals[i].trigger.focus();
         }
@@ -257,8 +257,7 @@ export default class Modal {
 
   static lockBody(className = defaultConfig.modalBodyIsOpen) {
     // store current scrollTop value
-    const scrollTop =
-      document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     document.body.setAttribute('data-lock-scrolltop', scrollTop);
     const pageContainer = document.getElementById('page-container');
 
@@ -326,6 +325,7 @@ export default class Modal {
       Array.prototype.forEach.call(icons, icon => {
         // this is a IE hack, solves disappearing SVG icons
         if (icon.href && icon.href.baseVal) {
+          // eslint-disable-next-line no-self-assign
           icon.href.baseVal = icon.href.baseVal; // trigger fixing of href
         }
       });
@@ -372,5 +372,4 @@ export default class Modal {
   }
 }
 
-export const lockBody = Modal.lockBody;
-export const unlockBody = Modal.unlockBody;
+export const { lockBody, unlockBody } = Modal;
