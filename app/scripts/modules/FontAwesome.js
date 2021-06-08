@@ -1,8 +1,8 @@
 // FONT AWESOME
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faAtlas,
-  faBook as falFaBook, faBookHeart, faBookmark, faBooks,
+  faAtlas, faAtom,
+  faBook as falFaBook, faBookHeart, faBookmark, faBookMedical, faBooks, faBrain, faBriefcase,
   faCalendar,
   faCoffeeTogo,
   faCommentLines,
@@ -14,7 +14,7 @@ import {
   faGift,
   faGraduationCap, faGrimace,
   faHatChef,
-  faHeadSideBrain, faHeart, faHistory, faKissWinkHeart, faLaughBeam,
+  faHeadSideBrain, faHeart, faHeartbeat, faHistory, faKissWinkHeart, faLaptop, faLaughBeam,
   faLightbulb,
   faMapMarked,
   faMugHot,
@@ -22,7 +22,7 @@ import {
   faPaintBrush,
   faPaperPlane,
   faPencil,
-  faPencilPaintbrush,
+  faPencilPaintbrush, faPencilRuler,
   faPray,
   faPrayingHands,
   faPuzzlePiece,
@@ -33,7 +33,7 @@ import {
   faStarExclamation,
   faStars, faSurprise,
   faSwords, faTheaterMasks,
-  faUfo, faUser, faUserSecret,
+  faUfo, faUser, faUsers, faUserSecret, faVolleyballBall,
   faWandMagic,
 } from '@fortawesome/pro-light-svg-icons';
 
@@ -89,7 +89,16 @@ library.add(
   faHeart,
   faKissWinkHeart,
   faTheaterMasks,
-  faQuoteRight
+  faQuoteRight,
+  faBriefcase,
+  faUsers,
+  faLaptop,
+  faAtom,
+  faBrain,
+  faHeartbeat,
+  faPencilRuler,
+  faVolleyballBall,
+  faBookMedical
 );
 
 dom.watch();
