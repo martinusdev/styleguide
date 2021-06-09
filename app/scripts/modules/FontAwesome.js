@@ -78,7 +78,16 @@ import {
   faCoin,
   faBuilding,
   faCamera,
-  faCameraMovie
+  faCameraMovie,
+  faKeyboard,
+  faChartNetwork,
+  faPlay,
+  faBrowser,
+  faCode,
+  faMicrochip,
+  faCog,
+  faDatabase,
+  faWindowAlt
 } from '@fortawesome/pro-light-svg-icons';
 
 import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
@@ -186,7 +195,16 @@ library.add(
   faCoin,
   faBuilding,
   faCamera,
-  faCameraMovie
+  faCameraMovie,
+  faKeyboard,
+  faChartNetwork,
+  faPlay,
+  faBrowser,
+  faCode,
+  faMicrochip,
+  faCog,
+  faDatabase,
+  faWindowAlt
 );
 
 dom.watch();
