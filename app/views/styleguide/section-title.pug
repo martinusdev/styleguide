@@ -82,8 +82,8 @@ block append content
         +demo
           +demo-example
 
-            section(style="background: url('../images/content/campaign/xmas2017/bg-cz.jpg') no-repeat center center; background-size: cover;")
-              .wrapper-main.section-title-wrapper
+            section
+              .wrapper-main.section-title-wrapper.section-title-background(style="background-image: url('../images/content/campaign/xmas2017/bg-cz.jpg');")
                 .section-title(class=`section-title--${theme}`)
                   .section-title__item
                     | Lorem ipsum dolor sit amet
@@ -94,12 +94,12 @@ block append content
 
           +demo-code
             :code
-              <section style="background: url('../images/content/campaign/xmas2017/bg-cz.jpg') no-repeat center center; background-size: cover;">
-                <div class="wrapper-main section-title-wrapper">
+              <section>
+                <div class="wrapper-main section-title-wrapper section-title-background" style="background-image: url('../images/content/campaign/xmas2017/bg-cz.jpg')">
                   <div class="section-title section-title--{theme-name}">
-                    <div class="section-title__item" style="background-color: #00bdf2; color: #fff;">Lorem ipsum dolor sit amet</div>
-                    <div class="section-title__item" style="background-color: #009dd0; color: #fff;">Lorem ipsum</div>
-                    <div class="section-title__item" style="background-color: #00bdf2; color: #fff;">Lorem ipsum dolor sit amet</div>
+                    <div class="section-title__item">Lorem ipsum dolor sit amet</div>
+                    <div class="section-title__item">Lorem ipsum</div>
+                    <div class="section-title__item">Lorem ipsum dolor sit amet</div>
                   </div>
                 </div>
               </section>
