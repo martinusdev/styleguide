@@ -2,8 +2,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  padding-top: _get-space('v', 'large');
-  padding-bottom: _get-space('v', 'large');
+  padding-top: _get-space('v', 'small');
+  padding-bottom: _get-space('v', 'small');
+
+  @include breakpoint('m') {
+    padding-top: _get-space('v', 'large');
+    padding-bottom: _get-space('v', 'large');
+  }
 }
 
 .section-title-background {
