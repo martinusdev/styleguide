@@ -168,9 +168,9 @@ export default class Modal {
     this._handleMultipleModals();
 
     // fix modal dialog height for ios manually (innerHeight)
-    setTimeout(() => {
-      this.dialog.style.maxHeight = `${window.innerHeight}px`;
-    }, 200); // magic number
+    // setTimeout(() => {
+    //   this.dialog.style.maxHeight = `${window.innerHeight}px`;
+    // }, 200); // magic number
   }
 
   _deactivateModal() {

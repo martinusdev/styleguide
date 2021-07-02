@@ -29,7 +29,7 @@ block append content
           section(style="background-color: #274c4b;")
             .wrapper-main.section-title-wrapper(style="background-image: url('../images/content/campaign/textbooks/header-bg.jpg');")
               .section-title
-                .section-title__item.section-title__item--static
+                .section-title__item.section-title__item--static(style="background: #fff")
                   img(src=`${assetsPrefix}images/content/logo-black.svg`, alt="Martinus", style="height: 28px;")
                 .section-title__item
                   | Lorem ipsum
@@ -41,7 +41,7 @@ block append content
             <section style="background-color: #274c4b;">
               <div class="wrapper-main section-title-wrapper" style="background-image: url('../images/content/campaign/textbooks/header-bg.jpg');">
                 <div class="section-title">
-                  <div class="section-title__item section-title__item--static"><img src="../images/content/logo-black.svg" alt="Martinus" style="height: 28px;"></div>
+                  <div class="section-title__item section-title__item--static" style="background: #fff;"><img src="../images/content/logo-black.svg" alt="Martinus" style="height: 28px;"></div>
                   <div class="section-title__item">Lorem ipsum</div>
                   <div class="section-title__item">Lorem ipsum dolor sit amet</div>
                 </div>
@@ -75,32 +75,34 @@ block append content
               </div>
             </section>
 
-    +content-sub-section('Section title - colors')
+    for theme in ['primary', 'blue', 'green', 'yellow', 'orange', 'brown', 'violet']
 
-      +demo
-        +demo-example
+      +content-sub-section('Section title - ' + theme)
 
-          section(style="background-color: #835c9e;")
-            .wrapper-main.section-title-wrapper
-              .section-title
-                .section-title__item(style="background-color: #00bdf2; color: #fff;")
-                  | Lorem ipsum dolor sit amet
-                .section-title__item(style="background-color: #009dd0; color: #fff;")
-                  | Lorem ipsum
-                .section-title__item(style="background-color: #00bdf2; color: #fff;")
-                  | Lorem ipsum dolor sit amet
+        +demo
+          +demo-example
 
-        +demo-code
-          :code
-            <section style="background-color: #835c9e;">
-              <div class="wrapper-main section-title-wrapper">
-                <div class="section-title">
-                  <div class="section-title__item" style="background-color: #00bdf2; color: #fff;">Lorem ipsum dolor sit amet</div>
-                  <div class="section-title__item" style="background-color: #009dd0; color: #fff;">Lorem ipsum</div>
-                  <div class="section-title__item" style="background-color: #00bdf2; color: #fff;">Lorem ipsum dolor sit amet</div>
+            section
+              .wrapper-main.section-title-wrapper.section-title-background(style="background-image: url('../images/content/campaign/xmas2017/bg-cz.jpg');")
+                .section-title(class=`section-title--${theme}`)
+                  .section-title__item
+                    | Lorem ipsum dolor sit amet
+                  .section-title__item
+                    | Lorem ipsum
+                  .section-title__item
+                    | Lorem ipsum dolor sit amet
+
+          +demo-code
+            :code
+              <section>
+                <div class="wrapper-main section-title-wrapper section-title-background" style="background-image: url('../images/content/campaign/xmas2017/bg-cz.jpg')">
+                  <div class="section-title section-title--{theme-name}">
+                    <div class="section-title__item">Lorem ipsum dolor sit amet</div>
+                    <div class="section-title__item">Lorem ipsum</div>
+                    <div class="section-title__item">Lorem ipsum dolor sit amet</div>
+                  </div>
                 </div>
-              </div>
-            </section>
+              </section>
 
     +content-sub-section('Section title - full screen photo')
 

@@ -95,6 +95,14 @@
   }
 }
 
+.tab-nav--compact {
+  .tab-nav__content {
+    &--link {
+      @include css-map($tabs-link, 'compact');
+    }
+  }
+}
+
 .tab-nav--rounded {
   .tab-nav__item:first-child .tab-nav__content {
     border-top-left-radius: $default-border-radius;
