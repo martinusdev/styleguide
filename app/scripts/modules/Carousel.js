@@ -1,4 +1,4 @@
-import Swiper from 'swiper';
+import SwiperCore, { Swiper, Navigation, Pagination } from 'swiper/core';
 import { doToggle } from './Toggle';
 
 import { nodeListToArray } from './Utils';
@@ -16,25 +16,25 @@ const getTotalNumberOfSlides = container => container.querySelectorAll('.swiper-
   .length;
 
 const defaultConfig = {
-  paginationClickable: true,
+  pagination: {
+    clickable: true,
+  },
   a11y: true,
   loop: false,
   keyboardControl: true,
   preloadImages: false,
-  lazyLoading: true,
-  lazyLoadingInPrevNext: true,
-  lazyLoadingOnTransitionStart: true,
-  buttonDisabledClass: 'is-disabled',
-  onInit: swiper => {
-    swiper.container[0].classList.add('is-initialized');
+  navigation: {
+    nextEl: '.carousel__btn--next',
+    prevEl: '.carousel__btn--prev',
   },
-  lazyIframeSelector: 'iframe[src]',
   watchSlidesVisibility: true,
   spaceBetween: 40,
 };
 
 export default class SwiperSlider {
   constructor(selector = '.swiper-container', config) {
+    SwiperCore.use([Navigation, Pagination]);
+
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
@@ -42,7 +42,7 @@ export default class SwiperSlider {
     this.instances = [];
 
     this._disableLazyIframes = this._disableLazyIframes.bind(this);
-    this._handleCarouselFunSlideChange = this._handleCarouselFunSlideChange.bind(
+    this._handleCarouselFanSlideChange = this._handleCarouselFanSlideChange.bind(
       this,
     );
 
@@ -73,25 +73,26 @@ export default class SwiperSlider {
           BREAKPOINTS,
         )
         && swiper.querySelectorAll('.swiper-slide').length
-        && !swiper.classList.contains('is-initialized')
+        && !swiper.classList.contains('swiper-container-initialized')
       ) {
         const swiperInstance = new Swiper(swiper, swiperConfig);
-        swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);
+        swiperInstance.update();
+        swiperInstance.on('slideChangeTransitionEnd', this._disableLazyIframes);
 
-        swiperInstance.on('onTransitionEnd', this._handleSlideChange);
+        swiperInstance.on('transitionEnd', this._handleSlideChange);
         this._handleSlideChange(swiperInstance);
 
         if (
-          swiperInstance.container[0].parentNode.classList.contains(
+          swiperInstance.el.parentNode.classList.contains(
             'carousel--fan',
           )
         ) {
           swiperInstance.on(
-            'onSlideChangeStart',
-            this._handleCarouselFunSlideChange,
+            'slideChangeTransitionStart',
+            this._handleCarouselFanSlideChange,
           );
 
-          this._handleCarouselFunSlideChange(swiperInstance);
+          this._handleCarouselFanSlideChange(swiperInstance);
         }
 
         this.instances.push(swiperInstance);
@@ -115,12 +116,16 @@ export default class SwiperSlider {
   }
 
   _handleSlideChange(instance) { // eslint-disable-line
+    if (instance.slides.length === 0) {
+      return;
+    }
+
     const activeElement = instance.slides[instance.activeIndex];
 
     const extraContent = activeElement.querySelector(
       '[data-swipper-extra-content-source]',
     );
-    const extraContentTarget = instance.container[0].querySelector(
+    const extraContentTarget = instance.el.querySelector(
       '[data-swipper-extra-content-target]',
     );
 
@@ -135,8 +140,8 @@ export default class SwiperSlider {
     }
   }
 
-  _handleCarouselFunSlideChange(instance) { // eslint-disable-line
-    const container = instance.container[0];
+  _handleCarouselFanSlideChange(instance) { // eslint-disable-line
+    const container = instance.el;
     const numberOfSlides = getTotalNumberOfSlides(container);
     const numberOfActiveSlides = Math.min(instance.loopedSlides, 5);
     const activeIndex = instance.realIndex;
