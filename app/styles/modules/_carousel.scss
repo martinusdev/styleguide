@@ -76,7 +76,7 @@
 .carousel {
   margin-bottom: _get-space('v', 'large');
 
-  .is-initialized .swiper-slide:not(.swiper-slide-visible) {
+  .swiper-container-initialized .swiper-slide:not(.swiper-slide-visible) {
     pointer-events: none;
   }
 
@@ -92,7 +92,7 @@
     &--next { right: 40px; }
     &--prev { left: 40px; }
 
-    .swiper-container:not(.is-initialized) & {
+    .swiper-container:not(.swiper-container-initialized) & {
       opacity: 0;
     }
 
@@ -128,11 +128,11 @@
   &__product-detail {
     width: 120px;
 
-    .swiper-container:not(.is-initialized) & {
+    .swiper-container:not(.swiper-container-initialized) & {
       margin-right: 20px;
     }
 
-    .swpier-container--fullwidth:not(.is-initialized) & {
+    .swpier-container--fullwidth:not(.swiper-container-initialized) & {
       @include breakpoint(l) {
         margin-right: 40px;
       }
@@ -154,7 +154,7 @@
 
   &__recently-viewed {
     width: 50px;
-    .swiper-container:not(.is-initialized) & {
+    .swiper-container:not(.swiper-container-initialized) & {
       margin-right: 10px;
     }
   }
@@ -162,7 +162,7 @@
   &__banner {
     width: 300px;
 
-    .swiper-container:not(.is-initialized) & {
+    .swiper-container:not(.swiper-container-initialized) & {
       margin-right: 20px;
     }
 
@@ -332,7 +332,7 @@
 
   border-radius: $default-border-radius;
 
-  .swiper-container:not(.is-initialized) & {
+  .swiper-container:not(.swiper-container-initialized) & {
     margin-right: 20px;
   }
 
