@@ -95,14 +95,18 @@ const storeListChoice = (
   },
   config,
 ) => {
-  const status = customProperties && customProperties.status
-    ? `status status--${customProperties.status}`
-    : '';
+  let statusClass = '';
+
+  if (customProperties && customProperties.status) {
+    statusClass = `status status--${customProperties.status} text-color-${customProperties.status}`;
+  }
+
+  const statusText = customProperties.statusText ? customProperties.statusText : '';
 
   return `
-  <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
-    <span class="text-vam ${status} text-color-grey text-regular text-ellipsis">${label}</span>
-    ${customProperties && customProperties.availability ? `<span class="text-vam text-color-grey">(${customProperties.availability})</span>` : ''}
+  <div style="max-width: 270px;" class="align-items-middle align-items-justify ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
+    <span class="text-color-grey text-left text-regular" style="max-width: 170px;">${label}</span>
+    <span class="${statusClass} text-right text-small">${statusText}</span>
   </div>
   `;
 };
@@ -111,10 +115,6 @@ const storeListChoices = config => `
   <div class="${config.classNames.list}" dir="ltr" role="listbox" style="min-width:270px; max-height: none;">
   </div>
 `;
-
-const storeListDropdown = config => config.store_list_header
-  .replace('config.classNames.list', config.classNames.list)
-  .replace('config.classNames.listDropdown', config.classNames.listDropdown);
 
 const imageListTemplate = ({ label, customProperties }) => `
   <div class="bar mb-none">
@@ -189,7 +189,6 @@ function getTemplates(template, select, config) {
       item: (classNames, data) => template(storeListTemplate(data)),
       choice: (classNames, data) => template(storeListChoice(data, config)),
       choiceList: () => template(storeListChoices(config)),
-      dropdown: () => template(storeListDropdown(config)),
     };
   }
 
@@ -273,19 +272,19 @@ export default class Select {
     const dropdown = e.target.parentNode.nextSibling;
     const container = e.target.parentNode.parentNode;
 
-    const _trnasitionEndHandler = evt => {
+    const _transitionEndHandler = evt => {
       if (evt.propertyName === 'visibility') {
         container.classList.remove('is-flipped');
         container.classList.remove('is-flipped-helper');
 
-        dropdown.removeEventListener('transitionend', _trnasitionEndHandler);
+        dropdown.removeEventListener('transitionend', _transitionEndHandler);
       }
     };
 
     if (container.classList.contains('is-flipped-helper')) {
       container.classList.add('is-flipped');
 
-      dropdown.addEventListener('transitionend', _trnasitionEndHandler);
+      dropdown.addEventListener('transitionend', _transitionEndHandler);
     }
   }
 
