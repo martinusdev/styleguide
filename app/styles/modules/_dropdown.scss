@@ -68,7 +68,8 @@
 @mixin dropdown-item (
   $dropdown-menu-item: $dropdown-menu-item
 ) {
-  display: block;
+  display: flex;
+  flex-wrap: nowrap;
   white-space: normal;
 
   @each $prop, $value in map-get($dropdown-menu-item, 'default') {
