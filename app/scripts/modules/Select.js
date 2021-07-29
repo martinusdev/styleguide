@@ -104,8 +104,8 @@ const storeListChoice = (
   const statusText = customProperties.statusText ? customProperties.statusText : '';
 
   return `
-  <div style="max-width: 270px;" class="align-items-middle align-items-justify ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
-    <span class="text-color-grey text-left text-regular" style="max-width: 170px;">${label}</span>
+  <div style="max-width: 100%;" class="align-items-middle align-items-justify ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
+    <span class="text-color-grey text-left text-regular" style="max-width: 66%;">${label}</span>
     <span class="${statusClass} text-right text-small">${statusText}</span>
   </div>
   `;
