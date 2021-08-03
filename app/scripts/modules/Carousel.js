@@ -23,10 +23,6 @@ const defaultConfig = {
   loop: false,
   keyboardControl: true,
   preloadImages: false,
-  navigation: {
-    nextEl: '.carousel__btn--next',
-    prevEl: '.carousel__btn--prev',
-  },
   watchSlidesVisibility: true,
   spaceBetween: 40,
 };
@@ -47,6 +43,11 @@ export default class SwiperSlider {
     );
 
     this._init();
+
+    this.instances.forEach(instance => {
+      instance.navigation.update();
+    });
+
     return this;
   }
 
@@ -55,7 +56,7 @@ export default class SwiperSlider {
       document.querySelectorAll(this.selector),
     );
 
-    return this.swipers.map(swiper => {
+    return this.swipers.map(/** Element */ swiper => {
       const breakpointUp = swiper.getAttribute('data-swiper-up');
       const breakpointDown = swiper.getAttribute('data-swiper-down');
       const options = swiper.getAttribute('data-swiper-options');
@@ -75,6 +76,11 @@ export default class SwiperSlider {
         && swiper.querySelectorAll('.swiper-slide').length
         && !swiper.classList.contains('swiper-container-initialized')
       ) {
+        swiperConfig.navigation = {
+          nextEl: swiper.querySelector('.carousel__btn--next'),
+          prevEl: swiper.querySelector('.carousel__btn--prev'),
+        };
+
         const swiperInstance = new Swiper(swiper, swiperConfig);
         swiperInstance.update();
         swiperInstance.on('slideChangeTransitionEnd', this._disableLazyIframes);
@@ -183,7 +189,9 @@ export default class SwiperSlider {
   }
 
   update() {
-    this.instances.forEach(instance => instance.update());
+    this.instances.forEach(instance => {
+      instance.update();
+    });
     this._init();
   }
 
