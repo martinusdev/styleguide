@@ -1,5 +1,6 @@
-import SwiperCore, { Swiper, Navigation, Pagination } from 'swiper/core';
-import { doToggle } from './Toggle';
+import SwiperCore, {
+  Swiper, Navigation, Pagination, Lazy
+} from 'swiper/core';
 
 import { nodeListToArray } from './Utils';
 import { BREAKPOINTS } from './Const';
@@ -23,13 +24,14 @@ const defaultConfig = {
   loop: false,
   keyboardControl: true,
   preloadImages: false,
+  lazy: true,
   watchSlidesVisibility: true,
   spaceBetween: 40,
 };
 
 export default class SwiperSlider {
   constructor(selector = '.swiper-container', config) {
-    SwiperCore.use([Navigation, Pagination]);
+    SwiperCore.use([Navigation, Pagination, Lazy]);
 
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
@@ -37,7 +39,6 @@ export default class SwiperSlider {
     this.swipers = [];
     this.instances = [];
 
-    this._disableLazyIframes = this._disableLazyIframes.bind(this);
     this._handleCarouselFanSlideChange = this._handleCarouselFanSlideChange.bind(
       this,
     );
@@ -106,19 +107,6 @@ export default class SwiperSlider {
 
       return swiper;
     });
-  }
-
-  _disableLazyIframes(swiper) {
-    for (let i = 0, l = swiper.slides.length; i < l; i++) {
-      const lazyIframe = swiper.slides[i].querySelector(
-        this.config.lazyIframeSelector,
-      );
-      if (lazyIframe) {
-        if (lazyIframe.hasAttribute('src')) {
-          doToggle({ target: lazyIframe });
-        }
-      }
-    }
   }
 
   _handleSlideChange(instance) { // eslint-disable-line

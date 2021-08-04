@@ -68,7 +68,7 @@ mixin booksCarouselRecommended(props = {})
             +product().mb-small.text-left
               if item.ad && ads
                 .h5.mb-tiny reklama
-              +productCover({cover: item.cover, collection: i < 2 && collections})
+              +productCover({lazy: true, cover: item.cover, collection: i < 2 && collections})
               +productTitle({
                 collection: i < 2 && collections,
                 title: i < 2 && collections ? `Kolekcia ${i + 1}` : item.title, author: i < 2 && collections ? false : item.author, ad: item.ad && ads })
