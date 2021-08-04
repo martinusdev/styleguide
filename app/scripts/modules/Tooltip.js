@@ -45,6 +45,7 @@ export default class Tooltip {
       const element = document.querySelector(target.getAttribute('data-html'));
       if (element) {
         targetConfig.content = element.innerHTML;
+        targetConfig.allowHTML = true;
       }
 
       return tippy(target, { ...this.config, ...targetConfig });
