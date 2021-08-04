@@ -16,6 +16,7 @@ mixin productCover(props = {})
       collection = false,
       badge,
       minHeight = false,
+      lazy = false,
     } = props;
 
     const tag = href ? 'a': 'div';
@@ -30,10 +31,17 @@ mixin productCover(props = {})
       if collection
         each i, index in Array(5)
           .thumbnail__img-wrap(style=(index==0 && minHeight != false) ? `min-height: ${minHeight}; box-shadow: none;` : '')
-            img(src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).img
+            if lazy
+              img(data-src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).img.swiper-lazy
+            else
+              img(src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).img
+
       else
         .thumbnail__img-wrap
-          img(src=`${assetsPrefix}${cover}`).img
+          if lazy
+            img(data-src=`${assetsPrefix}${cover}`).img.swiper-lazy
+          else
+            img(src=`${assetsPrefix}${cover}`).img
 
       if discount || rating
         .thumbnail__info
