@@ -117,8 +117,8 @@
 }
 
 @mixin column-size( $width: $grid-base ) {
-  flex-basis: math.div(100%, $grid-base * $width);
-  max-width: math.div(100%, $grid-base * $width);
+  flex-basis: math.div(100%, $grid-base) * $width;
+  max-width: math.div(100%, $grid-base) * $width;
 }
 
 @mixin column-fill {
@@ -135,7 +135,7 @@
   *[class*='col\-\-'],
   .col {
     flex: 1 0 100%;
-    min-width: 0%;
+    min-width: 0;
     max-width: 100%;
 
     @include column();
@@ -172,7 +172,7 @@
 
 // offsets
 @mixin column-offset($width) {
-  margin-left: math.div(100%, $grid-base * $width);
+  margin-left: math.div(100%, $grid-base) * $width;
 }
 
 @mixin column-offset-classes() {
