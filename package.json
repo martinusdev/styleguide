@@ -19,7 +19,7 @@
     "lodash": "^4.17.21",
     "pre-commit": "~1.2.2",
     "stylelint": "~13.13.1",
-    "stylelint-config-light": "~2.0.2"
+    "stylelint-config-sass-guidelines": "~8.0.0"
   },
   "engines": {
     "node": ">=6.9.0"
@@ -54,7 +54,7 @@
     "lg-thumbnail.js": "~1.2.0",
     "lg-video.js": "~1.3.0",
     "lg-zoom.js": "~1.3.0",
-    "light-scripts": "~3.1.0",
+    "light-scripts": "github:martinusdev/light-scripts#feature/update-dependencies-2",
     "lightgallery.js": "^1.4.0",
     "mutationobserver-shim": "^0.3.7",
     "normalize.css": "~8.0.1",
@@ -115,12 +115,33 @@
     }
   },
   "stylelint": {
-    "extends": "stylelint-config-light",
+    "extends": "stylelint-config-sass-guidelines",
     "ignoreFiles": [
       "app/styles/vendors/**/*.scss"
     ],
     "rules": {
-      "max-nesting-depth": null
+      "color-named": [
+        "never",
+        {
+          "ignore": [
+            "inside-function"
+          ]
+        }
+      ],
+      "max-nesting-depth": null,
+      "order/properties-alphabetical-order": null,
+      "order/order": null,
+      "scss/at-function-pattern": "^[_a-z]+([a-z0-9-]+[a-z0-9]+)?$",
+      "selector-class-pattern": null,
+      "selector-no-qualifying-type": [
+        true,
+        {
+          "ignore": [
+            "attribute",
+            "class"
+          ]
+        }
+      ]
     }
   }
 }

@@ -10,6 +10,8 @@
 // ----------------------------
 // ICONS
 
+@use 'sass:math';
+
 .icon {
   fill: currentColor;
   width: 1em;
@@ -19,7 +21,7 @@
 }
 
 @each $variant, $size in $icon-sizes {
-  .icon--#{$variant} {
+  .icon--#{'' + $variant} {
     width: $size;
     height: $size;
   }
@@ -128,7 +130,7 @@ img {
 
     @each $name, $size in $thumbnail-sizes {
       .thumbnail#{_get-variant-name($name)} & {
-        max-height: _get-rem($size * (19/12));
+        max-height: _get-rem($size * math.div(19, 12));
       }
     }
 
@@ -324,7 +326,7 @@ $thumbnail-badge: (
     &#{_get-variant-name($name)} {
       width: $size;
       height: $size;
-      padding: $size / 10;
+      padding: math.div($size, 10);
     }
   }
 

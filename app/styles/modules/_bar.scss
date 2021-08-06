@@ -3,7 +3,6 @@
   flex-flow: row;
   flex-wrap: wrap;
   align-items: center;
-
   margin-top: -(_get-space('h', 'small'));
   margin-bottom: _get-space('h');
 
@@ -16,7 +15,7 @@
   $width: 0
 ) {
   flex: 0 0 if($width == 0, auto, $width);
-  min-width: 0%;
+  min-width: 0;
   align-items: center;
   margin-top: _get-space('h', 'small');
 
@@ -96,31 +95,31 @@
     &__break {
       @include bar-break;
     }
-  }
 
-  // responsive bar spacing
-  @each $size, $props in $bar-spacing {
-    &#{_get-variant-name($size, '.bar--')} {
-      .bar__item {
-        @each $breakpoint, $space in _get-breakpoint-map($props) {
-          @include breakpoint($breakpoint) { // stylelint-disable
-            margin-right: $space;
+    // responsive bar spacing
+    @each $size, $props in $bar-spacing {
+      &#{_get-variant-name($size, '--')} {
+        .bar__item {
+          @each $breakpoint, $space in _get-breakpoint-map($props) {
+            @include breakpoint($breakpoint) { // stylelint-disable
+              margin-right: $space;
 
-            &:last-child {
-              margin-right: 0;
+              &:last-child {
+                margin-right: 0;
+              }
             }
           }
         }
       }
     }
-  }
 
-  @each $size, $props in $bar--vertical-spacing {
-    &#{_get-variant-name($size, '.bar--vertical-')} {
-      .bar__item {
-        @each $breakpoint, $space in _get-breakpoint-map($props) {
-          @include breakpoint($breakpoint) {
-            margin-top: $space;
+    @each $size, $props in $bar--vertical-spacing {
+      &#{_get-variant-name($size, '--vertical-')} {
+        .bar__item {
+          @each $breakpoint, $space in _get-breakpoint-map($props) {
+            @include breakpoint($breakpoint) {
+              margin-top: $space;
+            }
           }
         }
       }

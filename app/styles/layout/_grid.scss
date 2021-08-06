@@ -10,6 +10,8 @@
 // ----------------------------
 // WRAPPERS
 
+@use 'sass:math';
+
 .wrapper-main {
   width: 100%;
   margin-left: auto;
@@ -38,8 +40,8 @@
 }
 
 @mixin grid-layout-item($columns) {
-  flex: 0 0 100%/$columns;
-  max-width: 100%/$columns;
+  flex: 0 0 math.div(100%, $columns);
+  max-width: math.div(100%, $columns);
 }
 
 @mixin grid-spacing($spacing: $gutters) {
@@ -115,8 +117,8 @@
 }
 
 @mixin column-size( $width: $grid-base ) {
-  flex-basis: 100% / $grid-base * $width;
-  max-width: 100% / $grid-base * $width;
+  flex-basis: math.div(100%, $grid-base * $width);
+  max-width: math.div(100%, $grid-base * $width);
 }
 
 @mixin column-fill {
@@ -170,7 +172,7 @@
 
 // offsets
 @mixin column-offset($width) {
-  margin-left: 100% / $grid-base * $width;
+  margin-left: math.div(100%, $grid-base * $width);
 }
 
 @mixin column-offset-classes() {

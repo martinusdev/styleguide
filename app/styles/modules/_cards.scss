@@ -17,6 +17,7 @@
   $clickable: map-get($_card, clickable);
   $_card: map_remove($_card, before);
   $_card: map_remove($_card, after);
+  $_card: map_remove($_card, clickable);
 
   display: flex;
   flex-flow: column;
@@ -304,7 +305,7 @@
     }
 
     @each $variant, $color in $color-presets {
-      &--material-#{$variant} {
+      &--material-#{'' + $variant} {
         &::before {
           background-color: $color;
         }

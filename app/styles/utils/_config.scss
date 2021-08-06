@@ -20,6 +20,8 @@
 // Other modules and components
 // Pages
 
+@use 'sass:math';
+
 // ----------------------------
 // BREAKPOINTS
 
@@ -215,37 +217,37 @@ $typography-overrides: (
   null: (
     '.h0' : (
       font-size: _get-rem(40px),
-      line-height: 49/42,
+      line-height: math.div(49, 42),
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
     ),
     'h1, .h1' : (
       font-size: _get-rem(22px),
-      line-height: 49/42,
+      line-height: math.div(49, 42),
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
     ),
     'h2, .h2' : (
       font-size: _get-rem(18px),
-      line-height: 31/25,
+      line-height: math.div(31, 25),
       margin-bottom: _get-space('v'),
       font-weight: $font-weight-semibold,
     ),
     'h3, .h3' : (
       font-size: _get-rem(16px),
-      line-height: 24/18,
+      line-height: math.div(24, 18),
       margin-bottom: _get-space('v'),
       font-weight: $font-weight-semibold,
     ),
     'h4, .h4' : (
       font-size: _get-rem(14px),
-      line-height: 24/18,
+      line-height: math.div(24, 18),
       margin-bottom: _get-space('v'),
       color: _color(grey, 700)
     ),
     'h5, .h5' : (
       font-size: _get-rem(12px),
-      line-height: 20/12,
+      line-height: math.div(20, 12),
       margin-bottom: _get-space('v', 'small'),
       color: _color(grey, 700),
       text-transform: uppercase,
@@ -276,12 +278,12 @@ $typography-overrides: (
 
 $text-medium: (
   font-size: $font-size-medium,
-  line-height: 20/_strip-units($font-size-medium),
+  line-height: math.div(20, _strip-units($font-size-medium)),
 );
 
 $text-small: (
   font-size: $font-size-small,
-  line-height: 20/_strip-units($font-size-small),
+  line-height: math.div(20, _strip-units($font-size-small)),
 );
 
 $links: (
@@ -354,7 +356,7 @@ $em: (
 
 $inline-list: (
   default: (
-    margin: -(_get-space('v', 'small') / 2) 0 _get-space('v'),
+    margin: -(math.div(_get-space('v', 'small'), 2)) 0 _get-space('v'),
   ),
   line: (
     margin: 0 0.5em 0 0,
@@ -478,7 +480,7 @@ $gutters: (
 );
 
 $gutters-form: (
-  default: _get-space('h', 'small') / 2,
+  default: math.div(_get-space('h', 'small'), 2),
 );
 
 // ----------------------------
@@ -1292,7 +1294,7 @@ $table: (
 
 $table-cell: (
   default: (
-    padding: _get-space('v', 'small') / 2 _get-space('h'),
+    padding: math.div(_get-space('v', 'small'), 2) _get-space('h'),
     vertical-align: middle,
     border-bottom: $table-border-w $table-border-s $table-border-c,
   ),

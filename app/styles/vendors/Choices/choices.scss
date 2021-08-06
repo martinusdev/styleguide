@@ -2,6 +2,8 @@
 =            Choices            =
 ===============================*/
 
+@use 'sass:math';
+
 $select-selector: 'choices' !default;
 
 .#{$select-selector} {
@@ -95,7 +97,7 @@ $select-selector: 'choices' !default;
     display: inline-block;
     vertical-align: baseline;
     margin-top: 0;
-    margin-right: -$select-button-offset/2;
+    margin-right: math.div(-$select-button-offset, 2);
     margin-bottom: 0;
     margin-left: $select-button-offset;
     padding-left: $select-button-offset*2;
