@@ -1,14 +1,14 @@
 // stylelint-disable
 
 // VENDORS
-@import 'vendors/custom-scrollbar/_jquery.mCustomScrollbar';
-@import 'vendors/prettify/_prettify';
+@import 'vendors/custom-scrollbar/jquery.mCustomScrollbar';
+@import 'vendors/prettify/prettify';
 
 // UTILS
-@import "utils/_mixins_functions";
-@import "utils/_variables";
-@import "utils/_config";
-@import "utils/_media";
+@import "utils/mixins_functions";
+@import "utils/variables";
+@import "utils/config";
+@import "utils/media";
 
 $breakpoints: (
   xs: 0,
@@ -1105,7 +1105,7 @@ $breakpoints: (
       padding: 15px;
       box-shadow: inset 0 0 0 1px rgba(0,0,0,0.07);
       @each $color-theme, $colors in $color-palette {
-        &[data-color-theme="#{$color-theme}"] {
+        &[data-color-theme="#{'' + $color-theme}"] {
           @each $weight in $default-color-weights {
             &[data-color-weight="#{$weight}"] {
               background: _color($color-theme, $weight);

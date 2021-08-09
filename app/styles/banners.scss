@@ -2,41 +2,41 @@
 @import './../../node_modules/normalize.css/normalize';
 
 // UTILS
-@import 'utils/_mixins_functions';
-@import 'utils/_variables';
-@import 'utils/_config';
-@import 'utils/_media';
+@import 'utils/mixins_functions';
+@import 'utils/variables';
+@import 'utils/config';
+@import 'utils/media';
 
 // BASE
-@import 'base/_globals';
-@import 'base/_typography';
+@import 'base/globals';
+@import 'base/typography';
 
 // LAYOUT
-@import 'layout/_grid';
+@import 'layout/grid';
 
 // MODULES
-@import 'modules/_bar';
+@import 'modules/bar';
 
 // TOOLS
-@import 'tools/_utilities';
+@import 'tools/utilities';
 
 // SHAME
-@import 'shame/_shame';
+@import 'shame/shame';
 
 @each $variant, $color in $color-presets {
-  .bg-#{$variant} {
+  .bg-#{'' + $variant} {
     background-color: $color;
   }
 }
 
 @each $variant, $color in $color-presets {
-  .bg-light-#{$variant} {
+  .bg-light-#{'' + $variant} {
     background-color: _color-shade($color, 400);
   }
 }
 
 @each $variant, $color in $color-presets {
-  .color-#{$variant} {
+  .color-#{'' + $variant} {
     color: $color;
   }
 }
@@ -55,7 +55,7 @@
 }
 
 @each $variant, $color in $color-presets {
-  .btn-#{$variant} {
+  .btn-#{'' + $variant} {
     color: $color;
     border-color: $color;
   }

@@ -5,6 +5,8 @@
 // -----------------
 // form globals
 
+@use 'sass:math';
+
 button,
 input,
 optgroup,
@@ -73,7 +75,7 @@ fieldset {
 .checkbox > .form-control,
 .radio > .form-control {
   width: 100%;
-  margin: $form-m/2 0 0 _get-rem(30px);
+  margin: math.div($form-m, 2) 0 0 _get-rem(30px);
 }
 
 .form--block {

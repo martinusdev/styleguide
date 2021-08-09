@@ -42,7 +42,7 @@ $pagetip-sizes: (
   }
 
   @each $variant, $size in $pagetip-sizes {
-    &--#{$variant} {
+    &--#{'' + $variant} {
       @include breakpoint('m') {
         max-width: $size;
       }

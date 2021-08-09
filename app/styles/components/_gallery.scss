@@ -20,10 +20,12 @@ $gallery-item-sizes: (
   }
 }
 
+/* stylelint-disable */
 @each $variant, $size in $gallery-item-sizes {
-  .gallery--#{$variant} {
+  .gallery--#{'' + $variant} {
     .gallery__item img {
       width: $size;
     }
   }
 }
+/* stylelint-enable */

@@ -37,14 +37,11 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    // align-items: center;
 
     @include css-map($list-item, $variant);
 
-    @if css-map($list-item, $variant, 'border-bottom') {
-      &:last-child {
-        border-bottom: 0;
-      }
+    &:last-child {
+      border-bottom: 0;
     }
 
     > *:last-child {
