@@ -54,7 +54,7 @@ export default class Modal {
 
     this.modals.forEach(modal => {
       modal.addEventListener(TOGGLE_EVT, this._onToggle);
-      modal.addEventListener('click', this._onOverlayClick);
+      modal.addEventListener('mousedown', this._onOverlayClick);
       if (modal.hasAttribute(this.config.ajaxEnabledAttr)) {
         modal.addEventListener(MODAL_AJAX_LOADED_EVT, this._onAjaxLoaded);
       }
