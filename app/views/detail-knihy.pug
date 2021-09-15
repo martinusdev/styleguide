@@ -923,17 +923,6 @@ block content
               label.text-transform-upper.text-small.text-color-grey Text recenzie
             textarea.input(rows="5", placeholder="Napíšte svoju recenziu. Recenzia musí mať aspoň 150 znakov.")
 
-          //-.mb-medium
-            .row.mb-none.align-items-middlet
-              .col--m-6
-                .form-control.form-control--input.mb-tiny(style="position: relative;")
-                  .form-label
-                    label.text-transform-upper.text-small.text-color-grey Ďalšie knihy, ktoré sa vám páčili
-                  input.input(type="text", placeholder="Začnite písať názov knihy...")
-            each item, index in books
-              if index < 3
-                .badge.mb-tiny=item.title
-
           .form-control.form-control--checkbox
             .checkbox
               input.radiocheck__input(type="checkbox", id="review-spoiler")
@@ -1242,47 +1231,6 @@ block append scripts
         };
 
         var storeListSelect = new window.myApp.Select('.store-list-select', dataStoreList);
-
-        /*var storeListSelect = new window.myApp.Select('.store-list-select', {
-          choices: [
-            {
-              value: 'ba-obchodna',
-              label: 'Bratislava, Obchodná',
-              id: 1,
-              customProperties: {
-                status: 'success',
-                availability: '5+ ks',
-              }
-            },
-            {
-              value: 'ba-cubicon',
-              label: 'Bratislava, Cubicon',
-              id: 2,
-              customProperties: {
-                status: 'success',
-                availability: '5+ ks',
-              }
-            },
-            {
-              value: 'ke-galeria',
-              label: 'Košice, OC Galéria',
-              id: 3,
-              customProperties: {
-                status: 'orange',
-                availability: '3 ks',
-              }
-            },
-            {
-              value: 'nr-centro',
-              label: 'Nitra, OC Centro',
-              id: 4,
-              customProperties: {
-                status: 'grey',
-                availability: 'vypredané',
-              }
-            },
-          ]
-        });*/
 
         storeListSelect.elements[0].setChoiceByValue('ba-cubicon');
       });
