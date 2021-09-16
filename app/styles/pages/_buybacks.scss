@@ -37,12 +37,22 @@ h3 {
 }
 
 .faq {
-  p {
+  &__answer {
     display: none;
     margin-bottom: 0;
 
     &.is-active {
       display: block;
+    }
+  }
+
+  &__question {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    span {
+      max-width: 90%;
     }
   }
 
