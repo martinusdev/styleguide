@@ -2,7 +2,53 @@
   @include breakpoint('l') {
     background-image: url('../images/content/buybacks/header.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: bottom right;
+  }
+}
+
+h3 {
+  .counter {
+    width: 24px;
+  }
+}
+
+.counter {
+  color: _color(white);
+  border-radius: 50%;
+  text-align: center;
+  display: inline-block;
+
+  &--primary {
+    background: _color(primary);
+  }
+}
+
+.carousel--buybacks {
+
+  @include breakpoint('m', down) {
+    margin-right: -1.25rem;
+    margin-left: -1.25rem;
+  }
+
+  .swiper-slide {
+    max-width: 80%;
+  }
+}
+
+.faq {
+  p {
+    display: none;
+    margin-bottom: 0;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  hr {
+    margin-top: _get-space('v');
+    margin-bottom: _get-space('v');
+
   }
 }

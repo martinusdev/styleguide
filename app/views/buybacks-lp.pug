@@ -1,10 +1,24 @@
 extends layouts/_default
 
 block opts
-  - var pageTitle = 'Knihovrátok'
+  - const pageTitle = 'Knihovrátok'
 
+  -
+    const swiperConfig = {
+      slidesPerView: "auto",
+      spaceBetween: 20,
+      centeredSlides: true,
+      breakpoints: {
+        768: {
+          slidesPerView: 3,
+          centeredSlides: false,
+          simulateTouch: false,
+          spaceBetween: 40,
+        },
+      },
+    };
 block content
-  header.buybacks-header.bg-orange
+  header.buybacks-header.bg-orange.mb-large
     .wrapper-main.pt-large.pb-large
       .row.mt-medium-l.mb-medium-l
         .col--l-6.col--xl-8.text-color-white
@@ -12,5 +26,70 @@ block content
           h1.mb-medium Vymeňte čítané knihy za nové príbehy
           p.h4.mb-medium.text-color-white Máte doma knižky, ktoré už nebudete čítať? <strong>Vymeníme vám ich za poukážku na nákup</strong> v Martinuse a ponúkneme ich ďalším čitateľom.
           a.btn.btn--primary.pl-medium.pr-medium.mb-none(href="buybacks.html") Predať knihy Martinusu
-  main
-    | Hello world.<br><br><br><br><br><br><br><br>
+  main.wrapper-main.mt-medium.mb-large
+    h2.text-center Ako to funguje?
+    .row
+      .col--m-4
+        h3
+          span.counter.counter--primary.mr-tiny 1
+          | Zaevidujte knihy, ktoré chcete predať
+        p Prihláste sa do svojho martinusáckeho účtu a v časti Moje výkupy pridajte knihy na výkup. Zistíte tu aj to, či vami vybrané tituly vykupujeme a uvidíte aj predbežnú sumu.
+      .col--m-4
+        h3
+          span.counter.counter--primary.mr-tiny 2
+          | Doručte knižky k nám
+        p Doprajte svojej sove deň voľna :-) Knižky môžete odovzdať v jednom z našich kníhkupectiev, či poslať poštou alebo Packetou na našu centrálu.
+      .col--m-4
+        h3
+          span.counter.counter--primary.mr-tiny 3
+          | Pošleme vám poukážku
+        p Po tom, čo knižní škriatkovia skontrolujú stav vašich knižiek, pošleme vám na e-mail kód darčekovej poukážky v zodpovedajúcej hodnote. Takto môžete zaplniť prázdne miesto v knižnici.
+  main.bg-secondary.mb-large
+    .text-center.wrapper-main.mt-large
+      h2 Aké knihy vykupujeme?
+      p Také, o ktoré je stále záujem a s čistým svedomím ich pošleme ďalej.<br>Najviac vykupujeme beletriu, záujem však býva aj o veľa odborných titulov.
+    .wrapper-main.pb-large
+      .carousel.carousel--buybacks
+        .swiper-container(data-swiper-options=swiperConfig)
+          .swiper-wrapper
+            .swiper-slide.text-center
+              h3
+                | Ako nové<br>
+                strong.text-size-medium.text-color-success
+                  +icon('check-circle').mr-tiny
+                  | vykupujeme
+              img(src='https://picsum.photos/400/500')
+            .swiper-slide.text-center
+              h3
+                | Mierne opotrebované<br>
+                strong.text-size-medium.text-color-success
+                  +icon('check-circle').mr-tiny
+                  | vykupujeme
+              img(src='https://picsum.photos/400/500?v=2')
+            .swiper-slide.text-center
+              h3
+                | Poškodené alebo staré<br>
+                strong.text-size-medium.text-color-error
+                  +icon('close').mr-tiny
+                  | nevykupujeme :-(
+              img(src='https://picsum.photos/400/500?v=3')
+      p.text-center
+        a.link
+          | Ako rozlíšim mierne opotrebovanú a poškodenú knihu?
+          + icon('chevron-down')
+  .main.wrapper-main.pt-large
+    h2.text-center Časté otázky
+
+    .row
+      .col--l-8.ofst--l-2
+        .faq
+          h3.mb-small.flex.is-active.align-items-justify.clickable(data-toggle='self,next', data-toggle-expand, data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-down`)
+            | Čo získam, keď knihy odo mňa odkúpite?
+            +icon('chevron-up').icon--medium
+          p(data-toggle-expand).is-active Darčekovú poukážku na ďalší nákup cez www.martinus.sk či v našich kníhkupectvách. Takto si môžete svoju knižnú poličku z času na čas osviežiť. Definitívnu hodnotu darčekovej poukážky vám e-mailom oznámia naši knižní škriatkovia do 21 dní, odkedy balík prijmeme v našom sklade v Martine alebo od odovzdania v kamennom kníhkupectve.
+          hr
+          h3.mb-small.flex.align-items-justify.clickable(data-toggle='self,next', data-toggle-expand, data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`)
+            | Môžem ponúknuť do Knihovrátka všetky knihy, ktoré mám doma?
+            +icon('chevron-down').icon--medium
+          p(data-toggle-expand) Darčekovú poukážku na ďalší nákup cez www.martinus.sk či v našich kníhkupectvách. Takto si môžete svoju knižnú poličku z času na čas osviežiť. Definitívnu hodnotu darčekovej poukážky vám e-mailom oznámia naši knižní škriatkovia do 21 dní, odkedy balík prijmeme v našom sklade v Martine alebo od odovzdania v kamennom kníhkupectve.
+          hr
