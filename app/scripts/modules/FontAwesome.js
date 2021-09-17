@@ -87,7 +87,7 @@ import {
   faMicrochip,
   faCog,
   faDatabase,
-  faWindowAlt
+  faWindowAlt, faMousePointer, faShippingFast, faGiftCard
 } from '@fortawesome/pro-light-svg-icons';
 
 import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
@@ -108,6 +108,7 @@ library.add(
   faQuestion,
   faPencilPaintbrush,
   faGift,
+  faGiftCard,
   faCoffeeTogo,
   faMusic,
   faRecordVinyl,
@@ -185,6 +186,8 @@ library.add(
   faAirFreshener,
   faClinicMedical,
   faMortarPestle,
+  faMousePointer,
+  faShippingFast,
   faHouse,
   faPlane,
   faHammer,
