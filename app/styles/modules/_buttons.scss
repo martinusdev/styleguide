@@ -325,7 +325,7 @@
 
 // Button layout classes generator
 @mixin button-layout-classes {
-  @each $breakpoint, $w in $breakpoints {
+  @each $breakpoint, $w in $grid-breakpoints {
     @include breakpoint($breakpoint) {
       .btn-layout-#{_get-variant-name($breakpoint, '-')}-horizontal {
         @include button-layout('horizontal');
@@ -473,7 +473,7 @@
     @include button-group-base;
   }
 
-  @each $breakpoint, $w in $breakpoints {
+  @each $breakpoint, $w in $grid-breakpoints {
     @include breakpoint($breakpoint) {
       .btn-group-#{_get-variant-name($breakpoint, '-')}-horizontal {
         @include button-group-layout('horizontal');

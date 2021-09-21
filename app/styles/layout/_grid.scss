@@ -66,7 +66,7 @@
     @include grid-spacing();
   }
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $grid-breakpoints {
     @include breakpoint( $breakpoint ) {
       @for $i from 1 through 4 {
         .grid-#{_get-variant-name($breakpoint, '-')}-#{$i} {
@@ -145,7 +145,7 @@
     }
   }
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $grid-breakpoints {
     @include breakpoint( $breakpoint ) {
       @for $i from 1 through $grid-base {
         .col-#{_get-variant-name($breakpoint, '-')}-#{$i} {
@@ -182,7 +182,7 @@
     margin-right: auto;
   }
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $grid-breakpoints {
     @include breakpoint($breakpoint) {
       @for $i from 0 through $grid-base {
         .ofst-#{_get-variant-name($breakpoint, '-')}-#{$i} {
@@ -204,7 +204,7 @@
 // ----------------------------
 // Grid space
 
-@each $breakpoint, $size in $breakpoints {
+@each $breakpoint, $size in $grid-breakpoints {
   @include breakpoint($breakpoint) {
     .row-#{_get-variant-name($breakpoint, '-')}-space {
       > *[class*='col\-\-'],

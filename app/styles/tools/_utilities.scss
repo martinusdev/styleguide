@@ -61,7 +61,7 @@
 .text-right { text-align: right; }
 .text-justify { text-align: justify; }
 
-@each $breakpoint, $size in $breakpoints {
+@each $breakpoint, $size in $grid-breakpoints {
   @include breakpoint( $breakpoint ) {
     .text-center#{_get-variant-name($breakpoint, '-')} { text-align: center; }
     .text-left#{_get-variant-name($breakpoint, '-')} { text-align: left; }
@@ -142,13 +142,13 @@
   }
 }
 
-@each $breakpoint, $size in $breakpoints {
+@each $breakpoint, $size in $grid-breakpoints {
   @include breakpoint($breakpoint) {
     @include spacing-reset-classes( _get-variant-name( $breakpoint ) );
   }
 }
 
-@each $breakpoint, $size in $breakpoints {
+@each $breakpoint, $size in $grid-breakpoints {
   @include breakpoint($breakpoint, down) {
     @include spacing-reset-classes( #{'--' + $breakpoint + '-down'} );
   }
@@ -197,7 +197,7 @@
 
 // Visibility utilities
 @mixin show-for($breakpoint) {
-  @if map-get($breakpoints, $breakpoint) {
+  @if map-get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint, downfrom) {
       display: none !important;
     }
@@ -207,7 +207,7 @@
 }
 
 @mixin hide-for($breakpoint) {
-  @if map-get($breakpoints, $breakpoint) {
+  @if map-get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint) {
       display: none !important;
     }
@@ -218,7 +218,7 @@
 
 @mixin show-for-only($breakpoint) {
   $lower-bound-name: $breakpoint;
-  $upper-bound-name: _map-next($breakpoints, $breakpoint, 'key');
+  $upper-bound-name: _map-next($grid-breakpoints, $breakpoint, 'key');
 
   @if $lower-bound-name {
     @include breakpoint($lower-bound-name, downfrom) {
@@ -236,7 +236,7 @@
 }
 
 @mixin hide-for-only($breakpoint) {
-  @if map-get($breakpoints, $breakpoint) {
+  @if map-get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint, only) {
       display: none !important;
     }
@@ -254,7 +254,7 @@
     visibility: hidden;
   }
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $grid-breakpoints {
     @if $breakpoint != 'xs' {
       .show-#{$breakpoint} {
         @include show-for($breakpoint);
@@ -300,7 +300,7 @@
     visibility: hidden;
   }
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $grid-breakpoints {
     @if $breakpoint != 'xs' {
       .is-consent-show-#{$breakpoint} {
         @include show-for($breakpoint);
@@ -324,7 +324,7 @@
 // ---------------------------------------------
 // 3. OTHER UTILITIES
 
-@each $breakpoint, $size in $breakpoints {
+@each $breakpoint, $size in $grid-breakpoints {
   @include breakpoint( $breakpoint ) {
     .block#{_get-variant-name($breakpoint, '-')} { display: block !important; }
     .inline-block#{_get-variant-name($breakpoint, '-')} { display: inline-block !important; }
