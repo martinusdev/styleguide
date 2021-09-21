@@ -1,0 +1,17 @@
+// stylelint-disable
+
+$utilities: () !default;
+$utilities: map-merge(
+    (
+      // scss-docs-start utils-display
+      "display": (
+        responsive: true,
+        print: true,
+        property: display,
+        class: d,
+        values: inline inline-block block grid table table-row table-cell flex inline-flex none
+      ),
+      // scss-docs-end utils-display
+    ),
+    $utilities
+);
