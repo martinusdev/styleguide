@@ -87,7 +87,7 @@ import {
   faMicrochip,
   faCog,
   faDatabase,
-  faWindowAlt, faMousePointer, faShippingFast, faGiftCard
+  faWindowAlt, faMousePointer, faShippingFast, faGiftCard, faBandAid, faClawMarks
 } from '@fortawesome/pro-light-svg-icons';
 
 import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
@@ -207,7 +207,10 @@ library.add(
   faMicrochip,
   faCog,
   faDatabase,
-  faWindowAlt
+  faWindowAlt,
+  faBandAid,
+  faClawMarks,
+  faSparkles
 );
 
 dom.watch();
