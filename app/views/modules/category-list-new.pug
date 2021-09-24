@@ -19,8 +19,8 @@ mixin itemGroup(id)
 
 mixin groupItem(name, id, publisher, xmasmode)
   .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
-      .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
+    .bar__item.bar__item--fill.mb-m-small.no-mrg-top.no-mrg-horizontal--m-down
+      .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.no-mrg
           a.text-semibold.text-medium.inline-block.link=name
           | #{' '}
@@ -39,18 +39,18 @@ mixin groupItem(name, id, publisher, xmasmode)
         .bar__item.show-m
           .badges.mb-none
             if id == 0
-              .badge.badge--green.mb-small.mb-none-m Na sklade
-              .badge.badge--blue.mb-small.mb-none-m Novinka
+              .badge.badge--green.mb-small.mb-m-none Na sklade
+              .badge.badge--blue.mb-small.mb-m-none Novinka
             else if id == 1
-              .badge.badge--green.mb-small.mb-none-m PDF
-              .badge.badge--green.mb-small.mb-none-m EPUB
-              .badge.badge--green.mb-small.mb-none-m MOBI
+              .badge.badge--green.mb-small.mb-m-none PDF
+              .badge.badge--green.mb-small.mb-m-none EPUB
+              .badge.badge--green.mb-small.mb-m-none MOBI
             else if id == 2
-              .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
+              .badge.badge--green.mb-small.mb-m-none MP3 na stiahnutie
             else if id == 3
-              .badge.badge--green.mb-small.mb-none-m MP3 na CD
-              .badge.badge--green.mb-small.mb-none-m Na sklade
-    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-none-m.no-mrg-horizontal--m-down
+              .badge.badge--green.mb-small.mb-m-none MP3 na CD
+              .badge.badge--green.mb-small.mb-m-none Na sklade
+    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-m-none.no-mrg-horizontal--m-down
       .bar.bar--small.no-mrg.bar--no-wrap
         .bar__item.no-mrg
           .badge.badge--primary -20%
@@ -59,8 +59,8 @@ mixin groupItem(name, id, publisher, xmasmode)
         .bar__item.no-mrg
           +xmas({type: 'icon', size: 'medium'}).text-space-left-tiny(class=xmasmode ? '' : 'invisible')
 
-    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-none-m
-      .bar.bar--vertical.bar--vertical-small.mb-none.mb-tiny-m
+    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-m-none
+      .bar.bar--vertical.bar--vertical-small.mb-none.mb-m-tiny
         .bar__item.show-m.no-mrg(style="max-width: 200px;")
           if id == 1
             p.mb-tiny.text-color-grey-dark.text-medium.text-center Na sklade, objednávajte#{' '}
@@ -148,7 +148,7 @@ section.section.section--toolbar.no-pad.hide-l.bg-default(data-sticky,
 section.section
   .wrapper-main
     .row
-      #mobile-reduction.col--l-3.mobile-wrapper.mb-medium-l(data-toggle-lock)
+      #mobile-reduction.col--l-3.mobile-wrapper.mb-l-medium(data-toggle-lock)
         .mobile-wrapper__header
           .mobile-wrapper__header-title Zúženie výberu
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
@@ -178,7 +178,7 @@ section.section
         .flex.mb-tiny.align-items-middle
           .text-size-small.text-transform-upper.text-color-grey.inline-block-m.block.mr-medium Použité filtre
           a(href="#").link.text-size-medium Zrušiť filtre
-        .row.pl-medium-m
+        .row.pl-m-medium
           .row.overflow-scroll-x
             .col.pl-medium
               .badges.flex-nowrap
@@ -200,7 +200,7 @@ section.section
           .card.card--well
             .card__content
               .row
-                .col--m-4.mb-medium.mb-none-m
+                .col--m-4.mb-medium.mb-m-none
                   .mb-medium
                     h2.h5 vydavatelia
                     ul.list--unstyled
@@ -218,7 +218,7 @@ section.section
                           .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item.bar__item--fill.line-small
                           a.link Moje fantasy
-                .col--m-4.mb-medium.mb-none-m
+                .col--m-4.mb-medium.mb-m-none
                   h2.h5 kategórie
                   ul.list--unstyled.mb-small
                     for i in [1, 2]
@@ -290,7 +290,7 @@ section.section
         if carousel
           h2.mb-large Najobľúbenejšie tituly a kolekcie
           +booksCarouselRecommended().carousel--fade-inside.carousel--fade-inside-white
-        #mobile-order.mobile-wrapper.mb-medium-l(data-toggle-lock).hide-l
+        #mobile-order.mobile-wrapper.mb-l-medium(data-toggle-lock).hide-l
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
             .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-order")
@@ -351,7 +351,7 @@ section.section
                       collection: true,
                       })
                 .col--fill
-                  .row.mb-medium.mb-none-m
+                  .row.mb-medium.mb-m-none
 
                     .col--s-shrink.col--3.no-pad-right.hide-m
                       +product
@@ -363,7 +363,7 @@ section.section
                           })
 
                     .col--fill
-                      .mb-small-m
+                      .mb-m-small
                         h2.h3.mb-tiny
                           a.link.link--product(href="detail-knihy.html") #{item.title}
                           .badge EN
@@ -414,7 +414,7 @@ section.section
                             span.text-color-grey.show-m v TOP 100
 
                     .col--s-fill.col--9
-                      .mb-small-m
+                      .mb-m-small
                         h2.h3.mb-tiny
                           a.link.link--product(href="detail-knihy.html") #{item.title}
                             span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov

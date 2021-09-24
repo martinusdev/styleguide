@@ -59,8 +59,8 @@ mixin itemGroup(id)
 
 mixin groupItem(name, id, details, inline)
   .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
-      .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
+    .bar__item.bar__item--fill.mb-m-small.no-mrg-top.no-mrg-horizontal--m-down
+      .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.no-mrg
           a.text-semibold.text-medium.inline-block.link=name
           | #{' '}
@@ -78,17 +78,17 @@ mixin groupItem(name, id, details, inline)
               span.text-color-success Na sklade
         .bar__item(class=inline ? 'show-m' : '')
             if id == 0
-              .badge.badge--green.mb-small.mb-none-m Na sklade
-              .badge.badge--blue.mb-small.mb-none-m Novinka
+              .badge.badge--green.mb-small.mb-m-none Na sklade
+              .badge.badge--blue.mb-small.mb-m-none Novinka
             else if id == 1
-              .badge.badge--green.mb-small.mb-none-m PDF
-              .badge.badge--green.mb-small.mb-none-m EPUB
-              .badge.badge--green.mb-small.mb-none-m MOBI
+              .badge.badge--green.mb-small.mb-m-none PDF
+              .badge.badge--green.mb-small.mb-m-none EPUB
+              .badge.badge--green.mb-small.mb-m-none MOBI
             else if id == 2
-              .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
+              .badge.badge--green.mb-small.mb-m-none MP3 na stiahnutie
             else if id == 3
-              .badge.badge--green.mb-small.mb-none-m MP3 na CD
-              .badge.badge--green.mb-small.mb-none-m Na sklade
+              .badge.badge--green.mb-small.mb-m-none MP3 na CD
+              .badge.badge--green.mb-small.mb-m-none Na sklade
     .bar__item.bar__item--shrinkable.no-mrg-top.mb-none.no-mrg-horizontal--m-down
       .bar.bar--small.no-mrg.bar--no-wrap
         .bar__item.no-mrg
@@ -102,8 +102,8 @@ mixin groupItem(name, id, details, inline)
 
 mixin groupItem2(name, id, details, inline)
   .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
-      .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
+    .bar__item.bar__item--fill.mb-m-small.no-mrg-top.no-mrg-horizontal--m-down
+      .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.no-mrg
           a.text-semibold.text-medium.inline-block.link=name
           | #{' '}
@@ -121,26 +121,26 @@ mixin groupItem2(name, id, details, inline)
               span.text-color-success Na sklade
         .bar__item(class=inline ? 'show-m' : '')
           if id == 0
-            .badge.badge--green.mb-small.mb-none-m Na sklade
-            .badge.badge--blue.mb-small.mb-none-m Novinka
+            .badge.badge--green.mb-small.mb-m-none Na sklade
+            .badge.badge--blue.mb-small.mb-m-none Novinka
           else if id == 1
-            .badge.badge--green.mb-small.mb-none-m PDF
-            .badge.badge--green.mb-small.mb-none-m EPUB
-            .badge.badge--green.mb-small.mb-none-m MOBI
+            .badge.badge--green.mb-small.mb-m-none PDF
+            .badge.badge--green.mb-small.mb-m-none EPUB
+            .badge.badge--green.mb-small.mb-m-none MOBI
           else if id == 2
-            .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
+            .badge.badge--green.mb-small.mb-m-none MP3 na stiahnutie
           else if id == 3
-            .badge.badge--green.mb-small.mb-none-m MP3 na CD
-            .badge.badge--green.mb-small.mb-none-m Na sklade
+            .badge.badge--green.mb-small.mb-m-none MP3 na CD
+            .badge.badge--green.mb-small.mb-m-none Na sklade
           else if id == 4
-            .badge.mb-small.mb-none-m Bazár
-            .badge.badge--green.mb-small.mb-none-m Ako nová
+            .badge.mb-small.mb-m-none Bazár
+            .badge.badge--green.mb-small.mb-m-none Ako nová
           else if id == 5
-            .badge.mb-small.mb-none-m Bazár
-            .badge.badge--yellow.mb-small.mb-none-m Mierne opotrebená
+            .badge.mb-small.mb-m-none Bazár
+            .badge.badge--yellow.mb-small.mb-m-none Mierne opotrebená
           else if id == 6
-            .badge.mb-small.mb-none-m Bazár
-            .badge.badge--primary.mb-small.mb-none-m Poškodená
+            .badge.mb-small.mb-m-none Bazár
+            .badge.badge--primary.mb-small.mb-m-none Poškodená
     .bar__item.bar__item--shrinkable.no-mrg-top.mb-none.no-mrg-horizontal--m-down
       .bar.bar--small.no-mrg.bar--no-wrap
         .bar__item.no-mrg
@@ -314,7 +314,7 @@ block content
 
             h1.product-detail__title.mb-small Základy rybolovu pro kluky a holky
             h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
-            ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-large-m
+            ul.list-inline.list-inline--delimited.product-detail__author.mb-medium.mb-m-large
                 li
                   a.link(href="#", data-tooltip, data-html="#author-tooltip", data-tippy-theme="light") Frank Weissert
                 li
@@ -433,7 +433,7 @@ block content
 
             include ./modules/card-cart
 
-            .social-buttons.text-center.mb-medium.mb-none-l
+            .social-buttons.text-center.mb-medium.mb-l-none
               | <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
               | <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -846,7 +846,7 @@ block content
                 article.card.card--well.mb-large
                   .card__content
                     .row
-                      .col--l-6.mb-medium.mb-none-l
+                      .col--l-6.mb-medium.mb-l-none
                         header.review__header
                           .bar
                             .review__header-avatar.bar__item
@@ -1163,13 +1163,13 @@ block modals
         .bar.bar--vertical
           .bar__item.bar__item--fill.no-mrg-bottom
 
-            article.card.card--success.mb-small.mb-medium-m
+            article.card.card--success.mb-small.mb-m-medium
               .card__content
                 .bar.border-bottom-grey.no-mrg--m-down
                   .bar__item.bar__item--fill.no-mrg--m-down
-                    h3.text-color-success.mb-medium.text-semibold.mb-none.mb-small-m Zrýchlený nákup
+                    h3.text-color-success.mb-medium.text-semibold.mb-none.mb-m-small Zrýchlený nákup
                   .bar__item.no-mrg--m-down
-                    button.btn.btn--clean.mb-none.mb-small-m(data-toggle="#quick-checkout")
+                    button.btn.btn--clean.mb-none.mb-m-small(data-toggle="#quick-checkout")
                       +icon('close').icon--medium.icon--right
 
                 .card.card--notice
@@ -1182,7 +1182,7 @@ block modals
                       label.radiocheck__label.text-semibold(for='quick-checkout-remember')
                         | Zapamätať nastavenie pre ďalšie zrýchlené nákupy
 
-                .mb-small.mb-none-m
+                .mb-small.mb-m-none
                 +productHorizontal({
                   trash: true,
                   rating: false,

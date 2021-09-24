@@ -11,8 +11,8 @@ block opts
 
 mixin groupItem2(name, id, details, inline, cena)
   .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-small-m.no-mrg-top.no-mrg-horizontal--m-down
-      .bar.bar--vertical.bar--vertical-small.mb-small.mb-none-m
+    .bar__item.bar__item--fill.mb-m-small.no-mrg-top.no-mrg-horizontal--m-down
+      .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.no-mrg
           a.text-semibold.text-medium.inline-block.link=name
           | #{' '}
@@ -30,23 +30,23 @@ mixin groupItem2(name, id, details, inline, cena)
               span.text-color-success Na sklade
         .bar__item(class=inline ? 'show-m' : '')
           if id == 0
-            .badge.badge--green.mb-small.mb-none-m Na sklade
-            .badge.badge--blue.mb-small.mb-none-m Novinka
+            .badge.badge--green.mb-small.mb-m-none Na sklade
+            .badge.badge--blue.mb-small.mb-m-none Novinka
           else if id == 1
-            .badge.badge--green.mb-small.mb-none-m PDF
-            .badge.badge--green.mb-small.mb-none-m EPUB
-            .badge.badge--green.mb-small.mb-none-m MOBI
+            .badge.badge--green.mb-small.mb-m-none PDF
+            .badge.badge--green.mb-small.mb-m-none EPUB
+            .badge.badge--green.mb-small.mb-m-none MOBI
           else if id == 2
-            .badge.badge--green.mb-small.mb-none-m MP3 na stiahnutie
+            .badge.badge--green.mb-small.mb-m-none MP3 na stiahnutie
           else if id == 3
-            .badge.badge--green.mb-small.mb-none-m MP3 na CD
-            .badge.badge--green.mb-small.mb-none-m Na sklade
+            .badge.badge--green.mb-small.mb-m-none MP3 na CD
+            .badge.badge--green.mb-small.mb-m-none Na sklade
           else if id == 4
-            span.badge.badge--green.mb-small.mb-none-m Ako nová
+            span.badge.badge--green.mb-small.mb-m-none Ako nová
           else if id == 5
-            .badge.badge--yellow.mb-small.mb-none-m Mierne opotrebená
+            .badge.badge--yellow.mb-small.mb-m-none Mierne opotrebená
           else if id == 6
-            .badge.badge--primary.mb-small.mb-none-m Poškodená
+            .badge.badge--primary.mb-small.mb-m-none Poškodená
     .bar__item.bar__item--shrinkable.no-mrg-top.mb-none.no-mrg-horizontal--m-down
       .bar.bar--small.no-mrg.bar--no-wrap
         .bar__item.no-mrg
