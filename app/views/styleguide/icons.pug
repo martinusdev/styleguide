@@ -205,9 +205,9 @@ block append content
       +demo-example
         ul.l-icons
           each icon in icons
-            each iconStyles, iconName in icon
-              each style in iconStyles
-                case style
+            each iconNames, iconStyle in icon
+              each iconName in iconNames
+                case iconStyle
                   when 'duotone'
                     - prefix = 'fad';
                   when 'regular'
