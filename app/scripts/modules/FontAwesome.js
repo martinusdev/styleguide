@@ -87,7 +87,17 @@ import {
   faMicrochip,
   faCog,
   faDatabase,
-  faWindowAlt, faMousePointer, faShippingFast, faGiftCard, faBandAid, faClawMarks
+  faWindowAlt, faMousePointer, faShippingFast, faGiftCard, faBandAid, faClawMarks,
+  faMap,
+  faMapMarkerAlt,
+  faMapSigns,
+  faImage,
+  faStore,
+  faBoxAlt,
+  faMailbox,
+  faGlobeAsia,
+  faGlobeAmericas,
+  faGlobeAfrica
 } from '@fortawesome/pro-light-svg-icons';
 
 import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
@@ -210,7 +220,17 @@ library.add(
   faWindowAlt,
   faBandAid,
   faClawMarks,
-  faSparkles
+  faSparkles,
+  faMap,
+  faMapMarkerAlt,
+  faMapSigns,
+  faImage,
+  faStore,
+  faBoxAlt,
+  faMailbox,
+  faGlobeAsia,
+  faGlobeAmericas,
+  faGlobeAfrica
 );
 
 dom.watch();
