@@ -125,10 +125,10 @@ mixin megaMenuContent(props = {})
                     +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
                   =link.title
       .mega-menu__categories
-        .row.no-mrg-horizontal.mb-medium-m
+        .row.no-mrg-horizontal.mb-m-medium
           each category in categories
             .col.col--m-4.col--12.mega-menu__categories__category
-              a(href="#").flex.align-items-middle.pt-small.pb-small.pt-medium-m.pb-none-m.link.link--black.mega-menu__categories__title.mb-none
+              a(href="#").flex.align-items-middle.pt-small.pb-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none
                 .mr-tiny.mega-menu__categories__icon
                   if category.icon.startsWith('fa-')
                     i.text-color-theme.fa-fw.fal(class= category.icon)
@@ -144,7 +144,7 @@ mixin megaMenuContent(props = {})
                     a.block.mt-tiny.link.link--grey(href='#')
                       | + Ďalšie kategórie
         if recommended
-          .row.no-mrg-horizontal.mt-large-l.mb-medium
+          .row.no-mrg-horizontal.mt-l-large.mb-medium
             each group, i in recommended
               .col.col--l-6.mt-medium
                 .block.mb-tiny.text-transform-upper.text-size-small.text-nospace= group.title
@@ -153,7 +153,7 @@ mixin megaMenuContent(props = {})
                     li
                       a.link.link--black(href='#')= item
       if showAd
-        .mega-menu__banner.mb-medium.mb-none-l
+        .mega-menu__banner.mb-medium.mb-l-none
           a(href="#")
             img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
 
