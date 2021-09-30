@@ -65,9 +65,9 @@ block content
                   a(href="#").btn.btn--carousel.text-transform-none.text-size-medium.flex.align-items-middle.text-left.pt-small.pb-small
                     if category.icon
                       if category.icon.startsWith('fa-')
-                        i.text-color-theme.mr-tiny.fa-fw.fa-lg.fal(class= category.icon)
+                        i.text-color-primary.mr-tiny.fa-fw.fa-lg.fal(class= category.icon)
                       else
-                        +icon(category.icon).mr-tiny.text-color-theme
+                        +icon(category.icon).mr-tiny.text-color-primary
                     | !{category.title}
           .col.text-center.mb-small
             a.hide.link.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)

@@ -19,7 +19,7 @@ mixin backgroundSection(props = {})
   if isPlushToy
     .background-section(style=`background-image: url('${imageUrl}');`)
       button.plush-toy-button(type='button', data-toggle='#modal-plush-toy')
-        +icon('plus').text-color-theme.icon--large
+        +icon('plus').text-color-primary.icon--large
     +modalPlushToy
   else
     .background-section(style=`background-image: url('${imageUrl}');`)
