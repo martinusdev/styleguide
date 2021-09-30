@@ -72,7 +72,7 @@ mixin groupItem(name, id, publisher, xmasmode)
               | .
         .bar__item.no-mrg
           button.btn.btn--clean.btn--small.no-mrg.hide-m
-            +icon('cart').icon--medium.text-color-theme
+            +icon('cart').icon--medium.text-color-primary
           button.btn.btn--primary.btn--small.mb-tiny(data-toggle='#checkout-notice').show-m
             +icon('cart').icon--left.icon--small
             span.text-semibold Vložiť do košíka
@@ -299,7 +299,7 @@ section.section
             ul.list.pl-none
               each sortLink, i in sortLinks
                 li.list__item
-                  a.flex-1(class = i===0 ? 'text-color-theme': '')
+                  a.flex-1(class = i===0 ? 'text-color-primary': '')
                     if (typeof sortLink === 'object')
                       strong !{sortLink.title}
                     else
@@ -447,7 +447,7 @@ section.section
                           .text-medium.text-semibold.text-space-left #{item.price}
                         .bar__item
                           button.btn.btn--clean.no-mrg
-                            +icon('cart').icon--medium.text-color-theme
+                            +icon('cart').icon--medium.text-color-primary
                         .bar__item
                           button.btn.btn--clean.no-mrg
                             +icon('heart').icon--medium

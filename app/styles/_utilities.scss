@@ -100,6 +100,16 @@ $utilities: map-merge(
         values: $spacers
       ),
       // scss-docs-end utils-spacing
+      "color": (
+        property: color,
+        class: text-color,
+        values: map-merge(
+            $utilities-text-colors,
+            (
+              "reset": inherit,
+            )
+        )
+      ),
     ),
     $utilities
 );

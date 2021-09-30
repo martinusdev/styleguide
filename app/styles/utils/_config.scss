@@ -418,6 +418,16 @@ $text-color-blue: _color(blue);
 $text-color-error: _color(error, 600);
 $text-color-success: _color(success, 500);
 
+$utilities-text-colors: map-merge($color-presets,
+(
+  semiblack: $text-color-semiblack,
+  grey-light: $text-color-grey-light,
+  grey-dark: $text-color-grey-dark,
+  semiwhite: $text-color-semiwhite,
+  success: $text-color-success,
+  error: $text-color-error
+));
+
 // ----------------------------
 // ICONS
 
@@ -1639,6 +1649,10 @@ $badge: (
   brown: (
     color: _color(brown),
     border-color: _color(brown),
+  ),
+  error: (
+    color: _color(error),
+    border-color: _color(error),
   ),
   darkblue: (
     color: _color(darkblue),
