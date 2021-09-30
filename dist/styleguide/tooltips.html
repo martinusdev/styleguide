@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac/fonts.1f89903e.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.d3bae80b.css">
+    <link rel="stylesheet" href="../styles/main.f4cf1565.css">
     <link rel="stylesheet" href="../styles/light.3ef78219.css">
     <script src="../scripts/plugins/modernizr.4a489747.js"></script>
   </head>
@@ -71,13 +71,14 @@
                   <div class="bar">
                     <div class="bar__item"><em data-tooltip title="This is tooltip text">This text has tooltip</em></div>
                     <div class="bar__item">
-                      <button class="btn btn--ghost" data-tooltip title="This is tooltip text">This button has tooltip</button>
+                      <button class="btn btn--ghost" data-tooltip title="This is tooltip text. &lt;a href='#' class='link'&gt;This is a link within tooltip.&lt;/a&gt;">This button has tooltip with link</button>
                     </div>
                     <div class="hide" id="tooltip-light">
                       <div class="card">
                         <div class="card__content">
                           <h3>This is a content of hidden tooltip template</h3>
                           <p>You can put more html here</p>
+                          <p><a href='#' class="link">This is a link within tooltip.</a></p>
                           <button class="btn btn-primary mb-none">Test</button>
                         </div>
                       </div>
@@ -96,13 +97,14 @@
                   <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
                   <pre class="prettyprint"><code>&lt;em data-tooltip title=&quot;This is tooltip text&quot;&gt;...&lt;/em&gt;
 
-&lt;button class=&quot;btn btn--ghost&quot; data-tooltip title=&quot;This is tooltip text&quot;&gt;..&lt;/button&gt;
+&lt;button class=&quot;btn btn--ghost&quot; data-tooltip title=&quot;This is tooltip text &lt;a href='&#35;' class='link'&gt;This is a link within tooltip.&lt;/a&gt;&quot;&gt;..&lt;/button&gt;
 
 &lt;div class=&quot;hide&quot; id=&quot;tooltip-light&quot;&gt;
   &lt;div class=&quot;card&quot;&gt;
     &lt;div class=&quot;card__content&quot;&gt;
       &lt;h3&gt;This is a content of hidden tooltip template&lt;/h3&gt;
       &lt;p&gt;You can put more html here&lt;/p&gt;
+      &lt;p&gt;&lt;a href='&#35;' class=&quot;link&quot;&gt;This is a link within tooltip.&lt;/a&gt;&lt;/p&gt;
       &lt;button class=&quot;btn btn-primary mb-none&quot;&gt;Test&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
@@ -133,7 +135,7 @@
                         <button class="btn btn--ghost" data-tooltip data-tippy-placement="right" title="This is tooltip text">Position: right</button>
                       </div>
                       <div class="bar__item">
-                        <button class="btn btn--ghost" data-tooltip data-tippy-placement="bottom" title="This is tooltip text">Position: bottom</button>
+                        <button class="btn btn--ghost" data-tooltip data-tippy-placement="bottom" title="This is tooltip text.">Position: bottom</button>
                       </div>
                       <div class="bar__item">
                         <button class="btn btn--ghost" data-tooltip data-tippy-placement="left" title="This is tooltip text">Position: left</button>
