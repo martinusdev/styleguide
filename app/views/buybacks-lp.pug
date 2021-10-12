@@ -18,11 +18,12 @@ block opts
       },
     };
 block content
-  header.buybacks-header.bg-orange.mb-large
+  header.buybacks-header.bg-green.mb-large
     .wrapper-main.pt-large.pb-large
       .row.mt-l-medium.mb-l-medium
         .col--l-6.col--xl-8.text-color-white
-          h3.mb-small Výkup kníh Knihovrátok
+          h3.mb-small.d-none.d-print-block Knihovrátok
+          img(src=`${assetsPrefix}/images/content/buybacks/logo-knihovratok.svg`).d-print-none.mb-small.buybacks-logo
           h1.mb-medium Vymeňte čítané knihy za nové príbehy
           p.h4.mb-medium.text-color-white Máte doma knižky, ktoré už nebudete čítať? <strong>Vymeníme vám ich za poukážku na nákup</strong> v Martinuse a ponúkneme ich ďalším čitateľom.
           a.btn.btn--primary.pl-medium.pr-medium.mb-none(href="buybacks.html") Predať knihy Martinusu
