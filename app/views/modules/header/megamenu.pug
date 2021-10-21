@@ -116,14 +116,15 @@ mixin megaMenuContent(props = {})
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
     .mega-menu__content-wrap
       if additionalLinks
-        .mega-menu__recommended.overflow-scroll-x
-          ul.list--expanded.no-pad.mb-none.mega-menu__recommended__links
-            each link in additionalLinks
-              li
-                a.flex.align-items-middle.link.link--black(href='#')
-                  if link.icon
-                    +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
-                  =link.title
+        .mega-menu__recommended.overflow-scroll-shadow
+          .overflow-scroll-x
+            ul.list--expanded.no-pad.mb-none.mega-menu__recommended__links
+              each link in additionalLinks
+                li
+                  a.flex.align-items-middle.link.link--black(href='#')
+                    if link.icon
+                      +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
+                    =link.title
       .mega-menu__categories
         .row.no-mrg-horizontal.mb-m-medium
           each category in categories
