@@ -1,6 +1,26 @@
+@import './../../node_modules/bootstrap/scss/mixins';
+@import 'utils/mixins_functions';
+@import 'utils/variables';
+@import 'utils/config';
+@import 'utils/media';
+
 .kp-main-background {
   background: url('../images/content/pomocnik/kp-header-xmas.jpg') no-repeat right center;
   background-size: cover;
+
+  @include breakpoint('l', 'downfrom') {
+    background-position: left center;
+  }
+
+  .wrapper-main {
+    padding-top: _get-space('v', 'large');
+    padding-bottom: _get-space('v', 'large');
+    color: _color(white);
+  }
+}
+
+.kp-illustration {
+  display: none;
 }
 
 .kp-main-background-cz {
@@ -14,5 +34,5 @@
 }
 
 .kp-logo {
-  max-width: 230px !important;
+  max-width: 440px !important;
 }
