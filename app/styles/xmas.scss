@@ -4,12 +4,31 @@
 @import 'utils/config';
 @import 'utils/media';
 
+@keyframes swinging {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
 .logo-xmas {
   width: 58px;
   top: -64px;
   left: 5px;
   position: absolute;
   z-index: 10;
+  transform: rotate(-2deg);
+
+  &:hover {
+    animation: swinging 3.5s ease-in-out forwards infinite;
+  }
 }
 
 @media screen and (min-width: 1024px) {
