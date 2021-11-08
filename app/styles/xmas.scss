@@ -4,6 +4,31 @@
 @import 'utils/config';
 @import 'utils/media';
 
+.logo-xmas {
+  width: 58px;
+  top: -64px;
+  left: 5px;
+  position: absolute;
+  z-index: 10;
+}
+
+@media screen and (min-width: 1024px) {
+  .logo-xmas {
+    left: 34px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .is-search-active .logo-xmas {
+    display: none;
+  }
+}
+
+.header__wrapper::after {
+  background: rgb(196, 7, 11);
+  background: linear-gradient(90deg, rgba(126, 0, 3, 1) 0%, rgba(250, 61, 65, 1) 50%, rgba(143, 0, 3, 1) 100%);
+}
+
 .kp-main-background {
   background: url('../images/content/pomocnik/kp-header-xmas.jpg') no-repeat right center;
   background-size: cover;
