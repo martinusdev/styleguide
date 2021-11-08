@@ -30,7 +30,10 @@ block opts
 
   header.header
     .header__wrapper(data-sticky)
-      .wrapper-main
+      .wrapper-main.position-relative
+        if xmasLogo
+          a(href="#")
+            img(src=`${assetsPrefix}images/content/logo/xmas.png`, alt="Vianoce").logo-xmas
         .bar.header__bar
           .bar__item.header__logo
             a(href="#", class=bookClassHide)
