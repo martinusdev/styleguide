@@ -9,19 +9,17 @@ mixin prispievatelkyCarousel(props = {})
     const {} = props;
 
     var swiperConfig = {
-      slidesPerView: 4,
-      slidesPerGroup: 2,
+      slidesPerView: 1,
       breakpoints: {
-        1024: {},
-        768: {
-          slidesPerView: 3,
-        },
         640: {
           slidesPerView: 2,
         },
-        480: {
-          slidesPerView: 1,
+        768: {
+          slidesPerView: 3,
         },
+        1024: {
+          slidesPerView: 4,
+        }
       },
     };
     swiperConfig = JSON.stringify(swiperConfig);
