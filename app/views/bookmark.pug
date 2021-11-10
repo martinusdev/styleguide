@@ -1,0 +1,20 @@
+extends layouts/_default
+
+block opts
+  - var pageTitle = 'Záložka';
+
+block content
+  main
+    section.section.mb-large
+      .wrapper-main
+        .row
+          .col--6
+            div(style="width:350px;height:350px;box-shadow: inset 0 0 10px #fff;padding: 10px;").position-relative.flex.bg-secondary
+              .bookmark.bookmark--full
+                img(src=`${assetsPrefix}/images/content/logo/bookmark-full.svg`).bookmark__logo
+          .col--6
+            div(style="width:350px;height:350px;").bg-secondary.position-relative
+              .bookmark.bookmark--full
+                img(src=`${assetsPrefix}/images/content/logo/bookmark-full-cz.svg`).bookmark__logo
+
+
