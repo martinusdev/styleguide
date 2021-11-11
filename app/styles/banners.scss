@@ -117,8 +117,10 @@
   .banner-content {
     position: absolute;
     height: 100%;
+    width: 100%;
     flex: 1;
     overflow: hidden;
+    padding-right: 10px;
   }
 }
 
@@ -179,62 +181,37 @@
   position: relative;
   padding: 20px;
 
+  .banner-product-name {
+    padding: 80px 10px 0;
+  }
+
   .banner-author {
     font-size: 18px;
     line-height: 1.1;
   }
 
   .banner-title {
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.1;
   }
 
   .banner-img {
     height: 240px;
-    transform: rotate(20deg) translateY(10px);
+    transform: rotate(10deg) translateY(10px);
   }
 
   .banner-btn-container {
     position: absolute;
-    bottom: 65px;
+    bottom: 35px;
     left: 0;
     right: 0;
+    width: 100%;
+    padding-right: 10px;
   }
 
-  .banner-logo {
+  .banner-cover {
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 135px;
     right: 0;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    background: $color-white;
-  }
-
-  .banner-price {
-    position: absolute;
-    bottom: 110px;
-    left: 20px;
-    right: 20px;
-    font-size: 0;
-    text-align: center;
-
-    &__discount {
-      background: _color(primary);
-      color: $color-white;
-      display: inline-block;
-      font-size: $font-size-small;
-      padding: 0 10px;
-      position: absolute;
-      top: -18px;
-    }
-
-    &__sum {
-      background: $color-white;
-      font-weight: $font-weight-bold;
-      font-size: 24px;
-      display: inline-block;
-      padding: 0 10px;
-    }
   }
 }
