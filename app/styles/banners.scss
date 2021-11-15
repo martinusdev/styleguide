@@ -65,7 +65,7 @@
 }
 
 .banner-img {
-  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.65);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
 }
 
 .banner-468x60 {
@@ -81,11 +81,11 @@
   }
 
   .banner-author {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .banner-title {
-    font-size: 16px;
+    font-size: 18px;
     margin-top: -2px;
   }
 
@@ -97,18 +97,15 @@
   .bar {
     height: 60px;
     margin: 0;
+    padding-left: 70px;
   }
 
   .bar__item {
-    margin-top: 0;
+    margin-top: -4px;
   }
 
   .banner-btn {
     margin-right: 15px;
-  }
-
-  .banner-price {
-    margin-bottom: -3px;
   }
 }
 
@@ -118,7 +115,9 @@
   padding: 10px !important;
 
   .banner-content {
+    position: absolute;
     flex: 1;
+    overflow: hidden;
   }
 }
 
@@ -127,8 +126,12 @@
   width: 300px;
   height: 300px;
   overflow: hidden;
-  padding: 20px;
   position: relative;
+
+  .banner-content {
+    width: 280px;
+    height: 280px;
+  }
 
   .banner-author {
     font-size: 14px;
@@ -137,6 +140,7 @@
     padding-left: 12px;
     padding-right: 18px;
     font-weight: $font-weight-semibold;
+    max-width: 180px;
   }
 
   .banner-title {
@@ -144,38 +148,41 @@
     display: inline-block;
     padding: 10px 24px 7px 16px;
     width: 230px;
-    margin-left: 20px;
+    margin: -6px 0 0 20px;
+    font-weight: 700;
+    line-height: 1.1666666667;
+  }
+
+  .banner-cover {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
   }
 
   .banner-img {
-    height: 200px;
-    transform: rotate(20deg) translateY(10px);
+    height: 185px;
+    transform: rotate(10deg) translateY(10px);
   }
 
   .banner-btn {
     position: absolute;
-    bottom: 20px;
+    bottom: 65px;
+    left: 27px;
   }
 
-  .banner-logo {
-    position: absolute;
-    bottom: 20px;
-    right: 0;
-    padding-right: 20px;
-    padding-left: 10px;
-    padding-top: 5px;
-    background: $color-white;
-    height: 30px;
+  .section-title {
+    padding-top: 27px;
+    padding-left: 14px;
+
+    .banner-author {
+      background-color: #d42121;
+    }
+
+    .banner-title {
+      background-color: #ba111b;
+    }
   }
 
-  .banner-price {
-    font-size: 14px;
-    line-height: 30px;
-    display: inline-block;
-    padding-left: 12px;
-    padding-right: 18px;
-    font-weight: $font-weight-semibold;
-  }
 }
 
 .banner-160x600 {
@@ -186,62 +193,45 @@
   position: relative;
   padding: 20px;
 
+  .banner-content {
+    width: 140px;
+    height: 580px;
+  }
+
+  .banner-product-name {
+    padding: 80px 10px 0;
+  }
+
   .banner-author {
-    font-size: 18px;
+    font-size: 14px;
     line-height: 1.1;
   }
 
   .banner-title {
-    font-size: 24px;
+    font-size: 18px;
     line-height: 1.1;
   }
 
   .banner-img {
-    height: 240px;
-    transform: rotate(20deg) translateY(10px);
+    height: 220px;
+    transform: rotate(10deg) translateY(10px);
   }
 
   .banner-btn-container {
     position: absolute;
-    bottom: 65px;
+    bottom: 35px;
     left: 0;
     right: 0;
+    width: 100%;
+    padding-right: 10px;
   }
 
-  .banner-logo {
+  .banner-cover {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    background: $color-white;
-  }
+    bottom: 135px;
 
-  .banner-price {
-    position: absolute;
-    bottom: 110px;
-    left: 20px;
-    right: 20px;
-    font-size: 0;
-    text-align: center;
-
-    &__discount {
-      background: _color(primary);
-      color: $color-white;
-      display: inline-block;
-      font-size: $font-size-small;
-      padding: 0 10px;
-      position: absolute;
-      top: -18px;
-    }
-
-    &__sum {
-      background: $color-white;
-      font-weight: $font-weight-bold;
-      font-size: 24px;
-      display: inline-block;
-      padding: 0 10px;
-    }
+    display: flex;
+    justify-content: center;
+    width: 140px;
   }
 }
