@@ -50,6 +50,8 @@ export default class Dropdown {
 
       dropdown.addEventListener(TOGGLE_EVT, this._onToggle);
     });
+
+    this._addListeners();
   }
 
   static setDropdownPosition(target) {
@@ -113,6 +115,9 @@ export default class Dropdown {
   }
 
   _onClick(e) {
+    if (!this.trigger) {
+      return;
+    }
     if (this.trigger !== e.target && !this.trigger.contains(e.target)) {
       if (
         !this.target.hasAttribute(this.config.dataInteractive)
