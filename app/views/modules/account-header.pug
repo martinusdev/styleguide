@@ -54,13 +54,13 @@ mixin accountHeader(props = {})
           .bar__item
             .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/images/user/m-sm.jpg?x=0');")
           .bar__item.bar__item--shrinkable
-            h1.h3.text-color-black.text-semibold.no-mrg-bottom= name
+            h1.h3.text-color-black.text-semibold.mb-none= name
             h2.h5 Môj martinus
           .bar__item.bar__item--fill.show-l.text-center
-            +inlineNav({ items: nav, active: navActive, max: 4 }).no-mrg-bottom
+            +inlineNav({ items: nav, active: navActive, max: 4 }).mb-none
           .bar__item.bar__item--shrinkable.show-l
             nav
-              ul.list-inline.inline-nav.no-mrg-bottom
+              ul.list-inline.inline-nav.mb-none
                 li.inline-nav__item.text-size-regular
                   a.inline-nav__link(href="my-library.html", class = pageTitle == 'Moja knižnica' ? 'is-active' : '') Moja knižnica
 
@@ -75,7 +75,7 @@ mixin accountHeader(props = {})
 
           .bar__item.bar__item--border.show-l
           .bar__item.text-right.show-l
-            button.btn.btn--clean.btn--small.no-mrg-bottom.no-pad
+            button.btn.btn--clean.btn--small.mb-none.p-none
               | Odhlásiť sa
               +icon('logout', 'icon--medium').icon--right
 
@@ -134,6 +134,6 @@ mixin accountHeader(props = {})
               +icon('eye', 'icon--medium')
 
         .bar__item.text-right
-          button.btn.btn--clean.btn--small.no-mrg-bottom
+          button.btn.btn--clean.btn--small.mb-none
             span.show-m Odhlásiť sa
             +icon('logout', 'icon--medium').icon--right

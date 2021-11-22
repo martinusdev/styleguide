@@ -13,7 +13,7 @@ block content
     section.section
       .wrapper-main
         .row
-          .col--l-8.ofst--center.card.no-pad-horizontal
+          .col--l-8.ofst--center.card.px-none
             .card__content.mb-medium
               .bar.bar--small
                 .bar__item.bar__item--shrinkable
@@ -31,19 +31,19 @@ block content
                     .bar__item.bar__item--fill
                       h2.h3.mb-none Espresso
                     .bar__item.bar__item--shrinkable
-                      .form-control.form-control--input.no-mrg
+                      .form-control.form-control--input.m-none
                         .input-addons.input-addons--small.align-items-right
-                          .input-addons__item.input-addons__item--no-border.no-pad
+                          .input-addons__item.input-addons__item--no-border.p-none
                             button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                               +icon('minus', 'icon--medium', 'mínus')
-                          input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
-                          .input-addons__item.input-addons__item--no-border.no-pad
+                          input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.px-none.text-center
+                          .input-addons__item.input-addons__item--no-border.p-none
                             button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                               +icon('plus', 'icon--medium', 'plus')
                     .bar__item.bar__item--shrinkable.text-right
                       b 2,90 €
                     .bar__item.bar__item--shrinkable
-                      button.btn.btn--clean.no-mrg(type="button")
+                      button.btn.btn--clean.m-none(type="button")
                         +icon('trash', 'icon--medium')
 
               .mb-medium

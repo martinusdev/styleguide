@@ -9,7 +9,7 @@ include ./../../mixins/xmas
       .bar__item.bar__item--fill
         .pill.pill--blue 4
       .bar__item
-        button.btn.btn--clean.no-mrg.no-pad-right
+        button.btn.btn--clean.m-none.pr-none
           +icon('edit').icon--medium.icon--left
           | Upraviť
     #cart-summary(data-collapse="220")
@@ -19,14 +19,14 @@ include ./../../mixins/xmas
             .cart-item.cart-item--summary(class=item.ebook ? 'cart-item--has-tags' : '')
               .cart-item__content
                 .cart-item__column.cart-item__column--product-name
-                  a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html")
+                  a.text-size-medium.m-none.link.link--product(href="detail-knihy.html")
                     +xmas({type: 'icon'}).text-space-right-tiny
                     =item.title
                 if item.ebook
                   .cart-item__column.cart-item__column--tags
                     .badge.text-nowrap E-kniha
                 .cart-item__column.cart-item__column--qty
-                  .text-size-medium.no-mrg
+                  .text-size-medium.m-none
                     | 1x
                 .cart-item__column.cart-item__column--price
                   .text-semibold.text-size-medium.text-nowrap= item.price

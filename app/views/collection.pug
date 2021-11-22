@@ -18,7 +18,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
@@ -81,13 +81,13 @@ block content
 
                     +addTo()
 
-    section.section.no-pad-top
+    section.section.pt-none
       - for (var i = 0; i<8; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--4.col--s-shrink.text-left
-                +product().no-mrg-bottom
+                +product().mb-none
                   +productCover({
                     cover: 'images/content/books/sample-3.jpg',
                     rating: 3.5,

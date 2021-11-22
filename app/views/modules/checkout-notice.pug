@@ -4,7 +4,7 @@ include ./../mixins/icon
 
 .modal-overlay#checkout-notice(data-modal)
   article.modal.modal--full
-    .row.no-mrg-horizontal.modal__wrap
+    .row.mx-none.modal__wrap
       section.modal__content.col--l-8.col--m-6.show-m.bg-secondary
 
         .bar
@@ -77,7 +77,7 @@ include ./../mixins/icon
               breakBeforePrice: false
             }).mb-medium
 
-      section.modal__content.col--l-4.col--m-6.no-pad
+      section.modal__content.col--l-4.col--m-6.p-none
         .bar.bar--vertical
           .bar__item.bar__item--fill.no-mrg--m-down
 
@@ -96,14 +96,14 @@ include ./../mixins/icon
                   titleClass: 'text-color-grey-dark',
                   coverSize: 'medium-large',
                   trash: false,
-                }).no-mrg-bottom.show-m
+                }).mb-none.show-m
                 +productHorizontal({
                   trash: true,
                   rating: false,
                   titleClass: 'text-color-grey-dark text-medium',
                   coverSize: 'medium',
                   trash: false,
-                }).no-mrg-bottom.hide-m
+                }).mb-none.hide-m
             .text-center
               a.link(href="#").text-size-medium.text-space-right Zobraziť všetky (+3)#{' '}
               button.btn.btn--primary.btn--small.mb-none objednať
@@ -118,7 +118,7 @@ include ./../mixins/icon
                   coverSize: 'medium',
                   trash: false,
                   showCartButton: true,
-                }).no-mrg-bottom
+                }).mb-none
                 +productHorizontal({
                   trash: true,
                   rating: false,
@@ -126,7 +126,7 @@ include ./../mixins/icon
                   coverSize: 'medium',
                   trash: false,
                   showCartButton: true,
-                }).no-mrg-bottom.hide-m
+                }).mb-none.hide-m
                 a.link(href="#").text-size-medium.text-space-right Zobraziť viac odporúčaní
 
             .card.hide
@@ -169,8 +169,8 @@ include ./../mixins/icon
                             .bar.mb-none.align-items-center.bar--no-wrap
                               .bar__item.text-space-right
                                 .text-medium.text-semibold 19,50&nbsp;€
-                              .bar__item.no-mrg-right
-                                a.btn.btn--small.btn--clean.text-color-primary(href="#").no-pad
+                              .bar__item.mr-none
+                                a.btn.btn--small.btn--clean.text-color-primary(href="#").p-none
                                   +icon('cart').icon--medium
 
           .bar__item

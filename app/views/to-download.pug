@@ -34,8 +34,8 @@ block content
           .col--l-3.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
               .form-control.form-control--input
-                input.input.filter__search.no-mrg-top(type="text", name="filter-order", id="filter-order", placeholder="Hľadať v objednávkach")
-              ul.list.list--expanded.no-pad(role="navigation")
+                input.input.filter__search.mt-none(type="text", name="filter-order", id="filter-order", placeholder="Hľadať v objednávkach")
+              ul.list.list--expanded.p-none(role="navigation")
                 each item, index in subNav
                   li(class= index === 0 ? 'is-active' : '')
                     a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)= item.title
@@ -45,10 +45,10 @@ block content
             .row.align-items-bottom
               .col--6.col--s-4.col--m-3.mb-large
                 +product({ size: 'large' }).mb-small.product--gift
-                  +productCover({ cover: `${assetsPrefix}images/content/book-gift.svg`, type: false, clickable: false }).no-mrg-bottom
+                  +productCover({ cover: `${assetsPrefix}images/content/book-gift.svg`, type: false, clickable: false }).mb-none
                   .product__gift
                     p.text-semibold.mb-small.text-medium Dostali ste darček?
-                    button(data-toggle="#gift-modal").btn.btn--clean.no-mrg-bottom
+                    button(data-toggle="#gift-modal").btn.btn--clean.mb-none
                       | Viac
                       +icon('arrow-right').icon--right.icon--medium
 

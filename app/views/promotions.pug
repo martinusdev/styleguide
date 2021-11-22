@@ -18,7 +18,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Akcie a zľavy'] })
 
@@ -29,13 +29,13 @@ block content
             h1.mb-small Akcie a zľavy
             p.mb-large Okrem výhodných cien na všetky knihy vám pravidelne prinášame stovky kníh za ešte nižšie ceny v rámci špeciálnych akcií. Myslíme si, že na mnohé symbolické dni či mesiace by sa nemalo zabudnúť (vtedy vám ponúkame knihy súvisiace s témou aktuálneho dňa či mesiaca) a rovnako si myslíme, že mnohé knihy si sem-tam zaslúžia viac pozornosti, ako sa im zvyčajne dostáva. Nech sa páči - pozrite si našu ponuku aktuálnych akcií, vyberajte a nakupujte pohodlne!
 
-    section.section.no-pad-top
+    section.section.pt-none
       - for (var i = 0; i<2; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--4.col--s-shrink.text-left
-                +product().no-mrg-bottom
+                +product().mb-none
                   +productCover({
                     cover: 'images/content/books/sample-3.jpg',
                     rating: 3.5,

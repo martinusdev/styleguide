@@ -25,7 +25,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Bestsellery'] })
 
@@ -79,7 +79,7 @@ block content
                   .h0.text-color-grey-dark(style="position:absolute;")= i+1
                   .bar.align-items-center
                     .bar__item
-                      +product().no-mrg-bottom
+                      +product().mb-none
                         +productCover({
                           cover: 'images/content/books/sample-3.jpg',
                           rating: 3.5,
@@ -113,11 +113,11 @@ block content
                 .card__content.flex-shrinkable
 
                   .bar.align-items-middle.bar--vertical
-                    .bar__item.no-mrg-bottom
+                    .bar__item.mb-none
                       .bar.bar--small.bar--no-wrap.mb-small
-                        .bar__item.no-mrg
+                        .bar__item.m-none
                           .badge.badge--primary -20%
-                        .bar__item.no-mrg
+                        .bar__item.m-none
                           .h2.text-bold.text-space-left 8,99€
                     .bar__item
                       button.btn.btn--primary.mb-none(data-toggle='#checkout-notice')
@@ -125,15 +125,15 @@ block content
                         span.text-semibold Vložiť do košíka
                       +addTo({text: ''}).mb-none
 
-    section.section.no-pad-top
+    section.section.pt-none
       - for (var i = 0; i<8; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--1
                 .h0.text-color-grey-dark= i + 4
               .col--4.col--s-shrink.text-left
-                +product().no-mrg-bottom
+                +product().mb-none
                   +productCover({
                     cover: 'images/content/books/sample-3.jpg',
                     rating: 3.5,

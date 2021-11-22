@@ -39,7 +39,7 @@ block content
               .mb-medium
               .mb-large
                 h1.h2.mb-small.text-center Vaša objednávka č. 8512435 bola úspešne odoslaná a čakáme na vašu platbu!
-                p.text-medium.text-center.no-mrg-bottom Naši škriatkovia začali objednávku spracovávať a odošlú ju po vašom zaplatení do 3 dní.
+                p.text-medium.text-center.mb-none Naši škriatkovia začali objednávku spracovávať a odošlú ju po vašom zaplatení do 3 dní.
               //.mb-large.text-center
                 button.btn.btn--primary Zaplatiť kartou online
               // progress bar
@@ -68,7 +68,7 @@ block content
                       .text-semibold.text-nowrap Martinko Klingáč
                       .text-medium.text-nowrap Knižný škriatok
                 .col--m-fill
-                  article.card.card--well.no-mrg-bottom.card--arrowhead.card--arrowhead-left
+                  article.card.card--well.mb-none.card--arrowhead.card--arrowhead-left
                     section.card__content
                       p.text-medium.mb-small Milý Peter,
                         br
@@ -122,7 +122,7 @@ block content
                                     label(for=`list-check${i}`).radiocheck__label=item
                               a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Všetky zoznamy
                             .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
-                              .bar.no-mrg-bottom
+                              .bar.mb-none
                                 .bar__item.bar__item--fill
                                   h5.dropdown__group Presunúť do:
                                 .bar__item
@@ -134,7 +134,7 @@ block content
                                     input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
                                     label(for=`list-check${i}`).radiocheck__control
                                     label(for=`list-check${i}`).radiocheck__label=item
-                        button.btn.btn--clean.btn--small.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                        button.btn.btn--clean.btn--small.m-none(type="button" data-toggle=`#cart-item${i}`)
                           +icon('trash', 'icon--medium')
         .text-center.mb-large
           a.btn(href="/")

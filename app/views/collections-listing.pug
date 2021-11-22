@@ -15,7 +15,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
@@ -40,12 +40,12 @@ block content
               .card__content.text-center
                 h5.mb-small Kolekcia 34. týždna
                 h2.mb-small Knihy do vašej kuchyne
-                p.text-size-medium.text-color-grey.no-mrg-bottom Obsahuje 27 kníh
+                p.text-size-medium.text-color-grey.mb-none Obsahuje 27 kníh
 
               .card__content.card__content--overflow
                 hr.mb-medium
                 .bar
-                  .bar__item.bar.no-mrg-bottom
+                  .bar__item.bar.mb-none
                     .bar__item
                       .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                     .bar__item.text-size-medium
@@ -56,7 +56,7 @@ block content
                   .bar__item.bar__item--border.show-m
                   .bar__break.hide-m
                   .bar__item.bar__item--fill.bar__item--shrinkable
-                    p.no-mrg.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
+                    p.m-none.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
                 hr
 
                 +booksCarouselHorizontal
@@ -70,7 +70,7 @@ block content
                 h2.text-center Najpopulárnejšie
 
               .card__content
-                ul.list.list--counter.no-pad
+                ul.list.list--counter.p-none
                   each i in Array(5)
                     li.mb-medium
                       article.product.product--horizontal

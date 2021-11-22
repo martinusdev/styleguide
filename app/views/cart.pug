@@ -14,7 +14,7 @@ block content
     section.section
       .wrapper-main
         .row
-          .col--l-8.ofst--center.card.no-pad-horizontal
+          .col--l-8.ofst--center.card.px-none
 
             .card__content.mb-medium
               .bar.bar--small
@@ -33,7 +33,7 @@ block content
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          a.text-semibold.no-mrg.block.link.link--product.line-medium(href="detail-knihy.html")
+                          a.text-semibold.m-none.block.link.link--product.line-medium(href="detail-knihy.html")
                             +xmas({type: 'icon'}).text-space-right-tiny
                             =item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
@@ -46,7 +46,7 @@ block content
                             if (item.preorder)
                               .badge.badge--orange.text-nowrap Predpredaj
                           if (i == 1 || i == 2)
-                            .bar.bar--small.text-size-small.no-mrg.show-m
+                            .bar.bar--small.text-size-small.m-none.show-m
                               .bar__item
                                 .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                               .bar__item
@@ -56,22 +56,22 @@ block content
                                 a.link(href="#") Jana Róbertson
 
                         .cart-item__column.cart-item__column--wishlist.hide-m
-                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).no-mrg-bottom
+                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).mb-none
                         .cart-item__column.cart-item__column--qty
-                          .form-control.form-control--input.no-mrg
+                          .form-control.form-control--input.m-none
                             .input-addons.input-addons--small.align-items-right
-                              .input-addons__item.input-addons__item--no-border.no-pad
+                              .input-addons__item.input-addons__item--no-border.p-none
                                 button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('minus', 'icon--medium', 'mínus')
-                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
-                              .input-addons__item.input-addons__item--no-border.no-pad
+                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.px-none.text-center
+                              .input-addons__item.input-addons__item--no-border.p-none
                                 button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('plus', 'icon--medium', 'plus')
                         .cart-item__column.cart-item__column--price
                           .text-semibold.text-size-medium.text-nowrap= item.price
                         .cart-item__column.cart-item__column--remove
-                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).no-mrg-bottom.show-m
-                          button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).mb-none.show-m
+                          button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
                 li.list__item.align-items-bottom.mt-small
                   .list__item__section.list__item__section--primary.text-right
@@ -86,7 +86,7 @@ block content
                   a(href="/homepage.html").btn.btn--primary Objednať tituly
 
         .row
-          .col--l-8.ofst--center.card.no-pad-horizontal
+          .col--l-8.ofst--center.card.px-none
             .card__content.mb-medium
               .bar.bar--small
                 .bar__item
@@ -106,21 +106,21 @@ block content
                           if item.ebook
                             span.badge.text-nowrap E-kniha
                         .cart-item__column.cart-item__column--wishlist
-                          +addTo({ text: '' }).no-mrg-bottom
+                          +addTo({ text: '' }).mb-none
                         .cart-item__column.cart-item__column--qty
-                          .form-control.form-control--input.no-mrg
+                          .form-control.form-control--input.m-none
                             .input-addons.input-addons--small.align-items-right
-                              .input-addons__item.input-addons__item--no-border.no-pad
+                              .input-addons__item.input-addons__item--no-border.p-none
                                 button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('minus', 'icon--medium', 'mínus')
-                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
-                              .input-addons__item.input-addons__item--no-border.no-pad
+                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.px-none.text-center
+                              .input-addons__item.input-addons__item--no-border.p-none
                                 button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('plus', 'icon--medium', 'plus')
                         .cart-item__column.cart-item__column--price
                           .text-semibold.text-size-medium.text-nowrap= item.price
                         .cart-item__column.cart-item__column--remove
-                          button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                          button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
                 li.list__item.align-items-bottom.mt-small
                   .list__item__section.list__item__section--primary.text-right

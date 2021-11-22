@@ -12,7 +12,7 @@ block content
   main
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Martinus Help Page',''] })
 
@@ -33,7 +33,7 @@ block content
           - var links = [['Náš príbeh','My Martinusáci','Kariéra'],['Prečo nakupovať u nás','Čo sa deje s vašou objednávkou','Najčastejšie otázky','Poštové','Spôsob platby','Reklamácie'],['Kontakt a podpora','Kníhkupectvá'],['Obchodné podmienky','Ochrana súkromia','Licenčná dohoda a podmienka používania e-kníh '],['Čo pre vás robíme','Čítačky a besedy','Naše projekty','Blog'],['Kontakt pre médiá','Tlačové správy','Logá na stiahnutie','Partnerský systém']]
           - var headers = ['O Martinuse','Všetko o nákupe','Kontakty','Právne veci','Robíme pre vás','Pre médiá a firmy']
           - for (var i = 0; i<6; i++)
-            .card.bg-secondary.no-mrg-bottom
+            .card.bg-secondary.mb-none
               .card__content.card__content--large.bg-default
                 h2.text-center !{headers[i]}
                 ul.list.list--unstyled.list--clean(role="navigation")

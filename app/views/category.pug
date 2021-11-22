@@ -13,21 +13,21 @@ block opts
 
 block content
   main
-    section.section.section--secondary.no-pad-top(style="background-color: #133f7e;")
+    section.section.section--secondary.pt-none(style="background-color: #133f7e;")
       .wrapper-main
         a(href='#')
-          img.show-m.img.img--fluid(src="images/content/banners/banner.jpg").no-mrg
-          img.hide-m.img.img--fluid(src="images/content/banners/banner-mobile.jpg").no-mrg
+          img.show-m.img.img--fluid(src="images/content/banners/banner.jpg").m-none
+          img.hide-m.img.img--fluid(src="images/content/banners/banner-mobile.jpg").m-none
 
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy'] })
 
-    section.section--secondary.section.section--toolbar.cat-no-border-bottom.no-pad-top
+    section.section--secondary.section.section--toolbar.cat-no-border-bottom.pt-none
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item
             h1 Deti a mládež
           .bar__item.bar__item--fill
@@ -39,7 +39,7 @@ block content
     section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset=header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
       .wrapper-main
         .btn-layout.btn-layout--vertical.mb-small
-          .btn-dropdown.no-mrg
+          .btn-dropdown.m-none
             button.btn.btn--ghost.btn--icon-right.text-left(
               data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
               data-toggle-expand,

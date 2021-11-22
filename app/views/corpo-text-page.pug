@@ -50,7 +50,7 @@ block content
 
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
 
@@ -58,11 +58,11 @@ block content
       .wrapper-main
         .row
           .col--l-3.show-l
-            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.pr-none(href="#")
               +icon('arrow-left', 'icon--medium')
               span Späť na martinus centrum
             h2.h4 Kontakty
-            ul.list.list--expanded.no-pad(role="navigation")
+            ul.list.list--expanded.p-none(role="navigation")
               each section, i in navigation
                 li.mb-medium(class=i===2 ? 'is-active' : '')
                   a.text-medium(href=`#${section.href}`, data-scroll) !{section.title}
@@ -114,9 +114,9 @@ block content
                   .bar__item
                     .h4 Pomohol vám tento článok?
                   .bar__item
-                    .btn.btn--clean.no-mrg-bottom.text-color-grey
+                    .btn.btn--clean.mb-none.text-color-grey
                       +icon('smile', 'icon--medium')
-                    .btn.btn--clean.no-mrg-bottom.text-color-grey
+                    .btn.btn--clean.mb-none.text-color-grey
                       +icon('sad', 'icon--medium')
             aside
               h3.text-color-black.mb-medium Mohlo by vás zaujímať

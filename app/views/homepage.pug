@@ -37,7 +37,7 @@ mixin tyzdenneKolekcie
           .bar__item.bar__item--fill
             p.mb-small Vyberá#{' '}
               a.link(href='#', title="Callie Krueger") Callie Krueger
-            p.no-mrg.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
+            p.m-none.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
 
 mixin novinky
   section.mb-large
@@ -62,12 +62,12 @@ mixin najpredavaniejsieZPonuky
         article.tabs
           each item, index in ['books', 'movies', 'games', 'coffee-tea']
             section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
-              ul.list.list--counter.no-pad
+              ul.list.list--counter.p-none
                 each item, i in [...books, ...books ]
                   if i < 10
                     li.mb-medium(class=i > 4 ? 'show-l' : '')
-                      //- +productHorizontal(item).no-mrg
-                      +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
+                      //- +productHorizontal(item).m-none
+                      +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).m-none
 
       .card__content
         .btn-layout.btn-layout--vertical
@@ -91,7 +91,7 @@ mixin ludiNajviacZaujma
           each item, i in [...books, ...books ]
             if i < 4
               li(class=`${i < 3 ? 'mb-medium' : ''}`)
-                +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).no-mrg
+                +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).m-none
 
 include ./mixins/userMenu
 
@@ -211,7 +211,7 @@ block content
                                 | #{' '}napísal/a recenziu
                         .bar__break.hide-m
                         .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.align-items-center.no-mrg-top
+                          .rating-star.bar__item.align-items-center.mt-none
                             each star, starIndex in Array(5)
                               +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
                         .bar__item.bar__item--shrinkable.text-right
@@ -227,7 +227,7 @@ block content
                         };
                       .card.card--well.inline-block
                         .card__content
-                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
 
                   //.row.mb-large
                     .col--1.show-m
@@ -246,7 +246,7 @@ block content
                                 | #{' '}napísal/a recenziu
                         .bar__break.hide-m
                         .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.align-items-center.no-mrg-top
+                          .rating-star.bar__item.align-items-center.mt-none
                             each star, starIndex in Array(5)
                               +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
                         .bar__item.bar__item--shrinkable.text-right
@@ -273,7 +273,7 @@ block content
 
                       .bar.align-items-center
                         .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.align-items-center.no-mrg-top
+                          .rating-star.bar__item.align-items-center.mt-none
                             each star, starIndex in Array(5)
                               +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
                         .bar__item.bar__item--shrinkable.text-right
@@ -289,7 +289,7 @@ block content
                         };
                       .card.card--well.inline-block.mb-none
                         .card__content
-                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
 
                 .col--m-6
                   .card
@@ -305,7 +305,7 @@ block content
 
                       .bar.align-items-center
                         .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.align-items-center.no-mrg-top
+                          .rating-star.bar__item.align-items-center.mt-none
                             each star, starIndex in Array(5)
                               +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
                         .bar__item.bar__item--shrinkable.text-right
@@ -321,7 +321,7 @@ block content
                         };
                       .card.card--well.inline-block.mb-none
                         .card__content
-                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).no-mrg
+                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
 
               .btn-layout.btn-layout--horizontal.align-items-center
                 button.btn.btn--ghost Všetky novinky z čitateľských profilov
@@ -387,10 +387,10 @@ block content
           .col--m-8.ofst--m-2
             .quote
               .quote__send
-                a.btn.btn--small.btn--clean.no-pad-top
+                a.btn.btn--small.btn--clean.pt-none
                   +icon('upload').icon--small.icon--left
                   | Pošlite nám
-                a(href="#").btn.btn--small.btn--clean.no-pad-top
+                a(href="#").btn.btn--small.btn--clean.pt-none
                   +icon('instagram')
                   | #{' '}dobrevety
               .quote__delimiter
@@ -451,7 +451,7 @@ block content
                 .swiper-slide.carousel-cards__item
                   .card.card--well
                     .card__content
-                      .bar.no-mrg-bottom
+                      .bar.mb-none
                         .bar__item.bar__item--shrinkable
                           +icon(item.icon, 'text-color-grey')
                         .bar__item.bar__item--fill

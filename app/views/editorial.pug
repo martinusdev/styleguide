@@ -15,7 +15,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Odporúčame pre vás'] })
 
@@ -55,15 +55,15 @@ block content
                   .bar.align-items-middle.mb-none
                     .bar__item.bar__item--fill
                       .bar.bar--vertical.bar--vertical-small.mb-none
-                        .bar__item.no-mrg
+                        .bar__item.m-none
                           .text-medium.mb-tiny
                             | Posielame#{' '}
                             em ihneď
-                        .bar__item.no-mrg
-                          .bar.bar--small.no-mrg.bar--no-wrap
-                            .bar__item.no-mrg
+                        .bar__item.m-none
+                          .bar.bar--small.m-none.bar--no-wrap
+                            .bar__item.m-none
                               .badge.badge--primary -20%
-                            .bar__item.no-mrg
+                            .bar__item.m-none
                               .h2.text-bold.text-space-left 8,99€
                     .bar__break.hide-s
                     .bar__item.bar__item--shrinkable
@@ -79,18 +79,18 @@ block content
                   .col--m-6
                     .card(style="height: 90%;")
                       .card__content
-                        .bar.bar--vertical.bar--vertical-small.no-mrg
-                          .bar__item.bar__item--fill.no-mrg
+                        .bar.bar--vertical.bar--vertical-small.m-none
+                          .bar__item.bar__item--fill.m-none
                             .mb-small
                               +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'}))
-                          .bar__item.bar__item--shrinkable.no-mrg
+                          .bar__item.bar__item--shrinkable.m-none
                             .bar.mb-none
-                              .bar__item.no-mrg
+                              .bar__item.m-none
                                 button.btn.btn--primary.btn--small.mb-none
                                   +icon('cart').icon--left.icon--small
                                   span.text-semibold do košíka
-                              .bar__item.bar__item--fill.no-mrg
-                              .bar__item.no-mrg
+                              .bar__item.bar__item--fill.m-none
+                              .bar__item.m-none
                                 +addTo({text: '', buttonClass: 'btn--small'})
 
         .row.mb-large
