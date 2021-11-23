@@ -20,11 +20,11 @@ mixin groupItem2(name, id, details, inline, cena)
           //a.link.link--product Základy rybolovu pro kluky a holky
           .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
             if id == 0
-              span.text-color-success.text-space-right-tiny Na sklade
+              span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
             else if id == 1
-              span.text-color-success.text-space-right-tiny PDF
-              span.text-color-success.text-space-right-tiny EPUB
+              span.text-color-success.mr-tiny PDF
+              span.text-color-success.mr-tiny EPUB
               span.text-color-success MOBI
             else if id == 3
               span.text-color-success Na sklade
@@ -50,7 +50,7 @@ mixin groupItem2(name, id, details, inline, cena)
     .bar__item.bar__item--shrinkable.mt-none.mb-none.no-mrg-horizontal--m-down
       .bar.bar--small.m-none.bar--no-wrap
         .bar__item.m-none
-          .text-bold.text-space-left.text-space-right Žiaľ, nevykupujeme :(
+          .text-bold.ml-small.mr-small Žiaľ, nevykupujeme :(
         .bar__item.m-none
           button.btn.btn--primary.mb-none(data-toggle='#checkout-notice') Chcem vykúpiť
             +icon('cart').icon--small
@@ -110,7 +110,7 @@ block content
                             .cart-item__content
                               .cart-item__column.cart-item__column--product-name
                                 a.text-semibold.m-none.block.link.link--product.line-medium(href="detail-knihy.html")
-                                  +xmas({type: 'icon'}).text-space-right-tiny
+                                  +xmas({type: 'icon'}).mr-tiny
                                   =item.title
                                 ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                                   - var authors = item.author.split(', ')
@@ -148,7 +148,7 @@ block content
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
                           a.text-semibold.m-none.block.link.link--product.line-medium(href="detail-knihy.html")
-                            +xmas({type: 'icon'}).text-space-right-tiny
+                            +xmas({type: 'icon'}).mr-tiny
                             =item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                             - var authors = item.author.split(', ')

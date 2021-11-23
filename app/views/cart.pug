@@ -34,7 +34,7 @@ block content
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
                           a.text-semibold.m-none.block.link.link--product.line-medium(href="detail-knihy.html")
-                            +xmas({type: 'icon'}).text-space-right-tiny
+                            +xmas({type: 'icon'}).mr-tiny
                             =item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
                             - var authors = item.author.split(', ')
@@ -100,8 +100,8 @@ block content
                     .cart-item
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          span.text-semibold.line-medium(class=item.ebook ? 'text-space-right' : '')
-                            +xmas({type: 'icon'}).text-space-right-tiny
+                          span.text-semibold.line-medium(class=item.ebook ? 'mr-small' : '')
+                            +xmas({type: 'icon'}).mr-tiny
                             = item.title
                           if item.ebook
                             span.badge.text-nowrap E-kniha

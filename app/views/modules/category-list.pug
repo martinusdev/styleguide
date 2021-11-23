@@ -14,7 +14,7 @@ mixin itemGroup(id)
     .mb-medium
       a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
         +icon('plus')
-        | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac formátov</span>
+        | <span data-toggle-text-target class="ml-tiny mr-small">Viac formátov</span>
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
 mixin groupItem(name, id, publisher, xmasmode)
@@ -28,11 +28,11 @@ mixin groupItem(name, id, publisher, xmasmode)
           //a.link.link--product Základy rybolovu pro kluky a holky
           .inline-block.hide-m.text-size-small
             if id == 0
-              span.text-color-success.text-space-right-tiny Na sklade
+              span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
             else if id == 1
-              span.text-color-success.text-space-right-tiny PDF
-              span.text-color-success.text-space-right-tiny EPUB
+              span.text-color-success.mr-tiny PDF
+              span.text-color-success.mr-tiny EPUB
               span.text-color-success MOBI
             else if id == 3
               span.text-color-success Na sklade
@@ -55,9 +55,9 @@ mixin groupItem(name, id, publisher, xmasmode)
         .bar__item.m-none
           .badge.badge--primary -20%
         .bar__item.m-none
-          .text-bold.text-space-left 8,99
+          .text-bold.ml-small 8,99
         .bar__item.m-none
-          +xmas({type: 'icon', size: 'medium'}).text-space-left-tiny(class=xmasmode ? '' : 'invisible')
+          +xmas({type: 'icon', size: 'medium'}).ml-tiny(class=xmasmode ? '' : 'invisible')
 
     .bar__item.bar__item--shrinkable.mt-none.mb-small.mb-m-none
       .bar.bar--vertical.bar--vertical-small.mb-none.mb-m-tiny
@@ -188,7 +188,7 @@ section.section
                     ul.list--unstyled
                       for i in [1, 2]
                         li.bar.mb-tiny
-                          .bar__item.bar__item--shrinkable.text-space-right-tiny
+                          .bar__item.bar__item--shrinkable.mr-tiny
                             +icon('breadcrumbs').icon--medium.text-color-grey
                           .bar__item.bar__item--fill.line-small
                             a.link Ikar
@@ -196,7 +196,7 @@ section.section
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
-                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
                           .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item.bar__item--fill.line-small
                           a.link Moje fantasy
@@ -205,7 +205,7 @@ section.section
                   ul.list--unstyled.mb-small
                     for i in [1, 2]
                       li.bar.mb-tiny
-                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
                           +icon('folder').icon--medium.text-color-grey
                         .bar__item.bar__item--fill.line-small
                           a.link Kategória
@@ -223,7 +223,7 @@ section.section
                     ul.list--unstyled
                       for i in [1, 2]
                         li.bar.mb-tiny
-                          .bar__item.bar__item--shrinkable.text-space-right-tiny
+                          .bar__item.bar__item--shrinkable.mr-tiny
                             +icon('user').icon--medium.text-color-grey
                           .bar__item.bar__item--fill.line-small
                             a.link Meno Autora
@@ -231,7 +231,7 @@ section.section
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
-                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
                           .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item.bar__item--fill.line-small
                           a.link Janko Martinusak
@@ -260,8 +260,8 @@ section.section
             .carousel-lite__container.mj-carousel__scroll
               .carousel-lite__wrapper.mj-carousel__content.align-items-stretch
                 each item, i in menu
-                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").text-space-right.flex.align-items-middle
-                    i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.text-space-right
+                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").mr-small.flex.align-items-middle
+                    i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.mr-small
                     span.link.line-small= item.title
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev(style="left: 10px;")
               +icon('arrow-left').icon--medium
@@ -299,7 +299,7 @@ section.section
 
         if filters
           .badges.mb-tiny
-            .text-space-right Filtre:
+            .mr-small Filtre:
             .badge.mb-tiny
               | Žáner (Sci-fi)
               .btn.btn--small.btn--clean.btn--equal.mb-none
@@ -362,8 +362,8 @@ section.section
                         .badges.mb-small
                           a.badge.mb-none
                             +icon('star', 'icon--medium').text-color-yellow
-                            span.text-normal.text-space-left 3.5
-                            span.link.text-space-left(href="#recenzie", data-scroll) 234x
+                            span.text-normal.ml-small 3.5
+                            span.link.ml-small(href="#recenzie", data-scroll) 234x
 
                         div(data-collapse="60")
                           p.text-medium.mb-none.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
@@ -408,7 +408,7 @@ section.section
                       .mb-m-small
                         h2.h3.mb-tiny
                           a.link.link--product(href="detail-knihy.html") #{item.title}
-                            span.text-color-grey.text-space-left.text-normal Podnapdis na viac slov alebo aj riadkov
+                            span.text-color-grey.ml-small.text-normal Podnapdis na viac slov alebo aj riadkov
                           .badge CZ
                         .text-color-grey.mb-small.text-medium #{item.author}
                       .bar.bar--small.mb-small.show-s
@@ -416,8 +416,8 @@ section.section
                           .badges.mb-none
                             a.badge.mb-small
                               +icon('star', 'icon--medium').text-color-yellow
-                              span.text-normal.text-space-left #{item.rating}
-                              span.link.text-space-left(href="#recenzie", data-scroll) 234x
+                              span.text-normal.ml-small #{item.rating}
+                              span.link.ml-small(href="#recenzie", data-scroll) 234x
                             .badge.badge--green.mb-small Na sklade
                             .badge.badge--blue.mb-small Novinka
 
@@ -435,7 +435,7 @@ section.section
                         .bar__item
                           .badge.badge--primary -20%
                         .bar__item.bar__item--fill
-                          .text-medium.text-semibold.text-space-left #{item.price}
+                          .text-medium.text-semibold.ml-small #{item.price}
                         .bar__item
                           button.btn.btn--clean.m-none
                             +icon('cart').icon--medium.text-color-primary

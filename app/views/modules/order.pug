@@ -14,11 +14,11 @@ include ./../mixins/icon
       button.btn.btn--primary.mb-none
         | Zaplatiť#{' '}
         span.show-m kartou online
-      span.text-space-left
-      button.btn.btn--ghost.mb-none.text-space-right.show-m
+      span.ml-small
+      button.btn.btn--ghost.mb-none.mr-small.show-m
         +icon('trash', 'icon--medium').icon--left
         | Stornovať
-      button.btn.btn--clean.mb-none.text-space-right.hide-m
+      button.btn.btn--clean.mb-none.mr-small.hide-m
         +icon('trash', 'icon--medium')
   .row.mb-large.show-m
   .row.mb-m-large
@@ -134,7 +134,7 @@ include ./../mixins/icon
                 b Jozef Novák, Budyšínska 51, 851 02 Bratislava
 
           .text-right
-            span.text-large.text-space-right Spolu k úhrade
+            span.text-large.mr-small Spolu k úhrade
             span.h2.text-bold 10,00 €
 
         .card__content.bg-secondary
@@ -142,7 +142,7 @@ include ./../mixins/icon
             .bar__item.text-medium Zásielku pripravili:
             .bar__item
               each a, i in Array(5)
-                img(class=i !== 4 ? 'text-space-right' : '', src="/images/content/user-photo.png", width="45", alt="Avatar")
+                img(class=i !== 4 ? 'mr-small' : '', src="/images/content/user-photo.png", width="45", alt="Avatar")
 
     .col--l-6
       .order-packages
@@ -196,7 +196,7 @@ include ./../mixins/icon
                 a.btn.btn--small.btn--clean.p-none
                   +icon('download', 'icon--small')
                   | #{' '}Stiahnuť
-                a.btn.btn--small.btn--clean.p-none.text-space-left
+                a.btn.btn--small.btn--clean.p-none.ml-small
                   +icon('eye', 'icon--small')
                   | #{' '}Zobraziť
               .bar__item.bar__item--shrinkable.text-right

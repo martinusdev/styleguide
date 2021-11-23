@@ -83,10 +83,10 @@ mixin myLibrarySidenav2()
       li(class= index === 0 ? 'is-active' : '')
         a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
           if item.icon
-            +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`, data-tooltip, title="Popis stavu")
+            +icon(item.icon).icon--small.mr-small(class=`${item.iconColor}`, data-tooltip, title="Popis stavu")
           span(class= item.locked ? '' : '')= item.title
           if item.pill
-            .pill.text-space-left(class= index === 0 ? 'pill--blue' : 'pill--white')= item.pill
+            .pill.ml-small(class= index === 0 ? 'pill--blue' : 'pill--white')= item.pill
 
   .btn-layout.btn-layout--vertical
     button.btn(data-toggle='#add-list')
@@ -197,10 +197,10 @@ mixin myLibrarySidenav()
       li(class= index === 6 ? 'is-active' : '')
         a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
           if item.icon
-            +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
+            +icon(item.icon).icon--small.mr-small(class=`${item.iconColor}`)
           = item.title
           if item.pill
-            .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
+            .pill.ml-small(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
 
   h2.h3 Moje zoznamy a kolekcie
 
@@ -209,10 +209,10 @@ mixin myLibrarySidenav()
       li(class= index === 6 ? 'is-active' : '')
         a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
           if item.icon
-            +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
+            +icon(item.icon).icon--small.mr-small(class=`${item.iconColor}`)
           = item.title
           if item.pill
-            .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
+            .pill.ml-small(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
 
   .btn-layout.btn-layout--vertical
     button.btn(data-toggle='#add-list')

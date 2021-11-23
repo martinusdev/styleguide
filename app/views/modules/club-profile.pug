@@ -30,7 +30,7 @@ mixin userHeader (props = {})
             img(src="images/content/logo-small.svg")
         .bar__item.bar__item--shrinkable
           .flex
-            .flex-shrinkable.text-space-right
+            .flex-shrinkable.mr-small
               h1.h1.text-color-white.mb-tiny Janko Martinusák
             .flex-shrinkable
               .badge.badge--blue
@@ -58,8 +58,8 @@ mixin userHeader (props = {})
           nav
             ul.list-inline.mb-none.inline-nav
               each item, i in items
-                li.text-space-right.inline-nav__item
-                  a.h2.link.link--white.text-space-right.inline-nav__link(href=`${item.link}`, class= i == activeItem ? 'is-active' : '')= item.title
+                li.mr-small.inline-nav__item
+                  a.h2.link.link--white.mr-small.inline-nav__link(href=`${item.link}`, class= i == activeItem ? 'is-active' : '')= item.title
 
 mixin userAbout (props = {})
   -
@@ -74,7 +74,7 @@ mixin userAbout (props = {})
 
   .h5.mb-none Práve čítam
   .bar
-    .bar__item.bar__item--shrinkable.text-space-right
+    .bar__item.bar__item--shrinkable.mr-small
       .product__img.product__cover
         .thumbnail.thumbnail--book.thumbnail--small
           a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
