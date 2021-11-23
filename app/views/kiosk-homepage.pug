@@ -16,7 +16,7 @@ block content
     div(data-sticky-container)
 
       a(href='#')
-        img.img.img--fluid(src="images/content/banners/hero.jpg").no-mrg
+        img.img.img--fluid(src="images/content/banners/hero.jpg").m-none
 
       section.section.section--small.section--secondary.section--overflow
         .wrapper-main
@@ -46,8 +46,8 @@ block content
             swiperConfig = JSON.stringify(swiperConfig);
           .carousel.carousel--fade-outside.mb-medium
             .swiper-container.swiper-container-horizontal(data-swiper-options=swiperConfig)
-              //ul.swiper-wrapper.list--counter.no-pad(data-equal-columns)
-              ul.swiper-wrapper.list--counter.no-pad
+              //ul.swiper-wrapper.list--counter.p-none(data-equal-columns)
+              ul.swiper-wrapper.list--counter.p-none
                 each item, i in [...books, ...books, ...books, ...books]
                   //li.swiper-slide.carousel__product-detail(data-equal-column)
                   li.swiper-slide.carousel__product-detail

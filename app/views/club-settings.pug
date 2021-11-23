@@ -18,7 +18,7 @@ block content
         .row
           .col--l-2.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
-              ul.list.list--with-hover.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
+              ul.list.list--with-hover.list--expanded.p-none(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
                 li
                   a(href="#klub", data-scroll, data-scroll-offset=header.size.default + 40) Klub
                 li
@@ -32,18 +32,18 @@ block content
                   h3.h2.text-color-black.mb-medium Klubový profil
               .mb-large#my-account-image(data-toggle-class="hide")
                 .row.align-items-middle.mb-medium
-                  .col--3.col--m-shrink.no-pad-right
+                  .col--3.col--m-shrink.pr-none
                     img(src="/images/content/user-photo.png", alt="User", width="100")
                   .col--fill
                     div
-                      button.btn.btn--clean.btn--small.no-mrg(data-toggle='#my-account-imageupload, #my-account-image')
+                      button.btn.btn--clean.btn--small.m-none(data-toggle='#my-account-imageupload, #my-account-image')
                         +icon('upload', 'icon--medium').icon--left
                         | Nahrať#{' '}
                         span.show-s nový#{' '}
                         | obrázok
                     .mb-medium.show-m
                     div
-                      button.btn.btn--clean.btn--small.no-mrg
+                      button.btn.btn--clean.btn--small.m-none
                         +icon('trash', 'icon--medium').icon--left
                         | Odstrániť
               .my-account-imageupload.mb-large.hide.card.card--well#my-account-imageupload(data-toggle-class="hide")
@@ -51,7 +51,7 @@ block content
                   .bar__item.bar__item--fill
                     input(type="file")
                   .bar__item.bar__item--shrinkable
-                    button.btn.btn--clean.btn--small.no-mrg(data-toggle='#my-account-imageupload, #my-account-image')
+                    button.btn.btn--clean.btn--small.m-none(data-toggle='#my-account-imageupload, #my-account-image')
                       +icon('close', 'icon--medium')
 
               hr.mb-medium

@@ -16,7 +16,7 @@ mixin addTo(props = {})
     if link
       a.link.text-medium(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)=text
     else
-      button.btn.btn--clean.no-mrg(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand, class=buttonClass ? buttonClass : "")
+      button.btn.btn--clean.m-none(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand, class=buttonClass ? buttonClass : "")
         +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
         | #{text}
     .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
@@ -37,8 +37,8 @@ mixin addTo(props = {})
           if status
             a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`).dropdown__item.dropdown__item--more Označiť ako
         .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
-          .bar.no-mrg-bottom
-            .bar__item.no-mrg-right
+          .bar.mb-none
+            .bar__item.mr-none
               button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-list-${id}, #my-library-dropdown-${id}`)
                 +icon('chevron-left', 'icon--medium', 'Naspäť')
             .bar__item.bar__item--fill
@@ -52,7 +52,7 @@ mixin addTo(props = {})
           .card.mb-none
             .card__content.card__content--condensed
               .bar.flex-nowrap
-                .bar__item.no-mrg-right
+                .bar__item.mr-none
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
                     +icon('chevron-left', 'icon--medium', 'Naspäť')
                 .bar__item.align-self-center.text-center.text-nowrap
@@ -63,10 +63,10 @@ mixin addTo(props = {})
               .form-control.form-control--input
                 input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
               .btn-layout--vertical
-                button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+                button(type="button").btn.btn--full.mb-none Vytvoriť
         .hide(id=`my-library-dropdown-states-${id}` data-toggle-class="hide")
-          .bar.no-mrg-bottom
-            .bar__item.no-mrg-right
+          .bar.mb-none
+            .bar__item.mr-none
               button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-states-${id}, #my-library-dropdown-${id}`)
                 +icon('chevron-left', 'icon--medium', 'Naspäť')
             .bar__item.bar__item--fill

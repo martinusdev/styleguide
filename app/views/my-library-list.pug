@@ -27,7 +27,7 @@ block content
           .col--l-9.col--12.mb-large.show-l
             .bar.mb-medium
               .bar__item.hide-l
-                a(href="my-library-list.html").btn.btn--clean.no-mrg-bottom
+                a(href="my-library-list.html").btn.btn--clean.mb-none
                   +icon('arrow-left', 'icon--medium')
               .bar__item.bar__item--shrinkable.text-space-right-tiny
                 h2.mb-none Wishlist
@@ -43,7 +43,7 @@ block content
                   button.btn.btn--clean(data-toggle='#edit')
                     +icon('share').icon--medium.icon--left
                     span.show-m Zdieľať
-                  button.btn.btn--clean.no-mrg-bottom(data-toggle="#bulk-edit", disabled)
+                  button.btn.btn--clean.mb-none(data-toggle="#bulk-edit", disabled)
                     +icon('collection').icon--medium.icon--left
                     span.show-m Hromadná úprava
                   button.btn.btn--equal.btn--small.mb-none(data-toggle="#add-item")
@@ -114,7 +114,7 @@ block content
                     +productStatus({ actionDropdown: 'my-library', status: status })
                     +productCover({ cover: item.cover, href: '#' })
                     .bar.mb-small.align-items-top
-                      .bar__item.bar__item--fill.no-mrg-right
+                      .bar__item.bar__item--fill.mr-none
                         +productTitle({ title: item.title, author: item.author, href: '#' })
                       .bar__item.bar__item--shrinkable
                         if index < 5
@@ -176,7 +176,7 @@ block append modals
                   label Názov
                 .input-addons
                   input.input(type="text", value="Wishlist")
-                  .input-addons__item.no-pad
+                  .input-addons__item.p-none
                     button.btn Vytvoriť
           .bar
             .bar__item
@@ -220,7 +220,7 @@ block append modals
                   label Názov
                 .input-addons
                   input.input(type="text", value="Wishlist")
-                  .input-addons__item.no-pad
+                  .input-addons__item.p-none
                     button.btn Zmeniť
 
         .modal__content
@@ -252,7 +252,7 @@ block append modals
                 .form-control.form-control--input
                   .input-addons
                     input.input(type='text', value="https://www.martinus.sk/")#clipboard
-                    .input-addons__item.no-pad
+                    .input-addons__item.p-none
                       button.btn.btn--link(data-clipboard, data-clipboard-target="#clipboard") Koprírovať
             .bar
               .bar__item
@@ -314,7 +314,7 @@ block append modals
                   button.btn.btn--ghost.btn--small(disabled)
                     | Presunúť
                     +icon('chevron-down').icon--small.icon--right
-                  button.btn.btn--clean.btn--small.no-mrg(type="button" data-toggle=`#cart-item${i}`, disabled)
+                  button.btn.btn--clean.btn--small.m-none(type="button" data-toggle=`#cart-item${i}`, disabled)
                     +icon('trash', 'icon--medium')
 
         .modal__content
@@ -329,7 +329,7 @@ block append modals
                   .thumbnail__img-wrap
                     img.img(src=`${assetsPrefix}${item.cover}`)
               .bar__item.bar__item--fill
-                a.text-semibold.no-mrg.block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
+                a.text-semibold.m-none.block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
                   =item.title
                 ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.text-ellipsis.mb-none
                   - var authors = item.author.split(', ')
@@ -339,7 +339,7 @@ block append modals
                 .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
                   - for (var index = 0; index<5; index++)
                   input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + index)
-                  label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-" + index, class= index < stars ? 'is-active' : '')
+                  label.radiocheck__label.ml-none.rating-star__item(for="review-rating-" + index, class= index < stars ? 'is-active' : '')
                     // or `.text-color-yellow` on svg
                     +icon('star').icon--medium
               .bar__item.bar__item--shrinkable.show-m(style="max-width: 200px;")
@@ -350,7 +350,7 @@ block append modals
                 else
                   +icon('check-circle').text-color-success.icon--small(data-tooltip, title="Prečítaná")
               //-.bar__item.bar__item--shrinkable
-                button.btn.btn--clean.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
                   +icon('trash', 'icon--medium')
             .border-bottom-grey.mb-small
 

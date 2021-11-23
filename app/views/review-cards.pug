@@ -8,8 +8,8 @@ include ./mixins/icon
 
 mixin reviewCard
   .review-card.bg-secondary
-    .bar.bar--vertical.bar--vertical-small.no-mrg
-      .bar__item.bar__item--shrinkable.no-mrg
+    .bar.bar--vertical.bar--vertical-small.m-none
+      .bar__item.bar__item--shrinkable.m-none
         .review-heading
           .review-heading__item.review-heading__item--static
             img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus", style="height: 28px;").text-space-right-tiny
@@ -19,12 +19,12 @@ mixin reviewCard
           .review-heading__item(data-medium-editor)
             | Slávka Kubíková
 
-      .bar__item.bar__item--fill.no-mrg
-        .bar.bar--vertical.no-mrg.align-items-center
-          .bar__item.no-mrg
+      .bar__item.bar__item--fill.m-none
+        .bar.bar--vertical.m-none.align-items-center
+          .bar__item.m-none
             p.text-italic(data-medium-editor) Podľa mňa by si túto knihu mal prečítať každý rodič, hlavne starý rodič (aby pochopil príčiny pravidiel a zákazov rodičov a nerobil presný opak a podkopával tak rodičovskú autoritu), či učiteľ a pod. Človek sa častokrát zamyslí nad svojím prístupom a vzťahom k deťom a ich výchove, hlavne v tomto uponáhľanom svete. Rozhovory v knihe ponúkajú "priklady" ako sa to dá robiť aj inak.
 
-      .bar__item.bar__item--shrinkable.no-mrg
+      .bar__item.bar__item--shrinkable.m-none
         .review-rating.inline-block
           .bar.mb-none
             .bar__item.js-stars
@@ -98,16 +98,16 @@ html.no-js
             +icon('file').icon--medium
             | #{' '}vytlačiť
 
-    .bar.no-mrg(style=`width: 1654px; transform: translate3d(0, 0, 0) scale(${scale}, ${scale});`).js-row1
-      .bar__item.no-mrg
+    .bar.m-none(style=`width: 1654px; transform: translate3d(0, 0, 0) scale(${scale}, ${scale});`).js-row1
+      .bar__item.m-none
         +reviewCard
-      .bar__item.no-mrg
+      .bar__item.m-none
         +reviewCard
 
-    .bar.no-mrg(style=`width: 1654px; transform: translate3d(0, 0, 0) scale(${scale}, ${scale});`).js-row2
-      .bar__item.no-mrg
+    .bar.m-none(style=`width: 1654px; transform: translate3d(0, 0, 0) scale(${scale}, ${scale});`).js-row2
+      .bar__item.m-none
         +reviewCard
-      .bar__item.no-mrg
+      .bar__item.m-none
         +reviewCard
 
     script

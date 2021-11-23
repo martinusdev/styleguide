@@ -4,7 +4,7 @@ include ./../mixins/icon
 
 .modal-overlay#checkout-notice(data-modal)
   article.modal.modal--full
-    .row.no-mrg-horizontal.modal__wrap
+    .row.mx-none.modal__wrap
       section.modal__content.col--l-8.col--m-6.show-m.bg-secondary
 
         .bar
@@ -77,18 +77,17 @@ include ./../mixins/icon
               breakBeforePrice: false
             }).mb-medium
 
-      section.modal__content.col--l-4.col--m-6.no-pad
+      section.modal__content.col--l-4.col--m-6.p-none
         .bar.bar--vertical
-          .bar__item.bar__item--fill.no-mrg--m-down
+          .bar__item.bar__item--fill.m-none
 
             article.card.card--success.mb-small.mb-m-medium
               .card__content
-                .bar.border-bottom-grey.no-mrg--m-down
-                  .bar__item.bar__item--fill.no-mrg--m-down
-                    h3.text-color-success.mb-medium.text-semibold.mb-none.mb-m-small Do košíka ste práve pridali:
-                  .bar__item.no-mrg--m-down
-                    button.btn.btn--clean.mb-none.mb-m-small(data-toggle="#checkout-notice")
-                      +icon('close').icon--medium.icon--right
+                .d-flex.align-items-middle.align-items-justify.mb-tiny.mb-m-small
+                  h3.text-color-success.text-semibold.mb-none Do košíka ste práve pridali:
+                  button.btn.btn--clean.mb-none(data-toggle="#checkout-notice")
+                    +icon('close').icon--medium.icon--right
+
                 .mb-small.mb-m-none
                 +productHorizontal({
                   trash: true,
@@ -96,20 +95,20 @@ include ./../mixins/icon
                   titleClass: 'text-color-grey-dark',
                   coverSize: 'medium-large',
                   trash: false,
-                }).no-mrg-bottom.show-m
+                }).mb-none.show-m
                 +productHorizontal({
                   trash: true,
                   rating: false,
                   titleClass: 'text-color-grey-dark text-medium',
                   coverSize: 'medium',
                   trash: false,
-                }).no-mrg-bottom.hide-m
+                }).mb-none.hide-m
             .text-center
               a.link(href="#").text-size-medium.text-space-right Zobraziť všetky (+3)#{' '}
               button.btn.btn--primary.btn--small.mb-none objednať
 
             .card.hide
-              .card__content.no-pad-bottom--m-down
+              .card__content.pb-none
                 h5 Zákazníci si kúpili aj...
                 +productHorizontal({
                   trash: true,
@@ -118,7 +117,7 @@ include ./../mixins/icon
                   coverSize: 'medium',
                   trash: false,
                   showCartButton: true,
-                }).no-mrg-bottom
+                }).mb-none
                 +productHorizontal({
                   trash: true,
                   rating: false,
@@ -126,11 +125,11 @@ include ./../mixins/icon
                   coverSize: 'medium',
                   trash: false,
                   showCartButton: true,
-                }).no-mrg-bottom.hide-m
+                }).mb-none.hide-m
                 a.link(href="#").text-size-medium.text-space-right Zobraziť viac odporúčaní
 
             .card.hide
-              .card__content.no-pad-bottom--m-down
+              .card__content.pb-none
                 h5 Zákazníci si kúpili aj...
                 .bar.bar--small.mb-small.align-items-bottom
                   each item, index in books
@@ -148,7 +147,7 @@ include ./../mixins/icon
                 a.link(href="#").text-size-medium.text-space-right Zobraziť viac odporúčaní
 
             .card.hide-m
-              .card__content.no-pad-bottom--m-down
+              .card__content.pb-none
                 h5 Zákazníci si kúpili aj...
                 -
                   var swiperReccoConfig = {
@@ -169,8 +168,8 @@ include ./../mixins/icon
                             .bar.mb-none.align-items-center.bar--no-wrap
                               .bar__item.text-space-right
                                 .text-medium.text-semibold 19,50&nbsp;€
-                              .bar__item.no-mrg-right
-                                a.btn.btn--small.btn--clean.text-color-primary(href="#").no-pad
+                              .bar__item.mr-none
+                                a.btn.btn--small.btn--clean.text-color-primary(href="#").p-none
                                   +icon('cart').icon--medium
 
           .bar__item

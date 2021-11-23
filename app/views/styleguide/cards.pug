@@ -63,10 +63,10 @@ block append content
             </section>
           </article>
     //- end: demo
-    
+
     +content-sub-section('Variants')
       +p Standard cards support modifiers for background colors and content padding sizes.
-      
+
       +demo
         +demo-example
           .row
@@ -81,7 +81,7 @@ block append content
                 section.card__content.card__content--large
                   h3 Info card with padded content.
                   p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et.
-                  
+
             .col--m-6
               article.card.card--notice
                 section.card__content.card__content--condensed
@@ -102,14 +102,14 @@ block append content
                 ...
               </section>
             </article>
-            
+
             <!-- notice card with condensed content-->
             <article class="card card--info">
               <section class="card__content card__content--condensed">
                 ...
               </section>
             </article>
-    
+
     +content-sub-section('Material card')
 
       +p Material cards have shadows and top colored border with optional uppercase label. Can be used with color classes: <b>primary, green, orange, violet, blue, yellow, brown, darkblue</b>
@@ -146,7 +146,7 @@ block append content
                   p.text-color-grey-dark Knihu máme na <em class="">sklade</em>
 
                 .card__content
-                  .h1.no-mrg 12,99 €
+                  .h1.m-none 12,99 €
                   p.mb-small.text-color-grey-dark Bežná cena#{' '}
                     span.text-strikethrough 15,42 €
                   .badges.badges--inline.align-items-center
@@ -159,7 +159,7 @@ block append content
                       +icon('cart').icon--left.icon--medium
                       | Vložiť do košíka
 
-                    button.btn.btn--clean.no-mrg
+                    button.btn.btn--clean.m-none
                       +icon('heart').icon--left.icon--medium
                       | Pridať do
         +demo-code
@@ -167,7 +167,7 @@ block append content
             <article class="card card--well">
               ...
             </article>
-            
+
     +content-sub-section('Clickable card')
 
       +p In case you need to use a default/well/material card as an anchor element, add the <code class='l-code-inline'>.card--clickable</code> modifier to handle hover and focus styles.
@@ -182,7 +182,7 @@ block append content
                     .card__label Label
                   .card__content
                     | Clickity click
-              
+
         +demo-code
           :code
             <article class="card card--well">
@@ -211,12 +211,12 @@ block append content
               </div>
               ...
             </article>
-            
+
     +content-sub-section('Arrowhead card')
 
       +p Arrowhead card has a small nub pointing outside the card. It's only shown on screens larger than <code class="l-code-inline">m</code> and the position must be always specified.
-      
-      +note 
+
+      +note
         +p Currently the only card with non-white bg that properly supports arrowhead is Well, and only on the left side
 
       +demo
@@ -244,27 +244,27 @@ block append content
             <article class="card card--arrowhead card--arrowhead-top">
               ...
             </article>
-            
+
             <!-- arrowhead right -->
             <article class="card card--arrowhead card--arrowhead-right">
               ...
             </article>
-            
+
             <!-- arrowhead bottom -->
             <article class="card card--arrowhead card--arrowhead-bottom">
               ...
             </article>
-            
+
             <!-- arrowhead left -->
             <article class="card card--well card--arrowhead card--arrowhead-left">
               ...
             </article>
-    
+
     +content-sub-section('Speechbubble card')
 
       +p Speechbubble card has a small nub on the bottom left, mimicking a comic style callout.
-      
-      +note 
+
+      +note
         +p Speechbubbles are supported on cards with standard white and <code class="l-code-inline">.bg-secondary</code> backgrounds.
 
       +demo
@@ -279,11 +279,11 @@ block append content
             <article class="card card--speech-bubble">
               ...
             </article>
-            
+
     +content-sub-section('Done card')
 
       +p Done card has a check symbol as a sign of completed step/action.
-      
+
       +demo
         +demo-example
           .row(style='background: #666; padding-top: 1em')

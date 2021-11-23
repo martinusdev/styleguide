@@ -15,13 +15,13 @@ mixin checkoutCardDone(props = {})
         .bar__item.bar__item--fill
           h2!=title
         .bar__item
-          button.btn.btn--clean.no-mrg.no-pad-right
+          button.btn.btn--clean.m-none.pr-none
             +icon('edit').icon--medium.icon--left
             | Upraviť
 
     if summary
-      .card__content.no-pad-top.mb-medium
-        .bar.no-mrg
+      .card__content.pt-none.mb-medium
+        .bar.m-none
           .bar__item.bar__item--fill.text-size-medium!=summary
           if price
             .bar__item.text-size-medium

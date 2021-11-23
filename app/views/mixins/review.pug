@@ -66,18 +66,18 @@ mixin review(props = {})
           .bar__item.bar__item--shrinkable
             .btn-layout.btn-layout--horizontal.align-items-middle
               if !reply
-                button.btn.btn--clean.no-mrg-right(data-toggle=`#reply-review-${id}`)
+                button.btn.btn--clean.mr-none(data-toggle=`#reply-review-${id}`)
                   +icon('react').icon--left.icon--medium
                   | Reagovať
-              button.btn.btn--clean.no-mrg-right
+              button.btn.btn--clean.mr-none
                 +icon('like').icon--left.icon--medium
                 span.text-normal.text-size-medium= likes
 
-              button.btn.btn--clean.no-mrg-right
+              button.btn.btn--clean.mr-none
                 +icon('dislike').icon--left.icon--medium
                 span.text-normal.text-size-medium= dislikes
 
-              button.btn.btn--clean.no-mrg-right(data-toggle="#flag-review" data-toggle-self="false")
+              button.btn.btn--clean.mr-none(data-toggle="#flag-review" data-toggle-self="false")
                 +icon('flag').icon--medium
           if source
             .bar__break.hide-m

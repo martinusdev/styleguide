@@ -88,53 +88,6 @@
 // ---------------------------------------------
 // LAYOUT UTILITIES
 
-// mixin for utilities with layout targeting
-@mixin spacing-reset-classes($breakpoint: '') {
-  .no-mrg#{$breakpoint} { margin: 0 !important; }
-  .no-mrg-top#{$breakpoint} { margin-top: 0 !important; }
-  .no-mrg-bottom#{$breakpoint} { margin-bottom: 0 !important; }
-  .no-mrg-left#{$breakpoint} { margin-left: 0 !important; }
-  .no-mrg-right#{$breakpoint} { margin-right: 0 !important; }
-
-  .no-mrg-vertical#{$breakpoint} {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .no-mrg-horizontal#{$breakpoint} {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .no-pad#{$breakpoint} { padding: 0 !important; }
-  .no-pad-top#{$breakpoint} { padding-top: 0 !important; }
-  .no-pad-bottom#{$breakpoint} { padding-bottom: 0 !important; }
-  .no-pad-left#{$breakpoint} { padding-left: 0 !important; }
-  .no-pad-right#{$breakpoint} { padding-right: 0 !important; }
-
-  .no-pad-vertical#{$breakpoint} {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .no-pad-horizontal#{$breakpoint} {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
-
-@each $breakpoint, $size in $grid-breakpoints {
-  @include breakpoint($breakpoint) {
-    @include spacing-reset-classes( _get-variant-name( $breakpoint ) );
-  }
-}
-
-@each $breakpoint, $size in $grid-breakpoints {
-  @include breakpoint($breakpoint, down) {
-    @include spacing-reset-classes( #{'--' + $breakpoint + '-down'} );
-  }
-}
-
 .clearfix { @include clearfix; }
 .clear { clear: both; }
 

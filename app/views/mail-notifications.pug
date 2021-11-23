@@ -10,11 +10,11 @@ mixin checkbox(props = {})
     const {
       id,
       text,
-      tooltip, 
+      tooltip,
       disabled,
       checked
     } = props;
-    
+
   .form-control.form-control--checkbox
     .checkbox.radiocheck--medium
       input.radiocheck__input(type="checkbox", id=id, checked=checked, disabled=disabled)
@@ -22,7 +22,7 @@ mixin checkbox(props = {})
       label.radiocheck__label(for=id)
         block
         +icon('info').icon--medium(data-tooltip, title=tooltip)
-          
+
 
 block content
   main.account
@@ -35,7 +35,7 @@ block content
         .row
           .col--l-3.show-l(data-sticky-container)
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default + 40)
-              ul.list.list--with-hover.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
+              ul.list.list--with-hover.list--expanded.p-none(role="navigation", data-gumshoe, data-gumshoe-select="#account-sections-spy")
                 li
                   a(href="#newsletter", data-scroll, data-scroll-offset=header.size.default + 40) Pravidelný newsletter
                 li
@@ -52,7 +52,7 @@ block content
             #newsletter.mb-large
               h3.h2.text-color-black.mb-medium Pravidelný newsletter s novinkami
               p Chcete mať najrýchlejšie informácie o nových knihách? Alebo našich špeciálnych ponukách a zľavách? Tu si môžete nastaviť aké e-maily od nás budete dostávať.
-              
+
               p
                 a.link.text-size-medium(href="javascript:void(0)") Neprichádza náš newsletter na vaše Gmail konto?
 
@@ -81,20 +81,20 @@ block content
                     #autor-autocomplete-container
 
               .badges#autori-vybrane
-                
+
             #serie
               h3.h2.text-color-black.mb-none Sledované série
               p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
-              
+
               .row
                 .col--12.col--m-8
                   .form-control.form-control--input.mb-medium
                     .form-label
                       label(for="seria-autocomplete").text-transform-upper.text-small.text-color-grey.visually-hidden Série
                     #seria-autocomplete-container
-                
+
               .badges#serie-vybrane
-              
+
             #edicie
               h3.h2.text-color-black.mb-none Sledované edície
               p Pošleme vám mail vždy, keď uvedení autori vydajú knihu.
@@ -141,7 +141,7 @@ block content
                   +icon('save', 'icon--medium').icon--left
                   | Uložiť zmeny
 
- 
+
 block scripts
   script.
     window.myApp = window.myApp = {};
@@ -264,7 +264,7 @@ block scripts
           newAuthor.querySelector('button').addEventListener('click', (evt) => {
             newAuthor.remove();
           });
-          
+
           document.querySelector(id).appendChild(newAuthor);
       };
 

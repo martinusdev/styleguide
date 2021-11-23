@@ -27,7 +27,7 @@ mixin kioskFeatured
                 span.text-semibold.text-medium Callie Krueger
                 .text-small Kníhkupec
               .bar__item
-                .rating-star.bar__item.align-items-center.no-mrg
+                .rating-star.bar__item.align-items-center.m-none
                   each star, starIndex in Array(5)
                     +icon('star').rating-star__item.icon--large.is-active
 
@@ -99,12 +99,12 @@ html.no-js
 
               .bar__item.bar__item--fill.header__search(style="max-width: 100%; flex: 1;")
                 .header-search__search(style="max-width: 100%; display: flex;")
-                  form#search-form.form-control.form-control--input.no-mrg-bottom
+                  form#search-form.form-control.form-control--input.mb-none
                     .input-addons
                       input.input.input--dark#search-in-header(type='text', placeholder="Hľadáte knihu? Ťuknite a začnite písať...", data-input, data-toggle-focus, autocomplete="off")
                       .input-addons__item.header-search__empty.input-addons__item--dark
                         +icon('search', '', 'Search').icon--medium
-                      .input-addons__item.input-addons__item.no-pad.header-search__value
+                      .input-addons__item.input-addons__item.p-none.header-search__value
                         button.btn.btn--primary.text-nowrap
                           +icon('search', '', 'Search').icon--medium.icon--left
                           | Hladať
@@ -141,12 +141,12 @@ html.no-js
                     +product().mb-small
                       +productCover({cover: item.cover, size: 'medium-large', href: 'kiosk-detail.html'}).inline-block
                       .product__title
-                        p.text-semibold.no-mrg.text-ellipsis.text-size-medium.link--product
+                        p.text-semibold.m-none.text-ellipsis.text-size-medium.link--product
                           a.link.link--product(href='kiosk-detail.html')= item.title
                           ul.list-inline.list-inline--delimited.text-size-small.text-ellipsis.text-color-grey-light.mb-tiny
                             - const authors = item.author.split(', ')
                             each item, i in authors
-                              li.no-mrg= item
+                              li.m-none= item
                           if index == 3
                             .badge(style="background: transparent; color: #828282; border-color: #828282;") Nemáme
                           else

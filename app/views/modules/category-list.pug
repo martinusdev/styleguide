@@ -19,9 +19,9 @@ mixin itemGroup(id)
 
 mixin groupItem(name, id, publisher, xmasmode)
   .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-m-small.no-mrg-top.no-mrg-horizontal--m-down
+    .bar__item.bar__item--fill.mb-m-small.mt-none.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
-        .bar__item.no-mrg
+        .bar__item.m-none
           a.text-semibold.text-medium.inline-block.link=name
           | #{' '}
           span.text-medium.text-color-grey.show-m=publisher
@@ -50,18 +50,18 @@ mixin groupItem(name, id, publisher, xmasmode)
             else if id == 3
               .badge.badge--green.mb-small.mb-m-none MP3 na CD
               .badge.badge--green.mb-small.mb-m-none Na sklade
-    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-m-none.no-mrg-horizontal--m-down
-      .bar.bar--small.no-mrg.bar--no-wrap
-        .bar__item.no-mrg
+    .bar__item.bar__item--shrinkable.mt-none.mb-small.mb-m-none.no-mrg-horizontal--m-down
+      .bar.bar--small.m-none.bar--no-wrap
+        .bar__item.m-none
           .badge.badge--primary -20%
-        .bar__item.no-mrg
+        .bar__item.m-none
           .text-bold.text-space-left 8,99
-        .bar__item.no-mrg
+        .bar__item.m-none
           +xmas({type: 'icon', size: 'medium'}).text-space-left-tiny(class=xmasmode ? '' : 'invisible')
 
-    .bar__item.bar__item--shrinkable.no-mrg-top.mb-small.mb-m-none
+    .bar__item.bar__item--shrinkable.mt-none.mb-small.mb-m-none
       .bar.bar--vertical.bar--vertical-small.mb-none.mb-m-tiny
-        .bar__item.show-m.no-mrg(style="max-width: 200px;")
+        .bar__item.show-m.m-none(style="max-width: 200px;")
           if id == 1
             p.mb-tiny.text-color-grey-dark.text-medium.text-center Na sklade, objednávajte#{' '}
               em(data-tooltip, title="Toto je tooltip vysvetlivka") však rýchlo
@@ -70,8 +70,8 @@ mixin groupItem(name, id, publisher, xmasmode)
             p.mb-tiny.text-color-grey-dark.text-medium.text-center Posielame#{' '}
               em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
               | .
-        .bar__item.no-mrg
-          button.btn.btn--clean.btn--small.no-mrg.hide-m
+        .bar__item.m-none
+          button.btn.btn--clean.btn--small.m-none.hide-m
             +icon('cart').icon--medium.text-color-primary
           button.btn.btn--primary.btn--small.mb-tiny(data-toggle='#checkout-notice').show-m
             +icon('cart').icon--left.icon--small
@@ -89,7 +89,7 @@ mixin formatDropdown(props = {})
     } = props;
 
   .btn-layout.btn-layout--vertical(class=(small) ? 'mb-none' : '')&attributes(attributes)
-    .btn-dropdown.no-mrg
+    .btn-dropdown.m-none
       button.btn.btn--ghost.btn--icon-right.text-left(
       class=(small) ? 'btn--small' : '',
       data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
@@ -100,7 +100,7 @@ mixin formatDropdown(props = {})
       .dropdown(data-dropdown, data-toggle-expand)
         .dropdown__wrap
           a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
+            .bar.text-small.mb-none
               .bar__item.bar__item--fill
                 div Kniha
                 .text-color-grey Posielame ihneď
@@ -108,7 +108,7 @@ mixin formatDropdown(props = {})
                 .text-semibold.text-color-black 18,00 €
                 .text-color-grey -10%
           a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
+            .bar.text-small.mb-none
               .bar__item.bar__item--fill
                 div Ekniha
                 .text-color-grey Okamžite na stiahnutie
@@ -116,7 +116,7 @@ mixin formatDropdown(props = {})
                 .text-semibold.text-color-black 16,00 €
                 .text-color-grey -10%
           a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
+            .bar.text-small.mb-none
               .bar__item.bar__item--fill
                 div Audiokniha na CD
                 .text-color-grey Posielame ihneď
@@ -124,7 +124,7 @@ mixin formatDropdown(props = {})
                 .text-semibold.text-color-black 8,00 €
                 .text-color-grey -5%
           a(href="#").dropdown__item
-            .bar.text-small.no-mrg-bottom
+            .bar.text-small.mb-none
               .bar__item.bar__item--fill
                 div Audiokniha MP3
                 .text-color-grey Okamžite na stiahnutie
@@ -132,19 +132,19 @@ mixin formatDropdown(props = {})
                 .text-semibold.text-color-black 12,00 €
                 .text-color-grey -2%
 
-section.section.section--toolbar.no-pad.hide-l.bg-default(data-sticky,
+section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
   .wrapper-main
     .bar.mb-none
       .bar__item.bar__item--fill
-        .btn-layout.btn-layout--horizontal.no-mrg-bottom
-          button.btn.btn--clean.is-active.no-mrg-bottom(data-toggle="#mobile-reduction").no-mrg-right
+        .btn-layout.btn-layout--horizontal.mb-none
+          button.btn.btn--clean.is-active.mb-none(data-toggle="#mobile-reduction").mr-none
             +icon('reduction', 'icon--medium').icon--left
             span.show-s Zúženie výberu
-          button.btn.btn--clean.no-mrg-bottom(data-toggle="#mobile-order").no-mrg-right
+          button.btn.btn--clean.mb-none(data-toggle="#mobile-order").mr-none
             +icon('order', 'icon--medium').icon--left
             span.show-s Zoradiť
-          button.btn.btn--clean.no-mrg-bottom
+          button.btn.btn--clean.mb-none
             +icon('close', 'icon--medium').icon--left
             | Zrušiť
       .bar__item.bar__item--shrinkable.text-right.hide-m
@@ -159,7 +159,7 @@ section.section
           .mobile-wrapper__header-title Zúženie výberu
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
             +icon('close', 'icon--medium')
-        .mobile-wrapper__content.no-pad
+        .mobile-wrapper__content.p-none
           if subcategories
             .show-l.mb-large
               //-h2 Podkategórie
@@ -174,7 +174,7 @@ section.section
           else
             include category-filter
         .mobile-wrapper__footer
-            .btn-layout.btn-layout--vertical.no-mrg-bottom
+            .btn-layout.btn-layout--vertical.mb-none
               button.btn Zúžiť výber
       .col--l-9.col--12
         if searchCard
@@ -294,7 +294,7 @@ section.section
                     option(value="ba-obchodna") Bratislava, Obchodná
                     option(value="ba-obchodna") Bratislava, Obchodná
             .hide-l.align-items-bottom.flex.flex-1
-              .btn-layout.btn-layout--vertical.no-mrg-bottom
+              .btn-layout.btn-layout--vertical.mb-none
                 button.btn Zoradiť
 
         if filters
@@ -333,7 +333,7 @@ section.section
             //GROUPED ITEM
             .product-item.product-item--border-bottom.bg-default
               .row.mb-medium.product-item__content
-                .col--shrink.no-pad-right.show-m
+                .col--shrink.pr-none.show-m
                   +product
                     +productCover({
                       href: 'detail-knihy.html',
@@ -344,7 +344,7 @@ section.section
                 .col--fill
                   .row.mb-medium.mb-m-none
 
-                    .col--s-shrink.col--3.no-pad-right.hide-m
+                    .col--s-shrink.col--3.pr-none.hide-m
                       +product
                         +productCover({
                           href: 'detail-knihy.html',
@@ -366,7 +366,7 @@ section.section
                             span.link.text-space-left(href="#recenzie", data-scroll) 234x
 
                         div(data-collapse="60")
-                          p.text-medium.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
+                          p.text-medium.mb-none.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
                         .mb-medium.show-s
                           a(href="detail-knihy.html").link.text-medium Viac o knihe
                             +icon('arrow-right', 'icon--small')
@@ -378,11 +378,11 @@ section.section
                   +itemGroup(1)
 
           else
-            .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'no-mrg-bottom--m' : '' )
+            .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'mb-m-none' : '' )
               .row
                 .col--m-fill.product-item__content
                   .row.mb-medium
-                    .col--s-shrink.col--3.no-pad-right
+                    .col--s-shrink.col--3.pr-none
                       +product
                         +productCover({
                           href: 'detail-knihy.html',
@@ -423,7 +423,7 @@ section.section
 
 
                       div(data-collapse="60")
-                        p.text-medium.no-mrg-bottom.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
+                        p.text-medium.mb-none.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
                       .mb-medium.show-s
                         a(href="detail-knihy.html").link.text-medium Viac o knihe
                           +icon('arrow-right', 'icon--small')
@@ -437,10 +437,10 @@ section.section
                         .bar__item.bar__item--fill
                           .text-medium.text-semibold.text-space-left #{item.price}
                         .bar__item
-                          button.btn.btn--clean.no-mrg
+                          button.btn.btn--clean.m-none
                             +icon('cart').icon--medium.text-color-primary
                         .bar__item
-                          button.btn.btn--clean.no-mrg
+                          button.btn.btn--clean.m-none
                             +icon('heart').icon--medium
 
                 .col--m-shrink.product-item__price-box
@@ -499,7 +499,7 @@ section.section
           if i === 2
             .section.section--small.bg-secondary.mb-large
               .product-item
-                .row.mb-medium.no-mrg-horizontal
+                .row.mb-medium.mx-none
                   .col--m-2.text-center
                     +icon('footer-shipping').icon--xxlarge.text-color-success
                   .col--m-10.text-center.text-left-m
@@ -510,7 +510,7 @@ section.section
           //if i === 2
             .section.bg-secondary.show-m.mb-large
               .product-item
-                .row.mb-large.no-mrg-horizontal
+                .row.mb-large.mx-none
                   .col--m-fill.product-item__content
                     .bar
                       .bar__item
@@ -518,7 +518,7 @@ section.section
                           img(src="../images/content/gift/darcek@2x.png", alt="Darcek", width="120")
                       .bar__item.bar__item--fill
                         h2.mb-small Hľadáte darček?
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item Pre:
                           .bar__item.bar__item--fill
                             ul.list-inline
@@ -530,10 +530,10 @@ section.section
           if i === 4
             .section.bg-secondary.show-m.mb-large
               .product-item
-                .row.mb-large.no-mrg-horizontal
+                .row.mb-large.mx-none
                   .col--m-fill
                     .row
-                      .col--s-shrink.col--3.no-pad-right
+                      .col--s-shrink.col--3.pr-none
                         .thumbnail
                           img(src="../images/content/gift/darcekova-poukazka@2x.png", alt="Darcekova poukazka", width="120")
                       .col--s-fill.col--9
@@ -541,7 +541,7 @@ section.section
                           br
                           | Kúpte darčekovú poukážku
                         p Obdarujte svojich blízkych presne tým, po čom vždy túžili - a ani nemusíte vedieť, čo to je!
-                        p.no-mrg-bottom
+                        p.mb-none
                           strong Darujte im darčekovú poukážku,
                           | za ktorú si môžu vybrať čokoľvek z celej pomnuky Martinus.sk - desiatky tisíc kníh, filmov, puzzle a iných skvelých darčekov. Podmienky použitia nájdete
                           a(href="#") tu
@@ -549,7 +549,7 @@ section.section
                   .col--m-shrink.product-item__price-box
                     .text-small.text.text-transform-upper.text-color-grey hodnota darčekovej poukážky
                     .btn-layout.btn-layout--vertical.mb-medium
-                      .btn-dropdown.no-mrg
+                      .btn-dropdown.m-none
                         button.btn.btn--ghost.btn--icon-right.text-left(
                           data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                           data-toggle-expand,
