@@ -29,7 +29,7 @@ footer.footer
 
         .bar.bar--small
           .bar__item
-            a.link.text-color-white.text-size-medium.text-bold.text-space-right(href="#")= footer.activeStore
+            a.link.text-color-white.text-size-medium.text-bold.mr-small(href="#")= footer.activeStore
             - var state = 'closing'; //- open, closing, closed
             span.text-size-medium.clickable(class='text-color-' + footer.store[state].color, data-tooltip, data-html="#store-tooltip", data-tippy-theme="light")
               = footer.store[state].text

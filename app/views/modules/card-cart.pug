@@ -83,13 +83,13 @@ mixin addTo2(props = {})
               button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`)
                 +icon('close', 'icon--small', 'Naspäť')
           a(href="#").dropdown__item
-            +icon('circle').icon--small.text-color-grey.text-space-right
+            +icon('circle').icon--small.text-color-grey.mr-small
             b Neprečítané
           a(href="#").dropdown__item
-            +icon('time').icon--small.text-color-blue.text-space-right
+            +icon('time').icon--small.text-color-blue.mr-small
             | Práve čítam
           a(href="#", data-toggle="#book-read-modal").dropdown__item
-            +icon('check-circle').icon--small.text-color-success.text-space-right
+            +icon('check-circle').icon--small.text-color-success.mr-small
             | Prečítaná
 
   if info
@@ -156,7 +156,7 @@ mixin addTo2(props = {})
 
             if (pageTitle == 'Detail knihy 2')
               .flex.align-items-middle.is-consent-show-m
-                button.btn.btn--success.btn--medium.mb-none.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+                button.btn.btn--success.btn--medium.mb-none.flex-fill.mr-tiny(data-toggle='#quick-checkout')
                   +icon('fwd').icon--left.icon--medium
                   | Zrýchlený nákup
                 +icon('info').icon--medium.text-color-grey(data-tooltip, title="S tymto butonom nakupite strasne rychlo, ze si ani nevsimnete")
@@ -175,7 +175,7 @@ mixin addTo2(props = {})
 
           .mb-tiny
           .mb-small
-            +icon('xmas-small').icon--small.text-color-success.text-space-right-tiny
+            +icon('xmas-small').icon--small.text-color-success.mr-tiny
             a(href="#").link Otváracie hodiny počas Vianoc
 
 

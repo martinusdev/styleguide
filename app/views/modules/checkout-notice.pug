@@ -11,7 +11,7 @@ include ./../mixins/icon
           .bar__item.bar__item--fill.text-left
             a.link(href="#").text-size-medium
               +icon('arrow-left', 'icon--medium')
-              span.text-space-left Chcem pokračovať v nákupe
+              span.ml-small Chcem pokračovať v nákupe
 
         h5 Posledné z vášho wishlistu
         .row
@@ -104,7 +104,7 @@ include ./../mixins/icon
                   trash: false,
                 }).mb-none.hide-m
             .text-center
-              a.link(href="#").text-size-medium.text-space-right Zobraziť všetky (+3)#{' '}
+              a.link(href="#").text-size-medium.mr-small Zobraziť všetky (+3)#{' '}
               button.btn.btn--primary.btn--small.mb-none objednať
 
             .card.hide
@@ -126,7 +126,7 @@ include ./../mixins/icon
                   trash: false,
                   showCartButton: true,
                 }).mb-none.hide-m
-                a.link(href="#").text-size-medium.text-space-right Zobraziť viac odporúčaní
+                a.link(href="#").text-size-medium.mr-small Zobraziť viac odporúčaní
 
             .card.hide
               .card__content.pb-none
@@ -144,7 +144,7 @@ include ./../mixins/icon
                             .bar__item
                               a.btn.btn--small.btn--clean.btn--equal.text-color-primary(href="#")
                                 +icon('cart').icon--medium
-                a.link(href="#").text-size-medium.text-space-right Zobraziť viac odporúčaní
+                a.link(href="#").text-size-medium.mr-small Zobraziť viac odporúčaní
 
             .card.hide-m
               .card__content.pb-none
@@ -166,7 +166,7 @@ include ./../mixins/icon
                             +productCover({cover: item.cover, size: 'medium', href: '#'}).inline-block
                             +productTitle({title: item.title, author: item.author, href: '#', small: true}).mb-none
                             .bar.mb-none.align-items-center.bar--no-wrap
-                              .bar__item.text-space-right
+                              .bar__item.mr-small
                                 .text-medium.text-semibold 19,50&nbsp;€
                               .bar__item.mr-none
                                 a.btn.btn--small.btn--clean.text-color-primary(href="#").p-none
@@ -199,7 +199,7 @@ include ./../mixins/icon
                   a(href="#").btn.btn--primary Objednať teraz
 
                 .flex.align-items-middle.mb-none
-                  button.btn.btn--success.btn--medium.mb-none.is-consent-show-m.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+                  button.btn.btn--success.btn--medium.mb-none.is-consent-show-m.flex-fill.mr-tiny(data-toggle='#quick-checkout')
                     +icon('fwd').icon--left.icon--medium
                     | Zrýchlený nákup
                   +icon('info').icon--medium.text-color-grey(data-tooltip, title="S tymto butonom nakupite strasne rychlo, ze si ani nevsimnete")

@@ -29,10 +29,10 @@ block content
               .bar__item.hide-l
                 a(href="my-library-list.html").btn.btn--clean.mb-none
                   +icon('arrow-left', 'icon--medium')
-              .bar__item.bar__item--shrinkable.text-space-right-tiny
+              .bar__item.bar__item--shrinkable.mr-tiny
                 h2.mb-none Wishlist
                 small.text-color-grey.block(style="margin-top: -3px;")
-                  +icon('guard').icon--small.text-space-right-tiny
+                  +icon('guard').icon--small.mr-tiny
                   a(data-toggle="#edit").link súkromný
               .bar__item.bar__item--shrinkable
                 button.btn.btn--clean.btn--equal(data-toggle='#edit')
@@ -51,7 +51,7 @@ block content
               .bar__item.bar__item--shrinkable.show-m
                 | Zoradiť:
               .bar__item.bar__item--shrinkable
-                .form-control.form-control--select.inline-block.text-space-right
+                .form-control.form-control--select.inline-block.mr-small
                   select.js-select.select--ghost(data-select-dropdown-width="150px")
                     option Najnovšie
                     option Dátum nákupu
@@ -119,10 +119,10 @@ block content
                       .bar__item.bar__item--shrinkable
                         if index < 5
                           .text-color-success
-                            +icon('transit').icon--small.text-space-left-tiny(data-tooltip, title="Na sklade. Posielame do 3 dní.")
+                            +icon('transit').icon--small.ml-tiny(data-tooltip, title="Na sklade. Posielame do 3 dní.")
                         else
                           .text-color-grey
-                            +icon('transit').icon--small.text-space-left-tiny(data-tooltip, title="Na objednávku do troch týždňov.")
+                            +icon('transit').icon--small.ml-tiny(data-tooltip, title="Na objednávku do troch týždňov.")
                     if index === 1
                       +productToRate()
                     else if index === 3
@@ -146,7 +146,7 @@ block content
               .card__content
                 .bar.mb-none
                   .bar__item.bar__item--fill.text-left.text-right-m
-                    .h3.inline-block.text-space-right Hodnota zoznamu:
+                    .h3.inline-block.mr-small Hodnota zoznamu:
                     .h2.inline-block 346,50 €
                   .bar__break.hide-m
                   .bar__item.bar__item--shrinkable

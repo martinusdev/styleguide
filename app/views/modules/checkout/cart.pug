@@ -20,7 +20,7 @@ include ./../../mixins/xmas
               .cart-item__content
                 .cart-item__column.cart-item__column--product-name
                   a.text-size-medium.m-none.link.link--product(href="detail-knihy.html")
-                    +xmas({type: 'icon'}).text-space-right-tiny
+                    +xmas({type: 'icon'}).mr-tiny
                     =item.title
                 if item.ebook
                   .cart-item__column.cart-item__column--tags
@@ -38,7 +38,7 @@ include ./../../mixins/xmas
     .bar.align-items-bottom
       .bar__item--fill
         .text-color-success
-          +icon('footer-shipping').icon--medium.text-space-right
+          +icon('footer-shipping').icon--medium.mr-small
           | Výborne! Objednávku vám vieme odoslať ešte dnes!
       .bar__item.bar__item--shrinkable
         span.h3 Spolu

@@ -154,23 +154,23 @@ mixin productDownload(props = {})
           .dropdown__wrap
             h5.dropdown__group Stiahnuť ako:
             a(href="#", data-toggle="#audiobook-modal").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small mp3
             a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small pdf
             a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small epub
             a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small mobi
             h5.dropdown__group Poslať:
             a(href="#", data-toggle="#e-reader-modal").dropdown__item
-              +icon('upload').icon--small.text-space-right
+              +icon('upload').icon--small.mr-small
               span.text-transform-upper.text-small poslať do čítačky
             a(href="#").dropdown__item
-              +icon('upload').icon--small.text-space-right
+              +icon('upload').icon--small.mr-small
               span.text-transform-upper.text-small darovať
 
 mixin productBuy(props = {})
@@ -231,11 +231,11 @@ mixin productStatus(props = {})
         .bar__item
           if status === 'read'
             p.mb-none.text-small.text-color-success
-              +icon('check-circle').text-space-right-tiny.text-vam
+              +icon('check-circle').mr-tiny.text-vam
               | Prečítané
           else if status === 'reading'
             p.mb-none.text-small.text-color-blue
-              +icon('time').text-space-right-tiny.text-vam
+              +icon('time').mr-tiny.text-vam
               | Práve čítam
           else if status === 'notread'
             p.mb-none.text-small.text-color-grey
@@ -256,23 +256,23 @@ mixin productStatus(props = {})
                   if actionDropdown != 'my-library'
                     h5.dropdown__group Stiahnuť ako:
                     a(href="#", data-toggle="#audiobook-modal").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small mp3
                     a(href="#").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small pdf
                     a(href="#").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small epub
                     a(href="#").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small mobi
                     h5.dropdown__group Poslať:
                     a(href="#", data-toggle="#e-reader-modal").dropdown__item
-                      +icon('upload').icon--small.text-space-right
+                      +icon('upload').icon--small.mr-small
                       span.text-transform-upper.text-small poslať do čítačky
                     a(href="#").dropdown__item
-                      +icon('upload').icon--small.text-space-right
+                      +icon('upload').icon--small.mr-small
                       span.text-transform-upper.text-small darovať
                     hr.mb-small
                   if !status
@@ -287,7 +287,7 @@ mixin productStatus(props = {})
                   if status
                     a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`).dropdown__item.dropdown__item--more Označiť ako
                   a.dropdown__item
-                    +icon('trash').icon--small.text-space-right
+                    +icon('trash').icon--small.mr-small
                     | Odstrániť z knižnice
                 .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
                   .bar.mb-none
@@ -328,13 +328,13 @@ mixin productStatus(props = {})
                       button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`)
                         +icon('close', 'icon--small', 'Naspäť')
                   a(href="#").dropdown__item
-                    +icon('circle').icon--small.text-color-grey.text-space-right
+                    +icon('circle').icon--small.text-color-grey.mr-small
                     b Neprečítané
                   a(href="#").dropdown__item
-                    +icon('time').icon--small.text-color-blue.text-space-right
+                    +icon('time').icon--small.text-color-blue.mr-small
                     | Práve čítam
                   a(href="#", data-toggle="#book-read-modal").dropdown__item
-                    +icon('check-circle').icon--small.text-color-success.text-space-right
+                    +icon('check-circle').icon--small.text-color-success.mr-small
                     | Prečítaná
 
 mixin productPreview(props = {})

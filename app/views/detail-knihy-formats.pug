@@ -51,7 +51,7 @@ mixin itemGroup(id)
     .mb-medium
       //a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
         +icon('plus')
-        | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Viac formátov</span>
+        | <span data-toggle-text-target class="ml-tiny mr-small">Viac formátov</span>
       a.link.text-size-medium(data-toggle="#modal-formats")
         +icon('plus')
         | Zobraziť viac#{' '}
@@ -68,11 +68,11 @@ mixin groupItem(name, id, details, inline)
           //a.link.link--product Základy rybolovu pro kluky a holky
           .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
             if id == 0
-              span.text-color-success.text-space-right-tiny Na sklade
+              span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
             else if id == 1
-              span.text-color-success.text-space-right-tiny PDF
-              span.text-color-success.text-space-right-tiny EPUB
+              span.text-color-success.mr-tiny PDF
+              span.text-color-success.mr-tiny EPUB
               span.text-color-success MOBI
             else if id == 3
               span.text-color-success Na sklade
@@ -94,9 +94,9 @@ mixin groupItem(name, id, details, inline)
         .bar__item.m-none
           .badge.badge--primary -20%
         .bar__item.m-none
-          .text-bold.text-space-left 8,99
+          .text-bold.ml-small 8,99
         .bar__item.m-none
-          a.link.text-space-left-tiny
+          a.link.ml-tiny
             +icon('arrow-right').icon--medium
 
 
@@ -111,11 +111,11 @@ mixin groupItem2(name, id, details, inline)
           //a.link.link--product Základy rybolovu pro kluky a holky
           .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
             if id == 0
-              span.text-color-success.text-space-right-tiny Na sklade
+              span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
             else if id == 1
-              span.text-color-success.text-space-right-tiny PDF
-              span.text-color-success.text-space-right-tiny EPUB
+              span.text-color-success.mr-tiny PDF
+              span.text-color-success.mr-tiny EPUB
               span.text-color-success MOBI
             else if id == 3
               span.text-color-success Na sklade
@@ -146,7 +146,7 @@ mixin groupItem2(name, id, details, inline)
         .bar__item.m-none
           .badge.badge--primary -20%
         .bar__item.m-none
-          .text-bold.text-space-left.text-space-right 8,99
+          .text-bold.ml-small.mr-small 8,99
         .bar__item.m-none
           if id != 0
             button.btn.btn--primary.btn--small.btn--equal.mb-none(data-toggle='#checkout-notice')
@@ -271,7 +271,7 @@ block content
                   img.book-flag.book-flag--large(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: -5px;")
 
                 .product-detail__preview-link.text-left
-                  .text-space-right
+                  .mr-small
                   button.btn.btn--clean.mb-none(data-toggle="#product-preview")
                     +icon('eye').icon--left.icon--medium
                     span.show-m Pozrieť ukážku
@@ -313,14 +313,14 @@ block content
                       +icon('star').rating-star__item.icon--medium
                       .rating-star__value
                         | 3,5
-                    a.link.text-medium.text-space-left.show-m(href="#recenzie", data-scroll) 234x
+                    a.link.text-medium.ml-small.show-m(href="#recenzie", data-scroll) 234x
               .bar__item.bar__item--shrinkable.show-m
                 .badges.m-none
                   .badge.badge--green Bestseller
                   .badge.badge--orange Top #98
               .bar__item.bar__item--shrinkable
                 .text-medium
-                  +icon('coffee').icon--medium.text-space-right-tiny.text-color-grey
+                  +icon('coffee').icon--medium.mr-tiny.text-color-grey
                   em(data-tooltip, title="Lorem ipsum dolor sit amet").text-color-grey 3 hodiny čítania
 
             .bar.mb-medium.show-m
@@ -356,21 +356,21 @@ block content
 
             .show-m
               h2.h3 Ďalšie formáty tejto knihy
-              a.btn.btn--ghost.text-space-right.mb-small
+              a.btn.btn--ghost.mr-small.mb-small
                 .flex.align-items-middle
                   .flex-shrinkable
                     +icon('products-ebooks').icon--left.icon--medium
                   .flex-fill.text-left
                     | E-kniha#{' '}
                     .text-color-grey 9,99€
-              a.btn.btn--ghost.text-space-right.mb-small
+              a.btn.btn--ghost.mr-small.mb-small
                 .flex.align-items-middle
                   .flex-shrinkable
                     +icon('products-audiobooks').icon--left.icon--medium
                   .flex-fill.text-left
                     | audiokniha#{' '}
                     .text-color-grey 13,99€
-              a.btn.btn--ghost.text-space-right.mb-small
+              a.btn.btn--ghost.mr-small.mb-small
                 .flex.align-items-middle
                   .flex-shrinkable
                     +icon('products-books').icon--left.icon--medium
@@ -685,7 +685,7 @@ block content
                   .bar__item.bar__item--shrinkable
                     a.link
                       span Naše recenzie na ďalšie knihy
-                      +icon('arrow-right').text-space-left-tiny
+                      +icon('arrow-right').ml-tiny
                 .card.card--info.mb-large
                   .card__content
                     .bar
@@ -937,7 +937,7 @@ block content
                           .bar.mb-medium.text-medium.border-bottom-grey-2
                             .bar__item.mb-small
                               +icon('calendar', 'icon--medium').text-color-grey
-                            .bar__item.text-space-right.mb-small
+                            .bar__item.mr-small.mb-small
                               .text-semibold 21. 8. 2017, 17:00
                             .bar__item.mb-small
                               +icon('pin', 'icon--medium').text-color-grey
@@ -981,7 +981,7 @@ block content
           button.btn.btn--primary.btn--medium.mb-small(data-toggle='#checkout-notice').flex-fill
             +icon('cart').icon--left.icon--medium
             | Vložiť do košíka
-          button.btn.btn--success.btn--medium.mb-none.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+          button.btn.btn--success.btn--medium.mb-none.flex-fill.mr-tiny(data-toggle='#quick-checkout')
             +icon('fwd').icon--left.icon--medium
             | Zrýchlený nákup
 
@@ -1161,13 +1161,13 @@ block modals
                   trash: false,
                 }).mb-none
             .text-center
-              a.link(href="#").text-size-medium.text-space-right Zobraziť všetky (+3)#{' '}
+              a.link(href="#").text-size-medium.mr-small Zobraziť všetky (+3)#{' '}
 
           .bar__item.mb-none
             .card
               .card__content.pb-none
                 .flex.mb-small
-                  .flex-shrinkable.text-space-right
+                  .flex-shrinkable.mr-small
                     h3.mb-none Doručenie
                   .flex-shrinkable
                     a.link zmeniť
@@ -1180,17 +1180,17 @@ block modals
                   | 12585 Bratislava
                   small.text-color-grey.flex.align-items-middle
                     +icon('info').icon--small
-                    span.text-space-right-tiny Doručovacia adresa je rovnaká ako fakturačná
+                    span.mr-tiny Doručovacia adresa je rovnaká ako fakturačná
                     a.link zmeniť
 
                 .flex
-                  .flex-shrinkable.text-space-right
+                  .flex-shrinkable.mr-small
                     h3.mb-none Platba
                   .flex-shrinkable
                     a.link zmeniť
                 b Kartou#{' '}
                 | **** **** **** 4567
-                img.text-space-left(src=`${assetsPrefix}images/content/banks/sk/visa.png`, alt="VISA", width="32")
+                img.ml-small(src=`${assetsPrefix}images/content/banks/sk/visa.png`, alt="VISA", width="32")
 
           .bar__item
             article.card
