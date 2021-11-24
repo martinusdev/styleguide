@@ -15,13 +15,10 @@ block content
       .wrapper-main
         .row
           .col--l-8.ofst--center.card.px-none
-
             .card__content.mb-medium
-              .bar.bar--small
-                .bar__item
-                  h1.h2 Váš košík
-                .bar__item
-                  .pill.pill--blue 4
+              .d-flex.align-items-middle.mb-none
+                h2.mb-none.mr-small Váš košík
+                .pill.pill--blue 4
 
               ul.list.list--cart.list--unstyled
                 each item, i in books
@@ -33,15 +30,15 @@ block content
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__info
-                          a.text-semibold.m-none.block.link.link--product.text-medium.line-medium(href="detail-knihy.html")
-                            +xmas({type: 'icon'}).text-space-right-tiny
+                          a.text-semibold.mb-tiny.block.link.link--product.text-medium.line-medium(href="detail-knihy.html")
+                            +xmas({type: 'icon'}).mr-tiny
                             =item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-none
                             - var authors = item.author.split(', ')
                             each author in authors
-                              li= author
+                              li.m-none= author
                           if (item.ebook || item.preorder)
-                            .badges.show-m.mb-none.mt-tiny
+                            .badges.mb-none.mt-tiny
                               if (item.ebook)
                                 .badge.text-nowrap E-kniha
                               if (item.preorder)
@@ -49,18 +46,18 @@ block content
                         .cart-item__actions
                           .form-control.form-control--input.m-none.mr-small
                             .input-addons.input-addons--small.align-items-right
-                              .input-addons__item.no-pad
+                              .input-addons__item.p-none
                                 button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('minus', 'icon--medium', 'mínus')
-                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
-                              .input-addons__item.no-pad
+                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.px-none.text-center
+                              .input-addons__item.p-none
                                 button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('plus', 'icon--medium', 'plus')
                           button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
                           +addTo({text: '', link: false, status: false}).mb-none
                       .cart-item__price.text-semibold.text-size-medium.text-nowrap= item.price
-                li.list__item.align-items-bottom.mt-small
+                li.list__item.align-items-bottom.pb-none
                   .list__item__section.list__item__section--primary.text-right
                     span.h3.text-normal Spolu
                   .list__item__section.list__item__section--secondary
