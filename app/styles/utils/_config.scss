@@ -1415,7 +1415,7 @@ $card-header: (
 
 $list-margin-bottom: _get-space('v');
 
-$list-variants: (default, bordered, clean, padded);
+$list-variants: (default, bordered, clean, padded, cart);
 
 $list: (
   default: (
@@ -1428,6 +1428,10 @@ $list: (
   clean: (
     border: none,
   ),
+  cart: (
+    border: none,
+    background: none,
+  )
 );
 
 $list-item: (
@@ -1443,6 +1447,9 @@ $list-item: (
   ),
   bordered: (
     padding: _get-space('v', 'small') _get-space('h', 'small'),
+  ),
+  cart: (
+    padding: _get-space('v', 'default') 0,
   )
 );
 

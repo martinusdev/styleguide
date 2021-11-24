@@ -3,17 +3,13 @@
 // ----------------------------
 
 .cart-item {
+  align-items: center;
   display: flex;
   width: 100%;
 
   &__thumbnail {
-    flex: 0 0 _get-rem(40px);
-    margin-right: _get-space('h', 'small');
-
-    @include breakpoint(m) {
-      flex-basis: auto;
-      margin-right: _get-space('h');
-    }
+    flex-basis: _get-rem(50px);
+    flex-shrink: 0;
   }
 
   &__content {
@@ -22,16 +18,29 @@
 
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
+    flex-direction: column;
 
     .cart-item--summary & { //stylelint-disable-line
       justify-content: flex-end;
     }
 
     @include breakpoint(m) {
+      align-items: center;
       flex-wrap: nowrap;
+      flex-direction: row;
     }
+  }
+
+  &__price {
+    flex-basis: _get-rem(80px);
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
   }
 }
 

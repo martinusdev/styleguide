@@ -15,122 +15,53 @@ block content
       .wrapper-main
         .row
           .col--l-8.ofst--center.card.px-none
-
             .card__content.mb-medium
-              .bar.bar--small
-                .bar__item
-                  h1.h2 Váš košík
-                .bar__item
-                  .pill.pill--blue 4
+              .d-flex.align-items-middle.mb-none
+                h2.mb-none.mr-small Váš košík
+                .pill.pill--blue 4
 
               ul.list.list--cart.list--unstyled
                 each item, i in books
                   li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
                     .cart-item
-                      .cart-item__thumbnail
-                        a.thumbnail.thumbnail--book.thumbnail--medium-large.thumbnail--clickable(href="detail-knihy.html")
+                      .cart-item__thumbnail.mr-small
+                        a.thumbnail.thumbnail--book.thumbnail--medium.thumbnail--clickable(href="detail-knihy.html")
                           .thumbnail__img-wrap
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
-                        .cart-item__column.cart-item__column--product-name
-                          a.text-semibold.m-none.block.link.link--product.line-medium(href="detail-knihy.html")
+                        .cart-item__info
+                          a.text-semibold.mb-tiny.block.link.link--product.text-medium.line-medium(href="detail-knihy.html")
                             +xmas({type: 'icon'}).mr-tiny
                             =item.title
-                          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
+                          ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-none
                             - var authors = item.author.split(', ')
                             each author in authors
-                              li= author
-                          .badges.show-m
-                            if (item.ebook)
-                              .badge.text-nowrap E-kniha
-                            if (item.preorder)
-                              .badge.badge--orange.text-nowrap Predpredaj
-                          if (i == 1 || i == 2)
-                            .bar.bar--small.text-size-small.m-none.show-m
-                              .bar__item
-                                .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                              .bar__item
-                                span.text-transform-upper.text-color-grey Tento titul číta aj
-                                |
-                                |
-                                a.link(href="#") Jana Róbertson
-
-                        .cart-item__column.cart-item__column--wishlist.hide-m
-                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).mb-none
-                        .cart-item__column.cart-item__column--qty
-                          .form-control.form-control--input.m-none
+                              li.m-none= author
+                          if (item.ebook || item.preorder)
+                            .badges.mb-none.mt-tiny
+                              if (item.ebook)
+                                .badge.text-nowrap E-kniha
+                              if (item.preorder)
+                                .badge.badge--orange.text-nowrap Predpredaj
+                        .cart-item__actions
+                          .form-control.form-control--input.m-none.mr-small
                             .input-addons.input-addons--small.align-items-right
-                              .input-addons__item.input-addons__item--no-border.p-none
+                              .input-addons__item.p-none
                                 button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('minus', 'icon--medium', 'mínus')
                               input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.px-none.text-center
-                              .input-addons__item.input-addons__item--no-border.p-none
+                              .input-addons__item.p-none
                                 button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('plus', 'icon--medium', 'plus')
-                        .cart-item__column.cart-item__column--price
-                          .text-semibold.text-size-medium.text-nowrap= item.price
-                        .cart-item__column.cart-item__column--remove
-                          +addTo({text: 'Kúpiť neskôr', link: true, status: false}).mb-none.show-m
                           button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
-                li.list__item.align-items-bottom.mt-small
+                          +addTo({text: '', link: false, status: false}).mb-none
+                      .cart-item__price.text-semibold.text-size-medium.text-nowrap= item.price
+                li.list__item.align-items-bottom.pb-none
                   .list__item__section.list__item__section--primary.text-right
-                    span.h3 Spolu
+                    span.h3.text-normal Spolu
                   .list__item__section.list__item__section--secondary
-                    span.h2
-                      strong 21.45€
+                    span.h2.text-bold 21,45 €
             .card_footer
-              .col--m-9.ofst--center
-                .btn-layout--vertical.btn-layout--s-horizontal.btn-layout--fill.mb-large
-                  a(href="/homepage.html").btn.btn--ghost Späť do kníhkupectva
-                  a(href="/homepage.html").btn.btn--primary Objednať tituly
-
-        .row
-          .col--l-8.ofst--center.card.px-none
-            .card__content.mb-medium
-              .bar.bar--small
-                .bar__item
-                  h1.h2 Váš košík
-                .bar__item
-                  .pill.pill--blue 4
-
-              ul.list.list--cart.list--unstyled
-                each item, i in books
-                  li.list__item(id=`cart-item${i}` data-toggle-class="is-hidden")
-                    .cart-item
-                      .cart-item__content
-                        .cart-item__column.cart-item__column--product-name
-                          span.text-semibold.line-medium(class=item.ebook ? 'mr-small' : '')
-                            +xmas({type: 'icon'}).mr-tiny
-                            = item.title
-                          if item.ebook
-                            span.badge.text-nowrap E-kniha
-                        .cart-item__column.cart-item__column--wishlist
-                          +addTo({ text: '' }).mb-none
-                        .cart-item__column.cart-item__column--qty
-                          .form-control.form-control--input.m-none
-                            .input-addons.input-addons--small.align-items-right
-                              .input-addons__item.input-addons__item--no-border.p-none
-                                button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
-                                  +icon('minus', 'icon--medium', 'mínus')
-                              input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.px-none.text-center
-                              .input-addons__item.input-addons__item--no-border.p-none
-                                button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
-                                  +icon('plus', 'icon--medium', 'plus')
-                        .cart-item__column.cart-item__column--price
-                          .text-semibold.text-size-medium.text-nowrap= item.price
-                        .cart-item__column.cart-item__column--remove
-                          button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
-                            +icon('trash', 'icon--medium')
-                li.list__item.align-items-bottom.mt-small
-                  .list__item__section.list__item__section--primary.text-right
-                    span.h3 Spolu
-                  .list__item__section.list__item__section--secondary
-                    span.h2
-                      strong 21.45€
-
-            .card_footer
-              .col--m-9.ofst--center
-                .btn-layout--vertical.btn-layout--s-horizontal.btn-layout--fill.mb-large
-                  a(href="/homepage.html").btn.btn--ghost Späť do kníhkupectva
-                  a(href="/homepage.html").btn.btn--primary Objednať tituly
+              .col.text-right
+                a(href="/homepage.html").btn.btn--primary.btn--large Pristúpiť k objednávke
