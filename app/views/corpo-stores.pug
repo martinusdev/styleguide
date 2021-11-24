@@ -15,13 +15,13 @@ block content
 
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
           .bar__break.hide-l
           .bar__item.bar__item--fill
             .btn-layout.btn-layout--vertical.hide-l
-              .btn-dropdown.no-mrg
+              .btn-dropdown.m-none
                 button.btn.btn--ghost.btn--icon-right.text-left(
                 data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                 data-toggle-expand,
@@ -38,12 +38,12 @@ block content
       .wrapper-main
         .row
           .col--l-3.show-l(data-sticky-container)
-            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.pr-none(href="#")
               +icon('arrow-left', 'icon--medium')
               span Späť na martinus centrum
             div(data-sticky, data-sticky-class="is-stuck", data-scroll-offset=header.size.default+30)
               h2.h4 Kontakty
-              ul.list.list--expanded.no-pad(role="navigation")
+              ul.list.list--expanded.p-none(role="navigation")
                 each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
                   li.mb-medium
                     a.text-medium(href="#", data-scroll) !{link}
@@ -66,7 +66,7 @@ block content
                   .col--m-8
                     .store__photo-box.text-color-white.flex.flex-column.align-items-right(style="background-image: url(images/content/stores/store-ba.jpg)")
                       h2.mb-small Martinus na Obchodnej
-                      .bar.no-mrg-bottom
+                      .bar.mb-none
                         .bar__item
                           a#gallery-link(href="#") Prezrieť galériu
                             +icon('arrow-right')
@@ -84,7 +84,7 @@ block content
                       a.link(href="#") Besedy v tomto kníhkupectve
                         +icon('arrow-right')
                   .col--m-4
-                    p.no-mrg-bottom--m
+                    p.mb-m-none
                       span.text-semibold Otváracie hodiny
                       br
                       | Pondelok - piatok: 8:30 - 21:00
@@ -93,11 +93,11 @@ block content
 
                     .mb-small
                     .mb-medium
-                      +icon('xmas-small').icon--small.text-color-success.text-space-right-tiny
+                      +icon('xmas-small').icon--small.text-color-success.mr-tiny
                       a(href="#").link Otváracie hodiny počas Vianoc
 
                   .col--m-4
-                    p.no-mrg-bottom--m
+                    p.mb-m-none
                       span.text-semibold Kontakt
                       br
                       | Telefón: 02/3266 0366

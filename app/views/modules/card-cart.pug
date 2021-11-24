@@ -23,7 +23,7 @@ mixin addTo2(props = {})
     if link
       a.link.text-medium(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)=text
     else
-      button.btn.no-mrg(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand, class=buttonClass ? buttonClass : "")
+      button.btn.m-none(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand, class=buttonClass ? buttonClass : "")
         +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
         | #{text}
 
@@ -45,8 +45,8 @@ mixin addTo2(props = {})
           if status
             a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`).dropdown__item.dropdown__item--more Označiť ako
         .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
-          .bar.no-mrg-bottom
-            .bar__item.no-mrg-right
+          .bar.mb-none
+            .bar__item.mr-none
               button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-list-${id}, #my-library-dropdown-${id}`)
                 +icon('chevron-left', 'icon--medium', 'Naspäť')
             .bar__item.bar__item--fill
@@ -60,7 +60,7 @@ mixin addTo2(props = {})
           .card.mb-none
             .card__content.card__content--condensed
               .bar.flex-nowrap
-                .bar__item.no-mrg-right
+                .bar__item.mr-none
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
                     +icon('chevron-left', 'icon--medium', 'Naspäť')
                 .bar__item.align-self-center.text-center.text-nowrap
@@ -71,10 +71,10 @@ mixin addTo2(props = {})
               .form-control.form-control--input
                 input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
               .btn-layout--vertical
-                button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+                button(type="button").btn.btn--full.mb-none Vytvoriť
         .hide(id=`my-library-dropdown-states-${id}` data-toggle-class="hide")
-          .bar.no-mrg-bottom
-            .bar__item.no-mrg-right
+          .bar.mb-none
+            .bar__item.mr-none
               button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-states-${id}, #my-library-dropdown-${id}`)
                 +icon('chevron-left', 'icon--medium', 'Naspäť')
             .bar__item.bar__item--fill
@@ -83,13 +83,13 @@ mixin addTo2(props = {})
               button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`)
                 +icon('close', 'icon--small', 'Naspäť')
           a(href="#").dropdown__item
-            +icon('circle').icon--small.text-color-grey.text-space-right
+            +icon('circle').icon--small.text-color-grey.mr-small
             b Neprečítané
           a(href="#").dropdown__item
-            +icon('time').icon--small.text-color-blue.text-space-right
+            +icon('time').icon--small.text-color-blue.mr-small
             | Práve čítam
           a(href="#", data-toggle="#book-read-modal").dropdown__item
-            +icon('check-circle').icon--small.text-color-success.text-space-right
+            +icon('check-circle').icon--small.text-color-success.mr-small
             | Prečítaná
 
   if info
@@ -121,20 +121,14 @@ mixin addTo2(props = {})
         .card__content
           .row
             .col--6.col--m-12.text-right.text-center-m
-              .h1.price-box__price.no-mrg-bottom 12,99 €
+              .h1.price-box__price.mb-none 12,99 €
             .col--6.col--m-12.text-left.text-center-m
               p.text-color-grey-dark.mb-none.mb-m-small
                 span.show-m Bežná cena#{' '}
                 span.hide-m Bežne#{' '}
                 span.text-strikethrough 15,42 €
-              .badges.badges--inline.align-items-center.no-mrg-bottom
+              .badges.badges--inline.align-items-center.mb-none
                 .badge.badge--primary Ušetríte 3,50 €
-
-              .mb-tiny
-              .badge.badge--large
-                +icon('tip-heart').icon--medium.text-space-right-tiny
-                span.text-space-right-tiny alebo
-                a.link podporte vydavateľov
 
         .card__content
 
@@ -162,7 +156,7 @@ mixin addTo2(props = {})
 
             if (pageTitle == 'Detail knihy 2')
               .flex.align-items-middle.is-consent-show-m
-                button.btn.btn--success.btn--medium.mb-none.flex-fill.text-space-right-tiny(data-toggle='#quick-checkout')
+                button.btn.btn--success.btn--medium.mb-none.flex-fill.mr-tiny(data-toggle='#quick-checkout')
                   +icon('fwd').icon--left.icon--medium
                   | Zrýchlený nákup
                 +icon('info').icon--medium.text-color-grey(data-tooltip, title="S tymto butonom nakupite strasne rychlo, ze si ani nevsimnete")
@@ -176,12 +170,12 @@ mixin addTo2(props = {})
           .h1.price-box__price 13,90 €
 
         .card__content
-          .form-control.form-control--select.align-items-center.no-mrg
+          .form-control.form-control--select.align-items-center.m-none
             select#store-list-select.store-list-select.select--ghost.select--store.select--lowercase(data-select-store, data-select-small, data-select-position="bottom")
 
           .mb-tiny
           .mb-small
-            +icon('xmas-small').icon--small.text-color-success.text-space-right-tiny
+            +icon('xmas-small').icon--small.text-color-success.mr-tiny
             a(href="#").link Otváracie hodiny počas Vianoc
 
 

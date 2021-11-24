@@ -22,7 +22,7 @@ block content
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
               .btn-layout.btn-layout--vertical
-                .btn-dropdown.no-mrg
+                .btn-dropdown.m-none
                   button.btn.btn--clean.btn--lowercase.btn--icon-right.text-left(
                     data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                     data-toggle-expand,
@@ -34,7 +34,7 @@ block content
                   .dropdown(data-dropdown, data-toggle-expand)
                     .dropdown__wrap
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Slovenčina, e-kniha
                             .text-color-grey Posielame ihneď
@@ -42,7 +42,7 @@ block content
                             .text-semibold.text-color-black 18,00 €
                             .text-color-grey -10%
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Slovenčina, brožovaná väzba
                             .text-color-grey Posielame ihneď
@@ -50,7 +50,7 @@ block content
                             .text-semibold.text-color-black 16,00 €
                             .text-color-grey -10%
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Český jazyk, E-kniha
                             .text-color-grey Posielame ihneď
@@ -58,7 +58,7 @@ block content
                             .text-semibold.text-color-black 8,00 €
                             .text-color-grey -5%
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
                             .text-color-grey Posielame ihneď
@@ -68,7 +68,7 @@ block content
 
       section.section--breadcrumbs
         .wrapper-main
-          .bar.no-mrg-bottom
+          .bar.mb-none
             .bar__item.bar__item--shrinkable
               +breadcrumbs({ breadcrumbs: ['Knihy', 'Deti a mládež', 'Encyklopédie, náučné knihy', 'Ostatné', 'Základy rybolovu pro kluky a holky'] })
 
@@ -124,7 +124,7 @@ block content
                 .dropdown(data-dropdown, data-toggle-expand)
                   .dropdown__wrap
                     a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
+                      .bar.text-small.mb-none
                         .bar__item.bar__item--fill
                           div Slovenčina, e-kniha
                           .text-color-grey Posielame ihneď
@@ -132,7 +132,7 @@ block content
                           .text-semibold.text-color-black 18,00 €
                           .text-color-grey -10%
                     a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
+                      .bar.text-small.mb-none
                         .bar__item.bar__item--fill
                           div Slovenčina, brožovaná väzba
                           .text-color-grey Posielame ihneď
@@ -140,7 +140,7 @@ block content
                           .text-semibold.text-color-black 16,00 €
                           .text-color-grey -10%
                     a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
+                      .bar.text-small.mb-none
                         .bar__item.bar__item--fill
                           div Český jazyk, E-kniha
                           .text-color-grey Posielame ihneď
@@ -148,7 +148,7 @@ block content
                           .text-semibold.text-color-black 8,00 €
                           .text-color-grey -5%
                     a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.no-mrg-bottom
+                      .bar.text-small.mb-none
                         .bar__item.bar__item--fill
                           div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
                           .text-color-grey Posielame ihneď
@@ -172,7 +172,7 @@ block content
 
               .bar.bar--small.mb-medium
                 .bar__item
-                  .badges.no-mrg
+                  .badges.m-none
                     .badge
                       .rating-star
                         +icon('star').rating-star__item.icon--medium.is-active
@@ -182,36 +182,36 @@ block content
                         +icon('star').rating-star__item.icon--medium
                         .rating-star__value
                           | 3,5
-                      a.link.text-medium.text-space-left.show-m(href="#recenzie", data-scroll) 234x
+                      a.link.text-medium.ml-small.show-m(href="#recenzie", data-scroll) 234x
                 .bar__item.bar__item--shrinkable.show-m
-                  .badges.no-mrg
+                  .badges.m-none
                     .badge.badge--green Bestseller
                     .badge.badge--orange Top #98
                 .bar__item.bar__item--shrinkable
                   .text-medium
-                    +icon('coffee').icon--medium.text-space-right-tiny.text-color-grey
+                    +icon('coffee').icon--medium.mr-tiny.text-color-grey
                     em(data-tooltip, title="Lorem ipsum dolor sit amet").text-color-grey 3 hodiny čítania
 
               .bar.mb-medium.show-m
                 .bar__item
-                  dl.no-mrg
+                  dl.m-none
                     dt Vydavateľstvo
                     dd
                       a.link(href="#") Inspira Publishing
                       span.text-color-grey , 2016
                 .bar__item.bar__item--border
                 .bar__item
-                  dl.no-mrg
+                  dl.m-none
                     dt Edícia
                     dd
                       a.link(href="#") Rybolov
                 .bar__item.bar__item--border
                 .bar__item.bar__item--fill
-                  .bar.bar--small.align-items-top.no-mrg-bottom
+                  .bar.bar--small.align-items-top.mb-none
                     .bar__item
                       .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                     .bar__item.bar__item--fill
-                      dl.no-mrg
+                      dl.m-none
                         dt Tento titul číta aj
                         dd
                           a.link(href="#") Jana Róbertson
@@ -227,10 +227,6 @@ block content
 
             .col--l-3.col--m-6.ofst--m-4.ofst--l-0
               include ./modules/card-cart
-
-              .social-buttons.text-center.mb-medium.mb-l-none
-                | <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="100" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
-                | <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
       section.section
         .wrapper-main
@@ -314,7 +310,7 @@ block content
             .col--m-6.ofst--m-center
               .text-medium.text-uppercase.text-color-grey-dark.mb-medium Upozornenie
               p Obsah tejto knihy je vnímaný ako kontroverzný. Pri čítaní každej knihy odporúčame nezabúdať na kritické myslenie a názory odborníkov v danej oblasti. Zisk z predaja tejto knihy putuje na podporu neziskových organizácií SuperTrieda a Slovenská debatná asociácia
-                a.link.text-medium.text-space-left Prečo?
+                a.link.text-medium.ml-small Prečo?
               a.link.text-medium(href="#popis-knihy", data-scroll, data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.m + 20}}`) Zobraziť anotáciu ku knihe od vydavateľa
                 +icon('arrow-down')
 
@@ -325,18 +321,18 @@ block content
 
           +booksCarouselRecommended.carousel--fade-outside
 
-      section.section.section--secondary.no-pad-top(style="background-color: #133f7e;")
+      section.section.section--secondary.pt-none(style="background-color: #133f7e;")
         .wrapper-main
           a(href='#')
-            img.show-m.img.img--fluid(src="images/content/banners/banner.jpg").no-mrg
-            img.hide-m.img.img--fluid(src="images/content/banners/banner-mobile.jpg").no-mrg
+            img.show-m.img.img--fluid(src="images/content/banners/banner.jpg").m-none
+            img.hide-m.img.img--fluid(src="images/content/banners/banner-mobile.jpg").m-none
 
     div(data-sticky-container)
       section.hide-m(data-observe-book-detail=bookHeader, data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
         //.wrapper-main
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
-              .form-control.form-control--select.no-mrg
+              .form-control.form-control--select.m-none
                 select.select--clean#detail-sections-spy(data-scroll-offset=header.size.default + 80)
                   option(value="popis-knihy") Popis knihy
                   option(value="podrobnosti") Podrobnosti
@@ -358,7 +354,7 @@ block content
                   button.btn.btn--primary.btn--medium.mb-small(data-toggle='#checkout-notice')
                     | Do košíka
 
-                ul.list.list--with-hover.list--expanded.no-pad(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
+                ul.list.list--with-hover.list--expanded.p-none(role="navigation", data-gumshoe, data-gumshoe-select="#detail-sections-spy")
                   - const aboutBookScrollOffset = `{"0": ${header.size.default + 80}, "768": ${header.size.m + 10}}`;
                   li
                     a(href="#popis-knihy", data-scroll, data-scroll-offset=aboutBookScrollOffset ) Popis knihy
@@ -427,14 +423,14 @@ block content
                     include ./modules/card-buy-together
 
               section.mb-large
-                .card.card--well.no-pad-bottom
+                .card.card--well.pb-none
                   .card__content
-                    #mistake.row.no-mrg-bottom(data-toggle-class="hide")
+                    #mistake.row.mb-none(data-toggle-class="hide")
                       .col--m-8
                         .text-semibold Našli ste v našom obsashu nejaké nepresnosti?
                         div Dajte nám o tom vedieť.
                       .col--m-4.text-right
-                        button.btn.btn--ghost.no-mrg(data-toggle="#mistake, #mistake-detail") Nahlásiť chybu
+                        button.btn.btn--ghost.m-none(data-toggle="#mistake, #mistake-detail") Nahlásiť chybu
                     #mistake-detail.hide(data-toggle-class="hide")
                       .row
                         .col--fill
@@ -474,9 +470,9 @@ block content
                           button.btn(type="submit") odoslať upozornenie
 
               section.mb-large#podrobnosti(data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.default + 20}}`)
-                .card.card--well.text-medium.no-pad-bottom
+                .card.card--well.text-medium.pb-none
                   .card__content
-                    .row.no-mrg-bottom
+                    .row.mb-none
                       .col--6.col--s-4
                         dl
                           dt Počet strán
@@ -505,7 +501,7 @@ block content
                         dl
                           dt Katalógové číslo
                           dd 162431
-                    .row.no-mrg-bottom
+                    .row.mb-none
                       .col--12
                         dl
                           dt.mb-small Kategorizácia
@@ -557,7 +553,7 @@ block content
                   .bar__item.bar__item--shrinkable
                     a.link
                       span Naše recenzie na ďalšie knihy
-                      +icon('arrow-right').text-space-left-tiny
+                      +icon('arrow-right').ml-tiny
                 .card.card--info.mb-large
                   .card__content
                     .bar
@@ -632,14 +628,14 @@ block content
                     .row.align-items-center.align-items-middle
                       .col--l-7.text-center
                         p.mb-small Ako sa vám páčila kniha?
-                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l(data-stars)
+                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.m-l-none(data-stars)
                           - for (var abc = 0; abc<5; abc++)
                             input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
-                            label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+abc)
+                            label.radiocheck__label.ml-none.rating-star__item(for="review-rating-"+abc)
                               +icon('star').icon--xlarge
 
                       .col--l-5
-                        .btn-layout.btn-layout--vertical.no-mrg
+                        .btn-layout.btn-layout--vertical.m-none
                           button.btn(data-toggle="#add-review-modal") Pridať recenziu
                     .row.hide#add-review(data-toggle-class="hide")
                       .col--12.mb-medium
@@ -663,7 +659,7 @@ block content
                       +icon('star').rating-star__item.icon--large.is-active
                       +icon('star-half').rating-star__item.icon--large.is-active
                   .col--l-7.col--l-border
-                    table.book-rating__table.table.table--clean.no-mrg
+                    table.book-rating__table.table.table--clean.m-none
                       tbody
                         -
                           const barRating = [857, 10, 24, 3, 12];
@@ -704,23 +700,23 @@ block content
                                 | 4.5
                             .bar__item
                               .text-medium 2.3.2017
-                        p#user-review-1.bg-secondary.no-mrg-bottom(data-collapse="200") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        p#user-review-1.bg-secondary.mb-none(data-collapse="200") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
                         .product-read-more.mb-small
                           a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-1, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
                             +icon('arrow-down')
-                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.no-mrg-bottom
-                          button.btn.btn--clean.no-mrg-right
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.mb-none
+                          button.btn.btn--clean.mr-none
                             +icon('react').icon--left.icon--medium
                             | Reagovať
-                          button.btn.btn--clean.no-mrg-right
+                          button.btn.btn--clean.mr-none
                             +icon('like').icon--left.icon--medium
                             span.text-normal.text-size-medium= likes
 
-                          button.btn.btn--clean.no-mrg-right
+                          button.btn.btn--clean.mr-none
                             +icon('dislike').icon--left.icon--medium
                             span.text-normal.text-size-medium= dislikes
 
-                          button.btn.btn--clean.no-mrg-right(data-toggle="#flag-review" data-toggle-self="false")
+                          button.btn.btn--clean.mr-none(data-toggle="#flag-review" data-toggle-self="false")
                             +icon('flag').icon--medium
 
                       .col--l-6.col--l-border
@@ -738,23 +734,23 @@ block content
                                 | 4.5
                             .bar__item
                               .text-medium 2.3.2017
-                        p#user-review-2.bg-secondary.no-mrg-bottom(data-collapse="200") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
+                        p#user-review-2.bg-secondary.mb-none(data-collapse="200") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
                         .product-read-more.mb-small
                           a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-2, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
                             +icon('arrow-down')
-                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.no-mrg-bottom
-                          button.btn.btn--clean.no-mrg-right
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.mb-none
+                          button.btn.btn--clean.mr-none
                             +icon('react').icon--left.icon--medium
                             | Reagovať
-                          button.btn.btn--clean.no-mrg-right
+                          button.btn.btn--clean.mr-none
                             +icon('like').icon--left.icon--medium
                             span.text-normal.text-size-medium= likes
 
-                          button.btn.btn--clean.no-mrg-right
+                          button.btn.btn--clean.mr-none
                             +icon('dislike').icon--left.icon--medium
                             span.text-normal.text-size-medium= dislikes
 
-                          button.btn.btn--clean.no-mrg-right(data-toggle="#flag-review" data-toggle-self="false")
+                          button.btn.btn--clean.mr-none(data-toggle="#flag-review" data-toggle-self="false")
                             +icon('flag').icon--medium
 
                 +review({ source: true, verified: true, martinus: true, })
@@ -809,7 +805,7 @@ block content
                             .bar.mb-medium.text-medium.border-bottom-grey-2
                               .bar__item.mb-small
                                 +icon('calendar', 'icon--medium').text-color-grey
-                              .bar__item.text-space-right.mb-small
+                              .bar__item.mr-small.mb-small
                                 .text-semibold 21. 8. 2017, 17:00
                               .bar__item.mb-small
                                 +icon('pin', 'icon--medium').text-color-grey
@@ -902,13 +898,13 @@ block content
           .row.align-items-center.align-items-middle
             .col--l-7.text-center
               p.mb-small Ako sa vám páčila kniha?
-              #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.no-mrg-l.checked(data-stars)
+              #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.m-l-none.checked(data-stars)
                 - for (var abc = 0; abc<5; abc++)
                   input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + abc)
-                  label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-" + abc)
+                  label.radiocheck__label.ml-none.rating-star__item(for="review-rating-" + abc)
                     +icon('star').icon--xlarge
             .col--l-5
-              .btn-layout.btn-layout--vertical.no-mrg
+              .btn-layout.btn-layout--vertical.m-none
                 button.btn(data-toggle="#add-review-modal", disabled)
                   +icon('check-circle')
                   | #{' '}ohodnotené
@@ -981,7 +977,7 @@ block append tooltips
       .row.align-items-top
         .col--2.col--m-3
           .portrait(style="background-image: url('images/content/avatars/f.jpg');")
-        .col--10.col--m-9.no-pad-left
+        .col--10.col--m-9.pl-none
           #badges.club-badges(data-collapse="150").mb-small
             .club-badges__item
               .club-badge
@@ -1009,7 +1005,7 @@ block append tooltips
                 img(src="images/content/club/badges/badges-08.png")
 
           .bar
-            .bar__item.bar__item--shrinkable.text-space-right
+            .bar__item.bar__item--shrinkable.mr-small
               .product__img.product__cover
                 .thumbnail.thumbnail--book.thumbnail--small
                   a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
@@ -1024,7 +1020,7 @@ block append tooltips
 
     .card__footer
       button.btn.btn--clean.mb-none
-        span.text-space-left zobraziť čitateľský profil
+        span.ml-small zobraziť čitateľský profil
         +icon('arrow-right')
 
 block append scripts

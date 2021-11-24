@@ -30,7 +30,7 @@ block content
 
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Budeš našou posilou?'] })
 
@@ -38,20 +38,20 @@ block content
       .wrapper-main
         .row
           .col--l-3.show-l
-            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.pr-none(href="#")
               +icon('arrow-left', 'icon--medium')
               span Späť na martinus centrum
 
             h2.h4 Pridaj sa
 
-            ul.list.list--expanded.no-pad(role="navigation").mb-large
+            ul.list.list--expanded.p-none(role="navigation").mb-large
               each section, i in navigation
                 li.mb-medium(class=i === 0 ? 'is-active' : '')
                   a.text-medium(href=`#${section.href}`, data-scroll) !{section.title}
 
             h2.h4 Najnovšie ponuky
 
-            ul.text-medium.list.list--expanded.no-pad.list--with-hover.list--line-visible
+            ul.text-medium.list.list--expanded.p-none.list--with-hover.list--line-visible
               li
                 a.link Martinus: HR manažér (Bratislava, TPP)
               li

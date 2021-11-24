@@ -4,14 +4,14 @@ include ./../mixins/xmas
   if !hideFilterHeader
     .row.show-l.align-items-middle.mb-medium
       .col--fill
-        h2.no-mrg Filter
+        h2.m-none Filter
       .col--shrink
         if !collapseFilters
           a.link.text-transform-upper.text-small zmazať filter
   if xmas
     .filter__cat
       .filter__cat-name
-        .form-control.form-control--group.no-mrg-bottom
+        .form-control.form-control--group.mb-none
           .radiocheck-group
             .form-control.form-control--checkbox
               .checkbox
@@ -22,11 +22,11 @@ include ./../mixins/xmas
                   +icon('xmas-small').icon--small.text-color-success
   dl.filter__cat
     dt.filter__cat-name
-      .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-show-only", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Zobrazit iba
+      .btn-layout--vertical.mb-none
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.px-none.text-transform-none.text-color-black(data-toggle="self, #filter-show-only", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Zobrazit iba
           +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
     dd.filter__cat-items#filter-show-only(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
-      .form-control.form-control--group.no-mrg-bottom
+      .form-control.form-control--group.mb-none
         .radiocheck-group
           .form-control.form-control--checkbox
             .checkbox
@@ -58,11 +58,11 @@ include ./../mixins/xmas
               label.radiocheck__label(for="filter-presale") Predpredaj
   dl.filter__cat
     dt.filter__cat-name
-      .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-product-type", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Typ produktu
+      .btn-layout--vertical.mb-none
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.px-none.text-transform-none.text-color-black(data-toggle="self, #filter-product-type", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Typ produktu
           +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
     dd.filter__cat-items#filter-product-type(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
-      .form-control.form-control--group.no-mrg-bottom
+      .form-control.form-control--group.mb-none
         .radiocheck-group
           .form-control.form-control--checkbox
             .checkbox
@@ -82,11 +82,11 @@ include ./../mixins/xmas
                 span.text-color-grey.ml-tiny.text-size-small 635
   dl.filter__cat
     dt.filter__cat-name
-      .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-formats", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Formáty
+      .btn-layout--vertical.mb-none
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.px-none.text-transform-none.text-color-black(data-toggle="self, #filter-formats", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Formáty
           +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
     dd.filter__cat-items#filter-formats(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
-      .form-control.form-control--group.no-mrg-bottom
+      .form-control.form-control--group.mb-none
         .radiocheck-group
           .form-control.form-control--checkbox
             .checkbox
@@ -126,13 +126,13 @@ include ./../mixins/xmas
                 span.text-color-grey.ml-tiny.text-size-small 635
   dl.filter__cat
     dt.filter__cat-name
-      .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-authors", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Autori
+      .btn-layout--vertical.mb-none
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.px-none.text-transform-none.text-color-black(data-toggle="self, #filter-authors", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Autori
           +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
     dd.filter__cat-items#filter-authors(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
       .form-control.form-control--input.mb-small
         input.mt-none.input.input--small.filter__search(type="text", name="filter-author", id="filter-author", placeholder="Vyhľadajte autora")
-      .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
+      .form-control.form-control--group.mb-none(data-collapse="150")
         .radiocheck-group
           .form-control.form-control--checkbox
             .checkbox
@@ -177,14 +177,14 @@ include ./../mixins/xmas
                 span.text-color-grey.ml-tiny.text-size-small 635
       a.link.text-size-medium(href="javascript:void(0)", data-toggle="self, previous", data-toggle-icon="../icons_/app.svg#icon-arrow-up", data-toggle-text="Menej", data-collapse-trigger)
         +icon('plus')
-        | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Ďalších 60 autorov</span>
+        | <span data-toggle-text-target class="ml-tiny mr-small">Ďalších 60 autorov</span>
   dl.filter__cat
     dt.filter__cat-name
-      .btn-layout--vertical.no-mrg-bottom
-        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.no-pad-left.no-pad-right.text-transform-none.text-color-black(data-toggle="self, #filter-languages", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Jazyky
+      .btn-layout--vertical.mb-none
+        button.btn.btn--clean.btn--icon-right.btn--lowercase.text-left.px-none.text-transform-none.text-color-black(data-toggle="self, #filter-languages", data-toggle-icon=`../icons_/app.svg#icon-chevron-${collapseFilters ? 'up' : 'down'}`, data-collapse-trigger) Jazyky
           +icon(`chevron-${collapseFilters ? 'down' : 'up'}`, 'icon--medium').text-color-grey
     dd.filter__cat-items#filter-languages(data-toggle-class="hide", class=collapseFilters ? 'hide' : '')
-      .form-control.form-control--group.no-mrg-bottom(data-collapse="150")
+      .form-control.form-control--group.mb-none(data-collapse="150")
         .radiocheck-group
           .form-control.form-control--checkbox
             .checkbox
@@ -229,4 +229,4 @@ include ./../mixins/xmas
                 span.text-color-grey.ml-tiny.text-size-small 635
       a.link.block.text-center.text-size-medium(href="javascript:void(0)", data-toggle="self, previous", data-toggle-icon="../icons_/app.svg#icon-arrow-up", data-toggle-text="Menej", data-collapse-trigger)
         +icon('plus')
-        | <span data-toggle-text-target class="text-space-left-tiny text-space-right">Ďalšie 4 jazyky</span>
+        | <span data-toggle-text-target class="ml-tiny mr-small">Ďalšie 4 jazyky</span>

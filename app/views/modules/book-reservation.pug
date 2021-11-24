@@ -3,7 +3,7 @@ include ./../mixins/icon
 .modal-overlay.active#book-reservation(data-modal)
   article.modal.modal--medium
     .modal__wrap
-      header.modal__header.align-items-top.no-mrg-bottom
+      header.modal__header.align-items-top.mb-none
         .modal__header__headline
           h2.h3.mb-medium.text-semibold.text-color-black Rezervácia titulu v kníhkupectve
           p.text-medium Bojíte sa, že sa titul vypredá, skôr než stihnete prísť do kníhkupectva?
@@ -15,23 +15,23 @@ include ./../mixins/icon
       section.modal__content
         .row.border-bottom-grey.mb-medium
           .col--12
-            .bar.align-items-top.no-mrg-bottom
+            .bar.align-items-top.mb-none
               .bar__item
                 img(src="images/content/books/sample-15.jpg").thumbnail.thumbnail--book.thumbnail--medium
               .bar__item.bar__item--fill
                 h2.h4.text- Fantastické tvory a dlhý názov na dva riadky
                 .text-medium.text-color-grey.mb-small J.K. Rowlingová
                 .bar.align-items-middle.text-medium.mb-small
-                  button.btn.btn--clean.text-space-right.no-mrg-bottom
+                  button.btn.btn--clean.mr-small.mb-none
                     +icon('heart', 'icon--medium')
-                  .portrait.portrait--small.no-mrg-bottom(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                  span.text-space-left Tento titul má na poličke aj#{' '}
+                  .portrait.portrait--small.mb-none(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                  span.ml-small Tento titul má na poličke aj#{' '}
                     span.text-semibold Callie Krueger
         .row.border-bottom-grey.mb-medium
           .col--6.mb-medium
             h3.mb-small.text-semibold.text-color-black Kde si prídete nákup vyzdvihnúť?
             .form-control.form-control--select.mb-small
-              .form-label.no-mrg-bottom
+              .form-label.mb-none
                 label.text-transform-upper Kníhkupectvo
               select.store-list-select.select--ghost.select--lowercase(data-select-store)
             .text-semibold.text-medium Otváracie hodiny kníhkupectva:
@@ -39,20 +39,20 @@ include ./../mixins/icon
           .col--6.mb-medium
             h3.mb-small.text-semibold.text-color-black Zadajte vaše kontaktné údaje
             .form-control.form-control--input.mb-small
-              .form-label.form-label--required.no-mrg-bottom
+              .form-label.form-label--required.mb-none
                 label.text-transform-upper(for="reservation-name") Meno a priezvisko
               input.input(type="text", name="reservation-name", id="reservation-name", placeholder="Zadajte meno a priezvisko")
 
             .form-control.form-control--input.mb-small
-              .form-label.form-label--required.no-mrg-bottom
+              .form-label.form-label--required.mb-none
                 label.text-transform-upper(for="reservation-mobile") Mobil
               .input-addons
-                .input-addons__item.no-pad
+                .input-addons__item.p-none
                   select.js-select
                     option(selected disabled placeholder) +421
                     option +421
                 input.input(type="number", name="reservation-mobile", id="reservation-mobile", placeholder="902 000 000")
 
       footer.modal__footer
-        .btn-layout--horizontal.no-mrg-bottom.align-items-center
+        .btn-layout--horizontal.mb-none.align-items-center
           button.btn.btn--primary(type="button" data-toggle="#book-reservation") Záväzne rezervovať za 19,90 €

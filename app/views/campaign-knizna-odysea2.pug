@@ -38,12 +38,12 @@ block content
 
             .ko-user
               .bar.bar--vertical
-                .bar__item.border-bottom-grey.ko-border--violet.no-mrg-bottom
+                .bar__item.border-bottom-grey.ko-border--violet.mb-none
                   .bar
-                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email.no-mrg-bottom
-                      +icon('user').icon--medium.text-space-right
+                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email.mb-none
+                      +icon('user').icon--medium.mr-small
                       span.text-semibold klco.roman@gmail.com
-                    .bar__item.bar__item--fill.text-right.no-mrg-bottom
+                    .bar__item.bar__item--fill.text-right.mb-none
                       a(href="#").link.link--product
                         +icon('logout').icon--medium
                 .mb-medium
@@ -165,7 +165,7 @@ block content
             .form-control.form-control--input
               .input-addons
                 input.input(type="text", placeholder="Tvoj e-mail...")
-                .input-addons__item.no-pad
+                .input-addons__item.p-none
                   button.btn.btn--primary
                     | Prihlásiť
 
@@ -177,7 +177,7 @@ block content
             .mb-medium
             a(href="#")
               img(src="images/content/campaign/knizna-odysea/logo2/logo-small-sk.svg", width="270").img
-        .modal__header.mb-none.no-pad-top
+        .modal__header.mb-none.pt-none
           .modal__header__headline.text-center
             .h3.text-transform-upper úloha na tento deň
           .modal__header__action
@@ -199,7 +199,7 @@ block content
 
           img(src="https://placehold.it/800x500")
 
-          ol.list.no-pad
+          ol.list.p-none
             li.list__item.list__item--clickable(data-toggle="#q1, self", data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`, data-toggle-class="")
               .list__item__section.list__item__section--primary
                 a.link 1. Nápoveda
@@ -265,7 +265,7 @@ block content
                 .form-control.form-control--input#input-guess
                   .input-addons
                     input.input(type="text", placeholder="Názov knihy...")
-                    .input-addons__item.no-pad
+                    .input-addons__item.p-none
                       .btn.btn--ko2#btn-guess
                         | Hľadaj
 

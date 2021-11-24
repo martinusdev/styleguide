@@ -19,11 +19,11 @@ mixin bookHorizontal(props = {})
       recommender,
     } = props;
 
-  .section.product-item.no-mrg-bottom
+  .section.product-item.mb-none
     .wrapper-main
       .row
         .col--4.col--s-shrink.text-left.ofst--center
-          +product().no-mrg-bottom
+          +product().mb-none
             +productCover({
               cover: cover,
               size: coverSize
@@ -34,7 +34,7 @@ mixin bookHorizontal(props = {})
               href=`https://www.martinus.sk/?uItem=${id}`,
               data-target=`#u${id}`
             ) #{title}
-          ul.list-inline.list-inline--bulleted.no-pad
+          ul.list-inline.list-inline--bulleted.p-none
             li
               each val, key in authors
                 if key >= 1

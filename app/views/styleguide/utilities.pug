@@ -34,16 +34,16 @@ block append content
       +demo-example
         p
           code.l-code-inline .text-bold
-          span.text-bold.text-space-left text bold
+          span.text-bold.ml-small text bold
           br
           code.l-code-inline .text-semibold
-          span.text-semibold.text-space-left text semibold
+          span.text-semibold.ml-small text semibold
           br
           code.l-code-inline .text-light
-          span.text-light.text-space-left text light
+          span.text-light.ml-small text light
           br
           code.l-code-inline .text-italic
-          span.text-italic.text-space-left text italic
+          span.text-italic.ml-small text italic
           br
           code.l-code-inline .text-strikethrough
           span.text-strikethrough text strikethrough
@@ -99,41 +99,23 @@ block append content
 
         p
           code.l-code-inline .text-transform-upper
-          span.text-transform-upper.text-space-left text transform uppercase
+          span.text-transform-upper.ml-small text transform uppercase
           br
           code.l-code-inline .text-transform-capitalize
-          span.text-transform-capitalize.text-space-left text transform capitalize
+          span.text-transform-capitalize.ml-small text transform capitalize
           br
           code.l-code-inline .text-transform-none
-          span.text-transform-none.text-space-left text transform none
-
-        hr
-        p.text-space-half
-          code.l-code-inline .text-space-half
-        p.text-nospace
-          code.l-code-inline .text-nospace
-        p.text-nospace
-          span.text-space-left Text with space on left side
-          code.l-code-inline .text-space-left
-        p.text-nospace
-          span.text-space-left-tiny Text with tiny space on left side
-          code.l-code-inline .text-space-left-tiny
-        p.text-nospace
-          span.text-space-right Text with space on right side
-          code.l-code-inline .text-space-right
-        p.text-nospace
-          span.text-space-right-tiny Text with tiny space on right side
-          code.l-code-inline .text-space-right-tiny
+          span.text-transform-none.ml-small text transform none
 
         hr
 
         p.text-nowrap(style="")
           code.l-code-inline .text-nowrap
-          span.text-space-left Text no warp ea dolor ea exercitation et esse incididunt ut Excepteur officia. Tempor officia minim cillum do aute nulla sint dolor Lorem proident nisi elit.
+          span.ml-small Text no warp ea dolor ea exercitation et esse incididunt ut Excepteur officia. Tempor officia minim cillum do aute nulla sint dolor Lorem proident nisi elit.
 
         p.text-ellipsis(style="width: 200px")
           code.l-code-inline .text-ellipsis
-          span.text-space-left Text ellipsis
+          span.ml-small Text ellipsis
 
       +demo-code
         :code
@@ -164,16 +146,6 @@ block append content
           <span class="text-transform-upper">text transform uppercase</span>
           <span class="text-transform-capitalize">text transform capitalize</span>
           <span class="text-transform-none">text transform none</span>
-
-          <p class="text-space-half">text space half</p>
-          <p class="text-nospace">text nospace</p>
-          <p class="text-nospace">
-            ...
-            <span class="text-space-left">text space left</span>
-            <span class="text-space-left-tiny">text tiny space left</span>
-            <span class="text-space-right">text space right</span>
-            <span class="text-space-right-tiny">text tiny space right</span>
-          </p>
 
           <p class="text-nowrap">...</p>
           <p class="text-ellipsis">...</p>
@@ -219,26 +191,26 @@ block append content
 
     +content-sub-section('Spacing resets')
 
-      +p Use <code class='l-code-inline'>.no-pad</code> or <code class='l-code-inline'>.no-mrg</code> to reset margins or paddings. Target specific breakpoint with <code class='l-code-inline'>.no-mrg-[xs/s/m/xl]</code> and <code class='l-code-inline'>.no-pad-[xs/s/m/xl]</code>.
+      +p Use <code class='l-code-inline'>.p-none</code> or <code class='l-code-inline'>.m-none</code> to reset margins or paddings. Target specific breakpoint with <code class='l-code-inline'>.m[-xs/s/m/xl]-none</code> and <code class='l-code-inline'>.p[-xs/s/m/xl]-none</code>.
 
       +demo(true)
         +demo-code
           :code
-            <div class="no-mrg"> reset margins </div>
-            <div class="no-mrg-top"> reset top margin </div>
-            <div class="no-mrg-bottom"> reset bottom margin </div>
-            <div class="no-mrg-left"> reset left margin </div>
-            <div class="no-mrg-right"> reset right margin </div>
-            <div class="no-mrg-vertical"> reset top and bottom margin </div>
-            <div class="no-mrg-horizontal"> reset left and right margin </div>
+            <div class="m-none"> reset margins </div>
+            <div class="mt-none"> reset top margin </div>
+            <div class="mb-none"> reset bottom margin </div>
+            <div class="ml-none"> reset left margin </div>
+            <div class="mr-none"> reset right margin </div>
+            <div class="my-none"> reset top and bottom margin </div>
+            <div class="mx-none"> reset left and right margin </div>
 
-            <div class="no-pad"> reset padding </div>
-            <div class="no-pad-top"> reset padding-top </div>
-            <div class="no-pad-bottom"> reset padding-bottom </div>
-            <div class="no-pad-left"> reset left padding </div>
-            <div class="no-pad-right"> reset right padding </div>
-            <div class="no-pad-vertical"> reset top and bottom padding </div>
-            <div class="no-pad-horizontal"> reset left and right padding </div>
+            <div class="p-none"> reset padding </div>
+            <div class="pt-none"> reset padding-top </div>
+            <div class="pb-none"> reset padding-bottom </div>
+            <div class="pl-none"> reset left padding </div>
+            <div class="pr-none"> reset right padding </div>
+            <div class="py-none"> reset top and bottom padding </div>
+            <div class="px-none"> reset left and right padding </div>
       //- end: demo
 
     +content-sub-section('Flexbox utilities', 'flexbox-utils')

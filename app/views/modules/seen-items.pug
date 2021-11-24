@@ -2,7 +2,7 @@ section.section.section--white#seen-items(data-toggle-class="hide")
   .wrapper-main
     .bar.mb-large
       .bar__item
-        h2.no-mrg-bottom Pozreli ste si:
+        h2.mb-none Pozreli ste si:
       .bar__break.hide-l
       .bar__item.bar__item--fill.overflow-hidden
         -
@@ -12,7 +12,7 @@ section.section.section--white#seen-items(data-toggle-class="hide")
             spaceBetween: 10,
           };
           swiperConfig = JSON.stringify(swiperConfig);
-        .carousel.no-mrg-bottom(style="overflow: hidden;")
+        .carousel.mb-none(style="overflow: hidden;")
           .swiper-container(data-swiper-options=swiperConfig)
             .swiper-wrapper
               each item, i in Array(12)

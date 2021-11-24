@@ -2,8 +2,8 @@ include ./../mixins/icon
 
 .mb-medium
   .row.mb-large
-    .col--shrink.no-pad-right.hide-l
-      button.btn.btn--clean.no-mrg-bottom
+    .col--shrink.pr-none.hide-l
+      button.btn.btn--clean.mb-none
         +icon('arrow-left', 'icon--medium')
     .col--fill
       h1.h2.mb-none Objednávka č. 123
@@ -11,14 +11,14 @@ include ./../mixins/icon
     .col--shrink
       a(data-tooltip, title="Bla bla bla zatial nepotrvrdena platba, dont panic...")
         +icon('info', 'icon--medium')
-      button.btn.btn--primary.no-mrg-bottom
+      button.btn.btn--primary.mb-none
         | Zaplatiť#{' '}
         span.show-m kartou online
-      span.text-space-left
-      button.btn.btn--ghost.no-mrg-bottom.text-space-right.show-m
+      span.ml-small
+      button.btn.btn--ghost.mb-none.mr-small.show-m
         +icon('trash', 'icon--medium').icon--left
         | Stornovať
-      button.btn.btn--clean.no-mrg-bottom.text-space-right.hide-m
+      button.btn.btn--clean.mb-none.mr-small.hide-m
         +icon('trash', 'icon--medium')
   .row.mb-large.show-m
   .row.mb-m-large
@@ -48,7 +48,7 @@ include ./../mixins/icon
     .bar__item.bar__item--fill
       h2 Sumár objednávky
     .bar__item
-      button.btn.btn--ghost.no-mrg-bottom
+      button.btn.btn--ghost.mb-none
         +icon('download', 'icon--medium').icon--left
         | Stiahnuť faktúru
 
@@ -94,9 +94,9 @@ include ./../mixins/icon
           .order-summary__item.border-bottom-grey.mb-medium
             .bar.mb-none
               .bar__item.bar__item--fill.bar__item--shrinkable
-                h3.h5.no-mrg-bottom.text-color-black Spôsob platby
+                h3.h5.mb-none.text-color-black Spôsob platby
               .bar__item.text-right
-                button.btn.btn--clean.show-m.no-pad
+                button.btn.btn--clean.show-m.p-none
                   +icon('download', 'icon--small').icon--left
                   | faktúra
 
@@ -134,15 +134,15 @@ include ./../mixins/icon
                 b Jozef Novák, Budyšínska 51, 851 02 Bratislava
 
           .text-right
-            span.text-large.text-space-right Spolu k úhrade
+            span.text-large.mr-small Spolu k úhrade
             span.h2.text-bold 10,00 €
 
         .card__content.bg-secondary
-          .bar.align-items-center.no-mrg-top
+          .bar.align-items-center.mt-none
             .bar__item.text-medium Zásielku pripravili:
             .bar__item
               each a, i in Array(5)
-                img(class=i !== 4 ? 'text-space-right' : '', src="/images/content/user-photo.png", width="45", alt="Avatar")
+                img(class=i !== 4 ? 'mr-small' : '', src="/images/content/user-photo.png", width="45", alt="Avatar")
 
     .col--l-6
       .order-packages
@@ -163,52 +163,52 @@ include ./../mixins/icon
 
           .package__item.mb-small.border-bottom-grey
             .bar.align-items-middle.mb-small
-              .bar__item.no-pad-right
+              .bar__item.pr-none
                 .thumbnail.thumbnail--book.thumbnail--small
                   .thumbnail__img-wrap
                     img(src="https://i1.martinus.sk/tovar/_l/279/l279265.jpg")
               .bar__item.bar__item--fill
                 .text-semibold Muž, ktorý hľadal svoj tieň
                 .text-small.text-color-grey David Lagercrantz
-                a.btn.btn--small.btn--clean.no-pad
+                a.btn.btn--small.btn--clean.p-none
                   +icon('download', 'icon--small')
                   | #{' '}Stiahnuť
               .bar__item.bar__item--shrinkable.text-right
                 .text-medium
                   span.text-color-grey 1x#{' '}
                   span.text-semibold 8,84 €
-                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                button.btn.btn--clean.pt-none.pb-none
                   +icon('heart', 'icon--medium')
                 span.text-medium V#{' '}
                   a.link(href="#") knižnici
               .bar__item.bar__item--shrinkable.text-right
-                button.btn.btn--clean.no-mrg(type="button")
+                button.btn.btn--clean.m-none(type="button")
                   +icon('trash', 'icon--medium')
 
           .package__item.mb-small
             .bar.align-items-middle.mb-small
-              .bar__item.no-pad-right
+              .bar__item.pr-none
                 .thumbnail.thumbnail--book.thumbnail--small
                   .thumbnail__img-wrap
                     img(src="https://i1.martinus.sk/tovar/_l/242/l242240.jpg")
               .bar__item.bar__item--fill
                 .text-semibold Darčeková poukážka - 15 EUR
-                a.btn.btn--small.btn--clean.no-pad
+                a.btn.btn--small.btn--clean.p-none
                   +icon('download', 'icon--small')
                   | #{' '}Stiahnuť
-                a.btn.btn--small.btn--clean.no-pad.text-space-left
+                a.btn.btn--small.btn--clean.p-none.ml-small
                   +icon('eye', 'icon--small')
                   | #{' '}Zobraziť
               .bar__item.bar__item--shrinkable.text-right
                 .text-medium
                   span.text-color-grey 1x#{' '}
                   span.text-semibold 15,00 €
-                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                button.btn.btn--clean.pt-none.pb-none
                   +icon('heart', 'icon--medium')
                 span.text-medium V#{' '}
                   a.link(href="#") knižnici
               .bar__item.bar__item--shrinkable.text-right
-                button.btn.btn--clean.no-mrg(type="button")
+                button.btn.btn--clean.m-none(type="button")
                   +icon('trash', 'icon--medium')
 
         // zasielka 1
@@ -224,16 +224,16 @@ include ./../mixins/icon
                 span.text-color-black Kuriér GLS#{' '}
                 a(href="#").link HSKDJF546546
             .bar__item.text-right
-              a.btn.btn--small.btn--clean.no-pad
+              a.btn.btn--small.btn--clean.p-none
                 +icon('download', 'icon--small')
                 | #{' '}faktúra
             .bar__item.bar__item--shrinkable.text-right
-              button.btn.btn--clean.no-mrg(type="button")
+              button.btn.btn--clean.m-none(type="button")
                 +icon('trash', 'icon--medium')
 
           .package__item.mb-small
             .bar.align-items-middle.mb-small
-              .bar__item.no-pad-right
+              .bar__item.pr-none
                 .thumbnail.thumbnail--book.thumbnail--small
                   .thumbnail__img-wrap
                     img(src="images/content/books/sample-1.jpg")
@@ -244,12 +244,12 @@ include ./../mixins/icon
                 .text-medium
                   span.text-color-grey 1x#{' '}
                   span.text-semibold 123,26 €
-                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                button.btn.btn--clean.pt-none.pb-none
                   +icon('heart', 'icon--medium')
                 span.text-medium V#{' '}
                   a.link(href="#") knižnici
               .bar__item.bar__item--shrinkable.text-right
-                button.btn.btn--clean.no-mrg(type="button")
+                button.btn.btn--clean.m-none(type="button")
                   +icon('trash', 'icon--medium')
 
 
@@ -263,7 +263,7 @@ include ./../mixins/icon
                 | Vybavuje sa
           .package__item.mb-small
             .bar.align-items-middle.mb-small
-              .bar__item.no-pad-right
+              .bar__item.pr-none
                 .thumbnail.thumbnail--book.thumbnail--small
                   .thumbnail__img-wrap
                     img(src="images/content/books/sample-15.jpg")
@@ -275,17 +275,17 @@ include ./../mixins/icon
                 .text-medium
                   span.text-color-grey 1x#{' '}
                   span.text-semibold 123,26 €
-                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                button.btn.btn--clean.pt-none.pb-none
                   +icon('heart', 'icon--medium')
                 span.text-medium V#{' '}
                   a.link(href="#") knižnici
               .bar__item.bar__item--shrinkable.text-right
-                button.btn.btn--clean.no-mrg(type="button")
+                button.btn.btn--clean.m-none(type="button")
                   +icon('trash', 'icon--medium')
 
           .package__item.mb-small
             .bar.align-items-middle.mb-small
-              .bar__item.no-pad-right
+              .bar__item.pr-none
                 .thumbnail.thumbnail--book.thumbnail--small
                   .thumbnail__img-wrap
                     img(src="images/content/books/sample-15.jpg")
@@ -297,17 +297,17 @@ include ./../mixins/icon
                 .text-medium
                   span.text-color-grey 1x#{' '}
                   span.text-semibold 123,26 €
-                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                button.btn.btn--clean.pt-none.pb-none
                   +icon('heart', 'icon--medium')
                 span.text-medium V#{' '}
                   a.link(href="#") knižnici
               .bar__item.bar__item--shrinkable.text-right
-                button.btn.btn--clean.no-mrg(type="button")
+                button.btn.btn--clean.m-none(type="button")
                   +icon('trash', 'icon--medium')
 
           .package__item.mb-small
             .bar.align-items-middle.mb-small
-              .bar__item.no-pad-right
+              .bar__item.pr-none
                 .thumbnail.thumbnail--book.thumbnail--small
                   .thumbnail__img-wrap
                     img(src="images/content/books/sample-15.jpg")
@@ -319,12 +319,12 @@ include ./../mixins/icon
                 .text-medium
                   span.text-color-grey 1x#{' '}
                   span.text-semibold 123,26 €
-                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                button.btn.btn--clean.pt-none.pb-none
                   +icon('heart', 'icon--medium')
                 span.text-medium V#{' '}
                   a.link(href="#") knižnici
               .bar__item.bar__item--shrinkable.text-right
-                button.btn.btn--clean.no-mrg(type="button")
+                button.btn.btn--clean.m-none(type="button")
                   +icon('trash', 'icon--medium')
 
         // zrusene
@@ -337,7 +337,7 @@ include ./../mixins/icon
                 | Zrušené
           .package__item.mb-small
             .bar.align-items-middle.mb-small
-              .bar__item.no-pad-right
+              .bar__item.pr-none
                 .thumbnail.thumbnail--book.thumbnail--small
                   .thumbnail__img-wrap
                     img(src="images/content/books/sample-15.jpg")
@@ -348,12 +348,12 @@ include ./../mixins/icon
                 .text-medium
                   span.text-color-grey 1x#{' '}
                   span.text-semibold 123,26 €
-                button.btn.btn--clean.no-pad-top.no-pad-bottom
+                button.btn.btn--clean.pt-none.pb-none
                   +icon('heart', 'icon--medium')
                 span.text-medium V#{' '}
                   a.link(href="#") knižnici
               .bar__item.bar__item--shrinkable.text-right
-                button.btn.btn--clean.no-mrg(type="button")
+                button.btn.btn--clean.m-none(type="button")
                   +icon('trash', 'icon--medium')
 
 block scripts

@@ -37,7 +37,7 @@ block content
             hr
             each item, i in books
               .bar.align-items-middle
-                .bar__item.no-pad-right
+                .bar__item.pr-none
                   .thumbnail.thumbnail--book.thumbnail--medium
                     .thumbnail__img-wrap
                       img(src=`${item.cover}`)
@@ -54,7 +54,7 @@ block content
             each item, i in books
               if i < 3
                 .bar.align-items-middle
-                  .bar__item.no-pad-right
+                  .bar__item.pr-none
                     .thumbnail.thumbnail--book.thumbnail--medium
                       .thumbnail__img-wrap
                         img(src=`${item.cover}`)
@@ -67,7 +67,7 @@ block content
             each item, i in books
               if i < 2
                 .bar.align-items-middle
-                  .bar__item.no-pad-right
+                  .bar__item.pr-none
                     .thumbnail.thumbnail--book.thumbnail--medium
                       .thumbnail__img-wrap
                         img(src=`${item.cover}`)

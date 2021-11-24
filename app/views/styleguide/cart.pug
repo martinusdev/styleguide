@@ -41,9 +41,9 @@ block append content
                         img(src="/images/content/books/sample-15.jpg")
                   .cart-item__content
                     .cart-item__column.cart-item__column--product-name
-                      .text-semibold.no-mrg.text-ellipsis Základy rybolovu pro kluky a holky
-                      .text-color-grey.text-size-small.no-mrg.text-ellipsis Frank Weissert, Jack Thorne a John Tiffany
-                      .bar.bar--small.text-size-small.no-mrg.show-m
+                      .text-semibold.m-none.text-ellipsis Základy rybolovu pro kluky a holky
+                      .text-color-grey.text-size-small.m-none.text-ellipsis Frank Weissert, Jack Thorne a John Tiffany
+                      .bar.bar--small.text-size-small.m-none.show-m
                         .bar__item
                           .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item
@@ -53,23 +53,23 @@ block append content
                           a.link(href="#") Jana Róbertson
 
                     .cart-item__column.cart-item__column--wishlist
-                      +addTo({ text: '' }).no-mrg-bottom
+                      +addTo({ text: '' }).mb-none
                     .cart-item__column.cart-item__column--tags.show-m
                       .badge.text-nowrap E-kniha
                     .cart-item__column.cart-item__column--qty
-                      .form-control.form-control--input.no-mrg
+                      .form-control.form-control--input.m-none
                         .input-addons.input-addons--small.align-items-right
-                          .input-addons__item.no-pad
+                          .input-addons__item.p-none
                             button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                               +icon('minus', 'icon--medium', 'mínus')
-                          input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.no-pad-horizontal.text-center
-                          .input-addons__item.no-pad
+                          input(type="number" id=`product-${i}-qty` min="0" max="100" step="1" value="1").input.input--small.input--short.px-none.text-center
+                          .input-addons__item.p-none
                             button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                               +icon('plus', 'icon--medium', 'plus')
                     .cart-item__column.cart-item__column--price
                       .text-semibold.text-size-medium.text-nowrap 12,99 €
                     .cart-item__column.cart-item__column--remove
-                      button.btn.btn--clean.no-mrg(type="button")
+                      button.btn.btn--clean.m-none(type="button")
                         +icon('trash', 'icon--medium')
 
 
@@ -105,11 +105,11 @@ block append content
               .cart-item.cart-item--summary.cart-item--has-tags
                 .cart-item__content
                   .cart-item__column.cart-item__column--product-name
-                    a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html") Základy rybolovu pro kluky a holky
+                    a.text-size-medium.m-none.link.link--product(href="detail-knihy.html") Základy rybolovu pro kluky a holky
                   .cart-item__column.cart-item__column--tags
                     .badge.text-nowrap E-kniha
                   .cart-item__column.cart-item__column--qty
-                    .text-size-medium.no-mrg
+                    .text-size-medium.m-none
                       | 1x
                   .cart-item__column.cart-item__column--price
                     .text-semibold.text-size-medium.text-nowrap 12,99 &euro;
@@ -117,9 +117,9 @@ block append content
               .cart-item.cart-item--summary
                 .cart-item__content
                   .cart-item__column.cart-item__column--product-name
-                    a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html") Základy rybolovu pro kluky a holky
+                    a.text-size-medium.m-none.link.link--product(href="detail-knihy.html") Základy rybolovu pro kluky a holky
                   .cart-item__column.cart-item__column--qty
-                    .text-size-medium.no-mrg
+                    .text-size-medium.m-none
                       | 1x
                   .cart-item__column.cart-item__column--price
                     .text-semibold.text-size-medium.text-nowrap 12,99 &euro;

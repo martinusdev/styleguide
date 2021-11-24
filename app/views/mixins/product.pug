@@ -74,16 +74,16 @@ mixin productTitle(props = {})
     } = props;
 
   .product__title&attributes(attributes)
-    p.text-semibold.no-mrg.text-ellipsis(title=title, class= small ? 'text-size-small' : 'text-size-medium', class= href ? '' : 'link', class= !collection ? 'link--product' : '', class= ad ? 'text-color-orange' : '')
+    p.text-semibold.m-none.text-ellipsis(title=title, class= small ? 'text-size-small' : 'text-size-medium', class= href ? '' : 'link', class= !collection ? 'link--product' : '', class= ad ? 'text-color-orange' : '')
       if href
         a.link.link--product(href=href)= title
       else
         span= title
     if author
-      ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.no-mrg.text-ellipsis
+      ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.m-none.text-ellipsis
         - const authors = author.split(', ')
         each item in authors
-          li.no-mrg= item
+          li.m-none= item
 
 mixin productMeta(props = {})
   -
@@ -140,7 +140,7 @@ mixin productDownload(props = {})
     } = props;
 
   .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
+    .btn-layout.btn-layout--vertical.mb-none
       .btn-dropdown
         button.btn(
           class='btn--' + buttonClass,
@@ -154,23 +154,23 @@ mixin productDownload(props = {})
           .dropdown__wrap
             h5.dropdown__group Stiahnuť ako:
             a(href="#", data-toggle="#audiobook-modal").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small mp3
             a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small pdf
             a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small epub
             a(href="#").dropdown__item
-              +icon('download').icon--small.text-space-right
+              +icon('download').icon--small.mr-small
               span.text-transform-upper.text-small mobi
             h5.dropdown__group Poslať:
             a(href="#", data-toggle="#e-reader-modal").dropdown__item
-              +icon('upload').icon--small.text-space-right
+              +icon('upload').icon--small.mr-small
               span.text-transform-upper.text-small poslať do čítačky
             a(href="#").dropdown__item
-              +icon('upload').icon--small.text-space-right
+              +icon('upload').icon--small.mr-small
               span.text-transform-upper.text-small darovať
 
 mixin productBuy(props = {})
@@ -180,7 +180,7 @@ mixin productBuy(props = {})
     } = props;
 
   .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom
+    .btn-layout.btn-layout--vertical.mb-none
       button.btn.btn--primary
         +icon('cart').icon--left.icon--medium
         = price
@@ -192,13 +192,13 @@ mixin productToRate(props = {})
       id = Math.floor((Math.random() * 10000)),
     } = props;
   .product__action&attributes(attributes)
-    .btn-layout.btn-layout--vertical.no-mrg-bottom(data-toggle-class="hide")
+    .btn-layout.btn-layout--vertical.mb-none(data-toggle-class="hide")
       button.btn(data-toggle=`parent, #product-rating-${id}`) Hodnotiť
     .badge.badge--large.badge--block.hide(id=`product-rating-${id}`, data-toggle-class="hide")
       .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
         - for (var index = 0; index<5; index++)
           input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+index)
-          label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+index)
+          label.radiocheck__label.ml-none.rating-star__item(for="review-rating-"+index)
             +icon('star').icon--medium
 
 
@@ -212,7 +212,7 @@ mixin productRating(props = {})
       .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
         - for (var index = 0; index<5; index++)
           input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+index)
-          label.radiocheck__label.no-mrg-left.rating-star__item(for="review-rating-"+index, class= index < stars ? 'is-active': '')
+          label.radiocheck__label.ml-none.rating-star__item(for="review-rating-"+index, class= index < stars ? 'is-active': '')
             // or `.text-color-yellow` on svg
             +icon('star').icon--medium
 
@@ -226,19 +226,19 @@ mixin productStatus(props = {})
     } = props;
 
   .product__status
-    .bar.bar--tiny.no-mrg-bottom
+    .bar.bar--tiny.mb-none
       if status
         .bar__item
           if status === 'read'
-            p.no-mrg-bottom.text-small.text-color-success
-              +icon('check-circle').text-space-right-tiny.text-vam
+            p.mb-none.text-small.text-color-success
+              +icon('check-circle').mr-tiny.text-vam
               | Prečítané
           else if status === 'reading'
-            p.no-mrg-bottom.text-small.text-color-blue
-              +icon('time').text-space-right-tiny.text-vam
+            p.mb-none.text-small.text-color-blue
+              +icon('time').mr-tiny.text-vam
               | Práve čítam
           else if status === 'notread'
-            p.no-mrg-bottom.text-small.text-color-grey
+            p.mb-none.text-small.text-color-grey
               | Neprečítané
 
       if actionDropdown
@@ -256,23 +256,23 @@ mixin productStatus(props = {})
                   if actionDropdown != 'my-library'
                     h5.dropdown__group Stiahnuť ako:
                     a(href="#", data-toggle="#audiobook-modal").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small mp3
                     a(href="#").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small pdf
                     a(href="#").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small epub
                     a(href="#").dropdown__item
-                      +icon('download').icon--small.text-space-right
+                      +icon('download').icon--small.mr-small
                       span.text-transform-upper.text-small mobi
                     h5.dropdown__group Poslať:
                     a(href="#", data-toggle="#e-reader-modal").dropdown__item
-                      +icon('upload').icon--small.text-space-right
+                      +icon('upload').icon--small.mr-small
                       span.text-transform-upper.text-small poslať do čítačky
                     a(href="#").dropdown__item
-                      +icon('upload').icon--small.text-space-right
+                      +icon('upload').icon--small.mr-small
                       span.text-transform-upper.text-small darovať
                     hr.mb-small
                   if !status
@@ -287,11 +287,11 @@ mixin productStatus(props = {})
                   if status
                     a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`).dropdown__item.dropdown__item--more Označiť ako
                   a.dropdown__item
-                    +icon('trash').icon--small.text-space-right
+                    +icon('trash').icon--small.mr-small
                     | Odstrániť z knižnice
                 .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
-                  .bar.no-mrg-bottom
-                    .bar__item.no-mrg-right
+                  .bar.mb-none
+                    .bar__item.mr-none
                       button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-list-${id}, #my-library-dropdown-${id}`)
                         +icon('chevron-left', 'icon--medium', 'Naspäť')
                     .bar__item.bar__item--fill
@@ -305,7 +305,7 @@ mixin productStatus(props = {})
                   .card.mb-none
                     .card__content.card__content--condensed
                       .bar.flex-nowrap
-                        .bar__item.no-mrg-right
+                        .bar__item.mr-none
                           button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
                             +icon('chevron-left', 'icon--medium', 'Naspäť')
                         .bar__item.align-self-center.text-center.text-nowrap
@@ -316,10 +316,10 @@ mixin productStatus(props = {})
                       .form-control.form-control--input
                         input(name=`new-wishlist-${id}`, id=`new-wishlist-${id}`, placeholder="napr. otcovi na Vianoce").input
                       .btn-layout--vertical
-                        button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+                        button(type="button").btn.btn--full.mb-none Vytvoriť
                 .hide(id=`my-library-dropdown-states-${id}` data-toggle-class="hide")
-                  .bar.no-mrg-bottom
-                    .bar__item.no-mrg-right
+                  .bar.mb-none
+                    .bar__item.mr-none
                       button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-states-${id}, #my-library-dropdown-${id}`)
                         +icon('chevron-left', 'icon--medium', 'Naspäť')
                     .bar__item.bar__item--fill
@@ -328,13 +328,13 @@ mixin productStatus(props = {})
                       button.btn.btn--clean.btn--small(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-states-${id}`)
                         +icon('close', 'icon--small', 'Naspäť')
                   a(href="#").dropdown__item
-                    +icon('circle').icon--small.text-color-grey.text-space-right
+                    +icon('circle').icon--small.text-color-grey.mr-small
                     b Neprečítané
                   a(href="#").dropdown__item
-                    +icon('time').icon--small.text-color-blue.text-space-right
+                    +icon('time').icon--small.text-color-blue.mr-small
                     | Práve čítam
                   a(href="#", data-toggle="#book-read-modal").dropdown__item
-                    +icon('check-circle').icon--small.text-color-success.text-space-right
+                    +icon('check-circle').icon--small.text-color-success.mr-small
                     | Prečítaná
 
 mixin productPreview(props = {})

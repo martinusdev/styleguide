@@ -37,7 +37,7 @@ mixin productHorizontal(props = {})
         .badge.badge--primary= discount
 
     .product__caption
-      .bar.bar--small.no-mrg-bottom
+      .bar.bar--small.mb-none
         .bar__item.bar__item--fill
           if truncnateTitle
             .text-ellipsis
@@ -47,7 +47,7 @@ mixin productHorizontal(props = {})
           ul.list-inline.list-inline--delimited.text-color-grey.mb-small.text-size-small.mb-small
             - var authors = author.split(', ')
             each author in authors
-              li.no-mrg= author
+              li.m-none= author
           .bar.bar--small.bar--vertical-small.mb-small
             if xmas
               .bar__item
@@ -66,7 +66,7 @@ mixin productHorizontal(props = {})
 
             if edit
               .bar__item
-                  button.btn.btn--clean.no-mrg
+                  button.btn.btn--clean.m-none
                     +icon('edit').icon--medium.icon--left
                     | Upraviť
 

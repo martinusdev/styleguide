@@ -78,15 +78,15 @@ mixin myLibrarySidenav2()
 
   //h2.h3 Moje zoznamy a kolekcie
 
-  ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
+  ul.list.list--expanded.list--with-hover.p-none.mb-large(role="navigation")
     each item, index in subNav
       li(class= index === 0 ? 'is-active' : '')
         a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
           if item.icon
-            +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`, data-tooltip, title="Popis stavu")
+            +icon(item.icon).icon--small.mr-small(class=`${item.iconColor}`, data-tooltip, title="Popis stavu")
           span(class= item.locked ? '' : '')= item.title
           if item.pill
-            .pill.text-space-left(class= index === 0 ? 'pill--blue' : 'pill--white')= item.pill
+            .pill.ml-small(class= index === 0 ? 'pill--blue' : 'pill--white')= item.pill
 
   .btn-layout.btn-layout--vertical
     button.btn(data-toggle='#add-list')
@@ -192,32 +192,32 @@ mixin myLibrarySidenav()
       },
     ];
 
-  ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
+  ul.list.list--expanded.list--with-hover.p-none.mb-large(role="navigation")
     each item, index in subNav
       li(class= index === 6 ? 'is-active' : '')
         a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
           if item.icon
-            +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
+            +icon(item.icon).icon--small.mr-small(class=`${item.iconColor}`)
           = item.title
           if item.pill
-            .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
+            .pill.ml-small(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
 
   h2.h3 Moje zoznamy a kolekcie
 
-  ul.list.list--expanded.list--with-hover.no-pad.mb-large(role="navigation")
+  ul.list.list--expanded.list--with-hover.p-none.mb-large(role="navigation")
     each item, index in subNav2
       li(class= index === 6 ? 'is-active' : '')
         a(href=item.href, data-scroll, data-scroll-offset=header.size.default + 40)
           if item.icon
-            +icon(item.icon).icon--small.text-space-right(class=`${item.iconColor}`)
+            +icon(item.icon).icon--small.mr-small(class=`${item.iconColor}`)
           = item.title
           if item.pill
-            .pill.text-space-left(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
+            .pill.ml-small(class= index === 6 ? 'pill--blue' : 'pill--white')= item.pill
 
   .btn-layout.btn-layout--vertical
     button.btn(data-toggle='#add-list')
       | Pridať zoznam alebo kolekciu
-    //.btn-dropdown.btn-dropdown--no-icon.no-mrg-bottom
+    //.btn-dropdown.btn-dropdown--no-icon.mb-none
       button.btn(
         data-toggle='self, next',
         data-toggle-expand,
@@ -237,6 +237,6 @@ mixin myLibrarySidenav()
               .form-control.form-control--input
                 input(name="addListInput", id="addListInput", placeholder="napr. otcovi na Vianoce").input
               .btn-layout--vertical
-                button(type="button").btn.btn--full.no-mrg-bottom Vytvoriť
+                button(type="button").btn.btn--full.mb-none Vytvoriť
 
   p.text-small.text-center.text-color-grey Napr. Na vianoce, Pre brata,...

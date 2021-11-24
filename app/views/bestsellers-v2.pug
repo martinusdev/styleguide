@@ -25,7 +25,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Bestsellery'] })
 
@@ -65,18 +65,18 @@ block content
             each item, i in ['Knihy', 'Filmy', 'Hry']
               li
                 a.link.link--black(href="#", class= i == 0 ? 'text-bold' : '')
-                  +icon('footer-reading').icon--medium.text-space-right.text-color-grey
+                  +icon('footer-reading').icon--medium.mr-small.text-color-grey
                   = item
 
-    section.section.no-pad-top
+    section.section.pt-none
       - for (var i = 0; i<8; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--1
                 .h0.text-color-grey-dark= i+1
               .col--4.col--s-shrink.text-left
-                +product().no-mrg-bottom
+                +product().mb-none
                   +productCover({
                     cover: 'images/content/books/sample-3.jpg',
                     rating: 3.5,
