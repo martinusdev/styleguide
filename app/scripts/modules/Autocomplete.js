@@ -53,7 +53,7 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="flex">
-        <div class="flex-shrinkable align-self-middle pr-none text-space-right">
+        <div class="flex-shrinkable align-self-middle pr-none mr-small">
           <div class="author-photo no-pad">
             <div class="portrait portrait--medium" style="background-image: url('${value.image}');"></div>
           </div>
@@ -69,14 +69,14 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="flex">
-        <div class="flex-shrinkable text-space-right align-self-middle">
+        <div class="flex-shrinkable mr-small align-self-middle">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
               <img class="img" src="${value.image}" alt="${value.name}">
             </div>
           </div>
         </div>
-        <div class="flex-fill text-space-right align-self-middle">
+        <div class="flex-fill mr-small align-self-middle">
           <div class="text-size-regular text-semibold">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
@@ -90,7 +90,7 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="flex">
-        <div class="flex-shrinkable text-space-right align-self-middle">
+        <div class="flex-shrinkable mr-small align-self-middle">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
               <img class="img" src="${value.image}" alt="${value.name}">
@@ -108,7 +108,7 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="flex">
-        <div class="flex-shrinkable text-space-right align-self-middle">
+        <div class="flex-shrinkable mr-small align-self-middle">
         <div class="product__cover collection">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             ${value.images
