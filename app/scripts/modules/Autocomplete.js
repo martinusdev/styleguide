@@ -157,8 +157,6 @@ export default class Autocomplete {
     this.init();
 
     this.element.Autocomplete = this;
-
-    return this;
   }
 
   init() {

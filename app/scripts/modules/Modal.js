@@ -21,7 +21,7 @@ export const MODAL_AJAX_LOADED_EVT = 'modalAjaxLoaded';
 export const MODAL_OPEN = 'modalOpen';
 
 export default class Modal {
-  constructor(selector = 'data-modal', config) {
+  constructor(selector = 'data-modal', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
@@ -38,8 +38,6 @@ export default class Modal {
     this._onOverlayClick = this._onOverlayClick.bind(this);
 
     this._init();
-
-    return this;
   }
 
   update() {
@@ -65,7 +63,6 @@ export default class Modal {
     if (load) {
       this._openModalOnLoad();
     }
-    return this.modals;
   }
 
   _openModalOnLoad() {

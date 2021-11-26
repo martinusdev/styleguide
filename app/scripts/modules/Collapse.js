@@ -1,14 +1,12 @@
 const defaultConfig = {};
 
 export default class Collapse {
-  constructor(selector = '[data-collapse]', config) {
+  constructor(selector = '[data-collapse]', config = {}) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this.sections = [];
 
     this._init();
-
-    return this;
   }
 
   destroy() {
@@ -56,7 +54,7 @@ export default class Collapse {
   static findTrigger(el) {
     return el.parentNode.querySelector('[data-collapse-trigger]');
   }
-  
+
   static showTrigger(el) {
     const trigger = Collapse.findTrigger(el);
     if (trigger) {

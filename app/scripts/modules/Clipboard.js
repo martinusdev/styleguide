@@ -8,7 +8,7 @@ const defaultConfig = {
 };
 
 export default class Clipboard {
-  constructor(selector = '[data-clipboard]', config) {
+  constructor(selector = '[data-clipboard]', config = {}) {
     this.config = { ...defaultConfig, ...config };
     this.selector = selector;
 
@@ -16,8 +16,6 @@ export default class Clipboard {
     this._handleError = this._handleError.bind(this);
 
     this._init();
-
-    return this;
   }
 
   _init() {

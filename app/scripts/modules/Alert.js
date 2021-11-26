@@ -70,8 +70,6 @@ export default class Alert {
     this.destroy = this.destroy.bind(this);
 
     this._init();
-
-    return this;
   }
 
   _init() {

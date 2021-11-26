@@ -3,14 +3,12 @@ const defaultConfig = {
 };
 
 export default class EqualColumns {
-  constructor(selector = '[data-equal-columns]', config) {
+  constructor(selector = '[data-equal-columns]', config = {}) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this.equalColumns = [];
 
     this._init();
-
-    return this;
   }
 
   destroy() {

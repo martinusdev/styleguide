@@ -19,8 +19,6 @@ export default class Observables {
     this.observer = null;
 
     this._init();
-
-    return this;
   }
 
   destroy() {

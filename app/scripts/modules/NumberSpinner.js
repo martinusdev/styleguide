@@ -4,15 +4,13 @@ const defaultConfig = {
 };
 
 export default class NumberSpinner {
-  constructor(selector = 'data-number-spinner', config) {
+  constructor(selector = 'data-number-spinner', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
     this._onClick = this._onClick.bind(this);
 
     this.sliders = [];
-
-    return this._init();
   }
 
   _init() {

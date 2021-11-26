@@ -3,7 +3,7 @@ import { TOGGLE_EVT, doToggle } from './Toggle';
 const defaultConfig = {};
 
 export default class AudioPlayer {
-  constructor(selector = 'data-audioplayer', config) {
+  constructor(selector = 'data-audioplayer', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
@@ -13,8 +13,6 @@ export default class AudioPlayer {
     this._onEnd = this._onEnd.bind(this);
 
     this._init();
-
-    return this;
   }
 
   _init() {
