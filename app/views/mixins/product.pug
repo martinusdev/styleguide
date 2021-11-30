@@ -195,7 +195,7 @@ mixin productToRate(props = {})
     .btn-layout.btn-layout--vertical.mb-none(data-toggle-class="hide")
       button.btn(data-toggle=`parent, #product-rating-${id}`) Hodnotiť
     .badge.badge--large.badge--block.hide(id=`product-rating-${id}`, data-toggle-class="hide")
-      .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
+      .radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-around
         - for (var index = 0; index<5; index++)
           input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+index)
           label.radiocheck__label.ml-none.rating-star__item(for="review-rating-"+index)
@@ -209,7 +209,7 @@ mixin productRating(props = {})
     } = props;
   .product__action&attributes(attributes)
     .badge.badge--large.badge--block
-      .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
+      .radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-around
         - for (var index = 0; index<5; index++)
           input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+index)
           label.radiocheck__label.ml-none.rating-star__item(for="review-rating-"+index, class= index < stars ? 'is-active': '')
@@ -242,7 +242,7 @@ mixin productStatus(props = {})
               | Neprečítané
 
       if actionDropdown
-        .bar__item.align-self-right
+        .bar__item.ml-auto
           .btn-dropdown.btn-dropdown--no-icon
             button.btn.btn--clean.btn--small(
               data-toggle='self, next',
@@ -308,7 +308,7 @@ mixin productStatus(props = {})
                         .bar__item.mr-none
                           button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
                             +icon('chevron-left', 'icon--medium', 'Naspäť')
-                        .bar__item.align-self-center.text-center.text-nowrap
+                        .bar__item.mx-auto.text-center.text-nowrap
                           | Nový zoznam
                         .bar__item
                           button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)

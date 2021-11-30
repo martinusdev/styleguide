@@ -41,9 +41,9 @@ mixin productHorizontal(props = {})
         .bar__item.bar__item--fill
           if truncnateTitle
             .text-ellipsis
-              a.text-semibold.link.link--product.block.mb-small.line-medium(class=titleClass, href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+              a.text-semibold.link.link--product.d-block.mb-small.line-medium(class=titleClass, href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           else
-            a.text-semibold.link.link--product.block.mb-small.line-medium(class=titleClass, href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
+            a.text-semibold.link.link--product.d-block.mb-small.line-medium(class=titleClass, href=`${assetsPrefix}detail-knihy${htmlPostfix}`, title=title)= title
           ul.list-inline.list-inline--delimited.text-color-grey.mb-small.text-size-small.mb-small
             - var authors = author.split(', ')
             each author in authors
@@ -87,6 +87,6 @@ mixin productHorizontal(props = {})
               a.link(href='#') Čítať viac#{' '}
                 +icon('arrow-right')
         if trash
-          .bar__item.align-self-top
+          .bar__item.align-self-start
             a.btn.btn--small.btn--clean.btn--equal(href="#")
               +icon('trash').icon--medium

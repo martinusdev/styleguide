@@ -191,7 +191,7 @@ block append content
 
     +content-sub-section('Spacing resets')
 
-      +p Use <code class='l-code-inline'>.p-none</code> or <code class='l-code-inline'>.m-none</code> to reset margins or paddings. Target specific breakpoint with <code class='l-code-inline'>.m[-xs/s/m/xl]-none</code> and <code class='l-code-inline'>.p[-xs/s/m/xl]-none</code>.
+      +p Use <code class='l-code-inline'>.p-none</code> or <code class='l-code-inline'>.m-none</code> to reset margins or paddings. Target specific breakpoint with <code class='l-code-inline'>.m[-s/m/l/xl]-none</code> and <code class='l-code-inline'>.p[-s/m/l/xl]-none</code>.
 
       +demo(true)
         +demo-code
@@ -216,7 +216,7 @@ block append content
     +content-sub-section('Flexbox utilities', 'flexbox-utils')
 
       +ul
-        li <code class="l-code-inline">.flex</code> assigns <code class="l-code-inline">display: flex</code>
+        li <code class="l-code-inline">.d-flex</code> assigns <code class="l-code-inline">display: flex</code>
         li <code class="l-code-inline">.flex-column</code> assigns <code class="l-code-inline">flex-direction: column</code>
         li <code class="l-code-inline">.flex-1</code> assigns <code class="l-code-inline">flex: 1</code>
         li <code class="l-code-inline">.flex-noshrink</code> assigns <code class="l-code-inline">flex-shrink: 0</code>
@@ -234,84 +234,84 @@ block append content
 
       +p Horizontal alignment:
         +ul
-          li <code class="l-code-inline">.align-items-right</code> <code class="l-code-inline">.align-items-center</code>
-          li <code class="l-code-inline">.align-self-right</code> <code class="l-code-inline">.align-self-center</code>
+          li <code class="l-code-inline">.justify-content-end</code> <code class="l-code-inline">.justify-content-center</code>
+          li <code class="l-code-inline">.ml-auto</code> <code class="l-code-inline">.mx-auto</code>
 
       +demo
         +demo-example
-          code.l-code-inline .align-items-right
-          .row.align-items-right
+          code.l-code-inline .justify-content-end
+          .row.justify-content-end
             .col--3
               .l-debug XS3
             .col--3
               .l-debug XS3
           hr
-          code.l-code-inline .align-items-center
-          .row.align-items-center
+          code.l-code-inline .justify-content-center
+          .row.justify-content-center
             .col--3
               .l-debug XS3
             .col--3
               .l-debug XS3
           hr
-          code.l-code-inline .align-items-spaced
-          .row.align-items-spaced
+          code.l-code-inline .justify-content-around
+          .row.justify-content-around
             .col--3
               .l-debug XS3
             .col--3
               .l-debug XS3
           hr
-          code.l-code-inline .align-items-justify
-          .row.align-items-justify
+          code.l-code-inline .justify-content-between
+          .row.justify-content-between
             .col--3
               .l-debug XS3
             .col--3
               .l-debug XS3
-          hr
-          .row
-            .col--3
-              .l-debug XS3
-            .col--3.align-self-right
-              .l-debug XS3 .align-self-right
           hr
           .row
-            .col--3.align-self-center
-              .l-debug XS3 .align-self-center
+            .col--3
+              .l-debug XS3
+            .col--3.ml-auto
+              .l-debug XS3 .ml-auto
+          hr
+          .row
+            .col--3.mx-auto
+              .l-debug XS3 .mx-auto
 
         +demo-code
           :code
-            <div class="row align-items-right">
+            <div class="row justify-content-end">
               <div class="col--3"> ... </div>
               <div class="col--3"> ... </div>
             </div>
 
-            <div class="row align-items-center">
+            <div class="row justify-content-center">
               <div class="col--3"> ... </div>
               <div class="col--3"> ... </div>
             </div>
 
-            <div class="row align-items-spaced">
+            <div class="row justify-content-around">
               <div class="col--3"> ... </div>
               <div class="col--3"> ... </div>
             </div>
 
-            <div class="row align-items-justify">
+            <div class="row justify-content-between">
               <div class="col--3"> ... </div>
               <div class="col--3"> ... </div>
-            </div>
-
-            <div class="row">
-              <div class="col--3"> ... </div>
-              <div class="col--3 align-self-right"> ... </div>
             </div>
 
             <div class="row">
-              <div class="col--3 align-self-center"> ... </div>
+              <div class="col--3"> ... </div>
+              <div class="col--3 ml-auto"> ... </div>
+            </div>
+
+            <div class="row">
+              <div class="col--3 mx-auto"> ... </div>
             </div>
 
         +p Vertical alignment:
           +ul
-            li <code class="l-code-inline">.align-items-top</code> <code class="l-code-inline">.align-items-bottom</code> <code class="l-code-inline">.align-items-middle</code>
-            li <code class="l-code-inline">.align-self-top</code> <code class="l-code-inline">.align-self-bottom</code> <code class="l-code-inline">.align-self-middle</code>
+            li <code class="l-code-inline">.align-items-start</code> <code class="l-code-inline">.align-items-end</code> <code class="l-code-inline">.align-items-center</code>
+            li <code class="l-code-inline">.align-self-start</code> <code class="l-code-inline">.align-self-end</code> <code class="l-code-inline">.align-self-center</code>
 
           +demo
             +demo-example
@@ -322,36 +322,36 @@ block append content
                 .col--6.l-debug
                   | Lorem ipsum
               hr
-              code.l-code-inline .align-items-top
-              .row.align-items-top
+              code.l-code-inline .align-items-start
+              .row.align-items-start
                 .col--6.l-debug
                   | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
                 .col--6.l-debug
                   | Lorem ipsum
               hr
-              code.l-code-inline .align-items-bottom
-              .row.align-items-bottom
+              code.l-code-inline .align-items-end
+              .row.align-items-end
                 .col--6.l-debug
                   | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
                 .col--6.l-debug
                   | Lorem ipsum
               hr
-              code.l-code-inline .align-items-middle
-              .row.align-items-middle
+              code.l-code-inline .align-items-center
+              .row.align-items-center
                 .col--6.l-debug
                   | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Nulla vitae elit libero, a pharetra augue. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Nullam id dolor id nibh ultricies vehicula ut id elit.
                 .col--6.l-debug
                   | Lorem ipsum
               hr
-              .row.align-items-middle
+              .row.align-items-center
                 .col--3.l-debug
                   | Donec ullamcorper nulla non metus auctor fringilla. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.
-                .col--3.l-debug.align-self-top
-                  | .align-self-top
-                .col--3.l-debug.align-self-bottom
-                  | .align-self-bottom
-                .col--3.l-debug.align-self-middle
-                  | .align-self-middle
+                .col--3.l-debug.align-self-start
+                  | .align-self-start
+                .col--3.l-debug.align-self-end
+                  | .align-self-end
+                .col--3.l-debug.align-self-center
+                  | .align-self-center
             +demo-code
               :code
                 <div class="row">
@@ -359,26 +359,26 @@ block append content
                   <div class="col--6"> ... </div>
                 </div>
 
-                <div class="row align-items-top">
+                <div class="row align-items-start">
                   <div class="col--6"> ... </div>
                   <div class="col--6"> ... </div>
                 </div>
 
-                <div class="row align-items-bottom">
+                <div class="row align-items-end">
                   <div class="col--6"> ... </div>
                   <div class="col--6"> ... </div>
                 </div>
 
-                <div class="row align-items-middle">
+                <div class="row align-items-center">
                   <div class="col--6"> ... </div>
                   <div class="col--6"> ... </div>
                 </div>
 
                 <div class="row">
                   <div class="col--3"> ... </div>
-                  <div class="col--3 align-self-top"> ... </div>
-                  <div class="col--3 align-self-bottom"> ... </div>
-                  <div class="col--3 align-self-middle"> ... </div>
+                  <div class="col--3 align-self-start"> ... </div>
+                  <div class="col--3 align-self-end"> ... </div>
+                  <div class="col--3 align-self-center"> ... </div>
                 </div>
 
       //- end: demo
@@ -391,11 +391,14 @@ block append content
           li <code class='l-code-inline'>.clear</code> for clearing floats after floated elements.
 
     +content-sub-section('Display utilities')
+      p Target specific breakpoint with <code class='l-code-inline'>.d[-s/m/l/xl]-inline</code> etc.
 
       +ul
-        li <code class='l-code-inline'>.inline-block</code> for displaying anything as inline-block.
-        li <code class='l-code-inline'>.block</code> for displaying anything as block.
-        li <code class='l-code-inline'>.block-fill</code> for displaying anything as block with forced 100% width.
+        li <code class='l-code-inline'>.d-inline-block</code> for displaying anything as inline-block.
+        li <code class='l-code-inline'>.d-block</code> for displaying anything as block.
+        li <code class='l-code-inline'>.d-flex</code> for displaying anything as a flexbox.
+        li <code class='l-code-inline'>.d-inline-flex</code> for displaying anything as an inline flexbox.
+        li <code class='l-code-inline'>.d-none</code> for hiding anything.
 
   +content-section(contents[2])
 
@@ -468,21 +471,34 @@ block append content
 
   +content-section(contents[3], true)
 
-    +p Margin utilities:
-      +ul
-        li <code class='l-code-inline'>.mb-large</code> for large margin bottom.
-        li <code class='l-code-inline'>.mb-medium</code> for medium margin bottom.
-        li <code class='l-code-inline'>.mb-small</code> for small margin bottom.
-        li <code class='l-code-inline'>.mb-tiny</code> for tiny margin bottom.
-        li <code class='l-code-inline'>.mb-not-last</code> for removing bottom of parents last child.
+    +h3 Margin and padding
+    +p Margin and padding spacing are adapted from <a href="https://getbootstrap.com/docs/5.1/utilities/spacing/#notation" class="" target="_blank">Bootstrap utilities</a>, with a few differences:
 
-    +p Background utilites:
-      +ul
-          li.bg-default <code class='l-code-inline'>.bg-default</code> for default background color.
-          li.bg-secondary <code class='l-code-inline'>.bg-secondary</code> for secondary background color.
-          li.bg-blue <code class='l-code-inline'>.bg-blue</code> for blue background color.
-          li.bg-teal <code class='l-code-inline'>.bg-teal</code> for teal background color.
-          li.bg-green <code class='l-code-inline'>.bg-green</code> for green background color.
+    +p The classes are named using the format <code class='l-code-inline'>{property}{sides}-{size}</code> for xs and <code class='l-code-inline'>{property}{sides}-{breakpoint}-{size}</code> for s, m, l, and xl breakpoints.
+
+    +p Where <i>sides</i> is one of:
+    +ul
+      li <code class='l-code-inline'>t</code> - for classes that set <code class='l-code-inline'>margin-top</code> or <code class='l-code-inline'>padding-top</code>
+      li <code class='l-code-inline'>b</code> - for classes that set <code class='l-code-inline'>margin-bottom</code> or <code class='l-code-inline'>padding-bottom</code>
+      li <code class='l-code-inline'>l</code> - (left) for classes that set <code class='l-code-inline'>margin-left</code> or <code class='l-code-inline'>padding-left</code>
+      li <code class='l-code-inline'>r</code> - (right) for classes that set <code class='l-code-inline'>margin-right</code> or <code class='l-code-inline'>padding-right</code>
+      li <code class='l-code-inline'>x</code> - for classes that set both <code class='l-code-inline'>*-left</code> and <code class='l-code-inline'>*-right</code>
+      li <code class='l-code-inline'>y</code> - for classes that set both <code class='l-code-inline'>*-top</code> and <code class='l-code-inline'>*-bottom</code>
+      li blank - for classes that set a <code class='l-code-inline'>margin</code> or <code class='l-code-inline'>padding</code> on all 4 sides of the element
+
+    +p Where <i>size</i> is one of:
+    +ul
+      li <code class='l-code-inline'>none</code> - for classes that eliminate the <code class='l-code-inline'>margin or <code class='l-code-inline'>padding</code> by setting it to 0
+      li <code class='l-code-inline'>tiny</code> - tiny space (5px)
+      li <code class='l-code-inline'>small</code> - small space (10px)
+      li <code class='l-code-inline'>medium</code> - medium space (20px)
+      li <code class='l-code-inline'>large</code> - large space (40px)
+      li <code class='l-code-inline'>auto</code> - for classes that set the <code class='l-code-inline'>margin</code> to auto
+
+    +h3 Background utilites:
+    +ul
+      each color in ['default', 'secondary', 'teal', 'green', 'blue', 'grey', 'grey-dark', 'primary', 'primary-light', 'primary-dark', 'orange', 'violet', 'yellow', 'brown']
+        li(class=`bg-${color}`) <code class='l-code-inline'>.bg-#{color}</code> for #{color} background color.
 
     +p Border utilites:
       +ul
@@ -504,6 +520,6 @@ block append content
         .overflow-scroll-x
           .mr-large With fadeout effect. This is a <a href="#" class="link">rather long text which</a> will be horizontally scrollable on smaller screens.
       hr.my-tiny
-      .bg-grey.overflow-scroll-shadow
+      .bg-grey.text-color-white.overflow-scroll-shadow
         .overflow-scroll-x
           .mr-large With fadeout effect. This is a rather long text which will be horizontally scrollable on smaller screens.

@@ -25,7 +25,7 @@ block content
             +mobileSidebar
               h2.h3.mb-small Témy
 
-              a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level", data-toggle-icon="../icons_/app.svg#icon-chevron-right", data-collapse-trigger)
+              a.d-block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level", data-toggle-icon="../icons_/app.svg#icon-chevron-right", data-collapse-trigger)
                 +icon('chevron-down').text-color-grey.icon--medium.mr-tiny
                 | Krok po kroku v Martinuse
               #tree-level(data-toggle-class="hide")
@@ -34,7 +34,7 @@ block content
                     li.ml-small.mb-small
                       a.text-medium.link.link--black(class=i==2 ? 'text-semibold' : 'text-color-grey-dark')=item
                   li.ml-small.mb-small
-                    a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-1", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
+                    a.d-block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-1", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
                       +icon('chevron-right').text-color-grey.icon--medium.mr-tiny
                       | Naše hodnoty
                     #tree-level-1(data-toggle-class="hide").hide
@@ -43,7 +43,7 @@ block content
                           li.ml-small.mb-small
                             a.text-medium.link.link--black(class=i==2 ? 'text-semibold' : 'text-color-grey-dark')=item
                         li.ml-small.mb-small
-                          a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-2", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
+                          a.d-block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-2", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
                             +icon('chevron-right').text-color-grey.icon--medium.mr-tiny
                             | Škodoradosť
                           #tree-level-2(data-toggle-class="hide").hide
@@ -54,10 +54,10 @@ block content
                         each  item, i in treeMenu
                           li.ml-small.mb-small
                             a.text-medium.link.link--black(class=i==2 ? 'text-semibold' : 'text-color-grey-dark')=item
-                    a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-x", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
+                    a.d-block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-x", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
                       +icon('chevron-right').text-color-grey.icon--medium.mr-tiny
                       | Naše hodnoty
-                    a.block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-x", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
+                    a.d-block.mb-small.line-large.text-semibold.text-color-grey-dark(data-toggle="self, #tree-level-x", data-toggle-icon="../icons_/app.svg#icon-chevron-down", data-collapse-trigger)
                       +icon('chevron-right').text-color-grey.icon--medium.mr-tiny
                       | Naše hodnoty
 
@@ -66,7 +66,7 @@ block content
 
               h1.h1.mb-medium 7 zaujímavostí o fenoméne Pýcha a predsudok
               .bar.mb-medium.text-medium
-                .bar__item.flex.align-items-middle
+                .bar__item.d-flex.align-items-center
                   .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                   span.text-semibold.ml-small Callie Krueger
                 .bar__item.bar__item--border

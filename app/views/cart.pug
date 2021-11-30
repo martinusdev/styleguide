@@ -16,7 +16,7 @@ block content
         .row
           .col--l-8.ofst--center.card.px-none
             .card__content.mb-medium
-              .d-flex.align-items-middle.mb-none
+              .d-flex.align-items-center.mb-none
                 h2.mb-none.mr-small Váš košík
                 .pill.pill--blue 4
 
@@ -30,7 +30,7 @@ block content
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__info
-                          a.text-semibold.mb-tiny.block.link.link--product.text-medium.line-medium(href="detail-knihy.html")
+                          a.text-semibold.mb-tiny.d-block.link.link--product.text-medium.line-medium(href="detail-knihy.html")
                             +xmas({type: 'icon'}).mr-tiny
                             =item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-none
@@ -45,7 +45,7 @@ block content
                                 .badge.badge--orange.text-nowrap Predpredaj
                         .cart-item__actions
                           .form-control.form-control--input.m-none.mr-small
-                            .input-addons.input-addons--small.align-items-right
+                            .input-addons.input-addons--small.justify-content-end
                               .input-addons__item.p-none
                                 button(type="button" data-number-spinner="decrease" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('minus', 'icon--medium', 'mínus')
@@ -57,7 +57,7 @@ block content
                             +icon('trash', 'icon--medium')
                           +addTo({text: '', link: false, status: false}).mb-none
                       .cart-item__price.text-semibold.text-size-medium.text-nowrap= item.price
-                li.list__item.align-items-bottom.pb-none
+                li.list__item.align-items-end.pb-none
                   .list__item__section.list__item__section--primary.text-right
                     span.h3.text-normal Spolu
                   .list__item__section.list__item__section--secondary

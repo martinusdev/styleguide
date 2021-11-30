@@ -2,7 +2,7 @@ include ./../mixins/icon
 include ./../mixins/xmas
 .filter
   if !hideFilterHeader
-    .row.show-l.align-items-middle.mb-medium
+    .row.show-l.align-items-center.mb-medium
       .col--fill
         h2.m-none Filter
       .col--shrink
@@ -227,6 +227,6 @@ include ./../mixins/xmas
               label.radiocheck__control(for="filter-russian")
               label.radiocheck__label(for="filter-russian") Ruský#{' '}
                 span.text-color-grey.ml-tiny.text-size-small 635
-      a.link.block.text-center.text-size-medium(href="javascript:void(0)", data-toggle="self, previous", data-toggle-icon="../icons_/app.svg#icon-arrow-up", data-toggle-text="Menej", data-collapse-trigger)
+      a.link.d-block.text-center.text-size-medium(href="javascript:void(0)", data-toggle="self, previous", data-toggle-icon="../icons_/app.svg#icon-arrow-up", data-toggle-text="Menej", data-collapse-trigger)
         +icon('plus')
         | <span data-toggle-text-target class="ml-tiny mr-small">Ďalšie 4 jazyky</span>

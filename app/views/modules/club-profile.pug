@@ -29,7 +29,7 @@ mixin userHeader (props = {})
           div(style="position: absolute; bottom: 0;")
             img(src="images/content/logo-small.svg")
         .bar__item.bar__item--shrinkable
-          .flex
+          .d-flex
             .flex-shrinkable.mr-small
               h1.h1.text-color-white.mb-tiny Janko Martinusák
             .flex-shrinkable
@@ -158,10 +158,10 @@ mixin userFeed()
           .swiper-wrapper
             each item, index in books
               if index < 3
-                +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+                +product({size: 'large'}).mb-none.text-left.d-inline-block.swiper-slide
                   +productCover({cover: item.cover, href: '#'}).mb-none
             each item, index in [1,2]
-              +product({size: 'large'}).mb-none.text-left.inline-block.swiper-slide
+              +product({size: 'large'}).mb-none.text-left.d-inline-block.swiper-slide
                 +productCover({cover: 'images/content/book-empty.svg', href: '#'}).mb-none
 
   h2 Moje odznaky
@@ -322,7 +322,7 @@ mixin userFeed()
 
       hr.mb-medium
 
-      .card.card--well.inline-block
+      .card.card--well.d-inline-block
         .card__content
           .club-badge.club-badge--large.bg-blue-ci
             img(src="images/content/club/badges/badges-02.png")
@@ -354,7 +354,7 @@ mixin userFeed()
         var item = {
         xmas: false
         };
-      .card.card--well.inline-block
+      .card.card--well.d-inline-block
         .card__content
           +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
 
@@ -376,7 +376,7 @@ mixin userFeed()
                   | #{' '}napísal/a recenziu
           .bar__break.hide-m
           .bar__item.bar__item--shrinkable
-            .rating-star.bar__item.align-items-center.mt-none
+            .rating-star.bar__item.justify-content-center.mt-none
               each star, starIndex in Array(5)
                 +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
           .bar__item.bar__item--shrinkable.text-right
@@ -390,6 +390,6 @@ mixin userFeed()
           var item = {
           xmas: false
           };
-        .card.card--well.inline-block
+        .card.card--well.d-inline-block
           .card__content
             +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none

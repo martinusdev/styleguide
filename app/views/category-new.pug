@@ -62,7 +62,7 @@ block content
             .btn-layout--grid.letter-spacing-none
               each category, i in categories
                 .btn-layout-item
-                  a(href="#").btn.btn--carousel.text-transform-none.text-size-medium.flex.align-items-middle.text-left.pt-small.pb-small
+                  a(href="#").btn.btn--carousel.text-transform-none.text-size-medium.d-flex.align-items-center.text-left.pt-small.pb-small
                     if category.icon
                       if category.icon.startsWith('fa-')
                         i.text-color-primary.mr-tiny.fa-fw.fa-lg.fal(class= category.icon)
@@ -75,7 +75,7 @@ block content
               | <span data-toggle-text-target class="ml-tiny mr-small">Viac kategórií</span>
       .wrapper-main
         .row
-          .col.text-size-small.text-transform-upper.text-color-grey.inline-block-m.block Populárne filtre
+          .col.text-size-small.text-transform-upper.text-color-grey.d-m-inline-block.d-block Populárne filtre
       .wrapper-main.overflow-scroll-x
         .row.mt-tiny
           .col

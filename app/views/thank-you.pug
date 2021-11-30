@@ -59,9 +59,9 @@ block content
                             .order-progress__blank-circle
                         .text-medium.order-progress__status(class=i===currentStep ? 'text-semibold' : '') Dokončili ste objednávku
 
-              .row.align-items-middle.mb-large
+              .row.align-items-center.mb-large
                 .col--m-shrink
-                  .bar.align-items-middle.mb-small
+                  .bar.align-items-center.mb-small
                     .bar__item
                       img(src="/images/content/avatars/thank-you-avatar.png", alt="avatar", width="50")
                     .bar__item
@@ -101,7 +101,7 @@ block content
                           img(src=`${item.cover}`, alt="Kniha", width="74")
                     .bar__item.bar__item--fill
                       .line-small.text-medium.mb-tiny
-                        a.text-semibold.link.link--product.text-ellipsis.block(href="detail-knihy.html")=item.title
+                        a.text-semibold.link.link--product.text-ellipsis.d-block(href="detail-knihy.html")=item.title
                       .text-size-small.text-color-grey.text-ellipsis.mb-small=item.author
                       .btn-layout.btn-layout--horizontal
                         button.btn.btn--ghost.btn--small(

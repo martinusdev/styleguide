@@ -52,7 +52,7 @@ block content
                     .col--8
                       p.text-medium Slovensko je krajinou zabudnutých priemyselných pamiatok. Nadšenci zo združenia Čierne diery za nimi cestujú. Snažia sa nadchnúť ľudí pre históriu starých tovární, baní a stratených sídiel. Dokumentujú miesta, ktoré...
 
-                  .bar.align-items-middle.mb-none
+                  .bar.align-items-center.mb-none
                     .bar__item.bar__item--fill
                       .bar.bar--vertical.bar--vertical-small.mb-none
                         .bar__item.m-none
@@ -72,7 +72,7 @@ block content
                         span.text-semibold Vložiť do košíka
                       +addTo({text: ''})
 
-          .col--l-6.flex
+          .col--l-6.d-flex
             .row
               each item, i in [...books]
                 if i < 4
@@ -100,7 +100,7 @@ block content
                 .portrait(style=`background-image: url('https://mrtns.eu/tovar/_l/597/l597783.jpg?v=1555486578');`)
               .text-center.line-small
                 a.link.link--product(href="#").text-medium Plyšový drak Toothless 40 cm
-              .bar.bar--small.align-items-center
+              .bar.bar--small.justify-content-center
                 .bar__item
                   .badge.badge--primary -5%
                 .bar__item
