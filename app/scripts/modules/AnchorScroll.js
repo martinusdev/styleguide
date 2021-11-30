@@ -12,7 +12,7 @@ export default class AnchorScroll {
   constructor(selector = window.location.hash) {
     this.selector = selector;
 
-    return this._init();
+    this._init();
   }
 
   _init() {

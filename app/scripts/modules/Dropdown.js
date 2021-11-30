@@ -9,7 +9,7 @@ const isActive = el => el.classList.contains(defaultConfig.activeClassName)
   || el.getAttribute('aria-expanded') === 'true';
 
 export default class Dropdown {
-  constructor(selector = '[data-dropdown]', config) {
+  constructor(selector = '[data-dropdown]', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
@@ -20,8 +20,6 @@ export default class Dropdown {
     this.target = null;
     this.trigger = null;
     this._init();
-
-    return this;
   }
 
   destroy() {

@@ -30,7 +30,7 @@ const defaultConfig = {
 };
 
 export default class SwiperSlider {
-  constructor(selector = '.swiper-container', config) {
+  constructor(selector = '.swiper-container', config = {}) {
     SwiperCore.use([Navigation, Pagination, Lazy]);
 
     this.selector = selector;
@@ -48,8 +48,6 @@ export default class SwiperSlider {
     this.instances.forEach(instance => {
       instance.navigation.update();
     });
-
-    return this;
   }
 
   _init() {

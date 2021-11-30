@@ -20,13 +20,11 @@ const defaultConfig = {
 };
 
 export default class StickyWrapper {
-  constructor(selector = '[data-gumshoe] a', config) {
+  constructor(selector = '[data-gumshoe] a', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this._init();
-
-    return this;
   }
 
   _init() {

@@ -6,7 +6,7 @@ const defaultConfig = {
 };
 
 export default class Input {
-  constructor(selector = '[data-input]', config) {
+  constructor(selector = '[data-input]', config = {}) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this._handleFocus = this._handleFocus.bind(this);
@@ -16,8 +16,6 @@ export default class Input {
     this.items = [];
 
     this._init();
-
-    return this;
   }
 
   _init() {
@@ -30,8 +28,6 @@ export default class Input {
 
       Input.setClassValue(item);
     });
-
-    return this.items;
   }
 
   update() {

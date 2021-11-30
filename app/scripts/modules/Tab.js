@@ -15,7 +15,7 @@ const defaultConfig = {
 };
 
 export default class Tab {
-  constructor(selector = '[role="tab"]', config) {
+  constructor(selector = '[role="tab"]', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
@@ -24,8 +24,6 @@ export default class Tab {
     this.triggers = [];
     this.tabs = [];
     this._init();
-
-    return this;
   }
 
   _init() {

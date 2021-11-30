@@ -16,15 +16,13 @@ const defaultConfig = {
 };
 
 class Toggle {
-  constructor(selector = '[data-toggle]', config) {
+  constructor(selector = '[data-toggle]', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
     this._onClick = this._onClick.bind(this);
     this.triggers = [];
     this._init();
-
-    return this;
   }
 
   static isToggled(target, activeClass = defaultConfig.toggleClass) {

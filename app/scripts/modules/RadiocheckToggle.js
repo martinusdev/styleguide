@@ -11,15 +11,13 @@ const defaultConfig = {
 };
 
 export default class RadiocheckToggle {
-  constructor(selector = '[data-radiocheck-toggle]', config) {
+  constructor(selector = '[data-radiocheck-toggle]', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
     this._onChange = this._onChange.bind(this);
     this.triggers = [];
     this._init();
-
-    return this;
   }
 
   _init() {

@@ -1,5 +1,4 @@
-import Choices
-  from '../../../node_modules/choices.js/public/assets/scripts/choices';
+import Choices from 'choices.js/public/assets/scripts/choices';
 import { nodeListToArray } from './Utils';
 
 let lang = 'sk';
@@ -169,7 +168,7 @@ const wideImageListChoice = (
   </div>
   `;
 
-const choiceListTemplate = (width = 'none', config) => `
+const choiceListTemplate = (width = 'none', config = {}) => `
   <div class="${config.classNames.list}" dir="ltr" role="listbox" style="width:${width}"></div>
 `;
 
@@ -231,7 +230,7 @@ function getTemplates(template, select, config) {
 }
 
 export default class Select {
-  constructor(selector = '.js-select', config) {
+  constructor(selector = '.js-select', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...texts[lang], ...config };
 
@@ -239,8 +238,6 @@ export default class Select {
     this._onHideDropdown = this._onHideDropdown.bind(this);
 
     this.elements = this._init();
-
-    return this;
   }
 
   static setLang(newLang) {

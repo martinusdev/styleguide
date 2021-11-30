@@ -17,14 +17,12 @@ const defaultConfig = {
 };
 
 export default class Tooltip {
-  constructor(selector = '[data-tooltip]', config) {
+  constructor(selector = '[data-tooltip]', config = {}) {
     this.config = { ...defaultConfig, ...config };
     this.selector = selector;
     this.tooltips = [];
 
     this._init();
-
-    return this;
   }
 
   destroy() {
