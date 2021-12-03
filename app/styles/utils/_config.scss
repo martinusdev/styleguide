@@ -603,25 +603,14 @@ $button-styles: (
   default: (
     default: (
       color: $color-white,
-      background-color: _color(grey, 800),
-      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
-    ),
-    focus: (
       background-color: _color(grey, 700),
     ),
-    after: (
-      position: absolute,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      width: 100%,
-      background-color: _color(grey, 900),
-      height: 4px,
+    focus: (
+      background-color: _color(grey, 600),
     ),
     active: (
       color: $color-white,
       background-color: _color(grey, 900),
-      box-shadow: none,
     ),
     group: (
       border-color: _color(grey, 900),
@@ -652,6 +641,34 @@ $button-styles: (
       border-color: _color(primary, 600),
     ),
   ),
+  secondary: (
+    default: (
+      position: relative,
+      color: $color-white,
+      background-color: _color(grey, 800),
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    focus: (
+      background-color: _color(grey, 700),
+    ),
+    after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
+      background-color: _color(grey, 900),
+      height: 4px,
+    ),
+    active: (
+      color: $color-white,
+      background-color: _color(grey, 900),
+      box-shadow: none,
+    ),
+    group: (
+      border-color: _color(grey, 900),
+    ),
+  ),
   ghost: (
     default: (
       color: _color(grey, 700),
@@ -661,9 +678,6 @@ $button-styles: (
     focus: (
       background-color: _color(secondary, 400),
       color: _color(grey, 700),
-    ),
-    after: (
-      display: none !important,
     ),
     active: (
       background-color: _color(secondary, 500),
@@ -682,9 +696,6 @@ $button-styles: (
     focus: (
       background-color: _color(grey, 800),
       color: $color-white,
-    ),
-    after: (
-      display: none !important,
     ),
     active: (
       background-color: _color(grey, 900),
@@ -706,9 +717,6 @@ $button-styles: (
       border-color: transparent,
       background-color: transparent,
     ),
-    after: (
-      display: none !important,
-    ),
     active: (
       color: _color(primary, 600),
       border-color: transparent,
@@ -726,9 +734,6 @@ $button-styles: (
       border-color: _color(borders, 200),
       background-color: transparent,
       box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
-    ),
-    after: (
-      display: none !important,
     ),
     active: (
       color: _color(link, 500),
@@ -748,9 +753,6 @@ $button-styles: (
     ),
     active: (
       box-shadow: none,
-    ),
-    after: (
-      display: none !important,
     ),
     disabled: (
       pointer-events: all,
