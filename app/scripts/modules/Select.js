@@ -119,7 +119,7 @@ const storeListChoice = (
   }
 
   if (icon !== '') {
-    icon = `<svg class="icon ${iconColor} mr-tiny" style="flex-shrink: 0" role="img" aria-hidden="true"><use xlink:href="../icons_/app.svg?v=1#icon-${icon}"></use></svg>`;
+    icon = `<svg class="icon ${iconColor} mr-tiny" style="flex-shrink: 0" role="img" aria-hidden="true"><use xlink:href="/data/assets/martinus/lb/icons_/app.svg?v=1#icon-${icon}"></use></svg>`;
   }
 
   return `
