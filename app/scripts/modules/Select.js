@@ -102,10 +102,30 @@ const storeListChoice = (
 
   const statusText = customProperties.statusText ? customProperties.statusText : '';
 
+  let icon;
+  let iconColor;
+
+  switch (customProperties.type) {
+    case 'martinus':
+      icon = 'martinus';
+      iconColor = 'text-color-primary';
+      break;
+    case 'partner':
+      icon = 'pin';
+      iconColor = 'text-color-yellow';
+      break;
+    default:
+      icon = '';
+  }
+
+  if (icon !== '') {
+    icon = `<svg class="icon ${iconColor} mr-tiny" style="flex-shrink: 0" role="img" aria-hidden="true"><use xlink:href="../icons_/app.svg?v=1#icon-${icon}"></use></svg>`;
+  }
+
   return `
   <div style="max-width: 100%;" class="align-items-middle align-items-justify ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
-    <span class="text-color-grey text-left text-regular" style="max-width: 66%;">${label}</span>
-    <span class="${statusClass} text-right text-small">${statusText}</span>
+    <div class="d-flex align-items-middle text-color-grey-dark text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+    <div class="${statusClass} text-right text-small">${statusText}</div>
   </div>
   `;
 };
@@ -350,6 +370,7 @@ export default class Select {
 
         if (input) {
           input.classList.add('input');
+          input.classList.add('input--small');
           input.classList.add('input--search');
         }
       }
