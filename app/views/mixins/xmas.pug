@@ -30,7 +30,7 @@ mixin xmas(props = {})
     if (type == 'pricebox')
       div(class= status == 1 ? '' : 'inline-block', data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
         .bar.mb-small
-          .bar__item.bar__item--shrinkable.text-space-right-tiny
+          .bar__item.bar__item--shrinkable.mr-tiny
             +icon('xmas', 'icon--large')(class=statusColor[status])
           .bar__item.bar__item--fill.text-left.line-medium.text-medium
             span.text-semibold(class=statusColor[status])= statusText[status]
@@ -47,7 +47,7 @@ mixin xmas(props = {})
     if (type == 'short')
       .inline-block(data-tooltip, title="Toto je vysvetlivka k vianociam")&attributes(attributes)
         .bar.mb-none
-          .bar__item.bar__item--shrinkable.text-space-right-tiny
+          .bar__item.bar__item--shrinkable.mr-tiny
             +icon('xmas-small')(class=statusColor[status])
           .bar__item.bar__item--fill.text-left.line-medium.text-medium
             span.text-semibold(class=statusColor[status])= shortText[status]

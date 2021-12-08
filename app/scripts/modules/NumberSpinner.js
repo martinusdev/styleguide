@@ -4,15 +4,13 @@ const defaultConfig = {
 };
 
 export default class NumberSpinner {
-  constructor(selector = 'data-number-spinner', config) {
+  constructor(selector = 'data-number-spinner', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
     this._onClick = this._onClick.bind(this);
 
-    this.sliders = [];
-
-    return this._init();
+    this._init();
   }
 
   _init() {
@@ -24,8 +22,6 @@ export default class NumberSpinner {
       spinner.addEventListener('click', this._onClick);
       return spinner;
     });
-
-    return this.spinners;
   }
 
   _onClick(e) {
@@ -73,8 +69,10 @@ export default class NumberSpinner {
 
   destroy() {
     this.spinners.forEach(spinner => {
-      spinner.removeEventListener(this._onClick);
+      spinner.removeEventListener('click', this._onClick);
     });
+
+    this.spinners = [];
   }
 
   update() {

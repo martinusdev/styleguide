@@ -16,7 +16,7 @@ block content
 
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Učebnice'] })
 
@@ -48,12 +48,12 @@ block content
           li.tab-nav__item
             a.tab-nav__content.tab-nav__content--link
               .tab-nav__content-wrap
-                span.text-space-right-tiny Písacie potreby  
+                span.mr-tiny Písacie potreby
                 .badge.badge--green nové
           li.tab-nav__item
             a.tab-nav__content.tab-nav__content--link
               .tab-nav__content-wrap
-                span.text-space-right-tiny Batohy
+                span.mr-tiny Batohy
                   span.show-l #{' '}a príslušenstvo
                 .badge.badge--green nové
 
@@ -77,7 +77,7 @@ block content
               .bar__item.bar__item--shrinkable
                 b Začnite výberom tu:
               .bar__break.hide-m
-              .bar__item.bar__item--fill.no-mrg-right--s-down
+              .bar__item.bar__item--fill.mr-none--s-down
                 select.js-select
                   option Vyberte si...
                   option Jazykové učebnice
@@ -112,7 +112,7 @@ block content
     section.section--secondary.section.section--toolbar.hide-l(data-sticky, data-scroll-offset=header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
       .wrapper-main
         .btn-layout.btn-layout--vertical.mb-small
-          .btn-dropdown.no-mrg
+          .btn-dropdown.m-none
             button.btn.btn--ghost.btn--icon-right.text-left(
               data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
               data-toggle-expand,

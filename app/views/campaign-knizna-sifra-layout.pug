@@ -21,11 +21,11 @@ block content
           .col--m-3.mb-medium.text-center
             a(href="#")
               img(src="images/content/campaign/knizna-sifra4/logo/sk.svg", width="270")
-          .col--m-5.col--l-6.mb-medium.mb-none-m
+          .col--m-5.col--l-6.mb-medium.mb-m-none
             h1.mb-medium.ks-text Hľadaj knihy ukryté v obraze
             .show-m
               p.mb-none
-                ul.list--counter.no-pad.ks-list
+                ul.list--counter.p-none.ks-list
                   li.mb-small
                     b Počas marca#{' '}
                     | sa bude obraz postupne odkrývať.
@@ -36,14 +36,14 @@ block content
                     a(href="#", data-toggle="#rules").link.ks-link--inverse #{' '}kompletné pravidlá.
             .hide-m
               .mb-none#ks-description(data-collapse="70")
-                ul.list--counter.no-pad.ks-list
+                ul.list--counter.p-none.ks-list
                   li.mb-small Počas marca sa bude obraz postupne odkrývať. Ak si chceš pomôcť, skoč sa pozrieť na celý obraz.
                   li.mb-small Keď ťa vyžrebujeme, za každý uhádnutý názov získavaš knižku. Ak počas marca urobíš v Martinuse ľubovoľný nákup, tvoju výhru zdvojnásobíme
                   li.mb-small Za každú knižku zakúpenú na www.martinus.sk počas marca získaš pomôcku k niektorej časti obrazu.
                     a(href="#", data-toggle="#rules").link.ks-link--inverse #{' '}kompletné pravidlá.
               a.link.ks-link--inverse.text-size-medium(href="javascript:void(0)", data-toggle="#ks-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                 +icon('arrow-down')
-          .col--m-4.col--l-3.mb-none-m
+          .col--m-4.col--l-3.mb-m-none
 
             .text-center.text-right-m
               .btn.btn--primary.btn--medium.mb-small(data-toggle="#login")
@@ -57,10 +57,10 @@ block content
               .bar.bar--vertical
                 .bar__item.border-bottom-grey.ks-border--inverse
                   .bar
-                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email.no-mrg-bottom
-                      +icon('user').icon--medium.text-space-right
+                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email.mb-none
+                      +icon('user').icon--medium.mr-small
                       span.text-semibold klco.roman@gmail.com
-                    .bar__item.bar__item--fill.text-right.no-mrg-bottom
+                    .bar__item.bar__item--fill.text-right.mb-none
                       a(href="#").link.link--product
                         +icon('logout').icon--medium
                 .bar__item.text-center.text-left-m
@@ -95,7 +95,7 @@ block content
             .form-control.form-control--input
               .input-addons
                 input.input(type="text", placeholder="Tvoj e-mail...")
-                .input-addons__item.no-pad
+                .input-addons__item.p-none
                   button.btn.btn--primary
                     | Prihlásiť
 
@@ -124,7 +124,7 @@ block content
                 .form-control.form-control--input#input-guess
                   .input-addons
                     input.input(type="text", placeholder="Text odpovede...")
-                    .input-addons__item.no-pad
+                    .input-addons__item.p-none
                       .btn.btn--primary#btn-guess
                         | Hľadaj
 

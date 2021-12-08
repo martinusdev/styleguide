@@ -13,8 +13,6 @@ block content
   -
     var swiperConfig = {
       slidesPerView: 1,
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
     };
 
   main.collection
@@ -38,7 +36,7 @@ block content
 
     section.section--breadcrumbs.position-relative
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Čitateľské kolekcie', 'Kultové Sci-fi (Janko Martinusák)'] })
 
@@ -71,7 +69,7 @@ block content
               .bar__item.bar__item--fill
                 .bar.mb-none
                   .bar__item.bar__item--fill
-                    h2.no-mrg-bottom
+                    h2.mb-none
                       a.link(href="club-profile-public.html") Janko Martinusák
                     h1.mb-small Dlhý názov kolekcie, ktorý bude treba zalomiť
                     .btn-layout.btn-layout--horizontal
@@ -85,13 +83,13 @@ block content
                         | upraviť
 
 
-    section.section.no-pad-top
+    section.section.pt-none
       - for (var i = 0; i<8; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--4.col--s-shrink.text-left
-                +product().no-mrg-bottom
+                +product().mb-none
                   +productCover({
                     cover: 'images/content/books/sample-3.jpg',
                     rating: 3.5,
@@ -130,7 +128,7 @@ block content
                           +icon('star').rating-star__item.icon--large.is-active
                 else
                   p Lahodne s Ellou je názov jedinečnej kuchárskej knihy, ktorú na základe svojich vlastných skúseností napísala známa britská blogerka Ella Woodwardová. Jedinečnosť kuchárky nie je len v jedinečnom štýle a životnom príbehu autorky – radikálnou zmenou stravy sa jej podarilo vyliečiť z choroby, ktorú lekári označili za nevyliečiteľnú. Ella prináša dobré a zaujímavé recepty, v ktorých používa netradičné a dávno zabudnuté suroviny. V našich obchodoch ich dostaneme, ale nevieme ich používať.
-              .col--m-3.mb-large.mb-none-m
+              .col--m-3.mb-large.mb-m-none
                 .product-item__price-box.text-center
                   .mb-small.show-m
                     .h2.text-bold 12,99 €
@@ -154,7 +152,7 @@ block content
       .wrapper-main
         .row
           .col--m-4.ofst--m-center
-            .btn-layout--vertical.mb-large-m.mb-medium-s
+            .btn-layout--vertical.mb-m-large.mb-s-medium
               button.btn.btn--ghost Načítať ďalšie knihy (+5)
 
   include ./modules/seen-items

@@ -79,7 +79,7 @@ include ./../../mixins/icon
       }, {
         title: 'Darčekové poukážky',
         icon: 'footer-package',
-        iconColor: 'text-color-theme',
+        iconColor: 'text-color-primary',
       },{
         title: 'Bestsellery',
       }, {
@@ -116,24 +116,25 @@ mixin megaMenuContent(props = {})
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
     .mega-menu__content-wrap
       if additionalLinks
-        .mega-menu__recommended.overflow-scroll-x
-          ul.list--expanded.no-pad.mb-none.mega-menu__recommended__links
-            each link in additionalLinks
-              li
-                a.flex.align-items-middle.link.link--black(href='#')
-                  if link.icon
-                    +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
-                  =link.title
+        .mega-menu__recommended.overflow-scroll-shadow
+          .overflow-scroll-x
+            ul.list--expanded.p-none.mb-none.mega-menu__recommended__links
+              each link in additionalLinks
+                li
+                  a.flex.align-items-middle.link.link--black(href='#')
+                    if link.icon
+                      +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
+                    =link.title
       .mega-menu__categories
-        .row.no-mrg-horizontal.mb-medium-m
+        .row.mx-none.mb-m-medium
           each category in categories
             .col.col--m-4.col--12.mega-menu__categories__category
-              a(href="#").flex.align-items-middle.pt-small.pb-small.pt-medium-m.pb-none-m.link.link--black.mega-menu__categories__title.mb-none
+              a(href="#").flex.align-items-middle.pt-small.pb-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none
                 .mr-tiny.mega-menu__categories__icon
                   if category.icon.startsWith('fa-')
-                    i.text-color-theme.fa-fw.fal(class= category.icon)
+                    i.text-color-primary.fa-fw.fal(class= category.icon)
                   else
-                    +icon(category.icon).icon--large.text-color-theme
+                    +icon(category.icon).icon--large.text-color-primary
                 h3.mb-none=category.title
               if category.entries
                 ul.mega-menu__categories__subcategories.text-medium.show-m.mt-tiny.mb-small
@@ -144,25 +145,25 @@ mixin megaMenuContent(props = {})
                     a.block.mt-tiny.link.link--grey(href='#')
                       | + Ďalšie kategórie
         if recommended
-          .row.no-mrg-horizontal.mt-large-l.mb-medium
+          .row.mx-none.mt-l-large.mb-medium
             each group, i in recommended
               .col.col--l-6.mt-medium
-                .block.mb-tiny.text-transform-upper.text-size-small.text-nospace= group.title
-                ul.list-inline.list-inline--bulleted.text-size-small.no-pad.mb-none
+                .block.mb-tiny.text-transform-upper.text-size-small.m-none= group.title
+                ul.list-inline.list-inline--bulleted.text-size-small.p-none.mb-none
                   each item in group.entries
                     li
                       a.link.link--black(href='#')= item
       if showAd
-        .mega-menu__banner.mb-medium.mb-none-l
+        .mega-menu__banner.mb-medium.mb-l-none
           a(href="#")
             img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
 
 
 .header__mega-menu.mega-menu(data-mega-menu)
   .mega-menu__contents(data-mega-menu-contents)
-    div.text-color-white.mega-menu__mobile-navigation.btn-layout.btn-layout--horizontal.no-mrg-bottom.hide-l.overflow-scroll-x
+    div.text-color-white.mega-menu__mobile-navigation.btn-layout.btn-layout--horizontal.mb-none.hide-l.overflow-scroll-x
       each item in mainNav
-        .btn-dropdown.btn-dropdown--no-icon.no-mrg
+        .btn-dropdown.btn-dropdown--no-icon.m-none
           if item.trigger
             a.btn(
               data-mega-menu-trigger=`#${item.trigger}`,

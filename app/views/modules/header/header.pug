@@ -30,7 +30,10 @@ block opts
 
   header.header
     .header__wrapper(data-sticky)
-      .wrapper-main
+      .wrapper-main.position-relative
+        if xmasLogo
+          a(href="#")
+            img(src=`${assetsPrefix}images/content/logo/xmas.png`, alt="Vianoce").logo-xmas
         .bar.header__bar
           .bar__item.header__logo
             a(href="#", class=bookClassHide)
@@ -42,7 +45,7 @@ block opts
           .bar__item.header__nav(class=bookClassHide)
             .btn-layout.btn-layout--horizontal
               for item in mainNav
-                .btn-dropdown.no-mrg.show-l
+                .btn-dropdown.m-none.show-l
                   if item.trigger
                     a.btn.btn--clean.header-btn(
                     data-mega-menu-trigger=`#${item.trigger}`
@@ -53,7 +56,7 @@ block opts
                     a.btn.btn--clean.header-btn(
                       href=item.link
                     )= item.title
-              .btn-dropdown.no-mrg.btn-dropdown--no-icon.hide-l
+              .btn-dropdown.m-none.btn-dropdown--no-icon.hide-l
                 a.btn.btn--clean.text-transform-upper.header-btn(
                 data-mega-menu-trigger=`#${mainNav[0].trigger}`
                 data-toggle='self, #toggle-mega-menu-knihy',
@@ -69,19 +72,19 @@ block opts
               | <style>.header__wrapper::after{background: #7d609a;}</style>
 
           .bar__item.bar__item--fill.header__search.header-search
-            .hide-m.header-search__toggle.no-mrg
-              button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+            .hide-m.header-search__toggle.m-none
+              button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
                 +icon('search').icon--medium
             .hide-m.header-search__back
-              button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+              button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
                 +icon('arrow-left').icon--medium
             .header-search__search(style="position: relative;")
-              .form-control.form-control--input.no-mrg-bottom
+              .form-control.form-control--input.mb-none
                 .input-addons
                   input.input.input--dark#search-in-header(type='search', placeholder="Titul, kategória alebo autor", data-input, data-toggle-focus)
                   .input-addons__item.header-search__empty.input-addons__item--dark
                     +icon('search', '', 'Search').icon--medium
-                  .input-addons__item.input-addons__item.no-pad.header-search__value
+                  .input-addons__item.input-addons__item.p-none.header-search__value
                     .btn.btn--primary.text-nowrap
                       +icon('search', '', 'Search').icon--medium.icon--left
                       | Hladať

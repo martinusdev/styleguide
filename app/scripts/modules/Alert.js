@@ -10,7 +10,7 @@ const defaultConfig = {
   customActionTemplate: undefined,
   onAction: undefined,
   timeout: undefined,
-  iconPath: '../icons_/app.svg',
+  iconPath: '/data/assets/martinus/lb/icons_/app.svg',
 };
 
 const templateIcon = (icon, iconPath) => `
@@ -70,8 +70,6 @@ export default class Alert {
     this.destroy = this.destroy.bind(this);
 
     this._init();
-
-    return this;
   }
 
   _init() {

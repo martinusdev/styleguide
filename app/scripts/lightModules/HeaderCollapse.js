@@ -2,6 +2,7 @@
 // HeaderCollapse
 
 class HeaderCollapse {
+  // eslint-disable-next-line default-param-last
   constructor(selector = '.js-header', { offset, target }) {
     this.element = $(selector);
     this.offset = offset;

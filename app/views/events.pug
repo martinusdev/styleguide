@@ -11,14 +11,12 @@ block content
   -
     var swiperConfig = {
       slidesPerView: 1,
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
     };
 
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Besedy'] })
 
@@ -42,13 +40,13 @@ block content
             h2 Bratislava (Obchodná)
           .bar__break.hide-s
           .bar__item.bar__item--fill
-            a.btn.btn--clean.no-pad
+            a.btn.btn--clean.p-none
               | na stránku kníhkupectva
               +icon('arrow-right').icon--small.icon--right
 
-    section.section.no-pad-top.mb-medium
+    section.section.pt-none.mb-medium
       - for (var i = 0; i<4; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--s-shrink.text-center.show-m
@@ -99,9 +97,9 @@ block content
               | na stránku kníhkupectva
               +icon('arrow-right').icon--small.icon--right
 
-    section.section.no-pad-top.mb-medium
+    section.section.pt-none.mb-medium
       - for (var i = 0; i<3; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--s-shrink.text-center.show-m

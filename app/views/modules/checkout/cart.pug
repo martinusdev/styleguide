@@ -9,7 +9,7 @@ include ./../../mixins/xmas
       .bar__item.bar__item--fill
         .pill.pill--blue 4
       .bar__item
-        button.btn.btn--clean.no-mrg.no-pad-right
+        button.btn.btn--clean.m-none.pr-none
           +icon('edit').icon--medium.icon--left
           | Upraviť
     #cart-summary(data-collapse="220")
@@ -19,26 +19,26 @@ include ./../../mixins/xmas
             .cart-item.cart-item--summary(class=item.ebook ? 'cart-item--has-tags' : '')
               .cart-item__content
                 .cart-item__column.cart-item__column--product-name
-                  a.text-size-medium.no-mrg.link.link--product(href="detail-knihy.html")
-                    +xmas({type: 'icon'}).text-space-right-tiny
+                  a.text-size-medium.m-none.link.link--product(href="detail-knihy.html")
+                    +xmas({type: 'icon'}).mr-tiny
                     =item.title
                 if item.ebook
                   .cart-item__column.cart-item__column--tags
                     .badge.text-nowrap E-kniha
                 .cart-item__column.cart-item__column--qty
-                  .text-size-medium.no-mrg
+                  .text-size-medium.m-none
                     | 1x
                 .cart-item__column.cart-item__column--price
                   .text-semibold.text-size-medium.text-nowrap= item.price
     .text-center
-      span.link.text-size-medium(data-toggle="#cart-summary, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť všetky(+3)", data-collapse-trigger) <span data-toggle-text-target>Zobraziť všetký(+3)</span>#{' '}
+      span.link.text-size-medium(data-toggle="#cart-summary, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť všetky(+3)", data-collapse-trigger) <span data-toggle-text-target>Zobraziť všetky (+3)</span>#{' '}
         +icon('arrow-down')
 
   .card__footer
     .bar.align-items-bottom
       .bar__item--fill
         .text-color-success
-          +icon('footer-shipping').icon--medium.text-space-right
+          +icon('footer-shipping').icon--medium.mr-small
           | Výborne! Objednávku vám vieme odoslať ešte dnes!
       .bar__item.bar__item--shrinkable
         span.h3 Spolu

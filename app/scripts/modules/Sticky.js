@@ -15,19 +15,17 @@ const defaultConfig = {
 };
 
 export default class StickyWrapper {
-  constructor(selector = '[data-sticky]', config) {
+  constructor(selector = '[data-sticky]', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
     this.stickies = [];
 
-    return this._init();
+    this._init();
   }
 
   _init() {
     this.stickies = new Sticky(this.selector, this.config);
-
-    return this.stickies;
   }
 
   update() {

@@ -430,3 +430,30 @@
   -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
 }
+
+.header-warning {
+  z-index: 100;
+  &.bg-dark-grey {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      width: 20px;
+      height: 100%;
+      right: 0;
+      top: 0;
+      background: linear-gradient(90deg, rgba(71, 68, 64, 0) 0%, #474440 100%);
+      display: block;
+      content: ' ';
+    }
+  }
+}
+
+.dropdown--account {
+  min-width: 150px;
+  max-height: 70vh;
+
+  .dropdown__wrap {
+    max-height: 70vh;
+  }
+}

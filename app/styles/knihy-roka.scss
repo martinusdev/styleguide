@@ -4,13 +4,16 @@
   background-repeat: no-repeat;
   background-size: cover;
 
-  &--children {
-    background-image: url('../images/knihy-roka/hero-banner-children-mobile.png');
+  &--2021 {
+    background-image: url('../images/knihy-roka/bannery/2021/mobile_dospelacke.png');
   }
 
-  h1 {
-    font-size: _get-rem(80px);
-    margin-bottom: _get-rem(30px);
+  &--children {
+    background-image: url('../images/knihy-roka/hero-banner-children-mobile.png');
+
+    &--2021 {
+      background-image: url('../images/knihy-roka/bannery/2021/mobile_detske.png');
+    }
   }
 
   .year {
@@ -170,6 +173,13 @@
   align-items: flex-start;
 }
 
+.swiper--prispievatelky {
+  .carousel__btn {
+    display: block !important;
+    top: 25% !important;
+  }
+}
+
 .card--annotation {
   background-color: _color(info, 100);
   border-bottom-left-radius: 0;
@@ -241,8 +251,16 @@
   .hero-banner {
     background-image: url('../images/knihy-roka/hero-banner-adult.png');
 
+    &--2021 {
+      background-image: url('../images/knihy-roka/bannery/2021/header_dosp.png');
+    }
+
     &--children {
       background-image: url('../images/knihy-roka/hero-banner-children.png');
+
+      &--2021 {
+        background-image: url('../images/knihy-roka/bannery/2021/header_detsky.png');
+      }
     }
   }
 

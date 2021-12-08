@@ -37,13 +37,14 @@ block append content
             em(data-tooltip, title="This is tooltip text") This text has tooltip
 
           .bar__item
-            button.btn.btn--ghost(data-tooltip, title="This is tooltip text") This button has tooltip
+            button.btn.btn--ghost(data-tooltip, title="This is tooltip text. <a href='#' class='link'>This is a link within tooltip.</a>") This button has tooltip with link
 
           #tooltip-light.hide
             .card
               .card__content
                 h3 This is a content of hidden tooltip template
                 p You can put more html here
+                p <a href='#' class="link">This is a link within tooltip.</a>
                 button.btn.btn-primary.mb-none Test
 
           .bar__item
@@ -55,13 +56,14 @@ block append content
         :code
           <em data-tooltip title="This is tooltip text">...</em>
 
-          <button class="btn btn--ghost" data-tooltip title="This is tooltip text">..</button>
+          <button class="btn btn--ghost" data-tooltip title="This is tooltip text <a href='#' class='link'>This is a link within tooltip.</a>">..</button>
 
           <div class="hide" id="tooltip-light">
             <div class="card">
               <div class="card__content">
                 <h3>This is a content of hidden tooltip template</h3>
                 <p>You can put more html here</p>
+                <p><a href='#' class="link">This is a link within tooltip.</a></p>
                 <button class="btn btn-primary mb-none">Test</button>
               </div>
             </div>
@@ -82,7 +84,7 @@ block append content
             .bar__item
               button.btn.btn--ghost(data-tooltip, data-tippy-placement="right", title="This is tooltip text") Position: right
             .bar__item
-              button.btn.btn--ghost(data-tooltip, data-tippy-placement="bottom", title="This is tooltip text") Position: bottom
+              button.btn.btn--ghost(data-tooltip, data-tippy-placement="bottom", title="This is tooltip text.") Position: bottom
             .bar__item
               button.btn.btn--ghost(data-tooltip, data-tippy-placement="left", title="This is tooltip text") Position: left
 

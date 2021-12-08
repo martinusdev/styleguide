@@ -13,8 +13,6 @@ block content
   -
     var swiperConfig = {
       slidesPerView: 1,
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
     };
 
     var menu = [
@@ -27,7 +25,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Bestsellery'] })
 
@@ -36,7 +34,7 @@ block content
         .row.align-items-middle
           .col--12.col--m-3
             h1.mb-medium Bestsellery
-          .col--12.col--m-6.mb-medium.mb-none-m
+          .col--12.col--m-6.mb-medium.mb-m-none
             .bar.mb-none.align-items-center.show-m
               each item, i in menu
                 .bar__item.text-center
@@ -51,7 +49,7 @@ block content
                     .card__content.card__content--condensed
                       +icon(`products-${item.icon}`).icon--medium.text-color-grey
                       .h3.mb-none= item.title
-          .col--12.col--m-2.ofst--m-1.mb-medium.mb-none-m
+          .col--12.col--m-2.ofst--m-1.mb-medium.mb-m-none
             select.js-select.select--ghost
               option Rok
               option 2018
@@ -67,7 +65,7 @@ block content
             each item, i in ['Knihy', 'Filmy', 'Hry']
               li
                 a.link.link--black(href="#", class= i == 0 ? 'text-bold' : '')
-                  +icon('footer-reading').icon--medium.text-space-right.text-color-grey
+                  +icon('footer-reading').icon--medium.mr-small.text-color-grey
                   = item
 
     -

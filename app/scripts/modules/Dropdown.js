@@ -9,7 +9,7 @@ const isActive = el => el.classList.contains(defaultConfig.activeClassName)
   || el.getAttribute('aria-expanded') === 'true';
 
 export default class Dropdown {
-  constructor(selector = '[data-dropdown]', config) {
+  constructor(selector = '[data-dropdown]', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
@@ -20,8 +20,6 @@ export default class Dropdown {
     this.target = null;
     this.trigger = null;
     this._init();
-
-    return this;
   }
 
   destroy() {
@@ -50,6 +48,8 @@ export default class Dropdown {
 
       dropdown.addEventListener(TOGGLE_EVT, this._onToggle);
     });
+
+    this._addListeners();
   }
 
   static setDropdownPosition(target) {
@@ -113,6 +113,9 @@ export default class Dropdown {
   }
 
   _onClick(e) {
+    if (!this.trigger) {
+      return;
+    }
     if (this.trigger !== e.target && !this.trigger.contains(e.target)) {
       if (
         !this.target.hasAttribute(this.config.dataInteractive)

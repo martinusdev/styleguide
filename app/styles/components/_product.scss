@@ -1,6 +1,7 @@
 // ----------------------------
 // Product
 // ----------------------------
+@use 'sass:math';
 
 .product {
   $this: &;
@@ -113,7 +114,7 @@
       flex: 1 1 auto;
       min-width: 0;
       margin-top: 0;
-      margin-left: _get-space('h', 'small') + _get-space('h', 'tiny') / 2;
+      margin-left: _get-space('h', 'small') + math.div(_get-space('h', 'tiny'), 2);
     }
   }
 

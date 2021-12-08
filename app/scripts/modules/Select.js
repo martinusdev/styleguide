@@ -1,5 +1,4 @@
-import Choices
-  from '../../../node_modules/choices.js/public/assets/scripts/choices';
+import Choices from 'choices.js/public/assets/scripts/choices';
 import { nodeListToArray } from './Utils';
 
 let lang = 'sk';
@@ -78,31 +77,67 @@ const productSelectChoice = (data, config) => `
   </div>
   `;
 
-const storeListTemplate = ({ label, customProperties }) => {
-  const status = customProperties && customProperties.status
-    ? `status status--${customProperties.status}`
-    : '';
+const storeIcon = type => {
+  let icon;
+  let iconColor;
+
+  switch (type) {
+    case 'martinus':
+      icon = 'martinus';
+      iconColor = 'text-color-primary';
+      break;
+    case 'partner':
+      icon = 'pin';
+      iconColor = 'text-color-yellow';
+      break;
+    default:
+      icon = '';
+  }
+
+  if (icon !== '') {
+    icon = `<svg class="icon ${iconColor} mr-tiny" style="flex-shrink: 0" role="img" aria-hidden="true"><use xlink:href="/data/assets/martinus/lb/icons_/app.svg?v=1#icon-${icon}"></use></svg>`;
+  }
+
+  return icon;
+};
+
+const storeStatus = (customProperties, placeholder) => {
+  if (placeholder) {
+    return '';
+  }
+
+  const statusClass = customProperties.status ? `status status--${customProperties.status} text-color-${customProperties.status}` : '';
+  const statusText = customProperties.statusText ? customProperties.statusText : '';
+
+  return `<div class="${statusClass} text-right text-small">${statusText}</div>`;
+};
+
+const storeListTemplate = ({ label, customProperties, placeholder }) => {
+  const icon = storeIcon(customProperties.type);
+
+  const statusText = storeStatus(customProperties, placeholder);
 
   return `
-  <div class="text-left">
-    <span class="text-vam ${status} text-color-grey text-size-medium text-ellipsis">${label}</span>
-  </div>`;
+  <div style="max-width: 100%;" class="d-flex align-items-middle align-items-justify">
+    <div class="d-flex align-items-middle text-color-grey-dark text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+    ${statusText}
+  </div>
+  `;
 };
 
 const storeListChoice = (
   {
-    customProperties, disabled, label, id, value
+    customProperties, disabled, label, id, value, placeholder
   },
   config,
 ) => {
-  const status = customProperties && customProperties.status
-    ? `status status--${customProperties.status}`
-    : '';
+  const statusText = storeStatus(customProperties, placeholder);
+  const icon = storeIcon(customProperties.type);
 
   return `
-  <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
-    <span class="text-vam ${status} text-color-grey text-regular text-ellipsis">${label}</span>
-    ${customProperties && customProperties.availability ? `<span class="text-vam text-color-grey">(${customProperties.availability})</span>` : ''}
+  <div style="max-width: 100%;" class="align-items-middle align-items-justify ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
+    <div class="d-flex align-items-middle text-color-black text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+    ${statusText}
   </div>
   `;
 };
@@ -111,10 +146,6 @@ const storeListChoices = config => `
   <div class="${config.classNames.list}" dir="ltr" role="listbox" style="min-width:270px; max-height: none;">
   </div>
 `;
-
-const storeListDropdown = config => config.store_list_header
-  .replace('config.classNames.list', config.classNames.list)
-  .replace('config.classNames.listDropdown', config.classNames.listDropdown);
 
 const imageListTemplate = ({ label, customProperties }) => `
   <div class="bar mb-none">
@@ -169,7 +200,7 @@ const wideImageListChoice = (
   </div>
   `;
 
-const choiceListTemplate = (width = 'none', config) => `
+const choiceListTemplate = (width = 'none', config = {}) => `
   <div class="${config.classNames.list}" dir="ltr" role="listbox" style="width:${width}"></div>
 `;
 
@@ -189,7 +220,6 @@ function getTemplates(template, select, config) {
       item: (classNames, data) => template(storeListTemplate(data)),
       choice: (classNames, data) => template(storeListChoice(data, config)),
       choiceList: () => template(storeListChoices(config)),
-      dropdown: () => template(storeListDropdown(config)),
     };
   }
 
@@ -232,7 +262,7 @@ function getTemplates(template, select, config) {
 }
 
 export default class Select {
-  constructor(selector = '.js-select', config) {
+  constructor(selector = '.js-select', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...texts[lang], ...config };
 
@@ -240,8 +270,6 @@ export default class Select {
     this._onHideDropdown = this._onHideDropdown.bind(this);
 
     this.elements = this._init();
-
-    return this;
   }
 
   static setLang(newLang) {
@@ -273,19 +301,19 @@ export default class Select {
     const dropdown = e.target.parentNode.nextSibling;
     const container = e.target.parentNode.parentNode;
 
-    const _trnasitionEndHandler = evt => {
+    const _transitionEndHandler = evt => {
       if (evt.propertyName === 'visibility') {
         container.classList.remove('is-flipped');
         container.classList.remove('is-flipped-helper');
 
-        dropdown.removeEventListener('transitionend', _trnasitionEndHandler);
+        dropdown.removeEventListener('transitionend', _transitionEndHandler);
       }
     };
 
     if (container.classList.contains('is-flipped-helper')) {
       container.classList.add('is-flipped');
 
-      dropdown.addEventListener('transitionend', _trnasitionEndHandler);
+      dropdown.addEventListener('transitionend', _transitionEndHandler);
     }
   }
 
@@ -354,6 +382,7 @@ export default class Select {
 
         if (input) {
           input.classList.add('input');
+          input.classList.add('input--small');
           input.classList.add('input--search');
         }
       }

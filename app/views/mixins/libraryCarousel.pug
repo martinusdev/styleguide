@@ -3,8 +3,6 @@ include icon
 mixin libraryCarousel()
   -
     var swiperConfig = {
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
       slidesPerView: 4,
       spaceBetween: 20,
       breakpoints: {
@@ -60,7 +58,7 @@ mixin libraryCarousel()
                                   label(for=`list-check${i}`).radiocheck__label=item
                             a(data-toggle=`#my-library-dropdown-${id}, #my-library-dropdown-list-${id}`).dropdown__item.dropdown__item--more Všetky zoznamy
                           .hide(id=`my-library-dropdown-list-${id}` data-toggle-class="hide")
-                            .bar.no-mrg-bottom
+                            .bar.mb-none
                               .bar__item.bar__item--fill
                                 h5.dropdown__group Presunúť do:
                               .bar__item
@@ -72,7 +70,7 @@ mixin libraryCarousel()
                                   input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
                                   label(for=`list-check${i}`).radiocheck__control
                                   label(for=`list-check${i}`).radiocheck__label=item
-                      button.btn.btn--clean.btn--small.no-mrg(type="button" data-toggle=`#cart-item${i}`)
+                      button.btn.btn--clean.btn--small.m-none(type="button" data-toggle=`#cart-item${i}`)
                         +icon('trash', 'icon--medium')
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev

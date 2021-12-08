@@ -28,7 +28,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Kolekcie'] })
 
@@ -44,10 +44,10 @@ block content
               .bar__item.bar__item--fill
                 p Nakúpte do 18. novembra aspoň za 39€ a získajte od nás aj zľavu 5€ po Novom roku! Pošleme vám ju ju e-mailom a bude platiť na nákupy od 15€.
 
-            .mb-large.mb-medium-m
+            .mb-large.mb-m-medium
               p Vybrali sme pre vás knižky, ktoré určite potešia vašich blízkych. Ak máte špeciálnu požiadavku,#{' '}
                 a.link.ks-link--inverse(data-toggle="#xmas-help") radi vám pomôžeme!
-              .hide-m.mb-large.mb-none-m &nbsp;
+              .hide-m.mb-large.mb-m-none &nbsp;
 
             a.btn.btn--primary.btn--medium(data-toggle="#xmas-help")
               +icon('footer-package', 'icon--medium icon--left')
@@ -63,7 +63,7 @@ block content
     .modal-overlay.active#xmas-help(data-modal)
       article.modal.modal--medium
         .modal__wrap
-          header.modal__header.align-items-top.no-mrg-bottom
+          header.modal__header.align-items-top.mb-none
             .modal__header__headline
               h2.mb-medium Na každého čaká tá pravá knižka
               p.mb-medium Najkrajšia predvianočná šifra sú tie okamihy, keď si lámeme hlavu, ktorý darček najviac poteší našich blízkych. Je skvelé, že uvažujete nad knižkou, keďže aj podľa prieskumov patria k najobľúbenejším vianočným prekvapeniam.
@@ -76,22 +76,22 @@ block content
               .row.mb-none
                 .col--m-8.ofst--m-2
                   .form-control.form-control--input.mb-small
-                    .form-label.form-label--required.no-mrg-bottom
+                    .form-label.form-label--required.mb-none
                       label.text-transform-upper(for="xmas-name") Pre koho hľadáte darček?
                     input.input(type="text", name="xmas-name", id="xmas-name", placeholder="Napr. pre mamu, pre celú rodinu, pre domáceho škriatka...")
 
                   .form-control.form-control--input.mb-small
-                    .form-label.form-label--required.no-mrg-bottom
+                    .form-label.form-label--required.mb-none
                       label.text-transform-upper(for="xmas-sum") Koľko zlatiek môže stáť darček?
                     input.input(type="text", name="xmas-sum", id="xmas-sum", placeholder="Napr. do 25 eur")
 
                   .form-control.form-control--input.mb-small
-                    .form-label.form-label--required.no-mrg-bottom
+                    .form-label.form-label--required.mb-none
                       label.text-transform-upper(for="xmas-about") Čím by sa mal darček vyznačovať?
                     textarea.input(type="text", rows="4", name="xmas-about", id="xmas-about", placeholder="Napr. Hľadám knižku v islandčine, v ktorej by sa môj 20-ročný syn dočítal o zmysle života, hovoriacich rybách a programovaní autopilotov pre lietadlá Airbus A320. Alebo mi preňho odporučte dobrú kávu!")
 
                   .form-control.form-control--input.mb-medium
-                    .form-label.form-label--required.no-mrg-bottom
+                    .form-label.form-label--required.mb-none
                       label.text-transform-upper(for="xmas-mail") Na aký e-mail vám pošleme odpoveď?
                     input.input(type="text", name="xmas-mail", id="xmas-mail", placeholder="@")
 

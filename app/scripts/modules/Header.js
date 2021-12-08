@@ -5,7 +5,7 @@ const defaultConfig = {
 };
 
 export default class Header {
-  constructor(selector = '.header', config) {
+  constructor(selector = '.header', config = {}) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this.header = null;
@@ -15,15 +15,13 @@ export default class Header {
     );
 
     this._init();
-
-    return this;
   }
 
   _init() {
     this.header = document.querySelector(this.config.selector);
 
     if (!this.header) {
-      return null;
+      return;
     }
 
     this.searchInput = this.header.querySelector(this.config.searchSelector);
@@ -31,8 +29,6 @@ export default class Header {
     if (this.searchInput) {
       document.addEventListener(TOGGLE_EVT, this._focusSearchOnSearchActive);
     }
-
-    return this.header;
   }
 
   _focusSearchOnSearchActive(e) { // eslint-disable-line

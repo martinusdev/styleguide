@@ -123,7 +123,7 @@ block append content
         +demo-example
           ul.l-icons
             li.l-icons_item
-              +icon-sg('sg-home', 'icon--large').text-color-theme
+              +icon-sg('sg-home', 'icon--large').text-color-primary
             li.l-icons_item
               +icon-sg('sg-home', 'icon--large').text-color-grey
             li.l-icons_item
@@ -135,12 +135,12 @@ block append content
           :code
             <ul>
               <li>
-                <svg class="icon icon-home text-color-theme-500">
+                <svg class="icon icon-home text-color-primary">
                   <use xlink:href="#icon-home"></use>
                 </svg>
               </li>
               <li>
-                <svg class="icon icon-home text-color-theme-100">
+                <svg class="icon icon-home text-color-primary">
                   <use xlink:href="#icon-home"></use>
                 </svg>
               </li>
@@ -169,13 +169,13 @@ block append content
         +demo-example
           ol
             li
-              button.btn.btn--large.no-mrg
+              button.btn.btn--large.m-none
                 +icon-sg('sg-check', 'icon--left', '')
                 | Done
               br
               p(title=icon) I'm accompanied by button text, my purpose is purely presentational
             li
-              button.btn.btn--large.no-mrg
+              button.btn.btn--large.m-none
                 +icon-sg('sg-settings', '', 'Settings')
               br
               p(title=icon) I clearly represent what will happen when the button is clicked. Therefore an accessbile text alternative is appropriate.
@@ -205,9 +205,9 @@ block append content
       +demo-example
         ul.l-icons
           each icon in icons
-            each iconStyles, iconName in icon
-              each style in iconStyles
-                case style
+            each iconNames, iconStyle in icon
+              each iconName in iconNames
+                case iconStyle
                   when 'duotone'
                     - prefix = 'fad';
                   when 'regular'
@@ -388,21 +388,21 @@ block append content
               | Book
               .thumbnail.thumbnail--book.thumbnail--large
                 .thumbnail__img-wrap
-                  img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
             .bar__item
               | Large shadow
               .thumbnail.thumbnail--large-shadow.thumbnail--large
                 .thumbnail__img-wrap
-                  img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
             .bar__item
               | Clickable
               a.thumbnail.thumbnail--clickable.thumbnail--large
                 .thumbnail__img-wrap
-                  img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
           | Center
           .thumbnail.thumbnail--center.thumbnail--large
             .thumbnail__img-wrap
-              img.img.no-mrg(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+              img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
 
         +demo-code
           :code

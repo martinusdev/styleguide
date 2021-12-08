@@ -12,7 +12,7 @@
 // BACKGROUND UTILITIES
 
 @each $variant, $color in $color-presets {
-  .bg-#{$variant} {
+  .bg-#{'' + $variant} {
     background-color: $color;
   }
 }
@@ -61,7 +61,7 @@
 .text-right { text-align: right; }
 .text-justify { text-align: justify; }
 
-@each $breakpoint, $size in $breakpoints {
+@each $breakpoint, $size in $grid-breakpoints {
   @include breakpoint( $breakpoint ) {
     .text-center#{_get-variant-name($breakpoint, '-')} { text-align: center; }
     .text-left#{_get-variant-name($breakpoint, '-')} { text-align: left; }
@@ -75,84 +75,11 @@
 .text-vabl { vertical-align: baseline; }
 .text-vamd { vertical-align: -0.15em; }
 
-.text-space-half { margin-bottom: _get-space('v', 'small'); }
-.text-nospace { margin: 0; }
-.text-space-left { margin-left: _get-space('h', 'small'); }
-.text-space-right { margin-right: _get-space('h', 'small'); }
-.text-space-left-tiny { margin-left: _get-space('h', 'tiny'); }
-.text-space-right-tiny { margin-right: _get-space('h', 'tiny'); }
-
 .text-wrap { white-space: normal; }
 .text-nowrap { white-space: nowrap; }
 .text-ellipsis { @include text-ellipsis; }
-
-.text-color-theme { color: _color(primary, 500); }
-.text-color-theme-400 { color: _color(primary, 400); }
-.text-color-theme-200 { color: _color(primary, 200); }
-.text-color-theme-100 { color: _color(primary, 100); }
-.text-color-black { color: $text-color-black; }
-.text-color-semiblack { color: $text-color-semiblack; }
-.text-color-grey { color: $text-color-grey; }
-.text-color-grey-light { color: $text-color-grey-light; }
-.text-color-grey-dark { color: $text-color-grey-dark; }
-.text-color-white { color: $text-color-white; }
-.text-color-semiwhite { color: $text-color-semiwhite; }
-.text-color-yellow { color: $text-color-yellow; }
-.text-color-blue { color: $text-color-blue; }
-.text-color-success { color: $text-color-success; }
-.text-color-error { color: $text-color-error; }
-.text-color-orange { color: _color(orange, 500); }
-.text-color-beige { color: _color(brown, 300); }
-
 // ---------------------------------------------
 // LAYOUT UTILITIES
-
-// mixin for utilities with layout targeting
-@mixin spacing-reset-classes($breakpoint: '') {
-  .no-mrg#{$breakpoint} { margin: 0 !important; }
-  .no-mrg-top#{$breakpoint} { margin-top: 0 !important; }
-  .no-mrg-bottom#{$breakpoint} { margin-bottom: 0 !important; }
-  .no-mrg-left#{$breakpoint} { margin-left: 0 !important; }
-  .no-mrg-right#{$breakpoint} { margin-right: 0 !important; }
-
-  .no-mrg-vertical#{$breakpoint} {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-
-  .no-mrg-horizontal#{$breakpoint} {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }
-
-  .no-pad#{$breakpoint} { padding: 0 !important; }
-  .no-pad-top#{$breakpoint} { padding-top: 0 !important; }
-  .no-pad-bottom#{$breakpoint} { padding-bottom: 0 !important; }
-  .no-pad-left#{$breakpoint} { padding-left: 0 !important; }
-  .no-pad-right#{$breakpoint} { padding-right: 0 !important; }
-
-  .no-pad-vertical#{$breakpoint} {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-
-  .no-pad-horizontal#{$breakpoint} {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-}
-
-@each $breakpoint, $size in $breakpoints {
-  @include breakpoint($breakpoint) {
-    @include spacing-reset-classes( _get-variant-name( $breakpoint ) );
-  }
-}
-
-@each $breakpoint, $size in $breakpoints {
-  @include breakpoint($breakpoint, down) {
-    @include spacing-reset-classes( #{'--' + $breakpoint + '-down'} );
-  }
-}
 
 .clearfix { @include clearfix; }
 .clear { clear: both; }
@@ -197,7 +124,7 @@
 
 // Visibility utilities
 @mixin show-for($breakpoint) {
-  @if map-get($breakpoints, $breakpoint) {
+  @if map-get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint, downfrom) {
       display: none !important;
     }
@@ -207,7 +134,7 @@
 }
 
 @mixin hide-for($breakpoint) {
-  @if map-get($breakpoints, $breakpoint) {
+  @if map-get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint) {
       display: none !important;
     }
@@ -218,7 +145,7 @@
 
 @mixin show-for-only($breakpoint) {
   $lower-bound-name: $breakpoint;
-  $upper-bound-name: _map-next($breakpoints, $breakpoint, 'key');
+  $upper-bound-name: _map-next($grid-breakpoints, $breakpoint, 'key');
 
   @if $lower-bound-name {
     @include breakpoint($lower-bound-name, downfrom) {
@@ -236,7 +163,7 @@
 }
 
 @mixin hide-for-only($breakpoint) {
-  @if map-get($breakpoints, $breakpoint) {
+  @if map-get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint, only) {
       display: none !important;
     }
@@ -254,7 +181,7 @@
     visibility: hidden;
   }
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $grid-breakpoints {
     @if $breakpoint != 'xs' {
       .show-#{$breakpoint} {
         @include show-for($breakpoint);
@@ -300,7 +227,7 @@
     visibility: hidden;
   }
 
-  @each $breakpoint, $size in $breakpoints {
+  @each $breakpoint, $size in $grid-breakpoints {
     @if $breakpoint != 'xs' {
       .is-consent-show-#{$breakpoint} {
         @include show-for($breakpoint);
@@ -324,99 +251,15 @@
 // ---------------------------------------------
 // 3. OTHER UTILITIES
 
-@each $breakpoint, $size in $breakpoints {
+@each $breakpoint, $size in $grid-breakpoints {
   @include breakpoint( $breakpoint ) {
     .block#{_get-variant-name($breakpoint, '-')} { display: block !important; }
     .inline-block#{_get-variant-name($breakpoint, '-')} { display: inline-block !important; }
-
-    .mb-large#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'large') !important; }
-    .mb-medium#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v') !important; }
-    .mb-small#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'small') !important; }
-    .mb-tiny#{_get-variant-name($breakpoint, '-')} { margin-bottom: _get-space('v', 'tiny') !important; }
-    .mb-none#{_get-variant-name($breakpoint, '-')} { margin-bottom: 0 !important; }
-
-    .mt-large#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'large') !important; }
-    .mt-medium#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v') !important; }
-    .mt-small#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'small') !important; }
-    .mt-tiny#{_get-variant-name($breakpoint, '-')} { margin-top: _get-space('v', 'tiny') !important; }
-    .mt-none#{_get-variant-name($breakpoint, '-')} { margin-top: 0 !important; }
-
-    .mr-large#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'large') !important; }
-    .mr-medium#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v') !important; }
-    .mr-small#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'small') !important; }
-    .mr-tiny#{_get-variant-name($breakpoint, '-')} { margin-right: _get-space('v', 'tiny') !important; }
-    .mr-none#{_get-variant-name($breakpoint, '-')} { margin-right: 0 !important; }
-
-    .ml-large#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'large') !important; }
-    .ml-medium#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v') !important; }
-    .ml-small#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'small') !important; }
-    .ml-tiny#{_get-variant-name($breakpoint, '-')} { margin-left: _get-space('v', 'tiny') !important; }
-    .ml-none#{_get-variant-name($breakpoint, '-')} { margin-left: 0 !important; }
-
-    .m-none#{_get-variant-name($breakpoint, '-')} { margin: 0 !important; }
-
-    .my-none#{_get-variant-name($breakpoint, '-')} {
-      margin-bottom: 0 !important;
-      margin-top: 0 !important;
-    }
-
-    .mx-none#{_get-variant-name($breakpoint, '-')} {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
-    }
-
-    .pb-large#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v', 'large'); }
-    .pb-medium#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v'); }
-    .pb-small#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v', 'small'); }
-    .pb-tiny#{_get-variant-name($breakpoint, '-')} { padding-bottom: _get-space('v', 'tiny'); }
-    .pb-none#{_get-variant-name($breakpoint, '-')} { padding-bottom: 0; }
-
-    .pb-large#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'large'); }
-    .pt-medium#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v'); }
-    .pt-small#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'small'); }
-    .pt-tiny#{_get-variant-name($breakpoint, '-')} { padding-top: _get-space('v', 'tiny'); }
-    .pt-none#{_get-variant-name($breakpoint, '-')} { padding-top: 0; }
-
-    .pr-large#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'large'); }
-    .pr-medium#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v'); }
-    .pr-small#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'small'); }
-    .pr-tiny#{_get-variant-name($breakpoint, '-')} { padding-right: _get-space('v', 'tiny'); }
-    .pr-none#{_get-variant-name($breakpoint, '-')} { padding-right: 0; }
-
-    .pl-large#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'large'); }
-    .pl-medium#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v'); }
-    .pl-small#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'small'); }
-    .pl-tiny#{_get-variant-name($breakpoint, '-')} { padding-left: _get-space('v', 'tiny'); }
-    .pl-none#{_get-variant-name($breakpoint, '-')} { padding-left: 0; }
-
-    .p-none#{_get-variant-name($breakpoint, '-')} { padding: 0 !important; }
-
-    .py-none#{_get-variant-name($breakpoint, '-')} {
-      padding-bottom: 0 !important;
-      padding-top: 0 !important;
-    }
-
-    .px-none#{_get-variant-name($breakpoint, '-')} {
-      padding-left: 0 !important;
-      padding-right: 0 !important;
-    }
 
     .position-relative#{_get-variant-name($breakpoint, '-')} { position: relative; }
     .position-absolute#{_get-variant-name($breakpoint, '-')} { position: absolute; }
     .position-fixed#{_get-variant-name($breakpoint, '-')} { position: fixed; }
   }
-}
-
-.ml-auto {
-  margin-left: auto;
-}
-
-.mr-auto {
-  margin-right: auto;
-}
-
-.m-auto {
-  margin: auto;
 }
 
 .mb-not-last > *:last-child { margin-bottom: 0; }
@@ -446,7 +289,7 @@
 .overflow-auto { overflow: auto; }
 
 @each $variant, $color in $color-presets {
-  .bg-#{$variant} {
+  .bg-#{'' + $variant} {
     background-color: $color;
   }
 }
@@ -535,6 +378,22 @@
 
     &-xy {
       overflow: scroll;
+    }
+
+    &-shadow {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        width: 50px;
+        height: 100%;
+        right: 0;
+        top: 0;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+        display: block;
+        content: ' ';
+        pointer-events: none;
+      }
     }
   }
 }

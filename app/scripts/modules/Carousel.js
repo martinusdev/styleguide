@@ -1,5 +1,6 @@
-import Swiper from 'swiper';
-import { doToggle } from './Toggle';
+import SwiperCore, {
+  Swiper, Navigation, Pagination, Lazy
+} from 'swiper/core';
 
 import { nodeListToArray } from './Utils';
 import { BREAKPOINTS } from './Const';
@@ -16,38 +17,37 @@ const getTotalNumberOfSlides = container => container.querySelectorAll('.swiper-
   .length;
 
 const defaultConfig = {
-  paginationClickable: true,
+  pagination: {
+    clickable: true,
+  },
   a11y: true,
   loop: false,
   keyboardControl: true,
   preloadImages: false,
-  lazyLoading: true,
-  lazyLoadingInPrevNext: true,
-  lazyLoadingOnTransitionStart: true,
-  buttonDisabledClass: 'is-disabled',
-  onInit: swiper => {
-    swiper.container[0].classList.add('is-initialized');
-  },
-  lazyIframeSelector: 'iframe[src]',
+  lazy: true,
   watchSlidesVisibility: true,
   spaceBetween: 40,
 };
 
 export default class SwiperSlider {
-  constructor(selector = '.swiper-container', config) {
+  constructor(selector = '.swiper-container', config = {}) {
+    SwiperCore.use([Navigation, Pagination, Lazy]);
+
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
     this.swipers = [];
     this.instances = [];
 
-    this._disableLazyIframes = this._disableLazyIframes.bind(this);
-    this._handleCarouselFunSlideChange = this._handleCarouselFunSlideChange.bind(
+    this._handleCarouselFanSlideChange = this._handleCarouselFanSlideChange.bind(
       this,
     );
 
     this._init();
-    return this;
+
+    this.instances.forEach(instance => {
+      instance.navigation.update();
+    });
   }
 
   _init() {
@@ -55,7 +55,7 @@ export default class SwiperSlider {
       document.querySelectorAll(this.selector),
     );
 
-    return this.swipers.map(swiper => {
+    return this.swipers.map(/** Element */ swiper => {
       const breakpointUp = swiper.getAttribute('data-swiper-up');
       const breakpointDown = swiper.getAttribute('data-swiper-down');
       const options = swiper.getAttribute('data-swiper-options');
@@ -73,25 +73,31 @@ export default class SwiperSlider {
           BREAKPOINTS,
         )
         && swiper.querySelectorAll('.swiper-slide').length
-        && !swiper.classList.contains('is-initialized')
+        && !swiper.classList.contains('swiper-container-initialized')
       ) {
-        const swiperInstance = new Swiper(swiper, swiperConfig);
-        swiperInstance.on('onSlideChangeEnd', this._disableLazyIframes);
+        swiperConfig.navigation = {
+          nextEl: swiper.querySelector('.carousel__btn--next'),
+          prevEl: swiper.querySelector('.carousel__btn--prev'),
+        };
 
-        swiperInstance.on('onTransitionEnd', this._handleSlideChange);
+        const swiperInstance = new Swiper(swiper, swiperConfig);
+        swiperInstance.update();
+        swiperInstance.on('slideChangeTransitionEnd', this._disableLazyIframes);
+
+        swiperInstance.on('transitionEnd', this._handleSlideChange);
         this._handleSlideChange(swiperInstance);
 
         if (
-          swiperInstance.container[0].parentNode.classList.contains(
+          swiperInstance.el.parentNode.classList.contains(
             'carousel--fan',
           )
         ) {
           swiperInstance.on(
-            'onSlideChangeStart',
-            this._handleCarouselFunSlideChange,
+            'slideChangeTransitionStart',
+            this._handleCarouselFanSlideChange,
           );
 
-          this._handleCarouselFunSlideChange(swiperInstance);
+          this._handleCarouselFanSlideChange(swiperInstance);
         }
 
         this.instances.push(swiperInstance);
@@ -101,26 +107,17 @@ export default class SwiperSlider {
     });
   }
 
-  _disableLazyIframes(swiper) {
-    for (let i = 0, l = swiper.slides.length; i < l; i++) {
-      const lazyIframe = swiper.slides[i].querySelector(
-        this.config.lazyIframeSelector,
-      );
-      if (lazyIframe) {
-        if (lazyIframe.hasAttribute('src')) {
-          doToggle({ target: lazyIframe });
-        }
-      }
-    }
-  }
-
   _handleSlideChange(instance) { // eslint-disable-line
+    if (instance.slides.length === 0) {
+      return;
+    }
+
     const activeElement = instance.slides[instance.activeIndex];
 
     const extraContent = activeElement.querySelector(
       '[data-swipper-extra-content-source]',
     );
-    const extraContentTarget = instance.container[0].querySelector(
+    const extraContentTarget = instance.el.querySelector(
       '[data-swipper-extra-content-target]',
     );
 
@@ -135,8 +132,8 @@ export default class SwiperSlider {
     }
   }
 
-  _handleCarouselFunSlideChange(instance) { // eslint-disable-line
-    const container = instance.container[0];
+  _handleCarouselFanSlideChange(instance) { // eslint-disable-line
+    const container = instance.el;
     const numberOfSlides = getTotalNumberOfSlides(container);
     const numberOfActiveSlides = Math.min(instance.loopedSlides, 5);
     const activeIndex = instance.realIndex;
@@ -178,7 +175,9 @@ export default class SwiperSlider {
   }
 
   update() {
-    this.instances.forEach(instance => instance.update());
+    this.instances.forEach(instance => {
+      instance.update();
+    });
     this._init();
   }
 

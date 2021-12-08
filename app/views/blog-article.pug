@@ -21,7 +21,7 @@ block content
 
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({breadcrumbs: ['Recenzie', 'Recenzia na knihu']})
 
@@ -41,7 +41,7 @@ block content
                   .bar.mb-medium.text-medium
                     .bar__item.flex.align-items-middle
                       .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                      span.text-semibold.text-space-left Callie Krueger
+                      span.text-semibold.ml-small Callie Krueger
                     .bar__item.bar__item--border
                     .bar__item
                       .h5.show-m.text-color-white štvrtok #{' '}
@@ -51,10 +51,10 @@ block content
                         b 21.12. 2017
                         | #{' '}16:50
                     .bar__item.show-s
-                      +icon('time').text-space-right-tiny
+                      +icon('time').mr-tiny
                       b 15 minút čítania
                     .bar__item.hide-s
-                      +icon('time').text-space-right-tiny
+                      +icon('time').mr-tiny
                       b 15
 
                   p.h4.mb-large.text-color-white Ak ste si tiež zamilovali svetovú klasiku z pera Jane Austen, možno vás poteší pár doplňujúcich informácii o príbehu a jeho autorke. Nech žije Elizabeth, pán Darcy a všetká tá galantnosť dávnych čias! :-) Gratulujeme – práve túto nedeľu oslávi román svoje 203. narodeniny.
@@ -71,7 +71,7 @@ block content
               .bar.mb-medium.text-medium
                 .bar__item.flex.align-items-middle
                   .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                  span.text-semibold.text-space-left Callie Krueger
+                  span.text-semibold.ml-small Callie Krueger
                 .bar__item.bar__item--border
                 .bar__item
                   .h5.show-m štvrtok #{' '}
@@ -81,10 +81,10 @@ block content
                     b 21.12. 2017
                     | #{' '}16:50
                 .bar__item.show-s
-                  +icon('time').text-space-right-tiny
+                  +icon('time').mr-tiny
                   b 15 minút čítania
                 .bar__item.hide-s
-                  +icon('time').text-space-right-tiny
+                  +icon('time').mr-tiny
                   b 15
 
               p.h4.mb-large Ak ste si tiež zamilovali svetovú klasiku z pera Jane Austen, možno vás poteší pár doplňujúcich informácii o príbehu a jeho autorke. Nech žije Elizabeth, pán Darcy a všetká tá galantnosť dávnych čias! :-) Gratulujeme – práve túto nedeľu oslávi román svoje 203. narodeniny.
@@ -236,7 +236,7 @@ block content
         .row.mb-large
           each j in [0, 1, 2, 3]
             .col--m-3.col--6
-              img.img(src="images/content/stores/store-ba.jpg").no-mrg-bottom
+              img.img(src="images/content/stores/store-ba.jpg").mb-none
               .mb-small
               h3
                 a.link Nadpis ďalšieho článku
@@ -248,13 +248,11 @@ block content
             .bar
               .bar__item.bar__item--fill
                 h2.h3
-                  +icon('instagram').text-space-right
+                  +icon('instagram').mr-small
                   | Náš Instagram
 
             -
               var swiperConfig = {
-                nextButton: '.carousel__btn--next',
-                prevButton: '.carousel__btn--prev',
                 slidesPerView: 6,
                 slidesPerGroup: 6,
                 spaceBetween: 10,

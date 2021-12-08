@@ -1,14 +1,12 @@
 const defaultConfig = {};
 
 export default class Collapse {
-  constructor(selector = '[data-collapse]', config) {
+  constructor(selector = '[data-collapse]', config = {}) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this.sections = [];
 
     this._init();
-
-    return this;
   }
 
   destroy() {
@@ -40,12 +38,34 @@ export default class Collapse {
   static setCollapsible(el, height) {
     el.classList.add('collapsed');
     el.style.maxHeight = `${height}px`;
+
+    Collapse.showTrigger(el);
   }
 
   static setNotCollapsible(el) {
     if (el.classList.contains('collapsed')) {
       el.classList.remove('collapsed');
       el.style.maxHeight = 'none';
+
+      Collapse.hideTrigger(el);
+    }
+  }
+
+  static findTrigger(el) {
+    return el.parentNode.querySelector('[data-collapse-trigger]');
+  }
+
+  static showTrigger(el) {
+    const trigger = Collapse.findTrigger(el);
+    if (trigger) {
+      trigger.classList.remove('hide');
+    }
+  }
+
+  static hideTrigger(el) {
+    const trigger = Collapse.findTrigger(el);
+    if (trigger) {
+      trigger.classList.add('hide');
     }
   }
 }

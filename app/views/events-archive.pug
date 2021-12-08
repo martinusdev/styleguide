@@ -14,14 +14,12 @@ block content
   -
     var swiperConfig = {
       slidesPerView: 1,
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
     };
 
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Besedy', 'Bratislava (Obchodná)'] })
 
@@ -39,9 +37,9 @@ block content
               option Bratislava (Cubicon)
               option Nitra (OC Centro)
 
-    section.section.no-pad-top.mb-medium
+    section.section.pt-none.mb-medium
       - for (var i = 0; i<4; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--s-1.text-center.show-m

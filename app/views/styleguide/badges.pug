@@ -31,21 +31,21 @@ block append content
           .badge Mutilple
           .badge badges
           .badge in line.
-        
+
         .badges
-          .badge 
+          .badge
             | closeable
             button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
               +icon('close').icon--small.icon--right
-          .badge 
+          .badge
             | badges
             button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
               +icon('close').icon--small.icon--right
-          .badge 
+          .badge
             | in line
             button(href='#').btn.btn--clean.btn--small.btn--equal.mb-none
               +icon('close').icon--small.icon--right
-            
+
       +demo-code
         :code
 
@@ -55,7 +55,7 @@ block append content
       +demo
         +demo-example
           .badges
-            each color in ['primary', 'green', 'orange', 'violet', 'blue', 'yellow', 'brown', 'darkblue']
+            each color in ['primary', 'green', 'orange', 'violet', 'blue', 'yellow', 'brown', 'error', 'darkblue']
               .badge(class=`badge--${color}`)= color
         +demo-code
           :code

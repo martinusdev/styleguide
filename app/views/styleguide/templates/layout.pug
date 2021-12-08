@@ -48,7 +48,7 @@ html.no-js
     meta(name='description', content='Light is SCSS/Pug foundation for living styleguides')
     meta(name='keywords', content='Living Styleguide, Styleguide, SCSS, Pug')
     link(rel="icon", type="image/png", href=`${assetsPrefix}images/favicon.png`)
-    meta(name="theme-color", content="#ff5722")
+    meta(name="theme-color", content=project.theme)
 
     link(rel="stylesheet", href=`${assetsPrefix}fonts/Tabac/fonts.css`)
     link(rel="stylesheet", href=`${assetsPrefix}fonts/opensans/fonts.css`)
@@ -61,7 +61,7 @@ html.no-js
   //- -----------------------------------------------
   //- BODY
 
-  body(data-spy='scroll', data-target='.js-scrollspy', data-offset=150)#top
+  body(data-bs-spy='scroll', data-bs-target='.js-scrollspy', data-bs-offset=150)#top
 
     // offcanvas
     .l-offcanvas(data-role='offcanvas')

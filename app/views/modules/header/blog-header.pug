@@ -20,19 +20,19 @@ header.header
               | Autori
 
         .bar__item.bar__item--fill.header__search.header-search
-          .hide-m.header-search__toggle.no-mrg
-            button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+          .hide-m.header-search__toggle.m-none
+            button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
               +icon('search').icon--medium
           .hide-m.header-search__back
-            button.btn.btn--clean.header-btn.no-mrg-bottom(data-toggle=".header", data-toggle-class-target="is-search-active")
+            button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
               +icon('arrow-left').icon--medium
           .header-search__search(style="position: relative;")
-            .form-control.form-control--input.no-mrg-bottom
+            .form-control.form-control--input.mb-none
               .input-addons
                 input.input.input--dark#search-in-header(type='text', placeholder="Vyhľadávanie v článkoch...", data-input, data-toggle-focus)
                 .input-addons__item.header-search__empty.input-addons__item--dark
                     +icon('search', '', 'Search').icon--medium
-                .input-addons__item.input-addons__item.no-pad.header-search__value
+                .input-addons__item.input-addons__item.p-none.header-search__value
                   .btn.btn--primary.text-nowrap
                     +icon('search', '', 'Search').icon--medium.icon--left
                     | Hladať

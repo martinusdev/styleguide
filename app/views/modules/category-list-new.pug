@@ -41,7 +41,7 @@ mixin productRatingBadge(props = {})
   a.badge
     +icon('star', '').text-color-yellow
     span.text-color-grey #{rating}
-    span.link.text-space-left(href="#recenzie", data-scroll) 234x
+    span.link.ml-small(href="#recenzie", data-scroll) 234x
 
 mixin productType(props = {})
   -
@@ -125,7 +125,7 @@ section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
 section.section
   .wrapper-main
     .row
-      #mobile-reduction.col--l-3.mobile-wrapper.mb-medium-l(data-toggle-lock)
+      #mobile-reduction.col--l-3.mobile-wrapper.mb-l-medium(data-toggle-lock)
         .mobile-wrapper__header
           .mobile-wrapper__header-title Zúženie výberu
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
@@ -178,13 +178,13 @@ section.section
           .card.card--well
             .card__content
               .row
-                .col--m-4.mb-medium.mb-none-m
+                .col--m-4.mb-medium.mb-m-none
                   .mb-medium
                     h2.h5 vydavatelia
                     ul.list--unstyled
                       for i in [1, 2]
                         li.bar.mb-tiny
-                          .bar__item.bar__item--shrinkable.text-space-right-tiny
+                          .bar__item.bar__item--shrinkable.mr-tiny
                             +icon('breadcrumbs').icon--medium.text-color-grey
                           .bar__item.bar__item--fill.line-small
                             a.link Ikar
@@ -192,16 +192,16 @@ section.section
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
-                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
                           .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item.bar__item--fill.line-small
                           a.link Moje fantasy
-                .col--m-4.mb-medium.mb-none-m
+                .col--m-4.mb-medium.mb-m-none
                   h2.h5 kategórie
                   ul.list--unstyled.mb-small
                     for i in [1, 2]
                       li.bar.mb-tiny
-                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
                           +icon('folder').icon--medium.text-color-grey
                         .bar__item.bar__item--fill.line-small
                           a.link Kategória
@@ -219,7 +219,7 @@ section.section
                     ul.list--unstyled
                       for i in [1, 2]
                         li.bar.mb-tiny
-                          .bar__item.bar__item--shrinkable.text-space-right-tiny
+                          .bar__item.bar__item--shrinkable.mr-tiny
                             +icon('user').icon--medium.text-color-grey
                           .bar__item.bar__item--fill.line-small
                             a.link Meno Autora
@@ -227,7 +227,7 @@ section.section
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
-                        .bar__item.bar__item--shrinkable.text-space-right-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
                           .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                         .bar__item.bar__item--fill.line-small
                           a.link Janko Martinusak
@@ -237,7 +237,7 @@ section.section
         if carousel
           h2.mb-large Najobľúbenejšie tituly a kolekcie
           +booksCarouselRecommended().carousel--fade-inside.carousel--fade-inside-white
-        #mobile-order.mobile-wrapper.mb-medium-l(data-toggle-lock).hide-l
+        #mobile-order.mobile-wrapper.mb-l-medium(data-toggle-lock).hide-l
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
             .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-order")
@@ -246,7 +246,7 @@ section.section
             ul.list.pl-none
               each sortLink, i in sortLinks
                 li.list__item
-                  a.flex-1(class = i===0 ? 'text-color-theme': '')
+                  a.flex-1(class = i===0 ? 'text-color-primary': '')
                     if (typeof sortLink === 'object')
                       strong !{sortLink.title}
                     else

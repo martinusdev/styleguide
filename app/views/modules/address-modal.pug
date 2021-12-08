@@ -8,7 +8,7 @@ include ./../mixins/icon
           .bar__item.bar__item--fill
             h2 Upravte adresu
           .bar__item
-            button.btn.btn--clean.no-mrg-bottom(data-toggle="#account-address")
+            button.btn.btn--clean.mb-none(data-toggle="#account-address")
               +icon('close').icon--medium.icon--right
         .row
           .col--m-6
@@ -58,7 +58,7 @@ include ./../mixins/icon
                 label.text-transform-upper(for="checkout_tel")
                   | mobil
               .input-addons
-                .input-addons__item.no-pad
+                .input-addons__item.p-none
                   select.js-select.select--ghost
                     option(selected disabled placeholder) +421
                     option +421
@@ -90,5 +90,5 @@ include ./../mixins/icon
               input.input(type="text", name="checkout_vat", id="checkout_vat", placeholder="Zadajte IČ DPH firmy")
 
         .text-right
-          button.btn.btn--ghost.no-mrg-bottom(data-toggle="#account-address") Zrušiť
-          button.btn.no-mrg-bottom(data-toggle="#account-address") Uložiť adresu
+          button.btn.btn--ghost.mb-none(data-toggle="#account-address") Zrušiť
+          button.btn.mb-none(data-toggle="#account-address") Uložiť adresu

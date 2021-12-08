@@ -14,12 +14,12 @@ block content
     section.section.ko-header.text-color-white
       .wrapper-main
         .row.align-items-top.mb-none
-          .col--m-3.mb-medium.mb-none-m.text-center
+          .col--m-3.mb-medium.mb-m-none.text-center
             a.show-m
               img(src="images/content/campaign/knizna-odysea/logo-sk.svg", width="270")
             a.hide-m
               img(src="images/content/campaign/knizna-odysea/logo-horizontal-sk.svg", width="270")
-          .col--m-5.col--l-6.mb-medium.mb-none-m.text-center.text-left-m
+          .col--m-5.col--l-6.mb-medium.mb-m-none.text-center.text-left-m
             h1.h2.mb-small Lorem ipsum dolor sit amet
             .show-m
               p.mb-none Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse mollis arcu a vulputate tincidunt. Vivamus nisl arcu, accumsan eu imperdiet nec, ornare eget felis. Vivamus quis dui ac arcu euismod suscipit sit amet sed augue bla bla
@@ -29,7 +29,7 @@ block content
                 a(href="#", data-toggle="#rules").link.ko-link--green #{' '}kompletné pravidlá.
               a.link.ko-link--green.text-size-medium(href="javascript:void(0)", data-toggle="#ko-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger) <span data-toggle-text-target>Čítaj viac</span>#{' '}
                 +icon('arrow-down')
-          .col--m-4.col--l-3.mb-none-m
+          .col--m-4.col--l-3.mb-m-none
 
             .text-center.text-right-m.hide
               .btn.btn--primary.btn--medium.mb-small(data-toggle="#login")
@@ -38,12 +38,12 @@ block content
 
             .ko-user
               .bar.bar--vertical
-                .bar__item.border-bottom-grey.ko-border--violet.no-mrg-bottom
+                .bar__item.border-bottom-grey.ko-border--violet.mb-none
                   .bar
-                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email.no-mrg-bottom
-                      +icon('user').icon--medium.text-space-right
+                    .bar__item.bar__item--shrinkable.text-ellipsis.ko-user__email.mb-none
+                      +icon('user').icon--medium.mr-small
                       span.text-semibold klco.roman@gmail.com
-                    .bar__item.bar__item--fill.text-right.no-mrg-bottom
+                    .bar__item.bar__item--fill.text-right.mb-none
                       a(href="#").link.link--product
                         +icon('logout').icon--medium
                 .mb-medium
@@ -102,8 +102,6 @@ block content
       -
         var swiperConfig = {
           id: 'planets',
-          nextButton: '.carousel__btn--next',
-          prevButton: '.carousel__btn--prev',
           slidesPerView: 'auto',
           slidesPerGroup: 1,
           spaceBetween: 20,
@@ -167,7 +165,7 @@ block content
             .form-control.form-control--input
               .input-addons
                 input.input(type="text", placeholder="Tvoj e-mail...")
-                .input-addons__item.no-pad
+                .input-addons__item.p-none
                   button.btn.btn--primary
                     | Prihlásiť
 
@@ -196,7 +194,7 @@ block content
                 .form-control.form-control--input#input-guess
                   .input-addons
                     input.input(type="text", placeholder="Názov knihy...")
-                    .input-addons__item.no-pad
+                    .input-addons__item.p-none
                       .btn.btn--primary#btn-guess
                         | Hľadaj
 
@@ -226,8 +224,8 @@ block content
                   .product__caption
                     .product__title
                       a.link.link--product Hobbit
-                      ul.text-size-small.text-color-grey.no-mrg.text-ellipsis.list-inline.list-inline--delimited
-                        li.no-mrg J.R.R. Tolkien
+                      ul.text-size-small.text-color-grey.m-none.text-ellipsis.list-inline.list-inline--delimited
+                        li.m-none J.R.R. Tolkien
 
         .modal__footer
 

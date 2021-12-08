@@ -20,10 +20,12 @@
 // Other modules and components
 // Pages
 
+@use 'sass:math';
+
 // ----------------------------
 // BREAKPOINTS
 
-$breakpoints: (
+$grid-breakpoints: (
   xs: 0,
   s: 480px,
   m: 768px,
@@ -74,12 +76,30 @@ $color-palette: (
   // colors
   yellow: (
     100: #fef0d2,
-    500: #fcc34c
+    500: #fcc34c,
+    600: #eead25,
+    700: #d88f00,
   ),
-  orange: #f28629,
-  brown: #945131,
-  violet: #9967a7,
-  blue: #00b6eb,
+  orange: (
+    500: #f28629,
+    600: #e27317,
+    700: #d16200,
+  ),
+  brown: (
+    500: #945131,
+    600: #75432c,
+    700: #583527,
+  ),
+  violet: (
+    500: #9967a7,
+    600: #875797,
+    700: #774788,
+  ),
+  blue: (
+    500: #00b6eb,
+    600: #009ace,
+    700: #007fb1,
+  ),
   green: #33ab4e,
   teal: #67cdb7,
   // states
@@ -170,7 +190,7 @@ $selection-text-color: $color-white;
 //---------------
 // headings
 
-$heading-tags: (h1, h2, h3, h4, h5);
+$heading-tags: (h1, h2, h3, h4, h5, h6);
 
 $heading: (
   font-family: $font-family-tabac,
@@ -197,42 +217,47 @@ $typography-overrides: (
   null: (
     '.h0' : (
       font-size: _get-rem(40px),
-      line-height: 49/42,
+      line-height: math.div(49, 42),
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
     ),
     'h1, .h1' : (
       font-size: _get-rem(22px),
-      line-height: 49/42,
+      line-height: math.div(49, 42),
       margin-bottom: _get-space('v', 'large'),
       font-weight: $font-weight-bold,
     ),
     'h2, .h2' : (
       font-size: _get-rem(18px),
-      line-height: 31/25,
+      line-height: math.div(31, 25),
       margin-bottom: _get-space('v'),
       font-weight: $font-weight-semibold,
     ),
     'h3, .h3' : (
       font-size: _get-rem(16px),
-      line-height: 24/18,
+      line-height: math.div(24, 18),
       margin-bottom: _get-space('v'),
       font-weight: $font-weight-semibold,
     ),
     'h4, .h4' : (
       font-size: _get-rem(14px),
-      line-height: 24/18,
+      line-height: math.div(24, 18),
       margin-bottom: _get-space('v'),
       color: _color(grey, 700)
     ),
     'h5, .h5' : (
       font-size: _get-rem(12px),
-      line-height: 20/12,
+      line-height: math.div(20, 12),
       margin-bottom: _get-space('v', 'small'),
       color: _color(grey, 700),
       text-transform: uppercase,
       letter-spacing: 1px,
     ),
+    'h6, .h6': (
+      font-size: _get-rem(14px),
+      margin-bottom: _get-space('v', 'tiny'),
+      font-weight: $font-weight-semibold,
+    )
   ),
   m: (
     '.h0' : (
@@ -250,6 +275,9 @@ $typography-overrides: (
     'h4, .h4' : (
       font-size: _get-rem(18px),
     ),
+    'h6, .h6' : (
+      font-size: _get-rem(16px),
+    )
   ),
 );
 
@@ -258,12 +286,12 @@ $typography-overrides: (
 
 $text-medium: (
   font-size: $font-size-medium,
-  line-height: 20/_strip-units($font-size-medium),
+  line-height: math.div(20, _strip-units($font-size-medium)),
 );
 
 $text-small: (
   font-size: $font-size-small,
-  line-height: 20/_strip-units($font-size-small),
+  line-height: math.div(20, _strip-units($font-size-small)),
 );
 
 $links: (
@@ -336,7 +364,7 @@ $em: (
 
 $inline-list: (
   default: (
-    margin: -(_get-space('v', 'small') / 2) 0 _get-space('v'),
+    margin: -(math.div(_get-space('v', 'small'), 2)) 0 _get-space('v'),
   ),
   line: (
     margin: 0 0.5em 0 0,
@@ -389,6 +417,17 @@ $text-color-blue: _color(blue);
 
 $text-color-error: _color(error, 600);
 $text-color-success: _color(success, 500);
+
+$utilities-text-colors: map-merge($color-presets,
+(
+  primary-200: _color(primary, 200),
+  semiblack: $text-color-semiblack,
+  grey-light: $text-color-grey-light,
+  grey-dark: $text-color-grey-dark,
+  semiwhite: $text-color-semiwhite,
+  success: $text-color-success,
+  error: $text-color-error
+));
 
 // ----------------------------
 // ICONS
@@ -460,7 +499,7 @@ $gutters: (
 );
 
 $gutters-form: (
-  default: _get-space('h', 'small') / 2,
+  default: math.div(_get-space('h', 'small'), 2),
 );
 
 // ----------------------------
@@ -600,6 +639,34 @@ $button-styles: (
     ),
     group: (
       border-color: _color(primary, 600),
+    ),
+  ),
+  secondary: (
+    default: (
+      position: relative,
+      color: $color-white,
+      background-color: _color(grey, 800),
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    focus: (
+      background-color: _color(grey, 700),
+    ),
+    after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
+      background-color: _color(grey, 900),
+      height: 4px,
+    ),
+    active: (
+      color: $color-white,
+      background-color: _color(grey, 900),
+      box-shadow: none,
+    ),
+    group: (
+      border-color: _color(grey, 900),
     ),
   ),
   ghost: (
@@ -821,6 +888,7 @@ $input: (
     search: (
       background-image: svg-load('./../icons_/app/search.svg', fill=_color(grey, 500)),
       background-repeat: no-repeat,
+      background-size: 18px 18px,
       background-position: center right 0.5em,
     )
   ),
@@ -1223,7 +1291,7 @@ $dropdown-menu: (
     border-color: transparent,
     border-radius: 0 0 $dropdown-menu-b-r,
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2),
-    z-index: 100,
+    z-index: $z-index-dropdown,
     transition: #{visibility $ease-100-delayed, opacity $ease-out-100, transform $ease-out-100},
     transform-origin: top center,
     transform: scale(1, 0.1),
@@ -1274,7 +1342,7 @@ $table: (
 
 $table-cell: (
   default: (
-    padding: _get-space('v', 'small') / 2 _get-space('h'),
+    padding: math.div(_get-space('v', 'small'), 2) _get-space('h'),
     vertical-align: middle,
     border-bottom: $table-border-w $table-border-s $table-border-c,
   ),
@@ -1376,7 +1444,7 @@ $card-header: (
 
 $list-margin-bottom: _get-space('v');
 
-$list-variants: (default, bordered, clean, padded);
+$list-variants: (default, bordered, clean, padded, cart);
 
 $list: (
   default: (
@@ -1389,6 +1457,10 @@ $list: (
   clean: (
     border: none,
   ),
+  cart: (
+    border: none,
+    background: none,
+  )
 );
 
 $list-item: (
@@ -1404,6 +1476,9 @@ $list-item: (
   ),
   bordered: (
     padding: _get-space('v', 'small') _get-space('h', 'small'),
+  ),
+  cart: (
+    padding: _get-space('v', 'default') 0,
   )
 );
 
@@ -1611,6 +1686,10 @@ $badge: (
   brown: (
     color: _color(brown),
     border-color: _color(brown),
+  ),
+  error: (
+    color: _color(error),
+    border-color: _color(error),
   ),
   darkblue: (
     color: _color(darkblue),

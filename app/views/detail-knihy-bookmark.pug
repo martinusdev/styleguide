@@ -22,7 +22,7 @@ block content
           .bar.bar--small.mb-small
             .bar__item.bar__item--fill
               .btn-layout.btn-layout--vertical
-                .btn-dropdown.no-mrg
+                .btn-dropdown.m-none
                   button.btn.btn--clean.btn--lowercase.btn--icon-right.text-left(
                     data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
                     data-toggle-expand,
@@ -34,7 +34,7 @@ block content
                   .dropdown(data-dropdown, data-toggle-expand)
                     .dropdown__wrap
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Slovenčina, e-kniha
                             .text-color-grey Posielame ihneď
@@ -42,7 +42,7 @@ block content
                             .text-semibold.text-color-black 18,00 €
                             .text-color-grey -10%
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Slovenčina, brožovaná väzba
                             .text-color-grey Posielame ihneď
@@ -50,7 +50,7 @@ block content
                             .text-semibold.text-color-black 16,00 €
                             .text-color-grey -10%
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Český jazyk, E-kniha
                             .text-color-grey Posielame ihneď
@@ -58,7 +58,7 @@ block content
                             .text-semibold.text-color-black 8,00 €
                             .text-color-grey -5%
                       a(href="#").dropdown__item.text-wrap
-                        .bar.no-mrg-bottom
+                        .bar.mb-none
                           .bar__item.bar__item--fill
                             div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
                             .text-color-grey Posielame ihneď
@@ -68,7 +68,7 @@ block content
 
       section.section--breadcrumbs
         .wrapper-main
-          .bar.no-mrg-bottom
+          .bar.mb-none
             .bar__item.bar__item--shrinkable
               +breadcrumbs({ breadcrumbs: ['Knihy', 'Deti a mládež', 'Encyklopédie, náučné knihy', 'Ostatné', 'Základy rybolovu pro kluky a holky'] })
 
@@ -147,7 +147,7 @@ block append tooltips
 
   #reader-tooltip.hide.card
     .card__content.card__content--condensed.text-left
-      .bar.mb-small.mb-medium-m
+      .bar.mb-small.mb-m-medium
         .bar__item
           a.h3.link Darina Dobrovská
         .bar__item.bar__item--fill
@@ -162,7 +162,7 @@ block append tooltips
       .row.align-items-top
         .col--2.col--m-3
           .portrait(style="background-image: url('images/content/avatars/f.jpg');")
-        .col--10.col--m-9.no-pad-left
+        .col--10.col--m-9.pl-none
           #badges.club-badges(data-collapse="150").mb-small
             .club-badges__item
               .club-badge
@@ -190,7 +190,7 @@ block append tooltips
                 img(src="images/content/club/badges/badges-08.png")
 
           .bar
-            .bar__item.bar__item--shrinkable.text-space-right
+            .bar__item.bar__item--shrinkable.mr-small
               .product__img.product__cover
                 .thumbnail.thumbnail--book.thumbnail--small
                   a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
@@ -205,7 +205,7 @@ block append tooltips
 
     .card__footer
       button.btn.btn--clean.mb-none
-        span.text-space-left zobraziť čitateľský profil
+        span.ml-small zobraziť čitateľský profil
         +icon('arrow-right')
 
 block append scripts

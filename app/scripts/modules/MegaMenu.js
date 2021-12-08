@@ -10,7 +10,7 @@ const defaultConfig = {
 };
 
 export default class MegaMenu {
-  constructor(selector = '[data-mega-menu]', config) {
+  constructor(selector = '[data-mega-menu]', config = {}) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this.megaMenu = null;
@@ -24,8 +24,6 @@ export default class MegaMenu {
     this._handleClickOutside = this._handleClickOutside.bind(this);
 
     this._init();
-
-    return this;
   }
 
   _init() {

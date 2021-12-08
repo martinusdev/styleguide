@@ -48,11 +48,11 @@ block content
   main
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy'], last: 'Knihy pre deti' })
 
-    section.section--secondary.section.section--toolbar.border-bottom-none.no-pad-top
+    section.section--secondary.section.section--toolbar.border-bottom-none.pt-none
       .wrapper-main
         h1.mb-medium
           | Najpredávanejšie knihy pre deti s veľmi dlhým názvom kategórie
@@ -67,9 +67,9 @@ block content
                   a(href="#").btn.btn--carousel.text-transform-none.text-size-medium.flex.align-items-middle.text-left.pt-small.pb-small
                     if category.icon
                       if category.icon.startsWith('fa-')
-                        i.text-color-theme.mr-tiny.fa-fw.fa-lg.fal(class= category.icon)
+                        i.text-color-primary.mr-tiny.fa-fw.fa-lg.fal(class= category.icon)
                       else
-                        +icon(category.icon).mr-tiny.text-color-theme
+                        +icon(category.icon).mr-tiny.text-color-primary
                     | !{category.title}
           .col.text-center.hide-m.mb-small
             a.link.block.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)

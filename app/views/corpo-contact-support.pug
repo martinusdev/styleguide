@@ -12,7 +12,7 @@ block content
 
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'] })
 
@@ -20,11 +20,11 @@ block content
       .wrapper-main
         .row
           .col--l-3.show-l
-            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.no-pad-right(href="#")
+            a.btn.btn--clean.btn--icon-left.mb-medium.text-left.pr-none(href="#")
               +icon('arrow-left', 'icon--medium')
               span Späť na martinus centrum
             h2.h4 Kontakty
-            ul.list.list--with-hoverlist--expanded.no-pad(role="navigation")
+            ul.list.list--with-hoverlist--expanded.p-none(role="navigation")
               each link, i in ['Kontakt a podpora', 'Kníhkupectvá']
                 li.mb-medium(class=i===0 ? 'is-active' : '')
                   a.text-medium(href="#", data-scroll) !{link}
@@ -34,13 +34,13 @@ block content
               h1 Kontakt a podpora
               h2.h4 Potrebuejte údaje o Martinuse? Potrebujete s niečím pomôcť? Ak máte akékoľvek problémy alebo otázky, sme tu pre vás
             .hide-m
-              p.text-color-grey.text-size-medium.no-mrg Potrebuejte údaje o Martinuse?
+              p.text-color-grey.text-size-medium.m-none Potrebuejte údaje o Martinuse?
               p.text-color-grey.text-size-medium Potrebujete s niečím pomôcť?
 
             h2 Podpora
             .row.row--space
               .col--m-6.col--s-12
-                .card.bg-secondary.no-mrg-bottom
+                .card.bg-secondary.mb-none
                   .card__content
                     h2.h5 S čím vám môžeme pomôcť?
                     ul.list.bg-secondary.text-medium.mb-large
@@ -63,7 +63,7 @@ block content
             .card
               h2 O nás
               .row
-                .col--m-6.col--s-12.no-mrg
+                .col--m-6.col--s-12.m-none
                   h3.text-size-regular.text-color-black.mb-medium
                     strong Prevádzkovateľ#{' '}
                     | (adresa a sídlo firmy)
@@ -94,7 +94,7 @@ block content
                     | BIC: GIBASKBX
                   p.text-size-medium.text-color-grey.mb-medium
                     | (Prosím, neuhrádzajte na tento účet priamym bankovým prevodom alebo vkladom žiadne platby pred tým, ako Vám oznámime konkrétne detaily o platbe k Vašej objednávke. Ďakujeme za porozumenie.)
-                  h3.text-size-regular.text-color-black.text-bold.no-mrg-bottom
+                  h3.text-size-regular.text-color-black.text-bold.mb-none
                     | Orgán dozoru:
                   p.mb-medium
                     | Inšpektorát SOI pre Žilinský kraj

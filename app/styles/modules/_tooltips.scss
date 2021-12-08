@@ -1,30 +1,29 @@
 @import './../../../node_modules/tippy.js/dist/tippy';
-@import './../../../node_modules/tippy.js/themes/light';
 
-.tippy-tooltip.dark-theme {
+.tippy-box:not([data-theme~='light']) {
   background-color: _color(grey, 900);
-  padding: _get-rem(5px);
+  padding: _get-space('v', 'tiny');
 
-  color: $color-white;
+  color: $text-color-white;
 
   font-size: _get-rem($font-size-small);
   line-height: 1.35;
 
   border-radius: $default-border-radius;
 
-  .tippy-popper[x-placement^=top] & [x-arrow] {
+  &[data-placement^=top] > .tippy-arrow::before {
     border-top-color: _color(grey, 900);
   }
 
-  .tippy-popper[x-placement^=right] & [x-arrow] {
+  &[data-placement^=right] > .tippy-arrow::before {
     border-right-color: _color(grey, 900);
   }
 
-  .tippy-popper[x-placement^=bottom] & [x-arrow] {
+  &[data-placement^=bottom] > .tippy-arrow::before {
     border-bottom-color: _color(grey, 900);
   }
 
-  .tippy-popper[x-placement^=left] & [x-arrow] {
+  &[data-placement^=left] > .tippy-arrow::before {
     border-left-color: _color(grey, 900);
   }
 
@@ -34,6 +33,8 @@
     border-bottom: 0;
   }
 }
+
+@import './../../../node_modules/tippy.js/themes/light';
 
 .tippy-tooltip {
   max-width: _get-rem(500px) !important;

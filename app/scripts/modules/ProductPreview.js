@@ -1,7 +1,7 @@
-import scrollMonitor from 'scrollmonitor';
-import scrollTo from 'animated-scroll-to';
-
+import animateScrollTo from 'animated-scroll-to';
 import { nodeListToArray } from './Utils';
+
+const scrollMonitor = require('scrollmonitor');
 
 const defaultConfig = {
   selectorSlider: '[data-product-preview-slider]',
@@ -12,7 +12,7 @@ const defaultConfig = {
 };
 
 export default class ProductPreview {
-  constructor(selector = '[data-product-preview]', config) {
+  constructor(selector = '[data-product-preview]', config = {}) {
     this.config = { ...defaultConfig, ...{ selector }, ...config };
 
     this._handleNextPage = this._handleNextPage.bind(this);
@@ -25,8 +25,6 @@ export default class ProductPreview {
     this.allPages = 0;
 
     this._init();
-
-    return this;
   }
 
   _init() {
@@ -96,8 +94,8 @@ export default class ProductPreview {
   setPage(page) {
     this.currentPage = page;
 
-    scrollTo(this.slideWatchers[this.currentPage].top, {
-      element: this.slider,
+    animateScrollTo(this.slideWatchers[this.currentPage].top, {
+      elementToScroll: this.slider,
     });
   }
 

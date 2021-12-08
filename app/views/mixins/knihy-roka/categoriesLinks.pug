@@ -7,7 +7,7 @@ mixin categoriesLinks(props = {})
       li(data-tabs-item, class=`${link.id.replace(/#deti/,'-deti').replace(/#dospely/, '')} tab-nav__item ${i === activeIndex ? "is-active": ''}`)
         a.tab-nav__content.tab-nav__content--link(href=`${link.id}`, role='tab') #{link.title}
   .btn-layout--horizontal.hide-m
-    .btn-dropdown.btn-dropdown--categories.no-mrg-bottom
+    .btn-dropdown.btn-dropdown--categories.mb-none
       button.btn.btn--ghost(
         data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
         data-toggle-expand,

@@ -13,8 +13,6 @@ block content
   -
     var swiperConfig = {
       slidesPerView: 1,
-      nextButton: '.carousel__btn--next',
-      prevButton: '.carousel__btn--prev',
     };
 
     var menu = [
@@ -27,7 +25,7 @@ block content
   main.collection
     section.section--breadcrumbs
       .wrapper-main
-        .bar.no-mrg-bottom
+        .bar.mb-none
           .bar__item.bar__item--shrinkable
             +breadcrumbs({ breadcrumbs: ['Knihy', 'Bestsellery'] })
 
@@ -36,7 +34,7 @@ block content
         .row.align-items-middle
           .col--12.col--m-3
             h1.mb-medium Bestsellery
-          .col--12.col--m-6.mb-medium.mb-none-m
+          .col--12.col--m-6.mb-medium.mb-m-none
             .bar.mb-none.align-items-center.show-m
               each item, i in menu
                 .bar__item.text-center
@@ -51,7 +49,7 @@ block content
                     .card__content.card__content--condensed
                       +icon(`products-${item.icon}`).icon--medium.text-color-grey
                       .h3.mb-none= item.title
-          .col--12.col--m-2.ofst--m-1.mb-medium.mb-none-m
+          .col--12.col--m-2.ofst--m-1.mb-medium.mb-m-none
             select.js-select.select--ghost
               option Rok
               option 2018
@@ -67,7 +65,7 @@ block content
             each item, i in ['Knihy', 'Filmy', 'Hry']
               li
                 a.link.link--black(href="#", class= i == 0 ? 'text-bold' : '')
-                  +icon('footer-reading').icon--medium.text-space-right.text-color-grey
+                  +icon('footer-reading').icon--medium.mr-small.text-color-grey
                   = item
 
     section.section.section--secondary
@@ -81,7 +79,7 @@ block content
                   .h0.text-color-grey-dark(style="position:absolute;")= i+1
                   .bar.align-items-center
                     .bar__item
-                      +product().no-mrg-bottom
+                      +product().mb-none
                         +productCover({
                           cover: 'images/content/books/sample-3.jpg',
                           rating: 3.5,
@@ -115,27 +113,27 @@ block content
                 .card__content.flex-shrinkable
 
                   .bar.align-items-middle.bar--vertical
-                    .bar__item.no-mrg-bottom
+                    .bar__item.mb-none
                       .bar.bar--small.bar--no-wrap.mb-small
-                        .bar__item.no-mrg
+                        .bar__item.m-none
                           .badge.badge--primary -20%
-                        .bar__item.no-mrg
-                          .h2.text-bold.text-space-left 8,99€
+                        .bar__item.m-none
+                          .h2.text-bold.ml-small 8,99€
                     .bar__item
                       button.btn.btn--primary.mb-none(data-toggle='#checkout-notice')
                         +icon('cart').icon--left.icon--small
                         span.text-semibold Vložiť do košíka
                       +addTo({text: ''}).mb-none
 
-    section.section.no-pad-top
+    section.section.pt-none
       - for (var i = 0; i<8; i++)
-        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).no-mrg-bottom
+        .section.product-item(class=(i % 2 == 0) ? 'bg-secondary' : 'bg-default' ).mb-none
           .wrapper-main
             .row
               .col--1
                 .h0.text-color-grey-dark= i + 4
               .col--4.col--s-shrink.text-left
-                +product().no-mrg-bottom
+                +product().mb-none
                   +productCover({
                     cover: 'images/content/books/sample-3.jpg',
                     rating: 3.5,
@@ -175,7 +173,7 @@ block content
 
                 p Každý sa túži dožiť šťastnej a dôstojnej staroby. Mnohým sa celoživotné snaženie vydarí a ich život vyústi do vysnívanej pokojnej jesene, iní majú smolu, dožijú sa ignorácie od rodiny a nezriedka im ide o život. Práve o holé životy ide aj starým ľuďom...
 
-              .col--m-3.mb-large.mb-none-m
+              .col--m-3.mb-large.mb-m-none
                 .product-item__price-box.text-center
                   .mb-small.show-m
                     .h2.text-bold 12,99 €
@@ -199,7 +197,7 @@ block content
       .wrapper-main
         .row
           .col--m-4.ofst--m-center
-            .btn-layout--vertical.mb-large-m.mb-medium-s
+            .btn-layout--vertical.mb-m-large.mb-s-medium
               button.btn.btn--ghost Načítať ďalšie knihy (+5)
 
   include ./modules/seen-items

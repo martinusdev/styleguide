@@ -5,6 +5,8 @@
 // -------------------------------
 // MIXINS
 
+@use 'sass:math';
+
 @mixin color(
   $color-fallback,
   $color
@@ -18,7 +20,7 @@
   $font-size-r: $default-font-size) {
   $font-size: round($font-size);
   font-size: $font-size;
-  font-size: ($font-size / $default-font-size) * 1rem;
+  font-size: math.div($font-size, $default-font-size) * 1rem;
 }
 
 @mixin text-ellipsis {
@@ -76,7 +78,6 @@
   $border: '',
   $clip: true
 ) {
-
   $moz-border: '';
 
   @if $border == 'top left' {
@@ -239,14 +240,14 @@
   $size,
   $font-size: $default-font-size
 ) {
-  @return $size / $font-size * 1em;
+  @return math.div($size, $font-size) * 1em;
 }
 
 @function _get-rem(
   $size,
   $base: $default-font-size
 ) {
-  @return $size / $base * 1rem;
+  @return math.div($size, $base) * 1rem;
 }
 
 /// Base on -zf-map-next https://github.com/zurb/foundation-sites/blob/develop/scss/util/_breakpoint.scss
@@ -293,7 +294,7 @@
       $value: $value * $number;
     }
   } @else if ( $exponent < 0 ) {
-    $value: 1 / _pow($number, abs($exponent));
+    $value: math.div(1, _pow($number, abs($exponent)));
   }
 
   @return $value;
@@ -393,7 +394,7 @@
 /// @param {Number} $number - Number to strip units from
 /// @return {Number}
 @function _strip-units($number) {
-  @return $number / ($number * 0 + 1);
+  @return math.div($number, $number * 0 + 1);
 }
 
 @function _color($theme, $weight: 500) {
@@ -421,9 +422,9 @@
 
 @function _color-shade($color, $weight) {
   @if $weight > 500 and $color {
-    @return mix(black, $color, ($weight - 500) / 5 );
+    @return mix(black, $color, math.div($weight - 500, 5) );
   } @else if $weight < 500 and $color {
-    @return mix(white, $color, (500 - $weight) / 5 );
+    @return mix(white, $color, math.div(500 - $weight, 5) );
   } @else {
     @return $color;
   }
