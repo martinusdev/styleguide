@@ -18,8 +18,8 @@ section.section.section--white#seen-items(data-toggle-class="hide")
               each item, i in Array(12)
                 .swiper-slide.carousel__recently-viewed
                   a.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--medium(href="#")
-                    .thumbnail__img-wrap
-                      img.img.mb-medium(src=`${assetsPrefix}images/content/books/sample-${i + 1}.jpg`, alt="...")
+                    .thumbnail__img-wrap.shadow-none
+                      img.img(src=`${assetsPrefix}images/content/books/sample-${i + 1}.jpg`, alt="...")
       .bar__break.hide-m
       .bar__item
         a.link.text-size-medium(data-toggle="#seen-items-delete, #seen-items") Vymazať históriu prezeraných kníh
