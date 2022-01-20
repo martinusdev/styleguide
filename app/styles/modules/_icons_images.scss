@@ -96,7 +96,7 @@ img {
     user-select: none;
 
     #{$this}__img-wrap {
-      box-shadow: 0 10px 14px 0 rgba(#000, 0.2);
+      box-shadow: $shadow-md;
     }
 
     .img {
@@ -118,7 +118,7 @@ img {
   }
 
   &--large-shadow &__img-wrap {
-    box-shadow: -20px 10px 14px 0 rgba(#000, 0.2), -10px 0 5px 0 rgba(#000, 0.1); // todo generalize shadows
+    box-shadow: $shadow-lg;
   }
 
   &__img-wrap {
@@ -203,10 +203,6 @@ $thumbnail-badge: (
     &#{_get-variant-name($name)} {
       width: $size;
     }
-  }
-
-  &--shadow {
-    box-shadow: 0 10px 20px 0 rgba(#000, 0.3);
   }
 }
 
