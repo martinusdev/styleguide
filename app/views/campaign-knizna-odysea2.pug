@@ -3,6 +3,9 @@ extends layouts/_default
 include ./mixins/breadcrumbs
 include ./mixins/icon
 
+block head
+  link(rel="stylesheet", href=`${assetsPrefix}styles/campaigns.css`)
+
 block opts
     - var pageTitle = 'Knižná odysea'
     - var campaignHeader = true

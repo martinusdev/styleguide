@@ -2,6 +2,9 @@ extends layouts/_default
 
 include ./mixins/icon
 
+block head
+  link(rel="stylesheet", href=`${assetsPrefix}styles/campaigns.css`)
+
 block opts
     - var pageTitle = 'PF 2018'
 
