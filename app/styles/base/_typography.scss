@@ -110,34 +110,6 @@
         }
       }
     }
-
-    &--show {
-      position: relative;
-
-      &::after {
-        content: '';
-        position: absolute;
-        right: -30px;
-        bottom: -4px;
-        height: 24px;
-        width: 24px;
-
-        background: svg-load('./../icons_/app/arrow-right.svg', fill=_color(link, 400));
-
-        opacity: 0;
-        transform: translateX(-100%);
-        transition: transform $ease-100, opacity $ease-100;
-      }
-
-      &.is-active,
-      &:hover,
-      &:focus {
-        &::after { // stylelint-disable-line
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-    }
   }
 
   address { font-style: normal; }

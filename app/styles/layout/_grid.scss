@@ -34,53 +34,6 @@
 // ----------------------------
 // GRID
 
-@mixin grid-layout($columns: 4) {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-@mixin grid-layout-item($columns) {
-  flex: 0 0 math.div(100%, $columns);
-  max-width: math.div(100%, $columns);
-}
-
-@mixin grid-spacing($spacing: $gutters) {
-  @each $breakpoint, $gutter in $gutters {
-    @include breakpoint( $breakpoint ) {
-      margin-left: -$gutter;
-      margin-right: -$gutter;
-
-      > * {
-        padding: $gutter;
-      }
-    }
-  }
-}
-
-@mixin grid-layout-classes() {
-  .grid {
-    @include grid-layout();
-  }
-
-  .grid--spaced {
-    @include grid-spacing();
-  }
-
-  @each $breakpoint, $size in $grid-breakpoints {
-    @include breakpoint( $breakpoint ) {
-      @for $i from 1 through 4 {
-        .grid-#{_get-variant-name($breakpoint, '-')}-#{$i} {
-          > * {
-            @include grid-layout-item($i);
-          }
-        }
-      }
-    }
-  }
-}
-
-@include grid-layout-classes;
-
 @mixin row($gutters: $gutters) {
   display: flex;
   flex-wrap: wrap;
