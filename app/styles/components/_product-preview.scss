@@ -4,18 +4,18 @@
   flex-direction: column;
   height: 100%;
 
-  padding: _get-space('v', 'large') _get-space('h', 'large');
+  padding: _get-space('large') _get-space('large');
   text-align: left;
 
   @include breakpoint(s, 'down') {
-    padding: _get-space('v', 'small') 0 0;
+    padding: _get-space('small') 0 0;
   }
 
   &__header {
     flex: 1 0 auto;
 
     @include breakpoint(m) {
-      margin-bottom: _get-space('v', 'large');
+      margin-bottom: _get-space('large');
     }
   }
 
@@ -46,8 +46,8 @@
 
     margin-left: auto;
     margin-right: auto;
-    padding-left: _get-space('h');
-    padding-right: _get-space('h');
+    padding-left: _get-space();
+    padding-right: _get-space();
     padding-bottom: 1px;
     max-width: _get-rem(600px);
 
@@ -59,7 +59,7 @@
       // padding: 0;
       flex-basis: 100%;
       height: calc(100% - #{_get-rem(100px)});
-      margin-bottom: _get-space('h');
+      margin-bottom: _get-space();
       max-width: none;
     }
   }
@@ -81,7 +81,7 @@
 
   &__page {
     display: block;
-    margin-bottom: _get-space('v', 'large');
+    margin-bottom: _get-space('large');
 
     &:last-child {
       margin-bottom: 0;

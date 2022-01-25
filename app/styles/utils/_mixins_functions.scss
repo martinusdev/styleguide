@@ -305,38 +305,22 @@
 /// @param {String} $size ['default'] - Size of space
 /// @param {String} $local-font-size [null] - Local font size which will overide $default-font-size in em computation via _get-em.
 /// @example
-///   _get-space('v');
-///   _get-space('v', 'small');
-///   _get-space('v', 'default', '24px');
-///   _get-space('h');
+///   _get-space();
+///   _get-space('small');
+///   _get-space('default', '24px');
+///   _get-space();
 ///   ...
-@function _get-space($direction, $size: 'default', $local-font-size: null) {
-  @if $direction == 'v' or $direction == 'vertical' {
-    @if map-has-key($spaces-vertical, $size) {
-      $space: map-get($spaces-vertical, $size);
+@function _get-space($size: 'medium', $local-font-size: null) {
+  @if map-has-key($spaces, $size) {
+    $space: map-get($spaces, $size);
 
-      @if ($local-font-size) {
-        @return if(unit($space) == 'em', $space, _get-rem($space, $local-font-size));
-      } @else {
-        @return if(unit($space) == 'em', $space, _get-rem($space));
-      }
+    @if ($local-font-size) {
+      @return if(unit($space) == 'em', $space, _get-rem($space, $local-font-size));
     } @else {
-      @warn '$size is not defined';
-    }
-  } @else if $direction == 'h' or $direction == 'horizontal' {
-    @if map-has-key($spaces-horizontal, $size) {
-      $space: map-get($spaces-horizontal, $size);
-
-      @if ($local-font-size) {
-        @return if(unit($space) == 'em', $space, _get-rem($space, $local-font-size));
-      } @else {
-        @return if(unit($space) == 'em', $space, _get-rem($space));
-      }
-    } @else {
-      @warn '$size is not defined';
+      @return if(unit($space) == 'em', $space, _get-rem($space));
     }
   } @else {
-    @warn '$direction is not or wrongly defined';
+    @warn '$size is not defined';
   }
 }
 

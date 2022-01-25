@@ -3,10 +3,10 @@
 // ---------------------------------------------
 
 .section {
-  padding-top: _get-space('v');
+  padding-top: _get-space();
 
   @include breakpoint(m) {
-    padding-top: _get-space('v', 'large');
+    padding-top: _get-space('large');
   }
 
   @include clearfix;
@@ -16,7 +16,7 @@
   }
 
   &--toolbar {
-    padding-top: _get-space('v', 'small');
+    padding-top: _get-space('small');
     background-color: $color-white;
 
     border-bottom: 1px solid $default-border-color;
@@ -25,12 +25,12 @@
   }
 
   &--small {
-    padding-top: _get-space('v');
+    padding-top: _get-space();
   }
 
   &--breadcrumbs {
     background-color: _color('bg');
-    padding: _get-space('v', 'small') 0;
+    padding: _get-space('small') 0;
   }
 
   &--l-background {

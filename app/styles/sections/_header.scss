@@ -43,7 +43,7 @@
 
   &__back {
     display: none;
-    margin-right: _get-space('h', 'small');
+    margin-right: _get-space('small');
   }
 
   &__toggle {
@@ -130,8 +130,8 @@
     height: map-get($header-height, 'default');
     width: 100%;
     background-color: $color-black;
-    padding-top: _get-space('v') - _get-space('v', 'tiny');
-    padding-bottom: _get-space('v');
+    padding-top: _get-space() - _get-space('tiny');
+    padding-bottom: _get-space();
     z-index: $z-index-topbar;
 
     @include breakpoint(m) {
@@ -151,15 +151,15 @@
     }
 
     @include breakpoint(s, 'down') {
-      padding-top: _get-space('v', 'small');
-      padding-bottom: _get-space('v', 'small') + _get-space('v', 'tiny');
+      padding-top: _get-space('small');
+      padding-bottom: _get-space('small') + _get-space('tiny');
     }
   }
 
   .wrapper-main {
     @include breakpoint(m, 'down') {
-      padding-left: _get-space('h', 'small');
-      padding-right: _get-space('h', 'small');
+      padding-left: _get-space('small');
+      padding-right: _get-space('small');
     }
   }
 
@@ -231,7 +231,7 @@
   @include breakpoint(l) {
     .btn-dropdown {
       .header-btn {
-        padding-right: _get-space('h');
+        padding-right: _get-space();
       }
     }
   }

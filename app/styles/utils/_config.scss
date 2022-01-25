@@ -176,7 +176,27 @@ $default-font-size: $font-size-regular !default;
 
 $default-outline: 2px solid rgba(_color(primary, 200), 0.8);
 
-$default-space: _get-space('v') !default;
+// ----------------------------
+// SPACERS
+
+$spaces: (
+  tiny: 5px,
+  small: 10px,
+  medium: 20px,
+  large: 40px,
+) !default;
+
+$spacers: (
+  none: 0
+);
+
+@each $name, $value in $spaces {
+  $spacers: map-merge($spacers, ($name: _get-space($name)));
+}
+
+//$spacers: map-loop($spaces);
+
+$default-space: _get-space() !default;
 
 //---------------
 // selection
@@ -218,44 +238,44 @@ $typography-overrides: (
     '.h0' : (
       font-size: _get-rem(40px),
       line-height: math.div(49, 42),
-      margin-bottom: _get-space('v', 'large'),
+      margin-bottom: _get-space('large'),
       font-weight: $font-weight-bold,
     ),
     'h1, .h1' : (
       font-size: _get-rem(22px),
       line-height: math.div(49, 42),
-      margin-bottom: _get-space('v', 'large'),
+      margin-bottom: _get-space('large'),
       font-weight: $font-weight-bold,
     ),
     'h2, .h2' : (
       font-size: _get-rem(18px),
       line-height: math.div(31, 25),
-      margin-bottom: _get-space('v'),
+      margin-bottom: _get-space(),
       font-weight: $font-weight-semibold,
     ),
     'h3, .h3' : (
       font-size: _get-rem(16px),
       line-height: math.div(24, 18),
-      margin-bottom: _get-space('v'),
+      margin-bottom: _get-space(),
       font-weight: $font-weight-semibold,
     ),
     'h4, .h4' : (
       font-size: _get-rem(14px),
       line-height: math.div(24, 18),
-      margin-bottom: _get-space('v'),
+      margin-bottom: _get-space(),
       color: _color(grey, 700)
     ),
     'h5, .h5' : (
       font-size: _get-rem(12px),
       line-height: math.div(20, 12),
-      margin-bottom: _get-space('v', 'small'),
+      margin-bottom: _get-space('small'),
       color: _color(grey, 700),
       text-transform: uppercase,
       letter-spacing: 1px,
     ),
     'h6, .h6': (
       font-size: _get-rem(14px),
-      margin-bottom: _get-space('v', 'tiny'),
+      margin-bottom: _get-space('tiny'),
       font-weight: $font-weight-semibold,
     )
   ),
@@ -348,7 +368,7 @@ $links: (
 );
 
 $hr: (
-  margin-bottom: _get-space('v', 'large'),
+  margin-bottom: _get-space('large'),
   border-top: 1px solid $color-semiblack,
 );
 
@@ -364,7 +384,7 @@ $em: (
 
 $inline-list: (
   default: (
-    margin: -(math.div(_get-space('v', 'small'), 2)) 0 _get-space('v'),
+    margin: -(math.div(_get-space('small'), 2)) 0 _get-space(),
   ),
   line: (
     margin: 0 0.5em 0 0,
@@ -373,19 +393,19 @@ $inline-list: (
 
 $inline-list-item: (
   default: (
-    margin: (_get-space('v', 'tiny') _get-space('h', 'small') 0 0),
+    margin: (_get-space('tiny') _get-space('small') 0 0),
   ),
   expanded: (
-    margin: (_get-space('v', 'tiny') _get-space('h') 0 0),
+    margin: (_get-space('tiny') _get-space() 0 0),
   ),
   delimited: (
-    margin: (_get-space('v', 'tiny') 0 0 0),
+    margin: (_get-space('tiny') 0 0 0),
   ),
   bulleted: (
-    margin: (_get-space('v', 'tiny') _get-space('h', 'tiny') 0 0),
+    margin: (_get-space('tiny') _get-space('tiny') 0 0),
   ),
   condensed: (
-    margin: (_get-space('v', 'tiny') 0 0 0),
+    margin: (_get-space('tiny') 0 0 0),
   ),
 );
 
@@ -494,8 +514,8 @@ $wrapper-widths: (
 ); // You only need to set those breakpoints, where a change should occur.
 
 $wrapper-paddings: (
-  default: _get-space('h'),
-  l: _get-space('h', 'large'),
+  default: _get-space(),
+  l: _get-space('large'),
 ); // You only need to set those breakpoints, where a change should occur.
 
 //---------------
@@ -504,12 +524,12 @@ $wrapper-paddings: (
 $grid-base: 12 !default;
 
 $gutters: (
-  default: _get-space('h', 'small'),
-  m: _get-space('h'),
+  default: _get-space('small'),
+  m: _get-space(),
 );
 
 $gutters-form: (
-  default: math.div(_get-space('h', 'small'), 2),
+  default: math.div(_get-space('small'), 2),
 );
 
 // ----------------------------
@@ -517,22 +537,22 @@ $gutters-form: (
 
 $bar-spacing: (
   default: (
-    default: _get-space('h'),
+    default: _get-space(),
   ),
   small: (
-    default: _get-space('h', 'small'),
+    default: _get-space('small'),
   ),
   tiny: (
-    default: _get-space('h', 'tiny'),
+    default: _get-space('tiny'),
   )
 );
 
 $bar--vertical-spacing: (
   default: (
-    default: _get-space('h', 'small'),
+    default: _get-space('small'),
   ),
   small: (
-    default: _get-space('h', 'tiny'),
+    default: _get-space('tiny'),
   )
 );
 
@@ -544,7 +564,7 @@ $bar-break-height: 0;
 // Global button settings
 
 $button-margin-bottom: $default-space;
-$button-layout-margin: _get-space('h', 'small');
+$button-layout-margin: _get-space('small');
 
 $button: (
   default: (
@@ -826,7 +846,7 @@ $button-icon-scaling: (
 // ----------------------------
 // FORM COMPONENTS
 
-$form-m: _get-space('v');
+$form-m: _get-space();
 $form-control-block-m: 5px !default;
 
 $form-bgc: _color(grey, 50);
@@ -1034,7 +1054,7 @@ $radio-check-color: (
 );
 
 $radio-check-label: (
-  margin-left: _get-space('h', 'small'),
+  margin-left: _get-space('small'),
 );
 
 // $radio-check-sizes: (
@@ -1307,7 +1327,7 @@ $dropdown-menu: (
     transform: scale(1, 0.1),
   ),
   space: (
-    padding: _get-space('v') _get-space('h'),
+    padding: _get-space() _get-space(),
   )
 );
 
@@ -1352,7 +1372,7 @@ $table: (
 
 $table-cell: (
   default: (
-    padding: math.div(_get-space('v', 'small'), 2) _get-space('h'),
+    padding: math.div(_get-space('small'), 2) _get-space(),
     vertical-align: middle,
     border-bottom: $table-border-w $table-border-s $table-border-c,
   ),
@@ -1402,7 +1422,7 @@ $card: (
   ),
   material: (
     box-shadow: $shadow-md,
-    padding-top: _get-space('v', 'small'),
+    padding-top: _get-space('small'),
     before: (
       height: 4px,
       background-color: _color(bg, 600),
@@ -1432,19 +1452,19 @@ $card: (
 $card-section: (
   default: (
     default: (
-      padding: _get-space('v', 'small') _get-space('h') 0,
+      padding: _get-space('small') _get-space() 0,
     ),
     large: (
-      padding: _get-space('v') _get-space('h', 'large') 0,
+      padding: _get-space() _get-space('large') 0,
     ),
     condensed: (
-      padding: _get-space('v', 'tiny') _get-space('h', 'small'),
+      padding: _get-space('tiny') _get-space('small'),
     )
   ),
 );
 
 $card-header: (
-  padding: _get-space('v') _get-space('h'),
+  padding: _get-space() _get-space(),
   border-bottom: 1px solid $default-border-color,
   text-align: center,
 );
@@ -1452,7 +1472,7 @@ $card-header: (
 // ----------------------------
 // LISTS
 
-$list-margin-bottom: _get-space('v');
+$list-margin-bottom: _get-space();
 
 $list-variants: (default, bordered, clean, padded, cart);
 
@@ -1475,20 +1495,20 @@ $list: (
 
 $list-item: (
   default: (
-    padding: _get-space('v', 'small') 0,
+    padding: _get-space('small') 0,
     border-bottom: 1px solid _color(grey, 200),
   ),
   clean: (
     border-bottom: 1px solid transparent,
   ),
   padded: (
-    padding: _get-space('v', 'small') _get-space('h', 'small'),
+    padding: _get-space('small') _get-space('small'),
   ),
   bordered: (
-    padding: _get-space('v', 'small') _get-space('h', 'small'),
+    padding: _get-space('small') _get-space('small'),
   ),
   cart: (
-    padding: _get-space('v', 'default') 0,
+    padding: _get-space('medium') 0,
   )
 );
 
@@ -1496,8 +1516,8 @@ $list-item: (
 $list-item-clickable: (
   default: (
     transition: $ease-200,
-    padding-left: _get-space('v', 'small'),
-    padding-right: _get-space('v', 'small'),
+    padding-left: _get-space('small'),
+    padding-right: _get-space('small'),
   ),
   focus: (
     background-color: _color(grey, 50),
@@ -1569,10 +1589,10 @@ $tabs-link: (
 $tabs-card: (
   default: (
     border: 1px solid $default-border-color,
-    padding: _get-space('v', 'small') _get-space('h', 'small'),
+    padding: _get-space('small') _get-space('small'),
     font-size: _get-rem($font-size-medium),
     text-align: center,
-    margin-bottom: _get-space('v', 'small'),
+    margin-bottom: _get-space('small'),
   ),
   active: (
     border-color: _color(bg, 500),
@@ -1616,18 +1636,18 @@ $modal-dialog: (
     border-radius: $default-border-radius,
   ),
   'l': (
-    max-height: calc(100vh - (#{_get-space('v')} * 2)),
+    max-height: calc(100vh - (#{_get-space()} * 2)),
   )
 );
 
 $modal-dialog-variants: (
   'full' : (
     default: (
-      width: calc(100vw - (#{_get-space('h')} * 2)),
+      width: calc(100vw - (#{_get-space()} * 2)),
       max-width: _get-rem(1200px),
     ),
     'l': (
-      width: calc(100vw - (#{_get-space('h', 'large')} * 2)),
+      width: calc(100vw - (#{_get-space('large')} * 2)),
     )
   ),
   'medium' : (
@@ -1640,12 +1660,12 @@ $modal-dialog-variants: (
 
 $modal-section-spacing: (
   default: (
-    vertical: _get-space('v', 'small'),
-    horizontal: _get-space('v', 'small'),
+    vertical: _get-space('small'),
+    horizontal: _get-space('small'),
   ),
   'm': (
-    vertical: _get-space('v'),
-    horizontal: _get-space('v'),
+    vertical: _get-space(),
+    horizontal: _get-space(),
   ),
 );
 
@@ -1661,7 +1681,7 @@ $modal-footer: (
 
 $badge: (
   default: (
-    padding: 0 _get-space('h', 'tiny'),
+    padding: 0 _get-space('tiny'),
     color: _color(grey, 700),
     background-color: $color-white,
     border: 1px solid $default-border-color,

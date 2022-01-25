@@ -55,11 +55,11 @@
 
   &__recommended {
     flex: 0 0 auto;
-    padding: _get-space('v', 'small') _get-space('h', 'small');
+    padding: _get-space('small') _get-space('small');
     border-bottom: 1px solid $default-border-color;
 
     @include breakpoint(l) {
-      padding: _get-space('v') _get-space('h');
+      padding: _get-space() _get-space();
       background-color: _color(bg);
       flex: 0 0 _get-rem(280px);
       border-bottom: 0;
@@ -172,7 +172,7 @@
   @include breakpoint('m', 'down') {
     &__title {
       display: block;
-      margin-bottom: _get-space('v', 'small');
+      margin-bottom: _get-space('small');
     }
   }
 }
@@ -185,11 +185,11 @@
     li {
       display: inline-flex;
       margin-bottom: 0;
-      margin-right: _get-space('h');
+      margin-right: _get-space();
     }
 
     li:last-child {
-      padding-right: _get-space('h');
+      padding-right: _get-space();
     }
   }
 }

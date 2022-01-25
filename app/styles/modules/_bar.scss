@@ -3,8 +3,8 @@
   flex-flow: row;
   flex-wrap: wrap;
   align-items: center;
-  margin-top: -(_get-space('h', 'small'));
-  margin-bottom: _get-space('h');
+  margin-top: -(_get-space('small'));
+  margin-bottom: _get-space();
 
   &--no-wrap {
     flex-wrap: nowrap;
@@ -17,7 +17,7 @@
   flex: 0 0 if($width == 0, auto, $width);
   min-width: 0;
   align-items: center;
-  margin-top: _get-space('h', 'small');
+  margin-top: _get-space('small');
 
   > *:not(.bar):not([class*='mb\-']) {
     margin-bottom: 0;
@@ -70,7 +70,7 @@
 
       &--line > * {
         background-color: $color-white;
-        padding: 0 _get-space('h', 'small');
+        padding: 0 _get-space('small');
         display: inline-block;
       }
     }
