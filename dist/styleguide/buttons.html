@@ -12,9 +12,9 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac/fonts.1f89903e.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.b1aa8c0c.css">
+    <link rel="stylesheet" href="../styles/main.09a77d72.css">
     <link rel="stylesheet" href="../styles/light.3ef78219.css">
-    <script src="../scripts/plugins/modernizr.4a489747.js"></script>
+    <script src="../scripts/plugins/modernizr.d9c20825.js"></script>
   </head>
   <body data-bs-spy="scroll" data-bs-target=".js-scrollspy" data-bs-offset="150" id="top">
     <!-- offcanvas-->
@@ -252,6 +252,14 @@
                         </div>
                       </div>
                       <div class="col--l-3 col--s-6">
+                        <h4>Secondary</h4>
+                        <div class="btn-layout--vertical">
+                          <button class="btn btn--secondary" type="button">Secondary</button>
+                          <button class="btn btn--secondary is-active" type="button">Secondary</button>
+                          <button class="btn btn--secondary" type="button" disabled>Secondary</button>
+                        </div>
+                      </div>
+                      <div class="col--l-3 col--s-6">
                         <h4>Ghost</h4>
                         <div class="btn-layout--vertical">
                           <button class="btn btn--ghost" type="button">Ghost</button>
@@ -320,6 +328,11 @@
 &lt;button type=&quot;button&quot; class=&quot;btn btn--primary&quot;&gt;Primary&lt;/button&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn btn--primary is-active&quot;&gt;Primary&lt;/button&gt;
 &lt;button type=&quot;button&quot; disabled=&quot;&quot; class=&quot;btn btn--primary&quot;&gt;Primary&lt;/button&gt;
+
+&lt;!-- secondary --&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn--secondary&quot;&gt;Secondary&lt;/button&gt;
+&lt;button type=&quot;button&quot; class=&quot;btn btn--secondary is-active&quot;&gt;Secondary&lt;/button&gt;
+&lt;button type=&quot;button&quot; disabled=&quot;&quot; class=&quot;btn btn--secondary&quot;&gt;Secondary&lt;/button&gt;
 
 &lt;!-- ghost --&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn btn--ghost&quot;&gt;Ghost&lt;/button&gt;
@@ -912,115 +925,6 @@
                   </div>
                 </article>
               </div>
-              <div class="l-sub-section" id="">
-                <h3 class="l-h3">Split buttons
-                </h3>
-                <p class="l-p">Split buttons are basicaly extended dropdown buttons. They are created the same way as dropdowns, but using the call <code class='l-code-inline'>.btn-dropdown-split</code> and instead of using one button, you will use two.
-                </p>
-                <div class="l-box-desc l-box-warn">
-                  <p class="l-box-desc_headline">Warning</p>
-                  <p class="l-p">Split buttons are not supported in button groups and button bars.
-                  </p>
-                </div>
-                <article class="l-demo">
-                  <div class="l-demo_example">
-                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
-                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
-                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
-                        </svg></a>
-                    </div>
-                    <div class="btn-layout--horizontal">
-                      <div class="btn-dropdown-split">
-                        <button class="btn">Button</button>
-                        <button class="btn btn--equal" data-toggle="self, next, parent" data-toggle-icon="../icons_/app.svg#icon-chevron-up" data-toggle-expand aria-haspopup="true">
-                          <svg class="icon icon-chevron-down  icon--medium" role="img" aria-hidden="true">
-                            <use xlink:href="../icons_/app.svg#icon-chevron-down"></use>
-                          </svg>
-                        </button>
-                        <div class="dropdown" data-dropdown data-toggle-expand>
-                          <div class="dropdown__wrap"><a class="dropdown__item" href="#">List item 1</a><a class="dropdown__item" href="#">List item 2</a><a class="dropdown__item" href="#">List item 3</a><a class="dropdown__item" href="#">List item 4</a><a class="dropdown__item" href="#">List item 5</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="btn-dropdown-split">
-                        <button class="btn btn--primary btn--large">Button</button>
-                        <button class="btn btn--primary btn--large" data-toggle="self, next, parent" data-toggle-icon="../icons_/app.svg#icon-chevron-up" data-toggle-expand aria-haspopup="true">
-                          <svg class="icon icon-chevron-down  icon--medium" role="img" aria-hidden="true">
-                            <use xlink:href="../icons_/app.svg#icon-chevron-down"></use>
-                          </svg>
-                        </button>
-                        <div class="dropdown" data-dropdown data-toggle-expand>
-                          <div class="dropdown__wrap"><a class="dropdown__item" href="#">List item 1</a><a class="dropdown__item" href="#">List item 2</a><a class="dropdown__item" href="#">List item 3</a><a class="dropdown__item" href="#">List item 4</a><a class="dropdown__item" href="#">List item 5</a>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="btn-dropdown-split is-disabled">
-                        <button class="btn btn--small" disabled>Button</button>
-                        <button class="btn btn--small" disabled data-toggle="self, next, parent" data-toggle-icon="../icons_/app.svg#icon-chevron-up" data-toggle-expand aria-haspopup="true">
-                          <svg class="icon icon-chevron-down  icon--medium" role="img" aria-hidden="true">
-                            <use xlink:href="../icons_/app.svg#icon-chevron-down"></use>
-                          </svg>
-                        </button>
-                        <div class="dropdown" data-dropdown data-toggle-expand>
-                          <div class="dropdown__wrap"><a class="dropdown__item" href="#">List item 1</a><a class="dropdown__item" href="#">List item 2</a><a class="dropdown__item" href="#">List item 3</a><a class="dropdown__item" href="#">List item 4</a><a class="dropdown__item" href="#">List item 5</a>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="l-demo_code">
-                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                    <pre class="prettyprint"><code>&lt;div class=&quot;btn-dropdown-split&quot;&gt;
-  &lt;button class=&quot;btn&quot;&gt;Button&lt;/button&gt;
-  &lt;button
-    class=&quot;btn btn--equal&quot;
-    data-toggle=&quot;self, next, parent&quot; data-toggle-icon=&quot;icons_/app.svg&#35;icon-chevron-up&quot;
-    data-toggle-expand
-    aria-haspopup=&quot;true&quot;
-  &gt;
-    ...
-  &lt;/button&gt;
-  &lt;div class=&quot;dropdown&quot; data-toggle-expand&gt;
-  ...
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;btn-dropdown-split&quot;&gt;
-  &lt;button class=&quot;btn btn--large&quot;&gt;Button&lt;/button&gt;
-  &lt;button
-    class=&quot;btn btn--large&quot;
-    data-toggle=&quot;self, next, parent&quot;
-    data-toggle-icon=&quot;icons_/app.svg&#35;icon-chevron-up&quot;
-    data-toggle-expand
-    aria-haspopup=&quot;true&quot;
-  &gt;
-    ...
-  &lt;/button&gt;
-  &lt;div class=&quot;dropdown&quot; data-toggle-expand&gt;
-  ...
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;btn-dropdown-split is-disabled&quot;&gt;
-  &lt;button class=&quot;btn btn--small&quot; disabled&gt;Button&lt;/button&gt;
-  &lt;button
-    class=&quot;btn btn--small&quot;
-    disabled data-toggle=&quot;self, next, parent&quot;
-    data-toggle-icon=&quot;icons_/app.svg&#35;icon-chevron-up&quot;
-    data-toggle-expand
-    aria-haspopup=&quot;true&quot;
-  &gt;
-    ...
-  &lt;/button&gt;
-  &lt;div class=&quot;dropdown&quot; data-toggle-expand&gt;
-  ...
-  &lt;/div&gt;
-&lt;/div&gt;
-
-</code></pre>
-                  </div>
-                </article>
-              </div>
             </div>
           </section>
         </div>
@@ -1142,8 +1046,8 @@
     </div>
     <!-- end: offcanvas-->
     <script src="../scripts/vendor.bff8214d.js"></script>
-    <script src="../scripts/main.75696660.js"></script>
-    <script src="../scripts/light.a2991ef9.js"></script>
+    <script src="../scripts/main.57a01803.js"></script>
+    <script src="../scripts/light.d05dc783.js"></script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>

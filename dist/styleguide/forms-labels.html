@@ -12,9 +12,9 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac/fonts.1f89903e.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.b1aa8c0c.css">
+    <link rel="stylesheet" href="../styles/main.09a77d72.css">
     <link rel="stylesheet" href="../styles/light.3ef78219.css">
-    <script src="../scripts/plugins/modernizr.4a489747.js"></script>
+    <script src="../scripts/plugins/modernizr.d9c20825.js"></script>
   </head>
   <body data-bs-spy="scroll" data-bs-target=".js-scrollspy" data-bs-offset="150" id="top">
     <!-- offcanvas-->
@@ -844,203 +844,6 @@
               </article>
             </div>
           </section>
-          <section id="tooltips">
-            <div class="l-wrap-main">
-              <h2 class="l-h2">Form tooltips
-              </h2>
-              <p class="l-p">Validation tooltips for providing real-time input feedback.
-              </p>
-              <article class="l-demo">
-                <div class="l-demo_example">
-                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
-                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
-                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
-                      </svg></a>
-                  </div>
-                  <div class="row">
-                    <div class="col--m-4">
-                      <div class="form-control form-control--input">
-                        <div class="form-label">
-                          <label for="input-tooltip">Form label:</label>
-                        </div>
-                        <div class="form-tooltip-wrapper">
-                          <input class="input" type="text" placeholder="Input" id="input-tooltip">
-                          <div class="form-tooltip active">Validation message</div>
-                        </div>
-                      </div>
-                      <div class="form-control form-control--input">
-                        <div class="form-label is-valid">
-                          <label for="input-success-tooltip">Form label:</label>
-                        </div>
-                        <div class="form-tooltip-wrapper">
-                          <input class="input is-valid" type="text" placeholder="Input" id="input-success-tooltip">
-                          <div class="form-tooltip form-tooltip--success form-tooltip--medium-large active">Success validation message</div>
-                        </div>
-                      </div>
-                      <div class="form-control form-control--input">
-                        <div class="form-label">
-                          <label for="input-warning-tooltip">Form label:</label>
-                        </div>
-                        <div class="form-tooltip-wrapper">
-                          <input class="input" type="text" placeholder="Input" id="input-warning-tooltip">
-                          <div class="form-tooltip form-tooltip--warning form-tooltip--medium-large active">Warning validation message</div>
-                        </div>
-                      </div>
-                      <div class="form-control form-control--checkbox">
-                        <div class="form-label is-valid">
-                          <label for="checkbox-success-tooltip">Form label:</label>
-                        </div>
-                        <div class="form-tooltip-wrapper form-tooltip-wrapper--inline">
-                          <div class="checkbox">
-                            <input class="radiocheck__input is-valid" type="checkbox" id="checkbox-success-tooltip" name="checkbox-success-tooltip">
-                            <label class="radiocheck__control" for="checkbox-success-tooltip"></label>
-                            <label class="radiocheck__label" for="checkbox-success-tooltip">Checkbox</label>
-                          </div>
-                          <div class="form-tooltip form-tooltip--success form-tooltip--large active">Success large inline validation message</div>
-                        </div>
-                      </div>
-                      <div class="form-control form-control--group">
-                        <div class="radiocheck-group">
-                          <div class="form-label is-error">
-                            <label>Form label:</label>
-                          </div>
-                          <div class="form-tooltip-wrapper form-tooltip-wrapper--inline">
-                            <div class="form-control form-control--radio">
-                              <div class="radio">
-                                <input class="radiocheck__input is-error" type="radio" id="radio-group-error-tooltip-01" name="radio-group-error-tooltip">
-                                <label class="radiocheck__control" for="radio-group-error-tooltip-01"></label>
-                                <label class="radiocheck__label" for="radio-group-error-tooltip-01">Radio 1</label>
-                              </div>
-                            </div>
-                            <div class="form-control form-control--radio">
-                              <div class="radio">
-                                <input class="radiocheck__input is-error" type="radio" id="radio-group-error-tooltip-02" name="radio-group-error-tooltip">
-                                <label class="radiocheck__control" for="radio-group-error-tooltip-02"></label>
-                                <label class="radiocheck__label" for="radio-group-error-tooltip-02">Radio 2</label>
-                              </div>
-                            </div>
-                            <div class="form-tooltip form-tooltip--error form-tooltip--medium-large active">Error inline validation message</div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-control form-control--select">
-                        <div class="form-label is-valid">
-                          <label>Form label:</label>
-                        </div>
-                        <div class="form-tooltip-wrapper">
-                          <select class="js-select is-valid">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                            <option>Option 6</option>
-                          </select>
-                          <div class="form-tooltip form-tooltip--medium-large active">Rich validation message<span class="show-m">, which is multiline, and has <a class="link">some link</a> and maybe <a class="link">another</a></span></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="l-demo_code">
-                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                  <pre class="prettyprint"><code>&lt;div class=&quot;form-control form-control--input&quot;&gt;
-  &lt;div class=&quot;form-label&quot;&gt;
-    &lt;label for=&quot;input-tooltip&quot;&gt;Form label:&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-tooltip-wrapper&quot;&gt;
-    &lt;input class=&quot;input&quot; type=&quot;text&quot; placeholder=&quot;Input&quot; id=&quot;input-tooltip&quot;&gt;
-    &lt;div class=&quot;form-tooltip active&quot;&gt;Validation message&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;form-control form-control--input&quot;&gt;
-  &lt;div class=&quot;form-label is-valid&quot;&gt;
-    &lt;label for=&quot;input-success-tooltip&quot;&gt;Form label:&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-tooltip-wrapper&quot;&gt;
-    &lt;input class=&quot;input is-valid&quot; type=&quot;text&quot; placeholder=&quot;Input&quot; id=&quot;input-success-tooltip&quot;&gt;
-    &lt;div class=&quot;form-tooltip form-tooltip--success form-tooltip--medium-large active&quot;&gt;Success validation message&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;form-control form-control--input&quot;&gt;
-  &lt;div class=&quot;form-label&quot;&gt;
-    &lt;label for=&quot;input-warning-tooltip&quot;&gt;Form label:&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-tooltip-wrapper&quot;&gt;
-    &lt;input class=&quot;input&quot; type=&quot;text&quot; placeholder=&quot;Input&quot; id=&quot;input-warning-tooltip&quot;&gt;
-    &lt;div class=&quot;form-tooltip form-tooltip--warning form-tooltip--medium-large active&quot;&gt;Warning validation message&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;form-control form-control--checkbox&quot;&gt;
-  &lt;div class=&quot;form-label is-valid&quot;&gt;
-    &lt;label for=&quot;checkbox-success-tooltip&quot;&gt;Form label:&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-tooltip-wrapper form-tooltip-wrapper--inline&quot;&gt;
-    &lt;div class=&quot;checkbox&quot;&gt;
-      &lt;input class=&quot;radiocheck__input is-valid&quot; type=&quot;checkbox&quot; id=&quot;checkbox-success-tooltip&quot; name=&quot;checkbox-success-tooltip&quot;&gt;
-      &lt;label class=&quot;radiocheck__control&quot; for=&quot;checkbox-success-tooltip&quot;&gt;&lt;/label&gt;
-      &lt;label class=&quot;radiocheck__label&quot; for=&quot;checkbox-success-tooltip&quot;&gt;Checkbox&lt;/label&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;form-tooltip form-tooltip--success form-tooltip--large active&quot;&gt;Success large inline validation message&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;form-control form-control--group&quot;&gt;
-  &lt;div class=&quot;radiocheck-group&quot;&gt;
-
-    &lt;div class=&quot;form-label is-error&quot;&gt;
-      &lt;label&gt;Form label:&lt;/label&gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;form-tooltip-wrapper form-tooltip-wrapper--inline&quot;&gt;
-
-      &lt;div class=&quot;form-control form-control--radio&quot;&gt;
-        &lt;div class=&quot;radio&quot;&gt;
-          &lt;input class=&quot;radiocheck__input is-error&quot; type=&quot;radio&quot; id=&quot;radio-group-error-tooltip-01&quot; name=&quot;radio-group-error-tooltip&quot;&gt;
-          &lt;label class=&quot;radiocheck__control&quot; for=&quot;radio-group-error-tooltip-01&quot;&gt;&lt;/label&gt;
-          &lt;label class=&quot;radiocheck__label&quot; for=&quot;radio-group-error-tooltip-01&quot;&gt;Radio 1&lt;/label&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-
-      &lt;div class=&quot;form-control form-control--radio&quot;&gt;
-        &lt;div class=&quot;radio&quot;&gt;
-          &lt;input class=&quot;radiocheck__input is-error&quot; type=&quot;radio&quot; id=&quot;radio-group-error-tooltip-02&quot; name=&quot;radio-group-error-tooltip&quot;&gt;
-          &lt;label class=&quot;radiocheck__control&quot; for=&quot;radio-group-error-tooltip-02&quot;&gt;&lt;/label&gt;
-          &lt;label class=&quot;radiocheck__label&quot; for=&quot;radio-group-error-tooltip-02&quot;&gt;Radio 2&lt;/label&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;form-tooltip form-tooltip--error form-tooltip--medium-large active&quot;&gt;Error inline validation message&lt;/div&gt;
-
-    &lt;/div&gt;
-
-  &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;form-control form-control--select&quot;&gt;
-  &lt;div class=&quot;form-label is-valid&quot;&gt;
-    &lt;label&gt;Form label:&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;form-tooltip-wrapper&quot;&gt;
-    &lt;select class=&quot;js-select is-valid&quot;&gt;
-      &lt;option&gt;Option 1&lt;/option&gt;
-      &lt;option&gt;Option 2&lt;/option&gt;
-      &lt;option&gt;Option 3&lt;/option&gt;
-      &lt;option&gt;Option 4&lt;/option&gt;
-      &lt;option&gt;Option 5&lt;/option&gt;
-      &lt;option&gt;Option 6&lt;/option&gt;
-    &lt;/select&gt;
-    &lt;div class=&quot;form-tooltip form-tooltip--medium-large active&quot;&gt;Rich validation message&lt;span class=&quot;show-m&quot;&gt;, which is multiline, and has &lt;a class=&quot;link&quot;&gt;some link&lt;/a&gt; and maybe &lt;a class=&quot;link&quot;&gt;another&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;
-...
-</code></pre>
-                </div>
-              </article>
-            </div>
-          </section>
         </div>
       </article>
       <aside class="l-wrap-navs">
@@ -1160,8 +963,8 @@
     </div>
     <!-- end: offcanvas-->
     <script src="../scripts/vendor.bff8214d.js"></script>
-    <script src="../scripts/main.75696660.js"></script>
-    <script src="../scripts/light.a2991ef9.js"></script>
+    <script src="../scripts/main.57a01803.js"></script>
+    <script src="../scripts/light.d05dc783.js"></script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>

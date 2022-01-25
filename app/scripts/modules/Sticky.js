@@ -21,11 +21,13 @@ export default class StickyWrapper {
 
     this.stickies = [];
 
-    this._init();
+    // eslint-disable-next-line no-constructor-return
+    return this._init();
   }
 
   _init() {
     this.stickies = new Sticky(this.selector, this.config);
+    return this.stickies;
   }
 
   update() {

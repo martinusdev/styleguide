@@ -77,35 +77,67 @@ const productSelectChoice = (data, config) => `
   </div>
   `;
 
-const storeListTemplate = ({ label, customProperties }) => {
-  const status = customProperties && customProperties.status
-    ? `status status--${customProperties.status}`
-    : '';
+const storeIcon = type => {
+  let icon;
+  let iconColor;
+
+  switch (type) {
+    case 'martinus':
+      icon = 'martinus';
+      iconColor = 'text-color-primary';
+      break;
+    case 'partner':
+      icon = 'pin';
+      iconColor = 'text-color-yellow';
+      break;
+    default:
+      icon = '';
+  }
+
+  if (icon !== '') {
+    icon = `<svg class="icon ${iconColor} mr-tiny" style="flex-shrink: 0" role="img" aria-hidden="true"><use xlink:href="/data/assets/martinus/lb/icons_/app.svg?v=1#icon-${icon}"></use></svg>`;
+  }
+
+  return icon;
+};
+
+const storeStatus = (customProperties, placeholder) => {
+  if (placeholder) {
+    return '';
+  }
+
+  const statusClass = customProperties.status ? `status status--${customProperties.status} text-color-${customProperties.status}` : '';
+  const statusText = customProperties.statusText ? customProperties.statusText : '';
+
+  return `<div class="${statusClass} text-right text-small">${statusText}</div>`;
+};
+
+const storeListTemplate = ({ label, customProperties, placeholder }) => {
+  const icon = storeIcon(customProperties.type);
+
+  const statusText = storeStatus(customProperties, placeholder);
 
   return `
-  <div class="text-left">
-    <span class="text-vam ${status} text-color-grey text-size-medium text-ellipsis">${label}</span>
-  </div>`;
+  <div style="max-width: 100%;" class="d-flex align-items-middle align-items-justify">
+    <div class="d-flex align-items-middle text-color-grey-dark text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+    ${statusText}
+  </div>
+  `;
 };
 
 const storeListChoice = (
   {
-    customProperties, disabled, label, id, value
+    customProperties, disabled, label, id, value, placeholder
   },
   config,
 ) => {
-  let statusClass = '';
-
-  if (customProperties && customProperties.status) {
-    statusClass = `status status--${customProperties.status} text-color-${customProperties.status}`;
-  }
-
-  const statusText = customProperties.statusText ? customProperties.statusText : '';
+  const statusText = storeStatus(customProperties, placeholder);
+  const icon = storeIcon(customProperties.type);
 
   return `
   <div style="max-width: 100%;" class="align-items-middle align-items-justify ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
-    <span class="text-color-grey text-left text-regular" style="max-width: 66%;">${label}</span>
-    <span class="${statusClass} text-right text-small">${statusText}</span>
+    <div class="d-flex align-items-middle text-color-black text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+    ${statusText}
   </div>
   `;
 };
@@ -350,6 +382,7 @@ export default class Select {
 
         if (input) {
           input.classList.add('input');
+          input.classList.add('input--small');
           input.classList.add('input--search');
         }
       }

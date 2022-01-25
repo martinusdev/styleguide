@@ -300,8 +300,7 @@
       }
     }
 
-    > .btn,
-    > .btn-dropdown-split {
+    > .btn {
       vertical-align: middle;
     }
   } @else if $direction == 'vertical' {
@@ -538,31 +537,7 @@
 
 @include dropdown-button-classes;
 
-// Split button generator
-@mixin split-button {
-  @include dropdown-button;
-  @include button-group-base;
-  @include button-group-layout('horizontal');
-  display: inline-flex;
-  vertical-align: middle;
-
-  &.is-active {
-    .btn {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-}
-
 // Dropdown button classes generator
-@mixin split-button-classes {
-  .btn-dropdown-split {
-    @include split-button;
-  }
-}
-
-@include split-button-classes;
-
 .btn--hover {
   .btn--hover-hidden {
     display: inline-block;

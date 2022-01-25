@@ -151,6 +151,12 @@ block append content
                 button.btn.btn--primary.is-active(type='button') Primary
                 button.btn.btn--primary(type='button', disabled) Primary
             .col--l-3.col--s-6
+              h4 Secondary
+              .btn-layout--vertical
+                button.btn.btn--secondary(type='button') Secondary
+                button.btn.btn--secondary.is-active(type='button') Secondary
+                button.btn.btn--secondary(type='button', disabled) Secondary
+            .col--l-3.col--s-6
               h4 Ghost
               .btn-layout--vertical
                 button.btn.btn--ghost(type='button') Ghost
@@ -204,6 +210,11 @@ block append content
             <button type="button" class="btn btn--primary is-active">Primary</button>
             <button type="button" disabled="" class="btn btn--primary">Primary</button>
 
+            <!-- secondary -->
+            <button type="button" class="btn btn--secondary">Secondary</button>
+            <button type="button" class="btn btn--secondary is-active">Secondary</button>
+            <button type="button" disabled="" class="btn btn--secondary">Secondary</button>
+
             <!-- ghost -->
             <button type="button" class="btn btn--ghost">Ghost</button>
             <button type="button" class="btn btn--ghost is-active">Ghost</button>
@@ -213,7 +224,7 @@ block append content
             <button type="button" class="btn btn--clean">Clean</button>
             <button type="button" class="btn btn--clean is-active">Clean</button>
             <button type="button" disabled="" class="btn btn--clean">Clean</button>
-            
+
             <!-- success -->
             <button type="button" class="btn btn--success">Success</button>
             <button type="button" class="btn btn--success is-active">Success</button>
@@ -233,7 +244,7 @@ block append content
             <button type="button" class="btn btn--lowercase">Lowercase</button>
             <button type="button" class="btn btn--lowercase is-active">Lowercase</button>
             <button type="button" disabled="" class="btn btn--lowercase">Lowercase</button>
-            
+
             <!-- carousel -->
             <button type="button" class="btn btn--carousel">Carousel</button>
             <button type="button" class="btn btn--carousel is-active">Carousel</button>
@@ -668,106 +679,4 @@ block append content
               </div>
             </div>
       //- end: demo
-
-    +content-sub-section('Split buttons')
-
-      +p Split buttons are basicaly extended dropdown buttons. They are created the same way as dropdowns, but using the call <code class='l-code-inline'>.btn-dropdown-split</code> and instead of using one button, you will use two.
-
-      +warning
-        +p Split buttons are not supported in button groups and button bars.
-
-      +demo
-        +demo-example
-          .btn-layout--horizontal
-            .btn-dropdown-split
-              button.btn Button
-              button.btn.btn--equal(
-                data-toggle='self, next, parent',
-                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
-              )
-                +icon('chevron-down').icon--medium
-              .dropdown(data-dropdown, data-toggle-expand)
-                .dropdown__wrap
-                  each item in [1,2,3,4,5]
-                    a.dropdown__item(href="#") List item #{item}
-
-            .btn-dropdown-split
-              button.btn.btn--primary.btn--large Button
-              button.btn.btn--primary.btn--large(
-                data-toggle='self, next, parent',
-                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
-              )
-                +icon('chevron-down').icon--medium
-              .dropdown(data-dropdown, data-toggle-expand)
-                .dropdown__wrap
-                  each item in [1,2,3,4,5]
-                    a.dropdown__item(href="#") List item #{item}
-
-            .btn-dropdown-split.is-disabled
-              button.btn.btn--small(disabled) Button
-              button.btn.btn--small(
-                disabled,
-                data-toggle='self, next, parent', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                data-toggle-expand,
-                aria-haspopup="true"
-              )
-                +icon('chevron-down').icon--medium
-              .dropdown(data-dropdown, data-toggle-expand)
-                .dropdown__wrap
-                  each item in [1,2,3,4,5]
-                    a.dropdown__item(href="#") List item #{item}
-        +demo-code
-          :code
-            <div class="btn-dropdown-split">
-              <button class="btn">Button</button>
-              <button
-                class="btn btn--equal"
-                data-toggle="self, next, parent" data-toggle-icon="icons_/app.svg#icon-chevron-up"
-                data-toggle-expand
-                aria-haspopup="true"
-              >
-                ...
-              </button>
-              <div class="dropdown" data-toggle-expand>
-              ...
-              </div>
-            </div>
-
-            <div class="btn-dropdown-split">
-              <button class="btn btn--large">Button</button>
-              <button
-                class="btn btn--large"
-                data-toggle="self, next, parent"
-                data-toggle-icon="icons_/app.svg#icon-chevron-up"
-                data-toggle-expand
-                aria-haspopup="true"
-              >
-                ...
-              </button>
-              <div class="dropdown" data-toggle-expand>
-              ...
-              </div>
-            </div>
-
-            <div class="btn-dropdown-split is-disabled">
-              <button class="btn btn--small" disabled>Button</button>
-              <button
-                class="btn btn--small"
-                disabled data-toggle="self, next, parent"
-                data-toggle-icon="icons_/app.svg#icon-chevron-up"
-                data-toggle-expand
-                aria-haspopup="true"
-              >
-                ...
-              </button>
-              <div class="dropdown" data-toggle-expand>
-              ...
-              </div>
-            </div>
-
-
   //- end: section

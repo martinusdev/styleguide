@@ -10,7 +10,7 @@ export default class NumberSpinner {
 
     this._onClick = this._onClick.bind(this);
 
-    this.sliders = [];
+    this._init();
   }
 
   _init() {
@@ -22,8 +22,6 @@ export default class NumberSpinner {
       spinner.addEventListener('click', this._onClick);
       return spinner;
     });
-
-    return this.spinners;
   }
 
   _onClick(e) {
@@ -71,8 +69,10 @@ export default class NumberSpinner {
 
   destroy() {
     this.spinners.forEach(spinner => {
-      spinner.removeEventListener(this._onClick);
+      spinner.removeEventListener('click', this._onClick);
     });
+
+    this.spinners = [];
   }
 
   update() {

@@ -651,6 +651,34 @@ $button-styles: (
       border-color: _color(primary, 600),
     ),
   ),
+  secondary: (
+    default: (
+      position: relative,
+      color: $color-white,
+      background-color: _color(grey, 800),
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    focus: (
+      background-color: _color(grey, 700),
+    ),
+    after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
+      background-color: _color(grey, 900),
+      height: 4px,
+    ),
+    active: (
+      color: $color-white,
+      background-color: _color(grey, 900),
+      box-shadow: none,
+    ),
+    group: (
+      border-color: _color(grey, 900),
+    ),
+  ),
   ghost: (
     default: (
       color: _color(grey, 700),
@@ -870,6 +898,7 @@ $input: (
     search: (
       background-image: svg-load('./../icons_/app/search.svg', fill=_color(grey, 500)),
       background-repeat: no-repeat,
+      background-size: 18px 18px,
       background-position: center right 0.5em,
     )
   ),
@@ -1218,7 +1247,7 @@ $input-addon-sizes: (
 
 $form-label: (
   default: (
-    font-size: _get-rem(10px),
+    font-size: _get-rem(12px),
     margin-bottom: _get_em(3px),
     color: _color(grey, 700),
   ),
@@ -1271,7 +1300,7 @@ $dropdown-menu: (
     border-style: solid,
     border-color: transparent,
     border-radius: 0 0 $dropdown-menu-b-r,
-    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2),
+    box-shadow: $shadow-md,
     z-index: $z-index-dropdown,
     transition: #{visibility $ease-100-delayed, opacity $ease-out-100, transform $ease-out-100},
     transform-origin: top center,
@@ -1372,7 +1401,7 @@ $card: (
     ),
   ),
   material: (
-    box-shadow: 0 10px 14px 0 rgba(#000, 0.2),
+    box-shadow: $shadow-md,
     padding-top: _get-space('v', 'small'),
     before: (
       height: 4px,
