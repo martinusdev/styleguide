@@ -33,12 +33,12 @@ block content
                 button.btn.btn--clean.pl-tiny(data-toggle='#edit')
                   +icon('smart-list').icon--medium
               .bar__item.bar__item--shrinkable.mr-tiny
-                small.text-color-grey.block(style="margin-top: -3px;")
+                small.text-color-grey.d-block(style="margin-top: -3px;")
                   +icon('guard').icon--small.mr-tiny
                   a(data-toggle="#edit").link Súkromný
               .bar__break.hide-m
               .bar__item.bar__item--fill
-                .btn-layout.btn-layout--horizontal.align-items-middle
+                .btn-layout.btn-layout--horizontal.align-items-center
                   button.btn.btn--clean(data-toggle='#edit')
                     +icon('share').icon--medium.icon--left
                     span.show-m Zdieľať
@@ -50,7 +50,7 @@ block content
               //.bar__item.bar__item--shrinkable.show-m
                 | Zoradiť:
               .bar__item.bar__item--shrinkable
-                .form-control.form-control--select.inline-block.mr-small
+                .form-control.form-control--select.d-inline-block.mr-small
                   select.js-select.select--ghost(data-select-dropdown-width="200px")
                     option Od najnovších
                     option Podľa dátum nákupu
@@ -89,7 +89,7 @@ block content
                             .bar__item
                               button.btn vyhľadať
 
-            .row.align-items-bottom
+            .row.align-items-end
               each item, index in [...books, ...books, ...books, ...books]
                 -
                   let status;
@@ -106,10 +106,10 @@ block content
                     status = 'notread';
                   }
                 .col--6.col--s-4.col--m-3.mb-large.text-center
-                  +product({ size: 'large' }).mb-small.text-left.inline-block
+                  +product({ size: 'large' }).mb-small.text-left.d-inline-block
                     +productStatus({ actionDropdown: 'my-library', status: status })
                     +productCover({ cover: item.cover, href: '#' })
-                    .bar.mb-small.align-items-top
+                    .bar.mb-small.align-items-start
                       .bar__item.bar__item--fill.mr-none
                         +productTitle({ title: item.title, author: item.author, href: '#' })
                       .bar__item.bar__item--shrinkable
@@ -133,7 +133,7 @@ block content
                       +productBuy()
 
             .mb-medium
-            .btn-layout.btn-layout--horizontal.align-items-center.mb-large
+            .btn-layout.btn-layout--horizontal.justify-content-center.mb-large
               button.btn.btn--ghost
                 | Načítať ďalšie
                 +icon('arrow-down').icon--medium.icon--right
@@ -142,8 +142,8 @@ block content
               .card__content
                 .bar.mb-none
                   .bar__item.bar__item--fill.text-left.text-right-m
-                    .h3.inline-block.mr-small Hodnota zoznamu:
-                    .h2.inline-block 346,50 €
+                    .h3.d-inline-block.mr-small Hodnota zoznamu:
+                    .h2.d-inline-block 346,50 €
                   .bar__break.hide-m
                   .bar__item.bar__item--shrinkable
                     button.btn.btn--primary Vložiť všetky tituly do košíka
@@ -323,7 +323,7 @@ block append modals
 
         .modal__content
           each item, i in books
-            .bar.align-items-middle.mb-small
+            .bar.align-items-center.mb-small
               .bar__item.bar__item--shrinkable
                 .checkbox
                   input(id=`list-check${i}`, type="checkbox", name=`list-check${i}`).radiocheck__input
@@ -333,14 +333,14 @@ block append modals
                   .thumbnail__img-wrap
                     img.img(src=`${assetsPrefix}${item.cover}`)
               .bar__item.bar__item--fill
-                a.text-semibold.m-none.block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
+                a.text-semibold.m-none.d-block.link.link--product.line-medium.text-ellipsis(href="detail-knihy.html")
                   =item.title
                 ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.text-ellipsis.mb-none
                   - var authors = item.author.split(', ')
                   each author in authors
                     li= author
               .bar__item.bar__item--shrinkable
-                .radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-spaced
+                .radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-around
                   - for (var index = 0; index<5; index++)
                     input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + index)
                     label.radiocheck__label.ml-none.rating-star__item(for="review-rating-" + index, class= index < stars ? 'is-active' : '')

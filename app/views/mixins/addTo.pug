@@ -51,11 +51,11 @@ mixin addTo(props = {})
         .hide(id=`wishlist-add-item-${id}` data-toggle-class="hide")
           .card.mb-none
             .card__content.card__content--condensed
-              .bar.flex-nowrap
+              .bar.d-flex-nowrap
                 .bar__item.mr-none
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
                     +icon('chevron-left', 'icon--medium', 'Naspäť')
-                .bar__item.align-self-center.text-center.text-nowrap
+                .bar__item.mx-auto.text-center.text-nowrap
                   | Nový zoznam
                 .bar__item
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)

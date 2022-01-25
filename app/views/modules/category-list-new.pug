@@ -18,15 +18,15 @@ mixin itemGroup(id)
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
 mixin groupItem(name, id, publisher, xmasmode)
-  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
+  .bar.align-items-center.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
     .bar__item.bar__item--fill.mb-m-small.mt-none.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.m-none
-          a.text-semibold.text-medium.inline-block.link=name
+          a.text-semibold.text-medium.d-inline-block.link=name
           | #{' '}
           span.text-medium.text-color-grey.show-m=publisher
           //a.link.link--product Základy rybolovu pro kluky a holky
-          .inline-block.hide-m.text-size-small
+          .d-inline-block.hide-m.text-size-small
             if id == 0
               span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
@@ -163,7 +163,7 @@ section.section
               button.btn Zúžiť výber
       .col--l-9.col--12
         .div.mb-medium.show-l
-          ul.tab-nav.tab-nav--compact.flex
+          ul.tab-nav.tab-nav--compact.d-flex
             each sortLink, i in sortLinks
               li.tab-nav__item(class= i===0 ? 'is-active': '')
                 a.tab-nav__content--link(class= i > 0 ? 'border-bottom-grey': '')
@@ -172,11 +172,11 @@ section.section
                   else
                     | !{sortLink}
             li.tab-nav__item.flex-1
-              div.tab-nav__content.border-bottom-grey.align-items-right.text-size-small.text-color-grey.text-center
+              div.tab-nav__content.border-bottom-grey.justify-content-end.text-size-small.text-color-grey.text-center
                 | 2358 produktov
 
-        .flex.mb-tiny.align-items-middle
-          .text-size-small.text-transform-upper.text-color-grey.inline-block-m.block.mr-medium Použité filtre
+        .d-flex.mb-tiny.align-items-center
+          .text-size-small.text-transform-upper.text-color-grey.d-m-inline-block.d-block.mr-medium Použité filtre
           a(href="#").link.text-size-medium Zrušiť filtre
         .row.pl-m-medium
           .row.overflow-scroll-x
@@ -277,7 +277,7 @@ section.section
             .carousel-lite__container.mj-carousel__scroll
               .carousel-lite__wrapper.mj-carousel__content.align-items-stretch
                 each item, i in menu
-                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").mr-small.flex.align-items-middle
+                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").mr-small.d-flex.align-items-center
                     i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.mr-small
                     span.link.line-small= item.title
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev(style="left: 10px;")
@@ -576,7 +576,7 @@ section.section
                           +icon('cart').icon--left.icon--medium
                           span.text-semibold Vložiť do košíka
 
-        +pagination.align-items-center.mb-large
+        +pagination.justify-content-center.mb-large
 
 block append scripts
   script.

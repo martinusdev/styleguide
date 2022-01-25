@@ -58,15 +58,15 @@ mixin itemGroup(id)
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
 mixin groupItem(name, id, details, inline)
-  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
+  .bar.align-items-center.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
     .bar__item.bar__item--fill.mb-m-small.mt-none.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.m-none
-          a.text-semibold.text-medium.inline-block.link=name
+          a.text-semibold.text-medium.d-inline-block.link=name
           | #{' '}
           span.text-medium.text-color-grey(class=inline ? 'show-m' : '')=details
           //a.link.link--product Základy rybolovu pro kluky a holky
-          .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
+          .d-inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
             if id == 0
               span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
@@ -101,15 +101,15 @@ mixin groupItem(name, id, details, inline)
 
 
 mixin groupItem2(name, id, details, inline)
-  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
+  .bar.align-items-center.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
     .bar__item.bar__item--fill.mb-m-small.mt-none.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.m-none
-          a.text-semibold.text-medium.inline-block.link=name
+          a.text-semibold.text-medium.d-inline-block.link=name
           | #{' '}
           span.text-medium.text-color-grey(class=inline ? 'show-m' : '')=details
           //a.link.link--product Základy rybolovu pro kluky a holky
-          .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
+          .d-inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
             if id == 0
               span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
@@ -229,7 +229,7 @@ block header
 
             if bookHeader
               .bar__item.bar__item--fill.header__book.book-detail-show
-                .bar.bar--no-wrap.mb-none.align-self-right
+                .bar.bar--no-wrap.mb-none.ml-auto
                   .bar__item
                     .thumbnail.thumbnail--book.thumbnail--small
                       .thumbnail__img-wrap
@@ -338,7 +338,7 @@ block content
                     a.link(href="#") Rybolov
               .bar__item.bar__item--border
               .bar__item.bar__item--fill
-                .bar.bar--small.align-items-top.mb-none
+                .bar.bar--small.align-items-start.mb-none
                   .bar__item
                     .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                   .bar__item.bar__item--fill
@@ -357,21 +357,21 @@ block content
             .show-m
               h2.h3 Ďalšie formáty tejto knihy
               a.btn.btn--ghost.mr-small.mb-small
-                .flex.align-items-middle
+                .d-flex.align-items-center
                   .flex-shrinkable
                     +icon('products-ebooks').icon--left.icon--medium
                   .flex-fill.text-left
                     | E-kniha#{' '}
                     .text-color-grey 9,99€
               a.btn.btn--ghost.mr-small.mb-small
-                .flex.align-items-middle
+                .d-flex.align-items-center
                   .flex-shrinkable
                     +icon('products-audiobooks').icon--left.icon--medium
                   .flex-fill.text-left
                     | audiokniha#{' '}
                     .text-color-grey 13,99€
               a.btn.btn--ghost.mr-small.mb-small
-                .flex.align-items-middle
+                .d-flex.align-items-center
                   .flex-shrinkable
                     +icon('products-books').icon--left.icon--medium
                   .flex-fill.text-left
@@ -379,7 +379,7 @@ block content
                     .text-color-grey 13,99€
 
               a.btn.btn--ghost.mb-small
-                .flex.align-items-middle
+                .d-flex.align-items-center
                   .flex-shrinkable
                     +icon('arrow-down').icon--left.icon--medium
                   .flex-fill.text-left
@@ -757,10 +757,10 @@ block content
 
                 .card.card--well.mb-large
                   .card__content
-                    .row.align-items-center.align-items-middle
+                    .row.justify-content-center.align-items-center
                       .col--l-7.text-center
                         p.mb-small Ako sa vám páčila kniha?
-                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.m-l-none(data-stars)
+                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-center.mb-small.m-l-none(data-stars)
                           - for (var abc = 0; abc<5; abc++)
                           input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + abc)
                           label.radiocheck__label.ml-none.rating-star__item(for="review-rating-" + abc)
@@ -777,14 +777,14 @@ block content
                         .h4.mb-medium Máte chvíľu čas? Napíšte recenziu
                         include ./modules/review-form
 
-                .row.align-items-center.align-items-middle.book-rating.mb-large
+                .row.justify-content-center.align-items-center.book-rating.mb-large
                   .col--l-5
                     .rating-text.text-center
                       .rating-text__value
                         span.text-bold 4,7
                         span.text-color-grey  / 5
                         p.text-medium.text-color-grey.mb-small 1024 hodnotení
-                    .rating-star.align-items-center.mb-medium.no-mb-l
+                    .rating-star.justify-content-center.mb-medium.no-mb-l
                       +icon('star').rating-star__item.icon--large.is-active
                       +icon('star').rating-star__item.icon--large.is-active
                       +icon('star').rating-star__item.icon--large.is-active
@@ -836,7 +836,7 @@ block content
                         .product-read-more.mb-small
                           a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-1, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
                             +icon('arrow-down')
-                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.mb-none
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-center.mb-none
                           button.btn.btn--clean.mr-none
                             +icon('react').icon--left.icon--medium
                             | Reagovať
@@ -870,7 +870,7 @@ block content
                         .product-read-more.mb-small
                           a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-2, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
                             +icon('arrow-down')
-                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.mb-none
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-center.mb-none
                           button.btn.btn--clean.mr-none
                             +icon('react').icon--left.icon--medium
                             | Reagovať
@@ -1166,7 +1166,7 @@ block modals
           .bar__item.mb-none
             .card
               .card__content.pb-none
-                .flex.mb-small
+                .d-flex.mb-small
                   .flex-shrinkable.mr-small
                     h3.mb-none Doručenie
                   .flex-shrinkable
@@ -1178,12 +1178,12 @@ block modals
                   | Bydučínska 51
                   br
                   | 12585 Bratislava
-                  small.text-color-grey.flex.align-items-middle
+                  small.text-color-grey.d-flex.align-items-center
                     +icon('info').icon--small
                     span.mr-tiny Doručovacia adresa je rovnaká ako fakturačná
                     a.link zmeniť
 
-                .flex
+                .d-flex
                   .flex-shrinkable.mr-small
                     h3.mb-none Platba
                   .flex-shrinkable
@@ -1196,17 +1196,17 @@ block modals
             article.card
               .card__content
 
-                .bar.align-items-bottom.mb-none
+                .bar.align-items-end.mb-none
                   .bar__item Spolu
                   .bar__item.bar__item--fill.text-right
                     h1 21,77 €
 
-                .bar.align-items-bottom.text-color-grey.text-size-medium
+                .bar.align-items-end.text-color-grey.text-size-medium
                   .bar__item.bar__item--fill.text-right U nás ušetríte 2,00 €
 
                 .row
                   .col--s-11.col--m-7.ofst--center
-                    button.block-fill.clickable(type="submit")
+                    button.d-block.w-100.clickable(type="submit")
                       .btn-layout--vertical.mb-small
                         .btn.btn--primary
                           | záväzne objednať a zaplatiť

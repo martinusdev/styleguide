@@ -65,7 +65,7 @@ block content
                   var item = {
                   xmas: false
                   };
-                .card.card--well.inline-block
+                .card.card--well.d-inline-block
                   .card__content
                     +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
 
@@ -87,7 +87,7 @@ block content
                             | #{' '}napísal/a recenziu
                     .bar__break.hide-m
                     .bar__item.bar__item--shrinkable
-                      .rating-star.bar__item.align-items-center.mt-none
+                      .rating-star.bar__item.justify-content-center.mt-none
                         each star, starIndex in Array(5)
                           +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
                     .bar__item.bar__item--shrinkable.text-right
@@ -101,7 +101,7 @@ block content
                     var item = {
                     xmas: false
                     };
-                  .card.card--well.inline-block
+                  .card.card--well.d-inline-block
                     .card__content
                       +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
 

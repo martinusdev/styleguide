@@ -83,7 +83,7 @@ include ./../mixins/icon
 
             article.card.card--success.mb-small.mb-m-medium
               .card__content
-                .d-flex.align-items-middle.align-items-justify.mb-tiny.mb-m-small
+                .d-flex.align-items-center.justify-content-between.mb-tiny.mb-m-small
                   h3.text-color-success.text-semibold.mb-none Do košíka ste práve pridali:
                   button.btn.btn--clean.mb-none(data-toggle="#checkout-notice")
                     +icon('close').icon--medium.icon--right
@@ -131,14 +131,14 @@ include ./../mixins/icon
             .card.hide
               .card__content.pb-none
                 h5 Zákazníci si kúpili aj...
-                .bar.bar--small.mb-small.align-items-bottom
+                .bar.bar--small.mb-small.align-items-end
                   each item, index in books
                     if index < 3
                       .bar__item.bar__item--fill
                         +product().mb-small
-                          +productCover({cover: item.cover, size: 'medium', href: '#'}).inline-block
+                          +productCover({cover: item.cover, size: 'medium', href: '#'}).d-inline-block
                           +productTitle({title: item.title, author: item.author, href: '#', small: true}).mb-none
-                          .bar.mb-none.align-items-center
+                          .bar.mb-none.justify-content-center
                             .bar__item
                               .text-medium.text-semibold 149,50&nbsp;€
                             .bar__item
@@ -163,9 +163,9 @@ include ./../mixins/icon
                       each item, index in books
                         .swiper-slide
                           +product().mb-small
-                            +productCover({cover: item.cover, size: 'medium', href: '#'}).inline-block
+                            +productCover({cover: item.cover, size: 'medium', href: '#'}).d-inline-block
                             +productTitle({title: item.title, author: item.author, href: '#', small: true}).mb-none
-                            .bar.mb-none.align-items-center.bar--no-wrap
+                            .bar.mb-none.justify-content-center.bar--no-wrap
                               .bar__item.mr-small
                                 .text-medium.text-semibold 19,50&nbsp;€
                               .bar__item.mr-none
@@ -186,19 +186,19 @@ include ./../mixins/icon
                   .bar__item
                     span.text-size-medium 30 €
 
-                .bar.align-items-bottom.mb-none
+                .bar.align-items-end.mb-none
                   .bar__item Spolu
                   .bar__item.bar__item--fill.text-right
                     h1 21,77 €
 
-                .bar.align-items-bottom.text-color-grey.text-size-medium
+                .bar.align-items-end.text-color-grey.text-size-medium
                   .bar__item.bar__item--fill.text-right U nás ušetríte 2,00 €
 
                 .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-small
                   a(href="#").btn.btn--ghost Ísť do košíka
                   a(href="#").btn.btn--primary Objednať teraz
 
-                .flex.align-items-middle.mb-none
+                .d-flex.align-items-center.mb-none
                   button.btn.btn--success.btn--medium.mb-none.is-consent-show-m.flex-fill.mr-tiny(data-toggle='#quick-checkout')
                     +icon('fwd').icon--left.icon--medium
                     | Zrýchlený nákup

@@ -24,7 +24,7 @@
 
       p {
         margin-top: 0;
-        margin-bottom: _get-space('v');
+        margin-bottom: _get-space();
         line-height: map-get($values, base-line-height);
       }
 
@@ -213,18 +213,18 @@ hr {
   }
 
   .list--no-offset {
-    padding-left: _get-space('h');
+    padding-left: _get-space();
     list-style-position: outside;
   }
 
   .list--expanded {
     li {
-      margin-bottom: _get-space('v', 'small');
+      margin-bottom: _get-space('small');
       &:last-child { margin-bottom: 0; }
 
       > ul,
       > ol {
-        margin-top: _get-space('v', 'small');
+        margin-top: _get-space('small');
       }
     }
   }
@@ -243,7 +243,7 @@ hr {
 
   .list-inline--offset {
     > li {
-      &:last-child { margin-right: _get-space('h'); }
+      &:last-child { margin-right: _get-space(); }
     }
   }
 
@@ -282,7 +282,7 @@ hr {
       @include css-map($inline-list-item, 'bulleted');
 
       &:not(:last-child)::after {
-        margin-left: _get-space('h', 'tiny');
+        margin-left: _get-space('tiny');
         content: '•';
         color: $text-color-grey;
       }
@@ -323,7 +323,7 @@ hr {
 
     dt {
       clear: both;
-      margin-right: _get-space('v', 'small');
+      margin-right: _get-space('small');
     }
   }
 

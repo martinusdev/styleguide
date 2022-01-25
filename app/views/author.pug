@@ -44,7 +44,7 @@ block content
             .row
               .col--12
                 .bar
-                  .bar__item.flex.align-items-middle
+                  .bar__item.d-flex.align-items-center
                     +icon('star', 'icon--medium').text-color-yellow
                     span.h2.text-bold.ml-small 4,5
                   .bar__item.bar__item--shrinkable
@@ -68,18 +68,18 @@ block content
     section.section
       .wrapper-main
         h2.mb-large Všetky knihy autora
-        .row.align-items-bottom(data-equal-columns)
+        .row.align-items-end(data-equal-columns)
           -
             let count = 0;
           each item, index in [...books, ...books, ...books, ...books]
-            .col--6.col--s-4.col--m-3.col--l-2.mb-large.flex.flex-column.align-items-right(data-equal-column).column-label
+            .col--6.col--s-4.col--m-3.col--l-2.mb-large.d-flex.flex-column.justify-content-end(data-equal-column).column-label
               .column-label__content
                 if (index % 5 == 0)
                   h3= 2018 - count
                   -
                     count++
-              .align-self-middle
-                +product({size: 'large'}).mb-small.text-left.inline-block
+              .align-self-center
+                +product({size: 'large'}).mb-small.text-left.d-inline-block
                   +productCover({cover: item.cover, href: '#'})
                   +productTitle({title: item.title, author: item.author, href: '#'})
                   +productBuy()

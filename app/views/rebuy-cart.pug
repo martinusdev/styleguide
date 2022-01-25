@@ -10,15 +10,15 @@ block opts
     - const pageClass = 'bg-secondary';
 
 mixin groupItem2(name, id, details, inline, cena)
-  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
+  .bar.align-items-center.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
     .bar__item.bar__item--fill.mb-m-small.mt-none.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.m-none
-          a.text-semibold.text-medium.inline-block.link=name
+          a.text-semibold.text-medium.d-inline-block.link=name
           | #{' '}
           span.text-medium.text-color-grey(class=inline ? 'show-m' : '')=details
           //a.link.link--product Základy rybolovu pro kluky a holky
-          .inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
+          .d-inline-block.text-size-small(class=inline ? 'hide-m' : 'hide')
             if id == 0
               span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
@@ -109,7 +109,7 @@ block content
                                   img.img(src=`${assetsPrefix}${item.cover}`)
                             .cart-item__content
                               .cart-item__column.cart-item__column--product-name
-                                a.text-semibold.m-none.block.link.link--product.line-medium(href="detail-knihy.html")
+                                a.text-semibold.m-none.d-block.link.link--product.line-medium(href="detail-knihy.html")
                                   +xmas({type: 'icon'}).mr-tiny
                                   =item.title
                                 ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
@@ -147,7 +147,7 @@ block content
                             img.img(src=`${assetsPrefix}${item.cover}`)
                       .cart-item__content
                         .cart-item__column.cart-item__column--product-name
-                          a.text-semibold.m-none.block.link.link--product.line-medium(href="detail-knihy.html")
+                          a.text-semibold.m-none.d-block.link.link--product.line-medium(href="detail-knihy.html")
                             +xmas({type: 'icon'}).mr-tiny
                             =item.title
                           ul.list-inline.list-inline--delimited.text-color-grey.text-size-small.mb-small
@@ -167,7 +167,7 @@ block content
                         .cart-item__column.cart-item__column--remove
                           button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
                             +icon('trash', 'icon--medium')
-                li.list__item.align-items-bottom.mt-small
+                li.list__item.align-items-end.mt-small
                   .list__item__section.list__item__section--primary.text-right
                     span.h3 Spolu
                   .list__item__section.list__item__section--secondary

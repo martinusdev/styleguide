@@ -37,7 +37,7 @@ block content
   main
     section.section.bg-yellow.pt-medium.kp-process-background
       .wrapper-main
-        .row.align-items-middle.mb-medium
+        .row.align-items-center.mb-medium
           .col--s-5.col--l-3
             block logo
               a(href="campaign-pomocnik.html")
@@ -72,12 +72,12 @@ block content
             - i++
             .col--s-6.col--l-4.mb-medium
               input(type="radio", id=`check-${i}`, name="for-whom").kp-checkbox.visually-hidden
-              label(for=`check-${i}`).btn.btn--carousel.kp-label.pt-small.pb-small.flex.align-items-center.align-items-middle.mb-none
+              label(for=`check-${i}`).btn.btn--carousel.kp-label.pt-small.pb-small.d-flex.justify-content-center.align-items-center.mb-none
                 +icon(category.icon).text-color-primary-light.icon--xlarge.mr-small
                 span.h3.mb-none
                   =category.title
 
-        .flex.align-items-center.align-items-middle.mt-large
+        .d-flex.justify-content-center.align-items-center.mt-large
           button.btn.btn-full.btn--icon-left.mb-none
             +icon('chevron-left').icon--medium
             | Naspäť

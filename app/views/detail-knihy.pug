@@ -207,7 +207,7 @@ block content
                       a.link(href="#") Rybolov
                 .bar__item.bar__item--border
                 .bar__item.bar__item--fill
-                  .bar.bar--small.align-items-top.mb-none
+                  .bar.bar--small.align-items-start.mb-none
                     .bar__item
                       .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
                     .bar__item.bar__item--fill
@@ -625,10 +625,10 @@ block content
 
                 .card.card--well.mb-large
                   .card__content
-                    .row.align-items-center.align-items-middle
+                    .row.justify-content-center.align-items-center
                       .col--l-7.text-center
                         p.mb-small Ako sa vám páčila kniha?
-                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.m-l-none(data-stars)
+                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-center.mb-small.m-l-none(data-stars)
                           - for (var abc = 0; abc<5; abc++)
                             input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
                             label.radiocheck__label.ml-none.rating-star__item(for="review-rating-"+abc)
@@ -645,14 +645,14 @@ block content
                         .h4.mb-medium Máte chvíľu čas? Napíšte recenziu
                         include ./modules/review-form
 
-                .row.align-items-center.align-items-middle.book-rating.mb-large
+                .row.justify-content-center.align-items-center.book-rating.mb-large
                   .col--l-5
                     .rating-text.text-center
                       .rating-text__value
                         span.text-bold 4,7
                         span.text-color-grey  / 5
                         p.text-medium.text-color-grey.mb-small 1024 hodnotení
-                    .rating-star.align-items-center.mb-medium.no-mb-l
+                    .rating-star.justify-content-center.mb-medium.no-mb-l
                       +icon('star').rating-star__item.icon--large.is-active
                       +icon('star').rating-star__item.icon--large.is-active
                       +icon('star').rating-star__item.icon--large.is-active
@@ -704,7 +704,7 @@ block content
                         .product-read-more.mb-small
                           a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-1, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
                             +icon('arrow-down')
-                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.mb-none
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-center.mb-none
                           button.btn.btn--clean.mr-none
                             +icon('react').icon--left.icon--medium
                             | Reagovať
@@ -738,7 +738,7 @@ block content
                         .product-read-more.mb-small
                           a.link.text-size-medium(href="javascript:void(0)", data-toggle="#user-review-2, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
                             +icon('arrow-down')
-                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-middle.mb-none
+                        footer.review__footer.btn-layout.btn-layout--horizontal.align-items-center.mb-none
                           button.btn.btn--clean.mr-none
                             +icon('react').icon--left.icon--medium
                             | Reagovať
@@ -895,10 +895,10 @@ block content
             .btn.btn--clean(data-toggle="#add-review-modal")
               +icon('close').icon--medium
         .modal__content.bg-secondary
-          .row.align-items-center.align-items-middle
+          .row.justify-content-center.align-items-center
             .col--l-7.text-center
               p.mb-small Ako sa vám páčila kniha?
-              #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.align-items-center.mb-small.m-l-none.checked(data-stars)
+              #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-center.mb-small.m-l-none.checked(data-stars)
                 - for (var abc = 0; abc<5; abc++)
                   input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + abc)
                   label.radiocheck__label.ml-none.rating-star__item(for="review-rating-" + abc)
@@ -940,7 +940,7 @@ block content
                   .form-label
                     label.text-transform-upper.text-small.text-color-grey.form-label--required E-mail
                   input.input(type="email", placeholder="Váš email")
-          .btn-layout--horizontal.align-items-center
+          .btn-layout--horizontal.justify-content-center
             button.btn.btn--ghost(type="button" data-toggle="#add-review-modal") Zrušiť
             button.btn(type="button" data-toggle="#flag-review") Odoslať recenziu
           .text-small.text-center Odoslaním príspevku súhlasíte s našimi#{' '}
@@ -966,7 +966,7 @@ block append tooltips
         .bar__item
           a.h3.link Darina Dobrovská
         .bar__item.bar__item--fill
-          .bar.mb-none.align-items-right
+          .bar.mb-none.justify-content-end
             .bar__item
               button.btn.btn--clean
                 +icon('eye', 'icon--medium').icon--left.text-color-grey
@@ -974,7 +974,7 @@ block append tooltips
               button.btn.btn--small.mb-none.btn--clean
                 +icon('check-circle').icon--small.icon--left
                 | #{' '}Sledované
-      .row.align-items-top
+      .row.align-items-start
         .col--2.col--m-3
           .portrait(style="background-image: url('images/content/avatars/f.jpg');")
         .col--10.col--m-9.pl-none

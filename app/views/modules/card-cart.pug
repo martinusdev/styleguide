@@ -63,7 +63,7 @@ mixin addTo2(props = {})
                 .bar__item.mr-none
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
                     +icon('chevron-left', 'icon--medium', 'Naspäť')
-                .bar__item.align-self-center.text-center.text-nowrap
+                .bar__item.mx-auto.text-center.text-nowrap
                   | Nový zoznam
                 .bar__item
                   button.btn.btn--clean.btn--small(data-toggle=`#wishlist-add-item-${id}, #my-library-dropdown-${id}`)
@@ -106,12 +106,12 @@ mixin addTo2(props = {})
     li.tab-nav__item.flex-noshrink(data-tabs-item)
       a.tab-nav__content.tab-nav__content--card(href='#web' role="tab")
         span.tab-nav__content-wrap
-          span.block.text-ellipsis Na webe
+          span.d-block.text-ellipsis Na webe
           span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
     li.tab-nav__item(data-tabs-item)
       a.tab-nav__content.tab-nav__content--card(href='#shop' role="tab")
         span.tab-nav__content-wrap.text-nowrap
-          span.block.text-ellipsis Odložiť v kníhkupectve
+          span.d-block.text-ellipsis Odložiť v kníhkupectve
           span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
 
   .tabs
@@ -127,7 +127,7 @@ mixin addTo2(props = {})
                 span.show-m Bežná cena#{' '}
                 span.hide-m Bežne#{' '}
                 span.text-strikethrough 15,42 €
-              .badges.badges--inline.align-items-center.mb-none
+              .badges.badges--inline.justify-content-center.mb-none
                 .badge.badge--primary Ušetríte 3,50 €
 
         .card__content
@@ -155,7 +155,7 @@ mixin addTo2(props = {})
                 | Vložiť do košíka
 
             if (pageTitle == 'Detail knihy 2')
-              .flex.align-items-middle.is-consent-show-m
+              .d-flex.align-items-center.is-consent-show-m
                 button.btn.btn--success.btn--medium.mb-none.flex-fill.mr-tiny(data-toggle='#quick-checkout')
                   +icon('fwd').icon--left.icon--medium
                   | Zrýchlený nákup
@@ -170,7 +170,7 @@ mixin addTo2(props = {})
           .h1.price-box__price 13,90 €
 
         .card__content
-          .form-control.form-control--select.align-items-center.m-none
+          .form-control.form-control--select.justify-content-center.m-none
             select#store-list-select.store-list-select.select--ghost.select--store.select--lowercase(data-select-store, data-select-small, data-autocomplete, data-select-position="bottom")
 
           .mb-tiny

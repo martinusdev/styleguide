@@ -121,7 +121,7 @@ mixin megaMenuContent(props = {})
             ul.list--expanded.p-none.mb-none.mega-menu__recommended__links
               each link in additionalLinks
                 li
-                  a.flex.align-items-middle.link.link--black(href='#')
+                  a.d-flex.align-items-center.link.link--black(href='#')
                     if link.icon
                       +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
                     =link.title
@@ -129,7 +129,7 @@ mixin megaMenuContent(props = {})
         .row.mx-none.mb-m-medium
           each category in categories
             .col.col--m-4.col--12.mega-menu__categories__category
-              a(href="#").flex.align-items-middle.pt-small.pb-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none
+              a(href="#").d-flex.align-items-center.pt-small.pb-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none
                 .mr-tiny.mega-menu__categories__icon
                   if category.icon.startsWith('fa-')
                     i.text-color-primary.fa-fw.fal(class= category.icon)
@@ -140,15 +140,15 @@ mixin megaMenuContent(props = {})
                 ul.mega-menu__categories__subcategories.text-medium.show-m.mt-tiny.mb-small
                   each item in category.entries
                     li.mb-none
-                      a.pt-tiny.pb-tiny.block.link.link--black(href='#')= item
+                      a.pt-tiny.pb-tiny.d-block.link.link--black(href='#')= item
                   li
-                    a.block.mt-tiny.link.link--grey(href='#')
+                    a.d-block.mt-tiny.link.link--grey(href='#')
                       | + Ďalšie kategórie
         if recommended
           .row.mx-none.mt-l-large.mb-medium
             each group, i in recommended
               .col.col--l-6.mt-medium
-                .block.mb-tiny.text-transform-upper.text-size-small.m-none= group.title
+                .d-block.mb-tiny.text-transform-upper.text-size-small.m-none= group.title
                 ul.list-inline.list-inline--bulleted.text-size-small.p-none.mb-none
                   each item in group.entries
                     li

@@ -1,8 +1,8 @@
 $alerts: (
   default: (
     default: (
-      margin-bottom: _get-space('v'),
-      padding: _get-space('v', 'small') _get-space('h', 'small'),
+      margin-bottom: _get-space(),
+      padding: _get-space('small') _get-space('small'),
       background-color: _color(info),
       color: $color-white,
       font-size: $font-size-medium,
@@ -64,12 +64,12 @@ $alerts: (
 
   &__icon {
     flex: 0 0 auto;
-    margin-right: _get-space('h', 'small');
+    margin-right: _get-space('small');
   }
 
   &__loader {
     flex: 0 0 auto;
-    margin-right: _get-space('h', 'small');
+    margin-right: _get-space('small');
   }
 
   &__content {
@@ -79,7 +79,7 @@ $alerts: (
   &__action {
     flex: 0 0 auto;
     align-self: flex-start;
-    margin-left: _get-space('h', 'small');
+    margin-left: _get-space('small');
 
     .btn {
       color: _color(grey, 800);
@@ -142,7 +142,7 @@ $alerts: (
 
   max-width: 640px;
 
-  padding: 0 _get-space('h');
+  padding: 0 _get-space();
 
   @include breakpoint('m') {
     left: 50%;

@@ -31,18 +31,18 @@ block content
 
     section.section
       .wrapper-main
-        .row.align-items-middle
+        .row.align-items-center
           .col--12.col--m-3
             h1.mb-medium Bestsellery
           .col--12.col--m-6.mb-medium.mb-m-none
-            .bar.mb-none.align-items-center.show-m
+            .bar.mb-none.justify-content-center.show-m
               each item, i in menu
                 .bar__item.text-center
                   a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
                     .card__content
                       +icon(`products-${item.icon}`).icon--xlarge.text-color-grey
                       .h3.mb-none= item.title
-            .bar.mb-none.align-items-center.hide-m
+            .bar.mb-none.justify-content-center.hide-m
               each item, i in menu
                 .bar__item.text-center
                   a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
@@ -129,7 +129,7 @@ block content
                     .bar__item
                       a.link.text-medium(href="#") Kristína Nemilá
                     .bar__item
-                      .rating-star.align-items-center
+                      .rating-star.justify-content-center
                         each star, starIndex in Array(5)
                           +icon('star').rating-star__item.icon--large.is-active
 

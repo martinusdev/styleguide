@@ -31,18 +31,18 @@ block content
 
     section.section
       .wrapper-main
-        .row.align-items-middle
+        .row.align-items-center
           .col--12.col--m-3
             h1.mb-medium Bestsellery
           .col--12.col--m-6.mb-medium.mb-m-none
-            .bar.mb-none.align-items-center.show-m
+            .bar.mb-none.justify-content-center.show-m
               each item, i in menu
                 .bar__item.text-center
                   a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
                     .card__content
                       +icon(`products-${item.icon}`).icon--xlarge.text-color-grey
                       .h3.mb-none= item.title
-            .bar.mb-none.align-items-center.hide-m
+            .bar.mb-none.justify-content-center.hide-m
               each item, i in menu
                 .bar__item.text-center
                   a.card.card--clickable(class=i < 1 ? 'bg-blue' : '')
@@ -72,12 +72,12 @@ block content
       .wrapper-main
         .row.mb-large
           each item, i in Array(3)
-            .col--m-4.flex
+            .col--m-4.d-flex
               .card.card--material.w-100
                 img.book-flag.book-flag--medium-large(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: 0px;")
                 .card__content.flex-fill
                   .h0.text-color-grey-dark(style="position:absolute;")= i+1
-                  .bar.align-items-center
+                  .bar.justify-content-center
                     .bar__item
                       +product().mb-none
                         +productCover({
@@ -112,7 +112,7 @@ block content
 
                 .card__content.flex-shrinkable
 
-                  .bar.align-items-middle.bar--vertical
+                  .bar.align-items-center.bar--vertical
                     .bar__item.mb-none
                       .bar.bar--small.bar--no-wrap.mb-small
                         .bar__item.m-none

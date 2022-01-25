@@ -7,7 +7,7 @@ mixin kioskFeatured
   .row.mb-none
     - for (var i = 0; i<2; i++)
       .col--m-6
-        .bar.align-items-top.mb-none
+        .bar.align-items-start.mb-none
           .bar__item.bar__item--shrinkable
             .thumbnail.thumbnail--book.thumbnail--large(data-toggle="#product-preview")
               .thumbnail__img-wrap
@@ -27,7 +27,7 @@ mixin kioskFeatured
                 span.text-semibold.text-medium Callie Krueger
                 .text-small Kníhkupec
               .bar__item
-                .rating-star.bar__item.align-items-center.m-none
+                .rating-star.bar__item.justify-content-center.m-none
                   each star, starIndex in Array(5)
                     +icon('star').rating-star__item.icon--large.is-active
 
@@ -113,9 +113,9 @@ html.no-js
 
       footer.footer
         .wrapper-main
-          section.row.align-items-middle.mb-medium
+          section.row.align-items-center.mb-medium
             .col--l-7
-              .bar.bar--small.mb-medium.footer__copy.align-items-middle
+              .bar.bar--small.mb-medium.footer__copy.align-items-center
                 .bar__item
                   img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
                 .bar__item.bar__item--fill &copy; 2000-2019 Martinus. Všetky práva vyhradené.
@@ -137,9 +137,9 @@ html.no-js
                       br
                       | Skúste prosím zmeniť vyhľadávaný výraz.
                 each item, index in [...books, ...books]
-                  .inline-block(style="width: 120px;")
+                  .d-inline-block(style="width: 120px;")
                     +product().mb-small
-                      +productCover({cover: item.cover, size: 'medium-large', href: 'kiosk-detail.html'}).inline-block
+                      +productCover({cover: item.cover, size: 'medium-large', href: 'kiosk-detail.html'}).d-inline-block
                       .product__title
                         p.text-semibold.m-none.text-ellipsis.text-size-medium.link--product
                           a.link.link--product(href='kiosk-detail.html')= item.title

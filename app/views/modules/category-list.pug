@@ -18,15 +18,15 @@ mixin itemGroup(id)
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
 mixin groupItem(name, id, publisher, xmasmode)
-  .bar.align-items-middle.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
+  .bar.align-items-center.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
     .bar__item.bar__item--fill.mb-m-small.mt-none.no-mrg-horizontal--m-down
       .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
         .bar__item.m-none
-          a.text-semibold.text-medium.inline-block.link=name
+          a.text-semibold.text-medium.d-inline-block.link=name
           | #{' '}
           span.text-medium.text-color-grey.show-m=publisher
           //a.link.link--product Základy rybolovu pro kluky a holky
-          .inline-block.hide-m.text-size-small
+          .d-inline-block.hide-m.text-size-small
             if id == 0
               span.text-color-success.mr-tiny Na sklade
               span.text-color-blue Novinka
@@ -260,7 +260,7 @@ section.section
             .carousel-lite__container.mj-carousel__scroll
               .carousel-lite__wrapper.mj-carousel__content.align-items-stretch
                 each item, i in menu
-                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").mr-small.flex.align-items-middle
+                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").mr-small.d-flex.align-items-center
                     i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.mr-small
                     span.link.line-small= item.title
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev(style="left: 10px;")
@@ -293,7 +293,7 @@ section.section
                     option(value="ba-obchodna") Bratislava, Obchodná
                     option(value="ba-obchodna") Bratislava, Obchodná
                     option(value="ba-obchodna") Bratislava, Obchodná
-            .hide-l.align-items-bottom.flex.flex-1
+            .hide-l.align-items-end.d-flex.flex-1
               .btn-layout.btn-layout--vertical.mb-none
                 button.btn Zoradiť
 
@@ -567,7 +567,7 @@ section.section
                           +icon('cart').icon--left.icon--medium
                           span.text-semibold Vložiť do košíka
 
-        +pagination.align-items-center.mb-large
+        +pagination.justify-content-center.mb-large
 
 block append scripts
   script.
