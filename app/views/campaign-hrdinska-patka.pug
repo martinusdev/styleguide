@@ -17,10 +17,10 @@ block tab
     .wrapper-main.overflow-scroll-x.py-small
       nav.h5-days
         a.is-done 7.3.
-        a.is-done 8.3.
-        a.is-active 9.3.
-        a 10.3.
-        a 11.3.
+        a(data-day=2).is-done 8.3.
+        a(data-day=3).is-active 9.3.
+        a(data-day=4) 10.3.
+        a(data-day=5) 11.3.
         a 14.3.
         a 15.3.
         a 16.3.
@@ -36,7 +36,7 @@ block tab
         a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 30.3.") 30.3.
         a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 31.3.") 31.3.
         a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 1.4.") 1.4.
-  .bg-violet
+  .h5-wrap.h5-wrap--1
     .wrapper-main.text-center.py-large
       block gameAnswer
         h2.text-color-white.mb-small Dnes hádaš NÁZOV DIELA
@@ -47,3 +47,21 @@ block tab
                 input.input(type="text", placeholder="Sem napíš svoju odpoveď…")
                 .input-addons__item.p-none
                   a(href='campaign-hrdinska-patka-answer.html').btn.btn--primary.px-small Hádať
+    .h5-background
+      .wrapper-main
+        | Hello world<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+  script.
+    document.querySelectorAll('.h5-days a')
+      .forEach(el => {
+        el.addEventListener('click', function (/** Event **/ ev) {
+          const day = ev.currentTarget.dataset.day ?? 1;
+          changeDay(day)
+        })
+      })
+    function changeDay(day) {
+      const finalClass = `h5-wrap h5-wrap--${day}`;
+      const wrapper = document.querySelector('.h5-wrap');
+      wrapper.className = finalClass;
+    }
+
