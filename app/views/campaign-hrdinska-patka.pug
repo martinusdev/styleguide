@@ -1,0 +1,25 @@
+extends campaign-hrdinska-patka-layout
+
+block tab
+  section.section.section--small.pt-none
+    .wrapper-main.overflow-scroll-x
+      ul.tab-nav
+        li.tab-nav__item.is-active
+          a.tab-nav__content.tab-nav__content--link(href='campaign-hrdinska-patka.html')
+            .tab-nav__content-wrap Hra
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-hrdinska-patka-pribeh.html')
+            .tab-nav__content-wrap Príbeh
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-hrdinska-patka-pravidla.html')
+            .tab-nav__content-wrap Pravidlá
+  .bg-black
+    .wrapper-main.overflow-scroll-x.py-small
+      nav.h5-days
+        a.is-done 7.3.
+        a.is-done 8.3.
+        a.is-active 9.3.
+        a 10.3.
+        a 11.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 10.3.") 10.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 10.3.") 11.3.

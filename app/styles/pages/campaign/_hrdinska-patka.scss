@@ -1,0 +1,46 @@
+.h5-logo {
+  width: 100px;
+}
+
+.h5-days {
+  a {
+    font-size: $font-size-regular;
+    font-weight: $font-weight-semibold;
+    width: _get_rem(40px);
+    height: _get-rem(40px);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: _color(red);
+    margin-right: _get-space(tiny);
+    color: _color(white);
+
+    &.is-active {
+      background: _color(white);
+      color: _color(black);
+    }
+
+    &.is-done {
+      background: _color(green);
+    }
+
+    &.is-inactive {
+      background: _color(red, 700);
+      color: rgba(255, 255, 255, 0.5);
+      cursor: not-allowed;
+    }
+  }
+}
+
+@include breakpoint('m') {
+  .h5-logo {
+    width: 200px;
+  }
+
+  .h5-days {
+    a {
+      margin-right: _get-space(small);
+    }
+  }
+}

@@ -1,0 +1,174 @@
+extends layouts/_default
+
+block head
+  link(rel="stylesheet", href=`${assetsPrefix}styles/campaigns.css`)
+
+block opts
+  - var pageTitle = 'Hrdinská päťka'
+  - var campaignHeader = true
+  - var pageClass = 'ks-page'
+  - var headerWarningActive = false
+  -
+    const days = [
+      {
+        date: '7.3.',
+        hero: 'swan',
+        done: true,
+        available: true,
+      },
+      {
+        date: '8.3.',
+        hero: 'anastasia',
+        done: false,
+        available: true,
+      },
+      {
+        date: '9.3.',
+        hero: 'tarzan',
+        done: false,
+        available: true,
+      },
+      {
+        date: '10.3.',
+        hero: 'storocny-starcek',
+        done: false,
+        available: true,
+      },
+      {
+        date: '11.3.',
+        hero: 'mrakoplas',
+        done: false,
+        available: true,
+      },
+      {
+        date: '14.3.',
+        hero: 'robin-hood',
+        done: false,
+        available: true,
+      },
+      {
+        date: '15.3.',
+        hero: 'sauron',
+        done: false,
+        available: true,
+      },
+      {
+        date: '16.3.',
+        hero: 'ent',
+        done: false,
+        available: true,
+      },
+      {
+        date: '17.3.',
+        hero: 'hook',
+        done: false,
+        available: true,
+      },
+      {
+        date: '18.3.',
+        hero: 'snehovakralovna',
+        done: false,
+        available: true,
+      },
+      {
+        date: '21.3.',
+        hero: 'it',
+        done: false,
+        available: true,
+      },
+      {
+        date: '22.3.',
+        hero: 'babicka',
+        done: false,
+        available: true,
+      },
+      {
+        date: '23.3.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+      {
+        date: '24.3.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+      {
+        date: '25.3.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+      {
+        date: '28.3.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+      {
+        date: '29.3.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+      {
+        date: '30.3.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+      {
+        date: '31.3.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+      {
+        date: '1.4.',
+        hero: '',
+        done: false,
+        available: false,
+      },
+    ]
+
+block campaignHeaderContent
+
+
+block content
+  main
+    section.section.text-color-white.bg-orange.py-small
+      .wrapper-main
+        .d-flex.align-items-center
+          img(src='images/content/campaign/hrdinska-patka/logo-sk.png').mr-medium.h5-logo
+          .d-block
+            h1.mb-small Zachráň príbehy od zabudnutia!
+            block authSection
+              button.btn.btn--primary.mb-none(data-toggle="#h5-modal-login") Prihlásiť sa
+    block tab
+
+  .modal-overlay#h5-modal-login(data-modal)
+    article.modal
+      .modal__wrap
+        .modal__header
+          .modal__header__headline
+            h2 Prihlásenie
+          .modal__header__action
+            .btn.btn--clean(data-toggle="#h5-modal-login")
+              +icon('close').icon--medium
+        .modal__content
+          form
+            .form-control.form-control--input
+              .input-addons
+                input.input(type="text", placeholder="Prosím, zadaj svoj e-mail…")
+                .input-addons__item.p-none
+                  a.btn.btn--primary(href="campaign-hrdinska-patka-auth.html")
+                    | Prihlásiť
+
+            a.btn.btn--medium.mb-small.btn-login.btn-fb#fb_login_after_error
+              +icon('facebook').icon--small.icon--left
+              | Prihlásiť sa cez Facebook
+
+            .text-color-grey
+              p Vyber si e-mail, ktorý bude tvojím prihlásením v Hrdinskej päťke. Okrem toho to bude náš kontakt v prípade výhry a budeme ti naň posielať aj informácie súvisiace so súťažou a jej priebehom. Z ich odberu sa môžeš kedykoľvek odhlásiť. Prečítaj si aj <a href="" class="link">podrobné pravidlá Hrdinskej päťky</a>.
+              p Viac informácii o ochrane osobných údajov u nás <a href="" class="link">nájdeš tu</a>.
