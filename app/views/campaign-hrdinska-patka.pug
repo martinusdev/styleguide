@@ -38,11 +38,12 @@ block tab
         a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 1.4.") 1.4.
   .bg-violet
     .wrapper-main.text-center.py-large
-      h2.text-color-white.mb-small Dnes hádaš NÁZOV DIELA
-      .row
-        .col--m-8.ofst--m-2
-          .form-control.form-control--input.mb-none
-            .input-addons
-              input.input(type="text", placeholder="Sem napíš svoju odpoveď…")
-              .input-addons__item.p-none
-                button.btn.btn--primary.px-small Hádať
+      block gameAnswer
+        h2.text-color-white.mb-small Dnes hádaš NÁZOV DIELA
+        .row
+          .col--m-8.ofst--m-2
+            .form-control.form-control--input.mb-none
+              .input-addons
+                input.input(type="text", placeholder="Sem napíš svoju odpoveď…")
+                .input-addons__item.p-none
+                  a(href='campaign-hrdinska-patka-answer.html').btn.btn--primary.px-small Hádať
