@@ -8,129 +8,6 @@ block opts
   - var campaignHeader = true
   - var pageClass = 'ks-page'
   - var headerWarningActive = false
-  -
-    const days = [
-      {
-        date: '7.3.',
-        hero: 'swan',
-        done: true,
-        available: true,
-      },
-      {
-        date: '8.3.',
-        hero: 'anastasia',
-        done: false,
-        available: true,
-      },
-      {
-        date: '9.3.',
-        hero: 'tarzan',
-        done: false,
-        available: true,
-      },
-      {
-        date: '10.3.',
-        hero: 'storocny-starcek',
-        done: false,
-        available: true,
-      },
-      {
-        date: '11.3.',
-        hero: 'mrakoplas',
-        done: false,
-        available: true,
-      },
-      {
-        date: '14.3.',
-        hero: 'robin-hood',
-        done: false,
-        available: true,
-      },
-      {
-        date: '15.3.',
-        hero: 'sauron',
-        done: false,
-        available: true,
-      },
-      {
-        date: '16.3.',
-        hero: 'ent',
-        done: false,
-        available: true,
-      },
-      {
-        date: '17.3.',
-        hero: 'hook',
-        done: false,
-        available: true,
-      },
-      {
-        date: '18.3.',
-        hero: 'snehovakralovna',
-        done: false,
-        available: true,
-      },
-      {
-        date: '21.3.',
-        hero: 'it',
-        done: false,
-        available: true,
-      },
-      {
-        date: '22.3.',
-        hero: 'babicka',
-        done: false,
-        available: true,
-      },
-      {
-        date: '23.3.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-      {
-        date: '24.3.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-      {
-        date: '25.3.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-      {
-        date: '28.3.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-      {
-        date: '29.3.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-      {
-        date: '30.3.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-      {
-        date: '31.3.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-      {
-        date: '1.4.',
-        hero: '',
-        done: false,
-        available: false,
-      },
-    ]
 
 block campaignHeaderContent
 
@@ -139,12 +16,13 @@ block content
   main
     section.section.text-color-white.bg-orange.py-small
       .wrapper-main
-        .d-flex.align-items-center
-          img(src='images/content/campaign/hrdinska-patka/logo-sk.png').mr-medium.h5-logo
-          .d-block
+        .d-flex.align-items-center.flex-column.flex-m-row
+          img(src='images/content/campaign/hrdinska-patka/logo-sk.png').mr-m-medium.h5-logo
+          .d-flex.flex-column.align-items-center.align-items-m-start
             h1.mb-small Zachráň príbehy od zabudnutia!
             block authSection
               button.btn.btn--primary.mb-none(data-toggle="#h5-modal-login") Prihlásiť sa
+          block gameStats
     block tab
 
   .modal-overlay#h5-modal-login(data-modal)
