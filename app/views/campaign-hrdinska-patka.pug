@@ -48,8 +48,41 @@ block tab
                 .input-addons__item.p-none
                   a(href='campaign-hrdinska-patka-answer.html').btn.btn--primary.px-small Hádať
     .h5-background
-      .wrapper-main
-        | Hello world<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      .wrapper-main.h5-carousel
+        -
+          const swiperConfig = {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            centeredSlides: true,
+            pagination: {
+              el: '.swiper-pagination',
+              type: 'bullets',
+            },
+            breakpoints: {
+              640: {
+                slidesPerView: 3,
+                centeredSlides: false,
+                simulateTouch: false,
+              },
+              960: {
+                slidesPerView: 4,
+                centeredSlides: false,
+                simulateTouch: false,
+              }
+            },
+          };
+        .swiper-container(data-swiper-options=swiperConfig)
+          .swiper-wrapper
+            for hero in ['julia', 'vlk', 'forrest', 'psik']
+              .swiper-slide
+                img(
+                  src=`images/content/campaign/hrdinska-patka/heroes/${hero}.png`,
+                  srcset=`images/content/campaign/hrdinska-patka/heroes/${hero}@2x.png 2x`,
+                  title='Test',
+                  data-tooltip,
+                  data-show-on-create='true',
+                )
+          .swiper-pagination
 
   script.
     document.querySelectorAll('.h5-days a')

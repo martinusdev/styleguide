@@ -34,9 +34,22 @@
 }
 
 .h5-background {
-  height: 630px;
-  background-size: cover;
+  min-height: 630px;
+  background-size: initial;
+  background-position: center bottom;
   background-repeat: no-repeat;
+}
+
+.h5-carousel {
+
+  @include breakpoint('m', downfrom) {
+    margin-right: -1.25rem;
+    margin-left: -1.25rem;
+  }
+
+  .swiper-slide {
+    max-width: 80%;
+  }
 }
 
 .h5-wrap {

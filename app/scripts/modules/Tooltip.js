@@ -38,14 +38,21 @@ export default class Tooltip {
     const targets = Array.from(document.querySelectorAll(this.selector));
     this.tooltips = targets.map(target => {
       const targetConfig = {};
+      const { showOnCreate } = target.dataset;
 
       // fetch html element to put in tooltip
-      const element = document.querySelector(target.getAttribute('data-html'));
+      const element = document.querySelector(target.dataset.html);
       if (element) {
         targetConfig.content = element.innerHTML;
       }
 
       targetConfig.allowHTML = true;
+
+      if (showOnCreate) {
+        targetConfig.showOnCreate = true;
+        targetConfig.trigger = 'manual';
+        targetConfig.hideOnClick = false;
+      }
 
       return tippy(target, { ...this.config, ...targetConfig });
     });
