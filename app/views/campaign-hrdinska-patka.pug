@@ -47,8 +47,8 @@ block tab
                 input.input(type="text", placeholder="Sem napíš svoju odpoveď…")
                 .input-addons__item.p-none
                   a(href='campaign-hrdinska-patka-answer.html').btn.btn--primary.px-small Hádať
-    .h5-background
-      .wrapper-main.h5-carousel
+    .h5-background.d-flex
+      .wrapper-main.h5-carousel.d-flex
         -
           const swiperConfig = {
             slidesPerView: 'auto',
@@ -71,16 +71,17 @@ block tab
               }
             },
           };
-        .swiper-container(data-swiper-options=swiperConfig)
+        .swiper-container(data-swiper-options=swiperConfig).d-flex.flex-1
           .swiper-wrapper
             for hero in ['julia', 'vlk', 'forrest', 'psik']
-              .swiper-slide
+              div(style="padding-bottom: 140px;").swiper-slide.d-flex.flex-column.align-items-center.justify-content-end
+                .card.card--arrowhead.card--arrowhead-bottom.w-100
+                  .card__content
+                    | Test
                 img(
                   src=`images/content/campaign/hrdinska-patka/heroes/${hero}.png`,
                   srcset=`images/content/campaign/hrdinska-patka/heroes/${hero}@2x.png 2x`,
                   title='Test',
-                  data-tooltip,
-                  data-show-on-create='true',
                 )
           .swiper-pagination
 
