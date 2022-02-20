@@ -38,6 +38,14 @@
   }
 }
 
+.bg-teal {
+  background-color: $teal-bg-color;
+}
+
+.bg-light-teal {
+  background-color: _color-shade($teal-bg-color, 400);
+}
+
 @each $variant, $color in $color-presets {
   .color-#{'' + $variant} {
     color: $color;
