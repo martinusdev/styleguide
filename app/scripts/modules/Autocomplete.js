@@ -52,7 +52,7 @@ const defaultTemplates = {
   author: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="flex">
+      <div class="d-flex">
         <div class="flex-shrinkable align-self-middle pr-none mr-small">
           <div class="author-photo no-pad">
             <div class="portrait portrait--medium" style="background-image: url('${value.image}');"></div>
@@ -68,7 +68,7 @@ const defaultTemplates = {
   item: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="flex">
+      <div class="d-flex">
         <div class="flex-shrinkable mr-small align-self-middle">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
@@ -89,7 +89,7 @@ const defaultTemplates = {
   book: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="flex">
+      <div class="d-flex">
         <div class="flex-shrinkable mr-small align-self-middle">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
@@ -107,7 +107,7 @@ const defaultTemplates = {
   collection: {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
-      <div class="flex">
+      <div class="d-flex">
         <div class="flex-shrinkable mr-small align-self-middle">
         <div class="product__cover collection">
           <div class="thumbnail thumbnail--book thumbnail--medium">
