@@ -43,12 +43,56 @@
 .h5-carousel {
 
   @include breakpoint('m', downfrom) {
-    margin-right: -1.25rem;
-    margin-left: -1.25rem;
+    padding-left: 0;
+    padding-right: 0;
+
+    .swiper-slide-next {
+      align-items: flex-start !important;
+    }
+
+    .swiper-slide-next,
+    .swiper-slide-prev {
+      .h5-hero-name {
+        opacity: 0;
+      }
+    }
   }
 
   .swiper-slide {
     max-width: 80%;
+    padding-bottom: 100px;
+
+    &.is-inactive {
+      .card {
+        opacity: 0.7;
+      }
+
+      img {
+        filter: brightness(50%);
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .h5-hero-name {
+    height: 40px;
+
+    h3 {
+      font-size: _get-rem(18px);
+    }
+
+    a {
+      color: _color(white);
+    }
+  }
+
+  .swiper-pagination-bullet-active,
+  .swiper-pagination-bullet {
+    background: _color(white);
+  }
+
+  .swiper-pagination-bullets {
+    bottom: _get-space();
   }
 }
 

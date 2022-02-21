@@ -73,16 +73,53 @@ block tab
           };
         .swiper-container(data-swiper-options=swiperConfig).d-flex.flex-1
           .swiper-wrapper
-            for hero in ['julia', 'vlk', 'forrest', 'psik']
-              div(style="padding-bottom: 140px;").swiper-slide.d-flex.flex-column.align-items-center.justify-content-end
-                .card.card--arrowhead.card--arrowhead-bottom.w-100
-                  .card__content
-                    | Test
+            -
+              const heroes = [
+                {
+                  id: 'julia',
+                  name: 'Júlia',
+                  link: 'Viac o Júlii',
+                  text: '<strong>Prvá indícia:</strong><br><i class="text-light">„Neznámy, čo prinášaš?<br>Letmý dotyk, a či objatie?<br>Tu v zlatavom poli,<br>čo čaká na zožatie.“</i>',
+                  active: true,
+                },
+                {
+                  id: 'vlk',
+                  name: 'Zlý vlk',
+                  link: 'Viac o Zlom vlkovi',
+                  text: '<strong>Druhá indícia:</strong><br><i>„Sorry, dnes sa mi veľmi nechcelo, tak tu je fotka.“</i><br><img src="https://picsum.photos/id/1073/300/150">',
+                  active: true,
+                },
+                {
+                  id: 'forrest',
+                  name: 'Forrest Gump',
+                  link: 'Viac o Forrestovi',
+                  text: '<strong>Tretia indícia:</strong><br>Pribudne o 15:00',
+                  active: false,
+                },
+                {
+                  id: 'psik',
+                  name: 'Montmorency',
+                  link: 'Viac o Montmorencym',
+                  text: '<strong>Tretia indícia:</strong><br>Pribudne o 19:00',
+                  active: false,
+                },
+              ]
+
+            for hero in heroes
+              div(class=hero.active ? '' : 'is-inactive').swiper-slide.d-flex.flex-column.align-items-center.justify-content-end
+                .card.card--arrowhead.card--arrowhead-bottom.w-100.mt-medium
+                  .card__content.text-center !{hero.text}
                 img(
-                  src=`images/content/campaign/hrdinska-patka/heroes/${hero}.png`,
-                  srcset=`images/content/campaign/hrdinska-patka/heroes/${hero}@2x.png 2x`,
+                  src=`images/content/campaign/hrdinska-patka/heroes/${hero.id}.png`,
+                  srcset=`images/content/campaign/hrdinska-patka/heroes/${hero.id}@2x.png 2x`,
                   title='Test',
                 )
+                .h5-hero-name.text-color-white.text-center.pt-medium
+                  h3.mb-none
+                    =hero.name
+                  a.btn.btn--clean
+                    +icon('info').mr-tiny
+                    =hero.link
           .swiper-pagination
 
   script.
