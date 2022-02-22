@@ -12,7 +12,7 @@
   top: 0;
   width: 110px;
 
-  @include breakpoint('m', downfrom) {
+  @include breakpoint('l', downfrom) {
     width: 50px;
     right: _get-rem(25px);
   }
@@ -22,6 +22,14 @@
   height: 320px;
   background: url('../images/content/campaign/hrdinska-patka/about-us/postavicky.jpg') no-repeat bottom center;
   background-size: contain;
+
+  &--rules {
+    background-image: url('../images/content/campaign/hrdinska-patka/rules/postavicky.jpg');
+
+    @include breakpoint('m', downfrom) {
+      height: 180px !important;
+    }
+  }
 
   @include breakpoint('m', downfrom) {
     height: 130px;
