@@ -81,6 +81,7 @@ block tab
                   link: 'Viac o Júlii',
                   text: '<strong>Prvá indícia:</strong><br><i class="text-light">„Neznámy, čo prinášaš?<br>Letmý dotyk, a či objatie?<br>Tu v zlatavom poli,<br>čo čaká na zožatie.“</i>',
                   active: true,
+                  about: 'Júlia je odhodlaná pomôcť tímu zvíťaziť a dáva do svojich rád celé srdce. Nedaj sa odradiť trochu historickým vyjadrovaním a jej snahou všetko veršovať!',
                 },
                 {
                   id: 'vlk',
@@ -88,6 +89,7 @@ block tab
                   link: 'Viac o Zlom vlkovi',
                   text: '<strong>Druhá indícia:</strong><br><i>„Sorry, dnes sa mi veľmi nechcelo, tak tu je fotka.“</i><br><img src="https://picsum.photos/id/1073/300/150">',
                   active: true,
+                  about: 'Snaží sa polepšiť a terapeut mu poradil maľovanie. Trvá teda na tom, že svoje nápovedy bude kresliť, hoci stále bojuje s držaním farbičiek vo svojich veľkých labách. Je presvedčený, že perspektíva kazí umenie, preto sa jej vyhýba takmer ako Poľovníkovi.',
                 },
                 {
                   id: 'forrest',
@@ -95,6 +97,7 @@ block tab
                   link: 'Viac o Forrestovi',
                   text: '<strong>Tretia indícia:</strong><br>Pribudne o 15:00',
                   active: false,
+                  about: 'Forrest vie, že nápovedy sú ako bonboniéra – nikdy nevieš, akú dostaneš. A tak ti zvyčajne ponúkne prvú vec, ktorá mu zíde na um. Pri troche šťastia ti to pomôže a Forrest má predsa šťastia na rozdávanie!',
                 },
                 {
                   id: 'psik',
@@ -102,6 +105,7 @@ block tab
                   link: 'Viac o Montmorencym',
                   text: '<strong>Tretia indícia:</strong><br>Pribudne o 19:00',
                   active: false,
+                  about: 'Montmorency sa do tímu priplietol z knižky Traja v člne a pes, pričom on je, očividne, spomínaný pes. Namiesto nápovied v ľudskej reči len občas zabrechá, nedá sa však vylúčiť, že aj jeho štekanie má svoj význam! Pôsobí totiž veľmi múdro a sebavedomo.',
                 },
               ]
 
@@ -112,15 +116,33 @@ block tab
                 img(
                   src=`images/content/campaign/hrdinska-patka/heroes/${hero.id}.png`,
                   srcset=`images/content/campaign/hrdinska-patka/heroes/${hero.id}@2x.png 2x`,
-                  title='Test',
+                  title=hero.name,
                 )
                 .h5-hero-name.text-color-white.text-center.pt-medium
                   h3.mb-none
                     =hero.name
-                  a.btn.btn--clean
+                  a.btn.btn--clean(data-toggle=`#h5-modal-hero-${hero.id}`)
                     +icon('info').mr-tiny
                     =hero.link
           .swiper-pagination
+
+  for hero in heroes
+    .modal-overlay(data-modal, id=`h5-modal-hero-${hero.id}`)
+      article.modal
+        .modal__wrap
+          .modal__header.mb-none
+            .modal__header__headline
+              h3 !{hero.link}
+            .modal__header__action
+              .btn.btn--clean(data-toggle=`#h5-modal-hero-${hero.id}`)
+                +icon('close').icon--medium
+          .modal__content.d-flex
+            img(
+              src=`images/content/campaign/hrdinska-patka/heroes/${hero.id}.png`,
+              srcset=`images/content/campaign/hrdinska-patka/heroes/${hero.id}@2x.png 2x`,
+              style='width: 100px;',
+            ).mr-small
+            div !{hero.about}
 
   script.
     document.querySelectorAll('.h5-days a')
