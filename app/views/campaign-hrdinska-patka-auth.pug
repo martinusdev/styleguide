@@ -2,14 +2,14 @@ extends campaign-hrdinska-patka
 
 block authSection
   .h5-user.d-flex.flex-column.flex-m-row.align-items-center
-    .d-flex.align-items-center.justify-content-center
+    .d-flex.align-items-center.justify-content-center.justify-content-m-start
       +icon('user').icon--medium.mr-small.mb-none
       .h5-user__email.text-ellipsis superdlhy.sherlock.holmes@martinus.sk
       +icon('logout').ml-small.icon--medium
-    a.btn.btn--secondary.m-none.ml-medium(data-toggle='#h5-modal-bonus') Tajný bonus
+    a.btn.btn--secondary.mb-none.mt-small.mt-m-none.ml-medium(data-toggle='#h5-modal-bonus') Tajný bonus
 
 block gameStats
-  .kd-progress.ml-m-auto
+  .kd-progress.ml-m-auto(style='min-width:230px')
     .kd-progress__books.bg-primary-light
       i.fal.fa-book.fa-lg.mr-small
       | Hráš o&nbsp;<strong class="font-weight-bold">4</strong>&nbsp;z 20 kníh
@@ -31,7 +31,7 @@ append content
       .modal__wrap
         .modal__header.mb-none
           .modal__header__headline
-            h3 Tajný bonus č. 1 - meno autora
+            h3 Tajný bonus č. 1 - <span class="text-transform-upper">meno autora</span>
           .modal__header__action
             .btn.btn--clean(data-toggle=`#h5-modal-bonus`)
               +icon('close').icon--medium
