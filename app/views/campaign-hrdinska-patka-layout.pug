@@ -17,7 +17,8 @@ block content
     section.section.text-color-white.bg-orange.py-small
       .wrapper-main
         .d-flex.align-items-center.flex-column.flex-m-row
-          img(src='images/content/campaign/hrdinska-patka/logo-sk.png').mr-m-medium.h5-logo
+          a(href='campaign-hrdinska-patka.html')
+            img(src='images/content/campaign/hrdinska-patka/logo-sk.png').mr-m-medium.h5-logo
           .d-flex.flex-column.align-items-center.align-items-m-start
             h1.mb-small Zachráň príbehy od zabudnutia!
             block authSection
@@ -28,9 +29,9 @@ block content
   .modal-overlay#h5-modal-login(data-modal)
     article.modal
       .modal__wrap
-        .modal__header
+        .modal__header.mb-none.py-small
           .modal__header__headline
-            h2 Prihlásenie
+            h3 Prihlásenie
           .modal__header__action
             .btn.btn--clean(data-toggle="#h5-modal-login")
               +icon('close').icon--medium
