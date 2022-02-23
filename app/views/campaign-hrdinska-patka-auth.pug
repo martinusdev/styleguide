@@ -1,11 +1,12 @@
 extends campaign-hrdinska-patka
 
 block authSection
-  .kd-user.d-flex.align-items-center
-    .text-ellipsis.kd-user__email
+  .h5-user.d-flex.flex-column.flex-m-row.align-items-center
+    .d-flex.align-items-center.justify-content-center
       +icon('user').icon--medium.mr-small.mb-none
-      | superdlhy.sherlock.holmes@martinus.sk
-    +icon('logout').ml-small.icon--medium
+      .h5-user__email.text-ellipsis superdlhy.sherlock.holmes@martinus.sk
+      +icon('logout').ml-small.icon--medium
+    a.btn.btn--secondary.m-none.ml-medium(data-toggle='#h5-modal-bonus') Tajný bonus
 
 block gameStats
   .kd-progress.ml-m-auto
@@ -23,3 +24,29 @@ block gameStats
           a(href="campaign-knizna-detektivka-pravidla.html").link Pravidlá súťaže
         li
           a(href="https://www.martinus.sk").link Na Martinus
+
+append content
+  .modal-overlay(data-modal, id=`h5-modal-bonus`)
+    article.modal
+      .modal__wrap
+        .modal__header.mb-none
+          .modal__header__headline
+            h3 Tajný bonus č. 1 - meno autora
+          .modal__header__action
+            .btn.btn--clean(data-toggle=`#h5-modal-bonus`)
+              +icon('close').icon--medium
+        .modal__content.bg-secondary
+          .d-flex.mb-small
+            img(
+              src=`images/content/campaign/hrdinska-patka/heroes/forrest.png`,
+              srcset=`images/content/campaign/hrdinska-patka/heroes/forrest@2x.png 2x`,
+              style="width: 100px;",
+            ).flex-shrink-0.align-self-start
+            .card.card--arrowhead-left.card--arrowhead
+              .card__content.text-italic „Bublifuky? Prepáčte, toho pána nepoznám. Ale poviem vám, to je teda poriadne čudné meno.“
+          .form-control.form-control--input.mb-medium
+            .input-addons
+              input.input(type="text", placeholder="Sem napíš svoju odpoveď…")
+              .input-addons__item.p-none
+                a(href='campaign-hrdinska-patka-answer.html').btn.btn--primary.px-small Hádať
+          p.text-center V pondelok vyžrebujeme 5 výhercov, ktorí od nás dostanú darčekovú poukážku v hodnote 25 eur.
