@@ -1,0 +1,192 @@
+.h5-logo {
+  width: 100px;
+}
+
+.h5-content {
+  background: _color(secondary);
+}
+
+.h5-dracula {
+  right: _get-rem(50px);
+  left: auto;
+  top: 0;
+  width: 110px;
+
+  @include breakpoint('l', downfrom) {
+    width: 50px;
+    right: _get-rem(25px);
+  }
+}
+
+.h5-user {
+  &__email {
+    max-width: 70%;
+  }
+}
+
+.h5-bg-heroes {
+  height: 320px;
+  background: url('../images/content/campaign/hrdinska-patka/about-us/postavicky.jpg') no-repeat bottom center;
+  background-size: contain;
+
+  &--rules {
+    background-image: url('../images/content/campaign/hrdinska-patka/rules/postavicky.jpg');
+
+    @include breakpoint('m', downfrom) {
+      height: 180px !important;
+    }
+  }
+
+  @include breakpoint('m', downfrom) {
+    height: 130px;
+    background-size: cover;
+  }
+}
+
+.h5-days {
+  a {
+    font-size: $font-size-regular;
+    font-weight: $font-weight-semibold;
+    width: _get_rem(40px);
+    height: _get-rem(40px);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: _color(red);
+    margin-right: _get-space(tiny);
+    color: _color(white);
+
+    &.is-active {
+      background: _color(white);
+      color: _color(black);
+    }
+
+    &.is-done {
+      background: _color(green);
+    }
+
+    &.is-inactive {
+      background: _color(red, 700);
+      color: rgba(255, 255, 255, 0.5);
+      cursor: not-allowed;
+    }
+  }
+}
+
+.h5-background {
+  min-height: 630px;
+  background-size: initial;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.h5-carousel {
+
+  @include breakpoint('m', downfrom) {
+    padding-left: 0;
+    padding-right: 0;
+
+    .swiper-slide-next {
+      align-items: flex-start !important;
+    }
+
+    .swiper-slide-next,
+    .swiper-slide-prev {
+      .h5-hero-name {
+        opacity: 0;
+      }
+    }
+  }
+
+  .swiper-slide {
+    max-width: 80%;
+    padding-bottom: 100px;
+
+    &.is-inactive {
+      .card {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  .h5-hero-name {
+    height: 40px;
+
+    h3 {
+      font-size: _get-rem(18px);
+    }
+
+    a {
+      color: _color(white);
+    }
+  }
+
+  .swiper-pagination-bullet-active,
+  .swiper-pagination-bullet {
+    background: _color(white);
+  }
+
+  .swiper-pagination-bullets {
+    bottom: _get-space();
+  }
+}
+
+.h5-wrap {
+  &--1 {
+    background: #0a0651;
+
+    .h5-background {
+      background-image: url('../images/content/campaign/hrdinska-patka/bg/web_hlavicka_les.jpg');
+    }
+  }
+
+  &--2 {
+    background: _color(green);
+
+    .h5-background {
+      background-image: url('../images/content/campaign/hrdinska-patka/bg/web_hlavicka_shire.jpg');
+    }
+  }
+
+  &--3 {
+    background: #664282;
+
+    .h5-background {
+      background-image: url('../images/content/campaign/hrdinska-patka/bg/web_hlavicka_mesto.jpg');
+    }
+  }
+
+  &--4 {
+    background: #299fa6;
+
+    .h5-background {
+      background-image: url('../images/content/campaign/hrdinska-patka/bg/web_hlavicka_rozpravka.jpg');
+    }
+  }
+
+  &--5,
+  &--6,
+  &--0 {
+    background: #f28629;
+
+    .h5-background {
+      background-image: url('../images/content/campaign/hrdinska-patka/bg/web_hlavicka_planeta.jpg');
+    }
+  }
+}
+
+@include breakpoint('m') {
+  .h5-logo {
+    width: 200px;
+  }
+
+  .h5-days {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,160 @@
+extends campaign-hrdinska-patka-layout
+
+block tab
+  section.section.section--small.pt-none
+    .wrapper-main.overflow-scroll-x
+      ul.tab-nav
+        li.tab-nav__item.is-active
+          a.tab-nav__content.tab-nav__content--link(href='campaign-hrdinska-patka.html')
+            .tab-nav__content-wrap Hra
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-hrdinska-patka-pribeh.html')
+            .tab-nav__content-wrap Príbeh
+        li.tab-nav__item
+          a.tab-nav__content.tab-nav__content--link(href='campaign-hrdinska-patka-pravidla.html')
+            .tab-nav__content-wrap Pravidlá
+  .bg-black
+    .wrapper-main.overflow-scroll-x.py-small
+      nav.h5-days
+        a.is-done 7.3.
+        a(data-day=2).is-done 8.3.
+        a(data-day=3).is-active 9.3.
+        a(data-day=4) 10.3.
+        a(data-day=5) 11.3.
+        a 14.3.
+        a 15.3.
+        a 16.3.
+        a 17.3.
+        a 18.3.
+        a 21.3.
+        a 22.3.
+        a 23.3.
+        a 24.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 25.3.") 25.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 28.3.") 28.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 29.3.") 29.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 30.3.") 30.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 31.3.") 31.3.
+        a.is-inactive(data-tooltip, title="Túto úlohu odomkneme až 1.4.") 1.4.
+  .h5-wrap.h5-wrap--1
+    .wrapper-main.text-center.py-large
+      block gameAnswer
+        h2.text-color-white.mb-small Dnes hádaš <span class="text-transform-upper">názov diela!</span>
+        .row
+          .col--m-8.ofst--m-2
+            .form-control.form-control--input.mb-none
+              .input-addons
+                input.input(type="text", placeholder="Sem napíš svoju odpoveď…")
+                .input-addons__item.p-none
+                  a(href='campaign-hrdinska-patka-answer.html').btn.btn--primary.px-small Hádať
+    .h5-background.d-flex
+      .wrapper-main.h5-carousel.d-flex
+        -
+          const swiperConfig = {
+            slidesPerView: 'auto',
+            spaceBetween: 10,
+            centeredSlides: true,
+            pagination: {
+              el: '.swiper-pagination',
+              type: 'bullets',
+            },
+            breakpoints: {
+              640: {
+                slidesPerView: 3,
+                centeredSlides: false,
+                simulateTouch: false,
+              },
+              960: {
+                slidesPerView: 4,
+                centeredSlides: false,
+                simulateTouch: false,
+              }
+            },
+          };
+        .swiper-container(data-swiper-options=swiperConfig).d-flex.flex-1
+          .swiper-wrapper
+            -
+              const heroes = [
+                {
+                  id: 'julia',
+                  name: 'Júlia Kapuletová',
+                  link: 'Viac o Júlii',
+                  text: '<strong>Prvá indícia:</strong><br><i class="text-light">„Neznámy, čo prinášaš?<br>Letný dotyk, a či zodratie?<br>Tu v modravom poli,<br>čo čaká na zožratie.“</i>',
+                  active: true,
+                  about: 'Júlia Kapuletová je odhodlaná pomôcť tímu zvíťaziť a dáva do svojich rád celé srdce. Nedaj sa odradiť trochu historickým vyjadrovaním a jej snahou všetko veršovať!',
+                },
+                {
+                  id: 'psik',
+                  name: 'Montmorency',
+                  link: 'Viac o Montmorencym',
+                  text: '<strong>Druhá indícia:</strong><br>Pribudne o 8:00',
+                  active: false,
+                  about: 'Montmorency sa do tímu priplietol z knižky Traja v člne a pes, pričom on je, očividne, spomínaný pes. Namiesto nápovied v ľudskej reči len občas zabrechá, nedá sa však vylúčiť, že aj jeho štekanie má svoj význam! Pôsobí totiž veľmi múdro a sebavedomo.',
+                },
+                {
+                  id: 'forrest',
+                  name: 'Forrest Gump',
+                  link: 'Viac o Forrestovi',
+                  text: '<strong>Tretia indícia:</strong><br>Pribudne o 12:00',
+                  active: false,
+                  about: 'Forrest vie, že nápovedy sú ako bonboniéra – nikdy nevieš, akú dostaneš. A tak ti zvyčajne ponúkne prvú vec, ktorá mu zíde na um. Pri troche šťastia ti to pomôže a Forrest má predsa šťastia na rozdávanie!',
+                },
+                {
+                  id: 'vlk',
+                  name: 'Zlý vlk',
+                  link: 'Viac o Zlom vlkovi',
+                  text: '<strong>Štvrtá indícia:</strong><br><i>„Sorry, dnes sa mi veľmi nechcelo, tak tu je fotka.“</i><br><img src="https://picsum.photos/id/1073/300/150">',
+                  active: true,
+                  about: 'Snaží sa polepšiť a terapeut mu poradil maľovanie. Trvá teda na tom, že svoje nápovedy bude kresliť, hoci stále bojuje s držaním farbičiek vo svojich veľkých labách. Je presvedčený, že perspektíva kazí umenie, preto sa jej vyhýba takmer ako Poľovníkovi.',
+                },
+              ]
+
+            for hero in heroes
+              div(class=hero.active ? '' : 'is-inactive').swiper-slide.d-flex.flex-column.align-items-center.justify-content-end
+                .card.card--arrowhead.card--arrowhead-bottom.w-100.mt-medium
+                  .card__content.text-center !{hero.text}
+                img(
+                  src=`images/content/campaign/hrdinska-patka/heroes/${hero.id}.png`,
+                  srcset=`images/content/campaign/hrdinska-patka/heroes/${hero.id}@2x.png 2x`,
+                  title=hero.name,
+                )
+                .h5-hero-name.text-color-white.text-center.pt-medium
+                  h3.mb-none
+                    =hero.name
+                  a.btn.btn--clean(data-toggle=`#h5-modal-hero-${hero.id}`)
+                    +icon('info').mr-tiny
+                    =hero.link
+          .swiper-pagination
+
+  for hero in heroes
+    .modal-overlay(data-modal, id=`h5-modal-hero-${hero.id}`)
+      article.modal
+        .modal__wrap
+          .modal__header.mb-none.py-small
+            .modal__header__headline
+              h3 !{hero.name}
+            .modal__header__action
+              .btn.btn--clean(data-toggle=`#h5-modal-hero-${hero.id}`)
+                +icon('close').icon--medium
+          .modal__content.d-flex
+            img(
+              src=`images/content/campaign/hrdinska-patka/heroes/${hero.id}.png`,
+              srcset=`images/content/campaign/hrdinska-patka/heroes/${hero.id}@2x.png 2x`,
+              style='width: 100px;',
+            ).mr-small.align-self-start
+            div !{hero.about}
+
+  script.
+    document.querySelectorAll('.h5-days a')
+      .forEach(el => {
+        el.addEventListener('click', function (/** Event **/ ev) {
+          const day = ev.currentTarget.dataset.day ?? 1;
+          changeDay(day)
+        })
+      })
+    function changeDay(day) {
+      const finalClass = `h5-wrap h5-wrap--${day}`;
+      const wrapper = document.querySelector('.h5-wrap');
+      wrapper.className = finalClass;
+    }
+

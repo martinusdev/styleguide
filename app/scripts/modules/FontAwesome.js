@@ -97,7 +97,8 @@ import {
   faMailbox,
   faGlobeAsia,
   faGlobeAmericas,
-  faGlobeAfrica
+  faGlobeAfrica,
+  faTreasureChest
 } from '@fortawesome/pro-light-svg-icons';
 
 import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
@@ -230,7 +231,8 @@ library.add(
   faMailbox,
   faGlobeAsia,
   faGlobeAmericas,
-  faGlobeAfrica
+  faGlobeAfrica,
+  faTreasureChest
 );
 
 dom.watch();
