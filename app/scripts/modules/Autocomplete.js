@@ -53,12 +53,12 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="d-flex">
-        <div class="flex-shrinkable align-self-middle pr-none mr-small">
-          <div class="author-photo no-pad">
+        <div class="flex-shrinkable align-self-center pr-none mr-small">
+          <div class="author-photo p-none">
             <div class="portrait portrait--medium" style="background-image: url('${value.image}');"></div>
           </div>
         </div>
-        <div class="flex-fill align-self-middle">
+        <div class="flex-fill align-self-center">
           <div class="text-semibold text-size-regular">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
@@ -69,18 +69,18 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="d-flex">
-        <div class="flex-shrinkable mr-small align-self-middle">
+        <div class="flex-shrinkable mr-small align-self-center">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
               <img class="img" src="${value.image}" alt="${value.name}">
             </div>
           </div>
         </div>
-        <div class="flex-fill mr-small align-self-middle">
+        <div class="flex-fill mr-small align-self-center">
           <div class="text-size-regular text-semibold">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
-        <div class="flex-shrinkable align-self-middle">
+        <div class="flex-shrinkable align-self-center">
           <div class="text-bold">${value.price}</div>
         </div>
       </div>
@@ -90,14 +90,14 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="d-flex">
-        <div class="flex-shrinkable mr-small align-self-middle">
+        <div class="flex-shrinkable mr-small align-self-center">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             <div class="thumbnail__img-wrap">
               <img class="img" src="${value.image}" alt="${value.name}">
             </div>
           </div>
         </div>
-        <div class="flex-fill align-self-middle">
+        <div class="flex-fill align-self-center">
           <div class="text-size-regular text-semibold">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
@@ -108,7 +108,7 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="d-flex">
-        <div class="flex-shrinkable mr-small align-self-middle">
+        <div class="flex-shrinkable mr-small align-self-center">
         <div class="product__cover collection">
           <div class="thumbnail thumbnail--book thumbnail--medium">
             ${value.images
@@ -121,7 +121,7 @@ const defaultTemplates = {
           </div>
         </div>
         </div>
-        <div class="flex-fill align-self-middle">
+        <div class="flex-fill align-self-center">
           <div class="text-size-regular text-semibold">${value.name}</div>
           <p class="mb-none text-color-grey">${value.description}</p>
         </div>
@@ -132,7 +132,7 @@ const defaultTemplates = {
     inputValue: () => '', // set value of input onConfirm
     suggestion: value => `
       <div class="row">
-        <div class="col--12 align-self-middle">
+        <div class="col--12 align-self-center">
           <p class="mb-none">${value.name}</p>
         </div>
       </div>
