@@ -54,7 +54,7 @@ const defaultConfig = {
 };
 
 const productSelectTemplate = data => `
-  <div class="bar no-mrg-bottom">
+  <div class="bar mb-none">
     <div class="bar__item bar__item--fill">
       <p class="text-size-medium text-left text-semibold">${data.label}</p>
       ${data.customProperties.delivery ? `
@@ -70,7 +70,7 @@ const productSelectTemplate = data => `
 
 const productSelectChoice = (data, config) => `
   <div class="${config.classNames.item} ${config.classNames.itemChoice} ${data.disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${data.id}" data-value="${data.value}" ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
-    <div class="bar no-mrg-bottom align-items-justify">
+    <div class="bar mb-none justify-content-between">
       <div class="bar__item">${data.label}</div>
       <div class="bar__item">${data.customProperties.price}</div>
     </div>
@@ -118,8 +118,8 @@ const storeListTemplate = ({ label, customProperties, placeholder }) => {
   const statusText = storeStatus(customProperties, placeholder);
 
   return `
-  <div style="max-width: 100%;" class="d-flex align-items-middle align-items-justify">
-    <div class="d-flex align-items-middle text-color-grey-dark text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+  <div style="max-width: 100%;" class="d-flex align-items-center justify-content-between">
+    <div class="d-flex align-items-center text-color-grey-dark text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
     ${statusText}
   </div>
   `;
@@ -135,8 +135,8 @@ const storeListChoice = (
   const icon = storeIcon(customProperties.type);
 
   return `
-  <div style="max-width: 100%;" class="align-items-middle align-items-justify ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
-    <div class="d-flex align-items-middle text-color-black text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+  <div style="max-width: 100%;" class="align-items-center justify-content-between ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
+    <div class="d-flex align-items-center text-color-black text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
     ${statusText}
   </div>
   `;
