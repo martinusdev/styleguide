@@ -110,14 +110,15 @@ block tab
               ]
 
             for hero in heroes
-              div(class=hero.active ? '' : 'is-inactive').swiper-slide.d-flex.flex-column.align-items-center.justify-content-end
+              div(class=hero.active ? '' : 'is-inactive').swiper-slide.d-flex.flex-column.align-items-m-center.justify-content-end
                 .card.card--arrowhead.card--arrowhead-bottom.w-100.mt-medium
                   .card__content.text-center !{hero.text}
-                img(
-                  src=`images/content/campaign/hrdinska-patka/heroes/${hero.id}.png`,
-                  srcset=`images/content/campaign/hrdinska-patka/heroes/${hero.id}@2x.png 2x`,
-                  title=hero.name,
-                )
+                .h5-hero-img
+                  img(
+                    src=`images/content/campaign/hrdinska-patka/heroes/${hero.id}.png`,
+                    srcset=`images/content/campaign/hrdinska-patka/heroes/${hero.id}@2x.png 2x`,
+                    title=hero.name,
+                  )
                 .h5-hero-name.text-color-white.text-center.pt-medium
                   h3.mb-none
                     =hero.name

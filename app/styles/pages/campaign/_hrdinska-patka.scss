@@ -74,6 +74,17 @@
   }
 }
 
+.h5-hero-img {
+  transform: translateX(50%);
+  transition: transform ease-in-out 300ms;
+
+  img {
+    display: inline-block;
+    transform: translateX(-50%);
+    transition: transform ease-in-out 300ms;
+  }
+}
+
 .h5-background {
   min-height: 630px;
   background-size: initial;
@@ -88,7 +99,11 @@
     padding-right: 0;
 
     .swiper-slide-next {
-      //align-items: flex-start !important;
+      // stylelint-disable selector-max-compound-selectors
+      .h5-hero-img,
+      .h5-hero-img img {
+        transform: translateX(0%);
+      }
     }
 
     .swiper-slide-next,
