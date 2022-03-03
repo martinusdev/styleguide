@@ -1,5 +1,5 @@
 import SwiperCore, {
-  Swiper, Navigation, Pagination, Lazy
+  Swiper, Navigation, Pagination, Lazy, Parallax
 } from 'swiper/core';
 
 import { nodeListToArray } from './Utils';
@@ -31,7 +31,7 @@ const defaultConfig = {
 
 export default class SwiperSlider {
   constructor(selector = '.swiper-container', config = {}) {
-    SwiperCore.use([Navigation, Pagination, Lazy]);
+    SwiperCore.use([Navigation, Pagination, Lazy, Parallax]);
 
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };

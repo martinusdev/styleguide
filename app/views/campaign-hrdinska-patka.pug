@@ -1,5 +1,8 @@
 extends campaign-hrdinska-patka-layout
 
+block scripts
+  script(src=`${assetsPrefix}scripts/superhero-five.js`)
+
 block tab
   section.section.section--small.pt-none
     .wrapper-main.overflow-scroll-x
@@ -54,6 +57,7 @@ block tab
             slidesPerView: 'auto',
             spaceBetween: 10,
             centeredSlides: true,
+            parallax: true,
             pagination: {
               el: '.swiper-pagination',
               type: 'bullets',
@@ -72,6 +76,7 @@ block tab
             },
           };
         .swiper-container(data-swiper-options=swiperConfig).d-flex.flex-1
+          .parallax-bg.d-m-none(data-swiper-parallax="-23%") &nbsp;
           .swiper-wrapper
             -
               const heroes = [
