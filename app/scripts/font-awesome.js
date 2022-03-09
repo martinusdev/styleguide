@@ -1,4 +1,3 @@
-// FONT AWESOME
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
   faAtlas, faAtom,
