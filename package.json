@@ -7,6 +7,7 @@
   "version": "1.0.0",
   "description": "Martinus Styleguide",
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "dotenv": "~10.0.0",
     "eslint": "~7.32.0",
     "eslint-config-airbnb-base": "~15.0.0",
@@ -15,10 +16,15 @@
     "glob": "^7.2.0",
     "gulp": "~4.0.2",
     "gulp-hub": "~4.2.0",
+    "laravel-mix": "6.0.18",
+    "laravel-mix-pug-recursive": "^0.3.6",
+    "laravel-mix-versionhash": "^2.0.1",
     "lint-staged": "~12.1.2",
     "lodash": "^4.17.21",
     "postcss-scss": "^4.0.2",
     "pre-commit": "~1.2.2",
+    "resolve-url-loader": "^5.0.0",
+    "sass-loader": "^12.1.0",
     "stylelint": "~14.1.0",
     "stylelint-config-sass-guidelines": "~9.0.1"
   },
@@ -29,7 +35,9 @@
     "prepare": "gulp prepare",
     "build": "gulp build",
     "serve": "gulp serve",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "mix-prod": "yarn mix --production",
+    "mix-watch": "yarn mix watch"
   },
   "pre-commit": "lint-staged",
   "lint-staged": {
