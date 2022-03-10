@@ -1,5 +1,7 @@
 const mix = require('laravel-mix');
 const fs = require('fs');
+const mergeYaml = require('merge-yaml');
+require('laravel-mix-imagemin');
 
 mix.pug = require('laravel-mix-pug-recursive');
 
@@ -20,17 +22,28 @@ getFiles('app/styles').forEach(filepath => {
     return;
   }
 
-  mix.sass(`app/styles/${filepath}`, `${outputPath}/styles`)
+  mix.sass(`app/styles/${filepath}`, 'styles')
     .options({
       processCssUrls: false
     });
 });
 
-mix.pug('app/views/*.pug', outputPath, {
+const configs = [];
+
+getFiles('app/views/data').forEach(filepath => configs.push(`app/views/data/${filepath}`));
+getFiles('app/views/styleguide/data').forEach(filepath => configs.push(`app/views/styleguide/data/${filepath}`));
+const config = mergeYaml(configs);
+
+mix.pug('app/views/bookmark.pug', outputPath, {
+  excludePath: 'app/views',
   locals: {
-    datas: JSON.parse()
+    ...config
   }
 });
+
+mix.copy('app/fonts', 'dist2/fonts');
+mix.copy('app/icons_', 'dist2/icons_');
+mix.copy('app/images', 'dist2/images');
 
 mix.setPublicPath(outputPath);
 
