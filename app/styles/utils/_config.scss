@@ -1641,7 +1641,7 @@ $modal-dialog: (
 );
 
 $modal-dialog-variants: (
-  'full' : (
+  'full': (
     default: (
       width: calc(100vw - (#{_get-space()} * 2)),
       max-width: _get-rem(1200px),
@@ -1650,10 +1650,16 @@ $modal-dialog-variants: (
       width: calc(100vw - (#{_get-space('large')} * 2)),
     )
   ),
-  'medium' : (
+  'medium': (
     default: (
       width: _get-rem(700px),
       max-width: 90%,
+    )
+  ),
+  'large': (
+    default: (
+      width: calc(100vw - (#{_get-space('small')} * 2)),
+      max-width: _get-rem(1000px),
     )
   )
 );
