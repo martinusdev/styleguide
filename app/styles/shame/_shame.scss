@@ -9,3 +9,36 @@
 .list__item > * {
   flex-shrink: 1;
 }
+
+.smap img {
+  max-width: initial !important;
+  vertical-align: auto !important;
+}
+
+.smap .zoom {
+  top: auto !important;
+  position: absolute;
+  bottom: 110px !important;
+  right: 10px !important;
+  width: 31px !important;
+
+  .button-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  button {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 3px !important;
+  }
+
+  button.minus {
+    order: 2 !important;
+    margin-top: 3px !important;
+  }
+
+  button:hover {
+    color: _color(primary) !important;
+  }
+}
