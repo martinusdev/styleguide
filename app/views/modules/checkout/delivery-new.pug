@@ -5,107 +5,101 @@ include ./../../mixins/xmas
     h2 Zvoľte spôsob doručenia
 
   .card__content
-    .row.mb-medium
+    .row.mb-none
       .col--l-6
-        .form-control.form-control--group
-          .radiocheck-group.d-block
-
-            .form-control.form-control--radio
-              .radio.align-items-center
-                input.radiocheck__input(type='radio', id='radio_group_shipping_03', name='radio_group_shipping')
-                label.radiocheck__control(for='radio_group_shipping_03')
-                label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_03')
-                  div(style='width:25px').mr-tiny.text-center
-                    +icon('martinus').text-color-primary.fa-fw
-                  .d-flex.flex-1.justify-content-between.align-items-center
-                    div
-                      .text-semibold
-                        | Osobný odber
-                      +xmas({ type: 'short' })
-                    .text-size-medium.text-semibold
-                      | zadarmo
-
-            .form-control.form-control--radio
-              .radio.align-items-center
-                input.radiocheck__input(type='radio', id='radio_group_shipping_01', name='radio_group_shipping')
-                label.radiocheck__control(for='radio_group_shipping_01')
-                label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_01')
-                  div(style='width:25px').text-center.mr-tiny
-                    img(src=`${assetsPrefix}images/content/delivery-types/gls.svg`, alt="GLS").fa-fw
-                  .d-flex.flex-1.align-items-center.justify-content-between
-                    div
-                      .text-semibold
-                        | Kuriér GLS
-                      +xmas({type: 'short'})
-                    .text-size-medium.text-semibold
-                      | 4.28€
-
-            .form-control.form-control--radio
-              .radio.align-items-center
-                input.radiocheck__input(type='radio', id='radio_group_shipping_02', name='radio_group_shipping')
-                label.radiocheck__control(for='radio_group_shipping_02')
-                label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_02')
-                  div(style='width:25px').text-center.mr-tiny
-                    img(src=`${assetsPrefix}images/content/delivery-types/posta-sk.svg`, alt="Pošta").fa-fw
-                  .d-flex.flex-1.align-items-center.justify-content-between
-                    div
-                      .text-semibold
-                        | Slovenská pošta (na adresu)
-                      +xmas({type: 'short', status: 2})
-                    .text-size-medium.text-semibold
-                      | 1.99€
-
+        .form-control.form-control--radio
+          .radio.align-items-center
+            input.radiocheck__input(type='radio', id='radio_group_shipping_03', name='radio_group_shipping')
+            label.radiocheck__control(for='radio_group_shipping_03')
+            label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_03')
+              div(style='width:25px').mr-tiny.text-center
+                +icon('martinus').text-color-primary.fa-fw
+              .d-flex.flex-1.justify-content-between.align-items-center
+                div
+                  .text-semibold
+                    | Osobný odber
+                  +xmas({ type: 'short' })
+                .text-size-medium.text-semibold
+                  | zadarmo
       .col--l-6
-        .form-control.form-control--group
-          .radiocheck-group.d-block
-            .form-control.form-control--radio
-              .radio.align-items-center
-                input.radiocheck__input(type='radio', id='radio_group_shipping_04', name='radio_group_shipping')
-                label.radiocheck__control(for='radio_group_shipping_04')
-                label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_04')
-                  div(style='width:25px').text-center.mr-tiny
-                    img(src=`${assetsPrefix}images/content/delivery-types/ppl.svg`, alt="PPL").fa-fw
-                  .d-flex.flex-1.align-items-center.justify-content-between
-                    div
-                      .text-semibold
-                        | BalíkoBOX
-                      +xmas({type: 'short'})
-                    .text-size-medium.text-semibold
-                      | 1.99€
-
-            .form-control.form-control--radio
-              .radio.align-items-center
-                input.radiocheck__input(type='radio', id='radio_group_shipping_05', name='radio_group_shipping')
-                label.radiocheck__control(for='radio_group_shipping_05')
-                label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_05')
-                  div(style='width:25px').text-center.mr-tiny
-                    img(src=`${assetsPrefix}images/content/delivery-types/posta-sk.svg`, alt="Pošta").fa-fw
-                  .d-flex.flex-1.align-items-center.justify-content-between
-                    div
-                      .text-semibold
-                        | Slovenská pošta (na poštu)
-                      +xmas({type: 'short', status: 2})
-                    .text-size-medium.text-semibold
-                      | 1.99€
-
-            .form-control.form-control--radio
-              .radio.align-items-center
-                input.radiocheck__input(type='radio', id='radio_group_shipping_06', name='radio_group_shipping')
-                label.radiocheck__control(for='radio_group_shipping_06', data-toggle='#mj-modal-delivery-picker')
-                label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_06', data-toggle='#mj-modal-delivery-picker')
-                  div(style='width:25px').text-center.mr-tiny
-                    img(src=`${assetsPrefix}images/content/delivery-types/packeta.svg`, alt="Packeta").fa-fw
-                  .d-flex.flex-1.align-items-center.justify-content-between
-                    div
-                      .text-semibold
-                        | Packeta
-                      +xmas({type: 'short'})
-                    .text-size-medium.text-semibold
-                      | zadarmo
+        .form-control.form-control--radio
+          .radio.align-items-center
+            input.radiocheck__input(type='radio', id='radio_group_shipping_06', name='radio_group_shipping')
+            label.radiocheck__control(for='radio_group_shipping_06', data-toggle='#mj-modal-delivery-picker')
+            label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_06', data-toggle='#mj-modal-delivery-picker')
+              div(style='width:25px').text-center.mr-tiny
+                img(src=`${assetsPrefix}images/content/delivery-types/packeta.svg`, alt="Packeta").fa-fw
+              .d-flex.flex-1.align-items-center.justify-content-between
+                div
+                  .text-semibold
+                    | Packeta
+                  +xmas({ type: 'short' })
+                .text-size-medium.text-semibold
+                  | zadarmo
+      .col--l-6
+        .form-control.form-control--radio
+          .radio.align-items-center
+            input.radiocheck__input(type='radio', id='radio_group_shipping_01', name='radio_group_shipping')
+            label.radiocheck__control(for='radio_group_shipping_01')
+            label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_01')
+              div(style='width:25px').text-center.mr-tiny
+                img(src=`${assetsPrefix}images/content/delivery-types/gls.svg`, alt="GLS").fa-fw
+              .d-flex.flex-1.align-items-center.justify-content-between
+                div
+                  .text-semibold
+                    | Kuriér GLS
+                  +xmas({type: 'short'})
+                .text-size-medium.text-semibold
+                  | 4.28€
+      .col--l-6
+        .form-control.form-control--radio
+          .radio.align-items-center
+            input.radiocheck__input(type='radio', id='radio_group_shipping_02', name='radio_group_shipping')
+            label.radiocheck__control(for='radio_group_shipping_02')
+            label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_02')
+              div(style='width:25px').text-center.mr-tiny
+                img(src=`${assetsPrefix}images/content/delivery-types/posta-sk.svg`, alt="Pošta").fa-fw
+              .d-flex.flex-1.align-items-center.justify-content-between
+                div
+                  .text-semibold
+                    | Slovenská pošta<br class="d-m-none">(na adresu)
+                  +xmas({type: 'short', status: 2})
+                .text-size-medium.text-semibold
+                  | 1.99€
+      .col--l-6
+        .form-control.form-control--radio
+          .radio.align-items-center
+            input.radiocheck__input(type='radio', id='radio_group_shipping_05', name='radio_group_shipping')
+            label.radiocheck__control(for='radio_group_shipping_05')
+            label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_05')
+              div(style='width:25px').text-center.mr-tiny
+                img(src=`${assetsPrefix}images/content/delivery-types/posta-sk.svg`, alt="Pošta").fa-fw
+              .d-flex.flex-1.align-items-center.justify-content-between
+                div
+                  .text-semibold
+                    | Slovenská pošta<br class="d-m-none">(na poštu)
+                  +xmas({ type: 'short', status: 2 })
+                .text-size-medium.text-semibold
+                  | 1.99€
+      .col--l-6
+        .form-control.form-control--radio
+          .radio.align-items-center
+            input.radiocheck__input(type='radio', id='radio_group_shipping_04', name='radio_group_shipping')
+            label.radiocheck__control(for='radio_group_shipping_04')
+            label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_04')
+              div(style='width:25px').text-center.mr-tiny
+                img(src=`${assetsPrefix}images/content/delivery-types/ppl.svg`, alt="PPL").fa-fw
+              .d-flex.flex-1.align-items-center.justify-content-between
+                div
+                  .text-semibold
+                    | BalíkoBOX
+                  +xmas({type: 'short'})
+                .text-size-medium.text-semibold
+                  | 1.99€
 
   .card__content
-    .row
-      .col--s-8.col--m-5.ofst--center
-        .btn-layout--vertical
+    .row.mb-none
+      .col--s-8.col--m-5.mx-auto
+        .btn-layout--vertical.mb-none
           button.btn.btn--primary.is-disabled(type="submit")
             | Pokračovať v objednávke
