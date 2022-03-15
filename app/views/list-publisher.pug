@@ -6,6 +6,7 @@ block opts
     - var pageTitle = 'Výsledky vyhľadávania'
     - var filterStickyOffset = JSON.stringify({0: header.size.default, 768: header.size.m});
     - var publisher = true;
+    - var sortLinks = [{icon: 'breadcrumbs', title: 'Odporúčame'}, 'Bestsellery', 'Top hodnotené', 'Najnovšie', 'Najlacnejšie', 'Najdrahšie', 'Najvyššia zľava']
 
 block content
   main.category
@@ -14,7 +15,7 @@ block content
       .wrapper-main
         include modules/publisher/list
 
-    include modules/category-list
+    include modules/category-list-new
 
 block append scripts
   script(src=`${assetsPrefix}scripts/charts.js`)
