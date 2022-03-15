@@ -97,7 +97,7 @@ import {
   faGlobeAsia,
   faGlobeAmericas,
   faGlobeAfrica,
-  faTreasureChest, faArrowDownRight, faArrowUpRight
+  faTreasureChest, faArrowDownRight, faArrowUpRight, faArrowRight, faArrowLeft, faArrowDown
 } from '@fortawesome/pro-light-svg-icons';
 
 import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
@@ -233,7 +233,10 @@ library.add(
   faGlobeAfrica,
   faTreasureChest,
   faArrowDownRight,
-  faArrowUpRight
+  faArrowUpRight,
+  faArrowRight,
+  faArrowLeft,
+  faArrowDown
 );
 
 dom.watch();
