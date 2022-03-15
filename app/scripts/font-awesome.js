@@ -138,7 +138,8 @@ import {
   faArrowRight,
   faArrowLeft,
   faArrowDown,
-  faArrowUp
+  faArrowUp,
+  faHouse as farFaHouse, faRectangleHistory, faCircleUser,
 } from '@fortawesome/pro-regular-svg-icons';
 
 library.add(
@@ -276,7 +277,10 @@ library.add(
   faArrowRight,
   faArrowLeft,
   faArrowDown,
-  faArrowUp
+  faArrowUp,
+  farFaHouse,
+  faRectangleHistory,
+  faCircleUser
 );
 
 dom.watch();

@@ -154,7 +154,7 @@ section.section
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
             +icon('close', 'icon--medium')
         .mobile-wrapper__content.p-none
-          include category-filter  
+          include category-filter
         .mobile-wrapper__footer
             .btn-layout.btn-layout--vertical.mb-none
               button.btn Zúžiť výber
@@ -165,7 +165,7 @@ section.section
               li.tab-nav__item(class= i===0 ? 'is-active': '')
                 a.tab-nav__content--link(class= i > 0 ? 'border-bottom-grey': '')
                   if (typeof sortLink === 'object')
-                    +icon(sortLink.icon)
+                    +faIcon(sortLink.icon, 'far')
                   else
                     | !{sortLink}
             li.tab-nav__item.flex-1
@@ -199,15 +199,15 @@ section.section
               .row
                 .col--m-4.mb-medium.mb-m-none
                   .mb-medium
-                    h2.h5 vydavatelia
+                    h2.h5 Vydavatelia
                     ul.list--unstyled
                       for i in [1, 2]
                         li.bar.mb-tiny
                           .bar__item.bar__item--shrinkable.mr-tiny
-                            +icon('breadcrumbs').icon--medium.text-color-grey
+                            +faIcon('house', 'far').text-color-grey.fa-lg
                           .bar__item.bar__item--fill.line-small
                             a.link Ikar
-                  h2.h5 čitateľské kolekcie
+                  h2.h5 Čitateľské kolekcie
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
@@ -216,33 +216,27 @@ section.section
                         .bar__item.bar__item--fill.line-small
                           a.link Moje fantasy
                 .col--m-4.mb-medium.mb-m-none
-                  h2.h5 kategórie
+                  h2.h5 Kategórie
                   ul.list--unstyled.mb-small
                     for i in [1, 2]
                       li.bar.mb-tiny
                         .bar__item.bar__item--shrinkable.mr-tiny
-                          +icon('folder').icon--medium.text-color-grey
+                          +faIcon('rectangle-history', 'far').fa-lg.text-color-grey
                         .bar__item.bar__item--fill.line-small
                           a.link Kategória
-                          .mb-none
-                            small.text-color-grey Kategoria
-                            +icon('chevron-right').icon--small.text-color-grey
-                            small.text-color-grey Kategoria
-                            +icon('chevron-right').icon--small.text-color-grey
-                            small.text-color-grey Kategoria
-                  a.link.text-medium + ďalších 5
-                    +icon('arrow-down').icon--small
+                  a.link.text-medium + Ďalších 5
+                    +faIcon('arrow-down', 'far').icon--small.ml-tiny
                 .col--m-4
                   .mb-medium
-                    h2.h5 autori
+                    h2.h5 Autori
                     ul.list--unstyled
                       for i in [1, 2]
                         li.bar.mb-tiny
                           .bar__item.bar__item--shrinkable.mr-tiny
-                            +icon('user').icon--medium.text-color-grey
+                            +faIcon('circle-user', 'far').fa-lg.text-color-grey
                           .bar__item.bar__item--fill.line-small
                             a.link Meno Autora
-                  h2.h5 čitateľské profily
+                  h2.h5 Čitateľské profily
                   ul.list--unstyled
                     for i in [1, 2]
                       li.bar.mb-tiny
