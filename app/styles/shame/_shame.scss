@@ -5,40 +5,57 @@
 
 // ---------------------------------------------
 // Fix flex items text wrapping in ie10
+// stylelint-disable
 
 .list__item > * {
   flex-shrink: 1;
 }
 
-.smap img {
-  max-width: initial !important;
-  vertical-align: auto !important;
+.martinus-map .btn--location {
+  z-index: 101;
+  right: 82px;
+  bottom: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 3px;
+  margin-bottom: 0;
 }
 
-.smap .zoom {
-  top: auto !important;
-  position: absolute;
-  bottom: 110px !important;
-  right: 10px !important;
-  width: 31px !important;
-
-  .button-group {
-    display: flex;
-    flex-direction: column;
+.martinus-map .smap {
+  img {
+    max-width: initial;
+    vertical-align: auto;
   }
 
-  button {
-    width: 30px !important;
-    height: 30px !important;
-    border-radius: 3px !important;
-  }
+  .zoom {
+    top: auto;
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+    width: 66px;
+    text-align: right;
 
-  button.minus {
-    order: 2 !important;
-    margin-top: 3px !important;
-  }
+    .button-group {
+      box-shadow: none;
+      border-radius: 0;
 
-  button:hover {
-    color: _color(primary) !important;
+      button {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 3px;
+        box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
+      }
+
+      button.minus {
+        margin-right: 6px;
+      }
+
+      button:hover {
+        color: _color(primary);
+      }
+    }
   }
 }

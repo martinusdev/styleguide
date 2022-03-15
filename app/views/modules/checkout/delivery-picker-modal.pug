@@ -40,7 +40,9 @@
                 .ml-small.text-medium
                   strong Dolný Kubín, Nuttery Place<br>
                   | Bysterecká 2200
-          .col--7.px-none.modal__map
+          .col--7.px-none.modal__map.martinus-map.position-relative
+            button.btn.position-absolute.btn--location(data-tooltip, title="Zistiť aktuálnu polohu")
+              +icon('target').icon--medium.fa-fw
             div(id="m", style="height:100%")
 
 append block head
