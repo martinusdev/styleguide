@@ -2,6 +2,7 @@ extends templates/layout
 
 include ./../mixins/discountBadge
 include ./../mixins/icon
+include ./../mixins/faIcon
 
 //- Options
 block prepend opts
@@ -13,7 +14,6 @@ block prepend opts
 block prepend content
 
   +main-info(['app/styles/modules/_icons_images.scss'], contents)
-
     +p-big Documentation, preview and usage of icons and image utilities.
 
   //- end: main info
@@ -222,9 +222,7 @@ block append content
                 - const iconClass = `${prefix} fa-${iconName}`;
 
                 li.l-icons_item
-                  i.fa-2x(
-                    class=iconClass
-                  )
+                  +faIcon(iconName, 'fa-2x', prefix)
                   br
                   abbr(title=iconClass).text-color-grey= iconName
 
