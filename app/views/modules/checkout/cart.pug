@@ -1,4 +1,5 @@
 include ./../../mixins/icon
+include ./../../mixins/faIcon
 include ./../../mixins/xmas
 
 .card.card--done.mb-small#cart
@@ -31,8 +32,8 @@ include ./../../mixins/xmas
                 .cart-item__column.cart-item__column--price
                   .text-semibold.text-size-medium.text-nowrap= item.price
     .text-center
-      span.link.text-size-medium(data-toggle="#cart-summary, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť všetky(+3)", data-collapse-trigger) <span data-toggle-text-target>Zobraziť všetky (+3)</span>#{' '}
-        +icon('arrow-down')
+      span.link.text-size-medium(data-toggle="#cart-summary, self", data-toggle-icon="arrow-up", data-toggle-text="Zobraziť všetky(+3)", data-collapse-trigger) <span data-toggle-text-target>Zobraziť všetky (+3)</span>#{' '}
+        +faIcon('arrow-down', 'far').ml-tiny
 
   .card__footer
     .bar.align-items-end

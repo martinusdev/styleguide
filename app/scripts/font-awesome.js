@@ -1,19 +1,34 @@
 import { dom, library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faAtlas, faAtom,
-  faBook as falFaBook, faBookHeart, faBookmark, faBookMedical, faBooks, faBrain, faBriefcase,
+  faAtlas,
+  faAtom,
+  faBook as falFaBook,
+  faBookHeart,
+  faBookmark,
+  faBookMedical,
+  faBooks,
+  faBrain,
+  faBriefcase,
   faCalendar,
   faCoffeeTogo,
   faCommentLines,
   faComments,
   faCut,
-  faFeather, faFileAlt,
+  faFeather,
+  faFileAlt,
   faFingerprint,
   faFlag,
   faGift,
-  faGraduationCap, faGrimace,
+  faGraduationCap,
+  faGrimace,
   faHatChef,
-  faHeadSideBrain, faHeart, faHeartbeat, faHistory, faKissWinkHeart, faLaptop, faLaughBeam,
+  faHeadSideBrain,
+  faHeart,
+  faHeartbeat,
+  faHistory,
+  faKissWinkHeart,
+  faLaptop,
+  faLaughBeam,
   faLightbulb,
   faMapMarked,
   faMugHot,
@@ -21,18 +36,26 @@ import {
   faPaintBrush,
   faPaperPlane,
   faPencil,
-  faPencilPaintbrush, faPencilRuler,
+  faPencilPaintbrush,
+  faPencilRuler,
   faPray,
   faPrayingHands,
   faPuzzlePiece,
-  faQuestion, faQuoteRight,
+  faQuestion,
+  faQuoteRight,
   faRecordVinyl,
   faScrollOld,
   faSmile,
   faStarExclamation,
-  faStars, faSurprise,
-  faSwords, faTheaterMasks,
-  faUfo, faUser, faUsers, faUserSecret, faVolleyballBall,
+  faStars,
+  faSurprise,
+  faSwords,
+  faTheaterMasks,
+  faUfo,
+  faUser,
+  faUsers,
+  faUserSecret,
+  faVolleyballBall,
   faWandMagic,
   faReceipt,
   faMegaphone,
@@ -86,7 +109,12 @@ import {
   faMicrochip,
   faCog,
   faDatabase,
-  faWindowAlt, faMousePointer, faShippingFast, faGiftCard, faBandAid, faClawMarks,
+  faWindowAlt,
+  faMousePointer,
+  faShippingFast,
+  faGiftCard,
+  faBandAid,
+  faClawMarks,
   faMap,
   faMapMarkerAlt,
   faMapSigns,
@@ -97,10 +125,21 @@ import {
   faGlobeAsia,
   faGlobeAmericas,
   faGlobeAfrica,
-  faTreasureChest, faArrowDownRight, faArrowUpRight, faArrowRight, faArrowLeft, faArrowDown
+  faTreasureChest,
 } from '@fortawesome/pro-light-svg-icons';
 
-import { faBook as fasFaBook } from '@fortawesome/pro-solid-svg-icons';
+import {
+  faBook as fasFaBook,
+} from '@fortawesome/pro-solid-svg-icons';
+
+import {
+  faArrowDownRight,
+  faArrowUpRight,
+  faArrowRight,
+  faArrowLeft,
+  faArrowDown,
+  faArrowUp
+} from '@fortawesome/pro-regular-svg-icons';
 
 library.add(
   falFaBook,
@@ -236,7 +275,8 @@ library.add(
   faArrowUpRight,
   faArrowRight,
   faArrowLeft,
-  faArrowDown
+  faArrowDown,
+  faArrowUp
 );
 
 dom.watch();
