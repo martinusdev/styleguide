@@ -154,10 +154,7 @@ section.section
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
             +icon('close', 'icon--medium')
         .mobile-wrapper__content.p-none
-          if filterSmall
-            include category-filter-small
-          else
-            include category-filter
+          include category-filter  
         .mobile-wrapper__footer
             .btn-layout.btn-layout--vertical.mb-none
               button.btn Zúžiť výber
@@ -175,28 +172,28 @@ section.section
               div.tab-nav__content.border-bottom-grey.justify-content-end.text-size-small.text-color-grey.text-center
                 | 2358 produktov
 
-        .d-flex.mb-tiny.align-items-center
-          .text-size-small.text-transform-upper.text-color-grey.d-m-inline-block.d-block.mr-medium Použité filtre
-          a(href="#").link.text-size-medium Zrušiť filtre
-        .row.pl-m-medium
-          .row.overflow-scroll-x
-            .col.pl-medium
-              .badges.flex-nowrap
-                .badge.mb-small
-                  | Klasické detektívky
-                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
-                .badge.mb-small
-                  | Agatha Christie
-                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
-                .badge.mb-small.mr-medium
-                  | rýchlovky (do 1h)
-                  button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                    +icon('close').icon--small.icon--right
+        if showActiveFilters
+          .d-flex.mb-tiny.align-items-center
+            .text-size-small.text-transform-upper.text-color-grey.d-m-inline-block.d-block.mr-medium Použité filtre
+            a(href="#").link.text-size-medium Zrušiť filtre
+          .row.pl-m-medium
+            .row.overflow-scroll-x
+              .col.pl-medium
+                .badges.flex-nowrap
+                  .badge.mb-small
+                    | Klasické detektívky
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                      +icon('close').icon--small.icon--right
+                  .badge.mb-small
+                    | Agatha Christie
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                      +icon('close').icon--small.icon--right
+                  .badge.mb-small.mr-medium
+                    | rýchlovky (do 1h)
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
+                      +icon('close').icon--small.icon--right
 
         if searchCard
-          p Našli sme v:
           .card.card--well
             .card__content
               .row
