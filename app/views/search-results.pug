@@ -6,16 +6,13 @@ block opts
     - var pageTitle = 'Výsledky vyhľadávania'
     - var filterStickyOffset = JSON.stringify({0: header.size.default, 768: header.size.m});
     - var searchCard = true
+    - var sortLinks = [{icon: 'breadcrumbs', title: 'Odporúčame'}, 'Bestsellery', 'Top hodnotené', 'Najnovšie', 'Najlacnejšie', 'Najdrahšie', 'Najvyššia zľava']
 
 block content
   main.category
     section.section.section--secondary
-      .wrapper-main.text-center
+      .wrapper-main
         .text-medium.text-color-grey Hľadali ste
-        h1 Harry Potter
-          button.btn.btn--clean.mb-none(data-toggle=".header, #search-in-header", data-toggle-class-target="is-search-active")
-            +icon('edit', 'icon--medium', 'Upraviť vyhľadávanie')
-        .h3 Našli sme #{' '}
-          span.text-color-black.text-semibold 63 titulov
+        h1 harry potter
 
-    include modules/category-list
+    include modules/category-list-new
