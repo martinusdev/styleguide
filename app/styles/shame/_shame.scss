@@ -25,7 +25,9 @@
 }
 
 .martinus-map .smap {
-  img {
+
+  img[src*="//mapserver.mapy.cz/"]{
+    filter: grayscale(50%) saturate(20%) brightness(110%);
     max-width: initial;
     vertical-align: auto;
   }
