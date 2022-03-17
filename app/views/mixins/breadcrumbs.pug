@@ -1,4 +1,5 @@
 include icon
+include faIcon
 
 mixin breadcrumbs(props = {})
   -
@@ -8,7 +9,7 @@ mixin breadcrumbs(props = {})
 
   .breadcrumbs
     a.breadcrumbs__item.text-medium.link(href="#")
-      +icon('breadcrumbs', 'icon--small').text-color-grey
+      +faIcon('house', 'far').text-color-grey
     +icon('chevron-right', 'icon--small').text-color-grey
     each breadcrumb, i in breadcrumbs
       a.breadcrumbs__item.text-medium.link(href="#")
