@@ -26,10 +26,13 @@
 
 .martinus-map .smap {
 
-  img[src*="//mapserver.mapy.cz/"]{
-    filter: grayscale(50%) saturate(20%) brightness(110%);
+  img {
     max-width: initial;
     vertical-align: auto;
+  }
+
+  img[src*="//mapserver.mapy.cz/"] {
+    filter: grayscale(50%) saturate(20%) brightness(110%);
   }
 
   .zoom {
