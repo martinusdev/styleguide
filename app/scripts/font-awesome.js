@@ -133,11 +133,12 @@ import {
   faArrowDown,
   faArrowUp,
   faRectangleHistory,
-  faCircleUser,
+  faCircleUser, faCheckCircle, faHeartCirclePlus, faTrashXmark,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
   faBook as fasFaBook,
+  faHeart as fasFaHeart
 } from '@fortawesome/pro-solid-svg-icons';
 
 library.add(
@@ -277,7 +278,11 @@ library.add(
   faArrowDown,
   faArrowUp,
   faRectangleHistory,
-  faCircleUser
+  faCircleUser,
+  faCheckCircle,
+  faHeartCirclePlus,
+  fasFaHeart,
+  faTrashXmark
 );
 
 dom.watch();

@@ -54,7 +54,7 @@ block content
                                 button(type="button" data-number-spinner="increase" data-controls=`#product-${i}-qty`).btn.btn--small.btn--clean.btn--equal
                                   +icon('plus', 'icon--medium', 'plus')
                           button.btn.btn--clean.m-none(type="button" data-toggle=`#cart-item${i}`)
-                            +icon('trash', 'icon--medium')
+                            +faIcon('trash-xmark').fa-xl
                           +addTo({text: '', link: false, status: false}).mb-none
                       .cart-item__price.text-semibold.text-size-medium.text-nowrap= item.price
                 li.list__item.align-items-end.pb-none
