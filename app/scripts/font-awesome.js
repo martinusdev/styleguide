@@ -126,21 +126,19 @@ import {
   faGlobeAmericas,
   faGlobeAfrica,
   faTreasureChest,
-} from '@fortawesome/pro-light-svg-icons';
-
-import {
-  faBook as fasFaBook,
-} from '@fortawesome/pro-solid-svg-icons';
-
-import {
   faArrowDownRight,
   faArrowUpRight,
   faArrowRight,
   faArrowLeft,
   faArrowDown,
   faArrowUp,
-  faHouse as farFaHouse, faRectangleHistory, faCircleUser,
+  faRectangleHistory,
+  faCircleUser,
 } from '@fortawesome/pro-regular-svg-icons';
+
+import {
+  faBook as fasFaBook,
+} from '@fortawesome/pro-solid-svg-icons';
 
 library.add(
   falFaBook,
@@ -278,7 +276,6 @@ library.add(
   faArrowLeft,
   faArrowDown,
   faArrowUp,
-  farFaHouse,
   faRectangleHistory,
   faCircleUser
 );

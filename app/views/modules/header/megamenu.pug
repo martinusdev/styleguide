@@ -132,7 +132,7 @@ mixin megaMenuContent(props = {})
               a(href="#").d-flex.align-items-center.pt-small.pb-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none
                 .mr-tiny.mega-menu__categories__icon
                   if category.icon.startsWith('fa-')
-                    i.text-color-primary.fa-fw.fal(class= category.icon)
+                    +faIcon(category.icon.replace('fa-', '')).text-color-primary.fa-fw
                   else
                     +icon(category.icon).icon--large.text-color-primary
                 h3.mb-none=category.title

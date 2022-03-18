@@ -269,7 +269,7 @@ section.section
               .carousel-lite__wrapper.mj-carousel__content.align-items-stretch
                 each item, i in menu
                   a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").mr-small.d-flex.align-items-center
-                    i.fal.fa-3x(class=`fa-${item.icon}`).text-color-error.mr-small
+                    +faIcon(item.icon).text-color-error.mr-small.fa-3x
                     span.link.line-small= item.title
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev(style="left: 10px;")
               +icon('arrow-left').icon--medium

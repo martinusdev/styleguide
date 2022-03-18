@@ -16,28 +16,28 @@ block opts
     -
       const categories = [{
         title: 'Beletria',
-        icon: 'fa-book',
+        icon: 'book',
       }, {
         title: 'Rozprávky',
-        icon: 'fa-swords',
+        icon: 'swords',
       }, {
         title: 'Sci-fi, fantasy a komiksy',
-        icon: 'fa-stars',
+        icon: 'stars',
       }, {
         title: 'Náučné knihy',
-        icon: 'fa-atlas',
+        icon: 'atlas',
       }, {
         title: 'Omaľovánky, vystrihovanie, papier',
-        icon: 'fa-pencil-paintbrush',
+        icon: 'pencil-paintbrush',
       }, {
         title: 'Hlavolamy, doplňovačky, úlohy a hry',
-        icon: 'fa-question',
+        icon: 'question',
       }, {
         title: 'Kuchárske knihy',
-        icon: 'fa-hat-chef',
+        icon: 'hat-chef',
       }, {
         title: 'Učebnice',
-        icon: 'fa-graduation-cap',
+        icon: 'graduation-cap',
       }, {
         title: 'Hračky',
         icon: '',
@@ -65,10 +65,7 @@ block content
                 .btn-layout-item
                   a(href="#").btn.btn--carousel.text-transform-none.text-size-medium.d-flex.align-items-center.text-left.pt-small.pb-small
                     if category.icon
-                      if category.icon.startsWith('fa-')
-                        i.text-color-primary.mr-tiny.fa-fw.fa-lg.fal(class= category.icon)
-                      else
-                        +icon(category.icon).mr-tiny.text-color-primary
+                      +faIcon(category.icon).text-color-primary.mr-tiny.fa-fw.fa-lg
                     | !{category.title}
           .col.text-center.mb-small
             a.hide.link.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)
