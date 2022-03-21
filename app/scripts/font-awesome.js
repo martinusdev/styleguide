@@ -133,7 +133,13 @@ import {
   faArrowDown,
   faArrowUp,
   faRectangleHistory,
-  faCircleUser, faCheckCircle, faHeartCirclePlus, faTrashXmark,
+  faCircleUser,
+  faCheckCircle,
+  faHeartCirclePlus,
+  faTrashXmark,
+  faChevronUp,
+  faChevronDown,
+  faChevronLeft, faChevronRight, faBasketShopping,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
@@ -282,7 +288,12 @@ library.add(
   faCheckCircle,
   faHeartCirclePlus,
   fasFaHeart,
-  faTrashXmark
+  faTrashXmark,
+  faChevronUp,
+  faChevronDown,
+  faChevronLeft,
+  faChevronRight,
+  faBasketShopping
 );
 
 dom.watch();
