@@ -132,11 +132,13 @@ import {
   faArrowLeft,
   faArrowDown,
   faArrowUp,
+  faArrowDownToBracket,
+  faArrowRightFromBracket,
   faRectangleHistory,
   faCircleUser,
   faCheckCircle,
   faHeartCirclePlus,
-  faTrashXmark,
+  faTrashCanXmark,
   faChevronUp,
   faChevronDown,
   faChevronLeft,
@@ -145,13 +147,27 @@ import {
   faCreditCard,
   faCircle,
   faXmark,
-  faCircleExclamation, faTruckFast,
+  faCircleExclamation,
+  faTruckFast,
+  faShield,
+  faCircleInfo,
+  faThumbsUp,
+  faThumbsDown,
+  faLink,
+  faLoader,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
   faBook as fasFaBook,
   faHeart as fasFaHeart
 } from '@fortawesome/pro-solid-svg-icons';
+import {
+  faFacebookF,
+  faFoursquare,
+  faGoogle,
+  faInstagram, faTwitter,
+  faYoutube
+} from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   falFaBook,
@@ -294,7 +310,7 @@ library.add(
   faCheckCircle,
   faHeartCirclePlus,
   fasFaHeart,
-  faTrashXmark,
+  faTrashCanXmark,
   faChevronUp,
   faChevronDown,
   faChevronLeft,
@@ -304,7 +320,21 @@ library.add(
   faCircle,
   faXmark,
   faCircleExclamation,
-  faTruckFast
+  faTruckFast,
+  faFacebookF,
+  faFoursquare,
+  faGoogle,
+  faYoutube,
+  faInstagram,
+  faTwitter,
+  faShield,
+  faCircleInfo,
+  faThumbsUp,
+  faThumbsDown,
+  faLink,
+  faLoader,
+  faArrowDownToBracket,
+  faArrowRightFromBracket,
 );
 
 dom.watch();
