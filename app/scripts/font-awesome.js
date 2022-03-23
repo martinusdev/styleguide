@@ -155,7 +155,25 @@ import {
   faThumbsUp,
   faThumbsDown,
   faLink,
-  faLoader, faEye,
+  faLoader,
+  faEye,
+  faArrowUpFromBracket,
+  faBars,
+  faPlus,
+  faMinus,
+  faBarsSort,
+  faPause,
+  faVolume,
+  faBookBookmark,
+  faTabletScreen,
+  faDice,
+  faFilm,
+  faReply,
+  faFilter,
+  faFaceFrown,
+  faSearch,
+  faShare,
+  faLocationCrosshairs, faClock,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
@@ -337,7 +355,25 @@ library.add(
   faLoader,
   faArrowDownToBracket,
   faArrowRightFromBracket,
-  faEye
+  faArrowUpFromBracket,
+  faEye,
+  faBars,
+  faPlus,
+  faMinus,
+  faBarsSort,
+  faPause,
+  faVolume,
+  faBookBookmark,
+  faTabletScreen,
+  faDice,
+  faFilm,
+  faReply,
+  faFilter,
+  faFaceFrown,
+  faSearch,
+  faShare,
+  faLocationCrosshairs,
+  faClock
 );
 
 dom.watch();
