@@ -135,6 +135,7 @@ import {
   faArrowDownToBracket,
   faArrowRightFromBracket,
   faRectangleHistory,
+  faRectangleVerticalHistory,
   faCircleUser,
   faCheckCircle,
   faHeartCirclePlus,
@@ -154,7 +155,7 @@ import {
   faThumbsUp,
   faThumbsDown,
   faLink,
-  faLoader,
+  faLoader, faEye,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
@@ -306,6 +307,7 @@ library.add(
   faArrowDown,
   faArrowUp,
   faRectangleHistory,
+  faRectangleVerticalHistory,
   faCircleUser,
   faCheckCircle,
   faHeartCirclePlus,
@@ -335,6 +337,7 @@ library.add(
   faLoader,
   faArrowDownToBracket,
   faArrowRightFromBracket,
+  faEye
 );
 
 dom.watch();
