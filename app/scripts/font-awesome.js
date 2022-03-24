@@ -173,7 +173,7 @@ import {
   faFaceFrown,
   faSearch,
   faShare,
-  faLocationCrosshairs, faClock,
+  faLocationCrosshairs, faClock, faMagnifyingGlassPlus, faMagnifyingGlassMinus,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
@@ -373,7 +373,9 @@ library.add(
   faSearch,
   faShare,
   faLocationCrosshairs,
-  faClock
+  faClock,
+  faMagnifyingGlassPlus,
+  faMagnifyingGlassMinus
 );
 
 dom.watch();
