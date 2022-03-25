@@ -173,12 +173,12 @@ import {
   faFaceFrown,
   faSearch,
   faShare,
-  faLocationCrosshairs, faClock, faMagnifyingGlassPlus, faMagnifyingGlassMinus,
+  faLocationCrosshairs, faClock, faMagnifyingGlassPlus, faMagnifyingGlassMinus, faTreeChristmas,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
   faBook as fasFaBook,
-  faHeart as fasFaHeart
+  faHeart as fasFaHeart, faStar
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faFacebookF,
@@ -187,6 +187,7 @@ import {
   faInstagram, faTwitter,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
+import { faStarHalfStroke } from '@fortawesome/pro-duotone-svg-icons';
 
 library.add(
   falFaBook,
@@ -375,7 +376,10 @@ library.add(
   faLocationCrosshairs,
   faClock,
   faMagnifyingGlassPlus,
-  faMagnifyingGlassMinus
+  faMagnifyingGlassMinus,
+  faTreeChristmas,
+  faStar,
+  faStarHalfStroke
 );
 
 dom.watch();
