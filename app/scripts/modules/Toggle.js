@@ -69,11 +69,11 @@ class Toggle {
     }
 
     if (icon) {
-      let iconEl = target.querySelector(`use${iconTarget}`);
+      let iconEl = target.querySelector(iconTarget ? `use${iconTarget}` : 'use');
       let currentIconAttribute = 'xlink:href';
 
       if (!iconEl) {
-        iconEl = target.querySelector(`svg${iconTarget}`);
+        iconEl = target.querySelector(iconTarget ? `svg${iconTarget}` : 'svg');
         currentIconAttribute = 'data-icon';
       }
 
