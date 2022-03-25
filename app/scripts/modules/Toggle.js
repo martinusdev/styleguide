@@ -38,6 +38,7 @@ class Toggle {
     trigger,
     className,
     icon,
+    iconTarget,
     text,
     expand,
     attribute,
@@ -68,11 +69,11 @@ class Toggle {
     }
 
     if (icon) {
-      let iconEl = target.querySelector('use');
+      let iconEl = target.querySelector(`use${iconTarget}`);
       let currentIconAttribute = 'xlink:href';
 
       if (!iconEl) {
-        iconEl = target.querySelector('svg');
+        iconEl = target.querySelector(`svg${iconTarget}`);
         currentIconAttribute = 'data-icon';
       }
 
@@ -176,6 +177,7 @@ class Toggle {
         trigger,
         className,
         icon: target.getAttribute('data-toggle-icon'),
+        iconTarget: target.getAttribute('data-toggle-icon-target'),
         text: target.getAttribute('data-toggle-text'),
         expand: target.hasAttribute('data-toggle-expand'),
         attribute: target.getAttribute('data-toggle-attribute'),
