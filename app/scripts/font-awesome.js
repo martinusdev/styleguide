@@ -192,7 +192,7 @@ import {
   faInstagram, faTwitter,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
-import { faStarHalfStroke } from '@fortawesome/pro-duotone-svg-icons';
+import { faStarHalf } from '@fortawesome/pro-duotone-svg-icons';
 
 library.add(
   falFaBook,
@@ -384,7 +384,7 @@ library.add(
   faMagnifyingGlassMinus,
   faTreeChristmas,
   faStar,
-  faStarHalfStroke,
+  faStarHalf,
   faEllipsis
 );
 
