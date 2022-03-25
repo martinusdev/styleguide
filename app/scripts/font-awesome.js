@@ -173,7 +173,12 @@ import {
   faFaceFrown,
   faSearch,
   faShare,
-  faLocationCrosshairs, faClock, faMagnifyingGlassPlus, faMagnifyingGlassMinus, faTreeChristmas,
+  faLocationCrosshairs,
+  faClock,
+  faMagnifyingGlassPlus,
+  faMagnifyingGlassMinus,
+  faTreeChristmas,
+  faEllipsis,
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
@@ -379,7 +384,8 @@ library.add(
   faMagnifyingGlassMinus,
   faTreeChristmas,
   faStar,
-  faStarHalfStroke
+  faStarHalfStroke,
+  faEllipsis
 );
 
 dom.watch();
