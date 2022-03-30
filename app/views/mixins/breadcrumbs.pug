@@ -7,12 +7,12 @@ mixin breadcrumbs(props = {})
       breadcrumbs = ['Martinus Help Page', 'Všetko o nákupe', 'Poštovné'],
     } = props;
 
-  .breadcrumbs
+  .breadcrumbs.overflow-scroll-x.d-flex.align-items-center.py-tiny
     a.breadcrumbs__item.text-medium.link(href="#")
       +faIcon('house', 'far').text-color-grey
-    +icon('chevron-right', 'icon--small').text-color-grey
+    +faIcon('chevron-right').text-color-grey.fa-xs.mx-tiny
     each breadcrumb, i in breadcrumbs
       a.breadcrumbs__item.text-medium.link(href="#")
         span !{breadcrumb}
       if (i < breadcrumbs.length - 1)
-        +icon('chevron-right', 'icon--small').text-color-grey
+        +faIcon('chevron-right').text-color-grey.fa-xs.mx-tiny
