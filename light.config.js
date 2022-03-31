@@ -59,6 +59,7 @@ module.exports = (paths, config) => {
     },
     config: {
       images: {
+        src: config.images().src.replace('{gif,png,jpg,svg}', '{gif,png,jpg,svg,webp}'),
         imageminCfg: imageminCfgImages,
       },
       icons: {
@@ -77,23 +78,6 @@ module.exports = (paths, config) => {
           removeFill: false,
         },
       },
-      // react support - uncomment for future use
-      /*scripts: {
-        module: {
-          rules: [
-            {
-              test: /.jsx?$/,
-              exclude: /node_modules|bower_components|scripts\/pluginsIcons/,
-              use: {
-                loader: 'babel-loader',
-                query: {
-                  presets: ['es2016', 'react'],
-                },
-              },
-            },
-          ],
-        },
-      },*/
     },
   };
 };
