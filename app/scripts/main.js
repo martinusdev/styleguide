@@ -34,8 +34,6 @@ import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
 import CarouselLite from './modules/CarouselLite';
 
-import './modules/FontAwesome';
-
 // eslint-disable-next-line
 require('mutationobserver-shim');
 

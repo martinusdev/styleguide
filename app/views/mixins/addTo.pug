@@ -1,10 +1,12 @@
 include ./icon
+include ./faIcon
 
 mixin addTo(props = {})
   -
     const {
     text = 'Pridať do',
-    icon = 'heart',
+    icon = 'heart-circle-plus',
+    iconStyle = 'far',
     iconClass = '',
     link = false,
     status = true,
@@ -17,7 +19,7 @@ mixin addTo(props = {})
       a.link.text-medium(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand)=text
     else
       button.btn.btn--clean.m-none(id=`wishlist-button-${id}`, data-toggle="self, next",  aria-expanded="false", data-toggle-expand, class=buttonClass ? buttonClass : "")
-        +icon(icon).icon--medium(class=text ? "icon--left" : "", class=iconClass ? iconClass : "")
+        +faIcon(icon, iconStyle).fa-xl(class=text ? "mr-tiny" : "", class=iconClass ? iconClass : "")
         | #{text}
     .dropdown.dropdown--arrowhead(id=`wishlist-dropdown-${id}` data-dropdown, data-dropdown-interactive, data-toggle-expand, aria-expanded="false")
       .dropdown__wrap

@@ -234,7 +234,7 @@ $breakpoints: (
     display: block;
     border: none;
     @include border-radius(50%);
-    transition: transform 0.2s ease-in-out 0s, -webkit-transform 0.2s ease-in-out 0s;
+    transition: transform 0.2s ease-in-out 0s;
     transform: rotateZ(0deg);
     &.is-active { transform: rotateZ(180deg); }
   }
@@ -251,7 +251,7 @@ $breakpoints: (
     display: block;
     background-color: #fff;
     transition: all 0.2s ease-in-out 0s;
-    transition-property: transform, -webkit-transform, opacity, width;
+    transition-property: transform, opacity, width;
     &:first-child { transform: translateY(7px); }
     &:last-child { transform: translateY(-7px); }
 
