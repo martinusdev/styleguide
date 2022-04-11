@@ -1,3 +1,61 @@
 .map {
   height: 100%;
 }
+
+.martinus-map {
+  &__container {
+    height: 100%;
+  }
+
+  &--modal {
+    margin-top: - _get-space();
+    margin-bottom: - _get-space();
+
+    @include breakpoint(m, downfrom) {
+      height: 240px;
+      margin-top: -1 * _get-space('small');
+      margin-bottom: _get-space('small');
+    }
+  }
+}
+
+// stylelint-disable selector-max-compound-selectors
+.martinus-map .smap {
+  img {
+    max-width: initial;
+    vertical-align: auto;
+  }
+
+  img[src*='//mapserver.mapy.cz/'] {
+    filter: grayscale(50%) saturate(20%) brightness(110%);
+  }
+
+  .zoom {
+    top: auto;
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+    width: 66px;
+    text-align: right;
+
+    .button-group {
+      box-shadow: none;
+      border-radius: 0;
+
+      button {
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 3px;
+        box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
+      }
+
+      button.minus {
+        margin-right: 6px;
+      }
+
+      button:hover {
+        color: _color(primary);
+      }
+    }
+  }
+}

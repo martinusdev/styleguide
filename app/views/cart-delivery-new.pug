@@ -44,7 +44,7 @@ block content
         .modal__content
 
           .btn.btn--clean(data-toggle="#card-modal", style="position: absolute; right: 10px; top: 10px;")
-            +icon('close').icon--medium
+            +faIcon('xmark').fa-xl
 
           .mb-medium
 
@@ -64,6 +64,21 @@ block content
                   +icon('card').icon--medium.icon--left
                   | Zaplatím kartou vopred (rýchle)
 
+block append head
+  <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+  <script type="text/javascript">Loader.load();</script>
+
+block append scripts
+  script.
+    var center = SMap.Coords.fromWGS84(14.41790, 50.12655);
+    var map = new SMap(JAK.gel("mj-map"), center, 13);
+    map.addDefaultLayer(SMap.DEF_BASE).enable();
+
+    var c = new SMap.Control.Mouse(SMap.MOUSE_PAN);
+    map.addControl(c);
+
+    var zoom = new SMap.Control.Zoom(null, { titles: ['Priblížiť', 'Oddialiť'], showZoomMenu: false });
+    map.addControl(zoom);
 
 block append modals
   include modules/checkout/delivery-picker-modal
