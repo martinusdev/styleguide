@@ -1,0 +1,46 @@
+.modal-overlay#mj-modal-delivery-picker(data-modal)
+  .modal.modal--large
+    .modal__wrap
+      button.btn.btn--round.btn--equal.m-none.btn--carousel(data-toggle='#mj-modal-delivery-picker', style='position:absolute; right: 15px; top: 15px; z-index: 2')
+        +faIcon('xmark').fa-2x
+      .modal__content
+        .row
+          .col--m-5.order-1.order-m-0
+            h2.mb-small Packeta
+
+            .form-control.form-control--input
+              .input-addons.d-flex
+                .input-addons__item.p-none
+                  button.btn.btn--secondary.py-small(data-tooltip, title="Zistiť aktuálnu polohu")
+                    +faIcon('location-crosshairs').fa-xl.fa-fw
+                input.input.autocomplete__input(type="text", id="input-addon-left-5", placeholder="Hľadať podľa adresy")
+
+            .list
+              .list__item.d-flex.bg-secondary.p-small.align-items-start
+                img(src=`${assetsPrefix}images/content/delivery-types/packeta.svg`, alt="Packeta").fa-fw
+                .ml-small.text-medium
+                  strong Dolný Kubín, Papiernictvo Ševt<br>
+                  | Na Sihoti 15
+                  .d-flex.mt-small
+                    +faIcon('clock').fa-fw.fa-lg
+                    div.ml-tiny
+                      | Pondelok-piatok 8:30 – 20:00<br>
+                      | Sobota 10:00 – 16:00<br>
+                      | Nedeľa zatvorené
+                  .d-flex.mt-small
+                    +faIcon('circle-check').fa-fw.fa-lg.text-color-green
+                    div.ml-tiny
+                      | Možnosť platby kartou
+                  .d-flex.mt-tiny
+                    +faIcon('xmark').fa-fw.fa-lg.text-color-error
+                    div.ml-tiny.text-color-grey
+                      | Bezbariérový prístup
+                .btn-layout--vertical.mt-small
+                  a.btn.btn--primary Vyzdvihnem si to tu
+              .list__item.d-flex.p-small.align-items-start.list__item--clickable
+                img(src=`${assetsPrefix}images/content/delivery-types/packeta.svg`, alt="Packeta").fa-fw
+                .ml-small.text-medium
+                  strong Dolný Kubín, Nuttery Place<br>
+                  | Bysterecká 2200
+          .col--m-7.px-none.modal__map.martinus-map.martinus-map--modal.order-0.order-m-1
+            div(id="mj-map").martinus-map__container

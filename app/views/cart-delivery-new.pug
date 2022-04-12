@@ -1,0 +1,84 @@
+extends layouts/_default
+
+block opts
+    - var pageTitle = 'Košík - Doručenie'
+    - var checkoutHeader = true;
+    - const pageClass = 'bg-secondary';
+
+block content
+  main.bg-secondary
+    section.section--toolbar(data-sticky, data-scroll-offset=`{"0": ${header.size.default}, "768": ${header.size.m}}`, data-sticky-class="is-stuck", data-sticky-wrap)
+      .wrapper-main
+        .row.justify-content-center
+          .bar.bar--small.mb-none.col--l-8.ofst--center.mb-small
+            .bar__item.bar__item--fill.text-center
+              .mb-small Košík
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 100%")
+            .bar__item.bar__item--fill.text-center
+              .mb-small Doručenie
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 25%")
+            .bar__item.bar__item--fill.text-center
+              .mb-small Platba
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 0")
+            .bar__item.bar__item--fill.text-center
+              .mb-small Sumár
+              .progress-bar
+                  .progress-bar__value.progress-bar__value--green(style="width: 0")
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-8.ofst--center
+
+            include modules/checkout/cart
+
+            include modules/checkout/delivery-new
+
+  .modal-overlay.active#card-modal(data-modal)
+    .modal.modal--medium
+      .modal__wrap
+
+        .modal__content
+
+          .btn.btn--clean(data-toggle="#card-modal", style="position: absolute; right: 10px; top: 10px;")
+            +faIcon('xmark').fa-xl
+
+          .mb-medium
+
+          .row.mb-large.align-items-center
+            .col--m-2.text-center
+              +icon('card').icon--xxlarge.text-color-success
+            .col--m-10.text-center.text-left-m
+              p.mb-none Naozaj chcete za objednávku platiť až pri preberaní osobného odberu? Platbou vopred ušetríte#{' '}
+                strong množstvo času pri preberaní objednávky
+
+          div
+            .bar.justify-content-center.mb-medium.mb-m-none
+              .bar__item.no-mrg--s-down
+                a(href="#").btn.btn--ghost Zaplatím pri osobnom odbere (pomalšie)
+              .bar__item
+                a(href="#").btn.btn--success
+                  +icon('card').icon--medium.icon--left
+                  | Zaplatím kartou vopred (rýchle)
+
+block append head
+  <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+  <script type="text/javascript">Loader.load();</script>
+
+block append scripts
+  script.
+    var center = SMap.Coords.fromWGS84(14.41790, 50.12655);
+    var map = new SMap(JAK.gel("mj-map"), center, 13);
+    map.addDefaultLayer(SMap.DEF_BASE).enable();
+
+    var c = new SMap.Control.Mouse(SMap.MOUSE_PAN);
+    map.addControl(c);
+
+    var zoom = new SMap.Control.Zoom(null, { titles: ['Priblížiť', 'Oddialiť'], showZoomMenu: false });
+    map.addControl(zoom);
+
+block append modals
+  include modules/checkout/delivery-picker-modal
