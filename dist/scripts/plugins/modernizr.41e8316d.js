@@ -1,5 +1,5 @@
 /*!
- * modernizr v3.11.8
+ * modernizr v3.12.0
  * Build https://modernizr.com/download?-addtest-fnbind-printshiv-setclasses-testprop-dontmin
  *
  * Copyright (c)
@@ -35,7 +35,7 @@
    * @access public
    */
   var ModernizrProto = {
-    _version: '3.11.8',
+    _version: '3.12.0',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
@@ -1047,12 +1047,12 @@
   ;
 
   /**
-   * Create our "modernizr.d9c20825" element that we do most feature tests on.
+   * Create our "modernizr.41e8316d" element that we do most feature tests on.
    *
    * @access private
    */
   var modElem = {
-    elem: createElement('modernizr.d9c20825')
+    elem: createElement('modernizr.41e8316d')
   };
 
   // Clean up this element
@@ -1110,7 +1110,7 @@
    * @returns {boolean} the result of the specified callback test
    */
   function injectElementWithStyles(rule, callback, nodes, testnames) {
-    var mod = 'modernizr.d9c20825';
+    var mod = 'modernizr.41e8316d';
     var style;
     var ret;
     var node;
@@ -1317,7 +1317,7 @@
     // defined for valid tags. Therefore, if `modernizr` does not have one, we
     // fall back to a less used element and hope for the best.
     // For strict XHTML browsers the hardly used samp element is used.
-    var elems = ['modernizr.d9c20825', 'tspan', 'samp'];
+    var elems = ['modernizr.41e8316d', 'tspan', 'samp'];
     while (!mStyle.style && elems.length) {
       afterInit = true;
       mStyle.modElem = createElement(elems.shift());
