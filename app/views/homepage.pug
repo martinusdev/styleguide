@@ -192,72 +192,6 @@ block content
                     button.btn.btn--ghost.is-active Všetky
                     button.btn.btn--ghost Sledované
 
-                .card__content
-
-                  //.row.mb-large
-                    .col--1.show-m
-                      .bar
-                        .bar__item.bar__item--shrinkable
-                          .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                    .col--12.col--m-11
-                      .bar
-                        .bar__item.bar__item--fill
-                          .bar.mb-none
-                            .bar__item.bar__item--shrinkable.hide-m
-                              .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                            .bar__item.bar__item--fill
-                              p
-                                b Janko Martinusák
-                                | #{' '}napísal/a recenziu
-                        .bar__break.hide-m
-                        .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.justify-content-center.mt-none
-                            each star, starIndex in Array(5)
-                              +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
-                        .bar__item.bar__item--shrinkable.text-right
-                          .h5 24.5.2018 20:31
-
-                      hr.mb-medium
-
-                      p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
-
-                      -
-                        var item = {
-                        xmas: false
-                        };
-                      .card.card--well.d-inline-block
-                        .card__content
-                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
-
-                  //.row.mb-large
-                    .col--1.show-m
-                      .bar
-                        .bar__item.bar__item--shrinkable
-                          .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                    .col--12.col--m-11
-                      .bar
-                        .bar__item.bar__item--fill
-                          .bar.mb-none
-                            .bar__item.bar__item--shrinkable.hide-m
-                              .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                            .bar__item.bar__item--fill
-                              p
-                                b Janko Martinusák
-                                | #{' '}napísal/a recenziu
-                        .bar__break.hide-m
-                        .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.justify-content-center.mt-none
-                            each star, starIndex in Array(5)
-                              +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
-                        .bar__item.bar__item--shrinkable.text-right
-                          .h5 24.5.2018 20:31
-
-                      hr.mb-medium
-
-                      p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
-
-
-
               .row.mb-medium
                 .col--m-6
                   .card
@@ -334,41 +268,6 @@ block content
                   +sectionHeader({ header: 'Čitateľské kolekcie', small: true, more: false, center: true })
                 +collectionItemContent({user: true})
                 +collectionItemContent({user: true})
-
-    //-section.section
-      h2.text-center.mb-medium Máme pre vás aj
-      -
-        const tiles = [
-          {
-            title: 'Blog',
-            color: 'yellow'
-          },
-          {
-            title: 'E-knihy',
-            color: 'green'
-          },
-          {
-            title: 'Hry',
-            color: 'blue'
-          },
-          {
-            title: 'Filmy',
-            color: 'violet'
-          },
-          {
-            title: 'Knižné predplatné',
-            color: 'red'
-          },
-          {
-            title: 'Káva a čaj',
-            color: 'brown'
-          },
-          {
-            title: 'Darčeková poukážka',
-            color: 'orange'
-          },
-        ];
-      +carouselTiles(tiles)
 
     include ./modules/seen-items
 
@@ -461,31 +360,3 @@ block content
               +icon('arrow-left').icon--medium
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
               +icon('arrow-right').icon--medium
-
-  .modal-overlay.modal-overlay--dark#gdpr-modal(data-modal)
-    .modal.modal--medium
-      .modal__wrap
-        .modal__header.mb-none
-          .modal__header__headline.text-center
-            .h2 Súhlas s uložením údajov
-          .modal__header__action
-            .btn.btn--clean(data-toggle="#gdpr-modal")
-              +icon('close').icon--medium
-
-        .modal__content
-          .mb-medium
-
-          .row.mb-large.align-items-center
-            .ofst--m-1.col--m-3.text-center.mb-medium.mb-m-none
-              img.img.mb-none(src="images/content/cookies-books.svg", style="max-width: 150px;")
-            .col--m-7.text-center.text-left-m
-              p.mb-none Aby sme vám vedeli čo najlepšie odporúčať knižky, a tiež na marketingové účely, potrebujeme si do vášho prehliadača uložiť údaje – takzvané koláčiky alebo cookies. Tieto údaje zdieľame aj s tretími stranami a dávame na ne dobrý pozor. Súhlasíte s ich uložením?
-
-          .bar.justify-content-center
-            .bar__item
-              a(href="#").btn.btn--ghost.btn--large Neskôr
-            .bar__item
-              a(href="#").btn.btn--success.btn--large Súhlasím
-
-          .text-center.mb-large
-            a.link Viac informácií

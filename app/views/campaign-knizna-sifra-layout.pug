@@ -199,29 +199,6 @@ block content
                   | vianočný pomocník
                   +icon('arrow-right').icon--right
 
-  .modal-overlay#gdpr(data-modal, style="background-color: rgba(0, 0, 0, 0.8);")
-    article.modal.modal--medium
-      .modal__wrap
-        .modal__header.mb-none.bg-blue
-          .modal__header__headline.text-center
-            .h2.text-transform-upper Môžeme si u vás odložiť koláčiky?
-          .modal__header__action
-            .btn.btn--clean(data-toggle="#gift")
-              +icon('close').icon--medium
-        .modal__content
-          .row.align-items-center
-            .col--m-4
-              .text-center.mb-medium
-                img(src="images/content/cookies.svg", width="100%", style="").show-m
-                img(src="images/content/cookies.svg", width="60%", style="").hide-m
-            .col--m-8
-              p.mb-medium
-                | Na marketingové účely a tiež preto, aby sme vám v budúcnosti lepšie vedeli odporučiť knihy, ktoré by sa vám mohli páčiť, si potrebujeme uložiť do vášho prehliadača údaje (cookies). Tieto údaje zdieľame aj s tretími stranami. Súhlasíte s ich uložením?#{' '}
-                a.link Viac informácii
-          .btn-layout.btn-layout--horizontal.justify-content-center
-            button.btn.btn--primary Súhlasím a chcem pokračovať
-
-
 block append scripts
   script(src=`https://unpkg.com/leaflet@1.3.4/dist/leaflet.js`, integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==", crossorigin="")
   script
