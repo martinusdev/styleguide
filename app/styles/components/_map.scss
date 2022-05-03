@@ -5,16 +5,12 @@
 .martinus-map {
   &__container {
     height: 100%;
+    max-height: 100%;
   }
 
   &--modal {
-    margin-top: - _get-space();
-    margin-bottom: - _get-space();
-
     @include breakpoint(m, downfrom) {
-      height: 240px;
-      margin-top: -1 * _get-space('small');
-      margin-bottom: _get-space('small');
+      height: 35vh;
     }
   }
 }
@@ -58,4 +54,37 @@
       }
     }
   }
+}
+
+.col-select-place {
+  max-height: 90vh;
+}
+
+@include breakpoint(m, downfrom) {
+  .col-select-place {
+    max-height: 60vh;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scaleX(1);
+  }
+
+  50% {
+    transform: scale3d(1.05, 1.05, 1.05);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.map-marker-active {
+  width: 40px !important;
+  animation-name: pulse;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
 }

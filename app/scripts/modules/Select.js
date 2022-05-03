@@ -27,6 +27,7 @@ const defaultConfig = {
   searchChoices: false,
   shouldSort: false,
   itemSelectText: 'Press to select',
+  allowHTML: true,
   classNames: {
     containerOuter: 'choices',
     containerInner: 'choices__inner',
