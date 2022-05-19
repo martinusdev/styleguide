@@ -1,0 +1,13 @@
+.product-grid {
+  display: grid;
+  column-gap: _get-rem(34px);
+  grid-template-columns: repeat(auto-fit, 120px);
+  justify-content: space-around;
+  align-content: flex-start;
+}
+
+@include breakpoint('m') {
+  .product-grid {
+    justify-content: flex-start;
+  }
+}
