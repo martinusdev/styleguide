@@ -194,15 +194,21 @@
 
     &--done {
       &::after {
-        content: '';
-        height: _get-rem(24px);
-        width: _get-rem(24px);
+        display: none;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font: var(--fa-font-regular);
+        content: '\f058';
+      }
+
+      .fa-circle-check[data-fa-pseudo-element] {
         position: absolute;
         top: _get-rem(1px);
         left: -(_get-rem(10px));
-        background-image: svg-load('./../icons_/app/check-circle.svg');
-        background-color: $default-bg-color;
-        border-radius: $default-border-radius-circle;
+        font-size: 1.5rem;
+        color: _color(success);
+        background: $color-white;
+        border-radius: 9999px;
       }
     }
 
