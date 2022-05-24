@@ -193,19 +193,10 @@
     }
 
     &--done {
-      &::after {
-        display: none;
-        text-rendering: auto;
-        -webkit-font-smoothing: antialiased;
-        font: var(--fa-font-regular);
-        content: '\f058';
-      }
-
-      .fa-circle-check[data-fa-pseudo-element] {
+      &__icon {
         position: absolute;
         top: _get-rem(1px);
         left: -(_get-rem(10px));
-        font-size: 1.5rem;
         color: _color(success);
         background: $color-white;
         border-radius: 9999px;
