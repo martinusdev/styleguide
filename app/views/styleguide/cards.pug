@@ -1,6 +1,7 @@
 extends templates/layout
 
 include ./../mixins/icon
+include ./../mixins/faIcon
 
 //- Options
 block prepend opts
@@ -293,8 +294,9 @@ block append content
                 .card__content We're all done here.
         +demo-code
           :code
-            <!-- Speechbubble card -->
+            <!-- Done card card -->
             <article class="card card--done">
+              <i class="far fa-check-circle card--done__icon"></i>
               ...
             </article>
 
