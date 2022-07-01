@@ -128,8 +128,8 @@
 // Equilateral (width=height) button generator
 @mixin equilateral-button-sizing($padding) {
   $size: $padding * 2 + _map-deep-get($button, 'default', 'line-height');
-  width: calc(#{$size} - 3px);
-  height: calc(#{$size} - 3px);
+  width: calc(#{$size} - 4px);
+  height: calc(#{$size} - 4px);
 }
 
 @mixin equilateral-button {
@@ -197,6 +197,17 @@
 
 // Classes for proper icon alignment and sizing in buttons
 @mixin button-icon-classes {
+  .btn .far,
+  .btn .fal,
+  .btn .fas,
+  .btn .fab {
+    font-size: 1.5rem !important;
+  }
+
+  .btn svg[data-icon] {
+    margin-top: -1px;
+  }
+
   .btn .icon {
     position: relative;
     vertical-align: -0.15em;

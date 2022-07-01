@@ -1,6 +1,7 @@
 extends templates/layout
 
 include ./../mixins/icon
+include ./../mixins/faIcon
 
 //- Options
 block prepend opts
@@ -257,6 +258,21 @@ block append content
   +content-section(contents[1])
 
     +p Icons are added to button by creating icon element same way as described in <a class='l-a' href="icons#{htmlPostfix}">icons</a>. There are two ways how to use icons in buttons - inline or positioned.
+
+    +content-sub-section('Font Awesome icons')
+      +demo
+        +demo-example
+          .d-flex
+            div
+              button.btn.btn--primary.mr-small
+                +faIcon('shopping-basket').fa-xl.mr-tiny
+                | Pridať do košíka
+            div
+              button.btn.btn--secondary.mr-small
+                | Rezervovať v kníhkupectve
+            div
+              button.btn.btn--equal.btn--ghost
+                +faIcon('heart-circle-plus').fa-xl
 
     +content-sub-section('Floating icons')
 
