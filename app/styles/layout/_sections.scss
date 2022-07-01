@@ -30,7 +30,11 @@
 
   &--breadcrumbs {
     background-color: _color('bg');
-    padding: _get-space('small') 0;
+    padding: _get-space('tiny') 0;
+
+    @include breakpoint(m) {
+      padding: _get-space('small') 0;
+    }
   }
 
   &--l-background {
