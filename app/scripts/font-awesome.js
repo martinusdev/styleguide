@@ -183,7 +183,9 @@ import {
 
 import {
   faBook as fasFaBook,
-  faHeart as fasFaHeart, faStar
+  faHeart as fasFaHeart,
+  faEye as fasFaEye,
+  faStar
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faFacebookF,
@@ -363,6 +365,7 @@ library.add(
   faArrowRightFromBracket,
   faArrowUpFromBracket,
   faEye,
+  fasFaEye,
   faBars,
   faPlus,
   faMinus,
