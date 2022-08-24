@@ -74,14 +74,27 @@
     .is-active > & {
       @include css-map($tabs-card, 'active');
 
+      &:before {
+        height: 4px;
+        position: absolute;
+        left: -1px;
+        top: -1px;
+        right: -1px;
+        border-top-left-radius: $default-border-radius;
+        border-top-right-radius: $default-border-radius;
+        background: _color(bg, 600);
+        display: block;
+        content: '';
+      }
+
       &:after {
         content: '';
         position: absolute;
-        bottom: -(_map-deep-get($tabs-card, 'default', margin-bottom) + (_get-rem(1px)));
+        bottom: -(_map-deep-get($tabs-card, 'default', margin-bottom) + (_get-rem($default-border-radius)));
         left: -1px;
         right: -1px;
 
-        height: _map-deep-get($tabs-card, 'default', margin-bottom);
+        height: _map-deep-get($tabs-card, 'default', margin-bottom) + _get-rem($default-border-radius * 2);
         background-color: _map-deep-get($tabs-card, 'active', background-color);
         border: _map-deep-get($tabs-card, 'default', border);
         border-color: _map-deep-get($tabs-card, 'active', border-color);
@@ -106,11 +119,6 @@
 .tab-nav--rounded {
   .tab-nav__item .tab-nav__content {
     border-radius: $default-border-radius;
-  }
-
-  .tab-nav__item:first-child .tab-nav__content {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 }
 
