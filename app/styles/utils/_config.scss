@@ -377,7 +377,7 @@ $em: (
   font-style: normal,
   font-weight: $font-weight-semibold,
   color: $color-black,
-  border-bottom: 1px dashed $color-black,
+  border-bottom: 1px dotted $color-black,
 );
 
 //---------------
@@ -1588,7 +1588,7 @@ $tabs-link: (
 
 $tabs-card: (
   default: (
-    border: 1px solid $default-border-color,
+    border: 1px solid _color(grey, 400),
     padding: _get-space('small') _get-space('small'),
     font-size: _get-rem($font-size-medium),
     text-align: center,
@@ -1596,6 +1596,7 @@ $tabs-card: (
   ),
   active: (
     border-color: _color(bg, 500),
+    border-top: 3px solid _color(bg, 600),
     background-color: _color(bg, 500),
     font-weight: $font-weight-semibold,
   ),
