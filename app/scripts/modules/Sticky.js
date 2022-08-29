@@ -1,6 +1,7 @@
 import Sticky from 'sticky-js';
 
 import { getValueFromResponsiveMap } from './Utils';
+import { TRIGGER_EVT } from './Toggle';
 
 function getOffset(element) {
   const currentOffset = JSON.parse(element.getAttribute('data-scroll-offset'))
@@ -20,6 +21,10 @@ export default class StickyWrapper {
     this.config = { ...defaultConfig, ...config };
 
     this.stickies = [];
+
+    window.addEventListener(TRIGGER_EVT, () => {
+      this.update();
+    });
 
     // eslint-disable-next-line no-constructor-return
     return this._init();
