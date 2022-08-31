@@ -1,7 +1,6 @@
 import animateScrollTo from 'animated-scroll-to';
+import scrollMonitor from 'scrollmonitor';
 import { nodeListToArray } from './Utils';
-
-const scrollMonitor = require('scrollmonitor');
 
 const defaultConfig = {
   selectorSlider: '[data-product-preview-slider]',
@@ -58,16 +57,16 @@ export default class ProductPreview {
     slides.forEach(slide => {
       const slideWatcher = this.sliderMonitor.create(slide);
 
-      slideWatcher.fullyEnterViewport((e, el) => {
+      slideWatcher.fullyEnterViewport(() => {
         const page = parseInt(
-          el.watchItem.getAttribute(
+          slideWatcher.watchItem.getAttribute(
             // remove '[] with slice'
             this.config.selectorSlide.slice(1, -1),
           ),
           10,
         );
 
-        currentPage.innerHTML = page + 1;
+        currentPage.innerHTML = `${page + 1}`;
         this.currentPage = page;
       });
 
