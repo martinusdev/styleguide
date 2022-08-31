@@ -94,7 +94,7 @@
         left: -1px;
         right: -1px;
 
-        height: _map-deep-get($tabs-card, 'default', margin-bottom) + _get-rem($default-border-radius * 2);
+        height: _map-deep-get($tabs-card, 'default', margin-bottom) + _get-rem($default-border-radius * 2) + _get-rem(3px);
         background-color: _map-deep-get($tabs-card, 'active', background-color);
         border: _map-deep-get($tabs-card, 'default', border);
         border-color: _map-deep-get($tabs-card, 'active', border-color);
@@ -120,6 +120,8 @@
   .tab-nav__item .tab-nav__content {
     border-radius: $default-border-radius;
   }
+
+  margin-bottom: -3px;
 }
 
 .tab-nav__content-wrap {
