@@ -1,5 +1,6 @@
 include ./../../mixins/userMenu
 include ./../../mixins/icon
+include ./../../mixins/faIcon
 
 block opts
 
@@ -74,7 +75,7 @@ block opts
           .bar__item.bar__item--fill.header__search.header-search
             .hide-m.header-search__toggle.m-none
               button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
-                +icon('search').icon--medium
+                +faIcon('search').fa-lg
             .hide-m.header-search__back
               button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
                 +icon('arrow-left').icon--medium
@@ -82,12 +83,9 @@ block opts
               .form-control.form-control--input.mb-none
                 .input-addons
                   input.input.input--dark#search-in-header(type='search', placeholder="Titul, kategória alebo autor", data-input, data-toggle-focus)
-                  .input-addons__item.header-search__empty.input-addons__item--dark
-                    +icon('search', '', 'Search').icon--medium
-                  .input-addons__item.input-addons__item.p-none.header-search__value
-                    .btn.btn--primary.text-nowrap
-                      +icon('search', '', 'Search').icon--medium.icon--left
-                      | Hladať
+                  .input-addons__item.input-addons__item--dark.p-none
+                    button.btn.btn--default.header-search__empty
+                      +faIcon('search').fa-lg
               block headerSearchDropdown
 
           .bar__item.header__user(class=bookClassHide)
@@ -95,7 +93,7 @@ block opts
 
           .bar__item.header__cart(class=bookClassHide)
             a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
-              +icon('cart').icon--medium
+              +faIcon('basket-shopping').fa-lg
 
           if bookHeader
             .bar__item.bar__item--fill.header__book.book-detail-show

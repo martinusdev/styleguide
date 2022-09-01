@@ -32,9 +32,6 @@
   }
 
   &__empty {
-    border-top-right-radius: $form-b-r;
-    border-bottom-right-radius: $form-b-r;
-
     background-color: _color(grey, 900);
     border-color: _color(grey, 900);
 
@@ -178,18 +175,6 @@
 
   &__search {
     width: 100%;
-
-    .input {
-      // stylelint-disable max-nesting-depth
-      &:not(.is-value) {
-        ~ .header-search__value { display: none; }
-      }
-
-      &.is-value {
-        ~ .header-search__empty { display: none; }
-      }
-      // stylelint-enable max-nesting-depth
-    }
   }
 
   &__user {
