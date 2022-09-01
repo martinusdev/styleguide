@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
     <link rel="stylesheet" href="fonts/Tabac-Sans/style.b0d0f9cd.css">
-    <link rel="stylesheet" href="styles/main.f6987346.css">
+    <link rel="stylesheet" href="styles/main.324f1800.css">
     <script src="scripts/plugins/modernizr.d9c20825.js"></script>
     <link rel="stylesheet" href="styles/xmas.62995216.css">
   </head>
@@ -45,11 +45,11 @@
       <header class="header">
         <div class="header__wrapper" data-sticky>
           <div class="wrapper-main position-relative"><a href="#"><img class="logo-xmas" src="images/content/logo/xmas.png" alt="Vianoce"></a>
-            <div class="bar header__bar">
-              <div class="bar__item header__logo"><a href="#"><img class="show-l" src="images/content/logo.svg" alt="Martinus"><img class="hide-l" src="images/content/logo-small.svg" alt="Martinus"></a>
+            <div class="header__bar d-flex align-items-center">
+              <div class="header__logo"><a href="#"><img class="show-l" src="images/content/logo.svg" alt="Martinus"><img class="hide-l" src="images/content/logo-small.svg" alt="Martinus"></a>
               </div>
-              <div class="bar__item header__nav">
-                <div class="btn-layout btn-layout--horizontal">
+              <div class="header__nav">
+                <div class="btn-layout btn-layout--horizontal mb-none">
                   <div class="btn-dropdown m-none show-l"><a class="btn btn--clean header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true">Knihy</a>
                   </div>
                   <div class="btn-dropdown m-none show-l"><a class="btn btn--clean header-btn" href="#">E-Knihy</a>
@@ -62,42 +62,25 @@
                   </div>
                   <div class="btn-dropdown m-none show-l"><a class="btn btn--clean header-btn" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true">Doplnky</a>
                   </div>
-                  <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l"><a class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="icons_/app.svg#icon-close" data-toggle-expand aria-haspopup="true">
-                            <svg class="icon icon-menu  icon--medium" role="img" aria-hidden="true">
-                              <use xlink:href="icons_/app.svg#icon-menu"></use>
-                            </svg></a></div>
+                  <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l"><a class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="xmark" data-toggle-expand aria-haspopup="true"><i class="fa-bars far undefined fa-lg"></i></a></div>
                 </div>
               </div>
-              <div class="bar__item bar__item--fill header__search header-search">
+              <div class="flex-1 header__search header-search">
                 <div class="hide-m header-search__toggle m-none">
-                  <button class="btn btn--clean header-btn mb-none" data-toggle=".header" data-toggle-class-target="is-search-active">
-                          <svg class="icon icon-search  icon--medium" role="img" aria-hidden="true">
-                            <use xlink:href="icons_/app.svg#icon-search"></use>
-                          </svg>
+                  <button class="btn btn--clean header-btn mb-none" data-toggle=".header" data-toggle-class-target="is-search-active"><i class="fa-search far undefined fa-lg"></i>
                   </button>
                 </div>
                 <div class="hide-m header-search__back">
-                  <button class="btn btn--clean header-btn mb-none" data-toggle=".header" data-toggle-class-target="is-search-active">
-                          <svg class="icon icon-arrow-left  icon--medium" role="img" aria-hidden="true">
-                            <use xlink:href="icons_/app.svg#icon-arrow-left"></use>
-                          </svg>
+                  <button class="btn btn--clean header-btn mb-none" data-toggle=".header" data-toggle-class-target="is-search-active"><i class="fa-arrow-left far undefined fa-lg"></i>
                   </button>
                 </div>
                 <div class="header-search__search" style="position: relative;">
                   <div class="form-control form-control--input mb-none">
                     <div class="input-addons">
                       <input class="input input--dark" id="search-in-header" type="search" placeholder="Titul, kategória alebo autor" data-input data-toggle-focus>
-                      <div class="input-addons__item header-search__empty input-addons__item--dark">
-                              <svg class="icon icon-search  icon--medium" role="presentation" aria-label="Search">
-                                <use xlink:href="icons_/app.svg#icon-search"></use>
-                              </svg>
-                      </div>
-                      <div class="input-addons__item input-addons__item p-none header-search__value">
-                        <div class="btn btn--primary text-nowrap">
-                                <svg class="icon icon-search  icon--medium icon--left" role="presentation" aria-label="Search">
-                                  <use xlink:href="icons_/app.svg#icon-search"></use>
-                                </svg>Hladať
-                        </div>
+                      <div class="input-addons__item input-addons__item--dark p-none">
+                        <button class="btn btn--default header-search__empty"><i class="fa-search far undefined fa-lg"></i>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -125,12 +108,9 @@
                   </div>
                 </div>
               </div>
-              <div class="bar__item header__user">
-                      <div class="btn-dropdown btn-dropdown--no-icon header-user">
-                        <button class="btn btn--clean btn--lowercase header-btn header-btn--no-arrow" data-toggle-expand data-toggle="self, next">
-                                <svg class="icon icon-user  icon--medium icon--left header-user__icon" role="img" aria-hidden="true">
-                                  <use xlink:href="icons_/app.svg#icon-user"></use>
-                                </svg><span class="header-user__name">Janko</span>
+              <div class="header__user">
+                      <div class="btn-dropdown btn-dropdown--no-icon header-user mb-none">
+                        <button class="d-flex align-items-center btn btn--clean btn--lowercase header-btn header-btn--no-arrow" data-toggle-expand data-toggle="self, next"><i class="fa-circle-user far undefined fa-xl"></i><span class="header-user__name ml-tiny">Janko</span>
                         </button>
                         <div class="dropdown dropdown--account dropdown--arrowhead" data-dropdown data-toggle-expand aria-expanded="false">
                           <div class="dropdown__wrap">
@@ -150,10 +130,7 @@
                         </div>
                       </div>
               </div>
-              <div class="bar__item header__cart"><a class="btn btn--clean header-btn" href="cart.html" data-notification="4">
-                        <svg class="icon icon-cart  icon--medium" role="img" aria-hidden="true">
-                          <use xlink:href="icons_/app.svg#icon-cart"></use>
-                        </svg></a></div>
+              <div class="header__cart"><a class="btn btn--clean mb-none header-btn" href="cart.html" data-notification="4"><i class="fa-basket-shopping far undefined fa-lg"></i></a></div>
             </div>
           </div>
         </div>
@@ -1135,7 +1112,7 @@
                         </div>
                       </div>
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.43851921790151427">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.5945018442639896">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                       <div class="product mb-small text-left">
                                                 <div class="product__cover">
@@ -2328,7 +2305,7 @@
                     </div>
                     <div class="card__content card__content--overflow">
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.6665941243696802">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.7829348514901535">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
@@ -2987,7 +2964,7 @@
                         </div>
                       </div>
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.8422181669099265">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.4575885708827667">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
@@ -5954,7 +5931,7 @@
                         </div>
                       </div>
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.0677212981543529">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.005297152357489399">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
@@ -6611,7 +6588,7 @@
                         </div>
                       </div>
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.6787764332431965">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.18408445798504913">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
@@ -7804,7 +7781,7 @@
                     </div>
                     <div class="card__content card__content--overflow">
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.9395536538589577">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.3355639556477572">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
@@ -10770,7 +10747,7 @@
                         </div>
                       </div>
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.938074311895104">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.573295820511837">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
@@ -12650,7 +12627,7 @@
                         </div>
                       </div>
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.6978773707726502">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.94099035475093">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
@@ -14317,7 +14294,7 @@
                     </div>
                     <div class="card__content card__content--overflow">
                       <div class="carousel carousel--fade-outside carousel--fade-outside-white">
-                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.6601401467112602">
+                        <div class="swiper" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:1,&quot;spaceBetween&quot;:20}" id="slider-0.7758211664535952">
                           <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                                 <div class="product mb-small text-left">
                                     <div class="product__cover">
