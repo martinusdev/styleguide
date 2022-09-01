@@ -1,5 +1,5 @@
 include ./../../mixins/userMenu
-include ./../../mixins/icon
+include ./../../mixins/faIcon
 
 block opts
 
@@ -34,16 +34,16 @@ block opts
         if xmasLogo
           a(href="#")
             img(src=`${assetsPrefix}images/content/logo/xmas.png`, alt="Vianoce").logo-xmas
-        .bar.header__bar
-          .bar__item.header__logo
+        .header__bar.d-flex.align-items-center
+          .header__logo
             a(href="#", class=bookClassHide)
               img(src=`${assetsPrefix}images/content/logo.svg`, alt="Martinus").show-l
               img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus").hide-l
             if bookHeader
               a(href="#").book-detail-show
                 img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
-          .bar__item.header__nav(class=bookClassHide)
-            .btn-layout.btn-layout--horizontal
+          .header__nav(class=bookClassHide)
+            .btn-layout.btn-layout--horizontal.mb-none
               for item in mainNav
                 .btn-dropdown.m-none.show-l
                   if item.trigger
@@ -60,45 +60,42 @@ block opts
                 a.btn.btn--clean.text-transform-upper.header-btn(
                 data-mega-menu-trigger=`#${mainNav[0].trigger}`
                 data-toggle='self, #toggle-mega-menu-knihy',
-                data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-close`,
+                data-toggle-icon='xmark',
                 data-toggle-expand,
                 aria-haspopup="true"
                 )
-                  +icon('menu').icon--medium
+                  +faIcon('bars').fa-lg
 
           if headerPromo
-            .bar__item.bar__item--shrinkable.header__ad.show-m(class=bookClassHide)
+            .header__ad.show-m(class=bookClassHide)
               img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
               | <style>.header__wrapper::after{background: #7d609a;}</style>
 
-          .bar__item.bar__item--fill.header__search.header-search
+          .flex-1.header__search.header-search
             .hide-m.header-search__toggle.m-none
               button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
-                +icon('search').icon--medium
+                +faIcon('search').fa-lg
             .hide-m.header-search__back
               button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
-                +icon('arrow-left').icon--medium
+                +faIcon('arrow-left').fa-lg
             .header-search__search(style="position: relative;")
               .form-control.form-control--input.mb-none
                 .input-addons
                   input.input.input--dark#search-in-header(type='search', placeholder="Titul, kategória alebo autor", data-input, data-toggle-focus)
-                  .input-addons__item.header-search__empty.input-addons__item--dark
-                    +icon('search', '', 'Search').icon--medium
-                  .input-addons__item.input-addons__item.p-none.header-search__value
-                    .btn.btn--primary.text-nowrap
-                      +icon('search', '', 'Search').icon--medium.icon--left
-                      | Hladať
+                  .input-addons__item.input-addons__item--dark.p-none
+                    button.btn.btn--default.header-search__empty
+                      +faIcon('search').fa-lg
               block headerSearchDropdown
 
-          .bar__item.header__user(class=bookClassHide)
+          .header__user(class=bookClassHide)
             +userMenu()
 
-          .bar__item.header__cart(class=bookClassHide)
-            a.btn.btn--clean.header-btn(href="cart.html", data-notification="4")
-              +icon('cart').icon--medium
+          .header__cart(class=bookClassHide)
+            a.btn.btn--clean.mb-none.header-btn(href="cart.html", data-notification="4")
+              +faIcon('basket-shopping').fa-lg
 
           if bookHeader
-            .bar__item.bar__item--fill.header__book.book-detail-show
+            .flex-1.header__book.book-detail-show
               .bar.bar--no-wrap.mb-none.ml-auto
                 .bar__item
                   .thumbnail.thumbnail--book.thumbnail--small
@@ -110,7 +107,7 @@ block opts
                   .h3.text-color-white.text-bold 14,65 €
                 .bar__item.show-m
                   button.btn.btn--primary.btn--equal
-                    +icon('cart').icon--medium
+                    +faIcon('basket-shopping').fa-lg
                 .bar__item.bar__item--shrinkable.text-color-success.text-size-medium.line-small.header__buy__text
                   | Pridajte ešte tento titul do košíka a dopravu máte zdarma
 

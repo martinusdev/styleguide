@@ -32,9 +32,6 @@
   }
 
   &__empty {
-    border-top-right-radius: $form-b-r;
-    border-bottom-right-radius: $form-b-r;
-
     background-color: _color(grey, 900);
     border-color: _color(grey, 900);
 
@@ -130,9 +127,9 @@
     height: map-get($header-height, 'default');
     width: 100%;
     background-color: $color-black;
-    padding-top: _get-space() - _get-space('tiny');
-    padding-bottom: _get-space();
     z-index: $z-index-topbar;
+    display: flex;
+    align-items: center;
 
     @include breakpoint(m) {
       height: map-get($header-height, 'm');
@@ -164,31 +161,16 @@
   }
 
   &__bar {
-    height: _get-rem(50px);
     margin-bottom: 0;
+    margin-top: -5px;
 
     @include breakpoint(m, 'down') {
       justify-content: space-between;
+      margin-top: 0;
 
-      .bar__item { // stylelint-disable-line max-nesting-depth
+      > * { // stylelint-disable-line max-nesting-depth
         margin-right: _map-deep-get($bar-spacing, small, default);
       }
-    }
-  }
-
-  &__search {
-    width: 100%;
-
-    .input {
-      // stylelint-disable max-nesting-depth
-      &:not(.is-value) {
-        ~ .header-search__value { display: none; }
-      }
-
-      &.is-value {
-        ~ .header-search__empty { display: none; }
-      }
-      // stylelint-enable max-nesting-depth
     }
   }
 
