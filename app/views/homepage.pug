@@ -344,7 +344,7 @@ block content
           };
           swiperFooterConfige = JSON.stringify(swiperFooterConfig);
         .carousel.carousel--fade-outside.carousel--fade-outside-white.carousel-cards
-          .swiper-container(data-swiper-options=swiperFooterConfig)
+          .swiper(data-swiper-options=swiperFooterConfig)
             .swiper-wrapper
               each item, i in swiperFooterContent
                 .swiper-slide.carousel-cards__item
@@ -357,6 +357,6 @@ block content
                           p.text-medium= item.text
 
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-              +icon('arrow-left').icon--medium
+              +faIcon('arrow-left').fa-2x
             button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-              +icon('arrow-right').icon--medium
+              +faIcon('arrow-right').fa-2x

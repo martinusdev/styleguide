@@ -2,6 +2,7 @@ extends layouts/_default
 
 include ./mixins/breadcrumbs
 include ./mixins/icon
+include ./mixins/faIcon
 
 block head
   link(rel="stylesheet", href=`${assetsPrefix}styles/campaigns.css`)
@@ -77,7 +78,7 @@ block content
             },*/
           };
           swiperConfig = JSON.stringify(swiperConfig);
-        .swiper-container(data-swiper-options=swiperConfig).ko-timeline
+        .swiper(data-swiper-options=swiperConfig).ko-timeline
           .swiper-wrapper
             each item, i in Array(31)
               .swiper-slide.ko-timeline-item.ko-text-color-violet.clickable(
@@ -114,7 +115,7 @@ block content
         };
         swiperConfig = JSON.stringify(swiperConfig);
       .carousel.carousel--fade-inactive.carousel--disable-inactive
-        .swiper-container(data-swiper-options=swiperConfig)
+        .swiper(data-swiper-options=swiperConfig)
           .swiper-wrapper
             each item, i in Array(31)
               -
@@ -135,9 +136,9 @@ block content
 
 
           button.carousel__btn.carousel__btn--prev.ko-planets__btn.clickable
-            +icon('arrow-left')
+            +faIcon('arrow-left')
           button.carousel__btn.carousel__btn--next.ko-planets__btn.clickable
-            +icon('arrow-right')
+            +faIcon('arrow-right')
 
     //-#knihonaut.ko-knihonaut
       .bar

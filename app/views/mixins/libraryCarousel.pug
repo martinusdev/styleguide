@@ -1,4 +1,5 @@
 include icon
+include faIcon
 
 mixin libraryCarousel()
   -
@@ -22,7 +23,7 @@ mixin libraryCarousel()
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel.carousel--fade-outside
-    .swiper-container(data-swiper-options=swiperConfig)
+    .swiper(data-swiper-options=swiperConfig)
       .swiper-wrapper
         each item, i in books
           -
@@ -74,6 +75,6 @@ mixin libraryCarousel()
                         +icon('trash', 'icon--medium')
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-        +icon('arrow-left').icon--medium
+        +faIcon('arrow-left').fa-2x
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-        +icon('arrow-right').icon--medium
+        +faIcon('arrow-right').fa-2x

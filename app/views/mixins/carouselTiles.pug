@@ -1,4 +1,4 @@
-include icon
+include faIcon
 
 mixin carouselTiles(tiles)
   .carousel-tiles
@@ -12,7 +12,7 @@ mixin carouselTiles(tiles)
       };
       swiperConfig = JSON.stringify(swiperConfig);
     .carousel
-      .swiper-container(data-swiper-options=swiperConfig, data-swiper-up="m")
+      .swiper(data-swiper-options=swiperConfig, data-swiper-up="m")
         .swiper-wrapper
           each item, i in tiles
             .swiper-slide.carousel__tile.carousel-tile.carousel-tile__bg(class=`carousel-tile__bg--${item.color}`)
@@ -21,6 +21,6 @@ mixin carouselTiles(tiles)
                 img.img--fluid.show-m(src=`${assetsPrefix}images/content/banners/banner-tile-${i+1}.png`)
 
         button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-          +icon('arrow-left').icon--medium
+          +faIcon('arrow-left').fa-2x
         button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-          +icon('arrow-right').icon--medium
+          +faIcon('arrow-right').fa-2x

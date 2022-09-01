@@ -24,7 +24,7 @@ include ./../mixins/icon
   .row.mb-m-large
     // progress bar
     .order-progress.mb-large
-      .swiper-container(data-swiper-options=swiperConfig)
+      .swiper(data-swiper-options=swiperConfig)
         .swiper-wrapper
           - for (var i = 1; i < 7; ++i)
             .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')
