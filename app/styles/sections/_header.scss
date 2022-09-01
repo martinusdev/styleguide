@@ -127,9 +127,9 @@
     height: map-get($header-height, 'default');
     width: 100%;
     background-color: $color-black;
-    padding-top: _get-space() - _get-space('tiny');
-    padding-bottom: _get-space();
     z-index: $z-index-topbar;
+    display: flex;
+    align-items: center;
 
     @include breakpoint(m) {
       height: map-get($header-height, 'm');
@@ -161,20 +161,17 @@
   }
 
   &__bar {
-    height: _get-rem(50px);
     margin-bottom: 0;
+    margin-top: -5px;
 
     @include breakpoint(m, 'down') {
       justify-content: space-between;
+      margin-top: 0;
 
-      .bar__item { // stylelint-disable-line max-nesting-depth
+      > * { // stylelint-disable-line max-nesting-depth
         margin-right: _map-deep-get($bar-spacing, small, default);
       }
     }
-  }
-
-  &__search {
-    width: 100%;
   }
 
   &__user {

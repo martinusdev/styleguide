@@ -1,4 +1,5 @@
 include icon
+include faIcon
 
 mixin userMenu(props = {})
   -
@@ -6,10 +7,10 @@ mixin userMenu(props = {})
       userName = 'Janko'
     } = props;
 
-  .btn-dropdown.btn-dropdown--no-icon.header-user
-    button.btn.btn--clean.btn--lowercase.header-btn.header-btn--no-arrow(data-toggle-expand data-toggle="self, next")
-      +icon('user').icon--medium.icon--left.header-user__icon
-      span.header-user__name #{userName}
+  .btn-dropdown.btn-dropdown--no-icon.header-user.mb-none
+    button.d-flex.align-items-center.btn.btn--clean.btn--lowercase.header-btn.header-btn--no-arrow(data-toggle-expand data-toggle="self, next")
+      +faIcon('circle-user').fa-xl
+      span.header-user__name.ml-tiny #{userName}
 
     .dropdown.dropdown--account.dropdown--arrowhead(data-dropdown data-toggle-expand aria-expanded="false")
       .dropdown__wrap
