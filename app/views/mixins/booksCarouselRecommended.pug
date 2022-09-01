@@ -1,5 +1,5 @@
 include product
-include icon
+include faIcon
 
 mixin booksCarouselSwiperWrapper(props = {})
   -
@@ -61,7 +61,7 @@ mixin booksCarouselRecommended(props = {})
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel&attributes(attributes)
-    .swiper-container.swiper-container--fullwidth(data-swiper-options=swiperConfig, id='slider-' + Math.random())
+    .swiper.swiper--fullwidth(data-swiper-options=swiperConfig, id='slider-' + Math.random())
       +booksCarouselSwiperWrapper({counter: counter})(data-equal-columns)
         each item, i in [...books, ...books, ...books, ...books]
           +booksCarouselSwiperSlide({counter: counter})(data-equal-column)
@@ -86,6 +86,6 @@ mixin booksCarouselRecommended(props = {})
                   })
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-        +icon('arrow-left').icon--medium
+        +faIcon('arrow-left').fa-2x
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-        +icon('arrow-right').icon--medium
+        +faIcon('arrow-right').fa-2x

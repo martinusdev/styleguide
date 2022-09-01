@@ -1,4 +1,5 @@
 include ../mixins/icon
+include ../mixins/faIcon
 include ../mixins/product
 include ../mixins/productHorizontal
 
@@ -154,7 +155,7 @@ mixin userFeed()
   .card.card--material.card--material-primary
     .card__content
       .carousel
-        .swiper-container(data-swiper-options=swiperConfig)
+        .swiper(data-swiper-options=swiperConfig)
           .swiper-wrapper
             each item, index in books
               if index < 3
@@ -271,7 +272,7 @@ mixin userFeed()
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel&attributes(attributes)
-    .swiper-container.swpier-container--fullwidth(data-swiper-options=swiperConfig)
+    .swiper.swpier-container--fullwidth(data-swiper-options=swiperConfig)
       .swiper-wrapper
         each item,i in books
           if i < 2
@@ -294,9 +295,9 @@ mixin userFeed()
           +icon('plus').icon--xxlarge.text-color-grey(style="position: absolute; left: 25%; transform: translateX(-25%); top: 15%; z-index: 4;")
 
     button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-      +icon('arrow-left').icon--medium
+      +faIcon('arrow-left').fa-2x
     button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-      +icon('arrow-right').icon--medium
+      +faIcon('arrow-right').fa-2x
 
   h2 Moje aktivity
 

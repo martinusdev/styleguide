@@ -1,5 +1,5 @@
 include ../product
-include ../icon
+include ../faIcon
 include ../booksCarouselRecommended
 include ./checkoutModal
 include ./bookCover
@@ -20,13 +20,13 @@ mixin booksCarousel(props = {})
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel&attributes(attributes)
-    .swiper-container.swiper-container--fullwidth(data-swiper-options=swiperConfig)
+    .swiper.swiper--fullwidth(data-swiper-options=swiperConfig)
       +booksCarouselSwiperWrapper({})(data-equal-columns)
         each val, key in category
           .swiper-slide.carousel__product-detail
             +bookCover(category[key])
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-        +icon('arrow-left').icon--medium
+        +faIcon('arrow-left').fa-2x
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-        +icon('arrow-right').icon--medium
+        +faIcon('arrow-right').fa-2x

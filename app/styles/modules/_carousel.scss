@@ -10,9 +10,9 @@
   margin-right: -(_map-deep-get($carousel, $mode, size));
   padding: 0 _map-deep-get($carousel, $mode, size);
 
-  .swiper-container { overflow: visible; }
+  .swiper { overflow: visible; }
 
-  .swiper-container {
+  .swiper {
     margin: 0;
 
     // stylelint-disable-next-line
@@ -44,7 +44,7 @@
   }
 
   &-white {
-    .swiper-container { // stylelint-disable-line
+    .swiper { // stylelint-disable-line
       &::before { // stylelint-disable-line
         background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient-white)));
       }
@@ -76,7 +76,7 @@
 .carousel {
   margin-bottom: _get-space('large');
 
-  .swiper-container-initialized .swiper-slide:not(.swiper-slide-visible) {
+  .swiper-initialized .swiper-slide:not(.swiper-slide-visible) {
     pointer-events: none;
   }
 
@@ -92,7 +92,7 @@
     &--next { right: 40px; }
     &--prev { left: 40px; }
 
-    .swiper-container:not(.swiper-container-initialized) & {
+    .swiper:not(.swiper-initialized) & {
       opacity: 0;
     }
 
@@ -128,11 +128,11 @@
   &__product-detail {
     width: 120px;
 
-    .swiper-container:not(.swiper-container-initialized) & {
+    .swiper:not(.swiper-initialized) & {
       margin-right: 20px;
     }
 
-    .swpier-container--fullwidth:not(.swiper-container-initialized) & {
+    .swpier-container--fullwidth:not(.swiper-initialized) & {
       @include breakpoint(l) {
         margin-right: 40px;
       }
@@ -154,7 +154,7 @@
 
   &__recently-viewed {
     width: 50px;
-    .swiper-container:not(.swiper-container-initialized) & {
+    .swiper:not(.swiper-initialized) & {
       margin-right: 10px;
     }
   }
@@ -162,7 +162,7 @@
   &__banner {
     width: 300px;
 
-    .swiper-container:not(.swiper-container-initialized) & {
+    .swiper:not(.swiper-initialized) & {
       margin-right: 20px;
     }
 
@@ -178,7 +178,7 @@
 
   // stylelint-disable max-nesting-depth
   &--fan {
-    .swiper-container { overflow: visible; }
+    .swiper { overflow: visible; }
 
     .swiper-slide {
       opacity: 0;
@@ -238,7 +238,7 @@
     border-bottom: 20px solid rgba(255, 255, 255, 0.4);
     position: relative;
 
-    .swiper-container {
+    .swiper {
       @include breakpoint('m') {
         padding-left: 20px;
       }
@@ -332,7 +332,7 @@
 
   border-radius: $default-border-radius;
 
-  .swiper-container:not(.swiper-container-initialized) & {
+  .swiper:not(.swiper-initialized) & {
     margin-right: 20px;
   }
 

@@ -1,5 +1,5 @@
 include ../product
-include ../icon
+include ../faIcon
 include ../booksCarouselRecommended
 include ./checkoutModal
 include ./bookCover
@@ -24,7 +24,7 @@ mixin prispievatelkyCarousel(props = {})
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel&attributes(attributes)
-    .swiper-container.swiper-container--fullwidth.swiper--prispievatelky(data-swiper-options=swiperConfig)
+    .swiper.swiper--fullwidth.swiper--prispievatelky(data-swiper-options=swiperConfig)
       +booksCarouselSwiperWrapper({})(data-equal-columns)
         each val in prispievatelky
           .swiper-slide.carousel__product-detail
@@ -36,6 +36,6 @@ mixin prispievatelkyCarousel(props = {})
               p #{val.bio}
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-        +icon('arrow-left').icon--medium
+        +faIcon('arrow-left').fa-2x
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-        +icon('arrow-right').icon--medium
+        +faIcon('arrow-right').fa-2x

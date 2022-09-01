@@ -1,6 +1,6 @@
-import SwiperCore, {
-  Swiper, Navigation, Pagination, Lazy, Parallax
-} from 'swiper/core';
+import Swiper, {
+  Navigation, Pagination, Lazy, Parallax
+} from 'swiper';
 
 import { nodeListToArray } from './Utils';
 import { BREAKPOINTS } from './Const';
@@ -25,14 +25,13 @@ const defaultConfig = {
   keyboardControl: true,
   preloadImages: false,
   lazy: true,
-  watchSlidesVisibility: true,
+  watchSlidesProgress: true,
   spaceBetween: 40,
+  modules: [Navigation, Pagination, Lazy, Parallax],
 };
 
 export default class SwiperSlider {
-  constructor(selector = '.swiper-container', config = {}) {
-    SwiperCore.use([Navigation, Pagination, Lazy, Parallax]);
-
+  constructor(selector = '.swiper', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
@@ -73,7 +72,7 @@ export default class SwiperSlider {
           BREAKPOINTS,
         )
         && swiper.querySelectorAll('.swiper-slide').length
-        && !swiper.classList.contains('swiper-container-initialized')
+        && !swiper.classList.contains('swiper-initialized')
       ) {
         swiperConfig.navigation = {
           nextEl: swiper.querySelector('.carousel__btn--next'),

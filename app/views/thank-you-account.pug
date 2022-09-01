@@ -33,7 +33,7 @@ block content
                 p.text-medium.text-center.mb-none Naši škriatkovia začali objednávku spracovávať
               // progress bar
               .order-progress.mb-large
-                .swiper-container(data-swiper-options=swiperConfig)
+                .swiper(data-swiper-options=swiperConfig)
                   .swiper-wrapper
                     - for (var i = 1; i < 7; ++i)
                       .order-progress__item.swiper-slide.text-center(class=(i===currentStep) ? 'current' : '')

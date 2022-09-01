@@ -1,5 +1,5 @@
 include product
-include icon
+include faIcon
 
 mixin booksCarouselHorizontal(props = {})
   -
@@ -13,7 +13,7 @@ mixin booksCarouselHorizontal(props = {})
     };
     swiperConfig = JSON.stringify(swiperConfig);
   .carousel.carousel--fade-outside.carousel--fade-outside-white&attributes(attributes)
-    .swiper-container(data-swiper-options=swiperConfig, id='slider-' + Math.random())
+    .swiper(data-swiper-options=swiperConfig, id='slider-' + Math.random())
       .swiper-wrapper
         each item, i in [...books, ...books, ...books, ...books]
           a.swiper-slide(href=`${assetsPrefix}detail-knihy${htmlPostfix}`).carousel__product-detail
@@ -25,10 +25,10 @@ mixin booksCarouselHorizontal(props = {})
                 rating: item.rating,
                 price: item.price,
                 soldOut: item.soldOut,
-                upcoming: item.upcoming,
+                upcoming: item.upcoming
               })
 
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-        +icon('arrow-left').icon--medium
+        +faIcon('arrow-left').fa-2x
       button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-        +icon('arrow-right').icon--medium
+        +faIcon('arrow-right').fa-2x

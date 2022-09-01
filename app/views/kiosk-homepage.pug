@@ -5,7 +5,7 @@ include ./mixins/breadcrumbs
 include ./mixins/pagination
 include ./mixins/review
 include ./mixins/sectionHeader
-include ./mixins/icon
+include ./mixins/faIcon
 
 block opts
     - var pageTitle = 'Homepage';
@@ -45,7 +45,7 @@ block content
             };
             swiperConfig = JSON.stringify(swiperConfig);
           .carousel.carousel--fade-outside.mb-medium
-            .swiper-container.swiper-container-horizontal(data-swiper-options=swiperConfig)
+            .swiper.swiper-horizontal(data-swiper-options=swiperConfig)
               //ul.swiper-wrapper.list--counter.p-none(data-equal-columns)
               ul.swiper-wrapper.list--counter.p-none
                 each item, i in [...books, ...books, ...books, ...books]
@@ -56,9 +56,9 @@ block content
                       +productTitle({title: item.title, author: item.author, href: 'kiosk-detail.html'})
 
               button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
-                +icon('arrow-left').icon--medium
+                +faIcon('arrow-left').fa-2x
               button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
-                +icon('arrow-right').icon--medium
+                +faIcon('arrow-right').fa-2x
 
       section.section.section--small
         .wrapper-main
