@@ -1,9 +1,9 @@
-.modal-overlay#mj-modal-delivery-picker(data-modal)
-  .modal.modal--large
-    .modal__wrap
-      button.btn.btn--equal.m-none.btn--carousel(data-toggle='#mj-modal-delivery-picker', style='position:absolute; right: 15px; top: 15px; z-index: 2')
+.modal.fade#mj-modal-delivery-picker
+  .modal-dialog.modal-xl.modal-dialog-centered
+    .modal-content
+      button.btn.btn--equal.m-none.btn--carousel(data-bs-dismiss='modal', style='position:absolute; right: 15px; top: 15px; z-index: 2')
         +faIcon('xmark').fa-2x
-      .modal__content.py-none
+      .modal-body.py-none
         .row
           .col--m-5.order-1.order-m-0.col-select-place.d-flex.flex-column.pt-small
             h2.mb-small Packeta
