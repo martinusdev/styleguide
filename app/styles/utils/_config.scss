@@ -1627,86 +1627,6 @@ $tabs-card: (
   )
 );
 
-// ----------------------------
-// MODALS
-
-$modal-overlay-bg-color: $color-semiblack !default;
-$modal-overlay-z-index: $z-index-overlay !default;
-$modal-overlay-e: $ease-400 !default;
-
-$modal-overlay: (
-  default: (
-    background-color: rgba($color-black, 0.5),
-    box-shadow: #{$shadow-ambient-1, $shadow-direct-1},
-  ),
-  dark: (
-    background-color: rgba($color-black, 0.9),
-  )
-);
-
-$modal-dialog: (
-  default: (
-    width: 100%,
-    background-color: $color-white,
-    border: 1px solid $default-border-color,
-    box-shadow: ($shadow-ambient-3, $shadow-direct-2),
-    max-height: 95vh,
-  ),
-  'm': (
-    height: auto,
-    width: _get-rem(480px),
-    border-radius: $default-border-radius,
-  ),
-  'l': (
-    max-height: calc(100vh - (#{_get-space()} * 2)),
-  )
-);
-
-$modal-dialog-variants: (
-  'full': (
-    default: (
-      width: calc(100vw - (#{_get-space()} * 2)),
-      max-width: _get-rem(1200px),
-    ),
-    'l': (
-      width: calc(100vw - (#{_get-space('large')} * 2)),
-    )
-  ),
-  'medium': (
-    default: (
-      width: _get-rem(700px),
-      max-width: 90%,
-    )
-  ),
-  'large': (
-    default: (
-      width: calc(100vw - (#{_get-space('small')} * 2)),
-      max-width: _get-rem(1000px),
-    )
-  )
-);
-
-$modal-section-spacing: (
-  default: (
-    vertical: _get-space('small'),
-    horizontal: _get-space('small'),
-  ),
-  'm': (
-    vertical: _get-space(),
-    horizontal: _get-space(),
-  ),
-);
-
-$modal-header: (
-  background-color: _color(grey, 50),
-);
-
-$modal-content: ();
-
-$modal-footer: (
-  background: $color-white,
-);
-
 $badge: (
   default: (
     padding: 0 _get-space('tiny'),
@@ -1912,8 +1832,8 @@ $modal-header-padding-x: $modal-inner-padding !default;
 $modal-header-padding: $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
 
 $modal-sm: 300px !default;
-$modal-md: 500px !default;
-$modal-lg: 800px !default;
+$modal-md: 700px !default;
+$modal-lg: 1000px !default;
 $modal-xl: 1140px !default;
 
 $modal-fade-transform: translate(0, -50px) !default;
