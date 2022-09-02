@@ -5,7 +5,7 @@
 import { triggerResize } from './Utils';
 
 /* eslint import/no-cycle: [0] */
-import { lockBody, unlockBody } from './Modal';
+import { lockBody, unlockBody } from './OldModal';
 
 export const TRIGGER_EVT = 'triggerToggle';
 export const TOGGLE_EVT = 'toggle';

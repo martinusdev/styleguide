@@ -1,7 +1,7 @@
 import { nodeListToArray } from './Utils';
 import { doToggle, isToggled } from './Toggle';
 import { BREAKPOINTS } from './Const';
-import { lockBody, unlockBody } from './Modal';
+import { lockBody, unlockBody } from './OldModal';
 
 const defaultConfig = {
   selectorTriggers: '[data-mega-menu-trigger]',

@@ -178,6 +178,22 @@ $default-font-size: $font-size-regular !default;
 $default-outline: 2px solid rgba(_color(primary, 200), 0.8);
 
 // ----------------------------
+// BORDERS
+
+// scss-docs-start border-variables
+$border-width: 1px !default;
+$border-widths: (
+  1: 1px,
+  2: 2px,
+  3: 3px,
+  4: 4px,
+  5: 5px
+) !default;
+
+$border-color: $default-border-color !default;
+// scss-docs-end border-variables
+
+// ----------------------------
 // SPACERS
 
 $spaces: (
@@ -194,8 +210,6 @@ $spacers: (
 @each $name, $value in $spaces {
   $spacers: map-merge($spacers, ($name: _get-space($name)));
 }
-
-//$spacers: map-loop($spaces);
 
 $default-space: _get-space() !default;
 
@@ -218,10 +232,14 @@ $heading: (
   font-weight: $font-weight-default,
 );
 
+$line-height-base: 1.5 !default;
+$line-height-sm: 1.25 !default;
+$line-height-lg: 2 !default;
+
 $typography-settings: (
   default : (
     base-font-size: $default-font-size,
-    base-line-height: 1.5,
+    base-line-height: $line-height-base,
     typographic-ratio: 1.33,
   ),
   // mobile first breakpoints
@@ -1863,3 +1881,43 @@ $header-height: (
 
 // ----------------------------
 // PAGES
+
+// scss-docs-start modal-variables
+$modal-inner-padding: $default-space !default;
+
+$modal-footer-margin-between: 0.5rem !default;
+
+$modal-dialog-margin: 0.5rem !default;
+$modal-dialog-margin-y-sm-up: 1.75rem !default;
+
+$modal-title-line-height: $line-height-base !default;
+
+$modal-content-color: null !default;
+$modal-content-bg: $color-white !default;
+$modal-content-border-color: rgba($color-black, 0.2) !default;
+$modal-content-border-width: $border-width !default;
+$modal-content-border-radius: $border-radius-lg !default;
+$modal-content-inner-border-radius: subtract($modal-content-border-radius, $modal-content-border-width) !default;
+$modal-content-box-shadow-xs: $shadow-md !default;
+$modal-content-box-shadow-sm-up: $shadow-lg !default;
+
+$modal-backdrop-bg: $color-black !default;
+$modal-backdrop-opacity: 0.5 !default;
+$modal-header-border-color: $border-color !default;
+$modal-footer-border-color: $modal-header-border-color !default;
+$modal-header-border-width: $modal-content-border-width !default;
+$modal-footer-border-width: $modal-header-border-width !default;
+$modal-header-padding-y: $modal-inner-padding !default;
+$modal-header-padding-x: $modal-inner-padding !default;
+$modal-header-padding: $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
+
+$modal-sm: 300px !default;
+$modal-md: 500px !default;
+$modal-lg: 800px !default;
+$modal-xl: 1140px !default;
+
+$modal-fade-transform: translate(0, -50px) !default;
+$modal-show-transform: none !default;
+$modal-transition: transform 0.3s ease-out !default;
+$modal-scale-transform: scale(1.02) !default;
+// scss-docs-end modal-variables

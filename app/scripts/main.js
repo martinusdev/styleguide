@@ -1,5 +1,6 @@
 import svg4everybody from 'svg4everybody';
 import Choices from 'choices.js/public/assets/scripts/choices';
+
 import {
   customEventPolyfill,
   requestAnimationFramePolyfill,
@@ -14,6 +15,7 @@ import Toggle from './modules/Toggle';
 import Tab from './modules/Tab';
 import Dropdown from './modules/Dropdown';
 import Modal from './modules/Modal';
+import OldModal from './modules/OldModal';
 import Carousel from './modules/Carousel';
 import Collapse from './modules/Collapse';
 import Sticky from './modules/Sticky';
@@ -48,6 +50,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Tab = Tab;
   window.myApp.Select = Select;
   window.myApp.Modal = Modal;
+  window.myApp.OldModal = OldModal;
   window.myApp.Carousel = Carousel;
   window.myApp.Collapse = Collapse;
   window.myApp.Sticky = Sticky;
@@ -92,6 +95,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.selects = new Select();
 
   window.myApp.modals = new Modal();
+
+  window.myApp.oldModals = new OldModal();
 
   window.myApp.carousels = new Carousel();
 

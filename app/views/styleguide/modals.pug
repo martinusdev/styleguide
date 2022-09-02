@@ -9,19 +9,55 @@ block prepend opts
   - var pageID = page.page;
 
 //- Content
-block prepend content
-
-  +main-info(['app/styles/modules/_modals.scss'], contents)
-
-    +p-big Documentation for modal windows and popups.
-
-  //- end: main info
-
-//- Content
 block append content
 
-  //- MODALS
   +content-section(contents[0])
+
+    +p Modals are taken from Bootstrap - <a href='https://getbootstrap.com/docs/5.2/components/modal' target='_blank'>Documentation here</a>
+
+    +demo
+      +demo-example
+        button.btn(data-bs-toggle='modal' data-bs-target='#bs-modal-demo' type="button") Default modal
+
+        button.btn(data-bs-toggle='modal' data-bs-target='#bs-modal-demo-large' type="button") Large modal
+
+        button.btn(data-bs-toggle='modal' data-bs-target='#bs-modal-demo-static' type="button") Static backdrop
+
+        .modal.fade#bs-modal-demo
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h3.mb-none This is a BS modal
+              .modal-body
+                p Modal content
+              .modal-footer
+                | Modal footer
+                button.btn.btn--secondary.mb-none(data-bs-dismiss="modal") Close
+
+        .modal.fade#bs-modal-demo-large
+          .modal-dialog.modal-lg
+            .modal-content
+              .modal-header
+                h3.mb-none This is a BS modal
+              .modal-body
+                p Modal content
+              .modal-footer
+                | Modal footer
+                button.btn.btn--secondary.mb-none(data-bs-dismiss="modal") Close
+
+        .modal.fade#bs-modal-demo-static(data-bs-backdrop='static')
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h3.mb-none This is a BS modal
+              .modal-body
+                p Modal content
+              .modal-footer
+                | Modal footer
+                button.btn.btn--secondary.mb-none(data-bs-dismiss="modal") Close
+
+  //- LEGACY MODALS
+  +content-section(contents[1])
 
     +p Modal window can contain text or any UI controls such as forms, buttons etc. Modal windows retain focus until dismissed or a required action has been taken.
 
@@ -178,7 +214,7 @@ block append content
   //- end: section
 
   //- Multiple modals
-  +content-section(contents[1], true)
+  +content-section(contents[2], true)
 
     +p By default, having two open modals is not allowed. When you try to open a second modal, the first one gets closed automatically. To enable multiple open modals, all modal overlays need <code class="l-code-inline">[data-modal-allow-multiple]</code> attribute.
 
