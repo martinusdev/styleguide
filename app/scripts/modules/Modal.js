@@ -23,7 +23,7 @@ export default class ModalWrapper {
     );
   }
 
-  open(element) {
+  create(element) {
     return new Modal(element, this.config);
   }
 }
