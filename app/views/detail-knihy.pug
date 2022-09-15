@@ -6,6 +6,7 @@ include ./mixins/pagination
 include ./mixins/review
 include ./mixins/sectionHeader
 include ./mixins/icon
+include ./mixins/faIcon
 include ./mixins/collectionItem
 
 block opts
@@ -175,11 +176,11 @@ block content
                   .badges.m-none
                     .badge
                       .rating-star
-                        +icon('star').rating-star__item.icon--medium.is-active
-                        +icon('star').rating-star__item.icon--medium.is-active
-                        +icon('star').rating-star__item.icon--medium.is-active
-                        +icon('star-half').rating-star__item.icon--medium.is-active
-                        +icon('star').rating-star__item.icon--medium
+                        +faIcon('star', 'fas').rating-star__item.icon--medium.is-active
+                        +faIcon('star', 'fas').rating-star__item.icon--medium.is-active
+                        +faIcon('star', 'fas').rating-star__item.icon--medium.is-active
+                        +faIcon('star-half', 'fad').rating-star__item.icon--medium.is-active
+                        +faIcon('star', 'fas').rating-star__item.icon--medium
                         .rating-star__value
                           | 3,5
                       a.link.text-medium.ml-small.show-m(href="#recenzie", data-scroll) 234x
@@ -568,7 +569,7 @@ block content
                       .bar__item
                         .rating-star
                           each star, starIndex in Array(5)
-                            +icon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
+                            +faIcon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
                       .bar__item
                         .text-size-medium 2.3.2017
                     p.bg-blue.mb-none(data-collapse="150") Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí. Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
@@ -590,7 +591,7 @@ block content
                         .bar__item
                           .rating-star
                             each star, starIndex in Array(5)
-                              +icon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
+                              +faIcon('star', 'fas').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
                         .bar__item
                           .text-size-medium 2.3.2017
                       p.bg-blue.mb-none Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí. Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
@@ -608,7 +609,7 @@ block content
                         .bar__item
                           .rating-star
                             each star, starIndex in Array(5)
-                              +icon('star').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
+                              +faIcon('star', 'fas').rating-star__item.icon--medium(class=(starIndex <= 4) && 'is-active')
                         .bar__item
                           .text-size-medium 2.3.2017
                       p.bg-blue.mb-none Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí. Neviem čo fanúšikovia čakali od tejto knihy, že som našla niekoľko negatívnych recenzií, ale ja musím povedať, že som bola s príbehom spokojná. Opäť som sa vrátila do detských čias a zažívala som úplnú nostalgiu, pretože sa v knihe neobjavovala len budúcnosť, ale aj spomienky z minulosti. Ďalší riadok, ktorým sa táto recenzie končí.
@@ -627,12 +628,18 @@ block content
                   .card__content
                     .row.justify-content-center.align-items-center
                       .col--l-7.text-center
-                        p.mb-small Ako sa vám páčila kniha?
-                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-center.mb-small.m-l-none(data-stars)
-                          - for (var abc = 0; abc<5; abc++)
-                            input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-"+abc)
+                        p.mb-small Ako sa páčila kniha vám?
+                        #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.checked.justify-content-center.mb-small.m-l-none(data-stars)
+                          - for (let abc = 0; abc<5; abc++)
+                            input.rating-star__input.radiocheck__input(value=+abc+1, type="radio", name="review-rating", id="review-rating-"+abc, checked=abc===3)
                             label.radiocheck__label.ml-none.rating-star__item(for="review-rating-"+abc)
-                              +icon('star').icon--xlarge
+                              +faIcon('star', 'fas').icon--xlarge
+
+                        #rating-star-2.radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-center.mb-small.m-l-none(data-stars)
+                          - for (let abc = 0; abc<5; abc++)
+                            input.autosubmit.input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-2-" + abc)
+                            label.radiocheck__label.ml-none.rating-star__item(for="review-rating-2-" + abc)
+                              +faIcon('star', 'fas').icon--xlarge
 
                       .col--l-5
                         .btn-layout.btn-layout--vertical.m-none
@@ -653,11 +660,11 @@ block content
                         span.text-color-grey  / 5
                         p.text-medium.text-color-grey.mb-small 1024 hodnotení
                     .rating-star.justify-content-center.mb-medium.no-mb-l
-                      +icon('star').rating-star__item.icon--large.is-active
-                      +icon('star').rating-star__item.icon--large.is-active
-                      +icon('star').rating-star__item.icon--large.is-active
-                      +icon('star').rating-star__item.icon--large.is-active
-                      +icon('star-half').rating-star__item.icon--large.is-active
+                      +faIcon('star', 'fas').rating-star__item.icon--large.is-active
+                      +faIcon('star', 'fas').rating-star__item.icon--large.is-active
+                      +faIcon('star', 'fas').rating-star__item.icon--large.is-active
+                      +faIcon('star', 'fas').rating-star__item.icon--large.is-active
+                      +faIcon('star-half', 'fad').rating-star__item.icon--large.is-active
                   .col--l-7.col--l-border
                     table.book-rating__table.table.table--clean.m-none
                       tbody
@@ -669,7 +676,7 @@ block content
                             td
                               .rating-star
                                 each star, starIndex in Array(5)
-                                  +icon('star').rating-star__item.icon--medium(class=(starIndex <= (4 - ratingIndex)) && 'is-active')
+                                  +faIcon('star', 'fas').rating-star__item.icon--medium(class=(starIndex <= (4 - ratingIndex)) && 'is-active')
                             td
                               span= barRating[ratingIndex]
                             td(width="100%")
@@ -696,7 +703,7 @@ block content
                           .bar
                             .bar__item
                               .badge
-                                +icon('star', 'icon--small').text-color-yellow
+                                +faIcon('star', 'faas').text-color-yellow
                                 | 4.5
                             .bar__item
                               .text-medium 2.3.2017
@@ -898,11 +905,11 @@ block content
           .row.justify-content-center.align-items-center
             .col--l-7.text-center
               p.mb-small Ako sa vám páčila kniha?
-              #rating-star.radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-center.mb-small.m-l-none.checked(data-stars)
+              #rating-star-3.radiocheck-group.rating-star.rating-star--highlight-on-hover.justify-content-center.mb-small.m-l-none.checked(data-stars)
                 - for (var abc = 0; abc<5; abc++)
                   input.rating-star__input.radiocheck__input(type="radio", name="review-rating", id="review-rating-" + abc)
                   label.radiocheck__label.ml-none.rating-star__item(for="review-rating-" + abc)
-                    +icon('star').icon--xlarge
+                    +faIcon('star', 'fas').icon--xlarge
             .col--l-5
               .btn-layout.btn-layout--vertical.m-none
                 button.btn(data-toggle="#add-review-modal", disabled)
