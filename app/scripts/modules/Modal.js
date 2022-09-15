@@ -21,6 +21,10 @@ export default class ModalWrapper {
       this.modals,
       document.querySelectorAll(this.selector),
     );
+
+    this.modals.forEach(modal => {
+      new Modal(modal).show();
+    });
   }
 
   create(element, config = {}) {
