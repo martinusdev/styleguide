@@ -22,42 +22,17 @@
   }
 
   &--highlight-on-hover {
-    &.checked .rating-star__item {
+    label {
       color: _color(yellow);
     }
 
-    &.checked .radiocheck__input:checked {
-      + .rating-star__item ~ .rating-star__item { // stylelint-disable
-        color: _color(grey, 200);
-      }
+    //stylelint-disable
+    &:not(:hover) input:indeterminate + label,
+    &:not(:hover) input:checked ~ input + label,
+    input:hover ~ input + label {
+      color: _color(grey, 200);
     }
-
-    &#rating-star.checked:hover .rating-star__item,
-    &:hover .rating-star__item {
-      color: _color(yellow);
-    }
-
-    &#rating-star.checked .rating-star__item:hover,
-    .rating-star__item:hover {
-      ~ .rating-star__item {
-        color: _color(grey, 200);
-      }
-    }
-  }
-
-  &__icon {
-    width: _get-rem(22px);
-    height: _get-rem(22px);
-    background: svg-load('./../images/content/rating/star.svg');
-    background-size: auto _get-rem(22px);
-
-    &--half {
-      background: svg-load('./../images/content/rating/star-half.svg');
-    }
-
-    &--empty {
-      background: svg-load('./../images/content/rating/star-empty.svg');
-    }
+    //stylelint-enable
   }
 }
 
