@@ -9,10 +9,12 @@
   margin-bottom: 0;
 
   &__search {
+    position: relative;
     display: none;
+    width: 100%;
 
     // ugly fix - flexbox is calculating wrong width and button is overflowing
-    @include breakpoint(m, down) {
+    @include breakpoint(s, down) {
       max-width: calc(100% - 45px);
     }
 
