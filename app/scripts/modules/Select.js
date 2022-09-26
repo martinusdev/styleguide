@@ -149,15 +149,13 @@ const storeListChoices = config => `
 `;
 
 const imageListTemplate = ({ label, customProperties }) => `
-  <div class="bar mb-none">
-    ${customProperties && customProperties.image ? `<div class="bar__item bar__item--shrinkable"><img class="img--rounded" src="${customProperties.image}"></div>` : ''}
-    <div class="bar__item bar__item--fill">
-      <span>${label}</span>
-    </div>
-    <div class="bar__item bar__item--shrinkable text-right">
+  <div class="d-flex align-items-center mb-none">
+      ${customProperties && customProperties.image ? `<div class="img--rounded mr-small" style="width: 40px; height: 27px; background: url(${customProperties.image}) no-repeat center; background-size: cover"></div>` : ''}
+      <div class="flex-1">
+        <span>${label}</span><br>
+      </div>
       ${customProperties && customProperties.price ? `<span class="text-vam text-color-grey">${customProperties.price}</span>` : ''}
-    </div>
-  </div>`;
+    </div>`;
 
 const imageListChoice = (
   {
@@ -166,12 +164,10 @@ const imageListChoice = (
   config,
 ) => `
   <div class="text-left ${config.classNames.item} ${config.classNames.itemChoice} ${disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${id}" data-value="${value}">
-    <div class="bar mb-none">
-      ${customProperties && customProperties.image ? `<div class="bar__item bar__item--shrinkable"><img class="img--rounded" width="40" src="${customProperties.image}"></div>` : ''}
-      <div class="bar__item bar__item--fill">
-        <span>${label}</span>
-      </div>
-      <div class="bar__item bar__item--shrinkable text-right">
+    <div class="d-flex align-items-center mb-none">
+      ${customProperties && customProperties.image ? `<div class="img--rounded mr-small" style="width: 80px; height: 80px; background: url(${customProperties.image}) no-repeat center; background-size: cover"></div>` : ''}
+      <div class="flex-1">
+        <span>${label}</span><br>
         ${customProperties && customProperties.price ? `<span class="text-vam text-color-grey">${customProperties.price}</span>` : ''}
       </div>
     </div>
