@@ -4,6 +4,29 @@ include ./../mixins/pagination
 include ./../mixins/icon
 include ./../mixins/xmas
 
+mixin formatIcon(type)
+  case type
+    when 'book'
+    default
+      +faIcon('book')&attributes(attributes)
+    when 'audiobook'
+      +faIcon('volume')&attributes(attributes)
+    when 'ebook'
+      +faIcon('tablet-screen')&attributes(attributes)
+    when 'used'
+      +faIcon('book-arrow-up')&attributes(attributes)
+
+mixin formatName(type)
+  case type
+    when 'book'
+      | Kniha
+    when 'audiobook'
+      | Audiokniha
+    when 'ebook'
+      | E-kniha
+    when 'used'
+      | Čítaná
+
 mixin itemGroup(id)
   div&attributes(attributes)
     +groupItem('Kniha', 0, 'Vydavatelstvo Publishing, 2019', true)
@@ -78,59 +101,6 @@ mixin groupItem(name, id, publisher, xmasmode)
             span.text-semibold Vložiť do košíka
 
           +addTo({text: '', buttonClass: 'btn--small'})
-
-
-
-
-mixin formatDropdown(props = {})
-  -
-    const {
-      small = false
-    } = props;
-
-  .btn-layout.btn-layout--vertical(class=(small) ? 'mb-none' : '')&attributes(attributes)
-    .btn-dropdown.m-none
-      button.btn.btn--ghost.btn--icon-right.text-left(
-      class=(small) ? 'btn--small' : '',
-      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-      data-toggle-expand,
-      aria-haspopup="true"
-      ) Pevná väzba
-        +faIcon('chevron-down', 'icon-dropdown').icon--medium
-      .dropdown(data-dropdown, data-toggle-expand)
-        .dropdown__wrap
-          a(href="#").dropdown__item
-            .bar.text-small.mb-none
-              .bar__item.bar__item--fill
-                div Kniha
-                .text-color-grey Posielame ihneď
-              .bar__item.text-right
-                .text-semibold.text-color-black 18,00 €
-                .text-color-grey -10%
-          a(href="#").dropdown__item
-            .bar.text-small.mb-none
-              .bar__item.bar__item--fill
-                div Ekniha
-                .text-color-grey Okamžite na stiahnutie
-              .bar__item.text-right
-                .text-semibold.text-color-black 16,00 €
-                .text-color-grey -10%
-          a(href="#").dropdown__item
-            .bar.text-small.mb-none
-              .bar__item.bar__item--fill
-                div Audiokniha na CD
-                .text-color-grey Posielame ihneď
-              .bar__item.text-right
-                .text-semibold.text-color-black 8,00 €
-                .text-color-grey -5%
-          a(href="#").dropdown__item
-            .bar.text-small.mb-none
-              .bar__item.bar__item--fill
-                div Audiokniha MP3
-                .text-color-grey Okamžite na stiahnutie
-              .bar__item.text-right
-                .text-semibold.text-color-black 12,00 €
-                .text-color-grey -2%
 
 section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
@@ -361,13 +331,33 @@ section.section
                   if item.series
                     .d-inline.text-color-grey #{item.series}
 
-                p.text-medium.mb-small Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku&hellip;
+                p.listing__item__description.text-medium.mb-small Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur consequatur ea ex facilis id in laboriosam libero minus odit, perferendis provident qui ratione reprehenderit sapiente! Accusamus impedit molestias nesciunt.
+
+                if item.formats
+                  ul.list.listing__item__formats
+                    each format, type in item.formats
+                      li.list__item
+                        a(href="detail-knihy.html").link.text-medium
+                          +formatIcon(type).fa-lg.mr-tiny
+                          +formatName(type)
+                        .d-flex.align-items-end.justify-content-between
+                          .format__info
+                            .format__price
+                              | #{format.price}
+                              if (format.discount)
+                                .badge.badge--primary.ml-small -#{format.discount} %
+                            .format__stock-status.text-medium
+                              em.text-color-green Na sklade
+                          .format__actions
+                            button.btn.btn--clean.btn--equal.mr-tiny.mb-none(data-toggle='')
+                              +faIcon('heart-circle-plus').fa-xl
+                            button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
+                              +faIcon('basket-shopping').fa-xl
 
         each item, i in books
           -
             var itemType = 'default';
             if (i == 0) itemType = 'group';
-            if (i == 1) itemType = 'dropdown';
 
           if i === 0
             //GROUPED ITEM
@@ -468,9 +458,6 @@ section.section
                         a(href="detail-knihy.html").link.text-medium Viac o knihe
                           +faIcon('arrow-right')
 
-                      if itemType == 'dropdown'
-                        +formatDropdown({small: true}).hide-m
-
                       .bar.bar--tiny.mb-none.hide-m
                         .bar__item
                           .badge.badge--primary -20%
@@ -517,9 +504,6 @@ section.section
                           br
 
                   else
-                    if itemType == 'dropdown'
-                      +formatDropdown.show-m
-
                     .text-center.show-m
                       h2.text-bold.mb-small #{item.price}
                       .badge.badge--primary.mb-small Zľava 10%
