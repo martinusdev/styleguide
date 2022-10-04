@@ -13,7 +13,7 @@ mixin itemGroup(id)
       +groupItem('Audiokniha cd', 3, 'Vydavatelstvo Publishing, 2019')
     .mb-medium
       a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
-        +icon('plus')
+        +faIcon('plus')
         | <span data-toggle-text-target class="ml-tiny mr-small">Viac formátov</span>
       span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
 
@@ -72,9 +72,9 @@ mixin groupItem(name, id, publisher, xmasmode)
               | .
         .bar__item.m-none
           button.btn.btn--clean.btn--small.m-none.hide-m
-            +icon('cart').icon--medium.text-color-primary
+            +faIcon('basket-shopping').fa-lg.text-color-primary
           button.btn.btn--primary.btn--small.mb-tiny(data-toggle='#checkout-notice').show-m
-            +icon('cart').icon--left.icon--small
+            +faIcon('basket-shopping').fa-lg.mr-tiny
             span.text-semibold Vložiť do košíka
 
           +addTo({text: '', buttonClass: 'btn--small'})
@@ -96,7 +96,7 @@ mixin formatDropdown(props = {})
       data-toggle-expand,
       aria-haspopup="true"
       ) Pevná väzba
-        +icon('chevron-down', 'icon-dropdown').icon--medium
+        +faIcon('chevron-down', 'icon-dropdown').icon--medium
       .dropdown(data-dropdown, data-toggle-expand)
         .dropdown__wrap
           a(href="#").dropdown__item
@@ -138,11 +138,11 @@ section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
     .bar.mb-none
       .bar__item.bar__item--fill.mr-none.text-center
         button.btn.btn--clean.mb-none(data-toggle="#mobile-reduction").mr-none.text-size-medium
-          +icon('reduction', 'icon--medium').icon--left
+          +faIcon('filter').mr-tiny.fa-lg
           span Zúžiť výber
       .bar__item.bar__item--fill.border-left-grey.text-center
         button.btn.btn--fill.btn--clean.mb-none(data-toggle="#mobile-order").mr-none.text-size-medium
-          +icon('order', 'icon--medium').icon--left
+          +faIcon('bars-sort').mr-tiny.fa-lg
           span Zoradiť
 
 section.section
@@ -152,7 +152,7 @@ section.section
         .mobile-wrapper__header
           .mobile-wrapper__header-title Zúženie výberu
           .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
-            +icon('close', 'icon--medium')
+            +faIcon('xmark').fa-lg
         .mobile-wrapper__content.p-none
           include category-filter
         .mobile-wrapper__footer
@@ -183,15 +183,15 @@ section.section
                   .badge.mb-small
                     | Klasické detektívky
                     button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                      +icon('close').icon--small.icon--right
+                      +faIcon('xmark').ml-tiny
                   .badge.mb-small
                     | Agatha Christie
                     button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                      +icon('close').icon--small.icon--right
+                      +faIcon('xmark').ml-tiny
                   .badge.mb-small.mr-medium
                     | rýchlovky (do 1h)
                     button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                      +icon('close').icon--small.icon--right
+                      +faIcon('xmark').ml-tiny
 
         if searchCard
           .card.card--well
@@ -262,7 +262,7 @@ section.section
 
           .mb-large
             a.link.text-size-medium(href="javascript:void(0)", data-toggle="#category-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
-              +icon('arrow-down')
+              +faIcon('arrow-down')
 
           .mb-large.carousel-lite.mj-carousel(style="height: 5rem;").carousel-lite--fade-inside
             .carousel-lite__container.mj-carousel__scroll
@@ -286,7 +286,7 @@ section.section
           .mobile-wrapper__header
             .mobile-wrapper__header-title Radenie
             .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-order")
-              +icon('close', 'icon--medium')
+              +faIcon('xmark').fa-lg
           .mobile-wrapper__content
             ul.list.pl-none
               each sortLink, i in sortLinks
@@ -304,11 +304,11 @@ section.section
             .badge.mb-tiny
               | Žáner (Sci-fi)
               .btn.btn--small.btn--clean.btn--equal.mb-none
-                +icon('close').icon--small
+                +faIcon('xmark').fa-lg
             .badge.mb-tiny
               | Väzba mäkká
               .btn.btn--small.btn--clean.btn--equal.mb-none
-                +icon('close').icon--small
+                +faIcon('xmark')
             .btn.btn--small.btn--clean.mb-none zmazať filter
 
         if navIcons
@@ -362,7 +362,7 @@ section.section
                         .text-color-grey.mb-small.text-medium #{item.author}
                         .badges.mb-small
                           a.badge.mb-none
-                            +icon('star', 'icon--medium').text-color-yellow
+                            +faIcon('star', 'fas').text-color-yellow
                             span.text-normal.ml-small 3.5
                             span.link.ml-small(href="#recenzie", data-scroll) 234x
 
@@ -370,7 +370,7 @@ section.section
                           p.text-medium.mb-none.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
                         .mb-medium.show-s
                           a(href="detail-knihy.html").link.text-medium Viac o knihe
-                            +icon('arrow-right', 'icon--small')
+                            +faIcon('arrow-right')
 
                     .col--m-shrink.product-item__price-box
                       .text-center.show-m
@@ -395,11 +395,11 @@ section.section
                         if categoryListBadge
                           p.text-size-small
                             if (i % 3 === 0)
-                              +icon('arrow-up-right').text-color-success.icon--small.text-vat
+                              +faIcon('arrow-up-right').text-color-success.text-vat
                             if (i % 3 === 1)
-                              +icon('arrow-down-right').text-color-error.icon--small.text-vat
+                              +faIcon('arrow-down-right').text-color-error.text-vat
                             if (i % 3 === 2)
-                              +icon('arrow-right').text-color-grey.icon--small.text-vat
+                              +faIcon('arrow-right').text-color-grey.text-vat
                             | #{' '}
                             span.text-semibold 120
                             |  dní#{' '}
@@ -416,7 +416,7 @@ section.section
                         .bar__item.bar__item--shrinkable
                           .badges.mb-none
                             a.badge.mb-small
-                              +icon('star', 'icon--medium').text-color-yellow
+                              +faIcon('star', 'fas').text-color-yellow
                               span.text-normal.ml-small #{item.rating}
                               span.link.ml-small(href="#recenzie", data-scroll) 234x
                             .badge.badge--green.mb-small Na sklade
@@ -427,7 +427,7 @@ section.section
                         p.text-medium.mb-none.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
                       .mb-medium.show-s
                         a(href="detail-knihy.html").link.text-medium Viac o knihe
-                          +icon('arrow-right', 'icon--small')
+                          +faIcon('arrow-right')
 
                       if itemType == 'dropdown'
                         +formatDropdown({small: true}).hide-m
@@ -439,10 +439,10 @@ section.section
                           .text-medium.text-semibold.ml-small #{item.price}
                         .bar__item
                           button.btn.btn--clean.m-none
-                            +icon('cart').icon--medium.text-color-primary
+                            +faIcon('basket-shopping').fa-lg.text-color-primary
                         .bar__item
                           button.btn.btn--clean.m-none
-                            +icon('heart').icon--medium
+                            +faIcon('heart').fa-lg
 
                 .col--m-shrink.product-item__price-box
                   //- PUBLISHER PORTAL
@@ -491,7 +491,7 @@ section.section
 
                       .btn-layout--vertical
                         button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                          +icon('cart').icon--left.icon--medium
+                          +faIcon('basket-shopping').fa-lg.mr-tiny
                           span.text-semibold Vložiť do košíka
 
                         +addTo()
@@ -506,26 +506,6 @@ section.section
                   .col--m-10.text-center.text-left-m
                     h2.h3.mb-tiny.text-color-success Vedeli ste, že...?
                     p.mb-none až 4 knihy z 5 máme na sklade a posielame ich do nasledujúceho dňa?
-
-          //- HLADATE DARCEK
-          //if i === 2
-            .section.bg-secondary.show-m.mb-large
-              .product-item
-                .row.mb-large.mx-none
-                  .col--m-fill.product-item__content
-                    .bar
-                      .bar__item
-                        .thumbnail
-                          img(src="../images/content/gift/darcek@2x.png", alt="Darcek", width="120")
-                      .bar__item.bar__item--fill
-                        h2.mb-small Hľadáte darček?
-                        .bar.mb-none
-                          .bar__item Pre:
-                          .bar__item.bar__item--fill
-                            ul.list-inline
-                              each gift in ['babku', 'kamarátku', 'syna', 'dcéru', 'mamu', 'otca', 'brata']
-                                li
-                                  a.link !{gift}
 
           //- DARCEKOVA POUKAZKA
           if i === 4
@@ -557,7 +537,7 @@ section.section
                           aria-haspopup="true"
                         )
                           | 20,00 €
-                          +icon('chevron-down', 'icon-dropdown').icon--medium
+                          +faIcon('chevron-down', 'icon-dropdown').icon--medium
                         .dropdown(data-dropdown, data-toggle-expand)
                           a(href="#").dropdown__item 20,00 €
                           a(href="#").dropdown__item 15,00 €
@@ -565,7 +545,7 @@ section.section
                     .text-center
                       .btn-layout--vertical
                         button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                          +icon('cart').icon--left.icon--medium
+                          +faIcon('basket-shopping').fa-lg.mr-tiny
                           span.text-semibold Vložiť do košíka
 
         +pagination.justify-content-center.mb-large
