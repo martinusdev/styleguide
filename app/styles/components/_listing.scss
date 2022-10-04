@@ -1,0 +1,43 @@
+.listing {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__item {
+    display: flex;
+    flex-basis: 100%;
+    border-bottom: 1px solid $default-border-color;
+
+    margin-bottom: _get-space();
+    padding-bottom: _get-space();
+  }
+
+  &__item__cover {
+    flex-basis: _get-rem(100px);
+    margin-right: _get-space(small);
+
+    .product__cover {
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include breakpoint('m') {
+  .listing__item {
+    flex-basis: 50%;
+    margin-bottom: _get-space(large);
+    padding-bottom: _get-space(large);
+
+    &:nth-child(odd) {
+      padding-right: _get-space();
+    }
+
+    &:nth-child(even) {
+      padding-left: _get-space();
+    }
+  }
+
+  .listing__item__cover {
+    flex-basis: _get-rem(120px);
+    margin-right: _get-space();
+  }
+}

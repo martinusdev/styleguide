@@ -324,6 +324,45 @@ section.section
             li.tab-nav__item(data-tabs-item)
               a.tab-nav__content.tab-nav__content--link najstaršie
 
+        .listing
+          each item, i in books
+            .listing__item
+              .listing__item__cover
+                +productCover({
+                  href: 'detail-knihy.html',
+                  badge: false,
+                  cover: `${item.cover}`,
+                  collection: false,
+                })
+
+                .rating-star.justify-content-center.mt-small
+                  +faIcon('star', 'fas').rating-star__item.is-active
+                  +faIcon('star', 'fas').rating-star__item.is-active
+                  +faIcon('star', 'fas').rating-star__item.is-active
+                  +faIcon('star-half', 'fad').rating-star__item.is-active
+                  +faIcon('star', 'fas').rating-star__item
+
+                .badges.badges--column.mt-small
+                  .badge.badge--blue Novinka
+                  .badge.badge--blue TOP #10
+              .listing__item__details.flex-1
+                a.d-block.link.link--product(href="detail-knihy.html")
+                  =item.title
+                  if item.lang
+                    |&nbsp;
+                    span.badge.d-inline #{item.lang}
+                .text-medium.mb-small
+                  if item.subtitle
+                    .text-color-grey #{item.subtitle}
+                  ul.list-inline.list-inline--delimited.mb-none.d-inline.mr-tiny
+                    each author in item.author.split(', ')
+                      li.mt-none
+                        a.link #{author}
+                  if item.series
+                    .d-inline.text-color-grey #{item.series}
+
+                p.text-medium.mb-small Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku&hellip;
+
         each item, i in books
           -
             var itemType = 'default';
