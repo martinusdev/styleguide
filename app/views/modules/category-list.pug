@@ -27,6 +27,57 @@ mixin formatName(type)
     when 'used'
       | Čítaná
 
+mixin publisherCard()
+  .card.card--material.card--material-blue.mt-medium
+    .card__label
+      | štatistiky
+    .card__content.card__content--condensed
+      p.text-medium
+        b Predaných titulov
+        br
+        | E-shopy (14 dní):#{' '}
+        b 433
+        br
+        | E-shopy (celkovo):#{' '}
+        b 233
+        br
+        | Kníhkupectvá (14 dní):#{' '}
+        b 54
+        br
+        | Kníhkupectvá (celkovo):#{' '}
+        b 43
+        br
+      p.text-medium
+        | U dodávateľov:#{' '}
+        b 32
+        br
+        | Vo wishlistoch má:#{' '}
+        b 233 ľudí
+        br
+        | Rezervovalo si:#{' '}
+        b 233 ľudí
+        br
+
+mixin availability(props = {}, type = 'book')
+  -
+    const {
+      soldOut = false,
+      comingSoon = false
+    } = props
+
+  if soldOut
+    em.text-color-grey Vypredané
+  else if comingSoon
+    em.text-color-grey-dark
+      =comingSoon
+  else
+    case type
+      when 'ebook'
+      when 'audiobook'
+        em.text-color-green Ihneď na stiahnutie
+      default
+        em.text-color-green Na sklade
+
 section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
   .wrapper-main
@@ -247,8 +298,10 @@ section.section
                   +faIcon('star', 'fas').rating-star__item
 
                 .badges.badges--column.mt-small
-                  .badge.badge--blue Novinka
-                  .badge.badge--blue TOP #10
+                  if item.isNew
+                    .badge.badge--blue Novinka
+                  if item.isTop10
+                    .badge.badge--blue TOP #10
 
                 if categoryListBadge
                   p.text-size-small.mb-none.mt-small.text-center
@@ -293,6 +346,10 @@ section.section
                         a(href="detail-knihy.html").link.text-medium
                           +formatIcon(type).fa-lg.mr-tiny
                           +formatName(type)
+                          if format.types
+                            each formatType in format.types
+                              span.text-small.text-normal.text-color-grey.ml-tiny
+                                =formatType
                         .d-flex.align-items-end.justify-content-between
                           .format__info
                             .format__price
@@ -300,46 +357,19 @@ section.section
                               if (format.discount)
                                 .badge.badge--primary.ml-small -#{format.discount} %
                             .format__stock-status.text-medium
-                              em.text-color-green Na sklade
+                              +availability(format, type)
                           if !publisher
                             .format__actions
                               if (type !== 'used')
                                 button.btn.btn--clean.btn--equal.mr-tiny.mb-none(data-toggle='')
                                   +faIcon('heart-circle-plus').fa-xl
-                              button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
-                                +faIcon('basket-shopping').fa-xl
+                              if (!format.soldOut)
+                                button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
+                                  +faIcon('basket-shopping').fa-xl
                         if publisher
-                          .card.card--material.card--material-blue.mt-medium
-                            .card__label
-                              | štatistiky
-                            .card__content.card__content--condensed
-                              p.text-medium
-                                b Predaných titulov
-                                br
-                                | E-shopy (14 dní):#{' '}
-                                b 433
-                                br
-                                | E-shopy (celkovo):#{' '}
-                                b 233
-                                br
-                                | Kníhkupectvá (14 dní):#{' '}
-                                b 54
-                                br
-                                | Kníhkupectvá (celkovo):#{' '}
-                                b 43
-                                br
-                              p.text-medium
-                                | U dodávateľov:#{' '}
-                                b 32
-                                br
-                                | Vo wishlistoch má:#{' '}
-                                b 233 ľudí
-                                br
-                                | Rezervovalo si:#{' '}
-                                b 233 ľudí
-                                br
+                          +publisherCard()
                   if (otherFormats.length)
-                    a.link.mt-small.d-block.text-medium(data-toggle='previous')
+                    a.link.mt-small.d-block.text-medium(data-toggle='previous,self', data-toggle-icon='minus')
                       +faIcon('plus').mr-tiny
                       | Ďalšie formáty
                       each format in otherFormats
