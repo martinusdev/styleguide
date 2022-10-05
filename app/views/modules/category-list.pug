@@ -316,7 +316,7 @@ section.section
                   .badge.badge--blue Novinka
                   .badge.badge--blue TOP #10
               .listing__item__details.flex-1
-                a.d-block.link.link--product(href="detail-knihy.html")
+                a.listing__item__title.link.link--product(href="detail-knihy.html")
                   =item.title
                   if item.lang
                     |&nbsp;
@@ -334,9 +334,14 @@ section.section
                 p.listing__item__description.text-medium.mb-small Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur consequatur ea ex facilis id in laboriosam libero minus odit, perferendis provident qui ratione reprehenderit sapiente! Accusamus impedit molestias nesciunt.
 
                 if item.formats
+                  - let i = 0
+                  - let otherFormats = []
                   ul.list.listing__item__formats
                     each format, type in item.formats
-                      li.list__item
+                      - i++
+                      if (i > 2)
+                        - otherFormats.push(type)
+                      li.list__item(class = i > 2 ? 'd-none' : '')
                         a(href="detail-knihy.html").link.text-medium
                           +formatIcon(type).fa-lg.mr-tiny
                           +formatName(type)
@@ -353,6 +358,12 @@ section.section
                               +faIcon('heart-circle-plus').fa-xl
                             button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
                               +faIcon('basket-shopping').fa-xl
+                  if (otherFormats.length)
+                    a.link.mt-small.d-block.text-medium(data-toggle='previous')
+                      +faIcon('plus').mr-tiny
+                      | Ďalšie formáty
+                      each format in otherFormats
+                        +formatIcon(format).ml-tiny
 
         each item, i in books
           -
