@@ -27,81 +27,6 @@ mixin formatName(type)
     when 'used'
       | Čítaná
 
-mixin itemGroup(id)
-  div&attributes(attributes)
-    +groupItem('Kniha', 0, 'Vydavatelstvo Publishing, 2019', true)
-    +groupItem('E-kniha', 1, 'Vydavatelstvo Publishing, 2019')
-    .hide(data-toggle-class="hide", id=`item-group-more${id}`)
-      +groupItem('Audiokniha mp3', 2, 'Vydavatelstvo Publishing, 2019')
-      +groupItem('Audiokniha cd', 3, 'Vydavatelstvo Publishing, 2019')
-    .mb-medium
-      a.link.text-size-medium(href="javascript:void(0)", data-toggle=`#item-group-more${id}, #item-group-more-description${id}, self`, data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger, data-parent-hop="2")
-        +faIcon('plus')
-        | <span data-toggle-text-target class="ml-tiny mr-small">Viac formátov</span>
-      span.text-color-grey.text-size-small(id=`item-group-more-description${id}`, data-toggle-class="hide") (audiokniha mp3, audiokniha cd)
-
-mixin groupItem(name, id, publisher, xmasmode)
-  .bar.align-items-center.mb-medium(class=(id !== 3) ? 'border-bottom-grey' : '')
-    .bar__item.bar__item--fill.mb-m-small.mt-none.no-mrg-horizontal--m-down
-      .bar.bar--vertical.bar--vertical-small.mb-small.mb-m-none
-        .bar__item.m-none
-          a.text-semibold.text-medium.d-inline-block.link=name
-          | #{' '}
-          span.text-medium.text-color-grey.show-m=publisher
-          //a.link.link--product Základy rybolovu pro kluky a holky
-          .d-inline-block.hide-m.text-size-small
-            if id == 0
-              span.text-color-success.mr-tiny Na sklade
-              span.text-color-blue Novinka
-            else if id == 1
-              span.text-color-success.mr-tiny PDF
-              span.text-color-success.mr-tiny EPUB
-              span.text-color-success MOBI
-            else if id == 3
-              span.text-color-success Na sklade
-        .bar__item.show-m
-          .badges.mb-none
-            if id == 0
-              .badge.badge--green.mb-small.mb-m-none Na sklade
-              .badge.badge--blue.mb-small.mb-m-none Novinka
-            else if id == 1
-              .badge.badge--green.mb-small.mb-m-none PDF
-              .badge.badge--green.mb-small.mb-m-none EPUB
-              .badge.badge--green.mb-small.mb-m-none MOBI
-            else if id == 2
-              .badge.badge--green.mb-small.mb-m-none MP3 na stiahnutie
-            else if id == 3
-              .badge.badge--green.mb-small.mb-m-none MP3 na CD
-              .badge.badge--green.mb-small.mb-m-none Na sklade
-    .bar__item.bar__item--shrinkable.mt-none.mb-small.mb-m-none.no-mrg-horizontal--m-down
-      .bar.bar--small.m-none.bar--no-wrap
-        .bar__item.m-none
-          .badge.badge--primary -20%
-        .bar__item.m-none
-          .text-bold.ml-small 8,99
-        .bar__item.m-none
-          +xmas({type: 'icon', size: 'medium'}).ml-tiny(class=xmasmode ? '' : 'invisible')
-
-    .bar__item.bar__item--shrinkable.mt-none.mb-small.mb-m-none
-      .bar.bar--vertical.bar--vertical-small.mb-none.mb-m-tiny
-        .bar__item.show-m.m-none(style="max-width: 200px;")
-          if id == 1
-            p.mb-tiny.text-color-grey-dark.text-medium.text-center Na sklade, objednávajte#{' '}
-              em(data-tooltip, title="Toto je tooltip vysvetlivka") však rýchlo
-              | .
-          else
-            p.mb-tiny.text-color-grey-dark.text-medium.text-center Posielame#{' '}
-              em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-              | .
-        .bar__item.m-none
-          button.btn.btn--clean.btn--small.m-none.hide-m
-            +faIcon('basket-shopping').fa-lg.text-color-primary
-          button.btn.btn--primary.btn--small.mb-tiny(data-toggle='#checkout-notice').show-m
-            +faIcon('basket-shopping').fa-lg.mr-tiny
-            span.text-semibold Vložiť do košíka
-
-          +addTo({text: '', buttonClass: 'btn--small'})
-
 section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
   data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
   .wrapper-main
@@ -296,6 +221,15 @@ section.section
 
         .listing
           each item, i in books
+            if i === 2
+              section.section.section--small.bg-secondary.my-none.py-medium.w-100
+                .row.my-none.mx-none
+                  .col--m-2.text-center
+                    +icon('footer-shipping').icon--xxlarge.text-color-success
+                  .col--m-10.text-center.text-left-m
+                    h2.h3.mb-tiny.text-color-success Vedeli ste, že...?
+                    p.mb-none až 4 knihy z 5 máme na sklade a posielame ich do nasledujúceho dňa?
+
             .listing__item
               .listing__item__cover
                 +productCover({
@@ -315,6 +249,20 @@ section.section
                 .badges.badges--column.mt-small
                   .badge.badge--blue Novinka
                   .badge.badge--blue TOP #10
+
+                if categoryListBadge
+                  p.text-size-small.mb-none.mt-small.text-center
+                    if (i % 3 === 0)
+                      +faIcon('arrow-up-right').text-color-success.text-vat
+                    if (i % 3 === 1)
+                      +faIcon('arrow-down-right').text-color-error.text-vat
+                    if (i % 3 === 2)
+                      +faIcon('arrow-right').text-color-grey.text-vat
+                    | #{' '}
+                    span.text-semibold 120
+                    |  dní#{' '}
+                    span.text-color-grey.show-m v TOP 100
+
               .listing__item__details.flex-1
                 a.listing__item__title.link.link--product(href="detail-knihy.html")
                   =item.title
@@ -353,234 +301,49 @@ section.section
                                 .badge.badge--primary.ml-small -#{format.discount} %
                             .format__stock-status.text-medium
                               em.text-color-green Na sklade
-                          .format__actions
-                            button.btn.btn--clean.btn--equal.mr-tiny.mb-none(data-toggle='')
-                              +faIcon('heart-circle-plus').fa-xl
-                            button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
-                              +faIcon('basket-shopping').fa-xl
+                          if !publisher
+                            .format__actions
+                              if (type !== 'used')
+                                button.btn.btn--clean.btn--equal.mr-tiny.mb-none(data-toggle='')
+                                  +faIcon('heart-circle-plus').fa-xl
+                              button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
+                                +faIcon('basket-shopping').fa-xl
+                        if publisher
+                          .card.card--material.card--material-blue.mt-medium
+                            .card__label
+                              | štatistiky
+                            .card__content.card__content--condensed
+                              p.text-medium
+                                b Predaných titulov
+                                br
+                                | E-shopy (14 dní):#{' '}
+                                b 433
+                                br
+                                | E-shopy (celkovo):#{' '}
+                                b 233
+                                br
+                                | Kníhkupectvá (14 dní):#{' '}
+                                b 54
+                                br
+                                | Kníhkupectvá (celkovo):#{' '}
+                                b 43
+                                br
+                              p.text-medium
+                                | U dodávateľov:#{' '}
+                                b 32
+                                br
+                                | Vo wishlistoch má:#{' '}
+                                b 233 ľudí
+                                br
+                                | Rezervovalo si:#{' '}
+                                b 233 ľudí
+                                br
                   if (otherFormats.length)
                     a.link.mt-small.d-block.text-medium(data-toggle='previous')
                       +faIcon('plus').mr-tiny
                       | Ďalšie formáty
                       each format in otherFormats
                         +formatIcon(format).ml-tiny
-
-        each item, i in books
-          -
-            var itemType = 'default';
-            if (i == 0) itemType = 'group';
-
-          if i === 0
-            //GROUPED ITEM
-            .product-item.product-item--border-bottom.bg-default
-              .row.mb-medium.product-item__content
-                .col--shrink.pr-none.show-m
-                  +product
-                    +productCover({
-                      href: 'detail-knihy.html',
-                      badge: categoryListBadge ? i + 1 : false,
-                      cover: `${item.cover}`,
-                      collection: true,
-                      })
-                .col--fill
-                  .row.mb-medium.mb-m-none
-
-                    .col--s-shrink.col--3.pr-none.hide-m
-                      +product
-                        +productCover({
-                          href: 'detail-knihy.html',
-                          badge: categoryListBadge ? i + 1 : false,
-                          cover: `${item.cover}`,
-                          collection: true,
-                          })
-
-                    .col--fill
-                      .mb-m-small
-                        h2.h3.mb-tiny
-                          a.link.link--product(href="detail-knihy.html") #{item.title}
-                          .badge EN
-                        .text-color-grey.mb-small.text-medium #{item.author}
-                        .badges.mb-small
-                          a.badge.mb-none
-                            +faIcon('star', 'fas').text-color-yellow
-                            span.text-normal.ml-small 3.5
-                            span.link.ml-small(href="#recenzie", data-scroll) 234x
-
-                        div(data-collapse="60")
-                          p.text-medium.mb-none.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
-                        .mb-medium.show-s
-                          a(href="detail-knihy.html").link.text-medium Viac o knihe
-                            +faIcon('arrow-right')
-
-                    .col--m-shrink.product-item__price-box
-                      .text-center.show-m
-                        h2.text-bold.mb-small od #{item.price}
-
-                  +itemGroup(1)
-
-          else
-            .product-item.product-item--border-bottom.bg-default(class=(i === 2 || i === 4) ? 'mb-none--m' : '' )
-              .row
-                .col--m-fill.product-item__content
-                  .row.mb-medium
-                    .col--s-shrink.col--3.pr-none
-                      +product
-                        +productCover({
-                          href: 'detail-knihy.html',
-                          badge: categoryListBadge ? i+1 : false,
-                          cover: `${item.cover}`,
-                          collection: i == 1,
-                        })
-                          img.book-flag.book-flag--medium(src="images/content/top100/10dni.png", style="position: absolute; right: 10px; top: -5px;")
-                        if categoryListBadge
-                          p.text-size-small
-                            if (i % 3 === 0)
-                              +faIcon('arrow-up-right').text-color-success.text-vat
-                            if (i % 3 === 1)
-                              +faIcon('arrow-down-right').text-color-error.text-vat
-                            if (i % 3 === 2)
-                              +faIcon('arrow-right').text-color-grey.text-vat
-                            | #{' '}
-                            span.text-semibold 120
-                            |  dní#{' '}
-                            span.text-color-grey.show-m v TOP 100
-
-                    .col--s-fill.col--9
-                      .mb-m-small
-                        h2.h3.mb-tiny
-                          a.link.link--product(href="detail-knihy.html") #{item.title}
-                            span.text-color-grey.ml-small.text-normal Podnapdis na viac slov alebo aj riadkov
-                          .badge CZ
-                        .text-color-grey.mb-small.text-medium #{item.author}
-                      .bar.bar--small.mb-small.show-s
-                        .bar__item.bar__item--shrinkable
-                          .badges.mb-none
-                            a.badge.mb-small
-                              +faIcon('star', 'fas').text-color-yellow
-                              span.text-normal.ml-small #{item.rating}
-                              span.link.ml-small(href="#recenzie", data-scroll) 234x
-                            .badge.badge--green.mb-small Na sklade
-                            .badge.badge--blue.mb-small Novinka
-
-
-                      div(data-collapse="60")
-                        p.text-medium.mb-none.show-s Těžko se najde něco napínavějšího než rybolov. Jako mladí sportovní rybáři se z této knihy dozvíte, jak na to, aby dobrodružství jménem rybolov vám od začátku dělalo opravdovou radost. Vysvětlíme vám, jaké vybavení je nezbytné, jaké u nás žijí ryby a jak je lze ulovit. K tomu slouží také vhodné místo k lovu a správná nástraha. Po takové přípravě docela určitě brzy chytíte svou první rybu - nebo mnohem víc ryb než dřív.
-                      .mb-medium.show-s
-                        a(href="detail-knihy.html").link.text-medium Viac o knihe
-                          +faIcon('arrow-right')
-
-                      .bar.bar--tiny.mb-none.hide-m
-                        .bar__item
-                          .badge.badge--primary -20%
-                        .bar__item.bar__item--fill
-                          .text-medium.text-semibold.ml-small #{item.price}
-                        .bar__item
-                          button.btn.btn--clean.m-none
-                            +faIcon('basket-shopping').fa-lg.text-color-primary
-                        .bar__item
-                          button.btn.btn--clean.m-none
-                            +faIcon('heart').fa-lg
-
-                .col--m-shrink.product-item__price-box
-                  //- PUBLISHER PORTAL
-                  if i === 0 && publisher
-                    .card.card--material.card--material-blue
-                      .card__label
-                        | štatistiky
-                      .card__content.card__content--condensed
-                        p.text-medium
-                          b Predaných titulov
-                          br
-                          | E-shopy (14 dní):#{' '}
-                          b 433
-                          br
-                          | E-shopy (celkovo):#{' '}
-                          b 233
-                          br
-                          | Kníhkupectvá (14 dní):#{' '}
-                          b 54
-                          br
-                          | Kníhkupectvá (celkovo):#{' '}
-                          b 43
-                          br
-                        p.text-medium
-                          | U dodávateľov:#{' '}
-                          b 32
-                          br
-                          | Vo wishlistoch má:#{' '}
-                          b 233 ľudí
-                          br
-                          | Rezervovalo si:#{' '}
-                          b 233 ľudí
-                          br
-
-                  else
-                    .text-center.show-m
-                      h2.text-bold.mb-small #{item.price}
-                      .badge.badge--primary.mb-small Zľava 10%
-                      +xmas({status: 0})
-                      p.mb-medium.text-color-grey-dark.text-medium Posielame#{' '}
-                        em(data-tooltip, title="Toto je tooltip vysvetlivka") ihneď
-                        | .
-
-                      .btn-layout--vertical
-                        button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                          +faIcon('basket-shopping').fa-lg.mr-tiny
-                          span.text-semibold Vložiť do košíka
-
-                        +addTo()
-
-          //- HLADATE DARCEK
-          if i === 2
-            .section.section--small.bg-secondary.mb-large
-              .product-item
-                .row.mb-medium.mx-none
-                  .col--m-2.text-center
-                    +icon('footer-shipping').icon--xxlarge.text-color-success
-                  .col--m-10.text-center.text-left-m
-                    h2.h3.mb-tiny.text-color-success Vedeli ste, že...?
-                    p.mb-none až 4 knihy z 5 máme na sklade a posielame ich do nasledujúceho dňa?
-
-          //- DARCEKOVA POUKAZKA
-          if i === 4
-            .section.bg-secondary.show-m.mb-large
-              .product-item
-                .row.mb-large.mx-none
-                  .col--m-fill
-                    .row
-                      .col--s-shrink.col--3.pr-none
-                        .thumbnail
-                          img(src="../images/content/gift/darcekova-poukazka@2x.png", alt="Darcekova poukazka", width="120")
-                      .col--s-fill.col--9
-                        h2.mb-small Nie ste si istý?
-                          br
-                          | Kúpte darčekovú poukážku
-                        p Obdarujte svojich blízkych presne tým, po čom vždy túžili - a ani nemusíte vedieť, čo to je!
-                        p.mb-none
-                          strong Darujte im darčekovú poukážku,
-                          | za ktorú si môžu vybrať čokoľvek z celej pomnuky Martinus.sk - desiatky tisíc kníh, filmov, puzzle a iných skvelých darčekov. Podmienky použitia nájdete
-                          a(href="#") tu
-                          | .
-                  .col--m-shrink.product-item__price-box
-                    .text-small.text.text-transform-upper.text-color-grey hodnota darčekovej poukážky
-                    .btn-layout.btn-layout--vertical.mb-medium
-                      .btn-dropdown.m-none
-                        button.btn.btn--ghost.btn--icon-right.text-left(
-                          data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                          data-toggle-expand,
-                          aria-haspopup="true"
-                        )
-                          | 20,00 €
-                          +faIcon('chevron-down', 'icon-dropdown').icon--medium
-                        .dropdown(data-dropdown, data-toggle-expand)
-                          a(href="#").dropdown__item 20,00 €
-                          a(href="#").dropdown__item 15,00 €
-                          a(href="#").dropdown__item 10,00 €
-                    .text-center
-                      .btn-layout--vertical
-                        button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                          +faIcon('basket-shopping').fa-lg.mr-tiny
-                          span.text-semibold Vložiť do košíka
 
         +pagination.justify-content-center.mb-large
 

@@ -7,8 +7,12 @@
     flex-basis: 100%;
     border-bottom: 1px solid $default-border-color;
 
-    margin-bottom: _get-space();
+    padding-top: _get-space();
     padding-bottom: _get-space();
+
+    &:first-child {
+      padding-top: 0 !important;
+    }
   }
 
   &__item__cover {
@@ -62,15 +66,19 @@
 
 @include breakpoint('m') {
   .listing__item {
+    &:nth-child(2) {
+      padding-top: 0 !important;
+    }
+
     flex-basis: 50%;
-    margin-bottom: _get-space(large);
+    padding-top: _get-space(large);
     padding-bottom: _get-space(large);
 
-    &:nth-child(odd) {
+    &:nth-of-type(odd) {
       padding-right: _get-space();
     }
 
-    &:nth-child(even) {
+    &:nth-of-type(even) {
       padding-left: _get-space();
     }
   }
