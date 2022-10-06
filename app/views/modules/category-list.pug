@@ -280,6 +280,9 @@ section.section
                   .col--m-10.text-center.text-left-m
                     h2.h3.mb-tiny.text-color-success Vedeli ste, že...?
                     p.mb-none až 4 knihy z 5 máme na sklade a posielame ich do nasledujúceho dňa?
+            else
+              - const even = i % 2;
+              hr.my-none(class = even ? 'd-m-none' : '')
 
             .listing__item
               .listing__item__cover
@@ -369,11 +372,12 @@ section.section
                         if publisher
                           +publisherCard()
                   if (otherFormats.length)
-                    a.link.mt-small.d-block.text-medium(data-toggle='previous,self', data-toggle-icon='minus')
+                    a.link.mt-small.d-block.text-medium(data-toggle='previous,self', data-toggle-icon='arrow-up', data-toggle-text='Skryť formáty')
                       +faIcon('plus').mr-tiny
-                      | Ďalšie formáty
-                      each format in otherFormats
-                        +formatIcon(format).ml-tiny
+                      span(data-toggle-text-target)
+                        | Ďalšie formáty
+                        each format in otherFormats
+                          +formatIcon(format).ml-tiny
 
         +pagination.justify-content-center.mb-large
 

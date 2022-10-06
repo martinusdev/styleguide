@@ -2,10 +2,13 @@
   display: flex;
   flex-wrap: wrap;
 
+  .section {
+    border-radius: $default-border-radius;
+  }
+
   &__item {
     display: flex;
     flex-basis: 100%;
-    border-top: 1px solid $default-border-color;
 
     padding-top: _get-space();
     padding-bottom: _get-space();
@@ -43,6 +46,10 @@
 
     .list__item {
       flex-direction: column;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
 
     .format__price {
