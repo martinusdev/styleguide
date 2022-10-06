@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: wrap;
 
+  .section {
+    border-radius: $default-border-radius;
+  }
+
   &__item {
     display: flex;
     flex-basis: 100%;
@@ -42,6 +46,10 @@
 
     .list__item {
       flex-direction: column;
+
+      &:last-child {
+        padding-bottom: 0;
+      }
     }
 
     .format__price {
