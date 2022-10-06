@@ -20,7 +20,7 @@
 
   &__item__cover {
     flex-basis: _get-rem(100px);
-    margin-right: _get-space(small);
+    margin-right: _get-rem(15px);
 
     .product__cover {
       margin-bottom: 0;
@@ -49,6 +49,11 @@
       &:last-child {
         padding-bottom: 0;
       }
+    }
+
+    &.is-active {
+      padding-bottom: _get-space(small);
+      border-bottom: 1px solid _color(grey, 200);
     }
 
     .format__price {
