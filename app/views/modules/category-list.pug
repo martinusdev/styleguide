@@ -126,18 +126,18 @@ section.section
             .row.overflow-scroll-x
               .col.pl-medium
                 .badges.flex-nowrap
-                  .badge.mb-small
+                  .badge.mb-small.badge--green
                     | Klasické detektívky
-                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                      +faIcon('xmark').ml-tiny
-                  .badge.mb-small
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none.text-color-green
+                      +faIcon('xmark').ml-tiny.fa-fw
+                  .badge.mb-small.badge--green
                     | Agatha Christie
-                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                      +faIcon('xmark').ml-tiny
-                  .badge.mb-small.mr-medium
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none.text-color-green
+                      +faIcon('xmark').ml-tiny.fa-fw
+                  .badge.mb-small.mr-medium.badge--green
                     | rýchlovky (do 1h)
-                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none
-                      +faIcon('xmark').ml-tiny
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none.text-color-green
+                      +faIcon('xmark').ml-tiny.fa-fw
 
         if searchCard
           .card.card--well
@@ -300,20 +300,21 @@ section.section
                   +faIcon('star-half', 'fad').rating-star__item.is-active
                   +faIcon('star', 'fas').rating-star__item
 
-                .badges.badges--column.mt-small
-                  if item.isNew
-                    .badge.badge--blue Novinka
-                  if item.isTop10
-                    .badge.badge--blue TOP #10
+                if item.isNew || item.isTop10
+                  .badges.badges--column.mt-small
+                    if item.isNew
+                      .badge.badge--blue Novinka
+                    if item.isTop10
+                      .badge.badge--blue TOP #10
 
                 if categoryListBadge
                   p.text-size-small.mb-none.mt-small.text-center
                     if (i % 3 === 0)
-                      +faIcon('arrow-up-right').text-color-success.text-vat
+                      +faIcon('arrow-up-right').text-color-success.text-vat.fa-lg
                     if (i % 3 === 1)
-                      +faIcon('arrow-down-right').text-color-error.text-vat
+                      +faIcon('arrow-down-right').text-color-error.text-vat.fa-lg
                     if (i % 3 === 2)
-                      +faIcon('arrow-right').text-color-grey.text-vat
+                      +faIcon('arrow-right').text-color-grey.text-vat.fa-lg
                     | #{' '}
                     span.text-semibold 120
                     |  dní#{' '}
@@ -364,7 +365,7 @@ section.section
                           if !publisher
                             .format__actions
                               if (type !== 'used')
-                                button.btn.btn--clean.btn--equal.mr-tiny.mb-none(data-toggle='')
+                                button.btn.btn--clean.btn--equal.mb-none(data-toggle='')
                                   +faIcon('heart-circle-plus').fa-xl
                               if (!format.soldOut)
                                 button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
@@ -378,6 +379,8 @@ section.section
                         | Ďalšie formáty
                         each format in otherFormats
                           +formatIcon(format).ml-tiny
+
+        hr.mt-none.mb-medium.mb-m-large
 
         +pagination.justify-content-center.mb-large
 
