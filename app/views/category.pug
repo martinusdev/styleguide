@@ -55,8 +55,8 @@ block content
       .wrapper-main
         h1.mb-medium
           | Najpredávanejšie knihy pre deti s veľmi dlhým názvom kategórie
-          button.btn
-            +icon('edit').icon--medium
+          button.btn.mb-none
+            +faIcon('pencil').fa-lg
 
         .row.mb-small.mt-small
           .col.bg-secondary#list-categories(data-collapse=150)
@@ -69,7 +69,7 @@ block content
                     | !{category.title}
           .col.text-center.mb-small
             a.hide.link.text-size-medium(data-toggle="#list-categories, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Zobraziť menej", data-collapse-trigger)
-              +icon('plus')
+              +faIcon('plus')
               | <span data-toggle-text-target class="ml-tiny mr-small">Viac kategórií</span>
       .wrapper-main
         .row
@@ -78,23 +78,18 @@ block content
         .row.mt-tiny
           .col
             ul.list-inline.list-inline--offset.text-size-medium.pr-medium
-              li
-                a.link
+              li.mr-tiny
+                a.pill.pill--blue-light.text-size-medium
                   | Leporelá
-                  span.ml-tiny.pill.pill--blue= 59
-              li
-                a.link
+              li.mr-tiny
+                a.pill.pill--blue-light.text-size-medium
                   | Pre prváčikov
-                  span.ml-tiny.pill.pill--blue= 293
-              li
-                a.link
+              li.mr-tiny
+                a.pill.pill--blue-light.text-size-medium
                   | Pre začínajúcich čitateľov
-                  span.ml-tiny.pill.pill--blue= 859
-              li
-                a.link
+              li.mr-tiny
+                a.pill.pill--blue-light.text-size-medium
                   | Walt Disney
-                  span.ml-tiny.pill.pill--blue= 115
-
 
     - let categoryListBadge = true;
-    include modules/category-list-new
+    include modules/category-list
