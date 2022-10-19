@@ -178,14 +178,15 @@ import {
   faMagnifyingGlassPlus,
   faMagnifyingGlassMinus,
   faTreeChristmas,
-  faEllipsis, faBookArrowUp, faBookBlank,
+  faEllipsis, faBookArrowUp, faBookBlank, faEyeSlash
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
   faBook as fasFaBook,
   faHeart as fasFaHeart,
   faEye as fasFaEye,
-  faStar
+  faStar,
+  faEyeSlash as fasEyeSlash
 } from '@fortawesome/pro-solid-svg-icons';
 import {
   faFacebookF,
@@ -366,6 +367,8 @@ library.add(
   faArrowUpFromBracket,
   faEye,
   fasFaEye,
+  faEyeSlash,
+  fasEyeSlash,
   faBars,
   faPlus,
   faMinus,

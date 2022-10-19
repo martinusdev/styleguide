@@ -203,26 +203,27 @@ block append content
 
     +demo
       +demo-example
-        ul.l-icons
-          each icon in icons
-            each iconNames, iconStyle in icon
-              each iconName in iconNames
-                case iconStyle
-                  when 'duotone'
-                    - prefix = 'fad';
-                  when 'regular'
-                    - prefix = 'far';
-                  when 'light'
-                    - prefix = 'fal';
-                  when 'brands'
-                    - prefix = 'fab';
-                  default
-                    - prefix = 'fas';
+        each icon in icons
+          each iconNames, iconStyle in icon
+            case iconStyle
+              when 'duotone'
+                - prefix = 'fad';
+              when 'regular'
+                - prefix = 'far';
+              when 'light'
+                - prefix = 'fal';
+              when 'brands'
+                - prefix = 'fab';
+              default
+                - prefix = 'fas';
 
+            +h3 #{iconStyle} (.#{prefix})
+            ul.l-icons
+              each iconName in iconNames
                 - const iconClass = `${prefix} fa-${iconName}`;
 
-                li.l-icons_item
-                  +faIcon(iconName, prefix).fa-2x
+                li(data-tooltip, title=iconClass).l-icons_item
+                  +faIcon(iconName, prefix).fa-lg
                   br
                   abbr(title=iconClass).text-color-grey= iconName
 
