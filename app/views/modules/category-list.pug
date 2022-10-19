@@ -1,0 +1,392 @@
+include ./../mixins/addTo
+include ./../mixins/booksCarouselRecommended
+include ./../mixins/pagination
+include ./../mixins/icon
+include ./../mixins/xmas
+
+mixin formatIcon(type)
+  case type
+    when 'book'
+    default
+      +faIcon('book')&attributes(attributes)
+    when 'audiobook'
+      +faIcon('volume')&attributes(attributes)
+    when 'ebook'
+      +faIcon('tablet-screen')&attributes(attributes)
+    when 'used'
+      +faIcon('book-arrow-up')&attributes(attributes)
+
+mixin formatName(type)
+  case type
+    when 'book'
+      | Kniha
+    when 'audiobook'
+      | Audiokniha
+    when 'ebook'
+      | E-kniha
+    when 'used'
+      | Čítaná
+
+mixin publisherCard()
+  .card.card--material.card--material-blue.mt-medium
+    .card__label
+      | štatistiky
+    .card__content.card__content--condensed
+      p.text-medium
+        b Predaných titulov
+        br
+        | E-shopy (14 dní):#{' '}
+        b 433
+        br
+        | E-shopy (celkovo):#{' '}
+        b 233
+        br
+        | Kníhkupectvá (14 dní):#{' '}
+        b 54
+        br
+        | Kníhkupectvá (celkovo):#{' '}
+        b 43
+        br
+      p.text-medium
+        | U dodávateľov:#{' '}
+        b 32
+        br
+        | Vo wishlistoch má:#{' '}
+        b 233 ľudí
+        br
+        | Rezervovalo si:#{' '}
+        b 233 ľudí
+        br
+
+mixin availability(props = {}, type = 'book')
+  -
+    const {
+      soldOut = false,
+      comingSoon = false
+    } = props
+
+  if soldOut
+    em.text-color-grey Vypredané
+  else if comingSoon
+    em.text-color-grey-dark
+      =comingSoon
+  else
+    case type
+      when 'ebook'
+      when 'audiobook'
+        em.text-color-green Ihneď na stiahnutie
+      default
+        em.text-color-green Na sklade
+
+section.section.section--toolbar.p-none.hide-l.bg-default(data-sticky,
+  data-scroll-offset=filterStickyOffset ? filterStickyOffset : header.size.default, data-sticky-class="is-stuck", data-sticky-wrap, data-sticky-to="1024")
+  .wrapper-main
+    .bar.mb-none
+      .bar__item.bar__item--fill.mr-none.text-center
+        button.btn.btn--clean.mb-none(data-toggle="#mobile-reduction").mr-none.text-size-medium
+          +faIcon('filter').mr-tiny.fa-lg
+          span Zúžiť výber
+      .bar__item.bar__item--fill.border-left-grey.text-center
+        button.btn.btn--fill.btn--clean.mb-none(data-toggle="#mobile-order").mr-none.text-size-medium
+          +faIcon('bars-sort').mr-tiny.fa-lg
+          span Zoradiť
+
+section.section
+  .wrapper-main
+    .row
+      #mobile-reduction.col--l-3.mobile-wrapper.mb-l-medium(data-toggle-lock)
+        .mobile-wrapper__header
+          .mobile-wrapper__header-title Zúženie výberu
+          .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-reduction")
+            +faIcon('xmark').fa-lg
+        .mobile-wrapper__content.p-none
+          include category-filter
+        .mobile-wrapper__footer
+            .btn-layout.btn-layout--vertical.mb-none
+              button.btn Zúžiť výber
+      .col--l-9.col--12
+        .div.mb-medium.show-l
+          ul.tab-nav.tab-nav--compact.d-flex
+            each sortLink, i in sortLinks
+              li.tab-nav__item(class= i===0 ? 'is-active': '')
+                a.tab-nav__content--link(class= i > 0 ? 'border-bottom-grey': '')
+                  if (typeof sortLink === 'object')
+                    +faIcon(sortLink.icon, 'far')
+                  else
+                    | !{sortLink}
+            li.tab-nav__item.flex-1
+              div.tab-nav__content.border-bottom-grey.justify-content-end.text-size-small.text-color-grey.text-center
+                | 2358 produktov
+
+        if showActiveFilters
+          .d-flex.mb-tiny.align-items-center
+            .text-size-small.text-transform-upper.text-color-grey.d-m-inline-block.d-block.mr-medium Použité filtre
+            a(href="#").link.text-size-medium Zrušiť filtre
+          .row.pl-m-medium
+            .row.overflow-scroll-x
+              .col.pl-medium
+                .badges.flex-nowrap
+                  .badge.mb-small.badge--green
+                    | Klasické detektívky
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none.text-color-green
+                      +faIcon('xmark').ml-tiny.fa-fw
+                  .badge.mb-small.badge--green
+                    | Agatha Christie
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none.text-color-green
+                      +faIcon('xmark').ml-tiny.fa-fw
+                  .badge.mb-small.mr-medium.badge--green
+                    | rýchlovky (do 1h)
+                    button(type="button").btn.btn--clean.btn--small.btn--equal.mb-none.text-color-green
+                      +faIcon('xmark').ml-tiny.fa-fw
+
+        if searchCard
+          .card.card--well
+            .card__content
+              .row
+                .col--m-4.mb-medium.mb-m-none
+                  .mb-medium
+                    h2.h5 Vydavatelia
+                    ul.list--unstyled
+                      for i in [1, 2]
+                        li.bar.mb-tiny
+                          .bar__item.bar__item--shrinkable.mr-tiny
+                            +faIcon('house', 'far').text-color-grey.fa-lg
+                          .bar__item.bar__item--fill.line-small
+                            a.link Ikar
+                  h2.h5 Čitateľské kolekcie
+                  ul.list--unstyled
+                    for i in [1, 2]
+                      li.bar.mb-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
+                          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill.line-small
+                          a.link Moje fantasy
+                .col--m-4.mb-medium.mb-m-none
+                  h2.h5 Kategórie
+                  ul.list--unstyled.mb-small
+                    for i in [1, 2]
+                      li.bar.mb-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
+                          +faIcon('rectangle-history', 'far').fa-lg.text-color-grey
+                        .bar__item.bar__item--fill.line-small
+                          a.link Kategória
+                  a.link.text-medium + Ďalších 5
+                    +faIcon('arrow-down', 'far').icon--small.ml-tiny
+                .col--m-4
+                  .mb-medium
+                    h2.h5 Autori
+                    ul.list--unstyled
+                      for i in [1, 2]
+                        li.bar.mb-tiny
+                          .bar__item.bar__item--shrinkable.mr-tiny
+                            +faIcon('circle-user', 'far').fa-lg.text-color-grey
+                          .bar__item.bar__item--fill.line-small
+                            a.link Meno Autora
+                  h2.h5 Čitateľské profily
+                  ul.list--unstyled
+                    for i in [1, 2]
+                      li.bar.mb-tiny
+                        .bar__item.bar__item--shrinkable.mr-tiny
+                          .portrait.portrait--small(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+                        .bar__item.bar__item--fill.line-small
+                          a.link Janko Martinusak
+
+        if navIcons
+          #category-description(data-collapse="200")
+            .cms-article
+              .row
+                .col--3
+                  img.img(src="images/content/author.png")
+                .col--9
+                  p Harry zápasí s minulosťou, ktorá sa #{' '}
+                    a(href="#") ustavične vracia
+                    | . Jeho najmladšiemu synovi Albusovi pripadla ťarcha rodinného dedičstva, o ktoré nikdy nemal záujem. Keď minulosť a prítomnosť vytvoria hrozivú výbušnú zmes, otec aj syn musia čeliť nepríjemnej pravde, že raz sa temnota zjaví na nečakaných miestach.
+
+                  p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+
+                  p Slovenskú verziu scenára Harry Potter a prekliate dieťa v elektronickej verzii vydá spoločnosť Pottermore, globálny digitálny vydavateľ Harryho Pottera, ktorého založila sama J. K. Rowlingová v roku 2012.
+
+          .mb-large
+            a.link.text-size-medium(href="javascript:void(0)", data-toggle="#category-description, self", data-toggle-icon="icons_/app.svg#icon-arrow-up", data-toggle-text="Čítaj menej", data-collapse-trigger, data-parent-hop="2") <span data-toggle-text-target>Čítaj viac</span>#{' '}
+              +faIcon('arrow-down')
+
+          .mb-large.carousel-lite.mj-carousel(style="height: 5rem;").carousel-lite--fade-inside
+            .carousel-lite__container.mj-carousel__scroll
+              .carousel-lite__wrapper.mj-carousel__content.align-items-stretch
+                each item, i in menu
+                  a.carousel-lite__slide(style="width: 12rem; border: 1px solid #eee; padding: 10px 20px;").mr-small.d-flex.align-items-center
+                    +faIcon(item.icon).text-color-error.mr-small.fa-3x
+                    span.link.line-small= item.title
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev.mj-carousel__btn--prev(style="left: 10px;")
+              +faIcon('arrow-left').fa-2x
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next.mj-carousel__btn--next(style="right: 10px;")
+              +faIcon('arrow-right').fa-2x
+
+
+        if description
+          p.mb-large Vydavateľstvo Ikar je najväčší vydavateľský dom na Slovensku s produkciou cca 230 titulov ročne. Vydávame široké spektrum kníh pre všetky vekové kategórie od domácich aj zahraničných autorov. Medzi autormi, ktorých diela vydávame patria aj svetoví velikáni William Shakespeare, Gabriel García Márquez, či Fiodor Michajlovič Dostojevskij, ale aj autori slovenskej klasiky - Dobroslav Chrobák, Margita Figuli, František Švantner a ďalší. V našom vydaveteľskom dome našli svoje trvalé miesto viacerí úspešní súčasní slovenskí autori – Táňa Keleová-Vasilková, Andrea Coddington, Jozef Banáš, Jozef Karika...
+        if carousel
+          h2.mb-large Najobľúbenejšie tituly a kolekcie
+          +booksCarouselRecommended().carousel--fade-inside.carousel--fade-inside-white
+        #mobile-order.mobile-wrapper.mb-l-medium(data-toggle-lock).hide-l
+          .mobile-wrapper__header
+            .mobile-wrapper__header-title Radenie
+            .btn.btn--clean.mobile-wrapper__close(data-toggle="#mobile-order")
+              +faIcon('xmark').fa-lg
+          .mobile-wrapper__content
+            ul.list.pl-none
+              each sortLink, i in sortLinks
+                li.list__item
+                  a.flex-1(class = i===0 ? 'text-color-primary': '')
+                    if (typeof sortLink === 'object')
+                      strong !{sortLink.title}
+                    else
+                      strong !{sortLink}
+
+
+        if filters
+          .badges.mb-tiny
+            .mr-small Filtre:
+            .badge.mb-tiny
+              | Žáner (Sci-fi)
+              .btn.btn--small.btn--clean.btn--equal.mb-none
+                +faIcon('xmark').fa-lg
+            .badge.mb-tiny
+              | Väzba mäkká
+              .btn.btn--small.btn--clean.btn--equal.mb-none
+                +faIcon('xmark')
+            .btn.btn--small.btn--clean.mb-none zmazať filter
+
+        if navIcons
+          ul.tab-nav(data-tabs-container).text-size-medium.mb-large.show-m.bg-secondary
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najobľúbenejšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najlacnejšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najdrahšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najnovšie
+            li.tab-nav__item(data-tabs-item)
+              a.tab-nav__content.tab-nav__content--link najstaršie
+
+        .listing
+          each item, i in books
+            if i === 2
+              section.section.section--small.bg-secondary.my-none.py-medium.w-100
+                .row.my-none.mx-none
+                  .col--m-2.text-center
+                    +icon('footer-shipping').icon--xxlarge.text-color-success
+                  .col--m-10.text-center.text-left-m
+                    h2.h3.mb-tiny.text-color-success Vedeli ste, že...?
+                    p.mb-none až 4 knihy z 5 máme na sklade a posielame ich do nasledujúceho dňa?
+            else if i > 0
+              - const even = i % 2;
+              hr.my-none(class = even ? 'd-m-none' : '')
+
+            .listing__item
+              .listing__item__cover
+                +productCover({
+                  href: 'detail-knihy.html',
+                  badge: false,
+                  cover: `${item.cover}`,
+                  collection: false,
+                })
+
+                .rating-star.justify-content-center.mt-small
+                  +faIcon('star', 'fas').rating-star__item.is-active
+                  +faIcon('star', 'fas').rating-star__item.is-active
+                  +faIcon('star', 'fas').rating-star__item.is-active
+                  +faIcon('star-half', 'fad').rating-star__item.is-active
+                  +faIcon('star', 'fas').rating-star__item
+
+                if item.isNew || item.isTop10
+                  .badges.badges--column.mt-small
+                    if item.isNew
+                      .badge.badge--blue Novinka
+                    if item.isTop10
+                      .badge.badge--blue TOP #10
+
+                if categoryListBadge
+                  p.text-size-small.mb-none.mt-small.text-center
+                    if (i % 3 === 0)
+                      +faIcon('arrow-up-right').text-color-success.text-vat.fa-lg
+                    if (i % 3 === 1)
+                      +faIcon('arrow-down-right').text-color-error.text-vat.fa-lg
+                    if (i % 3 === 2)
+                      +faIcon('arrow-right').text-color-grey.text-vat.fa-lg
+                    | #{' '}
+                    span.text-semibold 120
+                    |  dní#{' '}
+                    span.text-color-grey.show-m v TOP 100
+
+              .listing__item__details.flex-1
+                a.listing__item__title.link.link--product(href="detail-knihy.html")
+                  =item.title
+                  if item.lang
+                    |&nbsp;
+                    span.badge.d-inline #{item.lang}
+                .text-medium.mb-small
+                  if item.subtitle
+                    .text-color-grey #{item.subtitle}
+                  ul.list-inline.list-inline--delimited.mb-none.d-inline.mr-tiny
+                    each author in item.author.split(', ')
+                      li.mt-none
+                        a.link #{author}
+                  if item.series
+                    .d-inline.text-color-grey #{item.series}
+
+                p.listing__item__description.text-medium.mb-small Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur consequatur ea ex facilis id in laboriosam libero minus odit, perferendis provident qui ratione reprehenderit sapiente! Accusamus impedit molestias nesciunt.
+
+                if item.formats
+                  - let i = 0
+                  - let otherFormats = []
+                  ul.list.listing__item__formats
+                    each format, type in item.formats
+                      - i++
+                      if (i > 2)
+                        - otherFormats.push(type)
+                      li.list__item(class = i > 2 ? 'd-none' : '')
+                        a(href="detail-knihy.html").link.text-medium
+                          +formatIcon(type).fa-lg.mr-tiny
+                          +formatName(type)
+                          if format.types
+                            each formatType in format.types
+                              span.text-small.text-normal.text-color-grey.ml-tiny
+                                =formatType
+                        .d-flex.align-items-end.justify-content-between
+                          .format__info
+                            .format__price
+                              | #{format.price}
+                              if (format.discount)
+                                .badge.badge--primary.ml-small -#{format.discount} %
+                            .format__stock-status.text-medium
+                              +availability(format, type)
+                          if !publisher
+                            .format__actions
+                              if (type !== 'used')
+                                button.btn.btn--clean.btn--equal.mb-none(data-toggle='')
+                                  +faIcon('heart-circle-plus').fa-xl
+                              if (!format.soldOut)
+                                button.btn.btn--primary.mb-none.btn--equal(data-toggle='#checkout-notice')
+                                  +faIcon('basket-shopping').fa-xl
+                        if publisher
+                          +publisherCard()
+                  if (otherFormats.length)
+                    a.link.mt-small.d-block.text-medium(data-toggle='previous,self', data-toggle-icon='arrow-up', data-toggle-text='Skryť formáty')
+                      +faIcon('plus').mr-tiny
+                      span(data-toggle-text-target)
+                        | Ďalšie formáty
+                        each format in otherFormats
+                          +formatIcon(format).ml-tiny
+
+        hr.mt-none.mb-medium.mb-m-large
+
+        +pagination.justify-content-center.mb-large
+
+block append scripts
+  script.
+    document.addEventListener('myAppLoaded', function() {
+
+      var carousel = new window.myApp.CarouselLite(document.querySelector('.mj-carousel'));
+      });
