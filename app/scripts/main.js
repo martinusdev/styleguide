@@ -1,5 +1,6 @@
 import svg4everybody from 'svg4everybody';
 import Choices from 'choices.js/public/assets/scripts/choices';
+
 import {
   customEventPolyfill,
   requestAnimationFramePolyfill,

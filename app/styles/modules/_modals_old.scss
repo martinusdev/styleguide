@@ -1,0 +1,227 @@
+// ---------------------------------------------
+// MODALS
+// ---------------------------------------------
+
+// CONTENTS
+// Modal
+
+// ----------------------------
+// MODALS
+
+$modal-overlay-bg-color: $color-semiblack !default;
+$modal-overlay-z-index: $z-index-overlay !default;
+$modal-overlay-e: $ease-400 !default;
+
+$modal-overlay: (
+  default: (
+    background-color: rgba($color-black, 0.5),
+    box-shadow: #{$shadow-ambient-1, $shadow-direct-1},
+  ),
+  dark: (
+    background-color: rgba($color-black, 0.9),
+  )
+);
+
+$modal-dialog: (
+  default: (
+    width: 100%,
+    background-color: $color-white,
+    border: 1px solid $default-border-color,
+    box-shadow: ($shadow-ambient-3, $shadow-direct-2),
+    max-height: 95vh,
+  ),
+  'm': (
+    height: auto,
+    width: _get-rem(480px),
+    border-radius: $default-border-radius,
+  ),
+  'l': (
+    max-height: calc(100vh - (#{_get-space()} * 2)),
+  )
+);
+
+$modal-dialog-variants: (
+  'full': (
+    default: (
+      width: calc(100vw - (#{_get-space()} * 2)),
+      max-width: _get-rem(1200px),
+    ),
+    'l': (
+      width: calc(100vw - (#{_get-space('large')} * 2)),
+    )
+  ),
+  'medium': (
+    default: (
+      width: _get-rem(700px),
+      max-width: 90%,
+    )
+  ),
+  'large': (
+    default: (
+      width: calc(100vw - (#{_get-space('small')} * 2)),
+      max-width: _get-rem(1000px),
+    )
+  )
+);
+
+$modal-section-spacing: (
+  default: (
+    vertical: _get-space('small'),
+    horizontal: _get-space('small'),
+  ),
+  'm': (
+    vertical: _get-space(),
+    horizontal: _get-space(),
+  ),
+);
+
+$modal-header: (
+  background-color: _color(grey, 50),
+);
+
+$modal-content: ();
+
+$modal-footer: (
+  background: $color-white,
+);
+
+@mixin modal-overlay($settings: $modal-overlay) {
+  width: 0;
+  height: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: $modal-overlay-z-index;
+  opacity: 0;
+  transform: scale(1.1, 1.1);
+  background-color: $modal-overlay-bg-color;
+  transition: opacity $modal-overlay-e, transform $modal-overlay-e, height 0s 0.4s, width 0s 0.4s, visibility $modal-overlay-e;
+  backface-visibility: hidden;
+  visibility: hidden;
+  user-select: none;
+
+  @each $variant, $props in $settings {
+    &#{_get-variant-name( $variant)} {
+      @include card($props);
+    }
+  }
+
+  &.is-active {
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 1;
+    transform: scale(1, 1);
+    transition-delay: 0s;
+    visibility: visible;
+  }
+}
+
+@mixin modal-dialog($settings: $modal-dialog, $variants: $modal-dialog-variants) {
+  display: flex;
+  flex-flow: column;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  overflow-y: auto;
+  overflow-x: hidden;
+  user-select: text;
+  -webkit-overflow-scrolling: touch;
+
+  @each $breakpoint, $props in $settings {
+    @include breakpoint($breakpoint) {
+      @include css-map($settings, $breakpoint);
+
+      > * + * {
+        border-top: map-get($props, 'border');
+      }
+
+      $radius: map-get($props, 'border-radius');
+
+      // stylelint-disable max-nesting-depth
+      > * {
+        &:first-child {
+          border-top-left-radius: $radius;
+          border-top-right-radius: $radius;
+        }
+
+        &:last-child {
+          border-bottom-left-radius: $radius;
+          border-bottom-right-radius: $radius;
+        }
+      }
+      // stylelint-enable max-nesting-depth
+    }
+  }
+
+  @each $variant, $breakpoint in $variants {
+    &#{_get-variant-name($variant)} {
+      @each $breakpoint, $props in $breakpoint {
+        @include breakpoint($breakpoint) {
+          @include css-map($props);
+        }
+      }
+    }
+  }
+}
+
+@mixin modal-section($settings, $spacing: $modal-section-spacing) {
+  width: 100%;
+  flex: 0 0 auto;
+
+  @include css-map($settings);
+
+  @each $breakpoint, $space in $spacing {
+    @include breakpoint($breakpoint) {
+      padding: map-get($space, 'vertical') map-get($space, 'horizontal');
+    }
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@mixin modal-header {
+  @include bar;
+
+  &__headline {
+    @include bar-content;
+  }
+
+  &__action {
+    @include bar-item;
+  }
+}
+
+@mixin modal-classes {
+  .modal-overlay {
+    @include modal-overlay;
+  }
+
+  .modal {
+    @include modal-dialog;
+  }
+
+  .modal__wrap {
+    flex: 1 0 auto;
+    flex-wrap: nowrap;
+  }
+
+  .modal__header {
+    @include modal-section($settings: $modal-header);
+    @include modal-header;
+  }
+
+  .modal__content {
+    @include modal-section($settings: $modal-content);
+  }
+
+  .modal__footer {
+    @include modal-section($settings: $modal-footer);
+  }
+}
+
+@include modal-classes;

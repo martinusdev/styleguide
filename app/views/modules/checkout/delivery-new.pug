@@ -25,7 +25,7 @@ include ./../../mixins/xmas
         .form-control.form-control--radio
           .radio.align-items-center
             input.radiocheck__input(type='radio', id='radio_group_shipping_06', name='radio_group_shipping')
-            label.radiocheck__control(for='radio_group_shipping_06', data-toggle='#mj-modal-delivery-picker')
+            label.radiocheck__control(for='radio_group_shipping_06', data-bs-toggle='modal', data-bs-target='#mj-modal-delivery-picker')
             label.radiocheck__label.d-flex.align-items-center.mb-none(for='radio_group_shipping_06', data-toggle='#mj-modal-delivery-picker')
               div(style='width:25px').text-center.mr-tiny
                 img(src=`${assetsPrefix}images/content/delivery-types/packeta.svg`, alt="Packeta").fa-fw

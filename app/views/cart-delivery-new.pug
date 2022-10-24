@@ -32,37 +32,8 @@ block content
       .wrapper-main
         .row
           .col--l-8.ofst--center
-
             include modules/checkout/cart
-
             include modules/checkout/delivery-new
-
-  .modal-overlay.active#card-modal(data-modal)
-    .modal.modal--medium
-      .modal__wrap
-
-        .modal__content
-
-          .btn.btn--clean(data-toggle="#card-modal", style="position: absolute; right: 10px; top: 10px;")
-            +faIcon('xmark').fa-xl
-
-          .mb-medium
-
-          .row.mb-large.align-items-center
-            .col--m-2.text-center
-              +icon('card').icon--xxlarge.text-color-success
-            .col--m-10.text-center.text-left-m
-              p.mb-none Naozaj chcete za objednávku platiť až pri preberaní osobného odberu? Platbou vopred ušetríte#{' '}
-                strong množstvo času pri preberaní objednávky
-
-          div
-            .bar.justify-content-center.mb-medium.mb-m-none
-              .bar__item.no-mrg--s-down
-                a(href="#").btn.btn--ghost Zaplatím pri osobnom odbere (pomalšie)
-              .bar__item
-                a(href="#").btn.btn--success
-                  +icon('card').icon--medium.icon--left
-                  | Zaplatím kartou vopred (rýchle)
 
 block append head
   <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
