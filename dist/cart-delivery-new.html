@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
     <link rel="stylesheet" href="fonts/Tabac-Sans/style.b0d0f9cd.css">
-    <link rel="stylesheet" href="styles/main.79605026.css">
+    <link rel="stylesheet" href="styles/main.58127eb1.css">
     <script src="scripts/plugins/modernizr.d9c20825.js"></script><script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
 <script type="text/javascript">Loader.load();</script>
   </head>
@@ -247,7 +247,7 @@
                         <div class="form-control form-control--radio">
                           <div class="radio align-items-center">
                             <input class="radiocheck__input" type="radio" id="radio_group_shipping_06" name="radio_group_shipping">
-                            <label class="radiocheck__control" for="radio_group_shipping_06" data-toggle="#mj-modal-delivery-picker"></label>
+                            <label class="radiocheck__control" for="radio_group_shipping_06" data-bs-toggle="modal" data-bs-target="#mj-modal-delivery-picker"></label>
                             <label class="radiocheck__label d-flex align-items-center mb-none" for="radio_group_shipping_06" data-toggle="#mj-modal-delivery-picker">
                               <div class="text-center mr-tiny" style="width:25px"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta"></div>
                               <div class="d-flex flex-1 align-items-center justify-content-between">
@@ -345,36 +345,6 @@
           </div>
         </section>
       </main>
-      <div class="modal-overlay active" id="card-modal" data-modal>
-        <div class="modal modal--medium">
-          <div class="modal__wrap">
-            <div class="modal__content">
-              <div class="btn btn--clean" data-toggle="#card-modal" style="position: absolute; right: 10px; top: 10px;"><i class="fa-xmark far undefined fa-xl"></i>
-              </div>
-              <div class="mb-medium"></div>
-              <div class="row mb-large align-items-center">
-                <div class="col--m-2 text-center">
-                                  <svg class="icon icon-card  icon--xxlarge text-color-success" role="img" aria-hidden="true">
-                                    <use xlink:href="icons_/app.svg#icon-card"></use>
-                                  </svg>
-                </div>
-                <div class="col--m-10 text-center text-left-m">
-                  <p class="mb-none">Naozaj chcete za objednávku platiť až pri preberaní osobného odberu? Platbou vopred ušetríte <strong>množstvo času pri preberaní objednávky</strong></p>
-                </div>
-              </div>
-              <div>
-                <div class="bar justify-content-center mb-medium mb-m-none">
-                  <div class="bar__item no-mrg--s-down"><a class="btn btn--ghost" href="#">Zaplatím pri osobnom odbere (pomalšie)</a></div>
-                  <div class="bar__item"><a class="btn btn--success" href="#">
-                                      <svg class="icon icon-card  icon--medium icon--left" role="img" aria-hidden="true">
-                                        <use xlink:href="icons_/app.svg#icon-card"></use>
-                                      </svg>Zaplatím kartou vopred (rýchle)</a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <footer class="footer">
         <div class="wrapper-main">
           <section class="mb-medium border-bottom-grey">
@@ -565,12 +535,12 @@
                     </svg></a></div><a class="link text-medium">Zmeniť moje kníhkupectvo</a>
         </div>
       </div>
-      <div class="modal-overlay" id="mj-modal-delivery-picker" data-modal>
-        <div class="modal modal--large">
-          <div class="modal__wrap">
-            <button class="btn btn--equal m-none btn--carousel" data-toggle="#mj-modal-delivery-picker" style="position:absolute; right: 15px; top: 15px; z-index: 2"><i class="fa-xmark far undefined fa-2x"></i>
+      <div class="modal fade" id="mj-modal-delivery-picker">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <button class="btn btn--equal m-none btn--carousel" data-bs-dismiss="modal" style="position:absolute; right: 15px; top: 15px; z-index: 2"><i class="fa-xmark far undefined fa-2x"></i>
             </button>
-            <div class="modal__content py-none">
+            <div class="modal-body py-none">
               <div class="row">
                 <div class="col--m-5 order-1 order-m-0 col-select-place d-flex flex-column pt-small">
                   <h2 class="mb-small">Packeta</h2>
@@ -599,34 +569,49 @@
                       <div class="btn-layout--vertical mt-small"><a class="btn btn--primary">Vyzdvihnem si to tu</a></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>0</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>1</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>2</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>3</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>4</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>5</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>6</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>7</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>8</span></div>
                     </li>
                     <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
-                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200</div>
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>9</span></div>
+                    </li>
+                    <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>10</span></div>
+                    </li>
+                    <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>11</span></div>
+                    </li>
+                    <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>12</span></div>
+                    </li>
+                    <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>13</span></div>
+                    </li>
+                    <li class="list__item d-flex p-small align-items-start list__item--clickable"><img class="fa-fw" src="images/content/delivery-types/packeta.svg" alt="Packeta">
+                      <div class="ml-small text-medium"><strong>Dolný Kubín, Nuttery Place<br></strong>Bysterecká 2200<span>14</span></div>
                     </li>
                   </ul>
                 </div>
@@ -644,9 +629,9 @@
       window.myApp = window.myApp || {};
       window.myApp.selectLanguage = 'sk';
     </script>
-    <script src="scripts/vendor.dab95d7a.js"></script>
-    <script src="scripts/main.b17b5416.js"></script>
-    <script src="scripts/font-awesome.6aa3eff3.js"></script>
+    <script src="scripts/vendor.bff8214d.js"></script>
+    <script src="scripts/main.f29bec26.js"></script>
+    <script src="scripts/font-awesome.98641270.js"></script>
     <script>
       var center = SMap.Coords.fromWGS84(14.41790, 50.12655);
       var map = new SMap(JAK.gel("mj-map"), center, 13);

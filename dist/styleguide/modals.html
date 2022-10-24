@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac/fonts.1f89903e.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.79605026.css">
+    <link rel="stylesheet" href="../styles/main.58127eb1.css">
     <link rel="stylesheet" href="../styles/light.1ff25b24.css">
     <script src="../scripts/plugins/modernizr.d9c20825.js"></script>
   </head>
@@ -30,31 +30,90 @@
               <ul class="l-headnav_list nav">
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#modals" data-smoothscroll="#modals" data-toggle-target="#header-navigation" data-toggle="dropdown">Modals</a></li>
+                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#legacy-modals" data-smoothscroll="#legacy-modals" data-toggle-target="#header-navigation" data-toggle="dropdown">Legacy Styleguide Modals</a></li>
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#multiple-modals" data-smoothscroll="#multiple-modals" data-toggle-target="#header-navigation" data-toggle="dropdown">Multiple modals</a></li>
               </ul>
             </div>
           </div>
         </header>
         <div class="l-content-main_inner">
-          <section class="l-main-info" id="main-info">
-            <div class="l-wrap-main">
-              <p class="l-big">Documentation for modal windows and popups.
-              </p>
-              <div class="l-box-desc">
-                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/modules/_modals.scss</code><br/>
-              </div>
-            </div>
-          </section>
           <aside class="l-nav-contents js-scrollspy">
             <p class="l-nav-contents_headline">Contents</p>
             <ul class="l-nav-contents_list nav">
               <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#modals" data-smoothscroll="#modals">Modals</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#legacy-modals" data-smoothscroll="#legacy-modals">Legacy Styleguide Modals</a></li>
               <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#multiple-modals" data-smoothscroll="#multiple-modals">Multiple modals</a></li>
             </ul>
           </aside>
           <section id="modals">
             <div class="l-wrap-main">
               <h2 class="l-h2">Modals
+              </h2>
+              <p class="l-p">Modals are taken from Bootstrap - <a href='https://getbootstrap.com/docs/5.2/components/modal' target='_blank'>Documentation here</a>
+              </p>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <button class="btn" data-bs-toggle="modal" data-bs-target="#bs-modal-demo" type="button">Default modal</button>
+                  <button class="btn" data-bs-toggle="modal" data-bs-target="#bs-modal-demo-large" type="button">Large modal</button>
+                  <button class="btn" data-bs-toggle="modal" data-bs-target="#bs-modal-demo-static" type="button">Static backdrop</button>
+                  <div class="modal fade" id="bs-modal-demo">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3 class="mb-none">This is a default BS modal</h3>
+                        </div>
+                        <div class="modal-body">
+                          <p>Modal content</p>
+                        </div>
+                        <div class="modal-footer">Modal footer
+                          <button class="btn btn--secondary mb-none" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="bs-modal-demo-large">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3 class="mb-none">This is a large BS modal</h3>
+                        </div>
+                        <div class="modal-body">
+                          <p>Modal content</p>
+                        </div>
+                        <div class="modal-footer">Modal footer
+                          <button class="btn btn--secondary mb-none" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal fade" id="bs-modal-demo-static" data-bs-backdrop="static">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h3 class="mb-none">This is a BS modal with static backdrop</h3>
+                        </div>
+                        <div class="modal-body">
+                          <p>Modal content</p>
+                        </div>
+                        <div class="modal-footer">Modal footer
+                          <button class="btn btn--secondary mb-none" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+              <hr class="l-hr-section"/>
+            </div>
+          </section>
+          <section id="legacy-modals">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Legacy Styleguide Modals
               </h2>
               <p class="l-p">Modal window can contain text or any UI controls such as forms, buttons etc. Modal windows retain focus until dismissed or a required action has been taken.
               </p>
@@ -481,10 +540,10 @@
       <!-- end: content main-->
     </div>
     <!-- end: offcanvas-->
-    <script src="../scripts/vendor.dab95d7a.js"></script>
-    <script src="../scripts/main.b17b5416.js"></script>
-    <script src="../scripts/font-awesome.6aa3eff3.js"></script>
-    <script src="../scripts/light.9a2e94f6.js"></script>
+    <script src="../scripts/vendor.bff8214d.js"></script>
+    <script src="../scripts/main.f29bec26.js"></script>
+    <script src="../scripts/font-awesome.98641270.js"></script>
+    <script src="../scripts/light.5577009b.js"></script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>
