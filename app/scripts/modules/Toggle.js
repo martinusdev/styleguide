@@ -4,9 +4,6 @@
 
 import { triggerResize } from './Utils';
 
-/* eslint import/no-cycle: [0] */
-import { lockBody, unlockBody } from './Modal';
-
 export const TRIGGER_EVT = 'triggerToggle';
 export const TOGGLE_EVT = 'toggle';
 
@@ -117,14 +114,6 @@ class Toggle {
 
     if (focus) {
       target.focus();
-    }
-
-    if (target.hasAttribute('data-toggle-lock')) {
-      if (document.body.className.includes('has-modal')) {
-        unlockBody();
-      } else {
-        lockBody();
-      }
     }
 
     if (dispatchEvent) {
