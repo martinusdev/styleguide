@@ -88,9 +88,18 @@
 
 .footer {
   &::after {
-    background-image: svg-load('./../images/content/rainbow-footer-xmas.svg');
+    background-image: url('../images/content/rainbow-footer-xmas.png');
     background-position-x: center;
-    height: 71px;
-    top: -71px;
+    background-position-y: bottom;
+    background-size: cover;
+    background-repeat: repeat-x;
+    height: 70px;
+    top: -68px;
+  }
+
+  @include breakpoint('l') {
+    &::after {
+      background-size: contain;
+    }
   }
 }
