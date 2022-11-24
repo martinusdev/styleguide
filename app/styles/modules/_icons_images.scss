@@ -90,10 +90,9 @@ img {
     }
   }
 
-  &--book {
-    position: relative;
+  &--book,
+  &--digital {
     border-radius: $default-border-radius;
-    user-select: none;
 
     #{$this}__img-wrap {
       box-shadow: $shadow-md;
@@ -102,6 +101,18 @@ img {
     .img {
       border-radius: $default-border-radius;
     }
+  }
+
+  &--digital {
+    img {
+      border-bottom-right-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+  }
+
+  &--book {
+    position: relative;
+    user-select: none;
 
     &::before {
       content: '';
