@@ -23,41 +23,41 @@
     margin-right: auto;
     margin-bottom: _get-space('small');
 
-    &.collection .thumbnail--book {
-      padding-bottom: _get-rem(4px);
+    &--collection .thumbnail--book {
+      padding-bottom: 1rem;
     }
 
-    &.collection .thumbnail--book::before {
+    &--collection .thumbnail--book::before {
       display: none;
     }
 
-    &.collection .thumbnail__img-wrap {
+    &--collection .thumbnail__img-wrap {
       position: relative;
       width: 75%;
       bottom: 0;
       z-index: 3;
     }
 
-    &.collection .thumbnail__img-wrap:nth-child(2) {
+    &--collection .thumbnail__img-wrap:nth-child(2) {
       position: absolute;
-      top: 10px;
+      bottom: 0.5rem;
       left: 12.5%;
       z-index: 2;
       // transform: translate(12.5%, calc(-100% - 30px));
     }
 
-    &.collection .thumbnail__img-wrap:nth-child(3) {
+    &--collection .thumbnail__img-wrap:nth-child(3) {
       position: absolute;
-      top: 20px;
+      bottom: 0;
       left: 25%;
       z-index: 1;
     }
 
-    &.collection .thumbnail__img-wrap:nth-child(n + 4) {
+    &--collection .thumbnail__img-wrap:nth-child(n + 4) {
       display: none;
     }
 
-    &.collection .thumbnail__info {
+    &--collection .thumbnail__info {
       opacity: 1;
       z-index: 5;
     }
