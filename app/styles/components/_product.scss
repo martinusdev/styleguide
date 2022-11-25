@@ -23,8 +23,11 @@
     margin-right: auto;
     margin-bottom: _get-space('small');
 
-    &--collection .thumbnail--book {
-      padding-bottom: 1rem;
+    &--collection .thumbnail {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: flex-start;
     }
 
     &--collection .thumbnail--book::before {
@@ -32,24 +35,19 @@
     }
 
     &--collection .thumbnail__img-wrap {
-      position: relative;
       width: 75%;
-      bottom: 0;
       z-index: 3;
     }
 
     &--collection .thumbnail__img-wrap:nth-child(2) {
-      position: absolute;
-      bottom: 0.5rem;
-      left: 12.5%;
+      margin-left: -45%;
+      margin-top: 0.5rem;
       z-index: 2;
-      // transform: translate(12.5%, calc(-100% - 30px));
     }
 
     &--collection .thumbnail__img-wrap:nth-child(3) {
-      position: absolute;
-      bottom: 0;
-      left: 25%;
+      margin-left: -45%;
+      margin-top: 1rem;
       z-index: 1;
     }
 

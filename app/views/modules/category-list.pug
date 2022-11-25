@@ -290,7 +290,7 @@ section.section
                   href: 'detail-knihy.html',
                   badge: false,
                   cover: `${item.cover}`,
-                  collection: false,
+                  collection: Object.keys(item.formats).length > 1,
                 })
 
                 .rating-star.justify-content-center.mt-small
