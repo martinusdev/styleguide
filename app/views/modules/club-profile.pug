@@ -284,7 +284,7 @@ mixin userFeed()
                 })
         a(href=`${assetsPrefix}my-library${htmlPostfix}#add-list`, style="position: relative;").swiper-slide.carousel__product-detail
           +product().mb-small.text-left
-            .product__cover.collection
+            .product__cover.product__cover--collection
               .thumbnail.thumbnail--book.thumbnail--large
                 each i, index in Array(3)
                   .thumbnail__img-wrap
@@ -292,7 +292,7 @@ mixin userFeed()
             +productTitle({
               collection: true, title: 'Pridať kolekciu', author: false
             })
-          +icon('plus').icon--xxlarge.text-color-grey(style="position: absolute; left: 25%; transform: translateX(-25%); top: 15%; z-index: 4;")
+          +faIcon('plus').icon--xxlarge.text-color-grey(style="position: absolute; left: 25%; transform: translateX(-25%); top: 15%; z-index: 4;")
 
     button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
       +faIcon('arrow-left').fa-2x

@@ -21,7 +21,7 @@ mixin productCover(props = {})
 
     const tag = href ? 'a': 'div';
 
-  .product__cover(class=collection===true ? 'collection' : '')&attributes(attributes)
+  .product__cover(class=collection===true ? 'product__cover--collection' : '')&attributes(attributes)
     #{tag}.thumbnail(
       href= href ? href : undefined,
       class= type ? `thumbnail--${type}` : '',
