@@ -151,8 +151,8 @@ const storeListChoices = config => `
 const imageListTemplate = ({ label, customProperties }) => `
   <div class="d-flex align-items-center mb-none">
       ${customProperties && customProperties.image ? `<div class="img--rounded mr-small" style="width: 40px; height: 27px; background: url(${customProperties.image}) no-repeat center; background-size: cover"></div>` : ''}
-      <div class="flex-1">
-        <span>${label}</span><br>
+      <div class="flex-1 mr-small">
+        <span>${label}</span>
       </div>
       ${customProperties && customProperties.price ? `<span class="text-vam text-color-grey">${customProperties.price}</span>` : ''}
     </div>`;
