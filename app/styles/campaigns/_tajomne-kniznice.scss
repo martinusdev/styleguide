@@ -4,12 +4,16 @@ $color-violet-dark: #19002c;
   background-color: $color-violet-dark;
 }
 
+.ks-page {
+  background: $color-violet-dark;
+}
+
 .tk23-header {
   padding: 40px 0;
   background: $color-violet-dark url('../images/content/campaign/tajomne-kniznice/web/header.jpg') no-repeat top center;
 
   @include breakpoint('m') {
-    padding: 85px 0;
+    padding: 80px 0;
   }
 
   &__logo {
@@ -27,6 +31,50 @@ $color-violet-dark: #19002c;
   &__claim {
     span {
       color: #d8bf9e;
+    }
+  }
+}
+
+.tk23-nav-days {
+  a {
+    font-size: $font-size-regular;
+    font-weight: $font-weight-semibold;
+    padding: 3px 8px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: _get-rem(10px);
+    background: _color(violet);
+    margin-right: _get-space(tiny);
+    color: _color(white);
+    transition: ease-in-out 300ms;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &.is-active {
+      background: _color(white);
+      color: _color(black);
+    }
+
+    &.is-done {
+      background: _color(green);
+    }
+
+    &.is-inactive {
+      background: #3b234e;
+      color: rgba(255, 255, 255, 0.5);
+      cursor: not-allowed;
+    }
+  }
+
+  @include breakpoint('l') {
+    display: flex;
+    justify-content: space-between;
+
+    a {
+      margin-right: 0;
     }
   }
 }
