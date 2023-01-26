@@ -1,0 +1,1207 @@
+.animation-shake {
+  animation-delay: 0;
+  animation-duration: 0.5s;
+  animation-name: shake;
+  animation-fill-mode: forwards; /* this prevents the animation from restarting! */
+}
+
+@keyframes shake {
+  8%, 41% {
+    transform: translateX(-10px);
+  }
+  25%, 58% {
+    transform: translateX(10px);
+  }
+  75% {
+    transform: translateX(-5px);
+  }
+  92% {
+    transform: translateX(5px);
+  }
+  0%, 100% {
+    transform: translateX(0);
+  }
+}
+.pf2018 h1 {
+  color: #956daf;
+}
+
+.pf2018-header {
+  position: relative;
+  background-color: #956daf;
+}
+.pf2018-header__bg {
+  position: absolute;
+  bottom: 0;
+}
+.pf2018-header__content {
+  position: relative;
+}
+
+.ko-text-color-green {
+  color: #e1ff6b;
+}
+
+.ko-text-color-violet {
+  color: #8781bd;
+}
+
+.ko-link--green {
+  color: #e1ff6b;
+}
+.ko-link--green:hover {
+  color: #e1ff6b;
+}
+
+.ko-link--green.is-active {
+  color: #e1ff6b;
+  text-decoration: none;
+}
+.ko-link--green.is-active:hover {
+  text-decoration: underline;
+}
+
+.ko-border--violet {
+  border-color: #8781bd;
+}
+
+.ko-page {
+  background: #3c2560;
+}
+
+.ko-header {
+  background: #3d245e;
+}
+.ko-header .collapsed:not(.is-active)::after {
+  background: linear-gradient(to top, #3d245e, rgba(61, 36, 94, 0));
+}
+
+.ko2-text-color-blue {
+  color: #0ff;
+}
+
+.ko2-text-color-pink {
+  color: #f0f;
+}
+
+.ko2-link--blue {
+  color: #0ff;
+}
+.ko2-link--blue:hover {
+  color: #0ff;
+}
+
+.ko2-link--blue.is-active {
+  color: #0ff;
+  text-decoration: none;
+}
+.ko2-link--blue.is-active:hover {
+  text-decoration: underline;
+}
+
+.ko2-page {
+  background: #0a041e;
+}
+
+.ko2-header {
+  background: #302071;
+}
+.ko2-header .collapsed:not(.is-active)::after {
+  background: linear-gradient(to top, #302071, rgba(48, 32, 113, 0));
+}
+
+.btn--ko2 {
+  background: #f0f;
+  background: linear-gradient(to right, aqua, fuchsia);
+  border: 0;
+}
+.btn--ko2::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #8781bd;
+  height: 4px;
+}
+
+.btn--ko2:hover {
+  background: linear-gradient(to right, aqua, rgba(255, 0, 255, 0.5));
+}
+
+.ko-user__email {
+  max-width: 85%;
+}
+
+.ko-timeline {
+  position: relative;
+  top: 0.75rem;
+  padding-top: 0.3125rem;
+}
+
+.ko-timeline-item {
+  width: 1.8125rem;
+  transform: scale(1);
+  transition: transform 0.6s ease 0s;
+}
+.ko-timeline-item:hover {
+  color: #cbc7e4;
+}
+.ko-timeline-item.is-active {
+  transform: scale(1.3) translateY(-3px);
+  color: #fff;
+  font-weight: 600;
+  opacity: 1 !important;
+}
+.ko-timeline-item.is-complete {
+  color: #e1ff6b;
+}
+.ko-timeline-item.is-disabled {
+  color: #fff;
+  opacity: 0.2;
+}
+
+.ko2-timeline-item.is-complete {
+  color: #0ff;
+}
+
+.ko-planets {
+  background: url("../images/content/campaign/knizna-odysea/space.jpg") no-repeat;
+  background-size: 200%;
+  background-position: 0 top;
+  transition: background-position 0.6s ease 0s;
+  position: relative;
+}
+.ko-planets-bonus {
+  background: url("../images/content/campaign/knizna-odysea/bonus.png") no-repeat;
+  width: 134px;
+  height: 111px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  overflow: hidden;
+}
+.ko-planets-bonus__txt {
+  width: 173px;
+  margin-top: 15px;
+  transform-origin: center center;
+  transform: rotate(40deg);
+}
+@media screen and (min-width: 768px) {
+  .ko-planets {
+    background-size: 120%;
+  }
+}
+.ko-planets__btn .icon {
+  width: 4.5rem;
+  height: auto;
+  color: #fff;
+  opacity: 0.8;
+}
+@media screen and (max-width: 767px) {
+  .ko-planets__btn .icon {
+    width: 3rem;
+  }
+}
+.ko-planets__btn:hover .icon {
+  opacity: 1;
+}
+.ko-planets__btn.is-disabled {
+  opacity: 0;
+}
+.ko-planets .carousel__btn {
+  display: flex;
+}
+@media screen and (max-width: 767px) {
+  .ko-planets .carousel__btn {
+    top: 90%;
+  }
+}
+.ko-planets .carousel__btn--prev {
+  left: 5%;
+}
+@media screen and (min-width: 768px) {
+  .ko-planets .carousel__btn--prev {
+    left: 15%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .ko-planets .carousel__btn--prev {
+    left: 30%;
+  }
+}
+.ko-planets .carousel__btn--next {
+  right: 5%;
+}
+@media screen and (min-width: 768px) {
+  .ko-planets .carousel__btn--next {
+    right: 15%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .ko-planets .carousel__btn--next {
+    right: 30%;
+  }
+}
+
+.ko2-planets {
+  background: url("../images/content/campaign/knizna-odysea/space2.jpg") no-repeat;
+  background-position-y: center;
+}
+.ko2-planets-bonus {
+  background: url("../images/content/campaign/knizna-odysea/bonus2.png") no-repeat;
+}
+
+.ko-planets-item {
+  width: 80%;
+  position: relative;
+}
+@media screen and (min-width: 768px) {
+  .ko-planets-item {
+    width: 50%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .ko-planets-item {
+    width: 30%;
+  }
+}
+.ko-planets-item__image {
+  transform: scale(0.7);
+  transition: transform 0.6s ease 0s;
+}
+.swiper-slide-active .ko-planets-item__image {
+  transform: scale(1);
+}
+.ko-planets-item__content {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 15%;
+  transition: visibility 0.4s ease 0s, opacity 0.6s ease 0s, transform 0.6s ease 0s;
+  transform: scale(0.3);
+}
+.ko-planets-item__content .h2 {
+  text-shadow: 0 0 30px #000;
+}
+.ko-planets-item__content .h5 {
+  text-shadow: 0 0 10px #000;
+}
+.swiper-slide-active .ko-planets-item__content {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.ko-video-background {
+  background: #e5e5e5;
+}
+
+.ko-video {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+}
+.ko-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.ko-knihonaut {
+  position: fixed;
+  bottom: -50%;
+  left: 0;
+  width: 100%;
+  z-index: 1999;
+  padding-right: 0.625rem;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), black);
+  transition: all 0.3s ease 0s, visibility 0.1s ease-out 0.1s;
+  pointer-events: none;
+}
+@media screen and (min-width: 1024px) {
+  .ko-knihonaut {
+    width: 50%;
+    top: 50%;
+    left: -250px;
+    padding-right: 2.5rem;
+    background: none;
+  }
+}
+.ko-knihonaut .ko-knihonaut__scene {
+  width: 80px;
+  height: 120px;
+}
+@media screen and (min-width: 768px) {
+  .ko-knihonaut .ko-knihonaut__scene {
+    width: 150px;
+    height: 200px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .ko-knihonaut .ko-knihonaut__scene {
+    width: 250px;
+    height: 300px;
+  }
+}
+.ko-knihonaut--active {
+  bottom: 0;
+}
+@media screen and (min-width: 1024px) {
+  .ko-knihonaut--active {
+    left: 0;
+    top: 300px;
+  }
+}
+.ko-knihonaut .card {
+  transition: visibility 0.2s ease-out 0.2s, opacity 0.4s ease 0s, transform 0.4s ease 0s;
+  transform-origin: top center;
+  transform: scale(0.1, 1);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: all;
+}
+@media screen and (min-width: 1024px) {
+  .ko-knihonaut .card {
+    transform-origin: center left;
+  }
+}
+.ko-knihonaut .card--arrowhead {
+  background-color: #000;
+  color: #fff;
+}
+.ko-knihonaut .card--arrowhead-left::before {
+  left: -10px;
+  border-right-color: #000;
+  border-width: 10px;
+}
+
+.ko-knihonaut--active .card {
+  transform: scale(1, 1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.ko-knihonaut-button {
+  position: absolute;
+  top: 0.9375rem;
+  left: 0.625rem;
+  z-index: 2;
+}
+.ko-knihonaut-button .icon {
+  font-size: 3rem;
+}
+.ko-knihonaut-button .pill {
+  position: absolute;
+  right: 0;
+  top: 0;
+  background-color: #d22121;
+}
+
+.ko-knihonaut-scroll::after {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  height: 35px;
+  width: 100%;
+  background: linear-gradient(to top, black, rgba(0, 0, 0, 0));
+}
+
+.ks-text-color-inverse {
+  color: #fae6ad;
+}
+
+.ks-text-color-beige {
+  color: #c89565;
+}
+
+.ks-link--inverse {
+  color: #fae6ad;
+}
+.ks-link--inverse:hover {
+  color: #d9b694;
+}
+
+.ks-border--inverse {
+  border-color: #fae6ad;
+}
+
+.ks-page {
+  background: #fff;
+}
+.ks-page .leaflet-container {
+  background: transparent;
+}
+
+.ks-header {
+  background: #522c2c;
+}
+.ks-header .collapsed:not(.is-active)::after {
+  background: linear-gradient(to top, #522c2c, rgba(82, 44, 44, 0));
+}
+
+.ks-user__email {
+  max-width: 85%;
+}
+
+.ks-list > li {
+  padding-left: 45px;
+}
+
+.ks-list > li::before {
+  top: 5px;
+  left: 0;
+  z-index: 0;
+  background: #e13736;
+  color: #fae6ad;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.ks-map {
+  width: 100%;
+  height: 400px;
+}
+@media screen and (min-width: 768px) {
+  .ks-map {
+    height: 700px;
+  }
+}
+
+.ks-progress {
+  display: flex;
+}
+.ks-progress__item {
+  height: 1.25rem;
+  background: #8f8d8a;
+  flex: 1 0 1px;
+  margin-right: 2px;
+  border-radius: 2px;
+}
+.ks-progress__item--active {
+  background: #fff;
+}
+
+.ks-bonus {
+  background: url("../images/content/campaign/knizna-sifra4/bonus.png") no-repeat;
+  width: 134px;
+  height: 111px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1399;
+}
+.ks-bonus__txt {
+  width: 173px;
+  position: absolute;
+  left: -45px;
+  top: 15px;
+  transform-origin: center center;
+  transform: rotate(-40deg);
+}
+
+.ks-bonus-mobile {
+  background: #e13736;
+  display: block;
+}
+
+.ks-status {
+  background: #fff;
+  display: inline-block;
+  padding: 5px 15px;
+  border: 2px solid #d9b694;
+  border-radius: 5px;
+}
+.ks-status__num {
+  color: #e13736;
+}
+
+.kd-header {
+  background: #583527 url("../images/content/campaign/knizna-detektivka/header-bg.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.kd-user {
+  justify-content: center;
+  flex-direction: column;
+}
+.kd-user__email {
+  max-width: 95%;
+}
+
+.kd-progress {
+  margin-top: 1.25rem;
+}
+.kd-progress > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.1875rem;
+  padding: 0 1.25rem;
+}
+.kd-progress__books {
+  margin-right: 20px;
+}
+.kd-progress__info {
+  margin-left: 40px;
+  color: #fff;
+}
+
+.kd-folder {
+  background: url("../images/content/campaign/knizna-detektivka/folder.jpg") no-repeat center;
+  background-size: cover;
+  position: relative;
+}
+.kd-folder__content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.625rem;
+}
+.kd-folder__complete {
+  position: absolute;
+  content: "";
+  display: block;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  color: #33ab4e;
+  border-bottom: 5px solid #33ab4e;
+}
+.kd-folder__complete .icon {
+  position: absolute;
+  right: 10px;
+  top: 15% !important;
+  transform: rotate(-15deg);
+}
+.kd-folder__hero {
+  margin-top: 0.625rem;
+  width: 85%;
+  height: 85%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}
+.kd-folder__date {
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.125rem;
+  background: rgba(255, 255, 255, 0.6);
+}
+.kd-folder::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.kd-badge-progress {
+  padding: 13px;
+  border-radius: 40px;
+  background: #d22121;
+  color: white;
+}
+
+.kd-content {
+  background-color: #fdefe3;
+}
+
+.kd-dialogue {
+  flex-wrap: wrap;
+}
+.kd-dialogue__hero {
+  flex: 0 0 100px;
+}
+.kd-dialogue__text {
+  flex: 1;
+}
+.kd-dialogue p {
+  margin-bottom: 5px;
+}
+.kd-dialogue p strong {
+  font-weight: 700;
+}
+.kd-dialogue p:nth-child(odd) {
+  color: #945131;
+}
+.kd-dialogue .card__content {
+  padding: 0.625rem;
+}
+.kd-dialogue .card--speech-bubble {
+  margin-right: 15px;
+  text-align: left;
+}
+.kd-dialogue .card--speech-bubble-end {
+  margin-left: 15px;
+  text-align: left;
+}
+
+@media screen and (max-width: 1023px) {
+  .kd-dialogue__hero {
+    order: 1;
+    align-self: flex-end;
+  }
+  .kd-dialogue__text {
+    order: 2;
+    flex: 1 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .kd-header__logo {
+    max-width: 560px;
+  }
+  .kd-badge-progress,
+.kd-progress {
+    margin-top: 0;
+  }
+  .kd-user {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+@media screen and (max-width: 479px) {
+  .kp-logo {
+    max-width: 60%;
+    align-self: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .kp-logo {
+    max-width: 90%;
+  }
+}
+
+.kp-nav__item {
+  display: flex;
+  justify-content: center;
+  background-color: #fdefe3;
+  border-bottom: 7px solid #fdefe3;
+}
+.kp-nav__item.is-active {
+  border-color: #eb2525;
+}
+.kp-nav__item:not(.is-active) .h2 {
+  color: #8f8d8a;
+}
+.kp-nav__item:not(.is-active) .h3 {
+  color: #bcbcba;
+}
+
+@media screen and (max-width: 767px) {
+  .kp-nav__item {
+    border-bottom-width: 3px;
+  }
+  .kp-nav__item .h2 {
+    font-size: 1rem;
+  }
+  .kp-thanks__photo {
+    order: 2;
+    text-align: right;
+  }
+  .kp-thanks .kp-logo {
+    max-width: 50%;
+  }
+}
+@media screen and (min-width: 480px) {
+  .kp-thanks__photo img {
+    width: 100%;
+  }
+}
+.kp-checkbox:checked + .kp-label {
+  border-color: #eb2525;
+}
+
+.kp-label {
+  text-transform: none;
+  letter-spacing: normal;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border: 2px solid white;
+}
+
+.h5-logo {
+  width: 100px;
+}
+
+.h5-content {
+  background: #fef7f1;
+}
+
+.h5-dracula {
+  right: 3.125rem;
+  left: auto;
+  top: 0;
+  width: 110px;
+}
+@media screen and (max-width: 1023px) {
+  .h5-dracula {
+    width: 50px;
+    right: 1.5625rem;
+  }
+}
+
+.h5-user__email {
+  max-width: 70%;
+}
+
+.h5-bg-heroes {
+  height: 320px;
+  background: url("../images/content/campaign/hrdinska-patka/about-us/postavicky.jpg") no-repeat bottom center;
+  background-size: contain;
+}
+.h5-bg-heroes--rules {
+  background-image: url("../images/content/campaign/hrdinska-patka/rules/postavicky.jpg");
+}
+@media screen and (max-width: 767px) {
+  .h5-bg-heroes--rules {
+    height: 180px !important;
+  }
+}
+@media screen and (max-width: 767px) {
+  .h5-bg-heroes {
+    height: 130px;
+    background-size: cover;
+  }
+}
+
+.h5-days a {
+  font-size: 16px;
+  font-weight: 600;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: red;
+  margin-right: 0.3125rem;
+  color: white;
+  transition: ease-in-out 300ms;
+}
+.h5-days a:hover {
+  transform: scale(1.2);
+}
+.h5-days a.is-active {
+  background: white;
+  color: black;
+}
+.h5-days a.is-done {
+  background: #33ab4e;
+}
+.h5-days a.is-inactive {
+  background: #990000;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: not-allowed;
+}
+
+.h5-hero-img {
+  transform: translateX(50%);
+  transition: transform ease-in-out 300ms;
+}
+.h5-hero-img img {
+  display: inline-block;
+  transform: translateX(-50%);
+  transition: transform ease-in-out 300ms;
+}
+
+.h5-background {
+  min-height: 630px;
+  background-size: initial;
+  background-position: center bottom;
+  background-repeat: repeat-x;
+}
+
+.h5-carousel .parallax-bg {
+  position: absolute;
+  left: -20%;
+  bottom: 0;
+  width: 200%;
+  height: 100%;
+  background-size: initial;
+  background-position: center bottom;
+}
+@media screen and (max-width: 767px) {
+  .h5-carousel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .h5-carousel .swiper-slide-next .h5-hero-img,
+.h5-carousel .swiper-slide-next .h5-hero-img img {
+    transform: translateX(0%);
+  }
+  .h5-carousel .swiper-slide-next .h5-hero-name,
+.h5-carousel .swiper-slide-prev .h5-hero-name {
+    opacity: 0;
+  }
+}
+.h5-carousel .swiper-slide {
+  max-width: 80%;
+  padding-bottom: 100px;
+}
+.h5-carousel .swiper-slide.is-inactive .card {
+  opacity: 0.7;
+}
+.h5-carousel .h5-hero-name {
+  height: 40px;
+}
+.h5-carousel .h5-hero-name h3 {
+  font-size: 1.125rem;
+}
+.h5-carousel .h5-hero-name a {
+  color: white;
+}
+.h5-carousel .swiper-pagination-bullet-active,
+.h5-carousel .swiper-pagination-bullet {
+  background: white;
+}
+.h5-carousel .swiper-pagination-bullets {
+  bottom: 1.25rem;
+}
+
+.h5-wrap--1 {
+  background: #0a0651;
+}
+.h5-wrap--1 .h5-background,
+.h5-wrap--1 .parallax-bg {
+  background-image: url("../images/content/campaign/hrdinska-patka/bg/web_hlavicka_les.jpg");
+}
+.h5-wrap--2 {
+  background: #33ab4e;
+}
+.h5-wrap--2 .h5-background,
+.h5-wrap--2 .parallax-bg {
+  background-image: url("../images/content/campaign/hrdinska-patka/bg/web_hlavicka_shire.jpg");
+}
+.h5-wrap--3 {
+  background: #664282;
+}
+.h5-wrap--3 .h5-background,
+.h5-wrap--3 .parallax-bg {
+  background-image: url("../images/content/campaign/hrdinska-patka/bg/web_hlavicka_mesto.jpg");
+}
+.h5-wrap--4 {
+  background: #299fa6;
+}
+.h5-wrap--4 .h5-background,
+.h5-wrap--4 .parallax-bg {
+  background-image: url("../images/content/campaign/hrdinska-patka/bg/web_hlavicka_rozpravka.jpg");
+}
+.h5-wrap--5, .h5-wrap--6, .h5-wrap--0 {
+  background: #f28629;
+}
+.h5-wrap--5 .h5-background,
+.h5-wrap--5 .parallax-bg, .h5-wrap--6 .h5-background,
+.h5-wrap--6 .parallax-bg, .h5-wrap--0 .h5-background,
+.h5-wrap--0 .parallax-bg {
+  background-image: url("../images/content/campaign/hrdinska-patka/bg/web_hlavicka_planeta.jpg");
+}
+
+@media screen and (min-width: 768px) {
+  .h5-logo {
+    width: 200px;
+  }
+  .h5-title {
+    text-align: left;
+  }
+  .h5-days {
+    display: flex;
+    justify-content: space-between;
+  }
+  .h5-days a {
+    margin-right: 0;
+  }
+}
+.bg-violet-dark {
+  background-color: #19002c;
+}
+
+.tk23-header {
+  padding: 40px 0;
+  background: #19002c url("../images/content/campaign/tajomne-kniznice/web/header.jpg") no-repeat top center;
+}
+@media screen and (min-width: 768px) {
+  .tk23-header {
+    padding: 85px 0;
+  }
+}
+.tk23-header__logo {
+  width: 13.75rem;
+}
+@media screen and (min-width: 768px) {
+  .tk23-header__logo {
+    width: 21.875rem;
+  }
+}
+.tk23-header__info {
+  max-width: 25rem;
+}
+.tk23-header__claim span {
+  color: #d8bf9e;
+}
+
+.hero-banner {
+  padding: 3.125rem 0;
+  background-image: url("../images/knihy-roka/hero-banner-adult-mobile.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.hero-banner--2021 {
+  background-image: url("../images/knihy-roka/bannery/2021/mobile_dospelacke.png");
+}
+.hero-banner--2022 {
+  background-image: url("https://mrtns.eu/img/custom/c7/e7/b0/c7e7b06f677ddb141b7d4ca546598dcb_281781515.png");
+}
+.hero-banner--children {
+  background-image: url("../images/knihy-roka/hero-banner-children-mobile.png");
+}
+.hero-banner--children--2021 {
+  background-image: url("../images/knihy-roka/bannery/2021/mobile_detske.png");
+}
+.hero-banner--children--2022 {
+  background-image: url("https://mrtns.eu/img/custom/45/0a/8a/450a8ad8ec3fe80f674518fe6be9f28d_579219866.png");
+}
+.hero-banner .year {
+  font-size: 7.5rem;
+}
+
+.swiper-table {
+  color: #fff;
+}
+.swiper-table.beletria {
+  background-color: #9967a7;
+}
+.swiper-table.deti1 {
+  background-color: #00c399;
+}
+.swiper-table.deti2 {
+  background-color: #f28629;
+}
+.swiper-table.deti3 {
+  background-color: #945131;
+}
+.swiper-table.deti4 {
+  background-color: #9967a7;
+}
+.swiper-table.deti5 {
+  background-color: #f28629;
+}
+.swiper-table.dizajn {
+  background-color: #595959;
+}
+.swiper-table.literaturaFaktu {
+  background-color: #f28629;
+}
+.swiper-table.popularnoNaucna {
+  background-color: #00b6eb;
+}
+.swiper-table.vydavatelskeTipy {
+  background-color: #9967a7;
+}
+.swiper-table__wrapper {
+  padding: 4.375rem 0;
+}
+
+.background-section {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  min-height: 55rem;
+  position: relative;
+}
+.background-section .plush-toy-button {
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 4px;
+  position: absolute;
+  top: 160px;
+  left: 320px;
+}
+
+.book-vertical .thumbnail--book {
+  margin: 0 auto;
+}
+
+.tab-nav .beletria.is-active > .tab-nav__content--link {
+  color: #956daf;
+  border-color: #956daf;
+}
+.tab-nav .reportaz-a-literatura-faktu.is-active > .tab-nav__content--link {
+  color: #f28629;
+  border-color: #f28629;
+}
+.tab-nav .popularno-naucna-literatura.is-active > .tab-nav__content--link {
+  color: #00b6eb;
+  border-color: #00b6eb;
+}
+.tab-nav .dizajn.is-active > .tab-nav__content--link {
+  color: #595959;
+  border-color: #595959;
+}
+.tab-nav .tipy-vydavatelov.is-active > .tab-nav__content--link {
+  color: #9967a7;
+  border-color: #9967a7;
+}
+.tab-nav .beletria-deti.is-active > .tab-nav__content--link {
+  color: #00c399;
+  border-color: #00c399;
+}
+.tab-nav .knihy-pre-deti-vo-veku-4-6-rokov-deti.is-active > .tab-nav__content--link {
+  color: #f28629;
+  border-color: #f28629;
+}
+.tab-nav .knihy-pre-deti-vo-veku-7-10-rokov-deti.is-active > .tab-nav__content--link {
+  color: #945131;
+  border-color: #945131;
+}
+.tab-nav .knihy-pre-deti-vo-veku-11-13-rokov-deti.is-active > .tab-nav__content--link {
+  color: #9967a7;
+  border-color: #9967a7;
+}
+.tab-nav .knihy-pre-deti-vo-veku-14-16-rokov-deti.is-active > .tab-nav__content--link {
+  color: #f28629;
+  border-color: #f28629;
+}
+
+.portrait--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper--prispievatelky .swiper-wrapper {
+  align-items: flex-start;
+}
+
+.swiper--prispievatelky .carousel__btn {
+  display: block !important;
+  top: 25% !important;
+}
+
+.card--annotation {
+  background-color: #d5ecfb;
+  border-bottom-left-radius: 0;
+}
+.card--annotation::after {
+  content: "";
+  position: absolute;
+  bottom: 0.625rem;
+  left: 0.625rem;
+  width: 0;
+  height: 0;
+  border: 0.9375rem solid transparent;
+  border-top-color: #d5ecfb;
+  border-bottom: 0;
+  border-left: 0;
+  margin-left: -10px;
+  margin-bottom: -20px;
+}
+
+.btn--floating {
+  position: fixed;
+  right: 50px;
+  bottom: 50px;
+  background-color: #d22121;
+  z-index: 1000;
+}
+.btn--floating:hover, .btn--floating:focus {
+  background-color: #b81d1d;
+}
+
+.btn-dropdown--categories {
+  width: 100%;
+  padding-top: 8px;
+}
+.btn-dropdown--categories .btn {
+  width: 100%;
+}
+
+.sticky {
+  background-color: #fff;
+  position: sticky;
+  top: 65px;
+  z-index: 1000;
+}
+
+@media (max-width: 1024px) {
+  .background-section {
+    min-height: 42.5rem;
+  }
+}
+@media (min-width: 768px) {
+  .swiper-table__table {
+    background-image: url("../images/knihy-roka/table.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom 0 right 0;
+    padding-bottom: 3.75rem;
+  }
+  .swiper-table__table .swiper {
+    max-width: 39.375rem;
+  }
+  .hero-banner {
+    background-image: url("../images/knihy-roka/hero-banner-adult.png");
+  }
+  .hero-banner--2021 {
+    background-image: url("../images/knihy-roka/bannery/2021/header_dosp.png");
+  }
+  .hero-banner--2022 {
+    background-image: url("https://mrtns.eu/img/custom/c8/08/3c/c8083c7aeaaf591ae8173835b2f36e8f_1927494092.png");
+  }
+  .hero-banner--children {
+    background-image: url("../images/knihy-roka/hero-banner-children.png");
+  }
+  .hero-banner--children--2021 {
+    background-image: url("../images/knihy-roka/bannery/2021/header_detsky.png");
+  }
+  .hero-banner--children--2022 {
+    background-image: url("https://mrtns.eu/img/custom/a6/af/80/a6af8025ddadadbfed0410cacbe57e0a_2085026691.png");
+  }
+  .sticky {
+    top: 75px;
+  }
+}
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: 2.5rem 0;
+  }
+  .hero-banner h1 {
+    font-size: 1.875rem;
+    margin-bottom: 1.25rem;
+  }
+  .hero-banner .year {
+    font-size: 6.25rem;
+  }
+  .background-section {
+    min-height: 30rem;
+  }
+  .background-section .plush-toy-button {
+    top: 120px;
+    left: 190px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-banner .year {
+    font-size: inherit;
+  }
+  .background-section {
+    min-height: 25rem;
+  }
+  .btn--floating {
+    right: 25px;
+    bottom: 25px;
+  }
+}

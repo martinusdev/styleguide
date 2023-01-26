@@ -1,0 +1,32 @@
+$color-violet-dark: #19002c;
+
+.bg-violet-dark {
+  background-color: $color-violet-dark;
+}
+
+.tk23-header {
+  padding: 40px 0;
+  background: $color-violet-dark url('../images/content/campaign/tajomne-kniznice/web/header.jpg') no-repeat top center;
+
+  @include breakpoint('m') {
+    padding: 85px 0;
+  }
+
+  &__logo {
+    width: _get-rem(220px);
+
+    @include breakpoint('m') {
+      width: _get-rem(350px);
+    }
+  }
+
+  &__info {
+    max-width: _get-rem(400px);
+  }
+
+  &__claim {
+    span {
+      color: #d8bf9e;
+    }
+  }
+}
