@@ -55,11 +55,11 @@ block gameContent
     document.querySelectorAll('.tk23-nav-days a')
       .forEach(el => {
         el.addEventListener('click', function (/** Event **/ ev) {
-          const day = ev.currentTarget.dataset.day ?? 1;
+          const day = ev.currentTarget.dataset.day ?? 'fantasy';
           changeDay(day)
         })
       })
-    function changeDay(day) {
+    function changeDay(day = 'fantasy') {
       const finalClass = `tk23-bg py-large tk23-bg--${day}`;
       const wrapper = document.querySelector('.tk23-bg');
       wrapper.className = finalClass;
