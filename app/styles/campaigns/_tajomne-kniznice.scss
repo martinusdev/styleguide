@@ -1,4 +1,5 @@
 $color-violet-dark: #19002c;
+$color-beige: #d8bf9e;
 
 .bg-violet-dark {
   background-color: $color-violet-dark;
@@ -30,7 +31,23 @@ $color-violet-dark: #19002c;
 
   &__claim {
     span {
-      color: #d8bf9e;
+      color: $color-beige;
+    }
+  }
+}
+
+.tk23-bg {
+  &--teaser {
+    padding: 60px;
+
+    height: 400px;
+
+    background: url('../images/content/campaign/tajomne-kniznice/web/teasing.jpg') no-repeat top center;
+    background-size: cover;
+
+    @include breakpoint('l') {
+      padding: 90px 30px;
+      height: 700px;
     }
   }
 }
@@ -76,5 +93,26 @@ $color-violet-dark: #19002c;
     a {
       margin-right: 0;
     }
+  }
+}
+
+.footer {
+  margin-top: 49px !important;
+}
+
+.campaign-progress {
+  color: _color(black);
+  min-width: _get-rem(200px);
+  text-align: center;
+
+  &__books {
+    background: $color-beige;
+    border-radius: _get-rem(3px) _get-rem(3px) 0 0;
+    padding: 5px 0;
+  }
+
+  &__info {
+    border-radius: 0 0 _get-rem(3px) _get-rem(3px);
+    padding: 7px 0;
   }
 }

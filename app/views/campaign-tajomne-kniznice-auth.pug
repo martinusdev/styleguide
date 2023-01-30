@@ -1,0 +1,28 @@
+extends campaign-tajomne-kniznice
+
+block authSection
+  .d-flex.align-items-center.justify-content-center
+    +faIcon('user-circle').fa-lg.mr-small.mb-none
+    .h5-user__email.text-ellipsis superdlhy.sherlock.holmes@martinus.sk
+    +faIcon('arrow-right-from-bracket').ml-small.fa-lg
+
+block gameStats
+  .campaign-progress.mt-medium
+    .campaign-progress__books
+      +faIcon('book').fa-lg.mr-small
+      | Hráš o&nbsp;<strong class="font-weight-bold">4</strong>&nbsp;z 20 kníh
+    .campaign-progress__info.text-medium.bg-white(data-tooltip, data-html="#tk23-double-price-tooltip", data-tippy-theme="light")
+      | Zdvojnásob svoju výhru
+      +faIcon('info-circle').ml-tiny
+  #tk23-double-price-tooltip.hide.card
+    .card__content.text-center
+      p.text-size-medium Stačí, ak do 1. apríla urobíš ľubovoľný nákup v kníhkupectve Martinus a tvoju prípadnú výhru zdvojnásobime.
+      ul.list-inline
+        li
+          a(href="campaign-knizna-detektivka-pravidla.html").link Pravidlá súťaže
+        li
+          a(href="https://www.martinus.sk").link Na Martinus
+
+block gameContent
+  .wrapper-main.tk23-bg.text-color-white
+    | Hello world.
