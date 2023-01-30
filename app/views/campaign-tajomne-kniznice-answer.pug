@@ -1,0 +1,35 @@
+extends campaign-tajomne-kniznice-auth
+
+block gameAnswer
+  h2 Jean Valjean
+
+  p.text-italic.tk23-answer__congrats
+    | &bdquo;Milý priateľ, gratulujem k správnemu uhádnutiu mojej knižnice. Je mi cťou byť súčasťou tohto krásneho príbehu a verím, že moje boje za spravodlivosť a lepší život nájdu odozvu v srdciach čitateľov.&ldquo;
+
+  .mt-large.d-flex.justify-content-center.align-items-center.flex-column.flex-m-row
+    .d-block.text-center.mr-m-large.mb-medium.mb-m-none
+      img(src=`${assetsPrefix}images/content/campaign/tajomne-kniznice/hero-fake.png`, alt="Fake News").tk23-answer__hero.mb-small
+      | <br>
+      button.mb-none.text-color-white.btn.btn--clean(data-bs-toggle="modal" data-bs-target="#tk23-answer__modal")
+        +faIcon('info-circle').mr-tiny
+        | Viac o postave
+    .d-flex.flex-column.tk23-answer__about.align-items-center.align-items-m-start
+      .d-flex.justify-content-center.align-items-center
+        .product__img.product__cover.mr-medium.ml-none.mb-none
+          .thumbnail.thumbnail--book.thumbnail--medium-large
+            .thumbnail__img-wrap
+              img(src=`https://mrtns.eu/tovar/_l/187/l187112.jpg?v=14873584431`).img
+        .d-block.text-left
+          h3.mb-tiny Les Misérables
+          p.mb-small Victor Hugo
+          a.btn.btn--primary.mb-none Kúpiť na Martinuse
+
+
+  .modal.fade#tk23-answer__modal
+    .modal-dialog.modal-dialog-centered
+      .modal-content
+        .modal-body.text-color-black
+          h3 Jean Valjean
+          p.mb-none
+            | Jean Valjean je bývalým väzňom, ktorý strávil 19 rokov vo väzení za krádež. Po svojom prepustení sa snaží začať nový život a nájsť pokoj, ale jeho minulosť ho neustále prenasleduje. Časom sa musí vrátiť k svojmu skutočnému ja a bojovať proti krivde a nespravodlivosti. Jean Valjean je silným a neústupným hrdinom, ktorý zastáva hodnoty lásky a spravodlivosti.
+
