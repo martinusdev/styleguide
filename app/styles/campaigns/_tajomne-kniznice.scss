@@ -5,6 +5,10 @@ $color-beige: #d8bf9e;
   background-color: $color-violet-dark;
 }
 
+.text-color-beige {
+  color: $color-beige;
+}
+
 .ks-page {
   background: $color-violet-dark;
 }
@@ -37,17 +41,78 @@ $color-beige: #d8bf9e;
 }
 
 .tk23-bg {
+  background-size: auto 700px !important;
+
+  &--historical {
+    background: #6b7b84 url('../images/content/campaign/tajomne-kniznice/bg/historical.jpg') repeat-x top center;
+  }
+
+  &--art-deco {
+    background: #985e43 url('../images/content/campaign/tajomne-kniznice/bg/art-deco.jpg') repeat-x top center;
+  }
+
+  &--billy {
+    background: #bb2a9b url('../images/content/campaign/tajomne-kniznice/bg/billy.jpg') repeat-x top center;
+  }
+
+  &--fantasy {
+    background: #3d3c3c url('../images/content/campaign/tajomne-kniznice/bg/fantasy.jpg') repeat-x top center;
+  }
+
+  &--wood {
+    background: #724b33 url('../images/content/campaign/tajomne-kniznice/bg/wood.jpg') repeat-x top center;
+  }
+
   &--teaser {
     padding: 60px;
 
     height: 400px;
 
-    background: url('../images/content/campaign/tajomne-kniznice/web/teasing.jpg') no-repeat top center;
-    background-size: cover;
+    background: url('../images/content/campaign/tajomne-kniznice/web/teasing.jpg?v=2') no-repeat top center;
+    background-size: cover !important;
 
     @include breakpoint('l') {
       padding: 90px 30px;
       height: 700px;
+    }
+  }
+
+  @include breakpoint('m') {
+    background-size: auto 900px !important;
+  }
+}
+
+.tk23-library {
+  width: 100%;
+  max-width: _get-rem(500px);
+  margin-bottom: 100px;
+
+  > img {
+    width: 100%;
+    filter: drop-shadow(0 20px 100px rgba(0, 0, 0, 0.3));
+    margin-bottom: 100px;
+  }
+}
+
+.tk23-hero-guess {
+  bottom: -80px;
+  right: -10px;
+
+  img {
+    width: 130px;
+
+    // stylelint-disable-next-line property-no-vendor-prefix
+    -webkit-filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.3));
+  }
+
+  @include breakpoint('m') {
+    bottom: 30px;
+    right: -200px;
+    width: 180px;
+
+    img {
+      width: 100%;
     }
   }
 }
@@ -96,8 +161,24 @@ $color-beige: #d8bf9e;
   }
 }
 
+.tk23-answer {
+  &__congrats {
+    max-width: 700px;
+    margin: auto;
+  }
+
+  &__hero {
+    width: 120px;
+    filter: drop-shadow(0 -4px 34px rgba(255, 255, 255, 0.64));
+  }
+
+  &__about {
+    max-width: 400px;
+  }
+}
+
 .footer {
-  margin-top: 49px !important;
+  margin-top: 39px !important;
 }
 
 .campaign-progress {
@@ -114,5 +195,9 @@ $color-beige: #d8bf9e;
   &__info {
     border-radius: 0 0 _get-rem(3px) _get-rem(3px);
     padding: 7px 0;
+  }
+
+  .progress-bar {
+    height: _get-rem(3px);
   }
 }
