@@ -15,7 +15,8 @@ $color-beige: #d8bf9e;
 
 .tk23-header {
   padding: 40px 0;
-  background: $color-violet-dark url('../images/content/campaign/tajomne-kniznice/web/header.jpg') no-repeat top center;
+  background: $color-violet-dark url('../images/content/campaign/tajomne-kniznice/web/header.jpg') no-repeat center center;
+  background-size: auto 330px;
 
   @include breakpoint('m') {
     padding: 80px 0;
@@ -63,22 +64,22 @@ $color-beige: #d8bf9e;
     background: #724b33 url('../images/content/campaign/tajomne-kniznice/bg/wood.jpg') repeat-x top center;
   }
 
-  &--teaser {
-    padding: 60px;
-
-    height: 400px;
-
-    background: url('../images/content/campaign/tajomne-kniznice/web/teasing.jpg?v=2') no-repeat top center;
-    background-size: cover !important;
-
-    @include breakpoint('l') {
-      padding: 90px 30px;
-      height: 700px;
-    }
-  }
-
   @include breakpoint('m') {
     background-size: auto 900px !important;
+  }
+}
+
+.tk23-teaser {
+  background-size: cover !important;
+  padding: 60px;
+  height: 400px;
+
+  background: url('../images/content/campaign/tajomne-kniznice/web/teasing.jpg?v=2') no-repeat top center;
+  background-size: cover !important;
+
+  @include breakpoint('l') {
+    padding: 90px 30px;
+    height: 700px;
   }
 }
 
