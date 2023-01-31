@@ -1,5 +1,5 @@
 $color-violet-dark: #19002c;
-$color-beige: #d8bf9e;
+$color-beige: #fddfc6;
 
 .bg-violet-dark {
   background-color: $color-violet-dark;
@@ -9,8 +9,12 @@ $color-beige: #d8bf9e;
   color: $color-beige;
 }
 
-.ks-page {
+.tk23-page {
   background: $color-violet-dark;
+
+  .footer {
+    margin-top: 39px !important;
+  }
 }
 
 .tk23-header {
@@ -69,18 +73,23 @@ $color-beige: #d8bf9e;
   }
 }
 
-.tk23-teaser {
+.tk23-teaser,
+.tk23-story {
   background-size: cover !important;
   padding: 60px;
   height: 400px;
 
-  background: url('../images/content/campaign/tajomne-kniznice/web/teasing.jpg?v=2') no-repeat top center;
+  background: url('../images/content/campaign/tajomne-kniznice/web/teasing.jpg') no-repeat top center;
   background-size: cover !important;
 
   @include breakpoint('l') {
     padding: 90px 30px;
     height: 700px;
   }
+}
+
+.tk23-story {
+  background: url('../images/content/campaign/tajomne-kniznice/web/pribeh.jpg') no-repeat top center;
 }
 
 .tk23-library {
@@ -166,6 +175,12 @@ $color-beige: #d8bf9e;
   &__congrats {
     max-width: 700px;
     margin: auto;
+
+    @include breakpoint(m) {
+      &::before {
+        left: 28% !important;
+      }
+    }
   }
 
   &__hero {
@@ -176,10 +191,6 @@ $color-beige: #d8bf9e;
   &__about {
     max-width: 400px;
   }
-}
-
-.footer {
-  margin-top: 39px !important;
 }
 
 .campaign-progress {
