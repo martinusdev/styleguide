@@ -43,12 +43,13 @@ block gameContent
       .tk23-library.mx-auto.position-relative
         img(src=`${assetsPrefix}images/content/campaign/tajomne-kniznice/web/library-fantasy.png`, alt="Knižnica")
 
-        .tk23-hero-guess.position-absolute.d-flex.flex-row.flex-m-column.align-items-center
-          .card.card--arrowhead.card--arrowhead-bottom.d-none.d-m-block
-            .card__content.text-center.p-medium Ďalšia indícia <strong>pribudne o 12:00</strong>
-          .card.card--arrowhead.card--arrowhead-right.d-block.d-m-none
-            .card__content.text-center.p-medium Ďalšia indícia <strong>pribudne o 12:00</strong>
-          img(src=`${assetsPrefix}images/content/campaign/tajomne-kniznice/hero-guess.png`, alt="Knižnica")
+        block gameHint
+          .tk23-hero-guess.position-absolute.d-flex.flex-row.flex-m-column.align-items-center
+            .card.card--arrowhead.card--arrowhead-bottom.d-none.d-m-block
+              .card__content.text-center.p-medium Ďalšia indícia <strong>pribudne o 12:00</strong>
+            .card.card--arrowhead.card--arrowhead-right.d-block.d-m-none
+              .card__content.text-center.p-medium Ďalšia indícia <strong>pribudne o 12:00</strong>
+            img(src=`${assetsPrefix}images/content/campaign/tajomne-kniznice/hero-guess.png`, alt="Knižnica")
 
 
   script.
