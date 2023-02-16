@@ -1,5 +1,5 @@
 import Swiper, {
-  Navigation, Pagination, Lazy, Parallax
+  Navigation, Pagination, Parallax
 } from 'swiper';
 
 import { nodeListToArray } from './Utils';
@@ -23,11 +23,9 @@ const defaultConfig = {
   a11y: true,
   loop: false,
   keyboardControl: true,
-  preloadImages: false,
-  lazy: true,
   watchSlidesProgress: true,
   spaceBetween: 40,
-  modules: [Navigation, Pagination, Lazy, Parallax],
+  modules: [Navigation, Pagination, Parallax],
 };
 
 export default class SwiperSlider {
