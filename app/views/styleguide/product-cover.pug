@@ -1,0 +1,38 @@
+extends templates/layout
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.productCovers', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+block prepend content
+
+  +main-info(['app/styles/components/_product-cover.scss'], contents)
+
+block append content
+  +content-section(contents[0])
+    .d-flex.align-items-start
+
+      a.product-cover.product-cover--large.product-cover--book(href="/?uItem=202152").mr-large
+        img(src="//mrtns.sk/tovar/_m/202/m202152.jpg?v=16639418981" alt="Harry Potter a Dary smrti - J.K. Rowling" title="Harry Potter a Dary smrti - J.K. Rowling" loading="lazy" decoding="async")
+
+      a.product-cover.product-cover--large.product-cover--ebook(href="/?uItem=202152").mr-large
+        img(src="//mrtns.sk/tovar/_m/202/m202152.jpg?v=16639418981" alt="Harry Potter a Dary smrti - J.K. Rowling" title="Harry Potter a Dary smrti - J.K. Rowling" loading="lazy" decoding="async")
+        .product-cover__badge.product-cover__badge--medium E-kniha
+
+
+  +content-section(contents[1])
+
+    .d-flex.mb-large
+      // Nove covery
+      a.product-cover.product-cover--large.product-cover--collection(href="/?uItem=202152").mr-large
+        img(src="//mrtns.sk/tovar/_m/202/m202152.jpg?v=16639418981" alt="Harry Potter a Dary smrti - J.K. Rowling" title="Harry Potter a Dary smrti - J.K. Rowling" loading="lazy" decoding="async")
+        div &nbsp;
+        img(src="//mrtns.sk/tovar/_m/202/m202151.jpg?v=16639422061" alt="Harry Potter a Dary smrti - J.K. Rowling" title="Harry Potter a Dary smrti - J.K. Rowling" loading="lazy" decoding="async")
+
+      a.product-cover.product-cover--large.product-cover--collection(href="/?uItem=236887")
+        img(src="//mrtns.sk/tovar/_m/236/m236887.jpg?v=15918818071" alt="Dune - Frank Herbert" title="Dune - Frank Herbert" loading="lazy" decoding="async")
+        img(src="//mrtns.sk/tovar/_m/787/m787009.jpg?v=16322045411" alt="Dune - Frank Herbert" title="Dune - Frank Herbert" loading="lazy" decoding="async")
+        img(src="//mrtns.sk/tovar/_m/1086/m1086065.jpg?v=16293716201" alt="Dune - Frank Herbert" title="Dune - Frank Herbert" loading="lazy" decoding="async")
+        img(src="//mrtns.sk/tovar/_m/1086/m1086065.jpg?v=16293716201" alt="Dune - Frank Herbert" title="Dune - Frank Herbert" loading="lazy" decoding="async")
