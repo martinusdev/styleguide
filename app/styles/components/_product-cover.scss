@@ -1,0 +1,125 @@
+a.product-cover:not(.product-cover--collection),
+a.product-cover--collection img {
+  transition: box-shadow $ease-200;
+
+  &:hover,
+  &:active {
+    box-shadow: $shadow-lg;
+  }
+}
+
+.product-cover {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  @each $name, $size in $cover-sizes {
+    &#{_get-variant-name($name)} {
+      max-width: $size;
+    }
+  }
+
+  img {
+    position: relative;
+  }
+
+  &--book,
+  &--ebook,
+  &--audiobook,
+  &--collection img {
+    border-radius: $default-border-radius;
+    box-shadow: $shadow-md;
+  }
+
+  &--book::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    width: 12px;
+    border-radius: $default-border-radius;
+
+    background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
+  }
+
+  &--collection {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    overflow: visible;
+
+    * {
+      display: block;
+      width: 65%;
+      z-index: 3;
+    }
+
+    *:nth-child(2) {
+      margin-left: -50%;
+      margin-top: 0.5rem;
+      z-index: 2;
+    }
+
+    *:nth-child(3) {
+      margin-left: -50%;
+      margin-top: 1rem;
+      z-index: 1;
+    }
+
+    *:nth-child(n + 4) {
+      display: none;
+    }
+  }
+}
+
+.product-cover--ebook {
+  .product-cover__badge {
+    background-color: _color(green);
+  }
+}
+
+.product-cover--audiobook {
+  .product-cover__badge {
+    background-color: _color(purple);
+  }
+}
+
+.product-cover__badge {
+  text-transform: uppercase;
+  font-size: 8px;
+  letter-spacing: 1px;
+  text-align: center;
+  color: _color(white);
+
+  &--full,
+  &--medium {
+    font-weight: $font-weight-semibold;
+  }
+
+  &--full {
+    font-size: 12px;
+
+    @media(min-width: 768px) {
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+  }
+
+  &--medium {
+    font-size: 11px;
+
+    @media(min-width: 480px) {
+      font-size: 12px;
+    }
+  }
+}
+
+.collection .carousel .thumbnail,
+.product .collection .thumbnail {
+  overflow: visible;
+  border-radius: 0;
+}
