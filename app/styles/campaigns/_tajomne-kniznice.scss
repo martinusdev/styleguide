@@ -47,29 +47,31 @@ $color-beige: #fddfc6;
 
 .tk23-bg {
   background-size: auto 700px !important;
+  box-shadow: #11011d 0 0 60px inset;
 
   &--historical {
-    background: #6b7b84 url('../images/content/campaign/tajomne-kniznice/bg/historical.jpg') repeat-x top center;
+    background: #6b7b84 url('../images/content/campaign/tajomne-kniznice/bg/historical.jpg') repeat-x top left;
   }
 
   &--art-deco {
-    background: #985e43 url('../images/content/campaign/tajomne-kniznice/bg/art-deco.jpg') repeat-x top center;
+    background: #985e43 url('../images/content/campaign/tajomne-kniznice/bg/art-deco.jpg') repeat-x top left;
   }
 
   &--billy {
-    background: #bb2a9b url('../images/content/campaign/tajomne-kniznice/bg/billy.jpg') repeat-x top center;
+    background: #bb2a9b url('../images/content/campaign/tajomne-kniznice/bg/billy.jpg') repeat-x top left;
   }
 
   &--fantasy {
-    background: #3d3c3c url('../images/content/campaign/tajomne-kniznice/bg/fantasy.jpg') repeat-x top center;
+    background: #3d3c3c url('../images/content/campaign/tajomne-kniznice/bg/fantasy.jpg') repeat-x top left;
   }
 
   &--wood {
-    background: #724b33 url('../images/content/campaign/tajomne-kniznice/bg/wood.jpg') repeat-x top center;
+    background: #724b33 url('../images/content/campaign/tajomne-kniznice/bg/wood.jpg') repeat-x top left;
   }
 
   @include breakpoint('m') {
-    background-size: auto 900px !important;
+    background-size: auto 830px !important;
+    box-shadow: #11011d 0 0 300px inset;
   }
 }
 
@@ -97,15 +99,18 @@ $color-beige: #fddfc6;
   max-width: _get-rem(500px);
   margin-bottom: 100px;
 
+  // stylelint-disable-next-line property-no-vendor-prefix
+  -webkit-filter: drop-shadow(0 20px 100px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 20px 100px rgba(0, 0, 0, 0.3));
+
   > img {
     width: 100%;
-    filter: drop-shadow(0 20px 100px rgba(0, 0, 0, 0.3));
-    margin-bottom: 100px;
+    //margin-bottom: 100px;
   }
 }
 
 .tk23-hero-guess {
-  bottom: -80px;
+  bottom: -90px;
   right: -10px;
 
   img {
@@ -178,13 +183,13 @@ $color-beige: #fddfc6;
 
     @include breakpoint(m) {
       &::before {
-        left: 28% !important;
+        left: 24% !important;
       }
     }
   }
 
   &__hero {
-    width: 120px;
+    width: _get-rem(200px);
     filter: drop-shadow(0 -4px 34px rgba(255, 255, 255, 0.64));
   }
 
