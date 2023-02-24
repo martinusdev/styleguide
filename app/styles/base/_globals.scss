@@ -13,8 +13,14 @@ body {
 body {
   position: relative;
   background: $default-bg-color;
-  font-family: $default-font-family;
+  font-family: $fallback-font-family;
   color: $default-text-color;
+}
+
+.fonts-loaded {
+  body {
+    font-family: $default-font-family;
+  }
 }
 
 * { box-sizing: border-box; }
