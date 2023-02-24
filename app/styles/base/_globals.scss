@@ -15,11 +15,26 @@ body {
   background: $default-bg-color;
   font-family: $fallback-font-family;
   color: $default-text-color;
+
+  --fw-normal: normal;
+  --fw-semibold: normal;
+  --fw-bold: normal;
+  --fs-normal: normal;
+  --fs-italic: normal;
 }
 
-.fonts-loaded {
+.fonts-loaded-1,
+.fonts-loaded-2 {
   body {
     font-family: $default-font-family;
+  }
+}
+
+.fonts-loaded-2 {
+  body {
+    --fw-semibold: #{$font-weight-semibold};
+    --fw-bold: #{$font-weight-bold};
+    --fs-italic: #{$font-style-italic};
   }
 }
 
