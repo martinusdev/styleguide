@@ -17,24 +17,16 @@ body {
   color: $default-text-color;
 
   --fw-normal: normal;
-  --fw-semibold: normal;
-  --fw-bold: normal;
+  --fw-semibold: #{$font-weight-semibold};
+  --fw-bold: #{$font-weight-bold};
+
   --fs-normal: normal;
-  --fs-italic: normal;
+  --fs-italic: #{$font-style-italic};
 }
 
-.fonts-loaded-1,
-.fonts-loaded-2 {
+.fonts-loaded {
   body {
     font-family: $default-font-family;
-  }
-}
-
-.fonts-loaded-2 {
-  body {
-    --fw-semibold: #{$font-weight-semibold};
-    --fw-bold: #{$font-weight-bold};
-    --fs-italic: #{$font-style-italic};
   }
 }
 
