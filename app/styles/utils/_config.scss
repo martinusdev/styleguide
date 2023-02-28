@@ -168,6 +168,7 @@ $blue-bg-color: _color(bg, 200) !default;
 $teal-bg-color: _color(teal) !default;
 $green-bg-color: _color(success, 500) !default;
 $default-text-color: $color-black !default;
+$fallback-font-family: $font-family-sans-serif !default;
 $default-font-family: $font-family-tabac !default;
 
 $default-border-color: _color(grey, 200);
@@ -229,7 +230,6 @@ $selection-text-color: $color-white;
 $heading-tags: (h1, h2, h3, h4, h5, h6);
 
 $heading: (
-  font-family: $font-family-tabac,
   font-weight: $font-weight-default,
 );
 
@@ -259,25 +259,25 @@ $typography-overrides: (
       font-size: _get-rem(40px),
       line-height: math.div(49, 42),
       margin-bottom: _get-space('large'),
-      font-weight: $font-weight-bold,
+      font-weight: var(--fw-bold),
     ),
     'h1, .h1' : (
       font-size: _get-rem(22px),
       line-height: math.div(49, 42),
       margin-bottom: _get-space('large'),
-      font-weight: $font-weight-bold,
+      font-weight: var(--fw-bold),
     ),
     'h2, .h2' : (
       font-size: _get-rem(18px),
       line-height: math.div(31, 25),
       margin-bottom: _get-space(),
-      font-weight: $font-weight-semibold,
+      font-weight: var(--fw-semibold),
     ),
     'h3, .h3' : (
       font-size: _get-rem(16px),
       line-height: math.div(24, 18),
       margin-bottom: _get-space(),
-      font-weight: $font-weight-semibold,
+      font-weight: var(--fw-semibold),
     ),
     'h4, .h4' : (
       font-size: _get-rem(14px),
@@ -296,7 +296,7 @@ $typography-overrides: (
     'h6, .h6': (
       font-size: _get-rem(14px),
       margin-bottom: _get-space('tiny'),
-      font-weight: $font-weight-semibold,
+      font-weight: var(--fw-semibold),
     )
   ),
   m: (
@@ -339,7 +339,7 @@ $links: (
     default: (
       text-decoration: none,
       color: _color(link),
-      font-weight: $font-weight-semibold,
+      font-weight: var(--fw-semibold),
       transition: #{color $ease-100, border $ease-100},
     ),
     focus: (
@@ -351,7 +351,7 @@ $links: (
   grey: (
     default: (
       color: _color(grey),
-      font-weight: $font-weight-default,
+      font-weight: var(--fw-normal),
     ),
     focus: (
       text-decoration: none,
@@ -360,7 +360,7 @@ $links: (
   black: (
     default: (
       color: $color-black,
-      font-weight: $font-weight-default,
+      font-weight: var(--fw-normal),
     ),
     focus: (
       text-decoration: none,
@@ -369,7 +369,7 @@ $links: (
   white: (
     default: (
       color: _color(grey, 100),
-      font-weight: $font-weight-default,
+      font-weight: var(--fw-normal),
     ),
     focus: (
       text-decoration: underline,
@@ -394,7 +394,7 @@ $hr: (
 
 $em: (
   font-style: normal,
-  font-weight: $font-weight-semibold,
+  font-weight: var(--fw-semibold),
   color: $color-black,
   border-bottom: 1px dotted $color-black,
 );
@@ -599,7 +599,7 @@ $button-layout-margin: _get-space('small');
 $button: (
   default: (
     border: 1px solid transparent,
-    font-weight: $font-weight-semibold,
+    font-weight: var(--fw-semibold),
     text-transform: uppercase,
     letter-spacing: 1px,
     line-height: 1.5,
@@ -1166,7 +1166,7 @@ $select: (
       border-radius: $select-b-r,
       box-shadow: none,
       text-transform: uppercase,
-      font-weight: 600,
+      font-weight: var(--fw-semibold),
       letter-spacing: 1px,
       after: (
         display: none,
@@ -1411,7 +1411,7 @@ $table-cell: (
   ),
   head: (
     vertical-align: bottom,
-    font-weight: $font-weight-semibold,
+    font-weight: var(--fw-semibold),
   ),
   head-highlight: (
     background-color: _color(bg, 500),
@@ -1573,7 +1573,7 @@ $list-counter: (
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
     color: _color(grey, 700),
     text-align: center,
-    font-weight: $font-weight-semibold,
+    font-weight: var(--fw-semibold),
   )
 );
 
@@ -1592,7 +1592,7 @@ $tabs-link: (
     border-bottom-style: solid,
     border-bottom-color: transparent,
     text-transform: uppercase,
-    font-weight: 600,
+    font-weight: var(--fw-semibold),
   ),
   compact: (
     padding: _get-em(10px) _get-em(15px),
@@ -1627,7 +1627,7 @@ $tabs-card: (
   active: (
     border-color: _color(bg, 500),
     background-color: _color(bg, 500),
-    font-weight: $font-weight-semibold,
+    font-weight: var(--fw-semibold),
     position: relative,
   ),
   focus: (
@@ -1646,7 +1646,7 @@ $badge: (
     border: 1px solid $default-border-color,
     border-radius: $default-border-radius,
     font-size: _get-rem($font-size-medium),
-    font-weight: $font-weight-semibold,
+    font-weight: var(--fw-semibold),
   ),
   primary: (
     color: _color(primary),
@@ -1706,7 +1706,7 @@ $pills: (
     border: 1px solid transparent,
     border-radius: $default-border-radius-circle,
     font-size: _get-rem($font-size-small),
-    font-weight: $font-weight-semibold,
+    font-weight: var(--fw-semibold),
     min-width: _get-rem(24px),
   ),
   blue: (

@@ -13,8 +13,21 @@ body {
 body {
   position: relative;
   background: $default-bg-color;
-  font-family: $default-font-family;
+  font-family: $fallback-font-family;
   color: $default-text-color;
+
+  --fw-normal: normal;
+  --fw-semibold: #{$font-weight-semibold};
+  --fw-bold: #{$font-weight-bold};
+
+  --fs-normal: normal;
+  --fs-italic: #{$font-style-italic};
+}
+
+.fonts-loaded {
+  body {
+    font-family: $default-font-family;
+  }
 }
 
 * { box-sizing: border-box; }
