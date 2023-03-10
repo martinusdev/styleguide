@@ -86,6 +86,7 @@ import {
   faTractor,
   faSunglasses,
   faSpa,
+  faTriangleExclamation,
   faTshirt,
   faAirFreshener,
   faClinicMedical,
@@ -393,7 +394,8 @@ library.add(
   faStarHalf,
   faEllipsis,
   faBookBlank,
-  faBookArrowUp
+  faBookArrowUp,
+  faTriangleExclamation
 );
 
 dom.watch();

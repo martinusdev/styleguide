@@ -7,7 +7,13 @@ $alerts: (
       color: $color-white,
       font-size: $font-size-medium,
       border-radius: $default-border-radius,
-    )
+    ),
+    icon: (
+      color: $color-white,
+    ),
+    link: (
+      color: _color(grey, 100),
+    ),
   ),
   success: (
     default: ( background-color: _color('success') ),
@@ -21,37 +27,49 @@ $alerts: (
   light: (
     default: (
       background-color: _color('info', 100),
-      color: _color('info')
+      color: $color-black,
+    ),
+    icon: (
+      color: _color('info'),
     ),
     link: (
-      color: _color('info'),
+      color: $color-black,
     )
   ),
   success-light: (
     default: (
       background-color: _color('success', 100),
-      color: _color('success')
+      color: $color-black,
+    ),
+    icon: (
+      color: _color('success'),
     ),
     link: (
-      color: _color('success'),
+      color: $color-black,
     )
   ),
   warning-light: (
     default: (
       background-color: _color('warning', 100),
-      color: _color('warning')
+      color: $color-black,
+    ),
+    icon: (
+      color: _color('warning'),
     ),
     link: (
-      color: _color('warning'),
+      color: $color-black,
     )
   ),
   error-light: (
     default: (
       background-color: _color('error', 100),
-      color: _color('error')
+      color: $color-black,
+    ),
+    icon: (
+      color: _color('error'),
     ),
     link: (
-      color: _color('error'),
+      color: $color-black,
     )
   )
 );
@@ -82,16 +100,27 @@ $alerts: (
     margin-left: _get-space('small');
 
     .btn {
-      color: _color(grey, 800);
+      color: $color-white;
+      margin-bottom: 0;
 
       // stylelint-disable-next-line
       &:focus,
       &:hover {
-        color: $color-white;
+        color: _color(grey, 200);
       }
     }
 
     > * { margin-bottom: 0; }
+  }
+
+  &[class*='-light'] {
+    .alert__action .btn {
+      color: _color(grey, 900);
+
+      &:hover {
+        color: _color(grey, 600);
+      }
+    }
   }
 
   &--fixed {
@@ -111,6 +140,10 @@ $alerts: (
   .link {
     color: $color-white;
     text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   @each $variant, $props in $alerts {
@@ -121,8 +154,8 @@ $alerts: (
         @include css-map($props, 'link');
       }
 
-      .btn:hover {
-        @include css-map($props, 'link');
+      .alert__icon {
+        @include css-map($props, 'icon');
       }
 
       &:focus,

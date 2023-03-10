@@ -2,6 +2,7 @@ extends templates/layout
 
 include ./../mixins/loader
 include ./../mixins/icon
+include ./../mixins/faIcon
 
 //- Options
 block prepend opts
@@ -32,14 +33,14 @@ block append content
           .col--m-8
             .alert
               .alert__icon
-                +icon('check-circle').icon--medium
+                +faIcon('check-circle').fa-xl
               .alert__content
                 | Upokoj sa, všetko ide podľa plánu.#{' '}
                 a.link(href="#") Viac informácií nájdete tu
                 | .
               .alert__action
                 button.btn.btn--clean.btn--small(data-alert-action)
-                  +icon('close').icon--medium
+                  +faIcon('xmark').fa-xl
           .col--m-4
             button.btn#alert-1 Show example
 
@@ -47,11 +48,11 @@ block append content
           .col--m-8
             .alert
               .alert__icon
-                +icon('check-circle').icon--medium
+                +faIcon('check-circle').fa-xl
               .alert__content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mauris augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.
               .alert__action
                 button.btn.btn--clean.btn--small(data-alert-action)
-                  +icon('close').icon--medium
+                  +faIcon('xmark').fa-xl
           .col--m-4
             button.btn#alert-2 Show example
 
@@ -61,7 +62,7 @@ block append content
               .alert__content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla eget mauris augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.
               .alert__action
                 button.btn.btn--clean.btn--small(data-alert-action)
-                  +icon('close').icon--medium
+                  +faIcon('xmark').fa-xl
           .col--m-4
             button.btn#alert-3 Show example
 
@@ -82,7 +83,7 @@ block append content
 
     +content-sub-section('Types')
 
-      +p Eight types of alert are defined: <code class='l-code-inline'>info (defalut)/success/warning/error/light/success-light/warging-light/error-light</code>. Coresponding icon with state should be included in alert.
+      +p Eight types of alert are defined: <code class='l-code-inline'>info (default)/success/warning/error/light/success-light/warning-light/error-light</code>. Coresponding icon with state should be included in alert.
 
       +demo
         +demo-example
@@ -90,12 +91,12 @@ block append content
             .col--m-8
               .alert
                 .alert__icon
-                  +icon('check-circle').icon--medium
+                  +faIcon('check-circle').fa-xl
                 .alert__content
                   | Upokoj sa, všetko ide podľa plánu.
                 .alert__action
                   button.btn.btn--clean.btn--small(data-alert-action)
-                    +icon('close').icon--medium
+                    +faIcon('xmark').fa-xl
             .col--m-4
               button.btn#alert-type-1 Show example
 
@@ -103,7 +104,7 @@ block append content
             .col--m-8
               .alert.alert--success
                 .alert__icon
-                  +icon('check-circle').icon--medium
+                  +faIcon('check-circle').fa-xl
                 .alert__content
                   span.text-semibold Úspech!
                   |  Všetko sa podarilo.#{' '}
@@ -111,7 +112,7 @@ block append content
                   | .
                 .alert__action
                   button.btn.btn--clean.btn--small(data-alert-action)
-                    +icon('close').icon--medium
+                    +faIcon('xmark').fa-xl
             .col--m-4
               button.btn#alert-type-2 Show example
 
@@ -119,13 +120,12 @@ block append content
             .col--m-8
               .alert.alert--warning
                 .alert__icon
-                  +icon('warning').icon--medium
+                  +faIcon('triangle-exclamation').fa-xl
                 .alert__content
                   span.text-semibold Hoplá!
                   |  Skúste to znova.
                 .alert__action
-                  button.btn.btn--clean.btn--small(data-alert-action)
-                    span.text-color-white Opakovať
+                  button.btn.btn--clean.btn--small(data-alert-action) Opakovať
             .col--m-4
               button.btn#alert-type-3 Show example
 
@@ -133,12 +133,12 @@ block append content
             .col--m-8
               .alert.alert--error
                 .alert__icon
-                  +icon('error').icon--medium
+                  +faIcon('circle-exclamation').fa-xl
                 .alert__content
-                  | Obrázok sa nepodarilo nahrať
+                  | Obrázok sa nepodarilo nahrať.
                 .alert__action
                   button.btn.btn--clean.btn--small(data-alert-action)
-                    +icon('close').icon--medium
+                    +faIcon('xmark').fa-xl
             .col--m-4
               button.btn#alert-type-4 Show example
 
@@ -146,18 +146,18 @@ block append content
             .col--m-8
               .alert.alert--light
                 .alert__icon
-                  +icon('check-circle').icon--medium
+                  +faIcon('check-circle').fa-xl
                 .alert__content
                   | Upokoj sa, všetko ide podľa plánu.
                 .alert__action
                   button.btn.btn--clean.btn--small(data-alert-action)
-                    +icon('close').icon--medium
+                    +faIcon('xmark').fa-xl
 
           .row
             .col--m-8
               .alert.alert--success-light
                 .alert__icon
-                  +icon('check-circle').icon--medium
+                  +faIcon('check-circle').fa-xl
                 .alert__content
                   span.text-semibold Úspech!
                   |  Všetko sa podarilo.#{' '}
@@ -165,13 +165,13 @@ block append content
                   | .
                 .alert__action
                   button.btn.btn--clean.btn--small(data-alert-action)
-                    +icon('close').icon--medium
+                    +faIcon('xmark').fa-xl
 
           .row
             .col--m-8
               .alert.alert--warning-light
                 .alert__icon
-                  +icon('warning').icon--medium
+                  +faIcon('triangle-exclamation').fa-xl
                 .alert__content
                   span.text-semibold Hoplá!
                   |  Skúste to znova.
@@ -183,12 +183,12 @@ block append content
             .col--m-8
               .alert.alert--error-light
                 .alert__icon
-                  +icon('error').icon--medium
+                  +faIcon('circle-exclamation').fa-xl
                 .alert__content
-                  | Obrázok sa nepodarilo nahrať
+                  | Obrázok sa nepodarilo nahrať.
                 .alert__action
                   button.btn.btn--clean.btn--small(data-alert-action)
-                    +icon('close').icon--medium
+                    +faIcon('xmark').fa-xl
 
         +demo-code
           :code
@@ -232,7 +232,7 @@ block append content
             .col--m-8
               .alert.alert--error
                 .alert__loader
-                  +loader({ size: 'small', color: 'white' })
+                  +loader({ color: 'white' })
                 .alert__content
                   | Načítavanie
             .col--m-4
@@ -296,7 +296,7 @@ block append scripts
     document.getElementById('alert-type-3').addEventListener('click', function() {
       var alertCustomAction = new window.myApp.Alert({
         type: 'warning',
-        icon: 'warning',
+        icon: 'triangle-exclamation',
         text: '<span class="text-semibold">Hoplá!</span> Skúste to znova.',
         customActionTemplate: '<button class="btn btn--clean btn--small" data-alert-action=""><span class="text-color-white">Opakovať</span></button>',
         onAction: function() {
@@ -309,7 +309,7 @@ block append scripts
     document.getElementById('alert-type-4').addEventListener('click', function() {
       new window.myApp.Alert({
         type: 'error',
-        icon: 'error',
+        icon: 'circle-exclamation',
         text: 'Obrázok sa nepodarilo nahrať',
       });
     });
