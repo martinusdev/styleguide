@@ -10,34 +10,25 @@ const defaultConfig = {
   customActionTemplate: undefined,
   onAction: undefined,
   timeout: undefined,
-  iconPath: '/data/assets/martinus/lb/icons_/app.svg',
 };
 
-const templateIcon = (icon, iconPath) => `
+const templateIcon = (icon) => `
   <div class="alert__icon">
-    <svg class="icon icon-${icon} icon--medium" role="img" aria-hidden="true">
-      <use xlink:href="${iconPath}#icon-${icon}" />
-    </svg>
+    <i class="far fa-${icon} fa-xl"></i>
   </div>
 `;
 
 const templateLoader = () => `
   <div class="alert__loader">
-    <div class="loader loader--white loader--small">
-      <div class="loader__page"></div>
-      <div class="loader__page"></div>
-      <div class="loader__page"></div>
-    </div>
+    <i class="far fa-loader fa-spin fa-xl"></i>
   </div>
 `;
 
-const templateAction = (customTemplate, iconPath) => `
+const templateAction = (customTemplate) => `
   <div class="alert__action">
     ${customTemplate || `
       <button class="btn btn--clean btn--small" data-alert-action>
-        <svg class="icon icon-close icon--medium" role="img" aria-hidden="true">
-          <use xlink:href="${iconPath}#icon-close" />
-        </svg>
+        <i class="far fa-xmark fa-xl"></i>
       </button>
     `}
   </div>
@@ -50,13 +41,12 @@ const template = ({
   text,
   closeable,
   customActionTemplate,
-  iconPath,
 }) => `
   <div class="alert alert--fixed ${type && `alert--${type}`}">
-    ${(icon && templateIcon(icon, iconPath)) || ''}
+    ${(icon && templateIcon(icon)) || ''}
     ${(loader && templateLoader()) || ''}
     <div class="alert__content">${text}</div>
-    ${((closeable || customActionTemplate) && templateAction(customActionTemplate, iconPath)) || ''}
+    ${((closeable || customActionTemplate) && templateAction(customActionTemplate)) || ''}
   </div>
 `;
 
@@ -89,7 +79,6 @@ export default class Alert {
         text: this.config.text,
         closeable: this.config.closeable,
         customActionTemplate: this.config.customActionTemplate,
-        iconPath: this.config.iconPath,
       }),
     );
 
