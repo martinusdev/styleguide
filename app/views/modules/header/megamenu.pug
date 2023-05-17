@@ -120,18 +120,18 @@ mixin megaMenuContent(props = {})
     .mega-menu__content-wrap
       if additionalLinks
         .mega-menu__sidebar.p-small
-          ul.list--expanded.p-none.mb-none.mega-menu__sidebar__links
+          ul.mega-menu__sidebar__links.py-small.py-m-medium
             each link in additionalLinks
               li
                 a.d-flex.align-items-center.link.link--black(href='#')
                   if link.icon
-                    +faIcon(link.icon).fa-fw.mr-small
+                    +faIcon(link.icon).fa-fw.fa-sm.mr-small.mr-m-tiny
                   =link.title
       .mega-menu__categories
         .row.mx-none.mb-m-medium
-          each category in categories
+          each category, index in categories
             .col.col--m-4.col--12.mega-menu__categories__category
-              a(href="#").d-flex.align-items-center.pt-small.pb-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none
+              a.d-flex.align-items-center.pt-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none(href='#', class=index > 0 ? 'pb-small' : '')
                 .mr-tiny.mega-menu__categories__icon
                   if category.icon.startsWith('fa-')
                     +faIcon(category.icon.replace('fa-', '')).text-color-primary.fa-fw
@@ -139,7 +139,7 @@ mixin megaMenuContent(props = {})
                     +icon(category.icon).icon--large.text-color-primary
                 h3.mb-none=category.title
               if category.entries
-                ul.mega-menu__categories__subcategories.text-medium.show-m.mt-tiny.mb-small
+                ul.mega-menu__categories__subcategories.text-medium.mt-tiny.mb-small(class=index > 0 ? 'show-m' : '')
                   each item in category.entries
                     li.mb-none
                       a.pt-tiny.pb-tiny.d-block.link.link--black(href='#')= item
@@ -155,7 +155,7 @@ mixin megaMenuContent(props = {})
                 img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
         if recommended
           .mega-menu__favorites
-            .row.mx-none.mt-l-large.mb-medium
+            .row.mx-none.mt-l-large.pb-medium
               each group, i in recommended
                 .col.col--l-6.mt-medium
                   .d-block.mb-tiny.text-transform-upper.text-size-small.m-none= group.title
