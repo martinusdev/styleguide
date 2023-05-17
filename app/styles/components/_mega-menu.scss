@@ -35,6 +35,7 @@
   &__content {
     flex: 1 1 auto;
     display: flex;
+    flex-direction: column;
 
     @include breakpoint(l) {
       &:not(.is-active) {
@@ -53,22 +54,23 @@
     }
   }
 
-  &__recommended {
+  &__sidebar {
     flex: 0 0 auto;
-    padding: _get-space('small') _get-space('small');
-    border-bottom: 1px solid $default-border-color;
+    background-color: _color(bg);
 
     @include breakpoint(l) {
-      padding: _get-space() _get-space();
-      background-color: _color(bg);
       flex: 0 0 _get-rem(280px);
-      border-bottom: 0;
     }
   }
 
   &__categories {
     flex: 1 1 auto;
     padding: 0;
+    order: -1;
+
+    @include breakpoint(l) {
+      order: 1;
+    }
 
     &__subcategories {
       padding-left: 2.5em;
@@ -97,14 +99,22 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: _color(grey, 700) !important;
+    background-color: _color(black);
+    display: flex;
+    flex-direction: column;
 
     .btn {
       width: 100%;
       border-radius: 0;
       text-transform: none;
       font-size: _get-rem(14px);
+      background-color: _color(black);
       letter-spacing: normal;
+      text-align: left;
+
+      &:active {
+        background-color: _color(grey, 700);
+      }
     }
 
     .btn.is-active {
@@ -134,20 +144,13 @@
   }
 
   @include breakpoint('m', 'downfrom') {
-    a {
-      font-size: _get-rem(14px) !important;
-    }
-
     &__categories__category {
-      border-bottom: 1px solid $text-color-grey-light;
       align-items: center;
     }
   }
 
   @include breakpoint(m, 'down') {
     &__contents {
-      display: block;
-      flex-direction: column;
       width: 100%;
       height: 100%;
     }
@@ -174,23 +177,29 @@
       display: block;
       margin-bottom: _get-space('small');
     }
+
+    &__subcategories {
+      li.mb-none:nth-child(n+6) {
+        display: none;
+      }
+    }
   }
 }
 
-.mega-menu__recommended__links {
-  @include breakpoint('l', 'downfrom') {
-    display: flex;
-    align-items: center;
+.mega-menu__sidebar__links {
+  [data-icon] {
+    color: _color(grey, 500);
+  }
 
-    li {
-      display: inline-flex;
-      margin-bottom: 0;
-      margin-right: _get-space();
-    }
+  padding: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: _get-space('small');
 
-    li:last-child {
-      padding-right: _get-space();
-    }
+  @include breakpoint('m', 'only') {
+    flex-direction: row;
   }
 }
 

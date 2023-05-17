@@ -7,7 +7,6 @@ include ./../mixins/faIcon
 - const htmlPostfix = '.html';
 - const xmas = false;
 
-- var gdpr = false;
 - var headerWarningActive = true;
 - var headerWarning = headerWarningActive ? ' has-header-warning' : '';
 
@@ -92,28 +91,6 @@ html.no-js.fonts-loaded
 
       block footer
         include ./../modules/footer
-
-      if gdpr
-        .footer-warning
-          if pageTitle == 'Detail knihy'
-            section.section.section-sticky-bottom.hide.is-consent-show.is-consent-hide-m(style="position: relative;")
-              .wrapper-main
-                .btn-layout--vertical.mb-medium
-                  button.btn.btn--primary.btn--large.mb-small(data-toggle='#checkout-notice')
-                    +icon('cart').icon--left.icon--medium
-                    | Vložiť do košíka
-          .section.section--small.bg-yellow
-            .wrapper-main
-              .bar
-                .bar__item.bar__item--fill
-                  | Na to, aby sme vám mohli lepšie odporučiť knihy, ktoré by vás mohli zaujímať si potrebujeme uložiť do vášho prehliadača údaje.
-                  br
-                  | Súhlasíte s tým? Svoj súhlas môžete neskôr odvolať.
-                .bar__break.hide-m
-                .bar__item.bar__item--shrinkable.text-right
-                  a.link(href="#") Viac informácií
-                .bar__item.bar__item--shrinkable.text-right
-                  a.btn.btn--primary súhlasím
 
       block modals
 

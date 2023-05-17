@@ -73,23 +73,26 @@ include ./../../mixins/icon
         entries: ['Harry Potter', 'Zaklínač', 'Hunger Games', 'Pán prsteňov', 'Neapolská sága', 'Kapitán Stein a notár Barbarič', 'Harry Hole'],
       }],
       additionalLinks: [{
-        title: 'Vianočné darčeky',
-        icon: 'xmas-small',
-        iconColor: 'text-color-success',
-      }, {
-        title: 'Darčekové poukážky',
-        icon: 'footer-package',
-        iconColor: 'text-color-primary',
-      },{
         title: 'Bestsellery',
+        icon: 'arrow-up-right'
       }, {
         title: 'Novinky',
+        icon: 'sparkles'
       }, {
-        title: 'Pripravujeme',
+        title: 'Knihomoľský pomocník',
+        icon: 'comment-lines'
       }, {
-        title: 'Akcie',
+        title: 'Pripravované',
+        icon: 'clock'
+      }, {
+        title: 'Akcie a zľavy',
+        icon: 'badge-percent'
+      }, {
+        title: 'Knihy na sklade',
+        icon: 'shipping-fast'
       }, {
         title: 'Kolekcie',
+        icon: 'rectangle-vertical-history'
       },],
       showAd: true,
     }, {
@@ -116,20 +119,19 @@ mixin megaMenuContent(props = {})
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
     .mega-menu__content-wrap
       if additionalLinks
-        .mega-menu__recommended.overflow-scroll-shadow
-          .overflow-scroll-x
-            ul.list--expanded.p-none.mb-none.mega-menu__recommended__links
-              each link in additionalLinks
-                li
-                  a.d-flex.align-items-center.link.link--black(href='#')
-                    if link.icon
-                      +icon(link.icon).icon--medium(class= link.iconColor).mr-tiny
-                    =link.title
+        .mega-menu__sidebar.p-small
+          ul.mega-menu__sidebar__links.py-small.py-m-medium.pl-tiny
+            each link in additionalLinks
+              li
+                a.d-flex.align-items-center.link.link--black(href='#')
+                  if link.icon
+                    +faIcon(link.icon).fa-fw.fa-sm.mr-small.mr-m-tiny
+                  =link.title
       .mega-menu__categories
         .row.mx-none.mb-m-medium
-          each category in categories
+          each category, index in categories
             .col.col--m-4.col--12.mega-menu__categories__category
-              a(href="#").d-flex.align-items-center.pt-small.pb-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none
+              a.d-flex.align-items-center.pt-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none(href='#', class=index > 0 ? 'pb-small' : '')
                 .mr-tiny.mega-menu__categories__icon
                   if category.icon.startsWith('fa-')
                     +faIcon(category.icon.replace('fa-', '')).text-color-primary.fa-fw
@@ -137,31 +139,35 @@ mixin megaMenuContent(props = {})
                     +icon(category.icon).icon--large.text-color-primary
                 h3.mb-none=category.title
               if category.entries
-                ul.mega-menu__categories__subcategories.text-medium.show-m.mt-tiny.mb-small
+                ul.mega-menu__categories__subcategories.text-medium.mt-tiny.mb-small(class=index > 0 ? 'show-m' : '')
                   each item in category.entries
                     li.mb-none
                       a.pt-tiny.pb-tiny.d-block.link.link--black(href='#')= item
                   li
                     a.d-block.mt-tiny.link.link--grey(href='#')
                       | + Ďalšie kategórie
+    if showAd || recommended
+      .mega-menu__content-wrap
+        if showAd
+          .mega-menu__sidebar
+            .mega-menu__banner
+              a(href="#")
+                img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
         if recommended
-          .row.mx-none.mt-l-large.mb-medium
-            each group, i in recommended
-              .col.col--l-6.mt-medium
-                .d-block.mb-tiny.text-transform-upper.text-size-small.m-none= group.title
-                ul.list-inline.list-inline--bulleted.text-size-small.p-none.mb-none
-                  each item in group.entries
-                    li
-                      a.link.link--black(href='#')= item
-      if showAd
-        .mega-menu__banner.mb-medium.mb-l-none
-          a(href="#")
-            img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
+          .mega-menu__favorites
+            .row.mx-none.mt-l-large.pb-medium
+              each group, i in recommended
+                .col.col--l-6.mt-medium
+                  .d-block.mb-tiny.text-transform-upper.text-size-small.m-none= group.title
+                  ul.list-inline.list-inline--bulleted.text-size-small.p-none.mb-none
+                    each item in group.entries
+                      li
+                        a.link.link--black(href='#')= item
 
 
 .header__mega-menu.mega-menu(data-mega-menu)
   .mega-menu__contents(data-mega-menu-contents)
-    div.text-color-white.mega-menu__mobile-navigation.btn-layout.btn-layout--horizontal.mb-none.hide-l.overflow-scroll-x
+    div.text-color-white.mega-menu__mobile-navigation.hide-l
       each item in mainNav
         .btn-dropdown.btn-dropdown--no-icon.m-none
           if item.trigger
