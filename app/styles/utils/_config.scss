@@ -21,6 +21,7 @@
 // Pages
 
 @use 'sass:math';
+@use 'sass:map';
 
 // ----------------------------
 // BREAKPOINTS
@@ -208,7 +209,7 @@ $spacers: (
 );
 
 @each $name, $value in $spaces {
-  $spacers: map-merge($spacers, ($name: _get-space($name)));
+  $spacers: map.merge($spacers, ($name: _get-space($name)));
 }
 
 $default-space: _get-space() !default;
@@ -440,7 +441,7 @@ $inline-list-item: (
 );
 
 $description-list: (
-  dt: map-merge(_map-deep-get($typography-overrides, null, 'h5, .h5'), ( margin-bottom: 0)),
+  dt: map.merge(_map-deep-get($typography-overrides, null, 'h5, .h5'), ( margin-bottom: 0)),
   dd: (
     font-size: _get-rem($font-size-medium),
   )
@@ -468,7 +469,7 @@ $text-color-blue: _color(blue);
 $text-color-error: _color(error, 600);
 $text-color-success: _color(success, 500);
 
-$utilities-text-colors: map-merge($color-presets,
+$utilities-text-colors: map.merge($color-presets,
 (
   primary-200: _color(primary, 200),
   semiblack: $text-color-semiblack,
@@ -479,7 +480,7 @@ $utilities-text-colors: map-merge($color-presets,
   error: $text-color-error
 ));
 
-$utilities-bg-colors: map-merge($color-presets,
+$utilities-bg-colors: map.merge($color-presets,
 (
   default: $default-bg-color,
   secondary: $secondary-bg-color,
@@ -1259,7 +1260,7 @@ $select-ghost-sizes: (
   ),
 );
 
-$select-sizes: map-merge($input-sizes, $select-ghost-sizes);
+$select-sizes: map.merge($input-sizes, $select-ghost-sizes);
 
 $select-item: (
   default: (

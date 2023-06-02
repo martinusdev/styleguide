@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 .is-mega-menu-active {
   .header-warning {
     display: none;
@@ -119,14 +121,14 @@
 
 .header {
   position: relative;
-  height: map-get($header-height, default);
+  height: map.get($header-height, default);
 
   @include breakpoint(m) {
-    height: map-get($header-height, 'm');
+    height: map.get($header-height, 'm');
   }
 
   &__wrapper {
-    height: map-get($header-height, 'default');
+    height: map.get($header-height, 'default');
     width: 100%;
     background-color: $color-black;
     z-index: $z-index-topbar;
@@ -134,7 +136,7 @@
     align-items: center;
 
     @include breakpoint(m) {
-      height: map-get($header-height, 'm');
+      height: map.get($header-height, 'm');
     }
 
     &::after {
@@ -285,14 +287,14 @@
 
 .header.header-book-detail {
   .header__book {
-    max-height: map-get($header-height, default);
+    max-height: map.get($header-height, default);
 
     @include breakpoint(s, down) {
       font-size: $font-size-medium;
     }
 
     @include breakpoint(m) {
-      max-height: map-get($header-height, 'm');
+      max-height: map.get($header-height, 'm');
     }
   }
 

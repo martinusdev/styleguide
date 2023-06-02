@@ -2,6 +2,8 @@
 // RADIO/CHECKBOX
 // ---------------------------------------------
 
+@use 'sass:map';
+
 // wrapper
 .checkbox,
 .radio {
@@ -87,10 +89,10 @@
       // stylelint-disable-next-line
       &::before,
       &::after {
-        // background-color: map-get($radio-check-color, 'disabled');
+        // background-color: map.get($radio-check-color, 'disabled');
       }
       + .radiocheck__label { // stylelint-disable-line
-        color: map-get($radio-check-color, 'disabled');
+        color: map.get($radio-check-color, 'disabled');
         pointer-events: none;
       }
     }
@@ -100,12 +102,12 @@
       // stylelint-disable-next-line
       &::before,
       &::after {
-        // background-color: map-get($radio-check-color, 'readonly');
+        // background-color: map.get($radio-check-color, 'readonly');
       }
 
       // stylelint-disable-next-line
       + .radiocheck__label {
-        color: map-get($radio-check-color, 'readonly');
+        color: map.get($radio-check-color, 'readonly');
         pointer-events: none;
       }
     }
@@ -114,11 +116,11 @@
       // stylelint-disable-next-line
       &::before,
       &::after {
-        background-color: map-get($radio-check-color, 'error');
+        background-color: map.get($radio-check-color, 'error');
       }
 
       + .radiocheck__label {   // stylelint-disable-line
-        color: map-get($radio-check-color, 'error');
+        color: map.get($radio-check-color, 'error');
       }
     }
   }

@@ -11,6 +11,7 @@
 // ICONS
 
 @use 'sass:math';
+@use 'sass:map';
 
 .icon {
   fill: currentColor;
@@ -255,14 +256,14 @@ $thumbnail-badge: (
   }
 
   .product-cover--book {
-    width: map_get($thumbnail-sizes, xlarge);
-    height: map_get($thumbnail-sizes, xlarge) * 1.4;
+    width: map.get($thumbnail-sizes, xlarge);
+    height: map.get($thumbnail-sizes, xlarge) * 1.4;
     position: absolute;
   }
 
   img {
-    width: map_get($thumbnail-sizes, xlarge);
-    height: map_get($thumbnail-sizes, xlarge) * 1.4;
+    width: map.get($thumbnail-sizes, xlarge);
+    height: map.get($thumbnail-sizes, xlarge) * 1.4;
   }
 }
 

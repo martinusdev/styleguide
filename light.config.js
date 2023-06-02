@@ -1,3 +1,5 @@
+const ESLintWebpackPlugin = require('eslint-webpack-plugin');
+
 module.exports = (paths, config) => {
   const imageminCfgIcons = config.icons().imageminCfg;
 
@@ -57,6 +59,11 @@ module.exports = (paths, config) => {
     paths: {
       icons: 'icons_',
     },
+    exports: {
+      plugins: [
+        new ESLintWebpackPlugin({}),
+      ]
+    },
     config: {
       images: {
         src: config.images().src.replace('{gif,png,jpg,svg}', '{gif,png,jpg,svg,webp}'),
@@ -78,6 +85,11 @@ module.exports = (paths, config) => {
           removeFill: false,
         },
       },
+      scripts: {
+        module: {
+          rules: [],
+        }
+      }
     },
   };
 };

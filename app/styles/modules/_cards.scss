@@ -10,14 +10,17 @@
 // ----------------------------
 // CARD
 
+@use 'sass:map';
+@use 'sass:list';
+
 @mixin card($_card: $card) {
   $border-radius: _map-deep-get($card, 'default', 'border-radius');
-  $after: map-get($_card, after);
-  $before: map-get($_card, before);
-  $clickable: map-get($_card, clickable);
-  $_card: map_remove($_card, before);
-  $_card: map_remove($_card, after);
-  $_card: map_remove($_card, clickable);
+  $after: map.get($_card, after);
+  $before: map.get($_card, before);
+  $clickable: map.get($_card, clickable);
+  $_card: map.remove($_card, before);
+  $_card: map.remove($_card, after);
+  $_card: map.remove($_card, clickable);
 
   display: flex;
   flex-flow: column;
@@ -163,11 +166,11 @@
               @include css-map($props);
 
               &:first-child { //stylelint-disable-line
-                padding-top: nth(map-get($props, padding), 1) * 2;
+                padding-top: list.nth(map.get($props, padding), 1) * 2;
               }
 
               &:last-child { //stylelint-disable-line
-                padding-bottom: nth(map-get($props, padding), 1) * 2;
+                padding-bottom: list.nth(map.get($props, padding), 1) * 2;
               }
 
               @if ($variant == 'condensed') {

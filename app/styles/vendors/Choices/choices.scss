@@ -3,6 +3,7 @@
 ===============================*/
 
 @use 'sass:math';
+@use 'sass:map';
 
 $select-selector: 'choices' !default;
 
@@ -79,10 +80,10 @@ $select-selector: 'choices' !default;
 @each $size, $props in $select-multiple-sizes {
   .#{$select-selector}[data-type*="select-multiple"].select#{_get-variant-name($size)}, .#{$select-selector}[data-type*="text"].select#{_get-variant-name($size)} {
     .#{$select-selector}__inner {
-      font-size: map-get($props, 'font-size');
+      font-size: map.get($props, 'font-size');
     }
     .#{$select-selector}__input {
-      padding: map-get($props, 'padding');
+      padding: map.get($props, 'padding');
       padding-left: 0;
     }
   }
@@ -132,8 +133,8 @@ $select-selector: 'choices' !default;
 
       border-radius: _map-deep-get($props, 'default', 'border-radius');
       $after: _map-deep-get($props, default, after);
-      $default: map-get($props, default);
-      $default: map_remove($default, after);
+      $default: map.get($props, default);
+      $default: map.remove($default, after);
 
       @include css-map($default);
 
@@ -217,7 +218,7 @@ $select-selector: 'choices' !default;
     bottom: 100%;
     margin-top: 0;
     border-radius: $dropdown-menu-b-r $dropdown-menu-b-r 0 0;
-    border-top-width: map-get($dropdown-menu, 'border-width');
+    border-top-width: map.get($dropdown-menu, 'border-width');
     border-bottom-width: 0;
     transform-origin: center bottom;
   }

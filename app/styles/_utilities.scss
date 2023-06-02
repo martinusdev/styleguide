@@ -1,7 +1,9 @@
 // stylelint-disable
 
+@use 'sass:map';
+
 $utilities: () !default;
-$utilities: map-merge(
+$utilities: map.merge(
     (
       // scss-docs-start utils-display
       "display": (
@@ -18,43 +20,43 @@ $utilities: map-merge(
         responsive: true,
         property: margin,
         class: m,
-        values: map-merge($spacers, (auto: auto))
+        values: map.merge($spacers, (auto: auto))
       ),
       "margin-x": (
         responsive: true,
         property: margin-right margin-left,
         class: mx,
-        values: map-merge($spacers, (auto: auto))
+        values: map.merge($spacers, (auto: auto))
       ),
       "margin-y": (
         responsive: true,
         property: margin-top margin-bottom,
         class: my,
-        values: map-merge($spacers, (auto: auto))
+        values: map.merge($spacers, (auto: auto))
       ),
       "margin-top": (
         responsive: true,
         property: margin-top,
         class: mt,
-        values: map-merge($spacers, (auto: auto))
+        values: map.merge($spacers, (auto: auto))
       ),
       "margin-right": (
         responsive: true,
         property: margin-right,
         class: mr,
-        values: map-merge($spacers, (auto: auto))
+        values: map.merge($spacers, (auto: auto))
       ),
       "margin-bottom": (
         responsive: true,
         property: margin-bottom,
         class: mb,
-        values: map-merge($spacers, (auto: auto))
+        values: map.merge($spacers, (auto: auto))
       ),
       "margin-left": (
         responsive: true,
         property: margin-left,
         class: ml,
-        values: map-merge($spacers, (auto: auto))
+        values: map.merge($spacers, (auto: auto))
       ),
       // Padding utilities
       "padding": (
@@ -116,7 +118,7 @@ $utilities: map-merge(
       "color": (
         property: color,
         class: text-color,
-        values: map-merge(
+        values: map.merge(
             $utilities-text-colors,
             (
               "reset": inherit,
@@ -128,7 +130,7 @@ $utilities: map-merge(
       "background-color": (
         property: background-color,
         class: bg,
-        values: map-merge(
+        values: map.merge(
             $utilities-bg-colors,
             (
               "transparent": transparent

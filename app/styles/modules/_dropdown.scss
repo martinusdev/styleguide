@@ -2,6 +2,8 @@
 // DROPDOWN
 // ---------------------------------------------
 
+@use 'sass:map';
+
 @mixin dropdown-visible-arrowhead () {
   transform: scale(1, 1) translateX(-50%);
 }
@@ -60,7 +62,7 @@
 @mixin dropdown-item-focus (
   $dropdown-menu-item: $dropdown-menu-item
 ) {
-  @each $prop, $value in map-get($dropdown-menu-item, 'focus') {
+  @each $prop, $value in map.get($dropdown-menu-item, 'focus') {
     #{$prop}: #{$value};
   }
 }
@@ -72,7 +74,7 @@
   flex-wrap: nowrap;
   white-space: normal;
 
-  @each $prop, $value in map-get($dropdown-menu-item, 'default') {
+  @each $prop, $value in map.get($dropdown-menu-item, 'default') {
     #{$prop}: #{$value};
   }
 
@@ -83,7 +85,7 @@
   }
 
   &--small {
-    @each $prop, $value in map-get($dropdown-menu-item, 'small') {
+    @each $prop, $value in map.get($dropdown-menu-item, 'small') {
       #{$prop}: #{$value};
     }
   }

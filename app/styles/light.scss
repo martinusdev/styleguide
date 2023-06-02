@@ -1,5 +1,7 @@
 // stylelint-disable
 
+@use 'sass:map';
+
 // VENDORS
 @import 'vendors/custom-scrollbar/jquery.mCustomScrollbar';
 @import 'vendors/prettify/prettify';
@@ -59,8 +61,8 @@ $breakpoints: (
   $content-sidepadding: 50px !default;
   $content-sidepadding-m: 30px !default;
 
-  $hide-contents-width: map-get($breakpoints, xxl);
-  $hide-nav-width: map-get($breakpoints, xl);
+  $hide-contents-width: map.get($breakpoints, xxl);
+  $hide-nav-width: map.get($breakpoints, xl);
 
 // -----------------------
 // MAIN
