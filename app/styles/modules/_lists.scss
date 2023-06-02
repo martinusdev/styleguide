@@ -9,8 +9,10 @@
 // ----------------------------
 // LISTS
 
+@use 'sass:map';
+
 %list-counter {
-  $size: map-get($list-counter, size);
+  $size: map.get($list-counter, size);
   content: counter(section);
   display: block;
   counter-increment: section;
@@ -86,7 +88,7 @@
     }
 
     .card__content > & {
-      border-radius: map-get($card, 'border-radius');
+      border-radius: map.get($card, 'border-radius');
     }
   }
 

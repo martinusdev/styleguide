@@ -14,6 +14,8 @@
 // Base
 
 @use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
 
 /// Applies base button styles used for every button-base
 /// @param {map} $states - Map of button states
@@ -50,7 +52,7 @@
 
 @mixin generate-color($states, $prop, $type) {
   @if not _map-deep-get($states, $type, $prop) {
-    #{$prop}: _color(_map-deep-get($states, 'default', $prop), map-get($button-color-weights, $type));
+    #{$prop}: _color(_map-deep-get($states, 'default', $prop), map.get($button-color-weights, $type));
   }
 };
 
@@ -144,7 +146,7 @@
 
   @each $variant, $values in $button-sizes {
     &.btn#{_get-variant-name($variant)} {
-      @include equilateral-button-sizing( nth(map-get($values, 'padding'), 1) );
+      @include equilateral-button-sizing( list.nth(map.get($values, 'padding'), 1) );
     }
   }
 
@@ -235,8 +237,8 @@
     @each $icon-variant, $icon-size in $icon-sizes {
       .btn#{_get-variant-name($button-variant)} .icon--#{$icon-variant} {
         // TODO this is still not good enought pls revisit later
-        $scale: _strip-units(map-get($button-size, font-size)) * _strip-units($icon-size) * _map-deep-get($button, default, line-height);
-        $margin: math.div(-(abs((1 - $scale * 1.1))), 2);
+        $scale: _strip-units(map.get($button-size, font-size)) * _strip-units($icon-size) * _map-deep-get($button, default, line-height);
+        $margin: math.div(-(math.abs((1 - $scale * 1.1))), 2);
 
         width: #{$scale}rem;
         height: #{$scale}rem;
@@ -408,7 +410,7 @@
   @each $name, $props in $button-styles {
     .btn#{_get-variant-name($name)} {
       @if not _map-deep-get($props, 'group', 'border-color') {
-        border-color: _color(_map-deep-get($props, 'default', 'border-color'), map-get($button-color-weights, button-group-border));
+        border-color: _color(_map-deep-get($props, 'default', 'border-color'), map.get($button-color-weights, button-group-border));
       } @else {
         border-color: _map-deep-get($props, 'group', 'border-color');
       }

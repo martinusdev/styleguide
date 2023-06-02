@@ -11,6 +11,8 @@
 // ---------------------------------------------
 // TYPOGRAPHY UTILITIES
 
+@use 'sass:map';
+
 .line-large { line-height: 2; }
 .line-default { line-height: _map-deep-get($typography-settings, 'default', 'base-line-height'); }
 .line-medium { line-height: 1.333; }
@@ -74,7 +76,7 @@
 
 // Visibility utilities
 @mixin show-for($breakpoint) {
-  @if map-get($grid-breakpoints, $breakpoint) {
+  @if map.get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint, downfrom) {
       display: none !important;
     }
@@ -84,7 +86,7 @@
 }
 
 @mixin hide-for($breakpoint) {
-  @if map-get($grid-breakpoints, $breakpoint) {
+  @if map.get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint) {
       display: none !important;
     }
@@ -113,7 +115,7 @@
 }
 
 @mixin hide-for-only($breakpoint) {
-  @if map-get($grid-breakpoints, $breakpoint) {
+  @if map.get($grid-breakpoints, $breakpoint) {
     @include breakpoint($breakpoint, only) {
       display: none !important;
     }

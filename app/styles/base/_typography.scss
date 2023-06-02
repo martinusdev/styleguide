@@ -7,6 +7,8 @@
 // Text
 // Lists
 
+@use 'sass:map';
+
 /// Typographt generator based on modular scale, rounded to whole pixels.
 /// Online calculator http://www.modularscale.com/
 @mixin typography-sizes() {
@@ -15,17 +17,17 @@
   @each $breakpoint, $values in $typography-settings {
     @include breakpoint($breakpoint) {
 
-      $base-font-size: map-get($values, base-font-size);
+      $base-font-size: map.get($values, base-font-size);
 
       html {
         font-size: _get-rem($base-font-size, 16px);
-        line-height: map-get($values, base-line-height);
+        line-height: map.get($values, base-line-height);
       }
 
       p {
         margin-top: 0;
         margin-bottom: _get-space();
-        line-height: map-get($values, base-line-height);
+        line-height: map.get($values, base-line-height);
       }
 
       @each $heading in $heading-tags {

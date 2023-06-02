@@ -6,6 +6,8 @@
 // MIXINS
 
 @use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
 
 @mixin color(
   $color-fallback,
@@ -18,7 +20,7 @@
 @mixin font-size(
   $font-size,
   $font-size-r: $default-font-size) {
-  $font-size: round($font-size);
+  $font-size: math.round($font-size);
   font-size: $font-size;
   font-size: math.div($font-size, $default-font-size) * 1rem;
 }
@@ -261,13 +263,13 @@
 @function _map-next($map, $key, $return: 'value') {
 
   // Store the keys of the map as a list
-  $values: map-keys($map);
+  $values: map.keys($map);
 
   $i: 0;
 
   // If the Key Exists, Get the index of the key within the map and add 1 to it for the next breakpoint in the map
   @if (map-has-key($map, $key)) {
-    $i: index($values, $key) + 1;
+    $i: list.index($values, $key) + 1;
   }
 
   // If the key doesn't exist, or it's the last key in the map, return null
@@ -277,9 +279,9 @@
   // Otherwise, return the value
   @else {
     @if $return == 'value' {
-      @return map-get($map, nth($values, $i));
+      @return map.get($map, list.nth($values, $i));
     } @else {
-      @return nth($values, $i);
+      @return list.nth($values, $i);
     }
   }
 }
@@ -294,7 +296,7 @@
       $value: $value * $number;
     }
   } @else if ( $exponent < 0 ) {
-    $value: math.div(1, _pow($number, abs($exponent)));
+    $value: math.div(1, _pow($number, math.abs($exponent)));
   }
 
   @return $value;
@@ -312,7 +314,7 @@
 ///   ...
 @function _get-space($size: 'medium', $local-font-size: null) {
   @if map-has-key($spaces, $size) {
-    $space: map-get($spaces, $size);
+    $space: map.get($spaces, $size);
 
     @if ($local-font-size) {
       @return if(unit($space) == 'em', $space, _get-rem($space, $local-font-size));
@@ -344,9 +346,9 @@
 /// @param {Map} $map - Map to extract last key from
 /// @return {String} - The last key in provided map
 @function _get-last-key($map) {
-  $keys: map-keys($map);
+  $keys: map.keys($map);
 
-  @return nth($keys, length($map));
+  @return list.nth($keys, length($map));
 }
 
 /// Get breakpoint map - Converts a string to a single-value breakpoint map for responsive use
@@ -367,7 +369,7 @@
 @function _map-deep-get($map, $keys...) {
   @each $key in $keys {
     @if (type-of($map) == map ) {
-      $map: map-get($map, $key);
+      $map: map.get($map, $key);
     }
   }
 
@@ -383,7 +385,7 @@
 
 @function _color($theme, $weight: 500) {
   @if map-has-key($color-palette, $theme) {
-    $color-theme: map-get($color-palette, $theme);
+    $color-theme: map.get($color-palette, $theme);
     $color: null;
 
     // if color is type of color, eg. no map
@@ -392,9 +394,9 @@
     }
 
     @if map-has-key($color-theme, $weight) {
-      $color: map-get($color-theme, $weight);
+      $color: map.get($color-theme, $weight);
     } @else {
-      $base-color: map-get($color-theme, 500);
+      $base-color: map.get($color-theme, 500);
       $color: _color-shade($base-color, $weight);
     }
 
