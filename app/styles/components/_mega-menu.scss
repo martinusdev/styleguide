@@ -3,17 +3,12 @@
 .mega-menu {
   display: none;
   position: fixed;
-  top: map.get($header-height, default);
   left: 50%;
   right: 0;
   width: 100%;
   max-width: 1180px;
   background-color: $color-white;
   transform: translateX(-50%);
-
-  @include breakpoint(m) {
-    top: map.get($header-height, 'm');
-  }
 
   &.is-active {
     display: flex;
