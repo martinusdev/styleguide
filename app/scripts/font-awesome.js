@@ -179,7 +179,7 @@ import {
   faMagnifyingGlassPlus,
   faMagnifyingGlassMinus,
   faTreeChristmas,
-  faEllipsis, faBookArrowUp, faBookBlank, faEyeSlash
+  faEllipsis, faBookArrowUp, faBookBlank, faEyeSlash, faPhone
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
@@ -395,7 +395,8 @@ library.add(
   faEllipsis,
   faBookBlank,
   faBookArrowUp,
-  faTriangleExclamation
+  faTriangleExclamation,
+  faPhone
 );
 
 dom.watch();
