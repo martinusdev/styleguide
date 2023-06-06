@@ -131,13 +131,18 @@
 
   &__topbar {
     background-color: #262422;
-    padding: _get-space('small') 0;
     width: 100%;
     order: 2;
     display: none;
 
+    &__banner {
+      max-height: 36px;
+      width: auto;
+    }
+
     nav {
       display: flex;
+      padding: _get-space('small') 0;
       gap: _get-space('medium');
       align-items: center;
 
@@ -160,6 +165,10 @@
 
       nav {
         justify-content: flex-end;
+
+        a:last-child {
+          padding-right: 0;
+        }
       }
     }
   }
