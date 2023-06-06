@@ -129,14 +129,24 @@
   z-index: $z-index-topbar;
   margin-bottom: 5px;
 
+  @include breakpoint(m) {
+    top: -40px;
+
+    &__mainbar {
+      position: sticky;
+      top: 0;
+    }
+  }
+
   &__topbar {
     background-color: #262422;
     width: 100%;
     order: 2;
     display: none;
+    height: auto;
 
     &__banner {
-      max-height: 36px;
+      height: 36px;
       width: auto;
     }
 
@@ -148,6 +158,7 @@
 
       a {
         display: block;
+        color: _color(grey, 200);
 
         &:last-child {
           padding-right: _get-space('medium');
@@ -162,6 +173,7 @@
     @include breakpoint(m) {
       order: 0;
       display: block;
+      height: 40px;
 
       nav {
         justify-content: flex-end;
