@@ -10,62 +10,14 @@ include ./mixins/faIcon
 include ./mixins/collectionItem
 
 block opts
-    - var pageTitle = 'Detail knihy';
-    - var bookHeader = true;
-    - var pageClass = 'is-consent';
+  - var pageTitle = 'Detail knihy';
+  - var bookHeader = true;
+  - var pageClass = 'is-consent';
+  - var headerWarningActive = false;
 
 block content
   main
     div(data-sticky-container)
-      section.section--secondary.section.section--toolbar.hide-m(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default)
-        .wrapper-main
-          .bar.bar--small.mb-small
-            .bar__item.bar__item--fill
-              .btn-layout.btn-layout--vertical
-                .btn-dropdown.m-none
-                  button.btn.btn--clean.btn--lowercase.btn--icon-right.text-left(
-                    data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                    data-toggle-expand,
-                    aria-haspopup="true"
-                  )
-                    span.text-size-medium Slovenčina, pevná väzba#{' '}
-                    span.text-color-grey.text-nowrap 12,99 €
-                    +icon('chevron-down', 'icon-dropdown').icon--medium
-                  .dropdown(data-dropdown, data-toggle-expand)
-                    .dropdown__wrap
-                      a(href="#").dropdown__item.text-wrap
-                        .bar.mb-none
-                          .bar__item.bar__item--fill
-                            div Slovenčina, e-kniha
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
-                            .text-semibold.text-color-black 18,00 €
-                            .text-color-grey -10%
-                      a(href="#").dropdown__item.text-wrap
-                        .bar.mb-none
-                          .bar__item.bar__item--fill
-                            div Slovenčina, brožovaná väzba
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
-                            .text-semibold.text-color-black 16,00 €
-                            .text-color-grey -10%
-                      a(href="#").dropdown__item.text-wrap
-                        .bar.mb-none
-                          .bar__item.bar__item--fill
-                            div Český jazyk, E-kniha
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
-                            .text-semibold.text-color-black 8,00 €
-                            .text-color-grey -5%
-                      a(href="#").dropdown__item.text-wrap
-                        .bar.mb-none
-                          .bar__item.bar__item--fill
-                            div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
-                            .text-color-grey Posielame ihneď
-                          .bar__item.text-right
-                            .text-semibold.text-color-black 12,00 €
-                            .text-color-grey -2%
-
       section.section--breadcrumbs
         .wrapper-main
           .bar.mb-none
@@ -98,49 +50,6 @@ block content
                       .alert.alert--error-light Váš prehliadač nepodporuje HTML5 audio prehrávač.
 
             article.col--7.col--s-9.col--m-8.col--l-6
-
-              .btn-dropdown.mb-small.show-m
-                button.btn.btn--small.btn--ghost.btn--icon-right.text-left(
-                  data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
-                  data-toggle-expand,
-                  aria-haspopup="true"
-                )
-                  | Slovenčina, pevná väzba
-                  +icon('chevron-down', 'icon-dropdown').icon--medium
-                .dropdown(data-dropdown, data-toggle-expand)
-                  .dropdown__wrap
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.mb-none
-                        .bar__item.bar__item--fill
-                          div Slovenčina, e-kniha
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 18,00 €
-                          .text-color-grey -10%
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.mb-none
-                        .bar__item.bar__item--fill
-                          div Slovenčina, brožovaná väzba
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 16,00 €
-                          .text-color-grey -10%
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.mb-none
-                        .bar__item.bar__item--fill
-                          div Český jazyk, E-kniha
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 8,00 €
-                          .text-color-grey -5%
-                    a(href="#").dropdown__item.text-wrap
-                      .bar.text-small.mb-none
-                        .bar__item.bar__item--fill
-                          div Český jazyk, audio kniha Donec id elit non mi porta gravida at eget metus.
-                          .text-color-grey Posielame ihneď
-                        .bar__item.text-right
-                          .text-semibold.text-color-black 12,00 €
-                          .text-color-grey -2%
 
               h1.product-detail__title.mb-small Základy rybolovu pro kluky a holky
               h3.h4.product-detail__subtitle.mb-small Praktický návod ako stretnúť, spoznať a získať ženu svojich snov
@@ -475,7 +384,7 @@ block content
                           dd 330g
                         dl
                           dt Jazyk
-                          dd slovenský
+                          dd sloveský
                         dl
                           dt ISBN
                           dd 9788055153025

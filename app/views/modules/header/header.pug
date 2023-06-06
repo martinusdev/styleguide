@@ -4,6 +4,33 @@ include ./../../mixins/faIcon
 block opts
 
 -
+  const topNav = [
+    {
+      icon: 'shipping-fast',
+      title: 'Doručenie'
+    },
+    {
+      icon: 'map-marker-alt',
+      title: 'Kníhkupectvá'
+    },
+    {
+      icon: 'owl',
+      iconType: 'legacy',
+      title: 'Knihovrátok'
+    },
+    {
+      icon: 'gift-card',
+      title: 'Darčekové poukážky'
+    },
+    {
+      icon: 'feather',
+      title: 'Knižný blog'
+    },
+    {
+      icon: 'phone',
+      title: 'Kontakt'
+    }]
+-
   const mainNav = [{
     title: 'Knihy',
     trigger: 'mega-menu-knihy',
@@ -30,6 +57,18 @@ block opts
 
   header.header
     .header__wrapper()
+      .header__topbar
+          .wrapper-main.overflow-scroll-x.d-m-flex.justify-content-between.align-items-center
+            img(src=`${assetsPrefix}images/content/banner-header.png`, alt="Reklama", width=100, height=100).header__topbar__banner.show-m
+            nav.text-size-medium
+              for item in topNav
+                a.link--white(href="#")
+                  if (item.iconType === 'legacy')
+                    +icon(item.icon, 'fa-md').mr-tiny
+                  else
+                    +faIcon(item.icon).mr-tiny
+                  | #{item.title}
+
       .wrapper-main.position-relative
         if xmasLogo
           a(href="#")
