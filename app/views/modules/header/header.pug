@@ -58,9 +58,10 @@ block opts
   header.header
     .header__wrapper()
       .header__topbar
-          .wrapper-main.overflow-scroll-x.d-m-flex.justify-content-between.align-items-center
-            img(src=`${assetsPrefix}images/content/banner-header.png`, alt="Reklama", width=100, height=36).header__topbar__banner.show-m
-            nav.text-size-medium
+          .wrapper-main.overflow-scroll-x.d-m-flex.justify-content-between.align-items-end
+            .header__ad.flex-shrink-0
+              img(src=`${assetsPrefix}images/content/banner-header.png`, alt="Reklama", width=150, height=50)
+            nav.text-size-medium.ml-m-medium
               for item in topNav
                 a.link--white(href="#")
                   if (item.iconType === 'legacy')
@@ -82,20 +83,19 @@ block opts
             if bookHeader
               a(href="#").book-detail-show
                 img(src=`${assetsPrefix}images/content/logo-small.svg`, alt="Martinus")
-          .header__nav(class=bookClassHide)
-            .btn-layout.btn-layout--horizontal.mb-none
+          .header__nav(class=bookClassHide).px-l-medium
+            .d-flex.align-items-center.btn-dropdown.mb-none
               for item in mainNav
-                .btn-dropdown.m-none.show-l
-                  if item.trigger
-                    a.btn.btn--clean.header-btn(
-                    data-mega-menu-trigger=`#${item.trigger}`
-                    data-toggle="self",
-                    aria-haspopup="true"
-                    )= item.title
-                  else
-                    a.btn.btn--clean.header-btn(
-                      href=item.link
-                    )= item.title
+                if item.trigger
+                  a.btn.btn--clean.header-btn.show-l.text-nowrap(
+                  data-mega-menu-trigger=`#${item.trigger}`
+                  data-toggle="self",
+                  aria-haspopup="true"
+                  )= item.title
+                else
+                  a.btn.btn--clean.header-btn.text-nowrap.show-l(
+                    href=item.link
+                  )= item.title
               .btn-dropdown.m-none.btn-dropdown--no-icon.hide-l
                 a.btn.btn--clean.text-transform-upper.header-btn(
                 data-mega-menu-trigger=`#${mainNav[0].trigger}`
@@ -111,7 +111,7 @@ block opts
               img(src="images/content/campaign/xmas2017/header-promo.png", style="height: 50px;")
               | <style>.header__wrapper::after{background: #7d609a;}</style>
 
-          .flex-1.header__search.header-search
+          .flex-m-grow-1.mr-none.mr-m-tiny.header__search.header-search
             .hide-m.header-search__toggle.m-none
               button.btn.btn--clean.header-btn.mb-none(data-toggle=".header", data-toggle-class-target="is-search-active")
                 +faIcon('search').fa-lg

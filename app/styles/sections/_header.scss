@@ -145,9 +145,13 @@
     display: none;
     height: auto;
 
-    &__banner {
-      height: 36px;
-      width: auto;
+    .header__ad {
+      display: none;
+
+      img {
+        height: 36px;
+        width: auto;
+      }
     }
 
     nav {
@@ -174,6 +178,10 @@
       order: 0;
       display: block;
       height: 40px;
+
+      .header__ad {
+        display: block;
+      }
 
       nav {
         justify-content: flex-end;
@@ -308,7 +316,7 @@
   }
 
   .btn-dropdown > .header-btn {
-    padding-right: 0.5rem;
+    padding: _get-space('small');
     text-transform: none;
     letter-spacing: normal;
   }
