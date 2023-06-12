@@ -59,7 +59,8 @@ block opts
     .header__wrapper()
       .header__topbar
           .wrapper-main.overflow-scroll-x.d-m-flex.justify-content-between.align-items-center
-            img(src=`${assetsPrefix}images/content/banner-header.png`, alt="Reklama", width=100, height=36).header__topbar__banner.show-m
+            .header__ad.flex-shrink-0
+              img(src=`${assetsPrefix}images/content/banner-header.png`, alt="Reklama", width=150, height=50)
             nav.text-size-medium
               for item in topNav
                 a.link--white(href="#")
