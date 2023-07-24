@@ -1,6 +1,5 @@
-import Swiper, {
-  Navigation, Pagination, Parallax
-} from 'swiper';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Parallax } from 'swiper/modules';
 
 import { nodeListToArray } from './Utils';
 import { BREAKPOINTS } from './Const';
