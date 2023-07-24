@@ -72,14 +72,22 @@ export default class Tab {
       ) {
         isActive = true;
       }
+
+      const href = this.triggers[i].getAttribute('href');
+      let id = href.slice(1);
+
+      if (!href.startsWith('#')) {
+        id = Math.floor(Math.random() * Date.now()).toString(16);
+      }
+
       this.triggers[i].setAttribute('aria-selected', isActive);
       this.triggers[i].setAttribute(
         'aria-controls',
-        this.triggers[i].getAttribute('href').slice(1),
+        id,
       );
       this.triggers[i].setAttribute(
         'id',
-        `${this.triggers[i].getAttribute('href').slice(1)}-label`,
+        `${id}-label`,
       );
     }
     const tabNavContainers = document.querySelectorAll(
@@ -178,10 +186,14 @@ export default class Tab {
   }
 
   _onClick(e) {
-    if (!e.currentTarget.hasAttribute('href')) {
+    const href = e.currentTarget.getAttribute('href');
+
+    if (!href || !href.startsWith('#')) {
       return;
     }
-    const tab = document.querySelector(e.currentTarget.getAttribute('href'));
+
+    const tab = document.querySelector(href);
+
     this.toggleTab(tab);
     e.preventDefault();
   }
