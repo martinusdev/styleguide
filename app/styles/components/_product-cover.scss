@@ -32,6 +32,13 @@ a.product-cover--collection img {
     box-shadow: $shadow-md;
   }
 
+  &--ebook,
+  &--audiobook {
+    .product-cover__info-icon {
+      bottom: 15px;
+    }
+  }
+
   &--book::before {
     content: '';
     position: absolute;
@@ -41,8 +48,13 @@ a.product-cover--collection img {
     z-index: 1;
     width: 12px;
     border-radius: $default-border-radius;
-
     background: linear-gradient(to right, rgba(#000, 0.1) 0, rgba(#000, 0.1) 5px, rgba(#fff, 0.1) 5px, rgba(#fff, 0.1) 10px, rgba(#000, 0.1) 11px, rgba(#000, 0.1) 12px);
+  }
+
+  @include breakpoint('m', 'downfrom') {
+    &--book::before {
+      display: none;
+    }
   }
 
   &--collection {
@@ -73,6 +85,20 @@ a.product-cover--collection img {
     *:nth-child(n + 4) {
       display: none;
     }
+  }
+
+  &__info-icon {
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    position: absolute;
+    left: 3px;
+    bottom: 3px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 11px;
   }
 }
 
