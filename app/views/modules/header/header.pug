@@ -15,7 +15,7 @@ block opts
     },
     {
       icon: 'owl',
-      iconType: 'legacy',
+      iconSet: 'fak',
       title: 'Knihovrátok'
     },
     {
@@ -67,7 +67,7 @@ block opts
                   if (item.iconType === 'legacy')
                     +icon(item.icon, 'fa-md').mr-tiny
                   else
-                    +faIcon(item.icon).mr-tiny
+                    +faIcon(item.icon, `${item.iconSet ? item.iconSet : 'far'}`).mr-tiny
                   | #{item.title}
 
 

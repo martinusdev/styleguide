@@ -73,7 +73,6 @@ $color-palette: (
     700: #625d58,
     800: #595959,
     900: #474440,
-
   ),
   // colors
   yellow: (
@@ -441,7 +440,7 @@ $inline-list-item: (
 );
 
 $description-list: (
-  dt: map.merge(_map-deep-get($typography-overrides, null, 'h5, .h5'), ( margin-bottom: 0)),
+  dt: map.merge(_map-deep-get($typography-overrides, null, 'h5, .h5'), (margin-bottom: 0)),
   dd: (
     font-size: _get-rem($font-size-medium),
   )
@@ -470,25 +469,25 @@ $text-color-error: _color(error, 600);
 $text-color-success: _color(success, 500);
 
 $utilities-text-colors: map.merge($color-presets,
-(
-  primary-200: _color(primary, 200),
-  semiblack: $text-color-semiblack,
-  grey-light: $text-color-grey-light,
-  grey-dark: $text-color-grey-dark,
-  semiwhite: $text-color-semiwhite,
-  success: $text-color-success,
-  error: $text-color-error
-));
+  (
+    primary-200: _color(primary, 200),
+    semiblack: $text-color-semiblack,
+    grey-light: $text-color-grey-light,
+    grey-dark: $text-color-grey-dark,
+    semiwhite: $text-color-semiwhite,
+    success: $text-color-success,
+    error: $text-color-error
+  ));
 
 $utilities-bg-colors: map.merge($color-presets,
-(
-  default: $default-bg-color,
-  secondary: $secondary-bg-color,
-  teal: $teal-bg-color,
-  green: $green-bg-color,
-  blue: $blue-bg-color,
-  grey-dark: _color(grey, 900),
-));
+  (
+    default: $default-bg-color,
+    secondary: $secondary-bg-color,
+    teal: $teal-bg-color,
+    green: $green-bg-color,
+    blue: $blue-bg-color,
+    grey-dark: _color(grey, 900),
+  ));
 
 // ----------------------------
 // ICONS
@@ -1865,13 +1864,16 @@ $modal-content-box-shadow-sm-up: $shadow-lg !default;
 
 $modal-backdrop-bg: $color-black !default;
 $modal-backdrop-opacity: 0.8 !default;
+
 $modal-header-border-color: $border-color !default;
-$modal-footer-border-color: $modal-header-border-color !default;
 $modal-header-border-width: $modal-content-border-width !default;
-$modal-footer-border-width: $modal-header-border-width !default;
 $modal-header-padding-y: $modal-inner-padding !default;
 $modal-header-padding-x: $modal-inner-padding !default;
 $modal-header-padding: $modal-header-padding-y $modal-header-padding-x !default; // Keep this for backwards compatibility
+
+$modal-footer-bg: null !default;
+$modal-footer-border-color: $modal-header-border-color !default;
+$modal-footer-border-width: $modal-header-border-width !default;
 
 $modal-sm: 300px !default;
 $modal-md: 700px !default;

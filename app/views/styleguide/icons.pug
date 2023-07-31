@@ -21,8 +21,43 @@ block prepend content
 //- Content
 block append content
 
-  //- ICONS
+  // FONT AWESOME ICONS
   +content-section(contents[0])
+
+    +p It is possible to use the following sub-set of <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> Icons.
+    +p Using just HTML, the markup is: <code class='l-code-inline'>&lt;i class="fad fa-heart"&gt;&lt;/i&gt;</code>
+    +p For more instructions on markup, styles, sizing, and coloring, please refer to <a href="https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use" target="_blank">the official documentation</a>.
+
+    +demo
+      +demo-example
+        each icon in icons
+          each iconNames, iconStyle in icon
+            case iconStyle
+              when 'duotone'
+                - prefix = 'fad';
+              when 'regular'
+                - prefix = 'far';
+              when 'light'
+                - prefix = 'fal';
+              when 'brands'
+                - prefix = 'fab';
+              when 'kit'
+                - prefix = 'fak';
+              default
+                - prefix = 'fas';
+
+            +h3 #{iconStyle} (.#{prefix})
+            ul.l-icons
+              each iconName in iconNames
+                - const iconClass = `${prefix} fa-${iconName}`;
+
+                li(data-tooltip, title=iconClass).l-icons_item
+                  +faIcon(iconName, prefix).fa-lg
+                  br
+                  abbr(title=iconClass, data-clipboard, data-clipboard-msg-success='<small>skopírované</small>', data-clipboard-text=`${iconName}`).text-color-grey= iconName
+
+  //- ICONS
+  +content-section(contents[1])
 
     +p Here is preview of icon set used in this project. An icon can be created by using pug mixin <code class='l-code-inline'>+icon(iconName)</code>.
     +p Using just HTML, the markup is: <code class='l-code-inline'>&lt;svg class="icon"&gt;&lt;use xlink:href="#icon-iconName"&gt;&lt;/svg class="icon"&gt;</code>
@@ -156,352 +191,3 @@ block append content
               </li>
             </ul>
       //- end: demo
-
-    +content-sub-section('Accessibility')
-
-      +p Icons have two use cases:
-      ol
-        li Presentational icon accompanied by text. such icon does not need to be picked up by screenreaders and should have <span class="l-code-inline">role='presentation'</span> and <span class="l-code-inline">aria-hidden='true'</span> attributes on its svg tag.
-        li Content icon, that needs an accessible text alternative. A content icon might be a button that only holds an icon without any text. To make such an icon accessible, add <span class="l-code-inline">role='img'</span> and <span class="l-code-inline">aria-label='Text alternative'</span> attributes to its svg tag.
-      +p Luckily, the <span class="l-code-inline">+icon()</span> pug mixin can handle both cases. Passing an accessible text alternative as an <span class="l-code-inline">alt</span> paramter, automatically generates the markup for a content icon. To create a presentational icon, just omit the paramter.
-
-      +demo
-        +demo-example
-          ol
-            li
-              button.btn.btn--large.m-none
-                +icon-sg('sg-check', 'icon--left', '')
-                | Done
-              br
-              p(title=icon) I'm accompanied by button text, my purpose is purely presentational
-            li
-              button.btn.btn--large.m-none
-                +icon-sg('sg-settings', '', 'Settings')
-              br
-              p(title=icon) I clearly represent what will happen when the button is clicked. Therefore an accessbile text alternative is appropriate.
-        +demo-code
-          :code
-            <button class="btn btn--large">
-              <svg class="icon icon-check" role="img" aria-hidden="true">
-                <use xlink:href="#icon-check"></use>
-              </svg>
-              Done
-            </button>
-
-            <button class="btn btn--large">
-              <svg class="icon icon-settings" role="presentation" aria-label="Settings">
-                <use xlink:href="#icon-settings"></use>
-              </svg>
-            </button>
-          //- end: Accessibility
-
-  +content-section(contents[1])
-
-    +p It is possible to use the following sub-set of <a href="https://fontawesome.com/icons?d=gallery" target="_blank">Font Awesome</a> Icons.
-    +p Using just HTML, the markup is: <code class='l-code-inline'>&lt;i class="fad fa-heart"&gt;&lt;/i&gt;</code>
-    +p For more instructions on markup, styles, sizing, and coloring, please refer to <a href="https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use" target="_blank">the official documentation</a>.
-
-    +demo
-      +demo-example
-        each icon in icons
-          each iconNames, iconStyle in icon
-            case iconStyle
-              when 'duotone'
-                - prefix = 'fad';
-              when 'regular'
-                - prefix = 'far';
-              when 'light'
-                - prefix = 'fal';
-              when 'brands'
-                - prefix = 'fab';
-              default
-                - prefix = 'fas';
-
-            +h3 #{iconStyle} (.#{prefix})
-            ul.l-icons
-              each iconName in iconNames
-                - const iconClass = `${prefix} fa-${iconName}`;
-
-                li(data-tooltip, title=iconClass).l-icons_item
-                  +faIcon(iconName, prefix).fa-lg
-                  br
-                  abbr(title=iconClass).text-color-grey= iconName
-
-  +content-section(contents[2])
-
-    +p There are three basic image utilities: fluid, rounded and circle. Fluid utility gives image ability to change size coresponding to its parent. Circle and rounded utilities provides specific shapes for images.
-
-    +demo
-      +demo-example
-        figure.l-image
-          img(src=`${assetsPrefix}images/300x300.gif`, alt='placeholder').img.img--fluid
-        figure.l-image
-          img(src=`${assetsPrefix}images/150x150.gif`, alt='placeholder').img.img--rounded
-        figure.l-image
-          img(src=`${assetsPrefix}images/150x150.gif`, alt='placeholder').img.img--circle
-
-      +demo-code
-        :code
-          <img src="..." class="img img--fluid">
-          <img src="..." class="img img--rounded">
-          <img src="..." class="img img--circle">
-    //- end: demo
-  //- end: section
-
-  +content-section(contents[3], true)
-
-    +p Image thumbnails are defined in four sizes <code class='l-code-inline'>small/medium/medium-large/large/xlarge/huge</code> as shown on example below.
-
-    +demo
-      +demo-example
-        .bar.bar--wrap
-          .bar__item
-            .thumbnail.thumbnail--small
-              .thumbnail__img-wrap
-                img.img--fluid.img--circle(src='https://placehold.it/25x25')
-          .bar__item
-            .thumbnail.thumbnail--medium
-              .thumbnail__img-wrap
-                img.img--fluid.img--circle(src='https://placehold.it/50x50')
-          .bar__item
-            .thumbnail.thumbnail--medium-large
-              .thumbnail__img-wrap
-                img.img--fluid.img--circle(src='https://placehold.it/65x65')
-          .bar__item
-            .thumbnail.thumbnail--large
-              .thumbnail__img-wrap
-                img.img--fluid.img--circle(src='https://placehold.it/120x120')
-          .bar__item
-            .thumbnail.thumbnail--xlarge
-              .thumbnail__img-wrap
-                img.img--fluid.img--circle(src='https://placehold.it/170x170')
-          .bar__item
-            .thumbnail.thumbnail--huge
-              .thumbnail__img-wrap
-                img.img--fluid.img--circle(src='https://placehold.it/270x270')
-
-      +demo-code
-        :code
-          <div class="thumbnail thumbail--small">
-            <div class="thumbnail__img-wrap">
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--medium">
-            <div class="thumbnail__img-wrap">
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--medium-large">
-            <div class="thumbnail__img-wrap">
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--large">
-            <div class="thumbnail__img-wrap">
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--xlarge">
-            <div class="thumbnail__img-wrap">
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--huge">
-            <div class="thumbnail__img-wrap">
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-
-    +content-sub-section('Accessibility')
-      +p Thumbnails have a default max-height that crops tall images. To enable this behavior, wrap the <code class="l-code-inline">.img</code> iside a <code class="l-code-inline">.thumbnail__img-wrap</code>
-
-    +demo
-      +demo-example
-        .bar.bar--wrap
-          .bar__item
-            .thumbnail.thumbnail--small
-              .thumbnail__img-wrap
-                img.img--fluid(src='https://placehold.it/25x75')
-          .bar__item
-            .thumbnail.thumbnail--medium
-              .thumbnail__img-wrap
-                img.img--fluid(src='https://placehold.it/50x150')
-          .bar__item
-            .thumbnail.thumbnail--medium-large
-              .thumbnail__img-wrap
-                img.img--fluid(src='https://placehold.it/65x195')
-          .bar__item
-            .thumbnail.thumbnail--large
-              .thumbnail__img-wrap
-                img.img--fluid(src='https://placehold.it/120x360')
-          .bar__item
-            .thumbnail.thumbnail--xlarge
-              .thumbnail__img-wrap
-                img.img--fluid(src='https://placehold.it/170x510')
-          .bar__item
-            .thumbnail.thumbnail--huge
-              .thumbnail__img-wrap
-                img.img--fluid(src='https://placehold.it/270x810')
-
-      +demo-code
-        :code
-          <div class="thumbnail thumbail--small">
-            <div class="thumbnail__img-wrap>
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--medium">
-            <div class="thumbnail__img-wrap>
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--medium-large">
-            <div class="thumbnail__img-wrap>
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--large">
-            <div class="thumbnail__img-wrap>
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--xlarge">
-            <div class="thumbnail__img-wrap>
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-          <div class="thumbnail thumbail--huge">
-            <div class="thumbnail__img-wrap>
-              <img class="img" src="..." alt="...">
-            </div>
-          </div>
-
-
-    +content-sub-section('Variants')
-
-      +demo
-        +demo-example
-          .bar
-            .bar__item
-              | Book
-              .thumbnail.thumbnail--book.thumbnail--large
-                .thumbnail__img-wrap
-                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .bar__item
-              | Large shadow
-              .thumbnail.thumbnail--large-shadow.thumbnail--large
-                .thumbnail__img-wrap
-                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .bar__item
-              | Clickable
-              a.thumbnail.thumbnail--clickable.thumbnail--large
-                .thumbnail__img-wrap
-                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-          | Center
-          .thumbnail.thumbnail--center.thumbnail--large
-            .thumbnail__img-wrap
-              img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-
-        +demo-code
-          :code
-            <div class="thumbnail thumbnail--book">
-              <div class="thumbnail__img-wrap">
-                <img class="img" src="..." alt="...">
-              </div>
-            </div>
-
-            <div class="thumbnail thumbnail--large-shadow">
-              <div class="thumbnail__img-wrap">
-                <img class="img" src="..." alt="...">
-              </div>
-            </div>
-
-            <a class="thumbnail thumbnail--clickable">
-              <div class="thumbnail__img-wrap">
-                <img class="img" src="..." alt="...">
-              </div>
-            </a>
-
-            <div class="thumbnail thumbnail--center">
-              <div class="thumbnail__img-wrap">
-                <img class="img" src="..." alt="...">
-              </div>
-            </div>
-
-    +content-sub-section('Thumbnail status and thumbnail badge')
-
-      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with <code class='l-code-inline'>.thumbnail-badge</code> as discount coutdown is shown below.
-
-      +demo
-        +demo-example
-          .thumbnail.thumbnail--book.thumbnail--large
-            .thumbnail__img-wrap
-              img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-            .thumbnail__status
-              +discountBadge(duration)
-
-        +demo-code
-          :code
-            <div class="thumbnail--book thumbnail--large">
-              <div class="thumbnail__img-wrap">
-                <img class="img" src="..." alt="...">
-              </div>
-              <div class="thumbnail__status">
-                <div class="thumbnail-badge">
-                  <svg>...</svg>
-                  <span class="thumbnail-badge__value text">3 dni</span>
-                </div>
-              </div>
-            </div>
-
-    +content-sub-section('Thumbnail info')
-
-      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__info</code> which can contain for example rating or discount.
-
-      +demo
-        +demo-example
-          .bar
-            .bar__item
-              .thumbnail.thumbnail--book.thumbnail--large
-                .thumbnail__img-wrap
-                  img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                .thumbnail__info
-                  .badge
-                    +icon('star').text-color-yellow.icon--small
-                    |  3.5
-            .bar__item
-              .thumbnail.thumbnail--book.thumbnail--large
-                .thumbnail__img-wrap
-                  img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
-                .thumbnail__info
-                  .badge.badge--primary -50%
-
-        +demo-code
-          :code
-            <div class="thumbnail--book thumbnail--large">
-              <div class="thumbnail__img-wrap">
-                <img class="img" src="..." alt="...">
-              </div>
-              <div class="thumbnail__info">
-                ...
-              </div>
-            </div>
-
-    +content-sub-section('Portraits')
-
-      +p Portraits are fluid square divs with background image. They maintain aspect ratio, can be sized with --small, --medium, etc. (same as thumbnails). If you set image with other than 1:1 ratio, it is placed to cover either with or height and is centered.
-
-      +demo
-        +demo-example
-          .portrait.portrait--small.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-          .portrait.portrait--medium.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-          .portrait.portrait--medium-large.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-          .portrait.portrait--large.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-          .portrait.portrait--xlarge.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-          .portrait.portrait--huge.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-
-        +demo-code
-          :code
-            <div class="portrait" style="background-image: url('...');"></div>
-            <div class="portrait portrait--small" style="background-image: url('...');"></div>
