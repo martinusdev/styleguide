@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac-Sans/style.0f2ed26c.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.52212061.css">
+    <link rel="stylesheet" href="../styles/main.00e3d0f3.css">
     <link rel="stylesheet" href="../styles/light.f62a6f9d.css">
     <script src="../scripts/plugins/modernizr.d9c20825.js"></script>
   </head>
@@ -30,8 +30,6 @@
               <ul class="l-headnav_list nav">
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#modals" data-smoothscroll="#modals" data-toggle-target="#header-navigation" data-toggle="dropdown">Modals</a></li>
-                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#legacy-modals" data-smoothscroll="#legacy-modals" data-toggle-target="#header-navigation" data-toggle="dropdown">Legacy Styleguide Modals</a></li>
-                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#multiple-modals" data-smoothscroll="#multiple-modals" data-toggle-target="#header-navigation" data-toggle="dropdown">Multiple modals</a></li>
               </ul>
             </div>
           </div>
@@ -41,8 +39,6 @@
             <p class="l-nav-contents_headline">Contents</p>
             <ul class="l-nav-contents_list nav">
               <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#modals" data-smoothscroll="#modals">Modals</a></li>
-              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#legacy-modals" data-smoothscroll="#legacy-modals">Legacy Styleguide Modals</a></li>
-              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#multiple-modals" data-smoothscroll="#multiple-modals">Multiple modals</a></li>
             </ul>
           </aside>
           <section id="modals">
@@ -111,317 +107,6 @@
               <hr class="l-hr-section"/>
             </div>
           </section>
-          <section id="legacy-modals">
-            <div class="l-wrap-main">
-              <h2 class="l-h2">Legacy Styleguide Modals
-              </h2>
-              <p class="l-p">Modal window can contain text or any UI controls such as forms, buttons etc. Modal windows retain focus until dismissed or a required action has been taken.
-              </p>
-              <p class="l-p">Modal component is complex component containing <code class='l-code-inline'>.modal-overlay</code> as main wrapper <code class='l-code-inline'>.modal</code> as window wrapper, <code class='l-code-inline'>.modal__wrap</code> as wrapper for modal body and <code class='l-code-inline'>.modal__header</code>, <code class='l-code-inline'>.modal__content</code> and <code class='l-code-inline'>.modal__footer</code> as inner sections of modal window. Modal window component can be created by following HTML structure in example below.
-              </p>
-              <div class="l-box-desc l-box-warn">
-                <p class="l-box-desc_headline">Javascript dependency</p>
-                <p class="l-p">Modal component is using <a href="js-toggle${assetsPrefix}" class='l-a'>Toggle</a> javascript module, to show and hide window.
-                </p>
-              </div>
-              <div class="l-box-desc l-box-note">
-                <p class="l-box-desc_headline">Note</p>
-                <p class="l-p">Larger modal window can be created by using additional class on <code class='l-code-inline'>.modal</code> element <code class='l-code-inline'>.modal-large</code>.
-                </p>
-              </div>
-              <article class="l-demo">
-                <div class="l-demo_example">
-                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
-                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
-                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
-                      </svg></a>
-                  </div>
-                  <button class="btn" type="button" data-toggle="#modal-demo">Show modal</button>
-                  <div class="modal-overlay" id="modal-demo" data-modal>
-                    <article class="modal">
-                      <div class="modal__wrap">
-                        <header class="modal__header">
-                          <h3 class="modal__header__headline">Headline</h3>
-                          <div class="modal__header__action">
-                            <button class="btn btn--link" data-toggle="#modal-demo" type="button">
-                              <svg class="icon icon-sg-close icon--medium" role="presentation" aria-label="Close">
-                                <use xlink:href="../icons_/styleguide.svg#icon-sg-close"></use>
-                              </svg>
-                            </button>
-                          </div>
-                        </header>
-                        <section class="modal__content">
-                          <p>Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.</p>
-                          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                          <div class="form-control">
-                            <input class="input" type="text" placeholder="Input">
-                          </div>
-                        </section>
-                        <footer class="modal__footer">
-                          <div class="btn-layout--horizontal justify-content-end">
-                            <button class="btn btn--link" type="button" data-toggle="#modal-demo">Cancel</button>
-                            <button class="btn btn--link" type="button" data-toggle="#modal-demo2">Open another modal</button>
-                          </div>
-                        </footer>
-                      </div>
-                    </article>
-                  </div>
-                  <div class="modal-overlay" id="modal-demo2" data-modal>
-                    <article class="modal">
-                      <div class="modal__wrap">
-                        <header class="modal__header">
-                          <h3 class="modal__header__headline">Another modal</h3>
-                          <div class="modal__header__action">
-                            <button class="btn btn--link" data-toggle="#modal-demo2" type="button">
-                              <svg class="icon icon-sg-close icon--medium" role="presentation" aria-label="Close">
-                                <use xlink:href="../icons_/styleguide.svg#icon-sg-close"></use>
-                              </svg>
-                            </button>
-                          </div>
-                        </header>
-                        <section class="modal__content">
-                          <p class="mt-none">Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.</p>
-                          <div class="form-control">
-                            <input class="input" type="text" placeholder="Input">
-                          </div>
-                        </section>
-                        <footer class="modal__footer">
-                          <div class="btn-layout--horizontal justify-content-end">
-                            <button class="btn btn--link" type="button" data-toggle="#modal-demo2">Cancel</button>
-                            <button class="btn btn--link" type="button" data-toggle="#modal-demo">Open previous modal</button>
-                          </div>
-                        </footer>
-                      </div>
-                    </article>
-                  </div>
-                </div>
-                <div class="l-demo_code">
-                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                  <pre class="prettyprint"><code>&lt;!-- toggle button --&gt;
-&lt;button class=&quot;btn&quot; type=&quot;button&quot; data-toggle=&quot;&#35;modal-demo&quot; data-toggle-self=&quot;false&quot;&gt;Show modal&lt;/button&gt;
-
-&lt;!-- modal --&gt;
-&lt;div class=&quot;modal-overlay active&quot; id=&quot;modal-demo&quot;&gt;
-  &lt;article class=&quot;modal&quot;&gt;
-    &lt;div class=&quot;modal__wrap&quot;&gt;
-      &lt;header class=&quot;modal__header&quot;&gt;
-        &lt;div class=&quot;modal__header__headline&quot;&gt;
-          &lt;h3 class=&quot;m-none&quot;&gt;Headline&lt;/h3&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;modal__header__action&quot;&gt;
-          &lt;a class=&quot;btn btn--link&quot; data-toggle=&quot;&#35;modal-demo&quot;&gt;
-            ...
-          &lt;/a&gt;
-        &lt;/div&gt;
-      &lt;/header&gt;
-
-      &lt;section class=&quot;modal__content&quot;&gt;
-        ...
-      &lt;/section&gt;
-
-      &lt;footer class=&quot;modal__footer&quot;&gt;
-        &lt;div class=&quot;row btn-layout--horizontal justify-content-end&quot;&gt;
-          &lt;button class=&quot;btn btn--small btn--link&quot; type=&quot;button&quot; data-toggle=&quot;&#35;modal-demo&quot;&gt;Cancel&lt;/button&gt;
-          &lt;button class=&quot;btn btn--small btn--link&quot; type=&quot;button&quot; data-toggle=&quot;&#35;modal-demo&quot;&gt;Ok&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/footer&gt;
-    &lt;/div&gt;
-  &lt;/article&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-              </article>
-              <div class="l-sub-section" id="">
-                <h3 class="l-h3">Modal sizes
-                </h3>
-                <p class="l-p">Modals comes in three sizes <code class='l-code-inline'>.modal--[default/medium/full]</code>.
-                </p>
-                <p class="l-p"><code class='l-code-inline'>.modal--full</code> behaves same as <code class='l-code-inline'>.wrapper-main</code> in terms of width dimensions, but it also fill height of the viewport.
-                </p>
-                <article class="l-demo">
-                  <div class="l-demo_example">
-                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
-                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
-                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
-                        </svg></a>
-                    </div>
-                    <div class="row">
-                      <div class="col--m-4">
-                        <div class="btn-layout btn-layout--vertical">
-                          <button class="btn" type="button" data-toggle="#modal-default">Show modal default</button>
-                          <button class="btn" type="button" data-toggle="#modal-medium">Show modal medium</button>
-                          <button class="btn" type="button" data-toggle="#modal-full">Show modal full</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-overlay" id="modal-default" data-modal>
-                    <article class="modal">
-                      <div class="modal__wrap">
-                        <header class="modal__header">
-                          <h3 class="modal__header__headline">Headline</h3>
-                          <div class="modal__header__action">
-                            <button class="btn btn--link" data-toggle="#modal-default" type="button">
-                              <svg class="icon icon-sg-close icon--medium" role="presentation" aria-label="Close">
-                                <use xlink:href="../icons_/styleguide.svg#icon-sg-close"></use>
-                              </svg>
-                            </button>
-                          </div>
-                        </header>
-                        <section class="modal__content">
-                          <p>Default modal</p>
-                        </section>
-                      </div>
-                    </article>
-                  </div>
-                  <div class="modal-overlay" id="modal-medium" data-modal>
-                    <article class="modal modal--medium">
-                      <div class="modal__wrap">
-                        <header class="modal__header">
-                          <h3 class="modal__header__headline">Headline</h3>
-                          <div class="modal__header__action">
-                            <button class="btn btn--link" data-toggle="#modal-medium" type="button">
-                              <svg class="icon icon-sg-close icon--medium" role="presentation" aria-label="Close">
-                                <use xlink:href="../icons_/styleguide.svg#icon-sg-close"></use>
-                              </svg>
-                            </button>
-                          </div>
-                        </header>
-                        <section class="modal__content">
-                          <p>Default medium width</p>
-                        </section>
-                      </div>
-                    </article>
-                  </div>
-                  <div class="modal-overlay" id="modal-full" data-modal>
-                    <article class="modal modal--full">
-                      <div class="modal__wrap">
-                        <header class="modal__header">
-                          <h3 class="modal__header__headline">Headline</h3>
-                          <div class="modal__header__action">
-                            <button class="btn btn--link" data-toggle="#modal-full" type="button">
-                              <svg class="icon icon-sg-close icon--medium" role="presentation" aria-label="Close">
-                                <use xlink:href="../icons_/styleguide.svg#icon-sg-close"></use>
-                              </svg>
-                            </button>
-                          </div>
-                        </header>
-                        <section class="modal__content">
-                          <p>Default full width</p>
-                        </section>
-                      </div>
-                    </article>
-                  </div>
-                  <div class="l-demo_code">
-                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                    <pre class="prettyprint"><code>&lt;article class=&quot;modal&quot;&gt;...&lt;/article&gt;
-&lt;article class=&quot;modal modal--medium&quot;&gt;...&lt;/article&gt;
-&lt;article class=&quot;modal modal--full&quot;&gt;...&lt;/article&gt;
-</code></pre>
-                  </div>
-                </article>
-              </div>
-              <hr class="l-hr-section"/>
-            </div>
-          </section>
-          <section id="multiple-modals">
-            <div class="l-wrap-main">
-              <h2 class="l-h2">Multiple modals
-              </h2>
-              <p class="l-p">By default, having two open modals is not allowed. When you try to open a second modal, the first one gets closed automatically. To enable multiple open modals, all modal overlays need <code class="l-code-inline">[data-modal-allow-multiple]</code> attribute.
-              </p>
-              <article class="l-demo">
-                <div class="l-demo_example">
-                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
-                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
-                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
-                      </svg></a>
-                  </div>
-                  <button class="btn" type="button" data-toggle="#modal-demo-multiple">Show modal</button>
-                  <div class="modal-overlay" id="modal-demo-multiple" data-modal data-modal-allow-multiple>
-                    <article class="modal">
-                      <div class="modal__wrap">
-                        <header class="modal__header">
-                          <h3 class="modal__header__headline">Headline</h3>
-                          <div class="modal__header__action">
-                            <button class="btn btn--link" data-toggle="#modal-demo-multiple" type="button">
-                              <svg class="icon icon-close icon--medium" role="presentation" aria-label="Close">
-                                <use xlink:href="../icons_/app.svg#icon-close"></use>
-                              </svg>
-                            </button>
-                          </div>
-                        </header>
-                        <section class="modal__content">
-                          <p>Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.</p>
-                          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur. Nullam quis risus eget urna mollis ornare vel eu leo. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                        </section>
-                        <footer class="modal__footer">
-                          <div class="btn-layout--horizontal justify-content-end">
-                            <button class="btn btn--link" type="button" data-toggle="#modal-demo-multiple">Cancel</button>
-                            <button class="btn btn--link" type="button" data-toggle="#modal-demo-multiple-2">Open another modal</button>
-                          </div>
-                        </footer>
-                      </div>
-                    </article>
-                  </div>
-                  <div class="modal-overlay" id="modal-demo-multiple-2" data-modal data-modal-allow-multiple>
-                    <article class="modal">
-                      <div class="modal__wrap">
-                        <header class="modal__header">
-                          <h3 class="modal__header__headline">Another modal</h3>
-                          <div class="modal__header__action">
-                            <button class="btn btn--link" data-toggle="#modal-demo-multiple-2" type="button">
-                              <svg class="icon icon-close icon--medium" role="presentation" aria-label="Close">
-                                <use xlink:href="../icons_/app.svg#icon-close"></use>
-                              </svg>
-                            </button>
-                          </div>
-                        </header>
-                        <section class="modal__content">
-                          <p class="mt-none">Lorem ipsum Sint commodo commodo enim tempor fugiat et voluptate quis proident magna labore ut aute esse voluptate in reprehenderit consequat laborum sit eu dolore non amet Excepteur deserunt.</p>
-                        </section>
-                        <footer class="modal__footer">
-                          <div class="btn-layout--horizontal justify-content-end">
-                            <button class="btn btn--link" type="button" data-toggle="#modal-demo-multiple-2">OK</button>
-                          </div>
-                        </footer>
-                      </div>
-                    </article>
-                  </div>
-                </div>
-                <div class="l-demo_code">
-                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                  <pre class="prettyprint"><code>&lt;!-- toggle button --&gt;
-&lt;button class=&quot;btn active&quot; type=&quot;button&quot; data-toggle=&quot;&#35;popup-demo&quot;&gt;Show popup&lt;/button&gt;
-
-&lt;!-- popup --&gt;
-&lt;div class=&quot;modal-overlay active&quot; id=&quot;popup-demo&quot;&gt;
-  &lt;article class=&quot;modal&quot;&gt;
-    &lt;div class=&quot;modal__wrap&quot;&gt;
-      &lt;header class=&quot;modal__header&quot;&gt;
-        &lt;div class=&quot;modal__header__headline&quot;&gt;
-          &lt;h3 class=&quot;m-none&quot;&gt;Headline&lt;/h3&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;modal__header__action&quot;&gt;
-          &lt;a class=&quot;btn btn--link&quot; data-toggle=&quot;&#35;popup-demo&quot;&gt;
-            ...
-          &lt;/a&gt;
-        &lt;/div&gt;
-      &lt;/header&gt;
-
-      &lt;section class=&quot;modal__content&quot;&gt;
-        ...
-        &lt;div class=&quot;row btn-layout--horizontal justify-content-end&quot;&gt;
-          &lt;button class=&quot;btn btn--small btn--link&quot; type=&quot;button&quot; data-toggle=&quot;&#35;popup-demo&quot;&gt;Cancel&lt;/button&gt;
-          &lt;button class=&quot;btn btn--small btn--link&quot; type=&quot;button&quot; data-toggle=&quot;&#35;popup-demo&quot;&gt;Delete&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/section&gt;
-    &lt;/div&gt;
-  &lt;/article&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-              </article>
-            </div>
-          </section>
         </div>
       </article>
       <aside class="l-wrap-navs">
@@ -446,7 +131,9 @@
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="typography.html">Typography</a>
                 </li>
-                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="icons.html">Icons / Images</a>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="icons.html">Icons</a>
+                </li>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="images.html">Images</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="grid.html">Grid</a>
                 </li>
@@ -542,10 +229,10 @@
       <!-- end: content main-->
     </div>
     <!-- end: offcanvas-->
-    <script src="../scripts/vendor.0b25f2a0.js"></script>
-    <script src="../scripts/main.3b34ab1d.js"></script>
-    <script src="../scripts/font-awesome.f898950e.js"></script>
-    <script src="../scripts/light.504f963a.js"></script>
+    <script src="../scripts/vendor.cb3803a4.js"></script>
+    <script src="../scripts/main.ca2b7ff3.js"></script>
+    <script src="../scripts/font-awesome.5591951d.js"></script>
+    <script src="../scripts/light.fdc8bae2.js"></script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>
