@@ -1,4 +1,4 @@
-import Modal from 'bootstrap/js/src/modal';
+import { Modal } from 'bootstrap';
 
 const defaultConfig = {
   backdrop: true,

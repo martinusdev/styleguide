@@ -1,0 +1,300 @@
+extends templates/layout
+
+include ./../mixins/discountBadge
+include ./../mixins/icon
+include ./../mixins/faIcon
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('foundations.images', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+//- Content
+block prepend content
+
+  +main-info(['app/styles/modules/_icons_images.scss'], contents)
+    +p-big Documentation, preview and usage of image utilities.
+
+  //- end: main info
+
+//- Content
+block append content
+  +content-section(contents[0])
+
+    +p There are three basic image utilities: fluid, rounded and circle. Fluid utility gives image ability to change size coresponding to its parent. Circle and rounded utilities provides specific shapes for images.
+
+    +demo
+      +demo-example
+        figure.l-image
+          img(src=`${assetsPrefix}images/300x300.gif`, alt='placeholder').img.img--fluid
+        figure.l-image
+          img(src=`${assetsPrefix}images/150x150.gif`, alt='placeholder').img.img--rounded
+        figure.l-image
+          img(src=`${assetsPrefix}images/150x150.gif`, alt='placeholder').img.img--circle
+
+      +demo-code
+        :code
+          <img src="..." class="img img--fluid">
+          <img src="..." class="img img--rounded">
+          <img src="..." class="img img--circle">
+    //- end: demo
+  //- end: section
+
+  +content-section(contents[1], true)
+
+    +p Image thumbnails are defined in four sizes <code class='l-code-inline'>small/medium/medium-large/large/xlarge/huge</code> as shown on example below.
+
+    +demo
+      +demo-example
+        .bar.bar--wrap
+          .bar__item
+            .thumbnail.thumbnail--small
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/25x25')
+          .bar__item
+            .thumbnail.thumbnail--medium
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/50x50')
+          .bar__item
+            .thumbnail.thumbnail--medium-large
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/65x65')
+          .bar__item
+            .thumbnail.thumbnail--large
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/120x120')
+          .bar__item
+            .thumbnail.thumbnail--xlarge
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/170x170')
+          .bar__item
+            .thumbnail.thumbnail--huge
+              .thumbnail__img-wrap
+                img.img--fluid.img--circle(src='https://placehold.it/270x270')
+
+      +demo-code
+        :code
+          <div class="thumbnail thumbail--small">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--medium">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--medium-large">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--large">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--xlarge">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--huge">
+            <div class="thumbnail__img-wrap">
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+
+    +content-sub-section('Accessibility')
+      +p Thumbnails have a default max-height that crops tall images. To enable this behavior, wrap the <code class="l-code-inline">.img</code> iside a <code class="l-code-inline">.thumbnail__img-wrap</code>
+
+    +demo
+      +demo-example
+        .bar.bar--wrap
+          .bar__item
+            .thumbnail.thumbnail--small
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/25x75')
+          .bar__item
+            .thumbnail.thumbnail--medium
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/50x150')
+          .bar__item
+            .thumbnail.thumbnail--medium-large
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/65x195')
+          .bar__item
+            .thumbnail.thumbnail--large
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/120x360')
+          .bar__item
+            .thumbnail.thumbnail--xlarge
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/170x510')
+          .bar__item
+            .thumbnail.thumbnail--huge
+              .thumbnail__img-wrap
+                img.img--fluid(src='https://placehold.it/270x810')
+
+      +demo-code
+        :code
+          <div class="thumbnail thumbail--small">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--medium">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--medium-large">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--large">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--xlarge">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+          <div class="thumbnail thumbail--huge">
+            <div class="thumbnail__img-wrap>
+              <img class="img" src="..." alt="...">
+            </div>
+          </div>
+
+
+    +content-sub-section('Variants')
+
+      +demo
+        +demo-example
+          .bar
+            .bar__item
+              | Book
+              .thumbnail.thumbnail--book.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .bar__item
+              | Large shadow
+              .thumbnail.thumbnail--large-shadow.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .bar__item
+              | Clickable
+              a.thumbnail.thumbnail--clickable.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+          | Center
+          .thumbnail.thumbnail--center.thumbnail--large
+            .thumbnail__img-wrap
+              img.img.m-none(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+
+        +demo-code
+          :code
+            <div class="thumbnail thumbnail--book">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+            </div>
+
+            <div class="thumbnail thumbnail--large-shadow">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+            </div>
+
+            <a class="thumbnail thumbnail--clickable">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+            </a>
+
+            <div class="thumbnail thumbnail--center">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+            </div>
+
+    +content-sub-section('Thumbnail status and thumbnail badge')
+
+      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__status</code>. Example with <code class='l-code-inline'>.thumbnail-badge</code> as discount coutdown is shown below.
+
+      +demo
+        +demo-example
+          .thumbnail.thumbnail--book.thumbnail--large
+            .thumbnail__img-wrap
+              img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+            .thumbnail__status
+              +discountBadge(duration)
+
+        +demo-code
+          :code
+            <div class="thumbnail--book thumbnail--large">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+              <div class="thumbnail__status">
+                <div class="thumbnail-badge">
+                  <svg>...</svg>
+                  <span class="thumbnail-badge__value text">3 dni</span>
+                </div>
+              </div>
+            </div>
+
+    +content-sub-section('Thumbnail info')
+
+      +p Thumbnails can embed status with <code class='l-code-inline'>.thumbnail__info</code> which can contain for example rating or discount.
+
+      +demo
+        +demo-example
+          .bar
+            .bar__item
+              .thumbnail.thumbnail--book.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail__info
+                  .badge
+                    +icon('star').text-color-yellow.icon--small
+                    |  3.5
+            .bar__item
+              .thumbnail.thumbnail--book.thumbnail--large
+                .thumbnail__img-wrap
+                  img.img(src=`${assetsPrefix}images/content/books/sample-15.jpg`, alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                .thumbnail__info
+                  .badge.badge--primary -50%
+
+        +demo-code
+          :code
+            <div class="thumbnail--book thumbnail--large">
+              <div class="thumbnail__img-wrap">
+                <img class="img" src="..." alt="...">
+              </div>
+              <div class="thumbnail__info">
+                ...
+              </div>
+            </div>
+
+    +content-sub-section('Portraits')
+
+      +p Portraits are fluid square divs with background image. They maintain aspect ratio, can be sized with --small, --medium, etc. (same as thumbnails). If you set image with other than 1:1 ratio, it is placed to cover either with or height and is centered.
+
+      +demo
+        +demo-example
+          .portrait.portrait--small.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+          .portrait.portrait--medium.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+          .portrait.portrait--medium-large.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+          .portrait.portrait--large.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+          .portrait.portrait--xlarge.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+          .portrait.portrait--huge.d-inline-block(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
+
+        +demo-code
+          :code
+            <div class="portrait" style="background-image: url('...');"></div>
+            <div class="portrait portrait--small" style="background-image: url('...');"></div>

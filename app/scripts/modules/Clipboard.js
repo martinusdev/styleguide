@@ -4,6 +4,7 @@ import { nodeListToArray } from './Utils';
 
 const defaultConfig = {
   successMsg: 'Skopírované',
+  successClass: 'btn--success',
   errorMsg: 'Chyba pri kopírovaní',
 };
 
@@ -32,7 +33,9 @@ export default class Clipboard {
   }
 
   _handleSuccess(e) {
-    e.trigger.classList.add('btn--success');
+    if (e.trigger.classList.contains('btn')) {
+      e.trigger.classList.add('btn--success');
+    }
     e.trigger.innerHTML = e.trigger.getAttribute('data-clipboard-msg-success')
       || this.config.successMsg;
   }

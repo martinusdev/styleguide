@@ -3,7 +3,7 @@
 import './modules/jQueryGlobalHelper';
 
 import $ from 'jquery';
-import 'bootstrap/js/src/scrollspy';
+import { ScrollSpy } from 'bootstrap';
 import 'jquery-mousewheel';
 import { prettyPrint } from './plugins/prettify/prettify';
 
