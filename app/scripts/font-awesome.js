@@ -1,1 +1,1 @@
-import './font-awesome/all';
+import './plugins/font-awesome/all';
