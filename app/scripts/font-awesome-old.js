@@ -112,7 +112,6 @@ import {
   faDatabase,
   faWindowAlt,
   faMousePointer,
-  faShippingFast,
   faGiftCard,
   faBandAid,
   faClawMarks,
@@ -179,7 +178,11 @@ import {
   faMagnifyingGlassPlus,
   faMagnifyingGlassMinus,
   faTreeChristmas,
-  faEllipsis, faBookArrowUp, faBookBlank, faEyeSlash, faPhone
+  faEllipsis,
+  faBookArrowUp,
+  faBookBlank,
+  faEyeSlash,
+  faPhone
 } from '@fortawesome/pro-regular-svg-icons';
 
 import {
@@ -193,7 +196,8 @@ import {
   faFacebookF,
   faFoursquare,
   faGoogle,
-  faInstagram, faTwitter,
+  faInstagram,
+  faTwitter,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
 import { faStarHalf } from '@fortawesome/pro-duotone-svg-icons';
@@ -293,7 +297,6 @@ library.add(
   faClinicMedical,
   faMortarPestle,
   faMousePointer,
-  faShippingFast,
   faHouse,
   faPlane,
   faHammer,
