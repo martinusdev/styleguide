@@ -813,6 +813,31 @@ $button-styles: (
       border-color: _color(grey, 400),
     ),
   ),
+  link: (
+    default: (
+      position: relative,
+      color: $color-white,
+      background-color: _color(link, 500),
+      box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    active: (
+      color: $color-white,
+      background-color: _color(link, 600),
+      box-shadow: none,
+    ),
+    after: (
+      position: absolute,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      width: 100%,
+      background-color: _color(link, 600),
+      height: 4px,
+    ),
+    group: (
+      border-color: _color(link, 600),
+    ),
+  ),
   facebook: (
     default: (
       color: _color(link, 500),
