@@ -28,9 +28,10 @@
     "node": ">=6.9.0"
   },
   "scripts": {
-    "prepare": "gulp prepare",
-    "build": "gulp build",
-    "serve": "gulp serve",
+    "prepare": "gulp prepare --openssl-legacy-provider",
+    "build": "gulp build --openssl-legacy-provider",
+    "serve": "gulp serve --openssl-legacy-provider",
+    "clear-cache": "gulp clearCache --openssl-legacy-provider",
     "lint-staged": "lint-staged"
   },
   "pre-commit": "lint-staged",
@@ -52,6 +53,7 @@
     "chart.js": "^2.7.2",
     "choices.js": "~10.2.0",
     "clipboard": "~2.0.11",
+    "fsevents": "^2.3.3",
     "gumshoe": "github:adammockor/gumshoe#80a5d8ee7eaa43e2bb7405b68579563e79c71883",
     "jquery": "^3.7.0",
     "jquery-mousewheel": "~3.1.13",
