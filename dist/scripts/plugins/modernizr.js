@@ -1,5 +1,5 @@
 /*!
- * modernizr v3.11.8
+ * modernizr v3.13.0
  * Build https://modernizr.com/download?-addtest-fnbind-printshiv-setclasses-testprop-dontmin
  *
  * Copyright (c)
@@ -35,7 +35,7 @@
    * @access public
    */
   var ModernizrProto = {
-    _version: '3.11.8',
+    _version: '3.13.0',
 
     // Any settings that don't work as separate modules
     // can go in here as configuration.
