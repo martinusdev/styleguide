@@ -1,36 +1,45 @@
 const ESLintWebpackPlugin = require('eslint-webpack-plugin');
 
 module.exports = (paths, config) => {
+
+  // add/change custom svgo plugin configs
   const imageminCfgIcons = config.icons().imageminCfg;
 
-  // add/change custom svgo plugin configs
-  const pluginsIcons = imageminCfgIcons.svgo.plugins;
   const customPluginConfigIcons = {
     removeStyleElement: false,
-    removeFill: false,
   };
 
-  Object.entries(customPluginConfigIcons).forEach(([name, value]) => {
-    // is it in the array?
-    const pluginIndexIcons = pluginsIcons.findIndex(p =>
-      Object.keys(p).includes(name),
-    );
-    if (pluginIndexIcons !== -1) {
-      // if yes change value to false
-      imageminCfgIcons.svgo.plugins[pluginIndexIcons][name] = value;
-    } else {
-      // if no add it
-      imageminCfgIcons.svgo.plugins = [
-        ...imageminCfgIcons.svgo.plugins,
-        { [name]: value },
-      ];
-    }
+  const finalSvgoIconsPlugins = [];
+  const existingSvgoIconsPluginNames = new Set();
+
+  imageminCfgIcons.svgo.plugins.forEach(plugin => {
+    const pluginName = Object.keys(plugin)[0];
+    existingSvgoIconsPluginNames.add(pluginName);
+
+    const isActive = customPluginConfigIcons.hasOwnProperty(pluginName) ?
+      customPluginConfigIcons[pluginName] :
+      plugin[pluginName];
+
+    finalSvgoIconsPlugins.push({
+      name: pluginName,
+      active: isActive
+    });
   });
 
-  const imageminCfgImages = config.images().imageminCfg;
+  for (const [pluginName, isActive] of Object.entries(customPluginConfigIcons)) {
+    if (!existingSvgoIconsPluginNames.has(pluginName)) {
+      finalSvgoIconsPlugins.push({
+        name: pluginName,
+        active: isActive
+      });
+    }
+  }
+
+  imageminCfgIcons.svgo.plugins = finalSvgoIconsPlugins;
 
   // add/change custom svgo plugin configs
-  const pluginsImages = imageminCfgImages.svgo.plugins;
+  const imageminCfgImages = config.images().imageminCfg;
+
   const customPluginConfigImages = {
     removeDimensions: false,
     removeViewBox: false,
@@ -38,22 +47,39 @@ module.exports = (paths, config) => {
     convertStyleToAttrs: false,
   };
 
-  Object.entries(customPluginConfigImages).forEach(([name, value]) => {
-    // is it in the array?
-    const pluginIndexImages = pluginsImages.findIndex(p =>
-      Object.keys(p).includes(name),
-    );
-    if (pluginIndexImages !== -1) {
-      // if yes change value to false
-      imageminCfgImages.svgo.plugins[pluginIndexImages][name] = value;
-    } else {
-      // if no add it
-      imageminCfgImages.svgo.plugins = [
-        ...imageminCfgImages.svgo.plugins,
-        { [name]: value },
-      ];
+  const finalSvgoImagesPlugins = [];
+  const existingSvgoImagesPluginNames = new Set();
+
+  imageminCfgImages.svgo.plugins.forEach(plugin => {
+    const pluginName = Object.keys(plugin)[0];
+
+    // Remove wrong plugin - should be fixed in light-scripts config
+    if (pluginName === 'removeViewbox') {
+      return;
     }
+
+    existingSvgoImagesPluginNames.add(pluginName);
+
+    const isActive = customPluginConfigImages.hasOwnProperty(pluginName) ?
+      customPluginConfigImages[pluginName] :
+      plugin[pluginName];
+
+    finalSvgoImagesPlugins.push({
+      name: pluginName,
+      active: isActive
+    });
   });
+
+  for (const [pluginName, isActive] of Object.entries(customPluginConfigImages)) {
+    if (!existingSvgoImagesPluginNames.has(pluginName)) {
+      finalSvgoImagesPlugins.push({
+        name: pluginName,
+        active: isActive
+      });
+    }
+  }
+
+  imageminCfgImages.svgo.plugins = finalSvgoImagesPlugins;
 
   return {
     paths: {
