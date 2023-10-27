@@ -1,9 +1,10 @@
 import ClipboardJs from 'clipboard';
+import tippy from 'tippy.js';
 
 import { nodeListToArray } from './Utils';
 
 const defaultConfig = {
-  successMsg: 'Skopírované',
+  successMsg: '<i class="far fa-check-circle fa-lg"></i>',
   successClass: 'btn--success',
   errorMsg: 'Chyba pri kopírovaní',
 };
@@ -21,7 +22,8 @@ export default class Clipboard {
 
   _init() {
     if (!ClipboardJs.isSupported()) {
-      nodeListToArray(document.querySelectorAll(this.selector)).forEach(item => item.setAttribute('disabled', 'true'),);
+      nodeListToArray(document.querySelectorAll(this.selector))
+        .forEach(item => item.setAttribute('disabled', 'true'),);
 
       return;
     }
@@ -33,16 +35,17 @@ export default class Clipboard {
   }
 
   _handleSuccess(e) {
-    if (e.trigger.classList.contains('btn')) {
-      e.trigger.classList.add('btn--success');
-    }
-    e.trigger.innerHTML = e.trigger.getAttribute('data-clipboard-msg-success')
+    const successMsg = e.trigger.getAttribute('data-clipboard-msg-success')
       || this.config.successMsg;
+
+    this.showTooltip(e.trigger, successMsg);
   }
 
   _handleError(e) {
-    e.trigger.innerHTML = e.trigger.getAttribute('data-clipboard-msg-error')
+    const errorMsg = e.trigger.getAttribute('data-clipboard-msg-error')
       || this.config.errorMsg;
+
+    this.showTooltip(e.trigger, errorMsg);
   }
 
   update() {
@@ -52,5 +55,25 @@ export default class Clipboard {
 
   destroy() {
     this.clipboard.destroy();
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  showTooltip(element, content) {
+    const tooltip = tippy(element, {
+      showOnCreate: true,
+      trigger: 'manual',
+      hideOnClick: true,
+      content,
+      allowHTML: true,
+      animation: 'scale',
+      placement: 'auto-end',
+      arrow: false,
+    });
+
+    // close the tooltip after 2 seconds
+    setTimeout(() => {
+      tooltip.hide();
+      tooltip.destroy();
+    }, 2000);
   }
 }
