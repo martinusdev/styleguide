@@ -408,9 +408,9 @@
 
 @function _color-shade($color, $weight) {
   @if $weight > 500 and $color {
-    @return mix(black, $color, math.div($weight - 500, 5) );
+    @return mix(black, $color, (math.div($weight - 500, 5) * 1%));
   } @else if $weight < 500 and $color {
-    @return mix(white, $color, math.div(500 - $weight, 5) );
+    @return mix(white, $color, (math.div(500 - $weight, 5) * 1%));
   } @else {
     @return $color;
   }
