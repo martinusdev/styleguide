@@ -180,7 +180,10 @@ export default class Tab {
     }
     if (scrollTo) {
       setTimeout(() => {
-        window.scroll(0, scrollTo);
+        window.scrollTo({
+          top: scrollTo,
+          behavior: 'smooth',
+        });
       }, this.config.scrollDelay);
     }
   }
