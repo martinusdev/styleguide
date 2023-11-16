@@ -1,0 +1,36 @@
+extends layouts/_default
+
+block opts
+  - var pageTitle = 'Off canvas menu'
+
+block content
+  main
+    section.section
+      .wrapper-main
+        .row
+          .col--m-3
+            .offcanvas-m(id='offcanvasResponsive', data-bs-backdrop="static").offcanvas-start
+              .offcanvas-header
+                h5.offcanvas-title Všetko o nákupe
+                button(type='button', data-bs-dismiss='offcanvas', data-bs-target='#offcanvasResponsive', aria-label='Close')
+                  +faIcon('xmark').fa-lg
+              .offcanvas-body.flex-column
+                h4 Všetko o nákupe
+                ul.list.my-none.p-none
+                  li
+                    a(href="#" class="d-block pt-tiny pb-tiny text-medium link link--black") Možnosti doručenia
+                  li
+                    a(href="#" class="d-block pt-tiny pb-tiny text-medium link link--black") Možnosti platby
+                  li
+                    a(href="#" class="d-block pt-tiny pb-tiny text-medium link link--black") Prečo nakupovať u nás?
+                  li
+                    a(href="#" class="d-block pt-tiny pb-tiny text-medium link link--black") Cesta vašej objednávky
+                  li
+                    a(href="#" class="d-block pt-tiny pb-tiny text-medium link link--black") Audioknižné aplikácie
+                  li
+                    a(href="#" class="d-block pt-tiny pb-tiny text-medium link link--black") Najčastejšie otázky
+                  li
+                    a(href="#" class="d-block pt-tiny pb-tiny text-medium link link--black") Rezervácia v kníhkupectve
+          .col--m-9
+            <button class="btn btn-primary d-lg-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">Toggle offcanvas</button>
+
