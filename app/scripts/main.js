@@ -1,5 +1,6 @@
 import svg4everybody from 'svg4everybody';
 import Choices from 'choices.js/public/assets/scripts/choices';
+import { Offcanvas } from 'bootstrap';
 
 import {
   customEventPolyfill,
@@ -70,6 +71,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.CarouselLite = CarouselLite;
 
   window.myApp.Choices = Choices;
+  window.myApp.Offcanvas = Offcanvas;
 
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
