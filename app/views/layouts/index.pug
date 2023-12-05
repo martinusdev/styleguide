@@ -19,6 +19,8 @@ html.no-js.fonts-loaded
   //- HEAD
 
   head
+    block headPrepend
+
     meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
     meta(name="viewport", content="width=device-width, initial-scale=1.0, user-scalable=yes")
@@ -32,7 +34,6 @@ html.no-js.fonts-loaded
     meta(name="theme-color", content=project.theme)
 
     link(rel="stylesheet", href=`${assetsPrefix}fonts/Tabac-Sans/style.css`)
-
     link(rel="stylesheet", href=`${assetsPrefix}styles/main.css`)
 
     script(src=`${assetsPrefix}scripts/plugins/modernizr.js`)
