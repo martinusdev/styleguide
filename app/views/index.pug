@@ -2,6 +2,9 @@ extends layouts/index
 
 include ./mixins/icon
 
+block headPrepend
+  link(rel="stylesheet", href=`${assetsPrefix}styles/light.css`)
+
 block content
   .intro-templates
     header.intro-templates_header(style="background-color:" + project.theme)
