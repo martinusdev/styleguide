@@ -46,25 +46,6 @@
 
 .text-strikethrough { text-decoration: line-through; }
 
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-.text-justify { text-align: justify; }
-
-@each $breakpoint, $size in $grid-breakpoints {
-  @include breakpoint( $breakpoint ) {
-    .text-center#{_get-variant-name($breakpoint, '-')} { text-align: center; }
-    .text-left#{_get-variant-name($breakpoint, '-')} { text-align: left; }
-    .text-right#{_get-variant-name($breakpoint, '-')} { text-align: right; }
-  }
-}
-
-.text-vam { vertical-align: middle; }
-.text-vat { vertical-align: top; }
-.text-vab { vertical-align: bottom; }
-.text-vabl { vertical-align: baseline; }
-.text-vamd { vertical-align: -0.15em; }
-
 .text-wrap { white-space: normal; }
 .text-nowrap { white-space: nowrap; }
 .text-ellipsis { @include text-ellipsis; }
@@ -95,35 +76,6 @@
   }
 }
 
-@mixin show-for-only($breakpoint) {
-  $lower-bound-name: $breakpoint;
-  $upper-bound-name: _map-next($grid-breakpoints, $breakpoint, 'key');
-
-  @if $lower-bound-name {
-    @include breakpoint($lower-bound-name, downfrom) {
-      display: none !important;
-    }
-
-    @if $upper-bound-name {
-      @include breakpoint($upper-bound-name) {
-        display: none !important;
-      }
-    }
-  } @else {
-    @warn 'hide-for() parameter #{$breakpoint} is not defined properly in the $breakpoints map';
-  }
-}
-
-@mixin hide-for-only($breakpoint) {
-  @if map.get($grid-breakpoints, $breakpoint) {
-    @include breakpoint($breakpoint, only) {
-      display: none !important;
-    }
-  } @else {
-    @warn 'hide-for() parameter #{$breakpoint} is not defined properly in the $breakpoints map';
-  }
-}
-
 @mixin visibility-classes() {
   .hide {
     display: none !important;
@@ -143,73 +95,11 @@
         @include hide-for($breakpoint);
       }
     }
-
-    .show-#{$breakpoint}-only {
-      @include show-for-only($breakpoint);
-    }
-
-    .hide-#{$breakpoint}-only {
-      @include hide-for-only($breakpoint);
-    }
-  }
-}
-
-@mixin is-consent-visibility-classes() {
-  .is-consent-show-inline {
-    display: inline !important;
-  }
-
-  .is-consent-show-inline-block {
-    display: inline-block !important;
-  }
-
-  .is-consent-show-flex {
-    display: flex !important;
-  }
-
-  .is-consent-show {
-    display: block !important;
-  }
-
-  .is-consent-hide {
-    display: none !important;
-  }
-
-  .is-consent-invisible {
-    visibility: hidden;
-  }
-
-  @each $breakpoint, $size in $grid-breakpoints {
-    @if $breakpoint != 'xs' {
-      .is-consent-show-#{$breakpoint} {
-        @include show-for($breakpoint);
-      }
-
-      .is-consent-hide-#{$breakpoint} {
-        @include hide-for($breakpoint);
-      }
-    }
-
-    .is-consent-show-#{$breakpoint}-only {
-      @include show-for-only($breakpoint);
-    }
-
-    .is-consent-hide-#{$breakpoint}-only {
-      @include hide-for-only($breakpoint);
-    }
   }
 }
 
 // ---------------------------------------------
 // 3. OTHER UTILITIES
-
-@each $breakpoint, $size in $grid-breakpoints {
-  @include breakpoint( $breakpoint ) {
-    .position-relative#{_get-variant-name($breakpoint, '-')} { position: relative; }
-    .position-absolute#{_get-variant-name($breakpoint, '-')} { position: absolute; }
-    .position-fixed#{_get-variant-name($breakpoint, '-')} { position: fixed; }
-  }
-}
 
 .mb-not-last > *:last-child { margin-bottom: 0; }
 
@@ -218,10 +108,6 @@
 }
 
 @include visibility-classes;
-
-.is-consent {
-  @include is-consent-visibility-classes;
-}
 
 .visually-hidden {
   position: absolute;
@@ -242,7 +128,6 @@
   &-bottom-grey { border-bottom: 1px solid $text-color-grey-light; }
   &-left-grey { border-left: 1px solid $text-color-grey-light; }
   &-right-grey { border-right: 1px solid $text-color-grey-light; }
-
   &-bottom-grey-2 { border-bottom: 2px solid $text-color-grey-light; }
 }
 
@@ -254,11 +139,6 @@
   flex: 0 0 auto !important;
   flex-shrink: 1 !important;
 }
-
-.w-100 { width: 100%; }
-.w-75 { width: 75%; }
-.w-50 { width: 50%; }
-.w-25 { width: 25%; }
 
 @include breakpoint(m, down) {
   .overflow-scroll {
