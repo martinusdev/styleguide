@@ -14,6 +14,12 @@ $utilities: map.merge(
         values: inline inline-block block flex inline-flex none
       ),
       // scss-docs-end utils-display
+      // scss-docs-start utils-position
+      "position": (
+        property: position,
+        values: static relative absolute fixed sticky
+      ),
+      // scss-docs-end utils-position
       // Margin utilities
       // scss-docs-start utils-spacing
       "margin": (
@@ -102,6 +108,15 @@ $utilities: map.merge(
         values: $spacers
       ),
       // scss-docs-end utils-spacing
+      // Text
+      // scss-docs-start utils-text
+      "text-align": (
+        responsive: true,
+        property: text-align,
+        class: text,
+        values: left center right
+      ),
+      // scss-docs-end utils-text
       // scss-docs-start utils-shadow
       "shadow": (
         property: box-shadow,
@@ -138,6 +153,20 @@ $utilities: map.merge(
         )
       ),
       // scss-docs-end utils-bg-color
+      // Sizing utilities
+      // scss-docs-start utils-sizing
+      "width": (
+        property: width,
+        class: w,
+        values: (
+          25: 25%,
+          50: 50%,
+          75: 75%,
+          100: 100%,
+          auto: auto
+        )
+      ),
+      // scss-docs-end utils-sizing
       // Flex utilities
       // scss-docs-start utils-flex
       "flex": (
