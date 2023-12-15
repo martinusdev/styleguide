@@ -96,7 +96,7 @@ const storeListTemplate = ({ label, customProperties, placeholder }) => {
 
   return `
   <div style="max-width: 100%;" class="d-flex align-items-center text-medium justify-content-between">
-    <div class="d-flex align-items-center text-color-grey-dark text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
+    <div class="d-flex align-items-center text-color-grey-dark text-left" style="max-width: 66%;">${icon}${label}</div>
     ${statusText}
   </div>
   `;
