@@ -54,30 +54,6 @@ const defaultConfig = {
   },
 };
 
-const productSelectTemplate = data => `
-  <div class="bar mb-none">
-    <div class="bar__item bar__item--fill">
-      <p class="text-size-medium text-left text-semibold">${data.label}</p>
-      ${data.customProperties.delivery ? `
-        <p class="text-size-small text-color-grey text-left">${data.customProperties.delivery}</p>
-      ` : ''}
-    </div>
-    ${data.customProperties.price ? `
-      <div class="bar__item">
-        <p class="text-semibold">${data.customProperties.price}</p>
-      </div>
-    ` : ''}
-  </div>`;
-
-const productSelectChoice = (data, config) => `
-  <div class="${config.classNames.item} ${config.classNames.itemChoice} ${data.disabled ? config.classNames.itemDisabled : config.classNames.itemSelectable}" data-select-text="${config.itemSelectText}" data-choice ${data.disabled ? 'data-choice-disabled aria-disabled="true"' : 'data-choice-selectable'} data-id="${data.id}" data-value="${data.value}" ${data.groupId > 0 ? 'role="treeitem"' : 'role="option"'}>
-    <div class="bar mb-none justify-content-between">
-      <div class="bar__item">${data.label}</div>
-      <div class="bar__item">${data.customProperties.price}</div>
-    </div>
-  </div>
-  `;
-
 const storeIcon = type => {
   let icon;
   let iconColor;
@@ -119,7 +95,7 @@ const storeListTemplate = ({ label, customProperties, placeholder }) => {
   const statusText = storeStatus(customProperties, placeholder);
 
   return `
-  <div style="max-width: 100%;" class="d-flex align-items-center justify-content-between">
+  <div style="max-width: 100%;" class="d-flex align-items-center text-medium justify-content-between">
     <div class="d-flex align-items-center text-color-grey-dark text-left text-regular" style="max-width: 66%;">${icon}${label}</div>
     ${statusText}
   </div>
@@ -149,7 +125,7 @@ const storeListChoices = config => `
 `;
 
 const imageListTemplate = ({ label, customProperties }) => `
-  <div class="d-flex align-items-center mb-none">
+  <div class="d-flex align-items-center text-medium mb-none">
       ${customProperties && customProperties.image ? `<div class="img--rounded mr-small" style="width: 40px; height: 27px; background: url(${customProperties.image}) no-repeat center; background-size: cover"></div>` : ''}
       <div class="flex-1 mr-small">
         <span>${label}</span>
@@ -203,14 +179,6 @@ const choiceListTemplate = (width = 'none', config = {}) => `
 
 function getTemplates(template, select, config) {
   let templates = {};
-  if (select.hasAttribute('data-select-product')) {
-    templates = {
-      ...{ templates },
-      item: (classNames, data) => template(productSelectTemplate(data)),
-      choice: (classNames, data) => template(productSelectChoice(data, config)),
-    };
-  }
-
   if (select.hasAttribute('data-select-store')) {
     templates = {
       ...{ templates },
