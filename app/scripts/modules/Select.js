@@ -60,11 +60,11 @@ const storeIcon = type => {
 
   switch (type) {
     case 'martinus':
-      icon = 'martinus';
+      icon = 'fak fa-martinus';
       iconColor = 'text-color-primary';
       break;
     case 'partner':
-      icon = 'pin';
+      icon = 'far fa-map-marker-alt';
       iconColor = 'text-color-yellow';
       break;
     default:
@@ -72,7 +72,7 @@ const storeIcon = type => {
   }
 
   if (icon !== '') {
-    icon = `<svg class="icon ${iconColor} mr-tiny" style="flex-shrink: 0" role="img" aria-hidden="true"><use xlink:href="/data/assets/martinus/lb/icons_/app.svg?v=1#icon-${icon}"></use></svg>`;
+    icon = `<i class="${icon} ${iconColor} fa-fw mr-tiny flex-shrink-0"></i>`;
   }
 
   return icon;
