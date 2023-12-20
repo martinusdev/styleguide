@@ -137,12 +137,6 @@
 
   @each $breakpoint, $size in $grid-breakpoints {
     @include breakpoint($breakpoint) {
-      @for $i from 0 through $grid-base {
-        .ofst-#{_get-variant-name($breakpoint, '-')}-#{$i} {
-          @include column-offset($i);
-        }
-      }
-
       .ofst-#{_get-variant-name($breakpoint, '-')}-center {
         float: none;
         margin-left: auto;
@@ -153,17 +147,3 @@
 }
 
 @include column-offset-classes;
-
-// ----------------------------
-// Grid space
-
-@each $breakpoint, $size in $grid-breakpoints {
-  @include breakpoint($breakpoint) {
-    .row-#{_get-variant-name($breakpoint, '-')}-space {
-      > *[class*='col\-\-'],
-      > .col {
-        margin-bottom: _get-space('large');
-      }
-    }
-  }
-}

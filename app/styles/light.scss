@@ -1302,3 +1302,17 @@ $breakpoints: (
   }
 
 @import 'pages/intro';
+
+// ----------------------------
+// Grid space
+
+@each $breakpoint, $size in $grid-breakpoints {
+  @include breakpoint($breakpoint) {
+    .row-#{_get-variant-name($breakpoint, '-')}-space {
+      > *[class*='col\-\-'],
+      > .col {
+        margin-bottom: _get-space('large');
+      }
+    }
+  }
+}
