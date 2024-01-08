@@ -12,6 +12,7 @@ export default class ModalWrapper {
     this.config = { ...defaultConfig, ...config };
 
     this.modals = [];
+    this.BsModal = Modal;
 
     this._init();
   }
@@ -23,16 +24,16 @@ export default class ModalWrapper {
     );
 
     this.modals.forEach(modal => {
-      new Modal(modal).show();
+      new this.BsModal(modal).show();
     });
   }
 
   create(element, config = {}) {
-    return new Modal(element, { ...this.config, ...config });
+    return new this.BsModal(element, { ...this.config, ...config });
   }
 
-  static getInstance(element) {
-    return Modal.getInstance(element);
+  getInstance(element) {
+    return this.BsModal.getInstance(element);
   }
 
   static lockBody(className = defaultConfig.modalBodyIsOpen) {
