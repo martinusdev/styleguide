@@ -31,6 +31,10 @@ export default class ModalWrapper {
     return new Modal(element, { ...this.config, ...config });
   }
 
+  static getInstance(element) {
+    return Modal.getInstance(element);
+  }
+
   static lockBody(className = defaultConfig.modalBodyIsOpen) {
     // store current scrollTop value
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
