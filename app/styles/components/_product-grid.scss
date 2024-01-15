@@ -1,6 +1,6 @@
 .product-grid {
   display: grid;
-  column-gap: _get-rem(34px);
+  column-gap: _get-rem(8px);
   grid-template-columns: repeat(auto-fit, 120px);
   justify-content: space-around;
   align-content: flex-start;
@@ -8,6 +8,7 @@
 
 @include breakpoint('m') {
   .product-grid {
+    column-gap: _get-rem(34px);
     justify-content: flex-start;
   }
 }
