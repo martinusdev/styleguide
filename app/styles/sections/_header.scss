@@ -129,6 +129,18 @@
   z-index: $z-index-topbar;
   margin-bottom: 5px;
 
+  .header__ad--mobile {
+    max-width: 100px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .header__ad {
+      flex-shrink: 1 !important;
+    }
+  }
+
   @include breakpoint(m) {
     top: -40px;
 
@@ -224,6 +236,7 @@
   &__bar {
     padding: _get-space('small') 0;
     margin-bottom: 0;
+    min-height: 65px;
 
     @include breakpoint(m, 'down') {
       justify-content: space-between;
@@ -482,11 +495,27 @@
   }
 }
 
-.dropdown--account {
-  min-width: 150px;
-  max-height: 70vh;
+@include breakpoint(m, 'down') {
+  .dropdown--account {
+    opacity: 1;
+    margin-top: 0;
+    position: fixed;
+    border-radius: 0;
+    max-height: none;
+    border: none;
+    overflow: hidden;
+    transition: var(--ms-offcanvas-transition);
 
-  .dropdown__wrap {
-    max-height: 70vh;
+    &.show,
+    &.showing {
+      z-index: 1442;
+    }
+  }
+}
+
+@include breakpoint(m) {
+  .dropdown--account {
+    width: 200px;
+    background-color: $color-white !important;
   }
 }

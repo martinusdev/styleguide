@@ -81,15 +81,24 @@
   }
 }
 
+.map-marker-link--martinus {
+  z-index: 49;
+}
+
 .map-marker-active {
   animation-name: pulse;
   animation-timing-function: ease-in-out;
   animation-duration: 1s;
   animation-fill-mode: both;
   animation-iteration-count: infinite;
+  z-index: 50;
 }
 
 .map-marker-active,
 .map-marker-active img {
-  width: 40px !important;
+  width: _get-rem(40px) !important;
+}
+
+.delivery-place__icon {
+  width: _get-rem(30px);
 }
