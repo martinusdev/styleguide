@@ -32,3 +32,19 @@ block gameContent
         for j in [1,2,3,4,5]
           .col--6.col--l-3.mc24-board__tile
             img(src='images/content/campaign/knizne-putovanie/card-sample.png').img-fluid
+
+  script.
+    document.addEventListener('DOMContentLoaded', function() {
+      var cards = document.querySelectorAll('.mc24-board__tile');
+      cards.forEach(function(card) {
+        var rotate = (Math.random() * 6 - 3).toFixed(2) + 'deg'; // random rotation between -3 and 3 degrees
+        var scale = (Math.random() * 0.1 + 1).toFixed(2); // random scale between 1 and 1.1
+        var translateX = (Math.random() * 6 - 3).toFixed(2) + 'px'; // random translationX between -3px and 3px
+        var translateY = (Math.random() * 6 - 3).toFixed(2) + 'px'; // random translationY between -3px and 3px
+
+        card.style.setProperty('--rotate', rotate);
+        card.style.setProperty('--scale', scale);
+        card.style.setProperty('--translateX', translateX);
+        card.style.setProperty('--translateY', translateY);
+      });
+    });

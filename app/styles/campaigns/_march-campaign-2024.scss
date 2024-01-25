@@ -64,30 +64,30 @@ $mc24-color-green: #3F9E52;
 
   &__tile {
     margin-bottom: _get-rem(30px);
+    transition: all 0.2s ease-in-out;
+
+    --rotate: 0deg;
+    --scale: 1;
+    --translateX: 0;
+    --translateY: 0;
+
+    transform: rotate(var(--rotate)) translateX(var(--translateX)) translateY(var(--translateY)) scale(var(--scale));
 
     @include breakpoint('m') {
       margin-bottom: _get-rem(60px);
     }
 
-    // rotate each nth:card a bit differently, there will be 20 cards all together, also translateX and translateY randomly a bit so it looks out of order just a touch
-    &:nth-child(6n + 1) {
-      transform: rotate(-2deg) translateX(-2px) translateY(-2px) scale(1.06);
-    }
-
-    &:nth-child(6n + 3) {
-      transform: rotate(2deg) translateX(3px) translateY(6px) scale(1.05);
-    }
-
-    &:nth-child(6n + 6) {
-      transform: rotate(-3deg) translateX(-1px) translateY(-1px) scale(1.03);
-    }
-
-    &:nth-child(6n + 2) {
-      transform: scale(1.04);
-    }
-
-    &:nth-child(6n + 4) {
-      transform: scale(1.07);
+    &:hover {
+      transform: scale(1.15);
     }
   }
+}
+
+@keyframes pageTurn {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+.turning {
+  animation: pageTurn 0.5s forwards;
 }
