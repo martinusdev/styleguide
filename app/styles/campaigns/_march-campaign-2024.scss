@@ -1,0 +1,93 @@
+$mc24-color-green: #3F9E52;
+
+.mc24-bg-green {
+  background: $mc24-color-green;
+}
+
+.mc24-page {
+  background: url('../images/content/campaign/knizne-putovanie/bg-page.jpg') repeat center top;
+  background-size: 900px;
+
+  .footer {
+    margin-top: 39px !important;
+  }
+}
+
+.mc24-header {
+  padding: _get-rem(180px) 0 _get-rem(30px) 0;
+  background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat center -30px;
+  background-size: auto 220px;
+
+  @include breakpoint('m') {
+    background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat right top;
+    background-size: auto 260px;
+    padding: _get-rem(30px) 0;
+  }
+
+  @include breakpoint('l') {
+    background-size: contain;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: _get-rem(15px);
+    align-items: center;
+
+    @include breakpoint('m') {
+      max-width: 50%;
+    }
+
+    @include breakpoint('l') {
+      position: relative;
+      gap: _get-rem(20px);
+
+      h2 {
+        width: 90%;
+      }
+    }
+  }
+
+  &__logo img {
+    height: _get-rem(90px);
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+    @include breakpoint('m') {
+      height: _get-rem(140px);
+    }
+  }
+}
+
+.mc24-board {
+  padding-top: _get-rem(60px);
+  padding-bottom: _get-rem(60px);
+
+  &__tile {
+    margin-bottom: _get-rem(30px);
+
+    @include breakpoint('m') {
+      margin-bottom: _get-rem(60px);
+    }
+
+    // rotate each nth:card a bit differently, there will be 20 cards all together, also translateX and translateY randomly a bit so it looks out of order just a touch
+    &:nth-child(6n + 1) {
+      transform: rotate(-2deg) translateX(-2px) translateY(-2px) scale(1.06);
+    }
+
+    &:nth-child(6n + 3) {
+      transform: rotate(2deg) translateX(3px) translateY(6px) scale(1.05);
+    }
+
+    &:nth-child(6n + 6) {
+      transform: rotate(-3deg) translateX(-1px) translateY(-1px) scale(1.03);
+    }
+
+    &:nth-child(6n + 2) {
+      transform: scale(1.04);
+    }
+
+    &:nth-child(6n + 4) {
+      transform: scale(1.07);
+    }
+  }
+}
