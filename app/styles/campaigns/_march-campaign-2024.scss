@@ -1,0 +1,93 @@
+$mc24-color-green: #3F9E52;
+
+.mc24-bg-green {
+  background: $mc24-color-green;
+}
+
+.mc24-page {
+  background: url('../images/content/campaign/knizne-putovanie/bg-page.jpg') repeat center top;
+  background-size: 900px;
+
+  .footer {
+    margin-top: 39px !important;
+  }
+}
+
+.mc24-header {
+  padding: _get-rem(180px) 0 _get-rem(30px) 0;
+  background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat center -30px;
+  background-size: auto 220px;
+
+  @include breakpoint('m') {
+    background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat right top;
+    background-size: auto 260px;
+    padding: _get-rem(30px) 0;
+  }
+
+  @include breakpoint('l') {
+    background-size: contain;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: _get-rem(15px);
+    align-items: center;
+
+    @include breakpoint('m') {
+      max-width: 50%;
+    }
+
+    @include breakpoint('l') {
+      position: relative;
+      gap: _get-rem(20px);
+
+      h2 {
+        width: 90%;
+      }
+    }
+  }
+
+  &__logo img {
+    height: _get-rem(90px);
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+    @include breakpoint('m') {
+      height: _get-rem(140px);
+    }
+  }
+}
+
+.mc24-board {
+  padding-top: _get-rem(60px);
+  padding-bottom: _get-rem(60px);
+
+  &__tile {
+    margin-bottom: _get-rem(30px);
+    transition: all 0.2s ease-in-out;
+
+    --rotate: 0deg;
+    --scale: 1;
+    --translateX: 0;
+    --translateY: 0;
+
+    transform: rotate(var(--rotate)) translateX(var(--translateX)) translateY(var(--translateY)) scale(var(--scale));
+
+    @include breakpoint('m') {
+      margin-bottom: _get-rem(60px);
+    }
+
+    &:hover {
+      transform: scale(1.15);
+    }
+  }
+}
+
+@keyframes pageTurn {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(180deg); }
+}
+
+.turning {
+  animation: pageTurn 0.5s forwards;
+}

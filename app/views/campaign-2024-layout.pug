@@ -1,0 +1,47 @@
+extends layouts/_default
+
+block head
+  link(rel="stylesheet", href=`${assetsPrefix}styles/campaigns.css`)
+
+block opts
+  - var pageTitle = 'Knižné putovanie'
+  - var campaignHeader = true
+  - var pageClass = 'mc24-page'
+  - var headerWarningActive = false
+
+block campaignHeaderContent
+
+
+block content
+  main
+    section.section.pt-none.mc24-bg-green
+      .wrapper-main
+        .mc24-header.text-color-white
+          .mc24-header__info
+            a(href='campaign-2024.html').flex-shrink-0.mc24-header__logo
+              img(src='images/content/campaign/knizne-putovanie/logo-sk.svg').mc24-logo
+            block authSection
+              h2.mc24-header__claim.text-center.mb-none Uhádni, kto posiela pohľadnice z knižných svetov, a vyhraj kopu kníh!
+              button.btn.btn--primary.mb-none(data-bs-toggle="modal" data-bs-target="#mc24-modal-login") Prihlásiť sa
+            block gameStats
+    block tab
+
+  .modal.fade#mc24-modal-login(aria-labelledby="login-modal-title" aria-hidden="true" tabindex="-1" role="dialog")
+    .modal-dialog.modal-dialog-centered
+      .modal-content
+        .modal-header
+          h3.modal-title#login-modal-title Prihlásenie
+          a.p-tiny(data-bs-dismiss="modal")
+            +faIcon('xmark').fa-lg
+        .modal-body
+          form
+            .form-control.form-control--input
+              .input-addons
+                input.input(type="text", placeholder="Prosím, zadaj svoj e-mail…")
+                .input-addons__item.p-none
+                  a.btn.btn--primary(href="campaign-2024-auth.html")
+                    | Prihlásiť
+
+            .text-color-grey.text-medium
+              p Vyber si e-mail, ktorý bude tvojím prihlásením <strong>v súťaži Knižné putovanie</strong>. Tento e-mail bude zároveň naším kontaktom v prípade výhry a budeme ti naň posielať aj informácie súvisiace so súťažou a jej priebehom. Z odberu informácií sa môžeš kedykoľvek odhlásiť. Podrobné pravidlá Knižného putovania <a href="" class="link">nájdeš tu</a>.
+              p.mb-none Viac informácii o ochrane osobných údajov u nás <a href="" class="link">nájdeš tu</a>.
