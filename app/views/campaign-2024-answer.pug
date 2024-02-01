@@ -1,34 +1,105 @@
-extends campaign-tajomne-kniznice-auth
+extends campaign-2024-auth
 
-block gameHint
-
-block gameAnswer
-  h2 Jean Valjean
-
-  article.card.card--arrowhead.card--arrowhead-bottom.text-color-black.mc24-answer__congrats
-    .card__content &bdquo;Milý priateľ, gratulujem k správnemu uhádnutiu mojej knižnice. Je mi cťou byť súčasťou tohto krásneho príbehu a verím, že moje boje za spravodlivosť nájdu odozvu v srdciach čitateľov.&ldquo;
-
-  .mt-large.d-flex.justify-content-center.align-items-center.flex-column.flex-m-row
-    .d-block.text-center.mr-m-large.mb-medium.mb-m-none
-      img(src=`${assetsPrefix}images/content/campaign/tajomne-kniznice/hero-fake.png`, alt="Fake News").mc24-answer__hero.mb-small
-      | <br>
-      button.mb-none.text-color-white.btn.btn--clean(data-bs-toggle="modal" data-bs-target="#mc24-answer__modal")
-        +faIcon('info-circle').mr-tiny
-        | Viac o postave
-    .d-flex.flex-column.mc24-answer__about.align-items-center.align-items-m-start
-      .d-flex.justify-content-center.align-items-center
-        .product-cover.product-cover--large.product-cover--book.mr-medium
-          img(src=`https://mrtns.eu/tovar/_l/187/l187112.jpg?v=14873584431`)
-        .d-block.text-left
-          h3.mb-tiny Les Misérables
-          p.mb-small Victor Hugo
-          a.btn.btn--primary.mb-none Pozrieť na Martinuse
-
-
-  .modal.fade#mc24-answer__modal
-    .modal-dialog.modal-dialog-centered
+block gameModal
+  .modal.modal-lg.fade#mc24-modal-game(aria-labelledby="game-modal-title" aria-hidden="true" tabindex="-1" role="dialog")
+    .modal-dialog
       .modal-content
-        .modal-body.text-color-black
-          h3 Jean Valjean
-          p.mb-none
-            | Jean Valjean je bývalým väzňom, ktorý strávil 19 rokov vo väzení za krádež. Po svojom prepustení sa snaží začať nový život a nájsť pokoj, ale jeho minulosť ho neustále prenasleduje. Časom sa musí vrátiť k svojmu skutočnému ja a bojovať proti krivde a nespravodlivosti. Jean Valjean je silným a neústupným hrdinom, ktorý zastáva hodnoty lásky a spravodlivosti.
+        .modal-body.px-l-large
+          h2.text-center#game-modal-title.text-bold.d-flex.align-items-center.justify-content-center.mb-none
+            img(src='images/content/campaign/knizne-putovanie/check.svg').mr-small
+            | Jožko Mrkvička
+
+          article.py-medium.px-l-large.mc24-game__hint.text-center.tabs
+            section#game-tab-0.tab
+              .d-flex.flex-column.align-items-center
+                .card.card--arrowhead.card--arrowhead-bottom.shadow-sm(style='max-width: 30rem; margin: 0 auto;').mb-medium
+                  .card__content Vitaj v Londýne, Červená Čiapočka. Síce tu už nebývam, ale vždy rád prídem na návštevu, dám si fish&chips a povozím sa na double deckri. Poď, ukážem ti Buckinghamský palác, poznám tajný vchod cez čínske bistro.
+                img(src='images/content/campaign/knizne-putovanie/hero-fake.png', width=100)
+
+                button.mb-none.btn.btn--clean(data-bs-toggle="modal" data-bs-target="#tk23-answer__modal")
+                  +faIcon('info-circle').mr-tiny
+                  | Viac o postave
+
+                .card.card--well.mc24-game__talk.text-left
+                  .card__content
+                    h5 Možno sa ti budú páčiť aj tieto knižky:
+                    .d-flex.align-items-start.mb-none
+                      .d-flex.align-items-center.mx-small
+                        .product-cover.product-cover--small-medium.product-cover--book.mr-small
+                          img(src=`https://mrtns.eu/tovar/_l/187/l187112.jpg?v=14873584431`, width=36)
+                        .text-color-grey.text-left.text-medium
+                          a.link--product.text-semibold Les Misérables
+                          div.text-small Victor Hugo<br>Slovart, 2020
+                      .d-flex.align-items-center.mx-small
+                        .product-cover.product-cover--small-medium.product-cover--book.mr-small
+                          img(src=`https://mrtns.eu/tovar/_l/187/l187112.jpg?v=14873584431`, width=36)
+                        .text-color-grey.text-left.text-medium
+                          a.link--product.text-semibold Les Misérables
+                          div.text-small Victor Hugo<br>Slovart, 2020
+                      .d-flex.align-items-center.mx-small
+                        .product-cover.product-cover--small-medium.product-cover--book.mr-small
+                          img(src=`https://mrtns.eu/tovar/_l/187/l187112.jpg?v=14873584431`, width=36)
+                        .text-color-grey.text-left.text-medium
+                          a.link--product.text-semibold Les Misérables
+                          div.text-small Victor Hugo<br>Slovart, 2020
+            section#game-tab-1.tab
+              img(src='images/content/campaign/knizne-putovanie/card-sample-lg.png').img-fluid.shadow-md
+            section#game-tab-2.tab
+              .card.mc24-paper.mc24-paper--fantasy-scifi.shadow-md
+                .card__content
+                  p Moja budúca dôverná priateľka, Červená Čiapočka,<br>hoci červená nie je moja najobľúbenejšia farba, rada ťa privítam na našom krásnom ostrove plnom vždyzelených lúk. Môžeš mi pomôcť s prípravou na učiteľské skúšky, tvoja babička mi hovorila, že si veľmi bystré dievča. Ach, kde som to len dala svoj klobúk?
+
+                  p Tvoja vždy verná…
+              a(href='#', data-paper="history").change-paper.mr-small Historický
+              a(href='#', data-paper="modern").change-paper.mr-small Moderný
+              a(href='#', data-paper="funky").change-paper.mr-small Funky
+              a(href='#', data-paper="fantasy-scifi").change-paper Fantasy a sci-fi
+            section#game-tab-3.tab
+              .card.card--well.mc24-game__talk.shadow-md
+                .card__content
+                  h2 Rozhovor s náhodnou osobou
+                  p Červená čiapočka na poľnej ceste zastaví neznámeho farmára v slamenom klobúku. Ukáže mu záhadnú pohľadnicu.
+
+                  .card.card--speech-bubble
+                    .card__content
+                      <strong>ČČ:</strong><br>
+                      | Prosím vás, milý pane, hľadám odosielateľa alebo odosielateľku tejto pohľadnice. Viete mi pomôcť?
+
+                  .card.card--speech-bubble-end.bg-secondary
+                    .card__content
+                      <strong>Farmár:</strong><br>
+                      | Akoby nie! Dom tejto osoby už zďaleka ľahko rozoznáš podľa farby strechy.
+
+                  .card.card--speech-bubble
+                    .card__content
+                      <strong>ČČ:</strong><br>
+                      | Čo mi o nej ešte viete povedať?
+
+                  .card.card--speech-bubble-end.bg-secondary
+                    .card__content
+                      <strong>Farmár:</strong><br>
+                      | Zhovorčivá osôbka s veľkou predstavivosťou. A máme podobné klobúky! Dovidenia, utekám podojiť kravy!
+
+          .mc24-game__tab-nav
+            ul.tab-nav.mx-auto.d-flex.align-items-center.justify-content-center(data-tabs-container)
+              li.tab-nav__item.is-active(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link(href='#game-tab-0', role="tab", title="Správna odpoveď")
+                  img(src='images/content/campaign/knizne-putovanie/hero-fake.png', style='height: 40px')
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link(href='#game-tab-1', role="tab", title="Vizuálna indícia", style="background-image: url('images/content/campaign/knizne-putovanie/card-sample.png')")
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-text.tab-nav__content--link(href='#game-tab-2', role="tab", title="Text na zadnej strane pohľadnice", style="background-image: url('images/content/campaign/knizne-putovanie/paper/history.jpg')")
+                  img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                  | 12:00
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link(href='#game-tab-3', role="tab", title="Rozhovor s náhodou osobou")
+                  img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                  | 16:00
+
+  script.
+    // open modal vanilla js upon page load
+    document.addEventListener("myAppLoaded", function() {
+      window.myApp.modals
+              .create('#mc24-modal-game')
+              .show('#mc24-modal-game');
+    });

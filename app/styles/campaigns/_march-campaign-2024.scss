@@ -1,6 +1,8 @@
 $mc24-color-green: #3F9E52;
 $mc24-color-beige: #FDEFE3;
 
+@import url('https://fonts.googleapis.com/css2?family=Caveat+Brush&family=Italianno&family=Jim+Nightshade&family=Open+Sans&display=swap');
+
 .mc24-bg-green {
   background: $mc24-color-green;
 }
@@ -10,12 +12,81 @@ $mc24-color-beige: #FDEFE3;
   background-size: 1100px;
 
   .footer {
-    margin-top: 39px !important;
+    margin-top: _get-rem(39px) !important;
+  }
+}
+
+.mc24-paper {
+  border-radius: 0.25rem;
+
+  .card__content {
+    padding: _get-rem(15px);
+
+    @include breakpoint('l') {
+      padding: _get-rem(60px);
+    }
+  }
+
+  &--history {
+    background: url('../images/content/campaign/knizne-putovanie/paper/history.jpg') no-repeat center top;
+    background-size: cover;
+    font-family: Italianno, cursive;
+
+    font-size: 2.2rem;
+    line-height: 1.2;
+
+    @include breakpoint('m') {
+      font-size: 3rem;
+    }
+  }
+
+  &--funky {
+    background: url('../images/content/campaign/knizne-putovanie/paper/funky.jpg') no-repeat center top;
+    background-size: cover;
+
+    font-family: 'Caveat Brush', cursive;
+    font-size: 1.7rem;
+
+    @include breakpoint('m') {
+      font-size: 2rem;
+    }
+  }
+
+  &--fantasy-scifi {
+    background: url('../images/content/campaign/knizne-putovanie/paper/fantasy-scifi.jpg') no-repeat center top;
+    background-size: cover;
+    font-family: 'Jim Nightshade', cursive;
+
+    font-size: 2rem;
+
+    @include breakpoint('m') {
+      font-size: 2.5rem;
+    }
+
+    .card__content::after {
+      display: block;
+      content: svg-load('../images/content/campaign/knizne-putovanie/paper/decoration.svg');
+      transform: rotate(180deg);
+      margin-top: _get-rem(-50px);
+    }
+  }
+
+  &--modern {
+    background: url('../images/content/campaign/knizne-putovanie/paper/modern.jpg') no-repeat center top;
+    background-size: cover;
+
+    font-family: 'Open Sans', sans-serif;
+
+    font-size: 1.4rem;
+
+    @include breakpoint('m') {
+      font-size: 1.6rem;
+    }
   }
 }
 
 .mc24-game {
-  &--talk {
+  &__talk {
     background: $mc24-color-beige;
 
     > .card__content {
@@ -36,11 +107,11 @@ $mc24-color-beige: #FDEFE3;
       }
 
       .card--speech-bubble {
-        margin-right: 50px;
+        margin-right: _get-rem(50px);
       }
 
       .card--speech-bubble-end {
-        margin-left: 50px;
+        margin-left: _get-rem(50px);
       }
     }
   }
@@ -67,8 +138,8 @@ $mc24-color-beige: #FDEFE3;
     }
 
     .tab-nav__content--link {
-      width: 60px;
-      height: 60px;
+      width: _get-rem(60px);
+      height: _get-rem(60px);
       padding: 0;
       background: $mc24-color-beige;
       border-radius: 3px;
@@ -92,8 +163,18 @@ $mc24-color-beige: #FDEFE3;
       height: 25px;
     }
 
-    .is-disabled img {
-      filter: grayscale(100%);
+    .is-disabled {
+      img {
+        filter: grayscale(100%);
+      }
+
+      .tab-nav__content--link {
+        color: $text-color-grey;
+
+        &:hover {
+          color: $text-color-grey;
+        }
+      }
     }
 
     .is-active .tab-nav__content--link {
