@@ -30,8 +30,90 @@ block gameContent
     .row
       for i in [1,2,3,4]
         for j in [1,2,3,4,5]
-          .col--6.col--l-3.mc24-board__tile
-            img(src='images/content/campaign/knizne-putovanie/card-sample.png').img-fluid
+          - const randomCover = Math.floor(Math.random() * 6) + 1;
+          .col--6.col--l-3
+            .mc24-board__tile(class=(i === 1 && j === 1) ? 'is-done': '')
+              if i === 1
+                a(href='#', data-bs-toggle="modal" data-bs-target="#mc24-modal-game")
+                  img(src='images/content/campaign/knizne-putovanie/card-sample.png').img-fluid
+              else
+                img(src=`images/content/campaign/knizne-putovanie/envelopes/${randomCover}.jpg`).img-fluid.img--rounded
+              .mc24-board__tile__date
+                | 28. 3.
+  block gameModal
+    .modal.modal-lg.fade#mc24-modal-game(aria-labelledby="game-modal-title" aria-hidden="true" tabindex="-1" role="dialog")
+      .modal-dialog
+        .modal-content
+          .modal-body.px-l-large
+            h2.text-center#game-modal-title Ktorá knižná postava poslala Červenej Čiapočke túto pohľadnicu?
+
+            .row.mb-medium
+              .col--m-8.mx-auto
+                .form-control.form-control--input.mb-none
+                  .input-addons
+                    input.input(type="text", placeholder="Sem napíš svoju odpoveď…")
+                    .input-addons__item.p-none
+                      a(href='campaign-2024-answer.html').btn.btn--primary.px-small Hádať
+
+            .mc24-game__tab-nav
+              h5.text-center.mb-none Indície:
+              ul.tab-nav.mx-auto.d-flex.align-items-center.justify-content-center(data-tabs-container)
+                li.tab-nav__item.is-active(data-tabs-item)
+                  a.tab-nav__content.tab-nav__content--link(href='#game-tab-1', role="tab", title="Vizuálna indícia", style="background-image: url('images/content/campaign/knizne-putovanie/card-sample.png')")
+                li.tab-nav__item(data-tabs-item)
+                  a.tab-nav__content.tab-text.tab-nav__content--link(href='#game-tab-2', role="tab", title="Text na zadnej strane pohľadnice", style="background-image: url('images/content/campaign/knizne-putovanie/paper/history.jpg')")
+                    img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                    | 12:00
+                li.tab-nav__item(data-tabs-item)
+                  a.tab-nav__content.tab-nav__content--link(href='#game-tab-3', role="tab", title="Rozhovor s náhodou osobou")
+                    img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                    | 16:00
+                li.tab-nav__item.is-disabled(data-tabs-item)
+                  .tab-nav__content.tab-nav__content--link(data-tooltip, title="Túto indíciu odomkneme o 16:00")
+                    img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                    | 16:00
+
+            article.py-medium.px-l-large.mc24-game__hint.text-center.tabs
+              section#game-tab-1.tab
+                img(src='images/content/campaign/knizne-putovanie/card-sample-lg.png').img-fluid.shadow-md
+              section#game-tab-2.tab
+                .card.mc24-paper.mc24-paper--fantasy-scifi.shadow-md
+                  .card__content
+                    p Moja budúca dôverná priateľka, Červená Čiapočka,<br>hoci červená nie je moja najobľúbenejšia farba, rada ťa privítam na našom krásnom ostrove plnom vždyzelených lúk. Môžeš mi pomôcť s prípravou na učiteľské skúšky, tvoja babička mi hovorila, že si veľmi bystré dievča. Ach, kde som to len dala svoj klobúk?
+
+                    p Tvoja vždy verná…
+                a(href='#', data-paper="history").change-paper.mr-small Historický
+                a(href='#', data-paper="modern").change-paper.mr-small Moderný
+                a(href='#', data-paper="funky").change-paper.mr-small Funky
+                a(href='#', data-paper="fantasy-scifi").change-paper Fantasy a sci-fi
+              section#game-tab-3.tab
+                .card.card--well.mc24-game__talk.shadow-md
+                  .card__content
+                    h2 Rozhovor s náhodnou osobou
+                    p Červená čiapočka na poľnej ceste zastaví neznámeho farmára v slamenom klobúku. Ukáže mu záhadnú pohľadnicu.
+
+                    .card.card--speech-bubble
+                      .card__content
+                        <strong>ČČ:</strong><br>
+                        | Prosím vás, milý pane, hľadám odosielateľa alebo odosielateľku tejto pohľadnice. Viete mi pomôcť?
+
+                    .card.card--speech-bubble-end.bg-secondary
+                      .card__content
+                        <strong>Farmár:</strong><br>
+                        | Akoby nie! Dom tejto osoby už zďaleka ľahko rozoznáš podľa farby strechy.
+
+                    .card.card--speech-bubble
+                      .card__content
+                        <strong>ČČ:</strong><br>
+                        | Čo mi o nej ešte viete povedať?
+
+                    .card.card--speech-bubble-end.bg-secondary
+                      .card__content
+                        <strong>Farmár:</strong><br>
+                        | Zhovorčivá osôbka s veľkou predstavivosťou. A máme podobné klobúky! Dovidenia, utekám podojiť kravy!
+
+              img(src='images/content/campaign/knizne-putovanie/hero-guess.png').mc24-game__hint__hero.mt-medium
+
 
   script.
     document.addEventListener('DOMContentLoaded', function() {
@@ -48,3 +130,18 @@ block gameContent
         card.style.setProperty('--translateY', translateY);
       });
     });
+
+    const mc24Paper = document.querySelector('.mc24-paper');
+    const mc24PaperClasses = ['mc24-paper--fantasy-scifi', 'mc24-paper--modern', 'mc24-paper--history', 'mc24-paper--funky'];
+
+    document.querySelectorAll('.change-paper').forEach(function(link) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        mc24PaperClasses.forEach(function(className) {
+          mc24Paper.classList.remove(className);
+        });
+        mc24Paper.classList.add('mc24-paper--' + this.dataset.paper);
+      });
+    });
+
+
