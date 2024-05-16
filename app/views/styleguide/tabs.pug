@@ -87,65 +87,6 @@ block append content
           </article>
       //- end: demo
 
-    +p To display a more compact tab navigation, use the <code class="l-code-inline">tab-nav--compact</code> class modifier.
-
-    +demo
-      +demo-example
-        ul.tab-nav.tab-nav--compact(data-tabs-container)
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link(href='#tab-compact-1' role="tab")
-              .tab-nav__content-wrap Tab 1
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link(href='#tab-compact-2' role="tab")
-              .tab-nav__content-wrap Tab 2
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link(href='#tab-compact-3' role="tab") Tab 3
-          li.tab-nav__item(data-tabs-item)
-            a.tab-nav__content.tab-nav__content--link.is-disabled(href='#tab-compact-4' role="tab" tabindex="-1")
-              .tab-nav__content-wrap Tab disabled
-
-        article.tabs
-          section#tab-compact-1.tab
-            p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
-          section#tab-compact-2.tab
-            p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
-          section#tab-compact-3.tab
-            p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
-          section#tab-compact-4.tab
-            p Lorem ipsum Veniam qui cupidatat dolore ad nulla in dolore veniam id est cillum quis magna dolore Ut minim in culpa dolore in qui nostrud in.
-
-      +demo-code
-        :code
-          <!-- tabs -->
-          <ul class="tab-nav tab-nav--compact" data-tabs-container>
-            <li class="tab-nav__item" data-tabs-item>
-              <a class="tab-nav__content tab-nav__content--link" href="#tab-1" role="tab">Tab 1</a>
-            </li>
-            <li class="tab-nav__item" data-tabs-item>
-              <a class="tab-nav__content tab-nav__content--link" href="#tab-2" role="tab">Tab 2</a>
-            </li>
-            <li class="tab-nav__item is-active" data-tabs-item>
-              <a class="tab-nav__content tab-nav__content--link" href="#tab-3" role="tab">Tab 3</a>
-            </li>
-            <li class="tab-nav__item" data-tabs-item>
-              <a class="tab-nav__content tab-nav__content--link is-disabled" href="#tab-4" tabindex="-1">Tab disabled</a>
-            </li>
-          </ul>
-
-          <!-- tabs panes-->
-          <article class="tabs">
-            <section id="tab-1" class="tab">
-            </section>
-            <section id="tab-2" class="tab">
-            </section>
-            <section id="tab-3" class="tab">
-            </section>
-            <section id="tab-4" class="tab">
-            </section>
-          </article>
-      //- end: demo
-
-
     +content-sub-section('Tabs card')
 
       +p Tabbed cards should have class <code class='l-code-inline'>.tab-nav--block</code> to distribute tab navigation items to full width.
@@ -170,11 +111,15 @@ block append content
 
       +demo
         +demo-example
-          .btn-group.btn-group--horizontal(data-tabs-container)
-            a(href='#tab-filter-1', role="tab", data-tabs-item).btn.btn--ghost.is-active Knihy
-            a(href='#tab-filter-2', role="tab", data-tabs-item).btn.btn--ghost Filmy
-            a(href='#tab-filter-3', role="tab", data-tabs-item).btn.btn--ghost Hry
-            a(href='#tab-filter-4', role="tab", data-tabs-item).btn.btn--ghost Káva a čaj
+          .btn-group.btn-group--tab.btn-group--horizontal(data-tabs-container)
+            a(href='#tab-filter-1', role="tab", data-tabs-item).btn.btn--tab.is-active Knihy
+            a(href='#tab-filter-2', role="tab", data-tabs-item).btn.btn--tab Filmy
+            a(href='#tab-filter-3', role="tab", data-tabs-item).btn.btn--tab Hry
+            a(href='#tab-filter-4', role="tab", data-tabs-item).btn.btn--tab Káva a čaj
+
+          .btn-group.btn-group--tab.btn-group--horizontal(data-tabs-container)
+            a(href='#tab-filter-1', role="tab", data-tabs-item).btn.btn--tab.is-active Example 1
+            a(href='#tab-filter-2', role="tab", data-tabs-item).btn.btn--tab Example 2
 
           article.tabs
             section#tab-filter-1.tab

@@ -797,21 +797,17 @@ $button-styles: (
   tab: (
     default: (
       color: _color(black),
-      border-color: _color(grey, 400),
       background-color: transparent,
     ),
     focus: (
-      background-color: _color(link, 400),
-      border-color: _color(link, 400) !important,
-      color: _color(white),
+      background-color: _color(bg, 500),
+      color: _color(black),
     ),
     active: (
-      background-color: _color(link),
-      border-color: _color(link) !important,
-      color: _color(white),
-    ),
-    group: (
-      border-color: _color(grey, 400),
+      background-color: #fff,
+      color: _color(primary),
+      border-radius: 3px,
+      box-shadow: $shadow-sm,
     ),
   ),
   link: (
@@ -1642,21 +1638,17 @@ $list-item-section-image-size: 3rem !default;
 
 $tabs-link: (
   default: (
-    padding: _get-em(8px) _get-em(20px) _get-em(6px),
+    padding: _get-em(10px) _get-em(15px),
     transition: #{border $ease-400, color $ease-400, opacity $ease-400},
     border-bottom-width: 2px,
     border-bottom-style: solid,
     border-bottom-color: transparent,
-    text-transform: uppercase,
-    font-weight: var(--fw-semibold),
-  ),
-  compact: (
-    padding: _get-em(10px) _get-em(15px),
     text-transform: none,
+    font-weight: var(--fw-semibold),
     line-height: 1,
-    display: flex,
     text-align: center,
     align-items: center,
+    display: flex,
   ),
   active: (
     color: _color(primary, 500),
