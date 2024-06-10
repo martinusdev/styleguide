@@ -50,6 +50,16 @@ export default class ProductPreview {
     nextPageButton.addEventListener('click', this._handleNextPage);
     prevPageButton.addEventListener('click', this._handlePrevPage);
 
+    window.addEventListener('keydown', (e) => {
+      if (e.code === 'ArrowDown' || e.code === 'ArrowRight' || (!e.shiftKey && e.code === 'Space')) {
+        this._handleNextPage();
+      }
+
+      if (e.code === 'ArrowUp' || e.code === 'ArrowLeft' || (e.shiftKey && e.code === 'Space')) {
+        this._handlePrevPage();
+      }
+    });
+
     this.sliderMonitor = scrollMonitor.createContainer(this.slider);
 
     this.allPages = slides.length;
