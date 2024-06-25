@@ -22,7 +22,7 @@ export default class Tooltip {
     this.selector = selector;
     this.tooltips = [];
 
-    this._init();
+    document.addEventListener('DOMContentLoaded', () => this._init.bind(this));
   }
 
   destroy() {
@@ -42,8 +42,10 @@ export default class Tooltip {
 
       // fetch html element to put in tooltip
       const element = document.querySelector(target.dataset.html);
+
       if (element) {
-        targetConfig.content = element.innerHTML;
+        element.style.display = 'block';
+        targetConfig.content = element;
       }
 
       targetConfig.allowHTML = true;
