@@ -21,37 +21,28 @@ mixin productCover(props = {})
 
     const tag = href ? 'a': 'div';
 
-  .product__cover(class=collection===true ? 'product__cover--collection' : '')&attributes(attributes)
-    #{tag}.thumbnail(
-      href= href ? href : undefined,
-      class= type ? `thumbnail--${type}` : '',
-      class= size ? `thumbnail--${size}` : '',
-      class= clickable ? `thumbnail--clickable`: ''
-    )
-      if collection
-        each i, index in Array(5)
-          .thumbnail__img-wrap(style=(index==0 && minHeight != false) ? `min-height: ${minHeight}; box-shadow: none;` : '')
-            if lazy
-              img(data-src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).img.swiper-lazy
-            else
-              img(src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).img
+  #{tag}.product-cover(
+    class=collection===true ? 'product-cover--collection' : '',
+    href= href ? href : undefined,
+    class= size ? `product-cover--${size}` : '',
+    class= type ? `product-cover--${type}` : '',
+  )&attributes(attributes)
+    if collection
+      each i, index in Array(3)
+        img(src=`${assetsPrefix}images/content/books/sample-${index + 1}.jpg`).d-block
 
-      else
-        .thumbnail__img-wrap
-          if lazy
-            img(data-src=`${assetsPrefix}${cover}`).img.swiper-lazy
-          else
-            img(src=`${assetsPrefix}${cover}`).img
+    else
+      img(src=`${assetsPrefix}${cover}`).d-block
 
-      if discount || rating
-        .thumbnail__info
-          if discount
-            .badge.badge--primary= discount
-          else if rating
-            .badge
-              +icon('star').text-color-yellow.icon--small
-              | #{' '}
-              = rating
+    if discount || rating
+      .thumbnail__info
+        if discount
+          .badge.badge--primary= discount
+        else if rating
+          .badge
+            +icon('star').text-color-yellow.icon--small
+            | #{' '}
+            = rating
 
     if duration || badge
       .thumbnail__status
