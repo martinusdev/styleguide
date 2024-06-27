@@ -1,0 +1,65 @@
+extends templates/layout
+
+include ./../mixins/faIcon
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.formComponents.starrating', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+  - var subPageID = page.subPage;
+
+//- Content
+block prepend content
+
+  +main-info([
+    'app/styles/modules/_ratings.scss',
+  ], contents)
+
+    +p-big Documentation of star rating module.
+  //- end: main info
+
+//- Content
+block append content
+  +content-section(contents[0])
+    +p Star rating is a form component that allows users to rate something by selecting stars. It is a set of radio buttons with stars as labels.
+
+    +demo
+      +demo-example
+        .row
+          .col
+            h4#rating-label Hodnotenie
+            .rating-star.rating-star--highlight-on-hover(role="radiogroup", aria-labelledby="rating-label")
+              input(type="radio", name="rating", value="1", id="rating-value1to5-1", aria-label="1 z 5").rating-star__input
+              label(for="rating-value1to5-1").rating-star__item
+                +faIcon('star', 'fas').fa-2x
+
+              input(type="radio", name="rating", value="2", id="rating-value1to5-2", aria-label="2 z 5").rating-star__input
+              label(for="rating-value1to5-2").rating-star__item
+                +faIcon('star', 'fas').fa-2x
+
+              input(type="radio", name="rating", value="3", id="rating-value1to5-3", checked, aria-label="3 z 5").rating-star__input
+              label(for="rating-value1to5-3").rating-star__item
+                +faIcon('star', 'fas').fa-2x
+
+              input(type="radio", name="rating", value="4", id="rating-value1to5-4", aria-label="4 z 5").rating-star__input
+              label(for="rating-value1to5-4").rating-star__item
+                +faIcon('star', 'fas').fa-2x
+
+              input(type="radio", name="rating", value="5", id="rating-value1to5-5", aria-label="5 z 5").rating-star__input
+              label(for="rating-value1to5-5").rating-star__item
+                +faIcon('star', 'fas').fa-2x
+      +demo-code
+        :code
+          <h4 id="rating-label">Hodnotenie</h4>
+          <div class="rating-star rating-star--highlight-on-hover" role="radiogroup" aria-labelledby="rating-label">
+            <input type="radio" name="rating" id="rating-1" value="1" class="rating-star__input" aria-label="1 z 5">
+            <label for="rating-1" class="rating_star__item"><i class="fas fa-star fa-2x"></i></label>
+            <input type="radio" name="rating" id="rating-2" value="2" class="rating-star__input" aria-label="2 z 5">
+            <label for="rating-2" class="rating_star__item"><i class="fas fa-star fa-2x"></i></label>
+            ... <!-- repeat for the total number of stars -->
+          </div>
+
+    //- end: demo
+
+  //- end: section
