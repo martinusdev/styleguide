@@ -40,31 +40,6 @@ block append content
 
         .row
           .col--l-6
-            .form-control.form-control--checkbox
-              .form-label
-                label(for="checkbox-withlabel") Form label:
-              .checkbox
-                input.radiocheck__input(type='checkbox', id='checkbox-withlabel', name='checkbox-withlabel')
-                label.radiocheck__control(for='checkbox-withlabel')
-                label.radiocheck__label(for='checkbox-withlabel') Checkbox
-
-          .col--l-6
-            .form-control.form-control--group
-              .radiocheck-group
-                .form-label
-                  label Form label:
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input(type='radio', id='radio-group-withlabel-01', name='radio-group-withlabel')
-                    label.radiocheck__control(for='radio-group-withlabel-01')
-                    label.radiocheck__label(for='radio-group-withlabel-01') Radio 1
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input(type='radio', id='radio-group-withlabel-02', name='radio-group-withlabel')
-                    label.radiocheck__control(for='radio-group-withlabel-02')
-                    label.radiocheck__label(for='radio-group-withlabel-02') Radio 2
-        .row
-          .col--l-6
             .form-control.form-control--select
               .form-label
                 label Form label:
@@ -87,27 +62,6 @@ block append content
               <label for="...">Form label:</label>
             </div>
             <textarea type="text" class="input" id="..." rows="3">
-          </div>
-
-          <!-- checkbox -->
-          <div class="form-control form-control--checkbox">
-            <div class="form-label">
-              <label for="...">Form label:</label>
-            </div>
-            <div class="checkbox">...</div>
-          </div>
-
-          <!-- radiogroup -->
-          <div class="form-control form-control--group">
-            <div class="radiocheck-group">
-              <div class="form-label">
-                <label>Form label:</label>
-              </div>
-              <div class="form-control form-control--radio">
-                <div class="radio">...</div>
-              </div>
-              ...
-            </div>
           </div>
 
           <!-- select -->
@@ -143,31 +97,6 @@ block append content
                   label(for='textarea-inline-01') Form label:
                 textarea.input(type='text', placeholder='Textarea', id='textarea-inline-01')
 
-          .row
-            .col--l-6
-              .form-control.form-control--inline.form-control--checkbox
-                .form-label
-                  label(for="checkbox-withlabel") Form label:
-                .checkbox
-                  input.radiocheck__input(type='checkbox', id='checkbox-inline-withlabel', name='checkbox-inline-withlabel')
-                  label.radiocheck__control(for='checkbox-inline-withlabel')
-                  label.radiocheck__label(for='checkbox-inline-withlabel') Checkbox
-
-            .col--l-6
-              .form-control.form-control--inline.form-control--group
-                .radiocheck-group
-                  .form-label
-                    label Form label:
-                  .form-control.form-control--radio
-                    .radio
-                      input.radiocheck__input(type='radio', id='radio-group-inline-withlabel-01', name='radio-group-inline-withlabel')
-                      label.radiocheck__control(for='radio-group-inline-withlabel-01')
-                      label.radiocheck__label(for='radio-group-inline-withlabel-01') Radio 1
-                  .form-control.form-control--radio
-                    .radio
-                      input.radiocheck__input(type='radio', id='radio-group-inline-withlabel-02', name='radio-group-inline-withlabel')
-                      label.radiocheck__control(for='radio-group-inline-withlabel-02')
-                      label.radiocheck__label(for='radio-group-inline-withlabel-02') Radio 2
           .row
             .col--l-6
               .form-control.form-control--inline.form-control--select
@@ -278,49 +207,36 @@ block append content
           .col--l-6
             .form-control.form-control--input
               .form-label
-                label(for='input-01') Form label:
-              input.input(type='text', placeholder='Input', id='input-01')
+                label(for='input-01b') Form label:
+              input.input(type='text', placeholder='Input', id='input-01b')
               p.form-text Lorem ipsum Elit anim tempor aliquip tempor mollit.
 
           .col--l-6
             .form-control.form-control--textarea
               .form-label
-                label(for='textarea-01') Form label:
-              textarea.input(type='text', placeholder='Textarea', id='textarea-01')
+                label(for='textarea-01b') Form label:
+              textarea.input(type='text', placeholder='Textarea', id='textarea-01b')
               p.form-text Lorem ipsum Elit anim tempor aliquip tempor mollit.
 
         .row
           .col--l-6
             .form-control.form-control--checkbox
-              .form-label
-                label(for="checkbox-withlabel") Form label:
-              .checkbox
-                input.radiocheck__input(type='checkbox', id='checkbox-withlabel', name='checkbox-withlabel')
-                label.radiocheck__control(for='checkbox-withlabel')
-                label.radiocheck__label(for='checkbox-withlabel') Checkbox
+              .form-check
+                input.form-check-input(type='checkbox', id='checkbox-withlabel', name='checkbox-withlabel')
+                label.form-check-label(for='checkbox-withlabel') Checkbox
               p.form-text Lorem ipsum Sit eu velit.
 
           .col--l-6
-            .form-control.form-control--group
-              .radiocheck-group
-                .form-label
-                  label Form label:
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input(type='radio', id='radio-group-withlabel-01', name='radio-group-withlabel')
-                    label.radiocheck__control(for='radio-group-withlabel-01')
-                    label.radiocheck__label(for='radio-group-withlabel-01') Radio 1
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input(type='radio', id='radio-group-withlabel-02', name='radio-group-withlabel')
-                    label.radiocheck__control(for='radio-group-withlabel-02')
-                    label.radiocheck__label(for='radio-group-withlabel-02') Radio 2
-                p.form-text Lorem ipsum Anim nisi et in dolor.
+            .form-check
+              input.form-check-input(type='radio', id='radio-group-withlabel-01', name='radio-group-withlabel')
+              label.form-check-label(for='radio-group-withlabel-01') Radio 1
+            .form-check
+              input.form-check-input(type='radio', id='radio-group-withlabel-02', name='radio-group-withlabel')
+              label.form-check-label(for='radio-group-withlabel-02') Radio 2
+            p.form-text Lorem ipsum Anim nisi et in dolor.
         .row
           .col--l-6
             .form-control.form-control--select
-              .form-label
-                label Form label:
               select.js-select
                 each option in [1,2,3,4,5,6]
                   option Option #{option}
@@ -395,30 +311,19 @@ block append content
         .row
           .col--l-6
             .form-control.form-control--checkbox
-              .form-label.is-error
-                label(for="checkbox-error") Form label:
-              .checkbox
-                input.radiocheck__input.is-error(type='checkbox', id='checkbox-error', name='checkbox-error')
-                label.radiocheck__control(for='checkbox-error')
-                label.radiocheck__label(for='checkbox-error') Checkbox
+              .form-check
+                input.form-check-input.is-invalid(type='checkbox', id='checkbox-error', name='checkbox-error')
+                label.form-check-label(for='checkbox-error') Checkbox
               p.form-text.is-error Lorem ipsum Sit eu velit.
 
           .col--l-6
-            .form-control.form-control--group
-              .radiocheck-group
-                .form-label.is-error
-                  label Form label:
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input.is-error(type='radio', id='radio-group-error-01', name='radio-group-error')
-                    label.radiocheck__control(for='radio-group-error-01')
-                    label.radiocheck__label(for='radio-group-error-01') Radio 1
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input.is-error(type='radio', id='radio-group-error-02', name='radio-group-error')
-                    label.radiocheck__control(for='radio-group-error-02')
-                    label.radiocheck__label(for='radio-group-error-02') Radio 2
-                p.form-text.is-error Lorem ipsum Anim nisi et in dolor.
+            .form-check
+              input.form-check-input.is-invalid(type='radio', id='radio-group-error-01', name='radio-group-error')
+              label.form-check-label(for='radio-group-error-01') Radio 1
+            .form-check
+              input.form-check-input.is-invalid(type='radio', id='radio-group-error-02', name='radio-group-error')
+              label.form-check-label(for='radio-group-error-02') Radio 2
+            p.form-text.is-error Lorem ipsum Anim nisi et in dolor.
         .row
           .col--l-6
             .form-control.form-control--select
@@ -508,31 +413,19 @@ block append content
 
         .row
           .col--l-6
-            .form-control.form-control--checkbox
-              .form-label.is-valid
-                label(for="checkbox-error") Form label:
-              .checkbox
-                input.radiocheck__input.is-valid(type='checkbox', id='checkbox-success', name='checkbox-success')
-                label.radiocheck__control(for='checkbox-success')
-                label.radiocheck__label(for='checkbox-success') Checkbox
-              p.form-text.is-valid Lorem ipsum Sit eu velit.
+            .form-check
+              input.form-check-input.is-valid(type='checkbox', id='checkbox-success', name='checkbox-success')
+              label.form-check-label(for='checkbox-success') Checkbox
+            p.form-text.is-valid Lorem ipsum Sit eu velit.
 
           .col--l-6
-            .form-control.form-control--group
-              .radiocheck-group
-                .form-label.is-valid
-                  label Form label:
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input.is-valid(type='radio', id='radio-group-success-01', name='radio-group-success')
-                    label.radiocheck__control(for='radio-group-success-01')
-                    label.radiocheck__label(for='radio-group-success-01') Radio 1
-                .form-control.form-control--radio
-                  .radio
-                    input.radiocheck__input.is-valid(type='radio', id='radio-group-success-02', name='radio-group-success')
-                    label.radiocheck__control(for='radio-group-success-02')
-                    label.radiocheck__label(for='radio-group-success-02') Radio 2
-                p.form-text.is-valid Lorem ipsum Anim nisi et in dolor.
+            .form-check
+              input.form-check-input.is-valid(type='radio', id='radio-group-success-01', name='radio-group-success')
+              label.form-check-label(for='radio-group-success-01') Radio 1
+            .form-check
+              input.form-check-input.is-valid(type='radio', id='radio-group-success-02', name='radio-group-success')
+              label.form-check-label(for='radio-group-success-02') Radio 2
+            p.form-text.is-valid Lorem ipsum Anim nisi et in dolor.
         .row
           .col--l-6
             .form-control.form-control--select

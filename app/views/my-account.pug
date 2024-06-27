@@ -1,6 +1,6 @@
 extends layouts/_default
 
-include ./mixins/icon
+include ./mixins/faIcon
 
 block opts
     - var pageTitle = 'Môj účet'
@@ -35,7 +35,7 @@ mixin address(props = {})
     .card__status
       .btn-dropdown.btn-dropdown--no-icon
         button.btn.btn--clean(data-toggle='self, next', data-toggle-expand, aria-haspopup="true")
-          +icon('dots', 'icon--medium')
+          +faIcon('ellipsis').fa-lg
         .dropdown.dropdown--align-right(data-dropdown, data-toggle-expand, style="min-width: 180px;")
           .dropdown__wrap
             a(href="#").dropdown__item Nastaviť ako fakturačnú
@@ -85,14 +85,14 @@ block content
                   .col--fill
                     div
                       button.btn.btn--clean.btn--small.m-none(data-toggle='#my-account-imageupload, #my-account-image')
-                        +icon('upload', 'icon--medium').icon--left
+                        +faIcon('arrow-up-from-bracket').fa-lg.mr-tiny.fa-fw
                         | Nahrať#{' '}
                         span.show-s nový#{' '}
                         | obrázok
                     .mb-medium.show-m
                     div
                       button.btn.btn--clean.btn--small.m-none
-                        +icon('trash', 'icon--medium').icon--left
+                        +faIcon('trash-can-xmark').fa-lg.mr-tiny.fa-fw
                         | Odstrániť
               .my-account-imageupload.mb-large.hide.card.card--well#my-account-imageupload(data-toggle-class="hide")
                 .bar.mb-none
@@ -246,10 +246,9 @@ block content
                       label.text-transform-upper.text-small.text-color-grey Adresa
                     select.js-select
                       option Obchodná 26, Bratislava
-                  .checkbox.mb-medium
-                    input.radiocheck__input(type='checkbox', id='quick-checkout-address', name='quick-checkout-address', data-radiocheck-toggle="#quick-checkout-address2")
-                    label.radiocheck__control(for='quick-checkout-address')
-                    label.radiocheck__label(for='quick-checkout-address')
+                  .form-check.mb-small
+                    input.form-check-input(type='checkbox', id='quick-checkout-address', name='quick-checkout-address', data-radiocheck-toggle="#quick-checkout-address2")
+                    label.form-check-label(for='quick-checkout-address')
                       | Chcem použiť inú fakturačnú adresu
 
                   .form-control.mb-large.hide#quick-checkout-address2
@@ -264,35 +263,28 @@ block content
                     select.js-select
                       option Zapamätaná karta **** **** **** 4567 (VISA)
 
-            #newsletter
+            #newsletter.mb-large
               h3.h2.text-color-black.mb-medium Newsletter
-              .form-control.form-control--checkbox.mb-large
-                .checkbox.radiocheck--medium
-                  input.radiocheck__input(type="checkbox", id="newsletter-delivery")
-                  label.radiocheck__control(for="newsletter-delivery")
-                  label.radiocheck__label(for="newsletter-delivery") Prajem si dostávať newsletter
+              .form-check
+                input.form-check-input(type="checkbox", id="newsletter-delivery")
+                label.form-check-label(for="newsletter-delivery") Prajem si dostávať newsletter
 
             #notifikacie
               h3.h2.text-color-black.mb-medium Dôležité notifikácie o objednávke
               p Nastavte si, ako vám môžeme posielať dôležité informácie o objednávke (napr. informáciu o jej expedovaní, alebo že si po ňu môžete prísť do kníhkupectva)
 
-              .form-control.form-control--radio
-                .radio
-                  input.radiocheck__input(type='radio', id='notifications_sms', name='notifications', checked, data-radiocheck-toggle="#notifications-messenger")
-                  label.radiocheck__control(for='notifications_sms')
-                  label.radiocheck__label(for='notifications_sms') Posielať pomocou SMS na číslo uvedené pri mojej adrese
+              .form-check
+                input.form-check-input(type='radio', id='notifications_sms', name='notifications', checked, data-radiocheck-toggle="#notifications-messenger")
+                label.form-check-label(for='notifications_sms') Posielať pomocou SMS na číslo uvedené pri mojej adrese
 
-              .form-control.form-control--radio
-                .radio
-                  input.radiocheck__input(type='radio', id='notifications_messenger', name='notifications' data-radiocheck-toggle="#notifications-messenger")
-                  label.radiocheck__control(for='notifications_messenger')
-                  label.radiocheck__label(for='notifications_messenger')
-                    | Pomocou Facebook Messengera
+              .form-check
+                input.form-check-input(type='radio', id='notifications_messenger', name='notifications' data-radiocheck-toggle="#notifications-messenger")
+                label.form-check-label(for='notifications_messenger') Pomocou Facebook Messengera
 
-                .card.card--info.form-control.hide#notifications-messenger
-                  .card__content
-                    p.mb-small Zaškrtnite prosím ešte možnosť "odosielať do Messengera" a nezabudnite stlačiť tlačidlo "Uložiť zmeny".
-                    img(src='images/content/messenger/button-mockup.png').mb-none
+              .card.card--info.form-control.hide#notifications-messenger
+                .card__content
+                  p.mb-small Zaškrtnite prosím ešte možnosť "odosielať do Messengera" a nezabudnite stlačiť tlačidlo "Uložiť zmeny".
+                  img(src='images/content/messenger/button-mockup.png').mb-none
 
               .mb-large
 
@@ -300,11 +292,9 @@ block content
               h3.h2.text-color-black.mb-medium E-knihy
               .row.align-items-center.mb-large
                 .col--m-shrink
-                  .form-control.form-control--checkbox.mb-none
-                    .checkbox.radiocheck--medium
-                      input.radiocheck__input(type="checkbox", id="ebboks")
-                      label.radiocheck__control(for="ebboks")
-                      label.radiocheck__label(for="ebboks") Prosím o automatické odosielanie e-kníh na tento e-mail:
+                  .form-check
+                    input.form-check-input(type="checkbox", id="ebboks")
+                    label.form-check-label(for="ebboks") Prosím o automatické odosielanie e-kníh na tento e-mail:
                 .col.mb-small.hide-m
                 .col--m-fill
                   .form-control.form-control--input.mb-none
@@ -314,7 +304,7 @@ block content
             .bar.bar--small.mb-small(data-sticky, data-sticky-class="is-stuck", data-sticky-wrap, data-scroll-offset=header.size.default + 40)
               .bar__item.bar__item--fill.text-right
                 button.btn
-                  +icon('save', 'icon--medium').icon--left
+                  +faIcon('check-circle').fa-lg.mr-tiny
                   | Uložiť zmeny
 
 block append modals

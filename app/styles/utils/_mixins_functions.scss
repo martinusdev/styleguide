@@ -82,6 +82,10 @@
 ) {
   $moz-border: '';
 
+  @if type-of($border) == number {
+    $border: '';
+  }
+
   @if $border == 'top left' {
     $border: '-top-left';
   }
