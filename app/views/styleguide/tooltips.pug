@@ -40,15 +40,25 @@ block append content
             button.btn.btn--ghost(data-tooltip, title="This is tooltip text. <a href='#' class='link'>This is a link within tooltip.</a>") This button has tooltip with link
 
           #tooltip-light.hide
-            .card
-              .card__content
-                h3 This is a content of hidden tooltip template
-                p You can put more html here
-                p <a href='#' class="link">This is a link within tooltip.</a>
-                button.btn.btn-primary.mb-none Test
-
           .bar__item
             button.btn.btn--ghost(data-tooltip, data-tippy-theme="light", data-html="#tooltip-light") Tooltip from html template
+
+              .card
+                .card__content
+                  h3 This is a content of hidden tooltip template
+                  p You can put more html here
+                  p <a href='#' class="link">This is a link within tooltip.</a>
+                  button.btn.btn-primary.mb-none Test
+              div.btn-group.btn-group--tab.btn-group--horizontal(data-tabs-container, role='tablist')
+                a.btn.btn--tab(href="#tooltip-tab1", data-tabs-item, role='tab') Tab 1
+                a.btn.btn--tab(href="#tooltip-tab2", data-tabs-item, role='tab') Tab 2
+              article.tabs
+                section.tab#tooltip-tab1
+                  h3 Tab 1
+                  p This is a content of tab 1
+                section.tab#tooltip-tab2
+                  h3 Tab 2
+                  p This is a content of tab 2
 
           .bar__item
             +icon('user').icon--large(data-tooltip, title="This is tooltip text on icon")
