@@ -25,27 +25,36 @@
         <header class="l-header-main">
           <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
           <div class="l-wrap-main">
-            <h1 class="js-header"><a href="#top" data-smoothscroll="#top">Modals</a></h1>
+            <h1 class="js-header"><a href="#top" data-smoothscroll="#top">Star Rating</a></h1>
             <div class="js-scrollspy l-headnav" id="header-navigation">
               <ul class="l-headnav_list nav">
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
-                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#modals" data-smoothscroll="#modals" data-toggle-target="#header-navigation" data-toggle="dropdown">Modals</a></li>
+                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#starrating" data-smoothscroll="#starrating" data-toggle-target="#header-navigation" data-toggle="dropdown">Star Rating</a></li>
               </ul>
             </div>
           </div>
         </header>
         <div class="l-content-main_inner">
+          <section class="l-main-info" id="main-info">
+            <div class="l-wrap-main">
+              <p class="l-big">Documentation of star rating module.
+              </p>
+              <div class="l-box-desc">
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/modules/_ratings.scss</code><br/>
+              </div>
+            </div>
+          </section>
           <aside class="l-nav-contents js-scrollspy">
             <p class="l-nav-contents_headline">Contents</p>
             <ul class="l-nav-contents_list nav">
-              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#modals" data-smoothscroll="#modals">Modals</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#starrating" data-smoothscroll="#starrating">Star Rating</a></li>
             </ul>
           </aside>
-          <section id="modals">
+          <section id="starrating">
             <div class="l-wrap-main">
-              <h2 class="l-h2">Modals
+              <h2 class="l-h2">Star Rating
               </h2>
-              <p class="l-p">Modals are taken from Bootstrap - <a href='https://getbootstrap.com/docs/5.2/components/modal' target='_blank'>Documentation here</a>
+              <p class="l-p">Star rating is a form component that allows users to rate something by selecting stars. It is a set of radio buttons with stars as labels.
               </p>
               <article class="l-demo">
                 <div class="l-demo_example">
@@ -54,54 +63,40 @@
                         <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
                       </svg></a>
                   </div>
-                  <button class="btn" data-bs-toggle="modal" data-bs-target="#bs-modal-demo" type="button">Default modal</button>
-                  <button class="btn" data-bs-toggle="modal" data-bs-target="#bs-modal-demo-large" type="button">Large modal</button>
-                  <button class="btn" data-bs-toggle="modal" data-bs-target="#bs-modal-demo-static" type="button">Static backdrop</button>
-                  <div class="modal fade" id="bs-modal-demo">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h3 class="mb-none">This is a default BS modal</h3>
-                        </div>
-                        <div class="modal-body">
-                          <p>Modal content</p>
-                        </div>
-                        <div class="modal-footer">Modal footer
-                          <button class="btn btn--secondary mb-none" data-bs-dismiss="modal">Close</button>
-                        </div>
+                  <div class="row">
+                    <div class="col">
+                      <h4 id="rating-label">Hodnotenie</h4>
+                      <div class="rating-star rating-star--highlight-on-hover" role="radiogroup" aria-labelledby="rating-label">
+                        <input class="rating-star__input" type="radio" name="rating" value="1" id="rating-value1to5-1" aria-label="1 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-1"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="2" id="rating-value1to5-2" aria-label="2 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-2"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="3" id="rating-value1to5-3" checked aria-label="3 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-3"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="4" id="rating-value1to5-4" aria-label="4 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-4"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="5" id="rating-value1to5-5" aria-label="5 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-5"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
                       </div>
                     </div>
                   </div>
-                  <div class="modal fade" id="bs-modal-demo-large">
-                    <div class="modal-dialog modal-lg">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h3 class="mb-none">This is a large BS modal</h3>
-                        </div>
-                        <div class="modal-body">
-                          <p>Modal content</p>
-                        </div>
-                        <div class="modal-footer">Modal footer
-                          <button class="btn btn--secondary mb-none" data-bs-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal fade" id="bs-modal-demo-static" data-bs-backdrop="static">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h3 class="mb-none">This is a BS modal with static backdrop</h3>
-                        </div>
-                        <div class="modal-body">
-                          <p>Modal content</p>
-                        </div>
-                        <div class="modal-footer">Modal footer
-                          <button class="btn btn--secondary mb-none" data-bs-dismiss="modal">Close</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;h4 id=&quot;rating-label&quot;&gt;Hodnotenie&lt;/h4&gt;
+&lt;div class=&quot;rating-star rating-star--highlight-on-hover&quot; role=&quot;radiogroup&quot; aria-labelledby=&quot;rating-label&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;rating&quot; id=&quot;rating-1&quot; value=&quot;1&quot; class=&quot;rating-star__input&quot; aria-label=&quot;1 z 5&quot;&gt;
+  &lt;label for=&quot;rating-1&quot; class=&quot;rating_star__item&quot;&gt;&lt;i class=&quot;fas fa-star fa-2x&quot;&gt;&lt;/i&gt;&lt;/label&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;rating&quot; id=&quot;rating-2&quot; value=&quot;2&quot; class=&quot;rating-star__input&quot; aria-label=&quot;2 z 5&quot;&gt;
+  &lt;label for=&quot;rating-2&quot; class=&quot;rating_star__item&quot;&gt;&lt;i class=&quot;fas fa-star fa-2x&quot;&gt;&lt;/i&gt;&lt;/label&gt;
+  ... &lt;!-- repeat for the total number of stars --&gt;
+&lt;/div&gt;
+</code></pre>
                 </div>
               </article>
               <hr class="l-hr-section"/>
@@ -148,17 +143,17 @@
               <ul class="l-nav-main_list-sub is-active">
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
                 </li>
-                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link is-active selected" data-toggle="self, next">Form components
                                     <svg class="icon icon-sg-add " role="img" aria-hidden="true">
                                       <use xlink:href="../icons_/styleguide.svg#icon-sg-add"></use>
                                     </svg></a>
-                  <ul class="l-nav-main_list-sub2">
+                  <ul class="l-nav-main_list-sub2 is-active">
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-basic.html">- Basic</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-labels.html">- Labels</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
-                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-starrating.html">- Star Rating</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link selected" href="forms-starrating.html">- Star Rating</a></li>
                   </ul>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
@@ -175,7 +170,7 @@
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tabs.html">Tabs</a>
                 </li>
-                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="modals.html">Modals</a>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="modals.html">Modals</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="dropdowns.html">Dropdowns</a>
                 </li>
