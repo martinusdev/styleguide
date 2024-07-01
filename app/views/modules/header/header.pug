@@ -87,22 +87,27 @@ block opts
             .d-flex.align-items-center.btn-dropdown.mb-none
               for item in mainNav
                 if item.trigger
-                  a.btn.btn--clean.header-btn.show-l.text-nowrap(
-                  data-mega-menu-trigger=`#${item.trigger}`
-                  data-toggle="self",
-                  aria-haspopup="true"
+                  button.btn.btn--clean.header-btn.show-l.text-nowrap(
+                    data-mega-menu-trigger=`#${item.trigger}`,
+                    data-toggle-expand,
+                    data-toggle="self",
+                    aria-haspopup="true",
+                    aria-expanded="false",
+                    type="button",
                   )= item.title
                 else
                   a.btn.btn--clean.header-btn.text-nowrap.show-l(
                     href=item.link
                   )= item.title
               .btn-dropdown.m-none.btn-dropdown--no-icon.hide-l
-                a.btn.btn--clean.text-transform-upper.header-btn(
-                data-mega-menu-trigger=`#${mainNav[0].trigger}`
-                data-toggle='self, #toggle-mega-menu-knihy',
-                data-toggle-icon='xmark',
-                data-toggle-expand,
-                aria-haspopup="true"
+                button.btn.btn--clean.text-transform-upper.header-btn(
+                  data-mega-menu-trigger=`#${mainNav[0].trigger}`
+                  data-toggle='self, #toggle-mega-menu-knihy',
+                  data-toggle-icon='xmark',
+                  data-toggle-expand,
+                  aria-expanded="false",
+                  aria-haspopup="true",
+                  type="button",
                 )
                   +faIcon('bars').fa-lg
 

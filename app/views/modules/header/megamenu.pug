@@ -171,10 +171,13 @@ mixin megaMenuContent(props = {})
       each item in mainNav
         .btn-dropdown.btn-dropdown--no-icon.m-none
           if item.trigger
-            a.btn(
+            button.btn(
               data-mega-menu-trigger=`#${item.trigger}`,
               data-toggle="self",
               aria-haspopup="true",
+              aria-expanded="false",
+              data-toggle-expand,
+              type="button",
               id=`toggle-${item.trigger}`
             )= item.title
           else
