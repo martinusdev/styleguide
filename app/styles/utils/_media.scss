@@ -10,6 +10,7 @@
 
 @use 'sass:map';
 @use 'sass:list';
+@use 'sass:meta';
 
 @mixin breakpoint( $breakpoint, $param: false) {
   @if (
@@ -20,7 +21,7 @@
     @content;
   } @else if not $param {
     // no param, just a standard mobile first media query
-    @if map-has-key( $grid-breakpoints, $breakpoint ) {
+    @if map.has-key( $grid-breakpoints, $breakpoint ) {
       // breakpoint is in $breakpoints map, let's use stored value
       @media screen and (min-width: map.get($grid-breakpoints, $breakpoint)) { @content; };
     } @else {
@@ -47,8 +48,8 @@
       (min-width: map.get($grid-breakpoints, $breakpoint)) and
       (max-width: _map-next($grid-breakpoints, $breakpoint) - 1px) { @content; };
   } @else if (
-    map-has-key( $grid-breakpoints, $param) and
-    map-has-key( $grid-breakpoints, $breakpoint)
+    map.has-key( $grid-breakpoints, $param) and
+    map.has-key( $grid-breakpoints, $breakpoint)
   ) {
     @media screen and
       (min-width: map.get($grid-breakpoints, $breakpoint)) and
@@ -61,8 +62,8 @@
     @media screen and (max-width: map.get($grid-breakpoints, $breakpoint) - 1px) {
       @content;
     } // -1
-  } @else if (type-of($param) == 'number') {
-    @if map-has-key($grid-breakpoints, $breakpoint) {
+  } @else if (meta.type-of($param) == 'number') {
+    @if map.has-key($grid-breakpoints, $breakpoint) {
       // breakpoint is in $breakpoints map
       @media screen and
         (min-width: map.get($grid-breakpoints, $breakpoint)) and

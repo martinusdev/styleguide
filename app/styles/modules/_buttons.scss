@@ -92,7 +92,7 @@
     @include generate-color($states, 'border-color', 'disabled');
   }
 
-  @if map-has-key($states, 'after') {
+  @if map.has-key($states, 'after') {
     position: relative;
     overflow: hidden;
     transform: translateZ(0);
@@ -109,7 +109,7 @@
     }
   }
 
-  @if map-has-key($states, 'before') {
+  @if map.has-key($states, 'before') {
     position: relative;
     overflow: hidden;
 
