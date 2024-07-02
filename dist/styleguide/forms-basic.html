@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac-Sans/style.0f2ed26c.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.1531f75b.css">
+    <link rel="stylesheet" href="../styles/main.ceecc7d1.css">
     <link rel="stylesheet" href="../styles/light.c86c69d1.css">
     <script src="../scripts/plugins/modernizr.1e58e638.js"></script>
   </head>
@@ -243,7 +243,7 @@
               </p>
               <div class="l-box-desc l-box-warn">
                 <p class="l-box-desc_headline">Warning</p>
-                <p class="l-p">To proper function of checkbox or radio, do not forget to spicify ID for native <code class='l-code-inline'>&lt;input&gt;</code> element and <code class='l-code-inline'>[for]</code> attribute for custom element.
+                <p class="l-p">To proper function of checkbox or radio, do not forget to specify ID for native <code class='l-code-inline'>&lt;input&gt;</code> element and <code class='l-code-inline'>[for]</code> attribute for custom element.
                 </p>
               </div>
               <article class="l-demo">
@@ -255,44 +255,35 @@
                   </div>
                   <div class="row">
                     <div class="col--l-6">
-                      <div class="form-control form-control--checkbox">
-                        <div class="checkbox">
-                          <input class="radiocheck__input" type="checkbox" id="checkbox-01" name="checkbox-01">
-                          <label class="radiocheck__control" for="checkbox-01"></label>
-                          <label class="radiocheck__label" for="checkbox-01">Checkbox</label>
-                        </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="checkbox-01b">
+                        <label class="form-check-label" for="checkbox-01b">Checkbox</label>
                       </div>
                     </div>
                     <div class="col--l-6">
-                      <div class="form-control form-control--radio">
-                        <div class="radio">
-                          <input class="radiocheck__input" type="radio" id="radio-01-01" name="radio-01">
-                          <label class="radiocheck__control" for="radio-01-01"></label>
-                          <label class="radiocheck__label" for="radio-01-01">Radio</label>
-                        </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" id="radio-01b">
+                        <label class="form-check-label" for="radio-01b">Radio</label>
                       </div>
                     </div>
                   </div>
                 </div>
                 <div class="l-demo_code">
                   <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                  <pre class="prettyprint"><code>&lt;div class=&quot;checkbox&quot;&gt;
-  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;radiocheck__input&quot; type=&quot;checkbox&quot;&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__control&quot;&gt;&lt;/label&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__label&quot;&gt;Checkbox&lt;/label&gt;
+                  <pre class="prettyprint"><code>&lt;div class=&quot;form-check&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-control&quot;&gt;Checkbox&lt;/label&gt;
 &lt;/div&gt;
-
-&lt;div class=&quot;radio&quot;&gt;
-  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;radiocheck__input&quot; type=&quot;radio&quot;&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__control&quot;&gt;&lt;/label&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__label&quot;&gt;Radio&lt;/label&gt;
+&lt;div class=&quot;form-check&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-control&quot;&gt;Radio&lt;/label&gt;
 &lt;/div&gt;</code></pre>
                 </div>
               </article>
               <div class="l-sub-section" id="">
                 <h3 class="l-h3">Checkbox states
                 </h3>
-                <p class="l-p">States can be set by using attributes and classes like <code class='l-code-inline'>.is-active</code>, <code class='l-code-inline'>[disabled]</code>, <code class='l-code-inline'>.is-disabled</code>, <code class='l-code-inline'>[readonly]</code>, <code class='l-code-inline'>.readonly</code> and <code class='l-code-inline'>.is-error</code> on hidden native input element.
+                <p class="l-p">States can be set by using attributes and classes like <code class='l-code-inline'>[disabled]</code> and <code class='l-code-inline'>.is-invalid</code> on hidden native input element.
                 </p>
                 <article class="l-demo">
                   <div class="l-demo_example">
@@ -303,61 +294,27 @@
                     </div>
                     <div class="row">
                       <div class="col--l-6">
-                        <div class="form-control form-control--checkbox">
-                          <div class="checkbox">
-                            <input class="radiocheck__input is-active" type="checkbox" id="checkbox-02" name="checkbox-02" checked>
-                            <label class="radiocheck__control" for="checkbox-02"></label>
-                            <label class="radiocheck__label" for="checkbox-02">Focus</label>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input" id="bs-checkbox-disabled" checked disabled type="checkbox">
+                          <label class="form-check-label" for="bs-checkbox-disabled">Disabled checkbox</label>
                         </div>
-                        <div class="form-control form-control--checkbox">
-                          <div class="checkbox">
-                            <input class="radiocheck__input" type="checkbox" id="checkbox-03" name="checkbox-03" disabled checked>
-                            <label class="radiocheck__control" for="checkbox-03"></label>
-                            <label class="radiocheck__label" for="checkbox-03">Disabled</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col--l-6">
-                        <div class="form-control form-control--checkbox">
-                          <div class="checkbox">
-                            <input class="radiocheck__input" type="checkbox" id="checkbox-04" name="checkbox-04" readonly checked>
-                            <label class="radiocheck__control" for="checkbox-04"></label>
-                            <label class="radiocheck__label" for="checkbox-04">Readonly</label>
-                          </div>
-                        </div>
-                        <div class="form-control form-control--checkbox">
-                          <div class="checkbox">
-                            <input class="radiocheck__input is-error" type="checkbox" id="checkbox-05" name="checkbox-05" checked>
-                            <label class="radiocheck__control" for="checkbox-05"></label>
-                            <label class="radiocheck__label" for="checkbox-05">Error</label>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input is-invalid" id="bs-checkbox-invalid" checked type="checkbox">
+                          <label class="form-check-label" for="bs-checkbox-invalid">Invalid checkbox</label>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="l-demo_code">
                     <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                    <pre class="prettyprint"><code>&lt;div class=&quot;checkbox&quot;&gt;
-  &lt;input id=&quot;...&quot; name=&quot;...&quot; checked=&quot;&quot; class=&quot;radiocheck__input is-active&quot; type=&quot;checkbox&quot;&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__control&quot;&gt;&lt;/label&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__label&quot;&gt;Focus&lt;/label&gt;
+                    <pre class="prettyprint"><code>&lt;div class=&quot;form-check&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; checked disabled class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Disabled&lt;/label&gt;
 &lt;/div&gt;
 
-&lt;div class=&quot;checkbox&quot;&gt;
-  &lt;input id=&quot;...&quot; name=&quot;...&quot; disabled=&quot;&quot; checked=&quot;&quot; class=&quot;radiocheck__input&quot; type=&quot;checkbox&quot;&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__control&quot;&gt;&lt;/label&gt;
-  &lt;label for=&quot;...&quot; class=&quot;radiocheck__label&quot;&gt;Disabled&lt;/label&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;checkbox&quot;&gt;
-  &lt;input id=&quot;...&quot; name=&quot;...&quot; readonly=&quot;&quot; checked=&quot;&quot; class=&quot;radiocheck__input&quot; type=&quot;checkbox&quot;&gt;
-  ...
-&lt;/div&gt;
-
-&lt;div class=&quot;checkbox&quot;&gt;
-  &lt;input id=&quot;...&quot; name=&quot;...&quot; checked=&quot;&quot; class=&quot;radiocheck__input error&quot; type=&quot;checkbox&quot;&gt;
-  ...
+&lt;div class=&quot;form-check&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; checked class=&quot;form-check-input is-invalid&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Invalid&lt;/label&gt;
 &lt;/div&gt;</code></pre>
                   </div>
                 </article>
@@ -376,35 +333,13 @@
                     </div>
                     <div class="row">
                       <div class="col--l-6">
-                        <div class="form-control form-control--radio">
-                          <div class="radio">
-                            <input class="radiocheck__input is-active" type="radio" id="radio-02-01" name="radio-02" checked>
-                            <label class="radiocheck__control" for="radio-02-01"></label>
-                            <label class="radiocheck__label" for="radio-02-01">Focus</label>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="radio-03-01" name="radio-03" disabled checked>
+                          <label class="form-check-label" for="radio-03-01">Disabled</label>
                         </div>
-                        <div class="form-control form-control--radio">
-                          <div class="radio">
-                            <input class="radiocheck__input" type="radio" id="radio-03-01" name="radio-03" disabled checked>
-                            <label class="radiocheck__control" for="radio-03-01"></label>
-                            <label class="radiocheck__label" for="radio-03-01">Disabled</label>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col--l-6">
-                        <div class="form-control form-control--radio">
-                          <div class="radio">
-                            <input class="radiocheck__input" type="radio" id="radio-04-01" name="radio-04" readonly checked>
-                            <label class="radiocheck__control" for="radio-04-01"></label>
-                            <label class="radiocheck__label" for="radio-04-01">Readonly</label>
-                          </div>
-                        </div>
-                        <div class="form-control form-control--radio">
-                          <div class="radio">
-                            <input class="radiocheck__input is-error" type="radio" id="radio-05-01" name="radio-05-01" checked>
-                            <label class="radiocheck__control" for="radio-05-01"></label>
-                            <label class="radiocheck__label" for="radio-05-01">Error</label>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input is-invalid" type="radio" id="radio-05-01" name="radio-05-01" checked>
+                          <label class="form-check-label" for="radio-05-01">Error</label>
                         </div>
                       </div>
                     </div>
@@ -435,9 +370,144 @@
                 </article>
               </div>
               <div class="l-sub-section" id="">
+                <h3 class="l-h3">Switch
+                </h3>
+                <p class="l-p">A switch has the markup of a custom checkbox but uses the <code class='l-code-inline'>.form-switch</code> class to render a toggle switch. Consider using <code class='l-code-inline'>role="switch"</code> to more accurately convey the nature of the control to assistive technologies that support this role.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="switch-01" name="switch-01" role="switch">
+                          <label class="form-check-label" for="switch-01">Default switch input</label>
+                        </div>
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="switch-02" name="switch-02" role="switch" checked>
+                          <label class="form-check-label" for="switch-02">Checked switch input</label>
+                        </div>
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="switch-03" name="switch-02" role="switch" disabled>
+                          <label class="form-check-label" for="switch-03">Disabled switch input</label>
+                        </div>
+                        <div class="form-check form-switch">
+                          <input class="form-check-input" type="checkbox" id="switch-04" name="switch-02" role="switch" checked disabled>
+                          <label class="form-check-label" for="switch-04">Disabled checked switch input</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Reverse
+                </h3>
+                <p class="l-p">Checkbox or radio can be displayed in reverse order by adding class <code class='l-code-inline'>.form-check-reverse</code> to container.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-check form-check-reverse">
+                          <input class="form-check-input" type="checkbox" id="checkbox-reverse-01" name="checkbox-reverse">
+                          <label class="form-check-label" for="checkbox-reverse-01">Reversed checkbox</label>
+                        </div>
+                        <div class="form-check form-check-reverse">
+                          <input class="form-check-input" type="checkbox" disabled id="checkbox-reverse-02" name="checkbox-reverse">
+                          <label class="form-check-label" for="checkbox-reverse-02">Disabled reversed checkbox</label>
+                        </div>
+                        <div class="form-check form-check-reverse">
+                          <input class="form-check-input" type="radio" id="radio-reverse-03" name="radio-reverse">
+                          <label class="form-check-label" for="radio-reverse-03">Reversed radio</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Inline Checkbox / Radio
+                </h3>
+                <p class="l-p">Checkbox (radio) can be displayed inline by adding class <code class='l-code-inline'>.form-check-inline</code> to container.
+                </p>
+                <article class="l-demo">
+                  <div class="l-demo_example">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                        </svg></a>
+                    </div>
+                    <div class="row">
+                      <div class="col mb-medium">
+                        <h5>Inline checkboxes</h5>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="checkbox-inline-01" name="checkbox-inline">
+                          <label class="form-check-label" for="checkbox-inline-01">Inline checkbox</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="checkbox-inline-02" name="checkbox-inline">
+                          <label class="form-check-label" for="checkbox-inline-02">Checkbox 2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" id="checkbox-inline-03" name="checkbox-inline">
+                          <label class="form-check-label" for="checkbox-inline-03">Checkbox 3</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <h5>Inline radios</h5>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" id="radio-inline-01" name="radio-inline">
+                          <label class="form-check-label" for="radio-inline-01">Radio 1</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" id="radio-inline-02" name="radio-inline">
+                          <label class="form-check-label" for="radio-inline-02">Radio 2</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" id="radio-inline-03" name="radio-inline">
+                          <label class="form-check-label" for="radio-inline-03">Radio 3</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="l-demo_code">
+                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                    <pre class="prettyprint"><code>&lt;div class=&quot;form-check form-check-inline&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Checkbox 1&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-check form-check-inline&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Checkbox 2&lt;/label&gt;
+&lt;/div&gt;
+...
+&lt;div class=&quot;form-check form-check-inline&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Radio 1&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class=&quot;form-check form-check-inline&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;radio&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Radio 2&lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                  </div>
+                </article>
+              </div>
+              <div class="l-sub-section" id="">
                 <h3 class="l-h3">Checkbox / Radio groups
                 </h3>
-                <p class="l-p">Checkbox (radio) group can be created by wrapping more checkbox (radio) elements into element with class <code class='l-code-inline'>.checkbox-group</code> or <code class='l-code-inline'>.radio-group</code>.
+                <p class="l-p">Checkbox (radio) group can be created by adding multiple checkboxes (radios) in one container.
                 </p>
                 <div class="l-box-desc l-box-warn">
                   <p class="l-box-desc_headline">Warning</p>
@@ -453,83 +523,46 @@
                     </div>
                     <div class="row">
                       <div class="col--l-6">
-                        <h4>Checkbox group</h4>
-                        <div class="form-control form-control--group">
-                          <div class="radiocheck-group">
-                            <div class="form-control form-control--checkbox">
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="checkbox-group-01" name="checkbox-group-01">
-                                <label class="radiocheck__control" for="checkbox-group-01"></label>
-                                <label class="radiocheck__label" for="checkbox-group-01">Checkbox 1</label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="checkbox-group-02" name="checkbox-group-02">
-                                <label class="radiocheck__control" for="checkbox-group-02"></label>
-                                <label class="radiocheck__label" for="checkbox-group-02">Checkbox 2</label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="checkbox-group-03" name="checkbox-group-03">
-                                <label class="radiocheck__control" for="checkbox-group-03"></label>
-                                <label class="radiocheck__label" for="checkbox-group-03">Checkbox 3</label>
-                              </div>
-                            </div>
-                          </div>
+                        <h5>Checkbox group</h5>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="checkbox-group-01" name="checkbox-group-01">
+                          <label class="form-check-labell" for="checkbox-group-01">Checkbox 1</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="checkbox-group-02" name="checkbox-group-02">
+                          <label class="form-check-label" for="checkbox-group-02">Checkbox 2</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="checkbox-group-03" name="checkbox-group-03">
+                          <label class="form-check-label" for="checkbox-group-03">Checkbox 3</label>
                         </div>
                       </div>
                       <div class="col--l-6">
-                        <h4>Radio group</h4>
-                        <div class="form-control form-control--group">
-                          <div class="radiocheck-group">
-                            <div class="form-control form-control--radio">
-                              <div class="radio">
-                                <input class="radiocheck__input" type="radio" id="radio-group-01" name="radio-group">
-                                <label class="radiocheck__control" for="radio-group-01"></label>
-                                <label class="radiocheck__label" for="radio-group-01">Radio 1</label>
-                              </div>
-                              <div class="radio">
-                                <input class="radiocheck__input" type="radio" id="radio-group-02" name="radio-group">
-                                <label class="radiocheck__control" for="radio-group-02"></label>
-                                <label class="radiocheck__label" for="radio-group-02">Radio 2</label>
-                              </div>
-                              <div class="radio">
-                                <input class="radiocheck__input" type="radio" id="radio-group-03" name="radio-group">
-                                <label class="radiocheck__control" for="radio-group-03"></label>
-                                <label class="radiocheck__label" for="radio-group-03">Radio 3</label>
-                              </div>
-                            </div>
-                          </div>
+                        <h5>Radio group</h5>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="radio-group-01" name="radio-group">
+                          <label class="form-check-label" for="radio-group-01">Radio 1</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="radio-group-02" name="radio-group">
+                          <label class="form-check-label" for="radio-group-02">Radio 2</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" id="radio-group-03" name="radio-group">
+                          <label class="form-check-label" for="radio-group-03">Radio 3</label>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div class="l-demo_code">
                     <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                    <pre class="prettyprint"><code>&lt;div class=&quot;radiocheck-group&quot;&gt;
-  &lt;div class=&quot;checkbox&quot;&gt;
-    &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;radiocheck__input&quot; type=&quot;checkbox&quot;&gt;
-    &lt;label for=&quot;...&quot; class=&quot;radiocheck__control&quot;&gt;&lt;/label&gt;
-    &lt;label for=&quot;...&quot; class=&quot;radiocheck__label&quot;&gt;Checkbox 1&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;checkbox&quot;&gt;
-    ...
-  &lt;/div&gt;
-  &lt;div class=&quot;checkbox&quot;&gt;
-    ...
-  &lt;/div&gt;
+                    <pre class="prettyprint"><code>&lt;div class=&quot;form-check&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Checkbox 1&lt;/label&gt;
 &lt;/div&gt;
-
-&lt;div class=&quot;radiocheck-group&quot;&gt;
-  &lt;div class=&quot;radio&quot;&gt;
-    &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;radiocheck__input&quot; type=&quot;radio&quot;&gt;
-    &lt;label for=&quot;...&quot; class=&quot;radiocheck__control&quot;&gt;&lt;/label&gt;
-    &lt;label for=&quot;...&quot; class=&quot;radiocheck__label&quot;&gt;Radio 1&lt;/label&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;radio&quot;&gt;
-    ...
-  &lt;/div&gt;
-  &lt;div class=&quot;radio&quot;&gt;
-    ...
-  &lt;/div&gt;
+&lt;div class=&quot;form-check&quot;&gt;
+  &lt;input id=&quot;...&quot; name=&quot;...&quot; class=&quot;form-check-input&quot; type=&quot;checkbox&quot;&gt;
+  &lt;label for=&quot;...&quot; class=&quot;form-check-label&quot;&gt;Checkbox 2&lt;/label&gt;
 &lt;/div&gt;</code></pre>
                   </div>
                 </article>
@@ -583,7 +616,7 @@
               <div class="l-sub-section" id="">
                 <h3 class="l-h3">Select types
                 </h3>
-                <p class="l-p">There is several types of select. Default with border around to match other form elements style, <code class='l-code-inline'>.select--clean</code> without borders, <code class='l-code-inline'>.select--ghost</code> with border similar to dropdown and <code class='l-code-inline'>.select--brown</code> for a stylized select.
+                <p class="l-p">There is several types of select. Default with border around to match other form elements style and <code class='l-code-inline'>.select--ghost</code> with border similar to dropdown.
                 </p>
                 <article class="l-demo">
                   <div class="l-demo_example">
@@ -607,33 +640,7 @@
                       </div>
                       <div class="col--l-6">
                         <div class="form-control form-control--select">
-                          <select class="js-select select--clean">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                            <option>Option 6</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col--l-6">
-                        <div class="form-control form-control--select">
                           <select class="js-select select--ghost">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                            <option>Option 6</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col--l-6">
-                        <div class="form-control form-control--select">
-                          <select class="js-select select--brown">
                             <option>Option 1</option>
                             <option>Option 2</option>
                             <option>Option 3</option>
@@ -650,14 +657,8 @@
                     <pre class="prettyprint"><code>&lt;!-- default --&gt;
 &lt;select class=&quot;js-select&quot;&gt;&lt;/select&gt;
 
-&lt;!-- clean --&gt;
-&lt;select class=&quot;select--clean js-select&quot;&gt;&lt;/select&gt;
-
 &lt;!-- ghost --&gt;
 &lt;select class=&quot;select--ghost js-select&quot;&gt;&lt;/select&gt;
-
-&lt;!-- brown --&gt;
-&lt;select class=&quot;select--brown js-select&quot;&gt;&lt;/select&gt;
 </code></pre>
                   </div>
                 </article>
@@ -699,28 +700,6 @@
                       </div>
                       <div class="col--l-6">
                         <div class="form-control form-control--select">
-                          <select class="select--clean js-select" disabled>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col--l-6">
-                        <div class="form-control form-control--select">
-                          <select class="select--clean js-select is-error">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col--l-6">
-                        <div class="form-control form-control--select">
                           <select class="select--ghost js-select" disabled>
                             <option>Option 1</option>
                             <option>Option 2</option>
@@ -733,28 +712,6 @@
                       <div class="col--l-6">
                         <div class="form-control form-control--select">
                           <select class="select--ghost js-select is-error">
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col--l-6">
-                        <div class="form-control form-control--select">
-                          <select class="select--brown js-select" disabled>
-                            <option>Option 1</option>
-                            <option>Option 2</option>
-                            <option>Option 3</option>
-                            <option>Option 4</option>
-                            <option>Option 5</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="col--l-6">
-                        <div class="form-control form-control--select">
-                          <select class="select--brown js-select is-error">
                             <option>Option 1</option>
                             <option>Option 2</option>
                             <option>Option 3</option>
@@ -779,18 +736,6 @@
   ...
 &lt;/select&gt;
 
-&lt;!-- clean disabled --&gt;
-&lt;select disabled=&quot;&quot; class=&quot;select--clean js-select&quot;&gt;
-  &lt;option&gt;Option 1&lt;/option&gt;
-  ...
-&lt;/select&gt;
-
-&lt;!-- clean error --&gt;
-&lt;select class=&quot;select--clean js-select error&quot;&gt;
-  &lt;option&gt;Option 1&lt;/option&gt;
-  ...
-&lt;/select&gt;
-
 &lt;!-- ghost disabled --&gt;
 &lt;select disabled=&quot;&quot; class=&quot;select--ghost js-select&quot;&gt;
   &lt;option&gt;Option 1&lt;/option&gt;
@@ -799,18 +744,6 @@
 
 &lt;!-- ghost error --&gt;
 &lt;select class=&quot;select--ghost js-select error&quot;&gt;
-  &lt;option&gt;Option 1&lt;/option&gt;
-  ...
-&lt;/select&gt;
-
-&lt;!-- brown disabled --&gt;
-&lt;select disabled=&quot;&quot; class=&quot;select--brown js-select&quot;&gt;
-  &lt;option&gt;Option 1&lt;/option&gt;
-  ...
-&lt;/select&gt;
-
-&lt;!-- brown error --&gt;
-&lt;select class=&quot;select--brown js-select error&quot;&gt;
   &lt;option&gt;Option 1&lt;/option&gt;
   ...
 &lt;/select&gt;</code></pre>
@@ -1154,6 +1087,7 @@
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-starrating.html">- Star Rating</a></li>
                   </ul>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
@@ -1224,9 +1158,9 @@
     </div>
     <!-- end: offcanvas-->
     <script src="../scripts/vendor.2282cdba.js"></script>
-    <script src="../scripts/main.6fe8bc52.js"></script>
-    <script src="../scripts/font-awesome.eae5c27b.js"></script>
-    <script src="../scripts/light.59672605.js"></script>
+    <script src="../scripts/main.de34fede.js"></script>
+    <script src="../scripts/font-awesome.315b1878.js"></script>
+    <script src="../scripts/light.33c2c4f2.js"></script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>

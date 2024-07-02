@@ -25,11 +25,11 @@
         <header class="l-header-main">
           <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
           <div class="l-wrap-main">
-            <h1 class="js-header"><a href="#top" data-smoothscroll="#top">Tooltips</a></h1>
+            <h1 class="js-header"><a href="#top" data-smoothscroll="#top">Star Rating</a></h1>
             <div class="js-scrollspy l-headnav" id="header-navigation">
               <ul class="l-headnav_list nav">
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
-                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#tooltip" data-smoothscroll="#tooltip" data-toggle-target="#header-navigation" data-toggle="dropdown">Tooltip</a></li>
+                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#starrating" data-smoothscroll="#starrating" data-toggle-target="#header-navigation" data-toggle="dropdown">Star Rating</a></li>
               </ul>
             </div>
           </div>
@@ -37,30 +37,25 @@
         <div class="l-content-main_inner">
           <section class="l-main-info" id="main-info">
             <div class="l-wrap-main">
-              <p class="l-big">Documentation for tooltips components.
+              <p class="l-big">Documentation of star rating module.
               </p>
               <div class="l-box-desc">
-                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/modules/_tooltips.scss</code><br/>
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/modules/_ratings.scss</code><br/>
               </div>
             </div>
           </section>
           <aside class="l-nav-contents js-scrollspy">
             <p class="l-nav-contents_headline">Contents</p>
             <ul class="l-nav-contents_list nav">
-              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#tooltip" data-smoothscroll="#tooltip">Tooltip</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#starrating" data-smoothscroll="#starrating">Star Rating</a></li>
             </ul>
           </aside>
-          <section id="tooltip">
+          <section id="starrating">
             <div class="l-wrap-main">
-              <h2 class="l-h2">Tooltip
+              <h2 class="l-h2">Star Rating
               </h2>
-              <p class="l-p">Tooltip can display simple text information inside bubble next to component. There are few variations of how tooltips can be used. For example on text, on button, with or without tooltip icon. Tooltip can be created using <code class='l-code-inline'>[data-tooltip]</code> attribute in conjunction with <code class='l-code-inline'>[title]</code> attribute.
+              <p class="l-p">Star rating is a form component that allows users to rate something by selecting stars. It is a set of radio buttons with stars as labels.
               </p>
-              <div class="l-box-desc l-box-warn">
-                <p class="l-box-desc_headline">Javascript dependency</p>
-                <p class="l-p">Tooltip component is wrapper plugin around <a class="l-a" href="https://github.com/atomiks/tippyjs">Tippy.js</a>. All methods and events are supported.
-                </p>
-              </div>
               <article class="l-demo">
                 <div class="l-demo_example">
                   <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
@@ -68,93 +63,43 @@
                         <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
                       </svg></a>
                   </div>
-                  <div class="bar">
-                    <div class="bar__item"><em data-tooltip title="This is tooltip text">This text has tooltip</em></div>
-                    <div class="bar__item">
-                      <button class="btn btn--ghost" data-tooltip title="This is tooltip text. &lt;a href='#' class='link'&gt;This is a link within tooltip.&lt;/a&gt;">This button has tooltip with link</button>
-                    </div>
-                    <div class="hide" id="tooltip-light"></div>
-                    <div class="bar__item">
-                      <button class="btn btn--ghost" data-tooltip data-tippy-theme="light" data-html="#tooltip-light">Tooltip from html template
-                        <div class="card">
-                          <div class="card__content">
-                            <h3>This is a content of hidden tooltip template</h3>
-                            <p>You can put more html here</p>
-                            <p><a href='#' class="link">This is a link within tooltip.</a></p>
-                            <button class="btn btn-primary mb-none">Test</button>
-                          </div>
-                        </div>
-                        <div class="btn-group btn-group--tab btn-group--horizontal" data-tabs-container role="tablist"><a class="btn btn--tab" href="#tooltip-tab1" data-tabs-item role="tab">Tab 1</a><a class="btn btn--tab" href="#tooltip-tab2" data-tabs-item role="tab">Tab 2</a></div>
-                        <article class="tabs">
-                          <section class="tab" id="tooltip-tab1">
-                            <h3>Tab 1</h3>
-                            <p>This is a content of tab 1</p>
-                          </section>
-                          <section class="tab" id="tooltip-tab2">
-                            <h3>Tab 2</h3>
-                            <p>This is a content of tab 2</p>
-                          </section>
-                        </article>
-                      </button>
-                    </div>
-                    <div class="bar__item">
-                      <svg class="icon icon-user  icon--large" role="img" aria-hidden="true" data-tooltip="data-tooltip" title="This is tooltip text on icon">
-                        <use xlink:href="../icons_/app.svg#icon-user"></use>
-                      </svg>
+                  <div class="row">
+                    <div class="col">
+                      <h4 id="rating-label">Hodnotenie</h4>
+                      <div class="rating-star rating-star--highlight-on-hover" role="radiogroup" aria-labelledby="rating-label">
+                        <input class="rating-star__input" type="radio" name="rating" value="1" id="rating-value1to5-1" aria-label="1 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-1"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="2" id="rating-value1to5-2" aria-label="2 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-2"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="3" id="rating-value1to5-3" checked aria-label="3 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-3"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="4" id="rating-value1to5-4" aria-label="4 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-4"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                        <input class="rating-star__input" type="radio" name="rating" value="5" id="rating-value1to5-5" aria-label="5 z 5">
+                        <label class="rating-star__item" for="rating-value1to5-5"><i class="fa-star fas undefined fa-2x"></i>
+                        </label>
+                      </div>
                     </div>
                   </div>
                 </div>
                 <div class="l-demo_code">
                   <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                  <pre class="prettyprint"><code>&lt;em data-tooltip title=&quot;This is tooltip text&quot;&gt;...&lt;/em&gt;
-
-&lt;button class=&quot;btn btn--ghost&quot; data-tooltip title=&quot;This is tooltip text &lt;a href='&#35;' class='link'&gt;This is a link within tooltip.&lt;/a&gt;&quot;&gt;..&lt;/button&gt;
-
-&lt;div class=&quot;hide&quot; id=&quot;tooltip-light&quot;&gt;
-  &lt;div class=&quot;card&quot;&gt;
-    &lt;div class=&quot;card__content&quot;&gt;
-      &lt;h3&gt;This is a content of hidden tooltip template&lt;/h3&gt;
-      &lt;p&gt;You can put more html here&lt;/p&gt;
-      &lt;p&gt;&lt;a href='&#35;' class=&quot;link&quot;&gt;This is a link within tooltip.&lt;/a&gt;&lt;/p&gt;
-      &lt;button class=&quot;btn btn-primary mb-none&quot;&gt;Test&lt;/button&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
+                  <pre class="prettyprint"><code>&lt;h4 id=&quot;rating-label&quot;&gt;Hodnotenie&lt;/h4&gt;
+&lt;div class=&quot;rating-star rating-star--highlight-on-hover&quot; role=&quot;radiogroup&quot; aria-labelledby=&quot;rating-label&quot;&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;rating&quot; id=&quot;rating-1&quot; value=&quot;1&quot; class=&quot;rating-star__input&quot; aria-label=&quot;1 z 5&quot;&gt;
+  &lt;label for=&quot;rating-1&quot; class=&quot;rating_star__item&quot;&gt;&lt;i class=&quot;fas fa-star fa-2x&quot;&gt;&lt;/i&gt;&lt;/label&gt;
+  &lt;input type=&quot;radio&quot; name=&quot;rating&quot; id=&quot;rating-2&quot; value=&quot;2&quot; class=&quot;rating-star__input&quot; aria-label=&quot;2 z 5&quot;&gt;
+  &lt;label for=&quot;rating-2&quot; class=&quot;rating_star__item&quot;&gt;&lt;i class=&quot;fas fa-star fa-2x&quot;&gt;&lt;/i&gt;&lt;/label&gt;
+  ... &lt;!-- repeat for the total number of stars --&gt;
 &lt;/div&gt;
-&lt;button class=&quot;btn btn--ghost&quot; data-tooltip=&quot;data-tooltip&quot; data-tippy-theme=&quot;light&quot; data-html=&quot;&#35;tooltip-light&quot;&gt;Tooltip from html template&lt;/button&gt;
-
-&lt;svg class=&quot;icon icon-user icon--large&quot; role=&quot;img&quot; aria-hidden=&quot;true&quot; data-tooltip data-tooltipped=&quot;&quot; title=&quot;This is tooltip text on icon&quot;&gt;.../svg&gt;
 </code></pre>
                 </div>
               </article>
-              <div class="l-sub-section" id="">
-                <h3 class="l-h3">Tooltip placements
-                </h3>
-                <p class="l-p">Tooltip can be positioned on: <code class='l-code-inline'>top(default)/right/bottom/left</code> with attribute <code class='l-code-inline'>data-tippy-placement</code> as shown on example below.
-                </p>
-                <article class="l-demo">
-                  <div class="l-demo_example">
-                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
-                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
-                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
-                        </svg></a>
-                    </div>
-                    <div class="bar">
-                      <div class="bar__item">
-                        <button class="btn btn--ghost" data-tooltip title="This is tooltip text">Placement: top (default)</button>
-                      </div>
-                      <div class="bar__item">
-                        <button class="btn btn--ghost" data-tooltip data-tippy-placement="right" title="This is tooltip text">Position: right</button>
-                      </div>
-                      <div class="bar__item">
-                        <button class="btn btn--ghost" data-tooltip data-tippy-placement="bottom" title="This is tooltip text.">Position: bottom</button>
-                      </div>
-                      <div class="bar__item">
-                        <button class="btn btn--ghost" data-tooltip data-tippy-placement="left" title="This is tooltip text">Position: left</button>
-                      </div>
-                    </div>
-                  </div>
-                </article>
-              </div>
+              <hr class="l-hr-section"/>
             </div>
           </section>
         </div>
@@ -198,17 +143,17 @@
               <ul class="l-nav-main_list-sub is-active">
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
                 </li>
-                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link is-active selected" data-toggle="self, next">Form components
                                     <svg class="icon icon-sg-add " role="img" aria-hidden="true">
                                       <use xlink:href="../icons_/styleguide.svg#icon-sg-add"></use>
                                     </svg></a>
-                  <ul class="l-nav-main_list-sub2">
+                  <ul class="l-nav-main_list-sub2 is-active">
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-basic.html">- Basic</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-labels.html">- Labels</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
-                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-starrating.html">- Star Rating</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link selected" href="forms-starrating.html">- Star Rating</a></li>
                   </ul>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
@@ -233,7 +178,7 @@
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="carousels.html">Carousels</a>
                 </li>
-                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="tooltips.html">Tooltips</a>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="tooltips.html">Tooltips</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="alerts.html">Alerts</a>
                 </li>

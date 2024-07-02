@@ -13,7 +13,7 @@
     <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
     <link rel="preload" href="fonts/Tabac-Sans/fonts/Tabac-Sans-Regular-9531409e5f6d548c2ccc3429d9d5db69.woff2" as="font" type="font/woff2">
     <link rel="stylesheet" href="fonts/Tabac-Sans/style.0f2ed26c.css">
-    <link rel="stylesheet" href="styles/main.1531f75b.css">
+    <link rel="stylesheet" href="styles/main.ceecc7d1.css">
     <script src="scripts/plugins/modernizr.1e58e638.js"></script>
   </head>
   <body class="undefined has-header-warning">
@@ -53,8 +53,13 @@
               <div class="header__logo"><a href="#"><img class="show-l" src="images/content/logo.svg" alt="Martinus"><img class="hide-l" src="images/content/logo-small.svg" alt="Martinus"></a>
               </div>
               <div class="header__nav px-l-medium">
-                <div class="d-flex align-items-center btn-dropdown mb-none"><a class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true">Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a><a class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true">Doplnky</a>
-                  <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l"><a class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="xmark" data-toggle-expand aria-haspopup="true"><i class="fa-bars far undefined fa-lg"></i></a></div>
+                <div class="d-flex align-items-center btn-dropdown mb-none">
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Knihy</button><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a>
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Doplnky</button>
+                  <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l">
+                    <button class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="xmark" data-toggle-expand aria-expanded="false" aria-haspopup="true" type="button"><i class="fa-bars far undefined fa-lg"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="flex-m-grow-1 mr-none mr-m-tiny header__search header-search">
@@ -107,7 +112,8 @@
         <div class="header__mega-menu mega-menu" data-mega-menu>
           <div class="mega-menu__contents" data-mega-menu-contents>
             <div class="text-color-white mega-menu__mobile-navigation hide-l">
-              <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" id="toggle-mega-menu-knihy">Knihy</a>
+              <div class="btn-dropdown btn-dropdown--no-icon m-none">
+                <button class="btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-knihy">Knihy</button>
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">E-Knihy</a>
               </div>
@@ -117,7 +123,8 @@
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">Filmy</a>
               </div>
-              <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" id="toggle-mega-menu-doplnky">Doplnky</a>
+              <div class="btn-dropdown btn-dropdown--no-icon m-none">
+                <button class="btn" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-doplnky">Doplnky</button>
               </div>
             </div>
                     <div class="mega-menu__content" data-mega-menu-target id="mega-menu-knihy">
@@ -751,12 +758,8 @@
                         <div class="bar bar--small mb-small align-items-end">
                           <div class="bar__item bar__item--fill">
                                     <div class="product mb-small">
-                                              <div class="product__cover d-inline-block">
-                                                <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
-                                                  </div>
-                                                </a>
-                                              </div>
+                                              <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
+                                              </a>
                                               <div class="product__title mb-none">
                                                 <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Základy rybolovu pro kluky a holky"><a class="link link--product" href="#">Základy rybolovu pro kluky a holky</a>
                                                 </p>
@@ -779,12 +782,8 @@
                           </div>
                           <div class="bar__item bar__item--fill">
                                     <div class="product mb-small">
-                                              <div class="product__cover d-inline-block">
-                                                <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
-                                                  </div>
-                                                </a>
-                                              </div>
+                                              <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
+                                              </a>
                                               <div class="product__title mb-none">
                                                 <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Hobbit"><a class="link link--product" href="#">Hobbit</a>
                                                 </p>
@@ -805,12 +804,8 @@
                           </div>
                           <div class="bar__item bar__item--fill">
                                     <div class="product mb-small">
-                                              <div class="product__cover d-inline-block">
-                                                <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
-                                                  </div>
-                                                </a>
-                                              </div>
+                                              <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
+                                              </a>
                                               <div class="product__title mb-none">
                                                 <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Ako ju získať"><a class="link link--product" href="#">Ako ju získať</a>
                                                 </p>
@@ -840,12 +835,8 @@
                             <div class="swiper-wrapper">
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Základy rybolovu pro kluky a holky"><a class="link link--product" href="#">Základy rybolovu pro kluky a holky</a>
                                                     </p>
@@ -868,12 +859,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Hobbit"><a class="link link--product" href="#">Hobbit</a>
                                                     </p>
@@ -894,12 +881,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Ako ju získať"><a class="link link--product" href="#">Ako ju získať</a>
                                                     </p>
@@ -920,12 +903,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/310/m310659.jpg?v=1533280320">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/310/m310659.jpg?v=1533280320">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Ako ju získať 2"><a class="link link--product" href="#">Ako ju získať 2</a>
                                                     </p>
@@ -946,12 +925,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/238/m238108.jpg?v=1535967025">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/238/m238108.jpg?v=1535967025">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Hobbit"><a class="link link--product" href="#">Hobbit</a>
                                                     </p>
@@ -972,12 +947,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/322/m322409.jpg?v=1534840867">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/322/m322409.jpg?v=1534840867">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Steve Jobs - mam taký dlhší názov Venenatis Purus Ridiculus Justo Adipiscing"><a class="link link--product" href="#">Steve Jobs - mam taký dlhší názov Venenatis Purus Ridiculus Justo Adipiscing</a>
                                                     </p>
@@ -1275,7 +1246,7 @@
       window.myApp.selectLanguage = 'sk';
     </script>
     <script src="scripts/vendor.2282cdba.js"></script>
-    <script src="scripts/main.6fe8bc52.js"></script>
-    <script src="scripts/font-awesome.eae5c27b.js"></script>
+    <script src="scripts/main.de34fede.js"></script>
+    <script src="scripts/font-awesome.315b1878.js"></script>
   </body>
 </html>
