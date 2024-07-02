@@ -5,9 +5,11 @@
 // -------------------------------
 // MIXINS
 
+@use 'sass:color';
 @use 'sass:math';
 @use 'sass:map';
 @use 'sass:list';
+@use 'sass:meta';
 
 @mixin color(
   $color-fallback,
@@ -82,7 +84,7 @@
 ) {
   $moz-border: '';
 
-  @if type-of($border) == number {
+  @if meta.type-of($border) == number {
     $border: '';
   }
 
@@ -272,12 +274,12 @@
   $i: 0;
 
   // If the Key Exists, Get the index of the key within the map and add 1 to it for the next breakpoint in the map
-  @if (map-has-key($map, $key)) {
+  @if (map.has-key($map, $key)) {
     $i: list.index($values, $key) + 1;
   }
 
   // If the key doesn't exist, or it's the last key in the map, return null
-  @if ($i > length($map) or $i == 0) {
+  @if ($i > list.length($map) or $i == 0) {
     @return null;
   }
   // Otherwise, return the value
@@ -317,13 +319,13 @@
 ///   _get-space();
 ///   ...
 @function _get-space($size: 'medium', $local-font-size: null) {
-  @if map-has-key($spaces, $size) {
+  @if map.has-key($spaces, $size) {
     $space: map.get($spaces, $size);
 
     @if ($local-font-size) {
-      @return if(unit($space) == 'em', $space, _get-rem($space, $local-font-size));
+      @return if(math.unit($space) == 'em', $space, _get-rem($space, $local-font-size));
     } @else {
-      @return if(unit($space) == 'em', $space, _get-rem($space));
+      @return if(math.unit($space) == 'em', $space, _get-rem($space));
     }
   } @else {
     @warn '$size is not defined';
@@ -352,14 +354,14 @@
 @function _get-last-key($map) {
   $keys: map.keys($map);
 
-  @return list.nth($keys, length($map));
+  @return list.nth($keys, list.length($map));
 }
 
 /// Get breakpoint map - Converts a string to a single-value breakpoint map for responsive use
 /// @param {String | Map} $value - String to convert. Passing a map will return the map itself.
 /// @return {Map}
 @function _get-breakpoint-map($value) {
-  @if type-of($value) == map {
+  @if meta.type-of($value) == map {
     @return $value;
   } @else {
     @return ('xs': $value);
@@ -372,7 +374,7 @@
 /// @return {*}
 @function _map-deep-get($map, $keys...) {
   @each $key in $keys {
-    @if (type-of($map) == map ) {
+    @if (meta.type-of($map) == map ) {
       $map: map.get($map, $key);
     }
   }
@@ -388,16 +390,16 @@
 }
 
 @function _color($theme, $weight: 500) {
-  @if map-has-key($color-palette, $theme) {
+  @if map.has-key($color-palette, $theme) {
     $color-theme: map.get($color-palette, $theme);
     $color: null;
 
     // if color is type of color, eg. no map
-    @if type-of($color-theme) == color {
+    @if meta.type-of($color-theme) == color {
       @return _color-shade($color-theme, $weight);
     }
 
-    @if map-has-key($color-theme, $weight) {
+    @if map.has-key($color-theme, $weight) {
       $color: map.get($color-theme, $weight);
     } @else {
       $base-color: map.get($color-theme, 500);
@@ -412,9 +414,9 @@
 
 @function _color-shade($color, $weight) {
   @if $weight > 500 and $color {
-    @return mix(black, $color, (math.div($weight - 500, 5) * 1%));
+    @return color.mix(black, $color, (math.div($weight - 500, 5) * 1%));
   } @else if $weight < 500 and $color {
-    @return mix(white, $color, (math.div(500 - $weight, 5) * 1%));
+    @return color.mix(white, $color, (math.div(500 - $weight, 5) * 1%));
   } @else {
     @return $color;
   }
