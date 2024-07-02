@@ -13,7 +13,7 @@
     <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
     <link rel="preload" href="fonts/Tabac-Sans/fonts/Tabac-Sans-Regular-9531409e5f6d548c2ccc3429d9d5db69.woff2" as="font" type="font/woff2">
     <link rel="stylesheet" href="fonts/Tabac-Sans/style.0f2ed26c.css">
-    <link rel="stylesheet" href="styles/main.1531f75b.css">
+    <link rel="stylesheet" href="styles/main.ceecc7d1.css">
     <script src="scripts/plugins/modernizr.1e58e638.js"></script>
   </head>
   <body class="undefined has-header-warning">
@@ -53,8 +53,13 @@
               <div class="header__logo"><a href="#"><img class="show-l" src="images/content/logo.svg" alt="Martinus"><img class="hide-l" src="images/content/logo-small.svg" alt="Martinus"></a>
               </div>
               <div class="header__nav px-l-medium">
-                <div class="d-flex align-items-center btn-dropdown mb-none"><a class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true">Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a><a class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true">Doplnky</a>
-                  <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l"><a class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="xmark" data-toggle-expand aria-haspopup="true"><i class="fa-bars far undefined fa-lg"></i></a></div>
+                <div class="d-flex align-items-center btn-dropdown mb-none">
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Knihy</button><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a>
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Doplnky</button>
+                  <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l">
+                    <button class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="xmark" data-toggle-expand aria-expanded="false" aria-haspopup="true" type="button"><i class="fa-bars far undefined fa-lg"></i>
+                    </button>
+                  </div>
                 </div>
               </div>
               <div class="flex-m-grow-1 mr-none mr-m-tiny header__search header-search">
@@ -107,7 +112,8 @@
         <div class="header__mega-menu mega-menu" data-mega-menu>
           <div class="mega-menu__contents" data-mega-menu-contents>
             <div class="text-color-white mega-menu__mobile-navigation hide-l">
-              <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" id="toggle-mega-menu-knihy">Knihy</a>
+              <div class="btn-dropdown btn-dropdown--no-icon m-none">
+                <button class="btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-knihy">Knihy</button>
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">E-Knihy</a>
               </div>
@@ -117,7 +123,8 @@
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">Filmy</a>
               </div>
-              <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" id="toggle-mega-menu-doplnky">Doplnky</a>
+              <div class="btn-dropdown btn-dropdown--no-icon m-none">
+                <button class="btn" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-doplnky">Doplnky</button>
               </div>
             </div>
                     <div class="mega-menu__content" data-mega-menu-target id="mega-menu-knihy">
@@ -751,12 +758,8 @@
                         <div class="bar bar--small mb-small align-items-end">
                           <div class="bar__item bar__item--fill">
                                     <div class="product mb-small">
-                                              <div class="product__cover d-inline-block">
-                                                <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
-                                                  </div>
-                                                </a>
-                                              </div>
+                                              <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
+                                              </a>
                                               <div class="product__title mb-none">
                                                 <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Základy rybolovu pro kluky a holky"><a class="link link--product" href="#">Základy rybolovu pro kluky a holky</a>
                                                 </p>
@@ -779,12 +782,8 @@
                           </div>
                           <div class="bar__item bar__item--fill">
                                     <div class="product mb-small">
-                                              <div class="product__cover d-inline-block">
-                                                <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
-                                                  </div>
-                                                </a>
-                                              </div>
+                                              <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
+                                              </a>
                                               <div class="product__title mb-none">
                                                 <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Hobbit"><a class="link link--product" href="#">Hobbit</a>
                                                 </p>
@@ -805,12 +804,8 @@
                           </div>
                           <div class="bar__item bar__item--fill">
                                     <div class="product mb-small">
-                                              <div class="product__cover d-inline-block">
-                                                <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
-                                                  </div>
-                                                </a>
-                                              </div>
+                                              <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
+                                              </a>
                                               <div class="product__title mb-none">
                                                 <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Ako ju získať"><a class="link link--product" href="#">Ako ju získať</a>
                                                 </p>
@@ -840,12 +835,8 @@
                             <div class="swiper-wrapper">
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Základy rybolovu pro kluky a holky"><a class="link link--product" href="#">Základy rybolovu pro kluky a holky</a>
                                                     </p>
@@ -868,12 +859,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Hobbit"><a class="link link--product" href="#">Hobbit</a>
                                                     </p>
@@ -894,12 +881,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/312/m312826.jpg?v=1531481391">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Ako ju získať"><a class="link link--product" href="#">Ako ju získať</a>
                                                     </p>
@@ -920,12 +903,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/310/m310659.jpg?v=1533280320">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/310/m310659.jpg?v=1533280320">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Ako ju získať 2"><a class="link link--product" href="#">Ako ju získať 2</a>
                                                     </p>
@@ -946,12 +925,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/238/m238108.jpg?v=1535967025">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/238/m238108.jpg?v=1535967025">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Hobbit"><a class="link link--product" href="#">Hobbit</a>
                                                     </p>
@@ -972,12 +947,8 @@
                               </div>
                               <div class="swiper-slide">
                                         <div class="product mb-small">
-                                                  <div class="product__cover d-inline-block">
-                                                    <a class="thumbnail thumbnail--book thumbnail--medium thumbnail--clickable" href="#">
-                                                      <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/322/m322409.jpg?v=1534840867">
-                                                      </div>
-                                                    </a>
-                                                  </div>
+                                                  <a class="product-cover product-cover--medium product-cover--book d-inline-block" href="#"><img class="d-block" src="https://mrtns.eu/tovar/_m/322/m322409.jpg?v=1534840867">
+                                                  </a>
                                                   <div class="product__title mb-none">
                                                     <p class="text-semibold m-none text-ellipsis text-size-small link--product" title="Steve Jobs - mam taký dlhší názov Venenatis Purus Ridiculus Justo Adipiscing"><a class="link link--product" href="#">Steve Jobs - mam taký dlhší názov Venenatis Purus Ridiculus Justo Adipiscing</a>
                                                     </p>
@@ -1162,45 +1133,25 @@
                         </div>
                       </dt>
                       <dd class="filter__cat-items" id="filter-show-only" data-toggle-class="hide">
-                        <div class="form-control form-control--group mb-none">
-                          <div class="radiocheck-group">
-                            <div class="form-control form-control--checkbox">
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-news">
-                                <label class="radiocheck__control" for="filter-news"></label>
-                                <label class="radiocheck__label" for="filter-news">Novinky</label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-discount">
-                                <label class="radiocheck__control" for="filter-discount"></label>
-                                <label class="radiocheck__label" for="filter-discount">Zľavnené tituly</label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-online-store">
-                                <label class="radiocheck__control" for="filter-online-store"></label>
-                                <label class="radiocheck__label" for="filter-online-store">Na sklade online long text fakt a este dlhsi</label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-book-store" name="book-store-option[type]" data-radiocheck-toggle="#filter-book-store-options">
-                                <label class="radiocheck__control" for="filter-book-store"></label>
-                                <label class="radiocheck__label" for="filter-book-store">V kníhkupectve</label>
-                                <div class="form-control form-control--select nested-select hide" data-toggle-class="hide" id="filter-book-store-options">
-                                  <select class="js-select select--ghost">
-                                    <option value="ba-obchodna">Bratislava, Obchodná</option>
-                                    <option value="ba-obchodna">Bratislava, Obchodná</option>
-                                    <option value="ba-obchodna">Bratislava, Obchodná</option>
-                                    <option value="ba-obchodna">Bratislava, Obchodná</option>
-                                    <option value="ba-obchodna">Bratislava, Obchodná</option>
-                                  </select>
-                                </div>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-presale">
-                                <label class="radiocheck__control" for="filter-presale"></label>
-                                <label class="radiocheck__label" for="filter-presale">Predpredaj</label>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-news">
+                          <label class="form-check-label" for="filter-news">Novinky</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-discount">
+                          <label class="form-check-label" for="filter-discount">Zľavnené tituly</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-online-store">
+                          <label class="form-check-label" for="filter-online-store">Na sklade online long text fakt a este dlhsi</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-book-store" name="book-store-option[type]" data-radiocheck-toggle="#filter-book-store-options">
+                          <label class="form-check-label" for="filter-book-store">V kníhkupectve</label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-presale">
+                          <label class="form-check-label" for="filter-presale">Predpredaj</label>
                         </div>
                       </dd>
                     </dl>
@@ -1215,26 +1166,17 @@
                         </div>
                       </dt>
                       <dd class="filter__cat-items" id="filter-product-type" data-toggle-class="hide">
-                        <div class="form-control form-control--group mb-none">
-                          <div class="radiocheck-group">
-                            <div class="form-control form-control--checkbox">
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-books">
-                                <label class="radiocheck__control" for="filter-books"></label>
-                                <label class="radiocheck__label" for="filter-books">Knihy <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-ebooks">
-                                <label class="radiocheck__control" for="filter-ebooks"></label>
-                                <label class="radiocheck__label" for="filter-ebooks">E-knihy <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-audiobooks">
-                                <label class="radiocheck__control" for="filter-audiobooks"></label>
-                                <label class="radiocheck__label" for="filter-audiobooks">Audioknihy <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-books">
+                          <label class="form-check-label" for="filter-books">Knihy <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-ebooks">
+                          <label class="form-check-label" for="filter-ebooks">E-knihy <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-audiobooks">
+                          <label class="form-check-label" for="filter-audiobooks">Audioknihy <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                         </div>
                       </dd>
                     </dl>
@@ -1249,46 +1191,33 @@
                         </div>
                       </dt>
                       <dd class="filter__cat-items" id="filter-formats" data-toggle-class="hide">
-                        <div class="form-control form-control--group mb-none">
-                          <div class="radiocheck-group">
-                            <div class="form-control form-control--checkbox">
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-hardcover">
-                                <label class="radiocheck__control" for="filter-hardcover"></label>
-                                <label class="radiocheck__label" for="filter-hardcover">Pevná väzba <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-brozovana-vazba">
-                                <label class="radiocheck__control" for="filter-brozovana-vazba"></label>
-                                <label class="radiocheck__label" for="filter-brozovana-vazba">Brožovaná väzba <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-sita-vazba">
-                                <label class="radiocheck__control" for="filter-sita-vazba"></label>
-                                <label class="radiocheck__label" for="filter-sita-vazba">Šitá väzba <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-mobi">
-                                <label class="radiocheck__control" for="filter-mobi"></label>
-                                <label class="radiocheck__label" for="filter-mobi">MOBI <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-online-epub">
-                                <label class="radiocheck__control" for="filter-online-epub"></label>
-                                <label class="radiocheck__label" for="filter-online-epub">EPUB <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-pdf">
-                                <label class="radiocheck__control" for="filter-pdf"></label>
-                                <label class="radiocheck__label" for="filter-pdf">PDF <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-mp3">
-                                <label class="radiocheck__control" for="filter-mp3"></label>
-                                <label class="radiocheck__label" for="filter-mp3">MP3 <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-hardcover">
+                          <label class="form-check-label" for="filter-hardcover">Pevná väzba <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-brozovana-vazba">
+                          <label class="form-check-label" for="filter-brozovana-vazba">Brožovaná väzba <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-sita-vazba">
+                          <label class="form-check-label" for="filter-sita-vazba">Šitá väzba <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-mobi">
+                          <label class="form-check-label" for="filter-mobi">MOBI <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-online-epub">
+                          <label class="form-check-label" for="filter-online-epub">EPUB <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-pdf">
+                          <label class="form-check-label" for="filter-pdf">PDF <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-mp3">
+                          <label class="form-check-label" for="filter-mp3">MP3 <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                         </div>
                       </dd>
                     </dl>
@@ -1306,51 +1235,37 @@
                         <div class="form-control form-control--input mb-small">
                           <input class="mt-none input input--small filter__search" type="text" name="filter-author" id="filter-author" placeholder="Vyhľadajte autora">
                         </div>
-                        <div class="form-control form-control--group mb-none" data-collapse="150">
-                          <div class="radiocheck-group">
-                            <div class="form-control form-control--checkbox">
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-1">
-                                <label class="radiocheck__control" for="filter-author-1"></label>
-                                <label class="radiocheck__label" for="filter-author-1">Milan Veselský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-2">
-                                <label class="radiocheck__control" for="filter-author-2"></label>
-                                <label class="radiocheck__label" for="filter-author-2">Albert Uderzo <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-3">
-                                <label class="radiocheck__control" for="filter-author-3"></label>
-                                <label class="radiocheck__label" for="filter-author-3">Božena Němcová <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-4">
-                                <label class="radiocheck__control" for="filter-author-4"></label>
-                                <label class="radiocheck__label" for="filter-author-4">J. K. Rowling <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-5">
-                                <label class="radiocheck__control" for="filter-author-5"></label>
-                                <label class="radiocheck__label" for="filter-author-5">Milan Veselský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-6">
-                                <label class="radiocheck__control" for="filter-author-6"></label>
-                                <label class="radiocheck__label" for="filter-author-6">Albert Uderzo <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-6">
-                                <label class="radiocheck__control" for="filter-author-6"></label>
-                                <label class="radiocheck__label" for="filter-author-6">Božena Němcová <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-author-7">
-                                <label class="radiocheck__control" for="filter-author-7"></label>
-                                <label class="radiocheck__label" for="filter-author-7">J. K. Rowling <span class="text-color-grey ml-tiny text-size-small">635</span></label>
-                              </div>
-                            </div>
-                          </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-1">
+                          <label class="form-check-label" for="filter-author-1">Milan Veselský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-2">
+                          <label class="form-check-label" for="filter-author-2">Albert Uderzo <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-3">
+                          <label class="form-check-label" for="filter-author-3">Božena Němcová <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-4">
+                          <label class="form-check-label" for="filter-author-4">J. K. Rowling <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-5">
+                          <label class="form-check-label" for="filter-author-5">Milan Veselský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-6a">
+                          <label class="form-check-label" for="filter-author-6a">Albert Uderzo <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-6b">
+                          <label class="form-check-label" for="filter-author-6b">Božena Němcová <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" id="filter-author-7">
+                          <label class="form-check-label" for="filter-author-7">J. K. Rowling <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                         </div><a class="link text-size-medium" href="javascript:void(0)" data-toggle="self, previous" data-toggle-icon="../icons_/app.svg#icon-arrow-up" data-toggle-text="Menej" data-collapse-trigger>
                                             <svg class="icon icon-plus " role="img" aria-hidden="true">
                                               <use xlink:href="icons_/app.svg#icon-plus"></use>
@@ -1371,45 +1286,37 @@
                         <div class="form-control form-control--group mb-none" data-collapse="150">
                           <div class="radiocheck-group">
                             <div class="form-control form-control--checkbox">
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-slovak">
-                                <label class="radiocheck__control" for="filter-slovak"></label>
-                                <label class="radiocheck__label" for="filter-slovak">Slovenský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-slovak1">
+                                <label class="form-check-label" for="filter-slovak1">Slovenský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-czech">
-                                <label class="radiocheck__control" for="filter-czech"></label>
-                                <label class="radiocheck__label" for="filter-czech">Český <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-czech2">
+                                <label class="form-check-label" for="filter-czech2">Český <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-german">
-                                <label class="radiocheck__control" for="filter-german"></label>
-                                <label class="radiocheck__label" for="filter-german">Nemecký <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-german1">
+                                <label class="form-check-label" for="filter-german1">Nemecký <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-russian">
-                                <label class="radiocheck__control" for="filter-russian"></label>
-                                <label class="radiocheck__label" for="filter-russian">Ruský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-russian1">
+                                <label class="form-check-label" for="filter-russian1">Ruský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-slovak">
-                                <label class="radiocheck__control" for="filter-slovak"></label>
-                                <label class="radiocheck__label" for="filter-slovak">Slovenský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-slovak">
+                                <label class="form-check-label" for="filter-slovak">Slovenský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-czech">
-                                <label class="radiocheck__control" for="filter-czech"></label>
-                                <label class="radiocheck__label" for="filter-czech">Český <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-czech">
+                                <label class="form-check-label" for="filter-czech">Český <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-german">
-                                <label class="radiocheck__control" for="filter-german"></label>
-                                <label class="radiocheck__label" for="filter-german">Nemecký <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-german">
+                                <label class="form-check-label" for="filter-german">Nemecký <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
-                              <div class="checkbox">
-                                <input class="radiocheck__input" type="checkbox" id="filter-russian">
-                                <label class="radiocheck__control" for="filter-russian"></label>
-                                <label class="radiocheck__label" for="filter-russian">Ruský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="filter-russian">
+                                <label class="form-check-label" for="filter-russian">Ruský <span class="text-color-grey ml-tiny text-size-small">635</span></label>
                               </div>
                             </div>
                           </div>
@@ -1463,20 +1370,8 @@
                 <div class="listing">
                   <div class="listing__item">
                     <div class="listing__item__cover">
-                              <div class="product__cover product__cover--collection">
-                                <a class="thumbnail thumbnail--book thumbnail--large thumbnail--clickable" href="detail-knihy.html">
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-1.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-2.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-3.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-4.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-5.jpg">
-                                  </div>
-                                </a>
-                              </div>
+                              <a class="product-cover product-cover--collection product-cover--large product-cover--book" href="detail-knihy.html"><img class="d-block" src="images/content/books/sample-1.jpg"><img class="d-block" src="images/content/books/sample-2.jpg"><img class="d-block" src="images/content/books/sample-3.jpg">
+                              </a>
                       <div class="rating-star justify-content-center mt-small"><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star-half fad undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item"></i>
                       </div>
                       <div class="badges badges--column mt-small">
@@ -1570,12 +1465,8 @@
                   <hr class="my-none d-m-none">
                   <div class="listing__item">
                     <div class="listing__item__cover">
-                              <div class="product__cover">
-                                <a class="thumbnail thumbnail--book thumbnail--large thumbnail--clickable" href="detail-knihy.html">
-                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
-                                  </div>
-                                </a>
-                              </div>
+                              <a class="product-cover product-cover--large product-cover--book" href="detail-knihy.html"><img class="d-block" src="https://mrtns.eu/tovar/_m/302/m302555.jpg?v=1535094317">
+                              </a>
                       <div class="rating-star justify-content-center mt-small"><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star-half fad undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item"></i>
                       </div>
                     </div>
@@ -1624,20 +1515,8 @@
                   </section>
                   <div class="listing__item">
                     <div class="listing__item__cover">
-                              <div class="product__cover product__cover--collection">
-                                <a class="thumbnail thumbnail--book thumbnail--large thumbnail--clickable" href="detail-knihy.html">
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-1.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-2.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-3.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-4.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-5.jpg">
-                                  </div>
-                                </a>
-                              </div>
+                              <a class="product-cover product-cover--collection product-cover--large product-cover--book" href="detail-knihy.html"><img class="d-block" src="images/content/books/sample-1.jpg"><img class="d-block" src="images/content/books/sample-2.jpg"><img class="d-block" src="images/content/books/sample-3.jpg">
+                              </a>
                       <div class="rating-star justify-content-center mt-small"><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star-half fad undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item"></i>
                       </div>
                     </div>
@@ -1710,20 +1589,8 @@
                   <hr class="my-none d-m-none">
                   <div class="listing__item">
                     <div class="listing__item__cover">
-                              <div class="product__cover product__cover--collection">
-                                <a class="thumbnail thumbnail--book thumbnail--large thumbnail--clickable" href="detail-knihy.html">
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-1.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-2.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-3.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-4.jpg">
-                                  </div>
-                                  <div class="thumbnail__img-wrap"><img class="img" src="images/content/books/sample-5.jpg">
-                                  </div>
-                                </a>
-                              </div>
+                              <a class="product-cover product-cover--collection product-cover--large product-cover--book" href="detail-knihy.html"><img class="d-block" src="images/content/books/sample-1.jpg"><img class="d-block" src="images/content/books/sample-2.jpg"><img class="d-block" src="images/content/books/sample-3.jpg">
+                              </a>
                       <div class="rating-star justify-content-center mt-small"><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star-half fad undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item"></i>
                       </div>
                       <div class="badges badges--column mt-small">
@@ -1781,12 +1648,8 @@
                   <hr class="my-none">
                   <div class="listing__item">
                     <div class="listing__item__cover">
-                              <div class="product__cover">
-                                <a class="thumbnail thumbnail--book thumbnail--large thumbnail--clickable" href="detail-knihy.html">
-                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/238/m238108.jpg?v=1535967025">
-                                  </div>
-                                </a>
-                              </div>
+                              <a class="product-cover product-cover--large product-cover--book" href="detail-knihy.html"><img class="d-block" src="https://mrtns.eu/tovar/_m/238/m238108.jpg?v=1535967025">
+                              </a>
                       <div class="rating-star justify-content-center mt-small"><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star-half fad undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item"></i>
                       </div>
                     </div>
@@ -1821,12 +1684,8 @@
                   <hr class="my-none d-m-none">
                   <div class="listing__item">
                     <div class="listing__item__cover">
-                              <div class="product__cover">
-                                <a class="thumbnail thumbnail--book thumbnail--large thumbnail--clickable" href="detail-knihy.html">
-                                  <div class="thumbnail__img-wrap"><img class="img" src="https://mrtns.eu/tovar/_m/322/m322409.jpg?v=1534840867">
-                                  </div>
-                                </a>
-                              </div>
+                              <a class="product-cover product-cover--large product-cover--book" href="detail-knihy.html"><img class="d-block" src="https://mrtns.eu/tovar/_m/322/m322409.jpg?v=1534840867">
+                              </a>
                       <div class="rating-star justify-content-center mt-small"><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item is-active"></i><i class="fa-star-half fad undefined rating-star__item is-active"></i><i class="fa-star fas undefined rating-star__item"></i>
                       </div>
                     </div>
@@ -2080,8 +1939,8 @@
       window.myApp.selectLanguage = 'sk';
     </script>
     <script src="scripts/vendor.2282cdba.js"></script>
-    <script src="scripts/main.6fe8bc52.js"></script>
-    <script src="scripts/font-awesome.eae5c27b.js"></script>
+    <script src="scripts/main.23551531.js"></script>
+    <script src="scripts/font-awesome.b1a702fc.js"></script>
     <script>
       document.addEventListener('myAppLoaded', function() {
       

@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac-Sans/style.0f2ed26c.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.1531f75b.css">
+    <link rel="stylesheet" href="../styles/main.ceecc7d1.css">
     <link rel="stylesheet" href="../styles/light.c86c69d1.css">
     <script src="../scripts/plugins/modernizr.1e58e638.js"></script>
   </head>
@@ -73,18 +73,29 @@
                     <div class="bar__item">
                       <button class="btn btn--ghost" data-tooltip title="This is tooltip text. &lt;a href='#' class='link'&gt;This is a link within tooltip.&lt;/a&gt;">This button has tooltip with link</button>
                     </div>
-                    <div class="hide" id="tooltip-light">
-                      <div class="card">
-                        <div class="card__content">
-                          <h3>This is a content of hidden tooltip template</h3>
-                          <p>You can put more html here</p>
-                          <p><a href='#' class="link">This is a link within tooltip.</a></p>
-                          <button class="btn btn-primary mb-none">Test</button>
-                        </div>
-                      </div>
-                    </div>
+                    <div class="hide" id="tooltip-light"></div>
                     <div class="bar__item">
-                      <button class="btn btn--ghost" data-tooltip data-tippy-theme="light" data-html="#tooltip-light">Tooltip from html template</button>
+                      <button class="btn btn--ghost" data-tooltip data-tippy-theme="light" data-html="#tooltip-light">Tooltip from html template
+                        <div class="card">
+                          <div class="card__content">
+                            <h3>This is a content of hidden tooltip template</h3>
+                            <p>You can put more html here</p>
+                            <p><a href='#' class="link">This is a link within tooltip.</a></p>
+                            <button class="btn btn-primary mb-none">Test</button>
+                          </div>
+                        </div>
+                        <div class="btn-group btn-group--tab btn-group--horizontal" data-tabs-container role="tablist"><a class="btn btn--tab" href="#tooltip-tab1" data-tabs-item role="tab">Tab 1</a><a class="btn btn--tab" href="#tooltip-tab2" data-tabs-item role="tab">Tab 2</a></div>
+                        <article class="tabs">
+                          <section class="tab" id="tooltip-tab1">
+                            <h3>Tab 1</h3>
+                            <p>This is a content of tab 1</p>
+                          </section>
+                          <section class="tab" id="tooltip-tab2">
+                            <h3>Tab 2</h3>
+                            <p>This is a content of tab 2</p>
+                          </section>
+                        </article>
+                      </button>
                     </div>
                     <div class="bar__item">
                       <svg class="icon icon-user  icon--large" role="img" aria-hidden="true" data-tooltip="data-tooltip" title="This is tooltip text on icon">
@@ -197,6 +208,7 @@
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-layouts.html">- Layouts</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-advanced.html">- Advanced</a></li>
                     <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-numberspinner.html">- Number Spinner</a></li>
+                    <li class="l-nav-main_list-sub2_item"><a class="l-nav-main-sub2_link" href="forms-starrating.html">- Star Rating</a></li>
                   </ul>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="bar.html">Bar</a>
@@ -267,9 +279,9 @@
     </div>
     <!-- end: offcanvas-->
     <script src="../scripts/vendor.2282cdba.js"></script>
-    <script src="../scripts/main.6fe8bc52.js"></script>
-    <script src="../scripts/font-awesome.eae5c27b.js"></script>
-    <script src="../scripts/light.59672605.js"></script>
+    <script src="../scripts/main.23551531.js"></script>
+    <script src="../scripts/font-awesome.b1a702fc.js"></script>
+    <script src="../scripts/light.316ec4f3.js"></script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>
