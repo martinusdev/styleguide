@@ -68,7 +68,7 @@ export default class Tab {
     for (let i = 0, l = this.triggers.length; i < l; i++) {
       let isActive = false;
       if (
-        this.triggers[i].parentNode.classList.contains(this.config.activeClass)
+        this.triggers[i].classList.contains(this.config.activeClass)
       ) {
         isActive = true;
       }
