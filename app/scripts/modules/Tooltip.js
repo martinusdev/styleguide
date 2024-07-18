@@ -22,7 +22,13 @@ export default class Tooltip {
     this.selector = selector;
     this.tooltips = [];
 
-    document.addEventListener('DOMContentLoaded', () => this._init.bind(this));
+    this._init = this._init.bind(this);
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', this._init);
+    } else {
+      this._init(); // Call directly if DOMContentLoaded has already occurred
+    }
   }
 
   destroy() {
