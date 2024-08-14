@@ -90,11 +90,14 @@ block opts
                   button.btn.btn--clean.header-btn.show-l.text-nowrap(
                     data-mega-menu-trigger=`#${item.trigger}`,
                     data-toggle-expand,
+                    data-toggle-icon='chevron-up'
                     data-toggle="self",
                     aria-haspopup="true",
                     aria-expanded="false",
                     type="button",
-                  )= item.title
+                  )
+                    =item.title
+                    +faIcon('chevron-down').fa-xs.ml-tiny
                 else
                   a.btn.btn--clean.header-btn.text-nowrap.show-l(
                     href=item.link

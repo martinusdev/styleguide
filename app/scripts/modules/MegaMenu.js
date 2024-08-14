@@ -1,6 +1,5 @@
 import { nodeListToArray } from './Utils';
 import { doToggle, isToggled } from './Toggle';
-import { BREAKPOINTS } from './Const';
 import { lockBody, unlockBody } from './Modal';
 
 const defaultConfig = {
@@ -22,6 +21,8 @@ export default class MegaMenu {
 
     this._handleTriggerClick = this._handleTriggerClick.bind(this);
     this._handleClickOutside = this._handleClickOutside.bind(this);
+    this._handleKeyDown = this._handleKeyDown.bind(this);
+    this._handleKeyEscape = this._handleKeyEscape.bind(this);
 
     this._init();
   }
@@ -48,10 +49,14 @@ export default class MegaMenu {
     this.triggers.forEach(trigger => {
       trigger.addEventListener('click', this._handleTriggerClick);
     });
+
+    document.addEventListener('keydown', this._handleKeyDown);
   }
 
   _detachDOMEvents() {
     this.triggers.forEach(trigger => trigger.removeEventListener('click', this._handleTriggerClick),);
+
+    document.removeEventListener('keydown', this._handleKeyDown);
   }
 
   _handleTriggerClick(e) {
@@ -64,21 +69,13 @@ export default class MegaMenu {
     this.openMegaMenuSection = targetSection && document.querySelector(targetSection);
 
     if (this.isMegaMenuOpen) {
-      if (window.innerWidth < BREAKPOINTS.l) {
-        // if (!document.body.classList.contains('has-header-warning')) {
-        lockBody();
-        // }
-      }
+      lockBody();
 
       setTimeout(() => {
         document.addEventListener('click', this._handleClickOutside);
       });
     } else {
-      if (window.innerWidth < BREAKPOINTS.l) {
-        // if (!document.body.classList.contains('has-header-warning')) {
-        unlockBody();
-        // }
-      }
+      unlockBody();
 
       document.removeEventListener('click', this._handleClickOutside);
     }
@@ -131,6 +128,14 @@ export default class MegaMenu {
           this.megaMenu.style.maxHeight = `${window.innerHeight - headerHeight}px`;
         }
       }, 200); // magic number
+
+      // focus first element upon opening
+      if (this.isMegaMenuOpen) {
+        const focusableElement = this.openMegaMenuSection.querySelector('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusableElement) {
+          focusableElement.focus();
+        }
+      }
     });
   }
 
@@ -140,31 +145,68 @@ export default class MegaMenu {
       && !this.megaMenu.contains(e.target) // if click target is not in megamenu
       && !e.target.closest(this.config.selectorTriggers) // if click target is not megamenu
     ) {
-      doToggle({
-        target: this.megaMenu,
-        className: 'is-active',
-        state: false,
-      });
-
-      doToggle({
-        target: document.querySelector('body'),
-        className: 'is-mega-menu-active',
-        state: false,
-      });
-
-      this.triggers.forEach(trigger => {
-        doToggle({
-          target: trigger,
-          className: 'is-active',
-          icon: isToggled(trigger) && trigger.getAttribute('data-toggle-icon'),
-          expand: true,
-          state: false,
-        });
-      });
-
-      unlockBody();
+      this._closeMegaMenu();
 
       document.removeEventListener('click', this._handleClickOutside);
+    }
+  }
+
+  _handleKeyEscape() {
+    const trigger = this.triggers.find(triggerElement => isToggled(triggerElement));
+
+    if (trigger) {
+      trigger.focus();
+    }
+
+    this._closeMegaMenu();
+  }
+
+  _closeMegaMenu() {
+    doToggle({
+      target: this.megaMenu,
+      className: 'is-active',
+      state: false,
+    });
+
+    doToggle({
+      target: document.querySelector('body'),
+      className: 'is-mega-menu-active',
+      state: false,
+    });
+
+    this.triggers.forEach(trigger => {
+      doToggle({
+        target: trigger,
+        className: 'is-active',
+        icon: isToggled(trigger) && trigger.getAttribute('data-toggle-icon'),
+        expand: true,
+        state: false,
+      });
+    });
+
+    unlockBody();
+  }
+
+  _handleKeyDown(/** KeyboardEvent */ e) {
+    if (e.key === 'Escape') {
+      this._handleKeyEscape();
+    } else if (e.key === 'Tab' && this.isMegaMenuOpen) {
+      const focusableElements = this.openMegaMenuSection.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+
+      if (focusableElements === []) {
+        return;
+      }
+
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      } else if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      }
     }
   }
 
