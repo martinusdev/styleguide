@@ -54,8 +54,10 @@
               </div>
               <div class="header__nav px-l-medium">
                 <div class="d-flex align-items-center btn-dropdown mb-none">
-                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Knihy</button><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a>
-                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Doplnky</button>
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle-expand data-toggle-icon="chevron-up" data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Knihy<i class="fa-chevron-down far undefined fa-xs ml-tiny"></i>
+                  </button><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a>
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle-expand data-toggle-icon="chevron-up" data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Doplnky<i class="fa-chevron-down far undefined fa-xs ml-tiny"></i>
+                  </button>
                   <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l">
                     <button class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="xmark" data-toggle-expand aria-expanded="false" aria-haspopup="true" type="button"><i class="fa-bars far undefined fa-lg"></i>
                     </button>
@@ -113,7 +115,8 @@
           <div class="mega-menu__contents" data-mega-menu-contents>
             <div class="text-color-white mega-menu__mobile-navigation hide-l">
               <div class="btn-dropdown btn-dropdown--no-icon m-none">
-                <button class="btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-knihy">Knihy</button>
+                <button class="btn d-flex align-items-center justify-content-between" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-knihy">Knihy<i class="fa-chevron-right far undefined fa-xs"></i>
+                </button>
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">E-Knihy</a>
               </div>
@@ -124,22 +127,12 @@
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">Filmy</a>
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none">
-                <button class="btn" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-doplnky">Doplnky</button>
+                <button class="btn d-flex align-items-center justify-content-between" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-doplnky">Doplnky<i class="fa-chevron-right far undefined fa-xs"></i>
+                </button>
               </div>
             </div>
                     <div class="mega-menu__content" data-mega-menu-target id="mega-menu-knihy">
                       <div class="mega-menu__content-wrap">
-                        <div class="mega-menu__sidebar p-small">
-                          <ul class="mega-menu__sidebar__links py-small py-m-medium pl-tiny">
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-arrow-up-right far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Bestsellery</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-sparkles far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Novinky</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-comment-lines far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihomoľský pomocník</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-clock far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Pripravované</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-badge-percent far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Akcie a zľavy</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-shipping-fast far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihy na sklade</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-rectangle-vertical-history far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Kolekcie</a></li>
-                          </ul>
-                        </div>
                         <div class="mega-menu__categories">
                           <div class="row mx-none mb-m-medium">
                             <div class="col col--m-4 col--12 mega-menu__categories__category"><a class="d-flex align-items-center pt-small pt-m-medium pb-m-none link link--black mega-menu__categories__title mb-none" href="#">
@@ -222,6 +215,17 @@
                             </div>
                           </div>
                         </div>
+                        <div class="mega-menu__sidebar p-small">
+                          <ul class="mega-menu__sidebar__links py-small py-m-medium pl-tiny">
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-arrow-up-right far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Bestsellery</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-sparkles far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Novinky</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-comment-lines far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihomoľský pomocník</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-clock far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Pripravované</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-badge-percent far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Akcie a zľavy</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-shipping-fast far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihy na sklade</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-rectangle-vertical-history far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Kolekcie</a></li>
+                          </ul>
+                        </div>
                       </div>
                       <div class="mega-menu__content-wrap">
                         <div class="mega-menu__sidebar">
@@ -268,10 +272,7 @@
                                 <h3 class="mb-none">Doplnky a darčeky</h3></a>
                             </div>
                             <div class="col col--m-4 col--12 mega-menu__categories__category"><a class="d-flex align-items-center pt-small pt-m-medium pb-m-none link link--black mega-menu__categories__title mb-none pb-small" href="#">
-                                <div class="mr-tiny mega-menu__categories__icon">
-                                          <svg class="icon icon-martinus  icon--large text-color-primary" role="img" aria-hidden="true">
-                                            <use xlink:href="icons_/app.svg#icon-martinus"></use>
-                                          </svg>
+                                <div class="mr-tiny mega-menu__categories__icon"><i class="fa-martinus fak undefined text-color-primary fa-fw"></i>
                                 </div>
                                 <h3 class="mb-none">Vecičky od Martinusu</h3></a>
                             </div>
@@ -2189,8 +2190,8 @@
       window.myApp.selectLanguage = 'sk';
     </script>
     <script src="scripts/vendor.2282cdba.js"></script>
-    <script src="scripts/main.1f576c2b.js"></script>
-    <script src="scripts/font-awesome.c2706f00.js"></script>
+    <script src="scripts/main.0509896a.js"></script>
+    <script src="scripts/font-awesome.6c318030.js"></script>
     <script>
       window.myApp = window.myApp = {};
       window.addEventListener('DOMContentLoaded', () => {

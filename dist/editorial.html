@@ -54,8 +54,10 @@
               </div>
               <div class="header__nav px-l-medium">
                 <div class="d-flex align-items-center btn-dropdown mb-none">
-                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Knihy</button><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a>
-                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle-expand data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Doplnky</button>
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-knihy" data-toggle-expand data-toggle-icon="chevron-up" data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Knihy<i class="fa-chevron-down far undefined fa-xs ml-tiny"></i>
+                  </button><a class="btn btn--clean header-btn text-nowrap show-l" href="#">E-Knihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Audioknihy</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Hry</a><a class="btn btn--clean header-btn text-nowrap show-l" href="#">Filmy</a>
+                  <button class="btn btn--clean header-btn show-l text-nowrap" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle-expand data-toggle-icon="chevron-up" data-toggle="self" aria-haspopup="true" aria-expanded="false" type="button">Doplnky<i class="fa-chevron-down far undefined fa-xs ml-tiny"></i>
+                  </button>
                   <div class="btn-dropdown m-none btn-dropdown--no-icon hide-l">
                     <button class="btn btn--clean text-transform-upper header-btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self, #toggle-mega-menu-knihy" data-toggle-icon="xmark" data-toggle-expand aria-expanded="false" aria-haspopup="true" type="button"><i class="fa-bars far undefined fa-lg"></i>
                     </button>
@@ -113,7 +115,8 @@
           <div class="mega-menu__contents" data-mega-menu-contents>
             <div class="text-color-white mega-menu__mobile-navigation hide-l">
               <div class="btn-dropdown btn-dropdown--no-icon m-none">
-                <button class="btn" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-knihy">Knihy</button>
+                <button class="btn d-flex align-items-center justify-content-between" data-mega-menu-trigger="#mega-menu-knihy" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-knihy">Knihy<i class="fa-chevron-right far undefined fa-xs"></i>
+                </button>
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">E-Knihy</a>
               </div>
@@ -124,22 +127,12 @@
               <div class="btn-dropdown btn-dropdown--no-icon m-none"><a class="btn" href="#">Filmy</a>
               </div>
               <div class="btn-dropdown btn-dropdown--no-icon m-none">
-                <button class="btn" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-doplnky">Doplnky</button>
+                <button class="btn d-flex align-items-center justify-content-between" data-mega-menu-trigger="#mega-menu-doplnky" data-toggle="self" aria-haspopup="true" aria-expanded="false" data-toggle-expand type="button" id="toggle-mega-menu-doplnky">Doplnky<i class="fa-chevron-right far undefined fa-xs"></i>
+                </button>
               </div>
             </div>
                     <div class="mega-menu__content" data-mega-menu-target id="mega-menu-knihy">
                       <div class="mega-menu__content-wrap">
-                        <div class="mega-menu__sidebar p-small">
-                          <ul class="mega-menu__sidebar__links py-small py-m-medium pl-tiny">
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-arrow-up-right far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Bestsellery</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-sparkles far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Novinky</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-comment-lines far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihomoľský pomocník</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-clock far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Pripravované</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-badge-percent far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Akcie a zľavy</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-shipping-fast far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihy na sklade</a></li>
-                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-rectangle-vertical-history far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Kolekcie</a></li>
-                          </ul>
-                        </div>
                         <div class="mega-menu__categories">
                           <div class="row mx-none mb-m-medium">
                             <div class="col col--m-4 col--12 mega-menu__categories__category"><a class="d-flex align-items-center pt-small pt-m-medium pb-m-none link link--black mega-menu__categories__title mb-none" href="#">
@@ -222,6 +215,17 @@
                             </div>
                           </div>
                         </div>
+                        <div class="mega-menu__sidebar p-small">
+                          <ul class="mega-menu__sidebar__links py-small py-m-medium pl-tiny">
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-arrow-up-right far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Bestsellery</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-sparkles far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Novinky</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-comment-lines far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihomoľský pomocník</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-clock far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Pripravované</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-badge-percent far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Akcie a zľavy</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-shipping-fast far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Knihy na sklade</a></li>
+                            <li><a class="d-flex align-items-center link link--black" href="#"><i class="fa-rectangle-vertical-history far undefined fa-fw fa-sm mr-small mr-m-tiny"></i>Kolekcie</a></li>
+                          </ul>
+                        </div>
                       </div>
                       <div class="mega-menu__content-wrap">
                         <div class="mega-menu__sidebar">
@@ -268,10 +272,7 @@
                                 <h3 class="mb-none">Doplnky a darčeky</h3></a>
                             </div>
                             <div class="col col--m-4 col--12 mega-menu__categories__category"><a class="d-flex align-items-center pt-small pt-m-medium pb-m-none link link--black mega-menu__categories__title mb-none pb-small" href="#">
-                                <div class="mr-tiny mega-menu__categories__icon">
-                                          <svg class="icon icon-martinus  icon--large text-color-primary" role="img" aria-hidden="true">
-                                            <use xlink:href="icons_/app.svg#icon-martinus"></use>
-                                          </svg>
+                                <div class="mr-tiny mega-menu__categories__icon"><i class="fa-martinus fak undefined text-color-primary fa-fw"></i>
                                 </div>
                                 <h3 class="mb-none">Vecičky od Martinusu</h3></a>
                             </div>
@@ -1085,11 +1086,11 @@
                                     </svg><span class="text-semibold">Vložiť do košíka</span>
                           </button>
                           <div class="btn-dropdown btn-dropdown--no-icon">
-                            <button class="btn btn--clean m-none" id="wishlist-button-986" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
+                            <button class="btn btn--clean m-none" id="wishlist-button-936" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
                             </button>
-                            <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-986" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
+                            <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-936" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
                               <div class="dropdown__wrap">
-                                <div id="my-library-dropdown-986" data-toggle-class="hide">
+                                <div id="my-library-dropdown-936" data-toggle-class="hide">
                                   <div class="dropdown__item">
                                     <div class="checkbox">
                                       <input class="radiocheck__input" id="list-check0" type="checkbox" name="list-check0"/>
@@ -1110,15 +1111,15 @@
                                       <label class="radiocheck__control" for="list-check2"></label>
                                       <label class="radiocheck__label" for="list-check2">Slovenská klasika</label>
                                     </div>
-                                  </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-986, #my-library-dropdown-list-986">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-986, #my-library-dropdown-986">Nový zoznam
+                                  </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-936, #my-library-dropdown-list-936">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-936, #my-library-dropdown-936">Nový zoznam
                                             <svg class="icon icon-plus  icon--left icon--medium text-color-success" role="img" aria-hidden="true">
                                               <use xlink:href="icons_/app.svg#icon-plus"></use>
-                                            </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-986, #my-library-dropdown-states-986">Označiť ako</a>
+                                            </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-936, #my-library-dropdown-states-936">Označiť ako</a>
                                 </div>
-                                <div class="hide" id="my-library-dropdown-list-986" data-toggle-class="hide">
+                                <div class="hide" id="my-library-dropdown-list-936" data-toggle-class="hide">
                                   <div class="bar mb-none">
                                     <div class="bar__item mr-none">
-                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-986, #my-library-dropdown-986">
+                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-936, #my-library-dropdown-936">
                                                 <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                   <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                 </svg>
@@ -1128,7 +1129,7 @@
                                       <h5 class="dropdown__group">Presunúť do:</h5>
                                     </div>
                                     <div class="bar__item">
-                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-986, #my-library-dropdown-list-986">
+                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-936, #my-library-dropdown-list-936">
                                                 <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                   <use xlink:href="icons_/app.svg#icon-close"></use>
                                                 </svg>
@@ -1136,12 +1137,12 @@
                                     </div>
                                   </div><a class="dropdown__item" href="#">Do školy</a><a class="dropdown__item" href="#">Pre brata</a>
                                 </div>
-                                <div class="hide" id="wishlist-add-item-986" data-toggle-class="hide">
+                                <div class="hide" id="wishlist-add-item-936" data-toggle-class="hide">
                                   <div class="card mb-none">
                                     <div class="card__content card__content--condensed">
                                       <div class="bar d-flex-nowrap">
                                         <div class="bar__item mr-none">
-                                          <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-986, #my-library-dropdown-986">
+                                          <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-936, #my-library-dropdown-936">
                                                     <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                       <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                     </svg>
@@ -1149,7 +1150,7 @@
                                         </div>
                                         <div class="bar__item mx-auto text-center text-nowrap">Nový zoznam</div>
                                         <div class="bar__item">
-                                          <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-986, #my-library-dropdown-986">
+                                          <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-936, #my-library-dropdown-936">
                                                     <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                       <use xlink:href="icons_/app.svg#icon-close"></use>
                                                     </svg>
@@ -1157,7 +1158,7 @@
                                         </div>
                                       </div>
                                       <div class="form-control form-control--input">
-                                        <input class="input" name="new-wishlist-986" id="new-wishlist-986" placeholder="napr. otcovi na Vianoce"/>
+                                        <input class="input" name="new-wishlist-936" id="new-wishlist-936" placeholder="napr. otcovi na Vianoce"/>
                                       </div>
                                       <div class="btn-layout--vertical">
                                         <button class="btn btn--full mb-none" type="button">Vytvoriť</button>
@@ -1165,10 +1166,10 @@
                                     </div>
                                   </div>
                                 </div>
-                                <div class="hide" id="my-library-dropdown-states-986" data-toggle-class="hide">
+                                <div class="hide" id="my-library-dropdown-states-936" data-toggle-class="hide">
                                   <div class="bar mb-none">
                                     <div class="bar__item mr-none">
-                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-986, #my-library-dropdown-986">
+                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-936, #my-library-dropdown-936">
                                                 <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                   <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                 </svg>
@@ -1178,7 +1179,7 @@
                                       <h5 class="dropdown__group">Označiť ako:</h5>
                                     </div>
                                     <div class="bar__item">
-                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-986, #my-library-dropdown-states-986">
+                                      <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-936, #my-library-dropdown-states-936">
                                                 <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                   <use xlink:href="icons_/app.svg#icon-close"></use>
                                                 </svg>
@@ -1256,11 +1257,11 @@
                               <div class="bar__item bar__item--fill m-none"></div>
                               <div class="bar__item m-none">
                                 <div class="btn-dropdown btn-dropdown--no-icon">
-                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-942" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
+                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-32" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
                                   </button>
-                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-942" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
+                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-32" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
                                     <div class="dropdown__wrap">
-                                      <div id="my-library-dropdown-942" data-toggle-class="hide">
+                                      <div id="my-library-dropdown-32" data-toggle-class="hide">
                                         <div class="dropdown__item">
                                           <div class="checkbox">
                                             <input class="radiocheck__input" id="list-check0" type="checkbox" name="list-check0"/>
@@ -1281,15 +1282,15 @@
                                             <label class="radiocheck__control" for="list-check2"></label>
                                             <label class="radiocheck__label" for="list-check2">Slovenská klasika</label>
                                           </div>
-                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-942, #my-library-dropdown-list-942">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-942, #my-library-dropdown-942">Nový zoznam
+                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-32, #my-library-dropdown-list-32">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-32, #my-library-dropdown-32">Nový zoznam
                                                   <svg class="icon icon-plus  icon--left icon--medium text-color-success" role="img" aria-hidden="true">
                                                     <use xlink:href="icons_/app.svg#icon-plus"></use>
-                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-942, #my-library-dropdown-states-942">Označiť ako</a>
+                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-32, #my-library-dropdown-states-32">Označiť ako</a>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-list-942" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-list-32" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-942, #my-library-dropdown-942">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-32, #my-library-dropdown-32">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1299,7 +1300,7 @@
                                             <h5 class="dropdown__group">Presunúť do:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-942, #my-library-dropdown-list-942">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-32, #my-library-dropdown-list-32">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1307,12 +1308,12 @@
                                           </div>
                                         </div><a class="dropdown__item" href="#">Do školy</a><a class="dropdown__item" href="#">Pre brata</a>
                                       </div>
-                                      <div class="hide" id="wishlist-add-item-942" data-toggle-class="hide">
+                                      <div class="hide" id="wishlist-add-item-32" data-toggle-class="hide">
                                         <div class="card mb-none">
                                           <div class="card__content card__content--condensed">
                                             <div class="bar d-flex-nowrap">
                                               <div class="bar__item mr-none">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-942, #my-library-dropdown-942">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-32, #my-library-dropdown-32">
                                                           <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                           </svg>
@@ -1320,7 +1321,7 @@
                                               </div>
                                               <div class="bar__item mx-auto text-center text-nowrap">Nový zoznam</div>
                                               <div class="bar__item">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-942, #my-library-dropdown-942">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-32, #my-library-dropdown-32">
                                                           <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-close"></use>
                                                           </svg>
@@ -1328,7 +1329,7 @@
                                               </div>
                                             </div>
                                             <div class="form-control form-control--input">
-                                              <input class="input" name="new-wishlist-942" id="new-wishlist-942" placeholder="napr. otcovi na Vianoce"/>
+                                              <input class="input" name="new-wishlist-32" id="new-wishlist-32" placeholder="napr. otcovi na Vianoce"/>
                                             </div>
                                             <div class="btn-layout--vertical">
                                               <button class="btn btn--full mb-none" type="button">Vytvoriť</button>
@@ -1336,10 +1337,10 @@
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-states-942" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-states-32" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-942, #my-library-dropdown-942">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-32, #my-library-dropdown-32">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1349,7 +1350,7 @@
                                             <h5 class="dropdown__group">Označiť ako:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-942, #my-library-dropdown-states-942">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-32, #my-library-dropdown-states-32">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1420,11 +1421,11 @@
                               <div class="bar__item bar__item--fill m-none"></div>
                               <div class="bar__item m-none">
                                 <div class="btn-dropdown btn-dropdown--no-icon">
-                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-199" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
+                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-477" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
                                   </button>
-                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-199" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
+                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-477" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
                                     <div class="dropdown__wrap">
-                                      <div id="my-library-dropdown-199" data-toggle-class="hide">
+                                      <div id="my-library-dropdown-477" data-toggle-class="hide">
                                         <div class="dropdown__item">
                                           <div class="checkbox">
                                             <input class="radiocheck__input" id="list-check0" type="checkbox" name="list-check0"/>
@@ -1445,15 +1446,15 @@
                                             <label class="radiocheck__control" for="list-check2"></label>
                                             <label class="radiocheck__label" for="list-check2">Slovenská klasika</label>
                                           </div>
-                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-199, #my-library-dropdown-list-199">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-199, #my-library-dropdown-199">Nový zoznam
+                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-477, #my-library-dropdown-list-477">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-477, #my-library-dropdown-477">Nový zoznam
                                                   <svg class="icon icon-plus  icon--left icon--medium text-color-success" role="img" aria-hidden="true">
                                                     <use xlink:href="icons_/app.svg#icon-plus"></use>
-                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-199, #my-library-dropdown-states-199">Označiť ako</a>
+                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-477, #my-library-dropdown-states-477">Označiť ako</a>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-list-199" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-list-477" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-199, #my-library-dropdown-199">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-477, #my-library-dropdown-477">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1463,7 +1464,7 @@
                                             <h5 class="dropdown__group">Presunúť do:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-199, #my-library-dropdown-list-199">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-477, #my-library-dropdown-list-477">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1471,12 +1472,12 @@
                                           </div>
                                         </div><a class="dropdown__item" href="#">Do školy</a><a class="dropdown__item" href="#">Pre brata</a>
                                       </div>
-                                      <div class="hide" id="wishlist-add-item-199" data-toggle-class="hide">
+                                      <div class="hide" id="wishlist-add-item-477" data-toggle-class="hide">
                                         <div class="card mb-none">
                                           <div class="card__content card__content--condensed">
                                             <div class="bar d-flex-nowrap">
                                               <div class="bar__item mr-none">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-199, #my-library-dropdown-199">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-477, #my-library-dropdown-477">
                                                           <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                           </svg>
@@ -1484,7 +1485,7 @@
                                               </div>
                                               <div class="bar__item mx-auto text-center text-nowrap">Nový zoznam</div>
                                               <div class="bar__item">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-199, #my-library-dropdown-199">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-477, #my-library-dropdown-477">
                                                           <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-close"></use>
                                                           </svg>
@@ -1492,7 +1493,7 @@
                                               </div>
                                             </div>
                                             <div class="form-control form-control--input">
-                                              <input class="input" name="new-wishlist-199" id="new-wishlist-199" placeholder="napr. otcovi na Vianoce"/>
+                                              <input class="input" name="new-wishlist-477" id="new-wishlist-477" placeholder="napr. otcovi na Vianoce"/>
                                             </div>
                                             <div class="btn-layout--vertical">
                                               <button class="btn btn--full mb-none" type="button">Vytvoriť</button>
@@ -1500,10 +1501,10 @@
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-states-199" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-states-477" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-199, #my-library-dropdown-199">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-477, #my-library-dropdown-477">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1513,7 +1514,7 @@
                                             <h5 class="dropdown__group">Označiť ako:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-199, #my-library-dropdown-states-199">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-477, #my-library-dropdown-states-477">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1588,11 +1589,11 @@
                               <div class="bar__item bar__item--fill m-none"></div>
                               <div class="bar__item m-none">
                                 <div class="btn-dropdown btn-dropdown--no-icon">
-                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-158" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
+                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-916" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
                                   </button>
-                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-158" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
+                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-916" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
                                     <div class="dropdown__wrap">
-                                      <div id="my-library-dropdown-158" data-toggle-class="hide">
+                                      <div id="my-library-dropdown-916" data-toggle-class="hide">
                                         <div class="dropdown__item">
                                           <div class="checkbox">
                                             <input class="radiocheck__input" id="list-check0" type="checkbox" name="list-check0"/>
@@ -1613,15 +1614,15 @@
                                             <label class="radiocheck__control" for="list-check2"></label>
                                             <label class="radiocheck__label" for="list-check2">Slovenská klasika</label>
                                           </div>
-                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-158, #my-library-dropdown-list-158">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-158, #my-library-dropdown-158">Nový zoznam
+                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-916, #my-library-dropdown-list-916">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-916, #my-library-dropdown-916">Nový zoznam
                                                   <svg class="icon icon-plus  icon--left icon--medium text-color-success" role="img" aria-hidden="true">
                                                     <use xlink:href="icons_/app.svg#icon-plus"></use>
-                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-158, #my-library-dropdown-states-158">Označiť ako</a>
+                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-916, #my-library-dropdown-states-916">Označiť ako</a>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-list-158" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-list-916" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-158, #my-library-dropdown-158">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-916, #my-library-dropdown-916">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1631,7 +1632,7 @@
                                             <h5 class="dropdown__group">Presunúť do:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-158, #my-library-dropdown-list-158">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-916, #my-library-dropdown-list-916">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1639,12 +1640,12 @@
                                           </div>
                                         </div><a class="dropdown__item" href="#">Do školy</a><a class="dropdown__item" href="#">Pre brata</a>
                                       </div>
-                                      <div class="hide" id="wishlist-add-item-158" data-toggle-class="hide">
+                                      <div class="hide" id="wishlist-add-item-916" data-toggle-class="hide">
                                         <div class="card mb-none">
                                           <div class="card__content card__content--condensed">
                                             <div class="bar d-flex-nowrap">
                                               <div class="bar__item mr-none">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-158, #my-library-dropdown-158">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-916, #my-library-dropdown-916">
                                                           <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                           </svg>
@@ -1652,7 +1653,7 @@
                                               </div>
                                               <div class="bar__item mx-auto text-center text-nowrap">Nový zoznam</div>
                                               <div class="bar__item">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-158, #my-library-dropdown-158">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-916, #my-library-dropdown-916">
                                                           <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-close"></use>
                                                           </svg>
@@ -1660,7 +1661,7 @@
                                               </div>
                                             </div>
                                             <div class="form-control form-control--input">
-                                              <input class="input" name="new-wishlist-158" id="new-wishlist-158" placeholder="napr. otcovi na Vianoce"/>
+                                              <input class="input" name="new-wishlist-916" id="new-wishlist-916" placeholder="napr. otcovi na Vianoce"/>
                                             </div>
                                             <div class="btn-layout--vertical">
                                               <button class="btn btn--full mb-none" type="button">Vytvoriť</button>
@@ -1668,10 +1669,10 @@
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-states-158" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-states-916" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-158, #my-library-dropdown-158">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-916, #my-library-dropdown-916">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1681,7 +1682,7 @@
                                             <h5 class="dropdown__group">Označiť ako:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-158, #my-library-dropdown-states-158">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-916, #my-library-dropdown-states-916">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1756,11 +1757,11 @@
                               <div class="bar__item bar__item--fill m-none"></div>
                               <div class="bar__item m-none">
                                 <div class="btn-dropdown btn-dropdown--no-icon">
-                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-969" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
+                                  <button class="btn btn--clean m-none btn--small" id="wishlist-button-478" data-toggle="self, next" aria-expanded="false" data-toggle-expand="data-toggle-expand"><i class="fa-heart-circle-plus far undefined fa-xl"></i>
                                   </button>
-                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-969" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
+                                  <div class="dropdown dropdown--arrowhead" id="wishlist-dropdown-478" data-dropdown="data-dropdown" data-dropdown-interactive="data-dropdown-interactive" data-toggle-expand="data-toggle-expand" aria-expanded="false">
                                     <div class="dropdown__wrap">
-                                      <div id="my-library-dropdown-969" data-toggle-class="hide">
+                                      <div id="my-library-dropdown-478" data-toggle-class="hide">
                                         <div class="dropdown__item">
                                           <div class="checkbox">
                                             <input class="radiocheck__input" id="list-check0" type="checkbox" name="list-check0"/>
@@ -1781,15 +1782,15 @@
                                             <label class="radiocheck__control" for="list-check2"></label>
                                             <label class="radiocheck__label" for="list-check2">Slovenská klasika</label>
                                           </div>
-                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-969, #my-library-dropdown-list-969">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-969, #my-library-dropdown-969">Nový zoznam
+                                        </div><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-478, #my-library-dropdown-list-478">Ďalšie zoznamy</a><a class="dropdown__item" data-toggle="#wishlist-add-item-478, #my-library-dropdown-478">Nový zoznam
                                                   <svg class="icon icon-plus  icon--left icon--medium text-color-success" role="img" aria-hidden="true">
                                                     <use xlink:href="icons_/app.svg#icon-plus"></use>
-                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-969, #my-library-dropdown-states-969">Označiť ako</a>
+                                                  </svg></a><a class="dropdown__item dropdown__item--more" data-toggle="#my-library-dropdown-478, #my-library-dropdown-states-478">Označiť ako</a>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-list-969" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-list-478" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-969, #my-library-dropdown-969">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-list-478, #my-library-dropdown-478">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1799,7 +1800,7 @@
                                             <h5 class="dropdown__group">Presunúť do:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-969, #my-library-dropdown-list-969">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-478, #my-library-dropdown-list-478">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1807,12 +1808,12 @@
                                           </div>
                                         </div><a class="dropdown__item" href="#">Do školy</a><a class="dropdown__item" href="#">Pre brata</a>
                                       </div>
-                                      <div class="hide" id="wishlist-add-item-969" data-toggle-class="hide">
+                                      <div class="hide" id="wishlist-add-item-478" data-toggle-class="hide">
                                         <div class="card mb-none">
                                           <div class="card__content card__content--condensed">
                                             <div class="bar d-flex-nowrap">
                                               <div class="bar__item mr-none">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-969, #my-library-dropdown-969">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-478, #my-library-dropdown-478">
                                                           <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                           </svg>
@@ -1820,7 +1821,7 @@
                                               </div>
                                               <div class="bar__item mx-auto text-center text-nowrap">Nový zoznam</div>
                                               <div class="bar__item">
-                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-969, #my-library-dropdown-969">
+                                                <button class="btn btn--clean btn--small" data-toggle="#wishlist-add-item-478, #my-library-dropdown-478">
                                                           <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                             <use xlink:href="icons_/app.svg#icon-close"></use>
                                                           </svg>
@@ -1828,7 +1829,7 @@
                                               </div>
                                             </div>
                                             <div class="form-control form-control--input">
-                                              <input class="input" name="new-wishlist-969" id="new-wishlist-969" placeholder="napr. otcovi na Vianoce"/>
+                                              <input class="input" name="new-wishlist-478" id="new-wishlist-478" placeholder="napr. otcovi na Vianoce"/>
                                             </div>
                                             <div class="btn-layout--vertical">
                                               <button class="btn btn--full mb-none" type="button">Vytvoriť</button>
@@ -1836,10 +1837,10 @@
                                           </div>
                                         </div>
                                       </div>
-                                      <div class="hide" id="my-library-dropdown-states-969" data-toggle-class="hide">
+                                      <div class="hide" id="my-library-dropdown-states-478" data-toggle-class="hide">
                                         <div class="bar mb-none">
                                           <div class="bar__item mr-none">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-969, #my-library-dropdown-969">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-states-478, #my-library-dropdown-478">
                                                       <svg class="icon icon-chevron-left icon--medium" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-chevron-left"></use>
                                                       </svg>
@@ -1849,7 +1850,7 @@
                                             <h5 class="dropdown__group">Označiť ako:</h5>
                                           </div>
                                           <div class="bar__item">
-                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-969, #my-library-dropdown-states-969">
+                                            <button class="btn btn--clean btn--small" data-toggle="#my-library-dropdown-478, #my-library-dropdown-states-478">
                                                       <svg class="icon icon-close icon--small" role="presentation" aria-label="Naspäť">
                                                         <use xlink:href="icons_/app.svg#icon-close"></use>
                                                       </svg>
@@ -1983,7 +1984,7 @@
           <div class="wrapper-main">
             <h2>Pretože ste si kúpili Mŕtvy na pekelnom vrchu</h2>
             <div class="carousel carousel--fade-inside carousel--fade-inside-white">
-              <div class="swiper swiper--fullwidth" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:7,&quot;breakpoints&quot;:{&quot;480&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1},&quot;640&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:2},&quot;768&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:3},&quot;1024&quot;:{&quot;slidesPerGroup&quot;:5}}}" id="slider-0.28033645046411415">
+              <div class="swiper swiper--fullwidth" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:7,&quot;breakpoints&quot;:{&quot;480&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1},&quot;640&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:2},&quot;768&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:3},&quot;1024&quot;:{&quot;slidesPerGroup&quot;:5}}}" id="slider-0.5674133308192109">
                 <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                             <div class="product mb-small text-left">
                                       <div class="product-cover product-cover--large product-cover--book"><img class="d-block" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
@@ -2486,7 +2487,7 @@
           <div class="wrapper-main">
             <h2>Pretože ste si kúpili Mŕtvy na pekelnom vrchu</h2>
             <div class="carousel carousel--fade-inside">
-              <div class="swiper swiper--fullwidth" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:7,&quot;breakpoints&quot;:{&quot;480&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1},&quot;640&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:2},&quot;768&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:3},&quot;1024&quot;:{&quot;slidesPerGroup&quot;:5}}}" id="slider-0.48590943390181396">
+              <div class="swiper swiper--fullwidth" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:7,&quot;breakpoints&quot;:{&quot;480&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1},&quot;640&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:2},&quot;768&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:3},&quot;1024&quot;:{&quot;slidesPerGroup&quot;:5}}}" id="slider-0.14576587753955983">
                 <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                             <div class="product mb-small text-left">
                                       <div class="product-cover product-cover--large product-cover--book"><img class="d-block" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
@@ -2989,7 +2990,7 @@
           <div class="wrapper-main">
             <h2>Pretože ste si kúpili Mŕtvy na pekelnom vrchu</h2>
             <div class="carousel carousel--fade-inside carousel--fade-inside-white">
-              <div class="swiper swiper--fullwidth" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:7,&quot;breakpoints&quot;:{&quot;480&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1},&quot;640&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:2},&quot;768&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:3},&quot;1024&quot;:{&quot;slidesPerGroup&quot;:5}}}" id="slider-0.30535369624541553">
+              <div class="swiper swiper--fullwidth" data-swiper-options="{&quot;slidesPerView&quot;:&quot;auto&quot;,&quot;slidesPerGroup&quot;:7,&quot;breakpoints&quot;:{&quot;480&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:1},&quot;640&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:2},&quot;768&quot;:{&quot;spaceBetween&quot;:20,&quot;slidesPerGroup&quot;:3},&quot;1024&quot;:{&quot;slidesPerGroup&quot;:5}}}" id="slider-0.6741328353551499">
                 <div class="swiper-wrapper"><a class="swiper-slide carousel__product-detail" href="detail-knihy.html">
                             <div class="product mb-small text-left">
                                       <div class="product-cover product-cover--large product-cover--book"><img class="d-block" src="https://mrtns.eu/tovar/_m/320/m320007.jpg?v=1534842754">
@@ -3686,7 +3687,7 @@
       window.myApp.selectLanguage = 'sk';
     </script>
     <script src="scripts/vendor.2282cdba.js"></script>
-    <script src="scripts/main.1f576c2b.js"></script>
-    <script src="scripts/font-awesome.c2706f00.js"></script>
+    <script src="scripts/main.0509896a.js"></script>
+    <script src="scripts/font-awesome.6c318030.js"></script>
   </body>
 </html>
