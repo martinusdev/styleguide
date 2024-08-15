@@ -3,60 +3,61 @@ include ./../../mixins/icon
 -
   const categoriesKnihy = [{
     title: 'Beletria',
-    icon: 'fa-book',
+    icon: 'book',
     entries: ['Detektívky, thrillery a horory', 'Sci-fi, fantasy a komiksy', 'Romantické a erotické', 'Spoločenské', 'Klasická literatúra', 'Slovenská próza', 'Historické', 'Romány'],
   }, {
     title: 'Náučná a odborná',
-    icon: 'fa-lightbulb',
+    icon: 'lightbulb',
     entries: ['Motivácia a sebarozvoj', 'Manažment a biznis', 'Spoločnosť', 'História', 'Životopisy a myšlienky', 'Zdravie a životný štýl', 'Hobby', 'Umenie'],
   }, {
     title: 'Pre deti',
-    icon: 'fa-smile',
+    icon: 'smile',
     entries: ['Pre najmenších', 'Pre prvákov', 'Pre pubertiakov', 'Beletria', 'Rozprávky', 'Sci-fi, fantasy a komiksy', 'Leporelá', 'Náučné knihy'],
   }, {
     title: 'Životopisy a myšlienky',
-    icon: 'fa-head-side-brain',
+    icon: 'head-side-brain',
   }, {
     title: 'Kuchárky',
-    icon: 'fa-hat-chef',
+    icon: 'hat-chef',
   }, {
     title: 'Učebnice a slovníky',
-    icon: 'fa-graduation-cap',
+    icon: 'graduation-cap',
   }, {
     title: 'Náboženstvo a ezoterika',
-    icon: 'fa-praying-hands',
+    icon: 'praying-hands',
   }, {
     title: 'Mapy a cestovanie',
-    icon: 'fa-map-marked',
+    icon: 'map-marked',
   }, {
     title: 'Cudzojazyčná literatúra',
-    icon: 'fa-flag',
+    icon: 'flag',
   }];
 
   const categoriesDoplnky = [{
     title: 'Doplnky a darčeky',
-    icon: 'fa-gift',
+    icon: 'gift',
   }, {
     title: 'Vecičky od Martinusu',
     icon: 'martinus',
+    iconStyle: 'fak',
   }, {
     title: 'Káva, čaj a pochutiny',
-    icon: 'fa-mug-hot',
+    icon: 'mug-hot',
   }, {
     title: 'Hrnčeky a fľaše',
-    icon: 'fa-coffee-togo',
+    icon: 'coffee-togo',
   }, {
     title: 'Papierníctvo',
-    icon: 'fa-pencil-paintbrush',
+    icon: 'pencil-paintbrush',
   }, {
     title: 'Zápisníky a kalendáre',
-    icon: 'fa-calendar',
+    icon: 'calendar',
   }, {
     title: 'Hudba',
-    icon: 'fa-music',
+    icon: 'music',
   }, {
     title: 'LP platne',
-    icon: 'fa-record-vinyl',
+    icon: 'record-vinyl',
   }];
 
   const megaMenu = [
@@ -118,25 +119,13 @@ mixin megaMenuContent(props = {})
 
   .mega-menu__content(data-mega-menu-target, id=`mega-menu-${id}`)
     .mega-menu__content-wrap
-      if additionalLinks
-        .mega-menu__sidebar.p-small
-          ul.mega-menu__sidebar__links.py-small.py-m-medium.pl-tiny
-            each link in additionalLinks
-              li
-                a.d-flex.align-items-center.link.link--black(href='#')
-                  if link.icon
-                    +faIcon(link.icon).fa-fw.fa-sm.mr-small.mr-m-tiny
-                  =link.title
       .mega-menu__categories
         .row.mx-none.mb-m-medium
           each category, index in categories
             .col.col--m-4.col--12.mega-menu__categories__category
               a.d-flex.align-items-center.pt-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none(href='#', class=index > 0 ? 'pb-small' : '')
                 .mr-tiny.mega-menu__categories__icon
-                  if category.icon.startsWith('fa-')
-                    +faIcon(category.icon.replace('fa-', '')).text-color-primary.fa-fw
-                  else
-                    +icon(category.icon).icon--large.text-color-primary
+                  +faIcon(category.icon, (category.iconStyle ? category.iconStyle : 'far')).text-color-primary.fa-fw
                 h3.mb-none=category.title
               if category.entries
                 ul.mega-menu__categories__subcategories.text-medium.mt-tiny.mb-small(class=index > 0 ? 'show-m' : '')
@@ -146,6 +135,15 @@ mixin megaMenuContent(props = {})
                   li
                     a.d-block.mt-tiny.link.link--grey(href='#')
                       | + Ďalšie kategórie
+      if additionalLinks
+        .mega-menu__sidebar.p-small
+          ul.mega-menu__sidebar__links.py-small.py-m-medium.pl-tiny
+            each link in additionalLinks
+              li
+                a.d-flex.align-items-center.link.link--black(href='#')
+                  if link.icon
+                    +faIcon(link.icon).fa-fw.fa-sm.mr-small.mr-m-tiny
+                  =link.title
     if showAd || recommended
       .mega-menu__content-wrap
         if showAd
@@ -171,7 +169,7 @@ mixin megaMenuContent(props = {})
       each item in mainNav
         .btn-dropdown.btn-dropdown--no-icon.m-none
           if item.trigger
-            button.btn(
+            button.btn.d-flex.align-items-center.justify-content-between(
               data-mega-menu-trigger=`#${item.trigger}`,
               data-toggle="self",
               aria-haspopup="true",
@@ -179,7 +177,9 @@ mixin megaMenuContent(props = {})
               data-toggle-expand,
               type="button",
               id=`toggle-${item.trigger}`
-            )= item.title
+            )
+              =item.title
+              +faIcon('chevron-right').fa-xs
           else
             a.btn(href=item.link)= item.title
     each item in megaMenu
