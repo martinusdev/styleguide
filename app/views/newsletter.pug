@@ -24,7 +24,7 @@ block content
             li
               span.fa-li
                 +faIcon('check-circle').text-color-success
-              =option
+              | !{option}
 
         .row.mb-medium
           .col--xl-7
@@ -48,17 +48,17 @@ block content
     section.section.bg-white.pb-large.border-bottom-grey
       .wrapper-main
         .row
-          .col--l-4.text-center
+          .col--l-4.text-center.mb-large.mb-l-none
             img(src=`${assetsPrefix}images/content/author.png`, style="width: 80px").img--circle.mb-small
             p.text-italic.mb-small Jeden z mála newsletterů, který opravdu čtu. Je inspirující, hravý, zábavný a prostě takový, jaký je celý&nbsp;Martinus.
             a(href="#").link Jana Zarková
             div.text-color-grey Influencerka
-          .col--l-4.text-center
+          .col--l-4.text-center.mb-large.mb-l-none
             img(src=`${assetsPrefix}images/content/author.png`, style="width: 80px").img--circle.mb-small
             p.text-italic.mb-small Pravidelné tipy na čtení a spoustu další knižní  inspirace. Moje knihovna sice praská ve všech, ale vůbec mi to  nevadí&nbsp;:) Doporučuju všemi&nbsp;deseti!
             a(href="#").link Jana Zarková
             div.text-color-grey Influencerka
-          .col--l-4.text-center
+          .col--l-4.text-center.mb-l-none
             img(src=`${assetsPrefix}images/content/author.png`, style="width: 80px").img--circle.mb-small
             p.text-italic.mb-small Newsletter, který si ráda pročtu od začátku dokonce! Navnadím se na čtení, najdu hromadu inspirace a rozšířím své knihomolské  obzory.
             a(href="#").link Jana Zarková
@@ -70,30 +70,27 @@ block content
         p.mb-large Váháte? Prohlédněte si ukázky několika zaslaných newsletterů.
 
         .row
-          .col--l-4
+          .col--m-6.col--l-4
             a(href="#").card.shadow-sm
-              div(style="height: 180px; overflow: hidden").d-flex.align-items-center
-                img(src=`${assetsPrefix}images/content/banner-374x374.jpg`)
+              div(style=`height: 180px; overflow: hidden; background-repeat: no-repeat; background-size: cover; background-position: center; background-image: url(${assetsPrefix}images/content/banner-374x374.jpg)`)
               .card__content.pt-medium
                 h3.mb-tiny Jak jsem se naučila znovu číst
                 span.link
                   | Přečíst newsletter
                   +faIcon('arrow-right').ml-tiny
 
-          .col--l-4
+          .col--m-6.col--l-4
             a(href="#").card.shadow-sm
-              div(style="height: 180px; overflow: hidden").d-flex.align-items-center
-                img(src=`${assetsPrefix}images/content/banner-374x374.jpg`)
+              div(style=`height: 180px; overflow: hidden; background-repeat: no-repeat; background-size: cover; background-position: center; background-image: url(${assetsPrefix}images/content/banner-374x374.jpg)`)
               .card__content.pt-medium
                 h3.mb-tiny Jak jsem se naučila znovu číst
                 span.link
                   | Přečíst newsletter
                   +faIcon('arrow-right').ml-tiny
 
-          .col--l-4
+          .col--m-6.col--l-4
             a(href="#").card.shadow-sm
-              div(style="height: 180px; overflow: hidden").d-flex.align-items-center
-                img(src=`${assetsPrefix}images/content/banner-374x374.jpg`)
+              div(style=`height: 180px; overflow: hidden; background-repeat: no-repeat; background-size: cover; background-position: center; background-image: url(${assetsPrefix}images/content/banner-374x374.jpg)`)
               .card__content.pt-medium
                 h3.mb-tiny Nej knihy 21. století? Máme!
                 span.link
