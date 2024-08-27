@@ -32,7 +32,7 @@ block content
               .card__content
                 h2 Přidejte se k 12 000 odběratelům
 
-                .d-flex.align-items-end.gap-small.mb-small
+                .d-flex.align-items-m-end.gap-small.mb-small.flex-column.flex-m-row
                   .form-control.form-control--input.flex-grow-1
                     .form-label
                       label(for='subscribe-email').h5
@@ -45,7 +45,27 @@ block content
                 | <small>Více o <a href="#" class="link">ochraně osobních údajů</a></small>
 
 
-    section.section.bg-white
+    section.section.bg-white.pb-large.border-bottom-grey
       .wrapper-main
-        | Hello
+        .row
+          .col--l-4.text-center
+            img(src=`${assetsPrefix}images/content/author.png`, style="width: 80px").img--circle.mb-small
+            p.text-italic.mb-small Jeden z mála newsletterů, který opravdu čtu. Je inspirující, hravý, zábavný a prostě takový, jaký je celý&nbsp;Martinus.
+            a(href="#").link Jana Zarková
+            div.text-color-grey Influencerka
+          .col--l-4.text-center
+            img(src=`${assetsPrefix}images/content/author.png`, style="width: 80px").img--circle.mb-small
+            p.text-italic.mb-small Pravidelné tipy na čtení a spoustu další knižní  inspirace. Moje knihovna sice praská ve všech, ale vůbec mi to  nevadí&nbsp;:) Doporučuju všemi&nbsp;deseti!
+            a(href="#").link Jana Zarková
+            div.text-color-grey Influencerka
+          .col--l-4.text-center
+            img(src=`${assetsPrefix}images/content/author.png`, style="width: 80px").img--circle.mb-small
+            p.text-italic.mb-small Newsletter, který si ráda pročtu od začátku dokonce! Navnadím se na čtení, najdu hromadu inspirace a rozšířím své knihomolské  obzory.
+            a(href="#").link Jana Zarková
+            div.text-color-grey Influencerka
+
+    section.section.bg-white.pb-large
+      .wrapper-main
+        h2.mb-small Ukázky newsletterů
+        p.mb-medium Váháte? Prohlédněte si ukázky několika zaslaných newsletterů.
 
