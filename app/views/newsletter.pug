@@ -9,4 +9,43 @@ block content
   main.bg-secondary
     section.section
       .wrapper-main
+        h1.mb-small Knižní newsletter
+        h4.mb-medium Nenechte si ujít dopis z knihkupectví, který vám 1x týdně přijde do vaší e-mailové schránky.
+
+        -
+          const listOptions = [
+            '<strong>Tematické long-reads</strong> o knižním světě',
+            'O akcích a novinkách se dozvíte jako první',
+            '<strong>Žádný spam</strong> ani letáky ve vaší schránce',
+          ];
+
+        ul.fa-ul.mb-large
+          each option in listOptions
+            li
+              span.fa-li
+                +faIcon('check-circle').text-color-success
+              =option
+
+        .row.mb-medium
+          .col--xl-7
+            .card.card--material.card--material-green.pt-none
+              .card__content
+                h2 Přidejte se k 12 000 odběratelům
+
+                .d-flex.align-items-end.gap-small.mb-small
+                  .form-control.form-control--input.flex-grow-1
+                    .form-label
+                      label(for='subscribe-email').h5
+                        | E-mail
+                        span(data-tooltip, title="Viac info").ml-tiny
+                          +faIcon('info-circle')
+                    input.input(id='subscribe-email', placeholder="Váš e-mail")
+                  button.btn.btn--primary.mb-none Přihlásit k odběru
+
+                | <small>Více o <a href="#" class="link">ochraně osobních údajů</a></small>
+
+
+    section.section.bg-white
+      .wrapper-main
+        | Hello
 
