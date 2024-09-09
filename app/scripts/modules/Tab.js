@@ -15,7 +15,7 @@ const defaultConfig = {
 };
 
 export default class Tab {
-  constructor(selector = '[role="tab"]', config = {}) {
+  constructor(selector = '[role="tab"]:not(.CybotCookiebotDialogNavItemLink)', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
