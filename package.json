@@ -29,7 +29,7 @@
   },
   "scripts": {
     "prepare": "gulp prepare --openssl-legacy-provider",
-    "build": "gulp build --openssl-legacy-provider",
+    "build": "gulp build --openssl-legacy-provider --mode=production",
     "serve": "gulp serve --openssl-legacy-provider",
     "images": "gulp images --openssl-legacy-provider",
     "clear-cache": "gulp clearCache --openssl-legacy-provider",
@@ -41,6 +41,7 @@
     "app/styles/**/*.scss": "stylelint"
   },
   "dependencies": {
+    "@awesome.me/kit-c68fa87f81": "^1.0.59",
     "@fortawesome/fontawesome-pro": "^6.5.2",
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/pro-regular-svg-icons": "^6.5.2",
