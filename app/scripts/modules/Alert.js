@@ -10,6 +10,7 @@ const defaultConfig = {
   customActionTemplate: undefined,
   onAction: undefined,
   timeout: undefined,
+  closeText: 'Close',
 };
 
 const templateIcon = (icon) => `
@@ -24,11 +25,12 @@ const templateLoader = () => `
   </div>
 `;
 
-const templateAction = (customTemplate) => `
+const templateAction = (customTemplate, closeText = '') => `
   <div class="alert__action">
     ${customTemplate || `
       <button class="btn btn--clean btn--small" data-alert-action>
         <i class="far fa-xmark fa-xl"></i>
+        <span class="visually-hidden">${closeText}</span>
       </button>
     `}
   </div>
@@ -41,12 +43,13 @@ const template = ({
   text,
   closeable,
   customActionTemplate,
+  closeText,
 }) => `
-  <div class="alert alert--fixed ${type && `alert--${type}`}">
+  <div role="alert" class="alert alert--fixed ${type && `alert--${type}`}">
     ${(icon && templateIcon(icon)) || ''}
     ${(loader && templateLoader()) || ''}
     <div class="alert__content">${text}</div>
-    ${((closeable || customActionTemplate) && templateAction(customActionTemplate)) || ''}
+    ${((closeable || customActionTemplate) && templateAction(customActionTemplate, closeText)) || ''}
   </div>
 `;
 
@@ -79,6 +82,7 @@ export default class Alert {
         text: this.config.text,
         closeable: this.config.closeable,
         customActionTemplate: this.config.customActionTemplate,
+        closeText: this.config.closeText,
       }),
     );
 
