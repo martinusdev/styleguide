@@ -60,7 +60,13 @@ export default class Alert {
     this.alert = document.createElement('div');
     this.alert.classList.add('alert', 'alert--fixed', `alert--${this.config.type}`);
 
-    this.alert.setAttribute('role', 'alert');
+    let role = 'alert';
+
+    if (this.config.loader) {
+      role = 'status';
+    }
+
+    this.alert.setAttribute('role', role);
 
     if (this.config.icon) {
       this.alert.appendChild(
