@@ -28,28 +28,11 @@ const templateLoader = () => `
 const templateAction = (customTemplate, closeText = '') => `
   <div class="alert__action">
     ${customTemplate || `
-      <button class="btn btn--clean btn--small" data-alert-action>
+      <button class="btn btn--clean btn--small" role="button" aria-hidden="true" data-alert-action>
         <i class="far fa-xmark fa-xl"></i>
         <span class="visually-hidden">${closeText}</span>
       </button>
     `}
-  </div>
-`;
-
-const template = ({
-  type,
-  icon,
-  loader,
-  text,
-  closeable,
-  customActionTemplate,
-  closeText,
-}) => `
-  <div role="alert" class="alert alert--fixed ${type && `alert--${type}`}">
-    ${(icon && templateIcon(icon)) || ''}
-    ${(loader && templateLoader()) || ''}
-    <div class="alert__content">${text}</div>
-    ${((closeable || customActionTemplate) && templateAction(customActionTemplate, closeText)) || ''}
   </div>
 `;
 
@@ -59,6 +42,7 @@ export default class Alert {
 
     this._setTimeout = this._setTimeout.bind(this);
     this._clearTimeout = this._clearTimeout.bind(this);
+    this._handleEscape = this._handleEscape.bind(this);
     this.destroy = this.destroy.bind(this);
     this.destroy = this.destroy.bind(this);
 
@@ -73,36 +57,61 @@ export default class Alert {
       return;
     }
 
-    // create alert DOM
-    this.alert = createElementFromString(
-      template({
-        type: this.config.type,
-        icon: this.config.icon,
-        loader: this.config.loader,
-        text: this.config.text,
-        closeable: this.config.closeable,
-        customActionTemplate: this.config.customActionTemplate,
-        closeText: this.config.closeText,
-      }),
-    );
+    this.alert = document.createElement('div');
+    this.alert.classList.add('alert', 'alert--fixed', `alert--${this.config.type}`);
 
-    this.container.insertBefore(this.alert, this.container.children[0] || null);
+    let role = 'alert';
+
+    if (this.config.loader) {
+      role = 'status';
+    }
+
+    this.alert.setAttribute('role', role);
+
+    if (this.config.icon) {
+      this.alert.appendChild(
+        createElementFromString(templateIcon(this.config.icon))
+      );
+    }
+
+    if (this.config.loader) {
+      this.alert.appendChild(
+        createElementFromString(templateLoader())
+      );
+    }
+
+    const alertContent = document.createElement('div');
+    alertContent.className = 'alert__content';
+    alertContent.innerHTML = this.config.text;
+    this.alert.appendChild(alertContent);
+
+    if (this.config.closeable || this.config.customActionTemplate) {
+      this.alert.appendChild(
+        createElementFromString(
+          templateAction(this.config.customActionTemplate, this.config.closeText)
+        )
+      );
+    }
+
+    this.container.prepend(this.alert);
 
     // wait for insert to dom, then attach class which can bring in animation
     setTimeout(() => {
       this.alert.classList.add('alert--fixed-active');
-    }, 50);
+    }, 100);
 
     // attach click event on alert action if alert is closeable or custom action is defined
     if (this.config.closeable || this.config.customActionTemplate) {
       this.actionEl = this.alert.querySelector('[data-alert-action]');
 
-      if (this.actionEl) {
-        this.actionEl.addEventListener(
-          'click',
-          this.config.onAction || this.destroy,
-        );
+      if (!this.actionEl) {
+        return;
       }
+
+      this.actionEl.addEventListener(
+        'click',
+        this.config.onAction || this.destroy,
+      );
     }
 
     // start timer if timeout is defined
@@ -112,6 +121,8 @@ export default class Alert {
       // clear timer if mouse is hovering above alert
       this.alert.addEventListener('mouseenter', this._clearTimeout);
     }
+
+    document.addEventListener('keydown', this._handleEscape);
   }
 
   _setTimeout() {
@@ -122,6 +133,12 @@ export default class Alert {
     clearTimeout(this.timeoutRunner);
 
     this.alert.addEventListener('mouseleave', this._setTimeout);
+  }
+
+  _handleEscape(event) {
+    if (event.key === 'Escape') {
+      this.destroy();
+    }
   }
 
   destroy() {
@@ -135,6 +152,8 @@ export default class Alert {
     if (this.config.timeout) {
       this.alert.removeEventListener('mouseenter', this._clearTimeout);
     }
+
+    document.removeEventListener('keydown', this._handleEscape);
 
     // wait for animation to end and dhend remove instance from DOM.
     this.alert.addEventListener(
