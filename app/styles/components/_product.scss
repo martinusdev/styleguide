@@ -19,6 +19,7 @@
 
   &__img {
     flex-shrink: 0;
+    position: relative;
   }
 
   &__title {
@@ -80,6 +81,35 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+
+  &--responsive {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    .product__title {
+      font-weight: $font-weight-semibold;
+      font-size: $font-size-medium;
+    }
+
+    .product__img {
+      width: 100%;
+      margin-bottom: _get-space('medium');
+    }
+
+    .list--products--responsive & {
+      @include breakpoint('l') {
+        flex-direction: row;
+        align-items: center;
+
+        .product__img {
+          width: _get-rem(65px);
+          margin-right: _get-rem(15px);
+          margin-bottom: 0;
+        }
+      }
+    }
   }
 }
 

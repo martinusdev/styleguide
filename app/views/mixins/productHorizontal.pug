@@ -1,5 +1,6 @@
 include discountBadge
 include icon
+include faIcon
 include xmas
 
 mixin productHorizontal(props = {})
@@ -21,19 +22,16 @@ mixin productHorizontal(props = {})
       showCartButton,
       titleClass = 'text-size-medium',
       breakBeforePrice,
-      edit = false
     } = props;
 
   article.product.product--horizontal&attributes(attributes)
-    .product__img.product__cover
-      .thumbnail.thumbnail--book(class=`thumbnail--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`)
-        a(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
-          .thumbnail__img-wrap
-            img(src=`${assetsPrefix}${cover}`).img
-        if duration
-          .thumbnail__status
-            +discountBadge(duration)
-      if discount && discountUnderBook
+    a.flex-shrink-0.product-cover.product-cover--book(class=`product-cover--${coverSize}`, class=`${discount && discountUnderBook ? 'mb-medium' : ''}`, href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+      img(src=`${assetsPrefix}${cover}`).d-block
+    if duration
+      .thumbnail__info
+        +discountBadge(duration)
+    if discount && discountUnderBook
+      .thumbnail__info
         .badge.badge--primary= discount
 
     .product__caption
@@ -58,17 +56,11 @@ mixin productHorizontal(props = {})
             else if rating
               .bar__item
                 .badge
-                  +icon('star').text-color-yellow.icon--small
+                  +faIcon('star', 'fas').text-color-yellow.mr-tiny
                   | #{' '}
                   = rating
             if count
               .bar__item.text-size-medium= count
-
-            if edit
-              .bar__item
-                  button.btn.btn--clean.m-none
-                    +icon('edit').icon--medium.icon--left
-                    | Upraviť
 
             if breakBeforePrice
               .bar__break
