@@ -1,0 +1,16 @@
+include faIcon
+
+mixin hpCardHeader(props)
+  -
+    const {
+      header,
+      subheader = false,
+      moreHref = '#',
+    } = props;
+
+  h2.mb-small
+    a(href=moreHref).link
+      if subheader
+        small.w-100.h5.mb-none.text-color-grey= subheader
+      | #{header}
+      +faIcon('chevron-right').ml-small.fa-xs

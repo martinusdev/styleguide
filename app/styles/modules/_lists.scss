@@ -153,6 +153,62 @@
 
 @include list-item-section-classes;
 
+.list--products {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 0;
+  margin-bottom: 0 !important;
+
+  a.product-cover--book,
+  a.product-cover:not(.product-cover--collection):hover,
+  a.product-cover:not(.product-cover--collection):active,
+  a.product-cover--collection img:hover,
+  a.product-cover--collection img:active
+  {
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.10), 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  }
+
+  li {
+    margin-right: _get-rem(30px);
+    margin-bottom: 0;
+    width: _get-rem(120px);
+    flex-shrink: 0;
+
+    &:first-child {
+      margin-left: _get-space();
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  @include breakpoint(l) {
+    li {
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &--responsive {
+    @include breakpoint(l) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      li {
+        margin-bottom: _get-space('medium');
+        width: 100%;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
 .fa-ul {
   --fa-li-margin: 1.5em;
   display: flex;
