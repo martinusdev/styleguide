@@ -871,9 +871,11 @@ $button-styles: (
   carousel: (
     default: (
       color: $color-black,
-      border-color: transparent,
-      background-color: $color-white,
+      border-color: rgba(255, 255, 255, 0.7),
+      background-color: rgba(255, 255, 255, 0.3),
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
+      backdrop-filter: blur(5px),
+      border-radius: 50px,
     ),
     focus: (
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2),
@@ -1708,9 +1710,9 @@ $carousel: (
   btns: (
     offsetH: (
       default: -10px,
-      l: -20px,
+      l: -15px,
     ),
-    offsetV: 50%,
+    offsetV: 25%,
   ),
   fade: (
     size: 800px,

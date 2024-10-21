@@ -9,8 +9,8 @@ mixin hpCardHeader(props)
     } = props;
 
   h2.mb-small
+    if subheader
+      small.w-100.d-block.h5.mb-none.text-color-grey= subheader
     a(href=moreHref).link
-      if subheader
-        small.w-100.h5.mb-none.text-color-grey= subheader
       | #{header}
       +faIcon('chevron-right').ml-small.fa-xs

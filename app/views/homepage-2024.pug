@@ -47,6 +47,10 @@ mixin booksCarouselHorizontal(props = {})
         if i < 10
           li.swiper-slide
             +productResponsive(Object.assign({}, item, { titleClass: 'text-size-regular' })).m-none
+    button.btn.btn--carousel.btn--equal.carousel__btn.carousel__btn--prev
+      +faIcon('arrow-left').fa-2x
+    button.btn.btn--carousel.btn--equal.carousel__btn.carousel__btn--next
+      +faIcon('arrow-right').fa-2x
 
 mixin recommendedForYou
   section.section-products.bg-white
