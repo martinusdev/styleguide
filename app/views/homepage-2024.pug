@@ -1,0 +1,226 @@
+extends layouts/_default
+
+include ./mixins/carouselTiles
+include ./mixins/productHorizontal
+include ./mixins/productResponsive
+include ./mixins/sectionHeader
+include ./mixins/hpCardHeader
+
+block opts
+    - var pageTitle = 'Homepage'
+    - var headerWarningActive = false
+
+mixin booksCarouselHorizontal(props = {})
+  -
+    let {
+      swiperConfig = {
+        slidesPerView: 2.8,
+        slidesPerGroup: 1,
+        spaceBetween: 30,
+
+        breakpoints: {
+          480: {
+            slidesPerView: 3.8,
+            spaceBetween: 30,
+          },
+          768: {
+            slidesPerView: 4.8,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          1200: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        },
+      },
+      swiperClass = '',
+    } = props;
+
+    swiperConfig = JSON.stringify(swiperConfig);
+  .swiper(data-swiper-options=swiperConfig, id='slider-' + Math.random(), class=swiperClass)
+    ul.list.list--products.swiper-wrapper&attributes(attributes)
+      each item, i in [...books, ...books ]
+        if i < 10
+          li.swiper-slide
+            +productResponsive(Object.assign({}, item, { titleClass: 'text-size-regular' })).m-none
+    button.btn.btn--carousel.btn--equal.carousel__btn.carousel__btn--prev
+      +faIcon('arrow-left').fa-2x
+    button.btn.btn--carousel.btn--equal.carousel__btn.carousel__btn--next
+      +faIcon('arrow-right').fa-2x
+
+mixin recommendedForYou
+  section.section-products.bg-white
+    article.card.mb-none
+      .card__content
+        +hpCardHeader({ header: 'Mohlo by vás zaujímať', subheader: 'Odporúčame', moreHref: '#' })
+      .card__content.card__content--products.card__content--overflow
+        +booksCarouselHorizontal
+
+mixin banner(banner)
+  section.mb-large
+    a(href='#').banner
+      img.img.img--fluid(src=`images/content/banners/${banner}.jpg`)
+
+mixin novinky
+  section.section-products(style="background: #e3dad2")
+    article.card.mb-none
+      .card__content
+        +hpCardHeader({ header: 'Novinky' })
+      .card__content.card__content--products.card__content--overflow
+        +booksCarouselHorizontal
+
+mixin topSellers
+  -
+    let swiperConfig = {
+      slidesPerView: 2.8,
+      slidesPerGroup: 1,
+      spaceBetween: 30,
+
+      breakpoints: {
+        480: {
+          slidesPerView: 3.8,
+          spaceBetween: 30,
+        },
+        768: {
+          slidesPerView: 4.8,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 'auto',
+          spaceBetween: 0,
+          direction: 'vertical',
+        }
+      }
+    };
+  section.section-products.section-products--compact.bg-white
+    .card
+      .card__content.d-m-flex.d-l-block.align-items-start.justify-content-between
+        +hpCardHeader({ header: 'Dnes letí' })
+        .d-flex.btn-group.btn-group--tab.btn-group--fill.mb-none(data-tabs-container)
+          a(href='#tab-ranking-books', role="tab", data-tabs-item).btn.btn--tab.is-active Knihy
+          a(href='#tab-ranking-ebooks', role="tab", data-tabs-item).btn.btn--tab E-knihy
+          a(href='#tab-ranking-audiobooks', role="tab", data-tabs-item).btn.btn--tab Audioknihy
+
+      .card__content.card__content--products.card__content--overflow.pt-none
+        article.tabs
+          each item, index in ['books', 'ebooks', 'audiobooks']
+            section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
+              +booksCarouselHorizontal({swiperConfig: swiperConfig, swiperClass: 'py-medium'}).list--products--responsive.list--counter
+
+      .card__content.d-none.d-l-block.pt-none
+        .btn-layout.btn-layout--vertical.mb-none
+          button.btn.btn--ghost Martinus Top 100
+
+mixin akcioveTituly
+  section.section-products.section-products--dark(style="background: #005b80")
+    article.card.mb-none
+      .card__content
+        +hpCardHeader({ header: 'Akciové tituly', 'subheader': 'Zamilované knižní dárky' })
+      .card__content.card__content--products.card__content--overflow
+        +booksCarouselHorizontal
+
+include ./mixins/userMenu
+
+block content
+  main.bg-secondary
+    section.section
+      include ./modules/carousel-banner
+
+    section.section
+      .wrapper-main
+        .row
+          .col--l-7.col--xl-8
+            +recommendedForYou
+            +akcioveTituly
+            +novinky
+
+          .col--l-5.col--xl-4.order-first.order-l-last
+            +topSellers
+            +banner('Square')
+
+    include ./modules/seen-items
+
+    section.section.bg-default
+      .wrapper-main
+        .row
+          .col--m-8.mx-auto
+            .quote
+              .quote__send
+                a.btn.btn--small.btn--clean.pt-none
+                  +icon('upload').icon--small.icon--left
+                  | Pošlite nám
+                a(href="#").btn.btn--small.btn--clean.pt-none
+                  +icon('instagram')
+                  | #{' '}dobrevety
+              .quote__delimiter
+              p.quote__text „Dnes mám na lásku skromnejšiu, menej univerzálnejšiu definíciu: láska je, keď niekto odchádza a ty máš pocit, že by si mu chcel niečo povedať.“
+
+              .quote-book.d-inline-block
+                .bar.align-items-center
+                  .bar__item.bar__item--shrinkable
+                    .thumbnail.thumbnail--book.thumbnail--small
+                      .thumbnail__img-wrap
+                        a(href="#")
+                          img(src=`https://mrtns.eu/tovar/_l/183/l183781.jpg?v=1496740665`)
+                  .bar__item.bar__item--fill.text-left
+                    a.link.link--product.text-semibold Letmý sneh lorem ipsum
+                    .text-small.text-color-grey.mb-tiny Pavel Vilikovský
+
+    section.bg-default.section.section--overflow
+      .wrapper-main
+        -
+          var swiperFooterContent = [
+            {
+              icon: 'footer-tradition',
+              text: 'Máme skoro 30-ročnú tradíciu predaja kníh'
+            },
+            {
+              icon: 'footer-shipping',
+              text: 'Ponúkame vyše 20 000 titulov na sklade'
+            },
+            {
+              icon: 'footer-stores',
+              text: '10 kníhkupectiev po celom Slovensku'
+            },
+            {
+              icon: 'footer-package',
+              text: 'Sme 3-násobný MasterCard Obchodník roka'
+            },
+            {
+              icon: 'footer-events',
+              text: 'Organizujeme desiatky besied s autormi'
+            },
+            {
+              icon: 'footer-positive',
+              text: 'Podporujeme čítanie s porozumením'
+            },
+          ];
+          var swiperFooterConfig = {
+            slidesPerView: 'auto',
+            slidesPerGroup: 1,
+            spaceBetween: 20,
+            centeredSlides: true,
+            loop: true,
+          };
+          swiperFooterConfige = JSON.stringify(swiperFooterConfig);
+        .carousel.carousel--fade-outside.carousel--fade-outside-white.carousel-cards
+          .swiper(data-swiper-options=swiperFooterConfig)
+            .swiper-wrapper
+              each item, i in swiperFooterContent
+                .swiper-slide.carousel-cards__item
+                  .card.card--well
+                    .card__content
+                      .bar.mb-none
+                        .bar__item.bar__item--shrinkable
+                          +icon(item.icon, 'text-color-grey')
+                        .bar__item.bar__item--fill
+                          p.text-medium= item.text
+
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+              +faIcon('arrow-left').fa-2x
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+              +faIcon('arrow-right').fa-2x
