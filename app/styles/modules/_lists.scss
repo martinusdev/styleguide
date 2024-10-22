@@ -160,13 +160,22 @@
   padding: 0;
   margin-bottom: 0 !important;
 
-  a.product-cover--book,
+  a.product-cover--book {
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.10), 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+  }
+
   a.product-cover:not(.product-cover--collection):hover,
   a.product-cover:not(.product-cover--collection):active,
   a.product-cover--collection img:hover,
   a.product-cover--collection img:active
   {
-    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.10), 0 1px 3px 0 rgba(0, 0, 0, 0.07);
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15), 0 1px 3px 0 rgba(0, 0, 0, 0.10);
+  }
+
+  .product:hover {
+    .product__title {
+      color: inherit;
+    }
   }
 
   li {

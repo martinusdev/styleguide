@@ -105,13 +105,13 @@ mixin topSellers
           a(href='#tab-ranking-ebooks', role="tab", data-tabs-item).btn.btn--tab E-knihy
           a(href='#tab-ranking-audiobooks', role="tab", data-tabs-item).btn.btn--tab Audioknihy
 
-      .card__content.card__content--products.card__content--overflow
+      .card__content.card__content--products.card__content--overflow.pt-none
         article.tabs
           each item, index in ['books', 'ebooks', 'audiobooks']
             section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
-              +booksCarouselHorizontal({swiperConfig: swiperConfig, swiperClass: 'pt-medium'}).list--products--responsive.list--counter
+              +booksCarouselHorizontal({swiperConfig: swiperConfig, swiperClass: 'py-medium'}).list--products--responsive.list--counter
 
-      .card__content.d-none.d-l-block
+      .card__content.d-none.d-l-block.pt-none
         .btn-layout.btn-layout--vertical.mb-none
           button.btn.btn--ghost Martinus Top 100
 
