@@ -177,7 +177,7 @@ $default-border-radius-circle: $border-radius-circle !default;
 
 $default-font-size: $font-size-regular !default;
 
-$default-outline: 2px solid rgba(_color(primary, 200), 0.8);
+$default-outline: 2px solid rgba(_color(borders, 200), 0.3);
 
 $enable-gradients: false !default;
 $enable-dark-mode: false !default;
@@ -871,11 +871,10 @@ $button-styles: (
   carousel: (
     default: (
       color: $color-black,
-      border-color: rgba(255, 255, 255, 0.6),
-      background-color: rgba(255, 255, 255, 0.3),
+      border-color: transparent,
+      background-color: rgba(255, 255, 255, 0.8),
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
       backdrop-filter: blur(5px),
-      border-radius: 50px,
     ),
     focus: (
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2),
@@ -1621,6 +1620,12 @@ $badge: (
     color: _color(darkblue),
     border-color: _color(darkblue),
   ),
+  transparent: (
+    color: inherit,
+    background: transparent,
+    border-color: transparent,
+    padding: 0,
+  )
 );
 
 $badge-sizes: (
