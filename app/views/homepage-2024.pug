@@ -66,10 +66,10 @@ mixin banner(banner)
       img.img.img--fluid(src=`images/content/banners/${banner}.jpg`)
 
 mixin novinky
-  section.section-products(style="background: #e3dad2")
+  section.section-products.section-products--light(style="background: #fcc34c")
     article.card.mb-none
       .card__content
-        +hpCardHeader({ header: 'Novinky' })
+        +hpCardHeader({ header: 'Novinky', subheader: 'Najnovšie tituly' })
       .card__content.card__content--products.card__content--overflow
         +booksCarouselHorizontal
 
@@ -116,7 +116,7 @@ mixin topSellers
           button.btn.btn--ghost Martinus Top 100
 
 mixin akcioveTituly
-  section.section-products.section-products--dark(style="background: #005b80")
+  section.section-products.section-products--dark(style="background: #875797")
     article.card.mb-none
       .card__content
         +hpCardHeader({ header: 'Akciové tituly', 'subheader': 'Zamilované knižní dárky' })
