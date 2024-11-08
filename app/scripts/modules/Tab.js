@@ -74,9 +74,16 @@ export default class Tab {
       }
 
       const href = this.triggers[i].getAttribute('href');
-      let id = href.slice(1);
+      let id;
 
-      if (!href.startsWith('#')) {
+      if (href.startsWith('#')) {
+        id = href.slice(1);
+      } else {
+        const url = new URL(href, window.location.origin);
+        id = url.hash.slice(1);
+      }
+
+      if (!id) {
         id = Math.floor(Math.random() * Date.now()).toString(16);
       }
 
@@ -191,11 +198,18 @@ export default class Tab {
   _onClick(e) {
     const href = e.currentTarget.getAttribute('href');
 
-    if (!href || !href.startsWith('#')) {
+    if (!href) {
       return;
     }
 
-    const tab = document.querySelector(href);
+    const url = new URL(href, window.location.origin);
+    const { hash } = url;
+
+    if (!hash) {
+      return;
+    }
+
+    const tab = document.querySelector(hash);
 
     this.toggleTab(tab);
     e.preventDefault();
@@ -225,7 +239,9 @@ export default class Tab {
     el.setAttribute('aria-hidden', false);
     this._toggleTabNav(el);
     if (el.parentNode.hasAttribute('data-tab-load')) {
-      window.history.replaceState(undefined, undefined, `#${el.getAttribute('id')}`);
+      const currentUrl = new URL(window.location);
+      currentUrl.hash = `#${el.getAttribute('id')}`;
+      window.history.replaceState(undefined, undefined, currentUrl.toString());
     }
     return true;
   }
@@ -265,8 +281,10 @@ export default class Tab {
   }
 
   _findTrigger(tab) {
+    const tabId = tab.getAttribute('id');
+
     return document.querySelector(
-      `${this.selector}[href="#${tab.getAttribute('id')}"]`,
+      `${this.selector}[href="#${tabId}"], ${this.selector}[href$="#${tabId}"]`
     );
   }
 }
