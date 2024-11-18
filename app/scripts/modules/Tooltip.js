@@ -18,9 +18,10 @@ const defaultConfig = {
       return template.innerHTML;
     }
 
-    const title = tippyContent || reference.getAttribute('title') || '';
+    const title = reference.getAttribute('title') || tippyContent || '';
 
     reference.removeAttribute('title');
+    reference.setAttribute('data-tippy-content', title);
 
     const htmlStripped = title.replace(/<[^>]*>?/gm, '');
     reference.setAttribute('aria-description', htmlStripped);
