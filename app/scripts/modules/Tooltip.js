@@ -18,7 +18,7 @@ const defaultConfig = {
       return template.innerHTML;
     }
 
-    const title = tippyContent || reference.getAttribute('title');
+    const title = tippyContent || reference.getAttribute('title') || '';
 
     reference.removeAttribute('title');
 
