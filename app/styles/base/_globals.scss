@@ -59,9 +59,14 @@ iframe,
 [tabindex],
 [contentEditable=true] {
   &:not([tabindex='-1']) {
-    &:focus {
+    &:focus-visible {
       outline: $default-outline;
+      outline-offset: var(--#{$prefix}outline-offset, 1px);
     }
+  }
+
+  &:has(img):focus-visible {
+    display: flex;
   }
 }
 
