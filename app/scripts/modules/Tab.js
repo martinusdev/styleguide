@@ -2,7 +2,7 @@
 // Tabs
 // module for handling tabs
 
-import { windowOffset, getSiblings } from './Utils';
+import { getSiblings } from './Utils';
 import { TOGGLE_EVT } from './Toggle';
 
 const defaultConfig = {
@@ -160,11 +160,20 @@ export default class Tab {
 
   _openTabOnLoad() {
     const hash = window.location.hash.slice(1);
+
+    if (!hash) {
+      return;
+    }
+
     for (let i = 0, l = this.tabs.length; i < l; i++) {
       if (this.tabs[i].getAttribute('id') === hash) {
-        if (this.tabs[i].closest('.tabs').hasAttribute('data-tab-load')) {
+        const tabContainer = this.tabs[i].closest(this.config.tabPanesContainerSelector);
+
+        if (tabContainer && tabContainer.hasAttribute('data-tab-load')) {
           this.toggleTab(this.tabs[i]);
           this._scrollToTab(this.tabs[i]);
+
+          break;
         }
       }
     }
@@ -173,26 +182,21 @@ export default class Tab {
   _scrollToTab(el) {
     const trigger = this._findTrigger(el);
     const triggerContainer = trigger.closest('[role=tablist]');
-    const offset = el.closest('.tabs').getAttribute('data-tab-load');
-    let scrollTo = 0;
-    if (!offset) {
-      scrollTo = windowOffset(triggerContainer).y;
-    } else if (!Number.isNaN(offset)) {
-      scrollTo = windowOffset(triggerContainer).y - offset;
-    } else {
-      const offsetContainer = document.querySelector(offset);
-      if (offsetContainer) {
-        scrollTo = windowOffset(triggerContainer).y - offsetContainer.offsetHeight;
+
+    if (!triggerContainer) {
+      return;
+    }
+
+    setTimeout(() => {
+      if (window.scrollY > 0) {
+        return;
       }
-    }
-    if (scrollTo) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: scrollTo,
-          behavior: 'smooth',
-        });
-      }, this.config.scrollDelay);
-    }
+
+      triggerContainer.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, this.config.scrollDelay);
   }
 
   _onClick(e) {
