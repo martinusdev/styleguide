@@ -2,7 +2,7 @@
 // Tabs
 // module for handling tabs
 
-import { windowOffset, getSiblings } from './Utils';
+import { getSiblings } from './Utils';
 import { TOGGLE_EVT } from './Toggle';
 
 const defaultConfig = {
@@ -180,36 +180,23 @@ export default class Tab {
   }
 
   _scrollToTab(el) {
-    const scrollToElement = el.closest(this.config.tabPanesContainerSelector);
+    const trigger = this._findTrigger(el);
+    const triggerContainer = trigger.closest('[role=tablist]');
 
-    if (!scrollToElement) {
+    if (!triggerContainer) {
       return;
     }
 
-    scrollToElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    setTimeout(() => {
+      if (window.scrollY > 0) {
+        return;
+      }
 
-    // const trigger = this._findTrigger(el);
-    // const triggerContainer = trigger.closest('[role=tablist]');
-    // const offset = el.closest(this.config.tabPanesContainerSelector).getAttribute('data-tab-load');
-    // let scrollTo = 0;
-    // if (!offset) {
-    //   scrollTo = windowOffset(triggerContainer).y;
-    // } else if (!Number.isNaN(offset)) {
-    //   scrollTo = windowOffset(triggerContainer).y - offset;
-    // } else {
-    //   const offsetContainer = document.querySelector(offset);
-    //   if (offsetContainer) {
-    //     scrollTo = windowOffset(triggerContainer).y - offsetContainer.offsetHeight;
-    //   }
-    // }
-    // if (scrollTo) {
-    //   setTimeout(() => {
-    //     window.scrollTo({
-    //       top: scrollTo,
-    //       behavior: 'smooth',
-    //     });
-    //   }, this.config.scrollDelay);
-    // }
+      triggerContainer.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, this.config.scrollDelay);
   }
 
   _onClick(e) {
