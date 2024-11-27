@@ -2,7 +2,7 @@
 // Tabs
 // module for handling tabs
 
-import { windowOffset, getSiblings } from './Utils';
+import { getSiblings } from './Utils';
 import { TOGGLE_EVT } from './Toggle';
 
 const defaultConfig = {
@@ -74,9 +74,16 @@ export default class Tab {
       }
 
       const href = this.triggers[i].getAttribute('href');
-      let id = href.slice(1);
+      let id;
 
-      if (!href.startsWith('#')) {
+      if (href.startsWith('#')) {
+        id = href.slice(1);
+      } else {
+        const url = new URL(href, window.location.origin);
+        id = url.hash.slice(1);
+      }
+
+      if (!id) {
         id = Math.floor(Math.random() * Date.now()).toString(16);
       }
 
@@ -153,11 +160,20 @@ export default class Tab {
 
   _openTabOnLoad() {
     const hash = window.location.hash.slice(1);
+
+    if (!hash) {
+      return;
+    }
+
     for (let i = 0, l = this.tabs.length; i < l; i++) {
       if (this.tabs[i].getAttribute('id') === hash) {
-        if (this.tabs[i].closest('.tabs').hasAttribute('data-tab-load')) {
+        const tabContainer = this.tabs[i].closest(this.config.tabPanesContainerSelector);
+
+        if (tabContainer && tabContainer.hasAttribute('data-tab-load')) {
           this.toggleTab(this.tabs[i]);
           this._scrollToTab(this.tabs[i]);
+
+          break;
         }
       }
     }
@@ -166,36 +182,38 @@ export default class Tab {
   _scrollToTab(el) {
     const trigger = this._findTrigger(el);
     const triggerContainer = trigger.closest('[role=tablist]');
-    const offset = el.closest('.tabs').getAttribute('data-tab-load');
-    let scrollTo = 0;
-    if (!offset) {
-      scrollTo = windowOffset(triggerContainer).y;
-    } else if (!Number.isNaN(offset)) {
-      scrollTo = windowOffset(triggerContainer).y - offset;
-    } else {
-      const offsetContainer = document.querySelector(offset);
-      if (offsetContainer) {
-        scrollTo = windowOffset(triggerContainer).y - offsetContainer.offsetHeight;
+
+    if (!triggerContainer) {
+      return;
+    }
+
+    setTimeout(() => {
+      if (window.scrollY > 0) {
+        return;
       }
-    }
-    if (scrollTo) {
-      setTimeout(() => {
-        window.scrollTo({
-          top: scrollTo,
-          behavior: 'smooth',
-        });
-      }, this.config.scrollDelay);
-    }
+
+      triggerContainer.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }, this.config.scrollDelay);
   }
 
   _onClick(e) {
     const href = e.currentTarget.getAttribute('href');
 
-    if (!href || !href.startsWith('#')) {
+    if (!href) {
       return;
     }
 
-    const tab = document.querySelector(href);
+    const url = new URL(href, window.location.origin);
+    const { hash } = url;
+
+    if (!hash) {
+      return;
+    }
+
+    const tab = document.querySelector(hash);
 
     this.toggleTab(tab);
     e.preventDefault();
@@ -225,7 +243,9 @@ export default class Tab {
     el.setAttribute('aria-hidden', false);
     this._toggleTabNav(el);
     if (el.parentNode.hasAttribute('data-tab-load')) {
-      window.history.replaceState(undefined, undefined, `#${el.getAttribute('id')}`);
+      const currentUrl = new URL(window.location);
+      currentUrl.hash = `#${el.getAttribute('id')}`;
+      window.history.replaceState(undefined, undefined, currentUrl.toString());
     }
     return true;
   }
@@ -265,8 +285,10 @@ export default class Tab {
   }
 
   _findTrigger(tab) {
+    const tabId = tab.getAttribute('id');
+
     return document.querySelector(
-      `${this.selector}[href="#${tab.getAttribute('id')}"]`,
+      `${this.selector}[href="#${tabId}"], ${this.selector}[href$="#${tabId}"]`
     );
   }
 }

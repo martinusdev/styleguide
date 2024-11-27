@@ -54,13 +54,12 @@ mixin najpredavaniejsieZPonuky
         .btn-layout.btn-layout--vertical.mb-large
           .btn-group.btn-group--horizontal.btn-group--fill(data-tabs-container)
             a(href='#tab-ranking-books', role="tab", data-tabs-item).btn.btn--tab.is-active Knihy
-            a(href='#tab-ranking-movies', role="tab", data-tabs-item).btn.btn--tab Filmy
-            a(href='#tab-ranking-games', role="tab", data-tabs-item).btn.btn--tab Hry
-            a(href='#tab-ranking-coffee-tea', role="tab", data-tabs-item).btn.btn--tab Káva a čaj
+            a(href='#tab-ranking-ebooks', role="tab", data-tabs-item).btn.btn--tab E-knihy
+            a(href='#tab-ranking-audiobooks', role="tab", data-tabs-item).btn.btn--tab Audioknihy
 
       .card__content
         article.tabs
-          each item, index in ['books', 'movies', 'games', 'coffee-tea']
+          each item, index in ['books', 'ebooks', 'audiobooks']
             section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
               ul.list.list--counter.p-none
                 each item, i in [...books, ...books ]

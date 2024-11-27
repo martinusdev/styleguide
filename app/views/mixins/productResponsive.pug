@@ -1,0 +1,43 @@
+include discountBadge
+include faIcon
+include xmas
+
+mixin productResponsive(props = {})
+  -
+    const {
+      cover = 'images/content/books/sample-15.jpg',
+      title = 'Základy rybolovu pro kluky a holky',
+      author = 'Frank Weissert, Jack Thorne, John Tiffany',
+      description,
+      discount,
+      discountUnderBook = false,
+      rating = 4.5,
+      price = '9999,99 €',
+      duration,
+      count,
+      trash,
+      truncnateTitle,
+      showCartButton,
+      titleClass = 'text-size-medium',
+      breakBeforePrice,
+    } = props;
+
+  article.product.product--responsive&attributes(attributes)
+    div.product__img
+      a.product-cover.product-cover--book(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+        img(src=`${assetsPrefix}${cover}`).d-block
+      if rating
+        .thumbnail__info
+          .badge
+            +faIcon('star', 'fas').text-color-yellow.mr-tiny
+            | #{' '}
+            = rating
+    .product__info.text-ellipsis
+      a.product__title.link.link--black(title=title, href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+        = title
+      .text-small.text-color-grey.mb-small
+        = author
+      .badges.mb-none
+        if discount
+          .badge.badge--primary.mr-small= discount
+        .badge.badge--transparent= price

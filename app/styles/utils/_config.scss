@@ -177,7 +177,7 @@ $default-border-radius-circle: $border-radius-circle !default;
 
 $default-font-size: $font-size-regular !default;
 
-$default-outline: 2px solid rgba(_color(primary, 200), 0.8);
+$default-outline: 2px solid var(--#{$prefix}outline-color, rgba(_color(borders, 200), 0.9)) !default;
 
 $enable-gradients: false !default;
 $enable-dark-mode: false !default;
@@ -492,7 +492,9 @@ $utilities-text-colors: map.merge($color-presets,
     grey-dark: $text-color-grey-dark,
     semiwhite: $text-color-semiwhite,
     success: $text-color-success,
-    error: $text-color-error
+    error: $text-color-error,
+    facebook: #0069BA,
+    google: #D22121,
   ));
 
 $utilities-bg-colors: map.merge($color-presets,
@@ -542,6 +544,7 @@ $image: (
 // THUMBNAILS
 
 $thumbnail-sizes: (
+  tiny: 20px,
   small: 25px,
   medium: 50px,
   medium-large: 65px,
@@ -872,8 +875,9 @@ $button-styles: (
     default: (
       color: $color-black,
       border-color: transparent,
-      background-color: $color-white,
+      background-color: rgba(255, 255, 255, 0.8),
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
+      backdrop-filter: blur(5px),
     ),
     focus: (
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2),
@@ -1502,12 +1506,12 @@ $list-item-clickable: (
 );
 
 $list-counter: (
-  size: 36px,
+  size: 25px,
   style: (
     background-color: $color-white,
     border-radius: 999em,
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
-    color: _color(grey, 700),
+    color: _color(black),
     text-align: center,
     font-weight: var(--fw-semibold),
   )
@@ -1619,6 +1623,12 @@ $badge: (
     color: _color(darkblue),
     border-color: _color(darkblue),
   ),
+  transparent: (
+    color: inherit,
+    background: transparent,
+    border-color: transparent,
+    padding: 0,
+  )
 );
 
 $badge-sizes: (
@@ -1708,9 +1718,9 @@ $carousel: (
   btns: (
     offsetH: (
       default: -10px,
-      l: -20px,
+      l: -15px,
     ),
-    offsetV: 50%,
+    offsetV: 25%,
   ),
   fade: (
     size: 800px,

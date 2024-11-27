@@ -4,14 +4,28 @@ const defaultConfig = {
   animation: 'scale',
   arrow: true,
   interactive: true,
-  appendTo: () => document.body,
+  allowHTML: true,
+  // appendTo: () => document.body,
   delay: 150,
   content(reference) {
     // use title as a default tooltip content
-    const title = reference.getAttribute('data-tippy-content')
-      || reference.getAttribute('title');
+    const { tippyContent, html } = reference.dataset;
+
+    if (html) {
+      const template = document.querySelector(html);
+      reference.setAttribute('aria-describedby', html.replace('#', ''));
+
+      return template.innerHTML;
+    }
+
+    const title = reference.getAttribute('title') || tippyContent || '';
+
     reference.removeAttribute('title');
     reference.setAttribute('data-tippy-content', title);
+
+    const htmlStripped = title.replace(/<[^>]*>?/gm, '');
+    reference.setAttribute('aria-description', htmlStripped);
+
     return title;
   },
 };
@@ -45,16 +59,6 @@ export default class Tooltip {
     this.tooltips = targets.map(target => {
       const targetConfig = {};
       const { showOnCreate } = target.dataset;
-
-      // fetch html element to put in tooltip
-      const element = document.querySelector(target.dataset.html);
-
-      if (element) {
-        element.style.display = 'block';
-        targetConfig.content = element;
-      }
-
-      targetConfig.allowHTML = true;
 
       if (showOnCreate) {
         targetConfig.showOnCreate = true;

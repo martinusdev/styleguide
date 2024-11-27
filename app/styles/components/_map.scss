@@ -26,35 +26,6 @@
   img[src*='//api.mapy.cz/'] {
     filter: grayscale(50%) saturate(20%) brightness(110%);
   }
-
-  .zoom {
-    top: auto;
-    position: absolute;
-    bottom: 70px;
-    right: 10px;
-    width: 66px;
-    text-align: right;
-
-    .button-group {
-      box-shadow: none;
-      border-radius: 0;
-
-      button {
-        width: 30px !important;
-        height: 30px !important;
-        border-radius: 3px;
-        box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.16);
-      }
-
-      button.minus {
-        margin-right: 6px;
-      }
-
-      button:hover {
-        color: _color(primary);
-      }
-    }
-  }
 }
 
 .col-select-place {
@@ -81,6 +52,10 @@
   }
 }
 
+.map-marker {
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.5));
+}
+
 .map-marker-link--martinus {
   z-index: 49;
 }
@@ -101,4 +76,54 @@
 
 .delivery-place__icon {
   width: _get-rem(30px);
+}
+
+.marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.marker-cluster div {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: _color('white');
+  font-family: "Tabac Sans", sans-serif;
+  font-weight: 600;
+  font-size: _get-rem(14px);
+
+  width: _get-rem(30px);
+  height: _get-rem(30px);
+  margin-left: _get-space('tiny');
+  margin-top: _get-space('tiny');
+
+  text-align: center;
+  border-radius: 15px;
+}
+
+.marker-cluster span {
+  line-height: _get-rem(30px);
+}
+
+.map-marker, .map-marker a {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+// stylelint-disable selector-max-id
+#mj-delivery-picker-modal {
+  .modal-xl {
+    --ms-modal-width: 95%;
+  }
+
+  .modal-content {
+    overflow: hidden;
+  }
+}
+// stylelint-enable selector-max-id
+
+@media (min-width: 768px) {
+  .col-select-place {
+    min-width: 410px;
+  }
 }

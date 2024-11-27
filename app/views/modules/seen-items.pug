@@ -1,25 +1,19 @@
-section.section.section--white#seen-items(data-toggle-class="hide")
+section.section.section--white.section--overflow#seen-items(data-toggle-class="hide", style="min-height: 159px;")
   .wrapper-main
-    .bar.mb-large
-      .bar__item
-        h2.mb-none Pozreli ste si:
-      .bar__break.hide-l
-      .bar__item.bar__item--fill.overflow-hidden
-        -
-          var swiperConfig = {
-            slidesPerView: 'auto',
-            slidesPerGroup: 1,
-            spaceBetween: 10,
-          };
-          swiperConfig = JSON.stringify(swiperConfig);
-        .carousel.mb-none(style="overflow: hidden;")
-          .swiper(data-swiper-options=swiperConfig)
-            .swiper-wrapper
-              each item, i in Array(12)
-                .swiper-slide.carousel__recently-viewed
-                  a.thumbnail.thumbnail--book.thumbnail--clickable.thumbnail--medium(href="#")
-                    .thumbnail__img-wrap.shadow-none
-                      img.img(src=`${assetsPrefix}images/content/books/sample-${i + 1}.jpg`, alt="...")
-      .bar__break.hide-m
-      .bar__item
-        a.link.text-size-medium(data-toggle="#seen-items-delete, #seen-items") Vymazať históriu prezeraných kníh
+    .d-flex.justify-content-between.align-items-center.mb-small
+      h3.mb-none Pozreli ste si
+      a.h5.link.mb-none.mj-products-seen-remove-link(href="#") Vymazať históriu
+    -
+      var swiperConfig = {
+        slidesPerView: 'auto',
+        slidesPerGroup: 1,
+        spaceBetween: 10,
+      };
+      swiperConfig = JSON.stringify(swiperConfig);
+    .carousel.mb-none(style="overflow: hidden;")
+      .swiper(data-swiper-options=swiperConfig)
+        .swiper-wrapper
+          each item, i in Array(12)
+            .swiper-slide.carousel__recently-viewed.swiper-slide-visible.swiper-slide-active
+              a.product-cover.product-cover--medium.product-cover--book.shadow-none(href="#")
+                img.d-block(src=`${assetsPrefix}images/content/books/sample-${i + 1}.jpg`, alt="...")
