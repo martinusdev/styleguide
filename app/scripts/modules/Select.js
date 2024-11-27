@@ -1,4 +1,4 @@
-import Choices from 'choices.js/public/assets/scripts/choices';
+import Choices from 'choices.js';
 import { nodeListToArray } from './Utils';
 
 let lang = 'sk';
@@ -356,10 +356,6 @@ export default class Select {
       select.addEventListener('hideDropdown', this._onHideDropdown);
 
       select.setAttribute('data-is-initialized', '');
-
-      // if (select.getAttribute('data-autocomplete')) {
-      //   const ac = new Autocomplete(select);
-      // }
 
       return choice;
     });
