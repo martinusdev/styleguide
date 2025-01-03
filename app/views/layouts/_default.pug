@@ -3,8 +3,8 @@ include ./../mixins/faIcon
 //- -----------------------------------------------
 //- VARIABLES AND DATA
 
-- const assetsPrefix = '';
-- const htmlPostfix = '.html';
+- const assetsPrefix = '../';
+- const htmlPostfix = '.pug';
 - const xmas = false;
 
 - var headerWarningActive = true;
@@ -103,8 +103,8 @@ html.no-js.fonts-loaded
     script.
       window.myApp = window.myApp || {};
       window.myApp.selectLanguage = 'sk';
-    script(src=`${assetsPrefix}scripts/vendor.js`)
-    script(src=`${assetsPrefix}scripts/main.js`)
-    script(src=`${assetsPrefix}scripts/font-awesome.js`)
+    script(src=`${assetsPrefix}scripts/vendor.js`, type="module")
+    script(src=`${assetsPrefix}scripts/main.js`, type="module")
+    script(src=`${assetsPrefix}scripts/font-awesome.js`, type="module")
 
     block scripts

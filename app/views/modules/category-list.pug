@@ -287,7 +287,7 @@ section.section
             .listing__item
               .listing__item__cover
                 +productCover({
-                  href: 'detail-knihy.html',
+                  href: 'detail-knihy.pug',
                   badge: false,
                   cover: `${item.cover}`,
                   collection: Object.keys(item.formats).length > 1,
@@ -321,7 +321,7 @@ section.section
                     span.text-color-grey.show-m v TOP 100
 
               .listing__item__details.flex-1
-                a.listing__item__title.link.link--product(href="detail-knihy.html")
+                a.listing__item__title.link.link--product(href="detail-knihy.pug")
                   =item.title
                   if item.lang
                     |&nbsp;
@@ -347,7 +347,7 @@ section.section
                       if (i > 2)
                         - otherFormats.push(type)
                       li.list__item(class = i > 2 ? 'd-none' : '')
-                        a(href="detail-knihy.html").link.text-medium
+                        a(href="detail-knihy.pug").link.text-medium
                           +formatIcon(type).fa-lg.mr-tiny
                           +formatName(type)
                           if format.types
