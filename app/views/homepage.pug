@@ -1,20 +1,60 @@
 extends layouts/_default
 
-include ./mixins/booksCarouselHorizontal
-include ./mixins/carouselTiles
-include ./mixins/productHorizontal
-include ./mixins/sectionHeader
-include ./mixins/collectionItem
+include ./mixins/productResponsive
+include ./mixins/hpCardHeader
 
 block opts
     - var pageTitle = 'Homepage'
     - var headerWarningActive = false
 
-mixin preVas
-  section.mb-large
-    article.card
-      .card__content.card__content--overflow
-        +sectionHeader({ header: 'Pre Vás', more: false, center: true })
+mixin booksCarouselHorizontal(props = {})
+  -
+    let {
+      swiperConfig = {
+        slidesPerView: 2.8,
+        slidesPerGroup: 1,
+        spaceBetween: 20,
+
+        breakpoints: {
+          480: {
+            slidesPerView: 3.8,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 4.8,
+            spaceBetween: 30,
+          },
+          1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+          },
+          1200: {
+            slidesPerView: 5,
+            spaceBetween: 30,
+          },
+        },
+      },
+      swiperClass = '',
+    } = props;
+
+    swiperConfig = JSON.stringify(swiperConfig);
+  .swiper(data-swiper-options=swiperConfig, id='slider-' + Math.random(), class=swiperClass)
+    ul.list.list--products.swiper-wrapper&attributes(attributes)
+      each item, i in [...books, ...books ]
+        if i < 10
+          li.swiper-slide
+            +productResponsive(Object.assign({}, item, { titleClass: 'text-size-regular' })).m-none
+    button.btn.btn--carousel.btn--equal.carousel__btn.carousel__btn--prev
+      +faIcon('arrow-left').fa-2x
+    button.btn.btn--carousel.btn--equal.carousel__btn.carousel__btn--next
+      +faIcon('arrow-right').fa-2x
+
+mixin recommendedForYou
+  section.section-products.bg-white
+    article.card.mb-none
+      .card__content
+        +hpCardHeader({ header: 'Mohlo by vás zaujímať', subheader: 'Odporúčame', moreHref: '#' })
+      .card__content.card__content--products.card__content--overflow
         +booksCarouselHorizontal
 
 mixin banner(banner)
@@ -22,75 +62,63 @@ mixin banner(banner)
     a(href='#').banner
       img.img.img--fluid(src=`images/content/banners/${banner}.jpg`)
 
-mixin tyzdenneKolekcie
-  section.mb-large
-    article.card
-
-      +collectionItemContent({label: "Tyzdenne kolekcie"})
-
-      .card__content
-        .btn-layout.btn-layout--vertical.mb-medium
-          button.btn.btn--ghost Celá kolekcia
-        .bar.bar--small.align-items-start
-          .bar__item
-            .portrait.portrait--medium(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-          .bar__item.bar__item--fill
-            p.mb-small Vyberá#{' '}
-              a.link(href='#', title="Callie Krueger") Callie Krueger
-            p.m-none.text-size-medium Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.
-
 mixin novinky
-  section.mb-large
-    article.card
-      .card__content.card__content--overflow
-        +sectionHeader({ header: 'Novinky', more: false, center: true })
+  section.section-products.section-products--light(style="background: #c1dff0")
+    article.card.mb-none
+      .card__content
+        +hpCardHeader({ header: 'Novinky', subheader: 'Najnovšie tituly' })
+      .card__content.card__content--products.card__content--overflow
         +booksCarouselHorizontal
 
-mixin najpredavaniejsieZPonuky
-  section.mb-large
-    .card
-      .card__content
-        +sectionHeader({ header: 'Najpredávanejšie z ponuky', more: false, center: true })
-        .btn-layout.btn-layout--vertical.mb-large
-          .btn-group.btn-group--horizontal.btn-group--fill(data-tabs-container)
-            a(href='#tab-ranking-books', role="tab", data-tabs-item).btn.btn--tab.is-active Knihy
-            a(href='#tab-ranking-ebooks', role="tab", data-tabs-item).btn.btn--tab E-knihy
-            a(href='#tab-ranking-audiobooks', role="tab", data-tabs-item).btn.btn--tab Audioknihy
+mixin topSellers
+  -
+    let swiperConfig = {
+      slidesPerView: 2.8,
+      slidesPerGroup: 1,
+      spaceBetween: 20,
 
-      .card__content
+      breakpoints: {
+        480: {
+          slidesPerView: 3.8,
+          spaceBetween: 20,
+        },
+        768: {
+          slidesPerView: 4.8,
+          spaceBetween: 30,
+        },
+        1024: {
+          slidesPerView: 'auto',
+          spaceBetween: 0,
+          direction: 'vertical',
+        }
+      }
+    };
+  section.section-products.section-products--compact.bg-white
+    .card
+      .card__content.d-m-flex.d-l-block.align-items-start.justify-content-between
+        +hpCardHeader({ header: 'Dnes letí' })
+        .d-flex.btn-group.btn-group--tab.btn-group--fill.mb-none(data-tabs-container)
+          a(href='#tab-ranking-books', role="tab", data-tabs-item).btn.btn--tab.is-active Knihy
+          a(href='#tab-ranking-ebooks', role="tab", data-tabs-item).btn.btn--tab E-knihy
+          a(href='#tab-ranking-audiobooks', role="tab", data-tabs-item).btn.btn--tab Audioknihy
+
+      .card__content.card__content--products.card__content--overflow.pt-none
         article.tabs
           each item, index in ['books', 'ebooks', 'audiobooks']
             section.tab(id=`tab-ranking-${item}`, class= index === 0 ? 'is-active' : '')
-              ul.list.list--counter.p-none
-                each item, i in [...books, ...books ]
-                  if i < 10
-                    li.mb-medium(class=i > 4 ? 'show-l' : '')
-                      //- +productHorizontal(item).m-none
-                      +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).m-none
+              +booksCarouselHorizontal({swiperConfig: swiperConfig, swiperClass: 'py-medium'}).list--products--responsive.list--counter
 
-      .card__content
-        .btn-layout.btn-layout--vertical
-          button.btn.btn--ghost Celý rebríček
+      .card__content.d-none.d-l-block.pt-none
+        .btn-layout.btn-layout--vertical.mb-none
+          button.btn.btn--ghost Martinus Top 100
 
 mixin akcioveTituly
-  section.mb-large
-    .card
+  section.section-products.section-products--dark(style="background: #875797")
+    article.card.mb-none
       .card__content
-        +sectionHeader({ header: 'Akciové tituly', more: false, center: true })
-        +productHorizontal({ discountUnderBook: true, discount: 'Ušetrite 3,50 €', description: 'Recepty zo života alebo zdravé desiate od Daniely Rau sú to najlepšie, čo môžete v Martinuse ochutnať.', coverSize: 'large', duration: {} })
-      .card__content.card__content--overflow
-        +booksCarouselHorizontal({ duration: {} })
-
-mixin ludiNajviacZaujma
-  section.mb-large
-    .card
-      .card__content
-        +sectionHeader({ header: 'Ľudí najviac zaujíma', more: false, center: true })
-        ul.list.list--unstyled
-          each item, i in [...books, ...books ]
-            if i < 4
-              li(class=`${i < 3 ? 'mb-medium' : ''}`)
-                +productHorizontal(Object.assign({}, item, { titleClass: 'text-size-regular'})).m-none
+        +hpCardHeader({ header: 'Akciové tituly', 'subheader': 'Zamilované knižní dárky' })
+      .card__content.card__content--products.card__content--overflow
+        +booksCarouselHorizontal
 
 include ./mixins/userMenu
 
@@ -101,152 +129,22 @@ block content
 
     section.section
       .wrapper-main
-        // desktop
-        .row.show-l
-          .col--l-4.col--m-6
-            +preVas
-            +banner('Main')
-            +tyzdenneKolekcie
-            +akcioveTituly
-
-          .col--l-4.col--m-6
-            +novinky
-            +collectionItem
-            +ludiNajviacZaujma
-            +collectionItem
-
-          .col--l-4.col--m-6
-            +najpredavaniejsieZPonuky
-            +banner('Square')
-
-        // tablet
-        .row.show-m-only
-          .col--m-6
-            +preVas
-            +novinky
-            +banner('Main')
-            +tyzdenneKolekcie
-            +akcioveTituly
-
-          .col--m-6
-            +najpredavaniejsieZPonuky
-            +collectionItem
-            +collectionItem
-            +ludiNajviacZaujma
-
-        // mobile
-        .row.hide-m
-          .col--12
-            +preVas
-            +najpredavaniejsieZPonuky
-            +novinky
-            +tyzdenneKolekcie
-            +banner('Main')
-            +collectionItem
-            +akcioveTituly
-
         .row
-          .col--m-8
-            section.mb-large
-              article.card
-                .card__content.card__content--overflow
-                  h2.text-center Novinky v čitateľských profiloch
-                  .btn-group.btn-group--horizontal.btn-group--fill.mb-none
-                    button.btn.btn--ghost.is-active Všetky
-                    button.btn.btn--ghost Sledované
+          .col--l-7.col--xl-8
+            +recommendedForYou
+            +akcioveTituly
+            +novinky
 
-              .row.mb-medium
-                .col--m-6
-                  .card
-                    .card__content
-
-                      .bar.bar--vertical.align-items-center
-                        .bar__item.bar__item--shrinkable
-                          .portrait.portrait--large(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                        .bar__item.bar__item--fill.text-center
-                          .h3
-                            a.link Janko Martinusák
-                          span napísal/a recenziu
-
-                      .bar.justify-content-center
-                        .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.justify-content-center.mt-none
-                            each star, starIndex in Array(5)
-                              +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
-                        .bar__item.bar__item--shrinkable.text-right
-                          .h5 24.5.2018 20:31
-
-                      hr.mb-medium
-
-                      p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
-
-                      -
-                        var item = {
-                        xmas: false
-                        };
-                      .card.card--well.d-inline-block.mb-none
-                        .card__content
-                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
-
-                .col--m-6
-                  .card
-                    .card__content
-
-                      .bar.bar--vertical.align-items-center
-                        .bar__item.bar__item--shrinkable
-                          .portrait.portrait--large(style="background-image: url('https://www.martinus.sk/data/autori/img/a1666.jpg');")
-                        .bar__item.bar__item--fill.text-center
-                          .h3
-                            a.link Janko Martinusák
-                          span napísal/a recenziu
-
-                      .bar.justify-content-center
-                        .bar__item.bar__item--shrinkable
-                          .rating-star.bar__item.justify-content-center.mt-none
-                            each star, starIndex in Array(5)
-                              +icon('star').rating-star__item.icon--large(class=`${starIndex < 3 ? 'is-active' : ''}`)
-                        .bar__item.bar__item--shrinkable.text-right
-                          .h5 24.5.2018 20:31
-
-                      hr.mb-medium
-
-                      p Fakt parádna kniha síce knihy mám prečítané iba dve a to Kráska a netvor a túto no ale i tak páčil sa mi nájme Chosé a samozrejme Richard Krauz ale každá postava má niečo do seba a samozrejme je to odľahčené Dánovím humorom. Ale smutné je že sa to deje na Slovensku nie len po prevrate.
-
-                      -
-                        var item = {
-                        xmas: false
-                        };
-                      .card.card--well.d-inline-block.mb-none
-                        .card__content
-                          +productHorizontal(Object.assign({}, item, {titleClass: 'text-size-regular'})).m-none
-
-              .btn-layout.btn-layout--horizontal.justify-content-center
-                button.btn.btn--ghost Všetky novinky z čitateľských profilov
-                button.btn Založiť čitateľský profil
-
-          .col--m-4
-            section.mb-large
-              article.card
-                .card__content
-                  +sectionHeader({ header: 'Čitateľské kolekcie', small: true, more: false, center: true })
-                +collectionItemContent({user: true})
-                +collectionItemContent({user: true})
+          .col--l-5.col--xl-4.order-first.order-l-last
+            +topSellers
+            +banner('Square')
 
     include ./modules/seen-items
 
     section.section.bg-default
       .wrapper-main
         .row
-          .col--m-8.ofst--m-2
-            .quote
-              .quote__delimiter
-              p.quote__text „Neobávaj sa nevedomosti, ale falošného poznania. Lepšie je nevedieť nič, ako pokladať za pravdu to, čo pravdou nie je.“
-              p.quote__author Lev Nikolajevič Tolstoj
-
-    section.section.bg-default
-      .wrapper-main
-        .row
-          .col--m-8.ofst--m-2
+          .col--m-8.mx-auto
             .quote
               .quote__send
                 a.btn.btn--small.btn--clean.pt-none
