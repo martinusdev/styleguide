@@ -174,46 +174,6 @@ $thumbnail-badge: (
 }
 
 // ----------------------------
-// PARALLAX
-
-.parallax-image {
-  $this: &;
-  overflow: hidden;
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  &--small {
-    min-height: 200px;
-    @include breakpoint('m') {
-      min-height: 300px;
-    }
-  }
-
-  &--medium {
-    min-height: 300px;
-    @include breakpoint('m') {
-      min-height: 500px;
-    }
-  }
-
-  &--large {
-    min-height: 500px;
-    @include breakpoint('m') {
-      min-height: 700px;
-    }
-  }
-
-  &--dark {
-    #{$this}__content {
-      background: linear-gradient(to bottom, rgba($color-black, 1), rgba($color-black, 0.6) 75%, rgba($color-black, 0));
-      padding-top: _get-space('large');
-    }
-  }
-}
-
-// ----------------------------
 // CLUB BADGES
 
 .club-badges {
@@ -323,9 +283,4 @@ $book-flag-widths: (
       }
     }
   }
-}
-
-.text-color-theme {
-  --fa-secondary-color: #d8b4a0;
-  --fa-secondary-opacity: 1;
 }

@@ -1,0 +1,29 @@
+.nav-shortcuts {
+  position: fixed;
+  top: _get-space(small);
+  left: -1984px;
+  z-index: 9999;
+  background: _color(white);
+  padding: _get-space(small);
+  border-radius: 4px;
+  box-shadow: $shadow-md;
+
+  width: 350px;
+
+  &--visible {
+    left: _get-space(small);
+  }
+
+  .link:hover {
+    text-decoration: none;
+
+    .shortcut-name {
+      text-decoration: underline;
+    }
+  }
+
+  .link .shortcut-key {
+    color: _color(black);
+    font-weight: normal;
+  }
+}

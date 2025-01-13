@@ -11,22 +11,6 @@
 @use 'sass:list';
 @use 'sass:meta';
 
-@mixin color(
-  $color-fallback,
-  $color
-) {
-  color: $color-fallback;
-  color: $color;
-}
-
-@mixin font-size(
-  $font-size,
-  $font-size-r: $default-font-size) {
-  $font-size: math.round($font-size);
-  font-size: $font-size;
-  font-size: math.div($font-size, $default-font-size) * 1rem;
-}
-
 @mixin text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -44,24 +28,6 @@
 
   &::after {
     clear: both;
-  }
-}
-
-@mixin center-unknown(
-  $selector) {
-  text-align: center;
-
-  &::before {
-    content: '';
-    height: 100%;
-    margin-right: -0.5em;
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  #{$selector} {
-    display: inline-block;
-    vertical-align: middle;
   }
 }
 
