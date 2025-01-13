@@ -232,64 +232,6 @@
 
 @include button-icon-classes;
 
-@mixin button-icon-sizes {
-  @each $button-variant, $button-size in $button-sizes {
-    @each $icon-variant, $icon-size in $icon-sizes {
-      .btn#{_get-variant-name($button-variant)} .icon--#{$icon-variant} {
-        // TODO this is still not good enought pls revisit later
-        $scale: _strip-units(map.get($button-size, font-size)) * _strip-units($icon-size) * _map-deep-get($button, default, line-height);
-        $margin: math.div(-(math.abs((1 - $scale * 1.1))), 2);
-
-        width: #{$scale}rem;
-        height: #{$scale}rem;
-        margin: #{$margin}rem;
-
-        &.icon--left {
-          margin-right: math.div($icon-size, 3);
-        }
-
-        &.icon--right {
-          margin-left: math.div($icon-size, 3);
-        }
-      }
-    }
-  }
-}
-
-@include button-icon-sizes;
-
-@mixin button-positioned-icon-classes {
-  .btn--icon {
-    &-left,
-    &-right {
-      .icon {
-        position: absolute;
-        height: 100%;
-        top: 0;
-        margin-top: 0;
-      }
-    }
-
-    &-left {
-      padding-left: 2rem;
-
-      .icon {
-        left: 0.5rem;
-      }
-    }
-
-    &-right {
-      padding-right: 2rem;
-
-      .icon {
-        right: 0.5rem;
-      }
-    }
-  }
-}
-
-@include button-positioned-icon-classes;
-
 // ----------------------------
 // Layout
 
@@ -553,18 +495,6 @@
 @mixin dropdown-button-classes {
   .btn-dropdown {
     @include dropdown-button;
-
-    &:not(.btn-dropdown--no-icon) .btn {
-      padding-right: 2rem;
-    }
-
-    .icon-dropdown {
-      position: absolute;
-      height: 100%;
-      top: 0;
-      right: 10px;
-      margin-top: 0;
-    }
   }
 }
 
