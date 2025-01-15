@@ -122,3 +122,54 @@
     padding: 0.2rem;
   }
 }
+
+// ----------------------------
+// ADAPTIVE
+
+table.table--adaptive {
+  @media screen and (max-width: 600px) {
+    thead tr {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+    }
+
+    tr:first-child {
+      border-top: 0 !important;
+    }
+
+    td {
+      display: flex;
+      align-items: center;
+      padding: 0.25rem 0 !important;
+    }
+
+    td.p-none {
+      padding: 0 !important;
+    }
+
+    td:first-child {
+      margin-top: 10px;
+    }
+
+    td:last-child {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      width: 100%;
+    }
+
+    td[data-label]::before {
+      content: attr(data-label);
+      width: _get-rem(120px);
+      font-size: .75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: left;
+      color: _color(grey, 700);
+      min-width: _get-rem(120px);
+      margin-right: _get-space(small);
+    }
+  }
+}

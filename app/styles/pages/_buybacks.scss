@@ -1,6 +1,5 @@
 .buybacks-header {
   @include breakpoint('l') {
-    background-image: url('../images/content/buybacks/sova.jpg');
     background-repeat: no-repeat;
     background-size: contain;
     background-position: bottom right;
@@ -21,13 +20,6 @@ h3 {
   }
 }
 
-.buybacks-icon-circle {
-  box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-}
-
 .counter {
   color: _color(white);
   border-radius: 50%;
@@ -37,10 +29,13 @@ h3 {
   &--primary {
     background: _color(primary);
   }
+
+  &--success {
+    background: _color(success);
+  }
 }
 
 .carousel--buybacks {
-
   @include breakpoint('m', downfrom) {
     margin-right: -1.25rem;
     margin-left: -1.25rem;
@@ -48,38 +43,5 @@ h3 {
 
   .swiper-slide {
     max-width: 80%;
-  }
-}
-
-.faq {
-  &__answer {
-    display: none;
-    margin-bottom: 0;
-
-    &.is-active {
-      display: block;
-    }
-  }
-
-  &__question {
-    display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-
-    &:hover {
-      span {
-        text-decoration: underline;
-      }
-    }
-
-    span {
-      max-width: 90%;
-    }
-  }
-
-  hr {
-    margin-top: _get-space();
-    margin-bottom: _get-space();
-
   }
 }

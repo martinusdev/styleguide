@@ -1,0 +1,32 @@
+.faq {
+  &__answer {
+    display: none;
+    margin-bottom: 0;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  &__question {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      span {
+        text-decoration: underline;
+      }
+    }
+
+    span {
+      max-width: 90%;
+    }
+  }
+
+  hr {
+    margin-top: _get-space();
+    margin-bottom: _get-space();
+
+  }
+}

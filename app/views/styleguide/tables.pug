@@ -127,6 +127,7 @@ block append content
             </table>
       //- end: demo
 
+
     +content-sub-section('Clean')
 
       +p To create clean no bordered version of table simple ad additional class <code class='l-code-inline'>.table--clean</code>.
@@ -157,4 +158,52 @@ block append content
             </table>
       //- end: demo
 
+    +content-sub-section('Adaptive Table')
+      +p To create adaptive table add additional class <code class='l-code-inline'>.table--adaptive</code>. Adaptive table will be displayed as block on mobile devices. Use <code class='l-code-inline'>data-label</code> attribute on td to define label for each column for mobile devices.
+
+      +demo
+        +demo-example
+          table.table.table--adaptive.table--clean
+            thead
+              tr
+                th First column
+                th Second column
+                th Third column
+                th Fourth column
+            tbody
+              tr
+                td(data-label="First column") 1
+                td(data-label="Second column") Et fugiat
+                td(data-label="Third column") Voluptate dolore
+                td(data-label="Fourth column") 979
+              tr
+                td(data-label="First column") 2
+                td(data-label="Second column") Quis deserunt
+                td(data-label="Third column") Aliqua sint laboris ut
+                td(data-label="Fourth column") 814
+
+        +demo-code
+          :code
+            <table class="table table--adaptive table--clean">
+              <tr>
+                <th>First column</th>
+                <th>Second column</th>
+                <th>Third column</th>
+                <th>Fourth column</th>
+              </tr>
+              <tbody>
+                <tr>
+                  <td data-label="First column">1</td>
+                  <td data-label="Second column">Et fugiat</td>
+                  <td data-label="Third column">Voluptate dolore</td>
+                  <td data-label="Fourth column">979</td>
+                </tr>
+                <tr>
+                  <td data-label="First column">2</td>
+                  <td data-label="Second column">Quis deserunt</td>
+                  <td data-label="Third column">Aliqua sint laboris ut</td>
+                  <td data-label="Fourth column">814</td>
+                </tr>
+              </tbody>
+            </table>
   //- end: section
