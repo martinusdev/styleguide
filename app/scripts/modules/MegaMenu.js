@@ -190,6 +190,11 @@ export default class MegaMenu {
   _handleKeyDown(/** KeyboardEvent */ e) {
     if (e.key === 'Escape') {
       this._handleKeyEscape();
+    } else if (e.key === 'ArrowDown' && this.triggers.includes(document.activeElement)) {
+      e.preventDefault();
+      document.activeElement.click();
+    } else if (e.key === 'ArrowUp' && this.isMegaMenuOpen) {
+      this._handleKeyEscape();
     } else if (e.key === 'Tab' && this.isMegaMenuOpen) {
       const focusableElements = this.openMegaMenuSection.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
 
