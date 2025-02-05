@@ -14,22 +14,22 @@ block campaignHeaderContent
 
 block content
   main
-    section.section.pt-none.mc24-bg-green
-      .wrapper-main
-        .mc24-header.text-color-white
-          .mc24-header__info
-            a(href='campaign-2024.html').flex-shrink-0.mc24-header__logo
-              img(src='images/content/campaign/knizne-putovanie/logo-sk.svg').mc24-logo
+    section.section.pt-none.mc25-bg-orange
+      .wrapper-main.px-none
+        .mc25-header.text-color-white
+          .mc25-header__info
+            a(href='campaign-2024.html').flex-shrink-0.mc25-header__logo
+              img(src='images/content/campaign/knizne-putovanie/logo-2025-sk.svg').mc25-logo
             block authSection
-              h2.mc24-header__claim.text-center.mb-none Uhádni, kto posiela pohľadnice z knižných svetov, a vyhraj kopu kníh!
-              button.btn.btn--primary.mb-none(data-bs-toggle="modal" data-bs-target="#mc24-modal-login") Prihlásiť sa
+              h2.mc25-header__claim.text-center.mb-none Uhádni, kto posiela pohľadnice z knižných svetov, a vyhraj kopu kníh!
+              button.btn.btn--primary.mb-none(data-bs-toggle="modal" data-bs-target="#mc25-modal-login") Prihlásiť sa
             block gameStats
     block tab
 
-  .modal.fade#mc24-modal-login(aria-labelledby="login-modal-title" aria-hidden="true" tabindex="-1" role="dialog")
+  .modal.fade#mc25-modal-login(aria-labelledby="login-modal-title" aria-hidden="true" tabindex="-1" role="dialog")
     .modal-dialog.modal-dialog-centered
       .modal-content
-        .modal-header
+        .modal-header.justify-content-between
           h3.modal-title#login-modal-title Prihlásenie
           a.p-tiny(data-bs-dismiss="modal")
             +faIcon('xmark').fa-lg
