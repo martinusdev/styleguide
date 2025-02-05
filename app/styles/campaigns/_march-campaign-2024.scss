@@ -1,8 +1,14 @@
 $mc24-color-green: #3F9E52;
 $mc24-color-beige: #FDEFE3;
 
+$mc25-color-orange: #D26922;
+
 .mc24-bg-green {
   background: $mc24-color-green;
+}
+
+.mc25-bg-orange {
+  background: $mc25-color-orange;
 }
 
 .mc24-page {
@@ -205,21 +211,7 @@ $mc24-color-beige: #FDEFE3;
   }
 }
 
-.mc24-header {
-  padding: _get-rem(180px) 0 _get-rem(30px) 0;
-  background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat center -30px;
-  background-size: auto 220px;
-
-  @include breakpoint('m') {
-    background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat right top;
-    background-size: auto 260px;
-    padding: _get-rem(30px) 0;
-  }
-
-  @include breakpoint('l') {
-    background-size: contain;
-  }
-
+.mc24-header, .mc25-header {
   &__info {
     display: flex;
     flex-direction: column;
@@ -239,6 +231,22 @@ $mc24-color-beige: #FDEFE3;
       }
     }
   }
+}
+
+.mc24-header {
+  padding: _get-rem(180px) 0 _get-rem(30px) 0;
+  background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat center -30px;
+  background-size: auto 220px;
+
+  @include breakpoint('m') {
+    background: $mc24-color-green url('../images/content/campaign/knizne-putovanie/bg-header.jpg') no-repeat right top;
+    background-size: auto 260px;
+    padding: _get-rem(30px) 0;
+  }
+
+  @include breakpoint('l') {
+    background-size: contain;
+  }
 
   &__logo img {
     height: _get-rem(90px);
@@ -246,6 +254,33 @@ $mc24-color-beige: #FDEFE3;
 
     @include breakpoint('m') {
       height: _get-rem(140px);
+    }
+  }
+}
+
+.mc25-header {
+  padding: _get-rem(30px) _get-rem(15px) _get-rem(180px) _get-rem(15px);
+  background: $mc25-color-orange url('../images/content/campaign/knizne-putovanie/bg-header-2025.jpg') no-repeat center bottom;
+  background-size: auto 220px;
+
+  @include breakpoint('m') {
+    background: $mc25-color-orange url('../images/content/campaign/knizne-putovanie/bg-header-2025.jpg') no-repeat 160px bottom;
+    //background-size: auto 260px;
+    background-size: cover;
+    padding: _get-rem(30px) 0;
+  }
+
+  @include breakpoint('l') {
+    background-size: contain;
+    background-position-x: 300px;
+  }
+
+  &__logo img {
+    height: _get-rem(70px);
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+    @include breakpoint('m') {
+      height: _get-rem(110px);
     }
   }
 }
