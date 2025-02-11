@@ -20,17 +20,34 @@ $mc25-color-orange: #e2782f;
   }
 }
 
-.mc24-paper {
+.mc24-paper, .mc25-paper {
   border-radius: 0.25rem;
 
   .card__content {
-    padding: _get-rem(15px);
+    padding: _get-rem(15px) _get-rem(30px);
 
     @include breakpoint('l') {
       padding: _get-rem(60px);
     }
   }
+}
 
+.mc25-paper {
+  &--diary {
+    background: url('../images/content/campaign/knizne-putovanie/paper/diary.jpg') no-repeat center top;
+    background-size: cover;
+    font-family: Italianno, cursive;
+
+    font-size: 2.2rem;
+    line-height: 1;
+
+    @include breakpoint('m') {
+      font-size: 2.8rem;
+    }
+  }
+}
+
+.mc24-paper {
   &--history {
     background: url('../images/content/campaign/knizne-putovanie/paper/history.jpg') no-repeat center top;
     background-size: cover;
