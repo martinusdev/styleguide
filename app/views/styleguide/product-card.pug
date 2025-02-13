@@ -1,0 +1,40 @@
+extends templates/layout
+include ../mixins/productResponsive
+
+//- Options
+block prepend opts
+  - var page = helpers.getPageIds('components.productCards', l_sitemap);
+  - var categoryID = page.category;
+  - var pageID = page.page;
+
+block prepend content
+
+  +main-info(['app/styles/components/_product.scss'], contents)
+
+    +p-big Documentation for various product cards
+
+block append content
+  +content-section(contents[0])
+    +h3 List of products
+
+    +p When you wrap the cards in <code class='l-code-inline'>.list--products</code>, they will be displayed in a row regardless of the screen size.
+
+    .mb-large
+      ul.list.list--products
+        li
+          +productResponsive()
+
+        li
+          +productResponsive()
+
+    +h3 List of products - responsive
+
+    +p However, you can also wrap the cards in <code class='l-code-inline'>.list--products--responsive</code> to make them responsive - see the example below (resize the window to notice the difference on moible)
+    +p The cards will be displayed in a column on desktop and in a row on mobile. Notice the card layout is the same as in the previous example, but the cards are displayed differently on different devices thanks to the list class.
+
+    .mb-large
+      ul.list.list--products.list--products--responsive.list--counter
+        li
+          +productResponsive()
+        li
+          +productResponsive()
