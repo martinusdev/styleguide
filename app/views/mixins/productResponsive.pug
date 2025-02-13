@@ -28,7 +28,7 @@ mixin productResponsive(props = {})
         img(src=`${assetsPrefix}${cover}`).d-block
       if rating
         .thumbnail__info
-          a.badge(href='#')
+          .badge
             +faIcon('star', 'fas').text-color-yellow.mr-tiny
             | #{' '}
             = rating
