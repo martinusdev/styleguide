@@ -12,7 +12,7 @@ mixin productResponsive(props = {})
       discount,
       discountUnderBook = false,
       rating = 4.5,
-      price = '9999,99 €',
+      price = '99,99 €',
       duration,
       count,
       trash,
@@ -24,7 +24,7 @@ mixin productResponsive(props = {})
 
   article.product.product--responsive&attributes(attributes)
     div.product__img
-      a.product-cover.product-cover--book(href=`${assetsPrefix}detail-knihy${htmlPostfix}`)
+      .product-cover.product-cover--book
         img(src=`${assetsPrefix}${cover}`).d-block
       if rating
         .thumbnail__info
