@@ -25,13 +25,11 @@
         <header class="l-header-main">
           <div class="l-header-main_controls"><a class="l-toggle-menu" data-toggle="self, body"><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span><span class="l-toggle-menu_line"></span></a></div>
           <div class="l-wrap-main">
-            <h1 class="js-header"><a href="#top" data-smoothscroll="#top">Alert</a></h1>
+            <h1 class="js-header"><a href="#top" data-smoothscroll="#top">Product cards</a></h1>
             <div class="js-scrollspy l-headnav" id="header-navigation">
               <ul class="l-headnav_list nav">
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
-                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#alert" data-smoothscroll="#alert" data-toggle-target="#header-navigation" data-toggle="dropdown">Alert</a></li>
-                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#options" data-smoothscroll="#options" data-toggle-target="#header-navigation" data-toggle="dropdown">Options</a></li>
-                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#methods" data-smoothscroll="#methods" data-toggle-target="#header-navigation" data-toggle="dropdown">Methods</a></li>
+                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#product-card" data-smoothscroll="#product-card" data-toggle-target="#header-navigation" data-toggle="dropdown">Responsive product card</a></li>
               </ul>
             </div>
           </div>
@@ -39,171 +37,114 @@
         <div class="l-content-main_inner">
           <section class="l-main-info" id="main-info">
             <div class="l-wrap-main">
-              <p class="l-big">Documentation for alert javascript module.
+              <p class="l-big">Documentation for various product cards
               </p>
               <div class="l-box-desc">
-                <p class="l-box-desc_headline">Files</p><code class="l-code">app/scripts/modules/Alert.js</code><br/>
+                <p class="l-box-desc_headline">Files</p><code class="l-code">app/styles/components/_product.scss</code><br/>
               </div>
             </div>
           </section>
           <aside class="l-nav-contents js-scrollspy">
             <p class="l-nav-contents_headline">Contents</p>
             <ul class="l-nav-contents_list nav">
-              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#alert" data-smoothscroll="#alert">Alert</a></li>
-              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#options" data-smoothscroll="#options">Options</a></li>
-              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#methods" data-smoothscroll="#methods">Methods</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#product-card" data-smoothscroll="#product-card">Responsive product card</a></li>
             </ul>
           </aside>
-          <section id="alert">
+          <section id="product-card">
             <div class="l-wrap-main">
-              <h2 class="l-h2">Alert
+              <h2 class="l-h2">Responsive product card
               </h2>
-              <div class="l-sub-section" id="">
-                <h3 class="l-h3">Usage
-                </h3>
-                <p class="l-p">Usage is shown in&nbsp;<a class="l-a" href="alerts#{htmlPostfix}">alerts</a> section of this styleguide.
-                </p>
+              <h3 class="l-h3">List of products
+              </h3>
+              <p class="l-p">When you wrap the cards in <code class='l-code-inline'>.list--products</code>, they will be displayed in a row regardless of the screen size.
+              </p>
+              <div class="mb-large">
+                <ul class="list list--products">
+                  <li>
+                    <article class="product product--responsive">
+                      <div class="product__img">
+                        <div class="product-cover product-cover--book"><img class="d-block" src="../images/content/books/sample-15.jpg"/></div>
+                        <div class="thumbnail__info">
+                          <div class="badge"><i class="fa-star fas undefined text-color-yellow mr-tiny"></i> 4.5
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product__info text-ellipsis"><a class="product__title link link--black" title="Základy rybolovu pro kluky a holky" href="../detail-knihy.html">Základy rybolovu pro kluky a holky</a>
+                        <div class="text-small text-color-grey mb-small">Frank Weissert, Jack Thorne, John Tiffany
+                        </div>
+                        <div class="badges mb-none">
+                          <div class="badge badge--transparent">99,99 €</div>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                  <li>
+                    <article class="product product--responsive">
+                      <div class="product__img">
+                        <div class="product-cover product-cover--book"><img class="d-block" src="../images/content/books/sample-15.jpg"/></div>
+                        <div class="thumbnail__info">
+                          <div class="badge"><i class="fa-star fas undefined text-color-yellow mr-tiny"></i> 4.5
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product__info text-ellipsis"><a class="product__title link link--black" title="Základy rybolovu pro kluky a holky" href="../detail-knihy.html">Základy rybolovu pro kluky a holky</a>
+                        <div class="text-small text-color-grey mb-small">Frank Weissert, Jack Thorne, John Tiffany
+                        </div>
+                        <div class="badges mb-none">
+                          <div class="badge badge--transparent">99,99 €</div>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                </ul>
               </div>
-              <div class="l-sub-section" id="">
-                <h3 class="l-h3">Default initialization
-                </h3>
-                <p class="l-p">Initialization is shown on example below. Constructor returns alert instance.
-                </p>
-                <article class="l-demo is-active no-example">
-                  <div class="l-demo_example">
-                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
-                        <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
-                          <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
-                        </svg></a>
-                    </div>
-                    <button class="btn" id="alert-example">Show example</button>
-                  </div>
-                  <div class="l-demo_code">
-                    <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
-                    <pre class="prettyprint"><code>&lt;script&gt;
-  document.getElementById('alert-example').addEventListener('click', function() {
-    var myAlert = new window.myApp.Alert({
-      icon: 'check-circle',
-      text: 'Upokoj sa, všetko ide podľa plánu. &lt;a class=&quot;link&quot; href=&quot;&#35;&quot;&gt;Viac informácií nájdete tu&lt;/a&gt;.'
-    });
-  });
-&lt;/script&gt;
-</code></pre>
-                  </div>
-                </article>
+              <h3 class="l-h3">List of products - responsive
+              </h3>
+              <p class="l-p">However, you can also wrap the cards in <code class='l-code-inline'>.list--products--responsive</code> to make them responsive - see the example below (resize the window to notice the difference on moible)
+              </p>
+              <p class="l-p">The cards will be displayed in a column on desktop and in a row on mobile. Notice the card layout is the same as in the previous example, but the cards are displayed differently on different devices thanks to the list class.
+              </p>
+              <div class="mb-large">
+                <ul class="list list--products list--products--responsive list--counter">
+                  <li>
+                    <article class="product product--responsive">
+                      <div class="product__img">
+                        <div class="product-cover product-cover--book"><img class="d-block" src="../images/content/books/sample-15.jpg"/></div>
+                        <div class="thumbnail__info">
+                          <div class="badge"><i class="fa-star fas undefined text-color-yellow mr-tiny"></i> 4.5
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product__info text-ellipsis"><a class="product__title link link--black" title="Základy rybolovu pro kluky a holky" href="../detail-knihy.html">Základy rybolovu pro kluky a holky</a>
+                        <div class="text-small text-color-grey mb-small">Frank Weissert, Jack Thorne, John Tiffany
+                        </div>
+                        <div class="badges mb-none">
+                          <div class="badge badge--transparent">99,99 €</div>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                  <li>
+                    <article class="product product--responsive">
+                      <div class="product__img">
+                        <div class="product-cover product-cover--book"><img class="d-block" src="../images/content/books/sample-15.jpg"/></div>
+                        <div class="thumbnail__info">
+                          <div class="badge"><i class="fa-star fas undefined text-color-yellow mr-tiny"></i> 4.5
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product__info text-ellipsis"><a class="product__title link link--black" title="Základy rybolovu pro kluky a holky" href="../detail-knihy.html">Základy rybolovu pro kluky a holky</a>
+                        <div class="text-small text-color-grey mb-small">Frank Weissert, Jack Thorne, John Tiffany
+                        </div>
+                        <div class="badges mb-none">
+                          <div class="badge badge--transparent">99,99 €</div>
+                        </div>
+                      </div>
+                    </article>
+                  </li>
+                </ul>
               </div>
               <hr class="l-hr-section"/>
-            </div>
-          </section>
-          <section id="options">
-            <div class="l-wrap-main">
-              <h2 class="l-h2">Options
-              </h2>
-              <p class="l-p"><code class='l-code-inline'>new Select({ config })</code>
-              </p>
-              <div class="l-table-wrap">
-                <table class="l-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Default</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>container</td>
-                      <td><code class='l-code-inline'>DOM Selector/String</code></td>
-                      <td><code class='l-code-inline'>'[data-alert-area]'</code></td>
-                      <td>Default DOM container, where alerts will be displayed.</td>
-                    </tr>
-                    <tr>
-                      <td>type</td>
-                      <td><code class='l-code-inline'>String/['info','success','warning', 'error']</code></td>
-                      <td><code class='l-code-inline'>'info'</code></td>
-                      <td>Type of alert message.</td>
-                    </tr>
-                    <tr>
-                      <td>text</td>
-                      <td><code class='l-code-inline'>String</code></td>
-                      <td><code class='l-code-inline'>''</code></td>
-                      <td>Alert message.</td>
-                    </tr>
-                    <tr>
-                      <td>icon</td>
-                      <td><code class='l-code-inline'>String</code></td>
-                      <td><code class='l-code-inline'></code></td>
-                      <td>Alert icon defined as icon name.</td>
-                    </tr>
-                    <tr>
-                      <td>loader</td>
-                      <td><code class='l-code-inline'>Boolean</code></td>
-                      <td><code class='l-code-inline'></code></td>
-                      <td>Specifies if loader is shown.</td>
-                    </tr>
-                    <tr>
-                      <td>closeable</td>
-                      <td><code class='l-code-inline'>Boolean</code></td>
-                      <td><code class='l-code-inline'></code></td>
-                      <td>Specifies if alert is closeable via default action on x-button.</td>
-                    </tr>
-                    <tr>
-                      <td>customActionTemplate</td>
-                      <td><code class='l-code-inline'>String</code></td>
-                      <td><code class='l-code-inline'></code></td>
-                      <td>Default x-button as action can be swaped to custom template. Template must be passed as stringified dom. Html elements is valid, but do not pass user input. Custom action callback can be defined in <code class='l-code-inline'>onAction</code> callback function.</td>
-                    </tr>
-                    <tr>
-                      <td>iconPath</td>
-                      <td><code class='l-code-inline'>String</code></td>
-                      <td><code class='l-code-inline'>'../icons_/app.svg'</code></td>
-                      <td>Path to icon sprite.</td>
-                    </tr>
-                    <tr>
-                      <td>onAction</td>
-                      <td><code class='l-code-inline'>Function</code></td>
-                      <td><code class='l-code-inline'>() => {}</code></td>
-                      <td>Callback called on <code class='l-code-inline'>click</code> on tooltip action. Default action is <code class='l-code-inline'>Alert.destroy</code>.</td>
-                    </tr>
-                    <tr>
-                      <td>timeout</td>
-                      <td><code class='l-code-inline'>Number</code></td>
-                      <td><code class='l-code-inline'></code></td>
-                      <td>If specified in milliseconds, alert will destoried after given time. Hover over alert resets timer.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <hr class="l-hr-section"/>
-            </div>
-          </section>
-          <section id="methods">
-            <div class="l-wrap-main">
-              <h2 class="l-h2">Methods
-              </h2>
-              <p class="l-p">Methods of alert instance.
-              </p>
-              <div class="l-table-wrap">
-                <table class="l-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Type</th>
-                      <th>Default</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>destroy</td>
-                      <td><code class='l-code-inline'>Function</code></td>
-                      <td><code class='l-code-inline'></code></td>
-                      <td>Will destroy alert instance.</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
             </div>
           </section>
         </div>
@@ -240,11 +181,11 @@
                 </li>
               </ul>
             </li>
-            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Components
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link is-active selected" data-toggle="self, next">Components
                                 <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
                                   <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
                                 </svg></a>
-              <ul class="l-nav-main_list-sub">
+              <ul class="l-nav-main_list-sub is-active">
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="buttons.html">Buttons</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" data-toggle="self, next">Form components
@@ -266,7 +207,7 @@
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="cards.html">Cards</a>
                 </li>
-                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="product-card.html">Product cards</a>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="product-card.html">Product cards</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="product-cover.html">Product covers</a>
                 </li>
@@ -299,18 +240,18 @@
                 </li>
               </ul>
             </li>
-            <li class="l-nav-main_list_item"><a class="l-nav-main_link is-active selected" data-toggle="self, next">Javascripts
+            <li class="l-nav-main_list_item"><a class="l-nav-main_link" data-toggle="self, next">Javascripts
                                 <svg class="icon icon-sg-caretright " role="img" aria-hidden="true">
                                   <use xlink:href="../icons_/styleguide.svg#icon-sg-caretright"></use>
                                 </svg></a>
-              <ul class="l-nav-main_list-sub is-active">
+              <ul class="l-nav-main_list-sub">
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-select.html">Select</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-autocomplete.html">Autocomplete</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-toggle.html">Toggle</a>
                 </li>
-                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link selected" href="js-alert.html">Alert</a>
+                <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-alert.html">Alert</a>
                 </li>
                 <li class="l-nav-main_list-sub_item"><a class="l-nav-main-sub_link" href="js-scrolling.html">Scrolling</a>
                 </li>
@@ -327,14 +268,6 @@
     <script src="../scripts/main.2e42f312.js"></script>
     <script src="../scripts/font-awesome.52e5f614.js"></script>
     <script src="../scripts/light.d47eee24.js"></script>
-    <script>
-      document.getElementById('alert-example').addEventListener('click', function() {
-        var myAlert = new window.myApp.Alert({
-          icon: 'check-circle',
-          text: 'Upokoj sa, všetko ide podľa plánu. <a class="link" href="#">Viac informácií nájdete tu</a>.'
-        });
-      });
-    </script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>
