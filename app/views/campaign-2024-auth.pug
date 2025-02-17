@@ -30,14 +30,14 @@ block gameContent
     .row
       for i in [1,2,3,4]
         for j in [1,2,3,4,5]
-          - const randomCover = Math.floor(Math.random() * 6) + 1;
+          - const randomCover = Math.floor(Math.random() * 5) + 1;
           .col--6.col--l-3
             .mc24-board__tile(class=(i === 1 && j === 1) ? 'is-done': '')
               if i === 1
                 a(href='#', data-bs-toggle="modal" data-bs-target="#mc24-modal-game")
                   img(src='images/content/campaign/knizne-putovanie/card-sample.png').img-fluid
               else
-                img(src=`images/content/campaign/knizne-putovanie/envelopes/${randomCover}.jpg`).img-fluid.img--rounded
+                img(src=`images/content/campaign/knizne-putovanie/diary-pages/${randomCover}.jpg`).img-fluid.img--rounded
               .mc24-board__tile__date
                 | 28. 3.
   block gameModal
@@ -55,22 +55,24 @@ block gameContent
                     .input-addons__item.p-none
                       a(href='campaign-2024-answer.html').btn.btn--primary.px-small Hádať
 
-            .mc24-game__tab-nav
+            .mc25-game__tab-nav
               h5.text-center.mb-none Indície:
               ul.tab-nav.mx-auto.d-flex.align-items-center.justify-content-center(data-tabs-container)
                 li.tab-nav__item.is-active(data-tabs-item)
-                  a.tab-nav__content.tab-nav__content--link(href='#game-tab-1', role="tab", title="Vizuálna indícia", style="background-image: url('images/content/campaign/knizne-putovanie/card-sample.png')")
+                  a.tab-nav__content.tab-nav__content--link(href='#game-tab-1', role="tab", title="Vizuálna indícia")
+                    img(src='images/content/campaign/knizne-putovanie/hint-1.jpg').mt-tiny
+                    | 28.3.
                 li.tab-nav__item(data-tabs-item)
-                  a.tab-nav__content.tab-text.tab-nav__content--link(href='#game-tab-2', role="tab", title="Text na zadnej strane pohľadnice", style="background-image: url('images/content/campaign/knizne-putovanie/paper/history.jpg')")
-                    img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                  a.tab-nav__content.tab-nav__content--link(href='#game-tab-2', role="tab", title="Text na zadnej strane pohľadnice")
+                    img(src='images/content/campaign/knizne-putovanie/hint-2.jpg').mt-tiny
                     | 12:00
                 li.tab-nav__item(data-tabs-item)
                   a.tab-nav__content.tab-nav__content--link(href='#game-tab-3', role="tab", title="Rozhovor s náhodou osobou")
-                    img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                    img(src='images/content/campaign/knizne-putovanie/hint-3.jpg').mt-tiny
                     | 16:00
                 li.tab-nav__item.is-disabled(data-tabs-item)
                   .tab-nav__content.tab-nav__content--link(data-tooltip, title="Túto indíciu odomkneme o 16:00")
-                    img(src='images/content/campaign/knizne-putovanie/ciapocka.png').mt-tiny
+                    img(src='images/content/campaign/knizne-putovanie/hint-3.jpg').mt-tiny
                     | 16:00
 
             article.py-medium.px-l-large.mc24-game__hint.text-center.tabs

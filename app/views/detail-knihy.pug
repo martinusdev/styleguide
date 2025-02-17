@@ -119,6 +119,50 @@ block content
                 a.link.text-medium(href="#popis-knihy", data-scroll, data-scroll-offset=`{"0": ${header.size.default + 70}, "768": ${header.size.m + 20}}`) Čítaj viac#{' '}
                    +icon('arrow-down')
 
+              .card.card--well.flex-1.mb-none
+                .card__content
+                  h6 Ďalšie knižné vydania
+                  ul.list.list-unstyled.bg-transparent.pl-none.mb-small.other-products
+                    li.py-small.d-flex.justify-content-between.align-items-center.border-bottom-grey
+                      .d-flex.align-items-center.position-relative
+                        .flex-shrink-0.product-cover.product-cover--small-medium
+                          img.d-block(src="images/content/books/sample-1.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                        .product-format__info.ml-small.text-medium
+                          a.link.link-card(href="#") Pevná väzba s prebalom
+                          br
+                          | Slovenčina, 2017
+                          .flex-shrink-0.mb-none.text-color-grey-dark.text-medium
+                            button(type="button", title="Táto kniha sa môže na cestu ku vám vybrať prakticky okamžite! Ak si ju objednáte do 13:00 v pracovný deň, odošleme vám ju ešte dnes, inak najneskôr nasledujúci pracovný deň.", data-tooltip)
+                              em.text-color-success.pointer-help Na sklade > 5ks
+                      .product-format__cart.d-flex.align-items-center
+                        .product-format__cart__price
+                          .d-flex.align-items-center
+                            strong.h3.text-bold.mb-none 14,95 €
+                        .product-format__cart__button
+                          form.ml-small
+                            .btn-layout--vertical.mb-none
+                              button.btn.btn--medium.btn--equal.btn--primary(data-toggle="#checkout-notice")
+                                +faIcon('basket-shopping').fa-xl
+
+                    li.py-small.d-flex.justify-content-between.align-items-center
+                      .d-flex.align-items-center.position-relative
+                        .flex-shrink-0.product-cover.product-cover--small-medium
+                          img.d-block(src="images/content/books/sample-1.jpg", alt="Základy rybolovu pro kluky a holky - Frank Weissert, Jack Thorne a John Tiffany")
+                        .product-format__info.ml-small.text-medium
+                          a.link.link-card Pevná väzba s prebalom
+                          br
+                          | Slovenčina, 2017
+                          .flex-shrink-0.mb-none.text-color-grey-dark.text-medium
+                            em.text-color-success.pointer-help Na sklade > 5ks
+                      .product-format__cart.d-flex.align-items-center
+                        .product-format__cart__price
+                          .d-flex.align-items-center
+                            strong.h3.text-bold.mb-none 14,95 €
+                        .product-format__cart__button
+                          form.ml-small
+                            .btn-layout--vertical.mb-none
+                              button.btn.btn--medium.btn--equal.btn--primary(data-toggle="#checkout-notice")
+                                +faIcon('basket-shopping').fa-xl
 
             .col--l-3.col--m-6.ofst--m-4.ofst--l-0
               include ./modules/card-cart
