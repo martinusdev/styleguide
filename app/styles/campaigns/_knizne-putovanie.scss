@@ -223,6 +223,66 @@ $mc25-color-orange: #e2782f;
   }
 }
 
+.mc25-game {
+  &__tab-nav {
+    .tab-nav {
+      gap: _get-rem(10px);
+    }
+
+    .tab-nav__content--link {
+      width: _get-rem(60px);
+      padding: 0 _get-rem(5px) _get-rem(5px) _get-rem(5px);
+      background: _color(white);
+      border-radius: 3px;
+      background-size: cover;
+      background-position: center center;
+      text-transform: none;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-size: $font-size-medium;
+    }
+
+    img {
+      height: _get-rem(40px);
+      margin-bottom: _get-rem(5px);
+    }
+
+    .is-disabled {
+      img {
+        filter: opacity(0.6);
+      }
+
+      .tab-nav__content--link {
+        color: $text-color-grey;
+
+        &:hover {
+          color: $text-color-grey;
+        }
+      }
+    }
+
+    .is-active .tab-nav__content--link {
+      position: relative;
+      border: 0 !important;
+
+      &::after {
+        background: #D22121;
+        height: 3px;
+        bottom: -3px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        display: block;
+        content: '';
+        border-radius: 3px;
+      }
+    }
+  }
+}
+
 .mc24-teaser {
   padding-top: 60px;
   padding-bottom: 60px;
