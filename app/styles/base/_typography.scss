@@ -344,4 +344,41 @@ hr {
   }
 }
 
+.title-divider {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: _get-space() 0;
+  text-align: center;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: $color-semiblack;
+  }
+
+  &::before {
+    margin-right: _get-space('small');
+  }
+
+  &::after {
+    margin-left: _get-space('small');
+  }
+
+  // Variants
+  &--centered {
+    justify-content: center;
+  }
+
+  &--primary {
+    &::before,
+    &::after {
+      background-color: _color(primary);
+    }
+  }
+}
+
+
 @include list-classes;
