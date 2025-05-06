@@ -1,11 +1,9 @@
 import tippy from 'tippy.js';
 
 const defaultConfig = {
-  animation: 'scale',
   arrow: true,
   interactive: true,
   allowHTML: true,
-  // appendTo: () => document.body,
   delay: 150,
   content(reference) {
     // use title as a default tooltip content
@@ -24,7 +22,7 @@ const defaultConfig = {
     reference.setAttribute('data-tippy-content', title);
 
     const htmlStripped = title.replace(/<[^>]*>?/gm, '');
-    reference.setAttribute('aria-description', htmlStripped);
+    reference.setAttribute('aria-label', htmlStripped);
 
     return title;
   },

@@ -34,6 +34,34 @@
   }
 }
 
+.tippy-box[data-theme~='success'] {
+  background-color: _color(green, 500);
+  padding: _get-space('tiny');
+
+  color: $text-color-white;
+
+  font-size: _get-rem($font-size-small);
+  line-height: 1.35;
+
+  border-radius: $default-border-radius;
+
+  &[data-placement^=top] > .tippy-arrow::before {
+    border-top-color: _color(green, 500);
+  }
+
+  &[data-placement^=right] > .tippy-arrow::before {
+    border-right-color: _color(green, 500);
+  }
+
+  &[data-placement^=bottom] > .tippy-arrow::before {
+    border-bottom-color: _color(green, 500);
+  }
+
+  &[data-placement^=left] > .tippy-arrow::before {
+    border-left-color: _color(green, 500);
+  }
+}
+
 @import './../../../node_modules/tippy.js/themes/light';
 
 .tippy-tooltip {
