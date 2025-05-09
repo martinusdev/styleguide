@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#D22121">
     <link rel="stylesheet" href="../fonts/Tabac-Sans/style.0f2ed26c.css">
     <link rel="stylesheet" href="../fonts/opensans/fonts.f3e271ed.css">
-    <link rel="stylesheet" href="../styles/main.b0ba37c2.css">
+    <link rel="stylesheet" href="../styles/main.6f57446e.css">
     <link rel="stylesheet" href="../styles/light.c86c69d1.css">
     <script src="../scripts/plugins/modernizr.1e58e638.js"></script>
   </head>
@@ -30,6 +30,7 @@
               <ul class="l-headnav_list nav">
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#main-info" data-smoothscroll="#main-info" data-toggle-target="#header-navigation" data-toggle="dropdown">Main info</a></li>
                 <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#tooltip" data-smoothscroll="#tooltip" data-toggle-target="#header-navigation" data-toggle="dropdown">Tooltip</a></li>
+                <li class="l-headnav_item nav-item"><a class="l-headnav_link nav-link js-toggle" href="#feature-highlight" data-smoothscroll="#feature-highlight" data-toggle-target="#header-navigation" data-toggle="dropdown">Feature Highlight</a></li>
               </ul>
             </div>
           </div>
@@ -48,6 +49,7 @@
             <p class="l-nav-contents_headline">Contents</p>
             <ul class="l-nav-contents_list nav">
               <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#tooltip" data-smoothscroll="#tooltip">Tooltip</a></li>
+              <li class="l-nav-contents_item"><a class="l-nav-contents_link" href="#feature-highlight" data-smoothscroll="#feature-highlight">Feature Highlight</a></li>
             </ul>
           </aside>
           <section id="tooltip">
@@ -143,6 +145,49 @@
                     </div>
                   </div>
                 </article>
+              </div>
+            </div>
+          </section>
+          <section id="feature-highlight">
+            <div class="l-wrap-main">
+              <h2 class="l-h2">Feature Highlight
+              </h2>
+              <p class="l-p">Feature Highlight is a specialized tooltip designed to draw attention to new or important interface elements. It builds on the Tooltip component but provides a more prominent visual style with an interactive close button. Feature Highlights can be used for onboarding, guided tours, or announcing new features.
+              </p>
+              <article class="l-demo">
+                <div class="l-demo_example">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Example:</span><a class="l-demo_headbar_control" title="Show code" data-toggle="parent" data-parent-hop="3">
+                      <svg class="icon icon-sg-code icon-m" role="presentation" aria-label="Show code example">
+                        <use xlink:href="../icons_/styleguide.svg#icon-sg-code"></use>
+                      </svg></a>
+                  </div>
+                  <div class="d-flex gap-small">
+                    <button class="btn btn--primary" data-feature-highlight="button-example" data-tippy-content="This is a feature highlight with close button" data-close-text="Do not show again">Feature example</button>
+                    <button class="btn btn-outline-secondary" data-feature-highlight-reset-all>Reset closed feature highlights</button>
+                  </div>
+                </div>
+                <div class="l-demo_code">
+                  <div class="l-demo_headbar"><span class="l-demo_headbar_title">Code:</span></div>
+                  <pre class="prettyprint"><code>&lt;button class=&quot;btn btn--primary&quot; data-feature-highlight=&quot;button-example&quot; data-tippy-content=&quot;This is a feature highlight with close button&quot; data-close-text=&quot;Do not show again&quot;&gt;Feature example&lt;/button&gt;
+</code></pre>
+                </div>
+              </article>
+              <div class="l-sub-section" id="">
+                <h3 class="l-h3">Implementation Notes
+                </h3>
+                <p class="l-p">Feature Highlights are automatically displayed with a success theme, positioned on top (or bottom on mobile devices), and include a close button. Each Feature Highlight can track when a user dismisses it to avoid showing it again.
+                </p>
+                <p class="l-p">Feature Highlight tooltips will remain visible until the user explicitly dismisses them with the close button or by clicking elsewhere. Once dismissed, the user's preference is saved in localStorage.
+                </p>
+                <p class="l-p">To implement a Feature Highlight in your code:
+                </p>
+                <ul class="list">
+                  <li class="list__item">Add the <code class='l-code-inline'>data-feature-highlight</code> attribute to any element</li>
+                  <li class="list__item">Use the <code class='l-code-inline'>data-close-text</code> attribute to set the text for the close button</li>
+                  <li class="list__item">Provide a unique identifier value (e.g., <code class='l-code-inline'>data-feature-highlight="new-feature-id"</code>)</li>
+                  <li class="list__item">Add content using either <code class='l-code-inline'>data-tippy-content</code> or <code class='l-code-inline'>data-html="#template-id"</code></li>
+                  <li class="list__item">The FeatureHighlight component will handle displaying, positioning, and tracking dismissals</li>
+                </ul>
               </div>
             </div>
           </section>
@@ -264,9 +309,9 @@
     </div>
     <!-- end: offcanvas-->
     <script src="../scripts/vendor.2282cdba.js"></script>
-    <script src="../scripts/main.3d4c0cfa.js"></script>
-    <script src="../scripts/font-awesome.b609622d.js"></script>
-    <script src="../scripts/light.949a4a86.js"></script>
+    <script src="../scripts/main.8400c048.js"></script>
+    <script src="../scripts/font-awesome.da7a8fba.js"></script>
+    <script src="../scripts/light.224921b6.js"></script>
     <div class="alert-container" data-alert-area></div>
   </body>
 </html>
