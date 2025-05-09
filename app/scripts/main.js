@@ -35,6 +35,7 @@ import EqualColumns from './modules/EqualColumns';
 import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
 import CarouselLite from './modules/CarouselLite';
+import FeatureHighlight from './modules/FeatureHighlight';
 
 // eslint-disable-next-line
 require('mutationobserver-shim');
@@ -56,6 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.ScrollSpy = ScrollSpy;
   window.myApp.SmoothScroll = SmoothScroll;
   window.myApp.Tooltip = Tooltip;
+  window.myApp.FeatureHighlight = FeatureHighlight;
   window.myApp.Input = Input;
   window.myApp.NumberSpinner = NumberSpinner;
   window.myApp.ProductPreview = ProductPreview;
@@ -107,6 +109,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.smoothScrolls = new SmoothScroll();
 
   window.myApp.tooltips = new Tooltip();
+
+  window.myApp.featureHighlights = new FeatureHighlight();
 
   window.myApp.inputs = new Input();
 

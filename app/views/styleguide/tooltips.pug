@@ -19,8 +19,7 @@ block prepend content
 
 //- Content
 block append content
-
-  //- TABS
+  //- TOOLTIPS
   +content-section(contents[0], true)
 
     +p Tooltip can display simple text information inside bubble next to component. There are few variations of how tooltips can be used. For example on text, on button, with or without tooltip icon. Tooltip can be created using <code class='l-code-inline'>[data-tooltip]</code> attribute in conjunction with <code class='l-code-inline'>[title]</code> attribute.
@@ -94,6 +93,38 @@ block append content
         //-     <button class="btn btn--ghost" data-tooltip data-tippy-placement="right" title="This is tooltip text">..</button>
         //-     <button class="btn btn--ghost" data-tooltip data-tippy-placement="bottom" title="This is tooltip text">..</button>
         //-     <button class="btn btn--ghost" data-tooltip data-tippy-placement="left" title="This is tooltip text">..</button>
+
+  //- FEATURE HIGHLIGHT
+  +content-section(contents[1], true)
+    +p Feature Highlight is a specialized tooltip designed to draw attention to new or important interface elements. It builds on the Tooltip component but provides a more prominent visual style with an interactive close button. Feature Highlights can be used for onboarding, guided tours, or announcing new features.
+
+    +demo
+      +demo-example
+        .d-flex.gap-small
+          button.btn.btn--primary(data-feature-highlight="button-example", data-tippy-content="This is a feature highlight with close button", data-close-text="Do not show again") Feature example
+
+          button(data-feature-highlight-reset-all).btn.btn-outline-secondary Reset closed feature highlights
+
+      +demo-code
+        :code
+          <button class="btn btn--primary" data-feature-highlight="button-example" data-tippy-content="This is a feature highlight with close button" data-close-text="Do not show again">Feature example</button>
+
+    +content-sub-section('Implementation Notes')
+
+      +p Feature Highlights are automatically displayed with a success theme, positioned on top (or bottom on mobile devices), and include a close button. Each Feature Highlight can track when a user dismisses it to avoid showing it again.
+
+      +p Feature Highlight tooltips will remain visible until the user explicitly dismisses them with the close button or by clicking elsewhere. Once dismissed, the user's preference is saved in localStorage.
+
+      +p To implement a Feature Highlight in your code:
+      ul.list
+        li.list__item Add the <code class='l-code-inline'>data-feature-highlight</code> attribute to any element
+        li.list__item Use the <code class='l-code-inline'>data-close-text</code> attribute to set the text for the close button
+        li.list__item Provide a unique identifier value (e.g., <code class='l-code-inline'>data-feature-highlight="new-feature-id"</code>)
+        li.list__item Add content using either <code class='l-code-inline'>data-tippy-content</code> or <code class='l-code-inline'>data-html="#template-id"</code>
+        li.list__item The FeatureHighlight component will handle displaying, positioning, and tracking dismissals
+
+
+
 
 
 //- end: section
