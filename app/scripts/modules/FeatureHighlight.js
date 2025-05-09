@@ -34,17 +34,26 @@ const defaultConfig = {
         contentWrapper.appendChild(box.firstChild);
       }
 
+      const reference = instance.reference;
+
       // Create close button
       const closeButton = document.createElement('button');
       closeButton.className = 'feature-highlight-close link link--white';
       closeButton.innerHTML = '<i class="far fa-xmark fa-lg"></i>';
+
+      let closeLabel = 'Close';
+
+      if (reference && reference.dataset.closeText) {
+        closeLabel = reference.dataset.closeText;
+      }
+
+      closeButton.setAttribute('title', closeLabel);
 
       // Add event listener to close button
       closeButton.addEventListener('click', () => {
         instance.hide();
 
         // Remember that this highlight was dismissed
-        const reference = instance.reference;
         if (reference && reference.dataset.featureHighlight) {
           localStorage.setItem(`feature-highlight-${reference.dataset.featureHighlight}-dismissed`, 'true');
         }

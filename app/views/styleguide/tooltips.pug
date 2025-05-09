@@ -101,25 +101,13 @@ block append content
     +demo
       +demo-example
         .d-flex.gap-small
-          button.btn.btn--primary(data-feature-highlight="button-example", data-tippy-content="This is a feature highlight with close button") Feature example
+          button.btn.btn--primary(data-feature-highlight="button-example", data-tippy-content="This is a feature highlight with close button", data-close-text="Do not show again") Feature example
 
           button(data-feature-highlight-reset-all).btn.btn-outline-secondary Reset closed feature highlights
 
       +demo-code
         :code
-          <button class="btn btn--primary" data-feature-highlight="button-example" data-tippy-content="This is a feature highlight with close button">Feature example</button>
-
-          <div id="feature-highlight-template" class="hide">
-            <div class="card bg-transparent">
-              <div class="card__content pb-none">
-                <h3>New Feature: Advanced Filtering</h3>
-                <p>We've just launched advanced filtering to help you find books more easily.</p>
-                <p><a href="#" class="link">Learn how to use filters</a></p>
-                <button class="btn btn--primary mb-none">Got it</button>
-              </div>
-            </div>
-          </div>
-          <button class="btn btn--ghost" data-feature-highlight="complex-example" data-html="#feature-highlight-template">Complex feature highlight</button>
+          <button class="btn btn--primary" data-feature-highlight="button-example" data-tippy-content="This is a feature highlight with close button" data-close-text="Do not show again">Feature example</button>
 
     +content-sub-section('Implementation Notes')
 
@@ -130,6 +118,7 @@ block append content
       +p To implement a Feature Highlight in your code:
       ul.list
         li.list__item Add the <code class='l-code-inline'>data-feature-highlight</code> attribute to any element
+        li.list__item Use the <code class='l-code-inline'>data-close-text</code> attribute to set the text for the close button
         li.list__item Provide a unique identifier value (e.g., <code class='l-code-inline'>data-feature-highlight="new-feature-id"</code>)
         li.list__item Add content using either <code class='l-code-inline'>data-tippy-content</code> or <code class='l-code-inline'>data-html="#template-id"</code>
         li.list__item The FeatureHighlight component will handle displaying, positioning, and tracking dismissals
