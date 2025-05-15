@@ -116,7 +116,7 @@ export default class SwiperSlider {
 
     if (extraContent && extraContentTarget) {
       extraContentTarget.replaceChildren(
-        ...Array.from(extraContent.children).map(item => item.cloneNode(true))
+        ...([...extraContent.children].map(item => item.cloneNode(true)))
       );
     }
   }
@@ -133,7 +133,7 @@ export default class SwiperSlider {
       .forEach(slide => slide.removeAttribute('data-carousel-fan-index'));
 
     // Calculate active slide indexes with wrapping
-    const activeSlideIndexes = Array.from({ length: numberOfActiveSlides }, (_, i) => {
+    const activeSlideIndexes = [...Array(numberOfActiveSlides)].map((_, i) => {
       const index = activeIndex - offset + i;
       return this._normalizeSlideIndex(index, numberOfSlides);
     });
