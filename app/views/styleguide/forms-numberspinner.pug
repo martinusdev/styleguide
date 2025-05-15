@@ -1,6 +1,7 @@
 extends templates/layout
 
 include ./../mixins/icon
+include ./../mixins/faIcon
 
 //- Options
 block prepend opts
@@ -33,11 +34,11 @@ block append content
           .input-addons
             .input-addons__item.p-none
               button(type="button" data-number-spinner="decrease" data-controls="#number-input").btn.btn--clean.btn--equal
-                +icon('minus', 'icon--medium', 'mínus')
+                +faIcon('minus')
             input(type="number" id="number-input" min="0" max="100" step="3" value="1").input.input--short.px-none.text-center
             .input-addons__item.p-none
               button(type="button" data-number-spinner="increase" data-controls="#number-input").btn.btn--clean.btn--equal
-                +icon('plus', 'icon--medium', 'plus')
+                +faIcon('plus')
 
       +demo-code
         :code

@@ -54,28 +54,16 @@ const defaultConfig = {
   },
 };
 
+const STORE_ICONS = new Map([
+  ['martinus', { icon: 'fak fa-martinus', color: 'text-color-primary' }],
+  ['partner', { icon: 'far fa-map-marker-alt', color: 'text-color-yellow' }],
+]);
+
 const storeIcon = type => {
-  let icon;
-  let iconColor;
+  const iconConfig = STORE_ICONS.get(type) ?? null;
+  if (!iconConfig) return '';
 
-  switch (type) {
-    case 'martinus':
-      icon = 'fak fa-martinus';
-      iconColor = 'text-color-primary';
-      break;
-    case 'partner':
-      icon = 'far fa-map-marker-alt';
-      iconColor = 'text-color-yellow';
-      break;
-    default:
-      icon = '';
-  }
-
-  if (icon !== '') {
-    icon = `<i class="${icon} ${iconColor} fa-fw mr-tiny flex-shrink-0"></i>`;
-  }
-
-  return icon;
+  return `<i class="${iconConfig.icon} ${iconConfig.color} fa-fw mr-tiny flex-shrink-0"></i>`;
 };
 
 const storeStatus = (customProperties, placeholder) => {
@@ -83,8 +71,8 @@ const storeStatus = (customProperties, placeholder) => {
     return '';
   }
 
-  const statusClass = customProperties.status ? `status status--${customProperties.status} text-color-${customProperties.status}` : '';
-  const statusText = customProperties.statusText ? customProperties.statusText : '';
+  const { status, statusText = '' } = customProperties;
+  const statusClass = status ? `status status--${status} text-color-${status}` : '';
 
   return `<div class="${statusClass} text-right text-small">${statusText}</div>`;
 };
@@ -202,9 +190,7 @@ function getTemplates(template, select, config) {
       item: (classNames, data) => template(
         wideImageListTemplate(
           data,
-          select.hasAttribute('data-select-width')
-            ? select.getAttribute('data-select-width')
-            : 'none',
+          select.getAttribute('data-select-width') ?? 'none'
         ),
       ),
       choice: (classNames, data) => template(wideImageListChoice(data, config)),
@@ -231,19 +217,23 @@ export default class Select {
     this.selector = selector;
     this.config = { ...defaultConfig, ...texts[lang], ...config };
 
+    this.abortController = new AbortController();
+
     this._onShowDropdown = this._onShowDropdown.bind(this);
     this._onHideDropdown = this._onHideDropdown.bind(this);
 
-    this.elements = this._init();
+    this.elements = this._initialize();
   }
 
-  static setLang(newLang) {
+  static setLang = (newLang) => {
     lang = newLang;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  _onShowDropdown(e) {
+  _onShowDropdown = (e) => {
     const container = e.target.parentNode.parentNode;
+
+    if (!container) return;
+
     if (container.classList.contains('is-flipped')) {
       container.classList.add('is-flipped-helper');
     }
@@ -261,34 +251,28 @@ export default class Select {
     }
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  _onHideDropdown(e) {
+  _onHideDropdown = (e) => {
     const dropdown = e.target.parentNode.nextSibling;
     const container = e.target.parentNode.parentNode;
 
-    const _transitionEndHandler = evt => {
+    const handleTransitionEnd = (evt) => {
       if (evt.propertyName === 'visibility') {
         container.classList.remove('is-flipped');
         container.classList.remove('is-flipped-helper');
 
-        dropdown.removeEventListener('transitionend', _transitionEndHandler);
+        dropdown.removeEventListener('transitionend', handleTransitionEnd);
       }
     };
 
     if (container.classList.contains('is-flipped-helper')) {
       container.classList.add('is-flipped');
 
-      dropdown.addEventListener('transitionend', _transitionEndHandler);
+      dropdown.addEventListener('transitionend', handleTransitionEnd);
     }
   }
 
-  _init() {
-    // this should work with babel, but it's not
-    // const selects = [...document.querySelectorAll(this.selector)];
-
-    const selects = Array.prototype.slice.call(
-      document.querySelectorAll(this.selector),
-    );
+  _initialize() {
+    const selects = [...document.querySelectorAll(this.selector)];
 
     return selects.map((select, index) => {
       const config = { ...this.config };
@@ -336,11 +320,11 @@ export default class Select {
 
       const classes = nodeListToArray(select.classList);
       const unwantedClasses = ['choices__input', 'is-hidden', 'js-select'];
-      classes.forEach(className => {
-        if (!unwantedClasses.includes(className)) {
-          choice.containerOuter.element.classList.add(className);
-        }
-      });
+
+      // add classes from select to choices
+      classes
+        .filter(className => !unwantedClasses.includes(className))
+        .forEach(className => choice.containerOuter.element.classList.add(className));
 
       if (config.searchEnabled) {
         const input = choice.dropdown.element.querySelector('input');
@@ -352,8 +336,12 @@ export default class Select {
         }
       }
 
-      select.addEventListener('showDropdown', this._onShowDropdown);
-      select.addEventListener('hideDropdown', this._onHideDropdown);
+      select.addEventListener('showDropdown', this._onShowDropdown, {
+        signal: this.abortController.signal,
+      });
+      select.addEventListener('hideDropdown', this._onHideDropdown, {
+        signal: this.abortController.signal,
+      });
 
       select.setAttribute('data-is-initialized', '');
 
@@ -362,6 +350,10 @@ export default class Select {
   }
 
   update() {
-    this._init();
+    this._initialize();
+  }
+
+  destroy() {
+    this.abortController.abort();
   }
 }

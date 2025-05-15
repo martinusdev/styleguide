@@ -7,6 +7,7 @@ export default class NumberSpinner {
   constructor(selector = 'data-number-spinner', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
+    this.spinners = new Set();
 
     this._onClick = this._onClick.bind(this);
 
@@ -14,14 +15,12 @@ export default class NumberSpinner {
   }
 
   _init() {
-    const spinners = Array.prototype.slice.call(
-      document.querySelectorAll(`[${this.selector}]`),
-    );
-
-    this.spinners = spinners.map(spinner => {
+    const spinners = document.querySelectorAll(`[${this.selector}]`);
+    spinners.forEach(spinner => {
       spinner.addEventListener('click', this._onClick);
-      return spinner;
+      this.spinners.add(spinner);
     });
+
   }
 
   _onClick(e) {
@@ -31,40 +30,43 @@ export default class NumberSpinner {
       button.getAttribute(this.config.targetDataAttribute),
     );
 
+    if (!input || !action) {
+      return;
+    }
+
     let value = parseInt(input.value, 10);
     if (Number.isNaN(value)) {
       value = 0;
     }
 
-    const step = input.getAttribute('step')
-      ? parseInt(input.getAttribute('step'), 10)
-      : this.config.step;
-
     if (!input || !action) {
       return;
     }
 
-    const changeEvent = new CustomEvent('change');
+    const currentValue = Number(input.value) || 0;
+    const step = Number(input.getAttribute('step')) || this.config.step;
 
-    if (action === 'increase') {
-      const max = parseInt(input.getAttribute('max'), 10);
-      let newValue = value + step;
-      if (!Number.isNaN(max) && newValue > max) {
-        newValue = max;
-      }
+    const newValue = this._calculateNewValue(action, currentValue, step, input);
+    if (newValue !== currentValue) {
       input.value = newValue;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  }
+
+  _calculateNewValue(action, currentValue, step, input) {
+    if (action === 'increase') {
+      const max = Number(input.getAttribute('max'));
+      const newValue = currentValue + step;
+      return Number.isFinite(max) ? Math.min(newValue, max) : newValue;
     }
 
     if (action === 'decrease') {
-      const min = parseInt(input.getAttribute('min'), 10);
-      let newValue = value - step;
-      if (!Number.isNaN(min) && newValue < min) {
-        newValue = min;
-      }
-      input.value = newValue;
+      const min = Number(input.getAttribute('min'));
+      const newValue = currentValue - step;
+      return Number.isFinite(min) ? Math.max(newValue, min) : newValue;
     }
 
-    input.dispatchEvent(changeEvent);
+    return currentValue;
   }
 
   destroy() {
@@ -72,7 +74,7 @@ export default class NumberSpinner {
       spinner.removeEventListener('click', this._onClick);
     });
 
-    this.spinners = [];
+    this.spinners.clear();
   }
 
   update() {

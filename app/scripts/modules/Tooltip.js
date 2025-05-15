@@ -11,8 +11,11 @@ const defaultConfig = {
 
     if (html) {
       const template = document.querySelector(html);
+      if (!template) {
+        console.error(`Tooltip: Element with selector "${html}" not found.`);
+        return '';
+      }
       reference.setAttribute('aria-describedby', html.replace('#', ''));
-
       return template.innerHTML;
     }
 
@@ -28,11 +31,18 @@ const defaultConfig = {
   },
 };
 
+/**
+ * Tooltip class to initialize and manage tooltips on specified elements.
+ */
 export default class Tooltip {
+  /**
+   * @param {string} selector - CSS selector for tooltip targets.
+   * @param {Object} config - Configuration options for tooltips.
+   */
   constructor(selector = '[data-tooltip]', config = {}) {
     this.config = { ...defaultConfig, ...config };
     this.selector = selector;
-    this.tooltips = [];
+    this.tooltips = new WeakMap(); // Use WeakMap for better memory management
 
     this._init = this._init.bind(this);
 
@@ -43,18 +53,33 @@ export default class Tooltip {
     }
   }
 
+  /**
+   * Destroy all tooltips and clean up references.
+   */
   destroy() {
-    this.tooltips.forEach(t => t.destroy());
+    this.tooltips.forEach((tooltip, target) => {
+      tooltip.destroy();
+      target.removeAttribute('aria-describedby'); // Clean up accessibility attributes
+    });
+    this.tooltips = new WeakMap();
   }
 
+  /**
+   * Update tooltips by destroying and reinitializing them.
+   */
   update() {
     this.destroy();
     this._init();
   }
 
+  /**
+   * Initialize tooltips on the selected elements.
+   * @private
+   */
   _init() {
-    const targets = Array.from(document.querySelectorAll(this.selector));
-    this.tooltips = targets.map(target => {
+    const targets = [...document.querySelectorAll(this.selector)];
+
+    targets.forEach(target => {
       const targetConfig = {};
       const { showOnCreate } = target.dataset;
 
@@ -64,7 +89,8 @@ export default class Tooltip {
         targetConfig.hideOnClick = false;
       }
 
-      return tippy(target, { ...this.config, ...targetConfig });
+      const tooltipInstance = tippy(target, { ...this.config, ...targetConfig });
+      this.tooltips.set(target, tooltipInstance);
     });
   }
 }
