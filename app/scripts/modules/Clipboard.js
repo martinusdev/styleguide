@@ -1,7 +1,4 @@
-import ClipboardJs from 'clipboard';
 import tippy from 'tippy.js';
-
-import { nodeListToArray } from './Utils';
 
 const defaultConfig = {
   successMsg: '<i class="far fa-check-circle fa-lg"></i>',
@@ -13,39 +10,48 @@ export default class Clipboard {
   constructor(selector = '[data-clipboard]', config = {}) {
     this.config = { ...defaultConfig, ...config };
     this.selector = selector;
-
-    this._handleSuccess = this._handleSuccess.bind(this);
-    this._handleError = this._handleError.bind(this);
+    this.handlers = [];
 
     this._init();
   }
 
   _init() {
-    if (!ClipboardJs.isSupported()) {
-      nodeListToArray(document.querySelectorAll(this.selector))
-        .forEach(item => item.setAttribute('disabled', 'true'),);
-
+    if (!Clipboard.isSupported()) {
+      document.querySelectorAll(this.selector)
+        .forEach(item => item.setAttribute('disabled', 'true'));
       return;
     }
 
-    this.clipboard = new ClipboardJs(this.selector, this.config);
-
-    this.clipboard.on('success', this._handleSuccess);
-    this.clipboard.on('error', this._handleError);
+    document.querySelectorAll(this.selector).forEach(element => {
+      const handler = this._createClickHandler(element);
+      element.addEventListener('click', handler);
+      this.handlers.push({ element, handler });
+    });
   }
 
-  _handleSuccess(e) {
-    const successMsg = e.trigger.getAttribute('data-clipboard-msg-success')
-      || this.config.successMsg;
+  _createClickHandler(element) {
+    return async (event) => {
+      event.preventDefault();
 
-    this.showTooltip(e.trigger, successMsg);
-  }
+      try {
+        const text = element.getAttribute('data-clipboard-text') ||
+          document.querySelector(element.getAttribute('data-clipboard-target'))?.value ||
+          document.querySelector(element.getAttribute('data-clipboard-target'))?.textContent ||
+          '';
 
-  _handleError(e) {
-    const errorMsg = e.trigger.getAttribute('data-clipboard-msg-error')
-      || this.config.errorMsg;
+        await navigator.clipboard.writeText(text);
 
-    this.showTooltip(e.trigger, errorMsg);
+        const successMsg = element.getAttribute('data-clipboard-msg-success') ||
+          this.config.successMsg;
+
+        Clipboard.showTooltip(element, successMsg);
+      } catch (error) {
+        const errorMsg = element.getAttribute('data-clipboard-msg-error') ||
+          this.config.errorMsg;
+
+        Clipboard.showTooltip(element, errorMsg);
+      }
+    };
   }
 
   update() {
@@ -54,11 +60,19 @@ export default class Clipboard {
   }
 
   destroy() {
-    this.clipboard.destroy();
+    if (this.handlers && this.handlers.length) {
+      this.handlers.forEach(({ element, handler }) => {
+        element.removeEventListener('click', handler);
+      });
+      this.handlers = [];
+    }
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  showTooltip(element, content) {
+  static isSupported() {
+    return !!navigator.clipboard && !!navigator.clipboard.writeText;
+  }
+
+  static showTooltip(element, content) {
     const tooltip = tippy(element, {
       showOnCreate: true,
       trigger: 'manual',
@@ -73,7 +87,10 @@ export default class Clipboard {
     // close the tooltip after 2 seconds
     setTimeout(() => {
       tooltip.hide();
-      tooltip.destroy();
+      // Ensure tooltip instance exists before destroying
+      if (tooltip && !tooltip.state.isDestroyed) {
+        tooltip.destroy();
+      }
     }, 2000);
   }
 }
