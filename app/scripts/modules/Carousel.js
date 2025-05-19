@@ -1,7 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination, Parallax } from 'swiper/modules';
 
-import { nodeListToArray } from './Utils';
 import { BREAKPOINTS } from './Const';
 
 const shouldInitalize = (
@@ -32,13 +31,10 @@ export default class SwiperSlider {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
 
-    this.swipers = [];
-    this.instances = [];
+    this.instances = new Set();
 
-    this._handleCarouselFanSlideChange = this._handleCarouselFanSlideChange.bind(
-      this,
-    );
-
+    this._handleCarouselFanSlideChange = this._handleCarouselFanSlideChange.bind(this);
+    this._handleSlideChange = this._handleSlideChange.bind(this);
     this._init();
 
     this.instances.forEach(instance => {
@@ -47,60 +43,61 @@ export default class SwiperSlider {
   }
 
   _init() {
-    this.swipers = Array.prototype.slice.call(
-      document.querySelectorAll(this.selector),
-    );
+    const swipers = document.querySelectorAll(this.selector);
 
-    return this.swipers.map(/** Element */ swiper => {
-      const breakpointUp = swiper.getAttribute('data-swiper-up');
-      const breakpointDown = swiper.getAttribute('data-swiper-down');
-      const options = swiper.getAttribute('data-swiper-options');
-      let swiperConfig = this.config;
+    swipers.forEach(swiper => {
+      if (!this._shouldInitializeSwiper(swiper)) return;
 
-      if (options) {
-        swiperConfig = { ...this.config, ...JSON.parse(options) };
+      const swiperConfig = this._createSwiperConfig(swiper);
+      const instance = this._createSwiperInstance(swiper, swiperConfig);
+
+      if (instance) {
+        this.instances.add(instance);
       }
-
-      if (
-        shouldInitalize(
-          breakpointUp,
-          breakpointDown,
-          window.innerWidth,
-          BREAKPOINTS,
-        )
-        && swiper.querySelectorAll('.swiper-slide').length
-        && !swiper.classList.contains('swiper-initialized')
-      ) {
-        swiperConfig.navigation = {
-          nextEl: swiper.querySelector('.carousel__btn--next'),
-          prevEl: swiper.querySelector('.carousel__btn--prev'),
-        };
-
-        const swiperInstance = new Swiper(swiper, swiperConfig);
-        swiperInstance.update();
-        swiperInstance.on('slideChangeTransitionEnd', this._disableLazyIframes);
-
-        swiperInstance.on('transitionEnd', this._handleSlideChange);
-        this._handleSlideChange(swiperInstance);
-
-        if (
-          swiperInstance.el.parentNode.classList.contains(
-            'carousel--fan',
-          )
-        ) {
-          swiperInstance.on(
-            'slideChangeTransitionStart',
-            this._handleCarouselFanSlideChange,
-          );
-
-          this._handleCarouselFanSlideChange(swiperInstance);
-        }
-
-        this.instances.push(swiperInstance);
-      }
-
-      return swiper;
     });
+  }
+
+  _shouldInitializeSwiper(swiper) {
+    const breakpointUp = swiper.getAttribute('data-swiper-up');
+    const breakpointDown = swiper.getAttribute('data-swiper-down');
+    const hasSlides = swiper.querySelectorAll('.swiper-slide').length > 0;
+    const notInitialized = !swiper.classList.contains('swiper-initialized');
+
+    return shouldInitalize(
+      breakpointUp,
+      breakpointDown,
+      window.innerWidth,
+      BREAKPOINTS
+    ) && hasSlides && notInitialized;
+  }
+
+  _createSwiperConfig(swiper) {
+    const options = swiper.getAttribute('data-swiper-options');
+    const baseConfig = options ? { ...this.config, ...JSON.parse(options) } : this.config;
+
+    return {
+      ...baseConfig,
+      navigation: {
+        nextEl: swiper.querySelector('.carousel__btn--next'),
+        prevEl: swiper.querySelector('.carousel__btn--prev'),
+      }
+    };
+  }
+
+  _createSwiperInstance(swiper, config) {
+    const instance = new Swiper(swiper, config);
+    instance.update();
+
+    instance.on('slideChangeTransitionEnd', this._disableLazyIframes);
+    instance.on('transitionEnd', this._handleSlideChange);
+    this._handleSlideChange(instance);
+
+    if (swiper.parentNode?.classList.contains('carousel--fan')) {
+      instance.on('slideChangeTransitionStart', this._handleCarouselFanSlideChange);
+      this._handleCarouselFanSlideChange(instance);
+    }
+
+    return instance;
   }
 
   _handleSlideChange(instance) { // eslint-disable-line
@@ -111,63 +108,56 @@ export default class SwiperSlider {
     const activeElement = instance.slides[instance.activeIndex];
 
     const extraContent = activeElement.querySelector(
-      '[data-swipper-extra-content-source]',
+      '[data-swipper-extra-content-source]'
     );
     const extraContentTarget = instance.el.querySelector(
-      '[data-swipper-extra-content-target]',
+      '[data-swipper-extra-content-target]'
     );
 
     if (extraContent && extraContentTarget) {
-      while (extraContentTarget.firstChild) {
-        extraContentTarget.removeChild(extraContentTarget.firstChild);
-      }
-
-      nodeListToArray(extraContent.children).forEach(item => {
-        extraContentTarget.appendChild(item.cloneNode(true));
-      });
+      extraContentTarget.replaceChildren(
+        ...([...extraContent.children].map(item => item.cloneNode(true)))
+      );
     }
   }
 
-  _handleCarouselFanSlideChange(instance) { // eslint-disable-line
+  _handleCarouselFanSlideChange(instance) {
     const container = instance.el;
     const numberOfSlides = getTotalNumberOfSlides(container);
     const numberOfActiveSlides = Math.min(instance.loopedSlides, 5);
     const activeIndex = instance.realIndex;
     const offset = Math.floor(numberOfActiveSlides / 2);
 
-    // remove old indexes
-    nodeListToArray(
-      container.querySelectorAll('[data-carousel-fan-index]'),
-    ).forEach(slide => {
-      slide.removeAttribute('data-carousel-fan-index');
+    // Clear old fan indexes
+    container.querySelectorAll('[data-carousel-fan-index]')
+      .forEach(slide => slide.removeAttribute('data-carousel-fan-index'));
+
+    // Calculate active slide indexes with wrapping
+    const activeSlideIndexes = [...Array(numberOfActiveSlides)].map((_, i) => {
+      const index = activeIndex - offset + i;
+      return this._normalizeSlideIndex(index, numberOfSlides);
     });
 
-    // create array of active slides
-    const arrayOfActiveSlides = [];
-    for (let i = activeIndex - offset; i <= activeIndex + offset; i += 1) {
-      let index = i;
-
-      if (i < 0) {
-        index = numberOfSlides - -i;
-      } else if (i >= numberOfSlides) {
-        index = i - numberOfSlides;
-      }
-
-      arrayOfActiveSlides.push(index);
-    }
-
-    // mark all visible slides with offset
-    arrayOfActiveSlides.forEach((slideIndex, index) => {
-      // find visible slide based on slideIndex
+    // Apply fan indexes to visible slides
+    activeSlideIndexes.forEach((slideIndex, position) => {
       const slide = container.querySelector(
-        `[data-swiper-slide-index="${slideIndex}"].swiper-slide-visible`,
+        `.swiper-slide-visible[data-swiper-slide-index="${slideIndex}"]`
       );
 
-      // set offset
       if (slide) {
-        slide.setAttribute('data-carousel-fan-index', index - offset);
+        slide.setAttribute('data-carousel-fan-index', position - offset);
       }
     });
+  }
+
+  _normalizeSlideIndex(index, totalSlides) {
+    if (index < 0) {
+      return totalSlides + index;
+    }
+    if (index >= totalSlides) {
+      return index - totalSlides;
+    }
+    return index;
   }
 
   update() {
@@ -179,5 +169,6 @@ export default class SwiperSlider {
 
   destroy() {
     this.instances.forEach(instance => instance.destroy());
+    this.instances.clear();
   }
 }

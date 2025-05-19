@@ -2,14 +2,6 @@ import svg4everybody from 'svg4everybody';
 import Choices from 'choices.js/public/assets/scripts/choices';
 import { Offcanvas } from 'bootstrap';
 
-import {
-  customEventPolyfill,
-  requestAnimationFramePolyfill,
-  closestPolyfill,
-  includesPolyfill,
-  arrayFromPolyfill,
-} from './modules/Polyfills';
-
 import Alert from './modules/Alert';
 import Select from './modules/Select';
 import Toggle from './modules/Toggle';
@@ -34,7 +26,6 @@ import AnchorScroll from './modules/AnchorScroll';
 import EqualColumns from './modules/EqualColumns';
 import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
-import CarouselLite from './modules/CarouselLite';
 import FeatureHighlight from './modules/FeatureHighlight';
 
 // eslint-disable-next-line
@@ -70,7 +61,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.EqualColumns = EqualColumns;
   window.myApp.Autocomplete = Autocomplete;
   window.myApp.Observables = Observables;
-  window.myApp.CarouselLite = CarouselLite;
 
   window.myApp.Choices = Choices;
   window.myApp.Offcanvas = Offcanvas;
@@ -78,11 +68,6 @@ window.addEventListener('DOMContentLoaded', () => {
   document.dispatchEvent(new CustomEvent(APP_INIT, { bubbles: true }));
 
   svg4everybody();
-  customEventPolyfill();
-  closestPolyfill();
-  requestAnimationFramePolyfill();
-  includesPolyfill();
-  arrayFromPolyfill();
 
   window.myApp.megaMenu = new MegaMenu();
 

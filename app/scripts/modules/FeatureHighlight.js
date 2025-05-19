@@ -20,6 +20,10 @@ const defaultConfig = {
   // Custom handler for adding a close button
   onMount(instance) {
     const box = instance.popper.querySelector('.tippy-content');
+    if (!box) {
+      console.error('Tippy content element not found');
+      return;
+    }
 
     // Add wrapper class for flexbox layout if not already present
     if (!box.classList.contains('feature-highlight-wrapper')) {
@@ -66,11 +70,21 @@ const defaultConfig = {
   },
 }
 
+/**
+ * FeatureHighlight class for creating interactive feature highlights using tooltips
+ * with dismiss functionality and persistence.
+ */
 export default class FeatureHighlight {
+  /**
+   * Create a new FeatureHighlight instance
+   * @param {string} selector - CSS selector for elements to highlight
+   * @param {Object} config - Configuration options for the tooltips
+   */
   constructor(selector = '[data-feature-highlight]', config = {}) {
     this.config = { ...defaultConfig, ...config };
     this.selector = selector;
-    this.tooltips = [];
+    this.tooltips = new WeakMap(); // Use WeakMap for better memory management
+    this.tooltipInstances = []; // Keep track of instances for methods that need to iterate
 
     this._init = this._init.bind(this);
     this._checkDismissedHighlights = this._checkDismissedHighlights.bind(this);
@@ -84,17 +98,28 @@ export default class FeatureHighlight {
     this.initResetButtons();
   }
 
+  /**
+   * Destroy all tooltips and clean up references
+   */
   destroy() {
-    this.tooltips.forEach(t => t.destroy());
-    this.tooltips = [];
+    this.tooltipInstances.forEach(tooltip => {
+      tooltip.destroy();
+    });
+    this.tooltips = new WeakMap();
+    this.tooltipInstances = [];
   }
 
+  /**
+   * Update tooltips by destroying and reinitializing them
+   */
   update() {
     this.destroy();
     this._init();
   }
 
-  // Initialize reset buttons for dismissed highlights
+  /**
+   * Initialize reset buttons for dismissed highlights
+   */
   initResetButtons() {
     // global event listener for click, looking for reset buttons
     document.addEventListener('click', (event) => {
@@ -108,9 +133,13 @@ export default class FeatureHighlight {
     });
   }
 
-  // Show a specific feature highlight by ID
+  /**
+   * Show a specific feature highlight by ID
+   * @param {string} id - ID of the feature to highlight
+   * @returns {boolean} True if highlight was shown, false otherwise
+   */
   showById(id) {
-    const tooltip = this.tooltips.find(t =>
+    const tooltip = this.tooltipInstances.find(t =>
       t.reference && t.reference.dataset.featureHighlight === id);
 
     if (tooltip) {
@@ -120,9 +149,13 @@ export default class FeatureHighlight {
     return false;
   }
 
-  // Hide a specific feature highlight by ID
+  /**
+   * Hide a specific feature highlight by ID
+   * @param {string} id - ID of the feature highlight to hide
+   * @returns {boolean} True if highlight was hidden, false otherwise
+   */
   hideById(id) {
-    const tooltip = this.tooltips.find(t =>
+    const tooltip = this.tooltipInstances.find(t =>
       t.reference && t.reference.dataset.featureHighlight === id);
 
     if (tooltip) {
@@ -132,9 +165,13 @@ export default class FeatureHighlight {
     return false;
   }
 
-  // Dismiss and remember a feature highlight
+  /**
+   * Dismiss and remember a feature highlight
+   * @param {string} id - ID of the feature highlight to dismiss
+   * @returns {boolean} True if highlight was dismissed, false otherwise
+   */
   dismissById(id) {
-    const tooltip = this.tooltips.find(t =>
+    const tooltip = this.tooltipInstances.find(t =>
       t.reference && t.reference.dataset.featureHighlight === id);
 
     if (tooltip) {
@@ -145,13 +182,24 @@ export default class FeatureHighlight {
     return false;
   }
 
-  // Reset dismissed state for a specific feature
+  /**
+   * Reset dismissed state for a specific feature
+   * @param {string} id - ID of the feature highlight to reset
+   * @returns {boolean} True if reset was successful
+   */
   resetDismissedState(id) {
+    if (!id) {
+      console.error('Feature highlight ID is required');
+      return false;
+    }
     localStorage.removeItem(`feature-highlight-${id}-dismissed`);
     return true;
   }
 
-  // Reset all dismissed states
+  /**
+   * Reset all dismissed states
+   * @returns {number} Number of items that were reset
+   */
   resetAllDismissedStates() {
     const keysToRemove = [];
     for (let i = 0; i < localStorage.length; i++) {
@@ -165,31 +213,51 @@ export default class FeatureHighlight {
     return keysToRemove.length;
   }
 
+  /**
+   * Initialize tooltips on eligible elements
+   * @private
+   */
   _init() {
-    // First, find all potential highlight elements
-    const allTargets = Array.from(document.querySelectorAll(this.selector));
+    try {
+      // First, find all potential highlight elements
+      const allTargets = [...document.querySelectorAll(this.selector)];
 
-    // Filter out elements that were previously dismissed
-    const eligibleTargets = allTargets.filter(target => {
-      const featureId = target.dataset.featureHighlight;
-      if (!featureId) return true; // Include elements without an ID (though they should have one)
+      if (!allTargets.length) {
+        return;
+      }
 
-      const isDismissed = localStorage.getItem(`feature-highlight-${featureId}-dismissed`) === 'true';
-      return !isDismissed;
-    });
+      // Filter out elements that were previously dismissed
+      const eligibleTargets = allTargets.filter(target => {
+        const featureId = target.dataset.featureHighlight;
+        if (!featureId) {
+          console.warn('Feature highlight element missing data-feature-highlight attribute:', target);
+          return true; // Include elements without an ID (though they should have one)
+        }
 
-    // Initialize Tippy only on eligible targets
-    this.tooltips = eligibleTargets.map(target => {
-      return tippy(target, this.config);
-    });
+        const isDismissed = localStorage.getItem(`feature-highlight-${featureId}-dismissed`) === 'true';
+        return !isDismissed;
+      });
+
+      // Initialize Tippy only on eligible targets
+      this.tooltipInstances = eligibleTargets.map(target => {
+        const instance = tippy(target, this.config);
+        this.tooltips.set(target, instance);
+        return instance;
+      });
+    } catch (error) {
+      console.error('Error initializing feature highlights:', error);
+    }
   }
 
-  // Check if any highlights were previously dismissed and update internal state
+  /**
+   * Check if any highlights were previously dismissed and update internal state
+   * @private
+   */
   _checkDismissedHighlights() {
-    if (!this.tooltips || !this.tooltips.length) return;
+    if (!this.tooltipInstances.length) return;
 
     // This is a safety check in case something was dismissed after initialization
-    const dismissedTooltips = this.tooltips.filter(tooltip => {
+    const dismissedTooltips = this.tooltipInstances.filter(tooltip => {
       const reference = tooltip.reference;
       if (reference && reference.dataset.featureHighlight) {
         const featureId = reference.dataset.featureHighlight;
@@ -201,7 +269,7 @@ export default class FeatureHighlight {
     // Destroy dismissed tooltips
     dismissedTooltips.forEach(tooltip => {
       tooltip.destroy();
-      this.tooltips = this.tooltips.filter(t => t !== tooltip);
+      this.tooltipInstances = this.tooltipInstances.filter(t => t !== tooltip);
     });
   }
 }
