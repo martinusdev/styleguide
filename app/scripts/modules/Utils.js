@@ -1,15 +1,3 @@
-// Get element position relative to document
-export function windowOffset(el) {
-  const position = { x: 0, y: 0 };
-  if (el.offsetParent) {
-    do {
-      position.x += el.offsetLeft;
-      position.y += el.offsetTop;
-    } while ((el = el.offsetParent)); // eslint-disable-line
-  }
-  return position;
-}
-
 // Get element siblings
 export function getSiblings(el) {
   if (!(el instanceof Element)) {
@@ -19,32 +7,8 @@ export function getSiblings(el) {
   if (!parent) {
     return false;
   }
-  const parentChildren = [];
-  const siblings = [];
 
-  parentChildren.push.apply(parentChildren, parent.children);
-
-  for (let i = 0, l = parentChildren.length; i < l; i++) {
-    if (parentChildren[i] !== el) {
-      siblings.push(parentChildren[i]);
-    }
-  }
-  return siblings;
-}
-
-/* eslint-disable no-continue */
-export function getPreviousSiblings(elem) {
-  const sibs = [];
-  while ((elem = elem.previousSibling)) { // eslint-disable-line
-    if (elem.nodeType === 3) continue; // text node
-    sibs.push(elem);
-  }
-  return sibs;
-}
-/* eslint-enable */
-
-export function insertAfter(newNode, referenceNode) {
-  referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+  return [...parent.children].filter(child => child !== el);
 }
 
 export function createElementFromString(elementAsStr) {
@@ -54,10 +18,7 @@ export function createElementFromString(elementAsStr) {
 }
 
 export function nodeListToArray(nodeList) {
-  const arr = [];
-  arr.push.apply(arr, nodeList);
-
-  return arr;
+  return [...nodeList];
 }
 
 export const transitionEnd = (() => {
@@ -70,26 +31,18 @@ export const transitionEnd = (() => {
     { key: 'WebkitTransition', value: 'webkitTransitionEnd' },
   ];
 
-  for (let i = 0, l = transitions.length; i < l; i++) {
-    if (el.style[transitions[i].key] !== 'undefined') {
-      transition = transitions[i].value;
+  transitions.forEach(({ key, value }) => {
+    if (el.style[key] !== 'undefined') {
+      transition = value;
     }
-  }
+  });
+
   return transition;
 })();
 
 export function triggerResize() {
-  if (typeof Event === 'function') {
-    // this helps recalculate swiper in modal
-    // modern browsers
-    window.dispatchEvent(new Event('resize'));
-  } else {
-    // for IE and other old browsers
-    // causes deprecation warning on modern browsers
-    const evt = window.document.createEvent('UIEvents');
-    evt.initUIEvent('resize', true, false, window, 0);
-    window.dispatchEvent(evt);
-  }
+  // Modern browsers only - no IE or legacy browser support
+  window.dispatchEvent(new Event('resize'));
 }
 
 export function isObject(val) {
@@ -134,7 +87,5 @@ export function getValueFromResponsiveMap(
 }
 
 export function escapeSelectorName(selector) {
-  const selectorName = selector.replace(/(:|\.|\[|\])/g, '\\$1');
-
-  return selectorName;
+  return selector.replace(/(:|\.|\[|\])/g, '\\$1');
 }
