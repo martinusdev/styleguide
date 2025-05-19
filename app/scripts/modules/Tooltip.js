@@ -42,7 +42,7 @@ export default class Tooltip {
   constructor(selector = '[data-tooltip]', config = {}) {
     this.config = { ...defaultConfig, ...config };
     this.selector = selector;
-    this.tooltips = new WeakMap(); // Use WeakMap for better memory management
+    this.tooltips = new Map();
 
     this._init = this._init.bind(this);
 
@@ -61,7 +61,7 @@ export default class Tooltip {
       tooltip.destroy();
       target.removeAttribute('aria-describedby'); // Clean up accessibility attributes
     });
-    this.tooltips = new WeakMap();
+    this.tooltips.clear();
   }
 
   /**
