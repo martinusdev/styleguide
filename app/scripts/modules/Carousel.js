@@ -3,7 +3,7 @@ import { Navigation, Pagination, Parallax } from 'swiper/modules';
 
 import { BREAKPOINTS } from './Const';
 
-const shouldInitalize = (
+const shouldInitialize = (
   up,
   down,
   currentWidth,
@@ -63,7 +63,7 @@ export default class SwiperSlider {
     const hasSlides = swiper.querySelectorAll('.swiper-slide').length > 0;
     const notInitialized = !swiper.classList.contains('swiper-initialized');
 
-    return shouldInitalize(
+    return shouldInitialize(
       breakpointUp,
       breakpointDown,
       window.innerWidth,
@@ -88,7 +88,6 @@ export default class SwiperSlider {
     const instance = new Swiper(swiper, config);
     instance.update();
 
-    instance.on('slideChangeTransitionEnd', this._disableLazyIframes);
     instance.on('transitionEnd', this._handleSlideChange);
     this._handleSlideChange(instance);
 

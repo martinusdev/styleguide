@@ -28,8 +28,6 @@ export default class AnchorScroll {
    */
   constructor(selector = window.location.hash) {
     this.selector = selector;
-    this.destroy = this.destroy.bind(this);
-
     this._init();
   }
 
@@ -37,7 +35,7 @@ export default class AnchorScroll {
    * Initialize the anchor scroll functionality
    * @private
    */
-  _init() {
+  _init = () => {
     if (!this.selector || this.selector === '') {
       return;
     }
@@ -65,7 +63,7 @@ export default class AnchorScroll {
    * @param {HTMLElement} anchorSection - The target element to scroll to
    * @private
    */
-  _createHelperElement(anchorSection) {
+  _createHelperElement = (anchorSection) => {
     const offset = getOffset(anchorSection);
     const helperElement = document.createElement('div');
 
@@ -82,7 +80,7 @@ export default class AnchorScroll {
   /**
    * Remove all helper elements and clean up
    */
-  destroy() {
+  destroy = () => {
     const anchorSections = [...document.querySelectorAll('.anchor-helper')];
 
     anchorSections.forEach(section => {

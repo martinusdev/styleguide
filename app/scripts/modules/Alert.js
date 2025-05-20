@@ -39,20 +39,13 @@ const templateAction = (customTemplate, closeText = '') => `
 export default class Alert {
   constructor(config) {
     this.config = { ...defaultConfig, ...config };
-
-    this._setTimeout = this._setTimeout.bind(this);
-    this._clearTimeout = this._clearTimeout.bind(this);
-    this._handleEscape = this._handleEscape.bind(this);
-    this.destroy = this.destroy.bind(this);
-    this.destroy = this.destroy.bind(this);
-
     this._init();
   }
 
-  _init() {
+  _init = () => {
     this.container = document.querySelector(this.config.container);
 
-    // abort if container do not exists in the DOM
+    // abort if container does not exist in the DOM
     if (!this.container) {
       return;
     }
@@ -125,23 +118,22 @@ export default class Alert {
     document.addEventListener('keydown', this._handleEscape);
   }
 
-  _setTimeout() {
+  _setTimeout = () => {
     this.timeoutRunner = setTimeout(this.destroy, this.config.timeout);
   }
 
-  _clearTimeout() {
+  _clearTimeout = () => {
     clearTimeout(this.timeoutRunner);
-
     this.alert.addEventListener('mouseleave', this._setTimeout);
   }
 
-  _handleEscape(event) {
+  _handleEscape = (event) => {
     if (event.key === 'Escape') {
       this.destroy();
     }
   }
 
-  destroy() {
+  destroy = () => {
     if (this.actionEl) {
       this.actionEl.removeEventListener(
         'click',
@@ -155,11 +147,13 @@ export default class Alert {
 
     document.removeEventListener('keydown', this._handleEscape);
 
-    // wait for animation to end and dhend remove instance from DOM.
+    // wait for animation to end and then remove instance from DOM
     this.alert.addEventListener(
       transitionEnd,
       () => {
-        this.container.removeChild(this.alert);
+        if (this.container && this.container.contains(this.alert)) {
+          this.container.removeChild(this.alert);
+        }
       },
       {
         once: true,

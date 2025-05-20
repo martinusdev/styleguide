@@ -1,3 +1,7 @@
+/**
+ * Modal Wrapper
+ * A wrapper class for Bootstrap's Modal component with additional functionality
+ */
 import { Modal } from 'bootstrap';
 
 const defaultConfig = {
@@ -7,6 +11,11 @@ const defaultConfig = {
 };
 
 export default class ModalWrapper {
+  /**
+   * Create a new modal wrapper
+   * @param {string} selector - Selector for modal elements
+   * @param {Object} config - Configuration options
+   */
   constructor(selector = '[data-bs-modal]', config = {}) {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
@@ -17,83 +26,116 @@ export default class ModalWrapper {
     this._init();
   }
 
-  _init() {
-    this.modals.push.apply(
-      this.modals,
-      document.querySelectorAll(this.selector),
-    );
+  /**
+   * Initialize the modal wrapper
+   * @private
+   */
+  _init = () => {
+    // Find all modal elements matching the selector
+    this.modals = [...document.querySelectorAll(this.selector)];
 
+    // Show each modal
     this.modals.forEach(modal => {
       new this.BsModal(modal).show();
     });
   }
 
-  create(element, config = {}) {
+  /**
+   * Create a new Bootstrap modal instance
+   * @param {Element} element - Modal DOM element
+   * @param {Object} config - Configuration options
+   * @returns {Modal} - Bootstrap modal instance
+   */
+  create = (element, config = {}) => {
     return new this.BsModal(element, { ...this.config, ...config });
   }
 
-  getInstance(element) {
+  /**
+   * Get an existing Bootstrap modal instance
+   * @param {Element} element - Modal DOM element
+   * @returns {Modal|null} - Bootstrap modal instance or null
+   */
+  getInstance = (element) => {
     return this.BsModal.getInstance(element);
   }
 
-  static lockBody(className = defaultConfig.modalBodyIsOpen) {
-    // store current scrollTop value
+  /**
+   * Lock the body to prevent scrolling
+   * @param {string} className - Class to add to body
+   */
+  static lockBody = (className = defaultConfig.modalBodyIsOpen) => {
+    // Store current scroll position
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    document.body.setAttribute('data-lock-scrolltop', scrollTop);
+    const body = document.body;
     const pageContainer = document.getElementById('page-container');
 
-    // add locking styles to body
-    document.body.style.height = '100%';
-    document.body.style.width = '100%';
-    document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
+    // Save scroll position as data attribute
+    body.setAttribute('data-lock-scrolltop', scrollTop.toString());
 
-    // add locking styles to scrollTop
+    // Apply locking styles to body
+    const lockStyles = {
+      height: '100%',
+      width: '100%',
+      overflow: 'hidden',
+      position: 'fixed'
+    };
+
+    // Apply styles to body
+    Object.entries(lockStyles).forEach(([prop, value]) => {
+      body.style[prop] = value;
+    });
+
+    // Add lock class
+    body.classList.add(className);
+
+    // Lock page container if it exists
     if (pageContainer) {
-      pageContainer.style.height = '100%';
-      pageContainer.style.width = '100%';
-      pageContainer.style.overflow = 'hidden';
-      pageContainer.style.position = 'fixed';
-      // scroll page-container to scrollTop position
+      // Apply same lock styles to page container
+      Object.entries(lockStyles).forEach(([prop, value]) => {
+        pageContainer.style[prop] = value;
+      });
+
+      // Maintain scroll position
       pageContainer.scrollTop = scrollTop;
     }
 
-    // add modal class
-    document.body.classList.add(className);
-
-    // attempt to scroll top fixed position
-    window.requestAnimationFrame(() => {
+    // Ensure scroll position is maintained in the viewport
+    requestAnimationFrame(() => {
       window.scrollTo(0, scrollTop);
     });
   }
 
-  static unlockBody(className = defaultConfig.modalBodyIsOpen) {
-    const scrollTop = document.body.getAttribute('data-lock-scrolltop');
+  /**
+   * Unlock the body to allow scrolling
+   * @param {string} className - Class to remove from body
+   */
+  static unlockBody = (className = defaultConfig.modalBodyIsOpen) => {
+    const body = document.body;
+    const scrollTop = parseInt(body.getAttribute('data-lock-scrolltop') || '0', 10);
     const pageContainer = document.getElementById('page-container');
 
-    // remove locking styles from body
-    document.body.style.height = '';
-    document.body.style.width = '';
-    document.body.style.overflow = '';
-    document.body.style.position = '';
+    // Reset all locking styles on body
+    const stylesToReset = ['height', 'width', 'overflow', 'position'];
+    stylesToReset.forEach(prop => {
+      body.style[prop] = '';
+    });
 
-    // add modal class
-    document.body.classList.remove(className);
+    // Remove lock class
+    body.classList.remove(className);
 
-    // remove locking styles from page-container
+    // Reset page container styles if it exists
     if (pageContainer) {
-      pageContainer.style.height = '';
-      pageContainer.style.width = '';
-      pageContainer.style.overflow = '';
-      pageContainer.style.position = '';
+      stylesToReset.forEach(prop => {
+        pageContainer.style[prop] = '';
+      });
     }
 
-    // set scroll position back
-
-    window.requestAnimationFrame(() => {
+    // Restore scroll position
+    requestAnimationFrame(() => {
       window.scrollTo(0, scrollTop);
     });
   }
 }
 
+// Export static methods for easy import
 export const { lockBody, unlockBody } = ModalWrapper;
