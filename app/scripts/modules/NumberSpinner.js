@@ -8,36 +8,23 @@ export default class NumberSpinner {
     this.selector = selector;
     this.config = { ...defaultConfig, ...config };
     this.spinners = new Set();
-
-    this._onClick = this._onClick.bind(this);
-
     this._init();
   }
 
-  _init() {
+  _init = () => {
     const spinners = document.querySelectorAll(`[${this.selector}]`);
     spinners.forEach(spinner => {
       spinner.addEventListener('click', this._onClick);
       this.spinners.add(spinner);
     });
-
   }
 
-  _onClick(e) {
+  _onClick = (e) => {
     const button = e.currentTarget;
     const action = button.getAttribute(this.selector);
     const input = document.querySelector(
-      button.getAttribute(this.config.targetDataAttribute),
+      button.getAttribute(this.config.targetDataAttribute)
     );
-
-    if (!input || !action) {
-      return;
-    }
-
-    let value = parseInt(input.value, 10);
-    if (Number.isNaN(value)) {
-      value = 0;
-    }
 
     if (!input || !action) {
       return;
@@ -49,11 +36,13 @@ export default class NumberSpinner {
     const newValue = this._calculateNewValue(action, currentValue, step, input);
     if (newValue !== currentValue) {
       input.value = newValue;
-      input.dispatchEvent(new Event('change', { bubbles: true }));
+      // Trigger change event for any listeners
+      const changeEvent = new Event('change', { bubbles: true });
+      input.dispatchEvent(changeEvent);
     }
   }
 
-  _calculateNewValue(action, currentValue, step, input) {
+  _calculateNewValue = (action, currentValue, step, input) => {
     if (action === 'increase') {
       const max = Number(input.getAttribute('max'));
       const newValue = currentValue + step;
@@ -69,15 +58,14 @@ export default class NumberSpinner {
     return currentValue;
   }
 
-  destroy() {
+  destroy = () => {
     this.spinners.forEach(spinner => {
       spinner.removeEventListener('click', this._onClick);
     });
-
     this.spinners.clear();
   }
 
-  update() {
+  update = () => {
     this.destroy();
     this._init();
   }

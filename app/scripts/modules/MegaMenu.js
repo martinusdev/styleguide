@@ -10,7 +10,7 @@ const defaultConfig = {
 
 export default class MegaMenu {
   constructor(selector = '[data-mega-menu]', config = {}) {
-    this.config = { ...defaultConfig, ...{ selector }, ...config };
+    this.config = { selector, ...defaultConfig, ...config };
 
     this.megaMenu = null;
     this.triggers = [];
@@ -19,15 +19,10 @@ export default class MegaMenu {
     this.isMegaMenuOpen = false;
     this.openMegaMenuSection = null;
 
-    this._handleTriggerClick = this._handleTriggerClick.bind(this);
-    this._handleClickOutside = this._handleClickOutside.bind(this);
-    this._handleKeyDown = this._handleKeyDown.bind(this);
-    this._handleKeyEscape = this._handleKeyEscape.bind(this);
-
     this._init();
   }
 
-  _init() {
+  _init = () => {
     this.megaMenu = document.querySelector(this.config.selector);
 
     if (!this.megaMenu) {
@@ -35,17 +30,17 @@ export default class MegaMenu {
     }
 
     this.triggers = nodeListToArray(
-      document.querySelectorAll(this.config.selectorTriggers),
+      document.querySelectorAll(this.config.selectorTriggers)
     );
 
     this.targets = nodeListToArray(
-      document.querySelectorAll(this.config.selectorTargets),
+      document.querySelectorAll(this.config.selectorTargets)
     );
 
     this._attachDOMEvents();
   }
 
-  _attachDOMEvents() {
+  _attachDOMEvents = () => {
     this.triggers.forEach(trigger => {
       trigger.addEventListener('click', this._handleTriggerClick);
     });
@@ -53,34 +48,33 @@ export default class MegaMenu {
     document.addEventListener('keydown', this._handleKeyDown);
   }
 
-  _detachDOMEvents() {
-    this.triggers.forEach(trigger => trigger.removeEventListener('click', this._handleTriggerClick),);
+  _detachDOMEvents = () => {
+    this.triggers.forEach(trigger => 
+      trigger.removeEventListener('click', this._handleTriggerClick)
+    );
 
     document.removeEventListener('keydown', this._handleKeyDown);
   }
 
-  _handleTriggerClick(e) {
+  _handleTriggerClick = (e) => {
     const currentTrigger = e.target.closest(this.config.selectorTriggers);
-    const targetSection = currentTrigger.getAttribute(
-      this.config.selectorTriggers.slice(1, -1),
-    );
+    const triggerAttribute = this.config.selectorTriggers.slice(1, -1);
+    const targetSection = currentTrigger.getAttribute(triggerAttribute);
 
     this.isMegaMenuOpen = !isToggled(currentTrigger);
     this.openMegaMenuSection = targetSection && document.querySelector(targetSection);
 
     if (this.isMegaMenuOpen) {
-      lockBody();
-
-      setTimeout(() => {
+      lockBody();      
+      requestAnimationFrame(() => {
         document.addEventListener('click', this._handleClickOutside);
       });
     } else {
       unlockBody();
-
       document.removeEventListener('click', this._handleClickOutside);
     }
 
-    // toggle trigger
+    // toggle trigger - only deactivate other triggers
     this.triggers.forEach(trigger => {
       if (trigger !== currentTrigger) {
         doToggle({
@@ -93,65 +87,77 @@ export default class MegaMenu {
       }
     });
 
+    const body = document.querySelector('body');
+    const contentsElement = document.querySelector(this.config.selectorContents);
+
+    // Handle all target elements
     this.targets.forEach(target => {
+      // Toggle target visibility based on whether it's the current section
       doToggle({
         target,
         className: 'is-active',
         state: target === this.openMegaMenuSection,
       });
+    });
+    
+    // Toggle mega menu visibility
+    doToggle({
+      target: this.megaMenu,
+      trigger: currentTrigger,
+      className: 'is-active',
+      state: this.isMegaMenuOpen,
+    });
 
-      doToggle({
-        target: this.megaMenu,
-        trigger: currentTrigger,
-        className: 'is-active',
-        state: this.isMegaMenuOpen,
-      });
+    // Toggle body class
+    doToggle({
+      target: body,
+      className: 'is-mega-menu-active',
+      state: this.isMegaMenuOpen,
+    });
 
+    // Ensure contents are hidden
+    if (contentsElement) {
       doToggle({
-        target: document.querySelector('body'),
-        className: 'is-mega-menu-active',
-        state: this.isMegaMenuOpen,
-      });
-
-      doToggle({
-        target: document.querySelector(this.config.selectorContents),
+        target: contentsElement,
         className: 'is-active',
         state: false,
       });
+    }
 
-      // fix MagaMenu height for ios manually (innerHeight - header height)
-      setTimeout(() => {
-        const headerHeight = document.querySelector('.header .header__wrapper')
-          .offsetHeight;
-
-        if (this.isMegaMenuOpen) {
+    // fix MegaMenu height for ios manually (innerHeight - header height)
+    if (this.isMegaMenuOpen) {
+      const headerWrapper = document.querySelector('.header .header__wrapper');
+      if (headerWrapper) {
+        requestAnimationFrame(() => {
+          const headerHeight = headerWrapper.offsetHeight;
           this.megaMenu.style.maxHeight = `${window.innerHeight - headerHeight}px`;
-        }
-      }, 200); // magic number
+        });
+      }
 
       // focus first element upon opening
-      if (this.isMegaMenuOpen) {
-        const focusableElement = this.openMegaMenuSection.querySelector('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (this.openMegaMenuSection) {
+        const focusableElement = this.openMegaMenuSection.querySelector(
+          'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        );
         if (focusableElement) {
           focusableElement.focus();
         }
       }
-    });
+    }
   }
 
-  _handleClickOutside(e) {
+  _handleClickOutside = (e) => {
     if (
-      this.megaMenu !== e.target // if click target is not megamenu
-      && !this.megaMenu.contains(e.target) // if click target is not in megamenu
-      && !e.target.closest(this.config.selectorTriggers) // if click target is not megamenu
+      this.megaMenu !== e.target && // if click target is not megamenu
+      !this.megaMenu.contains(e.target) && // if click target is not in megamenu
+      !e.target.closest(this.config.selectorTriggers) // if click target is not a trigger
     ) {
       this._closeMegaMenu();
-
       document.removeEventListener('click', this._handleClickOutside);
     }
   }
 
-  _handleKeyEscape() {
+  _handleKeyEscape = () => {
     const trigger = this.triggers.find(triggerElement => isToggled(triggerElement));
 
     if (trigger) {
@@ -161,19 +167,25 @@ export default class MegaMenu {
     this._closeMegaMenu();
   }
 
-  _closeMegaMenu() {
+  _closeMegaMenu = () => {
+    // Close mega menu
     doToggle({
       target: this.megaMenu,
       className: 'is-active',
       state: false,
     });
 
-    doToggle({
-      target: document.querySelector('body'),
-      className: 'is-mega-menu-active',
-      state: false,
-    });
+    // Remove body class
+    const body = document.querySelector('body');
+    if (body) {
+      doToggle({
+        target: body,
+        className: 'is-mega-menu-active',
+        state: false,
+      });
+    }
 
+    // Reset all triggers
     this.triggers.forEach(trigger => {
       doToggle({
         target: trigger,
@@ -184,43 +196,63 @@ export default class MegaMenu {
       });
     });
 
+    // Unlock body scroll
     unlockBody();
   }
 
-  _handleKeyDown(/** KeyboardEvent */ e) {
-    if (e.key === 'Escape') {
-      this._handleKeyEscape();
-    } else if (e.key === 'ArrowDown' && this.triggers.includes(document.activeElement)) {
-      e.preventDefault();
-      document.activeElement.click();
-    } else if (e.key === 'ArrowUp' && this.isMegaMenuOpen) {
-      this._handleKeyEscape();
-    } else if (e.key === 'Tab' && this.isMegaMenuOpen) {
-      const focusableElements = this.openMegaMenuSection.querySelectorAll('a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  _handleKeyDown = (/** KeyboardEvent */ e) => {
+    const { key, shiftKey } = e;
+    const activeElement = document.activeElement;
 
-      if (focusableElements === []) {
-        return;
-      }
+    switch (key) {
+      case 'Escape':
+        this._handleKeyEscape();
+        break;
+        
+      case 'ArrowDown':
+        if (this.triggers.includes(activeElement)) {
+          e.preventDefault();
+          activeElement.click();
+        }
+        break;
+        
+      case 'ArrowUp':
+        if (this.isMegaMenuOpen) {
+          this._handleKeyEscape();
+        }
+        break;
+        
+      case 'Tab':
+        if (this.isMegaMenuOpen && this.openMegaMenuSection) {
+          const focusableElements = this.openMegaMenuSection.querySelectorAll(
+            'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          );
+          
+          if (!focusableElements.length) {
+            return;
+          }
 
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
+          const firstElement = focusableElements[0];
+          const lastElement = focusableElements[focusableElements.length - 1];
 
-      if (!e.shiftKey && document.activeElement === lastElement) {
-        e.preventDefault();
-        firstElement.focus();
-      } else if (e.shiftKey && document.activeElement === firstElement) {
-        e.preventDefault();
-        lastElement.focus();
-      }
+          if (!shiftKey && activeElement === lastElement) {
+            e.preventDefault();
+            firstElement.focus();
+          } else if (shiftKey && activeElement === firstElement) {
+            e.preventDefault();
+            lastElement.focus();
+          }
+        }
+        break;
     }
   }
 
-  update() {
+  update = () => {
     this.destroy();
     this._init();
   }
 
-  destroy() {
+  destroy = () => {
     this._detachDOMEvents();
   }
 }

@@ -15,7 +15,7 @@ export default class Clipboard {
     this._init();
   }
 
-  _init() {
+  _init = () => {
     if (!Clipboard.isSupported()) {
       document.querySelectorAll(this.selector)
         .forEach(item => item.setAttribute('disabled', 'true'));
@@ -29,14 +29,17 @@ export default class Clipboard {
     });
   }
 
-  _createClickHandler(element) {
+  _createClickHandler = (element) => {
     return async (event) => {
       event.preventDefault();
 
       try {
+        const target = element.getAttribute('data-clipboard-target');
+        const targetElement = target ? document.querySelector(target) : null;
+        
         const text = element.getAttribute('data-clipboard-text') ||
-          document.querySelector(element.getAttribute('data-clipboard-target'))?.value ||
-          document.querySelector(element.getAttribute('data-clipboard-target'))?.textContent ||
+          targetElement?.value ||
+          targetElement?.textContent ||
           '';
 
         await navigator.clipboard.writeText(text);
@@ -54,12 +57,12 @@ export default class Clipboard {
     };
   }
 
-  update() {
+  update = () => {
     this.destroy();
     this._init();
   }
 
-  destroy() {
+  destroy = () => {
     if (this.handlers && this.handlers.length) {
       this.handlers.forEach(({ element, handler }) => {
         element.removeEventListener('click', handler);
@@ -68,11 +71,11 @@ export default class Clipboard {
     }
   }
 
-  static isSupported() {
+  static isSupported = () => {
     return !!navigator.clipboard && !!navigator.clipboard.writeText;
   }
 
-  static showTooltip(element, content) {
+  static showTooltip = (element, content) => {
     const tooltip = tippy(element, {
       showOnCreate: true,
       trigger: 'manual',
@@ -84,13 +87,18 @@ export default class Clipboard {
       arrow: false,
     });
 
-    // close the tooltip after 2 seconds
-    setTimeout(() => {
-      tooltip.hide();
-      // Ensure tooltip instance exists before destroying
-      if (tooltip && !tooltip.state.isDestroyed) {
-        tooltip.destroy();
-      }
+    // Use setTimeout cleanup with requestAnimationFrame for better performance
+    const timeoutId = setTimeout(() => {
+      requestAnimationFrame(() => {
+        tooltip.hide();
+        // Ensure tooltip instance exists before destroying
+        if (tooltip && !tooltip.state.isDestroyed) {
+          tooltip.destroy();
+        }
+      });
     }, 2000);
+
+    // Return cleanup function for potential early cancellation
+    return () => clearTimeout(timeoutId);
   }
 }
