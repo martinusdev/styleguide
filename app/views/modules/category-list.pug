@@ -283,13 +283,13 @@ section.section
                     span.badge.d-inline #{item.lang}
                 .text-medium.mb-small
                   if item.subtitle
-                    .text-color-grey #{item.subtitle}
+                    .text-color-grey.mb-tiny #{item.subtitle}
                   ul.list-inline.list-inline--delimited.mb-none.d-inline.mr-tiny
                     each author in item.author.split(', ')
                       li.mt-none
-                        a.link #{author}
+                        a.link.d-inline-block #{author}
                   if item.series
-                    .d-inline.text-color-grey #{item.series}
+                    a.d-inline-block.text-color-grey(href="#") #{item.series}
 
                 p.listing__item__description.text-medium.mb-small Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto aspernatur consequatur ea ex facilis id in laboriosam libero minus odit, perferendis provident qui ratione reprehenderit sapiente! Accusamus impedit molestias nesciunt.
 
