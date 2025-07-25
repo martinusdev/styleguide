@@ -136,13 +136,25 @@
   flex-shrink: 1 !important;
 }
 
+.overflow-scroll {
+  white-space: nowrap;
+  /* stylelint-disable */
+  scrollbar-width: none;  /* Firefox */
+  /* stylelint-enable */
+
+  &::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  overflow-x: scroll;
+}
+
 @include breakpoint(m, down) {
   .overflow-scroll {
     &-x,
     &-y,
     &-xy {
       white-space: nowrap;
-      -ms-overflow-style: none;  /* Internet Explorer 10+ */
 
       /* stylelint-disable */
       scrollbar-width: none;  /* Firefox */
