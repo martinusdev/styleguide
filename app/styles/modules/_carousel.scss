@@ -28,28 +28,44 @@
       pointer-events: none;
     }
 
-    &::after { // stylelint-disable-line
-      right: -(_map-deep-get($carousel, $mode, size));
-      left: auto;
-
-      background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient)));
-    }
-
     &::before { // stylelint-disable-line
       left: -(_map-deep-get($carousel, $mode, size));
       right: auto;
 
-      background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient)));
+      @supports (color: rgb(from var(--my-color) r g b / 0.5)) {
+        background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient)));
+      }
+
+      background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient-fallback)));
+    }
+
+    &::after { // stylelint-disable-line
+      right: -(_map-deep-get($carousel, $mode, size));
+      left: auto;
+
+      @supports (color: rgb(from var(--my-color) r g b / 0.5)) {
+        background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient)));
+      }
+
+      background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient-fallback)));
     }
   }
 
   &-white {
     .swiper { // stylelint-disable-line
       &::before { // stylelint-disable-line
-        background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient-white)));
+        @supports (color: rgb(from var(--my-color) r g b / 0.5)) {
+          background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient-white)));
+        }
+
+        background: linear-gradient(to left, (_map-deep-get($carousel, $mode, gradient-white-fallback)));
       }
       &::after { // stylelint-disable-line
-        background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient-white)));
+        @supports (color: rgb(from var(--my-color) r g b / 0.5)) {
+          background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient-white)));
+        }
+
+        background: linear-gradient(to right, (_map-deep-get($carousel, $mode, gradient-white-fallback)));
       }
     }
   }
