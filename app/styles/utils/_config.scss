@@ -1713,13 +1713,33 @@ $carousel: (
   ),
   fade: (
     size: 1800px,
-    gradient: (rgba(_color('bg'), 0), rgba(_color('bg'), 0.7) 40px, rgba(_color('bg'), 1) 300px),
-    gradient-white: (rgba($color-white, 0), rgba($color-white, 0.7) 40px, rgba($color-white, 1) 300px),
+    gradient: (
+      rgb(from var(--#{$prefix}fade-color, #{_color('bg')}) r g b / 0),
+      rgb(from var(--#{$prefix}fade-color, #{_color('bg')}) r g b / 0.7) 40px,
+      rgb(from var(--#{$prefix}fade-color, #{_color('bg')}) r g b / 1) 300px
+    ),
+    gradient-white: (
+      rgb(from var(--#{$prefix}fade-color, #{$color-white}) r g b / 0),
+      rgb(from var(--#{$prefix}fade-color, #{$color-white}) r g b / 0.7) 40px,
+      rgb(from var(--#{$prefix}fade-color, #{$color-white}) r g b / 1) 300px
+    ),
+    gradient-fallback: (rgba(_color('bg'), 0), rgba(_color('bg'), 0.7) 40px, rgba(_color('bg'), 1) 300px),
+    gradient-white-fallback: (rgba($color-white, 0), rgba($color-white, 0.7) 40px, rgba($color-white, 1) 300px),
   ),
   fade-inside: (
     size: 20px,
-    gradient: (rgba(_color('bg'), 0), rgba(_color('bg'), 0.7) 20px, rgba(_color('bg'), 1) 20px),
-    gradient-white: (rgba($color-white, 0), rgba($color-white, 0.7) 20px, rgba($color-white, 1) 20px),
+    gradient: (
+      rgb(from var(--#{$prefix}fade-color, #{_color('bg')}) r g b / 0),
+      rgb(from var(--#{$prefix}fade-color, #{_color('bg')}) r g b / 0.7) 20px,
+      rgb(from var(--#{$prefix}fade-color, #{_color('bg')}) r g b / 1) 20px
+    ),
+    gradient-white: (
+      rgb(from var(--#{$prefix}fade-color, #{$color-white}) r g b / 0),
+      rgb(from var(--#{$prefix}fade-color, #{$color-white}) r g b / 0.7) 20px,
+      rgb(from var(--#{$prefix}fade-color, #{$color-white}) r g b / 1) 20px
+    ),
+    gradient-fallback: (rgba(_color('bg'), 0), rgba(_color('bg'), 0.7) 20px, rgba(_color('bg'), 1) 20px),
+    gradient-white-fallback: (rgba($color-white, 0), rgba($color-white, 0.7) 20px, rgba($color-white, 1) 20px),
   )
 );
 
