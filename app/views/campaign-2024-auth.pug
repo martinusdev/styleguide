@@ -37,7 +37,7 @@ block gameContent
                 a(href='#', data-bs-toggle="modal" data-bs-target="#mc24-modal-game")
                   img(src='images/content/campaign/knizne-putovanie/card-sample.png').img-fluid
               else
-                img(src=`images/content/campaign/knizne-putovanie/diary-pages/${randomCover}.jpg`).img-fluid.img--rounded
+                img(src=`images/content/campaign/knizne-putovanie/leaves/no${randomCover}.jpg`).img-fluid.img--rounded
               .mc24-board__tile__date
                 | 28. 3.
   block gameModal
@@ -75,12 +75,13 @@ block gameContent
                     img(src='images/content/campaign/knizne-putovanie/hint-3.jpg').mt-tiny
                     | 16:00
 
-            article.py-medium.px-l-large.mc24-game__hint.text-center.tabs
+            article.py-medium.px-l-large.mc24-game__hint.tabs
               section#game-tab-1.tab
                 img(src='images/content/campaign/knizne-putovanie/card-sample-lg.png').img-fluid.shadow-md
               section#game-tab-2.tab
-                .card.mc25-paper.mc25-paper--diary.shadow-md
+                .card.mc25-paper.mc25-paper--logbook.shadow-md
                   .card__content
+                    small 6.10.2025, Kapitánov denník
                     p Moja budúca dôverná priateľka, Červená Čiapočka,<br>hoci červená nie je moja najobľúbenejšia farba, rada ťa privítam na našom krásnom ostrove plnom vždyzelených lúk. Môžeš mi pomôcť s prípravou na učiteľské skúšky, tvoja babička mi hovorila, že si veľmi bystré dievča. Ach, kde som to len dala svoj klobúk?
               section#game-tab-3.tab
                 .card.card--well.mc24-game__talk.shadow-md
@@ -107,8 +108,6 @@ block gameContent
                       .card__content
                         <strong>Farmár:</strong><br>
                         | Zhovorčivá osôbka s veľkou predstavivosťou. A máme podobné klobúky! Dovidenia, utekám podojiť kravy!
-
-              img(src='images/content/campaign/knizne-putovanie/hero-guess.png').mc24-game__hint__hero.mt-medium
 
 
   script.

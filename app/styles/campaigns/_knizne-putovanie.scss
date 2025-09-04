@@ -2,6 +2,7 @@ $mc24-color-green: #3F9E52;
 $mc24-color-beige: #FDEFE3;
 
 $mc25-color-orange: #e2782f;
+$mc25-color-purple: #5E3D76;
 
 .mc24-bg-green {
   background: $mc24-color-green;
@@ -9,6 +10,10 @@ $mc25-color-orange: #e2782f;
 
 .mc25-bg-orange {
   background: $mc25-color-orange;
+}
+
+.mc25-bg-purple {
+  background: $mc25-color-purple;
 }
 
 .mc24-page, .mc25-page {
@@ -50,6 +55,30 @@ $mc25-color-orange: #e2782f;
 
     @include breakpoint('m') {
       font-size: 2.8rem;
+    }
+  }
+
+  &--logbook {
+    background: url('../images/content/campaign/knizne-putovanie/paper/logbook-plain.jpg') no-repeat center top;
+    background-size: cover;
+    font-family: Quintessential, cursive;
+    text-align: left;
+    aspect-ratio: 4/3;
+
+    color: #3B5166;
+
+    small {
+      display: block;
+      font-size: 1.4rem;
+      margin-bottom: 1.6rem;
+    }
+
+    font-size: 1.8rem;
+    line-height: 1;
+
+    @include breakpoint('m') {
+      font-size: 2rem;
+      line-height: 1.4;
     }
   }
 }
@@ -349,6 +378,37 @@ $mc25-color-orange: #e2782f;
 
   @include breakpoint('m') {
     background: $mc25-color-orange url('../images/content/campaign/knizne-putovanie/bg-header-2025.jpg') no-repeat 160px bottom;
+    //background-size: auto 260px;
+    background-size: cover;
+    padding: _get-rem(30px) 0;
+  }
+
+  @include breakpoint('l') {
+    background-size: contain;
+    background-position-x: 300px;
+  }
+
+  &__claim {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+  }
+
+  &__logo img {
+    height: _get-rem(70px);
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+    @include breakpoint('m') {
+      height: _get-rem(110px);
+    }
+  }
+}
+
+.mc25-10-header {
+  padding: _get-rem(30px) _get-rem(15px) _get-rem(180px) _get-rem(15px);
+  background: $mc25-color-purple url('../images/content/campaign/knizne-putovanie/bg-header-oc2025.jpg') no-repeat center bottom;
+  background-size: auto 220px;
+
+  @include breakpoint('m') {
+    background: $mc25-color-purple url('../images/content/campaign/knizne-putovanie/bg-header-oc2025.jpg') no-repeat 160px bottom;
     //background-size: auto 260px;
     background-size: cover;
     padding: _get-rem(30px) 0;
