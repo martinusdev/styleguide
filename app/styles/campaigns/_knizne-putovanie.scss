@@ -404,12 +404,16 @@ $mc25-color-purple: #5E3D76;
 
 .mc25-10-header {
   padding: _get-rem(30px) _get-rem(15px) _get-rem(180px) _get-rem(15px);
-  background: $mc25-color-purple url('../images/content/campaign/knizne-putovanie/bg-header-oc2025.jpg') no-repeat center bottom;
-  background-size: auto 220px;
+  background: $mc25-color-purple url('../images/content/campaign/knizne-putovanie/bg-header-oc2025-mobile.jpg') no-repeat center bottom;
+  background-size: contain;
+
+  @include breakpoint('s') {
+    background: $mc25-color-purple url('../images/content/campaign/knizne-putovanie/bg-header-oc2025.jpg') no-repeat center bottom;
+    background-size: contain;
+  }
 
   @include breakpoint('m') {
     background: $mc25-color-purple url('../images/content/campaign/knizne-putovanie/bg-header-oc2025.jpg') no-repeat 160px bottom;
-    //background-size: auto 260px;
     background-size: cover;
     padding: _get-rem(30px) 0;
   }
