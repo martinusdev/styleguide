@@ -53,10 +53,6 @@ RUN cd /app/node_modules/optipng-bin && npm run install 2>/dev/null || true
 COPY app/ ./app/
 COPY .babelrc .browserslistrc eslint.config.js gulpfile.js light.config.js ./
 
-# Copy other configuration files (read-only in volume mount)
-COPY .github/ ./.github/
-COPY .husky/ ./.husky/
-
 # Change ownership of app directory to nodejs user
 RUN chown -R nodejs:nodejs /app
 
