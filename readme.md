@@ -9,6 +9,15 @@ Styleguide for [Martinus](https://www.martinus.sk), built with [light-scripts](h
 ### Prerequisites
 - [Docker](https://www.docker.com/)
 
+### ⚠️ Important
+**Do not run `yarn` directly.** This project uses Docker for security isolation. Always use the wrapper scripts:
+
+```bash
+./npm.sh <command>    # Instead of: yarn <command>
+./build.sh            # Instead of: yarn build
+./serve.sh            # Instead of: yarn serve
+```
+
 ### Usage
 
 ```bash
