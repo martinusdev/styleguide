@@ -1,0 +1,66 @@
+# Isolate this project from other docker-compose projects
+# This prevents conflicts with the main docker/ project
+name: styleguide
+
+services:
+  styleguide:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: martinus-styleguide-build
+    
+    # Security & Performance
+    security_opt:
+      - no-new-privileges:true
+    
+    # Volumes Strategy:
+    # - node_modules: Named volume (isolated, never exposed to host)
+    # - app/: Read-write mount (source code)
+    # - dist/: NOT MOUNTED - we use docker cp after build to avoid EBUSY errors
+    # - Output directories: Copied out after build
+    volumes:
+      # Named volume for node_modules (isolated dependency environment)
+      - styleguide_node_modules:/app/node_modules
+      
+      # Source code and package files (read-write for development)
+      - ../app:/app/app
+      - ../package.json:/app/package.json
+      - ../yarn.lock:/app/yarn.lock
+      
+      # NOTE: dist is NOT mounted to avoid EBUSY errors when gulp tries to clean it
+      # Instead, docker/build.sh uses `docker cp` to copy dist/ after build completes
+      
+      # Temp directories (internal only, don't mount to avoid file lock issues)
+      # The .tmp and tmp directories are created by gulp during build
+      # Mounting them can cause EBUSY errors with concurrent access
+      
+      # Config files (read-only)
+      - ../.babelrc:/app/.babelrc:ro
+      - ../.browserslistrc:/app/.browserslistrc:ro
+      - ../.stylelintrc.json:/app/.stylelintrc.json:ro
+      - ../browserslist-stats.json:/app/browserslist-stats.json:ro
+      - ../gulpfile.js:/app/gulpfile.js:ro
+      - ../light.config.js:/app/light.config.js:ro
+      - ../eslint.config.js:/app/eslint.config.js:ro
+    
+    # Environment
+    environment:
+      # Disable interactive mode for yarn in containers
+      - CI=true
+      - NODE_ENV=development
+    
+    # Keep container running for interactive commands
+    stdin_open: true
+    tty: true
+    
+    # Restart policy
+    restart: no
+    
+    # Port mapping for BrowserSync development server
+    ports:
+      - "3000:3000"  # BrowserSync server
+      - "3001:3001"  # BrowserSync UI
+
+volumes:
+  styleguide_node_modules:
+    driver: local

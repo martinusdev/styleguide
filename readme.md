@@ -1,47 +1,60 @@
-# Martinus LB styleguide
+# Martinus Styleguide
 
-Styleguide for [Martinus](https://www.martinus.sk), designed and created by [Lighting Beetle
-](https://github.com/lightingbeetle).
+Styleguide for [Martinus](https://www.martinus.sk), built with [light-scripts](https://github.com/lightingbeetle/light-scripts).
 
 > Light is backbone for living styleguides.
 
-## Table of Contents
+## Quick Start
 
-- [Prerequisites](#prerequisites)
-- [Install](#install)
-- [Features](#features)
-- [Usage](#usage)
+### Prerequisites
+- [Docker](https://www.docker.com/)
 
-## Prerequisites
+### Usage
 
-* [Node.js](http://nodejs.org/) `>= 6.9.0`  
-* [Yarn](https://yarnpkg.com/)  
+```bash
+# Install dependencies (Docker container)
+./npm.sh install
 
-## Install
+# Development server with live reload
+./serve.sh
+# Open http://localhost:3000
 
-Installation process:
-1. Clone this repository  
-2. Run `yarn install` to install dependencies (alternative is `npm install` if you don't use `yarn`)  
+# Production build
+./build.sh
+# Output in dist/
 
-## Features
-
-Build process is powered by `light-scripts` ( [docs](https://github.com/lightingbeetle/light-scripts))
-
-## Usage
-
-* For project development with live-reload run:
-```
-gulp serve
+# Any yarn command
+./npm.sh <command>
 ```
 
-* To build project run: (Result will be in `dist/` folder.)
-```
-gulp build [--force]
+### Installing / Updating Packages
+
+```bash
+# Add a specific package version
+./npm.sh add package-name@1.2.3
+
+# Update to latest version
+./npm.sh add package-name@latest
+
+# Check available updates
+./npm.sh outdated
 ```
 
-* To serve built project run:
-```
-gulp serve:dist
-```
+## Architecture
 
-[![Lighting Beetle](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Lighting Beetle")](http://www.lbstudio.sk)
+Everything runs in Docker for security and reproducibility:
+- ✅ Isolated npm/yarn from host filesystem (supply chain protection)
+- ✅ Non-root user execution
+- ✅ Image optimization (gifsicle, optipng, mozjpeg)
+- ✅ Build takes ~30 seconds
+
+### Scripts
+- `./npm.sh` - Run yarn commands
+- `./build.sh` - Production build  
+- `./serve.sh` - Development server
+
+All scripts available as root symlinks or in `docker/` directory.
+
+## Documentation
+
+- [docker/README.md](docker/README.md) - Docker setup details
