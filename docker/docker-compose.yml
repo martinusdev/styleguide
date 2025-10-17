@@ -1,13 +1,13 @@
 # Isolate this project from other docker-compose projects
 # This prevents conflicts with the main docker/ project
-name: styleguide
+name: martinus-styleguide
 
 services:
   styleguide:
     build:
       context: ../
       dockerfile: docker/Dockerfile
-    container_name: martinus-styleguide-build
+    container_name: martinus-styleguide
     
     # Security & Performance
     security_opt:
