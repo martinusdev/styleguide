@@ -26,15 +26,21 @@ RUN apk add --no-cache \
 # Skip installation if already present
 RUN which yarn || npm install -g yarn
 
-# Security: Use non-root user for yarn operations
-RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
+# vymazeme node uzivatele a vytvorime nanovo s uid a gid podla host usera
+RUN deluser --remove-home node 2>/dev/null || true && \
+    addgroup -g 1000 -S node && \
+    adduser -S node -u 1000 -G node
 
 WORKDIR /app
 
+RUN chown -R node:node /app
+
+USER node
+
 # Copy package files and auth config FIRST (before dependencies)
-COPY package.json ./ 
-COPY yarn.lock* ./
-COPY .npmrc* ./
+COPY --chown=node:node package.json ./
+COPY --chown=node:node yarn.lock* ./
+COPY --chown=node:node .npmrc* ./
 
 # Install dependencies with security measures
 # Uses yarn install with frozen-lockfile for reproducible builds
@@ -44,20 +50,17 @@ COPY .npmrc* ./
 # Note: optipng-bin will fail to download prebuilt binary on ARM64, but will be skipped as optional
 RUN yarn install --frozen-lockfile --prefer-offline --ignore-scripts || true
 
+USER root
 # Rebuild optipng-bin from source for ARM64 compatibility
 # The prebuilt binary fails on ARM64, but with build-base tools we can compile from source
 RUN cd /app/node_modules/optipng-bin && npm run install 2>/dev/null || true
+RUN chown -R node:node /app/node_modules
+USER node
 
 # Copy only necessary source files (app/)
 # node_modules is already installed above
-COPY app/ ./app/
-COPY .babelrc .browserslistrc eslint.config.js gulpfile.js light.config.js ./
-
-# Change ownership of app directory to nodejs user
-RUN chown -R nodejs:nodejs /app
-
-# Switch to non-root user
-USER nodejs
+COPY --chown=node:node app/ ./app/
+COPY --chown=node:node .babelrc .browserslistrc eslint.config.js gulpfile.js light.config.js ./
 
 # Default command: yarn scripts can be overridden
 CMD ["yarn", "serve"]
