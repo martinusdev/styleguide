@@ -14,13 +14,13 @@ services:
       - no-new-privileges:true
 
     # Volumes Strategy:
-    # - node_modules: Named volume (isolated, never exposed to host)
+    # - node_modules: Host filesystem mount (for IDE access)
     # - app/: Read-write mount (source code)
     # - dist/: NOT MOUNTED - we use docker cp after build to avoid EBUSY errors
     # - Output directories: Copied out after build
     volumes:
-      # Named volume for node_modules (isolated dependency environment)
-      - styleguide_node_modules:/app/node_modules
+      # Mount node_modules from host filesystem for IDE (WebStorm) access
+      - ../node_modules:/app/node_modules
 
       # Source code and package files (read-write for development)
       - ../app:/app/app
@@ -97,7 +97,5 @@ services:
     # MCP server uses stdio, no ports needed
 
 volumes:
-  styleguide_node_modules:
-    driver: local
   mcp_node_modules:
     driver: local
