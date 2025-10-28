@@ -14,15 +14,17 @@
     "dotenv": "~16.4.5",
     "eslint": "~9.17.0",
     "eslint-config-airbnb-base": "~15.0.0",
+    "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "~2.31.0",
     "eslint-webpack-plugin": "^4.2.0",
     "glob": "^11.0.0",
     "gulp": "~4.0.2",
     "gulp-hub": "~4.2.0",
+    "husky": "^8.0.3",
     "lint-staged": "~15.3.0",
     "lodash": "^4.17.21",
     "postcss-scss": "^4.0.9",
-    "pre-commit": "~1.2.2",
+    "prettier": "^3.3.3",
     "stylelint": "~15.11.0",
     "stylelint-config-sass-guidelines": "~11.1.0"
   },
@@ -30,17 +32,28 @@
     "node": ">=18.2.0"
   },
   "scripts": {
-    "prepare": "gulp prepare --openssl-legacy-provider",
+    "prepare": "husky install && gulp prepare --openssl-legacy-provider",
     "build": "gulp build --openssl-legacy-provider --mode=production",
     "serve": "gulp serve --openssl-legacy-provider",
     "images": "gulp images --openssl-legacy-provider",
     "clear-cache": "gulp clearCache --openssl-legacy-provider",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "lint": "prettier --check . && eslint . --max-warnings=0 && stylelint \"app/styles/**/*.scss\"",
+    "lint:fix": "eslint . --fix && stylelint \"app/styles/**/*.scss\" --fix && prettier --write .",
+    "format": "prettier --write ."
   },
-  "pre-commit": "lint-staged",
   "lint-staged": {
-    "app/scripts/**/*.js": "eslint",
-    "app/styles/**/*.scss": "stylelint"
+    "app/scripts/**/*.js": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "app/styles/**/*.scss": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.{md,json,yml,yaml}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@awesome.me/kit-c68fa87f81": "^1.0.67",
@@ -71,49 +84,5 @@
     "swiper": "~11.2.10",
     "three": "^0.172.0",
     "tippy.js": "^6.3.7"
-  },
-  "eslintConfig": {
-    "extends": "airbnb-base",
-    "rules": {
-      "arrow-parens": "off",
-      "comma-dangle": "off",
-      "no-trailing-spaces": [
-        2,
-        {
-          "skipBlankLines": true
-        }
-      ],
-      "no-param-reassign": 0,
-      "no-underscore-dangle": 0,
-      "no-plusplus": [
-        "error",
-        {
-          "allowForLoopAfterthoughts": true
-        }
-      ],
-      "prefer-spread": "off",
-      "import/no-extraneous-dependencies": [
-        "error",
-        {
-          "devDependencies": [
-            "!gulp/**/*.js"
-          ]
-        }
-      ]
-    },
-    "globals": {
-      "$": true,
-      "jQuery": true,
-      "Modernizr": true,
-      "window": true
-    },
-    "env": {
-      "browser": true
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "experimentalObjectRestSpread": true
-      }
-    }
   }
 }
