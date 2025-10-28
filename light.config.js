@@ -115,6 +115,10 @@ module.exports = (paths, config) => {
         module: {
           rules: [],
         }
+      },
+      serve: {
+        // Don't try to open browser in headless Docker environment
+        open: false,
       }
     },
   };

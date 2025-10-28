@@ -1,0 +1,101 @@
+# Isolate this project from other docker-compose projects
+# This prevents conflicts with the main docker/ project
+name: martinus-styleguide
+
+services:
+  styleguide:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
+    container_name: martinus-styleguide
+
+    # Security & Performance
+    security_opt:
+      - no-new-privileges:true
+
+    # Volumes Strategy:
+    # - node_modules: Host filesystem mount (for IDE access)
+    # - app/: Read-write mount (source code)
+    # - dist/: NOT MOUNTED - we use docker cp after build to avoid EBUSY errors
+    # - Output directories: Copied out after build
+    volumes:
+      # Mount node_modules from host filesystem for IDE (WebStorm) access
+      - ../node_modules:/app/node_modules
+
+      # Source code and package files (read-write for development)
+      - ../app:/app/app
+      - ../package.json:/app/package.json
+      - ../yarn.lock:/app/yarn.lock
+
+      # NOTE: dist is NOT mounted to avoid EBUSY errors when gulp tries to clean it
+      # Instead, docker/build.sh uses `docker cp` to copy dist/ after build completes
+
+      # Temp directories (internal only, don't mount to avoid file lock issues)
+      # The .tmp and tmp directories are created by gulp during build
+      # Mounting them can cause EBUSY errors with concurrent access
+
+      # Config files (read-only)
+      - ../.babelrc:/app/.babelrc:ro
+      - ../.browserslistrc:/app/.browserslistrc:ro
+      - ../.stylelintrc.json:/app/.stylelintrc.json:ro
+      - ../browserslist-stats.json:/app/browserslist-stats.json:ro
+      - ../gulpfile.js:/app/gulpfile.js:ro
+      - ../light.config.js:/app/light.config.js:ro
+      - ../eslint.config.js:/app/eslint.config.js:ro
+
+    # Environment
+    environment:
+      # Disable interactive mode for yarn in containers
+      - CI=true
+      - NODE_ENV=development
+
+    # Keep container running for interactive commands
+    stdin_open: true
+    tty: true
+
+    # Restart policy
+    restart: no
+
+    # Port mapping for BrowserSync development server
+    ports:
+      - "3000:3000"  # BrowserSync server
+      - "3001:3001"  # BrowserSync UI
+
+  mcp-server:
+    build:
+      context: ../mcp-server
+      dockerfile: Dockerfile
+    container_name: martinus-styleguide-mcp
+
+    # Security
+    security_opt:
+      - no-new-privileges:true
+
+    # Volumes: Mount app directory read-only for indexing
+    volumes:
+      # MCP server node_modules (isolated)
+      - mcp_node_modules:/mcp-server/node_modules
+
+      # Read-only access to app directory for indexing
+      - ../app:/app/app:ro
+
+      # MCP server source (for development)
+      - ../mcp-server/src:/mcp-server/src:ro
+      - ../mcp-server/package.json:/mcp-server/package.json:ro
+
+    # Environment
+    environment:
+      - NODE_ENV=production
+
+    # Keep container running
+    stdin_open: true
+    tty: true
+
+    # Restart policy
+    restart: no
+
+    # MCP server uses stdio, no ports needed
+
+volumes:
+  mcp_node_modules:
+    driver: local
