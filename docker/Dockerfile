@@ -26,7 +26,7 @@ RUN apk add --no-cache \
 # Skip installation if already present
 RUN which yarn || npm install -g yarn
 
-# vymazeme node uzivatele a vytvorime nanovo s uid a gid podla host usera
+# vymazeme node uzivatela a vytvorime nanovo s uid a gid podla host usera
 RUN deluser --remove-home node 2>/dev/null || true && \
     addgroup -g 1000 -S node && \
     adduser -S node -u 1000 -G node
@@ -34,6 +34,9 @@ RUN deluser --remove-home node 2>/dev/null || true && \
 WORKDIR /app
 
 RUN chown -R node:node /app
+
+# workaround pre win https://stackoverflow.com/questions/67087735/eacces-permission-denied-mkdir-usr-app-node-modules-cache-how-can-i-creat
+RUN mkdir -p node_modules/.cache && chmod -R 777 node_modules/.cache
 
 USER node
 
@@ -54,13 +57,13 @@ USER root
 # Rebuild optipng-bin from source for ARM64 compatibility
 # The prebuilt binary fails on ARM64, but with build-base tools we can compile from source
 RUN cd /app/node_modules/optipng-bin && npm run install 2>/dev/null || true
-RUN chown -R node:node /app/node_modules
+#RUN chown -R node:node /app/node_modules
 USER node
 
 # Copy only necessary source files (app/)
 # node_modules is already installed above
-COPY --chown=node:node app/ ./app/
-COPY --chown=node:node .babelrc .browserslistrc eslint.config.js gulpfile.js light.config.js ./
+#COPY --chown=node:node app/ ./app/
+#COPY --chown=node:node .babelrc .browserslistrc eslint.config.js gulpfile.js light.config.js ./
 
 # Default command: yarn scripts can be overridden
 CMD ["yarn", "serve"]
