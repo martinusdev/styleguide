@@ -10,7 +10,7 @@ Running Yarn locally exposes your filesystem to supply chain attacks. This Docke
 - ✅ Containerizes node_modules (named volume)
 - ✅ Ensures reproducible builds (yarn.lock)
 
-## Quick Start
+## Quick Start (Linux/Mac)
 
 ```bash
 ./npm.sh install       # Install dependencies
@@ -18,6 +18,16 @@ Running Yarn locally exposes your filesystem to supply chain attacks. This Docke
 ./serve.sh             # Development server (http://localhost:3000)
 ./npm.sh add package   # Add/update packages
 ./npm.sh outdated      # Check for updates
+```
+
+## Quick Start - Windows
+
+```powershell
+.\docker\npm.ps1 install       # Install dependencies
+.\docker\build.ps1             # Production build
+.\docker\serve.ps1             # Development server (http://localhost:3000)
+.\docker\npm.ps1 add package   # Add/update packages
+.\docker\npm.ps1 outdated      # Check for updates
 ```
 
 For more, see [../readme.md](../readme.md).
