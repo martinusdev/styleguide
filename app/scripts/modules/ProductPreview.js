@@ -28,6 +28,9 @@ export default class ProductPreview {
 
   _init() {
     this.container = document.querySelector(this.config.selector);
+    if (!this.container) {
+      return;
+    }
 
     this.slider = this.container.querySelector(this.config.selectorSlider);
 
