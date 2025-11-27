@@ -4,19 +4,15 @@
   flex-direction: column;
   height: 100%;
 
-  padding: _get-space('large') _get-space('large');
+  padding: 1.25rem 1.25rem 0;
   text-align: left;
 
   @include breakpoint(s, 'down') {
-    padding: _get-space('small') 0 0;
+    padding: 0;
   }
 
   &__header {
     flex: 1 0 auto;
-
-    @include breakpoint(m) {
-      margin-bottom: _get-space('large');
-    }
   }
 
   &__content {
@@ -56,9 +52,8 @@
     }
 
     @include breakpoint(s, 'down') {
-      // padding: 0;
       flex-basis: 100%;
-      height: calc(100% - #{_get-rem(100px)});
+      height: 100%;
       margin-bottom: _get-space();
       max-width: none;
     }
@@ -81,7 +76,7 @@
 
   &__page {
     display: block;
-    margin-bottom: _get-space('large');
+    margin-bottom: 1.25rem;
 
     &:last-child {
       margin-bottom: 0;
