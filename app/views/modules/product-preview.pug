@@ -1,51 +1,46 @@
 include ./../mixins/addTo
 include ./../mixins/icon
+include ./../mixins/faIcon
 
-.modal-overlay.modal-overlay--dark#product-preview(data-modal)
-  article.modal.modal--full.hide
-  .product-preview(data-product-preview)
-    .product-preview__header.bar
-      .bar__item.bar__item--fill
-        h2.text-color-white.show-m Sherlock Holmes 2: Dobrodružstvá Sherlocka Holmesa
-      .bar__item
-        button.btn.btn--clean(data-toggle="#product-preview").text-color-white
+.modal.fade#product-preview
+  .modal-dialog.modal-fullscreen.product-preview(data-product-preview)
+    .modal-content.bg-transparent.shadow-none
+      .product-preview__header.d-flex.align-items-center.justify-content-between.flex-row-reverse
+        button.btn.btn--clean.d-flex.align-items-center.justify-content-end(data-bs-dismiss="modal").text-color-white.mb-none
           span Zatvoriť
-          +icon('close').icon--medium.icon--right
+          +faIcon('xmark').fa-2x.ml-small
 
-    .product-preview__content
-      .product-preview__control.show-m
-        .bar.bar--vertical
-          .bar__item
-            button.btn.btn--large.btn--equal.btn--ghost-inverse(data-toggle='#product-preview-slider, self', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-zoom-out`)
-              +icon('zoom-in').icon--medium
-          .bar__item
-            button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-prev)
-              +icon('arrow-up').icon--medium
-          .bar__item.text-center
-            p.text-semibold
-              span.text-color-white(data-product-preview-page) 1
-              span.text-color-grey  /#{' '}
-              span.text-color-grey 5
-          .bar__item
-            button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-next)
-              +icon('arrow-down').icon--medium
+      .product-preview__content
+        .product-preview__control.show-m
+          .bar.bar--vertical
+            .bar__item
+              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-prev)
+                +faIcon('arrow-up').fa-xl
+            .bar__item.text-center
+              p.text-semibold
+                span.text-color-white(data-product-preview-page) 1
+                span.text-color-grey  /#{' '}
+                span.text-color-grey 5
+            .bar__item
+              button.btn.btn--large.btn--equal.btn--ghost-inverse(data-product-preview-next)
+                +faIcon('arrow-down').fa-xl
 
-      .product-preview__slider(data-product-preview-slider)#product-preview-slider
-        each product, index in Array(5)
-          .product-preview__page(data-product-preview-slide=`${index}`)
-            img.img--fluid(src=`${assetsPrefix}images/content/book-preview/preview-1.jpg`)
+        .product-preview__slider(data-product-preview-slider)#product-preview-slider
+          each product, index in Array(5)
+            .product-preview__page(data-product-preview-slide=`${index}`)
+              img.img--fluid(src=`${assetsPrefix}images/content/book-preview/preview-1.jpg`)
 
-      .product-preview__info
-        .card
-          .card__content
-            h2.show-m Ukážky na stiahnutie
-            .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-none
-              a(href="#").btn.btn--ghost.btn--icon-left
-                +icon('download').icon--medium
-                | PDF
-              a(href="#").btn.btn--ghost.btn--icon-left
-                +icon('download').icon--medium
-                | EPUB
-              a(href="#").btn.btn--ghost.btn--icon-left
-                +icon('download').icon--medium
-                | MOBI
+        .product-preview__info
+          .card
+            .card__content
+              h2.show-m Ukážky na stiahnutie
+              .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-none
+                a(href="#").btn.btn--ghost.btn--icon-left
+                  +icon('download').icon--medium
+                  | PDF
+                a(href="#").btn.btn--ghost.btn--icon-left
+                  +icon('download').icon--medium
+                  | EPUB
+                a(href="#").btn.btn--ghost.btn--icon-left
+                  +icon('download').icon--medium
+                  | MOBI
