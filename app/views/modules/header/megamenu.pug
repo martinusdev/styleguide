@@ -80,9 +80,6 @@ include ./../../mixins/icon
         title: 'Novinky',
         icon: 'sparkles'
       }, {
-        title: 'Knihomoľský pomocník',
-        icon: 'comment-lines'
-      }, {
         title: 'Pripravované',
         icon: 'clock'
       }, {
@@ -95,13 +92,11 @@ include ./../../mixins/icon
         title: 'Kolekcie',
         icon: 'rectangle-vertical-history'
       },],
-      showAd: true,
     }, {
       title: 'Doplnky',
       id: 'doplnky',
       mainLinkTitle: 'Zobraziť všetky doplnky',
       categories: categoriesDoplnky,
-      showAd: false,
     },
   ]
 
@@ -136,24 +131,32 @@ mixin megaMenuContent(props = {})
                     a.d-block.mt-tiny.link.link--grey(href='#')
                       | + Ďalšie kategórie
       if additionalLinks
-        .mega-menu__sidebar.p-small
-          ul.mega-menu__sidebar__links.py-small.py-m-medium.pl-tiny
+        .mega-menu__sidebar
+          ul.mega-menu__sidebar__links.p-none
+            li
+              a.sidebar__banner.link.link--black(href='#').sidebar__banner--sherlock
+                +faIcon("comment-lines").fa-fw.fa-sm.mr-small.mr-m-tiny.text-color-green
+                div.d-flex.flex-column
+                  strong Knihomoľský pomocník
+                  small.text-color-grey Spýtajte sa Sherlocka, čo čítať
+            li.mb-tiny
+              a.sidebar__banner.link.link--black(href='#')
+                +faIcon("sparkles").fa-fw.fa-sm.mr-small.mr-m-tiny.text-color-green
+                div.d-flex.flex-column
+                  strong Odporúčame pre vás
+                  small.text-color-grey Knižné tipy ušité na mieru vám
             each link in additionalLinks
               li
-                a.d-flex.align-items-center.link.link--black(href='#')
+                a.sidebar__link.link.link--black(href='#')
                   if link.icon
                     +faIcon(link.icon).fa-fw.fa-sm.mr-small.mr-m-tiny
                   =link.title
     if showAd || recommended
       .mega-menu__content-wrap
-        if showAd
-          .mega-menu__sidebar
-            .mega-menu__banner
-              a(href="#")
-                img.img--fluid(src=`${assetsPrefix}images/content/banners/square.jpg`)
+        .mega-menu__sidebar
         if recommended
           .mega-menu__favorites
-            .row.mx-none.mt-l-large.pb-medium
+            .row.mx-none.pb-medium
               each group, i in recommended
                 .col.col--l-6.mt-medium
                   .d-block.mb-tiny.text-transform-upper.text-size-small.m-none= group.title
