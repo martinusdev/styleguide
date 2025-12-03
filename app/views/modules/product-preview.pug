@@ -1,5 +1,4 @@
 include ./../mixins/addTo
-include ./../mixins/icon
 include ./../mixins/faIcon
 
 .modal.fade#product-preview
@@ -35,12 +34,12 @@ include ./../mixins/faIcon
             .card__content
               h2.show-m Ukážky na stiahnutie
               .btn-layout.btn-layout--horizontal.btn-layout--fill.mb-none
-                a(href="#").btn.btn--ghost.btn--icon-left
-                  +icon('download').icon--medium
+                a(href="#").btn.btn--ghost
+                  +faIcon('arrow-down-to-bracket').fa-xl.mr-tiny
                   | PDF
-                a(href="#").btn.btn--ghost.btn--icon-left
-                  +icon('download').icon--medium
+                a(href="#").btn.btn--ghost
+                  +faIcon('arrow-down-to-bracket').fa-xl.mr-tiny
                   | EPUB
-                a(href="#").btn.btn--ghost.btn--icon-left
-                  +icon('download').icon--medium
+                a(href="#").btn.btn--ghost
+                  +faIcon('arrow-down-to-bracket').fa-xl.mr-tiny
                   | MOBI
