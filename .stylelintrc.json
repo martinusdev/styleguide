@@ -1,15 +1,11 @@
 {
-  "extends": "stylelint-config-sass-guidelines",
-  "ignoreFiles": [
-    "app/styles/vendors/**/*.scss"
-  ],
+  "extends": ["stylelint-config-sass-guidelines"],
+  "ignoreFiles": ["app/styles/vendors/**/*.scss"],
   "rules": {
     "color-named": [
       "never",
       {
-        "ignore": [
-          "inside-function"
-        ]
+        "ignore": ["inside-function"]
       }
     ],
     "max-nesting-depth": null,
@@ -18,11 +14,9 @@
     "selector-no-qualifying-type": [
       true,
       {
-        "ignore": [
-          "attribute",
-          "class"
-        ]
+        "ignore": ["attribute", "class"]
       }
-    ]
+    ],
+    "color-hex-length": null
   }
 }
