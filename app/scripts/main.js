@@ -10,7 +10,6 @@ import Dropdown from './modules/Dropdown';
 import Modal from './modules/Modal';
 import Carousel from './modules/Carousel';
 import Collapse from './modules/Collapse';
-import Sticky from './modules/Sticky';
 import ScrollSpy from './modules/ScrollSpy';
 import SmoothScroll from './modules/SmoothScroll';
 import Tooltip from './modules/Tooltip';
@@ -43,7 +42,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.Modal = Modal;
   window.myApp.Carousel = Carousel;
   window.myApp.Collapse = Collapse;
-  window.myApp.Sticky = Sticky;
   window.myApp.ScrollSpy = ScrollSpy;
   window.myApp.SmoothScroll = SmoothScroll;
   window.myApp.Tooltip = Tooltip;
@@ -84,8 +82,6 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.carousels = new Carousel();
 
   window.myApp.collapses = new Collapse();
-
-  window.myApp.stickies = new Sticky();
 
   window.myApp.scrollspies = new ScrollSpy();
 
