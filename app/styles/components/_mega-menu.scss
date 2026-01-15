@@ -91,9 +91,17 @@
       background-color: _color(black);
       letter-spacing: normal;
       text-align: left;
+      justify-content: flex-start;
 
       &:active {
         background-color: _color(grey, 700);
+      }
+
+      // Buttons with icons (dropdowns) should space-between
+      &:has([data-icon]),
+      &:has(.icon),
+      &:has(svg) {
+        justify-content: space-between !important;
       }
     }
 
@@ -155,7 +163,7 @@
   @include breakpoint('m', 'down') {
     &__title {
       display: block;
-      margin-bottom: _get-space('small');
+      margin-bottom: .625rem;
     }
 
     &__subcategories {
@@ -179,6 +187,10 @@
 
   @include breakpoint('m', 'only') {
     flex-direction: row;
+
+    li.has_banner {
+      flex-basis: 50%;
+    }
   }
 }
 

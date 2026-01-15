@@ -118,12 +118,12 @@ mixin megaMenuContent(props = {})
         .row.mx-none.mb-m-medium
           each category, index in categories
             .col.col--m-4.col--12.mega-menu__categories__category
-              a.d-flex.align-items-center.pt-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none(href='#', class=index > 0 ? 'pb-small' : '')
+              a.d-flex.align-items-center.py-small.pt-m-medium.pb-m-none.link.link--black.mega-menu__categories__title.mb-none(href='#', class=index > 0 ? 'pb-small' : '')
                 .mr-tiny.mega-menu__categories__icon
                   +faIcon(category.icon, (category.iconStyle ? category.iconStyle : 'far')).text-color-primary.fa-fw
                 h3.mb-none=category.title
               if category.entries
-                ul.mega-menu__categories__subcategories.text-medium.mt-tiny.mb-small(class=index > 0 ? 'show-m' : '')
+                ul.mega-menu__categories__subcategories.text-medium.mt-tiny.mb-small.show-m
                   each item in category.entries
                     li.mb-none
                       a.pt-tiny.pb-tiny.d-block.link.link--black(href='#')= item
@@ -133,13 +133,13 @@ mixin megaMenuContent(props = {})
       if additionalLinks
         .mega-menu__sidebar
           ul.mega-menu__sidebar__links.p-none
-            li
+            li.has_banner
               a.sidebar__banner.link.link--black(href='#').sidebar__banner--sherlock
                 +faIcon("comment-lines").fa-fw.fa-sm.mr-small.mr-m-tiny.text-color-green
                 div.d-flex.flex-column
                   strong Knihomoľský pomocník
                   small.text-color-grey Spýtajte sa Sherlocka, čo čítať
-            li.mb-tiny
+            li.has_banner.mb-tiny
               a.sidebar__banner.link.link--black(href='#')
                 +faIcon("sparkles").fa-fw.fa-sm.mr-small.mr-m-tiny.text-color-green
                 div.d-flex.flex-column
