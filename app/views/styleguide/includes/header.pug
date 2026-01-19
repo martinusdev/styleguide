@@ -9,6 +9,9 @@ header.l-header-main
       h1.js-header
         a(href='#top', data-smoothscroll='#top')= page.title
 
+      .l-header-main_theme
+        button.l-theme-toggle(type='button', data-theme-toggle, aria-pressed='false') Dark mode
+
       unless categoryID == 0
         #header-navigation.js-scrollspy.l-headnav
           ul.l-headnav_list.nav
@@ -17,5 +20,4 @@ header.l-header-main
             each section in contents
               li.l-headnav_item.nav-item(style=section.hide?'display:none;':'')
                 a.l-headnav_link.nav-link.js-toggle(href='#' + section.href, data-smoothscroll='#' + section.href, data-toggle-target='#header-navigation', data-toggle='dropdown')= section.title
-
 

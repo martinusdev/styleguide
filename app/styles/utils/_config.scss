@@ -164,14 +164,14 @@ $primary: _color(primary);
 // ----------------------------
 // GENERAL
 
-$default-bg-color: $color-white !default;
+$default-bg-color: var(--ms-body-bg) !default;
 $secondary-bg-color: _color(bg) !default;
 $blue-bg-color: _color(bg, 200) !default;
 $teal-bg-color: _color(teal) !default;
 $green-bg-color: _color(success, 500) !default;
-$default-text-color: $color-black !default;
+$default-text-color: var(--ms-body-color) !default;
 
-$default-border-color: _color(grey, 200);
+$default-border-color: var(--ms-border-color);
 $default-border-radius: $border-radius !default;
 $default-border-radius-circle: $border-radius-circle !default;
 
@@ -352,13 +352,13 @@ $links: (
   default: (
     default: (
       text-decoration: none,
-      color: _color(link),
+      color: var(--ms-link-color),
       font-weight: var(--fw-semibold),
       transition: #{color $ease-100, border $ease-100},
     ),
     focus: (
-      color: _color(link, 400),
-      border-bottom-color: _color(link, 400),
+      color: var(--ms-link-color-hover),
+      border-bottom-color: var(--ms-link-color-hover),
       text-decoration: underline,
     )
   ),
