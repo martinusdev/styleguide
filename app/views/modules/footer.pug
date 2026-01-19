@@ -97,6 +97,16 @@ footer.footer
           .bar__item
             a(href='#')
               +icon('youtube').icon--medium
+          .bar__item
+            button.theme-toggle(
+              data-theme-toggle
+              type="button"
+              aria-label="Toggle theme"
+              aria-pressed="false"
+              title="Toggle dark mode"
+            )
+              span.theme-toggle__text-light Light
+              span.theme-toggle__text-dark Dark
 
     section.row.align-items-center
       .col--l-7

@@ -62,3 +62,31 @@ a.pill:hover {
 
 @include css-variants('.badge', $badge);
 @include css-variants('.pill', $pills);
+
+// Dark mode adjustments
+html[data-theme='dark'] {
+  .badge {
+    background-color: _color(grey, 800);
+    color: $color-white;
+    border-color: _color(grey, 700);
+  }
+
+  .badge--primary {
+    background-color: _color(primary, 800);
+    color: $color-white;
+    border-color: _color(primary, 800);
+  }
+
+  .badge--yellow {
+    background-color: _color(yellow, 800);
+    color: $color-white;
+    border-color: _color(yellow, 800);
+  }
+
+  .badge--transparent {
+    // Keep transparent - inherit color from parent, no background
+    color: inherit;
+    background-color: transparent;
+    border-color: transparent;
+  }
+}

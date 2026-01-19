@@ -2,6 +2,109 @@
 // GLOBALS
 // ---------------------------------------------
 
+:root {
+  // === Surfaces ===
+  --#{$prefix}surface-primary: #{$color-white};
+  --#{$prefix}surface-secondary: #{_color(bg)};
+  --#{$prefix}surface-tertiary: #{_color(grey, 50)};
+  --#{$prefix}surface-elevated: #{$color-white};
+  --#{$prefix}surface-hover: rgba(0, 0, 0, 0.02);
+  --#{$prefix}surface-active: rgba(0, 0, 0, 0.05);
+
+  // === Text ===
+  --#{$prefix}text-primary: #{$color-black};
+  --#{$prefix}text-secondary: #{_color(grey, 700)};
+  --#{$prefix}text-tertiary: #{_color(grey, 500)};
+  --#{$prefix}text-disabled: #{_color(grey, 400)};
+  --#{$prefix}text-inverse: #{$color-white};
+  --#{$prefix}text-link: #{_color(link)};
+  --#{$prefix}text-link-hover: #{_color(link, 400)};
+
+  // === Borders ===
+  --#{$prefix}border-default: #{_color(grey, 200)};
+  --#{$prefix}border-strong: #{_color(grey, 400)};
+  --#{$prefix}border-subtle: rgba(0, 0, 0, 0.05);
+
+  // === Interactive (Primary) ===
+  --#{$prefix}interactive-primary: #{_color(primary, 500)};
+  --#{$prefix}interactive-primary-hover: #{_color(primary, 400)};
+  --#{$prefix}interactive-primary-active: #{_color(primary, 600)};
+  --#{$prefix}interactive-primary-disabled: rgba(210, 33, 33, 0.25);
+
+  // === Interactive (Secondary) ===
+  --#{$prefix}interactive-secondary: #{_color(grey, 800)};
+  --#{$prefix}interactive-secondary-hover: #{_color(grey, 600)};
+  --#{$prefix}interactive-secondary-active: #{_color(grey, 900)};
+
+  // === States ===
+  --#{$prefix}state-error: #{_color(error, 500)};
+  --#{$prefix}state-error-bg: #{_color(error, 100)};
+  --#{$prefix}state-success: #{_color(success, 500)};
+  --#{$prefix}state-success-bg: #{_color(success, 100)};
+  --#{$prefix}state-warning: #{_color(warning, 500)};
+  --#{$prefix}state-warning-bg: #{_color(warning, 100)};
+  --#{$prefix}state-info: #{_color(info, 500)};
+  --#{$prefix}state-info-bg: #{_color(info, 100)};
+
+  // === Shadows ===
+  --#{$prefix}shadow-color: 0 0 0;
+  --#{$prefix}shadow-opacity-sm: 0.07;
+  --#{$prefix}shadow-opacity-md: 0.16;
+  --#{$prefix}shadow-opacity-lg: 0.22;
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  // === Surfaces ===
+  --#{$prefix}surface-primary: #1b1e22;
+  --#{$prefix}surface-secondary: #1c232b;
+  --#{$prefix}surface-tertiary: #11161b;
+  --#{$prefix}surface-elevated: #252a31;
+  --#{$prefix}surface-hover: rgba(255, 255, 255, 0.05);
+  --#{$prefix}surface-active: rgba(255, 255, 255, 0.1);
+
+  // === Text ===
+  --#{$prefix}text-primary: #f5f2ee;
+  --#{$prefix}text-secondary: #c1c7cd;
+  --#{$prefix}text-tertiary: #9aa1a8;
+  --#{$prefix}text-disabled: #5a6169;
+  --#{$prefix}text-inverse: #1b1e22;
+  --#{$prefix}text-link: #7ab8ff;
+  --#{$prefix}text-link-hover: #a1ceff;
+
+  // === Borders ===
+  --#{$prefix}border-default: #2f3236;
+  --#{$prefix}border-strong: #3f4c58;
+  --#{$prefix}border-subtle: rgba(255, 255, 255, 0.05);
+
+  // === Interactive (Primary) ===
+  --#{$prefix}interactive-primary: #ff6b6b;
+  --#{$prefix}interactive-primary-hover: #ff8f8f;
+  --#{$prefix}interactive-primary-active: #ff4747;
+  --#{$prefix}interactive-primary-disabled: rgba(255, 107, 107, 0.25);
+
+  // === Interactive (Secondary) ===
+  --#{$prefix}interactive-secondary: #7a8491;
+  --#{$prefix}interactive-secondary-hover: #8f9ba8;
+  --#{$prefix}interactive-secondary-active: #6b7785;
+
+  // === States ===
+  --#{$prefix}state-error: #ff6b6b;
+  --#{$prefix}state-error-bg: #4d2222;
+  --#{$prefix}state-success: #4ecb6f;
+  --#{$prefix}state-success-bg: #1f4d2c;
+  --#{$prefix}state-warning: #ffa94d;
+  --#{$prefix}state-warning-bg: #4d3619;
+  --#{$prefix}state-info: #4db8ff;
+  --#{$prefix}state-info-bg: #1a3d5c;
+
+  // === Shadows ===
+  --#{$prefix}shadow-opacity-sm: 0.3;
+  --#{$prefix}shadow-opacity-md: 0.4;
+  --#{$prefix}shadow-opacity-lg: 0.5;
+}
+
 html,
 body {
   padding: 0;
@@ -12,8 +115,8 @@ body {
 
 body {
   position: relative;
-  background: $default-bg-color;
-  color: $default-text-color;
+  background: var(--#{$prefix}surface-primary);
+  color: var(--#{$prefix}text-primary);
 
   --fw-normal: normal;
   --fw-semibold: #{$font-weight-semibold};

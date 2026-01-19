@@ -133,7 +133,7 @@
   }
 
   .link {
-    color: _color(black);
+    color: var(--#{$prefix}text-primary);
 
     &:hover {
       text-decoration: underline;
@@ -144,22 +144,34 @@
     }
   }
 
+  .text-color-grey {
+    color: var(--#{$prefix}text-secondary) !important;
+  }
+
   &--light {
+    // Custom colored section with light background - always dark text
+    color: _color(black);
+
+    .link {
+      color: _color(black) !important;
+    }
+
     .text-color-grey {
-      color: rgba(_color(black), 0.8) !important;
+      color: _color(grey, 700) !important;
     }
   }
 
   &--dark {
-    color: #fff;
+    // Custom colored section with dark background - always light text
+    color: $color-white;
     --ms-outline-color: #{rgba(_color($color-white), 0.8)};
 
     .link {
-      color: #fff !important;
+      color: $color-white !important;
     }
 
     .text-color-grey {
-      color: rgba(255, 255, 255, 0.8) !important;
+      color: rgba($color-white, 0.7) !important;
     }
   }
 

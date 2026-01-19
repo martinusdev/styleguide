@@ -42,6 +42,14 @@ html.fonts-loaded
     link(rel="preload", href=`${assetsPrefix}fonts/Tabac-Sans/fonts/Tabac-Sans-Regular-9531409e5f6d548c2ccc3429d9d5db69.woff2`, as="font", type="font/woff2")
     link(rel="stylesheet", href=`${assetsPrefix}fonts/Tabac-Sans/style.css`)
 
+    //- Prevent FOUC (Flash of Unstyled Content) when theme is loaded
+    script.
+      (function() {
+        const theme = localStorage.getItem('martinus-theme') ||
+          (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+
     link(rel="stylesheet", href=`${assetsPrefix}styles/main.css`)
 
     block head

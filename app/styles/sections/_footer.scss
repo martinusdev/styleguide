@@ -38,3 +38,42 @@
   h5,
   .h5 { color: inherit; }
 }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $color-white;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  &__text-light {
+    display: block;
+  }
+
+  &__text-dark {
+    display: none;
+  }
+
+  &.is-active {
+    .theme-toggle__text-light {
+      display: none;
+    }
+
+    .theme-toggle__text-dark {
+      display: block;
+    }
+  }
+}

@@ -141,8 +141,8 @@ $default-color-weights: (
 );
 
 $color-presets: (
-  white: $color-white,
-  black: $color-black,
+  white: var(--#{$prefix}surface-primary),
+  black: var(--#{$prefix}text-primary),
   grey: _color(grey, 700),
   primary: _color(primary),
   primary-light: _color(primary, 400),
@@ -164,14 +164,14 @@ $primary: _color(primary);
 // ----------------------------
 // GENERAL
 
-$default-bg-color: $color-white !default;
-$secondary-bg-color: _color(bg) !default;
+$default-bg-color: var(--#{$prefix}surface-primary) !default;
+$secondary-bg-color: var(--#{$prefix}surface-secondary) !default;
 $blue-bg-color: _color(bg, 200) !default;
 $teal-bg-color: _color(teal) !default;
 $green-bg-color: _color(success, 500) !default;
-$default-text-color: $color-black !default;
+$default-text-color: var(--#{$prefix}text-primary) !default;
 
-$default-border-color: _color(grey, 200);
+$default-border-color: var(--#{$prefix}border-default);
 $default-border-radius: $border-radius !default;
 $default-border-radius-circle: $border-radius-circle !default;
 
@@ -1748,7 +1748,7 @@ $section: (
     background-color: _color('bg'),
   ),
   white: (
-    background-color: $color-white,
+    background-color: var(--#{$prefix}surface-primary),
   ),
 );
 
