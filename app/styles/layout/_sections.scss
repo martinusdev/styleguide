@@ -17,7 +17,7 @@
 
   &--toolbar {
     padding-top: _get-space('small');
-    background-color: $color-white;
+    background-color: var(--#{$prefix}body-bg);
 
     border-bottom: 1px solid $default-border-color;
 
@@ -29,7 +29,7 @@
   }
 
   &--breadcrumbs {
-    background-color: _color('bg');
+    background-color: var(--#{$prefix}secondary-bg);
     padding: _get-space('tiny') 0;
 
     @include breakpoint(m) {
@@ -60,7 +60,7 @@
 
 .section-progress {
   padding-top: 0;
-  background-color: $color-white;
+  background-color: var(--#{$prefix}body-bg);
   border-bottom: 1px solid $default-border-color;
 }
 
@@ -86,23 +86,27 @@
     height: 35px;
     width: 100%;
 
-    background: linear-gradient(to top, rgba(#fff, 1), rgba(#fff, 0));
+    background: linear-gradient(to top, rgb(var(--#{$prefix}body-bg-rgb) / 1), rgb(var(--#{$prefix}body-bg-rgb) / 0));
   }
 
   &.bg-secondary:not(.is-active)::after {
-    background: linear-gradient(to top, rgba($secondary-bg-color, 1), rgba($secondary-bg-color, 0));
+    background: linear-gradient(
+      to top,
+      rgb(var(--#{$prefix}secondary-bg-rgb) / 1),
+      rgb(var(--#{$prefix}secondary-bg-rgb) / 0)
+    );
   }
 
   &.bg-teal:not(.is-active)::after {
-    background: linear-gradient(to top, rgba($teal-bg-color, 1), rgba($teal-bg-color, 0));
+    background: linear-gradient(to top, rgb(var(--#{$prefix}teal-bg-rgb) / 1), rgb(var(--#{$prefix}teal-bg-rgb) / 0));
   }
 
   &.bg-blue:not(.is-active)::after {
-    background: linear-gradient(to top, rgba($blue-bg-color, 1), rgba($blue-bg-color, 0));
+    background: linear-gradient(to top, rgb(var(--#{$prefix}blue-bg-rgb) / 1), rgb(var(--#{$prefix}blue-bg-rgb) / 0));
   }
 
   &.bg-green:not(.is-active)::after {
-    background: linear-gradient(to top, rgba($green-bg-color, 1), rgba($green-bg-color, 0));
+    background: linear-gradient(to top, rgb(var(--#{$prefix}green-bg-rgb) / 1), rgb(var(--#{$prefix}green-bg-rgb) / 0));
   }
 }
 
@@ -198,6 +202,6 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(#fff, 1), rgba(#fff, 0));
+  background: linear-gradient(to top, rgb(var(--#{$prefix}body-bg-rgb) / 1), rgb(var(--#{$prefix}body-bg-rgb) / 0));
   z-index: $z-index-sticky;
 }

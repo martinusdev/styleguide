@@ -2,6 +2,40 @@
 // GLOBALS
 // ---------------------------------------------
 
+:root {
+  --#{$prefix}body-bg: #{$color-white};
+  --#{$prefix}body-bg-rgb: 255 255 255;
+  --#{$prefix}body-color: #{$color-black};
+  --#{$prefix}border-color: #{_color(grey, 200)};
+  --#{$prefix}secondary-bg: #{_color(bg)};
+  --#{$prefix}secondary-bg-rgb: 251 247 245;
+  --#{$prefix}blue-bg: #{_color(bg, 200)};
+  --#{$prefix}blue-bg-rgb: 242 248 251;
+  --#{$prefix}teal-bg: #{_color(teal)};
+  --#{$prefix}teal-bg-rgb: 0 195 153;
+  --#{$prefix}green-bg: #{_color(success, 500)};
+  --#{$prefix}green-bg-rgb: 51 171 78;
+  --#{$prefix}outline-color: #{rgba(_color(borders, 200), 0.9)};
+}
+
+html[data-theme='dark'] {
+  color-scheme: dark;
+
+  --#{$prefix}body-bg: #111315;
+  --#{$prefix}body-bg-rgb: 17 19 21;
+  --#{$prefix}body-color: #f5f2ee;
+  --#{$prefix}border-color: #2f3236;
+  --#{$prefix}secondary-bg: #1b1e22;
+  --#{$prefix}secondary-bg-rgb: 27 30 34;
+  --#{$prefix}blue-bg: #0d2633;
+  --#{$prefix}blue-bg-rgb: 13 38 51;
+  --#{$prefix}teal-bg: #007d65;
+  --#{$prefix}teal-bg-rgb: 0 125 101;
+  --#{$prefix}green-bg: #247a3a;
+  --#{$prefix}green-bg-rgb: 36 122 58;
+  --#{$prefix}outline-color: rgba(130, 170, 230, 0.9);
+}
+
 html,
 body {
   padding: 0;
@@ -12,8 +46,8 @@ body {
 
 body {
   position: relative;
-  background: $default-bg-color;
-  color: $default-text-color;
+  background: var(--#{$prefix}body-bg);
+  color: var(--#{$prefix}body-color);
 
   --fw-normal: normal;
   --fw-semibold: #{$font-weight-semibold};
