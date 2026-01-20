@@ -1394,30 +1394,30 @@ $table-cell: (
 
 $card: (
   default: (
-    background-color: $color-white,
+    background-color: _theme(surface-elevated),
     border-radius: $default-border-radius,
     after: (),
     clickable: (
       hover: (
-        background-color: _color(grey, 50),
+        background-color: _theme(surface-hover),
       ),
       focus: (
-        background-color: _color(grey, 100),
+        background-color: _theme(surface-active),
       ),
     ),
   ),
   well: (
-    background-color: _color(bg, 500),
+    background-color: _theme(surface-secondary),
     after: (
       height: 4px,
-      background-color: _color(bg, 600),
+      background-color: _theme(surface-tertiary),
     ),
     clickable: (
       hover: (
-        background-color: _color(bg, 600),
+        background-color: _theme(surface-hover),
       ),
       focus: (
-        background-color: _color(bg, 650),
+        background-color: _theme(surface-active),
       ),
     ),
   ),
@@ -1426,7 +1426,7 @@ $card: (
     padding-top: _get-space('small'),
     before: (
       height: 4px,
-      background-color: _color(bg, 600),
+      background-color: _theme(surface-tertiary),
     ),
     clickable: (
       hover: (

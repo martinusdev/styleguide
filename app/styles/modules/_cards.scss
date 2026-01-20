@@ -341,39 +341,13 @@
 @include card-classes;
 
 // ----------------------------
-// Dark mode
+// Dark mode overrides for special features
 
 [data-theme='dark'] {
   .card {
-    background-color: _theme(surface-elevated);
-
-    &--well {
-      background-color: _theme(surface-secondary);
-
-      &::after {
-        background-color: _theme(surface-tertiary);
-      }
-
-      &.card--clickable:hover {
-        background-color: _theme(surface-hover);
-      }
-
-      &.card--clickable:focus {
-        background-color: _theme(surface-active);
-      }
-    }
-
     &__label {
       background: _theme(surface-elevated);
       color: _theme(text-secondary);
-    }
-
-    &--clickable:hover {
-      background-color: _theme(surface-hover);
-    }
-
-    &--clickable:focus {
-      background-color: _theme(surface-active);
     }
 
     &--arrowhead {
@@ -412,6 +386,10 @@
       &.bg-secondary::after {
         border-color: _theme(surface-secondary) _theme(surface-secondary) transparent transparent;
       }
+    }
+
+    &--done__icon {
+      background: _theme(surface-elevated);
     }
   }
 }
