@@ -437,6 +437,27 @@ block append content
                 </section>
               </article>
 
+      +content-sub-section('Clickable Cards in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .row
+              each item in ['', 'well', 'material']
+                .col--m-6.col--l-4
+                  a.card.card--clickable(href='javascript:void(0)' class='card--' + item)
+                    if item == 'material'
+                      .card__label Label
+                    .card__content
+                      | Hover to see interactive state
+
+          +demo-code
+            :code
+              <a class="card card--clickable" href="#">
+                <div class="card__content">
+                  Clickable card
+                </div>
+              </a>
+
       +content-sub-section('Card with Header and Footer in Dark Mode')
 
         +demo&attributes({['data-theme']: 'dark'})
@@ -459,6 +480,106 @@ block append content
                 </header>
                 <section class="card__content">...</section>
                 <footer class="card__footer">...</footer>
+              </article>
+
+      +content-sub-section('Colored Cards in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .row
+              .col--m-6
+                article.card.card--success
+                  section.card__content
+                    h3 Success card
+                    p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore.
+
+              .col--m-6
+                article.card.card--info
+                  section.card__content
+                    h3 Info card
+                    p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore.
+
+              .col--m-6
+                article.card.card--notice
+                  section.card__content
+                    h3 Notice card
+                    p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore.
+
+          +demo-code
+            :code
+              <article class="card card--success">
+                <section class="card__content">...</section>
+              </article>
+
+              <article class="card card--info">
+                <section class="card__content">...</section>
+              </article>
+
+              <article class="card card--notice">
+                <section class="card__content">...</section>
+              </article>
+
+      +content-sub-section('Material Cards in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .row
+              each item in ['', 'primary', 'green', 'orange']
+                .col--m-6
+                  .card.card--material(class='card--material-' + item)
+                    .card__label Label
+                    .card__content
+                      p Lorem ipsum Ea cillum deserunt do ut eiusmod reprehenderit minim et reprehenderit ea in dolor veniam dolor incididunt dolore dolor fugiat consequat ea qui exercitation proident.
+
+          +demo-code
+            :code
+              <article class="card card--material">
+                <div class="card__label">...</div>
+                <div class="card__content">...</div>
+              </article>
+
+              <article class="card card--material card--material-primary">
+                <div class="card__label">...</div>
+                <div class="card__content">...</div>
+              </article>
+
+      +content-sub-section('Special Card Variants in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .row(style='background: #333; padding-top: 1em')
+              .col--m-6
+                article.card.card--arrowhead.card--arrowhead-top
+                  .card__content
+                    p Arrowhead top
+
+              .col--m-6
+                article.card.card--well.card--arrowhead.card--arrowhead-left
+                  .card__content
+                    p Arrowhead left
+
+              .col--m-6
+                article.card.card--speech-bubble
+                  .card__content Hey, what can i say?
+
+              .col--m-6
+                article.card.card--done
+                  +faIcon('check-circle').card--done__icon
+                  .card__content We're all done here.
+
+          +demo-code
+            :code
+              <article class="card card--arrowhead card--arrowhead-top">
+                <div class="card__content">...</div>
+              </article>
+
+              <article class="card card--speech-bubble">
+                <div class="card__content">...</div>
+              </article>
+
+              <article class="card card--done">
+                <i class="far fa-check-circle card--done__icon"></i>
+                <div class="card__content">...</div>
               </article>
 
   //- end: section
