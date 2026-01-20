@@ -563,4 +563,63 @@ block append content
               </div>
             </div>
       //- end: demo
+
+  section#dark-mode
+
+    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+      header.l-section__header
+        +h2(style='color: var(--ms-text-primary);') Dark Mode
+
+      +p(style='color: var(--ms-text-primary);') This section demonstrates how buttons appear in dark mode. All button variants automatically adapt to the dark theme using CSS custom properties.
+
+      +content-sub-section('Button Styles in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .btn-layout--vertical.btn-layout--m-horizontal
+              button.btn(type='button') Default
+              button.btn.btn--primary(type='button') Primary
+              button.btn.btn--secondary(type='button') Secondary
+              button.btn.btn--ghost(type='button') Ghost
+              button.btn.btn--clean(type='button') Clean
+              button.btn.btn--link(type='button') Link
+              button.btn.btn--success(type='button') Success
+
+          +demo-code
+            :code
+              <button class="btn" type="button">Default</button>
+              <button class="btn btn--primary" type="button">Primary</button>
+              <button class="btn btn--secondary" type="button">Secondary</button>
+              <button class="btn btn--ghost" type="button">Ghost</button>
+
+      +content-sub-section('Button States in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .btn-layout--vertical.btn-layout--m-horizontal
+              button.btn.btn--primary(type='button') Normal
+              button.btn.btn--primary.is-active(type='button') Active
+              button.btn.btn--primary(type='button', disabled) Disabled
+
+          +demo-code
+            :code
+              <button class="btn btn--primary" type="button">Normal</button>
+              <button class="btn btn--primary is-active" type="button">Active</button>
+              <button class="btn btn--primary" type="button" disabled>Disabled</button>
+
+      +content-sub-section('Button Sizes in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .btn-layout--vertical.btn-layout--m-horizontal
+              button.btn.btn--primary.btn--small(type='button') Small
+              button.btn.btn--primary(type='button') Medium (default)
+              button.btn.btn--primary.btn--large(type='button') Large
+
+          +demo-code
+            :code
+              <button class="btn btn--primary btn--small" type="button">Small</button>
+              <button class="btn btn--primary" type="button">Medium</button>
+              <button class="btn btn--primary btn--large" type="button">Large</button>
+
   //- end: section

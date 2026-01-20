@@ -46,6 +46,26 @@
   --#{$prefix}state-info: #{_color(info, 500)};
   --#{$prefix}state-info-bg: #{_color(info, 100)};
 
+  // === Buttons ===
+  // Most buttons have same colors in light/dark as they provide enough contrast
+  --#{$prefix}button-default-bg: #{_color(grey, 700)};
+  --#{$prefix}button-default-bg-hover: #{_color(grey, 600)};
+  --#{$prefix}button-default-bg-active: #{_color(grey, 900)};
+  --#{$prefix}button-default-text: #{$color-white};
+
+  --#{$prefix}button-primary-bg: #{_color(primary, 500)};
+  --#{$prefix}button-primary-bg-hover: #{_color(primary, 400)};
+  --#{$prefix}button-primary-bg-active: #{_color(primary, 600)};
+  --#{$prefix}button-primary-text: #{$color-white};
+
+  --#{$prefix}button-ghost-border: #{_color(grey, 400)};
+  --#{$prefix}button-ghost-text: #{$color-black};
+
+  --#{$prefix}button-link-bg: #{_color(link, 500)};
+  --#{$prefix}button-link-bg-hover: #{_color(link, 400)};
+  --#{$prefix}button-link-bg-active: #{_color(link, 600)};
+  --#{$prefix}button-link-text: #{$color-white};
+
   // === Shadows ===
   --#{$prefix}shadow-color: 0 0 0;
   --#{$prefix}shadow-opacity-sm: 0.07;
@@ -53,7 +73,8 @@
   --#{$prefix}shadow-opacity-lg: 0.22;
 }
 
-html[data-theme='dark'] {
+html[data-theme='dark'],
+[data-theme='dark'] {
   color-scheme: dark;
 
   // === Surfaces ===
@@ -98,6 +119,12 @@ html[data-theme='dark'] {
   --#{$prefix}state-warning-bg: #4d3619;
   --#{$prefix}state-info: #4db8ff;
   --#{$prefix}state-info-bg: #1a3d5c;
+
+  // === Buttons ===
+  // Most buttons stay the same in dark mode (enough contrast)
+  // Only override what needs to change for dark mode
+  --#{$prefix}button-ghost-border: #{_color(grey, 500)};
+  --#{$prefix}button-ghost-text: #{$color-white};
 
   // === Shadows ===
   --#{$prefix}shadow-opacity-sm: 0.3;

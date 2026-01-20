@@ -694,30 +694,41 @@ $button-radii: (
 $button-styles: (
   default: (
     default: (
-      color: $color-white,
-      background-color: _color(grey, 700),
+      color: _theme(button-default-text),
+      background-color: _theme(button-default-bg),
+      border-color: transparent,
     ),
     focus: (
-      background-color: _color(grey, 600),
+      color: _theme(button-default-text),
+      background-color: _theme(button-default-bg-hover),
+      border-color: transparent,
     ),
     active: (
-      color: $color-white,
-      background-color: _color(grey, 900),
+      color: _theme(button-default-text),
+      background-color: _theme(button-default-bg-active),
+      border-color: transparent,
     ),
     group: (
-      border-color: _color(grey, 900),
+      border-color: _theme(button-default-bg-active),
     ),
   ),
   primary: (
     default: (
       position: relative,
-      color: $color-white,
-      background-color: _color(primary, 500),
+      color: _theme(button-primary-text),
+      background-color: _theme(button-primary-bg),
+      border-color: transparent,
       box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
     ),
+    focus: (
+      color: _theme(button-primary-text),
+      background-color: _theme(button-primary-bg-hover),
+      border-color: transparent,
+    ),
     active: (
-      color: $color-white,
-      background-color: _color(primary, 600),
+      color: _theme(button-primary-text),
+      background-color: _theme(button-primary-bg-active),
+      border-color: transparent,
       box-shadow: none,
     ),
     after: (
@@ -726,22 +737,25 @@ $button-styles: (
       left: 0,
       right: 0,
       width: 100%,
-      background-color: _color(primary, 600),
+      background-color: _theme(button-primary-bg-active),
       height: 4px,
     ),
     group: (
-      border-color: _color(primary, 600),
+      border-color: _theme(button-primary-bg-active),
     ),
   ),
   secondary: (
     default: (
       position: relative,
-      color: $color-white,
+      color: _theme(button-default-text),
       background-color: _color(grey, 800),
+      border-color: transparent,
       box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
     ),
     focus: (
+      color: _theme(button-default-text),
       background-color: _color(grey, 700),
+      border-color: transparent,
     ),
     after: (
       position: absolute,
@@ -753,8 +767,9 @@ $button-styles: (
       height: 4px,
     ),
     active: (
-      color: $color-white,
+      color: _theme(button-default-text),
       background-color: _color(grey, 900),
+      border-color: transparent,
       box-shadow: none,
     ),
     group: (
@@ -763,20 +778,22 @@ $button-styles: (
   ),
   ghost: (
     default: (
-      color: _color(black),
-      border-color: _color(grey, 400),
+      color: _theme(button-ghost-text),
+      border-color: _theme(button-ghost-border),
       background-color: transparent,
     ),
     focus: (
-      background-color: _color(secondary, 400),
-      color: _color(black),
+      color: _theme(button-ghost-text),
+      background-color: _theme(surface-hover),
+      border-color: _theme(button-ghost-border),
     ),
     active: (
-      background-color: _color(secondary, 500),
-      border-color: _color(gray, 200),
+      color: _theme(button-ghost-text),
+      background-color: _theme(surface-active),
+      border-color: _theme(button-ghost-border),
     ),
     group: (
-      border-color: _color(gray, 400),
+      border-color: _theme(button-ghost-border),
     ),
   ),
   ghost-inverse: (
@@ -786,10 +803,12 @@ $button-styles: (
       background-color: transparent,
     ),
     focus: (
-      background-color: _color(grey, 800),
       color: $color-white,
+      background-color: _color(grey, 800),
+      border-color: _color(grey, 600),
     ),
     active: (
+      color: $color-white,
       background-color: _color(grey, 900),
       border-color: _color(grey, 600),
     ),
@@ -799,34 +818,39 @@ $button-styles: (
   ),
   clean: (
     default: (
-      color: _color(grey, 700),
+      color: _theme(text-secondary),
       border-color: transparent,
       background-color: transparent,
       box-shadow: none,
     ),
     focus: (
-      color: _color(primary, 500),
+      color: _theme(interactive-primary),
       border-color: transparent,
       background-color: transparent,
+      box-shadow: none,
     ),
     active: (
-      color: _color(primary, 600),
+      color: _theme(interactive-primary-active),
       border-color: transparent,
       background-color: transparent,
+      box-shadow: none,
     ),
   ),
   tab: (
     default: (
-      color: _color(black),
+      color: _theme(text-primary),
       background-color: transparent,
+      border-color: transparent,
     ),
     focus: (
-      background-color: _color(bg, 500),
-      color: _color(black),
+      color: _theme(text-primary),
+      background-color: _theme(surface-hover),
+      border-color: transparent,
     ),
     active: (
-      background-color: #fff,
-      color: _color(primary),
+      color: _theme(interactive-primary),
+      background-color: _theme(surface-elevated),
+      border-color: transparent,
       border-radius: 3px,
       box-shadow: $shadow-sm,
     ),
@@ -834,13 +858,20 @@ $button-styles: (
   link: (
     default: (
       position: relative,
-      color: $color-white,
-      background-color: _color(link, 500),
+      color: _theme(button-link-text),
+      background-color: _theme(button-link-bg),
+      border-color: transparent,
       box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
     ),
+    focus: (
+      color: _theme(button-link-text),
+      background-color: _theme(button-link-bg-hover),
+      border-color: transparent,
+    ),
     active: (
-      color: $color-white,
-      background-color: _color(link, 600),
+      color: _theme(button-link-text),
+      background-color: _theme(button-link-bg-active),
+      border-color: transparent,
       box-shadow: none,
     ),
     after: (
@@ -849,11 +880,11 @@ $button-styles: (
       left: 0,
       right: 0,
       width: 100%,
-      background-color: _color(link, 600),
+      background-color: _theme(button-link-bg-active),
       height: 4px,
     ),
     group: (
-      border-color: _color(link, 600),
+      border-color: _theme(button-link-bg-active),
     ),
   ),
   facebook: (
@@ -904,11 +935,18 @@ $button-styles: (
       position: relative,
       color: $color-white,
       background-color: _color(success, 500),
+      border-color: transparent,
       box-shadow: #{$shadow-direct-2, $shadow-ambient-1},
+    ),
+    focus: (
+      color: $color-white,
+      background-color: _color(success, 400),
+      border-color: transparent,
     ),
     active: (
       color: $color-white,
       background-color: _color(success, 600),
+      border-color: transparent,
       box-shadow: none,
     ),
     after: (
@@ -1569,16 +1607,16 @@ $tabs-card: (
 $badge: (
   default: (
     padding: 0 _get-space('tiny'),
-    color: _color(grey, 700),
-    background-color: $color-white,
-    border: 1px solid $default-border-color,
+    color: _theme(text-secondary),
+    background-color: _theme(surface-primary),
+    border: 1px solid _theme(border-default),
     border-radius: $default-border-radius,
     font-size: _get-rem($font-size-medium),
     font-weight: var(--fw-semibold),
   ),
   primary: (
-    color: _color(primary),
-    border-color: _color(primary),
+    color: _theme(interactive-primary),
+    border-color: _theme(interactive-primary),
   ),
   green: (
     color: _color(green),
@@ -1609,8 +1647,8 @@ $badge: (
     border-color: _color(brown),
   ),
   error: (
-    color: _color(error),
-    border-color: _color(error),
+    color: _theme(state-error),
+    border-color: _theme(state-error),
   ),
   transparent: (
     color: inherit,
@@ -1631,8 +1669,8 @@ $badge-sizes: (
 
 $pills: (
   default: (
-    color: $color-white,
-    background-color: _color(grey),
+    color: _theme(text-inverse),
+    background-color: _theme(interactive-secondary),
     border: 1px solid transparent,
     border-radius: $default-border-radius-circle,
     font-size: _get-rem($font-size-small),
@@ -1640,45 +1678,45 @@ $pills: (
     min-width: _get-rem(24px),
   ),
   blue: (
-    color: $color-white,
-    background-color: _color(link, 500),
+    color: _theme(text-inverse),
+    background-color: _theme(text-link),
   ),
   blue-alt: (
-    color: $color-white,
+    color: _theme(text-inverse),
     background-color: _color(blue, 500),
   ),
   blue-light: (
-    color: _color(link, 500),
-    background-color: _color(info, 100),
+    color: _theme(text-link),
+    background-color: _theme(state-info-bg),
   ),
   orange: (
-    color: $color-white,
+    color: _theme(text-inverse),
     background-color: _color(orange, 500)
   ),
   orange-light: (
     color: _color(orange, 500),
-    background-color: _color(warning, 100)
+    background-color: _theme(state-warning-bg)
   ),
   red: (
-    color: $color-white,
-    background-color: _color(primary, 500)
+    color: _theme(text-inverse),
+    background-color: _theme(interactive-primary)
   ),
   red-light: (
-    color: _color(primary, 500),
-    background-color: _color(error, 100)
+    color: _theme(interactive-primary),
+    background-color: _theme(state-error-bg)
   ),
   green: (
-    color: $color-white,
-    background-color: _color(success, 500)
+    color: _theme(text-inverse),
+    background-color: _theme(state-success)
   ),
   green-light: (
-    color: _color(success, 500),
-    background-color: _color(success, 100)
+    color: _theme(state-success),
+    background-color: _theme(state-success-bg)
   ),
   white: (
-    color: _color(grey),
-    background-color: $color-white,
-    border-color: _color(grey, 200),
+    color: _theme(text-secondary),
+    background-color: _theme(surface-primary),
+    border-color: _theme(border-default),
   ),
 );
 

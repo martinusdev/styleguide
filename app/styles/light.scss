@@ -816,6 +816,40 @@ $breakpoints: (
         transform: translateY(0);
       }
     }
+
+    // Dark mode support
+    &[data-theme='dark'] {
+      .l-demo_headbar {
+        &_title {
+          color: _theme(text-primary);
+          border-color: _theme(interactive-primary);
+        }
+        &_control {
+          color: _theme(text-primary);
+          &:hover {
+            color: _theme(interactive-primary-hover);
+          }
+        }
+      }
+
+      .l-demo_example {
+        background-color: _theme(surface-primary);
+        border-color: _theme(border-default);
+        color: _theme(text-primary);
+      }
+
+      .l-demo_code {
+        background-color: _theme(surface-secondary);
+        border-color: _theme(border-default);
+        .l-demo_headbar {
+          background-image: linear-gradient(to right, _theme(surface-secondary) 97%, transparent 98%);
+        }
+        .prettyprint {
+          background-color: _theme(surface-secondary);
+          color: _theme(text-primary);
+        }
+      }
+    }
   }
 
   .l-debug-bg {
@@ -855,6 +889,17 @@ $breakpoints: (
       text-transform: uppercase;
       letter-spacing: 1px;
     }
+
+  // Dark mode typography overrides
+  [data-theme='dark'] {
+    .l-h2 {
+      color: _theme(text-primary);
+    }
+
+    .l-h3 {
+      color: _theme(text-primary);
+    }
+  }
 
     .l-h4 {
       margin: 1em 0;

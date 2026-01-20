@@ -246,6 +246,40 @@ block append content
             </article>
 
             <button class="btn" type="button" href="#tab3-2" data-toggle="#tab3-2">Toggle tab 2</button>
-//- end: section
+
+  section#dark-mode
+
+    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+      header.l-section__header
+        +h2(style='color: var(--ms-text-primary);') Dark Mode
+
+      +p(style='color: var(--ms-text-primary);') This section demonstrates how tabs filter appears in dark mode. The tab group automatically adapts to the dark theme using CSS custom properties.
+
+      +content-sub-section('Tabs Filter in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .btn-group.btn-group--tab.btn-group--horizontal(data-tabs-container)
+              a(href='#tab-dark-1', role="tab", data-tabs-item).btn.btn--tab.is-active Knihy
+              a(href='#tab-dark-2', role="tab", data-tabs-item).btn.btn--tab Filmy
+              a(href='#tab-dark-3', role="tab", data-tabs-item).btn.btn--tab Hry
+              a(href='#tab-dark-4', role="tab", data-tabs-item).btn.btn--tab Káva a čaj
+
+            .btn-group.btn-group--tab.btn-group--horizontal(data-tabs-container)
+              a(href='#tab-dark-1', role="tab", data-tabs-item).btn.btn--tab.is-active Example 1
+              a(href='#tab-dark-2', role="tab", data-tabs-item).btn.btn--tab Example 2
+
+            article.tabs
+              section#tab-dark-1.tab
+                p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+              section#tab-dark-2.tab
+                p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+
+          +demo-code
+            :code
+              <div class="btn-group btn-group--tab btn-group--horizontal" data-tabs-container>
+                <a class="btn btn--tab is-active" href="#tab-1" role="tab" data-tabs-item>Knihy</a>
+                <a class="btn btn--tab" href="#tab-2" role="tab" data-tabs-item>Filmy</a>
+              </div>
 
 //- end: section
