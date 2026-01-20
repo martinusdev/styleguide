@@ -8,8 +8,8 @@
 
 .footer {
   position: relative;
-  background-color: $color-black;
-  color: $color-white;
+  background-color: var(--#{$prefix}footer-bg);
+  color: var(--#{$prefix}footer-text);
 
   padding-top: _get-space('large');
   margin-top: 60px;
@@ -37,6 +37,22 @@
   .form-label label,
   h5,
   .h5 { color: inherit; }
+
+  a {
+    color: var(--#{$prefix}footer-link) !important;
+
+    &:hover {
+      color: var(--#{$prefix}footer-link-hover) !important;
+    }
+
+    &.text-color-white {
+      color: var(--#{$prefix}footer-link) !important;
+
+      &:hover {
+        color: var(--#{$prefix}footer-link-hover) !important;
+      }
+    }
+  }
 }
 
 .theme-toggle {
@@ -46,7 +62,7 @@
   padding: 0;
   border: 0;
   background: transparent;
-  color: $color-white;
+  color: var(--#{$prefix}footer-text);
   cursor: pointer;
   transition: opacity 0.2s ease;
 

@@ -66,6 +66,19 @@
   --#{$prefix}button-link-bg-active: #{_color(link, 600)};
   --#{$prefix}button-link-text: #{$color-white};
 
+  // === Carousel ===
+  --#{$prefix}fade-color: #{_color('bg')};
+
+  // === Button Groups ===
+  --#{$prefix}btn-group-tab-bg: #{_color(bg, 600)};
+
+  // === Footer ===
+  --#{$prefix}footer-bg: #{$color-black};
+  --#{$prefix}footer-text: #{$color-white};
+  --#{$prefix}footer-text-secondary: #{_color(grey, 500)};
+  --#{$prefix}footer-link: #{$color-white};
+  --#{$prefix}footer-link-hover: #{_color(link, 400)};
+
   // === Shadows ===
   --#{$prefix}shadow-color: 0 0 0;
   --#{$prefix}shadow-opacity-sm: 0.07;
@@ -78,10 +91,10 @@ html[data-theme='dark'],
   color-scheme: dark;
 
   // === Surfaces ===
-  --#{$prefix}surface-primary: #1b1e22;
-  --#{$prefix}surface-secondary: #1c232b;
-  --#{$prefix}surface-tertiary: #11161b;
-  --#{$prefix}surface-elevated: #252a31;
+  --#{$prefix}surface-primary: #1A1918;
+  --#{$prefix}surface-secondary: #252321;
+  --#{$prefix}surface-tertiary: #2F2D2A;
+  --#{$prefix}surface-elevated: #23211F;
   --#{$prefix}surface-hover: rgba(255, 255, 255, 0.05);
   --#{$prefix}surface-active: rgba(255, 255, 255, 0.1);
 
@@ -95,7 +108,7 @@ html[data-theme='dark'],
   --#{$prefix}text-link-hover: #a1ceff;
 
   // === Borders ===
-  --#{$prefix}border-default: #2f3236;
+  --#{$prefix}border-default: #3A3835;
   --#{$prefix}border-strong: #3f4c58;
   --#{$prefix}border-subtle: rgba(255, 255, 255, 0.05);
 
@@ -125,6 +138,12 @@ html[data-theme='dark'],
   // Only override what needs to change for dark mode
   --#{$prefix}button-ghost-border: #{_color(grey, 500)};
   --#{$prefix}button-ghost-text: #{$color-white};
+
+  // === Button Groups ===
+  --#{$prefix}btn-group-tab-bg: #474440;
+
+  // === Carousel ===
+  --#{$prefix}fade-color: var(--#{$prefix}surface-primary);
 
   // === Shadows ===
   --#{$prefix}shadow-opacity-sm: 0.3;
