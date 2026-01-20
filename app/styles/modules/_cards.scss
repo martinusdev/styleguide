@@ -340,6 +340,82 @@
 
 @include card-classes;
 
+// ----------------------------
+// Dark mode
+
+[data-theme='dark'] {
+  .card {
+    background-color: _theme(surface-elevated);
+
+    &--well {
+      background-color: _theme(surface-secondary);
+
+      &::after {
+        background-color: _theme(surface-tertiary);
+      }
+
+      &.card--clickable:hover {
+        background-color: _theme(surface-hover);
+      }
+
+      &.card--clickable:focus {
+        background-color: _theme(surface-active);
+      }
+    }
+
+    &__label {
+      background: _theme(surface-elevated);
+      color: _theme(text-secondary);
+    }
+
+    &--clickable:hover {
+      background-color: _theme(surface-hover);
+    }
+
+    &--clickable:focus {
+      background-color: _theme(surface-active);
+    }
+
+    &--arrowhead {
+      &.card--well::before {
+        border-right-color: _theme(surface-secondary);
+      }
+
+      &-left::before {
+        border-right-color: _theme(surface-elevated);
+      }
+
+      &-right::before {
+        border-left-color: _theme(surface-elevated);
+      }
+
+      &-top::before {
+        border-bottom-color: _theme(surface-elevated);
+      }
+
+      &-bottom::before {
+        border-top-color: _theme(surface-elevated);
+      }
+    }
+
+    &--speech-bubble::after {
+      border-color: _theme(surface-elevated) transparent transparent;
+
+      &.bg-secondary::after {
+        border-color: _theme(surface-secondary) transparent transparent;
+      }
+    }
+
+    &--speech-bubble-end::after {
+      border-color: _theme(surface-elevated) _theme(surface-elevated) transparent transparent;
+
+      &.bg-secondary::after {
+        border-color: _theme(surface-secondary) _theme(surface-secondary) transparent transparent;
+      }
+    }
+  }
+}
+
 // ---------------------------------------------
 // Zberatelske zalozky
 // ---------------------------------------------

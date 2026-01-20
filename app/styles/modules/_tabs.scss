@@ -131,3 +131,31 @@
     display: block;
   }
 }
+
+// ----------------------------
+// Dark mode
+
+[data-theme='dark'] {
+  .tab-nav__content--card {
+    border-color: _theme(border-strong);
+
+    &:focus,
+    &:hover {
+      border-color: _theme(border-strong);
+    }
+  }
+
+  .tab-nav__item.is-active > .tab-nav__content--card {
+    border-color: _theme(surface-secondary) !important;
+    background-color: _theme(surface-secondary) !important;
+
+    &:before {
+      background: _theme(surface-tertiary) !important;
+    }
+
+    &:after {
+      background-color: _theme(surface-secondary) !important;
+      border-color: _theme(surface-secondary) !important;
+    }
+  }
+}

@@ -403,4 +403,62 @@ block append content
           </article>
     //- end: demo
 
+  section#dark-mode
+
+    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+      header.l-section__header
+        +h2(style='color: var(--ms-text-primary);') Dark Mode
+
+      +p(style='color: var(--ms-text-primary);') This section demonstrates how cards appear in dark mode. All card variants automatically adapt to the dark theme using CSS custom properties.
+
+      +content-sub-section('Basic Cards in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .row
+              .col--m-6
+                article.card
+                  section.card__content
+                    h3 Basic card
+                    p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore qui voluptate et non ex laboris.
+
+              .col--m-6
+                article.card.card--well
+                  section.card__content
+                    h3 Card well
+                    p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore qui voluptate et non ex laboris.
+
+          +demo-code
+            :code
+              <article class="card">
+                <section class="card__content">
+                  <h3>Basic card</h3>
+                  <p>...</p>
+                </section>
+              </article>
+
+      +content-sub-section('Card with Header and Footer in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            article.card
+              header.card__header
+                h3.card-header__title Card Header
+              section.card__content
+                p Lorem ipsum Ullamco ut dolore laborum deserunt Excepteur veniam et Duis nostrud cupidatat dolore qui voluptate et non ex laboris ullamco consequat culpa consequat.
+              footer.card__footer
+                .btn-layout--horizontal.justify-content-end
+                  button.btn.btn--ghost(type='button') Cancel
+                  button.btn.btn--primary(type='button') Save
+
+          +demo-code
+            :code
+              <article class="card">
+                <header class="card__header">
+                  <h3 class="card-header__title">Card Header</h3>
+                </header>
+                <section class="card__content">...</section>
+                <footer class="card__footer">...</footer>
+              </article>
+
   //- end: section
