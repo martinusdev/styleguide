@@ -48,3 +48,36 @@ block append content
     //- end: demo
 
   //- end: section
+
+  section#dark-mode
+    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+      header.l-section__header
+        +h2(style='color: var(--ms-text-primary);') Dark Mode
+
+      +p(style='color: var(--ms-text-primary);') This section demonstrates how number spinners appear in dark mode with adapted styling.
+
+      +content-sub-section('Number Spinner')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .form-control.form-control--input
+              .input-addons
+                .input-addons__item.p-none
+                  button(type="button" data-number-spinner="decrease" data-controls="#number-input-dark").btn.btn--clean.btn--equal
+                    +faIcon('minus')
+                input(type="number" id="number-input-dark" min="0" max="100" step="3" value="1").input.input--short.px-none.text-center
+                .input-addons__item.p-none
+                  button(type="button" data-number-spinner="increase" data-controls="#number-input-dark").btn.btn--clean.btn--equal
+                    +faIcon('plus')
+
+          +demo-code
+            :code
+              <button type="button" data-number-spinner="decrease" data-controls="#number-input">...</button>
+              <input type="number" id="number-input" min="0" max="100" step="3">
+              <button type="button" data-number-spinner="increase" data-controls="#number-input">...</button>
+
+        //- end: demo
+
+      //- end: subsection
+
+  //- end: section

@@ -8,6 +8,7 @@
   --#{$prefix}surface-secondary: #{_color(bg)};
   --#{$prefix}surface-tertiary: #{_color(grey, 50)};
   --#{$prefix}surface-elevated: #{$color-white};
+  --#{$prefix}surface-secondary-dark: #F7EFEB;
   --#{$prefix}surface-hover: rgba(0, 0, 0, 0.02);
   --#{$prefix}surface-active: rgba(0, 0, 0, 0.05);
 
@@ -68,6 +69,12 @@
   --#{$prefix}dropdown-item-bg-hover: #{_color(bg, 500)};
   --#{$prefix}dropdown-item-text-hover: #{_color(primary)};
   --#{$prefix}dropdown-arrowhead-border-color: #fff;
+
+  // === Forms ===
+  --#{$prefix}form-bg: #{_color(grey, 50)};
+  --#{$prefix}form-text: #{$color-black};
+  --#{$prefix}form-border: #{_color(grey, 200)};
+  --#{$prefix}form-placeholder: #{_color(grey, 400)};
 
   // === Buttons ===
   // Most buttons have same colors in light/dark as they provide enough contrast
@@ -138,6 +145,7 @@ html[data-theme='dark'],
   --#{$prefix}surface-secondary: #252321;
   --#{$prefix}surface-tertiary: #2F2D2A;
   --#{$prefix}surface-elevated: #23211F;
+  --#{$prefix}surface-secondary-dark: #3A3835;
   --#{$prefix}surface-hover: rgba(255, 255, 255, 0.05);
   --#{$prefix}surface-active: rgba(255, 255, 255, 0.1);
 
@@ -226,6 +234,12 @@ html[data-theme='dark'],
   --#{$prefix}dropdown-item-bg-hover: #3f4c58;
   --#{$prefix}dropdown-item-text-hover: #7ab8ff;
   --#{$prefix}dropdown-arrowhead-border-color: #252321;
+
+  // === Forms ===
+  --#{$prefix}form-bg: var(--#{$prefix}surface-tertiary);
+  --#{$prefix}form-text: var(--#{$prefix}text-primary);
+  --#{$prefix}form-border: var(--#{$prefix}border-default);
+  --#{$prefix}form-placeholder: var(--#{$prefix}text-tertiary);
 
   // === Carousel ===
   --#{$prefix}fade-color: var(--#{$prefix}surface-primary);

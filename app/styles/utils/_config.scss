@@ -504,7 +504,7 @@ $utilities-bg-colors: map.merge($color-presets,
   (
     default: $default-bg-color,
     secondary: $secondary-bg-color,
-    secondary-dark: #F7EFEB,
+    secondary-dark: var(--#{$prefix}surface-secondary-dark),
     teal: $teal-bg-color,
     green: $green-bg-color,
     blue: $blue-bg-color,
@@ -1018,12 +1018,12 @@ $form-error-bgc: _color(error, 100);
 $input: (
   default: (
     default: (
-      background-color: $form-bgc,
+      background-color: var(--#{$prefix}form-bg),
       border-width: $form-b-w,
       border-style: $form-b-s,
-      border-color: $form-b-c,
+      border-color: var(--#{$prefix}form-border),
       border-radius: $form-b-r,
-      color: $form-c,
+      color: var(--#{$prefix}form-text),
       box-shadow: $form-bs,
       transition: $form-t,
     ),
@@ -1085,15 +1085,15 @@ $input: (
 $input-placeholder: (
   default: (
     default: (
-      color: _color(grey),
+      color: var(--#{$prefix}form-placeholder),
     )
   ),
   dark: (
     default: (
-      color: _color(grey, 200),
+      color: var(--#{$prefix}form-placeholder),
     ),
     focus: (
-      color: _color(grey, 700),
+      color: var(--#{$prefix}form-text),
     )
   )
 );
@@ -1143,12 +1143,12 @@ $select-button-offset: 8px !default;
 $select: (
   default: (
     default: (
-      background-color: $form-bgc,
+      background-color: var(--#{$prefix}form-bg),
       border-width: $form-b-w,
       border-style: $form-b-s,
-      border-color: $form-b-c,
+      border-color: var(--#{$prefix}form-border),
       border-radius: $form-b-r,
-      color: $form-c,
+      color: var(--#{$prefix}form-text),
       box-shadow: $form-bs,
       after: (
         display: none,
@@ -1244,16 +1244,16 @@ $select-search: (
 
 $input-addon: (
   default: (
-    background: $form-bgc,
-    color: _color(grey, 500),
+    background: var(--#{$prefix}form-bg),
+    color: var(--#{$prefix}form-placeholder),
     border-width: 1px,
     border-style: solid,
-    border-color: _color(grey, 300),
+    border-color: var(--#{$prefix}form-border),
     border-radius: $default-border-radius,
   ),
   dark: (
-    background-color: _color(grey, 900),
-    border-color: _color(grey, 900),
+    background-color: var(--#{$prefix}form-bg),
+    border-color: var(--#{$prefix}form-border),
   )
 );
 

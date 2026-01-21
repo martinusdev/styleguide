@@ -17,9 +17,9 @@
 
   &--toolbar {
     padding-top: _get-space('small');
-    background-color: $color-white;
+    background-color: var(--#{$prefix}surface-primary);
 
-    border-bottom: 1px solid $default-border-color;
+    border-bottom: 1px solid var(--#{$prefix}border-default);
 
     z-index: $z-index-sticky;
   }
@@ -229,6 +229,13 @@ html[data-theme='dark'],
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(#fff, 1), rgba(#fff, 0));
+  background: linear-gradient(to top, var(--#{$prefix}surface-primary), rgba(255, 255, 255, 0));
   z-index: $z-index-sticky;
+}
+
+html[data-theme='dark'],
+[data-theme='dark'] {
+  .section-sticky-bottom {
+    background: linear-gradient(to top, var(--#{$prefix}surface-primary), rgba(26, 25, 24, 0));
+  }
 }

@@ -648,3 +648,84 @@ block append content
             </select>
 
   //- end: section
+
+  section#dark-mode
+    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+      header.l-section__header
+        +h2(style='color: var(--ms-text-primary);') Dark Mode
+
+      +p(style='color: var(--ms-text-primary);') This section demonstrates how form components appear in dark mode. All form components automatically adapt to the dark theme using CSS custom properties.
+
+      +content-sub-section('Form Inputs')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .row.mb-medium
+              .col--l-6
+                .form-control.form-control--input
+                  input.input(type='text', placeholder='Input')
+                .form-control.form-control--input
+                  input.input(type='text', placeholder='Active', value='Active' class='is-active')
+              .col--l-6
+                .form-control.form-control--input
+                  input.input(type='text', placeholder='Disabled', disabled, value='Disabled')
+                .form-control.form-control--input
+                  input.input.is-error(type='text', placeholder='Error', value='Error')
+
+            .row.mb-medium
+              .col--l-6
+                .form-control.form-control--textarea
+                  textarea.input(rows=3, placeholder='Textarea')
+              .col--l-6
+                .form-control.form-control--select
+                  select.js-select
+                    option(selected, disabled, placeholder) Select option
+                    each option in [1,2,3,4,5]
+                      option Option #{option}
+
+            .row.mb-medium
+              .col--l-6
+                h5 Checkboxes
+                .form-check
+                  input.form-check-input(type='checkbox', id='dark-checkbox-01', checked)
+                  label.form-check-label(for='dark-checkbox-01') Checked checkbox
+                .form-check
+                  input.form-check-input(type='checkbox', id='dark-checkbox-02')
+                  label.form-check-label(for='dark-checkbox-02') Unchecked checkbox
+              .col--l-6
+                h5 Radios
+                .form-check
+                  input.form-check-input(type='radio', id='dark-radio-01', name='dark-radio', checked)
+                  label.form-check-label(for='dark-radio-01') Selected radio
+                .form-check
+                  input.form-check-input(type='radio', id='dark-radio-02', name='dark-radio')
+                  label.form-check-label(for='dark-radio-02') Unselected radio
+
+          +demo-code
+            :code
+              <!-- inputs -->
+              <input class="input" type="text" placeholder="Input">
+              <textarea class="input" placeholder="Textarea"></textarea>
+
+              <!-- select -->
+              <select class="js-select">
+                <option>Option 1</option>
+              </select>
+
+              <!-- checkboxes -->
+              <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="...">
+                <label for="..." class="form-check-label">Checkbox</label>
+              </div>
+
+              <!-- radios -->
+              <div class="form-check">
+                <input type="radio" class="form-check-input" id="..." name="...">
+                <label for="..." class="form-check-label">Radio</label>
+              </div>
+
+        //- end: demo
+
+      //- end: subsection
+
+  //- end: section
