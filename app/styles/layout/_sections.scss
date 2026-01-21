@@ -145,19 +145,16 @@
   }
 
   .text-color-grey {
-    color: var(--#{$prefix}text-secondary) !important;
+    color: var(--#{$prefix}text-color-grey) !important;
   }
 
   &--light {
     // Custom colored section with light background - always dark text
     color: _color(black);
+    --#{$prefix}text-color-grey: #{_color(grey, 700)};
 
     .link {
       color: _color(black) !important;
-    }
-
-    .text-color-grey {
-      color: _color(grey, 700) !important;
     }
   }
 
@@ -165,13 +162,10 @@
     // Custom colored section with dark background - always light text
     color: $color-white;
     --ms-outline-color: #{rgba(_color($color-white), 0.8)};
+    --#{$prefix}text-color-grey: rgba(255, 255, 255, 0.5);
 
     .link {
       color: $color-white !important;
-    }
-
-    .text-color-grey {
-      color: rgba($color-white, 0.7) !important;
     }
   }
 

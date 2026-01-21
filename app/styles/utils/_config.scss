@@ -143,7 +143,7 @@ $default-color-weights: (
 $color-presets: (
   white: var(--#{$prefix}surface-primary),
   black: var(--#{$prefix}text-primary),
-  grey: _color(grey, 700),
+  grey: var(--#{$prefix}text-color-grey),
   primary: _color(primary),
   primary-light: _color(primary, 400),
   primary-dark: _color(primary, 600),
@@ -297,13 +297,13 @@ $typography-overrides: (
       font-size: _get-rem(14px),
       line-height: math.div(24, 18),
       margin-bottom: _get-space(),
-      color: _color(grey, 700)
+      color: var(--#{$prefix}heading-secondary)
     ),
     'h5, .h5' : (
       font-size: _get-rem(12px),
       line-height: math.div(20, 12),
       margin-bottom: _get-space('small'),
-      color: _color(grey, 700),
+      color: var(--#{$prefix}heading-secondary),
       text-transform: uppercase,
       letter-spacing: 1px,
     ),
@@ -404,10 +404,10 @@ $links: (
   ),
   product: (
     default: (
-      color: _color('primary', 600),
+      color: var(--#{$prefix}link-product),
     ),
     focus: (
-      color: _color('primary', 400),
+      color: var(--#{$prefix}link-product-hover),
       text-decoration: underline,
     )
   )
@@ -473,7 +473,7 @@ $text-color-theme-400: _color(primary, 400);
 $text-color-theme-100: _color(primary, 100);
 
 $text-color-black: $color-black;
-$text-color-grey: _color(grey, 700);
+$text-color-grey: var(--#{$prefix}text-color-grey);
 $text-color-grey-light: _color(grey, 200);
 $text-color-grey-dark: _color(grey, 900);
 $text-color-semiblack: $color-semiblack;
@@ -907,16 +907,25 @@ $button-styles: (
   ),
   carousel: (
     default: (
-      color: $color-black,
+      color: var(--#{$prefix}button-carousel-text),
       border-color: transparent,
-      background-color: rgba(255, 255, 255, 0.8),
+      background-color: var(--#{$prefix}button-carousel-bg),
+      text-shadow: var(--#{$prefix}button-carousel-text-shadow),
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
       backdrop-filter: blur(5px),
     ),
     focus: (
+      color: var(--#{$prefix}button-carousel-text),
+      background-color: var(--#{$prefix}button-carousel-bg),
+      border-color: transparent,
+      text-shadow: var(--#{$prefix}button-carousel-text-shadow),
       box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2),
     ),
     active: (
+      color: var(--#{$prefix}button-carousel-text),
+      background-color: var(--#{$prefix}button-carousel-bg),
+      border-color: transparent,
+      text-shadow: var(--#{$prefix}button-carousel-text-shadow),
       box-shadow: none,
     ),
     disabled: (
@@ -1479,25 +1488,23 @@ $list-variants: (default, bordered, clean, padded, cart);
 
 $list: (
   default: (
-    background: $color-white,
     border: none,
   ),
   bordered: (
-    border: 1px solid _color(grey, 200),
+    border: 1px solid var(--#{$prefix}list-border),
   ),
   clean: (
     border: none,
   ),
   cart: (
     border: none,
-    background: none,
   )
 );
 
 $list-item: (
   default: (
     padding: _get-space('small') 0,
-    border-bottom: 1px solid _color(grey, 200),
+    border-bottom: 1px solid var(--#{$prefix}list-border),
   ),
   clean: (
     border-bottom: 1px solid transparent,
@@ -1524,12 +1531,12 @@ $list-item-clickable: (
     background-color: $secondary-bg-color,
   ),
   selected: (
-    background-color: _color(grey, 100),
-    border-color: _color(grey, 300)
+    background-color: var(--#{$prefix}list-item-clickable-selected-bg),
+    border-color: var(--#{$prefix}list-item-clickable-selected-border)
   ),
   selected-focus: (
-    background-color: _color(grey, 200),
-    border-color: _color(grey, 300),
+    background-color: var(--#{$prefix}list-item-clickable-selected-bg),
+    border-color: var(--#{$prefix}list-item-clickable-selected-border),
   ),
   disabled: (
     opacity: 0.4
@@ -1539,10 +1546,10 @@ $list-item-clickable: (
 $list-counter: (
   size: 25px,
   style: (
-    background-color: $color-white,
+    background-color: var(--#{$prefix}list-counter-bg),
     border-radius: 999em,
     box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.1),
-    color: _color(black),
+    color: var(--#{$prefix}list-counter-text),
     text-align: center,
     font-weight: var(--fw-semibold),
   )
