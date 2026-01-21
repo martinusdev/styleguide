@@ -352,54 +352,54 @@ $links: (
   default: (
     default: (
       text-decoration: none,
-      color: _color(link),
+      color: var(--#{$prefix}link-default),
       font-weight: var(--fw-semibold),
       transition: #{color $ease-100, border $ease-100},
     ),
     focus: (
-      color: _color(link, 400),
-      border-bottom-color: _color(link, 400),
+      color: var(--#{$prefix}link-default-hover),
+      border-bottom-color: var(--#{$prefix}link-default-hover),
       text-decoration: underline,
     )
   ),
   grey: (
     default: (
-      color: _color(grey, 700),
+      color: var(--#{$prefix}link-grey),
       font-weight: var(--fw-normal),
     ),
     focus: (
-      color: _color(grey, 700),
+      color: var(--#{$prefix}link-grey),
       text-decoration: underline,
     )
   ),
   black: (
     default: (
-      color: $color-black,
+      color: var(--#{$prefix}link-black),
       font-weight: var(--fw-normal),
     ),
     focus: (
-      color: $color-black,
+      color: var(--#{$prefix}link-black),
       text-decoration: underline,
     )
   ),
   white: (
     default: (
-      color: _color(grey, 100),
+      color: var(--#{$prefix}link-white),
       font-weight: var(--fw-normal),
     ),
     focus: (
       text-decoration: underline,
-      color: $color-white,
+      color: var(--#{$prefix}link-white-hover),
     )
   ),
   blue: (
     default: (
-      color: _color(blue),
+      color: var(--#{$prefix}link-blue),
       font-weight: var(--fw-normal),
     ),
     focus: (
       text-decoration: underline,
-      color: _color(blue),
+      color: var(--#{$prefix}link-blue),
     )
   ),
   product: (
@@ -421,7 +421,7 @@ $hr: (
 $em: (
   font-style: normal,
   font-weight: var(--fw-semibold),
-  color: $color-black,
+  color: var(--#{$prefix}em-color),
   text-decoration: underline,
   text-decoration-thickness: 1px,
   text-decoration-style: dotted,
@@ -475,7 +475,7 @@ $text-color-theme-100: _color(primary, 100);
 $text-color-black: $color-black;
 $text-color-grey: var(--#{$prefix}text-color-grey);
 $text-color-grey-light: _color(grey, 200);
-$text-color-grey-dark: _color(grey, 900);
+$text-color-grey-dark: var(--#{$prefix}text-color-grey-dark);
 $text-color-semiblack: $color-semiblack;
 
 $text-color-white: $color-white;
@@ -1325,7 +1325,7 @@ $dropdown-menu-max-h: 600px;
 
 $dropdown-menu: (
   default: (
-    background-color: $color-white,
+    background-color: var(--#{$prefix}dropdown-bg),
     border-width: 1px,
     border-style: solid,
     border-color: transparent,
@@ -1350,22 +1350,22 @@ $dropdown-menu-item: (
   default: (
     font-size: _get-rem($font-size-medium),
     padding: _get-rem(10px),
-    color: $color-black,
+    color: var(--#{$prefix}dropdown-text),
     transition: #{color $ease-out-200},
   ),
   small: (
     font-size: _get-rem($font-size-medium),
     padding: _get-rem(5px),
-    color: $color-black,
+    color: var(--#{$prefix}dropdown-text),
     transition: #{color $ease-out-200},
   ),
   focus: (
-    background-color: _color(bg, 500),
-    color: _color(primary),
+    background-color: var(--#{$prefix}dropdown-item-bg-hover),
+    color: var(--#{$prefix}dropdown-item-text-hover),
   ),
   highlighted: (
-    background-color: _color(bg, 500),
-    color: _color('primary'),
+    background-color: var(--#{$prefix}dropdown-item-bg-hover),
+    color: var(--#{$prefix}dropdown-item-text-hover),
   )
 );
 
@@ -1790,7 +1790,7 @@ $carousel: (
 
 $section: (
   secondary: (
-    background-color: _color('bg'),
+    background-color: var(--#{$prefix}surface-secondary),
   ),
   white: (
     background-color: var(--#{$prefix}surface-primary),

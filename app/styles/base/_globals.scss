@@ -20,10 +20,20 @@
   --#{$prefix}text-link: #{_color(link)};
   --#{$prefix}text-link-hover: #{_color(link, 400)};
 
+  // === Links ===
+  --#{$prefix}link-default: #{_color(link)};
+  --#{$prefix}link-default-hover: #{_color(link, 400)};
+  --#{$prefix}link-grey: #{_color(grey, 700)};
+  --#{$prefix}link-black: #{$color-black};
+  --#{$prefix}link-white: #{_color(grey, 100)};
+  --#{$prefix}link-white-hover: #{$color-white};
+  --#{$prefix}link-blue: #{_color(blue)};
+
   // === Borders ===
   --#{$prefix}border-default: #{_color(grey, 200)};
   --#{$prefix}border-strong: #{_color(grey, 400)};
   --#{$prefix}border-subtle: rgba(0, 0, 0, 0.05);
+  --#{$prefix}border-grey: #{_color(grey, 200)};
 
   // === Interactive (Primary) ===
   --#{$prefix}interactive-primary: #{_color(primary, 500)};
@@ -48,6 +58,16 @@
 
   // === Headings ===
   --#{$prefix}heading-secondary: #{_color(grey, 700)};
+
+  // === Emphasis ===
+  --#{$prefix}em-color: #{$color-black};
+
+  // === Dropdown ===
+  --#{$prefix}dropdown-bg: #{$color-white};
+  --#{$prefix}dropdown-text: #{$color-black};
+  --#{$prefix}dropdown-item-bg-hover: #{_color(bg, 500)};
+  --#{$prefix}dropdown-item-text-hover: #{_color(primary)};
+  --#{$prefix}dropdown-arrowhead-border-color: #fff;
 
   // === Buttons ===
   // Most buttons have same colors in light/dark as they provide enough contrast
@@ -89,6 +109,7 @@
 
   // === Quote & Grey Text ===
   --#{$prefix}text-color-grey: #{_color(grey, 700)};
+  --#{$prefix}text-color-grey-dark: #{_color(grey, 900)};
 
   // === Product Link ===
   --#{$prefix}link-product: #{_color(primary, 600)};
@@ -129,10 +150,20 @@ html[data-theme='dark'],
   --#{$prefix}text-link: #7ab8ff;
   --#{$prefix}text-link-hover: #a1ceff;
 
+  // === Links ===
+  --#{$prefix}link-default: #7ab8ff;
+  --#{$prefix}link-default-hover: #a1ceff;
+  --#{$prefix}link-grey: rgba(245, 243, 241, 0.65);
+  --#{$prefix}link-black: #f5f2ee;
+  --#{$prefix}link-white: #f5f2ee;
+  --#{$prefix}link-white-hover: #fff;
+  --#{$prefix}link-blue: #7ab8ff;
+
   // === Borders ===
   --#{$prefix}border-default: #3A3835;
   --#{$prefix}border-strong: #3f4c58;
   --#{$prefix}border-subtle: rgba(255, 255, 255, 0.05);
+  --#{$prefix}border-grey: rgba(255, 255, 255, 0.1);
 
   // === Interactive (Primary) ===
   --#{$prefix}interactive-primary: #ff6b6b;
@@ -177,6 +208,7 @@ html[data-theme='dark'],
 
   // === Quote & Grey Text ===
   --#{$prefix}text-color-grey: var(--#{$prefix}text-secondary);
+  --#{$prefix}text-color-grey-dark: rgba(245, 242, 238, 0.45);
 
   // === Product Link ===
   --#{$prefix}link-product: #{_color(primary, 400)};
@@ -184,6 +216,16 @@ html[data-theme='dark'],
 
   // === Headings ===
   --#{$prefix}heading-secondary: rgba(245, 242, 238, 0.65);
+
+  // === Emphasis ===
+  --#{$prefix}em-color: #f5f2ee;
+
+  // === Dropdown ===
+  --#{$prefix}dropdown-bg: #252321;
+  --#{$prefix}dropdown-text: #f5f2ee;
+  --#{$prefix}dropdown-item-bg-hover: #3f4c58;
+  --#{$prefix}dropdown-item-text-hover: #7ab8ff;
+  --#{$prefix}dropdown-arrowhead-border-color: #252321;
 
   // === Carousel ===
   --#{$prefix}fade-color: var(--#{$prefix}surface-primary);

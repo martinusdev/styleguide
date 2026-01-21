@@ -29,7 +29,7 @@
   }
 
   &--breadcrumbs {
-    background-color: _color('bg');
+    background-color: var(--#{$prefix}surface-secondary);
     padding: _get-space('tiny') 0;
 
     @include breakpoint(m) {
@@ -60,7 +60,7 @@
 
 .section-progress {
   padding-top: 0;
-  background-color: $color-white;
+  background-color: var(--#{$prefix}surface-primary);
   border-bottom: 1px solid $default-border-color;
 }
 
@@ -103,6 +103,31 @@
 
   &.bg-green:not(.is-active)::after {
     background: linear-gradient(to top, rgba($green-bg-color, 1), rgba($green-bg-color, 0));
+  }
+}
+
+html[data-theme='dark'],
+[data-theme='dark'] {
+  .collapsed {
+    &:not(.is-active)::after {
+      background: linear-gradient(to top, rgba(#1A1918, 1), rgba(#1A1918, 0));
+    }
+
+    &.bg-secondary:not(.is-active)::after {
+      background: linear-gradient(to top, rgba(#252321, 1), rgba(#252321, 0));
+    }
+
+    &.bg-teal:not(.is-active)::after {
+      background: linear-gradient(to top, rgba(#2F4C58, 1), rgba(#2F4C58, 0));
+    }
+
+    &.bg-blue:not(.is-active)::after {
+      background: linear-gradient(to top, rgba(#1F3A50, 1), rgba(#1F3A50, 0));
+    }
+
+    &.bg-green:not(.is-active)::after {
+      background: linear-gradient(to top, rgba(#1F4D2C, 1), rgba(#1F4D2C, 0));
+    }
   }
 }
 

@@ -212,3 +212,120 @@ block append content
             <div class="dropdown dropdown--nowrap dropdown--space" data-dropdown data-dropdown-interactive>
               ...
             </div>
+
+  //- end: section
+
+  section#dark-mode
+    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+      header.l-section__header
+        +h2(style='color: var(--ms-text-primary);') Dark Mode
+
+      +p(style='color: var(--ms-text-primary);') This section demonstrates how dropdowns appear in dark mode. All dropdown variants automatically adapt to the dark theme using CSS custom properties.
+
+      +content-sub-section('Dropdown Variants')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .row.mb-medium
+              .col--s-6
+                .dropdown(aria-expanded="true", style="position: relative; top: 0;")
+                  .dropdown__wrap
+                    each item in [1,2,3,4,5]
+                      a(href="#").dropdown__item Item #{item}
+              .col--s-6
+                .btn-layout--horizontal
+                  .btn-dropdown
+                    button.btn(
+                      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                      data-toggle-expand,
+                      aria-haspopup="true"
+                    )
+                      | Button
+                      +icon('chevron-down', 'icon-dropdown')
+                    .dropdown(data-dropdown, data-toggle-expand)
+                      .dropdown__wrap
+                        each item in [1,2,3,4,5]
+                          a(href="#").dropdown__item Item #{item}
+
+            .row.mb-medium
+              .col--s-6
+                .dropdown(aria-expanded="true", style="position: relative; top: 0;")
+                  .dropdown__wrap
+                    h5.dropdown__group Group 1
+                    each item in [1,2,3]
+                      a(href="#").dropdown__item Item #{item}
+                    h5.dropdown__group Group 2
+                    each item in [4, 5]
+                      a(href="#").dropdown__item Item #{item}
+              .col--s-6
+                .btn-layout--horizontal
+                  .btn-dropdown
+                    button.btn(
+                      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                      data-toggle-expand,
+                      aria-haspopup="true"
+                    )
+                      | Button with groups
+                      +icon('chevron-down', 'icon-dropdown')
+                    .dropdown(data-dropdown, data-toggle-expand)
+                      .dropdown__wrap
+                        h5.dropdown__group Group 1
+                        each item in [1,2,3]
+                          a(href="#").dropdown__item Item #{item}
+                        h5.dropdown__group Group 2
+                        each item in [4, 5]
+                          a(href="#").dropdown__item Item #{item}
+
+            .row.mb-medium
+              .col--s-6
+                .dropdown.dropdown--arrowhead(aria-expanded="true", style="position: relative; top: 0;")
+                  .dropdown__wrap
+                    each item in [1,2,3,4,5]
+                      a(href="#").dropdown__item Item #{item}
+              .col--s-6
+                .btn-layout--horizontal
+                  .btn-dropdown
+                    button.btn(
+                      data-toggle='self, next', data-toggle-icon=`${assetsPrefix}icons_/app.svg#icon-chevron-up`,
+                      data-toggle-expand,
+                      aria-haspopup="true"
+                    )
+                      | Button with arrowhead
+                      +icon('chevron-down', 'icon-dropdown')
+                    .dropdown.dropdown--arrowhead(data-dropdown, data-toggle-expand)
+                      .dropdown__wrap
+                        each item in [1,2,3,4,5]
+                          a(href="#").dropdown__item Item #{item}
+
+          +demo-code
+            :code
+              <!-- basic dropdown -->
+              <div class="dropdown" data-dropdown aria-expanded="false">
+                <div class="dropdown__wrap">
+                  <a class="dropdown__item" href="#">Item 1</a>
+                  ...
+                </div>
+              </div>
+
+              <!-- dropdown with groups -->
+              <div class="dropdown" data-dropdown aria-expanded="false">
+                <div class="dropdown__wrap">
+                  <h5 class="dropdown__group">Group 1</h5>
+                  <a class="dropdown__item" href="#">Item 1</a>
+                  ...
+                </div>
+              </div>
+
+              <!-- dropdown with arrowhead -->
+              <div class="dropdown dropdown--arrowhead" data-dropdown aria-expanded="false">
+                <div class="dropdown__wrap">
+                  <a class="dropdown__item" href="#">Item 1</a>
+                  ...
+                </div>
+              </div>
+
+        //- end: demo
+
+      //- end: subsection
+
+  //- end: section
