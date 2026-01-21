@@ -7,7 +7,7 @@
   right: 0;
   width: 100%;
   max-width: 1200px;
-  background-color: $color-white;
+  background-color: var(--#{$prefix}megamenu-bg);
   transform: translateX(-50%);
 
   &.is-active {
@@ -53,7 +53,7 @@
 
   &__sidebar {
     flex: 0 0 auto;
-    background-color: _color(bg);
+    background-color: var(--#{$prefix}megamenu-sidebar-bg);
 
     @include breakpoint(l) {
       flex: 0 0 _get-rem(280px);
@@ -79,7 +79,7 @@
     position: sticky;
     top: 0;
     z-index: 1;
-    background-color: _color(black);
+    background-color: var(--#{$prefix}megamenu-mobile-nav-bg);
     display: flex;
     flex-direction: column;
 
@@ -88,7 +88,7 @@
       border-radius: 0;
       text-transform: none;
       font-size: _get-rem(14px);
-      background-color: _color(black);
+      background-color: var(--#{$prefix}megamenu-mobile-nav-bg);
       letter-spacing: normal;
       text-align: left;
       justify-content: flex-start;
@@ -106,8 +106,8 @@
     }
 
     .btn.is-active {
-      background: #fff;
-      color: #000;
+      background: var(--#{$prefix}surface-primary);
+      color: var(--#{$prefix}text-primary);
     }
   }
 
@@ -175,7 +175,7 @@
 
 .mega-menu__sidebar__links {
   [data-icon] {
-    color: _color(grey, 500);
+    color: var(--#{$prefix}text-tertiary);
   }
 
   padding: 0;
@@ -206,7 +206,7 @@
       bottom: 0;
       z-index: $z-index-topbar - 1;
 
-      background-color: rgba($color-black, 0.5);
+      background-color: var(--#{$prefix}megamenu-overlay-bg);
     }
   }
 }
@@ -218,11 +218,11 @@
 
 .sidebar__banner {
   padding: _get-rem(15px);
-  border-bottom: 1px solid _color(grey, 200);
+  border-bottom: 1px solid var(--#{$prefix}border-default);
 
   &:hover {
     text-decoration: none;
-    border-color: _color(grey, 200);
+    border-color: var(--#{$prefix}border-default);
 
     strong {
       text-decoration: underline;

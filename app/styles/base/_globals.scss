@@ -76,6 +76,12 @@
   --#{$prefix}form-border: #{_color(grey, 200)};
   --#{$prefix}form-placeholder: #{_color(grey, 400)};
 
+  // === Megamenu ===
+  --#{$prefix}megamenu-bg: #{$color-white};
+  --#{$prefix}megamenu-sidebar-bg: #{_color(bg)};
+  --#{$prefix}megamenu-mobile-nav-bg: #{_color(black)};
+  --#{$prefix}megamenu-overlay-bg: rgba(0, 0, 0, 0.5);
+
   // === Buttons ===
   // Most buttons have same colors in light/dark as they provide enough contrast
   --#{$prefix}button-default-bg: #{_color(grey, 700)};
@@ -219,8 +225,11 @@ html[data-theme='dark'],
   --#{$prefix}text-color-grey-dark: rgba(245, 242, 238, 0.45);
 
   // === Product Link ===
-  --#{$prefix}link-product: #{_color(primary, 400)};
-  --#{$prefix}link-product-hover: #{_color(primary, 500)};
+  //--#{$prefix}link-product: #{_color(primary, 400)};
+  //--#{$prefix}link-product-hover: #{_color(primary, 500)};
+  // Alternate: Softer Red (interactive-primary)
+   --#{$prefix}link-product: var(--#{$prefix}interactive-primary);
+   --#{$prefix}link-product-hover: var(--#{$prefix}interactive-primary-hover);
 
   // === Headings ===
   --#{$prefix}heading-secondary: rgba(245, 242, 238, 0.65);
@@ -240,6 +249,11 @@ html[data-theme='dark'],
   --#{$prefix}form-text: var(--#{$prefix}text-primary);
   --#{$prefix}form-border: var(--#{$prefix}border-default);
   --#{$prefix}form-placeholder: var(--#{$prefix}text-tertiary);
+
+  // === Megamenu ===
+  --#{$prefix}megamenu-bg: var(--#{$prefix}surface-primary);
+  --#{$prefix}megamenu-sidebar-bg: var(--#{$prefix}surface-secondary);
+  --#{$prefix}megamenu-overlay-bg: rgba(255, 255, 255, 0.1);
 
   // === Carousel ===
   --#{$prefix}fade-color: var(--#{$prefix}surface-primary);
