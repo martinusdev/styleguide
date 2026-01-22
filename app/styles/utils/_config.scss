@@ -1008,9 +1008,9 @@ $form-disabled-b-c: _color(grey, 200);
 $form-readonly-c: _color(grey, 600);
 $form-readonly-b-c: _color(grey, 300);
 
-$form-error-c: $color-black;
-$form-error-b-c: _color(error, 600);
-$form-error-bgc: _color(error, 100);
+$form-error-c: var(--#{$prefix}form-error-text);
+$form-error-b-c: var(--#{$prefix}form-error-border);
+$form-error-bgc: var(--#{$prefix}form-error-bg);
 
 //---------------
 // input styles
@@ -1285,7 +1285,7 @@ $form-label: (
     color: _color(grey, 700),
   ),
   error: (
-    color: _color(error, 500),
+    color: var(--#{$prefix}form-error-text),
   ),
 );
 
@@ -1310,7 +1310,7 @@ $form-text: (
     color: _color(grey, 600),
   ),
   error: (
-    color: _color(error, 600),
+    color: var(--#{$prefix}form-error-text),
   ),
   success: (
     color: _color(success, 600),

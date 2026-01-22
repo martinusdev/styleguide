@@ -8,16 +8,17 @@
 @import './../../../../node_modules/bootstrap/scss/forms/form-check';
 
 .form-check-input {
-  &.is-invalid {
-    border-color: _color(error, 600);
-    --ms-form-check-bg: #{$color-white};
+  &.is-invalid,
+  &.is-error {
+    border-color: var(--#{$prefix}form-error-border);
+    --ms-form-check-bg: var(--#{$prefix}form-bg);
 
     &:checked {
-      background-color: _color(error, 600);
+      background-color: var(--#{$prefix}form-error-border);
     }
 
     ~ .form-check-label {
-      color: _color(error, 600);
+      color: var(--#{$prefix}form-error-text);
     }
   }
 }
