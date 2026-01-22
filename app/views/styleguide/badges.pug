@@ -107,58 +107,54 @@ block append content
           <span class="pill pill--blue-alt mb-small">4</span>
           <span class="pill pill--blue-light mb-small">4</span>
 
-  section#dark-mode
+    +content-sub-section('Dark Mode')
 
-    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
-      header.l-section__header
-        +h2(style='color: var(--ms-text-primary);') Dark Mode
+      .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
 
-      +p(style='color: var(--ms-text-primary);') This section demonstrates how badges and pills appear in dark mode. All badge variants automatically adapt to the dark theme using CSS custom properties.
+        +content-sub-section('Badges in Dark Mode')
 
-      +content-sub-section('Badges in Dark Mode')
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              .badge.mb-small Default badge
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            .badge.mb-small Default badge
+              .badges
+                .badge Multiple
+                .badge badges
+                .badge in line.
 
-            .badges
-              .badge Multiple
-              .badge badges
-              .badge in line.
+              .badges.mb-small
+                each color in ['primary', 'green', 'orange', 'violet', 'blue', 'yellow', 'brown', 'error', 'transparent']
+                  .badge(class=`badge--${color}`)= color
 
-            .badges.mb-small
-              each color in ['primary', 'green', 'orange', 'violet', 'blue', 'yellow', 'brown', 'error', 'transparent']
-                .badge(class=`badge--${color}`)= color
+              .badge.mb-small Default badge
+              .badge.badge--large Large badge
 
-            .badge.mb-small Default badge
-            .badge.badge--large Large badge
+            +demo-code
+              :code
+                <div class="badge">Default badge</div>
+                <div class="badge badge--primary">primary</div>
+                <div class="badge badge--large">Large badge</div>
 
-          +demo-code
-            :code
-              <div class="badge">Default badge</div>
-              <div class="badge badge--primary">primary</div>
-              <div class="badge badge--large">Large badge</div>
+        +content-sub-section('Pills in Dark Mode')
 
-      +content-sub-section('Pills in Dark Mode')
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              .pill.mb-small 4
+              .pill.pill--white.mb-small 102
+              .pill.pill--blue.mb-small 30
+              .pill.pill--blue-alt.mb-small.mr-tiny #hashtag
+              a.pill.pill--blue-light.mb-small Náučná
+              .pill.pill--orange.mb-small 42
+              .pill.pill--orange-light.mb-small 70
+              .pill.pill--red.mb-small 50
+              .pill.pill--red-light.mb-small 81
+              .pill.pill--green.mb-small 50
+              .pill.pill--green-light.mb-small 81
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            .pill.mb-small 4
-            .pill.pill--white.mb-small 102
-            .pill.pill--blue.mb-small 30
-            .pill.pill--blue-alt.mb-small.mr-tiny #hashtag
-            a.pill.pill--blue-light.mb-small Náučná
-            .pill.pill--orange.mb-small 42
-            .pill.pill--orange-light.mb-small 70
-            .pill.pill--red.mb-small 50
-            .pill.pill--red-light.mb-small 81
-            .pill.pill--green.mb-small 50
-            .pill.pill--green-light.mb-small 81
-
-          +demo-code
-            :code
-              <span class="pill">4</span>
-              <span class="pill pill--blue">30</span>
-              <span class="pill pill--red">50</span>
+            +demo-code
+              :code
+                <span class="pill">4</span>
+                <span class="pill pill--blue">30</span>
+                <span class="pill pill--red">50</span>
 
 //- end: section

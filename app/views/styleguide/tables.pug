@@ -206,182 +206,178 @@ block append content
                 </tr>
               </tbody>
             </table>
-  //- end: section
+    //- end: section
 
-  section#dark-mode
+    +content-sub-section('Dark Mode')
 
-    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
-      header.l-section__header
-        +h2(style='color: var(--ms-text-primary);') Dark Mode
+      .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
 
-      +p(style='color: var(--ms-text-primary);') This section demonstrates how tables appear in dark mode. All table variants automatically adapt to the dark theme using CSS custom properties.
+        +content-sub-section('Basic Table in Dark Mode')
 
-      +content-sub-section('Basic Table in Dark Mode')
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              table.table
+                thead
+                  tr
+                    th No.
+                    th Lorem
+                    th Ipsum
+                    th Dolor
+                tbody
+                  tr
+                    td 1
+                    td Et fugiat
+                    td Voluptate dolore
+                    td 979
+                  tr
+                    td 2
+                    td Quis deserunt
+                    td Aliqua sint laboris ut
+                    td 814
+                  tr
+                    td 3
+                    td Voluptate dolore
+                    td Aliqua sint laboris ut
+                    td 436
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            table.table
-              thead
-                tr
-                  th No.
-                  th Lorem
-                  th Ipsum
-                  th Dolor
-              tbody
-                tr
-                  td 1
-                  td Et fugiat
-                  td Voluptate dolore
-                  td 979
-                tr
-                  td 2
-                  td Quis deserunt
-                  td Aliqua sint laboris ut
-                  td 814
-                tr
-                  td 3
-                  td Voluptate dolore
-                  td Aliqua sint laboris ut
-                  td 436
+            +demo-code
+              :code
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Lorem</th>
+                      <th>Ipsum</th>
+                      <th>Dolor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>Et fugiat</td>
+                      <td>Voluptate dolore</td>
+                      <td>979</td>
+                    </tr>
+                  </tbody>
+                </table>
 
-          +demo-code
-            :code
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>No.</th>
-                    <th>Lorem</th>
-                    <th>Ipsum</th>
-                    <th>Dolor</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Et fugiat</td>
-                    <td>Voluptate dolore</td>
-                    <td>979</td>
-                  </tr>
-                </tbody>
-              </table>
+        +content-sub-section('Striped Table in Dark Mode')
 
-      +content-sub-section('Striped Table in Dark Mode')
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              table.table.table--striped
+                thead
+                  tr
+                    th No.
+                    th Lorem
+                    th Ipsum
+                    th Dolor
+                tbody
+                  tr
+                    td 1
+                    td Et fugiat
+                    td Voluptate dolore
+                    td 979
+                  tr
+                    td 2
+                    td Quis deserunt
+                    td Aliqua sint laboris ut
+                    td 814
+                  tr
+                    td 3
+                    td Voluptate dolore
+                    td Aliqua sint laboris ut
+                    td 436
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            table.table.table--striped
-              thead
-                tr
-                  th No.
-                  th Lorem
-                  th Ipsum
-                  th Dolor
-              tbody
-                tr
-                  td 1
-                  td Et fugiat
-                  td Voluptate dolore
-                  td 979
-                tr
-                  td 2
-                  td Quis deserunt
-                  td Aliqua sint laboris ut
-                  td 814
-                tr
-                  td 3
-                  td Voluptate dolore
-                  td Aliqua sint laboris ut
-                  td 436
+            +demo-code
+              :code
+                <table class="table table--striped">
+                  ...
+                </table>
 
-          +demo-code
-            :code
-              <table class="table table--striped">
-                ...
-              </table>
+        +content-sub-section('Condensed Table in Dark Mode')
 
-      +content-sub-section('Condensed Table in Dark Mode')
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              table.table.table--condensed
+                thead
+                  tr
+                    th No.
+                    th Lorem
+                    th Ipsum
+                    th Dolor
+                tbody
+                  tr
+                    td 1
+                    td Et fugiat
+                    td Voluptate dolore
+                    td 979
+                  tr
+                    td 2
+                    td Quis deserunt
+                    td Aliqua sint laboris ut
+                    td 814
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            table.table.table--condensed
-              thead
-                tr
-                  th No.
-                  th Lorem
-                  th Ipsum
-                  th Dolor
-              tbody
-                tr
-                  td 1
-                  td Et fugiat
-                  td Voluptate dolore
-                  td 979
-                tr
-                  td 2
-                  td Quis deserunt
-                  td Aliqua sint laboris ut
-                  td 814
+            +demo-code
+              :code
+                <table class="table table--condensed">
+                  ...
+                </table>
 
-          +demo-code
-            :code
-              <table class="table table--condensed">
-                ...
-              </table>
+        +content-sub-section('Clean Table in Dark Mode')
 
-      +content-sub-section('Clean Table in Dark Mode')
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              table.table.table--clean
+                thead
+                  tr
+                    th No.
+                    th Lorem
+                    th Ipsum
+                    th Dolor
+                tbody
+                  tr
+                    td 1
+                    td Et fugiat
+                    td Voluptate dolore
+                    td 979
+                  tr
+                    td 2
+                    td Quis deserunt
+                    td Aliqua sint laboris ut
+                    td 814
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            table.table.table--clean
-              thead
-                tr
-                  th No.
-                  th Lorem
-                  th Ipsum
-                  th Dolor
-              tbody
-                tr
-                  td 1
-                  td Et fugiat
-                  td Voluptate dolore
-                  td 979
-                tr
-                  td 2
-                  td Quis deserunt
-                  td Aliqua sint laboris ut
-                  td 814
+            +demo-code
+              :code
+                <table class="table table--clean">
+                  ...
+                </table>
 
-          +demo-code
-            :code
-              <table class="table table--clean">
-                ...
-              </table>
+        +content-sub-section('Adaptive Table in Dark Mode')
 
-      +content-sub-section('Adaptive Table in Dark Mode')
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              table.table.table--adaptive.table--clean
+                thead
+                  tr
+                    th First column
+                    th Second column
+                    th Third column
+                    th Fourth column
+                tbody
+                  tr
+                    td(data-label="First column") 1
+                    td(data-label="Second column") Et fugiat
+                    td(data-label="Third column") Voluptate dolore
+                    td(data-label="Fourth column") 979
+                  tr
+                    td(data-label="First column") 2
+                    td(data-label="Second column") Quis deserunt
+                    td(data-label="Third column") Aliqua sint laboris ut
+                    td(data-label="Fourth column") 814
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            table.table.table--adaptive.table--clean
-              thead
-                tr
-                  th First column
-                  th Second column
-                  th Third column
-                  th Fourth column
-              tbody
-                tr
-                  td(data-label="First column") 1
-                  td(data-label="Second column") Et fugiat
-                  td(data-label="Third column") Voluptate dolore
-                  td(data-label="Fourth column") 979
-                tr
-                  td(data-label="First column") 2
-                  td(data-label="Second column") Quis deserunt
-                  td(data-label="Third column") Aliqua sint laboris ut
-                  td(data-label="Fourth column") 814
-
-          +demo-code
-            :code
-              <table class="table table--adaptive table--clean">
-                ...
-              </table>
+            +demo-code
+              :code
+                <table class="table table--adaptive table--clean">
+                  ...
+                </table>

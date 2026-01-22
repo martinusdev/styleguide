@@ -247,15 +247,11 @@ block append content
 
             <button class="btn" type="button" href="#tab3-2" data-toggle="#tab3-2">Toggle tab 2</button>
 
-  section#dark-mode
+    +content-sub-section('Dark Mode')
 
-    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
-      header.l-section__header
-        +h2(style='color: var(--ms-text-primary);') Dark Mode
+      .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
 
-      +p(style='color: var(--ms-text-primary);') This section demonstrates how tabs filter appears in dark mode. The tab group automatically adapts to the dark theme using CSS custom properties.
-
-      +content-sub-section('Tabs Filter in Dark Mode')
+        +content-sub-section('Tabs Filter in Dark Mode')
 
         +demo&attributes({['data-theme']: 'dark'})
           +demo-example
@@ -282,8 +278,7 @@ block append content
                 <a class="btn btn--tab" href="#tab-2" role="tab" data-tabs-item>Filmy</a>
               </div>
 
-      +content-sub-section('Tabs Card in Dark Mode')
-
+        +content-sub-section('Tabs Card in Dark Mode')
         +demo&attributes({['data-theme']: 'dark'})
           +demo-example
             ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)

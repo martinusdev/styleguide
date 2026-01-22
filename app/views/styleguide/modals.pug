@@ -56,46 +56,42 @@ block append content
                 | Modal footer
                 button.btn.btn--secondary.mb-none(data-bs-dismiss="modal") Close
 
-  section#dark-mode
+    +content-sub-section('Dark Mode')
 
-    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
-      header.l-section__header
-        +h2(style='color: var(--ms-text-primary);') Dark Mode
+      .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
 
-      +p(style='color: var(--ms-text-primary);') This section demonstrates how modals appear in dark mode. All modal components automatically adapt to the dark theme using CSS custom properties.
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            button.btn(data-bs-toggle='modal' data-bs-target='#bs-modal-demo-dark' type="button") Modal in Dark Mode
 
-      +demo&attributes({['data-theme']: 'dark'})
-        +demo-example
-          button.btn(data-bs-toggle='modal' data-bs-target='#bs-modal-demo-dark' type="button") Modal in Dark Mode
+            .modal.fade#bs-modal-demo-dark
+              .modal-dialog
+                .modal-content
+                  .modal-header
+                    h3.modal-title.mb-none Modal Header
+                    button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
+                  .modal-body
+                    p This is the modal content in dark mode. The background, text, and borders automatically adapt to the dark theme.
+                  .modal-footer
+                    button.btn.btn--secondary(type="button" data-bs-dismiss="modal") Close
+                    button.btn.btn--primary(type="button") Save changes
 
-          .modal.fade#bs-modal-demo-dark
-            .modal-dialog
-              .modal-content
-                .modal-header
-                  h3.modal-title.mb-none Modal Header
-                  button.btn-close(type="button" data-bs-dismiss="modal" aria-label="Close")
-                .modal-body
-                  p This is the modal content in dark mode. The background, text, and borders automatically adapt to the dark theme.
-                .modal-footer
-                  button.btn.btn--secondary(type="button" data-bs-dismiss="modal") Close
-                  button.btn.btn--primary(type="button") Save changes
-
-        +demo-code
-          :code
-            <div class="modal fade" id="bs-modal-demo-dark">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h3 class="modal-title">Modal Header</h3>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
-                  </div>
-                  <div class="modal-body">
-                    <p>Modal content in dark mode...</p>
-                  </div>
-                  <div class="modal-footer">
-                    <button class="btn btn--secondary" type="button" data-bs-dismiss="modal">Close</button>
-                    <button class="btn btn--primary" type="button">Save changes</button>
+          +demo-code
+            :code
+              <div class="modal fade" id="bs-modal-demo-dark">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title">Modal Header</h3>
+                      <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal content in dark mode...</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn--secondary" type="button" data-bs-dismiss="modal">Close</button>
+                      <button class="btn btn--primary" type="button">Save changes</button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>

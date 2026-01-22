@@ -296,180 +296,177 @@ block append content
 
     //- end: subsection
 
-  //- end: section
+    //- end: section
 
-  section#dark-mode
-    .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
-      header.l-section__header
-        +h2(style='color: var(--ms-text-primary);') Dark Mode
+    +content-sub-section('Dark Mode')
 
-      +p(style='color: var(--ms-text-primary);') This section demonstrates how lists appear in dark mode. All list variants automatically adapt to the dark theme using CSS custom properties.
+      .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
 
-      +content-sub-section('All List Variants')
+        +content-sub-section('All List Variants')
 
-        +demo&attributes({['data-theme']: 'dark'})
-          +demo-example
-            .row.mb-medium
-              .col--l-5
-                h4.mb-medium Basic list
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              .row.mb-medium
+                .col--l-5
+                  h4.mb-medium Basic list
 
-                ul.list
-                  li.list__item Laborum laboris amet minim.
-                  li.list__item Quis adipisicing eu consectetur.
-                  li.list__item Et anim sit do nisi.
-                  li.list__item Deserunt id consectetur esse in.
+                  ul.list
+                    li.list__item Laborum laboris amet minim.
+                    li.list__item Quis adipisicing eu consectetur.
+                    li.list__item Et anim sit do nisi.
+                    li.list__item Deserunt id consectetur esse in.
 
-              .col--l-5.ofst--l-1
-                h4.mb-medium Bordered list
+                .col--l-5.ofst--l-1
+                  h4.mb-medium Bordered list
 
-                ul.list.list--bordered
-                  li.list__item Laborum laboris amet minim.
-                  li.list__item Quis adipisicing eu consectetur.
-                  li.list__item Et anim sit do nisi.
-                  li.list__item Deserunt id consectetur esse in.
+                  ul.list.list--bordered
+                    li.list__item Laborum laboris amet minim.
+                    li.list__item Quis adipisicing eu consectetur.
+                    li.list__item Et anim sit do nisi.
+                    li.list__item Deserunt id consectetur esse in.
 
-            .row.mb-medium
-              .col--l-5
-                h4.mb-medium Clean list
+              .row.mb-medium
+                .col--l-5
+                  h4.mb-medium Clean list
 
-                ul.list.list--clean
-                  li.list__item Laborum laboris amet minim.
-                  li.list__item Quis adipisicing eu consectetur.
-                  li.list__item Et anim sit do nisi.
-                  li.list__item Deserunt id consectetur esse in.
+                  ul.list.list--clean
+                    li.list__item Laborum laboris amet minim.
+                    li.list__item Quis adipisicing eu consectetur.
+                    li.list__item Et anim sit do nisi.
+                    li.list__item Deserunt id consectetur esse in.
 
-              .col--l-5.ofst--l-1
-                h4.mb-medium Padded list
+                .col--l-5.ofst--l-1
+                  h4.mb-medium Padded list
 
-                ul.list.list--padded
-                  li.list__item Laborum laboris amet minim.
-                  li.list__item Quis adipisicing eu consectetur.
-                  li.list__item Et anim sit do nisi.
-                  li.list__item Deserunt id consectetur esse in.
+                  ul.list.list--padded
+                    li.list__item Laborum laboris amet minim.
+                    li.list__item Quis adipisicing eu consectetur.
+                    li.list__item Et anim sit do nisi.
+                    li.list__item Deserunt id consectetur esse in.
 
-            .row.mb-medium
-              .col--l-5
-                h4.mb-medium List with hover effect
+              .row.mb-medium
+                .col--l-5
+                  h4.mb-medium List with hover effect
 
-                ul.list.list--with-hover
-                  li.list__item
-                    a(href="#") Laborum laboris amet minim.
-                  li.list__item
-                    a(href="#") Quis adipisicing eu consectetur.
-                  li.list__item
-                    a(href="#") Et anim sit do nisi.
-                  li.list__item
-                    a(href="#") Deserunt id consectetur esse in.
+                  ul.list.list--with-hover
+                    li.list__item
+                      a(href="#") Laborum laboris amet minim.
+                    li.list__item
+                      a(href="#") Quis adipisicing eu consectetur.
+                    li.list__item
+                      a(href="#") Et anim sit do nisi.
+                    li.list__item
+                      a(href="#") Deserunt id consectetur esse in.
 
-              .col--l-5.ofst--l-1
-                h4.mb-medium List with counter badges
+                .col--l-5.ofst--l-1
+                  h4.mb-medium List with counter badges
 
-                ul.list.list--unstyled.list--counter
-                  each item, i in [...books, ...books ]
-                    if i < 3
-                      li.mb-medium(class=i > 4 ? 'show-m' : '')
-                        +productHorizontal(item)
+                  ul.list.list--unstyled.list--counter
+                    each item, i in [...books, ...books ]
+                      if i < 3
+                        li.mb-medium(class=i > 4 ? 'show-m' : '')
+                          +productHorizontal(item)
 
-            .row.mb-medium
-              .col--l-5
-                h4.mb-medium List with icons
-                +p Use HtmlHelper::iconList() to generate a list with icons.
+              .row.mb-medium
+                .col--l-5
+                  h4.mb-medium List with icons
+                  +p.text-color-secondary Use HtmlHelper::iconList() to generate a list with icons.
 
-                ul.fa-ul.text-medium
-                  li
-                    span.fa-li.text-color-success
-                      i.far.fa-circle-check
-                    | Laborum laboris amet minim.
-                  li
-                    span.fa-li.text-color-success
-                      i.far.fa-circle-check
-                    | Quis adipisicing eu consectetur.
-                  li
-                    span.fa-li.text-color-success
-                      i.far.fa-store
-                    | Et anim sit do nisi.
+                  ul.fa-ul.text-medium
+                    li
+                      span.fa-li.text-color-success
+                        i.far.fa-circle-check
+                      | Laborum laboris amet minim.
+                    li
+                      span.fa-li.text-color-success
+                        i.far.fa-circle-check
+                      | Quis adipisicing eu consectetur.
+                    li
+                      span.fa-li.text-color-success
+                        i.far.fa-store
+                      | Et anim sit do nisi.
 
-              .col--l-5.ofst--l-1
-                h4.mb-medium Clickable items
+                .col--l-5.ofst--l-1
+                  h4.mb-medium Clickable items
 
-                ul.list
-                  li.list__item.list__item--clickable(tabindex="0")
-                    dl
-                      dt Commodo dolore
-                      dd Eu qui ut laborum
-                  li.list__item.list__item--clickable.is-selected(tabindex="0")
-                    dl
-                      dt Selected
-                      dd Veniam sit
-                  li.list__item.list__item--clickable(tabindex="0")
-                    dl
-                      dt Eiusmod in nulla
-                      dd Veniam sit
-                  li.list__item.list__item--clickable.is-disabled
-                    dl
-                      dt Disabled
-                      dd Veniam sit
+                  ul.list
+                    li.list__item.list__item--clickable(tabindex="0")
+                      dl
+                        dt Commodo dolore
+                        dd Eu qui ut laborum
+                    li.list__item.list__item--clickable.is-selected(tabindex="0")
+                      dl
+                        dt Selected
+                        dd Veniam sit
+                    li.list__item.list__item--clickable(tabindex="0")
+                      dl
+                        dt Eiusmod in nulla
+                        dd Veniam sit
+                    li.list__item.list__item--clickable.is-disabled
+                      dl
+                        dt Disabled
+                        dd Veniam sit
 
-          +demo-code
-            :code
-              <!-- basic list -->
-              <ul class="list">
-                <li class="list__item">... </li>
-              </ul>
+            +demo-code
+              :code
+                <!-- basic list -->
+                <ul class="list">
+                  <li class="list__item">... </li>
+                </ul>
 
-              <!-- bordered list -->
-              <ul class="list list--bordered">
-                <li class="list__item">... </li>
-              </ul>
+                <!-- bordered list -->
+                <ul class="list list--bordered">
+                  <li class="list__item">... </li>
+                </ul>
 
-              <!-- clean list -->
-              <ul class="list list--clean">
-                <li class="list__item">... </li>
-              </ul>
+                <!-- clean list -->
+                <ul class="list list--clean">
+                  <li class="list__item">... </li>
+                </ul>
 
-              <!-- padded list -->
-              <ul class="list list--padded">
-                <li class="list__item">... </li>
-              </ul>
+                <!-- padded list -->
+                <ul class="list list--padded">
+                  <li class="list__item">... </li>
+                </ul>
 
-              <!-- list with hover effect -->
-              <ul class="list list--with-hover">
-                <li class="list__item">
-                  <a>... </a>
-                </li>
-              </ul>
+                <!-- list with hover effect -->
+                <ul class="list list--with-hover">
+                  <li class="list__item">
+                    <a>... </a>
+                  </li>
+                </ul>
 
-              <!-- list with icons -->
-              <ul class="fa-ul text-medium">
-                <li>
-                  <span class="fa-li text-color-success">
-                    <i class="far fa-circle-check"></i>
-                  </span>
-                  ... text
-                </li>
-              </ul>
+                <!-- list with icons -->
+                <ul class="fa-ul text-medium">
+                  <li>
+                    <span class="fa-li text-color-success">
+                      <i class="far fa-circle-check"></i>
+                    </span>
+                    ... text
+                  </li>
+                </ul>
 
-              <!-- clickable items -->
-              <ul class="list">
-                <li class="list__item list__item--clickable" tabindex="0">
-                  <dl>
-                    <dt>... </dt>
-                    <dd>... </dd>
-                  </dl>
-                </li>
-                <li class="list__item list__item--clickable is-selected" tabindex="0">
-                  <dl>
-                    <dt>Selected</dt>
-                    <dd>... </dd>
-                  </dl>
-                </li>
-                <li class="list__item list__item--clickable is-disabled">
-                  <dl>
-                    <dt>Disabled</dt>
-                    <dd>... </dd>
-                  </dl>
-                </li>
-              </ul>
+                <!-- clickable items -->
+                <ul class="list">
+                  <li class="list__item list__item--clickable" tabindex="0">
+                    <dl>
+                      <dt>... </dt>
+                      <dd>... </dd>
+                    </dl>
+                  </li>
+                  <li class="list__item list__item--clickable is-selected" tabindex="0">
+                    <dl>
+                      <dt>Selected</dt>
+                      <dd>... </dd>
+                    </dl>
+                  </li>
+                  <li class="list__item list__item--clickable is-disabled">
+                    <dl>
+                      <dt>Disabled</dt>
+                      <dd>... </dd>
+                    </dl>
+                  </li>
+                </ul>
 
         //- end: demo
 
