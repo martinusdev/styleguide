@@ -109,25 +109,23 @@
 [data-theme='dark'] {
   .collapsed {
     &:not(.is-active)::after {
-      background: linear-gradient(to top, rgba(#1A1918, 1), rgba(#1A1918, 0));
+      background: linear-gradient(to top, _theme(surface-primary), transparent);
     }
 
     &.bg-secondary:not(.is-active)::after {
-      background: linear-gradient(to top, var(--#{$prefix}bg-secondary), rgba(var(--#{$prefix}bg-secondary), 0));
+      background: linear-gradient(to top, _theme(surface-secondary), transparent);
     }
 
     &.bg-teal:not(.is-active)::after {
-      background: linear-gradient(to top, var(--#{$prefix}bg-teal), rgba(var(--#{$prefix}bg-teal), 0));
+      background: linear-gradient(to top, _theme(bg-teal), transparent);
     }
 
     &.bg-blue:not(.is-active)::after {
-      background: linear-gradient(to top, rgba(#1a3d5c, 1), rgba(#1a3d5c, 0));
-
-      // background: linear-gradient(to top, var(--#{$prefix}bg-blue), rgba(var(--#{$prefix}bg-blue), 0));
+      background: linear-gradient(to top, _theme(state-info-bg), transparent);
     }
 
     &.bg-green:not(.is-active)::after {
-      background: linear-gradient(to top, var(--#{$prefix}bg-green), rgba(var(--#{$prefix}bg-green), 0));
+      background: linear-gradient(to top, _theme(state-success-bg), transparent);
     }
   }
 }

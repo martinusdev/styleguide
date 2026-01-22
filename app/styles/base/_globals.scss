@@ -124,6 +124,8 @@
   --#{$prefix}bg-teal: #{$teal-bg-color};
   --#{$prefix}bg-secondary: #{$secondary-bg-color};
   --#{$prefix}bg-green: #{$green-bg-color};
+  // bg-warning and bg-error are lighter variants (200) for decorative use
+  // state-*-bg are the standard alert/state backgrounds (100)
   --#{$prefix}bg-warning: #{_color(warning, 200)};
   --#{$prefix}bg-error: #{_color(error, 200)};
 
@@ -293,12 +295,12 @@ html[data-theme='dark'],
   --#{$prefix}fade-color: var(--#{$prefix}surface-primary);
 
   // === Background Colors ===
-  --#{$prefix}bg-blue: #1F3A50;
+  --#{$prefix}bg-blue: var(--#{$prefix}state-info-bg);
   --#{$prefix}bg-teal: #2F4C58;
-  --#{$prefix}bg-secondary: #252321;
-  --#{$prefix}bg-green: #1F4D2C;
-  --#{$prefix}bg-warning: #4d3619;
-  --#{$prefix}bg-error: #4d2222;
+  --#{$prefix}bg-secondary: var(--#{$prefix}surface-secondary);
+  --#{$prefix}bg-green: var(--#{$prefix}state-success-bg);
+  --#{$prefix}bg-warning: var(--#{$prefix}state-warning-bg);
+  --#{$prefix}bg-error: var(--#{$prefix}state-error-bg);
 
   // === Tables ===
   --#{$prefix}table-border: var(--#{$prefix}border-default);

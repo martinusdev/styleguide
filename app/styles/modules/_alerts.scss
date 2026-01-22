@@ -26,50 +26,50 @@ $alerts: (
   ),
   light: (
     default: (
-      background-color: _color('info', 100),
-      color: $color-black,
+      background-color: _theme(state-info-bg),
+      color: _theme(text-primary),
     ),
     icon: (
       color: _color('info'),
     ),
     link: (
-      color: $color-black,
+      color: _theme(text-primary),
     )
   ),
   success-light: (
     default: (
-      background-color: _color('success', 100),
-      color: $color-black,
+      background-color: _theme(state-success-bg),
+      color: _theme(text-primary),
     ),
     icon: (
       color: _color('success'),
     ),
     link: (
-      color: $color-black,
+      color: _theme(text-primary),
     )
   ),
   warning-light: (
     default: (
-      background-color: _color('warning', 100),
-      color: $color-black,
+      background-color: _theme(state-warning-bg),
+      color: _theme(text-primary),
     ),
     icon: (
       color: _color('warning'),
     ),
     link: (
-      color: $color-black,
+      color: _theme(text-primary),
     )
   ),
   error-light: (
     default: (
-      background-color: _color('error', 100),
-      color: $color-black,
+      background-color: _theme(state-error-bg),
+      color: _theme(text-primary),
     ),
     icon: (
       color: _color('error'),
     ),
     link: (
-      color: $color-black,
+      color: _theme(text-primary),
     )
   )
 );
@@ -165,50 +165,8 @@ $alerts: (
     }
   }
 
-  // dark mode overrides for light alert variants
-  &.alert--light {
-    [data-theme='dark'] & {
-      background-color: var(--#{$prefix}bg-blue);
-      color: var(--#{$prefix}text-primary);
-
-      .alert__icon {
-        color: _color('info');
-      }
-    }
-  }
-
-  &.alert--success-light {
-    [data-theme='dark'] & {
-      background-color: var(--#{$prefix}bg-green);
-      color: var(--#{$prefix}text-primary);
-
-      .alert__icon {
-        color: _color('success');
-      }
-    }
-  }
-
-  &.alert--warning-light {
-    [data-theme='dark'] & {
-      background-color: var(--#{$prefix}bg-warning);
-      color: var(--#{$prefix}text-primary);
-
-      .alert__icon {
-        color: _color('warning');
-      }
-    }
-  }
-
-  &.alert--error-light {
-    [data-theme='dark'] & {
-      background-color: var(--#{$prefix}bg-error);
-      color: var(--#{$prefix}text-primary);
-
-      .alert__icon {
-        color: _color('error');
-      }
-    }
-  }
+  // Note: light alert variants now use _theme(state-*-bg) tokens which automatically
+  // adapt to dark mode - no explicit dark mode overrides needed!
 }
 
 .alert-container {
