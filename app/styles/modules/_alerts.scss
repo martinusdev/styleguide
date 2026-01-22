@@ -115,10 +115,10 @@ $alerts: (
 
   &[class*='-light'] {
     .alert__action .btn {
-      color: _color(grey, 900);
+      color: var(--#{$prefix}alert-light-btn);
 
       &:hover {
-        color: _color(grey, 600);
+        color: var(--#{$prefix}alert-light-btn-hover);
       }
     }
   }
@@ -161,6 +161,51 @@ $alerts: (
       &:focus,
       &:hover {
         @include css-map($props, 'focus');
+      }
+    }
+  }
+
+  // dark mode overrides for light alert variants
+  &.alert--light {
+    [data-theme='dark'] & {
+      background-color: var(--#{$prefix}bg-blue);
+      color: var(--#{$prefix}text-primary);
+
+      .alert__icon {
+        color: _color('info');
+      }
+    }
+  }
+
+  &.alert--success-light {
+    [data-theme='dark'] & {
+      background-color: var(--#{$prefix}bg-green);
+      color: var(--#{$prefix}text-primary);
+
+      .alert__icon {
+        color: _color('success');
+      }
+    }
+  }
+
+  &.alert--warning-light {
+    [data-theme='dark'] & {
+      background-color: var(--#{$prefix}bg-warning);
+      color: var(--#{$prefix}text-primary);
+
+      .alert__icon {
+        color: _color('warning');
+      }
+    }
+  }
+
+  &.alert--error-light {
+    [data-theme='dark'] & {
+      background-color: var(--#{$prefix}bg-error);
+      color: var(--#{$prefix}text-primary);
+
+      .alert__icon {
+        color: _color('error');
       }
     }
   }

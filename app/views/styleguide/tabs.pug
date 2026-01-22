@@ -278,6 +278,44 @@ block append content
                 <a class="btn btn--tab" href="#tab-2" role="tab" data-tabs-item>Filmy</a>
               </div>
 
+        +content-sub-section('Regular Tabs in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            ul.tab-nav(data-tabs-container)
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link.is-active(href='#dark-tab-1' role="tab")
+                  .tab-nav__content-wrap Tab 1
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link(href='#dark-tab-2' role="tab")
+                  .tab-nav__content-wrap Tab 2
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link(href='#dark-tab-3' role="tab") Tab 3
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link.is-disabled(href='#dark-tab-4' role="tab" tabindex="-1")
+                  .tab-nav__content-wrap Tab disabled
+
+            article.tabs
+              section#dark-tab-1.tab.is-active
+                p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+              section#dark-tab-2.tab
+                p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+              section#dark-tab-3.tab
+                p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
+              section#dark-tab-4.tab
+                p Lorem ipsum Veniam qui cupidatat dolore ad nulla in dolore veniam id est cillum quis magna dolore Ut minim in culpa dolore in qui nostrud in.
+
+          +demo-code
+            :code
+              <ul class="tab-nav" data-tabs-container>
+                <li class="tab-nav__item" data-tabs-item>
+                  <a class="tab-nav__content tab-nav__content--link is-active" href="#tab-1" role="tab">Tab 1</a>
+                </li>
+                <li class="tab-nav__item" data-tabs-item>
+                  <a class="tab-nav__content tab-nav__content--link" href="#tab-2" role="tab">Tab 2</a>
+                </li>
+              </ul>
+
         +content-sub-section('Tabs Card in Dark Mode')
         +demo&attributes({['data-theme']: 'dark'})
           +demo-example
