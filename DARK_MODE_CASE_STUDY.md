@@ -86,6 +86,25 @@ For each component, we added a "Dark Mode" showcase section demonstrating:
 - Interactive states (hover, selected, disabled)
 - Code examples for developers
 
+#### Phase 5: Token Consolidation & Simplification
+
+After the initial implementation, we reviewed the entire dark mode system for redundancies and simplification opportunities:
+
+**Redundant Token Elimination:**
+- Discovered that `bg-warning`/`bg-error` duplicated `state-warning-bg`/`state-error-bg` values in dark mode
+- Consolidated by making `bg-*` tokens reference `state-*-bg` in dark mode
+- Reduced duplicate hex values and ensured single source of truth
+
+**Using `_theme()` in Component Configs:**
+- Instead of adding dark mode override blocks, updated component configs to use `_theme()` helper directly
+- Alert light variants: Changed from `_color('info', 100)` to `_theme(state-info-bg)` — **eliminated 40+ lines of dark mode overrides**
+- Tabs config: Changed from `_color(grey, 400)` to `_theme(border-strong)` — **reduced dark mode block from 18 lines to 6**
+
+**Replacing Hardcoded Hex Values:**
+- Found hardcoded dark mode colors like `#1A1918` and `#1a3d5c` in component files
+- Replaced with `_theme(surface-primary)` and `_theme(state-info-bg)`
+- Ensures consistency if dark mode colors ever need adjustment
+
 ### Key Insights
 
 **1. Tokens > Hardcoded Values**
@@ -112,6 +131,12 @@ For each component, we added a "Dark Mode" showcase section demonstrating:
 - When issues arose (carousel buttons looking wrong, border contrast too low), systematic investigation identified root causes
 - Rather than multiple failed attempts, structured debugging led directly to solutions
 - AI helped recognize patterns and apply them consistently across components
+
+**6. Simplification Through Token Reuse**
+- After initial implementation, review for redundancy yields significant simplification
+- Tokens can reference other tokens in dark mode (e.g., `bg-green: var(--ms-state-success-bg)`)
+- Using `_theme()` in configs instead of override blocks eliminates entire dark mode sections
+- The goal: **zero dark mode overrides** for components that can use tokens directly
 
 ### Technical Architecture
 
@@ -141,6 +166,7 @@ Dark Mode (html[data-theme='dark'])
 - **95+ CSS variables** defined for comprehensive theme control
 - **100% component coverage** with dark mode support
 - **Zero code duplication** - no separate stylesheets or duplicated rules
+- **Minimal override blocks** - most components adapt via tokens alone
 - **Scalable** - adding a third theme requires only new token values
 - **Maintainable** - changes propagate automatically across all components
 - **Developer-friendly** - new components only need to use tokens, they inherit theme support
@@ -241,6 +267,25 @@ Pre každý komponent sme pridali sekciu „Tmavý režim" demonštrujúcu:
 - Interaktívne stavy (hover, selected, disabled)
 - Príklady kódu pre vývojárov
 
+#### Fáza 5: Konsolidácia a zjednodušenie tokenov
+
+Po počiatočnej implementácii sme preskúmali celý systém tmavého režimu kvôli redundanciám a možnostiam zjednodušenia:
+
+**Eliminácia redundantných tokenov:**
+- Zistili sme, že `bg-warning`/`bg-error` duplikovali hodnoty `state-warning-bg`/`state-error-bg` v tmavom režime
+- Konsolidovali sme tak, že `bg-*` tokeny referencujú `state-*-bg` v tmavom režime
+- Znížili sme duplicitné hex hodnoty a zabezpečili jediný zdroj pravdy
+
+**Použitie `_theme()` v konfiguráciách komponentov:**
+- Namiesto pridávania blokov prepísania tmavého režimu sme aktualizovali konfigurácie na priame použitie helperu `_theme()`
+- Svetlé varianty alertov: Zmenené z `_color('info', 100)` na `_theme(state-info-bg)` — **eliminované 40+ riadkov prepisov**
+- Konfigurácia tabov: Zmenená z `_color(grey, 400)` na `_theme(border-strong)` — **znížený blok tmavého režimu z 18 riadkov na 6**
+
+**Nahradenie pevne zakódovaných hex hodnôt:**
+- Našli sme pevne zakódované farby tmavého režimu ako `#1A1918` a `#1a3d5c` v súboroch komponentov
+- Nahradené pomocou `_theme(surface-primary)` a `_theme(state-info-bg)`
+- Zabezpečuje konzistenciu, ak by sa farby tmavého režimu niekedy museli upraviť
+
 ### Kľúčové poznatky
 
 **1. Tokeny > Pevne zakódované hodnoty**
@@ -267,6 +312,12 @@ Pre každý komponent sme pridali sekciu „Tmavý režim" demonštrujúcu:
 - Keď sa vyskytli problémy (tlačidlá karuselu vyzerajú zle, kontrast ohraničenia príliš nízky), systematický výskum identifikoval hlavné príčiny
 - Namiesto viacerých neúspešných pokusov viedol štruktúrovaný debugging priamo k riešeniam
 - AI pomáhala rozpoznať vzory a aplikovať ich konzistentne v komponentoch
+
+**6. Zjednodušenie pomocou opätovného použitia tokenov**
+- Po počiatočnej implementácii preskúmanie redundancií prináša významné zjednodušenie
+- Tokeny môžu v tmavom režime referencovať iné tokeny (napr. `bg-green: var(--ms-state-success-bg)`)
+- Použitie `_theme()` v konfiguráciách namiesto blokov prepisov eliminuje celé sekcie tmavého režimu
+- Cieľ: **nula prepisov tmavého režimu** pre komponenty, ktoré môžu priamo používať tokeny
 
 ### Technická architektúra
 
@@ -295,7 +346,8 @@ Tmavý režim (html[data-theme='dark'])
 
 - **95+ CSS premenných** definovaných na komplexnú kontrolu motívu
 - **100% pokrytie komponentov** s podporou tmavého režimu
-- **Nulová duplikácia kódu** - žiadne samostatné stylesheeты alebo duplikované pravidlá
+- **Nulová duplikácia kódu** - žiadne samostatné štýly alebo duplikované pravidlá
+- **Minimálne bloky prepisov** - väčšina komponentov sa prispôsobuje iba pomocou tokenov
 - **Škálovateľný** - pridanie tretieho motívu vyžaduje iba nové hodnoty tokenov
 - **Udržovateľný** - zmeny sa automaticky šíria vo všetkých komponentoch
 - **Priateľský pre vývojárov** - nové komponenty potrebujú iba použiť tokeny, zdedia podporu motívov

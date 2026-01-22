@@ -15,6 +15,25 @@
 
 ## Key Discoveries
 
+### Token Consolidation Principle
+- **Avoid duplicate values across tokens** - if two tokens have the same dark mode value, one should reference the other
+- Example: `bg-warning` and `state-warning-bg` had identical dark mode values (`#4d3619`)
+- Solution: In dark mode, `--ms-bg-warning: var(--ms-state-warning-bg)` — single source of truth
+- This pattern applied to: `bg-blue`→`state-info-bg`, `bg-green`→`state-success-bg`, `bg-error`→`state-error-bg`
+
+### Prefer `_theme()` in Configs Over Override Blocks
+- **Best approach**: Use `_theme()` helper directly in component config maps
+- **Avoid**: Adding `[data-theme='dark']` blocks to override hardcoded colors
+- Example transformation:
+  ```scss
+  // Before: Hardcoded + dark override block needed
+  background-color: _color('info', 100)
+  
+  // After: Automatic dark mode adaptation, no override needed
+  background-color: _theme(state-info-bg)
+  ```
+- This eliminated ~40 lines of dark mode overrides in `_alerts.scss`
+
 ### Sass Compilation Limitations
 - **Cannot use CSS custom properties with Sass color functions** (e.g., `color.mix()`)
 - Solution: **Explicitly define all state colors** (default, focus, hover, active) in component configs
@@ -55,12 +74,25 @@
 4. **Document edge cases** that require manual overrides
 
 ## Completed Components
+- ✅ Alerts (all variants including light variants)
 - ✅ Badges
 - ✅ Buttons (all variants)
-- ✅ Tabs (filter and card styles)
 - ✅ Cards (all variants)
 - ✅ Demo component
+- ✅ Dropdowns
+- ✅ Forms (basic, advanced, labels, numberspinner)
+- ✅ Lists
+- ✅ Modals
+- ✅ Tables
+- ✅ Tabs (filter and card styles)
 - ✅ Typography (h2, h3)
+
+## Simplification Checklist
+When reviewing dark mode implementation:
+1. [ ] Are any tokens duplicating values? → Consolidate with references
+2. [ ] Are there `[data-theme='dark']` blocks? → Can they use `_theme()` in config instead?
+3. [ ] Are there hardcoded hex values in dark blocks? → Replace with `_theme()` calls
+4. [ ] Do `bg-*` and `state-*-bg` tokens have the same dark value? → Reference one from the other
 
 ## Next Steps
 - Continue systematic conversion of remaining components
