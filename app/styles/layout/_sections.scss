@@ -106,7 +106,6 @@
   }
 }
 
-html[data-theme='dark'],
 [data-theme='dark'] {
   .collapsed {
     &:not(.is-active)::after {
@@ -114,19 +113,21 @@ html[data-theme='dark'],
     }
 
     &.bg-secondary:not(.is-active)::after {
-      background: linear-gradient(to top, rgba(#252321, 1), rgba(#252321, 0));
+      background: linear-gradient(to top, var(--#{$prefix}bg-secondary), rgba(var(--#{$prefix}bg-secondary), 0));
     }
 
     &.bg-teal:not(.is-active)::after {
-      background: linear-gradient(to top, rgba(#2F4C58, 1), rgba(#2F4C58, 0));
+      background: linear-gradient(to top, var(--#{$prefix}bg-teal), rgba(var(--#{$prefix}bg-teal), 0));
     }
 
     &.bg-blue:not(.is-active)::after {
-      background: linear-gradient(to top, rgba(#1F3A50, 1), rgba(#1F3A50, 0));
+      background: linear-gradient(to top, rgba(#1a3d5c, 1), rgba(#1a3d5c, 0));
+
+      // background: linear-gradient(to top, var(--#{$prefix}bg-blue), rgba(var(--#{$prefix}bg-blue), 0));
     }
 
     &.bg-green:not(.is-active)::after {
-      background: linear-gradient(to top, rgba(#1F4D2C, 1), rgba(#1F4D2C, 0));
+      background: linear-gradient(to top, var(--#{$prefix}bg-green), rgba(var(--#{$prefix}bg-green), 0));
     }
   }
 }

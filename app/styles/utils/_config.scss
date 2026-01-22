@@ -507,7 +507,7 @@ $utilities-bg-colors: map.merge($color-presets,
     secondary-dark: var(--#{$prefix}surface-secondary-dark),
     teal: $teal-bg-color,
     green: $green-bg-color,
-    blue: $blue-bg-color,
+    blue: _theme(state-info-bg),
     grey-dark: _color(grey, 900),
   ));
 
@@ -1374,7 +1374,7 @@ $dropdown-menu-item: (
 
 $table-border-w: 1px;
 $table-border-s: solid;
-$table-border-c: _color(grey, 200);
+$table-border-c: var(--#{$prefix}table-border);
 
 $table: (
   background-color: $color-white,
@@ -1387,14 +1387,14 @@ $table-cell: (
     border-bottom: $table-border-w $table-border-s $table-border-c,
   ),
   even: (
-    background-color: _color(bg, 650),
+    background-color: var(--#{$prefix}table-striped-bg),
   ),
   head: (
     vertical-align: bottom,
     font-weight: var(--fw-semibold),
   ),
   head-highlight: (
-    background-color: _color(bg, 500),
+    background-color: var(--#{$prefix}table-head-bg),
   ),
 );
 
