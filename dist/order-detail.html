@@ -13,7 +13,22 @@
     <meta name="verify-v1" content="T+OHlS5UzwUGqeLzY9VCoZi05W1LWAjmytPCIQ2f3kw=">
     <link rel="preload" href="fonts/Tabac-Sans/fonts/Tabac-Sans-Regular-9531409e5f6d548c2ccc3429d9d5db69.woff2" as="font" type="font/woff2">
     <link rel="stylesheet" href="fonts/Tabac-Sans/style.0f2ed26c.css">
-    <link rel="stylesheet" href="styles/main.0e167635.css">
+    <script>
+      (function() {
+        function setCookie(name, value, days) {
+          const d = new Date();
+          d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+          document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+        }
+        const theme = localStorage.getItem('martinus-theme') ||
+          (window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('martinus-theme', theme);
+        setCookie('martinus-theme', theme, 365);
+      })();
+      
+    </script>
+    <link rel="stylesheet" href="styles/main.03eb42bd.css">
   </head>
   <body class="undefined has-header-warning">
     <div id="fb-root"></div>
@@ -2040,6 +2055,9 @@
                           <svg class="icon icon-youtube  icon--medium" role="img" aria-hidden="true">
                             <use xlink:href="icons_/app.svg#icon-youtube"></use>
                           </svg></a></div>
+                <div class="bar__item">
+                  <button class="theme-toggle" data-theme-toggle type="button" aria-label="Toggle theme" aria-pressed="false" title="Toggle dark mode"><span class="theme-toggle__text-light">Tma</span><span class="theme-toggle__text-dark">Svetlo</span></button>
+                </div>
               </div>
             </div>
           </section>
@@ -2106,8 +2124,8 @@
       window.myApp.selectLanguage = 'sk';
     </script>
     <script src="scripts/vendor.60ef9614.js"></script>
-    <script src="scripts/main.6c70202d.js"></script>
-    <script src="scripts/font-awesome.cad65f0f.js"></script>
+    <script src="scripts/main.c7521a72.js"></script>
+    <script src="scripts/font-awesome.0139e9c7.js"></script>
     <script>
       window.myApp = window.myApp = {};
       window.addEventListener('DOMContentLoaded', () => {
