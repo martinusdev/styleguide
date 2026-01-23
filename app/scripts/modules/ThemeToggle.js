@@ -43,6 +43,8 @@ class ThemeToggle {
    */
   applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem(this.storageKey, theme);
+    this.setCookie(this.storageKey, theme, 365);
     this.updateToggleUI(theme);
   }
 
@@ -71,8 +73,20 @@ class ThemeToggle {
   toggleTheme() {
     const current = document.documentElement.getAttribute('data-theme') || 'light';
     const next = current === 'dark' ? 'light' : 'dark';
-    localStorage.setItem(this.storageKey, next);
     this.applyTheme(next);
+  }
+
+  /**
+   * Set cookie for PHP to read
+   * @param {string} name - Cookie name
+   * @param {string} value - Cookie value
+   * @param {number} days - Expiration in days
+   */
+  setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = `expires=${date.toUTCString()}`;
+    document.cookie = `${name}=${value};${expires};path=/;SameSite=Lax`;
   }
 
   /**
