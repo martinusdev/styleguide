@@ -103,3 +103,16 @@
   @include input;
   @include input-search;
 }
+
+// Dark theme override for input--dark variant
+[data-theme='dark'] {
+  .input--dark {
+    &:focus,
+    &.is-active,
+    &.is-value {
+      background-color: var(--#{$prefix}surface-elevated);
+      border-color: var(--#{$prefix}border-default);
+      color: var(--#{$prefix}text-primary);
+    }
+  }
+}
