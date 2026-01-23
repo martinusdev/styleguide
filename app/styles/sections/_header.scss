@@ -117,7 +117,7 @@
 
         border-left: 8px solid transparent;
         border-right: 8px solid transparent;
-        border-bottom: 8px solid $color-white;
+        border-bottom: 8px solid var(--#{$prefix}megamenu-sidebar-bg);
       }
     }
   }
@@ -333,6 +333,11 @@
     text-transform: none;
     letter-spacing: normal;
   }
+
+  .text-white,
+  .text-color-white {
+    color: $color-white !important;
+  }
 }
 
 .header-user {
@@ -516,6 +521,6 @@
 @include breakpoint(m) {
   .dropdown--account {
     width: 200px;
-    background-color: $color-white !important;
+    background-color: var(--#{$prefix}dropdown-bg) !important;
   }
 }

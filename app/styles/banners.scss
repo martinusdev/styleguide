@@ -1,3 +1,5 @@
+@use 'sass:string';
+
 // VENDORS
 @import './../../node_modules/normalize.css/normalize';
 
@@ -33,8 +35,11 @@
 }
 
 @each $variant, $color in $color-presets {
-  .bg-light-#{'' + $variant} {
-    background-color: _color-shade($color, 400);
+  // Skip CSS variables (can't use Sass color functions on them)
+  @if not string.index(#{$color}, 'var(') {
+    .bg-light-#{'' + $variant} {
+      background-color: _color-shade($color, 400);
+    }
   }
 }
 

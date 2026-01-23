@@ -340,6 +340,60 @@
 
 @include card-classes;
 
+// ----------------------------
+// Dark mode overrides for special features
+
+[data-theme='dark'] {
+  .card {
+    &__label {
+      background: _theme(surface-elevated);
+      color: _theme(text-secondary);
+    }
+
+    &--arrowhead {
+      &.card--well::before {
+        border-right-color: _theme(surface-secondary);
+      }
+
+      &-left::before {
+        border-right-color: _theme(surface-elevated);
+      }
+
+      &-right::before {
+        border-left-color: _theme(surface-elevated);
+      }
+
+      &-top::before {
+        border-bottom-color: _theme(surface-elevated);
+      }
+
+      &-bottom::before {
+        border-top-color: _theme(surface-elevated);
+      }
+    }
+
+    &--speech-bubble::after {
+      border-color: _theme(surface-elevated) transparent transparent;
+
+      &.bg-secondary::after {
+        border-color: _theme(surface-secondary) transparent transparent;
+      }
+    }
+
+    &--speech-bubble-end::after {
+      border-color: _theme(surface-elevated) _theme(surface-elevated) transparent transparent;
+
+      &.bg-secondary::after {
+        border-color: _theme(surface-secondary) _theme(surface-secondary) transparent transparent;
+      }
+    }
+
+    &--done__icon {
+      background: _theme(surface-elevated);
+    }
+  }
+}
+
 // ---------------------------------------------
 // Zberatelske zalozky
 // ---------------------------------------------

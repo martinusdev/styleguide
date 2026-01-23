@@ -246,6 +246,112 @@ block append content
             </article>
 
             <button class="btn" type="button" href="#tab3-2" data-toggle="#tab3-2">Toggle tab 2</button>
-//- end: section
+
+    +content-sub-section('Dark Mode')
+
+      .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+
+        +content-sub-section('Tabs Filter in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            .btn-group.btn-group--tab.btn-group--horizontal(data-tabs-container)
+              a(href='#tab-dark-1', role="tab", data-tabs-item).btn.btn--tab.is-active Knihy
+              a(href='#tab-dark-2', role="tab", data-tabs-item).btn.btn--tab Filmy
+              a(href='#tab-dark-3', role="tab", data-tabs-item).btn.btn--tab Hry
+              a(href='#tab-dark-4', role="tab", data-tabs-item).btn.btn--tab Káva a čaj
+
+            .btn-group.btn-group--tab.btn-group--horizontal(data-tabs-container)
+              a(href='#tab-dark-1', role="tab", data-tabs-item).btn.btn--tab.is-active Example 1
+              a(href='#tab-dark-2', role="tab", data-tabs-item).btn.btn--tab Example 2
+
+            article.tabs
+              section#tab-dark-1.tab
+                p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+              section#tab-dark-2.tab
+                p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+
+          +demo-code
+            :code
+              <div class="btn-group btn-group--tab btn-group--horizontal" data-tabs-container>
+                <a class="btn btn--tab is-active" href="#tab-1" role="tab" data-tabs-item>Knihy</a>
+                <a class="btn btn--tab" href="#tab-2" role="tab" data-tabs-item>Filmy</a>
+              </div>
+
+        +content-sub-section('Regular Tabs in Dark Mode')
+
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            ul.tab-nav(data-tabs-container)
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link.is-active(href='#dark-tab-1' role="tab")
+                  .tab-nav__content-wrap Tab 1
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link(href='#dark-tab-2' role="tab")
+                  .tab-nav__content-wrap Tab 2
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link(href='#dark-tab-3' role="tab") Tab 3
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--link.is-disabled(href='#dark-tab-4' role="tab" tabindex="-1")
+                  .tab-nav__content-wrap Tab disabled
+
+            article.tabs
+              section#dark-tab-1.tab.is-active
+                p Lorem ipsum In eiusmod occaecat fugiat nulla sit aute sint Excepteur sed sit cillum laboris officia sit laborum sunt veniam id aute magna et velit aliquip elit in ut proident mollit labore.
+              section#dark-tab-2.tab
+                p Lorem ipsum Ut magna id tempor id sunt aute id ad ut do reprehenderit sint in adipisicing deserunt do aliquip nulla ullamco occaecat.
+              section#dark-tab-3.tab
+                p Lorem ipsum Labore ad et in in labore Ut qui voluptate adipisicing proident laborum sed deserunt amet amet occaecat do consequat sunt Excepteur sint voluptate quis ullamco in quis ut.
+              section#dark-tab-4.tab
+                p Lorem ipsum Veniam qui cupidatat dolore ad nulla in dolore veniam id est cillum quis magna dolore Ut minim in culpa dolore in qui nostrud in.
+
+          +demo-code
+            :code
+              <ul class="tab-nav" data-tabs-container>
+                <li class="tab-nav__item" data-tabs-item>
+                  <a class="tab-nav__content tab-nav__content--link is-active" href="#tab-1" role="tab">Tab 1</a>
+                </li>
+                <li class="tab-nav__item" data-tabs-item>
+                  <a class="tab-nav__content tab-nav__content--link" href="#tab-2" role="tab">Tab 2</a>
+                </li>
+              </ul>
+
+        +content-sub-section('Tabs Card in Dark Mode')
+        +demo&attributes({['data-theme']: 'dark'})
+          +demo-example
+            ul.tab-nav.tab-nav--block.tab-nav--rounded(data-tabs-container)
+              li.tab-nav__item.flex-noshrink(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--card.is-active(href='#dark-card-1' role="tab")
+                  span.tab-nav__content-wrap
+                    span.d-block.text-ellipsis Na webe
+                    span.status.status--success.text-color-grey.text-normal.text-ellipsis do 3 dní
+              li.tab-nav__item(data-tabs-item)
+                a.tab-nav__content.tab-nav__content--card(href='#dark-card-2' role="tab")
+                  span.tab-nav__content-wrap.text-nowrap
+                    span.d-block.text-ellipsis Odložiť v kníhkupectve
+                    span.status.status--success.text-color-grey.text-normal.text-ellipsis Bratislava, Obchodná
+
+            .tabs
+              section#dark-card-1.tab.is-active
+                article.card.card--well.text-center
+                  .card__content
+                    .h1 12,99 €
+                  .card__content
+                    p.mb-small Máme na sklade, posielame ihneď.
+
+              section#dark-card-2.tab
+                article.card.card--well.text-center
+                  .card__content
+                    .h1 13,90 €
+
+          +demo-code
+            :code
+              <ul class="tab-nav tab-nav--block tab-nav--rounded" data-tabs-container>
+                <li class="tab-nav__item" data-tabs-item>
+                  <a class="tab-nav__content tab-nav__content--card" href="#web" role="tab">
+                    <span class="tab-nav__content-wrap">Na webe</span>
+                  </a>
+                </li>
+              </ul>
 
 //- end: section

@@ -25,6 +25,7 @@ import AnchorScroll from './modules/AnchorScroll';
 import Autocomplete from './modules/Autocomplete';
 import Observables from './modules/Observables';
 import FeatureHighlight from './modules/FeatureHighlight';
+import ThemeToggle from './modules/ThemeToggle';
 
 // eslint-disable-next-line
 require('mutationobserver-shim');
@@ -57,6 +58,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.AnchorScroll = AnchorScroll;
   window.myApp.Autocomplete = Autocomplete;
   window.myApp.Observables = Observables;
+  window.myApp.ThemeToggle = ThemeToggle;
 
   window.myApp.Choices = Choices;
   window.myApp.Offcanvas = Offcanvas;
@@ -104,6 +106,8 @@ window.addEventListener('DOMContentLoaded', () => {
   window.myApp.clipboard = new Clipboard();
 
   window.myApp.anchorScroll = new AnchorScroll();
+
+  window.myApp.themeToggle = new ThemeToggle();
 
   document.dispatchEvent(new CustomEvent(APP_LOADED, { bubbles: true }));
 });

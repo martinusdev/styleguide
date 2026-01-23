@@ -82,7 +82,7 @@
         right: -1px;
         border-top-left-radius: $default-border-radius;
         border-top-right-radius: $default-border-radius;
-        background: _color(bg, 600);
+        background: _theme(surface-secondary-dark);
         display: block;
         content: '';
       }
@@ -95,9 +95,9 @@
         right: -1px;
 
         height: _map-deep-get($tabs-card, 'default', margin-bottom) + $default-border-radius * 2 + _get-rem(3px);
-        background-color: _map-deep-get($tabs-card, 'active', background-color);
+        background-color: _theme(surface-secondary);
         border: _map-deep-get($tabs-card, 'default', border);
-        border-color: _map-deep-get($tabs-card, 'active', border-color);
+        border-color: _theme(surface-secondary);
       }
     }
 
@@ -129,5 +129,17 @@
 
   &.is-active {
     display: block;
+  }
+}
+
+// Note: Tab cards now use _theme() tokens for colors, which automatically
+// adapt to dark mode. The overrides below are only for the pseudo-elements
+// that need tertiary surface color (slightly lighter than secondary).
+
+[data-theme='dark'] {
+  .tab-nav__item.is-active > .tab-nav__content--card {
+    &:before {
+      background: _theme(surface-tertiary) !important;
+    }
   }
 }

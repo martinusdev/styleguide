@@ -17,9 +17,9 @@
 
   &--toolbar {
     padding-top: _get-space('small');
-    background-color: $color-white;
+    background-color: var(--#{$prefix}surface-primary);
 
-    border-bottom: 1px solid $default-border-color;
+    border-bottom: 1px solid var(--#{$prefix}border-default);
 
     z-index: $z-index-sticky;
   }
@@ -29,7 +29,7 @@
   }
 
   &--breadcrumbs {
-    background-color: _color('bg');
+    background-color: var(--#{$prefix}surface-secondary);
     padding: _get-space('tiny') 0;
 
     @include breakpoint(m) {
@@ -60,7 +60,7 @@
 
 .section-progress {
   padding-top: 0;
-  background-color: $color-white;
+  background-color: var(--#{$prefix}surface-primary);
   border-bottom: 1px solid $default-border-color;
 }
 
@@ -106,6 +106,30 @@
   }
 }
 
+[data-theme='dark'] {
+  .collapsed {
+    &:not(.is-active)::after {
+      background: linear-gradient(to top, _theme(surface-primary), transparent);
+    }
+
+    &.bg-secondary:not(.is-active)::after {
+      background: linear-gradient(to top, _theme(surface-secondary), transparent);
+    }
+
+    &.bg-teal:not(.is-active)::after {
+      background: linear-gradient(to top, _theme(bg-teal), transparent);
+    }
+
+    &.bg-blue:not(.is-active)::after {
+      background: linear-gradient(to top, _theme(state-info-bg), transparent);
+    }
+
+    &.bg-green:not(.is-active)::after {
+      background: linear-gradient(to top, _theme(state-success-bg), transparent);
+    }
+  }
+}
+
 .section-products {
   margin-left: -1 * _get-space();
   margin-right: -1 * _get-space();
@@ -133,7 +157,7 @@
   }
 
   .link {
-    color: _color(black);
+    color: var(--#{$prefix}text-primary);
 
     &:hover {
       text-decoration: underline;
@@ -144,22 +168,28 @@
     }
   }
 
+  .text-color-grey {
+    color: var(--#{$prefix}text-color-grey) !important;
+  }
+
   &--light {
-    .text-color-grey {
-      color: rgba(_color(black), 0.8) !important;
+    // Custom colored section with light background - always dark text
+    color: _color(black);
+    --#{$prefix}text-color-grey: #{_color(grey, 700)};
+
+    .link {
+      color: _color(black) !important;
     }
   }
 
   &--dark {
-    color: #fff;
+    // Custom colored section with dark background - always light text
+    color: $color-white;
     --ms-outline-color: #{rgba(_color($color-white), 0.8)};
+    --#{$prefix}text-color-grey: rgba(255, 255, 255, 0.5);
 
     .link {
-      color: #fff !important;
-    }
-
-    .text-color-grey {
-      color: rgba(255, 255, 255, 0.8) !important;
+      color: $color-white !important;
     }
   }
 
@@ -198,6 +228,13 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(#fff, 1), rgba(#fff, 0));
+  background: linear-gradient(to top, var(--#{$prefix}surface-primary), rgba(255, 255, 255, 0));
   z-index: $z-index-sticky;
+}
+
+html[data-theme='dark'],
+[data-theme='dark'] {
+  .section-sticky-bottom {
+    background: linear-gradient(to top, var(--#{$prefix}surface-primary), rgba(26, 25, 24, 0));
+  }
 }

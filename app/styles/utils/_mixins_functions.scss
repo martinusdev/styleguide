@@ -376,6 +376,14 @@
   }
 }
 
+/// Get theme CSS custom property value
+/// @param {String} $token-name - The token name without the prefix (e.g., 'surface-primary')
+/// @return {String} - CSS variable reference
+/// @example _theme(surface-primary) => var(--ms-surface-primary)
+@function _theme($token-name) {
+  @return var(--#{$prefix}#{$token-name});
+}
+
 /// Get size in pixels based on modular scale from $typography-settings
 /// @param {Number} $level - Number which specifies level on modular typographic scale
 /// @param {String} $breakpoint ['default'] - Breakpoint in $typography settings

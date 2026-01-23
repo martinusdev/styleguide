@@ -254,6 +254,111 @@ block append content
               });
             </script>
 
+    +content-sub-section('Dark Mode')
+
+      .l-wrap-main(style='background-color: var(--ms-surface-primary); color: var(--ms-text-primary); padding: 2rem; border-radius: 8px;' data-theme='dark')
+
+        +content-sub-section('Alert Types in Dark Mode')
+
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              .row
+                .col--m-8
+                  .alert
+                    .alert__icon
+                      +faIcon('check-circle').fa-xl
+                    .alert__content
+                      | Default info alert
+                    .alert__action
+                      button.btn.btn--clean.btn--small(data-alert-action)
+                        +faIcon('xmark').fa-xl
+
+              .row
+                .col--m-8
+                  .alert.alert--success
+                    .alert__icon
+                      +faIcon('check-circle').fa-xl
+                    .alert__content
+                      | Success alert - operation completed successfully.
+                    .alert__action
+                      button.btn.btn--clean.btn--small(data-alert-action)
+                        +faIcon('xmark').fa-xl
+
+              .row
+                .col--m-8
+                  .alert.alert--warning
+                    .alert__icon
+                      +faIcon('triangle-exclamation').fa-xl
+                    .alert__content
+                      | Warning alert - please review this action.
+                    .alert__action
+                      button.btn.btn--clean.btn--small(data-alert-action)
+                        +faIcon('xmark').fa-xl
+
+              .row
+                .col--m-8
+                  .alert.alert--error
+                    .alert__icon
+                      +faIcon('circle-exclamation').fa-xl
+                    .alert__content
+                      | Error alert - something went wrong.
+                    .alert__action
+                      button.btn.btn--clean.btn--small(data-alert-action)
+                        +faIcon('xmark').fa-xl
+
+            +demo-code
+              :code
+                <div class="alert">...</div>
+                <div class="alert alert--success">...</div>
+                <div class="alert alert--warning">...</div>
+                <div class="alert alert--error">...</div>
+
+        +content-sub-section('Light Alert Variants in Dark Mode')
+
+          +demo&attributes({['data-theme']: 'dark'})
+            +demo-example
+              .row
+                .col--m-8
+                  .alert.alert--success-light
+                    .alert__icon
+                      +faIcon('check-circle').fa-xl
+                    .alert__content
+                      span.text-semibold Success light variant
+                      |  - lighter background style.
+                    .alert__action
+                      button.btn.btn--clean.btn--small(data-alert-action)
+                        +faIcon('xmark').fa-xl
+
+              .row
+                .col--m-8
+                  .alert.alert--warning-light
+                    .alert__icon
+                      +faIcon('triangle-exclamation').fa-xl
+                    .alert__content
+                      span.text-semibold Warning light variant
+                      |  - lighter background style.
+                    .alert__action
+                      button.btn.btn--clean.btn--small(data-alert-action)
+                        +faIcon('xmark').fa-xl
+
+              .row
+                .col--m-8
+                  .alert.alert--error-light
+                    .alert__icon
+                      +faIcon('circle-exclamation').fa-xl
+                    .alert__content
+                      span.text-semibold Error light variant
+                      |  - lighter background style.
+                    .alert__action
+                      button.btn.btn--clean.btn--small(data-alert-action)
+                        +faIcon('xmark').fa-xl
+
+            +demo-code
+              :code
+                <div class="alert alert--success-light">...</div>
+                <div class="alert alert--warning-light">...</div>
+                <div class="alert alert--error-light">...</div>
+
 //- end: section
 
 block append scripts
