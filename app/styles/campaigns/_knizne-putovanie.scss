@@ -4,8 +4,10 @@ $mc24-color-beige: #FDEFE3;
 $mc25-color-orange: #e2782f;
 $mc25-color-purple: #5E3D76;
 
+$mc26-color-green-dark: #02331D;
+
 @media screen and (min-width: 768px) {
-  .mc24-page, .mc25-page {
+  .mc24-page, .mc25-page, .mc26-page {
     .header {
       top: 0 !important;
     }
@@ -24,7 +26,11 @@ $mc25-color-purple: #5E3D76;
   background: $mc25-color-purple;
 }
 
-.mc24-page, .mc25-page {
+.mc26-bg-green-dark {
+  background: $mc26-color-green-dark;
+}
+
+.mc24-page, .mc25-page, .mc26-page {
   .footer {
     margin-top: _get-rem(39px) !important;
   }
@@ -40,6 +46,11 @@ $mc25-color-purple: #5E3D76;
   background-size: 1300px;
 }
 
+.mc26-page {
+  background: url('../images/content/campaign/knizne-putovanie/bg-page-mc2026.jpg') repeat left top;
+  background-size: 1300px;
+}
+
 .mc24-paper, .mc25-paper {
   border-radius: 0.25rem;
 
@@ -48,6 +59,22 @@ $mc25-color-purple: #5E3D76;
 
     @include breakpoint('l') {
       padding: _get-rem(60px);
+    }
+  }
+}
+
+.mc26-paper {
+  border-radius: 0.25rem;
+
+  .card__content {
+    padding: .9375rem 1.875rem 7.8rem;
+
+    @include breakpoint('m') {
+      padding: 4.75rem 7rem 4.75rem 4.75rem;
+    }
+
+    @include breakpoint('l') {
+      padding: 4.75rem 7rem 4.75rem 4.75rem;
     }
   }
 }
@@ -88,6 +115,18 @@ $mc25-color-purple: #5E3D76;
       font-size: 2rem;
       line-height: 1.4;
     }
+  }
+}
+
+.mc26-paper {
+  &--wolf-diary {
+    background: url('../images/content/campaign/knizne-putovanie/paper/wolf-diary.jpg') no-repeat center top;
+    background-size: cover;
+    font-family: Margarine, cursive;
+    color: #2B4A6F;
+    text-align: left;
+
+    font-size: 1.8rem;
   }
 }
 
@@ -422,6 +461,41 @@ $mc25-color-purple: #5E3D76;
 
   @include breakpoint('m') {
     background: $mc25-color-purple url('../images/content/campaign/knizne-putovanie/bg-header-oc2025.jpg') no-repeat 160px bottom;
+    background-size: cover;
+    padding: _get-rem(30px) 0;
+  }
+
+  @include breakpoint('l') {
+    background-size: contain;
+    background-position-x: 300px;
+  }
+
+  &__claim {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+  }
+
+  &__logo img {
+    height: _get-rem(70px);
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+    @include breakpoint('m') {
+      height: _get-rem(110px);
+    }
+  }
+}
+
+.mc26-header {
+  padding: _get-rem(30px) _get-rem(15px) _get-rem(180px) _get-rem(15px);
+  background: $mc26-color-green-dark url('../images/content/campaign/knizne-putovanie/bg-header-mc2026-mobile.jpg') no-repeat center bottom;
+  background-size: contain;
+
+  @include breakpoint('s') {
+    background: $mc26-color-green-dark url('../images/content/campaign/knizne-putovanie/bg-header-mc2026.jpg') no-repeat center bottom;
+    background-size: contain;
+  }
+
+  @include breakpoint('m') {
+    background: $mc26-color-green-dark url('../images/content/campaign/knizne-putovanie/bg-header-mc2026.jpg') no-repeat 160px bottom;
     background-size: cover;
     padding: _get-rem(30px) 0;
   }
