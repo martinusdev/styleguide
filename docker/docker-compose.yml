@@ -34,6 +34,9 @@ services:
       # The .tmp and tmp directories are created by gulp during build
       # Mounting them can cause EBUSY errors with concurrent access
 
+      # Scripts (postinstall helpers)
+      - ../scripts:/app/scripts:ro
+
       # Config files (read-only)
       - ../.babelrc:/app/.babelrc:ro
       - ../.browserslistrc:/app/.browserslistrc:ro
