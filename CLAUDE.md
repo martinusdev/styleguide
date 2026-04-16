@@ -1,201 +1,211 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+*Aktualizované: 2026-04-16*
 
-## Project Overview
+## Prehľad projektu
 
-This is the Martinus Styleguide, a living styleguide for [Martinus.sk](https://www.martinus.sk) built with [light-scripts](https://github.com/lightingbeetle/light-scripts). It uses Gulp for task automation and runs entirely in Docker for security isolation.
+Toto je Martinus Styleguide – živý styleguide pre [Martinus.sk](https://www.martinus.sk) postavený na [light-scripts](https://github.com/lightingbeetle/light-scripts). Ako task runner používa Gulp a celý beží v Dockeri pre bezpečnostnú izoláciu.
 
-## Critical: Docker-Only Development
+## Kritické: Vývoj výlučne cez Docker
 
-**NEVER run `yarn` or `npm` commands directly.** This project uses Docker to isolate npm/yarn from the host filesystem for supply chain security. Always use the wrapper scripts:
+**NIKDY nespúšťaj `yarn` ani `npm` priamo.** Projekt používa Docker na izoláciu npm/yarn od hostiteľského súborového systému kvôli bezpečnosti supply chain. Vždy používaj wrapper skripty:
 
-- `./npm.sh <command>` - Run any yarn command in Docker
-- `./build.sh` - Production build
-- `./serve.sh` - Development server (http://localhost:3000)
-- `./mcp.sh` - Start MCP server for Claude Code integration
+- `./npm.sh <príkaz>` – Spustí ľubovoľný yarn príkaz v Dockeri
+- `./build.sh` – Produkčný build
+- `./serve.sh` – Vývojový server (http://localhost:3000)
+- `./mcp.sh` – Spustí MCP server pre integráciu s Claude Code
 
-### Common Commands
+### Bežné príkazy
 
 ```bash
-# Install dependencies
+# Inštalácia závislostí
 ./npm.sh install
 
-# Development server with live reload
+# Vývojový server s live reload
 ./serve.sh
 
-# Production build (output in dist/)
+# Produkčný build (výstup v dist/)
 ./build.sh
 
-# Add/update packages
+# Pridanie/aktualizácia balíčkov
 ./npm.sh add package-name@version
 
-# Check for updates
+# Kontrola aktualizácií
 ./npm.sh outdated
 
-# Lint JavaScript
+# Lint JavaScriptu
 ./npm.sh run lint-staged
 
-# Clear build cache
+# Vyčistenie build cache
 ./npm.sh run clear-cache
 
-# Process images only
+# Spracovanie iba obrázkov
 ./npm.sh run images
 ```
 
-## Architecture
+## Jazyk
 
-### Build System
+- Kód, názvy tried, premenných, komentáre: **anglicky**
+- Dokumentácia a PR popisy: **slovensky**
 
-- **Task runner**: Gulp 4 with gulp-hub registry
-- **Base framework**: light-scripts (custom fork at martinusdev/light-scripts)
-- **Node requirement**: >=18.2.0
-- **Primary config**: `light.config.js` - extends and customizes light-scripts configuration
+## Git konvencie
 
-### Key Configuration Files
+- Hlavná vetva: `master`
+- Commit správy: slovenčina, trpný rod – „Pridaný komponent...", „Opravené zobrazenie..."
+- **Žiadne `Co-Authored-By`**, žiadne zmienky o AI nástrojoch
 
-- `light.config.js` - Main configuration for light-scripts:
-  - Custom SVGO plugins for icons and images
-  - ESLint webpack plugin integration
-  - Disables browser opening in Docker environment (`serve.open: false`)
-  - Custom cheerio config to remove SVG fill attributes (except `[data-keep-fill]`)
+### Formát PR popisu
 
-- `gulpfile.js` - Minimal wrapper that:
-  - Loads environment variables from `.env`
-  - Runs `prepare` task to copy lightgallery assets to `app/images/` and `app/fonts/`
-  - Delegates to light-scripts via gulp-hub registry
+PR popis má vždy dve časti:
 
-### Directory Structure
+**1. Úvodný odstavec** — 2–4 vety vysvetľujúce čo a prečo sa zmenilo. Boldy = skimmable príbeh.
+
+**2. `## Detaily`** — technické odrážky, čo konkrétne sa zmenilo. Kľúčové pojmy boldom. Ak PR rieši issue: `Closes #číslo`.
+
+Príklad:
+> **Tlačidlo „Kúpiť"** malo na mobile príliš malý hit-target a **spôsobovalo chyby pri klikaní**. Zvýšená minimálna výška na 48px.
+>
+> ## Detaily
+> - Upravená výška `.btn` na `min-height: 48px`
+> - Closes #42
+
+## Architektúra
+
+### Build systém
+
+- **Task runner**: Gulp 4 s gulp-hub registrom
+- **Základný framework**: light-scripts (vlastný fork na martinusdev/light-scripts)
+- **Požiadavka na Node**: >=18.2.0
+- **Hlavná konfigurácia**: `light.config.js` – rozširuje a prispôsobuje konfiguráciu light-scripts
+
+### Kľúčové konfiguračné súbory
+
+- `light.config.js` – Hlavná konfigurácia pre light-scripts:
+  - Vlastné SVGO pluginy pre ikony a obrázky
+  - Integrácia ESLint webpack pluginu
+  - Vypína automatické otváranie prehliadača v Docker prostredí (`serve.open: false`)
+  - Vlastná cheerio konfigurácia na odstránenie fill atribútov SVG (zachovaj pomocou `[data-keep-fill]`)
+
+- `gulpfile.js` – Minimálny wrapper, ktorý:
+  - Načítava premenné prostredia z `.env`
+  - Spúšťa task `prepare` na skopírovanie lightgallery assets do `app/images/` a `app/fonts/`
+  - Deleguje na light-scripts cez gulp-hub register
+
+### Štruktúra adresárov
 
 ```
 app/
-├── views/          # Pug templates
-│   ├── layouts/    # Page layouts
-│   ├── mixins/     # Reusable Pug mixins
-│   ├── modules/    # UI modules
-│   ├── styleguide/ # Styleguide-specific pages
-│   └── data/       # JSON data for templates
+├── views/          # Pug šablóny
+│   ├── layouts/    # Layouty stránok
+│   ├── mixins/     # Znovupoužiteľné Pug mixiny
+│   ├── modules/    # UI moduly
+│   ├── styleguide/ # Stránky špecifické pre styleguide
+│   └── data/       # JSON dáta pre šablóny
 ├── scripts/        # JavaScript
-│   ├── modules/    # JS modules
-│   ├── plugins/    # Third-party plugins
-│   └── main.js     # Entry point
+│   ├── modules/    # JS moduly
+│   ├── plugins/    # Pluginy tretích strán
+│   └── main.js     # Vstupný bod
 ├── styles/         # SCSS
-│   ├── base/       # Global styles, typography
-│   ├── layout/     # Grid, page structure
-│   ├── modules/    # Reusable UI modules (buttons, forms, etc.)
-│   ├── components/ # Specific components (products, menus, etc.)
-│   ├── sections/   # Header, footer
-│   ├── pages/      # Page-specific styles
-│   ├── utils/      # Variables, mixins, functions
-│   └── main.scss   # Main entry point
-├── images/         # Image assets
-├── icons_/         # SVG icons (processed with custom config)
-└── fonts/          # Web fonts
+│   ├── base/       # Globálne štýly, typografia
+│   ├── layout/     # Grid, štruktúra stránky
+│   ├── modules/    # Znovupoužiteľné UI vzory (tlačidlá, formuláre atď.)
+│   ├── components/ # Špecifické komponenty (produkty, menu atď.)
+│   ├── sections/   # Hlavička, pätička
+│   ├── pages/      # Štýly špecifické pre stránky
+│   ├── utils/      # Premenné, mixiny, funkcie
+│   └── main.scss   # Hlavný vstupný bod
+├── images/         # Obrázky
+├── icons_/         # SVG ikony (spracované s vlastnou konfiguráciou)
+└── fonts/          # Web fonty
 ```
 
-### Styling Architecture
+### Architektúra štýlov
 
-The project uses Bootstrap 5.3.7 utilities API with custom utilities defined in `app/styles/_utilities.scss`. SCSS follows ITCSS-like structure:
+Projekt používa Bootstrap 5.3.7 utilities API s vlastnými utilitami definovanými v `app/styles/_utilities.scss`. SCSS sleduje ITCSS-like štruktúru:
 
 1. **Vendors**: normalize.css, Bootstrap, Swiper
-2. **Utils**: Bootstrap functions/mixins, custom variables/mixins
-3. **Base**: Global styles, typography
-4. **Layout**: Grid system, sections, containers
-5. **Modules**: Reusable UI patterns (buttons, forms, cards, tables, etc.)
-6. **Components**: Specific business components (products, navigation, etc.)
-7. **Sections**: Header, footer
-8. **Pages**: Page-specific overrides
-9. **Tools**: Additional utilities
-10. **Shame**: Quick fixes (to be refactored)
+2. **Utils**: Bootstrap funkcie/mixiny, vlastné premenné/mixiny
+3. **Base**: Globálne štýly, typografia
+4. **Layout**: Grid systém, sekcie, kontajnery
+5. **Modules**: Znovupoužiteľné UI vzory (tlačidlá, formuláre, karty, tabuľky atď.)
+6. **Components**: Špecifické business komponenty (produkty, navigácia atď.)
+7. **Sections**: Hlavička, pätička
+8. **Pages**: Prepisy špecifické pre stránky
+9. **Tools**: Dodatočné utility
+10. **Shame**: Rýchle opravy (na refaktorovanie)
 
-### JavaScript Architecture
+### Architektúra JavaScriptu
 
-- **Entry point**: `app/scripts/main.js`
-- **Vendor bundles**: Separate `vendor.js` for third-party libraries
-- **Module pattern**: Individual modules in `app/scripts/modules/`
-- **Light modules**: Framework-specific in `app/scripts/lightModules/`
+- **Vstupný bod**: `app/scripts/main.js`
+- **Vendor bundles**: Samostatný `vendor.js` pre knižnice tretích strán
+- **Vzor modulov**: Jednotlivé moduly v `app/scripts/modules/`
+- **Light moduly**: Framework-špecifické v `app/scripts/lightModules/`
 
-Key dependencies: jQuery 3.7.1, Bootstrap 5.3.7, Swiper, Chart.js, lightgallery.js
+Kľúčové závislosti: jQuery 3.7.1, Bootstrap 5.3.7, Swiper, Chart.js, lightgallery.js
 
-### Template System
+### Systém šablón
 
-- **Engine**: Pug (formerly Jade)
-- **Data**: JSON files in `app/views/data/` and `app/views/data.json`
-- **Mixins**: Reusable components in `app/views/mixins/`
-- **Asset prefix**: Use `${assetsPrefix}` in templates for correct asset paths
+- **Engine**: Pug (predtým Jade)
+- **Dáta**: JSON súbory v `app/views/data/` a `app/views/data.json`
+- **Mixiny**: Znovupoužiteľné komponenty v `app/views/mixins/`
+- **Prefix pre assety**: V šablónach používaj `${assetsPrefix}` pre správne cesty k assetom
 
 ## Linting
 
 ### JavaScript (ESLint)
 
-- **Config**: `eslint.config.js` (flat config) + inline config in `package.json`
-- **Base**: airbnb-base style guide
-- **Globals**: jQuery, Modernizr
-- **Ignores**: node_modules, dist, plugins, font-awesome.js
+- **Konfigurácia**: `eslint.config.js` (flat config) + inline konfigurácia v `package.json`
+- **Základ**: airbnb-base style guide
+- **Globály**: jQuery, Modernizr
+- **Ignorované**: node_modules, dist, plugins, font-awesome.js
 
 ### SCSS (Stylelint)
 
-- **Config**: `.stylelintrc.json`
-- **Base**: stylelint-config-sass-guidelines
-- **Ignores**: app/styles/vendors/
-- **Key customizations**: No max-nesting-depth, flexible selector patterns
+- **Konfigurácia**: `.stylelintrc.json`
+- **Základ**: stylelint-config-sass-guidelines
+- **Ignorované**: app/styles/vendors/
+- **Kľúčové úpravy**: Bez max-nesting-depth, flexibilné vzory selektorov
 
-### Pre-commit Hooks
+### Pre-commit hooks
 
-The project uses `pre-commit` + `lint-staged`:
-- Lints `app/scripts/**/*.js` with ESLint
-- Lints `app/styles/**/*.scss` with Stylelint
+Projekt používa `pre-commit` + `lint-staged`:
+- Lintuje `app/scripts/**/*.js` pomocou ESLint
+- Lintuje `app/styles/**/*.scss` pomocou Stylelint
 
-## Docker Details
+## Docker – detaily
 
-### Why Docker?
+### Stratégia volumes
 
-Supply chain security: isolates npm/yarn from host filesystem, runs as non-root user (nodejs, UID 1001), containerizes node_modules in named volume.
+- `styleguide_node_modules` – Named Docker volume (nikdy nevystavený hostiteľovi)
+- `app/`, `package.json`, `yarn.lock` – Mountované read-write
+- Konfiguračné súbory – Mountované read-only
 
-### Volume Strategy
-
-- `styleguide_node_modules` - Named Docker volume (never exposed to host)
-- `app/`, `package.json`, `yarn.lock` - Mounted read-write
-- Config files - Mounted read-only
-
-### Troubleshooting
+### Riešenie problémov
 
 ```bash
-# Container won't start
+# Kontajner sa nespustí
 docker-compose logs styleguide
 docker-compose build --no-cache
 
-# Node modules issues
+# Problémy s node_modules
 docker volume rm martinus-styleguide_styleguide_node_modules
 ./npm.sh install
 
-# Permission errors
+# Chyby oprávnení
 sudo chown -R $USER app/
 ```
 
-See `docker/README.md` for detailed Docker documentation.
+Podrobná Docker dokumentácia: `docs/guides/docker.md`.
 
 ## MCP Server (Model Context Protocol)
 
-This project includes a custom MCP server that provides tools for efficiently exploring the styleguide:
+Vlastný MCP server poskytuje nástroje na preskúmavanie styleguide (komponenty, SCSS triedy, Pug mixiny, ikony, dátové štruktúry). Spustenie: `./mcp.sh`. Inštrukcie na nastavenie: `docs/guides/mcp-server.md`.
 
-- **list_components** - List all Pug/SCSS/JS components
-- **get_component_info** - Get detailed info about a specific component
-- **list_scss_utilities** - List SCSS variables, mixins, and utilities
-- **find_scss_class** - Search for SCSS class definitions
-- **list_pug_mixins** - List all Pug mixins with signatures
-- **get_mixin_info** - Get detailed mixin information
-- **list_icons** - List all SVG icons
-- **get_data_structure** - View JSON data file structures
+## Dôležité poznámky
 
-The MCP server runs in Docker with read-only access to `app/` for security. See `mcp-server/README.md` for setup instructions.
-
-## Important Notes
-
-- All scripts use `--openssl-legacy-provider` flag for Node compatibility
-- The `prepare` task must run before first build to copy lightgallery assets
-- Images support: gif, png, jpg, svg, webp (custom extension in light.config.js)
-- SVG icons have fill attributes removed automatically (preserve with `[data-keep-fill]`)
-- Development server runs on http://localhost:3000 (browser won't auto-open in Docker)
-- Production builds output to `dist/`
-- Git: main branch is `master`
+- Všetky skripty používajú flag `--openssl-legacy-provider` kvôli kompatibilite s Node
+- Task `prepare` musí bežať pred prvým buildom – kopíruje lightgallery assets
+- Podporované formáty obrázkov: gif, png, jpg, svg, webp (vlastná konfigurácia v `light.config.js`)
+- SVG ikonám sa automaticky odstraňujú fill atribúty (zachovaj pomocou `[data-keep-fill]`)
+- Vývojový server beží na http://localhost:3000 (prehliadač sa v Dockeri neotvorí automaticky)
+- Produkčné buildy sa ukladajú do `dist/`
