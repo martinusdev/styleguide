@@ -1,0 +1,121 @@
+extends layouts/_default
+
+include ./mixins/booksCarouselRecommended
+include ./mixins/libraryCarousel
+include ./mixins/faIcon
+include ./mixins/icon
+
+block opts
+    - var pageTitle = 'Carousels showcase'
+    - var headerWarningActive = false
+
+block content
+
+  main
+    section.section.section--white
+      .wrapper-main
+        h1.mb-tiny Carousels
+        p.text-color-grey.mb-none Prehľad variantov karuselov v reálnom layoute. Prepnite tému (svetlá/tmavá) a pozrite, ako sa jednotlivé varianty prispôsobujú.
+
+    //- --------------------------------------------------
+    //- FADE OUTSIDE (default) — fades to the section background
+    section.section.section--secondary
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-outside
+        p.text-color-grey.mb-small Default fade (large 1800px fade zones outside the container). Fades to the surrounding section background — here on the default (secondary) surface.
+        +booksCarouselRecommended({ads: false, collections: false}).carousel--fade-outside
+
+    //- --------------------------------------------------
+    //- FADE OUTSIDE WHITE — fades to the primary (white/dark) surface
+    section.section.section--white
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-outside.carousel--fade-outside-white
+        p.text-color-grey.mb-small Fade-outside tuned for primary-surface contexts (white cards in light mode, dark surface in dark mode).
+        +booksCarouselRecommended({ads: false, collections: false}).carousel--fade-outside.carousel--fade-outside-white
+
+    //- --------------------------------------------------
+    //- FADE INSIDE (default)
+    section.section.section--secondary
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-inside
+        p.text-color-grey.mb-small Compact 20px fade applied inside the container, clipping the last slide edge.
+        +booksCarouselRecommended({ads: false, collections: false, cartButton: true}).carousel--fade-inside
+
+    //- --------------------------------------------------
+    //- FADE INSIDE WHITE
+    section.section.section--white
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-inside.carousel--fade-inside-white
+        p.text-color-grey.mb-small Compact fade for primary-surface (white/dark) backgrounds.
+        +booksCarouselRecommended({ads: false, collections: false, cartButton: true}).carousel--fade-inside.carousel--fade-inside-white
+
+    //- --------------------------------------------------
+    //- FADE INACTIVE + DISABLE INACTIVE — banner carousel
+    section.section.section--secondary
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-inactive.carousel--disable-inactive
+        p.text-color-grey.mb-small Inactive slides are dimmed (opacity 0.5) and not clickable. Typical banner usage.
+        include ./modules/carousel-banner
+
+    //- --------------------------------------------------
+    //- FAN — collection carousel
+    section.section.section--white
+      .wrapper-main
+        h2.mb-tiny .carousel--fan
+        p.text-color-grey.mb-small Fanning animation. Used for collection promos.
+        include ./modules/collection-carousel
+
+    //- --------------------------------------------------
+    //- CAROUSEL CARDS — info cards with icon + text
+    section.section.section--white.section--overflow
+      .wrapper-main
+        h2.mb-tiny .carousel-cards (with fade-outside-white)
+        p.text-color-grey.mb-small Horizontal info-card slider. Used in the homepage footer (USPs).
+        -
+          var swiperCardsContent = [
+            { icon: 'footer-tradition', text: 'Máme skoro 30-ročnú tradíciu predaja kníh' },
+            { icon: 'footer-shipping', text: 'Ponúkame vyše 20 000 titulov na sklade' },
+            { icon: 'footer-stores', text: '10 kníhkupectiev po celom Slovensku' },
+            { icon: 'footer-package', text: 'Sme 3-násobný MasterCard Obchodník roka' },
+            { icon: 'footer-events', text: 'Organizujeme desiatky besied s autormi' },
+            { icon: 'footer-positive', text: 'Podporujeme čítanie s porozumením' },
+          ];
+          var swiperCardsConfig = JSON.stringify({
+            slidesPerView: 'auto',
+            slidesPerGroup: 1,
+            spaceBetween: 20,
+            centeredSlides: true,
+            loop: true,
+          });
+        .carousel.carousel--fade-outside.carousel--fade-outside-white.carousel-cards
+          .swiper(data-swiper-options=swiperCardsConfig)
+            .swiper-wrapper
+              each item in swiperCardsContent
+                .swiper-slide.carousel-cards__item
+                  .card.card--well
+                    .card__content
+                      .bar.mb-none
+                        .bar__item.bar__item--shrinkable
+                          +icon(item.icon, 'text-color-grey')
+                        .bar__item.bar__item--fill
+                          p.text-medium= item.text
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--prev
+              +faIcon('arrow-left').fa-2x
+            button.btn.btn--carousel.btn--large.btn--equal.carousel__btn.carousel__btn--next
+              +faIcon('arrow-right').fa-2x
+
+    //- --------------------------------------------------
+    //- LIBRARY CAROUSEL — carousel of cards (library list items)
+    section.section.section--secondary
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-outside (cards inside)
+        p.text-color-grey.mb-small Generic card slides. Used for the user's library listing.
+        +libraryCarousel
+
+    //- --------------------------------------------------
+    //- PLAIN — no modifier
+    section.section.section--white
+      .wrapper-main
+        h2.mb-tiny .carousel (no modifier)
+        p.text-color-grey.mb-small Plain carousel with no fade/animation modifier — slides simply scroll.
+        +booksCarouselRecommended({ads: false, collections: false, productInfo: false})
