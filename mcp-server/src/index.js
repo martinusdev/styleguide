@@ -8,8 +8,9 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { glob } from 'glob';
 import { readFile } from 'fs/promises';
-import { join, relative } from 'path';
+import { join, relative, extname } from 'path';
 import * as cheerio from 'cheerio';
+import yaml from 'js-yaml';
 
 const APP_DIR = '/app/app';
 
@@ -211,13 +212,21 @@ class StyleguideServer {
       }));
     }
 
-    // Find SCSS modules
+    // Find SCSS modules and components
     if (type === 'all' || type === 'scss') {
-      const scssFiles = await glob('styles/modules/**/*.scss', { cwd: APP_DIR });
-      components.scss = scssFiles.map(f => ({
-        name: relative('styles/modules', f).replace(/\.scss$/, ''),
-        path: f,
-      }));
+      const moduleFiles = await glob('styles/modules/**/*.scss', { cwd: APP_DIR });
+      const componentFiles = await glob('styles/components/**/*.scss', { cwd: APP_DIR });
+      const stripLeadingUnderscore = (p) => p.replace(/(^|\/)_/, '$1');
+      components.scss = [
+        ...moduleFiles.map(f => ({
+          name: stripLeadingUnderscore(relative('styles/modules', f)).replace(/\.scss$/, ''),
+          path: f,
+        })),
+        ...componentFiles.map(f => ({
+          name: stripLeadingUnderscore(relative('styles/components', f)).replace(/\.scss$/, ''),
+          path: f,
+        })),
+      ];
     }
 
     // Find JS modules
@@ -464,24 +473,67 @@ class StyleguideServer {
     };
   }
 
+  _extractMixinBlock(content, name) {
+    const lines = content.split('\n');
+    const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const signatureRe = new RegExp(`^(\\s*)mixin\\s+${escapedName}(\\s*\\([^)]*\\))?\\s*$`);
+
+    let startIdx = -1;
+    let baseIndent = 0;
+    let params = '()';
+
+    for (let i = 0; i < lines.length; i++) {
+      const m = lines[i].match(signatureRe);
+      if (m) {
+        startIdx = i;
+        baseIndent = m[1].length;
+        params = (m[2] || '').trim() || '()';
+        break;
+      }
+    }
+
+    if (startIdx === -1) return null;
+
+    let endIdx = lines.length;
+    for (let i = startIdx + 1; i < lines.length; i++) {
+      const line = lines[i];
+      if (line.trim() === '') continue;
+      const indent = line.match(/^(\s*)/)[1].length;
+      if (indent <= baseIndent) {
+        endIdx = i;
+        break;
+      }
+    }
+
+    while (endIdx > startIdx + 1 && lines[endIdx - 1].trim() === '') {
+      endIdx--;
+    }
+
+    return {
+      params,
+      line: startIdx + 1,
+      content: lines.slice(startIdx, endIdx).join('\n'),
+    };
+  }
+
   async getMixinInfo(name) {
     const files = await glob('views/mixins/**/*.pug', { cwd: APP_DIR });
 
     for (const file of files) {
       const content = await readFile(join(APP_DIR, file), 'utf-8');
-      const regex = new RegExp(`^mixin\\s+${name}\\s*(\\([^)]*\\))?([\\s\\S]*?)(?=^mixin\\s|$)`, 'm');
-      const match = content.match(regex);
+      const block = this._extractMixinBlock(content, name);
 
-      if (match) {
+      if (block) {
         return {
           content: [
             {
               type: 'text',
               text: JSON.stringify({
                 name,
-                params: match[1] || '()',
+                params: block.params,
                 file,
-                content: match[0],
+                line: block.line,
+                content: block.content,
               }, null, 2),
             },
           ],
@@ -509,11 +561,19 @@ class StyleguideServer {
     };
   }
 
+  _parseDataFile(filePath, content) {
+    const ext = extname(filePath).toLowerCase();
+    if (ext === '.yaml' || ext === '.yml') {
+      return yaml.load(content);
+    }
+    return JSON.parse(content);
+  }
+
   async getDataStructure(file) {
     if (file) {
       const filePath = join(APP_DIR, 'views/data', file);
       const content = await readFile(filePath, 'utf-8');
-      const data = JSON.parse(content);
+      const data = this._parseDataFile(filePath, content);
 
       return {
         content: [
@@ -524,7 +584,6 @@ class StyleguideServer {
         ],
       };
     } else {
-      // List all data files
       const dataJsonPath = join(APP_DIR, 'views/data.json');
       let mainData = {};
 
@@ -535,7 +594,7 @@ class StyleguideServer {
         // File doesn't exist
       }
 
-      const dataFiles = await glob('views/data/**/*.json', { cwd: APP_DIR });
+      const dataFiles = await glob('views/data/**/*.{yaml,yml,json}', { cwd: APP_DIR });
 
       return {
         content: [
