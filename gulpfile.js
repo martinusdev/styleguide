@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const gulp = require('gulp');
 const HubRegistry = require('gulp-hub');
 
@@ -12,6 +14,17 @@ gulp.task('prepare', done => {
   gulp
     .src('./node_modules/lightgallery.js/src/fonts/**')
     .pipe(gulp.dest('./app/fonts/lightgallery/'));
+
+  // Swiper v12 ships CSS-only styles that use modern CSS nesting.
+  // `button&` isn't valid Sass syntax, so rewrite it to `&:is(button)`
+  // before saving as a Sass partial that main.scss can @import.
+  const swiperSrc = fs.readFileSync(
+    './node_modules/swiper/swiper-bundle.css',
+    'utf8'
+  );
+  const swiperDest = './app/styles/vendors/swiper/_swiper-bundle.scss';
+  fs.mkdirSync(path.dirname(swiperDest), { recursive: true });
+  fs.writeFileSync(swiperDest, swiperSrc.replace(/button&/g, '&:is(button)'));
 
   done();
 });

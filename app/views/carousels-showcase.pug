@@ -50,6 +50,20 @@ block content
         +booksCarouselRecommended({ads: false, collections: false, cartButton: true}).carousel--fade-inside.carousel--fade-inside-white
 
     //- --------------------------------------------------
+    //- FADE CUSTOM COLORS — demonstrates the --ms-fade-color override
+    section.section.section--secondary
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-outside (custom --ms-fade-color)
+        p.text-color-grey.mb-small The fade gradient reads from <code>--ms-fade-color</code>. Set it inline (or on any ancestor) to tint the edges to any color.
+        +booksCarouselRecommended({ads: false, collections: false, productInfo: false})(style="--ms-fade-color: #9967a7;").carousel--fade-outside
+
+    section.section.section--secondary
+      .wrapper-main
+        h2.mb-tiny .carousel--fade-inside (custom --ms-fade-color)
+        p.text-color-grey.mb-small Same variable works for the compact inside fade — useful for callouts embedded in colored blocks.
+        +booksCarouselRecommended({ads: false, collections: false, cartButton: true})(style="--ms-fade-color: #fcc34c;").carousel--fade-inside
+
+    //- --------------------------------------------------
     //- FADE INACTIVE + DISABLE INACTIVE — banner carousel
     section.section.section--secondary
       .wrapper-main
