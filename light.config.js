@@ -113,7 +113,29 @@ module.exports = (paths, config) => {
       },
       scripts: {
         module: {
-          rules: [],
+          rules: [
+            {
+              test: /\.mjs$/,
+              include: /node_modules[\\/]swiper/,
+              type: 'javascript/auto',
+              use: {
+                loader: 'babel-loader',
+                options: {
+                  babelrc: false,
+                  presets: [
+                    ['@babel/preset-env', {
+                      modules: false,
+                      loose: true,
+                      include: [
+                        '@babel/plugin-transform-optional-chaining',
+                        '@babel/plugin-transform-nullish-coalescing-operator',
+                      ],
+                    }],
+                  ],
+                },
+              },
+            },
+          ],
         }
       },
       serve: {
