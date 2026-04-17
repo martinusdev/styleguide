@@ -248,7 +248,12 @@ Docker-based flow ostáva — `./mcp.sh` nastaví `APP_DIR` a spustí kontajner 
   - Build-time introspekcia aktuálneho FA bundle (čítať čo `@fortawesome/pro-regular-svg-icons` reálne importuje) a auto-generovať YAML. **Odporúčané** — autoritatívny zdroj = reálne buildovaný bundle.
   - Claude skill diffujúci FA `all.js` vs YAML.
 - **Open icon set swap** (Bootstrap Icons / Lucide) — odstránilo by to FA dependency úplne. Veľký rewrite (`faIcon` mixin + templates). Nie Fáza 2, ale roadmap.
-- **Remote MCP server** (Streamable HTTP) — zero-install pre konzumentov, ale vyžaduje ops. Možný follow-up po npm distribúcii ak bude dopyt.
+- **Remote MCP server** (Streamable HTTP) — zero-install pre konzumentov. Kandidátska doména: `mcp.mrtns.sk`. Leading hosting option: **Cloudflare Pages/Workers** — po Fáze 2 je external MCP čistý fetch-client (žiadny filesystem, žiadne ťažké deps), čo je presne Workers-friendly profil. Internal mode zostáva na Dockeri (potrebuje lokálny `fs`). Minimálne požiadavky:
+  - Výmena `StdioServerTransport` za `StreamableHTTPServerTransport` v `index.js`.
+  - Deploy ako Worker (`wrangler deploy`), route na `mcp.mrtns.sk`.
+  - Rozhodnúť auth — pravdepodobne public (read-only nad public artefaktmi) + Cloudflare rate limiting.
+  - Docs pre klientov: config snippet pre Claude Code / Cursor / Lovable (`{"type":"http","url":"https://mcp.mrtns.sk"}`).
+  Možný follow-up po npm distribúcii — alebo paralelne, keďže codebase je zdielaný (npm = local-install CLI entry, CF Worker = remote HTTP entry, obidva volajú ten istý thin fetch client).
 
 ## 7. Rozsah a poradie implementácie
 
