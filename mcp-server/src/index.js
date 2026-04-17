@@ -12,7 +12,16 @@ import { join, relative, extname } from 'path';
 import * as cheerio from 'cheerio';
 import yaml from 'js-yaml';
 
-const APP_DIR = '/app/app';
+// External mode (default): APP_DIR unset → filesystem tools are hidden and the
+// server serves only hosted-artifact tools (suitable for npx distribution).
+// Internal mode: APP_DIR points at a local styleguide checkout (Docker mount
+// or a contributor's working copy) and filesystem tools become available.
+const APP_DIR = process.env.MARTINUS_STYLEGUIDE_APP_DIR || null;
+
+const ASSETS_BASE_URL = (process.env.MARTINUS_STYLEGUIDE_ASSETS_URL
+  || 'https://mrtns.sk/assets/martinus/lb/').replace(/\/?$/, '/');
+const MANIFEST_URL = `${ASSETS_BASE_URL}rev-manifest.json`;
+const MANIFEST_CACHE_TTL_MS = 5 * 60 * 1000;
 
 /**
  * MCP Server for Martinus Styleguide
@@ -35,9 +44,102 @@ class StyleguideServer {
     this.componentIndex = null;
     this.scssIndex = null;
     this.pugMixinIndex = null;
+    this.manifestCache = null;
 
     this.setupHandlers();
     this.setupErrorHandling();
+  }
+
+  isInternalMode() {
+    return Boolean(APP_DIR);
+  }
+
+  requireInternalMode(toolName) {
+    if (!this.isInternalMode()) {
+      throw new Error(
+        `Tool "${toolName}" requires internal mode. Set the `
+        + 'MARTINUS_STYLEGUIDE_APP_DIR environment variable to a styleguide '
+        + 'checkout path to enable filesystem-backed tools.'
+      );
+    }
+  }
+
+  async fetchManifest() {
+    const now = Date.now();
+    if (this.manifestCache && (now - this.manifestCache.fetchedAt) < MANIFEST_CACHE_TTL_MS) {
+      return this.manifestCache.data;
+    }
+    const res = await fetch(MANIFEST_URL);
+    if (!res.ok) {
+      throw new Error(`Failed to fetch rev-manifest.json (${res.status} ${res.statusText}) from ${MANIFEST_URL}`);
+    }
+    const data = await res.json();
+    this.manifestCache = { data, fetchedAt: now };
+    return data;
+  }
+
+  resolveAsset(manifest, logicalPath) {
+    const hashed = manifest[logicalPath];
+    if (!hashed) {
+      throw new Error(`Asset "${logicalPath}" not present in rev-manifest.json. Available keys: ${Object.keys(manifest).sort().join(', ')}`);
+    }
+    // Query-string cache-busting instead of hashed filenames: consumers embed
+    // these URLs in their HTML, and hashed filenames stop resolving after the
+    // next styleguide rebuild. Stable path + ?v=<hash> keeps old embeds alive
+    // while still busting browser cache on new hashes. Hosting serves both.
+    const hashMatch = hashed.match(/\.([a-f0-9]+)\.[^.]+$/);
+    if (!hashMatch) {
+      return `${ASSETS_BASE_URL}${logicalPath}`;
+    }
+    return `${ASSETS_BASE_URL}${logicalPath}?v=${hashMatch[1]}`;
+  }
+
+  async getSetup(args) {
+    const language = args.language ?? 'sk';
+    if (!['sk', 'cz'].includes(language)) {
+      throw new Error(`Invalid language "${language}". Use "sk" or "cz".`);
+    }
+
+    const manifest = await this.fetchManifest();
+    const tabacCssUrl = this.resolveAsset(manifest, 'fonts/Tabac-Sans/style.css');
+    const mainCssUrl = this.resolveAsset(manifest, 'styles/main.css');
+    const vendorJsUrl = this.resolveAsset(manifest, 'scripts/vendor.js');
+    const mainJsUrl = this.resolveAsset(manifest, 'scripts/main.js');
+    const faJsUrl = this.resolveAsset(manifest, 'scripts/font-awesome.js');
+
+    const head = [
+      `<link rel="stylesheet" href="${tabacCssUrl}">`,
+      `<link rel="stylesheet" href="${mainCssUrl}">`,
+    ].join('\n');
+
+    const bodyEnd = [
+      `<script>window.myApp = window.myApp || {}; window.myApp.selectLanguage = ${JSON.stringify(language)};</script>`,
+      `<script src="${vendorJsUrl}"></script>`,
+      `<script src="${mainJsUrl}"></script>`,
+      `<script src="${faJsUrl}"></script>`,
+    ].join('\n');
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({
+            htmlClasses: ['fonts-loaded'],
+            head,
+            bodyEnd,
+            language,
+            assetsBaseUrl: ASSETS_BASE_URL,
+            bundleVersions: {
+              'styles/main.css': manifest['styles/main.css'],
+              'scripts/main.js': manifest['scripts/main.js'],
+              'scripts/vendor.js': manifest['scripts/vendor.js'],
+              'scripts/font-awesome.js': manifest['scripts/font-awesome.js'],
+              'fonts/Tabac-Sans/style.css': manifest['fonts/Tabac-Sans/style.css'],
+            },
+          }, null, 2),
+        },
+      ],
+    };
   }
 
   setupErrorHandling() {
@@ -52,11 +154,26 @@ class StyleguideServer {
   }
 
   setupHandlers() {
-    // List available tools
-    this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
-      tools: [
-        {
-          name: 'list_components',
+    const externalTools = [
+      {
+        name: 'get_setup',
+        description: 'Returns asset setup (stylesheet links, script tags, required <html> classes) for embedding the Martinus styleguide in an external project. Fetches the live rev-manifest.json from the hosted styleguide so asset URLs always point at the current hashed files. Response contains `head` (inject into <head>), `bodyEnd` (inject before </body>), and `htmlClasses` (add to the <html> element). Font Awesome Pro is always included. Use this once per project to wire up the base bundle.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            language: {
+              type: 'string',
+              enum: ['sk', 'cz'],
+              description: 'UI language for i18n-aware interactive modules (Select, Autocomplete). Default: "sk".',
+            },
+          },
+        },
+      },
+    ];
+
+    const internalTools = [
+      {
+        name: 'list_components',
           description: 'List all UI components/modules in the styleguide with their file locations',
           inputSchema: {
             type: 'object',
@@ -154,15 +271,24 @@ class StyleguideServer {
             },
           },
         },
-      ],
+    ];
+
+    const internalToolNames = new Set(internalTools.map(t => t.name));
+
+    this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
+      tools: this.isInternalMode() ? [...externalTools, ...internalTools] : externalTools,
     }));
 
-    // Handle tool calls
     this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
-      const { name, arguments: args } = request.params;
+      const { name, arguments: args = {} } = request.params;
 
       try {
+        if (internalToolNames.has(name)) {
+          this.requireInternalMode(name);
+        }
         switch (name) {
+          case 'get_setup':
+            return await this.getSetup(args);
           case 'list_components':
             return await this.listComponents(args.type || 'all');
           case 'get_component_info':
