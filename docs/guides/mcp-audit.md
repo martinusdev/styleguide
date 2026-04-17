@@ -4,6 +4,10 @@
 
 Tento dokument je živý audit MCP servera styleguide (`mcp-server/src/index.js`) a plán jeho prepracovania pre nový primárny cieľ: **externé projekty (napr. Lovable), ktoré chcú získať Martinus styling bez toho, aby mali checkout tohto repozitára**.
 
+> **Tracking:** [Wrike task — MCP pre frontendové nástroje (Styleguide)](https://www.wrike.com/open.htm?id=4434230510)
+>
+> **Workflow:** po každom novom PR v rámci tejto úlohy pridať nový `<b>Progres YYYY-MM-DD — <scope></b>` blok do popisu Wrike tasku (pattern viď existujúce Progres bloky). Blok obsahuje čo sa spravilo a link na PR. Wrike API pozná: description cez `mcp__wrike__wrike_update_task` (pozor, pri podobných zmenách `+` v texte sa URL-dekóduje na medzeru — escapovať cez `&#43;` alebo preformulovať).
+
 ## 1. Východiskový stav
 
 Aktuálny MCP server ponúka 8 nástrojov nad lokálnym adresárom `/app/app` (read-only mount v Dockeri):
