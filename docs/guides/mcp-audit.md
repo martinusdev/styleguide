@@ -4,6 +4,10 @@
 
 Tento dokument je živý audit MCP servera styleguide (`mcp-server/src/index.js`) a plán jeho prepracovania pre nový primárny cieľ: **externé projekty (napr. Lovable), ktoré chcú získať Martinus styling bez toho, aby mali checkout tohto repozitára**.
 
+> **Tracking:** [Wrike task — MCP pre frontendové nástroje (Styleguide)](https://www.wrike.com/open.htm?id=4434230510)
+>
+> **Workflow:** po každom novom PR v rámci tejto úlohy pridať nový `<b>Progres YYYY-MM-DD — <scope></b>` blok do popisu Wrike tasku (pattern viď existujúce Progres bloky). Blok obsahuje čo sa spravilo a link na PR. Wrike API pozná: description cez `mcp__wrike__wrike_update_task` (pozor, pri podobných zmenách `+` v texte sa URL-dekóduje na medzeru — escapovať cez `&#43;` alebo preformulovať).
+
 ## 1. Východiskový stav
 
 Aktuálny MCP server ponúka 8 nástrojov nad lokálnym adresárom `/app/app` (read-only mount v Dockeri):
@@ -37,6 +41,7 @@ Distribúcia: Docker kontajner `martinus-styleguide-mcp`, Claude Code sa pripáj
 - **Len `main` bundle.** Ostatné (`banners`, `campaigns`, `gallery`, `xmas`, ...) sú pre špecifické use-casy a nie sú súčasťou API.
 - **Zdroj pravdy = hostovaná verzia.** Base URL: `https://mrtns.sk/assets/martinus/lb/`. Manifest: `https://mrtns.sk/assets/martinus/lb/rev-manifest.json` (overene publicly accessible). MCP ho fetchuje pri štarte + krátke TTL cache.
 - **Vždy latest.** Žiadny pinning verzií. Hashe sa prekladajú z hostovaného manifestu, nie baked-in.
+- **Cache-busting cez query-string, nie hashed filename.** MCP emituje URL v tvare `styles/main.css?v=<hash>`, nie `styles/main.<hash>.css`. Dôvod: konzument si HTML snippet pastne do svojho projektu. Pri ďalšom styleguide buildi sa hash zmení — hashed-filename varianta by spôsobila, že staré embeds prestanú fungovať (súbor s pôvodným hashom ostáva na hosting, ale consumer nevie, že má URL preložiť). Stabilná cesta + query param rieši cache-busting prehliadača a zároveň drží staré embeds funkčné (servujú latest). Overené: hosting obslúži aj unversioned (`main.css`) aj hashed (`main.<hash>.css`) cesty súbežne.
 - **Thin fetch client, build emituje artefakty.** MCP nemá Pug, nemá Sass, nemá runtime kompiláciu. Všetko čo konzument potrebuje je vopred vypočítané v `./build.sh` a deployované. MCP len fetchuje a kombinuje. Engine-agnostický z konštrukcie — budúca výmena Pugu znamená výmenu build tasku, MCP ostáva rovnaký.
 - **Ikony = Font Awesome Pro 6.** Externé API neodhaľuje `app/icons_/`. Oficiálna cesta: FA notácia (`<i class="far fa-heart"></i>`) s curated subsetom z `app/views/styleguide/data/font-awesome-subset.yaml` (5 štýlov: regular, brands, solid, duotone, kit/martinus). Martinus má unlimited FA Pro licenciu ktorá pokrýva distribúciu hostovaného bundlu — MCP môže servírovať `scripts/font-awesome.js` z `mrtns.sk` aj cudzím projektom. Kit ikony (`fak-martinus`, `fak-owl`, `fak-owl-plus`) sú Martinus-owned custom a sú zabalené priamo v tomto bundli.
 
@@ -136,7 +141,7 @@ Cieľová sada (názvy finálne až po review):
 
 | Nástroj | Účel | Zdroj |
 |---|---|---|
-| `get_setup` | Vráti `<link>`/`<script>` tagy s resolved hashmi + font preconnects, pre main bundle. Voliteľný `with: ["font-awesome"]` pridá FA JS `<script>` s hashom z manifestu. | `rev-manifest.json` |
+| `get_setup` | Vráti `<link>`/`<script>` tagy pre main bundle. URL tvar: `styles/main.css?v=<hash>` (query-string cache-busting, viď §2). Font Awesome Pro vždy included (rozhodnutie z implementácie — opt-in API pridalo zbytočnú friction). Parameter `language: "sk" \| "cz"` pre i18n interaktívnych modulov. | `rev-manifest.json` |
 | `get_starter_template` | Minimálny HTML skeleton (doctype, head, body s wrapper class) napojený na main bundle. | `rev-manifest.json` |
 | `list_components` | Lista konzumovateľných komponentov. | `mcp-manifest.json` |
 | `get_component` | Kompilovaný HTML fragment s resolvovaným `assetsPrefix`. Response obsahuje `requires` array (napr. `["font-awesome"]` ak komponent používa ikony). | `components/<name>.html` + `mcp-manifest.json` |
@@ -221,6 +226,8 @@ Klasifikácia všetkých 27 modulov v `app/scripts/modules/`:
 
 | Téma | Rozhodnutie |
 |---|---|
+| Cache-busting URL formát | **`path?v=<hash>`** namiesto `path.<hash>.ext`. Stabilná cesta, embeds prežijú ďalší build. Viď §2. |
+| FA inclusion policy | **Vždy included** v `get_setup` (nie opt-in cez `with`). Pôvodný audit §5 navrhoval opt-in kvôli bloat, ale v praxi takmer každý komponent používa FA ikony (dropdown šípky, close tlačidlá, form indicators) a chýbajúce ikony pri minimalistickom setup-e = horší DX. |
 | Tokens formát | **Nested JSON** (`{ color: { primary: "#...", ... }, spacing: {...}, typography: {...} }`) |
 | npm scope | **`@martinus/styleguide-mcp`** |
 | Interné nástroje | **Two-mode MCP** — viď §6.1 |
@@ -259,8 +266,12 @@ Docker-based flow ostáva — `./mcp.sh` nastaví `APP_DIR` a spustí kontajner 
 
 Po odsúhlasení tohto dokumentu:
 
-1. **Fáza 3** najprv — inventár JS modulov + rozhodnutia z otázok 1-6. (Malé množstvo user inputu, veľký dopad na design.)
-2. **Fáza 2 implementácia** — nástroje s najväčšou hodnotou ako prvé: `get_setup`, `get_starter_template`, `get_component` (s mockovaným build stepom na začiatku). Následne `get_tokens`, `list/get_icon`, zvyšok.
-3. **Oprava existujúcich bugov** (Sekcia 3.6, 3.8) — v aktuálnej Docker verzii aj pre uistenie, že interní devs neblokujú na nich.
-4. **Build-time component emitter** v `./build.sh` — nová Gulp task.
-5. **Fáza 4** — npm publish po stabilizácii API.
+1. ✅ **Fáza 3** — inventár JS modulov + rozhodnutia z otázok 1-6. Viď §3.8 a §6.
+2. **Fáza 2 implementácia** — nástroje s najväčšou hodnotou ako prvé:
+   - ✅ `get_setup` — emituje `head`/`bodyEnd`/`htmlClasses`, URLs s `?v=<hash>` cache-bustingom. Two-mode skeleton (`MARTINUS_STYLEGUIDE_APP_DIR` env var) + fetch-client s TTL cache založené.
+   - 🔲 `get_starter_template` — triviálny follow-up (ten istý manifest, HTML skeleton okolo `get_setup`).
+   - 🔲 `get_component` (potrebuje build emitter, krok 4).
+   - 🔲 `get_tokens`, `list_icons` (FA subset), `get_icon`, `find_class`, `list_js_behaviors`, `get_js_behavior`.
+3. ✅ **Oprava existujúcich bugov** (Sekcia 3.6, 3.8) — commit `594c4110`.
+4. 🔲 **Build-time component emitter** v `./build.sh` — nová Gulp task pre `dist/components/*.html`, `dist/tokens.json`, `dist/class-index.json`, `dist/icons.json`, `dist/mcp-manifest.json`.
+5. 🔲 **Fáza 4** — npm publish po stabilizácii API.
