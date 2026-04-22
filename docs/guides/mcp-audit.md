@@ -1,6 +1,6 @@
 # MCP Audit a plán prepracovania
 
-*Aktualizované: 2026-04-17*
+*Aktualizované: 2026-04-22*
 
 Tento dokument je živý audit MCP servera styleguide (`mcp-server/src/index.js`) a plán jeho prepracovania pre nový primárny cieľ: **externé projekty (napr. Lovable), ktoré chcú získať Martinus styling bez toho, aby mali checkout tohto repozitára**.
 
@@ -143,8 +143,8 @@ Cieľová sada (názvy finálne až po review):
 |---|---|---|
 | `get_setup` | Vráti `<link>`/`<script>` tagy pre main bundle. URL tvar: `styles/main.css?v=<hash>` (query-string cache-busting, viď §2). Font Awesome Pro vždy included (rozhodnutie z implementácie — opt-in API pridalo zbytočnú friction). Parameter `language: "sk" \| "cz"` pre i18n interaktívnych modulov. | `rev-manifest.json` |
 | `get_starter_template` | Minimálny HTML skeleton (doctype, head, body s wrapper class) napojený na main bundle. | `rev-manifest.json` |
-| `list_components` | Lista konzumovateľných komponentov. | `mcp-manifest.json` |
-| `get_component` | Kompilovaný HTML fragment s resolvovaným `assetsPrefix`. Response obsahuje `requires` array (napr. `["font-awesome"]` ak komponent používa ikony). | `components/<name>.html` + `mcp-manifest.json` |
+| `list_components` | Lista konzumovateľných komponentov s ich `variants`. Klasifikácia v §Fáza 3b. | `mcp-manifest.json` |
+| `get_component` | Kompilovaný HTML fragment s resolvovaným `assetsPrefix`. Parametre: `name` (kategória, napr. `buttons`), optional `variant` (napr. `outline`; bez neho default). Response obsahuje `requires` array (napr. `["font-awesome"]` ak komponent používa ikony). | `components/<name>.html` alebo `components/<name>/<variant>.html` + `mcp-manifest.json` |
 | `get_tokens` | Resolvované dizajnové tokeny. Optional `category: "color" \| "spacing" \| "typography" \| ...`. | `tokens.json` |
 | `list_icons` | FA subset po štýloch (`far`, `fab`, `fas`, `fad`, `fak`). Optional `style` filter. | `icons.json` |
 | `get_icon` | Vráti `<i class="{prefix} fa-{name}"></i>` snippet. Response deklaruje `requires: ["font-awesome"]`. Kit ikony (`fak-*`) idú rovnakou cestou — sú v tom istom bundli. | `icons.json` |
@@ -209,6 +209,48 @@ Klasifikácia všetkých 27 modulov v `app/scripts/modules/`:
 
 **Bootstrap Offcanvas:** vynechané z MCP (konzument si vie použiť priamo BS API).
 
+### Fáza 3b — Inventár komponentov (HTML/CSS) ✅
+
+Klasifikácia design-system komponentov pre `get_component`, derivovaná zo styleguide sitemapy (`app/views/styleguide/data/sitemap.yaml`).
+
+**Granularita:** kategória + optional `variant` parameter (`get_component(name, variant?)`). Bez `variant` → default (`primary`/`basic`). Zoznam platných variantov per kategória vystavený v `mcp-manifest.json`. Presné mapovanie `variant` → CSS trieda (BEM modifier) sa finalizuje pri implementácii emittera vo Fáze 4.
+
+#### Public (17) — exponované v external mode
+
+| Kategória | Orientačné varianty |
+|---|---|
+| `buttons` | `primary`, `secondary`, `outline`, `sharp`, `round`, `equal`, `large`, `group`, `dropdown-split` |
+| `forms` | `input`, `textarea`, `checkbox`, `radio`, `select`, `multiselect`, `number-spinner`, `star-rating` |
+| `bar` | `default` |
+| `tables` | `default` |
+| `cards` | `basic`, `with-header`, `with-footer` |
+| `lists` | `list`, `items`, `item-sections` |
+| `tabs` | `basic`, `with-actions` |
+| `modals` | `basic` |
+| `dropdowns` | `basic` |
+| `badges` | `badge`, `pill` |
+| `carousels` | `basic` |
+| `tooltips` | `tooltip`, `feature-highlight` |
+| `alerts` | `info`, `success`, `warning`, `error` |
+| `loaders` | `basic` |
+| `product-card` | `default` — parameterizovaný (cover URL, title, author, price, badges). Externý konzument dodá dáta cez props / data-atribúty. |
+| `product-cover` | `default` — parameterizovaný (cover URL, title, author). |
+| `header` | `minimal` — **nový komponent na návrh:** minimalistická verzia (čierny top-bar s logom + farebný sub-bar). Eshop `header` / `megamenu` zostávajú internal. Vyžaduje markup + SCSS dizajn pred emitter implementáciou. |
+
+Varianty sú **orientačné** — presný zoznam sa potvrdí pri implementácii emittera. Krok tam: prejsť styleguide stránku kategórie (`app/views/styleguide/<name>.pug`), vybrať reprezentatívne ukážky, priradiť kanonické `variant` meno → BEM trieda.
+
+#### Internal — nie v external API
+
+Zvyšok `app/views/modules/` (cca 25 modulov) — eshop-specific business komponenty: `checkout/*`, `account-header`, `address-modal`, `audiobook-modal`, `book-read-modal`, `book-reservation`, `card-buy-together`, `card-cart`, `carousel-banner`, `category-filter`, `category-list`, `change-password`, `checkout-notice`, `club-profile`, `collection-carousel`, `e-reader-modal`, `flag-review`, `footer`, `gift-modal`, `order`, `product-preview`, `publisher/list`, `review-form`, `seen-items*`, `share-list-modal`, `tooltip-author`, plus eshop `header/` varianty (`header`, `megamenu`, `checkout-header`, `campaign-header`, `order-header`).
+
+V external mode `list_components` tieto nezobrazí, `get_component` ich neservuje. Internal mode má `list_components_source` / `get_component_source` pre raw Pug (viď §6.1).
+
+**Vypadlo:** `section-title` (v sitemap §Modules) — vypustené z public API, marginálna pridaná hodnota oproti holému HTML s utility triedami.
+
+**Otvorené pre Fázu 4:**
+- **Parameterizácia `product-card` / `product-cover`:** JSON props do Pug render vs. slot-based HTML s `data-*` atribútmi? Rozhodne sa pri návrhu emittera.
+- **`header.minimal` dizajn:** markup + SCSS. Najskôr pridať variantu do styleguide (napr. nová stránka alebo `templates/`), potom emitovať do `dist/components/header.html`.
+
 ### Fáza 4 — Distribúcia
 
 **Odporúčanie: npm balíček `@martinus/styleguide-mcp`**, spúšťaný cez `npx -y @martinus/styleguide-mcp`.
@@ -234,6 +276,7 @@ Klasifikácia všetkých 27 modulov v `app/scripts/modules/`:
 | Whitelist komponentov | Tagy v `mcp-manifest.json`: `public` vs `internal`. `list_components` external mode filtruje na `public`. |
 | `class-index.json` rozsah | **Len modules + components** (Martinus-specific). BS utility a vendor triedy nie sú v indexe; tool description to vysvetľuje agentovi. |
 | `icons.json` zdroj | **YAML** (`font-awesome-subset.yaml`) → emitovaný pri builde. YAML drift je akceptovaná tech debt (viď §6.2). |
+| `get_component` granularita | **Kategória + optional `variant` parameter.** Bez `variant` → default (`primary` / `basic`). Viď §Fáza 3b pre public zoznam a varianty. |
 | Bootstrap Offcanvas | Vynechané z MCP. |
 
 ### 6.1 Two-mode MCP
