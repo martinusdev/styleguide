@@ -1,0 +1,66 @@
+#
+# Component schema for the MCP `get_component` tool.
+#
+# Each entry under `components` declares:
+#   - `description`   — one-line prose shown to the AI agent.
+#   - `template`      — HTML string with Mustache-style interpolation:
+#                         {{var}}           HTML-escaped value
+#                         {{{var}}}         raw value (slot content)
+#                         {{#var}}…{{/var}} render block only if var is truthy
+#                         {{^var}}…{{/var}} render block only if var is falsy
+#   - `params`        — named parameters accepted by the component.
+#                         - type: string | enum | boolean
+#                         - required: true | false (default false)
+#                         - values: […]      (required for enum)
+#                         - default: …       (optional)
+#                         - description: prose shown to the agent
+#   - `requires`      — base asset bundles the rendered HTML depends on.
+#   - `addRequiresWhen` — param-name → extra bundles, appended when that
+#                         param is truthy at render time.
+#
+# Kept as one file for now. When this grows, split per-component later.
+#
+
+components:
+
+  buttons:
+    description: >-
+      Standard Martinus button. Pick a visual variant, optional size/shape,
+      optional Font Awesome icon rendered before the label. Renders a
+      <button> element; wrap or swap the tag on the consumer side if you
+      need an <a>.
+    template: |-
+      <button class="btn{{#variant}} btn--{{variant}}{{/variant}}{{#size}} btn--{{size}}{{/size}}{{#shape}} btn--{{shape}}{{/shape}}"{{#disabled}} disabled{{/disabled}}>{{#icon}}<i class="far fa-{{icon}}"></i> {{/icon}}{{label}}</button>
+    params:
+      label:
+        type: string
+        required: true
+        description: Visible button text.
+      variant:
+        type: enum
+        values: [primary, secondary, ghost, ghost-inverse, success]
+        description: >-
+          Visual style. Omit for the default filled button (no modifier class).
+      size:
+        type: enum
+        values: [small, large]
+        description: Optional size modifier. Omit for the default size.
+      shape:
+        type: enum
+        values: [sharp, round, equal]
+        description: >-
+          Optional shape modifier. `sharp` removes border-radius, `round`
+          makes it a pill, `equal` forces equal width and height (useful
+          with an icon and empty label).
+      icon:
+        type: string
+        description: >-
+          Optional Font Awesome Pro icon name without the `fa-` prefix
+          (regular style). When set, font-awesome is added to `requires`.
+      disabled:
+        type: boolean
+        default: false
+        description: Add the `disabled` attribute.
+    requires: []
+    addRequiresWhen:
+      icon: [font-awesome]

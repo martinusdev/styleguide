@@ -20,6 +20,7 @@
     "glob": "^11.1.0",
     "gulp": "~4.0.2",
     "gulp-hub": "~4.2.0",
+    "js-yaml": "^4.1.0",
     "lint-staged": "~15.3.0",
     "lodash": "^4.18.1",
     "postcss-scss": "^4.0.9",
@@ -33,6 +34,8 @@
   "scripts": {
     "prepare": "gulp prepare --openssl-legacy-provider",
     "build": "gulp build --openssl-legacy-provider --mode=production",
+    "postbuild": "node scripts/emit-mcp-artifacts.js",
+    "emit-mcp": "node scripts/emit-mcp-artifacts.js",
     "serve": "gulp serve --openssl-legacy-provider",
     "images": "gulp images --openssl-legacy-provider",
     "clear-cache": "gulp clearCache --openssl-legacy-provider",

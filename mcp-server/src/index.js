@@ -21,7 +21,86 @@ const APP_DIR = process.env.MARTINUS_STYLEGUIDE_APP_DIR || null;
 const ASSETS_BASE_URL = (process.env.MARTINUS_STYLEGUIDE_ASSETS_URL
   || 'https://mrtns.sk/assets/martinus/lb/').replace(/\/?$/, '/');
 const MANIFEST_URL = `${ASSETS_BASE_URL}rev-manifest.json`;
+const COMPONENTS_URL = `${ASSETS_BASE_URL}mcp-components.json`;
 const MANIFEST_CACHE_TTL_MS = 5 * 60 * 1000;
+const COMPONENTS_CACHE_TTL_MS = 5 * 60 * 1000;
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function isTruthy(value) {
+  return value !== undefined && value !== null && value !== false && value !== '';
+}
+
+/**
+ * Tiny Mustache-subset template engine used to render component HTML.
+ * Supports: {{var}} (escaped), {{{var}}} (raw), {{#var}}…{{/var}} (if truthy),
+ * {{^var}}…{{/var}} (if falsy). No nested blocks with the same key.
+ */
+function renderTemplate(tpl, data) {
+  let out = tpl;
+
+  const blockRe = /\{\{([#^])(\w+)\}\}([\s\S]*?)\{\{\/\2\}\}/g;
+  let prev;
+  do {
+    prev = out;
+    out = out.replace(blockRe, (_, op, key, body) => {
+      const truthy = isTruthy(data[key]);
+      const keep = op === '#' ? truthy : !truthy;
+      return keep ? body : '';
+    });
+  } while (out !== prev);
+
+  out = out.replace(/\{\{\{(\w+)\}\}\}/g, (_, key) => {
+    const v = data[key];
+    return v == null ? '' : String(v);
+  });
+  out = out.replace(/\{\{(\w+)\}\}/g, (_, key) => {
+    const v = data[key];
+    return v == null ? '' : escapeHtml(v);
+  });
+
+  return out;
+}
+
+function validateParams(component, name, args) {
+  const schema = component.params || {};
+  const normalized = {};
+  const unknownKeys = Object.keys(args).filter((k) => !Object.prototype.hasOwnProperty.call(schema, k));
+  if (unknownKeys.length) {
+    throw new Error(`Unknown parameter(s) for component "${name}": ${unknownKeys.join(', ')}. Allowed: ${Object.keys(schema).join(', ') || '(none)'}`);
+  }
+  for (const [key, spec] of Object.entries(schema)) {
+    const provided = Object.prototype.hasOwnProperty.call(args, key);
+    let value = provided ? args[key] : spec.default;
+
+    if (!provided && spec.required) {
+      throw new Error(`Missing required parameter "${key}" for component "${name}".`);
+    }
+    if (value === undefined || value === null) {
+      normalized[key] = spec.type === 'boolean' ? false : '';
+      continue;
+    }
+    if (spec.type === 'enum') {
+      if (!Array.isArray(spec.values) || !spec.values.includes(value)) {
+        throw new Error(`Invalid value "${value}" for "${key}". Allowed: ${(spec.values || []).join(', ')}.`);
+      }
+    }
+    if (spec.type === 'boolean') {
+      value = value === true || value === 'true';
+    }
+    if (spec.type === 'string' && typeof value !== 'string') {
+      value = String(value);
+    }
+    normalized[key] = value;
+  }
+  return normalized;
+}
 
 /**
  * MCP Server for Martinus Styleguide
@@ -45,6 +124,7 @@ class StyleguideServer {
     this.scssIndex = null;
     this.pugMixinIndex = null;
     this.manifestCache = null;
+    this.componentsCache = null;
 
     this.setupHandlers();
     this.setupErrorHandling();
@@ -142,6 +222,83 @@ class StyleguideServer {
     };
   }
 
+  async fetchComponents() {
+    const now = Date.now();
+    if (this.componentsCache && (now - this.componentsCache.fetchedAt) < COMPONENTS_CACHE_TTL_MS) {
+      return this.componentsCache.data;
+    }
+
+    // Internal mode prefers the checked-in YAML source — no network hop, no
+    // waiting for a deploy to see local schema edits.
+    let data;
+    if (this.isInternalMode()) {
+      const schemaPath = join(APP_DIR, 'mcp-components.yaml');
+      try {
+        const text = await readFile(schemaPath, 'utf-8');
+        data = yaml.load(text);
+      } catch (err) {
+        throw new Error(`Failed to read component schema from ${schemaPath}: ${err.message}`);
+      }
+    } else {
+      const res = await fetch(COMPONENTS_URL);
+      if (!res.ok) {
+        throw new Error(`Failed to fetch mcp-components.json (${res.status} ${res.statusText}) from ${COMPONENTS_URL}`);
+      }
+      data = await res.json();
+    }
+
+    if (!data || typeof data !== 'object' || !data.components) {
+      throw new Error('Component schema is empty or malformed: expected a top-level `components` map.');
+    }
+    this.componentsCache = { data, fetchedAt: now };
+    return data;
+  }
+
+  async getComponent(args) {
+    const { name, ...params } = args;
+    if (!name || typeof name !== 'string') {
+      throw new Error('Missing required argument "name".');
+    }
+
+    const schema = await this.fetchComponents();
+    const component = schema.components[name];
+    if (!component) {
+      const available = Object.keys(schema.components).sort().join(', ');
+      throw new Error(`Unknown component "${name}". Available: ${available}.`);
+    }
+    if (!component.template || typeof component.template !== 'string') {
+      throw new Error(`Component "${name}" has no template defined.`);
+    }
+
+    const data = validateParams(component, name, params);
+    const html = renderTemplate(component.template, data);
+
+    const requires = Array.isArray(component.requires) ? [...component.requires] : [];
+    if (component.addRequiresWhen) {
+      for (const [paramName, extras] of Object.entries(component.addRequiresWhen)) {
+        if (isTruthy(data[paramName]) && Array.isArray(extras)) {
+          for (const dep of extras) {
+            if (!requires.includes(dep)) requires.push(dep);
+          }
+        }
+      }
+    }
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({
+            name,
+            html,
+            params: data,
+            requires,
+          }, null, 2),
+        },
+      ],
+    };
+  }
+
   setupErrorHandling() {
     this.server.onerror = (error) => {
       console.error('[MCP Error]', error);
@@ -167,6 +324,21 @@ class StyleguideServer {
               description: 'UI language for i18n-aware interactive modules (Select, Autocomplete). Default: "sk".',
             },
           },
+        },
+      },
+      {
+        name: 'get_component',
+        description: 'Returns a rendered HTML fragment for a Martinus design-system component. Pass component `name` plus content/variant parameters (e.g. `label`, `variant`, `size`, `icon`). Response contains the final `html`, the normalized `params` used, and a `requires` array of extra asset bundles the HTML depends on (e.g. ["font-awesome"]) — pass those to get_setup if needed. Discover available components, their parameters, and allowed enum values from the published component schema (mcp-components.json) or by calling this tool without args to surface an error listing valid names.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              description: 'Component name, e.g. "buttons".',
+            },
+          },
+          required: ['name'],
+          additionalProperties: true,
         },
       },
     ];
@@ -289,6 +461,8 @@ class StyleguideServer {
         switch (name) {
           case 'get_setup':
             return await this.getSetup(args);
+          case 'get_component':
+            return await this.getComponent(args);
           case 'list_components':
             return await this.listComponents(args.type || 'all');
           case 'get_component_info':
