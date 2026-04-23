@@ -399,3 +399,218 @@ components:
           Add `card--clickable` for hover and focus styles. Swap `<article>`
           for `<a>` on the consumer side when the card should be a link.
     requires: []
+
+  # ---------------------------------------------------------------------------
+  # Form components
+
+  form-input:
+    description: >-
+      Single-line text input. Renders `<input class="input …">`. The `type`
+      param controls the HTML type attribute (text/email/password etc.);
+      `variant`, `size`, and `state` apply BEM/state modifiers.
+    template: |-
+      <input class="input{{#variant}} input--{{variant}}{{/variant}}{{#size}} input--{{size}}{{/size}}{{#state}} {{state}}{{/state}}" type="{{type}}" placeholder="{{placeholder}}"{{#value}} value="{{value}}"{{/value}}{{#disabled}} disabled{{/disabled}}{{#readonly}} readonly{{/readonly}}>
+    params:
+      placeholder:
+        type: string
+        required: true
+        description: Placeholder text shown inside the empty input.
+      type:
+        type: enum
+        values: [text, email, password, number, tel, search, url]
+        default: text
+        description: HTML input type. Defaults to `text`.
+      variant:
+        type: enum
+        values: [dark]
+        description: "`dark` — dark-themed input for dark backgrounds."
+      size:
+        type: enum
+        values: [large, small]
+        description: Size modifier — `large` or `small`.
+      state:
+        type: enum
+        values: [is-error, is-valid]
+        description: Validation state class added directly to the input element.
+      value:
+        type: string
+        description: Pre-filled value attribute.
+      disabled:
+        type: boolean
+        description: Adds the `disabled` HTML attribute.
+      readonly:
+        type: boolean
+        description: Adds the `readonly` HTML attribute.
+    requires: []
+
+  form-textarea:
+    description: >-
+      Multi-line text input. Renders `<textarea class="input …">`. Shares
+      `.input` base class and size/state modifiers with `form-input`.
+    template: |-
+      <textarea class="input{{#size}} input--{{size}}{{/size}}{{#state}} {{state}}{{/state}}"{{#rows}} rows="{{rows}}"{{/rows}} placeholder="{{placeholder}}"{{#disabled}} disabled{{/disabled}}{{#readonly}} readonly{{/readonly}}>{{value}}</textarea>
+    params:
+      placeholder:
+        type: string
+        required: true
+        description: Placeholder text.
+      rows:
+        type: string
+        description: HTML `rows` attribute (number as string, e.g. `"5"`).
+      size:
+        type: enum
+        values: [large, small]
+        description: Size modifier.
+      state:
+        type: enum
+        values: [is-error, is-valid]
+        description: Validation state class.
+      value:
+        type: string
+        description: Pre-filled content inside the textarea.
+      disabled:
+        type: boolean
+        description: Adds the `disabled` HTML attribute.
+      readonly:
+        type: boolean
+        description: Adds the `readonly` HTML attribute.
+    requires: []
+
+  form-checkbox:
+    description: >-
+      Bootstrap-based checkbox using `.form-check` wrapper, `.form-check-input`,
+      and `.form-check-label`. Requires a unique `id` to wire the label's `for`
+      attribute. For a row of checkboxes add `inline: true`.
+    template: |-
+      <div class="form-check{{#inline}} form-check--inline{{/inline}}{{#reverse}} form-check--reverse{{/reverse}}{{#state}} {{state}}{{/state}}"><input class="form-check-input" type="checkbox" id="{{id}}"{{#field_name}} name="{{field_name}}"{{/field_name}}{{#checked}} checked{{/checked}}{{#disabled}} disabled{{/disabled}}><label class="form-check-label" for="{{id}}">{{{label}}}</label></div>
+    params:
+      id:
+        type: string
+        required: true
+        description: Unique HTML `id`. Wires `<label for="…">` to the input.
+      label:
+        type: string
+        required: true
+        description: Label text; raw HTML (allows nested links or emphasis).
+      field_name:
+        type: string
+        description: HTML `name` attribute for form submission grouping.
+      checked:
+        type: boolean
+        description: Renders with `checked` attribute pre-set.
+      disabled:
+        type: boolean
+        description: Adds the `disabled` attribute.
+      state:
+        type: enum
+        values: [is-invalid, is-error]
+        description: Validation state class on the wrapper `<div>`.
+      inline:
+        type: boolean
+        description: >-
+          Adds `form-check--inline` so multiple checkboxes sit on one line.
+      reverse:
+        type: boolean
+        description: >-
+          Adds `form-check--reverse` to place the input after the label.
+    requires: []
+
+  form-radio:
+    description: >-
+      Bootstrap-based radio button — same structure as `form-checkbox` but
+      `type="radio"`. Use `field_name` to group mutually exclusive options.
+    template: |-
+      <div class="form-check{{#inline}} form-check--inline{{/inline}}{{#reverse}} form-check--reverse{{/reverse}}{{#state}} {{state}}{{/state}}"><input class="form-check-input" type="radio" id="{{id}}"{{#field_name}} name="{{field_name}}"{{/field_name}}{{#checked}} checked{{/checked}}{{#disabled}} disabled{{/disabled}}><label class="form-check-label" for="{{id}}">{{{label}}}</label></div>
+    params:
+      id:
+        type: string
+        required: true
+        description: Unique HTML `id`. Wires `<label for="…">` to the input.
+      label:
+        type: string
+        required: true
+        description: Label text; raw HTML.
+      field_name:
+        type: string
+        description: HTML `name` attribute — use the same value to group radio options.
+      checked:
+        type: boolean
+        description: Renders with `checked` attribute pre-set.
+      disabled:
+        type: boolean
+        description: Adds the `disabled` attribute.
+      state:
+        type: enum
+        values: [is-invalid, is-error]
+        description: Validation state class on the wrapper `<div>`.
+      inline:
+        type: boolean
+        description: Adds `form-check--inline` for horizontal grouping.
+      reverse:
+        type: boolean
+        description: Adds `form-check--reverse` to place the input after the label.
+    requires: []
+
+  form-switch:
+    description: >-
+      Toggle switch built on Bootstrap's `.form-check.form-switch` pattern.
+      Renders a checkbox input with `role="switch"` and a visible label.
+    template: |-
+      <div class="form-check form-switch"><input class="form-check-input" type="checkbox" role="switch" id="{{id}}"{{#field_name}} name="{{field_name}}"{{/field_name}}{{#checked}} checked{{/checked}}{{#disabled}} disabled{{/disabled}}><label class="form-check-label" for="{{id}}">{{{label}}}</label></div>
+    params:
+      id:
+        type: string
+        required: true
+        description: Unique HTML `id`. Wires `<label for="…">` to the input.
+      label:
+        type: string
+        required: true
+        description: Label text; raw HTML.
+      field_name:
+        type: string
+        description: HTML `name` attribute.
+      checked:
+        type: boolean
+        description: Renders with `checked` attribute pre-set.
+      disabled:
+        type: boolean
+        description: Adds the `disabled` attribute.
+    requires: []
+
+  form-select:
+    description: >-
+      Dropdown select enhanced with Choices.js (`.js-select`). Pass pre-built
+      `<option>` HTML as `options`. Variants, sizes, and inline mode mirror
+      the SCSS modifier classes.
+    template: |-
+      <select class="js-select{{#variant}} select--{{variant}}{{/variant}}{{#size}} select--{{size}}{{/size}}{{#inline}} select--inline{{/inline}}{{#state}} {{state}}{{/state}}"{{#disabled}} disabled{{/disabled}}>{{{options}}}</select>
+    params:
+      options:
+        type: string
+        required: true
+        description: >-
+          Raw HTML of `<option>` (and optionally `<optgroup>`) children.
+          Example: `<option value="sk">Slovakia</option>`.
+      variant:
+        type: enum
+        values: [ghost]
+        description: >-
+          `ghost` — borderless select, blends into surrounding content
+          (e.g. language picker in the header).
+      size:
+        type: enum
+        values: [large, small]
+        description: Size modifier.
+      inline:
+        type: boolean
+        description: >-
+          Adds `select--inline` — compact inline layout used for in-text
+          selects (e.g. items-per-page picker).
+      state:
+        type: enum
+        values: [is-error]
+        description: Validation error state.
+      disabled:
+        type: boolean
+        description: Adds the `disabled` HTML attribute.
+    requires: []
