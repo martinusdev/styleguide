@@ -29,8 +29,19 @@ const ASSETS_BASE_URL = (process.env.MARTINUS_STYLEGUIDE_ASSETS_URL
   || 'https://mrtns.sk/assets/martinus/lb/').replace(/\/?$/, '/');
 const MANIFEST_URL = `${ASSETS_BASE_URL}rev-manifest.json`;
 const COMPONENTS_URL = `${ASSETS_BASE_URL}mcp-components.json`;
+const ICONS_URL = `${ASSETS_BASE_URL}icons.json`;
 const MANIFEST_CACHE_TTL_MS = 5 * 60 * 1000;
 const COMPONENTS_CACHE_TTL_MS = 5 * 60 * 1000;
+const ICONS_CACHE_TTL_MS = 5 * 60 * 1000;
+
+const FA_STYLE_PREFIX = {
+  regular: 'far',
+  brands: 'fab',
+  solid: 'fas',
+  duotone: 'fad',
+  kit: 'fak',
+};
+const FA_VALID_STYLES = Object.keys(FA_STYLE_PREFIX);
 
 /**
  * MCP Server for Martinus Styleguide
@@ -55,6 +66,7 @@ export class StyleguideServer {
     this.pugMixinIndex = null;
     this.manifestCache = null;
     this.componentsCache = null;
+    this.iconsCache = null;
 
     this.setupHandlers();
     this.setupErrorHandling();
@@ -242,6 +254,116 @@ export class StyleguideServer {
     return data;
   }
 
+  _parseIconsYaml(parsed) {
+    if (!parsed || !Array.isArray(parsed.icons)) {
+      throw new Error('font-awesome-subset.yaml: expected a top-level `icons` array.');
+    }
+    const icons = [];
+    for (const item of parsed.icons) {
+      const entries = Object.entries(item);
+      if (!entries.length) continue;
+      const [style, names] = entries[0];
+      if (!Array.isArray(names)) continue;
+      const prefix = FA_STYLE_PREFIX[style] || `fa-${style}`;
+      for (const name of names) {
+        icons.push({ name, style, prefix, class: `${prefix} fa-${name}` });
+      }
+    }
+    return icons;
+  }
+
+  async fetchIcons() {
+    const now = Date.now();
+    if (this.iconsCache && (now - this.iconsCache.fetchedAt) < ICONS_CACHE_TTL_MS) {
+      return this.iconsCache.data;
+    }
+
+    let data;
+    if (this.isInternalMode()) {
+      const yamlPath = join(
+        APP_DIR, 'views', 'styleguide', 'data', 'font-awesome-subset.yaml'
+      );
+      try {
+        const text = await readFile(yamlPath, 'utf-8');
+        data = this._parseIconsYaml(yaml.load(text));
+      } catch (err) {
+        throw new Error(`Failed to read FA subset YAML from ${yamlPath}: ${err.message}`);
+      }
+    } else {
+      const res = await fetch(ICONS_URL);
+      if (!res.ok) {
+        throw new Error(
+          `Failed to fetch icons.json (${res.status} ${res.statusText}) from ${ICONS_URL}`
+        );
+      }
+      data = await res.json();
+    }
+
+    this.iconsCache = { data, fetchedAt: now };
+    return data;
+  }
+
+  async listIcons(style) {
+    if (style && !FA_VALID_STYLES.includes(style)) {
+      throw new Error(
+        `Invalid style "${style}". Valid styles: ${FA_VALID_STYLES.join(', ')}.`
+      );
+    }
+
+    const all = await this.fetchIcons();
+    const icons = style ? all.filter((i) => i.style === style) : all;
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ total: icons.length, style: style || 'all', icons }, null, 2),
+        },
+      ],
+    };
+  }
+
+  async getIcon(args) {
+    const { name, style = 'regular' } = args;
+    if (!name) throw new Error('Missing required argument "name".');
+
+    if (!FA_VALID_STYLES.includes(style)) {
+      throw new Error(
+        `Invalid style "${style}". Valid styles: ${FA_VALID_STYLES.join(', ')}.`
+      );
+    }
+
+    const all = await this.fetchIcons();
+    const icon = all.find((i) => i.name === name && i.style === style);
+
+    if (!icon) {
+      const otherStyles = all.filter((i) => i.name === name).map((i) => i.style);
+      if (otherStyles.length) {
+        throw new Error(
+          `Icon "${name}" not found in style "${style}". `
+          + `Available in: ${otherStyles.join(', ')}.`
+        );
+      }
+      throw new Error(`Icon "${name}" not found. Use list_icons to browse available icons.`);
+    }
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({
+            name: icon.name,
+            style: icon.style,
+            prefix: icon.prefix,
+            class: icon.class,
+            html: `<i class="${icon.class}"></i>`,
+            requires: ['font-awesome'],
+          }, null, 2),
+        },
+      ],
+    };
+  }
+
   async getComponent(args) {
     const { name, ...params } = args;
     if (!name || typeof name !== 'string') {
@@ -347,6 +469,39 @@ export class StyleguideServer {
           },
         },
       },
+      {
+        name: 'list_icons',
+        description: 'Returns Font Awesome Pro icons available in the Martinus styleguide bundle. Each entry contains `name`, `style`, `prefix`, and a ready-to-use `class` string (e.g. "far fa-heart"). Optional `style` filter: `regular` (far, ~180 icons), `brands` (fab, 6 icons), `solid` (fas, 5 icons), `duotone` (fad, 1 icon), `kit` (fak — 3 Martinus-custom icons: martinus, owl, owl-plus). Use `get_icon` to render an HTML snippet for a specific icon.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            style: {
+              type: 'string',
+              enum: ['regular', 'brands', 'solid', 'duotone', 'kit'],
+              description: 'Filter by FA style. Omit to return all styles.',
+            },
+          },
+        },
+      },
+      {
+        name: 'get_icon',
+        description: 'Returns an HTML snippet for a single Font Awesome Pro icon from the Martinus design-system subset. Response contains `html` (ready-to-use `<i>` tag), `prefix`, `style`, `class`, and `requires: ["font-awesome"]`. Default style: regular (far). Use list_icons to discover available icon names.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              description: 'Icon name without the `fa-` prefix, e.g. "heart", "check-circle".',
+            },
+            style: {
+              type: 'string',
+              enum: ['regular', 'brands', 'solid', 'duotone', 'kit'],
+              description: 'FA style. Default: "regular".',
+            },
+          },
+          required: ['name'],
+        },
+      },
     ];
 
     const internalTools = [
@@ -429,14 +584,6 @@ export class StyleguideServer {
           },
         },
         {
-          name: 'list_icons',
-          description: 'List all available SVG icons in app/icons_/',
-          inputSchema: {
-            type: 'object',
-            properties: {},
-          },
-        },
-        {
           name: 'get_data_structure',
           description: 'Get the structure of JSON data files used in templates',
           inputSchema: {
@@ -484,7 +631,9 @@ export class StyleguideServer {
           case 'get_mixin_info':
             return await this.getMixinInfo(args.name);
           case 'list_icons':
-            return await this.listIcons();
+            return await this.listIcons(args.style || null);
+          case 'get_icon':
+            return await this.getIcon(args);
           case 'get_data_structure':
             return await this.getDataStructure(args.file);
           default:
@@ -850,23 +999,6 @@ export class StyleguideServer {
     }
 
     throw new Error(`Mixin "${name}" not found`);
-  }
-
-  async listIcons() {
-    const files = await glob('icons_/**/*.svg', { cwd: APP_DIR });
-    const icons = files.map(f => ({
-      name: relative('icons_', f).replace(/\.svg$/, ''),
-      path: f,
-    }));
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify(icons, null, 2),
-        },
-      ],
-    };
   }
 
   _parseDataFile(filePath, content) {
