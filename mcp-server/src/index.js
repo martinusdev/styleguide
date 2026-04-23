@@ -32,6 +32,82 @@ const COMPONENTS_URL = `${ASSETS_BASE_URL}mcp-components.json`;
 const MANIFEST_CACHE_TTL_MS = 5 * 60 * 1000;
 const COMPONENTS_CACHE_TTL_MS = 5 * 60 * 1000;
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function isTruthy(value) {
+  return value !== undefined && value !== null && value !== false && value !== '';
+}
+
+/**
+ * Tiny Mustache-subset template engine used to render component HTML.
+ * Supports: {{var}} (escaped), {{{var}}} (raw), {{#var}}…{{/var}} (if truthy),
+ * {{^var}}…{{/var}} (if falsy). No nested blocks with the same key.
+ */
+function renderTemplate(tpl, data) {
+  let out = tpl;
+
+  const blockRe = /\{\{([#^])(\w+)\}\}([\s\S]*?)\{\{\/\2\}\}/g;
+  let prev;
+  do {
+    prev = out;
+    out = out.replace(blockRe, (_, op, key, body) => {
+      const truthy = isTruthy(data[key]);
+      const keep = op === '#' ? truthy : !truthy;
+      return keep ? body : '';
+    });
+  } while (out !== prev);
+
+  out = out.replace(/\{\{\{(\w+)\}\}\}/g, (_, key) => {
+    const v = data[key];
+    return v == null ? '' : String(v);
+  });
+  out = out.replace(/\{\{(\w+)\}\}/g, (_, key) => {
+    const v = data[key];
+    return v == null ? '' : escapeHtml(v);
+  });
+
+  return out;
+}
+
+function validateParams(component, name, args) {
+  const schema = component.params || {};
+  const normalized = {};
+  const unknownKeys = Object.keys(args).filter((k) => !Object.prototype.hasOwnProperty.call(schema, k));
+  if (unknownKeys.length) {
+    throw new Error(`Unknown parameter(s) for component "${name}": ${unknownKeys.join(', ')}. Allowed: ${Object.keys(schema).join(', ') || '(none)'}`);
+  }
+  for (const [key, spec] of Object.entries(schema)) {
+    const provided = Object.prototype.hasOwnProperty.call(args, key);
+    let value = provided ? args[key] : spec.default;
+
+    if (!provided && spec.required) {
+      throw new Error(`Missing required parameter "${key}" for component "${name}".`);
+    }
+    if (value === undefined || value === null) {
+      normalized[key] = spec.type === 'boolean' ? false : '';
+      continue;
+    }
+    if (spec.type === 'enum') {
+      if (!Array.isArray(spec.values) || !spec.values.includes(value)) {
+        throw new Error(`Invalid value "${value}" for "${key}". Allowed: ${(spec.values || []).join(', ')}.`);
+      }
+    }
+    if (spec.type === 'boolean') {
+      value = value === true || value === 'true';
+    }
+    if (spec.type === 'string' && typeof value !== 'string') {
+      value = String(value);
+    }
+    normalized[key] = value;
+  }
+  return normalized;
+}
 
 /**
  * MCP Server for Martinus Styleguide
@@ -105,8 +181,7 @@ export class StyleguideServer {
     return `${ASSETS_BASE_URL}${logicalPath}?v=${hashMatch[1]}`;
   }
 
-  async getSetup(args) {
-    const language = args.language ?? 'sk';
+  async buildSetup(language) {
     if (!['sk', 'cz'].includes(language)) {
       throw new Error(`Invalid language "${language}". Use "sk" or "cz".`);
     }
@@ -131,22 +206,157 @@ export class StyleguideServer {
     ].join('\n');
 
     return {
+      htmlClasses: ['fonts-loaded'],
+      head,
+      bodyEnd,
+      language,
+      assetsBaseUrl: ASSETS_BASE_URL,
+      bundleVersions: {
+        'styles/main.css': manifest['styles/main.css'],
+        'scripts/main.js': manifest['scripts/main.js'],
+        'scripts/vendor.js': manifest['scripts/vendor.js'],
+        'scripts/font-awesome.js': manifest['scripts/font-awesome.js'],
+        'fonts/Tabac-Sans/style.css': manifest['fonts/Tabac-Sans/style.css'],
+      },
+    };
+  }
+
+  async getSetup(args) {
+    const setup = await this.buildSetup(args.language ?? 'sk');
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(setup, null, 2),
+        },
+      ],
+    };
+  }
+
+  async getStarterTemplate(args) {
+    const language = args.language ?? 'sk';
+    const title = args.title ?? 'Martinus';
+    const setup = await this.buildSetup(language);
+
+    const htmlLang = language === 'cz' ? 'cs' : 'sk';
+    const htmlClassAttr = setup.htmlClasses.length
+      ? ` class="${setup.htmlClasses.join(' ')}"`
+      : '';
+    const escapedTitle = title
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Theme-init script prevents FOUC when dark mode is active — mirrors the
+    // inline script in app/views/layouts/_default.pug.
+    const themeInit = `<script>(function(){var t=localStorage.getItem('martinus-theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);localStorage.setItem('martinus-theme',t);})();</script>`;
+
+    const html = [
+      '<!doctype html>',
+      `<html lang="${htmlLang}"${htmlClassAttr}>`,
+      '<head>',
+      '  <meta charset="utf-8">',
+      '  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">',
+      '  <meta name="viewport" content="width=device-width, initial-scale=1.0">',
+      `  <title>${escapedTitle}</title>`,
+      `  ${themeInit}`,
+      setup.head.split('\n').map((l) => `  ${l}`).join('\n'),
+      '</head>',
+      '<body>',
+      '  <!-- Page content goes here. Use get_component to fetch compiled HTML fragments. -->',
+      setup.bodyEnd.split('\n').map((l) => `  ${l}`).join('\n'),
+      '</body>',
+      '</html>',
+      '',
+    ].join('\n');
+
+    return {
       content: [
         {
           type: 'text',
           text: JSON.stringify({
-            htmlClasses: ['fonts-loaded'],
-            head,
-            bodyEnd,
+            html,
             language,
+            title,
             assetsBaseUrl: ASSETS_BASE_URL,
-            bundleVersions: {
-              'styles/main.css': manifest['styles/main.css'],
-              'scripts/main.js': manifest['scripts/main.js'],
-              'scripts/vendor.js': manifest['scripts/vendor.js'],
-              'scripts/font-awesome.js': manifest['scripts/font-awesome.js'],
-              'fonts/Tabac-Sans/style.css': manifest['fonts/Tabac-Sans/style.css'],
-            },
+            bundleVersions: setup.bundleVersions,
+          }, null, 2),
+        },
+      ],
+    };
+  }
+
+  async fetchComponents() {
+    const now = Date.now();
+    if (this.componentsCache && (now - this.componentsCache.fetchedAt) < COMPONENTS_CACHE_TTL_MS) {
+      return this.componentsCache.data;
+    }
+
+    // Internal mode prefers the checked-in YAML source — no network hop, no
+    // waiting for a deploy to see local schema edits.
+    let data;
+    if (this.isInternalMode()) {
+      const schemaPath = join(APP_DIR, 'mcp-components.yaml');
+      try {
+        const text = await readFile(schemaPath, 'utf-8');
+        data = yaml.load(text);
+      } catch (err) {
+        throw new Error(`Failed to read component schema from ${schemaPath}: ${err.message}`);
+      }
+    } else {
+      const res = await fetch(COMPONENTS_URL);
+      if (!res.ok) {
+        throw new Error(`Failed to fetch mcp-components.json (${res.status} ${res.statusText}) from ${COMPONENTS_URL}`);
+      }
+      data = await res.json();
+    }
+
+    if (!data || typeof data !== 'object' || !data.components) {
+      throw new Error('Component schema is empty or malformed: expected a top-level `components` map.');
+    }
+    this.componentsCache = { data, fetchedAt: now };
+    return data;
+  }
+
+  async getComponent(args) {
+    const { name, ...params } = args;
+    if (!name || typeof name !== 'string') {
+      throw new Error('Missing required argument "name".');
+    }
+
+    const schema = await this.fetchComponents();
+    const component = schema.components[name];
+    if (!component) {
+      const available = Object.keys(schema.components).sort().join(', ');
+      throw new Error(`Unknown component "${name}". Available: ${available}.`);
+    }
+    if (!component.template || typeof component.template !== 'string') {
+      throw new Error(`Component "${name}" has no template defined.`);
+    }
+
+    const data = validateParams(component, name, params);
+    const html = renderTemplate(component.template, data);
+
+    const requires = Array.isArray(component.requires) ? [...component.requires] : [];
+    if (component.addRequiresWhen) {
+      for (const [paramName, extras] of Object.entries(component.addRequiresWhen)) {
+        if (isTruthy(data[paramName]) && Array.isArray(extras)) {
+          for (const dep of extras) {
+            if (!requires.includes(dep)) requires.push(dep);
+          }
+        }
+      }
+    }
+
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({
+            name,
+            html,
+            params: data,
+            requires,
           }, null, 2),
         },
       ],
@@ -272,6 +482,24 @@ export class StyleguideServer {
           additionalProperties: true,
         },
       },
+      {
+        name: 'get_starter_template',
+        description: 'Returns a complete HTML document (doctype + <html> + <head> + <body>) pre-wired to the hosted Martinus bundle. Use this when starting a new page from scratch — the response `html` field is a drop-in file you can save as index.html. For adding Martinus styling to an existing page, use get_setup instead and inject the fragments yourself. Font Awesome Pro is always included. The body is intentionally empty — fill it with get_component output.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            language: {
+              type: 'string',
+              enum: ['sk', 'cz'],
+              description: 'UI language for i18n-aware interactive modules and the <html lang> attribute (sk → "sk", cz → "cs"). Default: "sk".',
+            },
+            title: {
+              type: 'string',
+              description: 'Text for the <title> element. Default: "Martinus".',
+            },
+          },
+        },
+      },
     ];
 
     const internalTools = [
@@ -394,6 +622,8 @@ export class StyleguideServer {
             return await this.getSetup(args);
           case 'get_component':
             return await this.getComponent(args);
+          case 'get_starter_template':
+            return await this.getStarterTemplate(args);
           case 'list_components':
             return await this.listComponents(args.type || 'all');
           case 'get_component_info':
