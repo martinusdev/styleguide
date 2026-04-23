@@ -267,3 +267,135 @@ components:
           `comma` is inline comma-separated, `expanded` adds extra spacing,
           `no-offset` removes the left indent.
     requires: []
+
+  # ---------------------------------------------------------------------------
+  # UI components — badges, pills, alerts, cards.
+
+  badge:
+    description: >-
+      Bordered label for categorization or metadata. Use for keyword tags,
+      status labels, discount callouts. Wrap multiple badges in
+      `<div class="badges">…</div>` on the consumer side when displaying
+      them inline — the `.badges` wrapper handles spacing and is not a
+      separate MCP component.
+    template: |-
+      <span class="badge{{#variant}} badge--{{variant}}{{/variant}}{{#size}} badge--{{size}}{{/size}}">{{{label}}}</span>
+    params:
+      label:
+        type: string
+        required: true
+        description: Badge text; raw (unescaped) so inline markup works.
+      variant:
+        type: enum
+        values: [primary, green, teal, orange, violet, blue, yellow, brown, error, transparent]
+        description: Color variant. Omit for the default grey-bordered badge.
+      size:
+        type: enum
+        values: [large]
+        description: Size modifier. Omit for default (24px min-height). `large` gives 40px.
+    requires: []
+
+  pill:
+    description: >-
+      Small fully-rounded counter or filter chip. Visually distinct from
+      `.badge` — no border, fully rounded, typically used for numeric counts
+      (cart quantity, review count) or category filter chips. When the pill
+      should be a link, swap `<span>` for `<a>` on the consumer side.
+    template: |-
+      <span class="pill{{#variant}} pill--{{variant}}{{/variant}}">{{{label}}}</span>
+    params:
+      label:
+        type: string
+        required: true
+        description: Pill text or count; raw (unescaped).
+      variant:
+        type: enum
+        values: [white, blue, blue-alt, blue-light, orange, orange-light, red, red-light, green, green-light]
+        description: >-
+          Color variant. Omit for the default dark style (dark bg, white text).
+          `white` is for use on dark backgrounds. `-light` variants use a light
+          tinted background with the matching text color.
+    requires: []
+
+  alert:
+    description: >-
+      Inline alert banner for feedback messages (info, success, warning,
+      error). Optional icon (Font Awesome) anchors the left; optional action
+      slot holds a close button or CTA on the right. The JavaScript
+      `window.myApp.Alert` imperative API handles toast/fixed-position
+      alerts injected from scripts — use this component for static inline
+      alerts embedded in HTML markup.
+    template: |-
+      <div class="alert{{#variant}} alert--{{variant}}{{/variant}}">{{#icon}}<div class="alert__icon"><i class="far fa-{{icon}} fa-xl"></i></div>{{/icon}}<div class="alert__content">{{{content}}}</div>{{#action}}<div class="alert__action">{{{action}}}</div>{{/action}}</div>
+    params:
+      content:
+        type: string
+        required: true
+        description: Alert message; raw HTML. May contain inline markup and links.
+      variant:
+        type: enum
+        values: [success, warning, error, light, success-light, warning-light, error-light]
+        description: >-
+          Visual type. Omit for the default info (blue). `-light` variants use
+          theme-aware background tokens and adapt to dark mode automatically.
+      icon:
+        type: string
+        description: >-
+          Font Awesome Pro icon name without the `fa-` prefix (regular style).
+          Common values: `check-circle` (success), `triangle-exclamation`
+          (warning), `circle-exclamation` (error), `circle-info` (info).
+          When set, font-awesome is added to `requires`.
+      action:
+        type: string
+        description: >-
+          Raw HTML for the right-side action slot. Typical close button:
+          `<button class="btn btn--clean btn--small" data-alert-action><i class="far fa-xmark fa-xl"></i></button>`.
+    requires: []
+    addRequiresWhen:
+      icon: [font-awesome]
+
+  card:
+    description: >-
+      Content container with optional header, body, and footer. Use `variant`
+      for colored/styled cards. `clickable: true` adds hover and focus states —
+      swap `<article>` for `<a>` on the consumer side when the whole card
+      should be a link. Header renders a centered title bar; footer is a raw
+      HTML slot for action buttons or metadata.
+    template: |-
+      <article class="card{{#variant}} card--{{variant}}{{/variant}}{{#clickable}} card--clickable{{/clickable}}">{{#header}}<header class="card__header card-header"><h2 class="card-header__title">{{header}}</h2></header>{{/header}}<section class="card__content{{#contentSize}} card__content--{{contentSize}}{{/contentSize}}">{{{content}}}</section>{{#footer}}<footer class="card__footer">{{{footer}}}</footer>{{/footer}}</article>
+    params:
+      content:
+        type: string
+        required: true
+        description: Card body; raw HTML (unescaped).
+      variant:
+        type: enum
+        values: [well, material, success, info, notice]
+        description: >-
+          Visual style. Omit for the default white card. `well` uses a secondary
+          background with a bottom accent line, `material` adds shadow and a top
+          accent line, `success`/`info`/`notice` apply themed background colors.
+      header:
+        type: string
+        description: >-
+          Card header title text (HTML-escaped). When set, emits
+          `<header class="card__header card-header"><h2 class="card-header__title">…</h2></header>`.
+          For a header with left/right action buttons, build it manually using
+          `.card-header__action` and `.card-header__title` — MCP does not model
+          that variant.
+      footer:
+        type: string
+        description: Card footer; raw HTML. When set, wraps in `<footer class="card__footer">`.
+      contentSize:
+        type: enum
+        values: [large, condensed]
+        description: >-
+          Content padding modifier. `large` increases padding (good for
+          prominent callouts), `condensed` reduces it (good for dense lists).
+      clickable:
+        type: boolean
+        default: false
+        description: >-
+          Add `card--clickable` for hover and focus styles. Swap `<article>`
+          for `<a>` on the consumer side when the card should be a link.
+    requires: []

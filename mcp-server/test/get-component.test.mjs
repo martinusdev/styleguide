@@ -101,7 +101,7 @@ test('rejects a missing required param', async () => {
 test('rejects an unknown component with a list of valid names', async () => {
   await assert.rejects(
     () => server.getComponent({ name: 'nope' }),
-    /Unknown component "nope"\. Available: buttons/
+    /Unknown component "nope"\. Available:/
   );
 });
 
