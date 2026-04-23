@@ -64,3 +64,104 @@ components:
     requires: []
     addRequiresWhen:
       icon: [font-awesome]
+
+  # ---------------------------------------------------------------------------
+  # Layout primitives — structural wrappers the agent composes around its own
+  # markup. All four use `{{{children}}}` so the caller passes in raw HTML.
+  # Grid is 12-column with breakpoints xs/s/m/l/xl; BEM double-dash convention
+  # (.col--6, .col--l-6, …). See app/styles/layout/_grid.scss.
+
+  wrapper:
+    description: >-
+      Page wrapper. Centers content, caps width per breakpoint, and applies
+      responsive horizontal padding. Use as the top-level container around
+      page content so margins match other Martinus pages.
+    template: |-
+      <div class="wrapper-main">{{{children}}}</div>
+    params:
+      children:
+        type: string
+        description: Raw HTML to place inside the wrapper.
+    requires: []
+
+  row:
+    description: >-
+      Grid row — flex container for columns. Negative margins compensate for
+      column gutters so row children span the wrapper edge-to-edge. Put
+      `col` children directly inside.
+    template: |-
+      <div class="row{{#variant}} row--{{variant}}{{/variant}}">{{{children}}}</div>
+    params:
+      children:
+        type: string
+        description: Raw HTML (typically one or more `col` calls).
+      variant:
+        type: enum
+        values: [form]
+        description: >-
+          `form` uses tighter gutters tuned for form control spacing. Omit
+          for the default row gutters.
+    requires: []
+
+  col:
+    description: >-
+      Grid column inside a `row`. Martinus grid is 12-column with BEM
+      double-dash breakpoint modifiers (`.col--6`, `.col--l-6`). Omit every
+      size param for an auto-fill column; set `variant: fill` or
+      `variant: shrink` for non-sized behaviors.
+    template: |-
+      <div class="col{{#variant}} col--{{variant}}{{/variant}}{{#size}} col--{{size}}{{/size}}{{#sizeS}} col--s-{{sizeS}}{{/sizeS}}{{#sizeM}} col--m-{{sizeM}}{{/sizeM}}{{#sizeL}} col--l-{{sizeL}}{{/sizeL}}{{#sizeXl}} col--xl-{{sizeXl}}{{/sizeXl}}">{{{children}}}</div>
+    params:
+      children:
+        type: string
+        description: Raw HTML inside the column.
+      size:
+        type: enum
+        values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        description: Column width at the XS breakpoint (out of 12).
+      sizeS:
+        type: enum
+        values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        description: Column width at the S breakpoint (>=480px).
+      sizeM:
+        type: enum
+        values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        description: Column width at the M breakpoint (>=768px).
+      sizeL:
+        type: enum
+        values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        description: Column width at the L breakpoint (>=960px).
+      sizeXl:
+        type: enum
+        values: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+        description: Column width at the XL breakpoint (>=1280px).
+      variant:
+        type: enum
+        values: [fill, shrink, border]
+        description: >-
+          `fill` expands to take remaining space, `shrink` fits to content,
+          `border` adds a separator. Mutually exclusive with explicit sizes
+          in practice (though not enforced).
+    requires: []
+
+  section:
+    description: >-
+      Page section with vertical padding that scales at the M breakpoint.
+      Use as a child of `wrapper` to separate logical areas (hero, listing,
+      footer CTA, …). `size: small` reduces padding; `overflow: true` adds
+      `overflow: hidden` for contained float/absolute children.
+    template: |-
+      <div class="section{{#size}} section--{{size}}{{/size}}{{#overflow}} section--overflow{{/overflow}}">{{{children}}}</div>
+    params:
+      children:
+        type: string
+        description: Raw HTML inside the section.
+      size:
+        type: enum
+        values: [small]
+        description: Optional `small` padding modifier. Omit for default spacing.
+      overflow:
+        type: boolean
+        default: false
+        description: Add `section--overflow` (overflow hidden).
+    requires: []

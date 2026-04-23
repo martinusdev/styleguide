@@ -122,3 +122,25 @@ test('validateParams coerces non-string for string-typed param', () => {
   const out = validateParams(schema, 'buttons', { label: 42 });
   assert.equal(out.label, '42');
 });
+
+test('validateParams accepts a number arg against a stringified enum value', () => {
+  // Regression: col.sizeM has values ['1'..'12'] but JSON-RPC passes numbers.
+  // Loose comparison must match and normalize to the schema's declared type.
+  const sizeSchema = {
+    params: {
+      size: { type: 'enum', values: ['1', '2', '6', '12'] },
+    },
+  };
+  const out = validateParams(sizeSchema, 'col', { size: 6 });
+  assert.equal(out.size, '6');
+});
+
+test('validateParams accepts a string arg against a numeric enum value', () => {
+  const numSchema = {
+    params: {
+      n: { type: 'enum', values: [1, 2, 3] },
+    },
+  };
+  const out = validateParams(numSchema, 'x', { n: '2' });
+  assert.equal(out.n, 2);
+});

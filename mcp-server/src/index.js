@@ -170,9 +170,11 @@ export class StyleguideServer {
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;');
 
-    // Theme-init script prevents FOUC when dark mode is active — mirrors the
-    // inline script in app/views/layouts/_default.pug.
-    const themeInit = `<script>(function(){var t=localStorage.getItem('martinus-theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);localStorage.setItem('martinus-theme',t);})();</script>`;
+    // No theme-init script: external consumers don't share Martinus's
+    // localStorage / cookie state, and a `prefers-color-scheme` fallback
+    // would surprise-flip the page into dark mode. CSS only styles
+    // `[data-theme='dark']` overlays — omitting the attribute renders in
+    // light mode, which is the intended default for MCP-hosted pages.
 
     const html = [
       '<!doctype html>',
@@ -182,7 +184,6 @@ export class StyleguideServer {
       '  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">',
       '  <meta name="viewport" content="width=device-width, initial-scale=1.0">',
       `  <title>${escapedTitle}</title>`,
-      `  ${themeInit}`,
       setup.head.split('\n').map((l) => `  ${l}`).join('\n'),
       '</head>',
       '<body>',
