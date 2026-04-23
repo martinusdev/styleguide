@@ -103,6 +103,14 @@ test('col rejects an out-of-range size value', async () => {
   );
 });
 
+test('col accepts a numeric sizeM (JSON-RPC number → string enum)', async () => {
+  // Agents call get_component with `sizeM: 6`; JSON-RPC serializes that as a
+  // number, but the schema lists '1'..'12' as strings. Loose enum comparison
+  // bridges the gap.
+  const { html } = await render({ name: 'col', sizeM: 6, children: 'x' });
+  assert.equal(html, '<div class="col col--m-6">x</div>');
+});
+
 // ---------------------------------------------------------------------------
 // section
 

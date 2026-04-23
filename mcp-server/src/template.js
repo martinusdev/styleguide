@@ -71,11 +71,18 @@ export function validateParams(component, name, args) {
       continue;
     }
     if (spec.type === 'enum') {
-      if (!Array.isArray(spec.values) || !spec.values.includes(value)) {
+      // JSON-RPC preserves JS types (a schema value `'6'` and a caller arg `6`
+      // are distinct), so compare loosely — stringify both sides — to accept
+      // either. The normalized value is stored as the exact match from the
+      // schema list, preserving the original type for consumers.
+      const stringValue = String(value);
+      const matched = (spec.values || []).find((v) => String(v) === stringValue);
+      if (matched === undefined) {
         throw new Error(
           `Invalid value "${value}" for "${key}". Allowed: ${(spec.values || []).join(', ')}.`
         );
       }
+      value = matched;
     }
     if (spec.type === 'boolean') {
       value = value === true || value === 'true';
