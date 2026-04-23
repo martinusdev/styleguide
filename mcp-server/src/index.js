@@ -94,8 +94,7 @@ class StyleguideServer {
     return `${ASSETS_BASE_URL}${logicalPath}?v=${hashMatch[1]}`;
   }
 
-  async getSetup(args) {
-    const language = args.language ?? 'sk';
+  async buildSetup(language) {
     if (!['sk', 'cz'].includes(language)) {
       throw new Error(`Invalid language "${language}". Use "sk" or "cz".`);
     }
@@ -120,22 +119,80 @@ class StyleguideServer {
     ].join('\n');
 
     return {
+      htmlClasses: ['fonts-loaded'],
+      head,
+      bodyEnd,
+      language,
+      assetsBaseUrl: ASSETS_BASE_URL,
+      bundleVersions: {
+        'styles/main.css': manifest['styles/main.css'],
+        'scripts/main.js': manifest['scripts/main.js'],
+        'scripts/vendor.js': manifest['scripts/vendor.js'],
+        'scripts/font-awesome.js': manifest['scripts/font-awesome.js'],
+        'fonts/Tabac-Sans/style.css': manifest['fonts/Tabac-Sans/style.css'],
+      },
+    };
+  }
+
+  async getSetup(args) {
+    const setup = await this.buildSetup(args.language ?? 'sk');
+    return {
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify(setup, null, 2),
+        },
+      ],
+    };
+  }
+
+  async getStarterTemplate(args) {
+    const language = args.language ?? 'sk';
+    const title = args.title ?? 'Martinus';
+    const setup = await this.buildSetup(language);
+
+    const htmlLang = language === 'cz' ? 'cs' : 'sk';
+    const htmlClassAttr = setup.htmlClasses.length
+      ? ` class="${setup.htmlClasses.join(' ')}"`
+      : '';
+    const escapedTitle = title
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Theme-init script prevents FOUC when dark mode is active — mirrors the
+    // inline script in app/views/layouts/_default.pug.
+    const themeInit = `<script>(function(){var t=localStorage.getItem('martinus-theme')||(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');document.documentElement.setAttribute('data-theme',t);localStorage.setItem('martinus-theme',t);})();</script>`;
+
+    const html = [
+      '<!doctype html>',
+      `<html lang="${htmlLang}"${htmlClassAttr}>`,
+      '<head>',
+      '  <meta charset="utf-8">',
+      '  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">',
+      '  <meta name="viewport" content="width=device-width, initial-scale=1.0">',
+      `  <title>${escapedTitle}</title>`,
+      `  ${themeInit}`,
+      setup.head.split('\n').map((l) => `  ${l}`).join('\n'),
+      '</head>',
+      '<body>',
+      '  <!-- Page content goes here. Use get_component to fetch compiled HTML fragments. -->',
+      setup.bodyEnd.split('\n').map((l) => `  ${l}`).join('\n'),
+      '</body>',
+      '</html>',
+      '',
+    ].join('\n');
+
+    return {
       content: [
         {
           type: 'text',
           text: JSON.stringify({
-            htmlClasses: ['fonts-loaded'],
-            head,
-            bodyEnd,
+            html,
             language,
+            title,
             assetsBaseUrl: ASSETS_BASE_URL,
-            bundleVersions: {
-              'styles/main.css': manifest['styles/main.css'],
-              'scripts/main.js': manifest['scripts/main.js'],
-              'scripts/vendor.js': manifest['scripts/vendor.js'],
-              'scripts/font-awesome.js': manifest['scripts/font-awesome.js'],
-              'fonts/Tabac-Sans/style.css': manifest['fonts/Tabac-Sans/style.css'],
-            },
+            bundleVersions: setup.bundleVersions,
           }, null, 2),
         },
       ],
@@ -165,6 +222,24 @@ class StyleguideServer {
               type: 'string',
               enum: ['sk', 'cz'],
               description: 'UI language for i18n-aware interactive modules (Select, Autocomplete). Default: "sk".',
+            },
+          },
+        },
+      },
+      {
+        name: 'get_starter_template',
+        description: 'Returns a complete HTML document (doctype + <html> + <head> + <body>) pre-wired to the hosted Martinus bundle. Use this when starting a new page from scratch — the response `html` field is a drop-in file you can save as index.html. For adding Martinus styling to an existing page, use get_setup instead and inject the fragments yourself. Font Awesome Pro is always included. The body is intentionally empty — fill it with get_component output.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            language: {
+              type: 'string',
+              enum: ['sk', 'cz'],
+              description: 'UI language for i18n-aware interactive modules and the <html lang> attribute (sk → "sk", cz → "cs"). Default: "sk".',
+            },
+            title: {
+              type: 'string',
+              description: 'Text for the <title> element. Default: "Martinus".',
             },
           },
         },
@@ -289,6 +364,8 @@ class StyleguideServer {
         switch (name) {
           case 'get_setup':
             return await this.getSetup(args);
+          case 'get_starter_template':
+            return await this.getStarterTemplate(args);
           case 'list_components':
             return await this.listComponents(args.type || 'all');
           case 'get_component_info':

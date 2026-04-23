@@ -312,7 +312,7 @@ Po odsúhlasení tohto dokumentu:
 1. ✅ **Fáza 3** — inventár JS modulov + rozhodnutia z otázok 1-6. Viď §3.8 a §6.
 2. **Fáza 2 implementácia** — nástroje s najväčšou hodnotou ako prvé:
    - ✅ `get_setup` — emituje `head`/`bodyEnd`/`htmlClasses`, URLs s `?v=<hash>` cache-bustingom. Two-mode skeleton (`MARTINUS_STYLEGUIDE_APP_DIR` env var) + fetch-client s TTL cache založené.
-   - 🔲 `get_starter_template` — triviálny follow-up (ten istý manifest, HTML skeleton okolo `get_setup`).
+   - ✅ `get_starter_template` — kompletný HTML dokument (doctype + `<html>` + `<head>` + `<body>`) pre-wired na hosted bundle. Optional parametre `language` (`sk`/`cz`, default `sk`) a `title` (default `Martinus`). Reuse-uje `buildSetup()` helper extrahovaný z `get_setup`.
    - 🔲 `get_component` (potrebuje build emitter, krok 4).
    - 🔲 `get_tokens`, `list_icons` (FA subset), `get_icon`, `find_class`, `list_js_behaviors`, `get_js_behavior`.
 3. ✅ **Oprava existujúcich bugov** (Sekcia 3.6, 3.8) — commit `594c4110`.
