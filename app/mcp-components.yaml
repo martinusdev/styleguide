@@ -165,3 +165,105 @@ components:
         default: false
         description: Add `section--overflow` (overflow hidden).
     requires: []
+
+  # ---------------------------------------------------------------------------
+  # Typography — headings, body text, links, lists. Raw `{{{...}}}` slots so
+  # the caller can embed <strong>, <em>, <a class="link">… inline. See
+  # app/styles/base/_typography.scss.
+
+  heading:
+    description: >-
+      Heading h1–h6. `level` controls the actual HTML tag (affects SEO and
+      document outline). Set `styleLevel` to render a different visual size
+      than the tag implies (e.g. level=3, styleLevel=4 → <h3 class="h4">).
+      `titleDivider: true` adds the centered title with horizontal rules
+      variant.
+    template: |-
+      <h{{level}}{{#styleLevel}} class="h{{styleLevel}}{{#titleDivider}} title-divider{{/titleDivider}}"{{/styleLevel}}{{^styleLevel}}{{#titleDivider}} class="title-divider"{{/titleDivider}}{{/styleLevel}}>{{{text}}}</h{{level}}>
+    params:
+      level:
+        type: enum
+        values: ['1', '2', '3', '4', '5', '6']
+        required: true
+        description: HTML heading level (1–6).
+      text:
+        type: string
+        required: true
+        description: Heading text; raw (unescaped) so inline <em>/<strong> work.
+      styleLevel:
+        type: enum
+        values: ['1', '2', '3', '4', '5', '6']
+        description: >-
+          Visual size override. Omit to use the tag-default size. When set,
+          emits a `.h{N}` class that restyles to that visual level without
+          changing the tag.
+      titleDivider:
+        type: boolean
+        default: false
+        description: Add the `.title-divider` modifier (centered title with rules).
+    requires: []
+
+  text:
+    description: >-
+      Body paragraph. Default renders at body font size. `size: medium` is
+      slightly larger (lead-style), `size: small` is caption-sized.
+      Content is raw (unescaped), so inline <strong>, <em>, and
+      <a class="link"> work directly.
+    template: |-
+      <p{{#size}} class="text-{{size}}"{{/size}}>{{{content}}}</p>
+    params:
+      content:
+        type: string
+        required: true
+        description: Paragraph content; raw HTML (unescaped).
+      size:
+        type: enum
+        values: [medium, small]
+        description: Optional size modifier. Omit for default body size.
+    requires: []
+
+  link:
+    description: >-
+      Inline anchor. The base `.link` class resets underline + adds Martinus
+      hover styling — a plain <a> without this class is unstyled. Variants
+      tune color for context (e.g. `white` on dark backgrounds).
+    template: |-
+      <a href="{{href}}" class="link{{#variant}} link--{{variant}}{{/variant}}">{{{label}}}</a>
+    params:
+      href:
+        type: string
+        required: true
+        description: Destination URL.
+      label:
+        type: string
+        required: true
+        description: Link text; raw (unescaped) so inline markup works.
+      variant:
+        type: enum
+        values: [grey, black, white, product]
+        description: >-
+          Color variant. Omit for the default (inherit). `white` is for dark
+          backgrounds, `product` for product-listing contexts.
+    requires: []
+
+  list:
+    description: >-
+      Unordered list (<ul>). Pass pre-built <li>…</li> HTML as `items`
+      (raw). Variant picks the bullet/spacing style; omit for a browser
+      default list. For ordered lists, wrap in <ol> yourself — MCP keeps
+      this simple and <ol> is much rarer in the design system.
+    template: |-
+      <ul{{#variant}} class="list--{{variant}}"{{/variant}}>{{{items}}}</ul>
+    params:
+      items:
+        type: string
+        required: true
+        description: Raw HTML of <li> children.
+      variant:
+        type: enum
+        values: [default, unstyled, comma, expanded, no-offset]
+        description: >-
+          `default` shows styled bullets, `unstyled` removes them,
+          `comma` is inline comma-separated, `expanded` adds extra spacing,
+          `no-offset` removes the left indent.
+    requires: []
