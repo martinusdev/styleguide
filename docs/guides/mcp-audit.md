@@ -1,6 +1,6 @@
 # MCP Audit a plán prepracovania
 
-*Aktualizované: 2026-04-23*
+*Aktualizované: 2026-04-23 (po formulárových komponentoch)*
 
 Tento dokument je živý audit MCP servera styleguide (`mcp-server/src/index.js`) a plán jeho prepracovania pre nový primárny cieľ: **externé projekty (napr. Lovable), ktoré chcú získať Martinus styling bez toho, aby mali checkout tohto repozitára**.
 
@@ -52,7 +52,7 @@ Distribúcia: Docker kontajner `martinus-styleguide-mcp`, Claude Code sa pripáj
 | `dist/mcp-components.json` | Parametrické template schémy pre `get_component` (zdroj: `app/mcp-components.yaml`) | ✅ #634 |
 | `dist/tokens.json` | Resolvované dizajnové tokeny (Sass už vyhodnotil referencie a mapy) | 🔲 |
 | `dist/class-index.json` | Mapa `class name → compiled CSS rule text`, scoped na modules/components | 🔲 |
-| `dist/icons.json` | FA subset z `font-awesome-subset.yaml` transformovaný na `[{ name, style, class }]` | 🔲 |
+| `dist/icons.json` | FA subset z `font-awesome-subset.yaml` transformovaný na `[{ name, style, class }]` | ✅ |
 | `dist/mcp-manifest.json` | Top-level index: zoznam dostupných komponentov, ikon, behaviorov, tokens kategórií | 🔲 |
 
 Všetky sú statické JSON súbory. MCP si ich fetchuje na dopyt a kombinuje s `rev-manifest.json` pre hashe. Build pipeline je `scripts/emit-mcp-artifacts.js` (plain Node, bez Gulpu), volaný z `postbuild` npm scriptu — postupne sa napĺňa s každým novým artefaktom.
@@ -148,8 +148,8 @@ Cieľová sada (názvy finálne až po review):
 | `get_component` | Parametricky renderovaný HTML fragment. Parametre: `name` (kategória, napr. `buttons`) + content/variant parametre podľa schémy (`label`, `variant`, `size`, `icon`, ...). Response obsahuje `html`, normalizované `params`, a `requires` array. Mustache-style template engine interpoluje schému z `mcp-components.json`. | ✅ #634 (buttons; ďalšie komponenty postupne) | `mcp-components.json` |
 | `list_components` | Lista konzumovateľných komponentov s ich schémou (params, variants). | 🔲 | `mcp-components.json` |
 | `get_tokens` | Resolvované dizajnové tokeny. Optional `category: "color" \| "spacing" \| "typography" \| ...`. | 🔲 | `tokens.json` |
-| `list_icons` | FA subset po štýloch (`far`, `fab`, `fas`, `fad`, `fak`). Optional `style` filter. | 🔲 | `icons.json` |
-| `get_icon` | Vráti `<i class="{prefix} fa-{name}"></i>` snippet. Response deklaruje `requires: ["font-awesome"]`. Kit ikony (`fak-*`) idú rovnakou cestou — sú v tom istom bundli. | 🔲 | `icons.json` |
+| `list_icons` | FA subset po štýloch (`far`, `fab`, `fas`, `fad`, `fak`). Optional `style` filter. | ✅ | `icons.json` |
+| `get_icon` | Vráti `<i class="{prefix} fa-{name}"></i>` snippet. Response deklaruje `requires: ["font-awesome"]`. Kit ikony (`fak-*`) idú rovnakou cestou — sú v tom istom bundli. | ✅ | `icons.json` |
 | `find_class` | Hľadanie CSS triedy — vráti **compiled CSS rule text** (deklarácie z `main.css`). Bezpečný escaping vstupu (nie surový regex). | 🔲 | `class-index.json` |
 | `list_js_behaviors` | Interaktívne JS moduly v main bundle s popisom data-atribútov. | 🔲 | `mcp-manifest.json` |
 | `get_js_behavior` | Ako inicializovať konkrétne správanie (HTML + atribúty). | 🔲 | `mcp-manifest.json` |
@@ -232,22 +232,35 @@ Každá kategória dostane jeden entry v `mcp-components.yaml` s vlastnou sadou 
 | Kategória | Typické parametre |
 |---|---|
 | `buttons` ✅ | `label`, `variant`, `size`, `shape`, `icon`, `disabled` |
-| `forms` | `input` / `textarea` / `checkbox` / `radio` / `select` — pravdepodobne samostatné kategórie per typ kontroly, každá s vlastnými params |
-| `bar` | `items` (slot) |
-| `tables` | `headers`, `rows` (slot) |
-| `cards` | `header`, `body`, `footer` (slot-based) |
-| `lists` | `items` (slot) |
-| `tabs` | `tabs` (repeat slot) |
-| `modals` | `title`, `body`, `footer` (slot-based), `size` |
-| `dropdowns` | `trigger`, `items` (slot) |
-| `badges` | `label`, `variant`, `size`, `shape` (badge vs. pill) |
-| `carousels` | `slides` (slot) |
-| `tooltips` | `trigger`, `content`, `placement` |
-| `alerts` | `content`, `variant` (info/success/warning/error), `icon` |
-| `loaders` | `size` |
-| `product-card` | `coverUrl`, `title`, `author`, `price`, `badges` |
-| `product-cover` | `coverUrl`, `title`, `author` |
-| `header` | `minimal` — **nový komponent na návrh.** Minimalistická verzia (čierny top-bar s logom + farebný sub-bar). Eshop varianty zostávajú internal. Vyžaduje markup + SCSS dizajn. |
+| `heading` ✅ (#638) | `text`, `level`, `variant`, `size` |
+| `text` ✅ (#638) | `content`, `variant`, `size` |
+| `link` ✅ (#638) | `label`, `href`, `variant` |
+| `list` ✅ (#638) | `items` (slot), `variant` |
+| `wrapper` ✅ (#637) | `content` (slot), `size` |
+| `row` ✅ (#637) | `content` (slot), `gap`, `align`, `justify` |
+| `col` ✅ (#637) | `content` (slot), `span`, responsive breakpoint params |
+| `section` ✅ (#637) | `content` (slot), `variant`, `size` |
+| `badge` ✅ | `label`, `variant`, `size` |
+| `pill` ✅ | `label`, `variant` |
+| `alert` ✅ | `content`, `variant`, `icon`, `action` |
+| `card` ✅ | `content`, `header`, `footer`, `variant`, `contentSize`, `clickable` |
+| `form-input` ✅ | `placeholder`, `type`, `variant`, `size`, `state`, `value`, `disabled`, `readonly` |
+| `form-textarea` ✅ | `placeholder`, `rows`, `size`, `state`, `value`, `disabled`, `readonly` |
+| `form-checkbox` ✅ | `id`, `label`, `field_name`, `checked`, `disabled`, `state`, `inline`, `reverse` |
+| `form-radio` ✅ | `id`, `label`, `field_name`, `checked`, `disabled`, `state`, `inline`, `reverse` |
+| `form-switch` ✅ | `id`, `label`, `field_name`, `checked`, `disabled` |
+| `form-select` ✅ | `options` (slot), `variant`, `size`, `inline`, `state`, `disabled` |
+| `bar` 🔲 | `items` (slot) |
+| `tables` 🔲 | `headers`, `rows` (slot) |
+| `tabs` 🔲 | `tabs` (repeat slot) |
+| `modals` 🔲 | `title`, `body`, `footer` (slot-based), `size` |
+| `dropdowns` 🔲 | `trigger`, `items` (slot) |
+| `carousels` 🔲 | `slides` (slot) |
+| `tooltips` 🔲 | `trigger`, `content`, `placement` |
+| `loaders` 🔲 | `size` |
+| `product-card` 🔲 | `coverUrl`, `title`, `author`, `price`, `badges` |
+| `product-cover` 🔲 | `coverUrl`, `title`, `author` |
+| `header` 🔲 | `minimal` — **nový komponent na návrh.** Minimalistická verzia (čierny top-bar s logom + farebný sub-bar). Eshop varianty zostávajú internal. Vyžaduje markup + SCSS dizajn. |
 
 **Tabuľka je orientačná.** Presné parametre, ich typy a enum hodnoty sa finalizujú pri pridávaní každej kategórie do `mcp-components.yaml` (krok: prejsť styleguide stránku, identifikovať modifikátory v SCSS, preložiť na params). Zatiaľ je implementovaný iba `buttons` (#634) ako proof-of-architecture.
 
@@ -327,14 +340,20 @@ Docker-based flow ostáva — `./mcp.sh` nastaví `APP_DIR` a spustí kontajner 
    - ✅ `get_setup` (#631). Two-mode skeleton (`MARTINUS_STYLEGUIDE_APP_DIR` env var) + fetch client s TTL cache.
    - ✅ `get_starter_template` (#632). Kompletný HTML dokument pre-wired na hosted bundle. Zdieľaný `buildSetup()` helper.
    - ✅ `get_component` (#634, parametrická architektúra; buttons ako proof). Mustache-style template engine + param validátor + `app/mcp-components.yaml` ako zdroj pravdy.
-   - 🔲 Rozšírenie `mcp-components.yaml` o ostatné kategórie: cards, alerts, modals, tabs, dropdowns, badges, carousels, tooltips, loaders, bar, tables, lists, forms (per typ), product-card, product-cover, header.minimal.
+   - ✅ Rozšírenie `mcp-components.yaml` — dokončené kategórie: `heading`, `text`, `link`, `list` (#638); `wrapper`, `row`, `col`, `section` (#637); `badge`, `pill`, `alert`, `card`; `form-input`, `form-textarea`, `form-checkbox`, `form-radio`, `form-switch`, `form-select`. Celkom 19 komponentov.
+   - 🔲 Rozšírenie `mcp-components.yaml` — zostatok: `bar`, `tables`, `tabs`, `modals`, `dropdowns`, `carousels`, `tooltips`, `loaders`, `product-card`, `product-cover`, `header.minimal`.
    - 🔲 `list_components` — lista komponentov s ich schémou.
-   - 🔲 `get_tokens`, `list_icons`, `get_icon`, `find_class`, `list_js_behaviors`, `get_js_behavior`.
+   - ✅ `list_icons`, `get_icon` — FA subset po štýloch, `get_icon` vracia `<i class="…"></i>` + `requires: ["font-awesome"]`.
+   - 🔲 `get_tokens`, `find_class`, `list_js_behaviors`, `get_js_behavior`.
 3. **Emitter infra:**
    - ✅ `scripts/emit-mcp-artifacts.js` (plain Node, bez Gulpu) cez `postbuild` npm script. Prvý artefakt: `dist/mcp-components.json`.
-   - 🔲 Rozšíriť emitter o `icons.json` (FA subset YAML → JSON transform), `tokens.json` (Sass → JSON), `class-index.json` (PostCSS nad compiled `main.css`), `mcp-manifest.json` (top-level aggregator).
+   - ✅ Rozšírený emitter o `dist/icons.json` (FA subset YAML → flat JSON transform, 201 ikon).
+   - 🔲 Rozšíriť emitter o `tokens.json` (Sass → JSON), `class-index.json` (PostCSS nad compiled `main.css`), `mcp-manifest.json` (top-level aggregator).
 4. **Testy a CI:**
    - ✅ `node:test` sada pre MCP server — unit + integračné (#635).
    - ✅ GitHub Actions workflow pre push/PR — prvý CI projektu.
+   - ✅ Testy pre `list_icons` a `get_icon` (`icons.test.mjs`, 16 testov).
+   - ✅ Testy pre `badge`, `pill`, `alert`, `card` (`ui-components.test.mjs`, 33 testov).
+   - ✅ Testy pre formulárové komponenty (`form-components.test.mjs`, 60 testov). Celkom 173 testov, všetky prechádzajú.
    - 🔲 Rozšíriť pokrytie na `get_setup` / `get_starter_template` (mock `rev-manifest` fetch), E2E stdio testy.
 5. **Fáza 4 — Distribúcia:** 🔲 npm publish (`@martinus/styleguide-mcp` cez `npx`), prípadne Remote MCP na Cloudflare Workers (viď §6.2).
