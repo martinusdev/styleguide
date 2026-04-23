@@ -9,8 +9,15 @@ import {
 import { glob } from 'glob';
 import { readFile } from 'fs/promises';
 import { join, relative, extname } from 'path';
+import { fileURLToPath } from 'url';
 import * as cheerio from 'cheerio';
 import yaml from 'js-yaml';
+
+import {
+  isTruthy,
+  renderTemplate,
+  validateParams,
+} from './template.js';
 
 // External mode (default): APP_DIR unset → filesystem tools are hidden and the
 // server serves only hosted-artifact tools (suitable for npx distribution).
@@ -25,88 +32,12 @@ const COMPONENTS_URL = `${ASSETS_BASE_URL}mcp-components.json`;
 const MANIFEST_CACHE_TTL_MS = 5 * 60 * 1000;
 const COMPONENTS_CACHE_TTL_MS = 5 * 60 * 1000;
 
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-function isTruthy(value) {
-  return value !== undefined && value !== null && value !== false && value !== '';
-}
-
-/**
- * Tiny Mustache-subset template engine used to render component HTML.
- * Supports: {{var}} (escaped), {{{var}}} (raw), {{#var}}…{{/var}} (if truthy),
- * {{^var}}…{{/var}} (if falsy). No nested blocks with the same key.
- */
-function renderTemplate(tpl, data) {
-  let out = tpl;
-
-  const blockRe = /\{\{([#^])(\w+)\}\}([\s\S]*?)\{\{\/\2\}\}/g;
-  let prev;
-  do {
-    prev = out;
-    out = out.replace(blockRe, (_, op, key, body) => {
-      const truthy = isTruthy(data[key]);
-      const keep = op === '#' ? truthy : !truthy;
-      return keep ? body : '';
-    });
-  } while (out !== prev);
-
-  out = out.replace(/\{\{\{(\w+)\}\}\}/g, (_, key) => {
-    const v = data[key];
-    return v == null ? '' : String(v);
-  });
-  out = out.replace(/\{\{(\w+)\}\}/g, (_, key) => {
-    const v = data[key];
-    return v == null ? '' : escapeHtml(v);
-  });
-
-  return out;
-}
-
-function validateParams(component, name, args) {
-  const schema = component.params || {};
-  const normalized = {};
-  const unknownKeys = Object.keys(args).filter((k) => !Object.prototype.hasOwnProperty.call(schema, k));
-  if (unknownKeys.length) {
-    throw new Error(`Unknown parameter(s) for component "${name}": ${unknownKeys.join(', ')}. Allowed: ${Object.keys(schema).join(', ') || '(none)'}`);
-  }
-  for (const [key, spec] of Object.entries(schema)) {
-    const provided = Object.prototype.hasOwnProperty.call(args, key);
-    let value = provided ? args[key] : spec.default;
-
-    if (!provided && spec.required) {
-      throw new Error(`Missing required parameter "${key}" for component "${name}".`);
-    }
-    if (value === undefined || value === null) {
-      normalized[key] = spec.type === 'boolean' ? false : '';
-      continue;
-    }
-    if (spec.type === 'enum') {
-      if (!Array.isArray(spec.values) || !spec.values.includes(value)) {
-        throw new Error(`Invalid value "${value}" for "${key}". Allowed: ${(spec.values || []).join(', ')}.`);
-      }
-    }
-    if (spec.type === 'boolean') {
-      value = value === true || value === 'true';
-    }
-    if (spec.type === 'string' && typeof value !== 'string') {
-      value = String(value);
-    }
-    normalized[key] = value;
-  }
-  return normalized;
-}
 
 /**
  * MCP Server for Martinus Styleguide
  * Provides tools to query components, classes, mixins, and assets
  */
-class StyleguideServer {
+export class StyleguideServer {
   constructor() {
     this.server = new Server(
       {
@@ -917,6 +848,9 @@ class StyleguideServer {
   }
 }
 
-// Start the server
-const server = new StyleguideServer();
-server.run().catch(console.error);
+// Only start the server when executed as the entry point — importing this
+// module from tests (or any other consumer) must not spawn a stdio transport.
+if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
+  const server = new StyleguideServer();
+  server.run().catch(console.error);
+}
