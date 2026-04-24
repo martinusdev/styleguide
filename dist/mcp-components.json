@@ -1,0 +1,477 @@
+{
+  "components": {
+    "buttons": {
+      "description": "Standard Martinus button. Pick a visual variant, optional size/shape, optional Font Awesome icon rendered before the label. Renders a <button> element; wrap or swap the tag on the consumer side if you need an <a>.",
+      "template": "<button class=\"btn{{#variant}} btn--{{variant}}{{/variant}}{{#size}} btn--{{size}}{{/size}}{{#shape}} btn--{{shape}}{{/shape}}\"{{#disabled}} disabled{{/disabled}}>{{#icon}}<i class=\"far fa-{{icon}}\"></i> {{/icon}}{{label}}</button>",
+      "params": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Visible button text."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "primary",
+            "secondary",
+            "ghost",
+            "ghost-inverse",
+            "success"
+          ],
+          "description": "Visual style. Omit for the default filled button (no modifier class)."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "small",
+            "large"
+          ],
+          "description": "Optional size modifier. Omit for the default size."
+        },
+        "shape": {
+          "type": "enum",
+          "values": [
+            "sharp",
+            "round",
+            "equal"
+          ],
+          "description": "Optional shape modifier. `sharp` removes border-radius, `round` makes it a pill, `equal` forces equal width and height (useful with an icon and empty label)."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Optional Font Awesome Pro icon name without the `fa-` prefix (regular style). When set, font-awesome is added to `requires`."
+        },
+        "disabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "Add the `disabled` attribute."
+        }
+      },
+      "requires": [],
+      "addRequiresWhen": {
+        "icon": [
+          "font-awesome"
+        ]
+      }
+    },
+    "wrapper": {
+      "description": "Page wrapper. Centers content, caps width per breakpoint, and applies responsive horizontal padding. Use as the top-level container around page content so margins match other Martinus pages.",
+      "template": "<div class=\"wrapper-main\">{{{children}}}</div>",
+      "params": {
+        "children": {
+          "type": "string",
+          "description": "Raw HTML to place inside the wrapper."
+        }
+      },
+      "requires": []
+    },
+    "row": {
+      "description": "Grid row — flex container for columns. Negative margins compensate for column gutters so row children span the wrapper edge-to-edge. Put `col` children directly inside.",
+      "template": "<div class=\"row{{#variant}} row--{{variant}}{{/variant}}\">{{{children}}}</div>",
+      "params": {
+        "children": {
+          "type": "string",
+          "description": "Raw HTML (typically one or more `col` calls)."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "form"
+          ],
+          "description": "`form` uses tighter gutters tuned for form control spacing. Omit for the default row gutters."
+        }
+      },
+      "requires": []
+    },
+    "col": {
+      "description": "Grid column inside a `row`. Martinus grid is 12-column with BEM double-dash breakpoint modifiers (`.col--6`, `.col--l-6`). Omit every size param for an auto-fill column; set `variant: fill` or `variant: shrink` for non-sized behaviors.",
+      "template": "<div class=\"col{{#variant}} col--{{variant}}{{/variant}}{{#size}} col--{{size}}{{/size}}{{#sizeS}} col--s-{{sizeS}}{{/sizeS}}{{#sizeM}} col--m-{{sizeM}}{{/sizeM}}{{#sizeL}} col--l-{{sizeL}}{{/sizeL}}{{#sizeXl}} col--xl-{{sizeXl}}{{/sizeXl}}\">{{{children}}}</div>",
+      "params": {
+        "children": {
+          "type": "string",
+          "description": "Raw HTML inside the column."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "description": "Column width at the XS breakpoint (out of 12)."
+        },
+        "sizeS": {
+          "type": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "description": "Column width at the S breakpoint (>=480px)."
+        },
+        "sizeM": {
+          "type": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "description": "Column width at the M breakpoint (>=768px)."
+        },
+        "sizeL": {
+          "type": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "description": "Column width at the L breakpoint (>=960px)."
+        },
+        "sizeXl": {
+          "type": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+          ],
+          "description": "Column width at the XL breakpoint (>=1280px)."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "fill",
+            "shrink",
+            "border"
+          ],
+          "description": "`fill` expands to take remaining space, `shrink` fits to content, `border` adds a separator. Mutually exclusive with explicit sizes in practice (though not enforced)."
+        }
+      },
+      "requires": []
+    },
+    "section": {
+      "description": "Page section with vertical padding that scales at the M breakpoint. Use as a child of `wrapper` to separate logical areas (hero, listing, footer CTA, …). `size: small` reduces padding; `overflow: true` adds `overflow: hidden` for contained float/absolute children.",
+      "template": "<div class=\"section{{#size}} section--{{size}}{{/size}}{{#overflow}} section--overflow{{/overflow}}\">{{{children}}}</div>",
+      "params": {
+        "children": {
+          "type": "string",
+          "description": "Raw HTML inside the section."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "small"
+          ],
+          "description": "Optional `small` padding modifier. Omit for default spacing."
+        },
+        "overflow": {
+          "type": "boolean",
+          "default": false,
+          "description": "Add `section--overflow` (overflow hidden)."
+        }
+      },
+      "requires": []
+    },
+    "heading": {
+      "description": "Heading h1–h6. `level` controls the actual HTML tag (affects SEO and document outline). Set `styleLevel` to render a different visual size than the tag implies (e.g. level=3, styleLevel=4 → <h3 class=\"h4\">). `titleDivider: true` adds the centered title with horizontal rules variant.",
+      "template": "<h{{level}}{{#styleLevel}} class=\"h{{styleLevel}}{{#titleDivider}} title-divider{{/titleDivider}}\"{{/styleLevel}}{{^styleLevel}}{{#titleDivider}} class=\"title-divider\"{{/titleDivider}}{{/styleLevel}}>{{{text}}}</h{{level}}>",
+      "params": {
+        "level": {
+          "type": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "required": true,
+          "description": "HTML heading level (1–6)."
+        },
+        "text": {
+          "type": "string",
+          "required": true,
+          "description": "Heading text; raw (unescaped) so inline <em>/<strong> work."
+        },
+        "styleLevel": {
+          "type": "enum",
+          "values": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "description": "Visual size override. Omit to use the tag-default size. When set, emits a `.h{N}` class that restyles to that visual level without changing the tag."
+        },
+        "titleDivider": {
+          "type": "boolean",
+          "default": false,
+          "description": "Add the `.title-divider` modifier (centered title with rules)."
+        }
+      },
+      "requires": []
+    },
+    "text": {
+      "description": "Body paragraph. Default renders at body font size. `size: medium` is slightly larger (lead-style), `size: small` is caption-sized. Content is raw (unescaped), so inline <strong>, <em>, and <a class=\"link\"> work directly.",
+      "template": "<p{{#size}} class=\"text-{{size}}\"{{/size}}>{{{content}}}</p>",
+      "params": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Paragraph content; raw HTML (unescaped)."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "medium",
+            "small"
+          ],
+          "description": "Optional size modifier. Omit for default body size."
+        }
+      },
+      "requires": []
+    },
+    "link": {
+      "description": "Inline anchor. The base `.link` class resets underline + adds Martinus hover styling — a plain <a> without this class is unstyled. Variants tune color for context (e.g. `white` on dark backgrounds).",
+      "template": "<a href=\"{{href}}\" class=\"link{{#variant}} link--{{variant}}{{/variant}}\">{{{label}}}</a>",
+      "params": {
+        "href": {
+          "type": "string",
+          "required": true,
+          "description": "Destination URL."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Link text; raw (unescaped) so inline markup works."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "grey",
+            "black",
+            "white",
+            "product"
+          ],
+          "description": "Color variant. Omit for the default (inherit). `white` is for dark backgrounds, `product` for product-listing contexts."
+        }
+      },
+      "requires": []
+    },
+    "list": {
+      "description": "Unordered list (<ul>). Pass pre-built <li>…</li> HTML as `items` (raw). Variant picks the bullet/spacing style; omit for a browser default list. For ordered lists, wrap in <ol> yourself — MCP keeps this simple and <ol> is much rarer in the design system.",
+      "template": "<ul{{#variant}} class=\"list--{{variant}}\"{{/variant}}>{{{items}}}</ul>",
+      "params": {
+        "items": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML of <li> children."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "default",
+            "unstyled",
+            "comma",
+            "expanded",
+            "no-offset"
+          ],
+          "description": "`default` shows styled bullets, `unstyled` removes them, `comma` is inline comma-separated, `expanded` adds extra spacing, `no-offset` removes the left indent."
+        }
+      },
+      "requires": []
+    },
+    "badge": {
+      "description": "Bordered label for categorization or metadata. Use for keyword tags, status labels, discount callouts. Wrap multiple badges in `<div class=\"badges\">…</div>` on the consumer side when displaying them inline — the `.badges` wrapper handles spacing and is not a separate MCP component.",
+      "template": "<span class=\"badge{{#variant}} badge--{{variant}}{{/variant}}{{#size}} badge--{{size}}{{/size}}\">{{{label}}}</span>",
+      "params": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Badge text; raw (unescaped) so inline markup works."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "primary",
+            "green",
+            "teal",
+            "orange",
+            "violet",
+            "blue",
+            "yellow",
+            "brown",
+            "error",
+            "transparent"
+          ],
+          "description": "Color variant. Omit for the default grey-bordered badge."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "large"
+          ],
+          "description": "Size modifier. Omit for default (24px min-height). `large` gives 40px."
+        }
+      },
+      "requires": []
+    },
+    "pill": {
+      "description": "Small fully-rounded counter or filter chip. Visually distinct from `.badge` — no border, fully rounded, typically used for numeric counts (cart quantity, review count) or category filter chips. When the pill should be a link, swap `<span>` for `<a>` on the consumer side.",
+      "template": "<span class=\"pill{{#variant}} pill--{{variant}}{{/variant}}\">{{{label}}}</span>",
+      "params": {
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Pill text or count; raw (unescaped)."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "white",
+            "blue",
+            "blue-alt",
+            "blue-light",
+            "orange",
+            "orange-light",
+            "red",
+            "red-light",
+            "green",
+            "green-light"
+          ],
+          "description": "Color variant. Omit for the default dark style (dark bg, white text). `white` is for use on dark backgrounds. `-light` variants use a light tinted background with the matching text color."
+        }
+      },
+      "requires": []
+    },
+    "alert": {
+      "description": "Inline alert banner for feedback messages (info, success, warning, error). Optional icon (Font Awesome) anchors the left; optional action slot holds a close button or CTA on the right. The JavaScript `window.myApp.Alert` imperative API handles toast/fixed-position alerts injected from scripts — use this component for static inline alerts embedded in HTML markup.",
+      "template": "<div class=\"alert{{#variant}} alert--{{variant}}{{/variant}}\">{{#icon}}<div class=\"alert__icon\"><i class=\"far fa-{{icon}} fa-xl\"></i></div>{{/icon}}<div class=\"alert__content\">{{{content}}}</div>{{#action}}<div class=\"alert__action\">{{{action}}}</div>{{/action}}</div>",
+      "params": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Alert message; raw HTML. May contain inline markup and links."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "success",
+            "warning",
+            "error",
+            "light",
+            "success-light",
+            "warning-light",
+            "error-light"
+          ],
+          "description": "Visual type. Omit for the default info (blue). `-light` variants use theme-aware background tokens and adapt to dark mode automatically."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Font Awesome Pro icon name without the `fa-` prefix (regular style). Common values: `check-circle` (success), `triangle-exclamation` (warning), `circle-exclamation` (error), `circle-info` (info). When set, font-awesome is added to `requires`."
+        },
+        "action": {
+          "type": "string",
+          "description": "Raw HTML for the right-side action slot. Typical close button: `<button class=\"btn btn--clean btn--small\" data-alert-action><i class=\"far fa-xmark fa-xl\"></i></button>`."
+        }
+      },
+      "requires": [],
+      "addRequiresWhen": {
+        "icon": [
+          "font-awesome"
+        ]
+      }
+    },
+    "card": {
+      "description": "Content container with optional header, body, and footer. Use `variant` for colored/styled cards. `clickable: true` adds hover and focus states — swap `<article>` for `<a>` on the consumer side when the whole card should be a link. Header renders a centered title bar; footer is a raw HTML slot for action buttons or metadata.",
+      "template": "<article class=\"card{{#variant}} card--{{variant}}{{/variant}}{{#clickable}} card--clickable{{/clickable}}\">{{#header}}<header class=\"card__header card-header\"><h2 class=\"card-header__title\">{{header}}</h2></header>{{/header}}<section class=\"card__content{{#contentSize}} card__content--{{contentSize}}{{/contentSize}}\">{{{content}}}</section>{{#footer}}<footer class=\"card__footer\">{{{footer}}}</footer>{{/footer}}</article>",
+      "params": {
+        "content": {
+          "type": "string",
+          "required": true,
+          "description": "Card body; raw HTML (unescaped)."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "well",
+            "material",
+            "success",
+            "info",
+            "notice"
+          ],
+          "description": "Visual style. Omit for the default white card. `well` uses a secondary background with a bottom accent line, `material` adds shadow and a top accent line, `success`/`info`/`notice` apply themed background colors."
+        },
+        "header": {
+          "type": "string",
+          "description": "Card header title text (HTML-escaped). When set, emits `<header class=\"card__header card-header\"><h2 class=\"card-header__title\">…</h2></header>`. For a header with left/right action buttons, build it manually using `.card-header__action` and `.card-header__title` — MCP does not model that variant."
+        },
+        "footer": {
+          "type": "string",
+          "description": "Card footer; raw HTML. When set, wraps in `<footer class=\"card__footer\">`."
+        },
+        "contentSize": {
+          "type": "enum",
+          "values": [
+            "large",
+            "condensed"
+          ],
+          "description": "Content padding modifier. `large` increases padding (good for prominent callouts), `condensed` reduces it (good for dense lists)."
+        },
+        "clickable": {
+          "type": "boolean",
+          "default": false,
+          "description": "Add `card--clickable` for hover and focus styles. Swap `<article>` for `<a>` on the consumer side when the card should be a link."
+        }
+      },
+      "requires": []
+    }
+  }
+}
