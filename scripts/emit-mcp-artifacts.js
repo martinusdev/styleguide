@@ -78,9 +78,28 @@ function emitIcons() {
   console.log(`mcp-emit: wrote ${path.relative(ROOT, out)} (${icons.length} icons)`);
 }
 
+function emitUtilities() {
+  const src = path.join(ROOT, 'app', 'mcp-utilities.yaml');
+  const out = path.join(DIST, 'utilities.json');
+
+  if (!fs.existsSync(src)) {
+    throw new Error(`Missing utilities YAML: ${src}`);
+  }
+
+  const parsed = yaml.load(fs.readFileSync(src, 'utf8'));
+  if (!parsed || !parsed.groups) {
+    throw new Error('mcp-utilities.yaml: expected a top-level `groups` array.');
+  }
+
+  fs.mkdirSync(DIST, { recursive: true });
+  fs.writeFileSync(out, `${JSON.stringify(parsed, null, 2)}\n`);
+  console.log(`mcp-emit: wrote ${path.relative(ROOT, out)} (${parsed.groups.length} groups)`);
+}
+
 function main() {
   emitComponents();
   emitIcons();
+  emitUtilities();
 }
 
 try {

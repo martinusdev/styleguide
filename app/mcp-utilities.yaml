@@ -1,0 +1,315 @@
+# Martinus Styleguide — utility class reference for MCP consumers
+#
+# Source: app/styles/_utilities.scss (Bootstrap 5 API) +
+#         app/styles/tools/_utilities.scss (Martinus custom)
+#
+# KEY DIFFERENCES from stock Bootstrap 5:
+#   - Breakpoint suffixes: s / m / l / xl  (NOT sm / md / lg / xl / xxl)
+#   - Spacing value names: none / tiny / small / medium / large (NOT 0–5 numbers)
+#   - Class prefix for margin-left/right/top/bottom: ml / mr / mt / mb (NOT ms / me)
+
+meta:
+  responsive_pattern: >-
+    {class}-{breakpoint}-{value}
+    Breakpoint is omitted for xs (= all sizes, mobile-first default).
+    Example: d-flex (all) · d-m-flex (≥768px) · d-l-none (≥1024px)
+
+  breakpoints:
+    - name: xs
+      suffix: ""
+      min_width: 0
+      note: "default — omit the breakpoint suffix"
+    - name: s
+      suffix: s
+      min_width: 480px
+    - name: m
+      suffix: m
+      min_width: 768px
+    - name: l
+      suffix: l
+      min_width: 1024px
+    - name: xl
+      suffix: xl
+      min_width: 1280px
+
+  spacers:
+    none: 0
+    tiny: 5px
+    small: 10px
+    medium: 20px
+    large: 40px
+
+# Bootstrap-API utility groups
+groups:
+
+  - id: display
+    name: Display
+    class: d
+    property: display
+    responsive: true
+    categories: [display, flex]
+    values: [inline, inline-block, block, flex, inline-flex, none]
+    examples:
+      - {class: d-flex, note: "display: flex (all sizes)"}
+      - {class: d-m-none, note: "display: none from 768px up"}
+      - {class: "d-flex d-m-block", note: "flex on mobile, block on desktop"}
+
+  - id: flex_direction
+    name: Flex direction
+    class: flex
+    property: flex-direction
+    responsive: true
+    categories: [flex]
+    values: [row, column, row-reverse, column-reverse]
+    examples:
+      - {class: flex-column, note: "vertical stack"}
+      - {class: flex-m-row, note: "horizontal from 768px up"}
+
+  - id: flex_wrap
+    name: Flex wrap
+    class: flex
+    property: flex-wrap
+    responsive: true
+    categories: [flex]
+    values: [wrap, nowrap, wrap-reverse]
+
+  - id: flex_grow
+    name: Flex grow
+    class: flex
+    property: flex-grow
+    responsive: true
+    categories: [flex]
+    values: {grow-0: 0, grow-1: 1}
+
+  - id: flex_shrink
+    name: Flex shrink
+    class: flex
+    property: flex-shrink
+    responsive: true
+    categories: [flex]
+    values: {shrink-0: 0, shrink-1: 1}
+
+  - id: justify_content
+    name: Justify content
+    class: justify-content
+    property: justify-content
+    responsive: true
+    categories: [flex]
+    values: {start: flex-start, end: flex-end, center: center, between: space-between, around: space-around, evenly: space-evenly}
+    examples:
+      - {class: justify-content-center}
+      - {class: justify-content-between}
+      - {class: justify-content-m-between, note: "space-between from 768px up"}
+
+  - id: align_items
+    name: Align items
+    class: align-items
+    property: align-items
+    responsive: true
+    categories: [flex]
+    values: {start: flex-start, end: flex-end, center: center, baseline: baseline, stretch: stretch}
+    examples:
+      - {class: align-items-center}
+      - {class: align-items-end}
+      - {class: align-items-m-start, note: "align start from 768px up"}
+
+  - id: align_self
+    name: Align self
+    class: align-self
+    property: align-self
+    responsive: true
+    categories: [flex]
+    values: {auto: auto, start: flex-start, end: flex-end, center: center, baseline: baseline, stretch: stretch}
+
+  - id: align_content
+    name: Align content
+    class: align-content
+    property: align-content
+    responsive: true
+    categories: [flex]
+    values: {start: flex-start, end: flex-end, center: center, between: space-between, around: space-around, stretch: stretch}
+
+  - id: gap
+    name: Gap
+    class: gap
+    property: gap
+    responsive: true
+    categories: [flex, spacing]
+    values: [none, tiny, small, medium, large]
+    note: "values map to $spacers: none=0 tiny=5px small=10px medium=20px large=40px"
+
+  - id: order
+    name: Order
+    class: order
+    property: order
+    responsive: true
+    categories: [flex]
+    values: {first: -1, "0": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, last: 6}
+
+  - id: margin
+    name: Margin
+    class: m
+    property: margin
+    responsive: true
+    categories: [spacing]
+    values: [none, tiny, small, medium, large, auto]
+    axes:
+      - {class: m,  properties: [margin]}
+      - {class: mx, properties: [margin-right, margin-left]}
+      - {class: my, properties: [margin-top, margin-bottom]}
+      - {class: mt, properties: [margin-top]}
+      - {class: mr, properties: [margin-right]}
+      - {class: mb, properties: [margin-bottom]}
+      - {class: ml, properties: [margin-left]}
+    examples:
+      - {class: mb-medium, note: "margin-bottom: 20px"}
+      - {class: mt-m-large, note: "margin-top: 40px from 768px up"}
+      - {class: mx-auto, note: "center block horizontally"}
+      - {class: mb-none, note: "remove bottom margin"}
+
+  - id: padding
+    name: Padding
+    class: p
+    property: padding
+    responsive: true
+    categories: [spacing]
+    values: [none, tiny, small, medium, large]
+    axes:
+      - {class: p,  properties: [padding]}
+      - {class: px, properties: [padding-right, padding-left]}
+      - {class: py, properties: [padding-top, padding-bottom]}
+      - {class: pt, properties: [padding-top]}
+      - {class: pr, properties: [padding-right]}
+      - {class: pb, properties: [padding-bottom]}
+      - {class: pl, properties: [padding-left]}
+    examples:
+      - {class: px-medium, note: "padding-left/right: 20px"}
+      - {class: pt-m-large, note: "padding-top: 40px from 768px up"}
+
+  - id: text_align
+    name: Text align
+    class: text
+    property: text-align
+    responsive: true
+    categories: [text]
+    values: [left, center, right]
+    examples:
+      - {class: text-center}
+      - {class: text-m-left, note: "left-aligned from 768px up"}
+
+  - id: width
+    name: Width
+    class: w
+    property: width
+    responsive: false
+    categories: [sizing]
+    values: {"25": "25%", "50": "50%", "75": "75%", "100": "100%", auto: auto}
+
+  - id: position
+    name: Position
+    class: position
+    property: position
+    responsive: false
+    categories: [layout]
+    values: [static, relative, absolute, fixed, sticky]
+
+  - id: shadow
+    name: Box shadow
+    class: shadow
+    property: box-shadow
+    responsive: false
+    categories: [visual]
+    values: [sm, md, lg, none]
+
+  - id: rounded
+    name: Border radius
+    class: rounded
+    property: border-radius
+    responsive: false
+    categories: [visual]
+    values:
+      default: "$border-radius (~4px) — use class 'rounded' with no suffix"
+      "0": 0
+      "1": ~2px
+      "2": ~4px
+      "3": ~8px
+      circle: 50%
+      pill: 999px
+    note: "rounded (no suffix) = default radius; rounded-top / rounded-bottom / rounded-left / rounded-right also available"
+
+# Martinus-specific utilities (not generated by Bootstrap utility API)
+custom:
+
+  visibility:
+    note: >-
+      show-{bp} = visible only BELOW that breakpoint (hidden at bp and up).
+      hide-{bp} = hidden BELOW that breakpoint (visible at bp and up).
+    classes:
+      hide: "display: none !important (all sizes)"
+      invisible: "visibility: hidden (keeps space)"
+      visually-hidden: "screen-reader only (position absolute, 1px clip)"
+      show-s: "visible <480px · hidden ≥480px"
+      show-m: "visible <768px · hidden ≥768px"
+      show-l: "visible <1024px · hidden ≥1024px"
+      show-xl: "visible <1280px · hidden ≥1280px"
+      hide-s: "hidden <480px · visible ≥480px"
+      hide-m: "hidden <768px · visible ≥768px"
+      hide-l: "hidden <1024px · visible ≥1024px"
+      hide-xl: "hidden <1280px · visible ≥1280px"
+
+  flex:
+    note: "Custom flex shortcuts beyond Bootstrap API."
+    classes:
+      flex-1: "flex: 1"
+      flex-noshrink: "flex-shrink: 0 !important"
+      flex-fill: "flex: 1 0 1px !important"
+      flex-shrinkable: "flex: 0 0 auto !important; flex-shrink: 1 !important"
+
+  text:
+    note: "Typography helpers — weight, size, decoration, transform."
+    classes:
+      text-bold: "font-weight: bold (var(--fw-bold))"
+      text-semibold: "font-weight: semibold (var(--fw-semibold))"
+      text-italic: "font-style: italic"
+      text-light: "font-weight: light (var(--fw-light))"
+      text-normal: "font-weight: normal"
+      text-size-regular: "font-size: 14px (default body size)"
+      text-size-medium: "font-size: 12px"
+      text-size-small: "font-size: 11px"
+      text-nowrap: "white-space: nowrap"
+      text-wrap: "white-space: normal"
+      text-ellipsis: "single-line overflow ellipsis"
+      text-strikethrough: "text-decoration: line-through"
+      text-transform-upper: "text-transform: uppercase; letter-spacing: 0.1em"
+      text-transform-capitalize: "text-transform: capitalize"
+      text-transform-none: "text-transform: none"
+      line-large: "line-height: 2"
+      line-default: "line-height: 1.5"
+      line-medium: "line-height: 1.333"
+      line-small: "line-height: 1.2"
+
+  overflow:
+    classes:
+      overflow-hidden: "overflow: hidden"
+      overflow-auto: "overflow: auto"
+      overflow-scroll: "horizontal scroll with hidden scrollbar (mobile)"
+
+  sizing:
+    classes:
+      maw-100: "max-width: 100%"
+      miw-auto: "min-width: auto"
+      miw-0: "min-width: 0 (allows flex children to shrink below content size)"
+
+  border:
+    classes:
+      border-top-grey: "border-top: 1px solid var(--ms-border-grey)"
+      border-bottom-grey: "border-bottom: 1px solid var(--ms-border-grey)"
+      border-left-grey: "border-left: 1px solid var(--ms-border-grey)"
+      border-right-grey: "border-right: 1px solid var(--ms-border-grey)"
+
+  other:
+    classes:
+      clearfix: "clear floats (BFC)"
+      clickable: "cursor: pointer"
+      mb-not-last: "remove margin-bottom from last child (> *:last-child { mb: 0 })"
+      pointer-help: "cursor: help"

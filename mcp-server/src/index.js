@@ -30,9 +30,11 @@ const ASSETS_BASE_URL = (process.env.MARTINUS_STYLEGUIDE_ASSETS_URL
 const MANIFEST_URL = `${ASSETS_BASE_URL}rev-manifest.json`;
 const COMPONENTS_URL = `${ASSETS_BASE_URL}mcp-components.json`;
 const ICONS_URL = `${ASSETS_BASE_URL}icons.json`;
+const UTILITIES_URL = `${ASSETS_BASE_URL}utilities.json`;
 const MANIFEST_CACHE_TTL_MS = 5 * 60 * 1000;
 const COMPONENTS_CACHE_TTL_MS = 5 * 60 * 1000;
 const ICONS_CACHE_TTL_MS = 5 * 60 * 1000;
+const UTILITIES_CACHE_TTL_MS = 5 * 60 * 1000;
 
 const FA_STYLE_PREFIX = {
   regular: 'far',
@@ -67,6 +69,7 @@ export class StyleguideServer {
     this.manifestCache = null;
     this.componentsCache = null;
     this.iconsCache = null;
+    this.utilitiesCache = null;
 
     this.setupHandlers();
     this.setupErrorHandling();
@@ -364,6 +367,76 @@ export class StyleguideServer {
     };
   }
 
+  async fetchUtilities() {
+    const now = Date.now();
+    if (this.utilitiesCache && (now - this.utilitiesCache.fetchedAt) < UTILITIES_CACHE_TTL_MS) {
+      return this.utilitiesCache.data;
+    }
+
+    let data;
+    if (this.isInternalMode()) {
+      const yamlPath = join(APP_DIR, 'mcp-utilities.yaml');
+      try {
+        const text = await readFile(yamlPath, 'utf-8');
+        data = yaml.load(text);
+      } catch (err) {
+        throw new Error(`Failed to read mcp-utilities.yaml from ${yamlPath}: ${err.message}`);
+      }
+    } else {
+      const res = await fetch(UTILITIES_URL);
+      if (!res.ok) {
+        throw new Error(
+          `Failed to fetch utilities.json (${res.status} ${res.statusText}) from ${UTILITIES_URL}`
+        );
+      }
+      data = await res.json();
+    }
+
+    this.utilitiesCache = { data, fetchedAt: now };
+    return data;
+  }
+
+  async getUtilities(category) {
+    const VALID_CATEGORIES = ['flex', 'spacing', 'display', 'text', 'visibility', 'sizing', 'visual', 'layout', 'all'];
+    const cat = category || 'all';
+    if (!VALID_CATEGORIES.includes(cat)) {
+      throw new Error(
+        `Invalid category "${cat}". Valid: ${VALID_CATEGORIES.join(', ')}.`
+      );
+    }
+
+    const data = await this.fetchUtilities();
+    if (cat === 'all') {
+      return { content: [{ type: 'text', text: JSON.stringify(data, null, 2) }] };
+    }
+
+    const filtered = {
+      meta: data.meta,
+      groups: (data.groups || []).filter(
+        (g) => g.categories && g.categories.includes(cat)
+      ),
+      custom: {},
+    };
+
+    const customMap = {
+      flex: ['flex'],
+      spacing: [],
+      display: [],
+      text: ['text'],
+      visibility: ['visibility'],
+      sizing: ['sizing'],
+      visual: [],
+      layout: [],
+    };
+    for (const key of (customMap[cat] || [])) {
+      if (data.custom && data.custom[key]) {
+        filtered.custom[key] = data.custom[key];
+      }
+    }
+
+    return { content: [{ type: 'text', text: JSON.stringify(filtered, null, 2) }] };
+  }
+
   async getComponent(args) {
     const { name, ...params } = args;
     if (!name || typeof name !== 'string') {
@@ -502,6 +575,20 @@ export class StyleguideServer {
           required: ['name'],
         },
       },
+      {
+        name: 'get_utilities',
+        description: 'Returns the Martinus styleguide utility class reference — Bootstrap 5 utility groups (display, flex, spacing, text-align, etc.) plus Martinus-specific helpers (visibility, custom flex, text, overflow). IMPORTANT: Martinus uses custom breakpoint suffixes (s / m / l / xl) and custom spacing names (none / tiny / small / medium / large). Use `category` to get a focused subset.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            category: {
+              type: 'string',
+              enum: ['flex', 'spacing', 'display', 'text', 'visibility', 'sizing', 'visual', 'layout', 'all'],
+              description: 'Filter by category. `flex` includes display+all flex utilities. `spacing` includes margin, padding, gap. `all` returns the full reference (default).',
+            },
+          },
+        },
+      },
     ];
 
     const internalTools = [
@@ -634,6 +721,8 @@ export class StyleguideServer {
             return await this.listIcons(args.style || null);
           case 'get_icon':
             return await this.getIcon(args);
+          case 'get_utilities':
+            return await this.getUtilities(args.category || 'all');
           case 'get_data_structure':
             return await this.getDataStructure(args.file);
           default:
