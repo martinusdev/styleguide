@@ -614,3 +614,126 @@ components:
         type: boolean
         description: Adds the `disabled` HTML attribute.
     requires: []
+
+  # ---------------------------------------------------------------------------
+  # Data display & navigation
+
+  table:
+    description: >-
+      HTML table with `.table` base class. Pass pre-built `<tr>…</tr>` row
+      markup as `body` (required) and optionally as `head` for `<thead>`.
+      Use `variant` for visual style and `adaptive` for responsive mobile
+      stacking (pair with `data-label` attributes on `<td>` elements).
+    template: |-
+      <table class="table{{#variant}} table--{{variant}}{{/variant}}{{#size}} table--{{size}}{{/size}}{{#adaptive}} table--adaptive{{/adaptive}}">{{#head}}<thead>{{{head}}}</thead>{{/head}}<tbody>{{{body}}}</tbody></table>
+    params:
+      body:
+        type: string
+        required: true
+        description: Raw HTML of `<tr>…</tr>` rows for `<tbody>`.
+      head:
+        type: string
+        description: >-
+          Raw HTML of `<tr><th>…</th></tr>` for `<thead>`. When omitted,
+          no `<thead>` element is emitted.
+      variant:
+        type: enum
+        values: [simple, striped, clean, condensed]
+        description: >-
+          Visual style. `simple` — borderless with highlighted header;
+          `striped` — alternating row background; `clean` — no borders at all;
+          `condensed` — reduced cell padding.
+      size:
+        type: enum
+        values: [small]
+        description: "`small` reduces cell padding further."
+      adaptive:
+        type: boolean
+        description: >-
+          Adds `table--adaptive`. On narrow screens hides the `<thead>` and
+          stacks each `<td>` as a block using `data-label` attributes for
+          column headings.
+    requires: []
+
+  tabs:
+    description: >-
+      Tab navigation + content panels wired to the Tab JS module (initialized
+      by default in main bundle). Pass pre-built nav items as `nav_items` and
+      panel sections as `panels`. Default style uses `<ul class="tab-nav">` with
+      `.tab-nav__content--link` items. Set `filter: true` for a button-group
+      filter variant. Add `block` + `rounded` for card-style tabs.
+    template: |-
+      {{^filter}}<ul class="tab-nav{{#block}} tab-nav--block{{/block}}{{#rounded}} tab-nav--rounded{{/rounded}}" data-tabs-container>{{{nav_items}}}</ul>{{/filter}}{{#filter}}<div class="btn-group btn-group--tab btn-group--horizontal" data-tabs-container>{{{nav_items}}}</div>{{/filter}}<article class="tabs">{{{panels}}}</article>
+    params:
+      nav_items:
+        type: string
+        required: true
+        description: >-
+          Raw HTML of navigation items.
+          Link/card style: `<li class="tab-nav__item" data-tabs-item><a
+          class="tab-nav__content tab-nav__content--link" href="#id"
+          role="tab">Label</a></li>`. Add `is-active` to the default tab's
+          `<li>`. Filter style: `<a class="btn btn--tab is-active" href="#id"
+          role="tab" data-tabs-item>Label</a>`.
+      panels:
+        type: string
+        required: true
+        description: >-
+          Raw HTML of panel sections: `<section id="id" class="tab">…</section>`.
+          Add `is-active` to the initially visible panel (or omit and the JS
+          will activate the first one).
+      filter:
+        type: boolean
+        description: >-
+          Renders a button-group nav (`div.btn-group.btn-group--tab.btn-group--horizontal`)
+          instead of `ul.tab-nav`. Nav items should be `<a class="btn btn--tab">`.
+      block:
+        type: boolean
+        description: >-
+          Adds `tab-nav--block` — stretches nav items to full width. Used for
+          card-style tabs; combine with `rounded: true`.
+      rounded:
+        type: boolean
+        description: >-
+          Adds `tab-nav--rounded` — rounds the tab nav items. Used with
+          card-style tabs.
+    requires: []
+
+  dropdown:
+    description: >-
+      Absolute-positioned dropdown menu. Requires the Toggle + Dropdown JS
+      modules (both initialized by default in the main bundle). Pass list items
+      as `items`. Visibility is controlled via `aria-expanded` on the
+      `.dropdown` element — wire a trigger button with `data-toggle="self, next"`
+      and `data-toggle-expand` to open/close it.
+    template: |-
+      <div class="dropdown{{#arrowhead}} dropdown--arrowhead{{/arrowhead}}{{#space}} dropdown--space{{/space}}{{#nowrap}} dropdown--nowrap{{/nowrap}}{{#align_right}} dropdown--align-right{{/align_right}}" data-dropdown aria-expanded="false"><div class="dropdown__wrap">{{{items}}}</div></div>
+    params:
+      items:
+        type: string
+        required: true
+        description: >-
+          Raw HTML of menu content. Use `<a class="dropdown__item"
+          href="#">Label</a>` for links and `<h5 class="dropdown__group">Title
+          </h5>` for group headings.
+      arrowhead:
+        type: boolean
+        description: >-
+          Adds `dropdown--arrowhead` — centers the menu below the trigger with
+          an upward pointing arrow.
+      space:
+        type: boolean
+        description: >-
+          Adds `dropdown--space` — adds internal padding. Use when the dropdown
+          contains forms or other interactive content.
+      nowrap:
+        type: boolean
+        description: >-
+          Adds `dropdown--nowrap` — removes the `max-height` scroll limit.
+          Combine with `space` for interactive dropdowns.
+      align_right:
+        type: boolean
+        description: >-
+          Adds `dropdown--align-right` — aligns the menu to the right edge of
+          its positioned parent instead of the left.
+    requires: []
