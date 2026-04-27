@@ -397,7 +397,7 @@ export class StyleguideServer {
   }
 
   async getUtilities(category) {
-    const VALID_CATEGORIES = ['flex', 'spacing', 'display', 'text', 'visibility', 'sizing', 'visual', 'layout', 'all'];
+    const VALID_CATEGORIES = ['flex', 'spacing', 'display', 'text', 'visibility', 'sizing', 'visual', 'layout', 'colors', 'all'];
     const cat = category || 'all';
     if (!VALID_CATEGORIES.includes(cat)) {
       throw new Error(
@@ -427,6 +427,7 @@ export class StyleguideServer {
       sizing: ['sizing'],
       visual: [],
       layout: [],
+      colors: ['tokens'],
     };
     for (const key of (customMap[cat] || [])) {
       if (data.custom && data.custom[key]) {
@@ -583,8 +584,8 @@ export class StyleguideServer {
           properties: {
             category: {
               type: 'string',
-              enum: ['flex', 'spacing', 'display', 'text', 'visibility', 'sizing', 'visual', 'layout', 'all'],
-              description: 'Filter by category. `flex` includes display+all flex utilities. `spacing` includes margin, padding, gap. `all` returns the full reference (default).',
+              enum: ['flex', 'spacing', 'display', 'text', 'visibility', 'sizing', 'visual', 'layout', 'colors', 'all'],
+              description: 'Filter by category. `flex` includes display+all flex utilities. `spacing` includes margin, padding, gap. `colors` returns bg-*, text-color-* utility classes and --ms-* CSS design tokens. `all` returns the full reference (default).',
             },
           },
         },
