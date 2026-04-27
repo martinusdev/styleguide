@@ -737,3 +737,159 @@ components:
           Adds `dropdown--align-right` — aligns the menu to the right edge of
           its positioned parent instead of the left.
     requires: []
+
+  # ---------------------------------------------------------------------------
+  # Media & interactive
+
+  carousel:
+    description: >-
+      Swiper-based carousel (`.carousel` wrapper around a `.swiper` instance).
+      Pass slide HTML as `slides`; each slide should be a
+      `<div class="swiper-slide">…</div>` (or an `<a>` for linked slides).
+      Configure Swiper via `swiper_options` (JSON-like object string).
+      Show optional prev/next nav buttons with `show_buttons: true`.
+      The Swiper library is included in the main bundle — no extra `requires`.
+    template: |-
+      <div class="carousel{{#variant}} carousel--{{variant}}{{/variant}}{{#fade_white}} carousel--fade-outside-white{{/fade_white}}"><div class="swiper"{{#swiper_options}} data-swiper-options='{{{swiper_options}}}'{{/swiper_options}}><div class="swiper-wrapper">{{{slides}}}</div></div>{{#show_buttons}}<button class="btn btn--icon carousel__btn carousel__btn--prev" type="button" aria-label="Predchádzajúci"><i class="far fa-chevron-left"></i></button><button class="btn btn--icon carousel__btn carousel__btn--next" type="button" aria-label="Nasledujúci"><i class="far fa-chevron-right"></i></button>{{/show_buttons}}</div>
+    params:
+      slides:
+        type: string
+        required: true
+        description: >-
+          Raw HTML of slide items. Each slide should be
+          `<div class="swiper-slide">…</div>` or `<a class="swiper-slide" href="…">…</a>`.
+      variant:
+        type: enum
+        values: [fade-outside, fade-inside, fade-inactive, disable-inactive, fan, shelf, lazy]
+        description: >-
+          Visual modifier. `fade-outside` fades slides at the edges of the
+          viewport (pair with `fade_white: true` on white backgrounds).
+          `fade-inside` fades inside the container with overflow hidden.
+          `fade-inactive` dims non-active slides to 50% opacity.
+          `disable-inactive` prevents clicks on non-active slides.
+          `fan` spreads slides in a fanned stack with rotation animation.
+          `shelf` adds a bottom border shadow (bookshelf effect).
+          `lazy` sets a minimum height for lazy-loaded carousels.
+      swiper_options:
+        type: string
+        description: >-
+          JSON-like options passed to `data-swiper-options`. Example:
+          `{"slidesPerView":4,"slidesPerGroup":3,"spaceBetween":16}`.
+          Omit for Swiper defaults (one slide visible, no looping).
+      show_buttons:
+        type: boolean
+        description: >-
+          Render absolutely-positioned prev/next buttons (`.carousel__btn`).
+          Buttons are hidden on mobile (< s breakpoint) via CSS.
+          Buttons are invisible until Swiper initializes.
+      fade_white:
+        type: boolean
+        description: >-
+          Add `carousel--fade-outside-white` alongside `variant: fade-outside`.
+          Use when the carousel sits on a white/light background instead of
+          the default warm beige surface.
+    requires: []
+    addRequiresWhen:
+      show_buttons: [font-awesome]
+
+  # ---------------------------------------------------------------------------
+  # Product components
+
+  product-card:
+    description: >-
+      Responsive product card (`.product.product--responsive`). Shows a book
+      cover thumbnail on the left and title + author + price on the right.
+      On desktop inside `.list--products--responsive`, the layout switches to
+      a row (cover 65px wide). Use as `<li>` children inside
+      `<ul class="list list--products">` or `<ul class="list list--products list--products--responsive">`.
+    template: |-
+      <article class="product product--responsive"><div class="product__img"><div class="product-cover product-cover--book"><img src="{{cover_url}}" alt="{{cover_alt}}" class="d-block" loading="lazy"></div>{{#rating}}<div class="thumbnail__info"><div class="badge"><i class="fas fa-star text-color-yellow mr-tiny"></i> {{rating}}</div></div>{{/rating}}</div><div class="product__info text-ellipsis">{{#href}}<a class="product__title link link--black" href="{{href}}" title="{{title}}">{{title}}</a>{{/href}}{{^href}}<div class="product__title">{{title}}</div>{{/href}}{{#author}}<div class="text-small text-color-grey mb-small">{{author}}</div>{{/author}}<div class="badges mb-none">{{#discount}}<div class="badge badge--primary mr-small">{{discount}}</div>{{/discount}}{{#price}}<div class="badge badge--transparent">{{price}}</div>{{/price}}</div></div></article>
+    params:
+      title:
+        type: string
+        required: true
+        description: Book title. Displayed as a link when `href` is provided.
+      cover_url:
+        type: string
+        description: >-
+          URL of the cover image. Use `https://mrtns.sk/tovar/_m/<id>/m<id>.jpg`
+          for real Martinus books, or a placeholder for demos.
+      cover_alt:
+        type: string
+        description: Alt text for the cover image.
+      href:
+        type: string
+        description: >-
+          Link target for the title. When omitted the title renders as a `<div>`
+          without an anchor.
+      author:
+        type: string
+        description: Author name(s). Shown in grey text below the title.
+      price:
+        type: string
+        description: Price string displayed in a transparent badge (e.g. `9,99 €`).
+      rating:
+        type: string
+        description: >-
+          Rating value shown in a badge with a yellow star icon (e.g. `4.5`).
+          When set, font-awesome is added to requires.
+      discount:
+        type: string
+        description: >-
+          Discount badge text shown in a primary (red) badge (e.g. `-20%`).
+    requires: []
+    addRequiresWhen:
+      rating: [font-awesome]
+
+  product-cover:
+    description: >-
+      Book cover image element (`.product-cover`). Renders an `<a>` wrapping a
+      cover `<img>` with optional type and size modifiers. Use `type` to apply
+      the correct visual treatment: `book` adds a spine shadow, `ebook` and
+      `audiobook` color the badge, `collection` stacks multiple images.
+      Size controls the max-width via CSS (`small` 25 px → `huge` 270 px).
+    template: |-
+      <a class="product-cover{{#type}} product-cover--{{type}}{{/type}}{{#size}} product-cover--{{size}}{{/size}}"{{#href}} href="{{href}}"{{/href}}>{{^collection}}<img src="{{cover_url}}" alt="{{cover_alt}}" class="d-block" loading="lazy" decoding="async">{{/collection}}{{#collection}}{{{collection_images}}}{{/collection}}{{#badge_text}}<div class="product-cover__badge product-cover__badge--medium">{{badge_text}}</div>{{/badge_text}}</a>
+    params:
+      cover_url:
+        type: string
+        description: >-
+          URL of the cover image. Required for non-collection covers.
+          Example: `https://mrtns.sk/tovar/_m/202/m202152.jpg`.
+      cover_alt:
+        type: string
+        description: Alt text for the cover image.
+      href:
+        type: string
+        description: Link target. Omit for a non-clickable cover.
+      type:
+        type: enum
+        values: [book, ebook, audiobook, collection]
+        description: >-
+          Visual treatment. `book` — rounded corners and left-edge spine gradient.
+          `ebook` — green badge background. `audiobook` — purple badge background.
+          `collection` — renders multiple stacked images (pass `collection_images`).
+      size:
+        type: enum
+        values: [small, small-medium, medium, medium-large, large, xlarge, huge]
+        description: >-
+          Max-width size. Pixel values: `small` 25 px, `small-medium` 35 px,
+          `medium` 50 px, `medium-large` 65 px, `large` 150 px,
+          `xlarge` 170 px, `huge` 270 px.
+      badge_text:
+        type: string
+        description: >-
+          Text shown in `.product-cover__badge--medium` on top of the cover.
+          Typical values: `E-kniha`, `Audiokniha`. Badge color is set by `type`.
+      collection:
+        type: boolean
+        description: >-
+          Switch to collection mode. When `true`, renders `collection_images`
+          instead of a single `cover_url` image. Use with `type: collection`.
+      collection_images:
+        type: string
+        description: >-
+          Raw HTML of 2–4 `<img>` tags for collection mode. The CSS stacks
+          them with progressive offsets; items beyond 4 are hidden.
+          Example: `<img src="…" class="d-block"><img src="…" class="d-block">`.
+    requires: []

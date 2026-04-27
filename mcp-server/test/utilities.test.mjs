@@ -227,8 +227,8 @@ test('get_utilities with no category defaults to all', async () => {
 
 test('get_utilities rejects invalid category', async () => {
   await assert.rejects(
-    () => server.getUtilities('colors'),
-    /Invalid category "colors"/
+    () => server.getUtilities('rainbow'),
+    /Invalid category "rainbow"/
   );
 });
 
