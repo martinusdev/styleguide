@@ -85,3 +85,44 @@ test('rejects an invalid language with a clear error', async () => {
     /Invalid language "en"/
   );
 });
+
+test('starter response carries a utilityHint cheat sheet', async () => {
+  const payload = await renderStarter();
+  assert.ok(payload.utilityHint, 'utilityHint field is present');
+  assert.match(payload.utilityHint.notice, /Martinus utility/i);
+  assert.match(payload.utilityHint.breakpoints, /-s \/ -m \/ -l \/ -xl/);
+  assert.match(payload.utilityHint.grid, /col col--/);
+  assert.match(payload.utilityHint.spacing, /none .* tiny .* small .* medium .* large/);
+  assert.match(payload.utilityHint.discover, /get_utilities/);
+});
+
+// ---------------------------------------------------------------------------
+// get_setup — shares buildSetup() with get_starter_template, so the same
+// utilityHint must reach the response and the head/bodyEnd snippets must be
+// shaped for direct injection.
+
+async function renderSetup(args = {}) {
+  const res = await server.getSetup(args);
+  return JSON.parse(res.content[0].text);
+}
+
+test('get_setup returns head + bodyEnd snippets and htmlClasses', async () => {
+  const payload = await renderSetup();
+  assert.ok(payload.head.includes('<link rel="stylesheet"'));
+  assert.ok(payload.bodyEnd.includes('<script src='));
+  assert.deepEqual(payload.htmlClasses, ['fonts-loaded']);
+});
+
+test('get_setup carries the same utilityHint cheat sheet', async () => {
+  const payload = await renderSetup();
+  assert.ok(payload.utilityHint, 'utilityHint field is present');
+  assert.match(payload.utilityHint.grid, /col col--/);
+  assert.match(payload.utilityHint.discover, /get_utilities/);
+});
+
+test('get_setup rejects an invalid language', async () => {
+  await assert.rejects(
+    () => server.getSetup({ language: 'en' }),
+    /Invalid language "en"/
+  );
+});

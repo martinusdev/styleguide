@@ -45,6 +45,20 @@ const FA_STYLE_PREFIX = {
 };
 const FA_VALID_STYLES = Object.keys(FA_STYLE_PREFIX);
 
+// Surfaced in the get_setup / get_starter_template responses so an agent picks
+// up Martinus utility-class conventions before generating any markup. The list
+// is intentionally short — call get_utilities for the full reference.
+const UTILITY_HINT = {
+  notice: 'Martinus utility classes follow custom (non-Bootstrap) naming. Always prefer Martinus utilities; do not invent Bootstrap classes (e.g. col-md-6, mb-3, text-muted) — they will not match.',
+  breakpoints: 'Suffix is -s / -m / -l / -xl (NOT -sm / -md / -lg).',
+  grid: 'row > col col--{1..12} col--{s|m|l|xl}-{1..12}, e.g. col col--12 col--m-6 col--l-4. Do not use col-md-6.',
+  spacing: 'Sizes: none / tiny / small / medium / large. m-/mt-/mr-/mb-/ml-/mx-/my- and p-/pt-/.../py- with breakpoint variants (e.g. mb-small, mt-m-large).',
+  color: 'text-color-{grey|primary|success|warning|danger|black|white|...} for foreground; bg-{primary|secondary|success|...} for background; CSS design tokens via --ms-color-* / --ms-fade-color.',
+  text: 'text-{small|medium|large|big|huge}, text-{left|center|right}, text-bold, text-uppercase, text-ellipsis.',
+  display_flex: 'd-{none|block|flex|inline-block} (with -s/-m/-l/-xl variants), flex-{row|column|wrap|nowrap}, justify-content-{start|center|end|between|around}, align-items-{start|center|end|stretch}.',
+  discover: 'Call get_utilities (optionally with category in [flex, spacing, display, text, visibility, sizing, visual, layout, colors]) for the complete reference.',
+};
+
 /**
  * MCP Server for Martinus Styleguide
  * Provides tools to query components, classes, mixins, and assets
@@ -156,6 +170,7 @@ export class StyleguideServer {
         'scripts/font-awesome.js': manifest['scripts/font-awesome.js'],
         'fonts/Tabac-Sans/style.css': manifest['fonts/Tabac-Sans/style.css'],
       },
+      utilityHint: UTILITY_HINT,
     };
   }
 
@@ -219,6 +234,7 @@ export class StyleguideServer {
             title,
             assetsBaseUrl: ASSETS_BASE_URL,
             bundleVersions: setup.bundleVersions,
+            utilityHint: setup.utilityHint,
           }, null, 2),
         },
       ],
@@ -498,7 +514,7 @@ export class StyleguideServer {
     const externalTools = [
       {
         name: 'get_setup',
-        description: 'Returns asset setup (stylesheet links, script tags, required <html> classes) for embedding the Martinus styleguide in an external project. Fetches the live rev-manifest.json from the hosted styleguide so asset URLs always point at the current hashed files. Response contains `head` (inject into <head>), `bodyEnd` (inject before </body>), and `htmlClasses` (add to the <html> element). Font Awesome Pro is always included. Use this once per project to wire up the base bundle.',
+        description: 'Returns asset setup (stylesheet links, script tags, required <html> classes) for embedding the Martinus styleguide in an external project. Fetches the live rev-manifest.json from the hosted styleguide so asset URLs always point at the current hashed files. Response contains `head` (inject into <head>), `bodyEnd` (inject before </body>), `htmlClasses` (add to the <html> element), and `utilityHint` — a short cheat sheet of Martinus-specific utility-class conventions (custom breakpoints -s/-m/-l/-xl, custom spacing scale, BEM grid) so generated markup uses the right class names. Font Awesome Pro is always included. Use this once per project to wire up the base bundle.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -512,7 +528,7 @@ export class StyleguideServer {
       },
       {
         name: 'get_component',
-        description: 'Returns a rendered HTML fragment for a Martinus design-system component. Pass component `name` plus content/variant parameters (e.g. `label`, `variant`, `size`, `icon`). Response contains the final `html`, the normalized `params` used, and a `requires` array of extra asset bundles the HTML depends on (e.g. ["font-awesome"]) — pass those to get_setup if needed. Discover available components, their parameters, and allowed enum values from the published component schema (mcp-components.json) or by calling this tool without args to surface an error listing valid names.',
+        description: 'Returns a rendered HTML fragment for a Martinus design-system component. Pass component `name` plus content/variant parameters (e.g. `label`, `variant`, `size`, `icon`). Response contains the final `html`, the normalized `params` used, and a `requires` array of extra asset bundles the HTML depends on (e.g. ["font-awesome"]) — pass those to get_setup if needed. To discover available components and their parameter schemas, call list_components (gets all names + canonical HTML snippets) or get_component_info(name) (full param schema with types, enum values, required flags, plus a canonical_html sample render). Do NOT probe this tool with empty args to learn the schema — get_component_info is the cheaper and authoritative discovery path.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -527,7 +543,7 @@ export class StyleguideServer {
       },
       {
         name: 'get_starter_template',
-        description: 'Returns a complete HTML document (doctype + <html> + <head> + <body>) pre-wired to the hosted Martinus bundle. Use this when starting a new page from scratch — the response `html` field is a drop-in file you can save as index.html. For adding Martinus styling to an existing page, use get_setup instead and inject the fragments yourself. Font Awesome Pro is always included. The body is intentionally empty — fill it with get_component output.',
+        description: 'Returns a complete HTML document (doctype + <html> + <head> + <body>) pre-wired to the hosted Martinus bundle. Use this when starting a new page from scratch — the response `html` field is a drop-in file you can save as index.html. For adding Martinus styling to an existing page, use get_setup instead and inject the fragments yourself. Font Awesome Pro is always included. The body is intentionally empty — fill it with get_component output. The response also carries `utilityHint` — a short cheat sheet of Martinus-specific utility-class conventions; consult it before writing any markup so you do not invent Bootstrap-flavored class names.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -590,39 +606,39 @@ export class StyleguideServer {
           },
         },
       },
+      {
+        name: 'list_components',
+        description: 'Lists every component the agent can render. Always returns a `parametric` array — each entry is { name, description, params (param-name list), requires, canonicalHtml } where `canonicalHtml` is a ready-to-paste minimal example using correct Martinus class names (custom breakpoints -s/-m/-l/-xl, BEM modifiers like col--12, no Bootstrap). Read those snippets BEFORE writing markup; if a component is in this list, never invent its HTML — copy canonical_html and adapt, or call get_component. For the full typed schema of any one component (param types, enum values, required flags), call get_component_info. When the server runs against a checked-out repo (internal mode) the response also includes a `modules` map with raw Pug/SCSS/JS file locations for low-level inspection.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            type: {
+              type: 'string',
+              enum: ['parametric', 'pug', 'scss', 'js', 'all'],
+              description: '`parametric` returns only the parametric registry (always available). `pug` / `scss` / `js` return only filesystem-backed modules of that type (internal mode only). `all` (default) returns parametric + every available module type.',
+            },
+          },
+        },
+      },
+      {
+        name: 'get_component_info',
+        description: 'Returns full details for one component. Looks up `name` in the parametric registry first → returns { source: "parametric", description, params (typed schema with enums and required flags), requires, addRequiresWhen, canonicalHtml }. This is the cheapest way to discover a component\'s parameter schema BEFORE calling get_component — no need to make a probe call to read errors. If `name` is not parametric and the server runs in internal mode, falls back to filesystem lookup and returns { source: "module", files, pugContent, scssContent, jsContent } for raw inspection. Errors otherwise with a list of available parametric components.',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            name: {
+              type: 'string',
+              description: 'Component name (e.g. "buttons", "carousel", "product-card").',
+            },
+          },
+          required: ['name'],
+        },
+      },
     ];
 
     const internalTools = [
       {
-        name: 'list_components',
-          description: 'List all UI components/modules in the styleguide with their file locations',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              type: {
-                type: 'string',
-                enum: ['pug', 'scss', 'js', 'all'],
-                description: 'Filter by component type (default: all)',
-              },
-            },
-          },
-        },
-        {
-          name: 'get_component_info',
-          description: 'Get detailed information about a specific component including its Pug template, SCSS styles, and JavaScript',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              name: {
-                type: 'string',
-                description: 'Component name (e.g., "button", "card", "product-card")',
-              },
-            },
-            required: ['name'],
-          },
-        },
-        {
-          name: 'list_scss_utilities',
+        name: 'list_scss_utilities',
           description: 'List available SCSS utilities, variables, and mixins',
           inputSchema: {
             type: 'object',
@@ -743,14 +759,50 @@ export class StyleguideServer {
     });
   }
 
-  async listComponents(type) {
-    const components = {
-      pug: [],
-      scss: [],
-      js: [],
-    };
+  // Renders the YAML-declared `example` block for a parametric component into
+  // a canonical HTML snippet plus the augmented `requires` list. Returns null
+  // when the component has no example or its example fails to validate/render
+  // — list_components and get_component_info degrade gracefully so a single
+  // broken example never tanks the whole response. Tests assert that every
+  // checked-in component has a renderable example so we catch breakage at the
+  // YAML edit, not at runtime.
+  _renderCanonicalExample(name, component) {
+    if (!component || !component.example || !component.template) return null;
+    try {
+      const data = validateParams(component, name, component.example);
+      const html = renderTemplate(component.template, data);
+      const requires = Array.isArray(component.requires) ? [...component.requires] : [];
+      if (component.addRequiresWhen) {
+        for (const [paramName, extras] of Object.entries(component.addRequiresWhen)) {
+          if (isTruthy(data[paramName]) && Array.isArray(extras)) {
+            for (const dep of extras) if (!requires.includes(dep)) requires.push(dep);
+          }
+        }
+      }
+      return { html, requires, params: data };
+    } catch {
+      return null;
+    }
+  }
 
-    // Find Pug modules
+  async _listParametricComponents() {
+    const schema = await this.fetchComponents();
+    return Object.entries(schema.components).map(([name, c]) => {
+      const canonical = this._renderCanonicalExample(name, c);
+      const baseRequires = Array.isArray(c.requires) ? [...c.requires] : [];
+      return {
+        name,
+        description: c.description,
+        params: Object.keys(c.params || {}),
+        requires: canonical ? canonical.requires : baseRequires,
+        canonicalHtml: canonical ? canonical.html : null,
+      };
+    });
+  }
+
+  async _listFilesystemModules(type) {
+    const components = { pug: [], scss: [], js: [] };
+
     if (type === 'all' || type === 'pug') {
       const pugFiles = await glob('views/modules/**/*.pug', { cwd: APP_DIR });
       components.pug = pugFiles.map(f => ({
@@ -759,7 +811,6 @@ export class StyleguideServer {
       }));
     }
 
-    // Find SCSS modules and components
     if (type === 'all' || type === 'scss') {
       const moduleFiles = await glob('styles/modules/**/*.scss', { cwd: APP_DIR });
       const componentFiles = await glob('styles/components/**/*.scss', { cwd: APP_DIR });
@@ -776,7 +827,6 @@ export class StyleguideServer {
       ];
     }
 
-    // Find JS modules
     if (type === 'all' || type === 'js') {
       const jsFiles = await glob('scripts/modules/**/*.js', { cwd: APP_DIR });
       components.js = jsFiles.map(f => ({
@@ -785,9 +835,28 @@ export class StyleguideServer {
       }));
     }
 
-    const result = type === 'all'
-      ? components
-      : { [type]: components[type] };
+    return components;
+  }
+
+  async listComponents(type) {
+    const result = {};
+
+    // Parametric registry is always available — works in external mode too.
+    if (type === 'all' || type === 'parametric') {
+      result.parametric = await this._listParametricComponents();
+    }
+
+    // Filesystem-backed modules require internal mode. When `type` explicitly
+    // requests a filesystem flavour, hard-fail; when it's `all`, just omit the
+    // `modules` map so external-mode consumers get a useful response.
+    const fsTypes = new Set(['pug', 'scss', 'js']);
+    if (fsTypes.has(type)) {
+      this.requireInternalMode('list_components');
+      const modules = await this._listFilesystemModules(type);
+      result.modules = { [type]: modules[type] };
+    } else if (type === 'all' && this.isInternalMode()) {
+      result.modules = await this._listFilesystemModules('all');
+    }
 
     return {
       content: [
@@ -800,64 +869,96 @@ export class StyleguideServer {
   }
 
   async getComponentInfo(name) {
-    const info = {
-      name,
-      files: {},
-    };
+    if (!name || typeof name !== 'string') {
+      throw new Error('Missing required argument "name".');
+    }
 
-    // Check for Pug template
+    // Parametric registry first — covers most agent queries and works in
+    // external mode without a checked-out repo.
+    const schema = await this.fetchComponents();
+    const component = schema.components[name];
+    if (component) {
+      const canonical = this._renderCanonicalExample(name, component);
+      const baseRequires = Array.isArray(component.requires) ? [...component.requires] : [];
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify({
+              source: 'parametric',
+              name,
+              description: component.description,
+              params: component.params || {},
+              requires: canonical ? canonical.requires : baseRequires,
+              addRequiresWhen: component.addRequiresWhen || {},
+              canonicalHtml: canonical ? canonical.html : null,
+            }, null, 2),
+          },
+        ],
+      };
+    }
+
+    // Filesystem fallback — only meaningful in internal mode. External-mode
+    // consumers get a clear "available parametric:" listing instead of a
+    // silent miss that drives them to stop calling the tool.
+    if (!this.isInternalMode()) {
+      const available = Object.keys(schema.components).sort().join(', ');
+      throw new Error(
+        `Component "${name}" not found in parametric registry. `
+        + `Available parametric components: ${available}.`
+      );
+    }
+
+    const info = { source: 'module', name, files: {} };
+
     const pugPatterns = [
       `views/modules/${name}.pug`,
       `views/modules/${name}/**/*.pug`,
       `views/modules/**/${name}.pug`,
     ];
-
     for (const pattern of pugPatterns) {
       const files = await glob(pattern, { cwd: APP_DIR });
       if (files.length > 0) {
         info.files.pug = files[0];
-        const content = await readFile(join(APP_DIR, files[0]), 'utf-8');
-        info.pugContent = content;
+        info.pugContent = await readFile(join(APP_DIR, files[0]), 'utf-8');
         break;
       }
     }
 
-    // Check for SCSS
     const scssPatterns = [
       `styles/modules/_${name}.scss`,
       `styles/modules/${name}.scss`,
       `styles/components/_${name}.scss`,
       `styles/components/${name}.scss`,
     ];
-
     for (const pattern of scssPatterns) {
       const files = await glob(pattern, { cwd: APP_DIR });
       if (files.length > 0) {
         info.files.scss = files[0];
-        const content = await readFile(join(APP_DIR, files[0]), 'utf-8');
-        info.scssContent = content;
+        info.scssContent = await readFile(join(APP_DIR, files[0]), 'utf-8');
         break;
       }
     }
 
-    // Check for JS
     const jsPatterns = [
       `scripts/modules/${name}.js`,
       `scripts/modules/${name}/**/*.js`,
     ];
-
     for (const pattern of jsPatterns) {
       const files = await glob(pattern, { cwd: APP_DIR });
       if (files.length > 0) {
         info.files.js = files[0];
-        const content = await readFile(join(APP_DIR, files[0]), 'utf-8');
-        info.jsContent = content;
+        info.jsContent = await readFile(join(APP_DIR, files[0]), 'utf-8');
         break;
       }
     }
 
     if (Object.keys(info.files).length === 0) {
-      throw new Error(`Component "${name}" not found`);
+      const available = Object.keys(schema.components).sort().join(', ');
+      throw new Error(
+        `Component "${name}" not found in parametric registry or filesystem modules. `
+        + `Available parametric components: ${available}.`
+      );
     }
 
     return {

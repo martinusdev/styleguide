@@ -47,6 +47,11 @@
           "description": "Add the `disabled` attribute."
         }
       },
+      "example": {
+        "label": "Kúpiť",
+        "variant": "primary",
+        "icon": "cart-shopping"
+      },
       "requires": [],
       "addRequiresWhen": {
         "icon": [
@@ -62,6 +67,9 @@
           "type": "string",
           "description": "Raw HTML to place inside the wrapper."
         }
+      },
+      "example": {
+        "children": "<div class=\"section\"><h1 class=\"h1\">Vitajte v Martinuse</h1><p>Najväčšie kníhkupectvo na Slovensku.</p></div>"
       },
       "requires": []
     },
@@ -80,6 +88,9 @@
           ],
           "description": "`form` uses tighter gutters tuned for form control spacing. Omit for the default row gutters."
         }
+      },
+      "example": {
+        "children": "<div class=\"col col--12 col--m-6 col--l-4\">Stĺpec 1</div><div class=\"col col--12 col--m-6 col--l-4\">Stĺpec 2</div><div class=\"col col--12 col--m-6 col--l-4\">Stĺpec 3</div>"
       },
       "requires": []
     },
@@ -191,6 +202,12 @@
           "description": "`fill` expands to take remaining space, `shrink` fits to content, `border` adds a separator. Mutually exclusive with explicit sizes in practice (though not enforced)."
         }
       },
+      "example": {
+        "children": "<p>Obsah stĺpca</p>",
+        "size": "12",
+        "sizeM": "6",
+        "sizeL": "4"
+      },
       "requires": []
     },
     "section": {
@@ -213,6 +230,9 @@
           "default": false,
           "description": "Add `section--overflow` (overflow hidden)."
         }
+      },
+      "example": {
+        "children": "<h2 class=\"h2\">Odporúčané knihy</h2><p>Výber našich kníhkupcov.</p>"
       },
       "requires": []
     },
@@ -256,6 +276,10 @@
           "description": "Add the `.title-divider` modifier (centered title with rules)."
         }
       },
+      "example": {
+        "level": "2",
+        "text": "Odporúčané knihy"
+      },
       "requires": []
     },
     "text": {
@@ -275,6 +299,9 @@
           ],
           "description": "Optional size modifier. Omit for default body size."
         }
+      },
+      "example": {
+        "content": "Najväčšie kníhkupectvo na Slovensku ponúka <strong>viac ako 100 000 titulov</strong>."
       },
       "requires": []
     },
@@ -303,6 +330,11 @@
           "description": "Color variant. Omit for the default (inherit). `white` is for dark backgrounds, `product` for product-listing contexts."
         }
       },
+      "example": {
+        "href": "/detail-knihy",
+        "label": "Zobraziť detail knihy",
+        "variant": "black"
+      },
       "requires": []
     },
     "list": {
@@ -325,6 +357,10 @@
           ],
           "description": "`default` shows styled bullets, `unstyled` removes them, `comma` is inline comma-separated, `expanded` adds extra spacing, `no-offset` removes the left indent."
         }
+      },
+      "example": {
+        "items": "<li>Beletria</li><li>Detská literatúra</li><li>Odborná literatúra</li>",
+        "variant": "default"
       },
       "requires": []
     },
@@ -361,6 +397,10 @@
           "description": "Size modifier. Omit for default (24px min-height). `large` gives 40px."
         }
       },
+      "example": {
+        "label": "Novinka",
+        "variant": "green"
+      },
       "requires": []
     },
     "pill": {
@@ -388,6 +428,10 @@
           ],
           "description": "Color variant. Omit for the default dark style (dark bg, white text). `white` is for use on dark backgrounds. `-light` variants use a light tinted background with the matching text color."
         }
+      },
+      "example": {
+        "label": "3",
+        "variant": "red"
       },
       "requires": []
     },
@@ -421,6 +465,11 @@
           "type": "string",
           "description": "Raw HTML for the right-side action slot. Typical close button: `<button class=\"btn btn--clean btn--small\" data-alert-action><i class=\"far fa-xmark fa-xl\"></i></button>`."
         }
+      },
+      "example": {
+        "content": "Vaša objednávka bola úspešne odoslaná.",
+        "variant": "success-light",
+        "icon": "check-circle"
       },
       "requires": [],
       "addRequiresWhen": {
@@ -470,6 +519,11 @@
           "default": false,
           "description": "Add `card--clickable` for hover and focus styles. Swap `<article>` for `<a>` on the consumer side when the card should be a link."
         }
+      },
+      "example": {
+        "header": "Doprava zdarma",
+        "content": "<p>Pri objednávke nad 25 € doručíme zásielku zadarmo.</p>",
+        "variant": "well"
       },
       "requires": []
     },
@@ -532,6 +586,10 @@
           "description": "Adds the `readonly` HTML attribute."
         }
       },
+      "example": {
+        "placeholder": "Zadajte e-mail",
+        "type": "email"
+      },
       "requires": []
     },
     "form-textarea": {
@@ -575,6 +633,10 @@
           "type": "boolean",
           "description": "Adds the `readonly` HTML attribute."
         }
+      },
+      "example": {
+        "placeholder": "Vaša správa",
+        "rows": "5"
       },
       "requires": []
     },
@@ -621,6 +683,11 @@
           "description": "Adds `form-check--reverse` to place the input after the label."
         }
       },
+      "example": {
+        "id": "agree-terms",
+        "label": "Súhlasím s obchodnými podmienkami",
+        "field_name": "agree"
+      },
       "requires": []
     },
     "form-radio": {
@@ -666,6 +733,12 @@
           "description": "Adds `form-check--reverse` to place the input after the label."
         }
       },
+      "example": {
+        "id": "delivery-courier",
+        "label": "Kuriér",
+        "field_name": "delivery",
+        "checked": true
+      },
       "requires": []
     },
     "form-switch": {
@@ -694,6 +767,12 @@
           "type": "boolean",
           "description": "Adds the `disabled` attribute."
         }
+      },
+      "example": {
+        "id": "newsletter-switch",
+        "label": "Odoberať newsletter",
+        "field_name": "newsletter",
+        "checked": true
       },
       "requires": []
     },
@@ -737,6 +816,9 @@
           "description": "Adds the `disabled` HTML attribute."
         }
       },
+      "example": {
+        "options": "<option value=\"sk\">Slovensko</option><option value=\"cz\">Česko</option><option value=\"at\">Rakúsko</option>"
+      },
       "requires": []
     },
     "table": {
@@ -774,6 +856,11 @@
           "description": "Adds `table--adaptive`. On narrow screens hides the `<thead>` and stacks each `<td>` as a block using `data-label` attributes for column headings."
         }
       },
+      "example": {
+        "head": "<tr><th>Názov</th><th>Autor</th><th>Cena</th></tr>",
+        "body": "<tr><td>Harry Potter</td><td>J. K. Rowlingová</td><td>14,99 €</td></tr><tr><td>Hobbit</td><td>J. R. R. Tolkien</td><td>12,99 €</td></tr>",
+        "variant": "striped"
+      },
       "requires": []
     },
     "tabs": {
@@ -803,6 +890,10 @@
           "description": "Adds `tab-nav--rounded` — rounds the tab nav items. Used with card-style tabs."
         }
       },
+      "example": {
+        "nav_items": "<li class=\"tab-nav__item is-active\" data-tabs-item><a class=\"tab-nav__content tab-nav__content--link\" href=\"#tab-popis\" role=\"tab\">Popis</a></li><li class=\"tab-nav__item\" data-tabs-item><a class=\"tab-nav__content tab-nav__content--link\" href=\"#tab-recenzie\" role=\"tab\">Recenzie</a></li>",
+        "panels": "<section id=\"tab-popis\" class=\"tab is-active\"><p>Popis knihy.</p></section><section id=\"tab-recenzie\" class=\"tab\"><p>Recenzie čitateľov.</p></section>"
+      },
       "requires": []
     },
     "dropdown": {
@@ -830,6 +921,9 @@
           "type": "boolean",
           "description": "Adds `dropdown--align-right` — aligns the menu to the right edge of its positioned parent instead of the left."
         }
+      },
+      "example": {
+        "items": "<h5 class=\"dropdown__group\">Účet</h5><a class=\"dropdown__item\" href=\"/profil\">Môj profil</a><a class=\"dropdown__item\" href=\"/objednavky\">Objednávky</a><a class=\"dropdown__item\" href=\"/odhlasit\">Odhlásiť sa</a>"
       },
       "requires": []
     },
@@ -891,6 +985,12 @@
           "description": "Add `.carousel-cards` root modifier — info-card slider used for USP/feature rows (e.g. homepage footer). Slides should be `<div class=\"swiper-slide carousel-cards__item\"><div class=\"card card--well\">…</div></div>` (250px wide, ~90px min-height)."
         }
       },
+      "example": {
+        "slides": "<div class=\"swiper-slide\"><article class=\"product product--responsive\"><div class=\"product__img\"><div class=\"product-cover product-cover--book\"><img src=\"https://mrtns.sk/tovar/_m/202/m202152.jpg\" alt=\"Harry Potter\" class=\"d-block\" loading=\"lazy\"></div></div><div class=\"product__info text-ellipsis\"><a class=\"product__title link link--black\" href=\"/detail-knihy\" title=\"Harry Potter\">Harry Potter</a><div class=\"text-small text-color-grey mb-small\">J. K. Rowlingová</div><div class=\"badges mb-none\"><div class=\"badge badge--transparent\">14,99 €</div></div></div></article></div><div class=\"swiper-slide\"><article class=\"product product--responsive\"><div class=\"product__img\"><div class=\"product-cover product-cover--book\"><img src=\"https://mrtns.sk/tovar/_m/202/m202153.jpg\" alt=\"Hobbit\" class=\"d-block\" loading=\"lazy\"></div></div><div class=\"product__info text-ellipsis\"><a class=\"product__title link link--black\" href=\"/detail-knihy\" title=\"Hobbit\">Hobbit</a><div class=\"text-small text-color-grey mb-small\">J. R. R. Tolkien</div><div class=\"badges mb-none\"><div class=\"badge badge--transparent\">12,99 €</div></div></div></article></div>",
+        "swiper_options": "{\"slidesPerView\":\"auto\",\"spaceBetween\":16}",
+        "fade_outside": true,
+        "white_surface": true
+      },
       "requires": [],
       "addRequiresWhen": {
         "show_buttons": [
@@ -935,6 +1035,15 @@
           "type": "string",
           "description": "Discount badge text shown in a primary (red) badge (e.g. `-20%`)."
         }
+      },
+      "example": {
+        "title": "Harry Potter a Kameň mudrcov",
+        "cover_url": "https://mrtns.sk/tovar/_m/202/m202152.jpg",
+        "cover_alt": "Harry Potter a Kameň mudrcov",
+        "href": "/detail-knihy",
+        "author": "J. K. Rowlingová",
+        "price": "14,99 €",
+        "discount": "-20%"
       },
       "requires": [],
       "addRequiresWhen": {
@@ -994,6 +1103,13 @@
           "type": "string",
           "description": "Raw HTML of 2–4 `<img>` tags for collection mode. The CSS stacks them with progressive offsets; items beyond 4 are hidden. Example: `<img src=\"…\" class=\"d-block\"><img src=\"…\" class=\"d-block\">`."
         }
+      },
+      "example": {
+        "cover_url": "https://mrtns.sk/tovar/_m/202/m202152.jpg",
+        "cover_alt": "Harry Potter a Kameň mudrcov",
+        "href": "/detail-knihy",
+        "type": "book",
+        "size": "large"
       },
       "requires": []
     }
