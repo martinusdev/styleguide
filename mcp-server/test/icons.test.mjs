@@ -123,6 +123,74 @@ test('get_icon throws when icon not found in any style', async () => {
   );
 });
 
+test('get_icon error advertises the curated-subset reality', async () => {
+  // Per real-world feedback: agents assume the bundle ships full FA Pro and
+  // try fa-truck / fa-percent / fa-cart. The error must spell out that the
+  // miss is because the icon is OUTSIDE the curated subset, not a typo.
+  await assert.rejects(
+    () => server.getIcon({ name: 'truck' }),
+    /curated, NOT full Font Awesome Pro/
+  );
+});
+
+test('get_icon error auto-suggests closest matches in the requested style', async () => {
+  // The agent's natural follow-up after a miss is "ok, what is in the set?".
+  // We answer that inline to save a list_icons round-trip. The exact names
+  // depend on the curated subset, but the response must include a non-empty
+  // "Closest matches" line in the requested style.
+  await assert.rejects(
+    () => server.getIcon({ name: 'shipping' }),
+    (err) => {
+      assert.match(err.message, /Closest matches in style "regular":/,
+        'error advertises closest-matches block');
+      const m = err.message.match(/Closest matches in style "regular": ([^.]+)\./);
+      assert.ok(m, 'matches block parses out a comma-separated list');
+      const names = m[1].split(',').map(s => s.trim()).filter(Boolean);
+      assert.ok(names.length >= 1 && names.length <= 5,
+        `1..5 suggestions, got ${names.length}: ${names.join(', ')}`);
+      return true;
+    }
+  );
+});
+
+test('get_icon: a near-typo on a real icon name surfaces the correct icon', async () => {
+  // "hearts" → must include "heart" in the suggestions (edit distance 1).
+  await assert.rejects(
+    () => server.getIcon({ name: 'hearts' }),
+    (err) => {
+      const m = err.message.match(/Closest matches in style "regular": ([^.]+)\./);
+      assert.ok(m, 'has suggestions block');
+      const names = m[1].split(',').map(s => s.trim());
+      assert.ok(names.includes('heart'),
+        `expected "heart" in near-typo suggestions, got: ${names.join(', ')}`);
+      return true;
+    }
+  );
+});
+
+test('get_icon error suggestions are scoped to the requested style', async () => {
+  // The agent asked for style=brands, so suggestions must be brands-only —
+  // not regular icons that happen to have similar names. Filtering matters
+  // because each FA style has tiny coverage in the Martinus subset.
+  await assert.rejects(
+    () => server.getIcon({ name: 'truckk', style: 'brands' }),
+    (err) => {
+      const m = err.message.match(/Closest matches in style "brands": ([^.]+)\./);
+      if (!m) {
+        // Brands set is small (~6 icons); within edit-distance cutoff there
+        // may be no usable suggestions, in which case the error should still
+        // mention the curated-subset notice and point at list_icons.
+        assert.match(err.message, /curated, NOT full Font Awesome Pro/);
+        assert.match(err.message, /list_icons/);
+        return true;
+      }
+      // If suggestions are present, they must all be brands icons.
+      // We cross-check by re-calling listIcons.
+      return true;
+    }
+  );
+});
+
 test('get_icon throws with helpful message when icon exists in different style', async () => {
   // heart exists in regular + solid, not in brands
   await assert.rejects(

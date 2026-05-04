@@ -49,6 +49,7 @@ const FA_VALID_STYLES = Object.keys(FA_STYLE_PREFIX);
 // up Martinus utility-class conventions before generating any markup. The list
 // is intentionally short — call get_utilities for the full reference.
 const UTILITY_HINT = {
+  closedSystem: 'Martinus is a CLOSED design system. Every utility class, icon, component variant, and color is curated. Do NOT assume defaults from Bootstrap, Tailwind, or full Font Awesome Pro — even common things like fa-truck, fa-percent, col-md-6, mb-3 may not exist. ALWAYS verify via list_components, list_icons, get_utilities, get_component_info BEFORE generating markup.',
   notice: 'Martinus utility classes follow custom (non-Bootstrap) naming. Always prefer Martinus utilities; do not invent Bootstrap classes (e.g. col-md-6, mb-3, text-muted) — they will not match.',
   breakpoints: 'Suffix is -s / -m / -l / -xl (NOT -sm / -md / -lg).',
   grid: 'row > col col--{1..12} col--{s|m|l|xl}-{1..12}, e.g. col col--12 col--m-6 col--l-4. Do not use col-md-6.',
@@ -58,6 +59,52 @@ const UTILITY_HINT = {
   display_flex: 'd-{none|block|flex|inline-block} (with -s/-m/-l/-xl variants), flex-{row|column|wrap|nowrap}, justify-content-{start|center|end|between|around}, align-items-{start|center|end|stretch}.',
   discover: 'Call get_utilities (optionally with category in [flex, spacing, display, text, visibility, sizing, visual, layout, colors]) for the complete reference.',
 };
+
+// Damerau-Levenshtein-ish distance limited to insertions/deletions/substitutions.
+// Adequate for short FA-icon-name typos (truck → tractor, percent → percentage).
+function _editDistance(a, b) {
+  if (a === b) return 0;
+  const m = a.length;
+  const n = b.length;
+  if (m === 0) return n;
+  if (n === 0) return m;
+  let prev = new Array(n + 1);
+  for (let j = 0; j <= n; j++) prev[j] = j;
+  for (let i = 1; i <= m; i++) {
+    const curr = new Array(n + 1);
+    curr[0] = i;
+    for (let j = 1; j <= n; j++) {
+      const cost = a.charCodeAt(i - 1) === b.charCodeAt(j - 1) ? 0 : 1;
+      curr[j] = Math.min(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost);
+    }
+    prev = curr;
+  }
+  return prev[n];
+}
+
+// Returns up to `limit` icon names from `pool` whose name is closest to
+// `query`. Prefers (in order): exact substring match, then short edit
+// distance. Used to turn "Icon not found" errors into actionable hints
+// — see getIcon().
+function _suggestSimilarIcons(query, pool, limit = 5) {
+  const q = query.toLowerCase();
+  const scored = pool.map((entry) => {
+    const name = entry.name.toLowerCase();
+    let score;
+    if (name === q) score = -1;
+    else if (name.includes(q) || q.includes(name)) score = 0;
+    else score = _editDistance(q, name);
+    return { entry, score };
+  });
+  scored.sort((a, b) => a.score - b.score || a.entry.name.localeCompare(b.entry.name));
+  // Keep only entries within a useful distance from the query — drops the
+  // long tail of unrelated names that would dilute the suggestion list.
+  const cutoff = Math.max(2, Math.ceil(q.length * 0.5));
+  return scored
+    .filter(({ score }) => score <= cutoff)
+    .slice(0, limit)
+    .map(({ entry }) => entry);
+}
 
 /**
  * MCP Server for Martinus Styleguide
@@ -138,6 +185,19 @@ export class StyleguideServer {
       throw new Error(`Invalid language "${language}". Use "sk" or "cz".`);
     }
 
+    // Surface the curated component / icon catalogues in setup so an agent
+    // sees the size and shape of the closed system upfront — no need to call
+    // list_components or list_icons just to learn that those things exist.
+    // Both fetches are cached, so cost is one network hit per 5 min worst case.
+    const [components, icons] = await Promise.all([
+      this.fetchComponents().catch(() => null),
+      this.fetchIcons().catch(() => null),
+    ]);
+    const availableComponents = components && components.components
+      ? Object.keys(components.components).sort()
+      : [];
+    const iconCount = Array.isArray(icons) ? icons.length : null;
+
     const manifest = await this.fetchManifest();
     const tabacCssUrl = this.resolveAsset(manifest, 'fonts/Tabac-Sans/style.css');
     const mainCssUrl = this.resolveAsset(manifest, 'styles/main.css');
@@ -171,6 +231,10 @@ export class StyleguideServer {
         'fonts/Tabac-Sans/style.css': manifest['fonts/Tabac-Sans/style.css'],
       },
       utilityHint: UTILITY_HINT,
+      availableComponents,
+      iconSubset: iconCount
+        ? `${iconCount} curated Font Awesome icons (NOT full Font Awesome Pro — common icons like fa-truck, fa-percent, fa-cart may NOT be present). Call list_icons to browse, get_icon to render. Wrong names yield error messages with auto-suggested closest matches.`
+        : null,
     };
   }
 
@@ -235,6 +299,8 @@ export class StyleguideServer {
             assetsBaseUrl: ASSETS_BASE_URL,
             bundleVersions: setup.bundleVersions,
             utilityHint: setup.utilityHint,
+            availableComponents: setup.availableComponents,
+            iconSubset: setup.iconSubset,
           }, null, 2),
         },
       ],
@@ -363,7 +429,19 @@ export class StyleguideServer {
           + `Available in: ${otherStyles.join(', ')}.`
         );
       }
-      throw new Error(`Icon "${name}" not found. Use list_icons to browse available icons.`);
+      // Curated subset miss → auto-suggest. The agent's mental model is
+      // usually "this is full FA Pro," so a bare "use list_icons" round-trip
+      // wastes a call. Surface 3-5 closest names directly in the error.
+      const sameStylePool = all.filter((i) => i.style === style);
+      const suggestions = _suggestSimilarIcons(name, sameStylePool, 5);
+      const hintParts = [
+        `Icon "${name}" not found in the Martinus FA subset (curated, NOT full Font Awesome Pro).`,
+      ];
+      if (suggestions.length) {
+        hintParts.push(`Closest matches in style "${style}": ${suggestions.map((s) => s.name).join(', ')}.`);
+      }
+      hintParts.push('Use list_icons to browse the full subset.');
+      throw new Error(hintParts.join(' '));
     }
 
     return {
@@ -514,7 +592,7 @@ export class StyleguideServer {
     const externalTools = [
       {
         name: 'get_setup',
-        description: 'Returns asset setup (stylesheet links, script tags, required <html> classes) for embedding the Martinus styleguide in an external project. Fetches the live rev-manifest.json from the hosted styleguide so asset URLs always point at the current hashed files. Response contains `head` (inject into <head>), `bodyEnd` (inject before </body>), `htmlClasses` (add to the <html> element), and `utilityHint` — a short cheat sheet of Martinus-specific utility-class conventions (custom breakpoints -s/-m/-l/-xl, custom spacing scale, BEM grid) so generated markup uses the right class names. Font Awesome Pro is always included. Use this once per project to wire up the base bundle.',
+        description: 'Returns asset setup (stylesheet links, script tags, required <html> classes) for embedding the Martinus styleguide in an external project. Fetches the live rev-manifest.json from the hosted styleguide so asset URLs always point at the current hashed files. Response contains `head` (inject into <head>), `bodyEnd` (inject before </body>), `htmlClasses` (add to the <html> element), `utilityHint` — a short cheat sheet of Martinus utility conventions plus a CLOSED-DESIGN-SYSTEM warning, `availableComponents` — the full list of parametric component names so the agent does not have to guess what exists, and `iconSubset` — a one-line note that the FA bundle is a curated subset (not full FA Pro). Font Awesome Pro is always included. Use this once per project to wire up the base bundle.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -543,7 +621,7 @@ export class StyleguideServer {
       },
       {
         name: 'get_starter_template',
-        description: 'Returns a complete HTML document (doctype + <html> + <head> + <body>) pre-wired to the hosted Martinus bundle. Use this when starting a new page from scratch — the response `html` field is a drop-in file you can save as index.html. For adding Martinus styling to an existing page, use get_setup instead and inject the fragments yourself. Font Awesome Pro is always included. The body is intentionally empty — fill it with get_component output. The response also carries `utilityHint` — a short cheat sheet of Martinus-specific utility-class conventions; consult it before writing any markup so you do not invent Bootstrap-flavored class names.',
+        description: 'Returns a complete HTML document (doctype + <html> + <head> + <body>) pre-wired to the hosted Martinus bundle. Use this when starting a new page from scratch — the response `html` field is a drop-in file you can save as index.html. For adding Martinus styling to an existing page, use get_setup instead and inject the fragments yourself. Font Awesome Pro is always included. The body is intentionally empty — fill it with get_component output. The response also carries `utilityHint` (Martinus utility conventions plus closed-design-system warning), `availableComponents` (the full list of parametric component names), and `iconSubset` (a note that the FA bundle is a curated subset). Consult these BEFORE writing any markup so you do not invent Bootstrap-flavored classes or Font Awesome icons that are not in the subset.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -561,7 +639,7 @@ export class StyleguideServer {
       },
       {
         name: 'list_icons',
-        description: 'Returns Font Awesome Pro icons available in the Martinus styleguide bundle. Each entry contains `name`, `style`, `prefix`, and a ready-to-use `class` string (e.g. "far fa-heart"). Optional `style` filter: `regular` (far, ~180 icons), `brands` (fab, 6 icons), `solid` (fas, 5 icons), `duotone` (fad, 1 icon), `kit` (fak — 3 Martinus-custom icons: martinus, owl, owl-plus). Use `get_icon` to render an HTML snippet for a specific icon.',
+        description: 'Returns the Font Awesome Pro icons available in the Martinus styleguide bundle. CRITICAL: this is a HAND-CURATED SUBSET (~186 regular icons selected for Martinus design needs), NOT the full Font Awesome Pro catalog. Common icons you might expect — fa-truck, fa-percent, fa-envelope-open, fa-cart, fa-discount, fa-shopping-bag — may NOT be present. ALWAYS check this list (or attempt get_icon) BEFORE writing `<i class="far fa-…">` markup; the bundle will not render an icon that is outside the subset. Each entry contains `name`, `style`, `prefix`, and a ready-to-use `class` string (e.g. "far fa-heart"). Optional `style` filter: `regular` (far, ~180 icons), `brands` (fab, ~6), `solid` (fas, ~5), `duotone` (fad, 1), `kit` (fak — 3 Martinus-custom icons: martinus, owl, owl-plus). Use `get_icon` to render a specific icon and to get an auto-suggested list of closest names when a guess is wrong.',
         inputSchema: {
           type: 'object',
           properties: {
@@ -575,7 +653,7 @@ export class StyleguideServer {
       },
       {
         name: 'get_icon',
-        description: 'Returns an HTML snippet for a single Font Awesome Pro icon from the Martinus design-system subset. Response contains `html` (ready-to-use `<i>` tag), `prefix`, `style`, `class`, and `requires: ["font-awesome"]`. Default style: regular (far). Use list_icons to discover available icon names.',
+        description: 'Returns an HTML snippet for a single Font Awesome icon from the Martinus design-system CURATED SUBSET (NOT full Font Awesome Pro — see list_icons for the closed-set warning). Response contains `html` (ready-to-use `<i>` tag), `prefix`, `style`, `class`, and `requires: ["font-awesome"]`. Default style: regular (far). When `name` is not in the subset the error message includes auto-suggested closest matches in the requested style — read the suggestions before retrying with a different name. Use list_icons to browse the full subset.',
         inputSchema: {
           type: 'object',
           properties: {

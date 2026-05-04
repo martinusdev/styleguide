@@ -96,6 +96,35 @@ test('starter response carries a utilityHint cheat sheet', async () => {
   assert.match(payload.utilityHint.discover, /get_utilities/);
 });
 
+test('starter response carries a closedSystem warning naming common pitfalls', async () => {
+  const { utilityHint } = await renderStarter();
+  assert.match(utilityHint.closedSystem, /CLOSED design system/);
+  // Spelling out concrete guess-pitfalls (truck, percent, col-md-6) is what
+  // converted the truck/percent incident from "obvious in retrospect" into
+  // an actually-actionable warning. Test guards the wording stays explicit.
+  assert.match(utilityHint.closedSystem, /fa-truck/);
+  assert.match(utilityHint.closedSystem, /fa-percent/);
+  assert.match(utilityHint.closedSystem, /col-md-6/);
+  assert.match(utilityHint.closedSystem, /list_icons/);
+  assert.match(utilityHint.closedSystem, /list_components/);
+});
+
+test('starter response includes availableComponents and iconSubset notice', async () => {
+  const payload = await renderStarter();
+  assert.ok(Array.isArray(payload.availableComponents),
+    'availableComponents is an array of names');
+  assert.ok(payload.availableComponents.length >= 20,
+    'at least 20 parametric components surfaced');
+  assert.ok(payload.availableComponents.includes('buttons'));
+  assert.ok(payload.availableComponents.includes('carousel'));
+  // Names are sorted so the agent can do binary-search-style scanning.
+  const sorted = [...payload.availableComponents].sort();
+  assert.deepEqual(payload.availableComponents, sorted, 'names sorted');
+  // iconSubset is a one-line note, not a full icon dump.
+  assert.match(payload.iconSubset, /curated/);
+  assert.match(payload.iconSubset, /NOT full Font Awesome Pro/);
+});
+
 // ---------------------------------------------------------------------------
 // get_setup — shares buildSetup() with get_starter_template, so the same
 // utilityHint must reach the response and the head/bodyEnd snippets must be
