@@ -24,6 +24,7 @@ services:
 
       # Source code and package files (read-write for development)
       - ../app:/app/app
+      - ../scripts:/app/scripts:ro
       - ../package.json:/app/package.json
       - ../yarn.lock:/app/yarn.lock
 

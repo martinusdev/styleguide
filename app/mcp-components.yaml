@@ -743,51 +743,111 @@ components:
 
   carousel:
     description: >-
-      Swiper-based carousel (`.carousel` wrapper around a `.swiper` instance).
-      Pass slide HTML as `slides`; each slide should be a
-      `<div class="swiper-slide">…</div>` (or an `<a>` for linked slides).
-      Configure Swiper via `swiper_options` (JSON-like object string).
-      Show optional prev/next nav buttons with `show_buttons: true`.
-      The Swiper library is included in the main bundle — no extra `requires`.
+      Swiper-based carousel (`.carousel` wrapping a `.swiper`). Pass slide HTML
+      as `slides`; each slide is `<div class="swiper-slide">…</div>` (or an `<a>`
+      for linked slides). Slides commonly carry a kind modifier — `carousel__banner`
+      for hero banners, `carousel__book` for fan/collection promos, `carousel__tile`
+      (290×290px square), `carousel__product-detail` (120px detail), `carousel__recently-viewed`
+      (50px thumb), or `carousel-cards__item` (250px info card with `.card.card--well`
+      inside). The Swiper library is bundled in the main script — no extra `requires`
+      for the carousel itself; the page script auto-initialises every `.swiper`
+      element. Variant flags are independent and can be combined: a typical banner
+      is `fade_inactive: true` + `disable_inactive: true`; a recommended-books shelf
+      is `fade_outside: true` (+ `white_surface: true` on light surfaces); an info-card
+      USP row is `fade_outside: true` + `white_surface: true` + `carousel_cards: true`.
     template: |-
-      <div class="carousel{{#variant}} carousel--{{variant}}{{/variant}}{{#fade_white}} carousel--fade-outside-white{{/fade_white}}"><div class="swiper"{{#swiper_options}} data-swiper-options='{{{swiper_options}}}'{{/swiper_options}}><div class="swiper-wrapper">{{{slides}}}</div></div>{{#show_buttons}}<button class="btn btn--icon carousel__btn carousel__btn--prev" type="button" aria-label="Predchádzajúci"><i class="far fa-chevron-left"></i></button><button class="btn btn--icon carousel__btn carousel__btn--next" type="button" aria-label="Nasledujúci"><i class="far fa-chevron-right"></i></button>{{/show_buttons}}</div>
+      <div class="carousel{{#fade_outside}} carousel--fade-outside{{#white_surface}} carousel--fade-outside-white{{/white_surface}}{{/fade_outside}}{{#fade_inside}} carousel--fade-inside{{#white_surface}} carousel--fade-inside-white{{/white_surface}}{{/fade_inside}}{{#fade_inactive}} carousel--fade-inactive{{/fade_inactive}}{{#disable_inactive}} carousel--disable-inactive{{/disable_inactive}}{{#fan}} carousel--fan{{/fan}}{{#shelf}} carousel--shelf{{/shelf}}{{#lazy}} carousel--lazy{{/lazy}}{{#carousel_cards}} carousel-cards{{/carousel_cards}}"{{#fade_color}} style="--ms-fade-color: {{fade_color}}"{{/fade_color}}><div class="swiper"{{#swiper_options}} data-swiper-options='{{{swiper_options}}}'{{/swiper_options}}><div class="swiper-wrapper">{{{slides}}}</div>{{#show_buttons}}<button class="btn btn--carousel btn--large btn--equal carousel__btn carousel__btn--prev" type="button" aria-label="Predchádzajúci"><i class="far fa-arrow-left fa-2x"></i></button><button class="btn btn--carousel btn--large btn--equal carousel__btn carousel__btn--next" type="button" aria-label="Nasledujúci"><i class="far fa-arrow-right fa-2x"></i></button>{{/show_buttons}}</div></div>
     params:
       slides:
         type: string
         required: true
         description: >-
-          Raw HTML of slide items. Each slide should be
-          `<div class="swiper-slide">…</div>` or `<a class="swiper-slide" href="…">…</a>`.
-      variant:
-        type: enum
-        values: [fade-outside, fade-inside, fade-inactive, disable-inactive, fan, shelf, lazy]
-        description: >-
-          Visual modifier. `fade-outside` fades slides at the edges of the
-          viewport (pair with `fade_white: true` on white backgrounds).
-          `fade-inside` fades inside the container with overflow hidden.
-          `fade-inactive` dims non-active slides to 50% opacity.
-          `disable-inactive` prevents clicks on non-active slides.
-          `fan` spreads slides in a fanned stack with rotation animation.
-          `shelf` adds a bottom border shadow (bookshelf effect).
-          `lazy` sets a minimum height for lazy-loaded carousels.
+          Raw HTML of slide elements. Each slide is `<div class="swiper-slide">…</div>`
+          or `<a class="swiper-slide" href="…">…</a>`. Add a slide-kind modifier as
+          needed: `carousel__banner` (hero banner, ~300px mobile / ~600px desktop),
+          `carousel__book` (fan/collection promo), `carousel__tile` (290×290 square),
+          `carousel__product-detail` (120px detail), `carousel__recently-viewed`
+          (50px thumb), `carousel-cards__item` (250px info card — pair with
+          `carousel_cards: true`).
       swiper_options:
         type: string
         description: >-
-          JSON-like options passed to `data-swiper-options`. Example:
-          `{"slidesPerView":4,"slidesPerGroup":3,"spaceBetween":16}`.
-          Omit for Swiper defaults (one slide visible, no looping).
+          JSON string written verbatim into `data-swiper-options`. MUST be valid
+          JSON with double-quoted keys on a single line, e.g.
+          `{"slidesPerView":4,"slidesPerGroup":3,"spaceBetween":16}` or
+          `{"slidesPerView":"auto","centeredSlides":true,"loop":true}`. Stringify a
+          JS object with `JSON.stringify(...)` — JS-style `{slidesPerView:4}` will
+          fail to parse in the browser. Omit for Swiper defaults (one slide visible,
+          no looping).
       show_buttons:
         type: boolean
         description: >-
-          Render absolutely-positioned prev/next buttons (`.carousel__btn`).
-          Buttons are hidden on mobile (< s breakpoint) via CSS.
-          Buttons are invisible until Swiper initializes.
-      fade_white:
+          Render absolutely-positioned prev/next nav buttons inside the `.swiper`
+          container so the Swiper script can bind them via
+          `swiper.querySelector('.carousel__btn--prev/next')`. Buttons use
+          `btn btn--carousel btn--large btn--equal` with `fa-arrow-left/right.fa-2x`
+          icons (matches production carousels). Hidden on mobile (< s breakpoint)
+          via CSS; invisible until Swiper initialises.
+      fade_outside:
         type: boolean
         description: >-
-          Add `carousel--fade-outside-white` alongside `variant: fade-outside`.
-          Use when the carousel sits on a white/light background instead of
-          the default warm beige surface.
+          Add `.carousel--fade-outside` — fades slides at the viewport edges with
+          large 1800px gradient zones outside the container. Pair with
+          `white_surface: true` on white/light backgrounds.
+      fade_inside:
+        type: boolean
+        description: >-
+          Add `.carousel--fade-inside` — compact 20px fade clipped inside the
+          container (overflow hidden). Pair with `white_surface: true` on
+          white/light backgrounds.
+      fade_inactive:
+        type: boolean
+        description: >-
+          Add `.carousel--fade-inactive` — non-active slides dimmed to 50% opacity.
+          Common banner pattern; almost always combined with `disable_inactive: true`.
+      disable_inactive:
+        type: boolean
+        description: >-
+          Add `.carousel--disable-inactive` — non-active slides become non-clickable.
+          Almost always paired with `fade_inactive: true`.
+      fan:
+        type: boolean
+        description: >-
+          Add `.carousel--fan` — fanned/rotated stack animation for collection
+          promos. Slides should be `swiper-slide carousel__book`; the carousel
+          script applies `data-carousel-fan-index` to visible slides for staged
+          opacity/rotation.
+      shelf:
+        type: boolean
+        description: >-
+          Add `.carousel--shelf` — bottom-edge bookshelf shadow effect.
+      lazy:
+        type: boolean
+        description: >-
+          Add `.carousel--lazy` — reserves an 18rem min-height while lazy-loaded
+          slides render.
+      white_surface:
+        type: boolean
+        description: >-
+          Switch the active fade variant to its `-white` flavor
+          (`fade-outside-white` or `fade-inside-white`). Use when the carousel
+          sits on a white/light section (`section--white`) instead of the default
+          warm beige (`section--secondary`). No effect without `fade_outside` or
+          `fade_inside`.
+      fade_color:
+        type: string
+        description: >-
+          Override the fade gradient color. Emits `style="--ms-fade-color: <value>"`
+          on the carousel root. Accepts any CSS color (e.g. `#9967a7`,
+          `var(--ms-color-…)`). Useful when the carousel is embedded in a tinted
+          block. Has no effect without a fade variant.
+      carousel_cards:
+        type: boolean
+        description: >-
+          Add `.carousel-cards` root modifier — info-card slider used for
+          USP/feature rows (e.g. homepage footer). Slides should be
+          `<div class="swiper-slide carousel-cards__item"><div class="card card--well">…</div></div>`
+          (250px wide, ~90px min-height).
     requires: []
     addRequiresWhen:
       show_buttons: [font-awesome]

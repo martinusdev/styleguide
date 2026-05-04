@@ -39,20 +39,73 @@ test('carousel renders basic swiper structure', async () => {
   assert.ok(html.includes(slides));
 });
 
-test('carousel with variant applies .carousel--{variant}', async () => {
-  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', variant: 'fade-outside' });
+test('carousel with fade_outside applies .carousel--fade-outside', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fade_outside: true });
   assert.ok(html.includes('carousel carousel--fade-outside'));
 });
 
-test('carousel with fade_white adds --fade-outside-white modifier', async () => {
-  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', variant: 'fade-outside', fade_white: true });
+test('carousel with fade_inside applies .carousel--fade-inside', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fade_inside: true });
+  assert.ok(html.includes('carousel--fade-inside'));
+});
+
+test('carousel combines fade_inactive + disable_inactive (banner pattern)', async () => {
+  const { html } = await render({
+    name: 'carousel',
+    slides: '<div class="swiper-slide"></div>',
+    fade_inactive: true,
+    disable_inactive: true,
+  });
+  assert.ok(html.includes('carousel--fade-inactive'));
+  assert.ok(html.includes('carousel--disable-inactive'));
+});
+
+test('carousel with fan applies .carousel--fan', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fan: true });
+  assert.ok(html.includes('carousel--fan'));
+});
+
+test('carousel with shelf and lazy applies their modifiers', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', shelf: true, lazy: true });
+  assert.ok(html.includes('carousel--shelf'));
+  assert.ok(html.includes('carousel--lazy'));
+});
+
+test('carousel with white_surface + fade_outside adds --fade-outside-white', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fade_outside: true, white_surface: true });
   assert.ok(html.includes('carousel--fade-outside'));
   assert.ok(html.includes('carousel--fade-outside-white'));
 });
 
-test('carousel without fade_white omits --fade-outside-white', async () => {
-  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', variant: 'fade-outside' });
+test('carousel with white_surface + fade_inside adds --fade-inside-white', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fade_inside: true, white_surface: true });
+  assert.ok(html.includes('carousel--fade-inside'));
+  assert.ok(html.includes('carousel--fade-inside-white'));
+});
+
+test('carousel with white_surface alone emits no -white modifier (no fade variant)', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', white_surface: true });
+  assert.ok(!html.includes('-white'));
+});
+
+test('carousel without white_surface omits -white modifier', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fade_outside: true });
   assert.ok(!html.includes('fade-outside-white'));
+});
+
+test('carousel with fade_color emits --ms-fade-color inline style', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fade_outside: true, fade_color: '#9967a7' });
+  assert.ok(html.includes('style="--ms-fade-color: #9967a7"'));
+});
+
+test('carousel without fade_color omits inline style', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', fade_outside: true });
+  assert.ok(!html.includes('--ms-fade-color'));
+});
+
+test('carousel with carousel_cards adds .carousel-cards root modifier', async () => {
+  const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', carousel_cards: true });
+  assert.ok(html.includes('carousel-cards'));
 });
 
 test('carousel with swiper_options emits data-swiper-options attribute', async () => {
@@ -66,12 +119,18 @@ test('carousel without swiper_options omits data-swiper-options', async () => {
   assert.ok(!html.includes('data-swiper-options'));
 });
 
-test('carousel with show_buttons renders prev and next buttons', async () => {
+test('carousel with show_buttons renders prev and next buttons inside .swiper', async () => {
   const { html } = await render({ name: 'carousel', slides: '<div class="swiper-slide"></div>', show_buttons: true });
   assert.ok(html.includes('carousel__btn--prev'));
   assert.ok(html.includes('carousel__btn--next'));
-  assert.ok(html.includes('fa-chevron-left'));
-  assert.ok(html.includes('fa-chevron-right'));
+  // Production button styling — matches showcase / homepage / mixins.
+  assert.ok(html.includes('btn btn--carousel btn--large btn--equal'));
+  assert.ok(html.includes('fa-arrow-left'));
+  assert.ok(html.includes('fa-arrow-right'));
+  // Buttons MUST be inside the `.swiper` element so Carousel.js can bind them
+  // via swiper.querySelector('.carousel__btn--prev/next'). The closing
+  // `</div></div>` after the buttons closes `.swiper` then `.carousel`.
+  assert.ok(/<button [^>]*carousel__btn--next[^>]*>.*?<\/button><\/div><\/div>$/s.test(html));
 });
 
 test('carousel without show_buttons omits nav buttons', async () => {
@@ -89,10 +148,10 @@ test('carousel without show_buttons has empty requires', async () => {
   assert.deepEqual(requires, []);
 });
 
-test('carousel rejects invalid variant', async () => {
+test('carousel rejects unknown parameter', async () => {
   await assert.rejects(
-    () => server.getComponent({ name: 'carousel', slides: '<div>', variant: 'zoom' }),
-    /Invalid value "zoom" for "variant"/
+    () => server.getComponent({ name: 'carousel', slides: '<div>', variant: 'fade-outside' }),
+    /Unknown parameter\(s\) for component "carousel": variant/
   );
 });
 

@@ -472,6 +472,530 @@
         }
       },
       "requires": []
+    },
+    "form-input": {
+      "description": "Single-line text input. Renders `<input class=\"input …\">`. The `type` param controls the HTML type attribute (text/email/password etc.); `variant`, `size`, and `state` apply BEM/state modifiers.",
+      "template": "<input class=\"input{{#variant}} input--{{variant}}{{/variant}}{{#size}} input--{{size}}{{/size}}{{#state}} {{state}}{{/state}}\" type=\"{{type}}\" placeholder=\"{{placeholder}}\"{{#value}} value=\"{{value}}\"{{/value}}{{#disabled}} disabled{{/disabled}}{{#readonly}} readonly{{/readonly}}>",
+      "params": {
+        "placeholder": {
+          "type": "string",
+          "required": true,
+          "description": "Placeholder text shown inside the empty input."
+        },
+        "type": {
+          "type": "enum",
+          "values": [
+            "text",
+            "email",
+            "password",
+            "number",
+            "tel",
+            "search",
+            "url"
+          ],
+          "default": "text",
+          "description": "HTML input type. Defaults to `text`."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "dark"
+          ],
+          "description": "`dark` — dark-themed input for dark backgrounds."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "large",
+            "small"
+          ],
+          "description": "Size modifier — `large` or `small`."
+        },
+        "state": {
+          "type": "enum",
+          "values": [
+            "is-error",
+            "is-valid"
+          ],
+          "description": "Validation state class added directly to the input element."
+        },
+        "value": {
+          "type": "string",
+          "description": "Pre-filled value attribute."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Adds the `disabled` HTML attribute."
+        },
+        "readonly": {
+          "type": "boolean",
+          "description": "Adds the `readonly` HTML attribute."
+        }
+      },
+      "requires": []
+    },
+    "form-textarea": {
+      "description": "Multi-line text input. Renders `<textarea class=\"input …\">`. Shares `.input` base class and size/state modifiers with `form-input`.",
+      "template": "<textarea class=\"input{{#size}} input--{{size}}{{/size}}{{#state}} {{state}}{{/state}}\"{{#rows}} rows=\"{{rows}}\"{{/rows}} placeholder=\"{{placeholder}}\"{{#disabled}} disabled{{/disabled}}{{#readonly}} readonly{{/readonly}}>{{value}}</textarea>",
+      "params": {
+        "placeholder": {
+          "type": "string",
+          "required": true,
+          "description": "Placeholder text."
+        },
+        "rows": {
+          "type": "string",
+          "description": "HTML `rows` attribute (number as string, e.g. `\"5\"`)."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "large",
+            "small"
+          ],
+          "description": "Size modifier."
+        },
+        "state": {
+          "type": "enum",
+          "values": [
+            "is-error",
+            "is-valid"
+          ],
+          "description": "Validation state class."
+        },
+        "value": {
+          "type": "string",
+          "description": "Pre-filled content inside the textarea."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Adds the `disabled` HTML attribute."
+        },
+        "readonly": {
+          "type": "boolean",
+          "description": "Adds the `readonly` HTML attribute."
+        }
+      },
+      "requires": []
+    },
+    "form-checkbox": {
+      "description": "Bootstrap-based checkbox using `.form-check` wrapper, `.form-check-input`, and `.form-check-label`. Requires a unique `id` to wire the label's `for` attribute. For a row of checkboxes add `inline: true`.",
+      "template": "<div class=\"form-check{{#inline}} form-check--inline{{/inline}}{{#reverse}} form-check--reverse{{/reverse}}{{#state}} {{state}}{{/state}}\"><input class=\"form-check-input\" type=\"checkbox\" id=\"{{id}}\"{{#field_name}} name=\"{{field_name}}\"{{/field_name}}{{#checked}} checked{{/checked}}{{#disabled}} disabled{{/disabled}}><label class=\"form-check-label\" for=\"{{id}}\">{{{label}}}</label></div>",
+      "params": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "description": "Unique HTML `id`. Wires `<label for=\"…\">` to the input."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Label text; raw HTML (allows nested links or emphasis)."
+        },
+        "field_name": {
+          "type": "string",
+          "description": "HTML `name` attribute for form submission grouping."
+        },
+        "checked": {
+          "type": "boolean",
+          "description": "Renders with `checked` attribute pre-set."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Adds the `disabled` attribute."
+        },
+        "state": {
+          "type": "enum",
+          "values": [
+            "is-invalid",
+            "is-error"
+          ],
+          "description": "Validation state class on the wrapper `<div>`."
+        },
+        "inline": {
+          "type": "boolean",
+          "description": "Adds `form-check--inline` so multiple checkboxes sit on one line."
+        },
+        "reverse": {
+          "type": "boolean",
+          "description": "Adds `form-check--reverse` to place the input after the label."
+        }
+      },
+      "requires": []
+    },
+    "form-radio": {
+      "description": "Bootstrap-based radio button — same structure as `form-checkbox` but `type=\"radio\"`. Use `field_name` to group mutually exclusive options.",
+      "template": "<div class=\"form-check{{#inline}} form-check--inline{{/inline}}{{#reverse}} form-check--reverse{{/reverse}}{{#state}} {{state}}{{/state}}\"><input class=\"form-check-input\" type=\"radio\" id=\"{{id}}\"{{#field_name}} name=\"{{field_name}}\"{{/field_name}}{{#checked}} checked{{/checked}}{{#disabled}} disabled{{/disabled}}><label class=\"form-check-label\" for=\"{{id}}\">{{{label}}}</label></div>",
+      "params": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "description": "Unique HTML `id`. Wires `<label for=\"…\">` to the input."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Label text; raw HTML."
+        },
+        "field_name": {
+          "type": "string",
+          "description": "HTML `name` attribute — use the same value to group radio options."
+        },
+        "checked": {
+          "type": "boolean",
+          "description": "Renders with `checked` attribute pre-set."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Adds the `disabled` attribute."
+        },
+        "state": {
+          "type": "enum",
+          "values": [
+            "is-invalid",
+            "is-error"
+          ],
+          "description": "Validation state class on the wrapper `<div>`."
+        },
+        "inline": {
+          "type": "boolean",
+          "description": "Adds `form-check--inline` for horizontal grouping."
+        },
+        "reverse": {
+          "type": "boolean",
+          "description": "Adds `form-check--reverse` to place the input after the label."
+        }
+      },
+      "requires": []
+    },
+    "form-switch": {
+      "description": "Toggle switch built on Bootstrap's `.form-check.form-switch` pattern. Renders a checkbox input with `role=\"switch\"` and a visible label.",
+      "template": "<div class=\"form-check form-switch\"><input class=\"form-check-input\" type=\"checkbox\" role=\"switch\" id=\"{{id}}\"{{#field_name}} name=\"{{field_name}}\"{{/field_name}}{{#checked}} checked{{/checked}}{{#disabled}} disabled{{/disabled}}><label class=\"form-check-label\" for=\"{{id}}\">{{{label}}}</label></div>",
+      "params": {
+        "id": {
+          "type": "string",
+          "required": true,
+          "description": "Unique HTML `id`. Wires `<label for=\"…\">` to the input."
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Label text; raw HTML."
+        },
+        "field_name": {
+          "type": "string",
+          "description": "HTML `name` attribute."
+        },
+        "checked": {
+          "type": "boolean",
+          "description": "Renders with `checked` attribute pre-set."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Adds the `disabled` attribute."
+        }
+      },
+      "requires": []
+    },
+    "form-select": {
+      "description": "Dropdown select enhanced with Choices.js (`.js-select`). Pass pre-built `<option>` HTML as `options`. Variants, sizes, and inline mode mirror the SCSS modifier classes.",
+      "template": "<select class=\"js-select{{#variant}} select--{{variant}}{{/variant}}{{#size}} select--{{size}}{{/size}}{{#inline}} select--inline{{/inline}}{{#state}} {{state}}{{/state}}\"{{#disabled}} disabled{{/disabled}}>{{{options}}}</select>",
+      "params": {
+        "options": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML of `<option>` (and optionally `<optgroup>`) children. Example: `<option value=\"sk\">Slovakia</option>`."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "ghost"
+          ],
+          "description": "`ghost` — borderless select, blends into surrounding content (e.g. language picker in the header)."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "large",
+            "small"
+          ],
+          "description": "Size modifier."
+        },
+        "inline": {
+          "type": "boolean",
+          "description": "Adds `select--inline` — compact inline layout used for in-text selects (e.g. items-per-page picker)."
+        },
+        "state": {
+          "type": "enum",
+          "values": [
+            "is-error"
+          ],
+          "description": "Validation error state."
+        },
+        "disabled": {
+          "type": "boolean",
+          "description": "Adds the `disabled` HTML attribute."
+        }
+      },
+      "requires": []
+    },
+    "table": {
+      "description": "HTML table with `.table` base class. Pass pre-built `<tr>…</tr>` row markup as `body` (required) and optionally as `head` for `<thead>`. Use `variant` for visual style and `adaptive` for responsive mobile stacking (pair with `data-label` attributes on `<td>` elements).",
+      "template": "<table class=\"table{{#variant}} table--{{variant}}{{/variant}}{{#size}} table--{{size}}{{/size}}{{#adaptive}} table--adaptive{{/adaptive}}\">{{#head}}<thead>{{{head}}}</thead>{{/head}}<tbody>{{{body}}}</tbody></table>",
+      "params": {
+        "body": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML of `<tr>…</tr>` rows for `<tbody>`."
+        },
+        "head": {
+          "type": "string",
+          "description": "Raw HTML of `<tr><th>…</th></tr>` for `<thead>`. When omitted, no `<thead>` element is emitted."
+        },
+        "variant": {
+          "type": "enum",
+          "values": [
+            "simple",
+            "striped",
+            "clean",
+            "condensed"
+          ],
+          "description": "Visual style. `simple` — borderless with highlighted header; `striped` — alternating row background; `clean` — no borders at all; `condensed` — reduced cell padding."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "small"
+          ],
+          "description": "`small` reduces cell padding further."
+        },
+        "adaptive": {
+          "type": "boolean",
+          "description": "Adds `table--adaptive`. On narrow screens hides the `<thead>` and stacks each `<td>` as a block using `data-label` attributes for column headings."
+        }
+      },
+      "requires": []
+    },
+    "tabs": {
+      "description": "Tab navigation + content panels wired to the Tab JS module (initialized by default in main bundle). Pass pre-built nav items as `nav_items` and panel sections as `panels`. Default style uses `<ul class=\"tab-nav\">` with `.tab-nav__content--link` items. Set `filter: true` for a button-group filter variant. Add `block` + `rounded` for card-style tabs.",
+      "template": "{{^filter}}<ul class=\"tab-nav{{#block}} tab-nav--block{{/block}}{{#rounded}} tab-nav--rounded{{/rounded}}\" data-tabs-container>{{{nav_items}}}</ul>{{/filter}}{{#filter}}<div class=\"btn-group btn-group--tab btn-group--horizontal\" data-tabs-container>{{{nav_items}}}</div>{{/filter}}<article class=\"tabs\">{{{panels}}}</article>",
+      "params": {
+        "nav_items": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML of navigation items. Link/card style: `<li class=\"tab-nav__item\" data-tabs-item><a class=\"tab-nav__content tab-nav__content--link\" href=\"#id\" role=\"tab\">Label</a></li>`. Add `is-active` to the default tab's `<li>`. Filter style: `<a class=\"btn btn--tab is-active\" href=\"#id\" role=\"tab\" data-tabs-item>Label</a>`."
+        },
+        "panels": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML of panel sections: `<section id=\"id\" class=\"tab\">…</section>`. Add `is-active` to the initially visible panel (or omit and the JS will activate the first one)."
+        },
+        "filter": {
+          "type": "boolean",
+          "description": "Renders a button-group nav (`div.btn-group.btn-group--tab.btn-group--horizontal`) instead of `ul.tab-nav`. Nav items should be `<a class=\"btn btn--tab\">`."
+        },
+        "block": {
+          "type": "boolean",
+          "description": "Adds `tab-nav--block` — stretches nav items to full width. Used for card-style tabs; combine with `rounded: true`."
+        },
+        "rounded": {
+          "type": "boolean",
+          "description": "Adds `tab-nav--rounded` — rounds the tab nav items. Used with card-style tabs."
+        }
+      },
+      "requires": []
+    },
+    "dropdown": {
+      "description": "Absolute-positioned dropdown menu. Requires the Toggle + Dropdown JS modules (both initialized by default in the main bundle). Pass list items as `items`. Visibility is controlled via `aria-expanded` on the `.dropdown` element — wire a trigger button with `data-toggle=\"self, next\"` and `data-toggle-expand` to open/close it.",
+      "template": "<div class=\"dropdown{{#arrowhead}} dropdown--arrowhead{{/arrowhead}}{{#space}} dropdown--space{{/space}}{{#nowrap}} dropdown--nowrap{{/nowrap}}{{#align_right}} dropdown--align-right{{/align_right}}\" data-dropdown aria-expanded=\"false\"><div class=\"dropdown__wrap\">{{{items}}}</div></div>",
+      "params": {
+        "items": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML of menu content. Use `<a class=\"dropdown__item\" href=\"#\">Label</a>` for links and `<h5 class=\"dropdown__group\">Title </h5>` for group headings."
+        },
+        "arrowhead": {
+          "type": "boolean",
+          "description": "Adds `dropdown--arrowhead` — centers the menu below the trigger with an upward pointing arrow."
+        },
+        "space": {
+          "type": "boolean",
+          "description": "Adds `dropdown--space` — adds internal padding. Use when the dropdown contains forms or other interactive content."
+        },
+        "nowrap": {
+          "type": "boolean",
+          "description": "Adds `dropdown--nowrap` — removes the `max-height` scroll limit. Combine with `space` for interactive dropdowns."
+        },
+        "align_right": {
+          "type": "boolean",
+          "description": "Adds `dropdown--align-right` — aligns the menu to the right edge of its positioned parent instead of the left."
+        }
+      },
+      "requires": []
+    },
+    "carousel": {
+      "description": "Swiper-based carousel (`.carousel` wrapping a `.swiper`). Pass slide HTML as `slides`; each slide is `<div class=\"swiper-slide\">…</div>` (or an `<a>` for linked slides). Slides commonly carry a kind modifier — `carousel__banner` for hero banners, `carousel__book` for fan/collection promos, `carousel__tile` (290×290px square), `carousel__product-detail` (120px detail), `carousel__recently-viewed` (50px thumb), or `carousel-cards__item` (250px info card with `.card.card--well` inside). The Swiper library is bundled in the main script — no extra `requires` for the carousel itself; the page script auto-initialises every `.swiper` element. Variant flags are independent and can be combined: a typical banner is `fade_inactive: true` + `disable_inactive: true`; a recommended-books shelf is `fade_outside: true` (+ `white_surface: true` on light surfaces); an info-card USP row is `fade_outside: true` + `white_surface: true` + `carousel_cards: true`.",
+      "template": "<div class=\"carousel{{#fade_outside}} carousel--fade-outside{{#white_surface}} carousel--fade-outside-white{{/white_surface}}{{/fade_outside}}{{#fade_inside}} carousel--fade-inside{{#white_surface}} carousel--fade-inside-white{{/white_surface}}{{/fade_inside}}{{#fade_inactive}} carousel--fade-inactive{{/fade_inactive}}{{#disable_inactive}} carousel--disable-inactive{{/disable_inactive}}{{#fan}} carousel--fan{{/fan}}{{#shelf}} carousel--shelf{{/shelf}}{{#lazy}} carousel--lazy{{/lazy}}{{#carousel_cards}} carousel-cards{{/carousel_cards}}\"{{#fade_color}} style=\"--ms-fade-color: {{fade_color}}\"{{/fade_color}}><div class=\"swiper\"{{#swiper_options}} data-swiper-options='{{{swiper_options}}}'{{/swiper_options}}><div class=\"swiper-wrapper\">{{{slides}}}</div>{{#show_buttons}}<button class=\"btn btn--carousel btn--large btn--equal carousel__btn carousel__btn--prev\" type=\"button\" aria-label=\"Predchádzajúci\"><i class=\"far fa-arrow-left fa-2x\"></i></button><button class=\"btn btn--carousel btn--large btn--equal carousel__btn carousel__btn--next\" type=\"button\" aria-label=\"Nasledujúci\"><i class=\"far fa-arrow-right fa-2x\"></i></button>{{/show_buttons}}</div></div>",
+      "params": {
+        "slides": {
+          "type": "string",
+          "required": true,
+          "description": "Raw HTML of slide elements. Each slide is `<div class=\"swiper-slide\">…</div>` or `<a class=\"swiper-slide\" href=\"…\">…</a>`. Add a slide-kind modifier as needed: `carousel__banner` (hero banner, ~300px mobile / ~600px desktop), `carousel__book` (fan/collection promo), `carousel__tile` (290×290 square), `carousel__product-detail` (120px detail), `carousel__recently-viewed` (50px thumb), `carousel-cards__item` (250px info card — pair with `carousel_cards: true`)."
+        },
+        "swiper_options": {
+          "type": "string",
+          "description": "JSON string written verbatim into `data-swiper-options`. MUST be valid JSON with double-quoted keys on a single line, e.g. `{\"slidesPerView\":4,\"slidesPerGroup\":3,\"spaceBetween\":16}` or `{\"slidesPerView\":\"auto\",\"centeredSlides\":true,\"loop\":true}`. Stringify a JS object with `JSON.stringify(...)` — JS-style `{slidesPerView:4}` will fail to parse in the browser. Omit for Swiper defaults (one slide visible, no looping)."
+        },
+        "show_buttons": {
+          "type": "boolean",
+          "description": "Render absolutely-positioned prev/next nav buttons inside the `.swiper` container so the Swiper script can bind them via `swiper.querySelector('.carousel__btn--prev/next')`. Buttons use `btn btn--carousel btn--large btn--equal` with `fa-arrow-left/right.fa-2x` icons (matches production carousels). Hidden on mobile (< s breakpoint) via CSS; invisible until Swiper initialises."
+        },
+        "fade_outside": {
+          "type": "boolean",
+          "description": "Add `.carousel--fade-outside` — fades slides at the viewport edges with large 1800px gradient zones outside the container. Pair with `white_surface: true` on white/light backgrounds."
+        },
+        "fade_inside": {
+          "type": "boolean",
+          "description": "Add `.carousel--fade-inside` — compact 20px fade clipped inside the container (overflow hidden). Pair with `white_surface: true` on white/light backgrounds."
+        },
+        "fade_inactive": {
+          "type": "boolean",
+          "description": "Add `.carousel--fade-inactive` — non-active slides dimmed to 50% opacity. Common banner pattern; almost always combined with `disable_inactive: true`."
+        },
+        "disable_inactive": {
+          "type": "boolean",
+          "description": "Add `.carousel--disable-inactive` — non-active slides become non-clickable. Almost always paired with `fade_inactive: true`."
+        },
+        "fan": {
+          "type": "boolean",
+          "description": "Add `.carousel--fan` — fanned/rotated stack animation for collection promos. Slides should be `swiper-slide carousel__book`; the carousel script applies `data-carousel-fan-index` to visible slides for staged opacity/rotation."
+        },
+        "shelf": {
+          "type": "boolean",
+          "description": "Add `.carousel--shelf` — bottom-edge bookshelf shadow effect."
+        },
+        "lazy": {
+          "type": "boolean",
+          "description": "Add `.carousel--lazy` — reserves an 18rem min-height while lazy-loaded slides render."
+        },
+        "white_surface": {
+          "type": "boolean",
+          "description": "Switch the active fade variant to its `-white` flavor (`fade-outside-white` or `fade-inside-white`). Use when the carousel sits on a white/light section (`section--white`) instead of the default warm beige (`section--secondary`). No effect without `fade_outside` or `fade_inside`."
+        },
+        "fade_color": {
+          "type": "string",
+          "description": "Override the fade gradient color. Emits `style=\"--ms-fade-color: <value>\"` on the carousel root. Accepts any CSS color (e.g. `#9967a7`, `var(--ms-color-…)`). Useful when the carousel is embedded in a tinted block. Has no effect without a fade variant."
+        },
+        "carousel_cards": {
+          "type": "boolean",
+          "description": "Add `.carousel-cards` root modifier — info-card slider used for USP/feature rows (e.g. homepage footer). Slides should be `<div class=\"swiper-slide carousel-cards__item\"><div class=\"card card--well\">…</div></div>` (250px wide, ~90px min-height)."
+        }
+      },
+      "requires": [],
+      "addRequiresWhen": {
+        "show_buttons": [
+          "font-awesome"
+        ]
+      }
+    },
+    "product-card": {
+      "description": "Responsive product card (`.product.product--responsive`). Shows a book cover thumbnail on the left and title + author + price on the right. On desktop inside `.list--products--responsive`, the layout switches to a row (cover 65px wide). Use as `<li>` children inside `<ul class=\"list list--products\">` or `<ul class=\"list list--products list--products--responsive\">`.",
+      "template": "<article class=\"product product--responsive\"><div class=\"product__img\"><div class=\"product-cover product-cover--book\"><img src=\"{{cover_url}}\" alt=\"{{cover_alt}}\" class=\"d-block\" loading=\"lazy\"></div>{{#rating}}<div class=\"thumbnail__info\"><div class=\"badge\"><i class=\"fas fa-star text-color-yellow mr-tiny\"></i> {{rating}}</div></div>{{/rating}}</div><div class=\"product__info text-ellipsis\">{{#href}}<a class=\"product__title link link--black\" href=\"{{href}}\" title=\"{{title}}\">{{title}}</a>{{/href}}{{^href}}<div class=\"product__title\">{{title}}</div>{{/href}}{{#author}}<div class=\"text-small text-color-grey mb-small\">{{author}}</div>{{/author}}<div class=\"badges mb-none\">{{#discount}}<div class=\"badge badge--primary mr-small\">{{discount}}</div>{{/discount}}{{#price}}<div class=\"badge badge--transparent\">{{price}}</div>{{/price}}</div></div></article>",
+      "params": {
+        "title": {
+          "type": "string",
+          "required": true,
+          "description": "Book title. Displayed as a link when `href` is provided."
+        },
+        "cover_url": {
+          "type": "string",
+          "description": "URL of the cover image. Use `https://mrtns.sk/tovar/_m/<id>/m<id>.jpg` for real Martinus books, or a placeholder for demos."
+        },
+        "cover_alt": {
+          "type": "string",
+          "description": "Alt text for the cover image."
+        },
+        "href": {
+          "type": "string",
+          "description": "Link target for the title. When omitted the title renders as a `<div>` without an anchor."
+        },
+        "author": {
+          "type": "string",
+          "description": "Author name(s). Shown in grey text below the title."
+        },
+        "price": {
+          "type": "string",
+          "description": "Price string displayed in a transparent badge (e.g. `9,99 €`)."
+        },
+        "rating": {
+          "type": "string",
+          "description": "Rating value shown in a badge with a yellow star icon (e.g. `4.5`). When set, font-awesome is added to requires."
+        },
+        "discount": {
+          "type": "string",
+          "description": "Discount badge text shown in a primary (red) badge (e.g. `-20%`)."
+        }
+      },
+      "requires": [],
+      "addRequiresWhen": {
+        "rating": [
+          "font-awesome"
+        ]
+      }
+    },
+    "product-cover": {
+      "description": "Book cover image element (`.product-cover`). Renders an `<a>` wrapping a cover `<img>` with optional type and size modifiers. Use `type` to apply the correct visual treatment: `book` adds a spine shadow, `ebook` and `audiobook` color the badge, `collection` stacks multiple images. Size controls the max-width via CSS (`small` 25 px → `huge` 270 px).",
+      "template": "<a class=\"product-cover{{#type}} product-cover--{{type}}{{/type}}{{#size}} product-cover--{{size}}{{/size}}\"{{#href}} href=\"{{href}}\"{{/href}}>{{^collection}}<img src=\"{{cover_url}}\" alt=\"{{cover_alt}}\" class=\"d-block\" loading=\"lazy\" decoding=\"async\">{{/collection}}{{#collection}}{{{collection_images}}}{{/collection}}{{#badge_text}}<div class=\"product-cover__badge product-cover__badge--medium\">{{badge_text}}</div>{{/badge_text}}</a>",
+      "params": {
+        "cover_url": {
+          "type": "string",
+          "description": "URL of the cover image. Required for non-collection covers. Example: `https://mrtns.sk/tovar/_m/202/m202152.jpg`."
+        },
+        "cover_alt": {
+          "type": "string",
+          "description": "Alt text for the cover image."
+        },
+        "href": {
+          "type": "string",
+          "description": "Link target. Omit for a non-clickable cover."
+        },
+        "type": {
+          "type": "enum",
+          "values": [
+            "book",
+            "ebook",
+            "audiobook",
+            "collection"
+          ],
+          "description": "Visual treatment. `book` — rounded corners and left-edge spine gradient. `ebook` — green badge background. `audiobook` — purple badge background. `collection` — renders multiple stacked images (pass `collection_images`)."
+        },
+        "size": {
+          "type": "enum",
+          "values": [
+            "small",
+            "small-medium",
+            "medium",
+            "medium-large",
+            "large",
+            "xlarge",
+            "huge"
+          ],
+          "description": "Max-width size. Pixel values: `small` 25 px, `small-medium` 35 px, `medium` 50 px, `medium-large` 65 px, `large` 150 px, `xlarge` 170 px, `huge` 270 px."
+        },
+        "badge_text": {
+          "type": "string",
+          "description": "Text shown in `.product-cover__badge--medium` on top of the cover. Typical values: `E-kniha`, `Audiokniha`. Badge color is set by `type`."
+        },
+        "collection": {
+          "type": "boolean",
+          "description": "Switch to collection mode. When `true`, renders `collection_images` instead of a single `cover_url` image. Use with `type: collection`."
+        },
+        "collection_images": {
+          "type": "string",
+          "description": "Raw HTML of 2–4 `<img>` tags for collection mode. The CSS stacks them with progressive offsets; items beyond 4 are hidden. Example: `<img src=\"…\" class=\"d-block\"><img src=\"…\" class=\"d-block\">`."
+        }
+      },
+      "requires": []
     }
   }
 }
