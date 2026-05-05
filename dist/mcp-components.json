@@ -60,7 +60,7 @@
       }
     },
     "wrapper": {
-      "description": "Page wrapper. Centers content, caps width per breakpoint, and applies responsive horizontal padding. Use as the top-level container around page content so margins match other Martinus pages.",
+      "description": "Page wrapper. Centers content, caps width per breakpoint, and applies responsive horizontal padding. Always placed **inside** a `.section` element — never the other way around. The correct nesting is `<section class=\"section\"><div class=\"wrapper-main\">…</div></section>`.",
       "template": "<div class=\"wrapper-main\">{{{children}}}</div>",
       "params": {
         "children": {
@@ -69,7 +69,7 @@
         }
       },
       "example": {
-        "children": "<div class=\"section\"><h1 class=\"h1\">Vitajte v Martinuse</h1><p>Najväčšie kníhkupectvo na Slovensku.</p></div>"
+        "children": "<h1 class=\"h1\">Vitajte v Martinuse</h1><p>Najväčšie kníhkupectvo na Slovensku.</p>"
       },
       "requires": []
     },
@@ -211,8 +211,8 @@
       "requires": []
     },
     "section": {
-      "description": "Page section with vertical padding that scales at the M breakpoint. Use as a child of `wrapper` to separate logical areas (hero, listing, footer CTA, …). `size: small` reduces padding; `overflow: true` adds `overflow: hidden` for contained float/absolute children.",
-      "template": "<div class=\"section{{#size}} section--{{size}}{{/size}}{{#overflow}} section--overflow{{/overflow}}\">{{{children}}}</div>",
+      "description": "Page section with vertical padding that scales at the M breakpoint. **Wraps** the `wrapper` component — the correct nesting is always `<section class=\"section\"><div class=\"wrapper-main\">…</div></section>`, never the reverse. Use to separate logical areas (hero, listing, footer CTA, …). `size: small` reduces padding; `overflow: true` adds `overflow: hidden` for contained float/absolute children.",
+      "template": "<section class=\"section{{#size}} section--{{size}}{{/size}}{{#overflow}} section--overflow{{/overflow}}\"><div class=\"wrapper-main\">{{{children}}}</div></section>",
       "params": {
         "children": {
           "type": "string",
@@ -946,7 +946,7 @@
         },
         "fade_outside": {
           "type": "boolean",
-          "description": "Add `.carousel--fade-outside` — fades slides at the viewport edges with large 1800px gradient zones outside the container. Pair with `white_surface: true` on white/light backgrounds."
+          "description": "Add `.carousel--fade-outside` — fades slides at the viewport edges with large 1800px gradient zones outside the container. Pair with `white_surface: true` on white/light backgrounds. **The carousel's parent container must have `overflow: hidden`** to clip the bleed correctly — use `.section.section--overflow` (most common) or `.card__content.card__content--overflow` for card-based layouts."
         },
         "fade_inside": {
           "type": "boolean",
