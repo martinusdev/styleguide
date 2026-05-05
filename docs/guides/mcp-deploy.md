@@ -83,17 +83,13 @@ Vytvor `/opt/mcp-styleguide/docker-compose.yml`:
 ```yaml
 services:
   mcp:
-    image: ghcr.io/martinusdev/styleguide-mcp:latest
-    # alebo build lokálne:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile.http
+    build:
+      context: .
+      dockerfile: Dockerfile.http
     restart: unless-stopped
     environment:
       MCP_TRANSPORT: http
       MCP_PORT: "3001"
-      # Voliteľné — ak chceš iné CDN ako mrtns.sk:
-      # MARTINUS_STYLEGUIDE_ASSETS_URL: https://mrtns.sk/assets/martinus/lb/
     ports:
       - "127.0.0.1:3001:3001"
 ```
@@ -189,14 +185,10 @@ zdrojákom cez `MARTINUS_STYLEGUIDE_APP_DIR`).
 Pri každom merge do `master` treba na serveri:
 
 ```bash
-docker compose pull   # ak používaš ghcr.io image
-# alebo ak buildíš lokálne:
-git pull && docker compose build
+git pull
+docker compose build
 docker compose up -d
 ```
-
-Voliteľne: GitHub Actions workflow, ktorý po merge automaticky pushne
-nový image na ghcr.io a zavolá deploy na server.
 
 ---
 
