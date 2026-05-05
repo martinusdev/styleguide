@@ -1,0 +1,20 @@
+FROM node:20-alpine
+
+RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
+
+WORKDIR /mcp-server
+
+COPY package.json ./
+RUN yarn install --frozen-lockfile --prefer-offline
+
+COPY src/ ./src/
+
+RUN chown -R nodejs:nodejs /mcp-server
+USER nodejs
+
+ENV MCP_TRANSPORT=http
+ENV MCP_PORT=3001
+
+EXPOSE 3001
+
+CMD ["node", "src/index.js"]
