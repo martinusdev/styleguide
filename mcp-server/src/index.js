@@ -126,7 +126,6 @@ export class StyleguideServer {
 
     this.componentIndex = null;
     this.scssIndex = null;
-    this.pugMixinIndex = null;
     this.manifestCache = null;
     this.componentsCache = null;
     this.iconsCache = null;
@@ -744,28 +743,6 @@ export class StyleguideServer {
           },
         },
         {
-          name: 'list_pug_mixins',
-          description: 'List all available Pug mixins with their signatures and locations',
-          inputSchema: {
-            type: 'object',
-            properties: {},
-          },
-        },
-        {
-          name: 'get_mixin_info',
-          description: 'Get detailed information about a specific Pug mixin including its parameters and usage',
-          inputSchema: {
-            type: 'object',
-            properties: {
-              name: {
-                type: 'string',
-                description: 'Mixin name (without the + prefix)',
-              },
-            },
-            required: ['name'],
-          },
-        },
-        {
           name: 'get_data_structure',
           description: 'Get the structure of JSON data files used in templates',
           inputSchema: {
@@ -808,10 +785,6 @@ export class StyleguideServer {
             return await this.listScssUtilities(args.category || 'all');
           case 'find_scss_class':
             return await this.findScssClass(args.pattern);
-          case 'list_pug_mixins':
-            return await this.listPugMixins();
-          case 'get_mixin_info':
-            return await this.getMixinInfo(args.name);
           case 'list_icons':
             return await this.listIcons(args.style || null);
           case 'get_icon':
@@ -1170,104 +1143,6 @@ export class StyleguideServer {
         },
       ],
     };
-  }
-
-  async listPugMixins() {
-    const files = await glob('views/mixins/**/*.pug', { cwd: APP_DIR });
-    const mixins = [];
-
-    for (const file of files) {
-      const content = await readFile(join(APP_DIR, file), 'utf-8');
-      const matches = content.matchAll(/^mixin\s+([a-zA-Z0-9_-]+)\s*(\([^)]*\))?/gm);
-
-      for (const match of matches) {
-        mixins.push({
-          name: match[1],
-          params: match[2] || '()',
-          file,
-        });
-      }
-    }
-
-    return {
-      content: [
-        {
-          type: 'text',
-          text: JSON.stringify(mixins, null, 2),
-        },
-      ],
-    };
-  }
-
-  _extractMixinBlock(content, name) {
-    const lines = content.split('\n');
-    const escapedName = name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const signatureRe = new RegExp(`^(\\s*)mixin\\s+${escapedName}(\\s*\\([^)]*\\))?\\s*$`);
-
-    let startIdx = -1;
-    let baseIndent = 0;
-    let params = '()';
-
-    for (let i = 0; i < lines.length; i++) {
-      const m = lines[i].match(signatureRe);
-      if (m) {
-        startIdx = i;
-        baseIndent = m[1].length;
-        params = (m[2] || '').trim() || '()';
-        break;
-      }
-    }
-
-    if (startIdx === -1) return null;
-
-    let endIdx = lines.length;
-    for (let i = startIdx + 1; i < lines.length; i++) {
-      const line = lines[i];
-      if (line.trim() === '') continue;
-      const indent = line.match(/^(\s*)/)[1].length;
-      if (indent <= baseIndent) {
-        endIdx = i;
-        break;
-      }
-    }
-
-    while (endIdx > startIdx + 1 && lines[endIdx - 1].trim() === '') {
-      endIdx--;
-    }
-
-    return {
-      params,
-      line: startIdx + 1,
-      content: lines.slice(startIdx, endIdx).join('\n'),
-    };
-  }
-
-  async getMixinInfo(name) {
-    const files = await glob('views/mixins/**/*.pug', { cwd: APP_DIR });
-
-    for (const file of files) {
-      const content = await readFile(join(APP_DIR, file), 'utf-8');
-      const block = this._extractMixinBlock(content, name);
-
-      if (block) {
-        return {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({
-                name,
-                params: block.params,
-                file,
-                line: block.line,
-                content: block.content,
-              }, null, 2),
-            },
-          ],
-        };
-      }
-    }
-
-    throw new Error(`Mixin "${name}" not found`);
   }
 
   _parseDataFile(filePath, content) {

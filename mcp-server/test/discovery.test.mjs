@@ -139,10 +139,9 @@ test('get_component_info: every parametric component renders a canonical example
 });
 
 test('get_component_info falls back to filesystem in internal mode', async () => {
-  // booksCarouselRecommended is a pug mixin file under app/views/mixins —
-  // not in the parametric registry, but readable from disk. Internal mode
-  // should walk the filesystem after the parametric miss.
-  // Pick a name guaranteed to exist as a module file.
+  // Pick a Pug module name that exists on disk under app/views/modules
+  // but is not in the parametric registry — internal mode should walk the
+  // filesystem after the parametric miss and return raw source.
   const list = await call(server.listComponents('all'));
   const moduleOnly = list.modules.pug
     .map(m => m.name)
