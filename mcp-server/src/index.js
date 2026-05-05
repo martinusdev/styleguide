@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
+import { createServer } from 'http';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { StreamableHTTPServerTransport } from '@modelcontextprotocol/sdk/server/streamableHttp.js';
 import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
@@ -1199,11 +1201,41 @@ export class StyleguideServer {
     await this.server.connect(transport);
     console.error('Martinus Styleguide MCP server running on stdio');
   }
+
+  async runHttp(port = 3001) {
+    const httpServer = createServer(async (req, res) => {
+      const url = new URL(req.url, `http://localhost:${port}`);
+
+      if (url.pathname !== '/mcp') {
+        res.writeHead(404, { 'Content-Type': 'text/plain' });
+        res.end('Not found');
+        return;
+      }
+
+      const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
+      res.on('close', () => transport.close());
+      await this.server.connect(transport);
+      await transport.handleRequest(req, res);
+    });
+
+    await new Promise((resolve, reject) => {
+      httpServer.on('error', reject);
+      httpServer.listen(port, '0.0.0.0', resolve);
+    });
+
+    console.error(`Martinus Styleguide MCP server listening on http://0.0.0.0:${port}/mcp`);
+  }
 }
 
 // Only start the server when executed as the entry point — importing this
 // module from tests (or any other consumer) must not spawn a stdio transport.
 if (process.argv[1] && fileURLToPath(import.meta.url) === process.argv[1]) {
   const server = new StyleguideServer();
-  server.run().catch(console.error);
+  const useHttp = (process.env.MCP_TRANSPORT || 'stdio') === 'http';
+  if (useHttp) {
+    const port = parseInt(process.env.MCP_PORT || '3001', 10);
+    server.runHttp(port).catch(console.error);
+  } else {
+    server.run().catch(console.error);
+  }
 }

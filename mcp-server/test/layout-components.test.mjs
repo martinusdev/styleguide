@@ -116,17 +116,17 @@ test('col accepts a numeric sizeM (JSON-RPC number → string enum)', async () =
 
 test('section renders base .section around children', async () => {
   const { html } = await render({ name: 'section', children: '<h2>Hero</h2>' });
-  assert.equal(html, '<div class="section"><h2>Hero</h2></div>');
+  assert.equal(html, '<section class="section"><div class="wrapper-main"><h2>Hero</h2></div></section>');
 });
 
 test('section with size=small adds .section--small', async () => {
   const { html } = await render({ name: 'section', size: 'small' });
-  assert.equal(html, '<div class="section section--small"></div>');
+  assert.equal(html, '<section class="section section--small"><div class="wrapper-main"></div></section>');
 });
 
 test('section with overflow=true adds .section--overflow', async () => {
   const { html } = await render({ name: 'section', overflow: true });
-  assert.equal(html, '<div class="section section--overflow"></div>');
+  assert.equal(html, '<section class="section section--overflow"><div class="wrapper-main"></div></section>');
 });
 
 test('section combines size and overflow modifiers', async () => {
@@ -135,7 +135,7 @@ test('section combines size and overflow modifiers', async () => {
     size: 'small',
     overflow: true,
   });
-  assert.equal(html, '<div class="section section--small section--overflow"></div>');
+  assert.equal(html, '<section class="section section--small section--overflow"><div class="wrapper-main"></div></section>');
 });
 
 // ---------------------------------------------------------------------------
@@ -152,22 +152,21 @@ test('children slot preserves raw HTML (no escaping)', async () => {
 // ---------------------------------------------------------------------------
 // Composition — agent-style nested render
 
-test('nested wrapper > section > row > col composes cleanly', async () => {
+test('nested section > row > col composes cleanly', async () => {
   const col = (await render({ name: 'col', sizeM: '6', children: 'A' })).html;
   const col2 = (await render({ name: 'col', sizeM: '6', children: 'B' })).html;
   const row = (await render({ name: 'row', children: col + col2 })).html;
   const section = (await render({ name: 'section', children: row })).html;
-  const wrapper = (await render({ name: 'wrapper', children: section })).html;
   assert.equal(
-    wrapper,
-    '<div class="wrapper-main">'
-    + '<div class="section">'
+    section,
+    '<section class="section">'
+    + '<div class="wrapper-main">'
     + '<div class="row">'
     + '<div class="col col--m-6">A</div>'
     + '<div class="col col--m-6">B</div>'
     + '</div>'
     + '</div>'
-    + '</div>'
+    + '</section>'
   );
 });
 
