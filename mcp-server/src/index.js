@@ -114,7 +114,19 @@ function _suggestSimilarIcons(query, pool, limit = 5) {
  */
 export class StyleguideServer {
   constructor() {
-    this.server = new Server(
+    this.componentIndex = null;
+    this.scssIndex = null;
+    this.manifestCache = null;
+    this.componentsCache = null;
+    this.iconsCache = null;
+    this.utilitiesCache = null;
+
+    this.server = this.createServer();
+    this.setupErrorHandling(this.server);
+  }
+
+  createServer() {
+    const server = new Server(
       {
         name: 'martinus-styleguide',
         version: '1.0.0',
@@ -125,16 +137,8 @@ export class StyleguideServer {
         },
       }
     );
-
-    this.componentIndex = null;
-    this.scssIndex = null;
-    this.manifestCache = null;
-    this.componentsCache = null;
-    this.iconsCache = null;
-    this.utilitiesCache = null;
-
-    this.setupHandlers();
-    this.setupErrorHandling();
+    this.setupHandlers(server);
+    return server;
   }
 
   isInternalMode() {
@@ -578,18 +582,18 @@ export class StyleguideServer {
     };
   }
 
-  setupErrorHandling() {
-    this.server.onerror = (error) => {
+  setupErrorHandling(server) {
+    server.onerror = (error) => {
       console.error('[MCP Error]', error);
     };
 
     process.on('SIGINT', async () => {
-      await this.server.close();
+      await server.close();
       process.exit(0);
     });
   }
 
-  setupHandlers() {
+  setupHandlers(server) {
     const externalTools = [
       {
         name: 'get_setup',
@@ -761,11 +765,11 @@ export class StyleguideServer {
 
     const internalToolNames = new Set(internalTools.map(t => t.name));
 
-    this.server.setRequestHandler(ListToolsRequestSchema, async () => ({
+    server.setRequestHandler(ListToolsRequestSchema, async () => ({
       tools: this.isInternalMode() ? [...externalTools, ...internalTools] : externalTools,
     }));
 
-    this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
+    server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const { name, arguments: args = {} } = request.params;
 
       try {
@@ -1212,10 +1216,22 @@ export class StyleguideServer {
         return;
       }
 
+      const server = this.createServer();
       const transport = new StreamableHTTPServerTransport({ sessionIdGenerator: undefined });
-      res.on('close', () => transport.close());
-      await this.server.connect(transport);
-      await transport.handleRequest(req, res);
+      res.on('close', () => {
+        transport.close();
+        server.close();
+      });
+      try {
+        await server.connect(transport);
+        await transport.handleRequest(req, res);
+      } catch (err) {
+        console.error('[MCP HTTP] request failed:', err);
+        if (!res.headersSent) {
+          res.writeHead(500, { 'Content-Type': 'text/plain' });
+          res.end('Internal error');
+        }
+      }
     });
 
     await new Promise((resolve, reject) => {
