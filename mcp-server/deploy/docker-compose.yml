@@ -1,0 +1,28 @@
+# Public HTTP deploy — používa sa na serveri (napr. DigitalOcean Droplet).
+# Lokálny stdio variant je v ../../docker/docker-compose.yml.
+#
+# Spustenie:
+#   cd mcp-server/deploy && docker compose up -d --build
+
+name: martinus-styleguide-mcp
+
+services:
+  mcp:
+    build:
+      context: ..
+      dockerfile: Dockerfile.http
+    container_name: martinus-styleguide-mcp-http
+    restart: unless-stopped
+
+    security_opt:
+      - no-new-privileges:true
+
+    environment:
+      MCP_TRANSPORT: http
+      MCP_PORT: "3001"
+      # External mode — server číta dáta z mrtns.sk/assets, nie z lokálneho FS.
+      # MARTINUS_STYLEGUIDE_APP_DIR zámerne nie je nastavená.
+
+    # Bind iba na loopback — verejne dostupné cez nginx reverse proxy.
+    ports:
+      - "127.0.0.1:3001:3001"

@@ -1,19 +1,22 @@
 # MCP Server — deploy na Digital Ocean
 
-*Aktualizované: 2026-05-05*
+*Aktualizované: 2026-05-06*
 
-Návod na nasadenie MCP servera ako verejne dostupného HTTP endpointu.
-Lokálne stdio-based spustenie (`./mcp.sh`) zostáva nezmenené — tu ide
-o samostatný always-on server pre tím a externé nástroje (Lovable, Cursor).
+Návod na nasadenie MCP servera ako verejne dostupného HTTP endpointu pre tím
+a externé nástroje (Cursor, Lovable). Lokálne stdio spustenie (`./mcp.sh`)
+zostáva nezmenené — tu ide o samostatný always-on server.
+
+Všetka konfigurácia (Dockerfile, compose, nginx) je versionovaná v repe pod
+`mcp-server/`. Deploy je `git clone` + `docker compose up`. Nič sa na serveri
+ručne nevytvára.
 
 ---
 
 ## Predpoklady
 
-- DO Droplet: **Basic, 1 vCPU / 1 GB RAM** stačí (napr. `s-1vcpu-1gb`, ~$6/mes)
+- DO Droplet: **Basic, 1 vCPU / 1 GB RAM** stačí (`s-1vcpu-1gb`, ~$6/mes)
 - OS: Ubuntu 24.04 LTS
-- Doména alebo subdoména smerujúca na Droplet (napr. `mcp.martinus.dev`)
-- Docker + Docker Compose nainštalované na Dropleta
+- Doména/subdoména smerujúca na Droplet (napr. `mcp.martinus.dev`)
 
 ---
 
@@ -23,107 +26,63 @@ o samostatný always-on server pre tím a externé nástroje (Lovable, Cursor).
 klient (Claude Code / Cursor / Lovable)
     ↓  HTTPS
 nginx  (SSL termination, reverse proxy)
-    ↓  HTTP
-MCP server  (Node.js, port 3001)
-    ↓  HTTPS fetch (s 5-min TTL cache)
+    ↓  HTTP (127.0.0.1:3001)
+MCP server  (Node.js, Docker)
+    ↓  HTTPS fetch (5-min TTL cache)
 mrtns.sk/assets  (mcp-components.json, utilities.json, …)
 ```
 
 Server beží v **external mode** — dáta načítava z CDN (`mrtns.sk/assets`),
-nie z lokálneho súborového systému. Takže nepotrebuje kópiu repo.
+nie z lokálneho FS. Repo na serveri slúži len ako zdroj pre `docker build`.
 
 ---
 
 ## 1. Príprava Droplet
 
 ```bash
-# Ako root / sudo user
 apt update && apt upgrade -y
-apt install -y docker.io docker-compose-v2 nginx certbot python3-certbot-nginx
-
+apt install -y docker.io docker-compose-v2 nginx certbot python3-certbot-nginx git
 systemctl enable --now docker
 ```
 
 ---
 
-## 2. Dockerfile pre HTTP mód
+## 2. Klonovanie repa
 
-Súčasný `mcp-server/Dockerfile` spúšťa server cez stdio. Pridaj nový
-`mcp-server/Dockerfile.http` pre server deploy:
+Ľubovoľná cesta — server nemá hard-coded path. Príklad:
 
-```dockerfile
-FROM node:20-alpine
-
-RUN addgroup -g 1001 -S nodejs && adduser -S nodejs -u 1001
-
-WORKDIR /mcp-server
-
-COPY package.json ./
-RUN yarn install --frozen-lockfile --prefer-offline
-
-COPY src/ ./src/
-
-RUN chown -R nodejs:nodejs /mcp-server
-USER nodejs
-
-ENV MCP_TRANSPORT=http
-ENV MCP_PORT=3001
-
-EXPOSE 3001
-
-CMD ["node", "src/index.js"]
+```bash
+git clone https://github.com/martinusdev/styleguide.git /opt/martinus-styleguide
+cd /opt/martinus-styleguide
 ```
 
 ---
 
-## 3. docker-compose na serveri
+## 3. Spustenie MCP servera
 
-Vytvor `/opt/mcp-styleguide/docker-compose.yml`:
-
-```yaml
-services:
-  mcp:
-    build:
-      context: .
-      dockerfile: Dockerfile.http
-    restart: unless-stopped
-    environment:
-      MCP_TRANSPORT: http
-      MCP_PORT: "3001"
-    ports:
-      - "127.0.0.1:3001:3001"
+```bash
+cd /opt/martinus-styleguide/mcp-server/deploy
+docker compose up -d --build
+docker compose logs -f   # overenie
 ```
 
-`127.0.0.1:3001` — kontajner nie je priamo dostupný zvonku, iba cez nginx.
+Kontajner sa nabinduje na `127.0.0.1:3001` — zvonku je nedostupný, čaká
+na nginx.
 
 ---
 
 ## 4. nginx konfigurácia
 
-`/etc/nginx/sites-available/mcp-styleguide`:
-
-```nginx
-server {
-    listen 80;
-    server_name mcp.martinus.dev;
-
-    location / {
-        proxy_pass http://127.0.0.1:3001;
-        proxy_http_version 1.1;
-
-        # SSE streaming (MCP používa Server-Sent Events)
-        proxy_set_header Connection '';
-        proxy_buffering off;
-        proxy_cache off;
-        chunked_transfer_encoding on;
-
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-```
+Skopíruj template z repa, uprav `server_name`, vytvor symlink:
 
 ```bash
+cp /opt/martinus-styleguide/mcp-server/deploy/nginx.conf.example \
+   /etc/nginx/sites-available/mcp-styleguide
+
+# Uprav server_name na svoju doménu
+sed -i 's/CHANGE_ME.example.com/mcp.martinus.dev/' \
+   /etc/nginx/sites-available/mcp-styleguide
+
 ln -s /etc/nginx/sites-available/mcp-styleguide /etc/nginx/sites-enabled/
 nginx -t && systemctl reload nginx
 ```
@@ -140,15 +99,7 @@ Certbot upraví nginx config automaticky a nastaví auto-renew.
 
 ---
 
-## 6. Spustenie
-
-```bash
-cd /opt/mcp-styleguide
-docker compose up -d
-docker compose logs -f   # overenie
-```
-
-Test:
+## 6. Test
 
 ```bash
 curl -X POST https://mcp.martinus.dev/mcp \
@@ -156,13 +107,14 @@ curl -X POST https://mcp.martinus.dev/mcp \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
 ```
 
-Očakávaný výsledok: JSON s listom nástrojov (`list_components`, `get_component`, …).
+Očakávaný výsledok: JSON s listom nástrojov (`list_components`,
+`get_component`, …).
 
 ---
 
-## 7. Konfigurácia v Claude Code (po nasadení)
+## 7. Konfigurácia v Claude Code
 
-Namiesto lokálneho stdio spustenia stačí v `~/.config/claude/claude_desktop_config.json`:
+V `~/.config/claude/claude_desktop_config.json`:
 
 ```json
 {
@@ -175,19 +127,18 @@ Namiesto lokálneho stdio spustenia stačí v `~/.config/claude/claude_desktop_c
 }
 ```
 
-Lokálne `./mcp.sh` zostáva pre tých, čo chcú internal mode (prístup k
-zdrojákom cez `MARTINUS_STYLEGUIDE_APP_DIR`).
+Lokálne `./mcp.sh` zostáva pre internal mode (prístup k zdrojákom cez
+`MARTINUS_STYLEGUIDE_APP_DIR`).
 
 ---
 
 ## 8. Aktualizácie
 
-Pri každom merge do `master` treba na serveri:
-
 ```bash
+cd /opt/martinus-styleguide
 git pull
-docker compose build
-docker compose up -d
+cd mcp-server/deploy
+docker compose up -d --build
 ```
 
 ---
@@ -195,6 +146,4 @@ docker compose up -d
 ## Čo ešte treba rozhodnúť
 
 - [ ] Doménové meno (`mcp.martinus.dev` alebo iné)
-- [ ] Či buildovať image v GitHub Actions a pushovať na ghcr.io,
-      alebo buildovať priamo na serveri z git pull
 - [ ] Monitoring / uptime check (napr. UptimeRobot — zadarmo)
