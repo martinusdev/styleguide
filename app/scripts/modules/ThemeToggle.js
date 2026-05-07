@@ -103,10 +103,7 @@ class ThemeToggle {
     // Listen for system preference changes
     window.matchMedia('(prefers-color-scheme: dark)')
       .addEventListener('change', (e) => {
-        // Only auto-switch if user hasn't set a preference
-        if (!localStorage.getItem(this.storageKey)) {
-          this.applyTheme(e.matches ? 'dark' : 'light');
-        }
+        this.applyTheme(e.matches ? 'dark' : 'light');
       });
   }
 }
