@@ -57,12 +57,12 @@ class ThemeToggle {
 
     this.toggles.forEach((toggle) => {
       toggle.setAttribute('aria-pressed', isDark);
-      toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      toggle.classList.toggle('is-active', isDark);
 
-      if (isDark) {
-        toggle.classList.add('is-active');
-      } else {
-        toggle.classList.remove('is-active');
+      const label = isDark ? toggle.dataset.titleDark : toggle.dataset.titleLight;
+      if (label) {
+        toggle.setAttribute('aria-label', label);
+        toggle.setAttribute('title', label);
       }
     });
   }
