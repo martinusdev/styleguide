@@ -90,6 +90,8 @@
   --#{$prefix}megamenu-sidebar-bg: #{_color(bg)};
   --#{$prefix}megamenu-mobile-nav-bg: #{_color(black)};
   --#{$prefix}megamenu-overlay-bg: rgba(0, 0, 0, 0.5);
+  --#{$prefix}megamenu-mobile-nav-active-indicator: transparent;
+  --#{$prefix}megamenu-mobile-nav-active-bg: #{$color-white};
 
   // === Buttons ===
   // Most buttons have same colors in light/dark as they provide enough contrast
@@ -292,8 +294,11 @@ html[data-theme='dark'],
 
   // === Megamenu ===
   --#{$prefix}megamenu-bg: var(--#{$prefix}surface-primary);
-  --#{$prefix}megamenu-sidebar-bg: var(--#{$prefix}surface-secondary);
+  --#{$prefix}megamenu-sidebar-bg: var(--#{$prefix}surface-secondary-dark);
+  --#{$prefix}megamenu-mobile-nav-bg: var(--#{$prefix}surface-secondary);
   --#{$prefix}megamenu-overlay-bg: rgba(255, 255, 255, 0.1);
+  --#{$prefix}megamenu-mobile-nav-active-indicator: var(--#{$prefix}interactive-primary);
+  --#{$prefix}megamenu-mobile-nav-active-bg: rgba(255, 107, 107, 0.12);
 
   // === Carousel ===
   --#{$prefix}fade-color: var(--#{$prefix}surface-secondary);
