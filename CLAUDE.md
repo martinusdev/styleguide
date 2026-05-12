@@ -134,6 +134,8 @@ Projekt používa Bootstrap 5.3.7 utilities API s vlastnými utilitami definovan
 9. **Tools**: Dodatočné utility
 10. **Shame**: Rýchle opravy (na refaktorovanie)
 
+Konvencie pre rozhodovanie (kedy rozšíriť vs vytvoriť nový komponent, modules vs components vs pages): `docs/components/conventions.md`.
+
 ### Architektúra JavaScriptu
 
 - **Vstupný bod**: `app/scripts/main.js`
