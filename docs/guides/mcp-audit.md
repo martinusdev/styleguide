@@ -149,6 +149,26 @@ Cieľová sada (názvy finálne až po review):
 
 **Dependency model:** každý tool ktorý vracia HTML (komponent/ikonu) deklaruje `requires: string[]` — zoznam optional asset balíčkov (napr. `["font-awesome"]`). V schéme komponentu je deklaratívny `addRequiresWhen` — podmienené pridanie balíčkov podľa toho, či je konkrétny param nastavený (napr. `addRequiresWhen: { icon: ["font-awesome"] }` pre `buttons`). Agent `requires` zozbiera a môže ich použiť ako indikátor, že hosted bundle už obsahuje všetko potrebné (FA je súčasť `get_setup` defaultu).
 
+**`utilityHint` cheat sheet:** `get_setup` aj `get_starter_template` vracajú v odpovedi pole `utilityHint` — krátky súhrn konvencií, ktoré agent uvidí ešte pred prvým generovaním markupu. Zdroj je konštanta `UTILITY_HINT` v `mcp-server/src/index.js`, snapshot testy nad ňou žijú v `mcp-server/test/starter-template.test.mjs`.
+
+Aktuálne kľúče:
+
+| Kľúč | Pokrýva |
+|---|---|
+| `closedSystem` | Hlavné varovanie — Martinus je uzavretý dizajn systém, žiadne defaulty z Bootstrap/Tailwind/full FA Pro. Menuje typické pitfally (`fa-truck`, `fa-percent`, `col-md-6`, `mb-3`). |
+| `notice` | Pripomienka, že utility triedy nemajú Bootstrap pomenovanie. |
+| `breakpoints` | `-s / -m / -l / -xl` (NIE `-sm / -md / -lg`). |
+| `grid` | `row > col col--{1..12} col--{s\|m\|l\|xl}-{1..12}`. |
+| `spacing` | Spacery `none / tiny / small / medium / large` + axes (`m`, `mx`, `my`, `mt`, …). |
+| `color` | `text-color-*` a `bg-*` palety, design tokens `--ms-*`. |
+| `text` | Typography helpers (`text-small`, `text-bold`, `text-uppercase`, `text-ellipsis`). |
+| `typography` | **`<i>` pre italics; `<em>` je rezervovaný** — styleguide ho renderuje s podčiarknutím ako tooltip/hint indikátor, nie kurzívou. |
+| `buttons` | **`.btn` má defaultný `margin-bottom`** — v toolbaroch, chrome navi, flex skupinách, `card__footer` a tabuľkových akciách pridať `mb-none`, inak buttony „odskočia" hore. |
+| `display_flex` | `d-*` display + flex utility (`justify-content-*`, `align-items-*`, …). |
+| `discover` | Pointer na `get_utilities` pre úplnú referenciu. |
+
+Pridanie nového kľúča: edit `UTILITY_HINT` v `mcp-server/src/index.js` + test v `starter-template.test.mjs`. Konvencia: krátka veta s konkrétnym príkladom + dôvod, ak nie je samozrejmý.
+
 ### Fáza 3 — Inventár interaktívnych komponentov ✅
 
 Klasifikácia všetkých 27 modulov v `app/scripts/modules/`:

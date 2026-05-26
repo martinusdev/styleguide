@@ -58,6 +58,8 @@ const UTILITY_HINT = {
   spacing: 'Sizes: none / tiny / small / medium / large. m-/mt-/mr-/mb-/ml-/mx-/my- and p-/pt-/.../py- with breakpoint variants (e.g. mb-small, mt-m-large).',
   color: 'text-color-{grey|primary|success|warning|danger|black|white|...} for foreground; bg-{primary|secondary|success|...} for background; CSS design tokens via --ms-color-* / --ms-fade-color.',
   text: 'text-{small|medium|large|big|huge}, text-{left|center|right}, text-bold, text-uppercase, text-ellipsis.',
+  typography: 'Use <i> for italics. <em> is RESERVED — Martinus renders it with a dotted underline as a tooltip / hint indicator, NOT italic. Do not swap them: <em> for italics will look like a tooltip trigger.',
+  buttons: '.btn ships with a default margin-bottom (tuned for buttons standing alone in prose). In toolbars, flex button groups, sticky chrome / nav bars, card__footer rows, or table action cells, ADD `mb-none` — otherwise buttons appear nudged up versus their neighbors.',
   display_flex: 'd-{none|block|flex|inline-block} (with -s/-m/-l/-xl variants), flex-{row|column|wrap|nowrap}, justify-content-{start|center|end|between|around}, align-items-{start|center|end|stretch}.',
   discover: 'Call get_utilities (optionally with category in [flex, spacing, display, text, visibility, sizing, visual, layout, colors]) for the complete reference.',
 };

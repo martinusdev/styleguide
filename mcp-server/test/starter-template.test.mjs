@@ -96,6 +96,27 @@ test('starter response carries a utilityHint cheat sheet', async () => {
   assert.match(payload.utilityHint.discover, /get_utilities/);
 });
 
+test('utilityHint warns about <em> vs <i> typography convention', async () => {
+  const { utilityHint } = await renderStarter();
+  assert.ok(utilityHint.typography, 'typography field is present');
+  // Both tags must be named so the LLM knows which to use and which to avoid.
+  assert.match(utilityHint.typography, /<i>/);
+  assert.match(utilityHint.typography, /<em>/);
+  // The reason — tooltip / hint underline — guards against future edits
+  // that drop the rationale and leave only "use <i>" without context.
+  assert.match(utilityHint.typography, /tooltip|hint|underline/i);
+});
+
+test('utilityHint warns about .btn default margin-bottom', async () => {
+  const { utilityHint } = await renderStarter();
+  assert.ok(utilityHint.buttons, 'buttons field is present');
+  // The class to add is the actionable bit — keep the test guarding it.
+  assert.match(utilityHint.buttons, /mb-none/);
+  // Name at least one context where the bug shows up; the lived examples
+  // (toolbar / chrome / button group) are what makes the warning click.
+  assert.match(utilityHint.buttons, /toolbar|chrome|nav|group|footer/i);
+});
+
 test('starter response carries a closedSystem warning naming common pitfalls', async () => {
   const { utilityHint } = await renderStarter();
   assert.match(utilityHint.closedSystem, /CLOSED design system/);
