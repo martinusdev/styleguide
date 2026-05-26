@@ -1,0 +1,1764 @@
+<!DOCTYPE html>
+<html lang="sk" class="fonts-loaded">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MCP · Slide Deck (Martinus Styleguide)</title>
+
+  <!-- Martinus Styleguide assets -->
+  <link rel="stylesheet" href="https://mrtns.sk/assets/martinus/lb/fonts/Tabac-Sans/style.css?v=0f2ed26c">
+  <link rel="stylesheet" href="https://mrtns.sk/assets/martinus/lb/styles/main.css?v=bd16785f">
+
+  <style>
+    /* ─── deck mechanics ────────────────────────── */
+    html, body { height: 100%; overflow: hidden; margin: 0; }
+    body { background: var(--ms-surface-secondary); }
+
+    .deck { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .45s ease, transform .45s ease;
+      transform: translateY(20px);
+      overflow: auto;
+      padding-bottom: 80px; /* room for chrome */
+      /* bump base text size for slides — Martinus default is 14px,
+         that's too small for projection / presentation context */
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: none;
+      z-index: 2;
+    }
+    .slide.previous { transform: translateY(-20px); }
+
+    .slide .section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 60px;
+      padding-bottom: 100px;
+    }
+    .slide .wrapper-main { width: 100%; }
+
+    /* alternating slide backgrounds */
+    .slide:nth-child(even) > .section { background: var(--ms-surface-primary); }
+
+    /* bump Martinus text-* utilities within slide context — presentation
+       readability trumps strict utility-class consistency here */
+    .slide .text-small { font-size: 13px; }
+    .slide .text-medium { font-size: 15px; }
+    .slide .text-large { font-size: 19px; }
+    /* card titles a touch bigger too */
+    .slide .h4 { font-size: 22px; }
+    .slide .h5 { font-size: 19px; }
+    .slide .h6 { font-size: 17px; }
+
+    /* ─── slide chrome (bottom bar) ─────────────── */
+    .chrome {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      height: 64px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 0 20px;
+      background: rgba(255, 255, 255, .92);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-top: 1px solid var(--ms-border-default);
+    }
+    .chrome-logo {
+      font-weight: 700;
+      color: var(--ms-text-primary);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+    .chrome-logo b {
+      background: var(--ms-interactive-primary);
+      color: white;
+      padding: 1px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+    }
+    .chrome-progress {
+      flex: 1;
+      max-width: 240px;
+      height: 3px;
+      background: var(--ms-border-default);
+      position: relative;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .chrome-bar {
+      position: absolute;
+      inset: 0 auto 0 0;
+      background: var(--ms-interactive-primary);
+      width: 0%;
+      transition: width .4s ease;
+    }
+    .chrome-counter {
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--ms-text-primary);
+      letter-spacing: .04em;
+      font-variant-numeric: tabular-nums;
+    }
+    .chrome-counter .t { color: var(--ms-text-secondary); }
+    .chrome-hint {
+      font-size: 11px;
+      color: var(--ms-text-secondary);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .chrome-hint kbd {
+      font-family: monospace;
+      font-size: 10px;
+      background: var(--ms-surface-secondary);
+      border: 1px solid var(--ms-border-default);
+      border-radius: 3px;
+      padding: 1px 5px;
+      margin: 0 1px;
+      color: var(--ms-text-primary);
+    }
+    .chrome-nav { display: flex; gap: 4px; }
+    @media (max-width: 720px) {
+      .chrome-hint, .chrome-progress { display: none; }
+    }
+
+    /* ─── shared slide bits ──────────────────────── */
+    .slide-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: monospace;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: var(--ms-interactive-primary);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .slide-tag .dot {
+      width: 8px; height: 8px;
+      background: var(--ms-interactive-primary);
+      border-radius: 50%;
+    }
+    .slide-tag .rule {
+      width: 60px;
+      height: 1px;
+      background: var(--ms-border-default);
+    }
+
+    h1.slide-title {
+      font-size: clamp(52px, 7vw, 96px) !important;
+      line-height: 1 !important;
+      margin: 0 0 24px !important;
+      letter-spacing: -.025em;
+    }
+    h2.slide-heading {
+      font-size: clamp(36px, 5.2vw, 68px) !important;
+      line-height: 1.05 !important;
+      margin: 0 0 20px !important;
+      letter-spacing: -.02em;
+    }
+    .slide-lead {
+      font-size: clamp(20px, 2.1vw, 28px);
+      line-height: 1.45;
+      color: var(--ms-text-secondary);
+      max-width: 60ch;
+      margin-bottom: 24px;
+    }
+
+    /* big numeral background */
+    .big-num {
+      font-size: clamp(140px, 22vw, 320px);
+      line-height: .8;
+      color: var(--ms-interactive-primary);
+      opacity: .08;
+      font-weight: 300;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* code block */
+    .mcp-code {
+      background: #1c1917;
+      color: #e7e5e4;
+      padding: 24px 28px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-family: 'JetBrains Mono', 'SF Mono', monospace;
+      font-size: 15px;
+      line-height: 1.7;
+      position: relative;
+    }
+    .mcp-code::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 16px;
+      background: var(--ms-interactive-primary);
+      color: white;
+      font-family: monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      padding: 2px 10px;
+      text-transform: uppercase;
+    }
+    .mcp-code pre { margin: 0; white-space: pre; }
+    .mcp-code .c  { color: #57534e; font-style: italic; }
+    .mcp-code .st { color: #bef264; }
+    .mcp-code .pr { color: #fde68a; }
+    .mcp-code .fn { color: #93c5fd; }
+
+    /* lifecycle slide: 5 equal-width cards */
+    .lifecycle-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .lifecycle-step {
+      flex: 1 1 180px;
+      display: flex;
+      flex-direction: column;
+    }
+    .lifecycle-step .card__content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      padding: 24px 16px;
+    }
+    .lifecycle-step .step-circle {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 16px;
+      background: var(--ms-interactive-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      font-family: monospace;
+    }
+    .lifecycle-step .step-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ms-text-primary);
+      min-height: 2.4em;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .lifecycle-step .step-desc {
+      font-size: 15px;
+      color: var(--ms-text-secondary);
+      margin: 0;
+      flex: 1;
+      line-height: 1.45;
+    }
+
+    /* lifecycle phase grouping — Discovery (1+2) vs Tool call (3-5) */
+    .lifecycle-pair {
+      display: flex;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .phase {
+      display: flex;
+      flex-direction: column;
+    }
+    .phase--discovery { flex: 2; }
+    .phase--toolcall  { flex: 3; }
+    .phase__head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding-bottom: 14px;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--ms-border-default);
+      flex-wrap: wrap;
+    }
+    .phase--toolcall .phase__head { border-bottom-color: var(--ms-interactive-primary); }
+    .phase__marker {
+      font-family: monospace;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--ms-text-secondary);
+    }
+    .phase--toolcall .phase__marker { color: var(--ms-interactive-primary); }
+    .phase__name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ms-text-primary);
+    }
+    .phase__sub {
+      font-size: 14px;
+      color: var(--ms-text-secondary);
+      font-style: italic;
+    }
+    .phase .lifecycle-grid { flex: 1; }
+    @media (max-width: 720px) {
+      .lifecycle-pair { flex-direction: column; gap: 28px; }
+    }
+
+    /* best practices slide — visible cards, polished lists */
+    .practices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 720px) {
+      .practices { grid-template-columns: 1fr; }
+    }
+    .practice-card {
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+      border: 1px solid var(--ms-border-default);
+    }
+    .practice-card--good { --pc-color: var(--ms-state-success); --pc-bg: var(--ms-state-success-bg); }
+    .practice-card--bad  { --pc-color: var(--ms-state-error);   --pc-bg: var(--ms-state-error-bg); }
+
+    .practice-card__head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 22px;
+      background: var(--pc-bg);
+      border-bottom: 1px solid var(--ms-border-default);
+    }
+    .practice-card__icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--ms-surface-primary);
+      color: var(--pc-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+    .practice-card__title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--pc-color);
+      margin: 0;
+      letter-spacing: -.01em;
+    }
+
+    .practice-list {
+      list-style: none;
+      padding: 18px 22px 20px;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .practice-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      align-items: start;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+    .practice-item__marker {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--pc-bg);
+      color: var(--pc-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .practice-item__text strong { color: var(--ms-text-primary); }
+
+    /* primitíva slide — 3-up grid, polished cards */
+    .primitives-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 768px) { .primitives-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .primitive-card {
+      display: flex;
+      flex-direction: column;
+      padding: 26px 26px 22px;
+      border: 1px solid var(--ms-border-default);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .primitive-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0,0,0,.07);
+    }
+    .primitive-card--featured {
+      border-top: 4px solid var(--ms-interactive-primary);
+      box-shadow: 0 2px 6px rgba(0,0,0,.06), 0 14px 32px rgba(124,29,63,.07);
+    }
+    .primitive-card__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .primitive-card__num {
+      font-family: monospace;
+      font-size: 12px;
+      letter-spacing: .04em;
+      color: var(--ms-text-secondary);
+    }
+    .primitive-card__name {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--ms-text-primary);
+      margin: 0 0 10px;
+      letter-spacing: -.01em;
+      line-height: 1.1;
+    }
+    .primitive-card__desc {
+      font-size: 15px;
+      color: var(--ms-text-secondary);
+      line-height: 1.55;
+      margin: 0 0 18px;
+      flex: 1;
+    }
+    .primitive-card__example {
+      padding-top: 14px;
+      border-top: 1px dashed var(--ms-border-default);
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--ms-text-secondary);
+    }
+    .primitive-card__example code {
+      background: var(--ms-surface-secondary);
+      padding: 3px 7px;
+      border-radius: 3px;
+      color: var(--ms-text-primary);
+      display: inline-block;
+    }
+
+    /* architecture slide — 2 mode cards + chain diagrams */
+    .modes-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 768px) { .modes-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .mode-card {
+      display: flex;
+      flex-direction: column;
+      padding: 26px 28px 24px;
+      border: 1px solid var(--ms-border-default);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .mode-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0,0,0,.07);
+    }
+    .mode-card__head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-bottom: 18px;
+      margin-bottom: 18px;
+      border-bottom: 1px solid var(--ms-border-default);
+    }
+    .mode-card__icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: var(--ms-surface-secondary);
+      color: var(--ms-interactive-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      flex-shrink: 0;
+    }
+    .mode-card__heading { display: flex; flex-direction: column; }
+    .mode-card__name {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ms-text-primary);
+      letter-spacing: -.01em;
+      line-height: 1.15;
+    }
+    .mode-card__sub {
+      font-family: monospace;
+      font-size: 13px;
+      color: var(--ms-text-secondary);
+      margin-top: 4px;
+      letter-spacing: .03em;
+    }
+    .mode-card__desc {
+      font-size: 15px;
+      color: var(--ms-text-secondary);
+      line-height: 1.55;
+      margin: 0 0 20px;
+      flex: 1;
+    }
+    .mode-card__chain {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 16px;
+      background: var(--ms-surface-secondary);
+      border: 1px dashed var(--ms-border-default);
+      border-radius: 4px;
+      flex-wrap: wrap;
+    }
+    .chain-pill {
+      font-family: monospace;
+      font-size: 13px;
+      padding: 4px 10px;
+      background: var(--ms-surface-primary);
+      border: 1px solid var(--ms-border-default);
+      border-radius: 4px;
+      color: var(--ms-text-primary);
+      white-space: nowrap;
+    }
+    .chain-pill--active {
+      background: var(--ms-interactive-primary);
+      color: white;
+      border-color: var(--ms-interactive-primary);
+    }
+    .chain-arr {
+      color: var(--ms-text-secondary);
+      font-size: 14px;
+    }
+
+    /* takeaways slide — 5 numbered cards + 1 bonus */
+    .takeaways-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    @media (min-width: 480px) { .takeaways-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 880px) { .takeaways-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .takeaway-card {
+      display: flex;
+      flex-direction: column;
+      padding: 26px 26px 22px;
+      background: var(--ms-surface-primary);
+      border: 1px solid var(--ms-border-default);
+      border-top: 3px solid var(--ms-interactive-primary);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .takeaway-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0,0,0,.07);
+    }
+    .takeaway-card__num {
+      font-family: monospace;
+      font-size: 13px;
+      letter-spacing: .14em;
+      color: var(--ms-interactive-primary);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .takeaway-card__name {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--ms-text-primary);
+      margin: 0 0 10px;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+      text-transform: none;
+    }
+    .takeaway-card__desc {
+      font-size: 15px;
+      color: var(--ms-text-secondary);
+      line-height: 1.55;
+      margin: 0;
+      flex: 1;
+    }
+
+    /* bonus / dogfooding card variant */
+    .takeaway-card--bonus {
+      background: #fef9d6;
+      border: 1px solid #f0e190;
+      border-top: 3px solid #c9a013;
+      justify-content: center;
+    }
+    .takeaway-card--bonus .takeaway-card__icon {
+      font-size: 28px;
+      color: var(--ms-interactive-primary);
+      margin-bottom: 12px;
+    }
+    .takeaway-card--bonus p {
+      font-size: 15px;
+      color: var(--ms-text-primary);
+      line-height: 1.55;
+      margin: 0;
+    }
+    .takeaway-card--bonus p strong { font-weight: 700; }
+
+    /* security slide — 4 layers of defense */
+    .security-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media (min-width: 480px) { .security-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 880px) { .security-grid { grid-template-columns: repeat(4, 1fr); } }
+
+    .security-card {
+      display: flex;
+      flex-direction: column;
+      padding: 24px 22px 22px;
+      background: var(--ms-surface-primary);
+      border: 1px solid var(--ms-border-default);
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+      position: relative;
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .security-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0,0,0,.07);
+    }
+    .security-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 10px;
+      background: var(--ms-surface-secondary);
+      color: var(--ms-interactive-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 18px;
+    }
+    .security-card__layer {
+      font-family: monospace;
+      font-size: 11px;
+      letter-spacing: .14em;
+      color: var(--ms-text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .security-card__name {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ms-text-primary);
+      margin: 0 0 10px;
+      line-height: 1.25;
+      letter-spacing: -.01em;
+    }
+    .security-card__desc {
+      font-size: 14px;
+      color: var(--ms-text-secondary);
+      line-height: 1.55;
+      margin: 0;
+      flex: 1;
+    }
+    .security-card__desc code {
+      background: var(--ms-surface-secondary);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 12.5px;
+      color: var(--ms-text-primary);
+    }
+
+    /* tool icon — bigger, more prominent */
+    .tool-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--ms-surface-secondary);
+      color: var(--ms-interactive-primary);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    /* tools slide: custom grid (uniform gaps) + card polish */
+    .tools-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    @media (min-width: 480px) { .tools-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 768px) { .tools-grid { grid-template-columns: repeat(4, 1fr); } }
+    .tools-grid .tool-card {
+      height: 100%;
+      transition: transform .15s ease, box-shadow .2s ease;
+    }
+    .tools-grid .tool-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,.08), 0 1px 3px rgba(0,0,0,.06);
+    }
+    .tools-grid .tool-card .card__content {
+      padding: 22px 22px 20px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    .tools-grid .tool-card__name {
+      font-family: monospace;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ms-text-primary);
+      margin: 0 0 6px;
+      letter-spacing: -.01em;
+      line-height: 1.2;
+    }
+    .tools-grid .tool-card__desc {
+      font-size: 14px;
+      color: var(--ms-text-secondary);
+      margin: 0;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    /* flow nodes for diagrams */
+    .mcp-flow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .mcp-flow-arr { color: var(--ms-text-secondary); font-size: 18px; }
+    .mcp-flow-node {
+      background: var(--ms-surface-primary);
+      border: 1px solid var(--ms-border-default);
+      padding: 24px 24px 20px;
+      border-radius: 4px;
+      min-width: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .mcp-flow-node.is-key {
+      background: var(--ms-interactive-primary);
+      border-color: var(--ms-interactive-primary);
+      color: white;
+    }
+    .mcp-flow-node .mcp-flow-ico {
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 16px;
+      color: var(--ms-text-primary);
+    }
+    .mcp-flow-node.is-key .mcp-flow-ico { color: white; }
+    .mcp-flow-node .lbl { font-size: 18px; font-weight: 700; }
+    .mcp-flow-node .sub { font-size: 14px; color: var(--ms-text-secondary); margin-top: 4px; }
+    .mcp-flow-node.is-key .sub { color: rgba(255,255,255,.8); }
+
+    /* yaml ↔ json snippet pair (build pipeline slide) */
+    .snippet-pair {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 32px;
+    }
+    .snippet-pair .mcp-code {
+      padding: 14px 16px 12px;
+      margin: 0;
+    }
+    .snippet-pair .mcp-code pre {
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .snippet-pair-arr {
+      align-self: center;
+      font-size: 28px;
+      color: var(--ms-interactive-primary);
+      font-weight: 300;
+      line-height: 1;
+    }
+    @media (max-width: 880px) {
+      .snippet-pair { grid-template-columns: 1fr; }
+      .snippet-pair-arr { transform: rotate(90deg); justify-self: center; }
+    }
+
+    /* ─── overview ──────────────────────────────── */
+    .overview {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--ms-surface-secondary);
+      display: none;
+      overflow: auto;
+      padding: 32px;
+    }
+    .overview.active { display: block; }
+    .ov-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .ov-thumb {
+      background: var(--ms-surface-primary);
+      border: 1px solid var(--ms-border-default);
+      padding: 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all .15s;
+    }
+    .ov-thumb:hover {
+      border-color: var(--ms-interactive-primary);
+      transform: translateY(-2px);
+    }
+    .ov-thumb .ov-num {
+      font-family: monospace;
+      font-size: 11px;
+      letter-spacing: .12em;
+      color: var(--ms-interactive-primary);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .ov-thumb .ov-name { font-size: 18px; font-weight: 700; color: var(--ms-text-primary); }
+
+    /* reveal */
+    .slide.active .reveal { animation: revealUp .55s ease both; }
+    .slide.active .reveal:nth-child(2) { animation-delay: .08s; }
+    .slide.active .reveal:nth-child(3) { animation-delay: .16s; }
+    .slide.active .reveal:nth-child(4) { animation-delay: .24s; }
+    .slide.active .reveal:nth-child(5) { animation-delay: .32s; }
+    @keyframes revealUp {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="deck">
+
+  <!-- ─── SLIDE 1 — COVER ─────────────────────── -->
+  <section class="slide active" data-name="Úvod">
+    <div class="section bg-secondary">
+      <div class="wrapper-main">
+        <div class="row">
+          <div class="col col--12 col--m-8">
+            <span class="badge badge--primary mb-medium reveal" style="display:inline-block;">
+              <i class="far fa-sparkles"></i> Slide deck · Vol. 01
+            </span>
+            <h1 class="slide-title reveal text-bold">Model Context <span class="text-color-primary">Protocol.</span></h1>
+            <p class="slide-lead reveal">Ako dať <strong>Claudeovi</strong> oči a ruky — a prečo sme si na to postavili vlastný server.</p>
+            <div class="d-flex flex-wrap gap-small reveal">
+              <span class="pill pill--red-light">Open-source</span>
+              <span class="pill pill--blue-light">Anthropic · 2024</span>
+              <span class="pill pill--green-light">~10 min</span>
+            </div>
+          </div>
+          <div class="col col--12 col--m-4">
+            <article class="card card--material reveal">
+              <section class="card__content">
+                <div class="text-small text-color-grey" style="text-transform:uppercase; letter-spacing:.08em;">Obsah</div>
+                <ol class="list--default mt-small" style="padding-left: 18px;">
+                  <li>Problém</li>
+                  <li>Čo je MCP</li>
+                  <li>Tri primitíva</li>
+                  <li>Lifecycle</li>
+                  <li>Best practices</li>
+                  <li>Kedy MCP, kedy nie</li>
+                  <li>Bezpečnosť</li>
+                  <li>Naše tooly</li>
+                  <li>Architektúra</li>
+                  <li>Build pipeline</li>
+                  <li>Spustenie</li>
+                  <li>Takeaways</li>
+                </ol>
+              </section>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 2 — PROBLEM ───────────────────── -->
+  <section class="slide" data-name="Problém">
+    <div class="section">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 01 · Problém <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Claude nepozná naše <span class="text-color-primary">komponenty</span>.</h2>
+        <p class="slide-lead reveal">Náš styleguide nikdy nevidel. Bez kontextu generuje <strong>presvedčivo vyzerajúci</strong> HTML — taký, aký videl na tisícoch iných webov.</p>
+
+        <div class="practices mt-large reveal">
+          <article class="card practice-card practice-card--bad">
+            <div class="practice-card__head">
+              <span class="practice-card__icon"><i class="far fa-face-frown"></i></span>
+              <h3 class="practice-card__title">Bez MCP</h3>
+            </div>
+            <ul class="practice-list">
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Vymyslené CSS triedy</strong> — názvy, ktoré v styleguide neexistujú.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Nesprávna štruktúra</strong> — wrappers a hierarchia tagov ad-hoc.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Ručná oprava</strong> každého fragmentu pred použitím.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Žiadny vzťah</strong> k reálnemu styleguide.</div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card practice-card practice-card--good">
+            <div class="practice-card__head">
+              <span class="practice-card__icon"><i class="far fa-face-smile"></i></span>
+              <h3 class="practice-card__title">S MCP</h3>
+            </div>
+            <ul class="practice-list">
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Skutočný HTML</strong> zo styleguide, ready to paste.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Správne triedy</strong>, správna štruktúra — hneď.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Jeden zdroj pravdy</strong> pre AI aj ľudí.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Update styleguide</strong> = update pre AI naraz.</div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 3 — WHAT IS MCP ──────────────── -->
+  <section class="slide" data-name="Čo je MCP">
+    <div class="section bg-secondary">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 02 · Koncept <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">MCP = <span class="text-color-primary">protokol</span><br>medzi AI a nástrojmi.</h2>
+        <p class="slide-lead reveal">Open-source štandard od Anthropic (november 2024). Definuje, ako môže LLM volať externé funkcie a získavať dáta — bez ohľadu na vendora.</p>
+
+        <div class="mcp-flow mt-large reveal" style="margin-top:60px;">
+          <div class="mcp-flow-node">
+            <span class="mcp-flow-ico"><i class="far fa-user"></i></span>
+            <div class="lbl">Vývojár</div>
+            <div class="sub">Pýta sa</div>
+          </div>
+          <span class="mcp-flow-arr">→</span>
+          <div class="mcp-flow-node is-key">
+            <span class="mcp-flow-ico"><i class="far fa-sparkles"></i></span>
+            <div class="lbl">Claude</div>
+            <div class="sub">LLM</div>
+          </div>
+          <span class="mcp-flow-arr">→</span>
+          <div class="mcp-flow-node">
+            <span class="mcp-flow-ico"><i class="far fa-plug"></i></span>
+            <div class="lbl">MCP Server</div>
+            <div class="sub">JSON-RPC</div>
+          </div>
+          <span class="mcp-flow-arr">→</span>
+          <div class="mcp-flow-node">
+            <span class="mcp-flow-ico"><i class="far fa-books"></i></span>
+            <div class="lbl">Styleguide</div>
+            <div class="sub">HTML / dáta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 4 — PRIMITÍVA ─────────────────── -->
+  <section class="slide" data-name="Tri primitíva">
+    <div class="section">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 03 · Primitíva <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">MCP server ponúka <span class="text-color-primary">tri veci</span>.</h2>
+        <p class="slide-lead reveal">Tools, resources, prompts. My zatiaľ používame len prvé.</p>
+
+        <div class="primitives-grid mt-large reveal">
+          <article class="primitive-card primitive-card--featured">
+            <div class="primitive-card__head">
+              <span class="pill pill--red">U nás</span>
+              <span class="primitive-card__num">01 · Aktívne</span>
+            </div>
+            <h3 class="primitive-card__name">Tools</h3>
+            <p class="primitive-card__desc">Funkcie, ktoré LLM volá s parametrami. Server ich vykoná a vráti výsledok.</p>
+            <div class="primitive-card__example">
+              <code>get_component("buttons")</code>
+            </div>
+          </article>
+
+          <article class="primitive-card">
+            <div class="primitive-card__head">
+              <span class="pill pill--blue-light">Pasívne</span>
+              <span class="primitive-card__num">02 · Dáta</span>
+            </div>
+            <h3 class="primitive-card__name">Resources</h3>
+            <p class="primitive-card__desc">Dáta, ktoré server vystavuje na čítanie — súbory, logy. LLM ich číta podľa URI.</p>
+            <div class="primitive-card__example">
+              <code>file:///app/main.scss</code>
+            </div>
+          </article>
+
+          <article class="primitive-card">
+            <div class="primitive-card__head">
+              <span class="pill pill--green-light">Šablóny</span>
+              <span class="primitive-card__num">03 · Prompty</span>
+            </div>
+            <h3 class="primitive-card__name">Prompts</h3>
+            <p class="primitive-card__desc">Pripravené prompt šablóny s parametrami — klient ich ponúka ako rýchle akcie.</p>
+            <div class="primitive-card__example">
+              <code>"Vytvor formulár pre {{x}}"</code>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 5 — LIFECYCLE ─────────────────── -->
+  <section class="slide" data-name="Lifecycle">
+    <div class="section bg-secondary">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 04 · Lifecycle <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Anatómia <span class="text-color-primary">jedného volania</span>.</h2>
+        <p class="slide-lead reveal">Discovery sa deje raz pri pripojení. Tool call môže prebehnúť mnohokrát počas konverzácie.</p>
+
+        <div class="lifecycle-pair mt-large reveal">
+          <div class="phase phase--discovery">
+            <header class="phase__head">
+              <span class="phase__marker">Fáza A</span>
+              <strong class="phase__name">Discovery</strong>
+              <span class="phase__sub">raz pri pripojení</span>
+            </header>
+            <div class="lifecycle-grid">
+              <article class="card lifecycle-step">
+                <section class="card__content">
+                  <div class="step-circle">1</div>
+                  <div class="step-title">initialize</div>
+                  <p class="step-desc">Handshake, výmena capabilities.</p>
+                </section>
+              </article>
+              <article class="card lifecycle-step">
+                <section class="card__content">
+                  <div class="step-circle">2</div>
+                  <div class="step-title">tools/list</div>
+                  <p class="step-desc">Klient si vypýta zoznam toolov.</p>
+                </section>
+              </article>
+            </div>
+          </div>
+
+          <div class="phase phase--toolcall">
+            <header class="phase__head">
+              <span class="phase__marker">Fáza B</span>
+              <strong class="phase__name">Tool call</strong>
+              <span class="phase__sub">opakovane počas konverzácie</span>
+            </header>
+            <div class="lifecycle-grid">
+              <article class="card card--material lifecycle-step">
+                <section class="card__content">
+                  <div class="step-circle">3</div>
+                  <div class="step-title">LLM&nbsp;rozhoduje</div>
+                  <p class="step-desc">Claude vyberá ktorý tool zavolá.</p>
+                </section>
+              </article>
+              <article class="card lifecycle-step">
+                <section class="card__content">
+                  <div class="step-circle">4</div>
+                  <div class="step-title">tools/call</div>
+                  <p class="step-desc">Klient pošle request, server vykoná.</p>
+                </section>
+              </article>
+              <article class="card lifecycle-step">
+                <section class="card__content">
+                  <div class="step-circle">5</div>
+                  <div class="step-title">response</div>
+                  <p class="step-desc">Server vráti štruktúrovaný výsledok.</p>
+                </section>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 6 — BEST PRACTICES ─────────────── -->
+  <section class="slide" data-name="Best practices">
+    <div class="section">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 05 · Best practices <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Čo <span class="text-color-primary">funguje</span>, čo nie.</h2>
+        <p class="slide-lead reveal">LLM nečíta kód — číta popisy toolov. Pomenovanie a popis určuje úspešnosť.</p>
+
+        <div class="practices mt-large reveal">
+          <article class="card practice-card practice-card--good">
+            <div class="practice-card__head">
+              <span class="practice-card__icon"><i class="far fa-check-circle"></i></span>
+              <h3 class="practice-card__title">Funguje</h3>
+            </div>
+            <ul class="practice-list">
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Stručné popisné názvy</strong> — <code>get_component</code>.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Striktné JSON schema</strong> s enum hodnotami.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Cache</strong> drahých fetchov s TTL.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Štruktúrované chyby</strong> s návrhom riešenia.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Discovery tool</strong> pre získanie schemy.</div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card practice-card practice-card--bad">
+            <div class="practice-card__head">
+              <span class="practice-card__icon"><i class="far fa-xmark"></i></span>
+              <h3 class="practice-card__title">Nefunguje</h3>
+            </div>
+            <ul class="practice-list">
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Stovky toolov</strong> — LLM sa stratí.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Vágne názvy</strong> ako <code>do_thing</code>.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Jeden mega-tool</strong> s 30 parametrami.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Obrovské blob</strong> odpovede bez štruktúry.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Tichý fail</strong> — návrat <code>null</code> bez vysvetlenia.</div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 7 — KEDY MCP ───────────────────── -->
+  <section class="slide" data-name="Kedy MCP">
+    <div class="section">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 06 · Kedy použiť <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Kedy MCP, <span class="text-color-primary">kedy nie</span>.</h2>
+        <p class="slide-lead reveal">Nie každý kontextový problém potrebuje vlastný server. Tu sú konkrétne príklady.</p>
+
+        <div class="practices mt-large reveal">
+          <article class="card practice-card practice-card--good">
+            <div class="practice-card__head">
+              <span class="practice-card__icon"><i class="far fa-check-circle"></i></span>
+              <h3 class="practice-card__title">Vhodné</h3>
+            </div>
+            <ul class="practice-list">
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Interný design system</strong> — komponenty, tokens, ikonky (čo robíme my).</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Interné dáta a API</strong> — customer lookup, ticket history, štruktúra firmy.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>External SaaS s API kľúčom</strong> — Sentry, Linear, Slack, Grafana.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">+</span>
+                <div class="practice-item__text"><strong>Codebase navigation</strong> — symbol search, file deps, recent commits.</div>
+              </li>
+            </ul>
+          </article>
+
+          <article class="card practice-card practice-card--bad">
+            <div class="practice-card__head">
+              <span class="practice-card__icon"><i class="far fa-xmark"></i></span>
+              <h3 class="practice-card__title">Nevhodné</h3>
+            </div>
+            <ul class="practice-list">
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Verejné API LLM pozná</strong> — Stripe, AWS, npm, MDN.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Čistá výpočtová logika</strong> — regex, parsing, formátovanie.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Heavy data dumps</strong> — celé DB tabuľky / log súbory.</div>
+              </li>
+              <li class="practice-item">
+                <span class="practice-item__marker">−</span>
+                <div class="practice-item__text"><strong>Real-time produkčné mutácie</strong> — bez human-in-the-loop.</div>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 8 — BEZPEČNOSŤ ─────────────────── -->
+  <section class="slide" data-name="Bezpečnosť">
+    <div class="section bg-secondary">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 07 · Bezpečnosť <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Štyri vrstvy <span class="text-color-primary">obrany</span>.</h2>
+        <p class="slide-lead reveal">MCP server nie je len helper — môže byť útočným vektorom. Treba myslieť od transportu po dáta.</p>
+
+        <div class="security-grid mt-large reveal">
+          <article class="security-card">
+            <div class="security-card__icon"><i class="far fa-shield"></i></div>
+            <span class="security-card__layer">01 · Transport</span>
+            <h3 class="security-card__name">Šifrované spojenie</h3>
+            <p class="security-card__desc"><code>stdio</code> je process-isolated (lokálny Docker = bezpečný default). HTTP mode potrebuje TLS — Let's Encrypt + reverse proxy.</p>
+          </article>
+
+          <article class="security-card">
+            <div class="security-card__icon"><i class="far fa-fingerprint"></i></div>
+            <span class="security-card__layer">02 · Auth</span>
+            <h3 class="security-card__name">Autentifikácia klientov</h3>
+            <p class="security-card__desc">stdio: process boundary stačí — kto má <code>docker exec</code>, má prístup. HTTP: API kľúč v hlavičke alebo OAuth scope.</p>
+          </article>
+
+          <article class="security-card">
+            <div class="security-card__icon"><i class="far fa-filter"></i></div>
+            <span class="security-card__layer">03 · Tool design</span>
+            <h3 class="security-card__name">Validácia inputov</h3>
+            <p class="security-card__desc">Striktné JSON schema s enum hodnotami. Žiadny path traversal, žiadny SQL injection cez user-supplied strings.</p>
+          </article>
+
+          <article class="security-card">
+            <div class="security-card__icon"><i class="far fa-eye"></i></div>
+            <span class="security-card__layer">04 · Operations</span>
+            <h3 class="security-card__name">Audit + human-in-the-loop</h3>
+            <p class="security-card__desc">Logy <em>čo / kedy / kým</em> bolo zavolané. Mutácie produkcie len s explicitnou konfirmáciou. Rate limit pre runaway agents.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 9 — TOOLY ─────────────────────── -->
+  <section class="slide" data-name="Naše tooly">
+    <div class="section bg-secondary">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 08 · Naša implementácia <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Osem toolov, osem <span class="text-color-primary">otázok</span>.</h2>
+        <p class="slide-lead reveal">Každý tool rieši jednu konkrétnu otázku Claudea o našom dizajn systéme.</p>
+
+        <div class="tools-grid mt-medium reveal">
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-cog"></i></div>
+              <h3 class="tool-card__name">get_setup</h3>
+              <p class="tool-card__desc">HTML tagy pre assety.</p>
+            </section>
+          </article>
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-file-alt"></i></div>
+              <h3 class="tool-card__name">get_starter_template</h3>
+              <p class="tool-card__desc">Kompletný HTML dokument.</p>
+            </section>
+          </article>
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-puzzle-piece"></i></div>
+              <h3 class="tool-card__name">get_component</h3>
+              <p class="tool-card__desc">HTML fragment komponentu.</p>
+            </section>
+          </article>
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-list-ul"></i></div>
+              <h3 class="tool-card__name">list_components</h3>
+              <p class="tool-card__desc">Zoznam komponentov.</p>
+            </section>
+          </article>
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-circle-info"></i></div>
+              <h3 class="tool-card__name">get_component_info</h3>
+              <p class="tool-card__desc">Detail s param schémou.</p>
+            </section>
+          </article>
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-image"></i></div>
+              <h3 class="tool-card__name">list_icons</h3>
+              <p class="tool-card__desc">~186 FA ikoniek.</p>
+            </section>
+          </article>
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-paint-brush"></i></div>
+              <h3 class="tool-card__name">get_icon</h3>
+              <p class="tool-card__desc">Snippet pre ikonku.</p>
+            </section>
+          </article>
+          <article class="card tool-card">
+            <section class="card__content">
+              <div class="tool-icon"><i class="far fa-wand-magic"></i></div>
+              <h3 class="tool-card__name">get_utilities</h3>
+              <p class="tool-card__desc">Utility triedy referencia.</p>
+            </section>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 10 — ARCHITEKTÚRA ─────────────── -->
+  <section class="slide" data-name="Architektúra">
+    <div class="section">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 09 · Architektúra <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Jeden server, <span class="text-color-primary">dva módy</span>.</h2>
+        <p class="slide-lead reveal">Rovnaký codebase — len iný zdroj dát.</p>
+
+        <div class="modes-grid mt-large reveal">
+          <article class="mode-card">
+            <header class="mode-card__head">
+              <span class="mode-card__icon"><i class="far fa-globe-europe"></i></span>
+              <div class="mode-card__heading">
+                <span class="mode-card__name">External mode</span>
+                <span class="mode-card__sub">default · beží kdekoľvek</span>
+              </div>
+            </header>
+            <p class="mode-card__desc">Server fetchuje aktuálne dáta z <code>mrtns.sk/assets</code>, drží ich v cache 5 minút. Vždy konzistentné s produkciou.</p>
+            <div class="mode-card__chain">
+              <span class="chain-pill">Claude</span>
+              <span class="chain-arr">→</span>
+              <span class="chain-pill chain-pill--active">MCP server</span>
+              <span class="chain-arr">→</span>
+              <span class="chain-pill">mrtns.sk</span>
+            </div>
+          </article>
+
+          <article class="mode-card">
+            <header class="mode-card__head">
+              <span class="mode-card__icon"><i class="far fa-house"></i></span>
+              <div class="mode-card__heading">
+                <span class="mode-card__name">Internal mode</span>
+                <span class="mode-card__sub">dev · číta z repozitára</span>
+              </div>
+            </header>
+            <p class="mode-card__desc">Aktivuje sa env premennou. Server číta YAML súbory priamo — zmeny vidno okamžite bez deploya.</p>
+            <div class="mode-card__chain">
+              <span class="chain-pill">Claude</span>
+              <span class="chain-arr">→</span>
+              <span class="chain-pill chain-pill--active">MCP server</span>
+              <span class="chain-arr">→</span>
+              <span class="chain-pill">app/*.yaml</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 11 — BUILD PIPELINE ────────────── -->
+  <section class="slide" data-name="Build pipeline">
+    <div class="section bg-secondary">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 10 · Build pipeline <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Ako sa <span class="text-color-primary">dáta</span><br>dostanú na server.</h2>
+        <p class="slide-lead reveal">YAML je zdroj pravdy. JSON je len distribučný formát.</p>
+
+        <div class="mcp-flow mt-medium reveal" style="margin-top:32px;">
+          <div class="mcp-flow-node">
+            <span class="mcp-flow-ico"><i class="far fa-file-alt"></i></span>
+            <div class="lbl">YAML</div>
+            <div class="sub">app/mcp-*.yaml</div>
+          </div>
+          <span class="mcp-flow-arr">→</span>
+          <div class="mcp-flow-node">
+            <span class="mcp-flow-ico"><i class="far fa-cog"></i></span>
+            <div class="lbl">postbuild</div>
+            <div class="sub">emit-artifacts</div>
+          </div>
+          <span class="mcp-flow-arr">→</span>
+          <div class="mcp-flow-node">
+            <span class="mcp-flow-ico"><i class="far fa-code"></i></span>
+            <div class="lbl">JSON</div>
+            <div class="sub">dist/mcp-*.json</div>
+          </div>
+          <span class="mcp-flow-arr">→</span>
+          <div class="mcp-flow-node is-key">
+            <span class="mcp-flow-ico"><i class="far fa-globe-europe"></i></span>
+            <div class="lbl">CDN</div>
+            <div class="sub">mrtns.sk/assets</div>
+          </div>
+        </div>
+
+        <div class="snippet-pair reveal">
+          <div class="mcp-code" data-label="yaml">
+<pre><span class="c"># app/mcp-components.yaml</span>
+<span class="pr">buttons</span>:
+  <span class="pr">template</span>: |-
+    &lt;button class=<span class="st">"btn"</span>&gt;{{label}}&lt;/button&gt;
+  <span class="pr">params</span>:
+    <span class="pr">label</span>:
+      <span class="pr">type</span>: string
+      <span class="pr">required</span>: <span class="nu">true</span>
+    <span class="pr">variant</span>:
+      <span class="pr">type</span>: enum
+      <span class="pr">values</span>: [primary, secondary, ghost]</pre>
+          </div>
+          <span class="snippet-pair-arr">→</span>
+          <div class="mcp-code" data-label="json">
+<pre><span class="c">// dist/mcp-components.json</span>
+{
+  <span class="pr">"buttons"</span>: {
+    <span class="pr">"template"</span>: <span class="st">"&lt;button class=\"btn\"&gt;..."</span>,
+    <span class="pr">"params"</span>: {
+      <span class="pr">"label"</span>: {
+        <span class="pr">"type"</span>: <span class="st">"string"</span>,
+        <span class="pr">"required"</span>: <span class="nu">true</span>
+      },
+      <span class="pr">"variant"</span>: {
+        <span class="pr">"type"</span>: <span class="st">"enum"</span>,
+        <span class="pr">"values"</span>: [<span class="st">"primary"</span>,<span class="st">"secondary"</span>,<span class="st">"ghost"</span>]
+      }
+    }
+  }
+}</pre>
+          </div>
+        </div>
+
+        <p class="mt-medium text-center text-color-grey reveal text-small" style="max-width:60ch; margin:24px auto 0;">
+          Zdrojom pravdy je YAML (čitateľný, s komentármi, multiline templates). Po <code>./build.sh</code> sa emituje JSON, ktorý MCP server fetchuje z CDN a cachuje 5 minút.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 12 — SPUSTENIE ─────────────────── -->
+  <section class="slide" data-name="Spustenie">
+    <div class="section">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 11 · Spustenie <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Ako <span class="text-color-primary">začať</span>.</h2>
+        <p class="slide-lead reveal">Lokálne cez Docker alebo vzdialený server pre celý tím.</p>
+
+        <div class="row mt-medium reveal">
+          <div class="col col--12 col--m-6 mb-medium">
+            <h3 class="h5 mb-small">Lokálne · Docker</h3>
+            <div class="mcp-code" data-label="shell">
+<pre><span class="c"># 1. spustí MCP server v kontajneri</span>
+<span class="fn">./mcp.sh</span>
+
+<span class="c"># 2. claude_desktop_config.json</span>
+{
+  <span class="pr">"mcpServers"</span>: {
+    <span class="pr">"martinus-styleguide"</span>: {
+      <span class="pr">"command"</span>: <span class="st">"docker"</span>,
+      <span class="pr">"args"</span>: [
+        <span class="st">"exec"</span>, <span class="st">"-i"</span>,
+        <span class="st">"martinus-styleguide-mcp"</span>,
+        <span class="st">"node"</span>,
+        <span class="st">"/mcp-server/src/index.js"</span>
+      ]
+    }
+  }
+}</pre>
+            </div>
+          </div>
+          <div class="col col--12 col--m-6">
+            <h3 class="h5 mb-small">Vzdialené nasadenie</h3>
+            <article class="card mb-small">
+              <section class="card__content">
+                <div class="text-small text-color-grey" style="text-transform:uppercase; letter-spacing:.08em;">Server</div>
+                <strong>Digital Ocean droplet</strong>
+                <p class="text-small text-color-grey mb-none">Ubuntu 24.04 · 1 vCPU · 1 GB RAM · ~6 $/mes</p>
+              </section>
+            </article>
+            <article class="card mb-small">
+              <section class="card__content">
+                <div class="text-small text-color-grey" style="text-transform:uppercase; letter-spacing:.08em;">Transport</div>
+                <strong>HTTP + Nginx + SSL</strong>
+                <p class="text-small text-color-grey mb-none">Let's Encrypt cert, automatická obnova.</p>
+              </section>
+            </article>
+            <article class="card">
+              <section class="card__content">
+                <div class="text-small text-color-grey" style="text-transform:uppercase; letter-spacing:.08em;">Endpoint</div>
+                <strong><code>https://mcp.mrtns.sk/mcp</code></strong>
+                <p class="text-small text-color-grey mb-none">Jeden endpoint pre celý tím, bez Dockeru.</p>
+              </section>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 13 — TAKEAWAYS ──────────────── -->
+  <section class="slide" data-name="Takeaways">
+    <div class="section bg-secondary">
+      <div class="wrapper-main">
+        <span class="slide-tag reveal">
+          <span class="dot"></span> § 12 · Takeaways <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold">Päť vecí, ktoré si <span class="text-color-primary">odniesť</span>.</h2>
+
+        <div class="takeaways-grid mt-large reveal">
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">01</span>
+            <h3 class="takeaway-card__name">Otvorený štandard</h3>
+            <p class="takeaway-card__desc">MCP je open-source protokol od Anthropicu (nov 2024). Vendor-neutrálny, ako LSP pre IDE.</p>
+          </article>
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">02</span>
+            <h3 class="takeaway-card__name">Tri primitíva</h3>
+            <p class="takeaway-card__desc">Tools, resources, prompts. My zatiaľ používame len tools — funkcie volané LLM-om.</p>
+          </article>
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">03</span>
+            <h3 class="takeaway-card__name">8 toolov u nás</h3>
+            <p class="takeaway-card__desc">Setup, starter template, komponenty, ikonky, utility — pokrývajú typické otázky AI pri vývoji.</p>
+          </article>
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">04</span>
+            <h3 class="takeaway-card__name">Dva módy</h3>
+            <p class="takeaway-card__desc">External fetch z mrtns.sk pre produkciu, internal čítanie zo súborov pre lokálny vývoj.</p>
+          </article>
+          <article class="takeaway-card">
+            <span class="takeaway-card__num">05</span>
+            <h3 class="takeaway-card__name">Jeden zdroj pravdy</h3>
+            <p class="takeaway-card__desc">YAML → JSON → CDN. Update styleguide = update pre AI naraz, bez duplicity.</p>
+          </article>
+          <article class="takeaway-card takeaway-card--bonus">
+            <i class="far fa-sparkles takeaway-card__icon"></i>
+            <p><strong>Bonus.</strong> Tieto slides sú postavené priamo na Martinus styleguide bundli. Dogfooding. 🍷</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SLIDE 14 — OUTRO ──────────────────── -->
+  <section class="slide" data-name="Koniec">
+    <div class="section">
+      <div class="wrapper-main text-center">
+        <span class="slide-tag reveal" style="justify-content:center;">
+          <span class="dot"></span> Koniec · Otázky? <span class="rule"></span>
+        </span>
+        <h2 class="slide-heading reveal text-bold" style="margin-left:auto; margin-right:auto;">Ďakujem.</h2>
+        <p class="slide-lead reveal" style="margin-left:auto; margin-right:auto;">
+          Detailný materiál — vrátane sequence diagramov, časovej osi a histórie protokolu — nájdeš v dlhšej verzii článku.
+        </p>
+        <div class="d-flex flex-wrap gap-small justify-content-center mt-large reveal">
+          <a href="mcp-presentation-sg.html" class="btn btn--primary mb-none">
+            <i class="far fa-book-open"></i> Dlhšia verzia (článok)
+          </a>
+          <a href="docs/guides/mcp-server.md" class="btn btn--secondary mb-none">
+            <i class="far fa-cog"></i> Setup docs
+          </a>
+          <a href="docs/guides/mcp-audit.md" class="btn btn--ghost mb-none">
+            <i class="far fa-file-alt"></i> Audit & roadmap
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ─── OVERVIEW MODE ──────────────────────────── -->
+<div class="overview" id="overview">
+  <div class="d-flex justify-content-between align-items-center" style="margin-bottom:20px;">
+    <div>
+      <span class="badge badge--primary">Prehľad slidov</span>
+      <span class="text-small text-color-grey ml-small">stlač ESC pre návrat · kliknutím skoč na slide</span>
+    </div>
+  </div>
+  <div class="ov-grid" id="ov-grid"></div>
+</div>
+
+<!-- ─── CHROME (bottom bar) ────────────────────── -->
+<div class="chrome">
+  <div class="chrome-logo">Martinus <b>MCP</b></div>
+  <div class="chrome-progress"><div class="chrome-bar" id="bar"></div></div>
+  <div class="chrome-counter"><span id="cur">01</span> <span class="t">/ <span id="tot">14</span></span></div>
+  <div class="chrome-hint">
+    <kbd>←</kbd><kbd>→</kbd> nav · <kbd>esc</kbd> prehľad · <kbd>F</kbd> fullscreen
+  </div>
+  <div class="chrome-nav">
+    <button class="btn btn--ghost btn--small btn--equal mb-none" id="prev" title="Predchádzajúci">
+      <i class="far fa-chevron-left"></i>
+    </button>
+    <button class="btn btn--primary btn--small btn--equal mb-none" id="next" title="Ďalší">
+      <i class="far fa-chevron-right"></i>
+    </button>
+  </div>
+</div>
+
+<!-- ─── Martinus Styleguide JS ──────────────────── -->
+<script>window.myApp = window.myApp || {}; window.myApp.selectLanguage = "sk";</script>
+<script src="https://mrtns.sk/assets/martinus/lb/scripts/vendor.js?v=60ef9614"></script>
+<script src="https://mrtns.sk/assets/martinus/lb/scripts/main.js?v=99533015"></script>
+<script src="https://mrtns.sk/assets/martinus/lb/scripts/font-awesome.js?v=081e4eed"></script>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  const total = slides.length;
+  const cur$ = document.getElementById('cur');
+  const tot$ = document.getElementById('tot');
+  const bar$ = document.getElementById('bar');
+  const prev$ = document.getElementById('prev');
+  const next$ = document.getElementById('next');
+  const overview$ = document.getElementById('overview');
+  const ovGrid$ = document.getElementById('ov-grid');
+  let i = 0;
+  tot$.textContent = String(total).padStart(2, '0');
+
+  function go(n) {
+    if (n < 0) n = 0;
+    if (n > total - 1) n = total - 1;
+    slides.forEach((s, x) => {
+      s.classList.toggle('active', x === n);
+      s.classList.toggle('previous', x < n);
+    });
+    i = n;
+    cur$.textContent = String(n + 1).padStart(2, '0');
+    bar$.style.width = `${((n + 1) / total) * 100}%`;
+    history.replaceState(null, '', `#${n + 1}`);
+  }
+
+  // Overview thumbnails
+  slides.forEach((s, n) => {
+    const name = s.dataset.name || `Slide ${n + 1}`;
+    const t = document.createElement('div');
+    t.className = 'ov-thumb';
+    t.innerHTML = `<div class="ov-num">Slide ${String(n + 1).padStart(2, '0')}</div><div class="ov-name">${name}</div>`;
+    t.addEventListener('click', () => { go(n); toggleOverview(false); });
+    ovGrid$.appendChild(t);
+  });
+
+  function toggleOverview(force) {
+    const open = force !== undefined ? force : !overview$.classList.contains('active');
+    overview$.classList.toggle('active', open);
+  }
+
+  prev$.addEventListener('click', () => go(i - 1));
+  next$.addEventListener('click', () => go(i + 1));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(i + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(i - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); go(0); }
+    else if (e.key === 'End') { e.preventDefault(); go(total - 1); }
+    else if (e.key === 'Escape') { toggleOverview(); }
+    else if (e.key === 'f' || e.key === 'F') {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    }
+  });
+
+  // Click on slide background advances (but not on cards/buttons/links)
+  document.querySelector('.deck').addEventListener('click', (e) => {
+    if (e.target.closest('a, button, .card, .chrome, .overview, code, pre')) return;
+    if (overview$.classList.contains('active')) return;
+    go(i + 1);
+  });
+
+  // Touch swipe
+  let tx = null;
+  document.addEventListener('touchstart', (e) => { tx = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 50) go(dx < 0 ? i + 1 : i - 1);
+    tx = null;
+  });
+
+  // Deep link via hash
+  const initial = parseInt(location.hash.slice(1), 10);
+  if (initial && initial >= 1 && initial <= total) go(initial - 1);
+</script>
+
+</body>
+</html>
