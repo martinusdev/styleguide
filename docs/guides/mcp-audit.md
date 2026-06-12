@@ -342,6 +342,12 @@ Docker-based flow ostáva — `./mcp.sh` nastaví `APP_DIR` a spustí kontajner 
   - Rozhodnúť auth — pravdepodobne public (read-only nad public artefaktmi) + Cloudflare rate limiting.
   - Docs pre klientov: config snippet pre Claude Code / Cursor / Lovable (`{"type":"http","url":"https://mcp.mrtns.sk"}`).
   Možný follow-up po npm distribúcii — alebo paralelne, keďže codebase je zdielaný (npm = local-install CLI entry, CF Worker = remote HTTP entry, obidva volajú ten istý thin fetch client).
+- **Audit logging tool callov** — server dnes loguje len chyby a štart (`console.error` v `index.js`); jednotlivé `tools/call` requesty sa nezaznamenávajú. Next step: per-call záznam (tool, argumenty, timestamp, výsledok/chyba) v `CallToolRequestSchema` handleri. Prínosy:
+  - **Bezpečnostný audit** — dohľadateľnosť, kto čo zavolal; detekcia zacykleného agenta (podklad pre rate limiting). Na remote serveri vyžaduje per-client identitu (API kľúč), inak vidno len IP.
+  - **Debugging** — keď AI vygeneruje nezmysel, z logu vidno, či tool vrátil zlé dáta.
+  - **Usage insights** — ktoré tooly a komponenty sa reálne používajú; signál, aké dáta/API tímu chýbajú.
+
+  Implementačne: stdio mode loguje na stderr (stdout je vyhradený pre JSON-RPC) alebo do súboru; HTTP mode doplní identitu klienta.
 
 ## 7. Rozsah a poradie implementácie
 

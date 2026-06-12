@@ -400,13 +400,13 @@
   <div class="mcp-nav-inner">
     <a href="#top" class="mcp-nav-logo">Martinus <b>MCP</b></a>
     <ul class="mcp-nav-links">
-      <li><a href="#s1"><span class="num">01</span> Koncept</a></li>
-      <li><a href="#s2"><span class="num">02</span> Primitíva</a></li>
-      <li><a href="#s3"><span class="num">03</span> Lifecycle</a></li>
-      <li><a href="#s4"><span class="num">04</span> Praktiky</a></li>
-      <li><a href="#s5"><span class="num">05</span> Kedy MCP</a></li>
-      <li><a href="#s6"><span class="num">06</span> Bezpečnosť</a></li>
-      <li><a href="#s7"><span class="num">07</span> Prečo</a></li>
+      <li><a href="#s1"><span class="num">01</span> Motivácia</a></li>
+      <li><a href="#s2"><span class="num">02</span> Koncept</a></li>
+      <li><a href="#s3"><span class="num">03</span> Stavebné bloky</a></li>
+      <li><a href="#s4"><span class="num">04</span> Lifecycle</a></li>
+      <li><a href="#s5"><span class="num">05</span> Praktiky</a></li>
+      <li><a href="#s6"><span class="num">06</span> Kedy MCP</a></li>
+      <li><a href="#s7"><span class="num">07</span> Bezpečnosť</a></li>
       <li><a href="#s8"><span class="num">08</span> Tooly</a></li>
       <li><a href="#s9"><span class="num">09</span> Architektúra</a></li>
       <li><a href="#s10"><span class="num">10</span> Spustenie</a></li>
@@ -422,8 +422,8 @@
         <span class="badge badge--primary mb-medium" style="display:inline-block;">
           <i class="far fa-sparkles"></i> Model Context Protocol
         </span>
-        <h1 class="h1 mt-medium mb-medium">Ako dať <span class="text-color-primary">Claudeovi</span> oči a ruky.</h1>
-        <p class="text-large mb-medium">Krátky sprievodca <strong>MCP</strong> — od základného konceptu cez best practices, až po náš vlastný server pre Martinus Styleguide.</p>
+        <h1 class="h1 mt-medium mb-medium">Ako dať <span class="text-color-primary">AI</span> oči a ruky.</h1>
+        <p class="text-large mb-medium">Krátky sprievodca <strong>MCP</strong> — od základného konceptu cez best practices, až po to, ako sme AI naučili Martinus Styleguide.</p>
         <div class="d-flex flex-wrap gap-small">
           <span class="pill pill--blue-light">Open-source štandard</span>
           <span class="pill pill--green-light">Vendor-neutrálny</span>
@@ -437,13 +437,13 @@
           </header>
           <section class="card__content">
             <ol class="list--unstyled" style="list-style:none; padding:0; margin:0;">
-              <li class="mcp-toc-row mb-tiny"><span class="num">01</span><a href="#s1">Čo je MCP</a><span class="dots"></span></li>
-              <li class="mcp-toc-row mb-tiny"><span class="num">02</span><a href="#s2">Tri primitíva</a><span class="dots"></span></li>
-              <li class="mcp-toc-row mb-tiny"><span class="num">03</span><a href="#s3">Lifecycle</a><span class="dots"></span></li>
-              <li class="mcp-toc-row mb-tiny"><span class="num">04</span><a href="#s4">Best practices</a><span class="dots"></span></li>
-              <li class="mcp-toc-row mb-tiny"><span class="num">05</span><a href="#s5">Kedy MCP, kedy nie</a><span class="dots"></span></li>
-              <li class="mcp-toc-row mb-tiny"><span class="num">06</span><a href="#s6">Bezpečnosť</a><span class="dots"></span></li>
-              <li class="mcp-toc-row mb-tiny"><span class="num">07</span><a href="#s7">Motivácia</a><span class="dots"></span></li>
+              <li class="mcp-toc-row mb-tiny"><span class="num">01</span><a href="#s1">Prečo sme to postavili</a><span class="dots"></span></li>
+              <li class="mcp-toc-row mb-tiny"><span class="num">02</span><a href="#s2">Čo je MCP</a><span class="dots"></span></li>
+              <li class="mcp-toc-row mb-tiny"><span class="num">03</span><a href="#s3">Tri stavebné bloky</a><span class="dots"></span></li>
+              <li class="mcp-toc-row mb-tiny"><span class="num">04</span><a href="#s4">Lifecycle</a><span class="dots"></span></li>
+              <li class="mcp-toc-row mb-tiny"><span class="num">05</span><a href="#s5">Best practices</a><span class="dots"></span></li>
+              <li class="mcp-toc-row mb-tiny"><span class="num">06</span><a href="#s6">Kedy MCP, kedy nie</a><span class="dots"></span></li>
+              <li class="mcp-toc-row mb-tiny"><span class="num">07</span><a href="#s7">Bezpečnosť</a><span class="dots"></span></li>
               <li class="mcp-toc-row mb-tiny"><span class="num">08</span><a href="#s8">Naše tooly</a><span class="dots"></span></li>
               <li class="mcp-toc-row mb-tiny"><span class="num">09</span><a href="#s9">Architektúra</a><span class="dots"></span></li>
               <li class="mcp-toc-row"><span class="num">10</span><a href="#s10">Spustenie</a><span class="dots"></span></li>
@@ -455,15 +455,63 @@
   </div>
 </section>
 
-<!-- ─── §01 ČO JE MCP ──────────────────────────── -->
+<!-- ─── §01 MOTIVÁCIA ──────────────────────────── -->
 <section class="section" id="s1">
   <div class="wrapper-main">
-    <span class="mcp-section-num">§ 01 · Koncept</span>
+    <span class="mcp-section-num">§ 01 · Motivácia</span>
+    <h2 class="h2 mb-small">Prečo sme to <span class="text-color-primary">postavili</span>?</h2>
+    <p class="text-large text-color-grey mb-large">Náš styleguide nie je v Claudových tréningových dátach. Bez MCP teda Claude pri otázke „daj mi tlačidlo" generuje presvedčivo vyzerajúce HTML — také, aké videl na tisícoch iných webov. V príkladoch používame Claude, ale to isté platí pre každý AI nástroj, ktorý hovorí MCP.</p>
+
+    <div class="row">
+      <div class="col col--12 col--m-6">
+        <article class="card">
+          <section class="card__content">
+            <div class="d-flex align-items-center gap-small mb-small">
+              <i class="far fa-face-frown text-color-error" style="font-size:24px;"></i>
+              <span class="pill pill--red-light">Stav A · bez MCP</span>
+            </div>
+            <h3 class="h4 mb-small">Vymyslený kód (halucinácie)</h3>
+            <ul class="list--default" style="list-style:none; padding:0;">
+              <li class="mb-tiny">— Claude navrhuje komponenty zo svojej hlavy</li>
+              <li class="mb-tiny">— Vymyslené CSS triedy, nesprávna štruktúra</li>
+              <li class="mb-tiny">— Vývojár musí každý kúsok kódu ručne opraviť</li>
+              <li class="mb-tiny">— Každý má svoju verziu „toho istého" tlačidla</li>
+              <li>— Žiadny vzťah ku skutočnému styleguide</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+      <div class="col col--12 col--m-6">
+        <article class="card card--success">
+          <section class="card__content">
+            <div class="d-flex align-items-center gap-small mb-small">
+              <i class="far fa-face-smile text-color-success" style="font-size:24px;"></i>
+              <span class="pill pill--green-light">Stav B · s MCP</span>
+            </div>
+            <h3 class="h4 mb-small">Kanonický kód</h3>
+            <ul class="list--default" style="list-style:none; padding:0;">
+              <li class="mb-tiny">✓ Claude sa opýta nášho servera</li>
+              <li class="mb-tiny">✓ Vráti skutočný HTML zo styleguide</li>
+              <li class="mb-tiny">✓ Správne triedy, správna štruktúra — hneď</li>
+              <li class="mb-tiny">✓ Jeden zdroj pravdy pre AI aj ľudí</li>
+              <li>✓ Update styleguide = update pre AI naraz</li>
+            </ul>
+          </section>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── §02 ČO JE MCP ──────────────────────────── -->
+<section class="section bg-secondary" id="s2">
+  <div class="wrapper-main">
+    <span class="mcp-section-num">§ 02 · Koncept</span>
     <h2 class="h2 mb-medium">Čo je <span class="text-color-primary">Model Context Protocol</span>?</h2>
 
     <div class="row">
       <div class="col col--12 col--m-8">
-        <p class="text-large mb-medium">Veľké jazykové modely vedia rozprávať, ale samé osebe sú v izolácii. Nevidia naše súbory, databázy, ani styleguide. <strong>MCP</strong> je protokol, ktorý túto bariéru ruší — definuje, ako môže LLM volať externé nástroje a získavať dáta z reálneho prostredia.</p>
+        <p class="text-large mb-medium">Veľké jazykové modely vedia rozprávať, ale samé osebe sú v izolácii. Nevidia naše súbory, databázy, ani styleguide. <strong>MCP</strong> je protokol, ktorý túto bariéru ruší — definuje, ako môže AI volať externé nástroje a získavať dáta z reálneho prostredia.</p>
         <p class="mb-medium">Pred MCP každý vendor (OpenAI, Google, Anthropic) riešil prepojenie modelu s nástrojmi po svojom — proprietárne <i>function calling</i> API. Výsledok? Roztrieštený ekosystém, integrácie sa nedali zdieľať medzi modelmi, každá appka si musela písať vlastné lepidlo.</p>
         <p>V novembri 2024 Anthropic publikoval MCP ako <strong>open-source, vendor-neutrálny</strong> štandard. Princíp je rovnaký ako pri Language Server Protocole (LSP) pre IDE — jeden protokol, ktorý hovoria všetci.</p>
       </div>
@@ -473,7 +521,7 @@
             <i class="far fa-lightbulb fa-xl"></i>
           </div>
           <div class="alert__content">
-            <strong>Inšpiráciou pre MCP bol LSP</strong> — ten istý prístup, ktorý umožnil, že rovnaký jazykový server beží vo VS Code, Vim, IntelliJ aj Sublime.
+            <strong>Ako USB-C.</strong> Zariadenia sa po zapojení najprv „pokecajú“ — čo vieš ty, čo viem ja: nabíjanie, dáta, obraz — a podľa toho nastavia spoluprácu. MCP robí to isté: server pri pripojení povie, aké nástroje ponúka a ako sa s nimi pracuje.
           </div>
         </div>
       </div>
@@ -510,13 +558,22 @@
         </div>
       </div>
     </div>
+
+    <div class="alert alert--warning-light mt-medium">
+      <div class="alert__icon">
+        <i class="far fa-triangle-exclamation fa-xl"></i>
+      </div>
+      <div class="alert__content">
+        <strong>Časté omyly.</strong> MCP <strong>nenahrádza REST API</strong> — tool zvyčajne existujúce API len volá; kde stačí priame API, je presnejšie a lacnejšie. Nie je to <strong>komunikácia medzi AI modelmi</strong> — spája jeden model s nástrojmi a dátami. A <strong>nefunguje len s Claudeom</strong> — je to otvorený štandard pre všetkých klientov.
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ─── §02 TRI PRIMITÍVA ──────────────────────── -->
-<section class="section bg-secondary" id="s2">
+<!-- ─── §03 TRI STAVEBNÉ BLOKY ─────────────────── -->
+<section class="section" id="s3">
   <div class="wrapper-main">
-    <span class="mcp-section-num">§ 02 · Primitíva</span>
+    <span class="mcp-section-num">§ 03 · Stavebné bloky</span>
     <h2 class="h2 mb-small">MCP server ponúka <span class="text-color-primary">tri veci</span>.</h2>
     <p class="text-large text-color-grey mb-large">Tools, resources, prompts — tri stavebné bloky každého servera. My zatiaľ používame len <strong>tools</strong>.</p>
 
@@ -529,7 +586,7 @@
               <span class="text-small text-color-grey">01 · Aktívne</span>
             </div>
             <h3 class="h4 mb-tiny">Tools</h3>
-            <p class="text-color-grey mb-small">Funkcie, ktoré LLM volá s parametrami. Server ich vykoná a vráti výsledok. <strong>Najpoužívanejšie</strong> primitívum.</p>
+            <p class="text-color-grey mb-small">Funkcie, ktoré AI volá s parametrami. Server ich vykoná a vráti výsledok. <strong>Najpoužívanejší</strong> z trojice.</p>
             <p class="text-small text-color-grey mb-none" style="padding-top:12px; border-top:1px dashed var(--ms-border-default); font-family:monospace;">
               get_component(name: "buttons")
             </p>
@@ -544,7 +601,7 @@
               <span class="text-small text-color-grey">02 · Dáta</span>
             </div>
             <h3 class="h4 mb-tiny">Resources</h3>
-            <p class="text-color-grey mb-small">Dáta, ktoré server vystavuje na čítanie — súbory, log záznamy. LLM ich číta podľa URI.</p>
+            <p class="text-color-grey mb-small">Dáta, ktoré server vystavuje na čítanie — súbory, log záznamy. AI ich číta podľa URI.</p>
             <p class="text-small text-color-grey mb-none" style="padding-top:12px; border-top:1px dashed var(--ms-border-default); font-family:monospace;">
               file:///app/main.scss
             </p>
@@ -579,10 +636,10 @@
   </div>
 </section>
 
-<!-- ─── §03 LIFECYCLE ──────────────────────────── -->
-<section class="section" id="s3">
+<!-- ─── §04 LIFECYCLE ──────────────────────────── -->
+<section class="section bg-secondary" id="s4">
   <div class="wrapper-main">
-    <span class="mcp-section-num">§ 03 · Lifecycle</span>
+    <span class="mcp-section-num">§ 04 · Lifecycle</span>
     <h2 class="h2 mb-small">Anatómia <span class="text-color-primary">jedného volania</span>.</h2>
     <p class="text-large text-color-grey mb-large">Čo sa stane medzi promptom a odpoveďou. Discovery (1–2) sa deje raz pri pripojení; tool call (3–5) môže prebehnúť mnohokrát.</p>
 
@@ -594,7 +651,7 @@
               <span class="mcp-step-num">1</span>
               <strong style="font-family:monospace;">initialize</strong>
             </div>
-            <p class="text-color-grey mb-none">Handshake medzi klientom a serverom — výmena verzií a capabilities.</p>
+            <p class="text-color-grey mb-none">Úvodný „pokec“ — klient a server si povedia, akú verziu a aké funkcie podporujú. Ako USB-C pri zapojení.</p>
           </section>
         </article>
       </div>
@@ -614,9 +671,9 @@
           <section class="card__content">
             <div class="d-flex align-items-center gap-small mb-small">
               <span class="mcp-step-num">3</span>
-              <strong style="font-family:monospace;">LLM rozhoduje</strong>
+              <strong style="font-family:monospace;">AI rozhoduje</strong>
             </div>
-            <p class="text-color-grey mb-none">Claude na základe promptu vyberá, ktorý tool zavolá a s akými argumentmi.</p>
+            <p class="text-color-grey mb-none">AI na základe promptu vyberá, ktorý tool zavolá a s akými argumentmi.</p>
           </section>
         </article>
       </div>
@@ -638,7 +695,7 @@
               <span class="mcp-step-num">5</span>
               <strong style="font-family:monospace;">response</strong>
             </div>
-            <p class="text-color-grey mb-none">Server vráti štruktúrovaný výsledok, ktorý LLM použije v odpovedi.</p>
+            <p class="text-color-grey mb-none">Server vráti štruktúrovaný výsledok, ktorý AI použije v odpovedi.</p>
           </section>
         </article>
       </div>
@@ -656,12 +713,12 @@
   </div>
 </section>
 
-<!-- ─── §04 BEST PRACTICES ─────────────────────── -->
-<section class="section bg-secondary" id="s4">
+<!-- ─── §05 BEST PRACTICES ─────────────────────── -->
+<section class="section" id="s5">
   <div class="wrapper-main">
-    <span class="mcp-section-num">§ 04 · Praktiky</span>
+    <span class="mcp-section-num">§ 05 · Praktiky</span>
     <h2 class="h2 mb-small">Čo <span class="text-color-primary">funguje</span>, čo nie.</h2>
-    <p class="text-large text-color-grey mb-large">MCP je jednoduchý protokol, ale postaviť dobrý server je iný príbeh. <strong>LLM nečíta kód — číta popisy toolov.</strong></p>
+    <p class="text-large text-color-grey mb-large">MCP je jednoduchý protokol, ale postaviť dobrý server je iný príbeh. <strong>AI nečíta kód — číta popisy toolov.</strong></p>
 
     <div class="row">
       <div class="col col--12 col--m-6 mb-medium">
@@ -673,9 +730,9 @@
           </header>
           <section class="card__content">
             <ul class="list--default" style="list-style:none; padding:0; margin:0;">
-              <li class="mb-small"><strong>Stručné, popisné názvy</strong> — <code>get_component</code>, <code>list_icons</code>. LLM ich číta ako API.</li>
+              <li class="mb-small"><strong>Stručné, popisné názvy</strong> — <code>get_component</code>, <code>list_icons</code>. AI ich číta ako API.</li>
               <li class="mb-small"><strong>Striktné JSON schema</strong> pre parametre s enum hodnotami, popismi, povinnými poľami.</li>
-              <li class="mb-small"><strong>Cache</strong> drahých fetchov s rozumným TTL (u nás 5 min).</li>
+              <li class="mb-small"><strong>Cache</strong> — pomalé sieťové dáta si server pamätá (u nás 5 minút).</li>
               <li class="mb-small"><strong>Discovery tool</strong> pre získanie schemy (<code>get_component_info</code>) — lacnejšie ako skúšať parametre.</li>
               <li class="mb-small"><strong>Štruktúrované chyby</strong> s návrhom riešenia — náš <code>get_icon</code> pri chybe vráti najbližšie alternatívy.</li>
               <li class="mb-none"><strong>Curated subset</strong>, nie všetko. Vystavujeme len ~186 ikoniek, nie celé FA Pro.</li>
@@ -692,11 +749,11 @@
           </header>
           <section class="card__content">
             <ul class="list--default" style="list-style:none; padding:0; margin:0;">
-              <li class="mb-small"><strong>Stovky toolov</strong> v jednom serveri — LLM sa stratí a začne náhodne tipovať.</li>
+              <li class="mb-small"><strong>Stovky toolov</strong> v jednom serveri — AI sa stratí a začne náhodne tipovať.</li>
               <li class="mb-small"><strong>Vágne názvy</strong> ako <code>do_thing</code>, <code>process_data</code>, <code>handle_request</code>.</li>
               <li class="mb-small"><strong>Jeden mega-tool</strong> s 30 parametrami a režimami. Lepšie ich rozdeliť do menších.</li>
-              <li class="mb-small"><strong>Obrovské nestrukturované JSON</strong> blob odpovede — zaberú kontext bez prínosu.</li>
-              <li class="mb-small"><strong>Popis bez príkladu</strong> — LLM zvládne aj abstraktný popis, ale s príkladom je úspešnosť výrazne vyššia.</li>
+              <li class="mb-small"><strong>Obrovské neštruktúrované odpovede</strong> — zaberú kontext bez prínosu.</li>
+              <li class="mb-small"><strong>Popis bez príkladu</strong> — AI zvládne aj abstraktný popis, ale s príkladom je úspešnosť výrazne vyššia.</li>
               <li class="mb-none"><strong>Tichý fail</strong> — návrat <code>null</code> alebo prázdneho stringu bez vysvetlenia.</li>
             </ul>
           </section>
@@ -706,10 +763,10 @@
   </div>
 </section>
 
-<!-- ─── §05 KEDY POUŽIŤ ──────────────────────── -->
-<section class="section" id="s5">
+<!-- ─── §06 KEDY POUŽIŤ ──────────────────────── -->
+<section class="section bg-secondary" id="s6">
   <div class="wrapper-main">
-    <span class="mcp-section-num">§ 05 · Kedy použiť</span>
+    <span class="mcp-section-num">§ 06 · Kedy použiť</span>
     <h2 class="h2 mb-small">Kedy MCP, <span class="text-color-primary">kedy nie</span>.</h2>
     <p class="text-large text-color-grey mb-large">Nie každý kontextový problém potrebuje vlastný MCP server. Tu sú konkrétne príklady — kedy sa to oplatí a kedy len pridáme latency a komplexitu.</p>
 
@@ -723,10 +780,10 @@
           </header>
           <section class="card__content">
             <ul class="list--default" style="list-style:none; padding:0; margin:0;">
-              <li class="mb-small"><strong>Interný design system</strong> — komponenty, tokens, ikonky. Veci, ktoré LLM nemá v tréningových dátach.</li>
-              <li class="mb-small"><strong>Interné dáta a API</strong> — customer-by-ID lookup, support history, štruktúra firmy. Citlivé veci čo sa do tréningových dát nedostanú.</li>
-              <li class="mb-small"><strong>External SaaS s API kľúčom</strong> — Sentry issues, Linear tickety, Grafana queries, Slack messages. LLM ich vidí cez náš server, nie cez kopírovanie do promptu.</li>
-              <li class="mb-none"><strong>Codebase navigation</strong> — symbol search, file dependencies, recent commits. Repo-specific kontext.</li>
+              <li class="mb-small"><strong>Interný design system</strong> — komponenty, tokens, ikonky. Veci, ktoré AI nemá v tréningových dátach.</li>
+              <li class="mb-small"><strong>Interné dáta a API</strong> — vyhľadanie zákazníka, história supportu, štruktúra firmy. Citlivé veci, ktoré sa do tréningových dát nedostanú.</li>
+              <li class="mb-small"><strong>Externé služby s API kľúčom</strong> — Sentry, Linear, Grafana, Slack. AI ich vidí cez server, netreba nič kopírovať do promptu.</li>
+              <li class="mb-none"><strong>Orientácia v kóde</strong> — kde je čo definované, čo na čom závisí, posledné commity.</li>
             </ul>
           </section>
         </article>
@@ -740,10 +797,10 @@
           </header>
           <section class="card__content">
             <ul class="list--default" style="list-style:none; padding:0; margin:0;">
-              <li class="mb-small"><strong>Verejné API LLM pozná</strong> — Stripe, AWS, npm packages, MDN. MCP wrapper by bol len indirection cez známe.</li>
-              <li class="mb-small"><strong>Čistá výpočtová logika</strong> — regex, parsing, formátovanie. LLM to spočíta priamo, MCP len pridá latency.</li>
-              <li class="mb-small"><strong>Heavy data dumps</strong> — celé DB tabuľky, gigabajty logov. Zaberie kontext bez prínosu — lepšie urobiť tool ktorý vráti agregát alebo filter.</li>
-              <li class="mb-none"><strong>Real-time produkčné mutácie</strong> — DB writes, deploy commandy, finančné transakcie. Bez human-in-the-loop priveľa rizika.</li>
+              <li class="mb-small"><strong>Verejné API, ktoré AI pozná</strong> — Stripe, AWS, npm, MDN. MCP by bol len zbytočná obchádzka.</li>
+              <li class="mb-small"><strong>Čistá výpočtová logika</strong> — regex, parsing, formátovanie. AI to spočíta priamo, MCP len pridá zdržanie.</li>
+              <li class="mb-small"><strong>Obrovské dáta</strong> — celé DB tabuľky, gigabajty logov. Zaberú kontext bez prínosu — lepší je tool, ktorý vráti súhrn alebo filter.</li>
+              <li class="mb-none"><strong>Zápisy do produkcie</strong> — zmeny v DB, deploye, finančné transakcie. Bez potvrdenia človekom priveľké riziko.</li>
             </ul>
           </section>
         </article>
@@ -755,46 +812,46 @@
         <i class="far fa-lightbulb fa-xl"></i>
       </div>
       <div class="alert__content">
-        <strong>Heuristika.</strong> Ak by sa odpoveď dala vygúglovať a LLM by ju vedel reprodukovať z hlavy, MCP nie je riešenie. Ak je za firewallom alebo sa mení každú hodinu, MCP áno.
+        <strong>Heuristika.</strong> Ak by sa odpoveď dala vygúglovať a AI by ju vedela reprodukovať z hlavy, MCP nie je riešenie. Ak je za firewallom alebo sa mení každú hodinu, MCP áno. MCP s API pritom nesúperí — tool ich zvyčajne len obaľuje pre AI.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── §06 BEZPEČNOSŤ ────────────────────────── -->
-<section class="section bg-secondary" id="s6">
+<!-- ─── §07 BEZPEČNOSŤ ────────────────────────── -->
+<section class="section" id="s7">
   <div class="wrapper-main">
-    <span class="mcp-section-num">§ 06 · Bezpečnosť</span>
+    <span class="mcp-section-num">§ 07 · Bezpečnosť</span>
     <h2 class="h2 mb-small">Štyri vrstvy <span class="text-color-primary">obrany</span>.</h2>
-    <p class="text-large text-color-grey mb-large">MCP server nie je len helper — môže byť útočným vektorom. Treba myslieť na bezpečnosť od transportu cez auth, validáciu inputov, až po operations.</p>
+    <p class="text-large text-color-grey mb-large">MCP server nie je len pomocník — môže byť aj vstupnou bránou pre útok. Treba myslieť na bezpečnosť od spojenia cez prihlasovanie a validáciu vstupov až po prevádzku.</p>
 
     <div class="security-grid">
       <article class="security-card">
         <div class="security-card__icon"><i class="far fa-shield"></i></div>
         <span class="security-card__layer">01 · Transport</span>
         <h3 class="security-card__name">Šifrované spojenie</h3>
-        <p class="security-card__desc"><code>stdio</code> je process-isolated — lokálny Docker = bezpečný default. HTTP mode potrebuje TLS: Let's Encrypt certifikát + reverse proxy (čo aj robíme pri vzdialenom deploy).</p>
+        <p class="security-card__desc">Lokálny server (<code>stdio</code>) beží izolovane v Dockeri — bezpečný default. Vzdialený (HTTP) potrebuje TLS: Let's Encrypt certifikát + reverse proxy (čo robíme pri vzdialenom deployi).</p>
       </article>
 
       <article class="security-card">
         <div class="security-card__icon"><i class="far fa-fingerprint"></i></div>
         <span class="security-card__layer">02 · Auth</span>
         <h3 class="security-card__name">Autentifikácia klientov</h3>
-        <p class="security-card__desc">stdio: process boundary stačí — kto má <code>docker exec</code>, má prístup. HTTP: API kľúč v hlavičke, OAuth scope, alebo capability tokens pre granular access.</p>
+        <p class="security-card__desc">Lokálne: kto má prístup ku kontajneru (<code>docker exec</code>), má prístup k serveru. Vzdialene: API kľúč v hlavičke alebo OAuth.</p>
       </article>
 
       <article class="security-card">
         <div class="security-card__icon"><i class="far fa-filter"></i></div>
         <span class="security-card__layer">03 · Tool design</span>
         <h3 class="security-card__name">Validácia inputov</h3>
-        <p class="security-card__desc">Striktné JSON schema s enum hodnotami a type checks. Žiadny path traversal pri filesystem readoch. Žiadne SQL ani shell injection cez user-supplied strings.</p>
+        <p class="security-card__desc">Striktná schéma s vymenovanými hodnotami a kontrolou typov. Text od používateľa nikdy nejde priamo do ciest k súborom, SQL ani shellu.</p>
       </article>
 
       <article class="security-card">
         <div class="security-card__icon"><i class="far fa-eye"></i></div>
         <span class="security-card__layer">04 · Operations</span>
-        <h3 class="security-card__name">Audit + human-in-the-loop</h3>
-        <p class="security-card__desc">Logy <i>čo / kedy / kým</i> bolo zavolané. Mutácie produkcie iba s explicitnou konfirmáciou používateľa. Rate limit pre runaway agents (loop útok).</p>
+        <h3 class="security-card__name">Audit + potvrdenie človekom</h3>
+        <p class="security-card__desc">Logy <i>čo / kedy / kto</i> zavolal. Zmeny v produkcii iba s explicitným potvrdením používateľa. Limit počtu volaní, keby sa agent zacyklil.</p>
       </article>
     </div>
 
@@ -803,66 +860,18 @@
         <i class="far fa-triangle-exclamation fa-xl"></i>
       </div>
       <div class="alert__content">
-        <strong>Pozor.</strong> Aj samotné popisy toolov sú attack surface — LLM ich číta a riadi sa nimi. Prompt injection cez tool description je reálny vektor. Popisy by mali pochádzať len z dôveryhodných zdrojov, nie z user-generated content.
+        <strong>Pozor.</strong> Aj samotné popisy toolov sú útočná plocha — AI ich číta a riadi sa nimi. Škodlivá inštrukcia ukrytá v popise (prompt injection) je reálny útok. Inštalujme len servery z dôveryhodných zdrojov.
       </div>
     </div>
   </div>
 </section>
 
-<!-- ─── §07 MOTIVÁCIA ──────────────────────────── -->
-<section class="section" id="s7">
-  <div class="wrapper-main">
-    <span class="mcp-section-num">§ 07 · Motivácia</span>
-    <h2 class="h2 mb-small">Prečo sme to <span class="text-color-primary">postavili</span>?</h2>
-    <p class="text-large text-color-grey mb-large">Náš styleguide nie je v Claudových tréningových dátach. Bez MCP teda Claude pri otázke „daj mi tlačidlo" generuje presvedčivo vyzerajúce HTML — také, aké videl na tisícoch iných webov.</p>
-
-    <div class="row">
-      <div class="col col--12 col--m-6">
-        <article class="card">
-          <section class="card__content">
-            <div class="d-flex align-items-center gap-small mb-small">
-              <i class="far fa-face-frown text-color-error" style="font-size:24px;"></i>
-              <span class="pill pill--red-light">Stav A · bez MCP</span>
-            </div>
-            <h3 class="h4 mb-small">Hallucinated kód</h3>
-            <ul class="list--default" style="list-style:none; padding:0;">
-              <li class="mb-tiny">— Claude navrhuje komponenty zo svojej hlavy</li>
-              <li class="mb-tiny">— Vymyslené CSS triedy, nesprávna štruktúra</li>
-              <li class="mb-tiny">— Vývojár musí ručne opravovať každý fragment</li>
-              <li class="mb-tiny">— Každý má svoju verziu „toho istého" tlačidla</li>
-              <li>— Žiadny vzťah ku skutočnému styleguide</li>
-            </ul>
-          </section>
-        </article>
-      </div>
-      <div class="col col--12 col--m-6">
-        <article class="card card--success">
-          <section class="card__content">
-            <div class="d-flex align-items-center gap-small mb-small">
-              <i class="far fa-face-smile text-color-success" style="font-size:24px;"></i>
-              <span class="pill pill--green-light">Stav B · s MCP</span>
-            </div>
-            <h3 class="h4 mb-small">Kanonický kód</h3>
-            <ul class="list--default" style="list-style:none; padding:0;">
-              <li class="mb-tiny">✓ Claude sa opýta nášho servera</li>
-              <li class="mb-tiny">✓ Vráti skutočný HTML zo styleguide</li>
-              <li class="mb-tiny">✓ Správne triedy, správna štruktúra — hneď</li>
-              <li class="mb-tiny">✓ Jeden zdroj pravdy pre AI aj ľudí</li>
-              <li>✓ Update styleguide = update pre AI naraz</li>
-            </ul>
-          </section>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── §06 NAŠE TOOLY ─────────────────────────── -->
+<!-- ─── §08 NAŠE TOOLY ─────────────────────────── -->
 <section class="section bg-secondary" id="s8">
   <div class="wrapper-main">
     <span class="mcp-section-num">§ 08 · Naša implementácia</span>
     <h2 class="h2 mb-small">Osem <span class="text-color-primary">toolov</span>, osem otázok.</h2>
-    <p class="text-large text-color-grey mb-large">Každý tool rieši jednu konkrétnu otázku Claudea o našom dizajn systéme.</p>
+    <p class="text-large text-color-grey mb-large">Každý tool rieši jednu konkrétnu otázku AI o našom dizajn systéme.</p>
 
     <div class="row">
       <div class="col col--12 col--m-6 col--l-3 mb-medium">
@@ -977,7 +986,7 @@
   </div>
 </section>
 
-<!-- ─── §07 ARCHITEKTÚRA ──────────────────────── -->
+<!-- ─── §09 ARCHITEKTÚRA ──────────────────────── -->
 <section class="section" id="s9">
   <div class="wrapper-main">
     <span class="mcp-section-num">§ 09 · Architektúra</span>
@@ -997,7 +1006,7 @@
             </div>
             <p class="mb-medium">Server nemá prístup k repozitáru. Pri každom requeste si stiahne aktuálne dáta z <code>mrtns.sk/assets</code> a 5 minút si ich drží v cache. Vždy konzistentné s produkciou.</p>
             <div class="mcp-flow">
-              <span class="badge">Claude</span>
+              <span class="badge">AI klient</span>
               <span class="mcp-flow-arr">→</span>
               <span class="badge badge--primary">MCP server</span>
               <span class="mcp-flow-arr">→</span>
@@ -1018,7 +1027,7 @@
             </div>
             <p class="mb-medium">Aktivuje sa nastavením <code>MARTINUS_STYLEGUIDE_APP_DIR</code>. Server číta priamo zo súborov repozitára — zmena v <code>app/mcp-components.yaml</code> je vidieť okamžite, bez deploya.</p>
             <div class="mcp-flow">
-              <span class="badge">Claude</span>
+              <span class="badge">AI klient</span>
               <span class="mcp-flow-arr">→</span>
               <span class="badge badge--primary">MCP server</span>
               <span class="mcp-flow-arr">→</span>
@@ -1103,7 +1112,7 @@
   </div>
 </section>
 
-<!-- ─── §08 SPUSTENIE ──────────────────────────── -->
+<!-- ─── §10 SPUSTENIE ──────────────────────────── -->
 <section class="section bg-secondary" id="s10">
   <div class="wrapper-main">
     <span class="mcp-section-num">§ 10 · Spustenie</span>
