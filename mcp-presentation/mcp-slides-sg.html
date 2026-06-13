@@ -669,7 +669,7 @@
       margin-bottom: 6px;
     }
     .security-card__name {
-      font-size: 17px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--ms-text-primary);
       margin: 0 0 10px;
@@ -866,44 +866,11 @@
   <!-- ─── SLIDE 1 — COVER ─────────────────────── -->
   <section class="slide active" data-name="Úvod">
     <div class="section bg-secondary">
-      <div class="wrapper-main">
-        <div class="row">
-          <div class="col col--12 col--m-8">
-            <span class="badge badge--primary mb-medium reveal" style="display:inline-block;">
-              <i class="far fa-sparkles"></i> Slide deck · Vol. 01
-            </span>
-            <h1 class="slide-title reveal text-bold">Model Context <span class="text-color-primary">Protocol.</span></h1>
-            <p class="slide-lead reveal">Ako dať <strong>AI</strong> oči a ruky — a ako sme ju naučili náš styleguide.</p>
-            <div class="d-flex flex-wrap gap-small reveal">
-              <span class="pill pill--red-light">Open-source</span>
-              <span class="pill pill--blue-light">Anthropic · 2024</span>
-              <span class="pill pill--green-light">~12 min</span>
-            </div>
-          </div>
-          <div class="col col--12 col--m-4">
-            <article class="card card--material reveal">
-              <section class="card__content">
-                <div class="text-small text-color-grey" style="text-transform:uppercase; letter-spacing:.08em;">Obsah</div>
-                <ol class="list--default mt-small" style="padding-left: 18px;">
-                  <li>Problém</li>
-                  <li>Čo je MCP</li>
-                  <li>Čo MCP nie je</li>
-                  <li>Tri stavebné bloky</li>
-                  <li>Lifecycle</li>
-                  <li>Best practices</li>
-                  <li>Kedy MCP, kedy nie</li>
-                  <li>Bezpečnosť</li>
-                  <li>Naše tooly</li>
-                  <li>Architektúra</li>
-                  <li>Build pipeline</li>
-                  <li>Spustenie</li>
-                  <li>Kam ďalej</li>
-                  <li>Takeaways</li>
-                </ol>
-              </section>
-            </article>
-          </div>
-        </div>
+      <div class="wrapper-main text-center">
+        <h1 class="slide-title reveal text-bold">Model Context <span class="text-color-primary">Protocol.</span></h1>
+        <p class="slide-lead reveal" style="margin-left:auto; margin-right:auto;">Ako dať <strong>AI</strong> oči a ruky — a ako sme ju naučili náš styleguide.</p>
+        <img src="mcp-blocks.jpg" alt="Vľavo postavička márne skladá vežu z kociek, vpravo jej knihovníčka podáva správny dielik" class="reveal" style="display:block; max-width:680px; width:100%; margin:36px auto 0; border-radius:8px; border:10px solid white; box-shadow:0 2px 12px rgba(0,0,0,.08);">
+        <p class="reveal text-color-grey" style="margin:20px auto 0; font-size:17px;"><i>Harry vie kúzliť. Hermiona vie, v ktorej knihe je odpoveď.</i></p>
       </div>
     </div>
   </section>
@@ -916,7 +883,7 @@
           <span class="dot"></span> § 01 · Problém <span class="rule"></span>
         </span>
         <h2 class="slide-heading reveal text-bold">Claude nepozná naše <span class="text-color-primary">komponenty</span>.</h2>
-        <p class="slide-lead reveal">Náš styleguide nikdy nevidel. Bez kontextu generuje <strong>presvedčivo vyzerajúci</strong> HTML — taký, aký videl na tisícoch iných webov. V príkladoch používame Claude, ale to isté platí pre každý AI nástroj, ktorý hovorí MCP.</p>
+        <p class="slide-lead reveal">Náš styleguide nikdy nevidel — generuje <strong>presvedčivý</strong> HTML z tisícov iných webov. A platí to pre každý AI nástroj, nie len Claude.</p>
 
         <div class="practices mt-large reveal">
           <article class="card practice-card practice-card--bad">
@@ -927,19 +894,15 @@
             <ul class="practice-list">
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Vymyslené CSS triedy</strong> — názvy, ktoré v styleguide neexistujú.</div>
+                <div class="practice-item__text"><strong>Vymyslené CSS triedy</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Nesprávna štruktúra</strong> — HTML poskladané inak, ako ho má styleguide.</div>
+                <div class="practice-item__text"><strong>Nesprávna štruktúra</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Ručná oprava</strong> každého kúska kódu pred použitím.</div>
-              </li>
-              <li class="practice-item">
-                <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Každý dostane inú verziu</strong> toho istého tlačidla.</div>
+                <div class="practice-item__text"><strong>Každý dostane iné tlačidlo</strong></div>
               </li>
             </ul>
           </article>
@@ -952,19 +915,15 @@
             <ul class="practice-list">
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Skutočný HTML</strong> zo styleguide — stačí vložiť.</div>
+                <div class="practice-item__text"><strong>Skutočný HTML zo styleguide</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Správne triedy</strong>, správna štruktúra — hneď.</div>
+                <div class="practice-item__text"><strong>Správne triedy na prvýkrát</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Jeden zdroj pravdy</strong> pre AI aj ľudí.</div>
-              </li>
-              <li class="practice-item">
-                <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Update styleguide</strong> = update pre AI naraz.</div>
+                <div class="practice-item__text"><strong>Jeden zdroj pravdy</strong></div>
               </li>
             </ul>
           </article>
@@ -1037,21 +996,18 @@
               <span class="pill pill--red-light">Mýtus 01</span>
             </div>
             <h3 class="primitive-card__name">„Nahrádza REST API.“</h3>
-            <p class="primitive-card__desc"><strong>Nie — sedí nad nimi.</strong> MCP tool zvyčajne existujúce API len volá. Kde stačí priame API, je presnejšie a lacnejšie.</p>
           </article>
           <article class="primitive-card">
             <div class="primitive-card__head">
               <span class="pill pill--red-light">Mýtus 02</span>
             </div>
             <h3 class="primitive-card__name">„AI modely ním hovoria medzi sebou.“</h3>
-            <p class="primitive-card__desc"><strong>Nie — spája AI s nástrojmi.</strong> MCP pripája jeden model k dátam a funkciám, nie modely navzájom.</p>
           </article>
           <article class="primitive-card">
             <div class="primitive-card__head">
               <span class="pill pill--red-light">Mýtus 03</span>
             </div>
             <h3 class="primitive-card__name">„Funguje len s Claudeom.“</h3>
-            <p class="primitive-card__desc"><strong>Nie — je to otvorený štandard.</strong> Hovorí ním Claude, Cursor, Copilot, Zed a ďalší klienti.</p>
           </article>
         </div>
       </div>
@@ -1068,7 +1024,10 @@
         <h2 class="slide-heading reveal text-bold">MCP server ponúka <span class="text-color-primary">tri veci</span>.</h2>
         <p class="slide-lead reveal">Tools, resources, prompts. My zatiaľ používame len prvé.</p>
 
-        <div class="primitives-grid mt-large reveal">
+        <img src="mcp-building-blocks.jpg" alt="Traja pomocníci: prieskumník s mapou, knihovníčka s knihou a majster s náradím" class="reveal" style="display:block; max-width:440px; width:100%; margin:24px auto 0; border-radius:8px; border:10px solid white; box-shadow:0 2px 12px rgba(0,0,0,.08);">
+        <p class="reveal text-color-grey text-center" style="margin:14px 0 0; font-size:15px;">Mapa = prompts · kniha = resources · náradie = tools</p>
+
+        <div class="primitives-grid mt-medium reveal">
           <article class="primitive-card primitive-card--featured">
             <div class="primitive-card__head">
               <span class="pill pill--red">U nás</span>
@@ -1117,9 +1076,9 @@
           <span class="dot"></span> § 05 · Lifecycle <span class="rule"></span>
         </span>
         <h2 class="slide-heading reveal text-bold">Anatómia <span class="text-color-primary">jedného volania</span>.</h2>
-        <p class="slide-lead reveal">Discovery sa deje raz pri pripojení. Tool call môže prebehnúť mnohokrát počas konverzácie.</p>
+        <img src="mcp-lifecycle.jpg" alt="Päť panelov: zaklopanie na dvere, prezeranie skrinky s nástrojmi, rozmýšľanie nad mapou, siahnutie po nástroji, odovzdanie balíčka" class="reveal" style="display:block; max-width:760px; width:100%; margin:24px auto 0; border-radius:8px; border:10px solid white; box-shadow:0 2px 12px rgba(0,0,0,.08);">
 
-        <div class="lifecycle-pair mt-large reveal">
+        <div class="lifecycle-pair mt-medium reveal">
           <div class="phase phase--discovery">
             <header class="phase__head">
               <span class="phase__marker">Fáza A</span>
@@ -1131,14 +1090,12 @@
                 <section class="card__content">
                   <div class="step-circle">1</div>
                   <div class="step-title">initialize</div>
-                  <p class="step-desc">Úvodný „pokec“ — klient a server si povedia, čo kto vie. Ako USB-C.</p>
                 </section>
               </article>
               <article class="card lifecycle-step">
                 <section class="card__content">
                   <div class="step-circle">2</div>
                   <div class="step-title">tools/list</div>
-                  <p class="step-desc">Klient si vypýta zoznam toolov.</p>
                 </section>
               </article>
             </div>
@@ -1155,21 +1112,18 @@
                 <section class="card__content">
                   <div class="step-circle">3</div>
                   <div class="step-title">AI&nbsp;rozhoduje</div>
-                  <p class="step-desc">AI vyberá, ktorý tool zavolá.</p>
                 </section>
               </article>
               <article class="card lifecycle-step">
                 <section class="card__content">
                   <div class="step-circle">4</div>
                   <div class="step-title">tools/call</div>
-                  <p class="step-desc">Klient pošle request, server vykoná.</p>
                 </section>
               </article>
               <article class="card lifecycle-step">
                 <section class="card__content">
                   <div class="step-circle">5</div>
                   <div class="step-title">response</div>
-                  <p class="step-desc">Server vráti štruktúrovaný výsledok.</p>
                 </section>
               </article>
             </div>
@@ -1187,7 +1141,7 @@
           <span class="dot"></span> § 06 · Best practices <span class="rule"></span>
         </span>
         <h2 class="slide-heading reveal text-bold">Čo <span class="text-color-primary">funguje</span>, čo nie.</h2>
-        <p class="slide-lead reveal">AI nečíta kód — číta popisy toolov. Pomenovanie a popis určuje úspešnosť.</p>
+        <p class="slide-lead reveal">AI nečíta kód — číta <strong>popisy toolov</strong>.</p>
 
         <div class="practices mt-large reveal">
           <article class="card practice-card practice-card--good">
@@ -1198,23 +1152,19 @@
             <ul class="practice-list">
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Stručné popisné názvy</strong> — <code>get_component</code>.</div>
+                <div class="practice-item__text"><strong>Popisné názvy</strong> — <code>get_component</code></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Presné schémy parametrov</strong> — povolené hodnoty vymenované.</div>
+                <div class="practice-item__text"><strong>Presné schémy parametrov</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Cache</strong> — pomalé dáta si server pamätá (u nás 5 min).</div>
+                <div class="practice-item__text"><strong>Cache pomalých dát</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Štruktúrované chyby</strong> s návrhom riešenia.</div>
-              </li>
-              <li class="practice-item">
-                <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Tool na zistenie parametrov</strong> — lacnejšie ako skúšať naslepo.</div>
+                <div class="practice-item__text"><strong>Chyby s návrhom riešenia</strong></div>
               </li>
             </ul>
           </article>
@@ -1227,23 +1177,19 @@
             <ul class="practice-list">
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Stovky toolov</strong> — AI sa stratí.</div>
+                <div class="practice-item__text"><strong>Stovky toolov</strong> — AI sa stratí</div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Vágne názvy</strong> ako <code>do_thing</code>.</div>
+                <div class="practice-item__text"><strong>Vágne názvy</strong> — <code>do_thing</code></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Jeden mega-tool</strong> s 30 parametrami.</div>
+                <div class="practice-item__text"><strong>Mega-tool s 30 parametrami</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Obrovské odpovede</strong> bez štruktúry — míňajú kontext.</div>
-              </li>
-              <li class="practice-item">
-                <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Tichá chyba</strong> — server vráti <code>null</code> bez vysvetlenia.</div>
+                <div class="practice-item__text"><strong>Tichá chyba</strong> — <code>null</code> bez vysvetlenia</div>
               </li>
             </ul>
           </article>
@@ -1260,7 +1206,7 @@
           <span class="dot"></span> § 07 · Kedy použiť <span class="rule"></span>
         </span>
         <h2 class="slide-heading reveal text-bold">Kedy MCP, <span class="text-color-primary">kedy nie</span>.</h2>
-        <p class="slide-lead reveal">Nie každý kontextový problém potrebuje vlastný server. Tu sú konkrétne príklady.</p>
+        <p class="slide-lead reveal">Nie každý kontextový problém potrebuje vlastný server.</p>
 
         <div class="practices mt-large reveal">
           <article class="card practice-card practice-card--good">
@@ -1271,19 +1217,19 @@
             <ul class="practice-list">
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Interný design system</strong> — komponenty, tokens, ikonky (čo robíme my).</div>
+                <div class="practice-item__text"><strong>Interný design system</strong> — čo robíme my</div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Interné dáta a API</strong> — vyhľadanie zákazníka, história ticketov, štruktúra firmy.</div>
+                <div class="practice-item__text"><strong>Interné dáta a API</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Externé služby s API kľúčom</strong> — Sentry, Linear, Slack, Grafana.</div>
+                <div class="practice-item__text"><strong>Externé služby s kľúčom</strong> — Sentry, Slack</div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">+</span>
-                <div class="practice-item__text"><strong>Orientácia v kóde</strong> — kde je čo definované, čo na čom závisí.</div>
+                <div class="practice-item__text"><strong>Orientácia v kóde</strong></div>
               </li>
             </ul>
           </article>
@@ -1296,19 +1242,19 @@
             <ul class="practice-list">
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Verejné API, ktoré AI pozná</strong> — Stripe, AWS, npm, MDN.</div>
+                <div class="practice-item__text"><strong>Verejné API, ktoré AI pozná</strong> — Stripe, npm</div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Čistá výpočtová logika</strong> — regex, parsing, formátovanie.</div>
+                <div class="practice-item__text"><strong>Čisté výpočty</strong> — regex, formátovanie</div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Obrovské dáta</strong> — celé tabuľky, gigabajty logov.</div>
+                <div class="practice-item__text"><strong>Obrovské dáta</strong></div>
               </li>
               <li class="practice-item">
                 <span class="practice-item__marker">−</span>
-                <div class="practice-item__text"><strong>Zápisy do produkcie</strong> — zmeny ostrých dát bez potvrdenia človekom.</div>
+                <div class="practice-item__text"><strong>Zápisy do produkcie bez človeka</strong></div>
               </li>
             </ul>
           </article>
@@ -1336,28 +1282,24 @@
             <div class="security-card__icon"><i class="far fa-shield"></i></div>
             <span class="security-card__layer">01 · Transport</span>
             <h3 class="security-card__name">Šifrované spojenie</h3>
-            <p class="security-card__desc">Lokálne izolované v Dockeri, vzdialene vždy cez HTTPS.</p>
           </article>
 
           <article class="security-card">
             <div class="security-card__icon"><i class="far fa-fingerprint"></i></div>
             <span class="security-card__layer">02 · Auth</span>
             <h3 class="security-card__name">Autentifikácia klientov</h3>
-            <p class="security-card__desc">Vzdialený server pustí len klientov s kľúčom.</p>
           </article>
 
           <article class="security-card">
             <div class="security-card__icon"><i class="far fa-filter"></i></div>
             <span class="security-card__layer">03 · Tool design</span>
-            <h3 class="security-card__name">Validácia inputov</h3>
-            <p class="security-card__desc">Server prijme len presne definované vstupy — nič nejde priamo do SQL či súborov.</p>
+            <h3 class="security-card__name">Validácia vstupov</h3>
           </article>
 
           <article class="security-card">
             <div class="security-card__icon"><i class="far fa-eye"></i></div>
             <span class="security-card__layer">04 · Operations</span>
             <h3 class="security-card__name">Audit + potvrdenie človekom</h3>
-            <p class="security-card__desc">Logovať, kto čo zavolal. Ostré zmeny len s potvrdením človeka.</p>
           </article>
         </div>
 
@@ -1734,10 +1676,10 @@
           <a href="mcp-presentation-sg.html" class="btn btn--primary mb-none">
             <i class="far fa-book-open"></i> Dlhšia verzia (článok)
           </a>
-          <a href="docs/guides/mcp-server.md" class="btn btn--secondary mb-none">
+          <a href="../docs/guides/mcp-server.md" class="btn btn--secondary mb-none">
             <i class="far fa-cog"></i> Setup docs
           </a>
-          <a href="docs/guides/mcp-audit.md" class="btn btn--ghost mb-none">
+          <a href="../docs/guides/mcp-audit.md" class="btn btn--ghost mb-none">
             <i class="far fa-file-alt"></i> Audit & roadmap
           </a>
         </div>
