@@ -32,6 +32,7 @@
     "node": ">=18.2.0"
   },
   "scripts": {
+    "postinstall": "node scripts/fix-optipng.js",
     "prepare": "gulp prepare --openssl-legacy-provider",
     "build": "gulp build --openssl-legacy-provider --mode=production",
     "postbuild": "node scripts/emit-mcp-artifacts.js",
