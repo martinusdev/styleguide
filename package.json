@@ -33,9 +33,11 @@
   },
   "scripts": {
     "prepare": "gulp prepare --openssl-legacy-provider",
+    "prebuild": "node scripts/sync-font-awesome-subset.js",
     "build": "gulp build --openssl-legacy-provider --mode=production",
     "postbuild": "node scripts/emit-mcp-artifacts.js",
     "emit-mcp": "node scripts/emit-mcp-artifacts.js",
+    "sync-fa-subset": "node scripts/sync-font-awesome-subset.js",
     "serve": "gulp serve --openssl-legacy-provider",
     "images": "gulp images --openssl-legacy-provider",
     "clear-cache": "gulp clearCache --openssl-legacy-provider",
