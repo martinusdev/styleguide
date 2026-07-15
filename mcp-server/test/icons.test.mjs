@@ -66,11 +66,12 @@ test('list_icons filtered by solid returns only fas icons', async () => {
   assert.ok(data.icons.every((i) => i.prefix === 'fas'));
 });
 
-test('list_icons filtered by kit returns the 3 Martinus custom icons', async () => {
+test('list_icons filtered by kit returns the 4 Martinus custom icons', async () => {
   const data = parse(await server.listIcons('kit'));
-  assert.equal(data.total, 3);
+  assert.equal(data.total, 4);
   const names = data.icons.map((i) => i.name);
   assert.ok(names.includes('martinus'));
+  assert.ok(names.includes('martinus-outline'));
   assert.ok(names.includes('owl'));
   assert.ok(names.includes('owl-plus'));
   assert.ok(data.icons.every((i) => i.prefix === 'fak'));
@@ -112,7 +113,7 @@ test('get_icon owl-plus kit icon renders correctly', async () => {
 });
 
 test('get_icon always includes requires: ["font-awesome"]', async () => {
-  const data = parse(await server.getIcon({ name: 'check-circle' }));
+  const data = parse(await server.getIcon({ name: 'circle-check' }));
   assert.deepEqual(data.requires, ['font-awesome']);
 });
 

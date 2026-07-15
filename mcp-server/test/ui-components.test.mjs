@@ -116,8 +116,8 @@ test('alert with variant applies .alert--{variant}', async () => {
 });
 
 test('alert with icon renders .alert__icon wrapper and FA icon', async () => {
-  const { html } = await render({ name: 'alert', content: 'OK', icon: 'check-circle' });
-  assert.ok(html.includes('<div class="alert__icon"><i class="far fa-check-circle fa-xl"></i></div>'));
+  const { html } = await render({ name: 'alert', content: 'OK', icon: 'circle-check' });
+  assert.ok(html.includes('<div class="alert__icon"><i class="far fa-circle-check fa-xl"></i></div>'));
   assert.ok(html.includes('<div class="alert__content">OK</div>'));
 });
 
