@@ -56,6 +56,23 @@ block append content
                   br
                   abbr(title=iconClass, data-clipboard, data-clipboard-msg-success='<small>skopírované</small>', data-clipboard-text=`${iconName}`).text-color-grey= iconName
 
+    +content-sub-section('Legacy names (pre Font Awesome 6)')
+
+      - var legacyIconNames = ['air-freshener', 'atlas', 'balance-scale', 'band-aid', 'box-alt', 'check-circle', 'clinic-medical', 'coffee-togo', 'cog', 'cut', 'fighter-jet', 'file-alt', 'globe-africa', 'globe-americas', 'globe-asia', 'globe-europe', 'heartbeat', 'history', 'map-marked', 'map-marker-alt', 'map-signs', 'paint-brush', 'pencil-paintbrush', 'pencil-ruler', 'pray', 'praying-hands', 'search', 'shipping-fast', 'sign-language', 'theater-masks', 'tshirt', 'user-friends', 'volleyball-ball', 'window-alt'];
+
+      +p These are Font Awesome 5 icon names that were renamed when the kit was upgraded to Font Awesome 6 (e.g. <code class='l-code-inline'>cog</code> &rarr; <code class='l-code-inline'>gear</code>). They are <strong>no longer part of the curated subset</strong> in <code class='l-code-inline'>font-awesome-subset.yaml</code> — this section only exists to check whether Font Awesome's own backward-compatibility shims still render them. If an icon below looks broken/empty, the shim does not cover it and any markup still using that name must be updated to the current name.
+
+      +demo
+        +demo-example
+          ul.l-icons
+            each iconName in legacyIconNames
+              - const iconClass = `far fa-${iconName}`;
+
+              li(data-tooltip, title=iconClass).l-icons_item
+                +faIcon(iconName, 'far').fa-lg
+                br
+                span.text-color-grey= iconName
+
   //- ICONS
   +content-section(contents[1])
 
