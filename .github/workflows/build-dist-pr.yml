@@ -1,0 +1,45 @@
+name: Build dist and open PR
+
+on:
+  push:
+    branches: [master]
+
+# Avoid two builds racing to push the same branch if master gets multiple
+# quick pushes (e.g. a merge queue).
+concurrency:
+  group: build-dist-pr
+  cancel-in-progress: true
+
+jobs:
+  build-dist:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: yarn
+
+      - run: yarn install
+      - run: yarn prepare --openssl-legacy-provider
+      - run: yarn build
+
+      # No-op if the build output is identical to what's already committed
+      # (e.g. this run was triggered by merging the bot's own PR).
+      - name: Open PR with build artifacts
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "Aktualizovaný build (dist/)"
+          branch: auto/build-dist
+          delete-branch: true
+          title: "Build: aktualizované dist artefakty"
+          body: |
+            Automaticky vygenerovaný produkčný build z commitu ${{ github.sha }} na `master`.
+
+            Vyžaduje manuálne overenie a merge.
+          add-paths: dist
