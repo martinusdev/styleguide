@@ -3,6 +3,11 @@ name: Build dist and open PR
 on:
   push:
     branches: [master]
+    # A push that only touches dist/ is the bot's own build-artifact commit
+    # (or a merge of its PR) — skip it, or every merge would trigger another
+    # build and re-open this same PR forever.
+    paths-ignore:
+      - 'dist/**'
 
 # Avoid two builds racing to push the same branch if master gets multiple
 # quick pushes (e.g. a merge queue).
