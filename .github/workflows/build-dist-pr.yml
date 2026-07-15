@@ -22,8 +22,16 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
           cache: yarn
+
+      - name: Configure Font Awesome registry auth
+        run: |
+          cat <<EOF > .npmrc
+          @awesome.me:registry=https://npm.fontawesome.com/
+          @fortawesome:registry=https://npm.fontawesome.com/
+          //npm.fontawesome.com/:_authToken=${{ secrets.FONTAWESOME_NPM_TOKEN }}
+          EOF
 
       - run: yarn install
       - run: yarn prepare --openssl-legacy-provider
