@@ -357,6 +357,27 @@
   }
 }
 
+// ----------------------------
+// Dark mode overrides
+//
+// The bundle hardcodes light surfaces (light blue annotation bubble, white
+// sticky bar) but never sets a text color, so in dark mode the inherited text
+// flips to light and disappears. Only the surfaces are overridden here - the
+// light theme output stays byte-identical.
+[data-theme='dark'] {
+  .card--annotation {
+    background-color: _theme(state-info-bg);
+
+    &::after {
+      border-top-color: _theme(state-info-bg);
+    }
+  }
+
+  .sticky {
+    background-color: _theme(surface-primary);
+  }
+}
+
 @media (max-width: 767px) {
   .product-item--cms .product-cover {
     max-width: 120px;
