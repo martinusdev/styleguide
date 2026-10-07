@@ -32,6 +32,7 @@
     "node": ">=18.2.0"
   },
   "scripts": {
+    "postinstall": "node scripts/fix-optipng.js",
     "prepare": "gulp prepare --openssl-legacy-provider",
     "prebuild": "node scripts/sync-font-awesome-subset.js",
     "build": "gulp build --openssl-legacy-provider --mode=production",
