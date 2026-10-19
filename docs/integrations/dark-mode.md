@@ -56,6 +56,8 @@
 
 **Tab + Card union**: Aktívny tab a card-well musia mať rovnaké pozadie – oba `_theme(surface-secondary)`.
 
+**Offcanvas**: Pozadie `_theme(surface-primary)` (rovnako ako telo modálu), nie `surface-elevated` – fade pod zbalenými zoznamami (`.collapsed::after` v `layout/_sections.scss`) v dark mode počíta so `surface-primary`, pri inom pozadí by pod zoznamom vznikol tmavší pruh.
+
 ## Požiadavky pre každý komponent
 
 1. Konvertuj konfiguráciu na theme tokeny namiesto hardcoded farieb
@@ -74,6 +76,7 @@
 - Forms (basic, advanced, labels, numberspinner)
 - Lists
 - Modals
+- Offcanvas
 - Tables
 - Tabs (filter a card štýly)
 - Typography (h2, h3)
